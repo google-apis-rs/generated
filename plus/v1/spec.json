@@ -1,0 +1,3185 @@
+{
+  "kind": "discovery#restDescription",
+  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/w2FrgYFAkH9NArdWrHE1nhKOCxU\"",
+  "discoveryVersion": "v1",
+  "id": "plus:v1",
+  "name": "plus",
+  "canonicalName": null,
+  "fullyEncodeReservedExpansion": null,
+  "version": "v1",
+  "revision": "20190616",
+  "title": "Google+ API",
+  "description": "Builds on top of the Google+ platform.",
+  "ownerDomain": "google.com",
+  "ownerName": "Google",
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/gplus-16.png",
+    "x32": "http://www.google.com/images/icons/product/gplus-32.png"
+  },
+  "documentationLink": "https://developers.google.com/+/api/",
+  "protocol": "rest",
+  "baseUrl": "https://www.googleapis.com/plus/v1/",
+  "basePath": "/plus/v1/",
+  "rootUrl": "https://www.googleapis.com/",
+  "servicePath": "plus/v1/",
+  "batchPath": "batch/plus/v1",
+  "version_module": null,
+  "packagePath": null,
+  "labels": null,
+  "features": null,
+  "parameters": {
+    "alt": {
+      "description": "Data format for the response.",
+      "default": "json",
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "json"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json"
+      ],
+      "repeated": false
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "location": "query",
+      "required": false,
+      "type": "boolean",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "quotaUser": {
+      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "userIp": {
+      "description": "Deprecated. Please use quotaUser instead.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    }
+  },
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/plus.login": {
+          "description": "View your basic profile info, including your age range and language"
+        },
+        "https://www.googleapis.com/auth/plus.me": {
+          "description": "Associate you with your personal info on Google"
+        },
+        "https://www.googleapis.com/auth/userinfo.email": {
+          "description": "View your email address"
+        },
+        "https://www.googleapis.com/auth/userinfo.profile": {
+          "description": "See your personal info, including any personal info you've made publicly available"
+        }
+      }
+    }
+  },
+  "schemas": {
+    "Acl": {
+      "id": "Acl",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "description": {
+          "description": "Description of the access granted, suitable for display.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "items": {
+          "description": "The list of access entries.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "PlusAclentryResource"
+          }
+        },
+        "kind": {
+          "description": "Identifies this resource as a collection of access controls. Value: \"plus#acl\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Activity": {
+      "id": "Activity",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "access": {
+          "description": "Identifies who has access to see this activity.",
+          "$ref": "Acl"
+        },
+        "actor": {
+          "description": "The person who performed this activity.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "clientSpecificActorInfo": {
+              "description": "Actor info specific to particular clients.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "youtubeActorInfo": {
+                  "description": "Actor info specific to YouTube clients.",
+                  "type": "object",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {
+                    "channelId": {
+                      "description": "ID of the YouTube channel owned by the Actor.",
+                      "type": "string",
+                      "format": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "properties": {},
+                      "additionalProperties": null,
+                      "items": null
+                    }
+                  },
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            },
+            "displayName": {
+              "description": "The name of the actor, suitable for display.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "id": {
+              "description": "The ID of the actor's Person resource.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "image": {
+              "description": "The image representation of the actor.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "url": {
+                  "description": "The URL of the actor's profile photo. To resize the image and crop it to a square, append the query string ?sz=x, where x is the dimension in pixels of each side.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            },
+            "name": {
+              "description": "An object representation of the individual components of name.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "familyName": {
+                  "description": "The family name (\"last name\") of the actor.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "givenName": {
+                  "description": "The given name (\"first name\") of the actor.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            },
+            "url": {
+              "description": "The link to the actor's Google profile.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "verification": {
+              "description": "Verification status of actor.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "adHocVerified": {
+                  "description": "Verification for one-time or manual processes.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "address": {
+          "description": "Street address where this activity occurred.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "annotation": {
+          "description": "Additional content added by the person who shared this activity, applicable only when resharing an activity.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "crosspostSource": {
+          "description": "If this activity is a crosspost from another system, this property specifies the ID of the original activity.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "etag": {
+          "description": "ETag of this response for caching purposes.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "geocode": {
+          "description": "Latitude and longitude where this activity occurred. Format is latitude followed by longitude, space separated.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "The ID of this activity.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Identifies this resource as an activity. Value: \"plus#activity\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "location": {
+          "description": "The location where this activity occurred.",
+          "$ref": "Place"
+        },
+        "object": {
+          "description": "The object of this activity.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "actor": {
+              "description": "If this activity's object is itself another activity, such as when a person reshares an activity, this property specifies the original activity's actor.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "clientSpecificActorInfo": {
+                  "description": "Actor info specific to particular clients.",
+                  "type": "object",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {
+                    "youtubeActorInfo": {
+                      "description": "Actor info specific to YouTube clients.",
+                      "type": "object",
+                      "format": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "properties": {
+                        "channelId": {
+                          "description": "ID of the YouTube channel owned by the Actor.",
+                          "type": "string",
+                          "format": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "properties": {},
+                          "additionalProperties": null,
+                          "items": null
+                        }
+                      },
+                      "additionalProperties": null,
+                      "items": null
+                    }
+                  },
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "displayName": {
+                  "description": "The original actor's name, which is suitable for display.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "id": {
+                  "description": "ID of the original actor.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "image": {
+                  "description": "The image representation of the original actor.",
+                  "type": "object",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {
+                    "url": {
+                      "description": "A URL that points to a thumbnail photo of the original actor.",
+                      "type": "string",
+                      "format": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "properties": {},
+                      "additionalProperties": null,
+                      "items": null
+                    }
+                  },
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "url": {
+                  "description": "A link to the original actor's Google profile.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "verification": {
+                  "description": "Verification status of actor.",
+                  "type": "object",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {
+                    "adHocVerified": {
+                      "description": "Verification for one-time or manual processes.",
+                      "type": "string",
+                      "format": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "properties": {},
+                      "additionalProperties": null,
+                      "items": null
+                    }
+                  },
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            },
+            "attachments": {
+              "description": "The media objects attached to this activity.",
+              "type": "array",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": {
+                "type": "object",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {
+                  "content": {
+                    "description": "If the attachment is an article, this property contains a snippet of text from the article. It can also include descriptions for other types.",
+                    "type": "string",
+                    "format": null,
+                    "enum": [],
+                    "enumDescriptions": [],
+                    "properties": {},
+                    "additionalProperties": null,
+                    "items": null
+                  },
+                  "displayName": {
+                    "description": "The title of the attachment, such as a photo caption or an article title.",
+                    "type": "string",
+                    "format": null,
+                    "enum": [],
+                    "enumDescriptions": [],
+                    "properties": {},
+                    "additionalProperties": null,
+                    "items": null
+                  },
+                  "embed": {
+                    "description": "If the attachment is a video, the embeddable link.",
+                    "type": "object",
+                    "format": null,
+                    "enum": [],
+                    "enumDescriptions": [],
+                    "properties": {
+                      "type": {
+                        "description": "Media type of the link.",
+                        "type": "string",
+                        "format": null,
+                        "enum": [],
+                        "enumDescriptions": [],
+                        "properties": {},
+                        "additionalProperties": null,
+                        "items": null
+                      },
+                      "url": {
+                        "description": "URL of the link.",
+                        "type": "string",
+                        "format": null,
+                        "enum": [],
+                        "enumDescriptions": [],
+                        "properties": {},
+                        "additionalProperties": null,
+                        "items": null
+                      }
+                    },
+                    "additionalProperties": null,
+                    "items": null
+                  },
+                  "fullImage": {
+                    "description": "The full image URL for photo attachments.",
+                    "type": "object",
+                    "format": null,
+                    "enum": [],
+                    "enumDescriptions": [],
+                    "properties": {
+                      "height": {
+                        "description": "The height, in pixels, of the linked resource.",
+                        "type": "integer",
+                        "format": "uint32",
+                        "enum": [],
+                        "enumDescriptions": [],
+                        "properties": {},
+                        "additionalProperties": null,
+                        "items": null
+                      },
+                      "type": {
+                        "description": "Media type of the link.",
+                        "type": "string",
+                        "format": null,
+                        "enum": [],
+                        "enumDescriptions": [],
+                        "properties": {},
+                        "additionalProperties": null,
+                        "items": null
+                      },
+                      "url": {
+                        "description": "URL of the image.",
+                        "type": "string",
+                        "format": null,
+                        "enum": [],
+                        "enumDescriptions": [],
+                        "properties": {},
+                        "additionalProperties": null,
+                        "items": null
+                      },
+                      "width": {
+                        "description": "The width, in pixels, of the linked resource.",
+                        "type": "integer",
+                        "format": "uint32",
+                        "enum": [],
+                        "enumDescriptions": [],
+                        "properties": {},
+                        "additionalProperties": null,
+                        "items": null
+                      }
+                    },
+                    "additionalProperties": null,
+                    "items": null
+                  },
+                  "id": {
+                    "description": "The ID of the attachment.",
+                    "type": "string",
+                    "format": null,
+                    "enum": [],
+                    "enumDescriptions": [],
+                    "properties": {},
+                    "additionalProperties": null,
+                    "items": null
+                  },
+                  "image": {
+                    "description": "The preview image for photos or videos.",
+                    "type": "object",
+                    "format": null,
+                    "enum": [],
+                    "enumDescriptions": [],
+                    "properties": {
+                      "height": {
+                        "description": "The height, in pixels, of the linked resource.",
+                        "type": "integer",
+                        "format": "uint32",
+                        "enum": [],
+                        "enumDescriptions": [],
+                        "properties": {},
+                        "additionalProperties": null,
+                        "items": null
+                      },
+                      "type": {
+                        "description": "Media type of the link.",
+                        "type": "string",
+                        "format": null,
+                        "enum": [],
+                        "enumDescriptions": [],
+                        "properties": {},
+                        "additionalProperties": null,
+                        "items": null
+                      },
+                      "url": {
+                        "description": "Image URL.",
+                        "type": "string",
+                        "format": null,
+                        "enum": [],
+                        "enumDescriptions": [],
+                        "properties": {},
+                        "additionalProperties": null,
+                        "items": null
+                      },
+                      "width": {
+                        "description": "The width, in pixels, of the linked resource.",
+                        "type": "integer",
+                        "format": "uint32",
+                        "enum": [],
+                        "enumDescriptions": [],
+                        "properties": {},
+                        "additionalProperties": null,
+                        "items": null
+                      }
+                    },
+                    "additionalProperties": null,
+                    "items": null
+                  },
+                  "objectType": {
+                    "description": "The type of media object. Possible values include, but are not limited to, the following values:  \n- \"photo\" - A photo. \n- \"album\" - A photo album. \n- \"video\" - A video. \n- \"article\" - An article, specified by a link.",
+                    "type": "string",
+                    "format": null,
+                    "enum": [],
+                    "enumDescriptions": [],
+                    "properties": {},
+                    "additionalProperties": null,
+                    "items": null
+                  },
+                  "thumbnails": {
+                    "description": "If the attachment is an album, this property is a list of potential additional thumbnails from the album.",
+                    "type": "array",
+                    "format": null,
+                    "enum": [],
+                    "enumDescriptions": [],
+                    "properties": {},
+                    "additionalProperties": null,
+                    "items": {
+                      "type": "object",
+                      "format": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "properties": {
+                        "description": {
+                          "description": "Potential name of the thumbnail.",
+                          "type": "string",
+                          "format": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "properties": {},
+                          "additionalProperties": null,
+                          "items": null
+                        },
+                        "image": {
+                          "description": "Image resource.",
+                          "type": "object",
+                          "format": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "properties": {
+                            "height": {
+                              "description": "The height, in pixels, of the linked resource.",
+                              "type": "integer",
+                              "format": "uint32",
+                              "enum": [],
+                              "enumDescriptions": [],
+                              "properties": {},
+                              "additionalProperties": null,
+                              "items": null
+                            },
+                            "type": {
+                              "description": "Media type of the link.",
+                              "type": "string",
+                              "format": null,
+                              "enum": [],
+                              "enumDescriptions": [],
+                              "properties": {},
+                              "additionalProperties": null,
+                              "items": null
+                            },
+                            "url": {
+                              "description": "Image url.",
+                              "type": "string",
+                              "format": null,
+                              "enum": [],
+                              "enumDescriptions": [],
+                              "properties": {},
+                              "additionalProperties": null,
+                              "items": null
+                            },
+                            "width": {
+                              "description": "The width, in pixels, of the linked resource.",
+                              "type": "integer",
+                              "format": "uint32",
+                              "enum": [],
+                              "enumDescriptions": [],
+                              "properties": {},
+                              "additionalProperties": null,
+                              "items": null
+                            }
+                          },
+                          "additionalProperties": null,
+                          "items": null
+                        },
+                        "url": {
+                          "description": "URL of the webpage containing the image.",
+                          "type": "string",
+                          "format": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "properties": {},
+                          "additionalProperties": null,
+                          "items": null
+                        }
+                      },
+                      "additionalProperties": null,
+                      "items": null
+                    }
+                  },
+                  "url": {
+                    "description": "The link to the attachment, which should be of type text/html.",
+                    "type": "string",
+                    "format": null,
+                    "enum": [],
+                    "enumDescriptions": [],
+                    "properties": {},
+                    "additionalProperties": null,
+                    "items": null
+                  }
+                },
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "content": {
+              "description": "The HTML-formatted content, which is suitable for display.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "id": {
+              "description": "The ID of the object. When resharing an activity, this is the ID of the activity that is being reshared.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "objectType": {
+              "description": "The type of the object. Possible values include, but are not limited to, the following values:  \n- \"note\" - Textual content. \n- \"activity\" - A Google+ activity.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "originalContent": {
+              "description": "The content (text) as provided by the author, which is stored without any HTML formatting. When creating or updating an activity, this value must be supplied as plain text in the request.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "plusoners": {
+              "description": "People who +1'd this activity.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "selfLink": {
+                  "description": "The URL for the collection of people who +1'd this activity.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "totalItems": {
+                  "description": "Total number of people who +1'd this activity.",
+                  "type": "integer",
+                  "format": "uint32",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            },
+            "replies": {
+              "description": "Comments in reply to this activity.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "selfLink": {
+                  "description": "The URL for the collection of comments in reply to this activity.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "totalItems": {
+                  "description": "Total number of comments on this activity.",
+                  "type": "integer",
+                  "format": "uint32",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            },
+            "resharers": {
+              "description": "People who reshared this activity.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "selfLink": {
+                  "description": "The URL for the collection of resharers.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "totalItems": {
+                  "description": "Total number of people who reshared this activity.",
+                  "type": "integer",
+                  "format": "uint32",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            },
+            "url": {
+              "description": "The URL that points to the linked resource.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "placeId": {
+          "description": "ID of the place where this activity occurred.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "placeName": {
+          "description": "Name of the place where this activity occurred.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "provider": {
+          "description": "The service provider that initially published this activity.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "title": {
+              "description": "Name of the service provider.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "published": {
+          "description": "The time at which this activity was initially published. Formatted as an RFC 3339 timestamp.",
+          "type": "string",
+          "format": "date-time",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "radius": {
+          "description": "Radius, in meters, of the region where this activity occurred, centered at the latitude and longitude identified in geocode.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "title": {
+          "description": "Title of this activity.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "updated": {
+          "description": "The time at which this activity was last updated. Formatted as an RFC 3339 timestamp.",
+          "type": "string",
+          "format": "date-time",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "url": {
+          "description": "The link to this activity.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "verb": {
+          "description": "This activity's verb, which indicates the action that was performed. Possible values include, but are not limited to, the following values:  \n- \"post\" - Publish content to the stream. \n- \"share\" - Reshare an activity.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ActivityFeed": {
+      "id": "ActivityFeed",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "etag": {
+          "description": "ETag of this response for caching purposes.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "The ID of this collection of activities. Deprecated.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "items": {
+          "description": "The activities in this page of results.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Activity"
+          }
+        },
+        "kind": {
+          "description": "Identifies this resource as a collection of activities. Value: \"plus#activityFeed\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nextLink": {
+          "description": "Link to the next page of activities.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nextPageToken": {
+          "description": "The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "selfLink": {
+          "description": "Link to this activity resource.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "title": {
+          "description": "The title of this collection of activities, which is a truncated portion of the content.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "updated": {
+          "description": "The time at which this collection of activities was last updated. Formatted as an RFC 3339 timestamp.",
+          "type": "string",
+          "format": "date-time",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Comment": {
+      "id": "Comment",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "actor": {
+          "description": "The person who posted this comment.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "clientSpecificActorInfo": {
+              "description": "Actor info specific to particular clients.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "youtubeActorInfo": {
+                  "description": "Actor info specific to YouTube clients.",
+                  "type": "object",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {
+                    "channelId": {
+                      "description": "ID of the YouTube channel owned by the Actor.",
+                      "type": "string",
+                      "format": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "properties": {},
+                      "additionalProperties": null,
+                      "items": null
+                    }
+                  },
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            },
+            "displayName": {
+              "description": "The name of this actor, suitable for display.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "id": {
+              "description": "The ID of the actor.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "image": {
+              "description": "The image representation of this actor.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "url": {
+                  "description": "The URL of the actor's profile photo. To resize the image and crop it to a square, append the query string ?sz=x, where x is the dimension in pixels of each side.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            },
+            "url": {
+              "description": "A link to the Person resource for this actor.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "verification": {
+              "description": "Verification status of actor.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "adHocVerified": {
+                  "description": "Verification for one-time or manual processes.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "etag": {
+          "description": "ETag of this response for caching purposes.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "The ID of this comment.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "inReplyTo": {
+          "description": "The activity this comment replied to.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "id": {
+                "description": "The ID of the activity.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "url": {
+                "description": "The URL of the activity.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "kind": {
+          "description": "Identifies this resource as a comment. Value: \"plus#comment\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "object": {
+          "description": "The object of this comment.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "content": {
+              "description": "The HTML-formatted content, suitable for display.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "objectType": {
+              "description": "The object type of this comment. Possible values are:  \n- \"comment\" - A comment in reply to an activity.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "originalContent": {
+              "description": "The content (text) as provided by the author, stored without any HTML formatting. When creating or updating a comment, this value must be supplied as plain text in the request.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "plusoners": {
+          "description": "People who +1'd this comment.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "totalItems": {
+              "description": "Total number of people who +1'd this comment.",
+              "type": "integer",
+              "format": "uint32",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "published": {
+          "description": "The time at which this comment was initially published. Formatted as an RFC 3339 timestamp.",
+          "type": "string",
+          "format": "date-time",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "selfLink": {
+          "description": "Link to this comment resource.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "updated": {
+          "description": "The time at which this comment was last updated. Formatted as an RFC 3339 timestamp.",
+          "type": "string",
+          "format": "date-time",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "verb": {
+          "description": "This comment's verb, indicating what action was performed. Possible values are:  \n- \"post\" - Publish content to the stream.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "CommentFeed": {
+      "id": "CommentFeed",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "etag": {
+          "description": "ETag of this response for caching purposes.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "The ID of this collection of comments.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "items": {
+          "description": "The comments in this page of results.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Comment"
+          }
+        },
+        "kind": {
+          "description": "Identifies this resource as a collection of comments. Value: \"plus#commentFeed\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nextLink": {
+          "description": "Link to the next page of activities.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nextPageToken": {
+          "description": "The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "title": {
+          "description": "The title of this collection of comments.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "updated": {
+          "description": "The time at which this collection of comments was last updated. Formatted as an RFC 3339 timestamp.",
+          "type": "string",
+          "format": "date-time",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "PeopleFeed": {
+      "id": "PeopleFeed",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "etag": {
+          "description": "ETag of this response for caching purposes.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "items": {
+          "description": "The people in this page of results. Each item includes the id, displayName, image, and url for the person. To retrieve additional profile data, see the people.get method.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Person"
+          }
+        },
+        "kind": {
+          "description": "Identifies this resource as a collection of people. Value: \"plus#peopleFeed\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nextPageToken": {
+          "description": "The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "selfLink": {
+          "description": "Link to this resource.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "title": {
+          "description": "The title of this collection of people.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "totalItems": {
+          "description": "The total number of people available in this list. The number of people in a response might be smaller due to paging. This might not be set for all collections.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Person": {
+      "id": "Person",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "aboutMe": {
+          "description": "A short biography for this person.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "ageRange": {
+          "description": "The age range of the person. Valid ranges are 17 or younger, 18 to 20, and 21 or older. Age is determined from the user's birthday using Western age reckoning.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "max": {
+              "description": "The age range's upper bound, if any. Possible values include, but are not limited to, the following:  \n- \"17\" - for age 17 \n- \"20\" - for age 20",
+              "type": "integer",
+              "format": "int32",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "min": {
+              "description": "The age range's lower bound, if any. Possible values include, but are not limited to, the following:  \n- \"21\" - for age 21 \n- \"18\" - for age 18",
+              "type": "integer",
+              "format": "int32",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "birthday": {
+          "description": "The person's date of birth, represented as YYYY-MM-DD.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "braggingRights": {
+          "description": "The \"bragging rights\" line of this person.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "circledByCount": {
+          "description": "For followers who are visible, the number of people who have added this person or page to a circle.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "cover": {
+          "description": "The cover photo content.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "coverInfo": {
+              "description": "Extra information about the cover photo.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "leftImageOffset": {
+                  "description": "The difference between the left position of the cover image and the actual displayed cover image. Only valid for banner layout.",
+                  "type": "integer",
+                  "format": "int32",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "topImageOffset": {
+                  "description": "The difference between the top position of the cover image and the actual displayed cover image. Only valid for banner layout.",
+                  "type": "integer",
+                  "format": "int32",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            },
+            "coverPhoto": {
+              "description": "The person's primary cover image.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "height": {
+                  "description": "The height of the image.",
+                  "type": "integer",
+                  "format": "int32",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "url": {
+                  "description": "The URL of the image.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "width": {
+                  "description": "The width of the image.",
+                  "type": "integer",
+                  "format": "int32",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            },
+            "layout": {
+              "description": "The layout of the cover art. Possible values include, but are not limited to, the following values:  \n- \"banner\" - One large image banner.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "currentLocation": {
+          "description": "(this field is not currently used)",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "displayName": {
+          "description": "The name of this person, which is suitable for display.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "domain": {
+          "description": "The hosted domain name for the user's Google Apps account. For instance, example.com. The plus.profile.emails.read or email scope is needed to get this domain name.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "emails": {
+          "description": "A list of email addresses that this person has, including their Google account email address, and the public verified email addresses on their Google+ profile. The plus.profile.emails.read scope is needed to retrieve these email addresses, or the email scope can be used to retrieve just the Google account email address.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "type": {
+                "description": "The type of address. Possible values include, but are not limited to, the following values:  \n- \"account\" - Google account email address. \n- \"home\" - Home email address. \n- \"work\" - Work email address. \n- \"other\" - Other.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "value": {
+                "description": "The email address.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "etag": {
+          "description": "ETag of this response for caching purposes.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "gender": {
+          "description": "The person's gender. Possible values include, but are not limited to, the following values:  \n- \"male\" - Male gender. \n- \"female\" - Female gender. \n- \"other\" - Other.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "The ID of this person.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "image": {
+          "description": "The representation of the person's profile photo.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "isDefault": {
+              "description": "Whether the person's profile photo is the default one",
+              "type": "boolean",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "url": {
+              "description": "The URL of the person's profile photo. To resize the image and crop it to a square, append the query string ?sz=x, where x is the dimension in pixels of each side.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "isPlusUser": {
+          "description": "Whether this user has signed up for Google+.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Identifies this resource as a person. Value: \"plus#person\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "language": {
+          "description": "The user's preferred language for rendering.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "name": {
+          "description": "An object representation of the individual components of a person's name.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "familyName": {
+              "description": "The family name (last name) of this person.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "formatted": {
+              "description": "The full name of this person, including middle names, suffixes, etc.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "givenName": {
+              "description": "The given name (first name) of this person.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "honorificPrefix": {
+              "description": "The honorific prefixes (such as \"Dr.\" or \"Mrs.\") for this person.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "honorificSuffix": {
+              "description": "The honorific suffixes (such as \"Jr.\") for this person.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "middleName": {
+              "description": "The middle name of this person.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "nickname": {
+          "description": "The nickname of this person.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "objectType": {
+          "description": "Type of person within Google+. Possible values include, but are not limited to, the following values:  \n- \"person\" - represents an actual person. \n- \"page\" - represents a page.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "occupation": {
+          "description": "The occupation of this person.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "organizations": {
+          "description": "A list of current or past organizations with which this person is associated.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "department": {
+                "description": "The department within the organization. Deprecated.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "description": {
+                "description": "A short description of the person's role in this organization. Deprecated.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "endDate": {
+                "description": "The date that the person left this organization.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "location": {
+                "description": "The location of this organization. Deprecated.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "name": {
+                "description": "The name of the organization.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "primary": {
+                "description": "If \"true\", indicates this organization is the person's primary one, which is typically interpreted as the current one.",
+                "type": "boolean",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "startDate": {
+                "description": "The date that the person joined this organization.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "title": {
+                "description": "The person's job title or role within the organization.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "type": {
+                "description": "The type of organization. Possible values include, but are not limited to, the following values:  \n- \"work\" - Work. \n- \"school\" - School.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "placesLived": {
+          "description": "A list of places where this person has lived.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "primary": {
+                "description": "If \"true\", this place of residence is this person's primary residence.",
+                "type": "boolean",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "value": {
+                "description": "A place where this person has lived. For example: \"Seattle, WA\", \"Near Toronto\".",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "plusOneCount": {
+          "description": "If a Google+ Page, the number of people who have +1'd this page.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "relationshipStatus": {
+          "description": "The person's relationship status. Possible values include, but are not limited to, the following values:  \n- \"single\" - Person is single. \n- \"in_a_relationship\" - Person is in a relationship. \n- \"engaged\" - Person is engaged. \n- \"married\" - Person is married. \n- \"its_complicated\" - The relationship is complicated. \n- \"open_relationship\" - Person is in an open relationship. \n- \"widowed\" - Person is widowed. \n- \"in_domestic_partnership\" - Person is in a domestic partnership. \n- \"in_civil_union\" - Person is in a civil union.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "skills": {
+          "description": "The person's skills.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "tagline": {
+          "description": "The brief description (tagline) of this person.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "url": {
+          "description": "The URL of this person's profile.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "urls": {
+          "description": "A list of URLs for this person.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "label": {
+                "description": "The label of the URL.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "type": {
+                "description": "The type of URL. Possible values include, but are not limited to, the following values:  \n- \"otherProfile\" - URL for another profile. \n- \"contributor\" - URL to a site for which this person is a contributor. \n- \"website\" - URL for this Google+ Page's primary website. \n- \"other\" - Other URL.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "value": {
+                "description": "The URL value.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "verified": {
+          "description": "Whether the person or Google+ Page has been verified.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Place": {
+      "id": "Place",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "address": {
+          "description": "The physical address of the place.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "formatted": {
+              "description": "The formatted address for display.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "displayName": {
+          "description": "The display name of the place.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "The id of the place.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Identifies this resource as a place. Value: \"plus#place\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "position": {
+          "description": "The position of the place.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "latitude": {
+              "description": "The latitude of this position.",
+              "type": "number",
+              "format": "double",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "longitude": {
+              "description": "The longitude of this position.",
+              "type": "number",
+              "format": "double",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "PlusAclentryResource": {
+      "id": "PlusAclentryResource",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "displayName": {
+          "description": "A descriptive name for this entry. Suitable for display.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "The ID of the entry. For entries of type \"person\" or \"circle\", this is the ID of the resource. For other types, this property is not set.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "type": {
+          "description": "The type of entry describing to whom access is granted. Possible values are:  \n- \"person\" - Access to an individual. \n- \"circle\" - Access to members of a circle. \n- \"myCircles\" - Access to members of all the person's circles. \n- \"extendedCircles\" - Access to members of all the person's circles, plus all of the people in their circles. \n- \"domain\" - Access to members of the person's Google Apps domain. \n- \"public\" - Access to anyone on the web.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    }
+  },
+  "resources": {
+    "activities": {
+      "resources": {},
+      "methods": {
+        "get": {
+          "id": "plus.activities.get",
+          "path": "activities/{activityId}",
+          "httpMethod": "GET",
+          "description": "Shut down. See https://developers.google.com/+/api-shutdown for more details.",
+          "parameters": {
+            "activityId": {
+              "description": "The ID of the activity to get.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "activityId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Activity"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/plus.login",
+            "https://www.googleapis.com/auth/plus.me"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "plus.activities.list",
+          "path": "people/{userId}/activities/{collection}",
+          "httpMethod": "GET",
+          "description": "Shut down. See https://developers.google.com/+/api-shutdown for more details.",
+          "parameters": {
+            "collection": {
+              "description": "The collection of activities to list.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "public"
+              ],
+              "enumDescriptions": [
+                "All public activities created by the specified user."
+              ],
+              "repeated": false
+            },
+            "maxResults": {
+              "description": "The maximum number of activities to include in the response, which is used for paging. For any response, the actual number returned might be less than the specified maxResults.",
+              "default": "20",
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "uint32",
+              "minimum": "1",
+              "maximum": "100",
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of \"nextPageToken\" from the previous response.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "userId": {
+              "description": "The ID of the user to get activities for. The special value \"me\" can be used to indicate the authenticated user.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "userId",
+            "collection"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "ActivityFeed"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/plus.login",
+            "https://www.googleapis.com/auth/plus.me"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "search": {
+          "id": "plus.activities.search",
+          "path": "activities",
+          "httpMethod": "GET",
+          "description": "Shut down. See https://developers.google.com/+/api-shutdown for more details.",
+          "parameters": {
+            "language": {
+              "description": "Specify the preferred language to search with. See search language codes for available values.",
+              "default": "en-US",
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "maxResults": {
+              "description": "The maximum number of activities to include in the response, which is used for paging. For any response, the actual number returned might be less than the specified maxResults.",
+              "default": "10",
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "uint32",
+              "minimum": "1",
+              "maximum": "20",
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "orderBy": {
+              "description": "Specifies how to order search results.",
+              "default": "recent",
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "best",
+                "recent"
+              ],
+              "enumDescriptions": [
+                "Sort activities by relevance to the user, most relevant first.",
+                "Sort activities by published date, most recent first."
+              ],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of \"nextPageToken\" from the previous response. This token can be of any length.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "query": {
+              "description": "Full-text search query string.",
+              "default": null,
+              "location": "query",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "query"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "ActivityFeed"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/plus.login",
+            "https://www.googleapis.com/auth/plus.me"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "comments": {
+      "resources": {},
+      "methods": {
+        "get": {
+          "id": "plus.comments.get",
+          "path": "comments/{commentId}",
+          "httpMethod": "GET",
+          "description": "Shut down. See https://developers.google.com/+/api-shutdown for more details.",
+          "parameters": {
+            "commentId": {
+              "description": "The ID of the comment to get.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "commentId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Comment"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/plus.login",
+            "https://www.googleapis.com/auth/plus.me"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "plus.comments.list",
+          "path": "activities/{activityId}/comments",
+          "httpMethod": "GET",
+          "description": "Shut down. See https://developers.google.com/+/api-shutdown for more details.",
+          "parameters": {
+            "activityId": {
+              "description": "The ID of the activity to get comments for.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "maxResults": {
+              "description": "The maximum number of comments to include in the response, which is used for paging. For any response, the actual number returned might be less than the specified maxResults.",
+              "default": "20",
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "uint32",
+              "minimum": "0",
+              "maximum": "500",
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of \"nextPageToken\" from the previous response.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "sortOrder": {
+              "description": "The order in which to sort the list of comments.",
+              "default": "ascending",
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "ascending",
+                "descending"
+              ],
+              "enumDescriptions": [
+                "Sort oldest comments first.",
+                "Sort newest comments first."
+              ],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "activityId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "CommentFeed"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/plus.login",
+            "https://www.googleapis.com/auth/plus.me"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "people": {
+      "resources": {},
+      "methods": {
+        "get": {
+          "id": "plus.people.get",
+          "path": "people/{userId}",
+          "httpMethod": "GET",
+          "description": "Get a person's profile. If your app uses scope https://www.googleapis.com/auth/plus.login, this method is guaranteed to return ageRange and language.",
+          "parameters": {
+            "userId": {
+              "description": "The ID of the person to get the profile for. The special value \"me\" can be used to indicate the authenticated user.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "userId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Person"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/plus.login",
+            "https://www.googleapis.com/auth/plus.me",
+            "https://www.googleapis.com/auth/userinfo.email",
+            "https://www.googleapis.com/auth/userinfo.profile"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "plus.people.list",
+          "path": "people/{userId}/people/{collection}",
+          "httpMethod": "GET",
+          "description": "List all of the people in the specified collection.",
+          "parameters": {
+            "collection": {
+              "description": "The collection of people to list.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "connected",
+                "visible"
+              ],
+              "enumDescriptions": [
+                "The list of visible people in the authenticated user's circles who also use the requesting app. This list is limited to users who made their app activities visible to the authenticated user.",
+                "The list of people who this user has added to one or more circles, limited to the circles visible to the requesting application."
+              ],
+              "repeated": false
+            },
+            "maxResults": {
+              "description": "The maximum number of people to include in the response, which is used for paging. For any response, the actual number returned might be less than the specified maxResults.",
+              "default": "100",
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "uint32",
+              "minimum": "1",
+              "maximum": "100",
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "orderBy": {
+              "description": "The order to return people in.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "alphabetical",
+                "best"
+              ],
+              "enumDescriptions": [
+                "Order the people by their display name.",
+                "Order people based on the relevence to the viewer."
+              ],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of \"nextPageToken\" from the previous response.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "userId": {
+              "description": "Get the collection of people for the person identified. Use \"me\" to indicate the authenticated user.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "userId",
+            "collection"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "PeopleFeed"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/plus.login",
+            "https://www.googleapis.com/auth/plus.me"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "listByActivity": {
+          "id": "plus.people.listByActivity",
+          "path": "activities/{activityId}/people/{collection}",
+          "httpMethod": "GET",
+          "description": "Shut down. See https://developers.google.com/+/api-shutdown for more details.",
+          "parameters": {
+            "activityId": {
+              "description": "The ID of the activity to get the list of people for.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "collection": {
+              "description": "The collection of people to list.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "plusoners",
+                "resharers"
+              ],
+              "enumDescriptions": [
+                "List all people who have +1'd this activity.",
+                "List all people who have reshared this activity."
+              ],
+              "repeated": false
+            },
+            "maxResults": {
+              "description": "The maximum number of people to include in the response, which is used for paging. For any response, the actual number returned might be less than the specified maxResults.",
+              "default": "20",
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "uint32",
+              "minimum": "1",
+              "maximum": "100",
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of \"nextPageToken\" from the previous response.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "activityId",
+            "collection"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "PeopleFeed"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/plus.login",
+            "https://www.googleapis.com/auth/plus.me"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "search": {
+          "id": "plus.people.search",
+          "path": "people",
+          "httpMethod": "GET",
+          "description": "Shut down. See https://developers.google.com/+/api-shutdown for more details.",
+          "parameters": {
+            "language": {
+              "description": "Specify the preferred language to search with. See search language codes for available values.",
+              "default": "en-US",
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "maxResults": {
+              "description": "The maximum number of people to include in the response, which is used for paging. For any response, the actual number returned might be less than the specified maxResults.",
+              "default": "25",
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "uint32",
+              "minimum": "1",
+              "maximum": "50",
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of \"nextPageToken\" from the previous response. This token can be of any length.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "query": {
+              "description": "Specify a query string for full text search of public text in all profiles.",
+              "default": null,
+              "location": "query",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "query"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "PeopleFeed"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/plus.login",
+            "https://www.googleapis.com/auth/plus.me"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    }
+  },
+  "methods": {}
+}

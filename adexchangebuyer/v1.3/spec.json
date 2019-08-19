@@ -1,0 +1,3189 @@
+{
+  "kind": "discovery#restDescription",
+  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/hcIsQyAOKgIG-XNmjJJ2qekVMV8\"",
+  "discoveryVersion": "v1",
+  "id": "adexchangebuyer:v1.3",
+  "name": "adexchangebuyer",
+  "canonicalName": "Ad Exchange Buyer",
+  "fullyEncodeReservedExpansion": null,
+  "version": "v1.3",
+  "revision": "20190614",
+  "title": "Ad Exchange Buyer API",
+  "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
+  "ownerDomain": "google.com",
+  "ownerName": "Google",
+  "icons": {
+    "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
+    "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
+  },
+  "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
+  "protocol": "rest",
+  "baseUrl": "https://www.googleapis.com/adexchangebuyer/v1.3/",
+  "basePath": "/adexchangebuyer/v1.3/",
+  "rootUrl": "https://www.googleapis.com/",
+  "servicePath": "adexchangebuyer/v1.3/",
+  "batchPath": "batch/adexchangebuyer/v1.3",
+  "version_module": null,
+  "packagePath": null,
+  "labels": null,
+  "features": null,
+  "parameters": {
+    "alt": {
+      "description": "Data format for the response.",
+      "default": "json",
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "json"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json"
+      ],
+      "repeated": false
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "location": "query",
+      "required": false,
+      "type": "boolean",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "quotaUser": {
+      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "userIp": {
+      "description": "Deprecated. Please use quotaUser instead.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    }
+  },
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/adexchange.buyer": {
+          "description": "Manage your Ad Exchange buyer account configuration"
+        }
+      }
+    }
+  },
+  "schemas": {
+    "Account": {
+      "id": "Account",
+      "description": "Configuration data for an Ad Exchange buyer account.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "bidderLocation": {
+          "description": "Your bidder locations that have distinct URLs.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "maximumQps": {
+                "description": "The maximum queries per second the Ad Exchange will send.",
+                "type": "integer",
+                "format": "int32",
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "region": {
+                "description": "The geographical region the Ad Exchange should send requests from. Only used by some quota systems, but always setting the value is recommended. Allowed values:  \n- ASIA \n- EUROPE \n- US_EAST \n- US_WEST",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "url": {
+                "description": "The URL to which the Ad Exchange will send bid requests.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "cookieMatchingNid": {
+          "description": "The nid parameter value used in cookie match requests. Please contact your technical account manager if you need to change this.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "cookieMatchingUrl": {
+          "description": "The base URL used in cookie match requests.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "Account id.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Resource type.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "maximumActiveCreatives": {
+          "description": "The maximum number of active creatives that an account can have, where a creative is active if it was inserted or bid with in the last 30 days. Please contact your technical account manager if you need to change this.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "maximumTotalQps": {
+          "description": "The sum of all bidderLocation.maximumQps values cannot exceed this. Please contact your technical account manager if you need to change this.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "numberActiveCreatives": {
+          "description": "The number of creatives that this account inserted or bid with in the last 30 days.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "AccountsList": {
+      "id": "AccountsList",
+      "description": "An account feed lists Ad Exchange buyer accounts that the user has access to. Each entry in the feed corresponds to a single buyer account.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "items": {
+          "description": "A list of accounts.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Account"
+          }
+        },
+        "kind": {
+          "description": "Resource type.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "BillingInfo": {
+      "id": "BillingInfo",
+      "description": "The configuration data for an Ad Exchange billing info.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "accountId": {
+          "description": "Account id.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "accountName": {
+          "description": "Account name.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "billingId": {
+          "description": "A list of adgroup IDs associated with this particular account. These IDs may show up as part of a realtime bidding BidRequest, which indicates a bid request for this account.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "kind": {
+          "description": "Resource type.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "BillingInfoList": {
+      "id": "BillingInfoList",
+      "description": "A billing info feed lists Billing Info the Ad Exchange buyer account has access to. Each entry in the feed corresponds to a single billing info.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "items": {
+          "description": "A list of billing info relevant for your account.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "BillingInfo"
+          }
+        },
+        "kind": {
+          "description": "Resource type.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Budget": {
+      "id": "Budget",
+      "description": "The configuration data for Ad Exchange RTB - Budget API.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "accountId": {
+          "description": "The id of the account. This is required for get and update requests.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "billingId": {
+          "description": "The billing id to determine which adgroup to provide budget information for. This is required for get and update requests.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "budgetAmount": {
+          "description": "The daily budget amount in unit amount of the account currency to apply for the billingId provided. This is required for update requests.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "currencyCode": {
+          "description": "The currency code for the buyer. This cannot be altered here.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "The unique id that describes this item.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "The kind of the resource, i.e. \"adexchangebuyer#budget\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Creative": {
+      "id": "Creative",
+      "description": "A creative and its classification data.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "HTMLSnippet": {
+          "description": "The HTML snippet that displays the ad when inserted in the web page. If set, videoURL should not be set.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "accountId": {
+          "description": "Account id.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "adTechnologyProviders": {
+          "description": null,
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "detectedProviderIds": {
+              "description": null,
+              "type": "array",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": {
+                "type": "string",
+                "format": "int64",
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "hasUnidentifiedProvider": {
+              "description": null,
+              "type": "boolean",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "advertiserId": {
+          "description": "Detected advertiser id, if any. Read-only. This field should not be set in requests.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "advertiserName": {
+          "description": "The name of the company being advertised in the creative.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "agencyId": {
+          "description": "The agency id for this creative.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "apiUploadTimestamp": {
+          "description": "The last upload timestamp of this creative if it was uploaded via API. Read-only. The value of this field is generated, and will be ignored for uploads. (formatted RFC 3339 timestamp).",
+          "type": "string",
+          "format": "date-time",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "attribute": {
+          "description": "All attributes for the ads that may be shown from this snippet.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "integer",
+            "format": "int32",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "buyerCreativeId": {
+          "description": "A buyer-specific id identifying the creative in this ad.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "clickThroughUrl": {
+          "description": "The set of destination urls for the snippet.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "corrections": {
+          "description": "Shows any corrections that were applied to this creative. Read-only. This field should not be set in requests.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "details": {
+                "description": "Additional details about the correction.",
+                "type": "array",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": {
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "reason": {
+                "description": "The type of correction that was applied to the creative.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "disapprovalReasons": {
+          "description": "The reasons for disapproval, if any. Note that not all disapproval reasons may be categorized, so it is possible for the creative to have a status of DISAPPROVED with an empty list for disapproval_reasons. In this case, please reach out to your TAM to help debug the issue. Read-only. This field should not be set in requests.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "details": {
+                "description": "Additional details about the reason for disapproval.",
+                "type": "array",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": {
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "reason": {
+                "description": "The categorized reason for disapproval.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "filteringReasons": {
+          "description": "The filtering reasons for the creative. Read-only. This field should not be set in requests.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "date": {
+              "description": "The date in ISO 8601 format for the data. The data is collected from 00:00:00 to 23:59:59 in PST.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "reasons": {
+              "description": "The filtering reasons.",
+              "type": "array",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": {
+                "type": "object",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {
+                  "filteringCount": {
+                    "description": "The number of times the creative was filtered for the status. The count is aggregated across all publishers on the exchange.",
+                    "type": "string",
+                    "format": "int64",
+                    "enum": [],
+                    "enumDescriptions": [],
+                    "properties": {},
+                    "additionalProperties": null,
+                    "items": null
+                  },
+                  "filteringStatus": {
+                    "description": "The filtering status code. Please refer to the creative-status-codes.txt file for different statuses.",
+                    "type": "integer",
+                    "format": "int32",
+                    "enum": [],
+                    "enumDescriptions": [],
+                    "properties": {},
+                    "additionalProperties": null,
+                    "items": null
+                  }
+                },
+                "additionalProperties": null,
+                "items": null
+              }
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "height": {
+          "description": "Ad height.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "impressionTrackingUrl": {
+          "description": "The set of urls to be called to record an impression.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "kind": {
+          "description": "Resource type.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nativeAd": {
+          "description": "If nativeAd is set, HTMLSnippet and videoURL should not be set.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "advertiser": {
+              "description": null,
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "appIcon": {
+              "description": "The app icon, for app download ads.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "height": {
+                  "description": null,
+                  "type": "integer",
+                  "format": "int32",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "url": {
+                  "description": null,
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "width": {
+                  "description": null,
+                  "type": "integer",
+                  "format": "int32",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            },
+            "body": {
+              "description": "A long description of the ad.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "callToAction": {
+              "description": "A label for the button that the user is supposed to click.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "clickTrackingUrl": {
+              "description": "The URL to use for click tracking.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "headline": {
+              "description": "A short title for the ad.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "image": {
+              "description": "A large image.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "height": {
+                  "description": null,
+                  "type": "integer",
+                  "format": "int32",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "url": {
+                  "description": null,
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "width": {
+                  "description": null,
+                  "type": "integer",
+                  "format": "int32",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            },
+            "impressionTrackingUrl": {
+              "description": "The URLs are called when the impression is rendered.",
+              "type": "array",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": {
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "logo": {
+              "description": "A smaller image, for the advertiser logo.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "height": {
+                  "description": null,
+                  "type": "integer",
+                  "format": "int32",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "url": {
+                  "description": null,
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "width": {
+                  "description": null,
+                  "type": "integer",
+                  "format": "int32",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            },
+            "price": {
+              "description": "The price of the promoted app including the currency info.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "starRating": {
+              "description": "The app rating in the app store. Must be in the range [0-5].",
+              "type": "number",
+              "format": "double",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "productCategories": {
+          "description": "Detected product categories, if any. Read-only. This field should not be set in requests.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "integer",
+            "format": "int32",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "restrictedCategories": {
+          "description": "All restricted categories for the ads that may be shown from this snippet.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "integer",
+            "format": "int32",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "sensitiveCategories": {
+          "description": "Detected sensitive categories, if any. Read-only. This field should not be set in requests.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "integer",
+            "format": "int32",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "status": {
+          "description": "Creative serving status. Read-only. This field should not be set in requests.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "vendorType": {
+          "description": "All vendor types for the ads that may be shown from this snippet.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "integer",
+            "format": "int32",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "version": {
+          "description": "The version for this creative. Read-only. This field should not be set in requests.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "videoURL": {
+          "description": "The URL to fetch a video ad. If set, HTMLSnippet and the nativeAd should not be set.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "width": {
+          "description": "Ad width.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "CreativesList": {
+      "id": "CreativesList",
+      "description": "The creatives feed lists the active creatives for the Ad Exchange buyer accounts that the user has access to. Each entry in the feed corresponds to a single creative.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "items": {
+          "description": "A list of creatives.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Creative"
+          }
+        },
+        "kind": {
+          "description": "Resource type.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nextPageToken": {
+          "description": "Continuation token used to page through creatives. To retrieve the next page of results, set the next request's \"pageToken\" value to this.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "DirectDeal": {
+      "id": "DirectDeal",
+      "description": "The configuration data for an Ad Exchange direct deal.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "accountId": {
+          "description": "The account id of the buyer this deal is for.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "advertiser": {
+          "description": "The name of the advertiser this deal is for.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "allowsAlcohol": {
+          "description": "Whether the publisher for this deal is eligible for alcohol ads.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "buyerAccountId": {
+          "description": "The account id that this deal was negotiated for. It is either the buyer or the client that this deal was negotiated on behalf of.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "currencyCode": {
+          "description": "The currency code that applies to the fixed_cpm value. If not set then assumed to be USD.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "dealTier": {
+          "description": "The deal type such as programmatic reservation or fixed price and so on.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "endTime": {
+          "description": "End time for when this deal stops being active. If not set then this deal is valid until manually disabled by the publisher. In seconds since the epoch.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "fixedCpm": {
+          "description": "The fixed price for this direct deal. In cpm micros of currency according to currency_code. If set, then this deal is eligible for the fixed price tier of buying (highest priority, pay exactly the configured fixed price).",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "Deal id.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Resource type.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "name": {
+          "description": "Deal name.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "privateExchangeMinCpm": {
+          "description": "The minimum price for this direct deal. In cpm micros of currency according to currency_code. If set, then this deal is eligible for the private exchange tier of buying (below fixed price priority, run as a second price auction).",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "publisherBlocksOverriden": {
+          "description": "If true, the publisher has opted to have their blocks ignored when a creative is bid with for this deal.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "sellerNetwork": {
+          "description": "The name of the publisher offering this direct deal.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "startTime": {
+          "description": "Start time for when this deal becomes active. If not set then this deal is active immediately upon creation. In seconds since the epoch.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "DirectDealsList": {
+      "id": "DirectDealsList",
+      "description": "A direct deals feed lists Direct Deals the Ad Exchange buyer account has access to. This includes direct deals set up for the buyer account as well as its merged stream seats.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "directDeals": {
+          "description": "A list of direct deals relevant for your account.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "DirectDeal"
+          }
+        },
+        "kind": {
+          "description": "Resource type.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "PerformanceReport": {
+      "id": "PerformanceReport",
+      "description": "The configuration data for an Ad Exchange performance report list.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "bidRate": {
+          "description": "The number of bid responses with an ad.",
+          "type": "number",
+          "format": "double",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "bidRequestRate": {
+          "description": "The number of bid requests sent to your bidder.",
+          "type": "number",
+          "format": "double",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "calloutStatusRate": {
+          "description": "Rate of various prefiltering statuses per match. Please refer to the callout-status-codes.txt file for different statuses.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "cookieMatcherStatusRate": {
+          "description": "Average QPS for cookie matcher operations.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "creativeStatusRate": {
+          "description": "Rate of ads with a given status. Please refer to the creative-status-codes.txt file for different statuses.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "filteredBidRate": {
+          "description": "The number of bid responses that were filtered due to a policy violation or other errors.",
+          "type": "number",
+          "format": "double",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "hostedMatchStatusRate": {
+          "description": "Average QPS for hosted match operations.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "inventoryMatchRate": {
+          "description": "The number of potential queries based on your pretargeting settings.",
+          "type": "number",
+          "format": "double",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Resource type.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "latency50thPercentile": {
+          "description": "The 50th percentile round trip latency(ms) as perceived from Google servers for the duration period covered by the report.",
+          "type": "number",
+          "format": "double",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "latency85thPercentile": {
+          "description": "The 85th percentile round trip latency(ms) as perceived from Google servers for the duration period covered by the report.",
+          "type": "number",
+          "format": "double",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "latency95thPercentile": {
+          "description": "The 95th percentile round trip latency(ms) as perceived from Google servers for the duration period covered by the report.",
+          "type": "number",
+          "format": "double",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "noQuotaInRegion": {
+          "description": "Rate of various quota account statuses per quota check.",
+          "type": "number",
+          "format": "double",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "outOfQuota": {
+          "description": "Rate of various quota account statuses per quota check.",
+          "type": "number",
+          "format": "double",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "pixelMatchRequests": {
+          "description": "Average QPS for pixel match requests from clients.",
+          "type": "number",
+          "format": "double",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "pixelMatchResponses": {
+          "description": "Average QPS for pixel match responses from clients.",
+          "type": "number",
+          "format": "double",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "quotaConfiguredLimit": {
+          "description": "The configured quota limits for this account.",
+          "type": "number",
+          "format": "double",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "quotaThrottledLimit": {
+          "description": "The throttled quota limits for this account.",
+          "type": "number",
+          "format": "double",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "region": {
+          "description": "The trading location of this data.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "successfulRequestRate": {
+          "description": "The number of properly formed bid responses received by our servers within the deadline.",
+          "type": "number",
+          "format": "double",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "timestamp": {
+          "description": "The unix timestamp of the starting time of this performance data.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "unsuccessfulRequestRate": {
+          "description": "The number of bid responses that were unsuccessful due to timeouts, incorrect formatting, etc.",
+          "type": "number",
+          "format": "double",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "PerformanceReportList": {
+      "id": "PerformanceReportList",
+      "description": "The configuration data for an Ad Exchange performance report list.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "kind": {
+          "description": "Resource type.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "performanceReport": {
+          "description": "A list of performance reports relevant for the account.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "PerformanceReport"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "PretargetingConfig": {
+      "id": "PretargetingConfig",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "billingId": {
+          "description": "The id for billing purposes, provided for reference. Leave this field blank for insert requests; the id will be generated automatically.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "configId": {
+          "description": "The config id; generated automatically. Leave this field blank for insert requests.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "configName": {
+          "description": "The name of the config. Must be unique. Required for all requests.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "creativeType": {
+          "description": "List must contain exactly one of PRETARGETING_CREATIVE_TYPE_HTML or PRETARGETING_CREATIVE_TYPE_VIDEO.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "dimensions": {
+          "description": "Requests which allow one of these (width, height) pairs will match. All pairs must be supported ad dimensions.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "height": {
+                "description": "Height in pixels.",
+                "type": "string",
+                "format": "int64",
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "width": {
+                "description": "Width in pixels.",
+                "type": "string",
+                "format": "int64",
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "excludedContentLabels": {
+          "description": "Requests with any of these content labels will not match. Values are from content-labels.txt in the downloadable files section.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "excludedGeoCriteriaIds": {
+          "description": "Requests containing any of these geo criteria ids will not match.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "excludedPlacements": {
+          "description": "Requests containing any of these placements will not match.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "token": {
+                "description": "The value of the placement. Interpretation depends on the placement type, e.g. URL for a site placement, channel name for a channel placement, app id for a mobile app placement.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "type": {
+                "description": "The type of the placement.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "excludedUserLists": {
+          "description": "Requests containing any of these users list ids will not match.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "excludedVerticals": {
+          "description": "Requests containing any of these vertical ids will not match. Values are from the publisher-verticals.txt file in the downloadable files section.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "geoCriteriaIds": {
+          "description": "Requests containing any of these geo criteria ids will match.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "isActive": {
+          "description": "Whether this config is active. Required for all requests.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "The kind of the resource, i.e. \"adexchangebuyer#pretargetingConfig\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "languages": {
+          "description": "Request containing any of these language codes will match.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "mobileCarriers": {
+          "description": "Requests containing any of these mobile carrier ids will match. Values are from mobile-carriers.csv in the downloadable files section.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "mobileDevices": {
+          "description": "Requests containing any of these mobile device ids will match. Values are from mobile-devices.csv in the downloadable files section.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "mobileOperatingSystemVersions": {
+          "description": "Requests containing any of these mobile operating system version ids will match. Values are from mobile-os.csv in the downloadable files section.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "placements": {
+          "description": "Requests containing any of these placements will match.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "token": {
+                "description": "The value of the placement. Interpretation depends on the placement type, e.g. URL for a site placement, channel name for a channel placement, app id for a mobile app placement.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "type": {
+                "description": "The type of the placement.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "platforms": {
+          "description": "Requests matching any of these platforms will match. Possible values are PRETARGETING_PLATFORM_MOBILE, PRETARGETING_PLATFORM_DESKTOP, and PRETARGETING_PLATFORM_TABLET.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "supportedCreativeAttributes": {
+          "description": "Creative attributes should be declared here if all creatives corresponding to this pretargeting configuration have that creative attribute. Values are from pretargetable-creative-attributes.txt in the downloadable files section.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "userLists": {
+          "description": "Requests containing any of these user list ids will match.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "vendorTypes": {
+          "description": "Requests that allow any of these vendor ids will match. Values are from vendors.txt in the downloadable files section.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "verticals": {
+          "description": "Requests containing any of these vertical ids will match.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "PretargetingConfigList": {
+      "id": "PretargetingConfigList",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "items": {
+          "description": "A list of pretargeting configs",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "PretargetingConfig"
+          }
+        },
+        "kind": {
+          "description": "Resource type.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    }
+  },
+  "resources": {
+    "accounts": {
+      "resources": {},
+      "methods": {
+        "get": {
+          "id": "adexchangebuyer.accounts.get",
+          "path": "accounts/{id}",
+          "httpMethod": "GET",
+          "description": "Gets one account by ID.",
+          "parameters": {
+            "id": {
+              "description": "The account id",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "id"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Account"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "adexchangebuyer.accounts.list",
+          "path": "accounts",
+          "httpMethod": "GET",
+          "description": "Retrieves the authenticated user's list of accounts.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": null,
+          "response": {
+            "$ref": "AccountsList"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "patch": {
+          "id": "adexchangebuyer.accounts.patch",
+          "path": "accounts/{id}",
+          "httpMethod": "PATCH",
+          "description": "Updates an existing account. This method supports patch semantics.",
+          "parameters": {
+            "id": {
+              "description": "The account id",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "id"
+          ],
+          "request": {
+            "$ref": "Account"
+          },
+          "response": {
+            "$ref": "Account"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "update": {
+          "id": "adexchangebuyer.accounts.update",
+          "path": "accounts/{id}",
+          "httpMethod": "PUT",
+          "description": "Updates an existing account.",
+          "parameters": {
+            "id": {
+              "description": "The account id",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "id"
+          ],
+          "request": {
+            "$ref": "Account"
+          },
+          "response": {
+            "$ref": "Account"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "billingInfo": {
+      "resources": {},
+      "methods": {
+        "get": {
+          "id": "adexchangebuyer.billingInfo.get",
+          "path": "billinginfo/{accountId}",
+          "httpMethod": "GET",
+          "description": "Returns the billing information for one account specified by account ID.",
+          "parameters": {
+            "accountId": {
+              "description": "The account id.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "accountId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "BillingInfo"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "adexchangebuyer.billingInfo.list",
+          "path": "billinginfo",
+          "httpMethod": "GET",
+          "description": "Retrieves a list of billing information for all accounts of the authenticated user.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": null,
+          "response": {
+            "$ref": "BillingInfoList"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "budget": {
+      "resources": {},
+      "methods": {
+        "get": {
+          "id": "adexchangebuyer.budget.get",
+          "path": "billinginfo/{accountId}/{billingId}",
+          "httpMethod": "GET",
+          "description": "Returns the budget information for the adgroup specified by the accountId and billingId.",
+          "parameters": {
+            "accountId": {
+              "description": "The account id to get the budget information for.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "billingId": {
+              "description": "The billing id to get the budget information for.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "accountId",
+            "billingId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Budget"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "patch": {
+          "id": "adexchangebuyer.budget.patch",
+          "path": "billinginfo/{accountId}/{billingId}",
+          "httpMethod": "PATCH",
+          "description": "Updates the budget amount for the budget of the adgroup specified by the accountId and billingId, with the budget amount in the request. This method supports patch semantics.",
+          "parameters": {
+            "accountId": {
+              "description": "The account id associated with the budget being updated.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "billingId": {
+              "description": "The billing id associated with the budget being updated.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "accountId",
+            "billingId"
+          ],
+          "request": {
+            "$ref": "Budget"
+          },
+          "response": {
+            "$ref": "Budget"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "update": {
+          "id": "adexchangebuyer.budget.update",
+          "path": "billinginfo/{accountId}/{billingId}",
+          "httpMethod": "PUT",
+          "description": "Updates the budget amount for the budget of the adgroup specified by the accountId and billingId, with the budget amount in the request.",
+          "parameters": {
+            "accountId": {
+              "description": "The account id associated with the budget being updated.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "billingId": {
+              "description": "The billing id associated with the budget being updated.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "accountId",
+            "billingId"
+          ],
+          "request": {
+            "$ref": "Budget"
+          },
+          "response": {
+            "$ref": "Budget"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "creatives": {
+      "resources": {},
+      "methods": {
+        "get": {
+          "id": "adexchangebuyer.creatives.get",
+          "path": "creatives/{accountId}/{buyerCreativeId}",
+          "httpMethod": "GET",
+          "description": "Gets the status for a single creative. A creative will be available 30-40 minutes after submission.",
+          "parameters": {
+            "accountId": {
+              "description": "The id for the account that will serve this creative.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "buyerCreativeId": {
+              "description": "The buyer-specific id for this creative.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "accountId",
+            "buyerCreativeId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Creative"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "insert": {
+          "id": "adexchangebuyer.creatives.insert",
+          "path": "creatives",
+          "httpMethod": "POST",
+          "description": "Submit a new creative.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": {
+            "$ref": "Creative"
+          },
+          "response": {
+            "$ref": "Creative"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "adexchangebuyer.creatives.list",
+          "path": "creatives",
+          "httpMethod": "GET",
+          "description": "Retrieves a list of the authenticated user's active creatives. A creative will be available 30-40 minutes after submission.",
+          "parameters": {
+            "accountId": {
+              "description": "When specified, only creatives for the given account ids are returned.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": true
+            },
+            "buyerCreativeId": {
+              "description": "When specified, only creatives for the given buyer creative ids are returned.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": true
+            },
+            "maxResults": {
+              "description": "Maximum number of entries returned on one result page. If not set, the default is 100. Optional.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "uint32",
+              "minimum": "1",
+              "maximum": "1000",
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "A continuation token, used to page through ad clients. To retrieve the next page, set this parameter to the value of \"nextPageToken\" from the previous response. Optional.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "statusFilter": {
+              "description": "When specified, only creatives having the given status are returned.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "approved",
+                "disapproved",
+                "not_checked"
+              ],
+              "enumDescriptions": [
+                "Creatives which have been approved.",
+                "Creatives which have been disapproved.",
+                "Creatives whose status is not yet checked."
+              ],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [],
+          "request": null,
+          "response": {
+            "$ref": "CreativesList"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "directDeals": {
+      "resources": {},
+      "methods": {
+        "get": {
+          "id": "adexchangebuyer.directDeals.get",
+          "path": "directdeals/{id}",
+          "httpMethod": "GET",
+          "description": "Gets one direct deal by ID.",
+          "parameters": {
+            "id": {
+              "description": "The direct deal id",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "id"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "DirectDeal"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "adexchangebuyer.directDeals.list",
+          "path": "directdeals",
+          "httpMethod": "GET",
+          "description": "Retrieves the authenticated user's list of direct deals.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": null,
+          "response": {
+            "$ref": "DirectDealsList"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "performanceReport": {
+      "resources": {},
+      "methods": {
+        "list": {
+          "id": "adexchangebuyer.performanceReport.list",
+          "path": "performancereport",
+          "httpMethod": "GET",
+          "description": "Retrieves the authenticated user's list of performance metrics.",
+          "parameters": {
+            "accountId": {
+              "description": "The account id to get the reports.",
+              "default": null,
+              "location": "query",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "endDateTime": {
+              "description": "The end time of the report in ISO 8601 timestamp format using UTC.",
+              "default": null,
+              "location": "query",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "maxResults": {
+              "description": "Maximum number of entries returned on one result page. If not set, the default is 100. Optional.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "uint32",
+              "minimum": "1",
+              "maximum": "1000",
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "A continuation token, used to page through performance reports. To retrieve the next page, set this parameter to the value of \"nextPageToken\" from the previous response. Optional.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "startDateTime": {
+              "description": "The start time of the report in ISO 8601 timestamp format using UTC.",
+              "default": null,
+              "location": "query",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "accountId",
+            "endDateTime",
+            "startDateTime"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "PerformanceReportList"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "pretargetingConfig": {
+      "resources": {},
+      "methods": {
+        "delete": {
+          "id": "adexchangebuyer.pretargetingConfig.delete",
+          "path": "pretargetingconfigs/{accountId}/{configId}",
+          "httpMethod": "DELETE",
+          "description": "Deletes an existing pretargeting config.",
+          "parameters": {
+            "accountId": {
+              "description": "The account id to delete the pretargeting config for.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "configId": {
+              "description": "The specific id of the configuration to delete.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "accountId",
+            "configId"
+          ],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "get": {
+          "id": "adexchangebuyer.pretargetingConfig.get",
+          "path": "pretargetingconfigs/{accountId}/{configId}",
+          "httpMethod": "GET",
+          "description": "Gets a specific pretargeting configuration",
+          "parameters": {
+            "accountId": {
+              "description": "The account id to get the pretargeting config for.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "configId": {
+              "description": "The specific id of the configuration to retrieve.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "accountId",
+            "configId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "PretargetingConfig"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "insert": {
+          "id": "adexchangebuyer.pretargetingConfig.insert",
+          "path": "pretargetingconfigs/{accountId}",
+          "httpMethod": "POST",
+          "description": "Inserts a new pretargeting configuration.",
+          "parameters": {
+            "accountId": {
+              "description": "The account id to insert the pretargeting config for.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "accountId"
+          ],
+          "request": {
+            "$ref": "PretargetingConfig"
+          },
+          "response": {
+            "$ref": "PretargetingConfig"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "adexchangebuyer.pretargetingConfig.list",
+          "path": "pretargetingconfigs/{accountId}",
+          "httpMethod": "GET",
+          "description": "Retrieves a list of the authenticated user's pretargeting configurations.",
+          "parameters": {
+            "accountId": {
+              "description": "The account id to get the pretargeting configs for.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "accountId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "PretargetingConfigList"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "patch": {
+          "id": "adexchangebuyer.pretargetingConfig.patch",
+          "path": "pretargetingconfigs/{accountId}/{configId}",
+          "httpMethod": "PATCH",
+          "description": "Updates an existing pretargeting config. This method supports patch semantics.",
+          "parameters": {
+            "accountId": {
+              "description": "The account id to update the pretargeting config for.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "configId": {
+              "description": "The specific id of the configuration to update.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "accountId",
+            "configId"
+          ],
+          "request": {
+            "$ref": "PretargetingConfig"
+          },
+          "response": {
+            "$ref": "PretargetingConfig"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "update": {
+          "id": "adexchangebuyer.pretargetingConfig.update",
+          "path": "pretargetingconfigs/{accountId}/{configId}",
+          "httpMethod": "PUT",
+          "description": "Updates an existing pretargeting config.",
+          "parameters": {
+            "accountId": {
+              "description": "The account id to update the pretargeting config for.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "configId": {
+              "description": "The specific id of the configuration to update.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "accountId",
+            "configId"
+          ],
+          "request": {
+            "$ref": "PretargetingConfig"
+          },
+          "response": {
+            "$ref": "PretargetingConfig"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adexchange.buyer"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    }
+  },
+  "methods": {}
+}

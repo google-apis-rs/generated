@@ -1,0 +1,1285 @@
+{
+  "kind": "discovery#restDescription",
+  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/FH8hr1vcSrDlKiGXDM8sQApgVtA\"",
+  "discoveryVersion": "v1",
+  "id": "pagespeedonline:v5",
+  "name": "pagespeedonline",
+  "canonicalName": null,
+  "fullyEncodeReservedExpansion": null,
+  "version": "v5",
+  "revision": "20190725",
+  "title": "PageSpeed Insights API",
+  "description": "Analyzes the performance of a web page and provides tailored suggestions to make that page faster.",
+  "ownerDomain": "google.com",
+  "ownerName": "Google",
+  "icons": {
+    "x16": "https://www.google.com/images/icons/product/pagespeed-16.png",
+    "x32": "https://www.google.com/images/icons/product/pagespeed-32.png"
+  },
+  "documentationLink": "https://developers.google.com/speed/docs/insights/v5/get-started",
+  "protocol": "rest",
+  "baseUrl": "https://www.googleapis.com/pagespeedonline/v5/",
+  "basePath": "/pagespeedonline/v5/",
+  "rootUrl": "https://www.googleapis.com/",
+  "servicePath": "pagespeedonline/v5/",
+  "batchPath": "batch/pagespeedonline/v5",
+  "version_module": null,
+  "packagePath": null,
+  "labels": null,
+  "features": null,
+  "parameters": {
+    "alt": {
+      "description": "Data format for the response.",
+      "default": "json",
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "json"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json"
+      ],
+      "repeated": false
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "location": "query",
+      "required": false,
+      "type": "boolean",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "quotaUser": {
+      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "userIp": {
+      "description": "Deprecated. Please use quotaUser instead.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    }
+  },
+  "auth": null,
+  "schemas": {
+    "GoogleprotobufValue": {
+      "id": "GoogleprotobufValue",
+      "description": null,
+      "type": "any",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {},
+      "additionalProperties": null,
+      "items": null
+    },
+    "LighthouseAuditResultV5": {
+      "id": "LighthouseAuditResultV5",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "description": {
+          "description": "The description of the audit.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "details": {
+          "description": "Freeform details section of the audit.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
+        "displayValue": {
+          "description": "The value that should be displayed on the UI for this audit.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "errorMessage": {
+          "description": "An error message from a thrown error inside the audit.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "explanation": {
+          "description": "An explanation of the errors in the audit.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "The audit's id.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "score": {
+          "description": null,
+          "type": "any",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "scoreDisplayMode": {
+          "description": "The enumerated score display mode.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "title": {
+          "description": "The human readable title.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "warnings": {
+          "description": null,
+          "type": "any",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "LighthouseCategoryV5": {
+      "id": "LighthouseCategoryV5",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "auditRefs": {
+          "description": "An array of references to all the audit members of this category.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "group": {
+                "description": "The category group that the audit belongs to (optional).",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "id": {
+                "description": "The audit ref id.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "weight": {
+                "description": "The weight this audit's score has on the overall category score.",
+                "type": "number",
+                "format": "double",
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "description": {
+          "description": "A more detailed description of the category and its importance.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "The string identifier of the category.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "manualDescription": {
+          "description": "A description for the manual audits in the category.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "score": {
+          "description": null,
+          "type": "any",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "title": {
+          "description": "The human-friendly name of the category.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "LighthouseResultV5": {
+      "id": "LighthouseResultV5",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "audits": {
+          "description": "Map of audits in the LHR.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "An audit that was performed in this run. Keyed by audit id.",
+            "$ref": "LighthouseAuditResultV5"
+          },
+          "items": null
+        },
+        "categories": {
+          "description": "Map of categories in the LHR.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "accessibility": {
+              "description": "The accessibility category, containing all accessibility related audits.",
+              "$ref": "LighthouseCategoryV5"
+            },
+            "best-practices": {
+              "description": "The best practices category, containing all web best practice related audits.",
+              "$ref": "LighthouseCategoryV5"
+            },
+            "performance": {
+              "description": "The performance category, containing all performance related audits.",
+              "$ref": "LighthouseCategoryV5"
+            },
+            "pwa": {
+              "description": "The Progressive-Web-App (PWA) category, containing all pwa related audits.",
+              "$ref": "LighthouseCategoryV5"
+            },
+            "seo": {
+              "description": "The Search-Engine-Optimization (SEO) category, containing all seo related audits.",
+              "$ref": "LighthouseCategoryV5"
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "categoryGroups": {
+          "description": "Map of category groups in the LHR.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "A grouping contained in a category that groups similar audits together.",
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "description": {
+                "description": "An optional human readable description of the category group.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "title": {
+                "description": "The title of the category group.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
+        "configSettings": {
+          "description": "The configuration settings for this LHR.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "emulatedFormFactor": {
+              "description": "The form factor the emulation should use.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "locale": {
+              "description": "The locale setting.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "onlyCategories": {
+              "description": null,
+              "type": "any",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "environment": {
+          "description": "Environment settings that were used when making this LHR.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "benchmarkIndex": {
+              "description": "The benchmark index number that indicates rough device class.",
+              "type": "number",
+              "format": "double",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "hostUserAgent": {
+              "description": "The user agent string of the version of Chrome used.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "networkUserAgent": {
+              "description": "The user agent string that was sent over the network.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "fetchTime": {
+          "description": "The time that this run was fetched.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "finalUrl": {
+          "description": "The final resolved url that was audited.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "i18n": {
+          "description": "The internationalization strings that are required to render the LHR.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "rendererFormattedStrings": {
+              "description": "Internationalized strings that are formatted to the locale in configSettings.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "auditGroupExpandTooltip": {
+                  "description": "The tooltip text on an expandable chevron icon.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "crcInitialNavigation": {
+                  "description": "The label for the initial request in a critical request chain.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "crcLongestDurationLabel": {
+                  "description": "The label for values shown in the summary of critical request chains.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "errorLabel": {
+                  "description": "The label shown next to an audit or metric that has had an error.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "errorMissingAuditInfo": {
+                  "description": "The error string shown next to an erroring audit.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "labDataTitle": {
+                  "description": "The title of the lab data performance category.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "lsPerformanceCategoryDescription": {
+                  "description": "The disclaimer shown under performance explaning that the network can vary.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "manualAuditsGroupTitle": {
+                  "description": "The heading shown above a list of audits that were not computerd in the run.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "notApplicableAuditsGroupTitle": {
+                  "description": "The heading shown above a list of audits that do not apply to a page.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "opportunityResourceColumnLabel": {
+                  "description": "The heading for the estimated page load savings opportunity of an audit.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "opportunitySavingsColumnLabel": {
+                  "description": "The heading for the estimated page load savings of opportunity audits.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "passedAuditsGroupTitle": {
+                  "description": "The heading that is shown above a list of audits that are passing.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "scorescaleLabel": {
+                  "description": "The label that explains the score gauges scale (0-49, 50-89, 90-100).",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "toplevelWarningsMessage": {
+                  "description": "The label shown preceding important warnings that may have invalidated an entire report.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "varianceDisclaimer": {
+                  "description": "The disclaimer shown below a performance metric value.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "warningHeader": {
+                  "description": "The label shown above a bulleted list of warnings.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "lighthouseVersion": {
+          "description": "The lighthouse version that was used to generate this LHR.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "requestedUrl": {
+          "description": "The original requested url.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "runWarnings": {
+          "description": "List of all run warnings in the LHR. Will always output to at least `[]`.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "runtimeError": {
+          "description": "A top-level error message that, if present, indicates a serious enough problem that this Lighthouse result may need to be discarded.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "code": {
+              "description": "The enumerated Lighthouse Error code.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "message": {
+              "description": "A human readable message explaining the error code.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "stackPacks": {
+          "description": "The Stack Pack advice strings.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "descriptions": {
+                "description": "The stack pack advice strings.",
+                "type": "object",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": {
+                  "description": "The specific stack pack description.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "items": null
+              },
+              "iconDataURL": {
+                "description": "The stack pack icon data uri.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "id": {
+                "description": "The stack pack id.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "title": {
+                "description": "The stack pack title.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "timing": {
+          "description": "Timing information for this LHR.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "total": {
+              "description": "The total duration of Lighthouse's run.",
+              "type": "number",
+              "format": "double",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "userAgent": {
+          "description": "The user agent that was used to run this LHR.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "PagespeedApiLoadingExperienceV5": {
+      "id": "PagespeedApiLoadingExperienceV5",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "id": {
+          "description": "The url, pattern or origin which the metrics are on.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "initial_url": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "metrics": {
+          "description": null,
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "The type of the metric.",
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "category": {
+                "description": null,
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "distributions": {
+                "description": null,
+                "type": "array",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": {
+                  "type": "object",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {
+                    "max": {
+                      "description": null,
+                      "type": "integer",
+                      "format": "int32",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "properties": {},
+                      "additionalProperties": null,
+                      "items": null
+                    },
+                    "min": {
+                      "description": null,
+                      "type": "integer",
+                      "format": "int32",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "properties": {},
+                      "additionalProperties": null,
+                      "items": null
+                    },
+                    "proportion": {
+                      "description": null,
+                      "type": "number",
+                      "format": "double",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "properties": {},
+                      "additionalProperties": null,
+                      "items": null
+                    }
+                  },
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "percentile": {
+                "description": null,
+                "type": "integer",
+                "format": "int32",
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
+        "overall_category": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "PagespeedApiPagespeedResponseV5": {
+      "id": "PagespeedApiPagespeedResponseV5",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "analysisUTCTimestamp": {
+          "description": "The UTC timestamp of this analysis.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "captchaResult": {
+          "description": "The captcha verify result",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "Canonicalized and final URL for the document, after following page redirects (if any).",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Kind of result.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "lighthouseResult": {
+          "description": "Lighthouse response for the audit url as an object.",
+          "$ref": "LighthouseResultV5"
+        },
+        "loadingExperience": {
+          "description": "Metrics of end users' page loading experience.",
+          "$ref": "PagespeedApiLoadingExperienceV5"
+        },
+        "originLoadingExperience": {
+          "description": "Metrics of the aggregated page loading experience of the origin",
+          "$ref": "PagespeedApiLoadingExperienceV5"
+        },
+        "version": {
+          "description": "The version of PageSpeed used to generate these results.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "major": {
+              "description": "The major version number of PageSpeed used to generate these results.",
+              "type": "integer",
+              "format": "int32",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "minor": {
+              "description": "The minor version number of PageSpeed used to generate these results.",
+              "type": "integer",
+              "format": "int32",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    }
+  },
+  "resources": {
+    "pagespeedapi": {
+      "resources": {},
+      "methods": {
+        "runpagespeed": {
+          "id": "pagespeedonline.pagespeedapi.runpagespeed",
+          "path": "runPagespeed",
+          "httpMethod": "GET",
+          "description": "Runs PageSpeed analysis on the page at the specified URL, and returns PageSpeed scores, a list of suggestions to make that page faster, and other information.",
+          "parameters": {
+            "category": {
+              "description": "A Lighthouse category to run; if none are given, only Performance category will be run",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "accessibility",
+                "best-practices",
+                "performance",
+                "pwa",
+                "seo"
+              ],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "repeated": true
+            },
+            "locale": {
+              "description": "The locale used to localize formatted results",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": "[a-zA-Z]+((_|-)[a-zA-Z]+)?",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "strategy": {
+              "description": "The analysis strategy (desktop or mobile) to use, and desktop is the default",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "desktop",
+                "mobile"
+              ],
+              "enumDescriptions": [
+                "Fetch and analyze the URL for desktop browsers",
+                "Fetch and analyze the URL for mobile devices"
+              ],
+              "repeated": false
+            },
+            "url": {
+              "description": "The URL to fetch and analyze",
+              "default": null,
+              "location": "query",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": "(?i)(site:|origin:)?http(s)?://.*",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "utm_campaign": {
+              "description": "Campaign name for analytics.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "utm_source": {
+              "description": "Campaign source for analytics.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "url"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "PagespeedApiPagespeedResponseV5"
+          },
+          "scopes": [],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    }
+  },
+  "methods": {}
+}

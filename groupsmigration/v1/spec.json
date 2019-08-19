@@ -1,0 +1,237 @@
+{
+  "kind": "discovery#restDescription",
+  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/qDu5470S_QfnHCP_4GxoX8OU3Kg\"",
+  "discoveryVersion": "v1",
+  "id": "groupsmigration:v1",
+  "name": "groupsmigration",
+  "canonicalName": "Groups Migration",
+  "fullyEncodeReservedExpansion": null,
+  "version": "v1",
+  "revision": "20181126",
+  "title": "Groups Migration API",
+  "description": "Groups Migration Api.",
+  "ownerDomain": "google.com",
+  "ownerName": "Google",
+  "icons": {
+    "x16": "https://www.google.com/images/icons/product/discussions-16.gif",
+    "x32": "https://www.google.com/images/icons/product/discussions-32.gif"
+  },
+  "documentationLink": "https://developers.google.com/google-apps/groups-migration/",
+  "protocol": "rest",
+  "baseUrl": "https://www.googleapis.com/groups/v1/groups/",
+  "basePath": "/groups/v1/groups/",
+  "rootUrl": "https://www.googleapis.com/",
+  "servicePath": "groups/v1/groups/",
+  "batchPath": "batch/groupsmigration/v1",
+  "version_module": null,
+  "packagePath": null,
+  "labels": null,
+  "features": null,
+  "parameters": {
+    "alt": {
+      "description": "Data format for the response.",
+      "default": "json",
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "json"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json"
+      ],
+      "repeated": false
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "location": "query",
+      "required": false,
+      "type": "boolean",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "quotaUser": {
+      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "userIp": {
+      "description": "Deprecated. Please use quotaUser instead.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    }
+  },
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/apps.groups.migration": {
+          "description": "Manage messages in groups on your domain"
+        }
+      }
+    }
+  },
+  "schemas": {
+    "Groups": {
+      "id": "Groups",
+      "description": "JSON response template for groups migration API.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "kind": {
+          "description": "The kind of insert resource this is.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "responseCode": {
+          "description": "The status of the insert request.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    }
+  },
+  "resources": {
+    "archive": {
+      "resources": {},
+      "methods": {
+        "insert": {
+          "id": "groupsmigration.archive.insert",
+          "path": "{groupId}/archive",
+          "httpMethod": "POST",
+          "description": "Inserts a new mail into the archive of the Google group.",
+          "parameters": {
+            "groupId": {
+              "description": "The group ID",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "groupId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Groups"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/apps.groups.migration"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": true,
+          "mediaUpload": {
+            "accept": [
+              "message/rfc822"
+            ],
+            "maxSize": "25MB",
+            "protocols": {
+              "simple": {
+                "multipart": true,
+                "path": "/upload/groups/v1/groups/{groupId}/archive"
+              },
+              "resumable": {
+                "multipart": true,
+                "path": "/resumable/upload/groups/v1/groups/{groupId}/archive"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "methods": {}
+}

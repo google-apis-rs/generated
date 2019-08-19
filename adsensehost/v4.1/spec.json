@@ -1,0 +1,2946 @@
+{
+  "kind": "discovery#restDescription",
+  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/J8k8fAH-aaXTQjQRCGqNGaRHx6g\"",
+  "discoveryVersion": "v1",
+  "id": "adsensehost:v4.1",
+  "name": "adsensehost",
+  "canonicalName": "AdSense Host",
+  "fullyEncodeReservedExpansion": null,
+  "version": "v4.1",
+  "revision": "20190814",
+  "title": "AdSense Host API",
+  "description": "Generates performance reports, generates ad codes, and provides publisher management capabilities for AdSense Hosts.",
+  "ownerDomain": "google.com",
+  "ownerName": "Google",
+  "icons": {
+    "x16": "https://www.google.com/images/icons/product/adsense-16.png",
+    "x32": "https://www.google.com/images/icons/product/adsense-32.png"
+  },
+  "documentationLink": "https://developers.google.com/adsense/host/",
+  "protocol": "rest",
+  "baseUrl": "https://www.googleapis.com/adsensehost/v4.1/",
+  "basePath": "/adsensehost/v4.1/",
+  "rootUrl": "https://www.googleapis.com/",
+  "servicePath": "adsensehost/v4.1/",
+  "batchPath": "batch/adsensehost/v4.1",
+  "version_module": null,
+  "packagePath": null,
+  "labels": [
+    "limited_availability"
+  ],
+  "features": null,
+  "parameters": {
+    "alt": {
+      "description": "Data format for the response.",
+      "default": "json",
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "csv",
+        "json"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of text/csv",
+        "Responses with Content-Type of application/json"
+      ],
+      "repeated": false
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "location": "query",
+      "required": false,
+      "type": "boolean",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "quotaUser": {
+      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "userIp": {
+      "description": "Deprecated. Please use quotaUser instead.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    }
+  },
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/adsensehost": {
+          "description": "View and manage your AdSense host data and associated accounts"
+        }
+      }
+    }
+  },
+  "schemas": {
+    "Account": {
+      "id": "Account",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "id": {
+          "description": "Unique identifier of this account.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Kind of resource this is, in this case adsensehost#account.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "name": {
+          "description": "Name of this account.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "status": {
+          "description": "Approval status of this account. One of: PENDING, APPROVED, DISABLED.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Accounts": {
+      "id": "Accounts",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "etag": {
+          "description": "ETag of this response for caching purposes.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "items": {
+          "description": "The accounts returned in this list response.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Account"
+          }
+        },
+        "kind": {
+          "description": "Kind of list this is, in this case adsensehost#accounts.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "AdClient": {
+      "id": "AdClient",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "arcOptIn": {
+          "description": "Whether this ad client is opted in to ARC.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "Unique identifier of this ad client.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Kind of resource this is, in this case adsensehost#adClient.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "productCode": {
+          "description": "This ad client's product code, which corresponds to the PRODUCT_CODE report dimension.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "supportsReporting": {
+          "description": "Whether this ad client supports being reported on.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "AdClients": {
+      "id": "AdClients",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "etag": {
+          "description": "ETag of this response for caching purposes.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "items": {
+          "description": "The ad clients returned in this list response.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "AdClient"
+          }
+        },
+        "kind": {
+          "description": "Kind of list this is, in this case adsensehost#adClients.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nextPageToken": {
+          "description": "Continuation token used to page through ad clients. To retrieve the next page of results, set the next request's \"pageToken\" value to this.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "AdCode": {
+      "id": "AdCode",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "adCode": {
+          "description": "The ad code snippet.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Kind this is, in this case adsensehost#adCode.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "AdStyle": {
+      "id": "AdStyle",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "colors": {
+          "description": "The colors included in the style. These are represented as six hexadecimal characters, similar to HTML color codes, but without the leading hash.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "background": {
+              "description": "The color of the ad background.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "border": {
+              "description": "The color of the ad border.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "text": {
+              "description": "The color of the ad text.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "title": {
+              "description": "The color of the ad title.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "url": {
+              "description": "The color of the ad url.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "corners": {
+          "description": "The style of the corners in the ad (deprecated: never populated, ignored).",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "font": {
+          "description": "The font which is included in the style.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "family": {
+              "description": "The family of the font. Possible values are: ACCOUNT_DEFAULT_FAMILY, ADSENSE_DEFAULT_FAMILY, ARIAL, TIMES and VERDANA.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "size": {
+              "description": "The size of the font. Possible values are: ACCOUNT_DEFAULT_SIZE, ADSENSE_DEFAULT_SIZE, SMALL, MEDIUM and LARGE.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Kind this is, in this case adsensehost#adStyle.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "AdUnit": {
+      "id": "AdUnit",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "code": {
+          "description": "Identity code of this ad unit, not necessarily unique across ad clients.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "contentAdsSettings": {
+          "description": "Settings specific to content ads (AFC) and highend mobile content ads (AFMC - deprecated).",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "backupOption": {
+              "description": "The backup option to be used in instances where no ad is available.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "color": {
+                  "description": "Color to use when type is set to COLOR. These are represented as six hexadecimal characters, similar to HTML color codes, but without the leading hash.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "type": {
+                  "description": "Type of the backup option. Possible values are BLANK, COLOR and URL.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "url": {
+                  "description": "URL to use when type is set to URL.",
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            },
+            "size": {
+              "description": "Size of this ad unit. Size values are in the form SIZE_{width}_{height}.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "type": {
+              "description": "Type of this ad unit. Possible values are TEXT, TEXT_IMAGE, IMAGE and LINK.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "customStyle": {
+          "description": "Custom style information specific to this ad unit.",
+          "$ref": "AdStyle"
+        },
+        "id": {
+          "description": "Unique identifier of this ad unit. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Kind of resource this is, in this case adsensehost#adUnit.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "mobileContentAdsSettings": {
+          "description": "Settings specific to WAP mobile content ads (AFMC - deprecated).",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "markupLanguage": {
+              "description": "The markup language to use for this ad unit.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "scriptingLanguage": {
+              "description": "The scripting language to use for this ad unit.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "size": {
+              "description": "Size of this ad unit.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "type": {
+              "description": "Type of this ad unit.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "name": {
+          "description": "Name of this ad unit.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "status": {
+          "description": "Status of this ad unit. Possible values are:\nNEW: Indicates that the ad unit was created within the last seven days and does not yet have any activity associated with it.\n\nACTIVE: Indicates that there has been activity on this ad unit in the last seven days.\n\nINACTIVE: Indicates that there has been no activity on this ad unit in the last seven days.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "AdUnits": {
+      "id": "AdUnits",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "etag": {
+          "description": "ETag of this response for caching purposes.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "items": {
+          "description": "The ad units returned in this list response.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "AdUnit"
+          }
+        },
+        "kind": {
+          "description": "Kind of list this is, in this case adsensehost#adUnits.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nextPageToken": {
+          "description": "Continuation token used to page through ad units. To retrieve the next page of results, set the next request's \"pageToken\" value to this.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "AssociationSession": {
+      "id": "AssociationSession",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "accountId": {
+          "description": "Hosted account id of the associated publisher after association. Present if status is ACCEPTED.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "Unique identifier of this association session.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Kind of resource this is, in this case adsensehost#associationSession.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "productCodes": {
+          "description": "The products to associate with the user. Options: AFC, AFG, AFV, AFS (deprecated), AFMC (deprecated)",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "redirectUrl": {
+          "description": "Redirect URL of this association session. Used to redirect users into the AdSense association flow.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "status": {
+          "description": "Status of the completed association, available once the association callback token has been verified. One of ACCEPTED, REJECTED, or ERROR.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "userLocale": {
+          "description": "The preferred locale of the user themselves when going through the AdSense association flow.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "websiteLocale": {
+          "description": "The locale of the user's hosted website.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "websiteUrl": {
+          "description": "The URL of the user's hosted website.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "CustomChannel": {
+      "id": "CustomChannel",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "code": {
+          "description": "Code of this custom channel, not necessarily unique across ad clients.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "Unique identifier of this custom channel. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Kind of resource this is, in this case adsensehost#customChannel.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "name": {
+          "description": "Name of this custom channel.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "CustomChannels": {
+      "id": "CustomChannels",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "etag": {
+          "description": "ETag of this response for caching purposes.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "items": {
+          "description": "The custom channels returned in this list response.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "CustomChannel"
+          }
+        },
+        "kind": {
+          "description": "Kind of list this is, in this case adsensehost#customChannels.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nextPageToken": {
+          "description": "Continuation token used to page through custom channels. To retrieve the next page of results, set the next request's \"pageToken\" value to this.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Report": {
+      "id": "Report",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "averages": {
+          "description": "The averages of the report. This is the same length as any other row in the report; cells corresponding to dimension columns are empty.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "headers": {
+          "description": "The header information of the columns requested in the report. This is a list of headers; one for each dimension in the request, followed by one for each metric in the request.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "currency": {
+                "description": "The currency of this column. Only present if the header type is METRIC_CURRENCY.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "name": {
+                "description": "The name of the header.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "type": {
+                "description": "The type of the header; one of DIMENSION, METRIC_TALLY, METRIC_RATIO, or METRIC_CURRENCY.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "kind": {
+          "description": "Kind this is, in this case adsensehost#report.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "rows": {
+          "description": "The output rows of the report. Each row is a list of cells; one for each dimension in the request, followed by one for each metric in the request. The dimension cells contain strings, and the metric cells contain numbers.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "array",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": {
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          }
+        },
+        "totalMatchedRows": {
+          "description": "The total number of rows matched by the report request. Fewer rows may be returned in the response due to being limited by the row count requested or the report row limit.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "totals": {
+          "description": "The totals of the report. This is the same length as any other row in the report; cells corresponding to dimension columns are empty.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "warnings": {
+          "description": "Any warnings associated with generation of the report.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "UrlChannel": {
+      "id": "UrlChannel",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "id": {
+          "description": "Unique identifier of this URL channel. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Kind of resource this is, in this case adsensehost#urlChannel.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "urlPattern": {
+          "description": "URL Pattern of this URL channel. Does not include \"http://\" or \"https://\". Example: www.example.com/home",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "UrlChannels": {
+      "id": "UrlChannels",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "etag": {
+          "description": "ETag of this response for caching purposes.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "items": {
+          "description": "The URL channels returned in this list response.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "UrlChannel"
+          }
+        },
+        "kind": {
+          "description": "Kind of list this is, in this case adsensehost#urlChannels.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nextPageToken": {
+          "description": "Continuation token used to page through URL channels. To retrieve the next page of results, set the next request's \"pageToken\" value to this.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    }
+  },
+  "resources": {
+    "accounts": {
+      "resources": {
+        "adclients": {
+          "resources": {},
+          "methods": {
+            "get": {
+              "id": "adsensehost.accounts.adclients.get",
+              "path": "accounts/{accountId}/adclients/{adClientId}",
+              "httpMethod": "GET",
+              "description": "Get information about one of the ad clients in the specified publisher's AdSense account.",
+              "parameters": {
+                "accountId": {
+                  "description": "Account which contains the ad client.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "adClientId": {
+                  "description": "Ad client to get.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "accountId",
+                "adClientId"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "AdClient"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/adsensehost"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "list": {
+              "id": "adsensehost.accounts.adclients.list",
+              "path": "accounts/{accountId}/adclients",
+              "httpMethod": "GET",
+              "description": "List all hosted ad clients in the specified hosted account.",
+              "parameters": {
+                "accountId": {
+                  "description": "Account for which to list ad clients.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "maxResults": {
+                  "description": "The maximum number of ad clients to include in the response, used for paging.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "integer",
+                  "format": "uint32",
+                  "minimum": "0",
+                  "maximum": "10000",
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "pageToken": {
+                  "description": "A continuation token, used to page through ad clients. To retrieve the next page, set this parameter to the value of \"nextPageToken\" from the previous response.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "accountId"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "AdClients"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/adsensehost"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            }
+          }
+        },
+        "adunits": {
+          "resources": {},
+          "methods": {
+            "delete": {
+              "id": "adsensehost.accounts.adunits.delete",
+              "path": "accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}",
+              "httpMethod": "DELETE",
+              "description": "Delete the specified ad unit from the specified publisher AdSense account.",
+              "parameters": {
+                "accountId": {
+                  "description": "Account which contains the ad unit.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "adClientId": {
+                  "description": "Ad client for which to get ad unit.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "adUnitId": {
+                  "description": "Ad unit to delete.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "accountId",
+                "adClientId",
+                "adUnitId"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "AdUnit"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/adsensehost"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "get": {
+              "id": "adsensehost.accounts.adunits.get",
+              "path": "accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}",
+              "httpMethod": "GET",
+              "description": "Get the specified host ad unit in this AdSense account.",
+              "parameters": {
+                "accountId": {
+                  "description": "Account which contains the ad unit.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "adClientId": {
+                  "description": "Ad client for which to get ad unit.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "adUnitId": {
+                  "description": "Ad unit to get.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "accountId",
+                "adClientId",
+                "adUnitId"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "AdUnit"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/adsensehost"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "getAdCode": {
+              "id": "adsensehost.accounts.adunits.getAdCode",
+              "path": "accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}/adcode",
+              "httpMethod": "GET",
+              "description": "Get ad code for the specified ad unit, attaching the specified host custom channels.",
+              "parameters": {
+                "accountId": {
+                  "description": "Account which contains the ad client.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "adClientId": {
+                  "description": "Ad client with contains the ad unit.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "adUnitId": {
+                  "description": "Ad unit to get the code for.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "hostCustomChannelId": {
+                  "description": "Host custom channel to attach to the ad code.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": true
+                }
+              },
+              "parameterOrder": [
+                "accountId",
+                "adClientId",
+                "adUnitId"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "AdCode"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/adsensehost"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "insert": {
+              "id": "adsensehost.accounts.adunits.insert",
+              "path": "accounts/{accountId}/adclients/{adClientId}/adunits",
+              "httpMethod": "POST",
+              "description": "Insert the supplied ad unit into the specified publisher AdSense account.",
+              "parameters": {
+                "accountId": {
+                  "description": "Account which will contain the ad unit.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "adClientId": {
+                  "description": "Ad client into which to insert the ad unit.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "accountId",
+                "adClientId"
+              ],
+              "request": {
+                "$ref": "AdUnit"
+              },
+              "response": {
+                "$ref": "AdUnit"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/adsensehost"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "list": {
+              "id": "adsensehost.accounts.adunits.list",
+              "path": "accounts/{accountId}/adclients/{adClientId}/adunits",
+              "httpMethod": "GET",
+              "description": "List all ad units in the specified publisher's AdSense account.",
+              "parameters": {
+                "accountId": {
+                  "description": "Account which contains the ad client.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "adClientId": {
+                  "description": "Ad client for which to list ad units.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "includeInactive": {
+                  "description": "Whether to include inactive ad units. Default: true.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "boolean",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "maxResults": {
+                  "description": "The maximum number of ad units to include in the response, used for paging.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "integer",
+                  "format": "uint32",
+                  "minimum": "0",
+                  "maximum": "10000",
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "pageToken": {
+                  "description": "A continuation token, used to page through ad units. To retrieve the next page, set this parameter to the value of \"nextPageToken\" from the previous response.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "accountId",
+                "adClientId"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "AdUnits"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/adsensehost"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "patch": {
+              "id": "adsensehost.accounts.adunits.patch",
+              "path": "accounts/{accountId}/adclients/{adClientId}/adunits",
+              "httpMethod": "PATCH",
+              "description": "Update the supplied ad unit in the specified publisher AdSense account. This method supports patch semantics.",
+              "parameters": {
+                "accountId": {
+                  "description": "Account which contains the ad client.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "adClientId": {
+                  "description": "Ad client which contains the ad unit.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "adUnitId": {
+                  "description": "Ad unit to get.",
+                  "default": null,
+                  "location": "query",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "accountId",
+                "adClientId",
+                "adUnitId"
+              ],
+              "request": {
+                "$ref": "AdUnit"
+              },
+              "response": {
+                "$ref": "AdUnit"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/adsensehost"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "update": {
+              "id": "adsensehost.accounts.adunits.update",
+              "path": "accounts/{accountId}/adclients/{adClientId}/adunits",
+              "httpMethod": "PUT",
+              "description": "Update the supplied ad unit in the specified publisher AdSense account.",
+              "parameters": {
+                "accountId": {
+                  "description": "Account which contains the ad client.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "adClientId": {
+                  "description": "Ad client which contains the ad unit.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "accountId",
+                "adClientId"
+              ],
+              "request": {
+                "$ref": "AdUnit"
+              },
+              "response": {
+                "$ref": "AdUnit"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/adsensehost"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            }
+          }
+        },
+        "reports": {
+          "resources": {},
+          "methods": {
+            "generate": {
+              "id": "adsensehost.accounts.reports.generate",
+              "path": "accounts/{accountId}/reports",
+              "httpMethod": "GET",
+              "description": "Generate an AdSense report based on the report request sent in the query parameters. Returns the result as JSON; to retrieve output in CSV format specify \"alt=csv\" as a query parameter.",
+              "parameters": {
+                "accountId": {
+                  "description": "Hosted account upon which to report.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "dimension": {
+                  "description": "Dimensions to base the report on.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "[a-zA-Z_]+",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": true
+                },
+                "endDate": {
+                  "description": "End of the date range to report on in \"YYYY-MM-DD\" format, inclusive.",
+                  "default": null,
+                  "location": "query",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "\\d{4}-\\d{2}-\\d{2}|(today|startOfMonth|startOfYear)(([\\-\\+]\\d+[dwmy]){0,3}?)",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "filter": {
+                  "description": "Filters to be run on the report.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "[a-zA-Z_]+(==|=@).+",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": true
+                },
+                "locale": {
+                  "description": "Optional locale to use for translating report output to a local language. Defaults to \"en_US\" if not specified.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "[a-zA-Z_]+",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "maxResults": {
+                  "description": "The maximum number of rows of report data to return.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "integer",
+                  "format": "uint32",
+                  "minimum": "0",
+                  "maximum": "50000",
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "metric": {
+                  "description": "Numeric columns to include in the report.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "[a-zA-Z_]+",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": true
+                },
+                "sort": {
+                  "description": "The name of a dimension or metric to sort the resulting report on, optionally prefixed with \"+\" to sort ascending or \"-\" to sort descending. If no prefix is specified, the column is sorted ascending.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "(\\+|-)?[a-zA-Z_]+",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": true
+                },
+                "startDate": {
+                  "description": "Start of the date range to report on in \"YYYY-MM-DD\" format, inclusive.",
+                  "default": null,
+                  "location": "query",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "\\d{4}-\\d{2}-\\d{2}|(today|startOfMonth|startOfYear)(([\\-\\+]\\d+[dwmy]){0,3}?)",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "startIndex": {
+                  "description": "Index of the first row of report data to return.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "integer",
+                  "format": "uint32",
+                  "minimum": "0",
+                  "maximum": "5000",
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "accountId",
+                "startDate",
+                "endDate"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "Report"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/adsensehost"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            }
+          }
+        }
+      },
+      "methods": {
+        "get": {
+          "id": "adsensehost.accounts.get",
+          "path": "accounts/{accountId}",
+          "httpMethod": "GET",
+          "description": "Get information about the selected associated AdSense account.",
+          "parameters": {
+            "accountId": {
+              "description": "Account to get information about.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "accountId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Account"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adsensehost"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "adsensehost.accounts.list",
+          "path": "accounts",
+          "httpMethod": "GET",
+          "description": "List hosted accounts associated with this AdSense account by ad client id.",
+          "parameters": {
+            "filterAdClientId": {
+              "description": "Ad clients to list accounts for.",
+              "default": null,
+              "location": "query",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": true
+            }
+          },
+          "parameterOrder": [
+            "filterAdClientId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Accounts"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adsensehost"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "adclients": {
+      "resources": {},
+      "methods": {
+        "get": {
+          "id": "adsensehost.adclients.get",
+          "path": "adclients/{adClientId}",
+          "httpMethod": "GET",
+          "description": "Get information about one of the ad clients in the Host AdSense account.",
+          "parameters": {
+            "adClientId": {
+              "description": "Ad client to get.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "adClientId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "AdClient"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adsensehost"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "adsensehost.adclients.list",
+          "path": "adclients",
+          "httpMethod": "GET",
+          "description": "List all host ad clients in this AdSense account.",
+          "parameters": {
+            "maxResults": {
+              "description": "The maximum number of ad clients to include in the response, used for paging.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "uint32",
+              "minimum": "0",
+              "maximum": "10000",
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "A continuation token, used to page through ad clients. To retrieve the next page, set this parameter to the value of \"nextPageToken\" from the previous response.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [],
+          "request": null,
+          "response": {
+            "$ref": "AdClients"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adsensehost"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "associationsessions": {
+      "resources": {},
+      "methods": {
+        "start": {
+          "id": "adsensehost.associationsessions.start",
+          "path": "associationsessions/start",
+          "httpMethod": "GET",
+          "description": "Create an association session for initiating an association with an AdSense user.",
+          "parameters": {
+            "productCode": {
+              "description": "Products to associate with the user.",
+              "default": null,
+              "location": "query",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "AFC",
+                "AFG",
+                "AFMC",
+                "AFS",
+                "AFV"
+              ],
+              "enumDescriptions": [
+                "AdSense For Content",
+                "AdSense For Games",
+                "AdSense For Mobile Content - deprecated",
+                "AdSense For Search - deprecated",
+                "AdSense For Video"
+              ],
+              "repeated": true
+            },
+            "userLocale": {
+              "description": "The preferred locale of the user.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "websiteLocale": {
+              "description": "The locale of the user's hosted website.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "websiteUrl": {
+              "description": "The URL of the user's hosted website.",
+              "default": null,
+              "location": "query",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "productCode",
+            "websiteUrl"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "AssociationSession"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adsensehost"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "verify": {
+          "id": "adsensehost.associationsessions.verify",
+          "path": "associationsessions/verify",
+          "httpMethod": "GET",
+          "description": "Verify an association session after the association callback returns from AdSense signup.",
+          "parameters": {
+            "token": {
+              "description": "The token returned to the association callback URL.",
+              "default": null,
+              "location": "query",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "token"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "AssociationSession"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adsensehost"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "customchannels": {
+      "resources": {},
+      "methods": {
+        "delete": {
+          "id": "adsensehost.customchannels.delete",
+          "path": "adclients/{adClientId}/customchannels/{customChannelId}",
+          "httpMethod": "DELETE",
+          "description": "Delete a specific custom channel from the host AdSense account.",
+          "parameters": {
+            "adClientId": {
+              "description": "Ad client from which to delete the custom channel.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "customChannelId": {
+              "description": "Custom channel to delete.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "adClientId",
+            "customChannelId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "CustomChannel"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adsensehost"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "get": {
+          "id": "adsensehost.customchannels.get",
+          "path": "adclients/{adClientId}/customchannels/{customChannelId}",
+          "httpMethod": "GET",
+          "description": "Get a specific custom channel from the host AdSense account.",
+          "parameters": {
+            "adClientId": {
+              "description": "Ad client from which to get the custom channel.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "customChannelId": {
+              "description": "Custom channel to get.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "adClientId",
+            "customChannelId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "CustomChannel"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adsensehost"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "insert": {
+          "id": "adsensehost.customchannels.insert",
+          "path": "adclients/{adClientId}/customchannels",
+          "httpMethod": "POST",
+          "description": "Add a new custom channel to the host AdSense account.",
+          "parameters": {
+            "adClientId": {
+              "description": "Ad client to which the new custom channel will be added.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "adClientId"
+          ],
+          "request": {
+            "$ref": "CustomChannel"
+          },
+          "response": {
+            "$ref": "CustomChannel"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adsensehost"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "adsensehost.customchannels.list",
+          "path": "adclients/{adClientId}/customchannels",
+          "httpMethod": "GET",
+          "description": "List all host custom channels in this AdSense account.",
+          "parameters": {
+            "adClientId": {
+              "description": "Ad client for which to list custom channels.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "maxResults": {
+              "description": "The maximum number of custom channels to include in the response, used for paging.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "uint32",
+              "minimum": "0",
+              "maximum": "10000",
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "A continuation token, used to page through custom channels. To retrieve the next page, set this parameter to the value of \"nextPageToken\" from the previous response.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "adClientId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "CustomChannels"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adsensehost"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "patch": {
+          "id": "adsensehost.customchannels.patch",
+          "path": "adclients/{adClientId}/customchannels",
+          "httpMethod": "PATCH",
+          "description": "Update a custom channel in the host AdSense account. This method supports patch semantics.",
+          "parameters": {
+            "adClientId": {
+              "description": "Ad client in which the custom channel will be updated.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "customChannelId": {
+              "description": "Custom channel to get.",
+              "default": null,
+              "location": "query",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "adClientId",
+            "customChannelId"
+          ],
+          "request": {
+            "$ref": "CustomChannel"
+          },
+          "response": {
+            "$ref": "CustomChannel"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adsensehost"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "update": {
+          "id": "adsensehost.customchannels.update",
+          "path": "adclients/{adClientId}/customchannels",
+          "httpMethod": "PUT",
+          "description": "Update a custom channel in the host AdSense account.",
+          "parameters": {
+            "adClientId": {
+              "description": "Ad client in which the custom channel will be updated.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "adClientId"
+          ],
+          "request": {
+            "$ref": "CustomChannel"
+          },
+          "response": {
+            "$ref": "CustomChannel"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adsensehost"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "reports": {
+      "resources": {},
+      "methods": {
+        "generate": {
+          "id": "adsensehost.reports.generate",
+          "path": "reports",
+          "httpMethod": "GET",
+          "description": "Generate an AdSense report based on the report request sent in the query parameters. Returns the result as JSON; to retrieve output in CSV format specify \"alt=csv\" as a query parameter.",
+          "parameters": {
+            "dimension": {
+              "description": "Dimensions to base the report on.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": "[a-zA-Z_]+",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": true
+            },
+            "endDate": {
+              "description": "End of the date range to report on in \"YYYY-MM-DD\" format, inclusive.",
+              "default": null,
+              "location": "query",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": "\\d{4}-\\d{2}-\\d{2}|(today|startOfMonth|startOfYear)(([\\-\\+]\\d+[dwmy]){0,3}?)",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "filter": {
+              "description": "Filters to be run on the report.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": "[a-zA-Z_]+(==|=@).+",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": true
+            },
+            "locale": {
+              "description": "Optional locale to use for translating report output to a local language. Defaults to \"en_US\" if not specified.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": "[a-zA-Z_]+",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "maxResults": {
+              "description": "The maximum number of rows of report data to return.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "uint32",
+              "minimum": "0",
+              "maximum": "50000",
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "metric": {
+              "description": "Numeric columns to include in the report.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": "[a-zA-Z_]+",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": true
+            },
+            "sort": {
+              "description": "The name of a dimension or metric to sort the resulting report on, optionally prefixed with \"+\" to sort ascending or \"-\" to sort descending. If no prefix is specified, the column is sorted ascending.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": "(\\+|-)?[a-zA-Z_]+",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": true
+            },
+            "startDate": {
+              "description": "Start of the date range to report on in \"YYYY-MM-DD\" format, inclusive.",
+              "default": null,
+              "location": "query",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": "\\d{4}-\\d{2}-\\d{2}|(today|startOfMonth|startOfYear)(([\\-\\+]\\d+[dwmy]){0,3}?)",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "startIndex": {
+              "description": "Index of the first row of report data to return.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "uint32",
+              "minimum": "0",
+              "maximum": "5000",
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "startDate",
+            "endDate"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Report"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adsensehost"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "urlchannels": {
+      "resources": {},
+      "methods": {
+        "delete": {
+          "id": "adsensehost.urlchannels.delete",
+          "path": "adclients/{adClientId}/urlchannels/{urlChannelId}",
+          "httpMethod": "DELETE",
+          "description": "Delete a URL channel from the host AdSense account.",
+          "parameters": {
+            "adClientId": {
+              "description": "Ad client from which to delete the URL channel.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "urlChannelId": {
+              "description": "URL channel to delete.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "adClientId",
+            "urlChannelId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "UrlChannel"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adsensehost"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "insert": {
+          "id": "adsensehost.urlchannels.insert",
+          "path": "adclients/{adClientId}/urlchannels",
+          "httpMethod": "POST",
+          "description": "Add a new URL channel to the host AdSense account.",
+          "parameters": {
+            "adClientId": {
+              "description": "Ad client to which the new URL channel will be added.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "adClientId"
+          ],
+          "request": {
+            "$ref": "UrlChannel"
+          },
+          "response": {
+            "$ref": "UrlChannel"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adsensehost"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "adsensehost.urlchannels.list",
+          "path": "adclients/{adClientId}/urlchannels",
+          "httpMethod": "GET",
+          "description": "List all host URL channels in the host AdSense account.",
+          "parameters": {
+            "adClientId": {
+              "description": "Ad client for which to list URL channels.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "maxResults": {
+              "description": "The maximum number of URL channels to include in the response, used for paging.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "uint32",
+              "minimum": "0",
+              "maximum": "10000",
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "A continuation token, used to page through URL channels. To retrieve the next page, set this parameter to the value of \"nextPageToken\" from the previous response.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "adClientId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "UrlChannels"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adsensehost"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    }
+  },
+  "methods": {}
+}

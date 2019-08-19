@@ -1,0 +1,563 @@
+{
+  "kind": "discovery#restDescription",
+  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/qGkHMZe9bZVLuldSWVcB57_Xoj4\"",
+  "discoveryVersion": "v1",
+  "id": "urlshortener:v1",
+  "name": "urlshortener",
+  "canonicalName": null,
+  "fullyEncodeReservedExpansion": null,
+  "version": "v1",
+  "revision": "20150519",
+  "title": "URL Shortener API",
+  "description": "Lets you create, inspect, and manage goo.gl short URLs",
+  "ownerDomain": "google.com",
+  "ownerName": "Google",
+  "icons": {
+    "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+    "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+  },
+  "documentationLink": "https://developers.google.com/url-shortener/v1/getting_started",
+  "protocol": "rest",
+  "baseUrl": "https://www.googleapis.com/urlshortener/v1/",
+  "basePath": "/urlshortener/v1/",
+  "rootUrl": "https://www.googleapis.com/",
+  "servicePath": "urlshortener/v1/",
+  "batchPath": "batch/urlshortener/v1",
+  "version_module": null,
+  "packagePath": null,
+  "labels": null,
+  "features": null,
+  "parameters": {
+    "alt": {
+      "description": "Data format for the response.",
+      "default": "json",
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "json"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json"
+      ],
+      "repeated": false
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "location": "query",
+      "required": false,
+      "type": "boolean",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "quotaUser": {
+      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "userIp": {
+      "description": "Deprecated. Please use quotaUser instead.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    }
+  },
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/urlshortener": {
+          "description": "Manage your goo.gl short URLs"
+        }
+      }
+    }
+  },
+  "schemas": {
+    "AnalyticsSnapshot": {
+      "id": "AnalyticsSnapshot",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "browsers": {
+          "description": "Top browsers, e.g. \"Chrome\"; sorted by (descending) click counts. Only present if this data is available.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "StringCount"
+          }
+        },
+        "countries": {
+          "description": "Top countries (expressed as country codes), e.g. \"US\" or \"DE\"; sorted by (descending) click counts. Only present if this data is available.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "StringCount"
+          }
+        },
+        "longUrlClicks": {
+          "description": "Number of clicks on all goo.gl short URLs pointing to this long URL.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "platforms": {
+          "description": "Top platforms or OSes, e.g. \"Windows\"; sorted by (descending) click counts. Only present if this data is available.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "StringCount"
+          }
+        },
+        "referrers": {
+          "description": "Top referring hosts, e.g. \"www.google.com\"; sorted by (descending) click counts. Only present if this data is available.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "StringCount"
+          }
+        },
+        "shortUrlClicks": {
+          "description": "Number of clicks on this short URL.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "AnalyticsSummary": {
+      "id": "AnalyticsSummary",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "allTime": {
+          "description": "Click analytics over all time.",
+          "$ref": "AnalyticsSnapshot"
+        },
+        "day": {
+          "description": "Click analytics over the last day.",
+          "$ref": "AnalyticsSnapshot"
+        },
+        "month": {
+          "description": "Click analytics over the last month.",
+          "$ref": "AnalyticsSnapshot"
+        },
+        "twoHours": {
+          "description": "Click analytics over the last two hours.",
+          "$ref": "AnalyticsSnapshot"
+        },
+        "week": {
+          "description": "Click analytics over the last week.",
+          "$ref": "AnalyticsSnapshot"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "StringCount": {
+      "id": "StringCount",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "count": {
+          "description": "Number of clicks for this top entry, e.g. for this particular country or browser.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "Label assigned to this top entry, e.g. \"US\" or \"Chrome\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Url": {
+      "id": "Url",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "analytics": {
+          "description": "A summary of the click analytics for the short and long URL. Might not be present if not requested or currently unavailable.",
+          "$ref": "AnalyticsSummary"
+        },
+        "created": {
+          "description": "Time the short URL was created; ISO 8601 representation using the yyyy-MM-dd'T'HH:mm:ss.SSSZZ format, e.g. \"2010-10-14T19:01:24.944+00:00\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "Short URL, e.g. \"http://goo.gl/l6MS\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "The fixed string \"urlshortener#url\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "longUrl": {
+          "description": "Long URL, e.g. \"http://www.google.com/\". Might not be present if the status is \"REMOVED\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "status": {
+          "description": "Status of the target URL. Possible values: \"OK\", \"MALWARE\", \"PHISHING\", or \"REMOVED\". A URL might be marked \"REMOVED\" if it was flagged as spam, for example.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "UrlHistory": {
+      "id": "UrlHistory",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "items": {
+          "description": "A list of URL resources.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Url"
+          }
+        },
+        "itemsPerPage": {
+          "description": "Number of items returned with each full \"page\" of results. Note that the last page could have fewer items than the \"itemsPerPage\" value.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "The fixed string \"urlshortener#urlHistory\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nextPageToken": {
+          "description": "A token to provide to get the next page of results.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "totalItems": {
+          "description": "Total number of short URLs associated with this user (may be approximate).",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    }
+  },
+  "resources": {
+    "url": {
+      "resources": {},
+      "methods": {
+        "get": {
+          "id": "urlshortener.url.get",
+          "path": "url",
+          "httpMethod": "GET",
+          "description": "Expands a short URL or gets creation time and analytics.",
+          "parameters": {
+            "projection": {
+              "description": "Additional information to return.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "ANALYTICS_CLICKS",
+                "ANALYTICS_TOP_STRINGS",
+                "FULL"
+              ],
+              "enumDescriptions": [
+                "Returns only click counts.",
+                "Returns only top string counts.",
+                "Returns the creation timestamp and all available analytics."
+              ],
+              "repeated": false
+            },
+            "shortUrl": {
+              "description": "The short URL, including the protocol.",
+              "default": null,
+              "location": "query",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "shortUrl"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Url"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/urlshortener"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "insert": {
+          "id": "urlshortener.url.insert",
+          "path": "url",
+          "httpMethod": "POST",
+          "description": "Creates a new short URL.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": {
+            "$ref": "Url"
+          },
+          "response": {
+            "$ref": "Url"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/urlshortener"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "urlshortener.url.list",
+          "path": "url/history",
+          "httpMethod": "GET",
+          "description": "Retrieves a list of URLs shortened by a user.",
+          "parameters": {
+            "projection": {
+              "description": "Additional information to return.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "ANALYTICS_CLICKS",
+                "FULL"
+              ],
+              "enumDescriptions": [
+                "Returns short URL click counts.",
+                "Returns short URL click counts."
+              ],
+              "repeated": false
+            },
+            "start-token": {
+              "description": "Token for requesting successive pages of results.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [],
+          "request": null,
+          "response": {
+            "$ref": "UrlHistory"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/urlshortener"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    }
+  },
+  "methods": {}
+}

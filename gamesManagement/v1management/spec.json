@@ -1,0 +1,1628 @@
+{
+  "kind": "discovery#restDescription",
+  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/8j_3po7rAN7q-v_6pSLmyw87K5w\"",
+  "discoveryVersion": "v1",
+  "id": "gamesManagement:v1management",
+  "name": "gamesManagement",
+  "canonicalName": "Games Management",
+  "fullyEncodeReservedExpansion": null,
+  "version": "v1management",
+  "revision": "20190808",
+  "title": "Google Play Game Services Management API",
+  "description": "The Management API for Google Play Game Services.",
+  "ownerDomain": "google.com",
+  "ownerName": "Google",
+  "icons": {
+    "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+    "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+  },
+  "documentationLink": "https://developers.google.com/games/services",
+  "protocol": "rest",
+  "baseUrl": "https://www.googleapis.com/games/v1management/",
+  "basePath": "/games/v1management/",
+  "rootUrl": "https://www.googleapis.com/",
+  "servicePath": "games/v1management/",
+  "batchPath": "batch/gamesManagement/v1management",
+  "version_module": null,
+  "packagePath": null,
+  "labels": null,
+  "features": null,
+  "parameters": {
+    "alt": {
+      "description": "Data format for the response.",
+      "default": "json",
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "json"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json"
+      ],
+      "repeated": false
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "location": "query",
+      "required": false,
+      "type": "boolean",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "quotaUser": {
+      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "userIp": {
+      "description": "Deprecated. Please use quotaUser instead.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    }
+  },
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/games": {
+          "description": "Create, edit, and delete your Google Play Games activity"
+        }
+      }
+    }
+  },
+  "schemas": {
+    "AchievementResetAllResponse": {
+      "id": "AchievementResetAllResponse",
+      "description": "This is a JSON template for achievement reset all response.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "kind": {
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#achievementResetAllResponse.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "results": {
+          "description": "The achievement reset results.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "AchievementResetResponse"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "AchievementResetMultipleForAllRequest": {
+      "id": "AchievementResetMultipleForAllRequest",
+      "description": "This is a JSON template for multiple achievements reset all request.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "achievement_ids": {
+          "description": "The IDs of achievements to reset.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "kind": {
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#achievementResetMultipleForAllRequest.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "AchievementResetResponse": {
+      "id": "AchievementResetResponse",
+      "description": "This is a JSON template for an achievement reset response.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "currentState": {
+          "description": "The current state of the achievement. This is the same as the initial state of the achievement.\nPossible values are:  \n- \"HIDDEN\"- Achievement is hidden. \n- \"REVEALED\" - Achievement is revealed. \n- \"UNLOCKED\" - Achievement is unlocked.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "definitionId": {
+          "description": "The ID of an achievement for which player state has been updated.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#achievementResetResponse.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "updateOccurred": {
+          "description": "Flag to indicate if the requested update actually occurred.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "EventsResetMultipleForAllRequest": {
+      "id": "EventsResetMultipleForAllRequest",
+      "description": "This is a JSON template for multiple events reset all request.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "event_ids": {
+          "description": "The IDs of events to reset.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "kind": {
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#eventsResetMultipleForAllRequest.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GamesPlayedResource": {
+      "id": "GamesPlayedResource",
+      "description": "This is a JSON template for metadata about a player playing a game with the currently authenticated user.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "autoMatched": {
+          "description": "True if the player was auto-matched with the currently authenticated user.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "timeMillis": {
+          "description": "The last time the player played the game in milliseconds since the epoch in UTC.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GamesPlayerExperienceInfoResource": {
+      "id": "GamesPlayerExperienceInfoResource",
+      "description": "This is a JSON template for 1P/3P metadata about the player's experience.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "currentExperiencePoints": {
+          "description": "The current number of experience points for the player.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "currentLevel": {
+          "description": "The current level of the player.",
+          "$ref": "GamesPlayerLevelResource"
+        },
+        "lastLevelUpTimestampMillis": {
+          "description": "The timestamp when the player was leveled up, in millis since Unix epoch UTC.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nextLevel": {
+          "description": "The next level of the player. If the current level is the maximum level, this should be same as the current level.",
+          "$ref": "GamesPlayerLevelResource"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GamesPlayerLevelResource": {
+      "id": "GamesPlayerLevelResource",
+      "description": "This is a JSON template for 1P/3P metadata about a user's level.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "level": {
+          "description": "The level for the user.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "maxExperiencePoints": {
+          "description": "The maximum experience points for this level.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "minExperiencePoints": {
+          "description": "The minimum experience points for this level.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "HiddenPlayer": {
+      "id": "HiddenPlayer",
+      "description": "This is a JSON template for the HiddenPlayer resource.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "hiddenTimeMillis": {
+          "description": "The time this player was hidden.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#hiddenPlayer.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "player": {
+          "description": "The player information.",
+          "$ref": "Player"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "HiddenPlayerList": {
+      "id": "HiddenPlayerList",
+      "description": "This is a JSON template for a list of hidden players.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "items": {
+          "description": "The players.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "HiddenPlayer"
+          }
+        },
+        "kind": {
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#hiddenPlayerList.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nextPageToken": {
+          "description": "The pagination token for the next page of results.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Player": {
+      "id": "Player",
+      "description": "This is a JSON template for a Player resource.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "avatarImageUrl": {
+          "description": "The base URL for the image that represents the player.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "bannerUrlLandscape": {
+          "description": "The url to the landscape mode player banner image.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "bannerUrlPortrait": {
+          "description": "The url to the portrait mode player banner image.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "displayName": {
+          "description": "The name to display for the player.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "experienceInfo": {
+          "description": "An object to represent Play Game experience information for the player.",
+          "$ref": "GamesPlayerExperienceInfoResource"
+        },
+        "kind": {
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#player.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "lastPlayedWith": {
+          "description": "Details about the last time this player played a multiplayer game with the currently authenticated player. Populated for PLAYED_WITH player collection members.",
+          "$ref": "GamesPlayedResource"
+        },
+        "name": {
+          "description": "An object representation of the individual components of the player's name. For some players, these fields may not be present.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "familyName": {
+              "description": "The family name of this player. In some places, this is known as the last name.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "givenName": {
+              "description": "The given name of this player. In some places, this is known as the first name.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "originalPlayerId": {
+          "description": "The player ID that was used for this player the first time they signed into the game in question. This is only populated for calls to player.get for the requesting player, only if the player ID has subsequently changed, and only to clients that support remapping player IDs.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "playerId": {
+          "description": "The ID of the player.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "profileSettings": {
+          "description": "The player's profile settings. Controls whether or not the player's profile is visible to other players.",
+          "$ref": "ProfileSettings"
+        },
+        "title": {
+          "description": "The player's title rewarded for their game activities.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "PlayerScoreResetAllResponse": {
+      "id": "PlayerScoreResetAllResponse",
+      "description": "This is a JSON template for a list of leaderboard reset resources.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "kind": {
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#playerScoreResetResponse.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "results": {
+          "description": "The leaderboard reset results.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "PlayerScoreResetResponse"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "PlayerScoreResetResponse": {
+      "id": "PlayerScoreResetResponse",
+      "description": "This is a JSON template for a list of reset leaderboard entry resources.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "definitionId": {
+          "description": "The ID of an leaderboard for which player state has been updated.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#playerScoreResetResponse.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "resetScoreTimeSpans": {
+          "description": "The time spans of the updated score.\nPossible values are:  \n- \"ALL_TIME\" - The score is an all-time score. \n- \"WEEKLY\" - The score is a weekly score. \n- \"DAILY\" - The score is a daily score.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ProfileSettings": {
+      "id": "ProfileSettings",
+      "description": "This is a JSON template for profile settings",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "kind": {
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#profileSettings.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "profileVisible": {
+          "description": null,
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "QuestsResetMultipleForAllRequest": {
+      "id": "QuestsResetMultipleForAllRequest",
+      "description": "This is a JSON template for multiple quests reset all request.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "kind": {
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#questsResetMultipleForAllRequest.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "quest_ids": {
+          "description": "The IDs of quests to reset.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ScoresResetMultipleForAllRequest": {
+      "id": "ScoresResetMultipleForAllRequest",
+      "description": "This is a JSON template for multiple scores reset all request.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "kind": {
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#scoresResetMultipleForAllRequest.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "leaderboard_ids": {
+          "description": "The IDs of leaderboards to reset.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    }
+  },
+  "resources": {
+    "achievements": {
+      "resources": {},
+      "methods": {
+        "reset": {
+          "id": "gamesManagement.achievements.reset",
+          "path": "achievements/{achievementId}/reset",
+          "httpMethod": "POST",
+          "description": "Resets the achievement with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.",
+          "parameters": {
+            "achievementId": {
+              "description": "The ID of the achievement used by this method.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "achievementId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "AchievementResetResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "resetAll": {
+          "id": "gamesManagement.achievements.resetAll",
+          "path": "achievements/reset",
+          "httpMethod": "POST",
+          "description": "Resets all achievements for the currently authenticated player for your application. This method is only accessible to whitelisted tester accounts for your application.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": null,
+          "response": {
+            "$ref": "AchievementResetAllResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "resetAllForAllPlayers": {
+          "id": "gamesManagement.achievements.resetAllForAllPlayers",
+          "path": "achievements/resetAllForAllPlayers",
+          "httpMethod": "POST",
+          "description": "Resets all draft achievements for all players. This method is only available to user accounts for your developer console.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "resetForAllPlayers": {
+          "id": "gamesManagement.achievements.resetForAllPlayers",
+          "path": "achievements/{achievementId}/resetForAllPlayers",
+          "httpMethod": "POST",
+          "description": "Resets the achievement with the given ID for all players. This method is only available to user accounts for your developer console. Only draft achievements can be reset.",
+          "parameters": {
+            "achievementId": {
+              "description": "The ID of the achievement used by this method.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "achievementId"
+          ],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "resetMultipleForAllPlayers": {
+          "id": "gamesManagement.achievements.resetMultipleForAllPlayers",
+          "path": "achievements/resetMultipleForAllPlayers",
+          "httpMethod": "POST",
+          "description": "Resets achievements with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft achievements may be reset.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": {
+            "$ref": "AchievementResetMultipleForAllRequest"
+          },
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "applications": {
+      "resources": {},
+      "methods": {
+        "listHidden": {
+          "id": "gamesManagement.applications.listHidden",
+          "path": "applications/{applicationId}/players/hidden",
+          "httpMethod": "GET",
+          "description": "Get the list of players hidden from the given application. This method is only available to user accounts for your developer console.",
+          "parameters": {
+            "applicationId": {
+              "description": "The application ID from the Google Play developer console.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "maxResults": {
+              "description": "The maximum number of player resources to return in the response, used for paging. For any response, the actual number of player resources returned may be less than the specified maxResults.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": "1",
+              "maximum": "50",
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "The token returned by the previous request.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "applicationId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "HiddenPlayerList"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "events": {
+      "resources": {},
+      "methods": {
+        "reset": {
+          "id": "gamesManagement.events.reset",
+          "path": "events/{eventId}/reset",
+          "httpMethod": "POST",
+          "description": "Resets all player progress on the event with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application. All quests for this player that use the event will also be reset.",
+          "parameters": {
+            "eventId": {
+              "description": "The ID of the event.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "eventId"
+          ],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "resetAll": {
+          "id": "gamesManagement.events.resetAll",
+          "path": "events/reset",
+          "httpMethod": "POST",
+          "description": "Resets all player progress on all events for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application. All quests for this player will also be reset.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "resetAllForAllPlayers": {
+          "id": "gamesManagement.events.resetAllForAllPlayers",
+          "path": "events/resetAllForAllPlayers",
+          "httpMethod": "POST",
+          "description": "Resets all draft events for all players. This method is only available to user accounts for your developer console. All quests that use any of these events will also be reset.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "resetForAllPlayers": {
+          "id": "gamesManagement.events.resetForAllPlayers",
+          "path": "events/{eventId}/resetForAllPlayers",
+          "httpMethod": "POST",
+          "description": "Resets the event with the given ID for all players. This method is only available to user accounts for your developer console. Only draft events can be reset. All quests that use the event will also be reset.",
+          "parameters": {
+            "eventId": {
+              "description": "The ID of the event.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "eventId"
+          ],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "resetMultipleForAllPlayers": {
+          "id": "gamesManagement.events.resetMultipleForAllPlayers",
+          "path": "events/resetMultipleForAllPlayers",
+          "httpMethod": "POST",
+          "description": "Resets events with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft events may be reset. All quests that use any of the events will also be reset.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": {
+            "$ref": "EventsResetMultipleForAllRequest"
+          },
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "players": {
+      "resources": {},
+      "methods": {
+        "hide": {
+          "id": "gamesManagement.players.hide",
+          "path": "applications/{applicationId}/players/hidden/{playerId}",
+          "httpMethod": "POST",
+          "description": "Hide the given player's leaderboard scores from the given application. This method is only available to user accounts for your developer console.",
+          "parameters": {
+            "applicationId": {
+              "description": "The application ID from the Google Play developer console.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "playerId": {
+              "description": "A player ID. A value of me may be used in place of the authenticated player's ID.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "applicationId",
+            "playerId"
+          ],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "unhide": {
+          "id": "gamesManagement.players.unhide",
+          "path": "applications/{applicationId}/players/hidden/{playerId}",
+          "httpMethod": "DELETE",
+          "description": "Unhide the given player's leaderboard scores from the given application. This method is only available to user accounts for your developer console.",
+          "parameters": {
+            "applicationId": {
+              "description": "The application ID from the Google Play developer console.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "playerId": {
+              "description": "A player ID. A value of me may be used in place of the authenticated player's ID.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "applicationId",
+            "playerId"
+          ],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "quests": {
+      "resources": {},
+      "methods": {
+        "reset": {
+          "id": "gamesManagement.quests.reset",
+          "path": "quests/{questId}/reset",
+          "httpMethod": "POST",
+          "description": "Resets all player progress on the quest with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.",
+          "parameters": {
+            "questId": {
+              "description": "The ID of the quest.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "questId"
+          ],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "resetAll": {
+          "id": "gamesManagement.quests.resetAll",
+          "path": "quests/reset",
+          "httpMethod": "POST",
+          "description": "Resets all player progress on all quests for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "resetAllForAllPlayers": {
+          "id": "gamesManagement.quests.resetAllForAllPlayers",
+          "path": "quests/resetAllForAllPlayers",
+          "httpMethod": "POST",
+          "description": "Resets all draft quests for all players. This method is only available to user accounts for your developer console.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "resetForAllPlayers": {
+          "id": "gamesManagement.quests.resetForAllPlayers",
+          "path": "quests/{questId}/resetForAllPlayers",
+          "httpMethod": "POST",
+          "description": "Resets all player progress on the quest with the given ID for all players. This method is only available to user accounts for your developer console. Only draft quests can be reset.",
+          "parameters": {
+            "questId": {
+              "description": "The ID of the quest.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "questId"
+          ],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "resetMultipleForAllPlayers": {
+          "id": "gamesManagement.quests.resetMultipleForAllPlayers",
+          "path": "quests/resetMultipleForAllPlayers",
+          "httpMethod": "POST",
+          "description": "Resets quests with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft quests may be reset.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": {
+            "$ref": "QuestsResetMultipleForAllRequest"
+          },
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "rooms": {
+      "resources": {},
+      "methods": {
+        "reset": {
+          "id": "gamesManagement.rooms.reset",
+          "path": "rooms/reset",
+          "httpMethod": "POST",
+          "description": "Reset all rooms for the currently authenticated player for your application. This method is only accessible to whitelisted tester accounts for your application.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "resetForAllPlayers": {
+          "id": "gamesManagement.rooms.resetForAllPlayers",
+          "path": "rooms/resetForAllPlayers",
+          "httpMethod": "POST",
+          "description": "Deletes rooms where the only room participants are from whitelisted tester accounts for your application. This method is only available to user accounts for your developer console.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "scores": {
+      "resources": {},
+      "methods": {
+        "reset": {
+          "id": "gamesManagement.scores.reset",
+          "path": "leaderboards/{leaderboardId}/scores/reset",
+          "httpMethod": "POST",
+          "description": "Resets scores for the leaderboard with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.",
+          "parameters": {
+            "leaderboardId": {
+              "description": "The ID of the leaderboard.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "leaderboardId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "PlayerScoreResetResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "resetAll": {
+          "id": "gamesManagement.scores.resetAll",
+          "path": "scores/reset",
+          "httpMethod": "POST",
+          "description": "Resets all scores for all leaderboards for the currently authenticated players. This method is only accessible to whitelisted tester accounts for your application.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": null,
+          "response": {
+            "$ref": "PlayerScoreResetAllResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "resetAllForAllPlayers": {
+          "id": "gamesManagement.scores.resetAllForAllPlayers",
+          "path": "scores/resetAllForAllPlayers",
+          "httpMethod": "POST",
+          "description": "Resets scores for all draft leaderboards for all players. This method is only available to user accounts for your developer console.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "resetForAllPlayers": {
+          "id": "gamesManagement.scores.resetForAllPlayers",
+          "path": "leaderboards/{leaderboardId}/scores/resetForAllPlayers",
+          "httpMethod": "POST",
+          "description": "Resets scores for the leaderboard with the given ID for all players. This method is only available to user accounts for your developer console. Only draft leaderboards can be reset.",
+          "parameters": {
+            "leaderboardId": {
+              "description": "The ID of the leaderboard.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "leaderboardId"
+          ],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "resetMultipleForAllPlayers": {
+          "id": "gamesManagement.scores.resetMultipleForAllPlayers",
+          "path": "scores/resetMultipleForAllPlayers",
+          "httpMethod": "POST",
+          "description": "Resets scores for the leaderboards with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft leaderboards may be reset.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": {
+            "$ref": "ScoresResetMultipleForAllRequest"
+          },
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "turnBasedMatches": {
+      "resources": {},
+      "methods": {
+        "reset": {
+          "id": "gamesManagement.turnBasedMatches.reset",
+          "path": "turnbasedmatches/reset",
+          "httpMethod": "POST",
+          "description": "Reset all turn-based match data for a user. This method is only accessible to whitelisted tester accounts for your application.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "resetForAllPlayers": {
+          "id": "gamesManagement.turnBasedMatches.resetForAllPlayers",
+          "path": "turnbasedmatches/resetForAllPlayers",
+          "httpMethod": "POST",
+          "description": "Deletes turn-based matches where the only match participants are from whitelisted tester accounts for your application. This method is only available to user accounts for your developer console.",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/games"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    }
+  },
+  "methods": {}
+}

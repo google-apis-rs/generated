@@ -1,0 +1,2454 @@
+{
+  "kind": "discovery#restDescription",
+  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/xuVlW_HInMXcSj3GubFRaQPSQq0\"",
+  "discoveryVersion": "v1",
+  "id": "storage:v1beta1",
+  "name": "storage",
+  "canonicalName": null,
+  "fullyEncodeReservedExpansion": null,
+  "version": "v1beta1",
+  "revision": "20190624",
+  "title": "Cloud Storage JSON API",
+  "description": "Lets you store and retrieve potentially-large, immutable data objects.",
+  "ownerDomain": "google.com",
+  "ownerName": "Google",
+  "icons": {
+    "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
+    "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
+  },
+  "documentationLink": "https://developers.google.com/storage/docs/json_api/",
+  "protocol": "rest",
+  "baseUrl": "https://www.googleapis.com/storage/v1beta1/",
+  "basePath": "/storage/v1beta1/",
+  "rootUrl": "https://www.googleapis.com/",
+  "servicePath": "storage/v1beta1/",
+  "batchPath": "batch/storage/v1beta1",
+  "version_module": null,
+  "packagePath": null,
+  "labels": [
+    "labs"
+  ],
+  "features": null,
+  "parameters": {
+    "alt": {
+      "description": "Data format for the response.",
+      "default": "json",
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "json"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json"
+      ],
+      "repeated": false
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "location": "query",
+      "required": false,
+      "type": "boolean",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "quotaUser": {
+      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "userIp": {
+      "description": "Deprecated. Please use quotaUser instead.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    }
+  },
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/devstorage.full_control": {
+          "description": "Manage your data and permissions in Google Cloud Storage"
+        },
+        "https://www.googleapis.com/auth/devstorage.read_only": {
+          "description": "View your data in Google Cloud Storage"
+        },
+        "https://www.googleapis.com/auth/devstorage.read_write": {
+          "description": "Manage your data in Google Cloud Storage"
+        }
+      }
+    }
+  },
+  "schemas": {
+    "Bucket": {
+      "id": "Bucket",
+      "description": "A bucket.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "acl": {
+          "description": "Access controls on the bucket.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "BucketAccessControl"
+          }
+        },
+        "defaultObjectAcl": {
+          "description": "Default access controls to apply to new objects when no ACL is provided.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "ObjectAccessControl"
+          }
+        },
+        "id": {
+          "description": "The name of the bucket.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "The kind of item this is. For buckets, this is always storage#bucket.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "location": {
+          "description": "The location of the bucket. Object data for objects in the bucket resides in physical storage in this location. Can be US or EU. Defaults to US.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "owner": {
+          "description": "The owner of the bucket. This will always be the project team's owner group.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "entity": {
+              "description": "The entity, in the form group-groupId.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "entityId": {
+              "description": "The ID for the entity.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "projectId": {
+          "description": "The project the bucket belongs to.",
+          "type": "string",
+          "format": "uint64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "selfLink": {
+          "description": "The URI of this bucket.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "timeCreated": {
+          "description": "Creation time of the bucket in RFC 3339 format.",
+          "type": "string",
+          "format": "date-time",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "website": {
+          "description": "The bucket's website configuration.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "mainPageSuffix": {
+              "description": "Behaves as the bucket's directory index where missing objects are treated as potential directories.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "notFoundPage": {
+              "description": "The custom object to return when a requested resource is not found.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "BucketAccessControl": {
+      "id": "BucketAccessControl",
+      "description": "An access-control entry.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "bucket": {
+          "description": "The name of the bucket.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "domain": {
+          "description": "The domain associated with the entity, if any.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "email": {
+          "description": "The email address associated with the entity, if any.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "entity": {
+          "description": "The entity holding the permission, in one of the following forms: \n- user-userId \n- user-email \n- group-groupId \n- group-email \n- domain-domain \n- allUsers \n- allAuthenticatedUsers Examples: \n- The user liz@example.com would be user-liz@example.com. \n- The group example@googlegroups.com would be group-example@googlegroups.com. \n- To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "entityId": {
+          "description": "The ID for the entity, if any.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "The ID of the access-control entry.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "role": {
+          "description": "The access permission for the entity. Can be READER, WRITER, or OWNER.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "selfLink": {
+          "description": "The link to this access-control entry.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "BucketAccessControls": {
+      "id": "BucketAccessControls",
+      "description": "An access-control list.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "items": {
+          "description": "The list of items.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "BucketAccessControl"
+          }
+        },
+        "kind": {
+          "description": "The kind of item this is. For lists of bucket access control entries, this is always storage#bucketAccessControls.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Buckets": {
+      "id": "Buckets",
+      "description": "A list of buckets.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "items": {
+          "description": "The list of items.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Bucket"
+          }
+        },
+        "kind": {
+          "description": "The kind of item this is. For lists of buckets, this is always storage#buckets.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nextPageToken": {
+          "description": "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Object": {
+      "id": "Object",
+      "description": "An object.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "acl": {
+          "description": "Access controls on the object.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "ObjectAccessControl"
+          }
+        },
+        "bucket": {
+          "description": "The bucket containing this object.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "cacheControl": {
+          "description": "Cache-Control directive for the object data.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "contentDisposition": {
+          "description": "Content-Disposition of the object data.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "contentEncoding": {
+          "description": "Content-Encoding of the object data.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "contentLanguage": {
+          "description": "Content-Language of the object data.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "The ID of the object.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "The kind of item this is. For objects, this is always storage#object.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "media": {
+          "description": "Object media data. Provided on your behalf when uploading raw media or multipart/related with an auxiliary media part.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "algorithm": {
+              "description": "Hash algorithm used. Currently only MD5 is supported. Required if a hash is provided.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "contentType": {
+              "description": "Content-Type of the object data.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "data": {
+              "description": "URL-safe Base64-encoded data. This property can be used to insert objects under 64KB in size, and will only be returned in response to the get method for objects so created. When this resource is returned in response to the list method, this property is omitted.",
+              "type": "string",
+              "format": "byte",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "hash": {
+              "description": "Hash of the data. Required if a hash algorithm is provided.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "length": {
+              "description": "Content-Length of the data in bytes.",
+              "type": "string",
+              "format": "uint64",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "link": {
+              "description": "Media download link.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "timeCreated": {
+              "description": "Creation time of the data in RFC 3339 format.",
+              "type": "string",
+              "format": "date-time",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "metadata": {
+          "description": "User-provided metadata, in key/value pairs.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "An individual metadata entry.",
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
+        "name": {
+          "description": "The name of this object. Required if not specified by URL parameter.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "owner": {
+          "description": "The owner of the object. This will always be the uploader of the object.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "entity": {
+              "description": "The entity, in the form user-userId.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "entityId": {
+              "description": "The ID for the entity.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "selfLink": {
+          "description": "The link to this object.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ObjectAccessControl": {
+      "id": "ObjectAccessControl",
+      "description": "An access-control entry.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "bucket": {
+          "description": "The name of the bucket.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "domain": {
+          "description": "The domain associated with the entity, if any.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "email": {
+          "description": "The email address associated with the entity, if any.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "entity": {
+          "description": "The entity holding the permission, in one of the following forms: \n- user-userId \n- user-email \n- group-groupId \n- group-email \n- domain-domain \n- allUsers \n- allAuthenticatedUsers Examples: \n- The user liz@example.com would be user-liz@example.com. \n- The group example@googlegroups.com would be group-example@googlegroups.com. \n- To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "entityId": {
+          "description": "The ID for the entity, if any.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "The ID of the access-control entry.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "The kind of item this is. For object access control entries, this is always storage#objectAccessControl.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "object": {
+          "description": "The name of the object.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "role": {
+          "description": "The access permission for the entity. Can be READER or OWNER.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "selfLink": {
+          "description": "The link to this access-control entry.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ObjectAccessControls": {
+      "id": "ObjectAccessControls",
+      "description": "An access-control list.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "items": {
+          "description": "The list of items.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "ObjectAccessControl"
+          }
+        },
+        "kind": {
+          "description": "The kind of item this is. For lists of object access control entries, this is always storage#objectAccessControls.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Objects": {
+      "id": "Objects",
+      "description": "A list of objects.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "items": {
+          "description": "The list of items.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Object"
+          }
+        },
+        "kind": {
+          "description": "The kind of item this is. For lists of objects, this is always storage#objects.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nextPageToken": {
+          "description": "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "prefixes": {
+          "description": "The list of prefixes of objects matching-but-not-listed up to and including the requested delimiter.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    }
+  },
+  "resources": {
+    "bucketAccessControls": {
+      "resources": {},
+      "methods": {
+        "delete": {
+          "id": "storage.bucketAccessControls.delete",
+          "path": "b/{bucket}/acl/{entity}",
+          "httpMethod": "DELETE",
+          "description": "Deletes the ACL entry for the specified entity on the specified bucket.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of a bucket.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "entity": {
+              "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket",
+            "entity"
+          ],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "get": {
+          "id": "storage.bucketAccessControls.get",
+          "path": "b/{bucket}/acl/{entity}",
+          "httpMethod": "GET",
+          "description": "Returns the ACL entry for the specified entity on the specified bucket.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of a bucket.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "entity": {
+              "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket",
+            "entity"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "BucketAccessControl"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "insert": {
+          "id": "storage.bucketAccessControls.insert",
+          "path": "b/{bucket}/acl",
+          "httpMethod": "POST",
+          "description": "Creates a new ACL entry on the specified bucket.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of a bucket.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket"
+          ],
+          "request": {
+            "$ref": "BucketAccessControl"
+          },
+          "response": {
+            "$ref": "BucketAccessControl"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "storage.bucketAccessControls.list",
+          "path": "b/{bucket}/acl",
+          "httpMethod": "GET",
+          "description": "Retrieves ACL entries on the specified bucket.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of a bucket.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "BucketAccessControls"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "patch": {
+          "id": "storage.bucketAccessControls.patch",
+          "path": "b/{bucket}/acl/{entity}",
+          "httpMethod": "PATCH",
+          "description": "Updates an ACL entry on the specified bucket. This method supports patch semantics.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of a bucket.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "entity": {
+              "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket",
+            "entity"
+          ],
+          "request": {
+            "$ref": "BucketAccessControl"
+          },
+          "response": {
+            "$ref": "BucketAccessControl"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "update": {
+          "id": "storage.bucketAccessControls.update",
+          "path": "b/{bucket}/acl/{entity}",
+          "httpMethod": "PUT",
+          "description": "Updates an ACL entry on the specified bucket.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of a bucket.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "entity": {
+              "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket",
+            "entity"
+          ],
+          "request": {
+            "$ref": "BucketAccessControl"
+          },
+          "response": {
+            "$ref": "BucketAccessControl"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "buckets": {
+      "resources": {},
+      "methods": {
+        "delete": {
+          "id": "storage.buckets.delete",
+          "path": "b/{bucket}",
+          "httpMethod": "DELETE",
+          "description": "Deletes an empty bucket.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of a bucket.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket"
+          ],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control",
+            "https://www.googleapis.com/auth/devstorage.read_write"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "get": {
+          "id": "storage.buckets.get",
+          "path": "b/{bucket}",
+          "httpMethod": "GET",
+          "description": "Returns metadata for the specified bucket.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of a bucket.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "projection": {
+              "description": "Set of properties to return. Defaults to no_acl.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "full",
+                "no_acl"
+              ],
+              "enumDescriptions": [
+                "Include all properties.",
+                "Omit acl and defaultObjectAcl properties."
+              ],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Bucket"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control",
+            "https://www.googleapis.com/auth/devstorage.read_only",
+            "https://www.googleapis.com/auth/devstorage.read_write"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "insert": {
+          "id": "storage.buckets.insert",
+          "path": "b",
+          "httpMethod": "POST",
+          "description": "Creates a new bucket.",
+          "parameters": {
+            "projection": {
+              "description": "Set of properties to return. Defaults to no_acl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "full",
+                "no_acl"
+              ],
+              "enumDescriptions": [
+                "Include all properties.",
+                "Omit acl and defaultObjectAcl properties."
+              ],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [],
+          "request": {
+            "$ref": "Bucket"
+          },
+          "response": {
+            "$ref": "Bucket"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control",
+            "https://www.googleapis.com/auth/devstorage.read_write"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "storage.buckets.list",
+          "path": "b",
+          "httpMethod": "GET",
+          "description": "Retrieves a list of buckets for a given project.",
+          "parameters": {
+            "max-results": {
+              "description": "Maximum number of buckets to return.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "uint32",
+              "minimum": "0",
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "A previously-returned page token representing part of the larger set of results to view.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "projectId": {
+              "description": "A valid API project identifier.",
+              "default": null,
+              "location": "query",
+              "required": true,
+              "type": "string",
+              "format": "uint64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "projection": {
+              "description": "Set of properties to return. Defaults to no_acl.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "full",
+                "no_acl"
+              ],
+              "enumDescriptions": [
+                "Include all properties.",
+                "Omit acl and defaultObjectAcl properties."
+              ],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "projectId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Buckets"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control",
+            "https://www.googleapis.com/auth/devstorage.read_only",
+            "https://www.googleapis.com/auth/devstorage.read_write"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "patch": {
+          "id": "storage.buckets.patch",
+          "path": "b/{bucket}",
+          "httpMethod": "PATCH",
+          "description": "Updates a bucket. This method supports patch semantics.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of a bucket.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "projection": {
+              "description": "Set of properties to return. Defaults to full.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "full",
+                "no_acl"
+              ],
+              "enumDescriptions": [
+                "Include all properties.",
+                "Omit acl and defaultObjectAcl properties."
+              ],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket"
+          ],
+          "request": {
+            "$ref": "Bucket"
+          },
+          "response": {
+            "$ref": "Bucket"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control",
+            "https://www.googleapis.com/auth/devstorage.read_write"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "update": {
+          "id": "storage.buckets.update",
+          "path": "b/{bucket}",
+          "httpMethod": "PUT",
+          "description": "Updates a bucket.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of a bucket.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "projection": {
+              "description": "Set of properties to return. Defaults to full.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "full",
+                "no_acl"
+              ],
+              "enumDescriptions": [
+                "Include all properties.",
+                "Omit acl and defaultObjectAcl properties."
+              ],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket"
+          ],
+          "request": {
+            "$ref": "Bucket"
+          },
+          "response": {
+            "$ref": "Bucket"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control",
+            "https://www.googleapis.com/auth/devstorage.read_write"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "objectAccessControls": {
+      "resources": {},
+      "methods": {
+        "delete": {
+          "id": "storage.objectAccessControls.delete",
+          "path": "b/{bucket}/o/{object}/acl/{entity}",
+          "httpMethod": "DELETE",
+          "description": "Deletes the ACL entry for the specified entity on the specified object.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of a bucket.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "entity": {
+              "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "object": {
+              "description": "Name of the object.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket",
+            "object",
+            "entity"
+          ],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "get": {
+          "id": "storage.objectAccessControls.get",
+          "path": "b/{bucket}/o/{object}/acl/{entity}",
+          "httpMethod": "GET",
+          "description": "Returns the ACL entry for the specified entity on the specified object.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of a bucket.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "entity": {
+              "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "object": {
+              "description": "Name of the object.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket",
+            "object",
+            "entity"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "ObjectAccessControl"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "insert": {
+          "id": "storage.objectAccessControls.insert",
+          "path": "b/{bucket}/o/{object}/acl",
+          "httpMethod": "POST",
+          "description": "Creates a new ACL entry on the specified object.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of a bucket.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "object": {
+              "description": "Name of the object.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket",
+            "object"
+          ],
+          "request": {
+            "$ref": "ObjectAccessControl"
+          },
+          "response": {
+            "$ref": "ObjectAccessControl"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "storage.objectAccessControls.list",
+          "path": "b/{bucket}/o/{object}/acl",
+          "httpMethod": "GET",
+          "description": "Retrieves ACL entries on the specified object.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of a bucket.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "object": {
+              "description": "Name of the object.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket",
+            "object"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "ObjectAccessControls"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "patch": {
+          "id": "storage.objectAccessControls.patch",
+          "path": "b/{bucket}/o/{object}/acl/{entity}",
+          "httpMethod": "PATCH",
+          "description": "Updates an ACL entry on the specified object. This method supports patch semantics.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of a bucket.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "entity": {
+              "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "object": {
+              "description": "Name of the object.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket",
+            "object",
+            "entity"
+          ],
+          "request": {
+            "$ref": "ObjectAccessControl"
+          },
+          "response": {
+            "$ref": "ObjectAccessControl"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "update": {
+          "id": "storage.objectAccessControls.update",
+          "path": "b/{bucket}/o/{object}/acl/{entity}",
+          "httpMethod": "PUT",
+          "description": "Updates an ACL entry on the specified object.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of a bucket.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "entity": {
+              "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "object": {
+              "description": "Name of the object.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket",
+            "object",
+            "entity"
+          ],
+          "request": {
+            "$ref": "ObjectAccessControl"
+          },
+          "response": {
+            "$ref": "ObjectAccessControl"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "objects": {
+      "resources": {},
+      "methods": {
+        "delete": {
+          "id": "storage.objects.delete",
+          "path": "b/{bucket}/o/{object}",
+          "httpMethod": "DELETE",
+          "description": "Deletes data blobs and associated metadata.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of the bucket in which the object resides.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "object": {
+              "description": "Name of the object.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket",
+            "object"
+          ],
+          "request": null,
+          "response": null,
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control",
+            "https://www.googleapis.com/auth/devstorage.read_write"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "get": {
+          "id": "storage.objects.get",
+          "path": "b/{bucket}/o/{object}",
+          "httpMethod": "GET",
+          "description": "Retrieves objects or their associated metadata.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of the bucket in which the object resides.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "object": {
+              "description": "Name of the object.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "projection": {
+              "description": "Set of properties to return. Defaults to no_acl.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "full",
+                "no_acl"
+              ],
+              "enumDescriptions": [
+                "Include all properties.",
+                "Omit the acl property."
+              ],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket",
+            "object"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Object"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control",
+            "https://www.googleapis.com/auth/devstorage.read_only",
+            "https://www.googleapis.com/auth/devstorage.read_write"
+          ],
+          "supportsMediaDownload": true,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "insert": {
+          "id": "storage.objects.insert",
+          "path": "b/{bucket}/o",
+          "httpMethod": "POST",
+          "description": "Stores new data blobs and associated metadata.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of the bucket in which to store the new object. Overrides the provided object metadata's bucket value, if any.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "name": {
+              "description": "Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "projection": {
+              "description": "Set of properties to return. Defaults to no_acl, unless the object resource specifies the acl property, when it defaults to full.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "full",
+                "no_acl"
+              ],
+              "enumDescriptions": [
+                "Include all properties.",
+                "Omit the acl property."
+              ],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket"
+          ],
+          "request": {
+            "$ref": "Object"
+          },
+          "response": {
+            "$ref": "Object"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control",
+            "https://www.googleapis.com/auth/devstorage.read_write"
+          ],
+          "supportsMediaDownload": true,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": true,
+          "mediaUpload": {
+            "accept": [
+              "*/*"
+            ],
+            "maxSize": null,
+            "protocols": {
+              "simple": {
+                "multipart": true,
+                "path": "/upload/storage/v1beta1/b/{bucket}/o"
+              },
+              "resumable": {
+                "multipart": true,
+                "path": "/resumable/upload/storage/v1beta1/b/{bucket}/o"
+              }
+            }
+          }
+        },
+        "list": {
+          "id": "storage.objects.list",
+          "path": "b/{bucket}/o",
+          "httpMethod": "GET",
+          "description": "Retrieves a list of objects matching the criteria.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of the bucket in which to look for objects.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "delimiter": {
+              "description": "Returns results in a directory-like mode. items will contain only objects whose names, aside from the prefix, do not contain delimiter. Objects whose names, aside from the prefix, contain delimiter will have their name, truncated after the delimiter, returned in prefixes. Duplicate prefixes are omitted.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "max-results": {
+              "description": "Maximum number of items plus prefixes to return. As duplicate prefixes are omitted, fewer total results may be returned than requested.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "uint32",
+              "minimum": "0",
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "A previously-returned page token representing part of the larger set of results to view.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "prefix": {
+              "description": "Filter results to objects whose names begin with this prefix.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "projection": {
+              "description": "Set of properties to return. Defaults to no_acl.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "full",
+                "no_acl"
+              ],
+              "enumDescriptions": [
+                "Include all properties.",
+                "Omit the acl property."
+              ],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Objects"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control",
+            "https://www.googleapis.com/auth/devstorage.read_only",
+            "https://www.googleapis.com/auth/devstorage.read_write"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": true,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "patch": {
+          "id": "storage.objects.patch",
+          "path": "b/{bucket}/o/{object}",
+          "httpMethod": "PATCH",
+          "description": "Updates a data blob's associated metadata. This method supports patch semantics.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of the bucket in which the object resides.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "object": {
+              "description": "Name of the object.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "projection": {
+              "description": "Set of properties to return. Defaults to full.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "full",
+                "no_acl"
+              ],
+              "enumDescriptions": [
+                "Include all properties.",
+                "Omit the acl property."
+              ],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket",
+            "object"
+          ],
+          "request": {
+            "$ref": "Object"
+          },
+          "response": {
+            "$ref": "Object"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control",
+            "https://www.googleapis.com/auth/devstorage.read_write"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "update": {
+          "id": "storage.objects.update",
+          "path": "b/{bucket}/o/{object}",
+          "httpMethod": "PUT",
+          "description": "Updates a data blob's associated metadata.",
+          "parameters": {
+            "bucket": {
+              "description": "Name of the bucket in which the object resides.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "object": {
+              "description": "Name of the object.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "projection": {
+              "description": "Set of properties to return. Defaults to full.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "full",
+                "no_acl"
+              ],
+              "enumDescriptions": [
+                "Include all properties.",
+                "Omit the acl property."
+              ],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "bucket",
+            "object"
+          ],
+          "request": {
+            "$ref": "Object"
+          },
+          "response": {
+            "$ref": "Object"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/devstorage.full_control",
+            "https://www.googleapis.com/auth/devstorage.read_write"
+          ],
+          "supportsMediaDownload": true,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    }
+  },
+  "methods": {}
+}
