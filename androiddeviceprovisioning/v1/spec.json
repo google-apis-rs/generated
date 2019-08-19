@@ -7,7 +7,7 @@
   "canonicalName": "Android Provisioning Partner",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190814",
+  "revision": "20190816",
   "title": "Android Device Provisioning Partner API",
   "description": "Automates Android zero-touch enrollment for device resellers, customers, and EMMs.",
   "ownerDomain": "google.com",

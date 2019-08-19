@@ -7,7 +7,7 @@
   "canonicalName": "Manufacturer Center",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20190809",
+  "revision": "20190815",
   "title": "Manufacturer Center API",
   "description": "Public API for managing Manufacturer Center related data.",
   "ownerDomain": "google.com",
