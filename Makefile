@@ -4,7 +4,7 @@ API_INDEX_JSON = etc/api-index.v1.json
 API_INDEX_MAPPED_JSON = etc/api-index-mapped.v1.json
 OUTPUT_DIR = gen
 MAKEFILE_TPL = templates/Makefile.liquid
-GEN_MAKEFILE = Makefile.generated
+GEN_MAKEFILE = $(OUTPUT_DIR)/Makefile
 
 help:
 	$(info -- Targets for files we depend on ----------------------------------------------------)

@@ -10,6 +10,6 @@ To easily alter MCP code without having to commit, run `make` with an overridden
 to one that you just build. Typical invocations would look like this:
 
 ```
-(cd ../generator && cargo build) && MCP=../generator/target/debug/mcp make -f Makefile.generated
+(cd ../generator && cargo build) && MCP=../generator/target/debug/mcp make -C gen
 ```
 
