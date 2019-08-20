@@ -3,8 +3,15 @@
 set -eu
 
 make update-all-metadata generate-makefile
-make -C gen gen-all cargo-all ARGS=check -k || {
+
+# gen + cargo check + cargo doc
+cd gen
+{
+  make gen-all cargo-all ARGS=check -k
+  make cargo-all ARGS=doc -k
+} || {
     res=$?
     make show-all-errors
     exit $res
 }
+
