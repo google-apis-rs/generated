@@ -18,3 +18,7 @@ Cargo.lock
 
 # Code for the generator
 /_generator/
+
+# This file can be used to mark errors during generation.
+# Run `make update-mapped-index` if one of these changes.
+!generator-errors.log
