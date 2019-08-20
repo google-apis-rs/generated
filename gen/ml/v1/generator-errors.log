@@ -1,0 +1,52 @@
+    Blocking waiting for file lock on build directory
+    Checking google-ml1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/ml/v1/lib)
+error[E0423]: expected value, found struct `jobs::JobsActions`
+    --> gen/ml/v1/lib/src/lib.rs:2482:13
+     |
+2482 |             jobs::JobsActions
+     |             ^^^^^^^^^^^^^^^^^ did you mean `jobs::JobsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `locations::LocationsActions`
+    --> gen/ml/v1/lib/src/lib.rs:2486:13
+     |
+2486 |             locations::LocationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `locations::LocationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `models::ModelsActions`
+    --> gen/ml/v1/lib/src/lib.rs:2490:13
+     |
+2490 |             models::ModelsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^ did you mean `models::ModelsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `operations::OperationsActions`
+    --> gen/ml/v1/lib/src/lib.rs:2494:13
+     |
+2494 |             operations::OperationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `operations::OperationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `versions::VersionsActions`
+    --> gen/ml/v1/lib/src/lib.rs:4709:17
+     |
+4709 |                 versions::VersionsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `versions::VersionsActions { /* fields */ }`?
+
+warning: unreachable expression
+   --> gen/ml/v1/lib/src/lib.rs:235:13
+    |
+235 | /             Ok(match value {
+236 | |                 _ => {
+237 | |                     return Err(::serde::de::Error::custom(format!(
+238 | |                         "invalid enum for #name: {}",
+...   |
+241 | |                 }
+242 | |             })
+    | |______________^
+    |
+    = note: #[warn(unreachable_code)] on by default
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-ml1`.
+
+To learn more, run the command again with --verbose.

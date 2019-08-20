@@ -1,0 +1,101 @@
+    Blocking waiting for file lock on build directory
+    Checking google-cloudkms1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/cloudkms/v1/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/cloudkms/v1/lib/src/lib.rs:4760:49
+     |
+4760 |                     version_view: Option<crate::crypto_keys::params::ListVersionView>,
+     |                                                 ^^^^^^^^^^^
+     |                                                 |
+     |                                                 unresolved import
+     |                                                 help: a similar path exists: `crate::projects::locations::key_rings::crypto_keys`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/cloudkms/v1/lib/src/lib.rs:4797:39
+     |
+4797 |                         value: crate::crypto_keys::params::ListVersionView,
+     |                                       ^^^^^^^^^^^
+     |                                       |
+     |                                       unresolved import
+     |                                       help: a similar path exists: `crate::projects::locations::key_rings::crypto_keys`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/cloudkms/v1/lib/src/lib.rs:6768:45
+     |
+6768 |                         view: Option<crate::crypto_key_versions::params::ListView>,
+     |                                             ^^^^^^^^^^^^^^^^^^^
+     |                                             |
+     |                                             unresolved import
+     |                                             help: a similar path exists: `crate::projects::locations::key_rings::crypto_keys::crypto_key_versions`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/cloudkms/v1/lib/src/lib.rs:6805:43
+     |
+6805 |                             value: crate::crypto_key_versions::params::ListView,
+     |                                           ^^^^^^^^^^^^^^^^^^^
+     |                                           |
+     |                                           unresolved import
+     |                                           help: a similar path exists: `crate::projects::locations::key_rings::crypto_keys::crypto_key_versions`
+
+error[E0423]: expected value, found struct `locations::LocationsActions`
+    --> gen/cloudkms/v1/lib/src/lib.rs:2301:13
+     |
+2301 |             locations::LocationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `locations::LocationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `key_rings::KeyRingsActions`
+    --> gen/cloudkms/v1/lib/src/lib.rs:2354:17
+     |
+2354 |                 key_rings::KeyRingsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `key_rings::KeyRingsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `crypto_keys::CryptoKeysActions`
+    --> gen/cloudkms/v1/lib/src/lib.rs:2862:21
+     |
+2862 |                     crypto_keys::CryptoKeysActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `crypto_keys::CryptoKeysActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `import_jobs::ImportJobsActions`
+    --> gen/cloudkms/v1/lib/src/lib.rs:2866:21
+     |
+2866 |                     import_jobs::ImportJobsActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `import_jobs::ImportJobsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `crypto_key_versions::CryptoKeyVersionsActions`
+    --> gen/cloudkms/v1/lib/src/lib.rs:4058:25
+     |
+4058 |                         crypto_key_versions::CryptoKeyVersionsActions
+     |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `crypto_key_versions::CryptoKeyVersionsActions { /* fields */ }`?
+
+warning: unreachable expression
+    --> gen/cloudkms/v1/lib/src/lib.rs:3801:29
+     |
+3801 | /                             Ok(match value {
+3802 | |                                 _ => {
+3803 | |                                     return Err(::serde::de::Error::custom(format!(
+3804 | |                                         "invalid enum for #name: {}",
+...    |
+3807 | |                                 }
+3808 | |                             })
+     | |______________________________^
+     |
+     = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+    --> gen/cloudkms/v1/lib/src/lib.rs:5573:33
+     |
+5573 | /                                 Ok(match value {
+5574 | |                                     _ => {
+5575 | |                                         return Err(::serde::de::Error::custom(format!(
+5576 | |                                             "invalid enum for #name: {}",
+...    |
+5579 | |                                     }
+5580 | |                                 })
+     | |__________________________________^
+
+error: aborting due to 9 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-cloudkms1`.
+
+To learn more, run the command again with --verbose.

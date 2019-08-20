@@ -1,0 +1,14 @@
+    Blocking waiting for file lock on build directory
+    Checking google-youtubereporting1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/youtubereporting/v1/lib)
+error[E0423]: expected value, found struct `reports::ReportsActions`
+    --> gen/youtubereporting/v1/lib/src/lib.rs:1082:13
+     |
+1082 |             reports::ReportsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `reports::ReportsActions { /* fields */ }`?
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-youtubereporting1`.
+
+To learn more, run the command again with --verbose.

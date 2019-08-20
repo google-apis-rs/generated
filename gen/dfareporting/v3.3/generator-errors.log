@@ -1,0 +1,561 @@
+    Blocking waiting for file lock on build directory
+    Checking google-dfareporting3d3 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/dfareporting/v3.3/lib)
+error[E0423]: expected value, found struct `compatible_fields::CompatibleFieldsActions`
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:46977:13
+      |
+46977 |             compatible_fields::CompatibleFieldsActions
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `compatible_fields::CompatibleFieldsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `files::FilesActions`
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:46981:13
+      |
+46981 |             files::FilesActions
+      |             ^^^^^^^^^^^^^^^^^^^ did you mean `files::FilesActions { /* fields */ }`?
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:1782:9
+     |
+1782 |         #[doc = "Date on which the campaign will stop running. On insert, the end date must be today or a future date. The end date must be later than or be the same as the start date. If, for example, you set 6/25/2015 as both the start and end dates, the effective campaign run date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error. This is a required field."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:1810:9
+     |
+1810 |         #[doc = "Date on which the campaign starts running. The start date can be any date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error. This is a required field."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:1782:9
+     |
+1782 |         #[doc = "Date on which the campaign will stop running. On insert, the end date must be today or a future date. The end date must be later than or be the same as the start date. If, for example, you set 6/25/2015 as both the start and end dates, the effective campaign run date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error. This is a required field."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:1810:9
+     |
+1810 |         #[doc = "Date on which the campaign starts running. The start date can be any date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error. This is a required field."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:1782:9
+     |
+1782 |         #[doc = "Date on which the campaign will stop running. On insert, the end date must be today or a future date. The end date must be later than or be the same as the start date. If, for example, you set 6/25/2015 as both the start and end dates, the effective campaign run date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error. This is a required field."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:1810:9
+     |
+1810 |         #[doc = "Date on which the campaign starts running. The start date can be any date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error. This is a required field."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:6802:9
+     |
+6802 |         #[doc = "The end date of the date range, inclusive. A string of the format: \"yyyy-MM-dd\"."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:6811:9
+     |
+6811 |         #[doc = "The start date of the date range, inclusive. A string of the format: \"yyyy-MM-dd\"."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:6802:9
+     |
+6802 |         #[doc = "The end date of the date range, inclusive. A string of the format: \"yyyy-MM-dd\"."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:6811:9
+     |
+6811 |         #[doc = "The start date of the date range, inclusive. A string of the format: \"yyyy-MM-dd\"."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:6802:9
+     |
+6802 |         #[doc = "The end date of the date range, inclusive. A string of the format: \"yyyy-MM-dd\"."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:6811:9
+     |
+6811 |         #[doc = "The start date of the date range, inclusive. A string of the format: \"yyyy-MM-dd\"."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:7356:9
+     |
+7356 |         #[doc = "The end date of the date range for which to retrieve dimension values. A string of the format \"yyyy-MM-dd\"."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:7365:9
+     |
+7365 |         #[doc = "The start date of the date range for which to retrieve dimension values. A string of the format \"yyyy-MM-dd\"."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:7356:9
+     |
+7356 |         #[doc = "The end date of the date range for which to retrieve dimension values. A string of the format \"yyyy-MM-dd\"."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:7365:9
+     |
+7365 |         #[doc = "The start date of the date range for which to retrieve dimension values. A string of the format \"yyyy-MM-dd\"."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:7356:9
+     |
+7356 |         #[doc = "The end date of the date range for which to retrieve dimension values. A string of the format \"yyyy-MM-dd\"."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:7365:9
+     |
+7365 |         #[doc = "The start date of the date range for which to retrieve dimension values. A string of the format \"yyyy-MM-dd\"."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:8395:9
+     |
+8395 |         #[doc = "Inventory item flight end date."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:8402:9
+     |
+8402 |         #[doc = "Inventory item flight start date."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:8395:9
+     |
+8395 |         #[doc = "Inventory item flight end date."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:8402:9
+     |
+8402 |         #[doc = "Inventory item flight start date."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:8395:9
+     |
+8395 |         #[doc = "Inventory item flight end date."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+    --> gen/dfareporting/v3.3/lib/src/lib.rs:8402:9
+     |
+8402 |         #[doc = "Inventory item flight start date."]
+     |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+     |
+     = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+     = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:11329:9
+      |
+11329 |         #[doc = "Effective date of this order document."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:11329:9
+      |
+11329 |         #[doc = "Effective date of this order document."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:11329:9
+      |
+11329 |         #[doc = "Effective date of this order document."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:12841:9
+      |
+12841 |         #[doc = "End date of this inventory item."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:12853:9
+      |
+12853 |         #[doc = "Start date of this inventory item."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:12841:9
+      |
+12841 |         #[doc = "End date of this inventory item."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:12853:9
+      |
+12853 |         #[doc = "Start date of this inventory item."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:12841:9
+      |
+12841 |         #[doc = "End date of this inventory item."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:12853:9
+      |
+12853 |         #[doc = "Start date of this inventory item."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13001:9
+      |
+13001 |         #[doc = "Placement end date. This date must be later than, or the same day as, the placement start date, but not later than the campaign end date. If, for example, you set 6/25/2015 as both the start and end dates, the effective placement date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error. This field is required on insertion."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13017:9
+      |
+13017 |         #[doc = "Placement start date. This date must be later than, or the same day as, the campaign start date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error. This field is required on insertion."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13020:9
+      |
+13020 |         #[doc = "Testing start date of this placement. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13001:9
+      |
+13001 |         #[doc = "Placement end date. This date must be later than, or the same day as, the placement start date, but not later than the campaign end date. If, for example, you set 6/25/2015 as both the start and end dates, the effective placement date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error. This field is required on insertion."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13017:9
+      |
+13017 |         #[doc = "Placement start date. This date must be later than, or the same day as, the campaign start date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error. This field is required on insertion."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13020:9
+      |
+13020 |         #[doc = "Testing start date of this placement. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13001:9
+      |
+13001 |         #[doc = "Placement end date. This date must be later than, or the same day as, the placement start date, but not later than the campaign end date. If, for example, you set 6/25/2015 as both the start and end dates, the effective placement date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error. This field is required on insertion."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13017:9
+      |
+13017 |         #[doc = "Placement start date. This date must be later than, or the same day as, the campaign start date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error. This field is required on insertion."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13020:9
+      |
+13020 |         #[doc = "Testing start date of this placement. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13047:9
+      |
+13047 |         #[doc = "Pricing period end date. This date must be later than, or the same day as, the pricing period start date, but not later than the placement end date. The period end date can be the same date as the period start date. If, for example, you set 6/25/2015 as both the start and end dates, the effective pricing period date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13057:9
+      |
+13057 |         #[doc = "Pricing period start date. This date must be later than, or the same day as, the placement start date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13047:9
+      |
+13047 |         #[doc = "Pricing period end date. This date must be later than, or the same day as, the pricing period start date, but not later than the placement end date. The period end date can be the same date as the period start date. If, for example, you set 6/25/2015 as both the start and end dates, the effective pricing period date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13057:9
+      |
+13057 |         #[doc = "Pricing period start date. This date must be later than, or the same day as, the placement start date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13047:9
+      |
+13047 |         #[doc = "Pricing period end date. This date must be later than, or the same day as, the pricing period start date, but not later than the placement end date. The period end date can be the same date as the period start date. If, for example, you set 6/25/2015 as both the start and end dates, the effective pricing period date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13057:9
+      |
+13057 |         #[doc = "Pricing period start date. This date must be later than, or the same day as, the placement start date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13231:9
+      |
+13231 |         #[doc = "End date of the project."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13250:9
+      |
+13250 |         #[doc = "Start date of the project."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13231:9
+      |
+13231 |         #[doc = "End date of the project."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13250:9
+      |
+13250 |         #[doc = "Start date of the project."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13231:9
+      |
+13231 |         #[doc = "End date of the project."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:13250:9
+      |
+13250 |         #[doc = "Start date of the project."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:14441:9
+      |
+14441 |         #[doc = "The expiration date when the scheduled report stops running."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:14453:9
+      |
+14453 |         #[doc = "Start date of date range for which scheduled reports should be run."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:14441:9
+      |
+14441 |         #[doc = "The expiration date when the scheduled report stops running."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:14453:9
+      |
+14453 |         #[doc = "Start date of date range for which scheduled reports should be run."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:14441:9
+      |
+14441 |         #[doc = "The expiration date when the scheduled report stops running."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not satisfied
+     --> gen/dfareporting/v3.3/lib/src/lib.rs:14453:9
+      |
+14453 |         #[doc = "Start date of date range for which scheduled reports should be run."]
+      |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+      |
+      = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+      = note: required by `schemas::_IMPL_SERIALIZE_FOR_Account::_serde::ser::SerializeStruct::serialize_field`
+
+error: aborting due to 62 previous errors
+
+Some errors have detailed explanations: E0277, E0423.
+For more information about an error, try `rustc --explain E0277`.
+error: Could not compile `google-dfareporting3d3`.
+
+To learn more, run the command again with --verbose.

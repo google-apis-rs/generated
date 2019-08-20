@@ -1,0 +1,71 @@
+    Blocking waiting for file lock on build directory
+    Checking google-cloudidentity1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/cloudidentity/v1/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/cloudidentity/v1/lib/src/lib.rs:2369:33
+     |
+2369 |             view: Option<crate::memberships::params::ListView>,
+     |                                 ^^^^^^^^^^^
+     |                                 |
+     |                                 unresolved import
+     |                                 help: a similar path exists: `crate::groups::memberships`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/cloudidentity/v1/lib/src/lib.rs:2394:50
+     |
+2394 |             pub fn view(&mut self, value: crate::memberships::params::ListView) -> &mut Self {
+     |                                                  ^^^^^^^^^^^
+     |                                                  |
+     |                                                  unresolved import
+     |                                                  help: a similar path exists: `crate::groups::memberships`
+
+error[E0423]: expected value, found struct `memberships::MembershipsActions`
+   --> gen/cloudidentity/v1/lib/src/lib.rs:686:13
+    |
+686 |             memberships::MembershipsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `memberships::MembershipsActions { /* fields */ }`?
+
+warning: unreachable expression
+   --> gen/cloudidentity/v1/lib/src/lib.rs:486:17
+    |
+486 | /                 Ok(match value {
+487 | |                     _ => {
+488 | |                         return Err(::serde::de::Error::custom(format!(
+489 | |                             "invalid enum for #name: {}",
+...   |
+492 | |                     }
+493 | |                 })
+    | |__________________^
+    |
+    = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+   --> gen/cloudidentity/v1/lib/src/lib.rs:522:17
+    |
+522 | /                 Ok(match value {
+523 | |                     _ => {
+524 | |                         return Err(::serde::de::Error::custom(format!(
+525 | |                             "invalid enum for #name: {}",
+...   |
+528 | |                     }
+529 | |                 })
+    | |__________________^
+
+warning: unreachable expression
+    --> gen/cloudidentity/v1/lib/src/lib.rs:1849:21
+     |
+1849 | /                     Ok(match value {
+1850 | |                         _ => {
+1851 | |                             return Err(::serde::de::Error::custom(format!(
+1852 | |                                 "invalid enum for #name: {}",
+...    |
+1855 | |                         }
+1856 | |                     })
+     | |______________________^
+
+error: aborting due to 3 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-cloudidentity1`.
+
+To learn more, run the command again with --verbose.

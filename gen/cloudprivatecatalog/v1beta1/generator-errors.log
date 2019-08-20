@@ -1,0 +1,62 @@
+    Blocking waiting for file lock on build directory
+    Checking google-cloudprivatecatalog1_beta1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/cloudprivatecatalog/v1beta1/lib)
+error[E0423]: expected value, found struct `catalogs::CatalogsActions`
+   --> gen/cloudprivatecatalog/v1beta1/lib/src/lib.rs:309:13
+    |
+309 |             catalogs::CatalogsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `catalogs::CatalogsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `products::ProductsActions`
+   --> gen/cloudprivatecatalog/v1beta1/lib/src/lib.rs:313:13
+    |
+313 |             products::ProductsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `products::ProductsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `versions::VersionsActions`
+   --> gen/cloudprivatecatalog/v1beta1/lib/src/lib.rs:317:13
+    |
+317 |             versions::VersionsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `versions::VersionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `catalogs::CatalogsActions`
+    --> gen/cloudprivatecatalog/v1beta1/lib/src/lib.rs:1122:13
+     |
+1122 |             catalogs::CatalogsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `catalogs::CatalogsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `products::ProductsActions`
+    --> gen/cloudprivatecatalog/v1beta1/lib/src/lib.rs:1126:13
+     |
+1126 |             products::ProductsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `products::ProductsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `versions::VersionsActions`
+    --> gen/cloudprivatecatalog/v1beta1/lib/src/lib.rs:1130:13
+     |
+1130 |             versions::VersionsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `versions::VersionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `catalogs::CatalogsActions`
+    --> gen/cloudprivatecatalog/v1beta1/lib/src/lib.rs:1935:13
+     |
+1935 |             catalogs::CatalogsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `catalogs::CatalogsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `products::ProductsActions`
+    --> gen/cloudprivatecatalog/v1beta1/lib/src/lib.rs:1939:13
+     |
+1939 |             products::ProductsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `products::ProductsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `versions::VersionsActions`
+    --> gen/cloudprivatecatalog/v1beta1/lib/src/lib.rs:1943:13
+     |
+1943 |             versions::VersionsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `versions::VersionsActions { /* fields */ }`?
+
+error: aborting due to 9 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-cloudprivatecatalog1_beta1`.
+
+To learn more, run the command again with --verbose.

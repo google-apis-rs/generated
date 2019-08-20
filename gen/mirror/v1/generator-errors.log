@@ -1,0 +1,21 @@
+    Blocking waiting for file lock on build directory
+    Checking google-mirror1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/mirror/v1/lib)
+error[E0423]: expected value, found struct `attachments::AttachmentsActions`
+    --> gen/mirror/v1/lib/src/lib.rs:2635:13
+     |
+2635 |             attachments::AttachmentsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `attachments::AttachmentsActions { /* fields */ }`?
+
+error[E0609]: no field `request` on type `timeline::attachments::InsertRequestBuilder<'a, A>`
+    --> gen/mirror/v1/lib/src/lib.rs:3829:63
+     |
+3829 |                 let request_json = ::serde_json::to_vec(&self.request)?;
+     |                                                               ^^^^^^^ help: a field with a similar name exists: `reqwest`
+
+error: aborting due to 2 previous errors
+
+Some errors have detailed explanations: E0423, E0609.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-mirror1`.
+
+To learn more, run the command again with --verbose.

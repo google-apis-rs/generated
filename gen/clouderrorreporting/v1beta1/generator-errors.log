@@ -1,0 +1,149 @@
+    Blocking waiting for file lock on build directory
+    Checking google-clouderrorreporting1_beta1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/clouderrorreporting/v1beta1/lib)
+error[E0433]: failed to resolve: unresolved import
+   --> gen/clouderrorreporting/v1beta1/lib/src/lib.rs:889:46
+    |
+889 |             time_range_period: Option<crate::events::params::ListTimeRangePeriod>,
+    |                                              ^^^^^^
+    |                                              |
+    |                                              unresolved import
+    |                                              help: a similar path exists: `crate::projects::events`
+
+error[E0433]: failed to resolve: unresolved import
+   --> gen/clouderrorreporting/v1beta1/lib/src/lib.rs:936:31
+    |
+936 |                 value: crate::events::params::ListTimeRangePeriod,
+    |                               ^^^^^^
+    |                               |
+    |                               unresolved import
+    |                               help: a similar path exists: `crate::projects::events`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/clouderrorreporting/v1beta1/lib/src/lib.rs:1428:38
+     |
+1428 |             alignment: Option<crate::group_stats::params::ListAlignment>,
+     |                                      ^^^^^^^^^^^
+     |                                      |
+     |                                      unresolved import
+     |                                      help: a similar path exists: `crate::projects::group_stats`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/clouderrorreporting/v1beta1/lib/src/lib.rs:1431:34
+     |
+1431 |             order: Option<crate::group_stats::params::ListOrder>,
+     |                                  ^^^^^^^^^^^
+     |                                  |
+     |                                  unresolved import
+     |                                  help: a similar path exists: `crate::projects::group_stats`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/clouderrorreporting/v1beta1/lib/src/lib.rs:1437:46
+     |
+1437 |             time_range_period: Option<crate::group_stats::params::ListTimeRangePeriod>,
+     |                                              ^^^^^^^^^^^
+     |                                              |
+     |                                              unresolved import
+     |                                              help: a similar path exists: `crate::projects::group_stats`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/clouderrorreporting/v1beta1/lib/src/lib.rs:1455:31
+     |
+1455 |                 value: crate::group_stats::params::ListAlignment,
+     |                               ^^^^^^^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::projects::group_stats`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/clouderrorreporting/v1beta1/lib/src/lib.rs:1471:51
+     |
+1471 |             pub fn order(&mut self, value: crate::group_stats::params::ListOrder) -> &mut Self {
+     |                                                   ^^^^^^^^^^^
+     |                                                   |
+     |                                                   unresolved import
+     |                                                   help: a similar path exists: `crate::projects::group_stats`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/clouderrorreporting/v1beta1/lib/src/lib.rs:1503:31
+     |
+1503 |                 value: crate::group_stats::params::ListTimeRangePeriod,
+     |                               ^^^^^^^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::projects::group_stats`
+
+error[E0423]: expected value, found struct `events::EventsActions`
+   --> gen/clouderrorreporting/v1beta1/lib/src/lib.rs:644:13
+    |
+644 |             events::EventsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^ did you mean `events::EventsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `group_stats::GroupStatsActions`
+   --> gen/clouderrorreporting/v1beta1/lib/src/lib.rs:648:13
+    |
+648 |             group_stats::GroupStatsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `group_stats::GroupStatsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `groups::GroupsActions`
+   --> gen/clouderrorreporting/v1beta1/lib/src/lib.rs:652:13
+    |
+652 |             groups::GroupsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^ did you mean `groups::GroupsActions { /* fields */ }`?
+
+warning: unreachable expression
+   --> gen/clouderrorreporting/v1beta1/lib/src/lib.rs:811:21
+    |
+811 | /                     Ok(match value {
+812 | |                         _ => {
+813 | |                             return Err(::serde::de::Error::custom(format!(
+814 | |                                 "invalid enum for #name: {}",
+...   |
+817 | |                         }
+818 | |                     })
+    | |______________________^
+    |
+    = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+    --> gen/clouderrorreporting/v1beta1/lib/src/lib.rs:1304:21
+     |
+1304 | /                     Ok(match value {
+1305 | |                         _ => {
+1306 | |                             return Err(::serde::de::Error::custom(format!(
+1307 | |                                 "invalid enum for #name: {}",
+...    |
+1310 | |                         }
+1311 | |                     })
+     | |______________________^
+
+warning: unreachable expression
+    --> gen/clouderrorreporting/v1beta1/lib/src/lib.rs:1340:21
+     |
+1340 | /                     Ok(match value {
+1341 | |                         _ => {
+1342 | |                             return Err(::serde::de::Error::custom(format!(
+1343 | |                                 "invalid enum for #name: {}",
+...    |
+1346 | |                         }
+1347 | |                     })
+     | |______________________^
+
+warning: unreachable expression
+    --> gen/clouderrorreporting/v1beta1/lib/src/lib.rs:1376:21
+     |
+1376 | /                     Ok(match value {
+1377 | |                         _ => {
+1378 | |                             return Err(::serde::de::Error::custom(format!(
+1379 | |                                 "invalid enum for #name: {}",
+...    |
+1382 | |                         }
+1383 | |                     })
+     | |______________________^
+
+error: aborting due to 11 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-clouderrorreporting1_beta1`.
+
+To learn more, run the command again with --verbose.

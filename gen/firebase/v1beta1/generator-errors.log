@@ -1,0 +1,44 @@
+    Blocking waiting for file lock on build directory
+    Checking google-firebase1_beta1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/firebase/v1beta1/lib)
+error[E0423]: expected value, found struct `android_apps::AndroidAppsActions`
+    --> gen/firebase/v1beta1/lib/src/lib.rs:1927:13
+     |
+1927 |             android_apps::AndroidAppsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `android_apps::AndroidAppsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `available_locations::AvailableLocationsActions`
+    --> gen/firebase/v1beta1/lib/src/lib.rs:1931:13
+     |
+1931 |             available_locations::AvailableLocationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `available_locations::AvailableLocationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `default_location::DefaultLocationActions`
+    --> gen/firebase/v1beta1/lib/src/lib.rs:1935:13
+     |
+1935 |             default_location::DefaultLocationActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `default_location::DefaultLocationActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `ios_apps::IosAppsActions`
+    --> gen/firebase/v1beta1/lib/src/lib.rs:1939:13
+     |
+1939 |             ios_apps::IosAppsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `ios_apps::IosAppsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `web_apps::WebAppsActions`
+    --> gen/firebase/v1beta1/lib/src/lib.rs:1943:13
+     |
+1943 |             web_apps::WebAppsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `web_apps::WebAppsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `sha::ShaActions`
+    --> gen/firebase/v1beta1/lib/src/lib.rs:3417:17
+     |
+3417 |                 sha::ShaActions
+     |                 ^^^^^^^^^^^^^^^ did you mean `sha::ShaActions { /* fields */ }`?
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-firebase1_beta1`.
+
+To learn more, run the command again with --verbose.

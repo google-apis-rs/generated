@@ -1,0 +1,52 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+    Checking google-androiddeviceprovisioning1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/androiddeviceprovisioning/v1/lib)
+error[E0423]: expected value, found struct `configurations::ConfigurationsActions`
+    --> gen/androiddeviceprovisioning/v1/lib/src/lib.rs:1973:13
+     |
+1973 |             configurations::ConfigurationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `configurations::ConfigurationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `devices::DevicesActions`
+    --> gen/androiddeviceprovisioning/v1/lib/src/lib.rs:1977:13
+     |
+1977 |             devices::DevicesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `devices::DevicesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `dpcs::DpcsActions`
+    --> gen/androiddeviceprovisioning/v1/lib/src/lib.rs:1981:13
+     |
+1981 |             dpcs::DpcsActions
+     |             ^^^^^^^^^^^^^^^^^ did you mean `dpcs::DpcsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `customers::CustomersActions`
+    --> gen/androiddeviceprovisioning/v1/lib/src/lib.rs:4082:13
+     |
+4082 |             customers::CustomersActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `customers::CustomersActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `devices::DevicesActions`
+    --> gen/androiddeviceprovisioning/v1/lib/src/lib.rs:4086:13
+     |
+4086 |             devices::DevicesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `devices::DevicesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `vendors::VendorsActions`
+    --> gen/androiddeviceprovisioning/v1/lib/src/lib.rs:4090:13
+     |
+4090 |             vendors::VendorsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `vendors::VendorsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `customers::CustomersActions`
+    --> gen/androiddeviceprovisioning/v1/lib/src/lib.rs:5901:17
+     |
+5901 |                 customers::CustomersActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `customers::CustomersActions { /* fields */ }`?
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-androiddeviceprovisioning1`.
+
+To learn more, run the command again with --verbose.

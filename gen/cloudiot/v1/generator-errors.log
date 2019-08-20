@@ -1,0 +1,113 @@
+    Blocking waiting for file lock on build directory
+    Checking google-cloudiot1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/cloudiot/v1/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/cloudiot/v1/lib/src/lib.rs:3907:39
+     |
+3907 |                         Option<crate::devices::params::ListGatewayListOptionsGatewayType>,
+     |                                       ^^^^^^^
+     |                                       |
+     |                                       unresolved import
+     |                                       help: a similar path exists: `crate::projects::locations::registries::devices`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/cloudiot/v1/lib/src/lib.rs:3957:39
+     |
+3957 |                         value: crate::devices::params::ListGatewayListOptionsGatewayType,
+     |                                       ^^^^^^^
+     |                                       |
+     |                                       unresolved import
+     |                                       help: a similar path exists: `crate::projects::locations::registries::devices`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/cloudiot/v1/lib/src/lib.rs:5503:43
+     |
+5503 |                             Option<crate::devices::params::ListGatewayListOptionsGatewayType>,
+     |                                           ^^^^^^^
+     |                                           |
+     |                                           unresolved import
+     |                                           help: a similar path exists: `crate::projects::locations::registries::devices`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/cloudiot/v1/lib/src/lib.rs:5553:43
+     |
+5553 |                             value: crate::devices::params::ListGatewayListOptionsGatewayType,
+     |                                           ^^^^^^^
+     |                                           |
+     |                                           unresolved import
+     |                                           help: a similar path exists: `crate::projects::locations::registries::devices`
+
+error[E0423]: expected value, found struct `locations::LocationsActions`
+    --> gen/cloudiot/v1/lib/src/lib.rs:1609:13
+     |
+1609 |             locations::LocationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `locations::LocationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `registries::RegistriesActions`
+    --> gen/cloudiot/v1/lib/src/lib.rs:1621:17
+     |
+1621 |                 registries::RegistriesActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `registries::RegistriesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `devices::DevicesActions`
+    --> gen/cloudiot/v1/lib/src/lib.rs:1861:21
+     |
+1861 |                     devices::DevicesActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `devices::DevicesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `groups::GroupsActions`
+    --> gen/cloudiot/v1/lib/src/lib.rs:1865:21
+     |
+1865 |                     groups::GroupsActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^ did you mean `groups::GroupsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `config_versions::ConfigVersionsActions`
+    --> gen/cloudiot/v1/lib/src/lib.rs:3488:25
+     |
+3488 |                         config_versions::ConfigVersionsActions
+     |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `config_versions::ConfigVersionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `states::StatesActions`
+    --> gen/cloudiot/v1/lib/src/lib.rs:3492:25
+     |
+3492 |                         states::StatesActions
+     |                         ^^^^^^^^^^^^^^^^^^^^^ did you mean `states::StatesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `devices::DevicesActions`
+    --> gen/cloudiot/v1/lib/src/lib.rs:5013:25
+     |
+5013 |                         devices::DevicesActions
+     |                         ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `devices::DevicesActions { /* fields */ }`?
+
+warning: unreachable expression
+    --> gen/cloudiot/v1/lib/src/lib.rs:3307:29
+     |
+3307 | /                             Ok(match value {
+3308 | |                                 _ => {
+3309 | |                                     return Err(::serde::de::Error::custom(format!(
+3310 | |                                         "invalid enum for #name: {}",
+...    |
+3313 | |                                 }
+3314 | |                             })
+     | |______________________________^
+     |
+     = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+    --> gen/cloudiot/v1/lib/src/lib.rs:5448:33
+     |
+5448 | /                                 Ok(match value {
+5449 | |                                     _ => {
+5450 | |                                         return Err(::serde::de::Error::custom(format!(
+5451 | |                                             "invalid enum for #name: {}",
+...    |
+5454 | |                                     }
+5455 | |                                 })
+     | |__________________________________^
+
+error: aborting due to 11 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-cloudiot1`.
+
+To learn more, run the command again with --verbose.

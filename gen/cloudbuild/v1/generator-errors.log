@@ -1,0 +1,34 @@
+    Blocking waiting for file lock on build directory
+    Checking google-cloudbuild1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/cloudbuild/v1/lib)
+error[E0423]: expected value, found struct `builds::BuildsActions`
+    --> gen/cloudbuild/v1/lib/src/lib.rs:2260:13
+     |
+2260 |             builds::BuildsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^ did you mean `builds::BuildsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `triggers::TriggersActions`
+    --> gen/cloudbuild/v1/lib/src/lib.rs:2264:13
+     |
+2264 |             triggers::TriggersActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `triggers::TriggersActions { /* fields */ }`?
+
+warning: unreachable expression
+   --> gen/cloudbuild/v1/lib/src/lib.rs:504:13
+    |
+504 | /             Ok(match value {
+505 | |                 _ => {
+506 | |                     return Err(::serde::de::Error::custom(format!(
+507 | |                         "invalid enum for #name: {}",
+...   |
+510 | |                 }
+511 | |             })
+    | |______________^
+    |
+    = note: #[warn(unreachable_code)] on by default
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-cloudbuild1`.
+
+To learn more, run the command again with --verbose.

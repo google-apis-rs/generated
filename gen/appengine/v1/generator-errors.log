@@ -1,0 +1,233 @@
+    Blocking waiting for file lock on build directory
+    Checking google-appengine1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/appengine/v1/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/appengine/v1/lib/src/lib.rs:4563:33
+     |
+4563 |             view: Option<crate::authorized_certificates::params::GetView>,
+     |                                 ^^^^^^^^^^^^^^^^^^^^^^^
+     |                                 |
+     |                                 unresolved import
+     |                                 help: a similar path exists: `crate::apps::authorized_certificates`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/appengine/v1/lib/src/lib.rs:4580:31
+     |
+4580 |                 value: crate::authorized_certificates::params::GetView,
+     |                               ^^^^^^^^^^^^^^^^^^^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::apps::authorized_certificates`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/appengine/v1/lib/src/lib.rs:4705:33
+     |
+4705 |             view: Option<crate::authorized_certificates::params::ListView>,
+     |                                 ^^^^^^^^^^^^^^^^^^^^^^^
+     |                                 |
+     |                                 unresolved import
+     |                                 help: a similar path exists: `crate::apps::authorized_certificates`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/appengine/v1/lib/src/lib.rs:4732:31
+     |
+4732 |                 value: crate::authorized_certificates::params::ListView,
+     |                               ^^^^^^^^^^^^^^^^^^^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::apps::authorized_certificates`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/appengine/v1/lib/src/lib.rs:5502:46
+     |
+5502 |             override_strategy: Option<crate::domain_mappings::params::CreateOverrideStrategy>,
+     |                                              ^^^^^^^^^^^^^^^
+     |                                              |
+     |                                              unresolved import
+     |                                              help: a similar path exists: `crate::apps::domain_mappings`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/appengine/v1/lib/src/lib.rs:5519:31
+     |
+5519 |                 value: crate::domain_mappings::params::CreateOverrideStrategy,
+     |                               ^^^^^^^^^^^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::apps::domain_mappings`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/appengine/v1/lib/src/lib.rs:9396:37
+     |
+9396 |                 view: Option<crate::versions::params::GetView>,
+     |                                     ^^^^^^^^
+     |                                     |
+     |                                     unresolved import
+     |                                     help: a similar path exists: `crate::apps::services::versions`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/appengine/v1/lib/src/lib.rs:9411:54
+     |
+9411 |                 pub fn view(&mut self, value: crate::versions::params::GetView) -> &mut Self {
+     |                                                      ^^^^^^^^
+     |                                                      |
+     |                                                      unresolved import
+     |                                                      help: a similar path exists: `crate::apps::services::versions`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/appengine/v1/lib/src/lib.rs:9537:37
+     |
+9537 |                 view: Option<crate::versions::params::ListView>,
+     |                                     ^^^^^^^^
+     |                                     |
+     |                                     unresolved import
+     |                                     help: a similar path exists: `crate::apps::services::versions`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/appengine/v1/lib/src/lib.rs:9562:54
+     |
+9562 |                 pub fn view(&mut self, value: crate::versions::params::ListView) -> &mut Self {
+     |                                                      ^^^^^^^^
+     |                                                      |
+     |                                                      unresolved import
+     |                                                      help: a similar path exists: `crate::apps::services::versions`
+
+error[E0423]: expected value, found struct `authorized_certificates::AuthorizedCertificatesActions`
+    --> gen/appengine/v1/lib/src/lib.rs:3542:13
+     |
+3542 |             authorized_certificates::AuthorizedCertificatesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `authorized_certificates::AuthorizedCertificatesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `authorized_domains::AuthorizedDomainsActions`
+    --> gen/appengine/v1/lib/src/lib.rs:3546:13
+     |
+3546 |             authorized_domains::AuthorizedDomainsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `authorized_domains::AuthorizedDomainsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `domain_mappings::DomainMappingsActions`
+    --> gen/appengine/v1/lib/src/lib.rs:3550:13
+     |
+3550 |             domain_mappings::DomainMappingsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `domain_mappings::DomainMappingsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `firewall::FirewallActions`
+    --> gen/appengine/v1/lib/src/lib.rs:3554:13
+     |
+3554 |             firewall::FirewallActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `firewall::FirewallActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `locations::LocationsActions`
+    --> gen/appengine/v1/lib/src/lib.rs:3558:13
+     |
+3558 |             locations::LocationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `locations::LocationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `operations::OperationsActions`
+    --> gen/appengine/v1/lib/src/lib.rs:3562:13
+     |
+3562 |             operations::OperationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `operations::OperationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `services::ServicesActions`
+    --> gen/appengine/v1/lib/src/lib.rs:3566:13
+     |
+3566 |             services::ServicesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `services::ServicesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `ingress_rules::IngressRulesActions`
+    --> gen/appengine/v1/lib/src/lib.rs:6271:17
+     |
+6271 |                 ingress_rules::IngressRulesActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `ingress_rules::IngressRulesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `versions::VersionsActions`
+    --> gen/appengine/v1/lib/src/lib.rs:8266:17
+     |
+8266 |                 versions::VersionsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `versions::VersionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `instances::InstancesActions`
+    --> gen/appengine/v1/lib/src/lib.rs:9117:21
+     |
+9117 |                     instances::InstancesActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `instances::InstancesActions { /* fields */ }`?
+
+warning: unreachable expression
+    --> gen/appengine/v1/lib/src/lib.rs:3058:13
+     |
+3058 | /             Ok(match value {
+3059 | |                 _ => {
+3060 | |                     return Err(::serde::de::Error::custom(format!(
+3061 | |                         "invalid enum for #name: {}",
+...    |
+3064 | |                 }
+3065 | |             })
+     | |______________^
+     |
+     = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+    --> gen/appengine/v1/lib/src/lib.rs:4120:21
+     |
+4120 | /                     Ok(match value {
+4121 | |                         _ => {
+4122 | |                             return Err(::serde::de::Error::custom(format!(
+4123 | |                                 "invalid enum for #name: {}",
+...    |
+4126 | |                         }
+4127 | |                     })
+     | |______________________^
+
+warning: unreachable expression
+    --> gen/appengine/v1/lib/src/lib.rs:4156:21
+     |
+4156 | /                     Ok(match value {
+4157 | |                         _ => {
+4158 | |                             return Err(::serde::de::Error::custom(format!(
+4159 | |                                 "invalid enum for #name: {}",
+...    |
+4162 | |                         }
+4163 | |                     })
+     | |______________________^
+
+warning: unreachable expression
+    --> gen/appengine/v1/lib/src/lib.rs:5358:21
+     |
+5358 | /                     Ok(match value {
+5359 | |                         _ => {
+5360 | |                             return Err(::serde::de::Error::custom(format!(
+5361 | |                                 "invalid enum for #name: {}",
+...    |
+5364 | |                         }
+5365 | |                     })
+     | |______________________^
+
+warning: unreachable expression
+    --> gen/appengine/v1/lib/src/lib.rs:8928:25
+     |
+8928 | /                         Ok(match value {
+8929 | |                             _ => {
+8930 | |                                 return Err(::serde::de::Error::custom(format!(
+8931 | |                                     "invalid enum for #name: {}",
+...    |
+8934 | |                             }
+8935 | |                         })
+     | |__________________________^
+
+warning: unreachable expression
+    --> gen/appengine/v1/lib/src/lib.rs:8964:25
+     |
+8964 | /                         Ok(match value {
+8965 | |                             _ => {
+8966 | |                                 return Err(::serde::de::Error::custom(format!(
+8967 | |                                     "invalid enum for #name: {}",
+...    |
+8970 | |                             }
+8971 | |                         })
+     | |__________________________^
+
+error: aborting due to 20 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-appengine1`.
+
+To learn more, run the command again with --verbose.

@@ -1,0 +1,149 @@
+    Blocking waiting for file lock on build directory
+    Checking google-dlp2 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/dlp/v2/lib)
+error[E0433]: failed to resolve: unresolved import
+     --> gen/dlp/v2/lib/src/lib.rs:11446:35
+      |
+11446 |             r#type: Option<crate::dlp_jobs::params::ListType>,
+      |                                   ^^^^^^^^
+      |                                   |
+      |                                   unresolved import
+      |                                   help: a similar path exists: `crate::projects::dlp_jobs`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/dlp/v2/lib/src/lib.rs:11481:52
+      |
+11481 |             pub fn r_type(&mut self, value: crate::dlp_jobs::params::ListType) -> &mut Self {
+      |                                                    ^^^^^^^^
+      |                                                    |
+      |                                                    unresolved import
+      |                                                    help: a similar path exists: `crate::projects::dlp_jobs`
+
+error[E0423]: expected value, found struct `deidentify_templates::DeidentifyTemplatesActions`
+    --> gen/dlp/v2/lib/src/lib.rs:6727:13
+     |
+6727 |             deidentify_templates::DeidentifyTemplatesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `deidentify_templates::DeidentifyTemplatesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `inspect_templates::InspectTemplatesActions`
+    --> gen/dlp/v2/lib/src/lib.rs:6731:13
+     |
+6731 |             inspect_templates::InspectTemplatesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `inspect_templates::InspectTemplatesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `stored_info_types::StoredInfoTypesActions`
+    --> gen/dlp/v2/lib/src/lib.rs:6735:13
+     |
+6735 |             stored_info_types::StoredInfoTypesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `stored_info_types::StoredInfoTypesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `content::ContentActions`
+    --> gen/dlp/v2/lib/src/lib.rs:9373:13
+     |
+9373 |             content::ContentActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `content::ContentActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `deidentify_templates::DeidentifyTemplatesActions`
+    --> gen/dlp/v2/lib/src/lib.rs:9377:13
+     |
+9377 |             deidentify_templates::DeidentifyTemplatesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `deidentify_templates::DeidentifyTemplatesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `dlp_jobs::DlpJobsActions`
+    --> gen/dlp/v2/lib/src/lib.rs:9381:13
+     |
+9381 |             dlp_jobs::DlpJobsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `dlp_jobs::DlpJobsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `image::ImageActions`
+    --> gen/dlp/v2/lib/src/lib.rs:9385:13
+     |
+9385 |             image::ImageActions
+     |             ^^^^^^^^^^^^^^^^^^^ did you mean `image::ImageActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `inspect_templates::InspectTemplatesActions`
+    --> gen/dlp/v2/lib/src/lib.rs:9389:13
+     |
+9389 |             inspect_templates::InspectTemplatesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `inspect_templates::InspectTemplatesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `job_triggers::JobTriggersActions`
+    --> gen/dlp/v2/lib/src/lib.rs:9393:13
+     |
+9393 |             job_triggers::JobTriggersActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `job_triggers::JobTriggersActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `locations::LocationsActions`
+    --> gen/dlp/v2/lib/src/lib.rs:9397:13
+     |
+9397 |             locations::LocationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `locations::LocationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `stored_info_types::StoredInfoTypesActions`
+    --> gen/dlp/v2/lib/src/lib.rs:9401:13
+     |
+9401 |             stored_info_types::StoredInfoTypesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `stored_info_types::StoredInfoTypesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `content::ContentActions`
+     --> gen/dlp/v2/lib/src/lib.rs:13769:17
+      |
+13769 |                 content::ContentActions
+      |                 ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `content::ContentActions { /* fields */ }`?
+
+warning: unreachable expression
+   --> gen/dlp/v2/lib/src/lib.rs:747:13
+    |
+747 | /             Ok(match value {
+748 | |                 _ => {
+749 | |                     return Err(::serde::de::Error::custom(format!(
+750 | |                         "invalid enum for #name: {}",
+...   |
+753 | |                 }
+754 | |             })
+    | |______________^
+    |
+    = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+    --> gen/dlp/v2/lib/src/lib.rs:2876:13
+     |
+2876 | /             Ok(match value {
+2877 | |                 _ => {
+2878 | |                     return Err(::serde::de::Error::custom(format!(
+2879 | |                         "invalid enum for #name: {}",
+...    |
+2882 | |                 }
+2883 | |             })
+     | |______________^
+
+warning: unreachable expression
+    --> gen/dlp/v2/lib/src/lib.rs:3050:13
+     |
+3050 | /             Ok(match value {
+3051 | |                 _ => {
+3052 | |                     return Err(::serde::de::Error::custom(format!(
+3053 | |                         "invalid enum for #name: {}",
+...    |
+3056 | |                 }
+3057 | |             })
+     | |______________^
+
+warning: unreachable expression
+     --> gen/dlp/v2/lib/src/lib.rs:10790:21
+      |
+10790 | /                     Ok(match value {
+10791 | |                         _ => {
+10792 | |                             return Err(::serde::de::Error::custom(format!(
+10793 | |                                 "invalid enum for #name: {}",
+...     |
+10796 | |                         }
+10797 | |                     })
+      | |______________________^
+
+error: aborting due to 14 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-dlp2`.
+
+To learn more, run the command again with --verbose.

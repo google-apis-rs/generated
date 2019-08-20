@@ -1,0 +1,14 @@
+    Blocking waiting for file lock on build directory
+    Checking google-identitytoolkit3 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/identitytoolkit/v3/lib)
+error[E0412]: cannot find type `IdentitytoolkitRelyingpartyGetPublicKeysResponse` in module `crate::schemas`
+    --> gen/identitytoolkit/v3/lib/src/lib.rs:3185:29
+     |
+3185 |             crate::schemas::IdentitytoolkitRelyingpartyGetPublicKeysResponse,
+     |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: a struct with a similar name exists: `IdentitytoolkitRelyingpartyGetProjectConfigResponse`
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0412`.
+error: Could not compile `google-identitytoolkit3`.
+
+To learn more, run the command again with --verbose.

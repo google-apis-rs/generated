@@ -1,0 +1,32 @@
+    Blocking waiting for file lock on build directory
+    Checking google-cloudprivatecatalogproducer1_beta1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/cloudprivatecatalogproducer/v1beta1/lib)
+error[E0423]: expected value, found struct `associations::AssociationsActions`
+    --> gen/cloudprivatecatalogproducer/v1beta1/lib/src/lib.rs:1090:13
+     |
+1090 |             associations::AssociationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `associations::AssociationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `products::ProductsActions`
+    --> gen/cloudprivatecatalogproducer/v1beta1/lib/src/lib.rs:1094:13
+     |
+1094 |             products::ProductsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `products::ProductsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `icons::IconsActions`
+    --> gen/cloudprivatecatalogproducer/v1beta1/lib/src/lib.rs:3253:17
+     |
+3253 |                 icons::IconsActions
+     |                 ^^^^^^^^^^^^^^^^^^^ did you mean `icons::IconsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `versions::VersionsActions`
+    --> gen/cloudprivatecatalogproducer/v1beta1/lib/src/lib.rs:3257:17
+     |
+3257 |                 versions::VersionsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `versions::VersionsActions { /* fields */ }`?
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-cloudprivatecatalogproducer1_beta1`.
+
+To learn more, run the command again with --verbose.

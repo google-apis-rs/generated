@@ -1,0 +1,444 @@
+    Blocking waiting for file lock on build directory
+    Checking google-androidpublisher2 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/androidpublisher/v2/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/androidpublisher/v2/lib/src/lib.rs:4162:52
+     |
+4162 |                 deobfuscation_file_type : crate :: deobfuscationfiles :: params :: UploadDeobfuscationFileType,
+     |                                                    ^^^^^^^^^^^^^^^^^^
+     |                                                    |
+     |                                                    unresolved import
+     |                                                    help: a similar path exists: `crate::edits::deobfuscationfiles`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/androidpublisher/v2/lib/src/lib.rs:4188:45
+     |
+4188 |             deobfuscation_file_type: crate::deobfuscationfiles::params::UploadDeobfuscationFileType,
+     |                                             ^^^^^^^^^^^^^^^^^^
+     |                                             |
+     |                                             unresolved import
+     |                                             help: a similar path exists: `crate::edits::deobfuscationfiles`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/androidpublisher/v2/lib/src/lib.rs:4965:45
+     |
+4965 |                 expansion_file_type: crate::expansionfiles::params::GetExpansionFileType,
+     |                                             ^^^^^^^^^^^^^^
+     |                                             |
+     |                                             unresolved import
+     |                                             help: a similar path exists: `crate::edits::expansionfiles`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/androidpublisher/v2/lib/src/lib.rs:4990:45
+     |
+4990 |                 expansion_file_type: crate::expansionfiles::params::PatchExpansionFileType,
+     |                                             ^^^^^^^^^^^^^^
+     |                                             |
+     |                                             unresolved import
+     |                                             help: a similar path exists: `crate::edits::expansionfiles`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/androidpublisher/v2/lib/src/lib.rs:5016:45
+     |
+5016 |                 expansion_file_type: crate::expansionfiles::params::UpdateExpansionFileType,
+     |                                             ^^^^^^^^^^^^^^
+     |                                             |
+     |                                             unresolved import
+     |                                             help: a similar path exists: `crate::edits::expansionfiles`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/androidpublisher/v2/lib/src/lib.rs:5041:45
+     |
+5041 |                 expansion_file_type: crate::expansionfiles::params::UploadExpansionFileType,
+     |                                             ^^^^^^^^^^^^^^
+     |                                             |
+     |                                             unresolved import
+     |                                             help: a similar path exists: `crate::edits::expansionfiles`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/androidpublisher/v2/lib/src/lib.rs:5067:41
+     |
+5067 |             expansion_file_type: crate::expansionfiles::params::GetExpansionFileType,
+     |                                         ^^^^^^^^^^^^^^
+     |                                         |
+     |                                         unresolved import
+     |                                         help: a similar path exists: `crate::edits::expansionfiles`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/androidpublisher/v2/lib/src/lib.rs:5182:41
+     |
+5182 |             expansion_file_type: crate::expansionfiles::params::PatchExpansionFileType,
+     |                                         ^^^^^^^^^^^^^^
+     |                                         |
+     |                                         unresolved import
+     |                                         help: a similar path exists: `crate::edits::expansionfiles`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/androidpublisher/v2/lib/src/lib.rs:5299:41
+     |
+5299 |             expansion_file_type: crate::expansionfiles::params::UpdateExpansionFileType,
+     |                                         ^^^^^^^^^^^^^^
+     |                                         |
+     |                                         unresolved import
+     |                                         help: a similar path exists: `crate::edits::expansionfiles`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/androidpublisher/v2/lib/src/lib.rs:5415:41
+     |
+5415 |             expansion_file_type: crate::expansionfiles::params::UploadExpansionFileType,
+     |                                         ^^^^^^^^^^^^^^
+     |                                         |
+     |                                         unresolved import
+     |                                         help: a similar path exists: `crate::edits::expansionfiles`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/androidpublisher/v2/lib/src/lib.rs:5886:36
+     |
+5886 |                 image_type: crate::images::params::DeleteImageType,
+     |                                    ^^^^^^
+     |                                    |
+     |                                    unresolved import
+     |                                    help: a similar path exists: `crate::edits::images`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/androidpublisher/v2/lib/src/lib.rs:5912:36
+     |
+5912 |                 image_type: crate::images::params::DeleteallImageType,
+     |                                    ^^^^^^
+     |                                    |
+     |                                    unresolved import
+     |                                    help: a similar path exists: `crate::edits::images`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/androidpublisher/v2/lib/src/lib.rs:5936:36
+     |
+5936 |                 image_type: crate::images::params::ListImageType,
+     |                                    ^^^^^^
+     |                                    |
+     |                                    unresolved import
+     |                                    help: a similar path exists: `crate::edits::images`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/androidpublisher/v2/lib/src/lib.rs:5960:36
+     |
+5960 |                 image_type: crate::images::params::UploadImageType,
+     |                                    ^^^^^^
+     |                                    |
+     |                                    unresolved import
+     |                                    help: a similar path exists: `crate::edits::images`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/androidpublisher/v2/lib/src/lib.rs:5986:32
+     |
+5986 |             image_type: crate::images::params::DeleteImageType,
+     |                                ^^^^^^
+     |                                |
+     |                                unresolved import
+     |                                help: a similar path exists: `crate::edits::images`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/androidpublisher/v2/lib/src/lib.rs:6079:32
+     |
+6079 |             image_type: crate::images::params::DeleteallImageType,
+     |                                ^^^^^^
+     |                                |
+     |                                unresolved import
+     |                                help: a similar path exists: `crate::edits::images`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/androidpublisher/v2/lib/src/lib.rs:6191:32
+     |
+6191 |             image_type: crate::images::params::ListImageType,
+     |                                ^^^^^^
+     |                                |
+     |                                unresolved import
+     |                                help: a similar path exists: `crate::edits::images`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/androidpublisher/v2/lib/src/lib.rs:6303:32
+     |
+6303 |             image_type: crate::images::params::UploadImageType,
+     |                                ^^^^^^
+     |                                |
+     |                                unresolved import
+     |                                help: a similar path exists: `crate::edits::images`
+
+error[E0423]: expected value, found struct `apklistings::ApklistingsActions`
+    --> gen/androidpublisher/v2/lib/src/lib.rs:2004:13
+     |
+2004 |             apklistings::ApklistingsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `apklistings::ApklistingsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `apks::ApksActions`
+    --> gen/androidpublisher/v2/lib/src/lib.rs:2008:13
+     |
+2008 |             apks::ApksActions
+     |             ^^^^^^^^^^^^^^^^^ did you mean `apks::ApksActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `bundles::BundlesActions`
+    --> gen/androidpublisher/v2/lib/src/lib.rs:2012:13
+     |
+2012 |             bundles::BundlesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `bundles::BundlesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `deobfuscationfiles::DeobfuscationfilesActions`
+    --> gen/androidpublisher/v2/lib/src/lib.rs:2016:13
+     |
+2016 |             deobfuscationfiles::DeobfuscationfilesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `deobfuscationfiles::DeobfuscationfilesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `details::DetailsActions`
+    --> gen/androidpublisher/v2/lib/src/lib.rs:2020:13
+     |
+2020 |             details::DetailsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `details::DetailsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `expansionfiles::ExpansionfilesActions`
+    --> gen/androidpublisher/v2/lib/src/lib.rs:2024:13
+     |
+2024 |             expansionfiles::ExpansionfilesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `expansionfiles::ExpansionfilesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `images::ImagesActions`
+    --> gen/androidpublisher/v2/lib/src/lib.rs:2028:13
+     |
+2028 |             images::ImagesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^ did you mean `images::ImagesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `listings::ListingsActions`
+    --> gen/androidpublisher/v2/lib/src/lib.rs:2032:13
+     |
+2032 |             listings::ListingsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `listings::ListingsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `testers::TestersActions`
+    --> gen/androidpublisher/v2/lib/src/lib.rs:2036:13
+     |
+2036 |             testers::TestersActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `testers::TestersActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `tracks::TracksActions`
+    --> gen/androidpublisher/v2/lib/src/lib.rs:2040:13
+     |
+2040 |             tracks::TracksActions
+     |             ^^^^^^^^^^^^^^^^^^^^^ did you mean `tracks::TracksActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `products::ProductsActions`
+    --> gen/androidpublisher/v2/lib/src/lib.rs:9058:13
+     |
+9058 |             products::ProductsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `products::ProductsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `subscriptions::SubscriptionsActions`
+    --> gen/androidpublisher/v2/lib/src/lib.rs:9062:13
+     |
+9062 |             subscriptions::SubscriptionsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `subscriptions::SubscriptionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `voidedpurchases::VoidedpurchasesActions`
+    --> gen/androidpublisher/v2/lib/src/lib.rs:9066:13
+     |
+9066 |             voidedpurchases::VoidedpurchasesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `voidedpurchases::VoidedpurchasesActions { /* fields */ }`?
+
+error[E0609]: no field `request` on type `edits::apks::UploadRequestBuilder<'a, A>`
+    --> gen/androidpublisher/v2/lib/src/lib.rs:3671:63
+     |
+3671 |                 let request_json = ::serde_json::to_vec(&self.request)?;
+     |                                                               ^^^^^^^ help: a field with a similar name exists: `reqwest`
+
+error[E0609]: no field `request` on type `edits::bundles::UploadRequestBuilder<'a, A>`
+    --> gen/androidpublisher/v2/lib/src/lib.rs:4004:63
+     |
+4004 |                 let request_json = ::serde_json::to_vec(&self.request)?;
+     |                                                               ^^^^^^^ help: a field with a similar name exists: `reqwest`
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> gen/androidpublisher/v2/lib/src/lib.rs:4246:25
+     |
+4246 |                     let str_value = self.deobfuscation_file_type.to_string();
+     |                         ^^^^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `std::marker::Sized` is not implemented for `str`
+     = note: to learn more, visit <https://doc.rust-lang.org/book/ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait>
+     = note: all local variables must have a statically known size
+     = help: unsized locals are gated as an unstable feature
+
+error[E0609]: no field `request` on type `edits::deobfuscationfiles::UploadRequestBuilder<'a, A>`
+    --> gen/androidpublisher/v2/lib/src/lib.rs:4267:63
+     |
+4267 |                 let request_json = ::serde_json::to_vec(&self.request)?;
+     |                                                               ^^^^^^^ help: a field with a similar name exists: `reqwest`
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> gen/androidpublisher/v2/lib/src/lib.rs:4293:25
+     |
+4293 |                     let str_value = self.deobfuscation_file_type.to_string();
+     |                         ^^^^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `std::marker::Sized` is not implemented for `str`
+     = note: to learn more, visit <https://doc.rust-lang.org/book/ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait>
+     = note: all local variables must have a statically known size
+     = help: unsized locals are gated as an unstable feature
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> gen/androidpublisher/v2/lib/src/lib.rs:4363:25
+     |
+4363 |                     let str_value = self.deobfuscation_file_type.to_string();
+     |                         ^^^^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `std::marker::Sized` is not implemented for `str`
+     = note: to learn more, visit <https://doc.rust-lang.org/book/ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait>
+     = note: all local variables must have a statically known size
+     = help: unsized locals are gated as an unstable feature
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> gen/androidpublisher/v2/lib/src/lib.rs:5151:25
+     |
+5151 |                     let str_value = self.expansion_file_type.to_string();
+     |                         ^^^^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `std::marker::Sized` is not implemented for `str`
+     = note: to learn more, visit <https://doc.rust-lang.org/book/ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait>
+     = note: all local variables must have a statically known size
+     = help: unsized locals are gated as an unstable feature
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> gen/androidpublisher/v2/lib/src/lib.rs:5268:25
+     |
+5268 |                     let str_value = self.expansion_file_type.to_string();
+     |                         ^^^^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `std::marker::Sized` is not implemented for `str`
+     = note: to learn more, visit <https://doc.rust-lang.org/book/ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait>
+     = note: all local variables must have a statically known size
+     = help: unsized locals are gated as an unstable feature
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> gen/androidpublisher/v2/lib/src/lib.rs:5385:25
+     |
+5385 |                     let str_value = self.expansion_file_type.to_string();
+     |                         ^^^^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `std::marker::Sized` is not implemented for `str`
+     = note: to learn more, visit <https://doc.rust-lang.org/book/ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait>
+     = note: all local variables must have a statically known size
+     = help: unsized locals are gated as an unstable feature
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> gen/androidpublisher/v2/lib/src/lib.rs:5473:25
+     |
+5473 |                     let str_value = self.expansion_file_type.to_string();
+     |                         ^^^^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `std::marker::Sized` is not implemented for `str`
+     = note: to learn more, visit <https://doc.rust-lang.org/book/ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait>
+     = note: all local variables must have a statically known size
+     = help: unsized locals are gated as an unstable feature
+
+error[E0609]: no field `request` on type `edits::expansionfiles::UploadRequestBuilder<'a, A>`
+    --> gen/androidpublisher/v2/lib/src/lib.rs:5494:63
+     |
+5494 |                 let request_json = ::serde_json::to_vec(&self.request)?;
+     |                                                               ^^^^^^^ help: a field with a similar name exists: `reqwest`
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> gen/androidpublisher/v2/lib/src/lib.rs:5520:25
+     |
+5520 |                     let str_value = self.expansion_file_type.to_string();
+     |                         ^^^^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `std::marker::Sized` is not implemented for `str`
+     = note: to learn more, visit <https://doc.rust-lang.org/book/ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait>
+     = note: all local variables must have a statically known size
+     = help: unsized locals are gated as an unstable feature
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> gen/androidpublisher/v2/lib/src/lib.rs:5588:25
+     |
+5588 |                     let str_value = self.expansion_file_type.to_string();
+     |                         ^^^^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `std::marker::Sized` is not implemented for `str`
+     = note: to learn more, visit <https://doc.rust-lang.org/book/ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait>
+     = note: all local variables must have a statically known size
+     = help: unsized locals are gated as an unstable feature
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> gen/androidpublisher/v2/lib/src/lib.rs:6047:25
+     |
+6047 |                     let str_value = self.image_type.to_string();
+     |                         ^^^^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `std::marker::Sized` is not implemented for `str`
+     = note: to learn more, visit <https://doc.rust-lang.org/book/ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait>
+     = note: all local variables must have a statically known size
+     = help: unsized locals are gated as an unstable feature
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> gen/androidpublisher/v2/lib/src/lib.rs:6161:25
+     |
+6161 |                     let str_value = self.image_type.to_string();
+     |                         ^^^^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `std::marker::Sized` is not implemented for `str`
+     = note: to learn more, visit <https://doc.rust-lang.org/book/ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait>
+     = note: all local variables must have a statically known size
+     = help: unsized locals are gated as an unstable feature
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> gen/androidpublisher/v2/lib/src/lib.rs:6273:25
+     |
+6273 |                     let str_value = self.image_type.to_string();
+     |                         ^^^^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `std::marker::Sized` is not implemented for `str`
+     = note: to learn more, visit <https://doc.rust-lang.org/book/ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait>
+     = note: all local variables must have a statically known size
+     = help: unsized locals are gated as an unstable feature
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> gen/androidpublisher/v2/lib/src/lib.rs:6358:25
+     |
+6358 |                     let str_value = self.image_type.to_string();
+     |                         ^^^^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `std::marker::Sized` is not implemented for `str`
+     = note: to learn more, visit <https://doc.rust-lang.org/book/ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait>
+     = note: all local variables must have a statically known size
+     = help: unsized locals are gated as an unstable feature
+
+error[E0609]: no field `request` on type `edits::images::UploadRequestBuilder<'a, A>`
+    --> gen/androidpublisher/v2/lib/src/lib.rs:6379:63
+     |
+6379 |                 let request_json = ::serde_json::to_vec(&self.request)?;
+     |                                                               ^^^^^^^ help: a field with a similar name exists: `reqwest`
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> gen/androidpublisher/v2/lib/src/lib.rs:6402:25
+     |
+6402 |                     let str_value = self.image_type.to_string();
+     |                         ^^^^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `std::marker::Sized` is not implemented for `str`
+     = note: to learn more, visit <https://doc.rust-lang.org/book/ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait>
+     = note: all local variables must have a statically known size
+     = help: unsized locals are gated as an unstable feature
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> gen/androidpublisher/v2/lib/src/lib.rs:6467:25
+     |
+6467 |                     let str_value = self.image_type.to_string();
+     |                         ^^^^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `std::marker::Sized` is not implemented for `str`
+     = note: to learn more, visit <https://doc.rust-lang.org/book/ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait>
+     = note: all local variables must have a statically known size
+     = help: unsized locals are gated as an unstable feature
+
+error: aborting due to 51 previous errors
+
+Some errors have detailed explanations: E0277, E0423, E0433, E0609.
+For more information about an error, try `rustc --explain E0277`.
+error: Could not compile `google-androidpublisher2`.
+
+To learn more, run the command again with --verbose.

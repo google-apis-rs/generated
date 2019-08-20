@@ -1,0 +1,20 @@
+    Blocking waiting for file lock on build directory
+    Checking google-binaryauthorization1_beta1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/binaryauthorization/v1beta1/lib)
+error[E0423]: expected value, found struct `attestors::AttestorsActions`
+   --> gen/binaryauthorization/v1beta1/lib/src/lib.rs:919:13
+    |
+919 |             attestors::AttestorsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `attestors::AttestorsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `policy::PolicyActions`
+   --> gen/binaryauthorization/v1beta1/lib/src/lib.rs:923:13
+    |
+923 |             policy::PolicyActions
+    |             ^^^^^^^^^^^^^^^^^^^^^ did you mean `policy::PolicyActions { /* fields */ }`?
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-binaryauthorization1_beta1`.
+
+To learn more, run the command again with --verbose.

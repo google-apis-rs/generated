@@ -1,0 +1,38 @@
+    Blocking waiting for file lock on build directory
+    Checking google-fitness1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/fitness/v1/lib)
+error[E0423]: expected value, found struct `data_sources::DataSourcesActions`
+    --> gen/fitness/v1/lib/src/lib.rs:1205:13
+     |
+1205 |             data_sources::DataSourcesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `data_sources::DataSourcesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `dataset::DatasetActions`
+    --> gen/fitness/v1/lib/src/lib.rs:1209:13
+     |
+1209 |             dataset::DatasetActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `dataset::DatasetActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `sessions::SessionsActions`
+    --> gen/fitness/v1/lib/src/lib.rs:1213:13
+     |
+1213 |             sessions::SessionsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `sessions::SessionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `data_point_changes::DataPointChangesActions`
+    --> gen/fitness/v1/lib/src/lib.rs:1323:17
+     |
+1323 |                 data_point_changes::DataPointChangesActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `data_point_changes::DataPointChangesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `datasets::DatasetsActions`
+    --> gen/fitness/v1/lib/src/lib.rs:1327:17
+     |
+1327 |                 datasets::DatasetsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `datasets::DatasetsActions { /* fields */ }`?
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-fitness1`.
+
+To learn more, run the command again with --verbose.

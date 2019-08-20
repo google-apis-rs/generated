@@ -1,0 +1,265 @@
+    Blocking waiting for file lock on build directory
+    Checking google-books1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/books/v1/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/books/v1/lib/src/lib.rs:9105:35
+     |
+9105 |             action: Option<crate::readingpositions::params::SetPositionAction>,
+     |                                   ^^^^^^^^^^^^^^^^
+     |                                   |
+     |                                   unresolved import
+     |                                   help: a similar path exists: `crate::mylibrary::readingpositions`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/books/v1/lib/src/lib.rs:9121:31
+     |
+9121 |                 value: crate::readingpositions::params::SetPositionAction,
+     |                               ^^^^^^^^^^^^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::mylibrary::readingpositions`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/books/v1/lib/src/lib.rs:11622:40
+      |
+11622 |             association: Option<crate::associated::params::ListAssociation>,
+      |                                        ^^^^^^^^^^
+      |                                        |
+      |                                        unresolved import
+      |                                        help: a similar path exists: `crate::volumes::associated`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/books/v1/lib/src/lib.rs:11625:31
+      |
+11625 |                 Option<crate::associated::params::ListMaxAllowedMaturityRating>,
+      |                               ^^^^^^^^^^
+      |                               |
+      |                               unresolved import
+      |                               help: a similar path exists: `crate::volumes::associated`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/books/v1/lib/src/lib.rs:11639:31
+      |
+11639 |                 value: crate::associated::params::ListAssociation,
+      |                               ^^^^^^^^^^
+      |                               |
+      |                               unresolved import
+      |                               help: a similar path exists: `crate::volumes::associated`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/books/v1/lib/src/lib.rs:11652:31
+      |
+11652 |                 value: crate::associated::params::ListMaxAllowedMaturityRating,
+      |                               ^^^^^^^^^^
+      |                               |
+      |                               unresolved import
+      |                               help: a similar path exists: `crate::volumes::associated`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/books/v1/lib/src/lib.rs:11910:43
+      |
+11910 |             acquire_method: Option<crate::mybooks::params::ListAcquireMethod>,
+      |                                           ^^^^^^^
+      |                                           |
+      |                                           unresolved import
+      |                                           help: a similar path exists: `crate::volumes::mybooks`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/books/v1/lib/src/lib.rs:11914:45
+      |
+11914 |             processing_state: Option<crate::mybooks::params::ListProcessingState>,
+      |                                             ^^^^^^^
+      |                                             |
+      |                                             unresolved import
+      |                                             help: a similar path exists: `crate::volumes::mybooks`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/books/v1/lib/src/lib.rs:11929:31
+      |
+11929 |                 value: crate::mybooks::params::ListAcquireMethod,
+      |                               ^^^^^^^
+      |                               |
+      |                               unresolved import
+      |                               help: a similar path exists: `crate::volumes::mybooks`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/books/v1/lib/src/lib.rs:11952:31
+      |
+11952 |                 value: crate::mybooks::params::ListProcessingState,
+      |                               ^^^^^^^
+      |                               |
+      |                               unresolved import
+      |                               help: a similar path exists: `crate::volumes::mybooks`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/books/v1/lib/src/lib.rs:12179:32
+      |
+12179 |                 rating: crate::recommended::params::RateRating,
+      |                                ^^^^^^^^^^^
+      |                                |
+      |                                unresolved import
+      |                                help: a similar path exists: `crate::volumes::recommended`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/books/v1/lib/src/lib.rs:12205:31
+      |
+12205 |                 Option<crate::recommended::params::ListMaxAllowedMaturityRating>,
+      |                               ^^^^^^^^^^^
+      |                               |
+      |                               unresolved import
+      |                               help: a similar path exists: `crate::volumes::recommended`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/books/v1/lib/src/lib.rs:12224:31
+      |
+12224 |                 value: crate::recommended::params::ListMaxAllowedMaturityRating,
+      |                               ^^^^^^^^^^^
+      |                               |
+      |                               unresolved import
+      |                               help: a similar path exists: `crate::volumes::recommended`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/books/v1/lib/src/lib.rs:12328:28
+      |
+12328 |             rating: crate::recommended::params::RateRating,
+      |                            ^^^^^^^^^^^
+      |                            |
+      |                            unresolved import
+      |                            help: a similar path exists: `crate::volumes::recommended`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/books/v1/lib/src/lib.rs:12528:45
+      |
+12528 |             processing_state: Option<crate::useruploaded::params::ListProcessingState>,
+      |                                             ^^^^^^^^^^^^
+      |                                             |
+      |                                             unresolved import
+      |                                             help: a similar path exists: `crate::volumes::useruploaded`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/books/v1/lib/src/lib.rs:12554:31
+      |
+12554 |                 value: crate::useruploaded::params::ListProcessingState,
+      |                               ^^^^^^^^^^^^
+      |                               |
+      |                               unresolved import
+      |                               help: a similar path exists: `crate::volumes::useruploaded`
+
+error[E0423]: expected value, found struct `volumes::VolumesActions`
+    --> gen/books/v1/lib/src/lib.rs:3784:13
+     |
+3784 |             volumes::VolumesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `volumes::VolumesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `annotation_data::AnnotationDataActions`
+    --> gen/books/v1/lib/src/lib.rs:5065:13
+     |
+5065 |             annotation_data::AnnotationDataActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `annotation_data::AnnotationDataActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `volume_annotations::VolumeAnnotationsActions`
+    --> gen/books/v1/lib/src/lib.rs:5069:13
+     |
+5069 |             volume_annotations::VolumeAnnotationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `volume_annotations::VolumeAnnotationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `annotations::AnnotationsActions`
+    --> gen/books/v1/lib/src/lib.rs:7044:13
+     |
+7044 |             annotations::AnnotationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `annotations::AnnotationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `bookshelves::BookshelvesActions`
+    --> gen/books/v1/lib/src/lib.rs:7048:13
+     |
+7048 |             bookshelves::BookshelvesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `bookshelves::BookshelvesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `readingpositions::ReadingpositionsActions`
+    --> gen/books/v1/lib/src/lib.rs:7052:13
+     |
+7052 |             readingpositions::ReadingpositionsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `readingpositions::ReadingpositionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `volumes::VolumesActions`
+    --> gen/books/v1/lib/src/lib.rs:8055:17
+     |
+8055 |                 volumes::VolumesActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `volumes::VolumesActions { /* fields */ }`?
+
+error[E0412]: cannot find type `AddVolumeReason` in module `crate::bookshelves::params`
+    --> gen/books/v1/lib/src/lib.rs:8064:56
+     |
+8064 |             reason: Option<crate::bookshelves::params::AddVolumeReason>,
+     |                                                        ^^^^^^^^^^^^^^^ not found in `crate::bookshelves::params`
+help: possible candidate is found in another module, you can import it into scope
+     |
+7840 |         use crate::mylibrary::bookshelves::params::AddVolumeReason;
+     |
+
+error[E0412]: cannot find type `AddVolumeReason` in module `crate::bookshelves::params`
+    --> gen/books/v1/lib/src/lib.rs:8078:52
+     |
+8078 |                 value: crate::bookshelves::params::AddVolumeReason,
+     |                                                    ^^^^^^^^^^^^^^^ not found in `crate::bookshelves::params`
+help: possible candidate is found in another module, you can import it into scope
+     |
+7840 |         use crate::mylibrary::bookshelves::params::AddVolumeReason;
+     |
+
+error[E0412]: cannot find type `RemoveVolumeReason` in module `crate::bookshelves::params`
+    --> gen/books/v1/lib/src/lib.rs:8548:56
+     |
+8548 |             reason: Option<crate::bookshelves::params::RemoveVolumeReason>,
+     |                                                        ^^^^^^^^^^^^^^^^^^ not found in `crate::bookshelves::params`
+help: possible candidate is found in another module, you can import it into scope
+     |
+7840 |         use crate::mylibrary::bookshelves::params::RemoveVolumeReason;
+     |
+
+error[E0412]: cannot find type `RemoveVolumeReason` in module `crate::bookshelves::params`
+    --> gen/books/v1/lib/src/lib.rs:8562:52
+     |
+8562 |                 value: crate::bookshelves::params::RemoveVolumeReason,
+     |                                                    ^^^^^^^^^^^^^^^^^^ not found in `crate::bookshelves::params`
+help: possible candidate is found in another module, you can import it into scope
+     |
+7840 |         use crate::mylibrary::bookshelves::params::RemoveVolumeReason;
+     |
+
+error[E0423]: expected value, found struct `membership::MembershipActions`
+     --> gen/books/v1/lib/src/lib.rs:10457:13
+      |
+10457 |             membership::MembershipActions
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `membership::MembershipActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `associated::AssociatedActions`
+     --> gen/books/v1/lib/src/lib.rs:11137:13
+      |
+11137 |             associated::AssociatedActions
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `associated::AssociatedActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `mybooks::MybooksActions`
+     --> gen/books/v1/lib/src/lib.rs:11141:13
+      |
+11141 |             mybooks::MybooksActions
+      |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `mybooks::MybooksActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `recommended::RecommendedActions`
+     --> gen/books/v1/lib/src/lib.rs:11145:13
+      |
+11145 |             recommended::RecommendedActions
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `recommended::RecommendedActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `useruploaded::UseruploadedActions`
+     --> gen/books/v1/lib/src/lib.rs:11149:13
+      |
+11149 |             useruploaded::UseruploadedActions
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `useruploaded::UseruploadedActions { /* fields */ }`?
+
+error: aborting due to 32 previous errors
+
+Some errors have detailed explanations: E0412, E0423, E0433.
+For more information about an error, try `rustc --explain E0412`.
+error: Could not compile `google-books1`.
+
+To learn more, run the command again with --verbose.

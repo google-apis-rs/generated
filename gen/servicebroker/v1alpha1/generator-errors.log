@@ -1,0 +1,56 @@
+    Blocking waiting for file lock on build directory
+    Checking google-servicebroker1_alpha1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/servicebroker/v1alpha1/lib)
+error[E0423]: expected value, found struct `brokers::BrokersActions`
+   --> gen/servicebroker/v1alpha1/lib/src/lib.rs:793:13
+    |
+793 |             brokers::BrokersActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `brokers::BrokersActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `instances::InstancesActions`
+   --> gen/servicebroker/v1alpha1/lib/src/lib.rs:805:17
+    |
+805 |                 instances::InstancesActions
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `instances::InstancesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `service_instances::ServiceInstancesActions`
+   --> gen/servicebroker/v1alpha1/lib/src/lib.rs:809:17
+    |
+809 |                 service_instances::ServiceInstancesActions
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `service_instances::ServiceInstancesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `v_2::V2Actions`
+   --> gen/servicebroker/v1alpha1/lib/src/lib.rs:813:17
+    |
+813 |                 v_2::V2Actions
+    |                 ^^^^^^^^^^^^^^ did you mean `v_2::V2Actions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `service_bindings::ServiceBindingsActions`
+   --> gen/servicebroker/v1alpha1/lib/src/lib.rs:844:21
+    |
+844 |                     service_bindings::ServiceBindingsActions
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `service_bindings::ServiceBindingsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `catalog::CatalogActions`
+    --> gen/servicebroker/v1alpha1/lib/src/lib.rs:1501:21
+     |
+1501 |                     catalog::CatalogActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `catalog::CatalogActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `service_instances::ServiceInstancesActions`
+    --> gen/servicebroker/v1alpha1/lib/src/lib.rs:1505:21
+     |
+1505 |                     service_instances::ServiceInstancesActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `service_instances::ServiceInstancesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `service_bindings::ServiceBindingsActions`
+    --> gen/servicebroker/v1alpha1/lib/src/lib.rs:1902:25
+     |
+1902 |                         service_bindings::ServiceBindingsActions
+     |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `service_bindings::ServiceBindingsActions { /* fields */ }`?
+
+error: aborting due to 8 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-servicebroker1_alpha1`.
+
+To learn more, run the command again with --verbose.

@@ -1,0 +1,14 @@
+    Blocking waiting for file lock on build directory
+    Checking google-alertcenter1_beta1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/alertcenter/v1beta1/lib)
+error[E0423]: expected value, found struct `feedback::FeedbackActions`
+    --> gen/alertcenter/v1beta1/lib/src/lib.rs:1259:13
+     |
+1259 |             feedback::FeedbackActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `feedback::FeedbackActions { /* fields */ }`?
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-alertcenter1_beta1`.
+
+To learn more, run the command again with --verbose.

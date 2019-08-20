@@ -1,0 +1,104 @@
+    Blocking waiting for file lock on build directory
+    Checking google-adsense1d4 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/adsense/v1.4/lib)
+error[E0423]: expected value, found struct `adclients::AdclientsActions`
+    --> gen/adsense/v1.4/lib/src/lib.rs:1324:13
+     |
+1324 |             adclients::AdclientsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `adclients::AdclientsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `adunits::AdunitsActions`
+    --> gen/adsense/v1.4/lib/src/lib.rs:1328:13
+     |
+1328 |             adunits::AdunitsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `adunits::AdunitsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `alerts::AlertsActions`
+    --> gen/adsense/v1.4/lib/src/lib.rs:1332:13
+     |
+1332 |             alerts::AlertsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^ did you mean `alerts::AlertsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `customchannels::CustomchannelsActions`
+    --> gen/adsense/v1.4/lib/src/lib.rs:1336:13
+     |
+1336 |             customchannels::CustomchannelsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `customchannels::CustomchannelsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `payments::PaymentsActions`
+    --> gen/adsense/v1.4/lib/src/lib.rs:1340:13
+     |
+1340 |             payments::PaymentsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `payments::PaymentsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `reports::ReportsActions`
+    --> gen/adsense/v1.4/lib/src/lib.rs:1344:13
+     |
+1344 |             reports::ReportsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `reports::ReportsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `savedadstyles::SavedadstylesActions`
+    --> gen/adsense/v1.4/lib/src/lib.rs:1348:13
+     |
+1348 |             savedadstyles::SavedadstylesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `savedadstyles::SavedadstylesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `urlchannels::UrlchannelsActions`
+    --> gen/adsense/v1.4/lib/src/lib.rs:1352:13
+     |
+1352 |             urlchannels::UrlchannelsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `urlchannels::UrlchannelsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `customchannels::CustomchannelsActions`
+    --> gen/adsense/v1.4/lib/src/lib.rs:2073:17
+     |
+2073 |                 customchannels::CustomchannelsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `customchannels::CustomchannelsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `adunits::AdunitsActions`
+    --> gen/adsense/v1.4/lib/src/lib.rs:3016:17
+     |
+3016 |                 adunits::AdunitsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `adunits::AdunitsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `saved::SavedActions`
+    --> gen/adsense/v1.4/lib/src/lib.rs:3731:17
+     |
+3731 |                 saved::SavedActions
+     |                 ^^^^^^^^^^^^^^^^^^^ did you mean `saved::SavedActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `customchannels::CustomchannelsActions`
+    --> gen/adsense/v1.4/lib/src/lib.rs:5156:13
+     |
+5156 |             customchannels::CustomchannelsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `customchannels::CustomchannelsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `adunits::AdunitsActions`
+    --> gen/adsense/v1.4/lib/src/lib.rs:6057:13
+     |
+6057 |             adunits::AdunitsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `adunits::AdunitsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `dimensions::DimensionsActions`
+    --> gen/adsense/v1.4/lib/src/lib.rs:6604:13
+     |
+6604 |             dimensions::DimensionsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `dimensions::DimensionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `metrics::MetricsActions`
+    --> gen/adsense/v1.4/lib/src/lib.rs:6608:13
+     |
+6608 |             metrics::MetricsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `metrics::MetricsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `saved::SavedActions`
+    --> gen/adsense/v1.4/lib/src/lib.rs:7011:13
+     |
+7011 |             saved::SavedActions
+     |             ^^^^^^^^^^^^^^^^^^^ did you mean `saved::SavedActions { /* fields */ }`?
+
+error: aborting due to 16 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-adsense1d4`.
+
+To learn more, run the command again with --verbose.

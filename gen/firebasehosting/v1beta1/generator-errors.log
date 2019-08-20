@@ -1,0 +1,65 @@
+    Blocking waiting for file lock on build directory
+    Checking google-firebasehosting1_beta1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/firebasehosting/v1beta1/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/firebasehosting/v1beta1/lib/src/lib.rs:3661:39
+     |
+3661 |                 status: Option<crate::files::params::ListStatus>,
+     |                                       ^^^^^
+     |                                       |
+     |                                       unresolved import
+     |                                       help: a similar path exists: `crate::sites::versions::files`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/firebasehosting/v1beta1/lib/src/lib.rs:3686:56
+     |
+3686 |                 pub fn status(&mut self, value: crate::files::params::ListStatus) -> &mut Self {
+     |                                                        ^^^^^
+     |                                                        |
+     |                                                        unresolved import
+     |                                                        help: a similar path exists: `crate::sites::versions::files`
+
+error[E0423]: expected value, found struct `domains::DomainsActions`
+    --> gen/firebasehosting/v1beta1/lib/src/lib.rs:1393:13
+     |
+1393 |             domains::DomainsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `domains::DomainsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `releases::ReleasesActions`
+    --> gen/firebasehosting/v1beta1/lib/src/lib.rs:1397:13
+     |
+1397 |             releases::ReleasesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `releases::ReleasesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `versions::VersionsActions`
+    --> gen/firebasehosting/v1beta1/lib/src/lib.rs:1401:13
+     |
+1401 |             versions::VersionsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `versions::VersionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `files::FilesActions`
+    --> gen/firebasehosting/v1beta1/lib/src/lib.rs:3043:17
+     |
+3043 |                 files::FilesActions
+     |                 ^^^^^^^^^^^^^^^^^^^ did you mean `files::FilesActions { /* fields */ }`?
+
+warning: unreachable expression
+    --> gen/firebasehosting/v1beta1/lib/src/lib.rs:3615:25
+     |
+3615 | /                         Ok(match value {
+3616 | |                             _ => {
+3617 | |                                 return Err(::serde::de::Error::custom(format!(
+3618 | |                                     "invalid enum for #name: {}",
+...    |
+3621 | |                             }
+3622 | |                         })
+     | |__________________________^
+     |
+     = note: #[warn(unreachable_code)] on by default
+
+error: aborting due to 6 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-firebasehosting1_beta1`.
+
+To learn more, run the command again with --verbose.

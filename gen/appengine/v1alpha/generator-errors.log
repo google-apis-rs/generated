@@ -1,0 +1,131 @@
+    Blocking waiting for file lock on build directory
+    Checking google-appengine1_alpha v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/appengine/v1alpha/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/appengine/v1alpha/lib/src/lib.rs:1467:33
+     |
+1467 |             view: Option<crate::authorized_certificates::params::GetView>,
+     |                                 ^^^^^^^^^^^^^^^^^^^^^^^
+     |                                 |
+     |                                 unresolved import
+     |                                 help: a similar path exists: `crate::apps::authorized_certificates`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/appengine/v1alpha/lib/src/lib.rs:1484:31
+     |
+1484 |                 value: crate::authorized_certificates::params::GetView,
+     |                               ^^^^^^^^^^^^^^^^^^^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::apps::authorized_certificates`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/appengine/v1alpha/lib/src/lib.rs:1609:33
+     |
+1609 |             view: Option<crate::authorized_certificates::params::ListView>,
+     |                                 ^^^^^^^^^^^^^^^^^^^^^^^
+     |                                 |
+     |                                 unresolved import
+     |                                 help: a similar path exists: `crate::apps::authorized_certificates`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/appengine/v1alpha/lib/src/lib.rs:1636:31
+     |
+1636 |                 value: crate::authorized_certificates::params::ListView,
+     |                               ^^^^^^^^^^^^^^^^^^^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::apps::authorized_certificates`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/appengine/v1alpha/lib/src/lib.rs:2409:46
+     |
+2409 |             override_strategy: Option<crate::domain_mappings::params::CreateOverrideStrategy>,
+     |                                              ^^^^^^^^^^^^^^^
+     |                                              |
+     |                                              unresolved import
+     |                                              help: a similar path exists: `crate::apps::domain_mappings`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/appengine/v1alpha/lib/src/lib.rs:2431:31
+     |
+2431 |                 value: crate::domain_mappings::params::CreateOverrideStrategy,
+     |                               ^^^^^^^^^^^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::apps::domain_mappings`
+
+error[E0423]: expected value, found struct `authorized_certificates::AuthorizedCertificatesActions`
+   --> gen/appengine/v1alpha/lib/src/lib.rs:977:13
+    |
+977 |             authorized_certificates::AuthorizedCertificatesActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `authorized_certificates::AuthorizedCertificatesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `authorized_domains::AuthorizedDomainsActions`
+   --> gen/appengine/v1alpha/lib/src/lib.rs:981:13
+    |
+981 |             authorized_domains::AuthorizedDomainsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `authorized_domains::AuthorizedDomainsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `domain_mappings::DomainMappingsActions`
+   --> gen/appengine/v1alpha/lib/src/lib.rs:985:13
+    |
+985 |             domain_mappings::DomainMappingsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `domain_mappings::DomainMappingsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `locations::LocationsActions`
+   --> gen/appengine/v1alpha/lib/src/lib.rs:989:13
+    |
+989 |             locations::LocationsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `locations::LocationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `operations::OperationsActions`
+   --> gen/appengine/v1alpha/lib/src/lib.rs:993:13
+    |
+993 |             operations::OperationsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `operations::OperationsActions { /* fields */ }`?
+
+warning: unreachable expression
+    --> gen/appengine/v1alpha/lib/src/lib.rs:1024:21
+     |
+1024 | /                     Ok(match value {
+1025 | |                         _ => {
+1026 | |                             return Err(::serde::de::Error::custom(format!(
+1027 | |                                 "invalid enum for #name: {}",
+...    |
+1030 | |                         }
+1031 | |                     })
+     | |______________________^
+     |
+     = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+    --> gen/appengine/v1alpha/lib/src/lib.rs:1060:21
+     |
+1060 | /                     Ok(match value {
+1061 | |                         _ => {
+1062 | |                             return Err(::serde::de::Error::custom(format!(
+1063 | |                                 "invalid enum for #name: {}",
+...    |
+1066 | |                         }
+1067 | |                     })
+     | |______________________^
+
+warning: unreachable expression
+    --> gen/appengine/v1alpha/lib/src/lib.rs:2262:21
+     |
+2262 | /                     Ok(match value {
+2263 | |                         _ => {
+2264 | |                             return Err(::serde::de::Error::custom(format!(
+2265 | |                                 "invalid enum for #name: {}",
+...    |
+2268 | |                         }
+2269 | |                     })
+     | |______________________^
+
+error: aborting due to 11 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-appengine1_alpha`.
+
+To learn more, run the command again with --verbose.

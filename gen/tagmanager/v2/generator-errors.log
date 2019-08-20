@@ -1,0 +1,141 @@
+    Blocking waiting for file lock on build directory
+    Checking google-tagmanager2 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/tagmanager/v2/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/tagmanager/v2/lib/src/lib.rs:9209:43
+     |
+9209 |                     r#type: Option<crate::built_in_variables::params::CreateType>,
+     |                                           ^^^^^^^^^^^^^^^^^^
+     |                                           |
+     |                                           unresolved import
+     |                                           help: a similar path exists: `crate::accounts::containers::workspaces::built_in_variables`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/tagmanager/v2/lib/src/lib.rs:9222:39
+     |
+9222 |                         value: crate::built_in_variables::params::CreateType,
+     |                                       ^^^^^^^^^^^^^^^^^^
+     |                                       |
+     |                                       unresolved import
+     |                                       help: a similar path exists: `crate::accounts::containers::workspaces::built_in_variables`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/tagmanager/v2/lib/src/lib.rs:9323:43
+     |
+9323 |                     r#type: Option<crate::built_in_variables::params::DeleteType>,
+     |                                           ^^^^^^^^^^^^^^^^^^
+     |                                           |
+     |                                           unresolved import
+     |                                           help: a similar path exists: `crate::accounts::containers::workspaces::built_in_variables`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/tagmanager/v2/lib/src/lib.rs:9336:39
+     |
+9336 |                         value: crate::built_in_variables::params::DeleteType,
+     |                                       ^^^^^^^^^^^^^^^^^^
+     |                                       |
+     |                                       unresolved import
+     |                                       help: a similar path exists: `crate::accounts::containers::workspaces::built_in_variables`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/tagmanager/v2/lib/src/lib.rs:9604:43
+     |
+9604 |                     r#type: Option<crate::built_in_variables::params::RevertType>,
+     |                                           ^^^^^^^^^^^^^^^^^^
+     |                                           |
+     |                                           unresolved import
+     |                                           help: a similar path exists: `crate::accounts::containers::workspaces::built_in_variables`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/tagmanager/v2/lib/src/lib.rs:9617:39
+     |
+9617 |                         value: crate::built_in_variables::params::RevertType,
+     |                                       ^^^^^^^^^^^^^^^^^^
+     |                                       |
+     |                                       unresolved import
+     |                                       help: a similar path exists: `crate::accounts::containers::workspaces::built_in_variables`
+
+error[E0423]: expected value, found struct `containers::ContainersActions`
+    --> gen/tagmanager/v2/lib/src/lib.rs:3372:13
+     |
+3372 |             containers::ContainersActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `containers::ContainersActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `user_permissions::UserPermissionsActions`
+    --> gen/tagmanager/v2/lib/src/lib.rs:3376:13
+     |
+3376 |             user_permissions::UserPermissionsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `user_permissions::UserPermissionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `environments::EnvironmentsActions`
+    --> gen/tagmanager/v2/lib/src/lib.rs:3868:17
+     |
+3868 |                 environments::EnvironmentsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `environments::EnvironmentsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `version_headers::VersionHeadersActions`
+    --> gen/tagmanager/v2/lib/src/lib.rs:3872:17
+     |
+3872 |                 version_headers::VersionHeadersActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `version_headers::VersionHeadersActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `versions::VersionsActions`
+    --> gen/tagmanager/v2/lib/src/lib.rs:3876:17
+     |
+3876 |                 versions::VersionsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `versions::VersionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `workspaces::WorkspacesActions`
+    --> gen/tagmanager/v2/lib/src/lib.rs:3880:17
+     |
+3880 |                 workspaces::WorkspacesActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `workspaces::WorkspacesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `built_in_variables::BuiltInVariablesActions`
+    --> gen/tagmanager/v2/lib/src/lib.rs:6633:21
+     |
+6633 |                     built_in_variables::BuiltInVariablesActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `built_in_variables::BuiltInVariablesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `folders::FoldersActions`
+    --> gen/tagmanager/v2/lib/src/lib.rs:6637:21
+     |
+6637 |                     folders::FoldersActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `folders::FoldersActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `tags::TagsActions`
+    --> gen/tagmanager/v2/lib/src/lib.rs:6641:21
+     |
+6641 |                     tags::TagsActions
+     |                     ^^^^^^^^^^^^^^^^^ did you mean `tags::TagsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `templates::TemplatesActions`
+    --> gen/tagmanager/v2/lib/src/lib.rs:6645:21
+     |
+6645 |                     templates::TemplatesActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `templates::TemplatesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `triggers::TriggersActions`
+    --> gen/tagmanager/v2/lib/src/lib.rs:6649:21
+     |
+6649 |                     triggers::TriggersActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `triggers::TriggersActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `variables::VariablesActions`
+    --> gen/tagmanager/v2/lib/src/lib.rs:6653:21
+     |
+6653 |                     variables::VariablesActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `variables::VariablesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `zones::ZonesActions`
+    --> gen/tagmanager/v2/lib/src/lib.rs:6657:21
+     |
+6657 |                     zones::ZonesActions
+     |                     ^^^^^^^^^^^^^^^^^^^ did you mean `zones::ZonesActions { /* fields */ }`?
+
+error: aborting due to 19 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-tagmanager2`.
+
+To learn more, run the command again with --verbose.

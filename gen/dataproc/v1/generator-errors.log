@@ -1,0 +1,107 @@
+    Blocking waiting for file lock on build directory
+    Checking google-dataproc1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/dataproc/v1/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dataproc/v1/lib/src/lib.rs:7017:50
+     |
+7017 |                 job_state_matcher: Option<crate::jobs::params::ListJobStateMatcher>,
+     |                                                  ^^^^
+     |                                                  |
+     |                                                  unresolved import
+     |                                                  help: a similar path exists: `crate::projects::regions::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dataproc/v1/lib/src/lib.rs:7046:35
+     |
+7046 |                     value: crate::jobs::params::ListJobStateMatcher,
+     |                                   ^^^^
+     |                                   |
+     |                                   unresolved import
+     |                                   help: a similar path exists: `crate::projects::regions::jobs`
+
+error[E0423]: expected value, found struct `locations::LocationsActions`
+    --> gen/dataproc/v1/lib/src/lib.rs:2887:13
+     |
+2887 |             locations::LocationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `locations::LocationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `regions::RegionsActions`
+    --> gen/dataproc/v1/lib/src/lib.rs:2891:13
+     |
+2891 |             regions::RegionsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `regions::RegionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `workflow_templates::WorkflowTemplatesActions`
+    --> gen/dataproc/v1/lib/src/lib.rs:2903:17
+     |
+2903 |                 workflow_templates::WorkflowTemplatesActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `workflow_templates::WorkflowTemplatesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `clusters::ClustersActions`
+    --> gen/dataproc/v1/lib/src/lib.rs:4578:17
+     |
+4578 |                 clusters::ClustersActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `clusters::ClustersActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `jobs::JobsActions`
+    --> gen/dataproc/v1/lib/src/lib.rs:4582:17
+     |
+4582 |                 jobs::JobsActions
+     |                 ^^^^^^^^^^^^^^^^^ did you mean `jobs::JobsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `operations::OperationsActions`
+    --> gen/dataproc/v1/lib/src/lib.rs:4586:17
+     |
+4586 |                 operations::OperationsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `operations::OperationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `workflow_templates::WorkflowTemplatesActions`
+    --> gen/dataproc/v1/lib/src/lib.rs:4590:17
+     |
+4590 |                 workflow_templates::WorkflowTemplatesActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `workflow_templates::WorkflowTemplatesActions { /* fields */ }`?
+
+warning: unreachable expression
+    --> gen/dataproc/v1/lib/src/lib.rs:1539:13
+     |
+1539 | /             Ok(match value {
+1540 | |                 _ => {
+1541 | |                     return Err(::serde::de::Error::custom(format!(
+1542 | |                         "invalid enum for #name: {}",
+...    |
+1545 | |                 }
+1546 | |             })
+     | |______________^
+     |
+     = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+    --> gen/dataproc/v1/lib/src/lib.rs:2046:13
+     |
+2046 | /             Ok(match value {
+2047 | |                 _ => {
+2048 | |                     return Err(::serde::de::Error::custom(format!(
+2049 | |                         "invalid enum for #name: {}",
+...    |
+2052 | |                 }
+2053 | |             })
+     | |______________^
+
+warning: unreachable expression
+    --> gen/dataproc/v1/lib/src/lib.rs:6222:25
+     |
+6222 | /                         Ok(match value {
+6223 | |                             _ => {
+6224 | |                                 return Err(::serde::de::Error::custom(format!(
+6225 | |                                     "invalid enum for #name: {}",
+...    |
+6228 | |                             }
+6229 | |                         })
+     | |__________________________^
+
+error: aborting due to 9 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-dataproc1`.
+
+To learn more, run the command again with --verbose.

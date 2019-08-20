@@ -1,0 +1,20 @@
+    Blocking waiting for file lock on build directory
+    Checking google-fusiontables1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/fusiontables/v1/lib)
+error[E0609]: no field `request` on type `table::ImportRowsRequestBuilder<'a, A>`
+    --> gen/fusiontables/v1/lib/src/lib.rs:3345:59
+     |
+3345 |             let request_json = ::serde_json::to_vec(&self.request)?;
+     |                                                           ^^^^^^^ help: a field with a similar name exists: `reqwest`
+
+error[E0609]: no field `request` on type `table::ImportTableRequestBuilder<'a, A>`
+    --> gen/fusiontables/v1/lib/src/lib.rs:3524:59
+     |
+3524 |             let request_json = ::serde_json::to_vec(&self.request)?;
+     |                                                           ^^^^^^^ help: a field with a similar name exists: `reqwest`
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0609`.
+error: Could not compile `google-fusiontables1`.
+
+To learn more, run the command again with --verbose.

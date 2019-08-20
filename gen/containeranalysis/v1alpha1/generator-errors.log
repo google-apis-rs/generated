@@ -1,0 +1,83 @@
+    Blocking waiting for file lock on build directory
+    Checking google-containeranalysis1_alpha1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/containeranalysis/v1alpha1/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/containeranalysis/v1alpha1/lib/src/lib.rs:6223:33
+     |
+6223 |             kind: Option<crate::occurrences::params::ListKind>,
+     |                                 ^^^^^^^^^^^
+     |                                 |
+     |                                 unresolved import
+     |                                 help: a similar path exists: `crate::projects::occurrences`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/containeranalysis/v1alpha1/lib/src/lib.rs:6246:50
+     |
+6246 |             pub fn kind(&mut self, value: crate::occurrences::params::ListKind) -> &mut Self {
+     |                                                  ^^^^^^^^^^^
+     |                                                  |
+     |                                                  unresolved import
+     |                                                  help: a similar path exists: `crate::projects::occurrences`
+
+error[E0423]: expected value, found struct `notes::NotesActions`
+    --> gen/containeranalysis/v1alpha1/lib/src/lib.rs:3515:13
+     |
+3515 |             notes::NotesActions
+     |             ^^^^^^^^^^^^^^^^^^^ did you mean `notes::NotesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `occurrences::OccurrencesActions`
+    --> gen/containeranalysis/v1alpha1/lib/src/lib.rs:3519:13
+     |
+3519 |             occurrences::OccurrencesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `occurrences::OccurrencesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `operations::OperationsActions`
+    --> gen/containeranalysis/v1alpha1/lib/src/lib.rs:3523:13
+     |
+3523 |             operations::OperationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `operations::OperationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `scan_configs::ScanConfigsActions`
+    --> gen/containeranalysis/v1alpha1/lib/src/lib.rs:3527:13
+     |
+3527 |             scan_configs::ScanConfigsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `scan_configs::ScanConfigsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `occurrences::OccurrencesActions`
+    --> gen/containeranalysis/v1alpha1/lib/src/lib.rs:3723:17
+     |
+3723 |                 occurrences::OccurrencesActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `occurrences::OccurrencesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `notes::NotesActions`
+    --> gen/containeranalysis/v1alpha1/lib/src/lib.rs:7761:13
+     |
+7761 |             notes::NotesActions
+     |             ^^^^^^^^^^^^^^^^^^^ did you mean `notes::NotesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `occurrences::OccurrencesActions`
+    --> gen/containeranalysis/v1alpha1/lib/src/lib.rs:7957:17
+     |
+7957 |                 occurrences::OccurrencesActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `occurrences::OccurrencesActions { /* fields */ }`?
+
+warning: unreachable expression
+    --> gen/containeranalysis/v1alpha1/lib/src/lib.rs:5185:21
+     |
+5185 | /                     Ok(match value {
+5186 | |                         _ => {
+5187 | |                             return Err(::serde::de::Error::custom(format!(
+5188 | |                                 "invalid enum for #name: {}",
+...    |
+5191 | |                         }
+5192 | |                     })
+     | |______________________^
+     |
+     = note: #[warn(unreachable_code)] on by default
+
+error: aborting due to 9 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-containeranalysis1_alpha1`.
+
+To learn more, run the command again with --verbose.

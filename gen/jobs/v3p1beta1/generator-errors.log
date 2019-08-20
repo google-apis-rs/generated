@@ -1,0 +1,185 @@
+    Blocking waiting for file lock on build directory
+    Checking google-jobs3_p1beta1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/jobs/v3p1beta1/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/jobs/v3p1beta1/lib/src/lib.rs:5667:37
+     |
+5667 |             job_view: Option<crate::jobs::params::ListJobView>,
+     |                                     ^^^^
+     |                                     |
+     |                                     unresolved import
+     |                                     help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/jobs/v3p1beta1/lib/src/lib.rs:5689:54
+     |
+5689 |             pub fn job_view(&mut self, value: crate::jobs::params::ListJobView) -> &mut Self {
+     |                                                      ^^^^
+     |                                                      |
+     |                                                      unresolved import
+     |                                                      help: a similar path exists: `crate::projects::jobs`
+
+error[E0423]: expected value, found struct `client_events::ClientEventsActions`
+    --> gen/jobs/v3p1beta1/lib/src/lib.rs:3700:13
+     |
+3700 |             client_events::ClientEventsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `client_events::ClientEventsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `companies::CompaniesActions`
+    --> gen/jobs/v3p1beta1/lib/src/lib.rs:3704:13
+     |
+3704 |             companies::CompaniesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `companies::CompaniesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `jobs::JobsActions`
+    --> gen/jobs/v3p1beta1/lib/src/lib.rs:3708:13
+     |
+3708 |             jobs::JobsActions
+     |             ^^^^^^^^^^^^^^^^^ did you mean `jobs::JobsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `operations::OperationsActions`
+    --> gen/jobs/v3p1beta1/lib/src/lib.rs:3712:13
+     |
+3712 |             operations::OperationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `operations::OperationsActions { /* fields */ }`?
+
+warning: unreachable expression
+   --> gen/jobs/v3p1beta1/lib/src/lib.rs:723:13
+    |
+723 | /             Ok(match value {
+724 | |                 _ => {
+725 | |                     return Err(::serde::de::Error::custom(format!(
+726 | |                         "invalid enum for #name: {}",
+...   |
+729 | |                 }
+730 | |             })
+    | |______________^
+    |
+    = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+    --> gen/jobs/v3p1beta1/lib/src/lib.rs:1481:13
+     |
+1481 | /             Ok(match value {
+1482 | |                 _ => {
+1483 | |                     return Err(::serde::de::Error::custom(format!(
+1484 | |                         "invalid enum for #name: {}",
+...    |
+1487 | |                 }
+1488 | |             })
+     | |______________^
+
+warning: unreachable expression
+    --> gen/jobs/v3p1beta1/lib/src/lib.rs:1763:13
+     |
+1763 | /             Ok(match value {
+1764 | |                 _ => {
+1765 | |                     return Err(::serde::de::Error::custom(format!(
+1766 | |                         "invalid enum for #name: {}",
+...    |
+1769 | |                 }
+1770 | |             })
+     | |______________^
+
+warning: unreachable expression
+    --> gen/jobs/v3p1beta1/lib/src/lib.rs:1799:13
+     |
+1799 | /             Ok(match value {
+1800 | |                 _ => {
+1801 | |                     return Err(::serde::de::Error::custom(format!(
+1802 | |                         "invalid enum for #name: {}",
+...    |
+1805 | |                 }
+1806 | |             })
+     | |______________^
+
+warning: unreachable expression
+    --> gen/jobs/v3p1beta1/lib/src/lib.rs:1835:13
+     |
+1835 | /             Ok(match value {
+1836 | |                 _ => {
+1837 | |                     return Err(::serde::de::Error::custom(format!(
+1838 | |                         "invalid enum for #name: {}",
+...    |
+1841 | |                 }
+1842 | |             })
+     | |______________^
+
+warning: unreachable expression
+    --> gen/jobs/v3p1beta1/lib/src/lib.rs:2147:13
+     |
+2147 | /             Ok(match value {
+2148 | |                 _ => {
+2149 | |                     return Err(::serde::de::Error::custom(format!(
+2150 | |                         "invalid enum for #name: {}",
+...    |
+2153 | |                 }
+2154 | |             })
+     | |______________^
+
+warning: unreachable expression
+    --> gen/jobs/v3p1beta1/lib/src/lib.rs:2340:13
+     |
+2340 | /             Ok(match value {
+2341 | |                 _ => {
+2342 | |                     return Err(::serde::de::Error::custom(format!(
+2343 | |                         "invalid enum for #name: {}",
+...    |
+2346 | |                 }
+2347 | |             })
+     | |______________^
+
+warning: unreachable expression
+    --> gen/jobs/v3p1beta1/lib/src/lib.rs:2376:13
+     |
+2376 | /             Ok(match value {
+2377 | |                 _ => {
+2378 | |                     return Err(::serde::de::Error::custom(format!(
+2379 | |                         "invalid enum for #name: {}",
+...    |
+2382 | |                 }
+2383 | |             })
+     | |______________^
+
+warning: unreachable expression
+    --> gen/jobs/v3p1beta1/lib/src/lib.rs:3620:17
+     |
+3620 | /                 Ok(match value {
+3621 | |                     _ => {
+3622 | |                         return Err(::serde::de::Error::custom(format!(
+3623 | |                             "invalid enum for #name: {}",
+...    |
+3626 | |                     }
+3627 | |                 })
+     | |__________________^
+
+warning: unreachable expression
+    --> gen/jobs/v3p1beta1/lib/src/lib.rs:3656:17
+     |
+3656 | /                 Ok(match value {
+3657 | |                     _ => {
+3658 | |                         return Err(::serde::de::Error::custom(format!(
+3659 | |                             "invalid enum for #name: {}",
+...    |
+3662 | |                     }
+3663 | |                 })
+     | |__________________^
+
+warning: unreachable expression
+    --> gen/jobs/v3p1beta1/lib/src/lib.rs:4947:21
+     |
+4947 | /                     Ok(match value {
+4948 | |                         _ => {
+4949 | |                             return Err(::serde::de::Error::custom(format!(
+4950 | |                                 "invalid enum for #name: {}",
+...    |
+4953 | |                         }
+4954 | |                     })
+     | |______________________^
+
+error: aborting due to 6 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-jobs3_p1beta1`.
+
+To learn more, run the command again with --verbose.

@@ -1,0 +1,26 @@
+    Blocking waiting for file lock on build directory
+    Checking google-translate3_beta1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/translate/v3beta1/lib)
+error[E0423]: expected value, found struct `locations::LocationsActions`
+   --> gen/translate/v3beta1/lib/src/lib.rs:965:13
+    |
+965 |             locations::LocationsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `locations::LocationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `glossaries::GlossariesActions`
+    --> gen/translate/v3beta1/lib/src/lib.rs:1518:17
+     |
+1518 |                 glossaries::GlossariesActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `glossaries::GlossariesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `operations::OperationsActions`
+    --> gen/translate/v3beta1/lib/src/lib.rs:1522:17
+     |
+1522 |                 operations::OperationsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `operations::OperationsActions { /* fields */ }`?
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-translate3_beta1`.
+
+To learn more, run the command again with --verbose.

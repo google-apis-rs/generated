@@ -1,0 +1,32 @@
+    Blocking waiting for file lock on build directory
+    Checking google-containeranalysis1_beta1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/containeranalysis/v1beta1/lib)
+error[E0423]: expected value, found struct `notes::NotesActions`
+    --> gen/containeranalysis/v1beta1/lib/src/lib.rs:4080:13
+     |
+4080 |             notes::NotesActions
+     |             ^^^^^^^^^^^^^^^^^^^ did you mean `notes::NotesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `occurrences::OccurrencesActions`
+    --> gen/containeranalysis/v1beta1/lib/src/lib.rs:4084:13
+     |
+4084 |             occurrences::OccurrencesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `occurrences::OccurrencesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `scan_configs::ScanConfigsActions`
+    --> gen/containeranalysis/v1beta1/lib/src/lib.rs:4088:13
+     |
+4088 |             scan_configs::ScanConfigsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `scan_configs::ScanConfigsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `occurrences::OccurrencesActions`
+    --> gen/containeranalysis/v1beta1/lib/src/lib.rs:4306:17
+     |
+4306 |                 occurrences::OccurrencesActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `occurrences::OccurrencesActions { /* fields */ }`?
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-containeranalysis1_beta1`.
+
+To learn more, run the command again with --verbose.

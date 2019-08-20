@@ -1,0 +1,543 @@
+    Blocking waiting for file lock on build directory
+    Checking google-dataflow1_b3 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/dataflow/v1b3/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dataflow/v1b3/lib/src/lib.rs:6989:35
+     |
+6989 |             filter: Option<crate::jobs::params::AggregatedFilter>,
+     |                                   ^^^^
+     |                                   |
+     |                                   unresolved import
+     |                                   help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dataflow/v1b3/lib/src/lib.rs:6993:33
+     |
+6993 |             view: Option<crate::jobs::params::AggregatedView>,
+     |                                 ^^^^
+     |                                 |
+     |                                 unresolved import
+     |                                 help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dataflow/v1b3/lib/src/lib.rs:7008:52
+     |
+7008 |             pub fn filter(&mut self, value: crate::jobs::params::AggregatedFilter) -> &mut Self {
+     |                                                    ^^^^
+     |                                                    |
+     |                                                    unresolved import
+     |                                                    help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dataflow/v1b3/lib/src/lib.rs:7028:50
+     |
+7028 |             pub fn view(&mut self, value: crate::jobs::params::AggregatedView) -> &mut Self {
+     |                                                  ^^^^
+     |                                                  |
+     |                                                  unresolved import
+     |                                                  help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dataflow/v1b3/lib/src/lib.rs:7295:33
+     |
+7295 |             view: Option<crate::jobs::params::CreateView>,
+     |                                 ^^^^
+     |                                 |
+     |                                 unresolved import
+     |                                 help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dataflow/v1b3/lib/src/lib.rs:7320:50
+     |
+7320 |             pub fn view(&mut self, value: crate::jobs::params::CreateView) -> &mut Self {
+     |                                                  ^^^^
+     |                                                  |
+     |                                                  unresolved import
+     |                                                  help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dataflow/v1b3/lib/src/lib.rs:7446:33
+     |
+7446 |             view: Option<crate::jobs::params::GetView>,
+     |                                 ^^^^
+     |                                 |
+     |                                 unresolved import
+     |                                 help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dataflow/v1b3/lib/src/lib.rs:7466:50
+     |
+7466 |             pub fn view(&mut self, value: crate::jobs::params::GetView) -> &mut Self {
+     |                                                  ^^^^
+     |                                                  |
+     |                                                  unresolved import
+     |                                                  help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dataflow/v1b3/lib/src/lib.rs:7733:35
+     |
+7733 |             filter: Option<crate::jobs::params::ListFilter>,
+     |                                   ^^^^
+     |                                   |
+     |                                   unresolved import
+     |                                   help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dataflow/v1b3/lib/src/lib.rs:7737:33
+     |
+7737 |             view: Option<crate::jobs::params::ListView>,
+     |                                 ^^^^
+     |                                 |
+     |                                 unresolved import
+     |                                 help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dataflow/v1b3/lib/src/lib.rs:7752:52
+     |
+7752 |             pub fn filter(&mut self, value: crate::jobs::params::ListFilter) -> &mut Self {
+     |                                                    ^^^^
+     |                                                    |
+     |                                                    unresolved import
+     |                                                    help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dataflow/v1b3/lib/src/lib.rs:7772:50
+     |
+7772 |             pub fn view(&mut self, value: crate::jobs::params::ListView) -> &mut Self {
+     |                                                  ^^^^
+     |                                                  |
+     |                                                  unresolved import
+     |                                                  help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dataflow/v1b3/lib/src/lib.rs:8719:51
+     |
+8719 |                 minimum_importance: Option<crate::messages::params::ListMinimumImportance>,
+     |                                                   ^^^^^^^^
+     |                                                   |
+     |                                                   unresolved import
+     |                                                   help: a similar path exists: `crate::projects::jobs::messages`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dataflow/v1b3/lib/src/lib.rs:8749:35
+     |
+8749 |                     value: crate::messages::params::ListMinimumImportance,
+     |                                   ^^^^^^^^
+     |                                   |
+     |                                   unresolved import
+     |                                   help: a similar path exists: `crate::projects::jobs::messages`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dataflow/v1b3/lib/src/lib.rs:9892:37
+     |
+9892 |                 view: Option<crate::jobs::params::CreateView>,
+     |                                     ^^^^
+     |                                     |
+     |                                     unresolved import
+     |                                     help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dataflow/v1b3/lib/src/lib.rs:9912:54
+     |
+9912 |                 pub fn view(&mut self, value: crate::jobs::params::CreateView) -> &mut Self {
+     |                                                      ^^^^
+     |                                                      |
+     |                                                      unresolved import
+     |                                                      help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/dataflow/v1b3/lib/src/lib.rs:10039:37
+      |
+10039 |                 view: Option<crate::jobs::params::GetView>,
+      |                                     ^^^^
+      |                                     |
+      |                                     unresolved import
+      |                                     help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/dataflow/v1b3/lib/src/lib.rs:10054:54
+      |
+10054 |                 pub fn view(&mut self, value: crate::jobs::params::GetView) -> &mut Self {
+      |                                                      ^^^^
+      |                                                      |
+      |                                                      unresolved import
+      |                                                      help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/dataflow/v1b3/lib/src/lib.rs:10324:39
+      |
+10324 |                 filter: Option<crate::jobs::params::ListFilter>,
+      |                                       ^^^^
+      |                                       |
+      |                                       unresolved import
+      |                                       help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/dataflow/v1b3/lib/src/lib.rs:10327:37
+      |
+10327 |                 view: Option<crate::jobs::params::ListView>,
+      |                                     ^^^^
+      |                                     |
+      |                                     unresolved import
+      |                                     help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/dataflow/v1b3/lib/src/lib.rs:10342:56
+      |
+10342 |                 pub fn filter(&mut self, value: crate::jobs::params::ListFilter) -> &mut Self {
+      |                                                        ^^^^
+      |                                                        |
+      |                                                        unresolved import
+      |                                                        help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/dataflow/v1b3/lib/src/lib.rs:10357:54
+      |
+10357 |                 pub fn view(&mut self, value: crate::jobs::params::ListView) -> &mut Self {
+      |                                                      ^^^^
+      |                                                      |
+      |                                                      unresolved import
+      |                                                      help: a similar path exists: `crate::projects::jobs`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/dataflow/v1b3/lib/src/lib.rs:11324:55
+      |
+11324 |                     minimum_importance: Option<crate::messages::params::ListMinimumImportance>,
+      |                                                       ^^^^^^^^
+      |                                                       |
+      |                                                       unresolved import
+      |                                                       help: a similar path exists: `crate::projects::jobs::messages`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/dataflow/v1b3/lib/src/lib.rs:11349:39
+      |
+11349 |                         value: crate::messages::params::ListMinimumImportance,
+      |                                       ^^^^^^^^
+      |                                       |
+      |                                       unresolved import
+      |                                       help: a similar path exists: `crate::projects::jobs::messages`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/dataflow/v1b3/lib/src/lib.rs:13089:37
+      |
+13089 |                 view: Option<crate::templates::params::GetView>,
+      |                                     ^^^^^^^^^
+      |                                     |
+      |                                     unresolved import
+      |                                     help: a similar path exists: `crate::projects::templates`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/dataflow/v1b3/lib/src/lib.rs:13109:54
+      |
+13109 |                 pub fn view(&mut self, value: crate::templates::params::GetView) -> &mut Self {
+      |                                                      ^^^^^^^^^
+      |                                                      |
+      |                                                      unresolved import
+      |                                                      help: a similar path exists: `crate::projects::templates`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/dataflow/v1b3/lib/src/lib.rs:13995:33
+      |
+13995 |             view: Option<crate::templates::params::GetView>,
+      |                                 ^^^^^^^^^
+      |                                 |
+      |                                 unresolved import
+      |                                 help: a similar path exists: `crate::projects::templates`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/dataflow/v1b3/lib/src/lib.rs:14020:50
+      |
+14020 |             pub fn view(&mut self, value: crate::templates::params::GetView) -> &mut Self {
+      |                                                  ^^^^^^^^^
+      |                                                  |
+      |                                                  unresolved import
+      |                                                  help: a similar path exists: `crate::projects::templates`
+
+error[E0423]: expected value, found struct `jobs::JobsActions`
+    --> gen/dataflow/v1b3/lib/src/lib.rs:6278:13
+     |
+6278 |             jobs::JobsActions
+     |             ^^^^^^^^^^^^^^^^^ did you mean `jobs::JobsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `locations::LocationsActions`
+    --> gen/dataflow/v1b3/lib/src/lib.rs:6282:13
+     |
+6282 |             locations::LocationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `locations::LocationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `snapshots::SnapshotsActions`
+    --> gen/dataflow/v1b3/lib/src/lib.rs:6286:13
+     |
+6286 |             snapshots::SnapshotsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `snapshots::SnapshotsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `templates::TemplatesActions`
+    --> gen/dataflow/v1b3/lib/src/lib.rs:6290:13
+     |
+6290 |             templates::TemplatesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `templates::TemplatesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `debug::DebugActions`
+    --> gen/dataflow/v1b3/lib/src/lib.rs:6973:17
+     |
+6973 |                 debug::DebugActions
+     |                 ^^^^^^^^^^^^^^^^^^^ did you mean `debug::DebugActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `messages::MessagesActions`
+    --> gen/dataflow/v1b3/lib/src/lib.rs:6977:17
+     |
+6977 |                 messages::MessagesActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `messages::MessagesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `work_items::WorkItemsActions`
+    --> gen/dataflow/v1b3/lib/src/lib.rs:6981:17
+     |
+6981 |                 work_items::WorkItemsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `work_items::WorkItemsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `jobs::JobsActions`
+    --> gen/dataflow/v1b3/lib/src/lib.rs:9399:17
+     |
+9399 |                 jobs::JobsActions
+     |                 ^^^^^^^^^^^^^^^^^ did you mean `jobs::JobsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `snapshots::SnapshotsActions`
+    --> gen/dataflow/v1b3/lib/src/lib.rs:9403:17
+     |
+9403 |                 snapshots::SnapshotsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `snapshots::SnapshotsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `sql::SqlActions`
+    --> gen/dataflow/v1b3/lib/src/lib.rs:9407:17
+     |
+9407 |                 sql::SqlActions
+     |                 ^^^^^^^^^^^^^^^ did you mean `sql::SqlActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `templates::TemplatesActions`
+    --> gen/dataflow/v1b3/lib/src/lib.rs:9411:17
+     |
+9411 |                 templates::TemplatesActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `templates::TemplatesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `debug::DebugActions`
+    --> gen/dataflow/v1b3/lib/src/lib.rs:9869:21
+     |
+9869 |                     debug::DebugActions
+     |                     ^^^^^^^^^^^^^^^^^^^ did you mean `debug::DebugActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `messages::MessagesActions`
+    --> gen/dataflow/v1b3/lib/src/lib.rs:9873:21
+     |
+9873 |                     messages::MessagesActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `messages::MessagesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `snapshots::SnapshotsActions`
+    --> gen/dataflow/v1b3/lib/src/lib.rs:9877:21
+     |
+9877 |                     snapshots::SnapshotsActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `snapshots::SnapshotsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `work_items::WorkItemsActions`
+    --> gen/dataflow/v1b3/lib/src/lib.rs:9881:21
+     |
+9881 |                     work_items::WorkItemsActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `work_items::WorkItemsActions { /* fields */ }`?
+
+error[E0072]: recursive type `schemas::ConcatPosition` has infinite size
+   --> gen/dataflow/v1b3/lib/src/lib.rs:453:5
+    |
+453 |     pub struct ConcatPosition {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^ recursive type has infinite size
+...
+459 |         pub position: Option<crate::schemas::Position>,
+    |         ---------------------------------------------- recursive without indirection
+    |
+    = help: insert indirection (e.g., a `Box`, `Rc`, or `&`) at some point to make `schemas::ConcatPosition` representable
+
+error[E0072]: recursive type `schemas::Position` has infinite size
+    --> gen/dataflow/v1b3/lib/src/lib.rs:3349:5
+     |
+3349 |     pub struct Position {
+     |     ^^^^^^^^^^^^^^^^^^^ recursive type has infinite size
+...
+3356 |         pub concat_position: Option<crate::schemas::ConcatPosition>,
+     |         ----------------------------------------------------------- recursive without indirection
+     |
+     = help: insert indirection (e.g., a `Box`, `Rc`, or `&`) at some point to make `schemas::Position` representable
+
+warning: unreachable expression
+    --> gen/dataflow/v1b3/lib/src/lib.rs:6595:21
+     |
+6595 | /                     Ok(match value {
+6596 | |                         _ => {
+6597 | |                             return Err(::serde::de::Error::custom(format!(
+6598 | |                                 "invalid enum for #name: {}",
+...    |
+6601 | |                         }
+6602 | |                     })
+     | |______________________^
+     |
+     = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+    --> gen/dataflow/v1b3/lib/src/lib.rs:6631:21
+     |
+6631 | /                     Ok(match value {
+6632 | |                         _ => {
+6633 | |                             return Err(::serde::de::Error::custom(format!(
+6634 | |                                 "invalid enum for #name: {}",
+...    |
+6637 | |                         }
+6638 | |                     })
+     | |______________________^
+
+warning: unreachable expression
+    --> gen/dataflow/v1b3/lib/src/lib.rs:6667:21
+     |
+6667 | /                     Ok(match value {
+6668 | |                         _ => {
+6669 | |                             return Err(::serde::de::Error::custom(format!(
+6670 | |                                 "invalid enum for #name: {}",
+...    |
+6673 | |                         }
+6674 | |                     })
+     | |______________________^
+
+warning: unreachable expression
+    --> gen/dataflow/v1b3/lib/src/lib.rs:6703:21
+     |
+6703 | /                     Ok(match value {
+6704 | |                         _ => {
+6705 | |                             return Err(::serde::de::Error::custom(format!(
+6706 | |                                 "invalid enum for #name: {}",
+...    |
+6709 | |                         }
+6710 | |                     })
+     | |______________________^
+
+warning: unreachable expression
+    --> gen/dataflow/v1b3/lib/src/lib.rs:6739:21
+     |
+6739 | /                     Ok(match value {
+6740 | |                         _ => {
+6741 | |                             return Err(::serde::de::Error::custom(format!(
+6742 | |                                 "invalid enum for #name: {}",
+...    |
+6745 | |                         }
+6746 | |                     })
+     | |______________________^
+
+warning: unreachable expression
+    --> gen/dataflow/v1b3/lib/src/lib.rs:6775:21
+     |
+6775 | /                     Ok(match value {
+6776 | |                         _ => {
+6777 | |                             return Err(::serde::de::Error::custom(format!(
+6778 | |                                 "invalid enum for #name: {}",
+...    |
+6781 | |                         }
+6782 | |                     })
+     | |______________________^
+
+warning: unreachable expression
+    --> gen/dataflow/v1b3/lib/src/lib.rs:8664:25
+     |
+8664 | /                         Ok(match value {
+8665 | |                             _ => {
+8666 | |                                 return Err(::serde::de::Error::custom(format!(
+8667 | |                                     "invalid enum for #name: {}",
+...    |
+8670 | |                             }
+8671 | |                         })
+     | |__________________________^
+
+warning: unreachable expression
+    --> gen/dataflow/v1b3/lib/src/lib.rs:9577:25
+     |
+9577 | /                         Ok(match value {
+9578 | |                             _ => {
+9579 | |                                 return Err(::serde::de::Error::custom(format!(
+9580 | |                                     "invalid enum for #name: {}",
+...    |
+9583 | |                             }
+9584 | |                         })
+     | |__________________________^
+
+warning: unreachable expression
+    --> gen/dataflow/v1b3/lib/src/lib.rs:9613:25
+     |
+9613 | /                         Ok(match value {
+9614 | |                             _ => {
+9615 | |                                 return Err(::serde::de::Error::custom(format!(
+9616 | |                                     "invalid enum for #name: {}",
+...    |
+9619 | |                             }
+9620 | |                         })
+     | |__________________________^
+
+warning: unreachable expression
+    --> gen/dataflow/v1b3/lib/src/lib.rs:9649:25
+     |
+9649 | /                         Ok(match value {
+9650 | |                             _ => {
+9651 | |                                 return Err(::serde::de::Error::custom(format!(
+9652 | |                                     "invalid enum for #name: {}",
+...    |
+9655 | |                             }
+9656 | |                         })
+     | |__________________________^
+
+warning: unreachable expression
+    --> gen/dataflow/v1b3/lib/src/lib.rs:9685:25
+     |
+9685 | /                         Ok(match value {
+9686 | |                             _ => {
+9687 | |                                 return Err(::serde::de::Error::custom(format!(
+9688 | |                                     "invalid enum for #name: {}",
+...    |
+9691 | |                             }
+9692 | |                         })
+     | |__________________________^
+
+warning: unreachable expression
+     --> gen/dataflow/v1b3/lib/src/lib.rs:11268:29
+      |
+11268 | /                             Ok(match value {
+11269 | |                                 _ => {
+11270 | |                                     return Err(::serde::de::Error::custom(format!(
+11271 | |                                         "invalid enum for #name: {}",
+...     |
+11274 | |                                 }
+11275 | |                             })
+      | |______________________________^
+
+warning: unreachable expression
+     --> gen/dataflow/v1b3/lib/src/lib.rs:12849:25
+      |
+12849 | /                         Ok(match value {
+12850 | |                             _ => {
+12851 | |                                 return Err(::serde::de::Error::custom(format!(
+12852 | |                                     "invalid enum for #name: {}",
+...     |
+12855 | |                             }
+12856 | |                         })
+      | |__________________________^
+
+warning: unreachable expression
+     --> gen/dataflow/v1b3/lib/src/lib.rs:13765:21
+      |
+13765 | /                     Ok(match value {
+13766 | |                         _ => {
+13767 | |                             return Err(::serde::de::Error::custom(format!(
+13768 | |                                 "invalid enum for #name: {}",
+...     |
+13771 | |                         }
+13772 | |                     })
+      | |______________________^
+
+error: aborting due to 45 previous errors
+
+Some errors have detailed explanations: E0072, E0423, E0433.
+For more information about an error, try `rustc --explain E0072`.
+error: Could not compile `google-dataflow1_b3`.
+
+To learn more, run the command again with --verbose.

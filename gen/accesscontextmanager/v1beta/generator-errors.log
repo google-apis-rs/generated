@@ -1,0 +1,109 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Checking google-accesscontextmanager1_beta v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/accesscontextmanager/v1beta/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/accesscontextmanager/v1beta/lib/src/lib.rs:2219:48
+     |
+2219 |             access_level_format: Option<crate::access_levels::params::GetAccessLevelFormat>,
+     |                                                ^^^^^^^^^^^^^
+     |                                                |
+     |                                                unresolved import
+     |                                                help: a similar path exists: `crate::access_policies::access_levels`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/accesscontextmanager/v1beta/lib/src/lib.rs:2236:31
+     |
+2236 |                 value: crate::access_levels::params::GetAccessLevelFormat,
+     |                               ^^^^^^^^^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::access_policies::access_levels`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/accesscontextmanager/v1beta/lib/src/lib.rs:2356:48
+     |
+2356 |             access_level_format: Option<crate::access_levels::params::ListAccessLevelFormat>,
+     |                                                ^^^^^^^^^^^^^
+     |                                                |
+     |                                                unresolved import
+     |                                                help: a similar path exists: `crate::access_policies::access_levels`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/accesscontextmanager/v1beta/lib/src/lib.rs:2375:31
+     |
+2375 |                 value: crate::access_levels::params::ListAccessLevelFormat,
+     |                               ^^^^^^^^^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::access_policies::access_levels`
+
+error[E0423]: expected value, found struct `access_levels::AccessLevelsActions`
+    --> gen/accesscontextmanager/v1beta/lib/src/lib.rs:1011:13
+     |
+1011 |             access_levels::AccessLevelsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `access_levels::AccessLevelsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `service_perimeters::ServicePerimetersActions`
+    --> gen/accesscontextmanager/v1beta/lib/src/lib.rs:1015:13
+     |
+1015 |             service_perimeters::ServicePerimetersActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `service_perimeters::ServicePerimetersActions { /* fields */ }`?
+
+warning: unreachable expression
+   --> gen/accesscontextmanager/v1beta/lib/src/lib.rs:257:13
+    |
+257 | /             Ok(match value {
+258 | |                 _ => {
+259 | |                     return Err(::serde::de::Error::custom(format!(
+260 | |                         "invalid enum for #name: {}",
+...   |
+263 | |                 }
+264 | |             })
+    | |______________^
+    |
+    = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+   --> gen/accesscontextmanager/v1beta/lib/src/lib.rs:293:13
+    |
+293 | /             Ok(match value {
+294 | |                 _ => {
+295 | |                     return Err(::serde::de::Error::custom(format!(
+296 | |                         "invalid enum for #name: {}",
+...   |
+299 | |                 }
+300 | |             })
+    | |______________^
+
+warning: unreachable expression
+    --> gen/accesscontextmanager/v1beta/lib/src/lib.rs:1793:21
+     |
+1793 | /                     Ok(match value {
+1794 | |                         _ => {
+1795 | |                             return Err(::serde::de::Error::custom(format!(
+1796 | |                                 "invalid enum for #name: {}",
+...    |
+1799 | |                         }
+1800 | |                     })
+     | |______________________^
+
+warning: unreachable expression
+    --> gen/accesscontextmanager/v1beta/lib/src/lib.rs:1829:21
+     |
+1829 | /                     Ok(match value {
+1830 | |                         _ => {
+1831 | |                             return Err(::serde::de::Error::custom(format!(
+1832 | |                                 "invalid enum for #name: {}",
+...    |
+1835 | |                         }
+1836 | |                     })
+     | |______________________^
+
+error: aborting due to 6 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-accesscontextmanager1_beta`.
+
+To learn more, run the command again with --verbose.

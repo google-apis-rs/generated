@@ -1,0 +1,40 @@
+    Blocking waiting for file lock on build directory
+    Checking google-cloudbuild1_alpha1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/cloudbuild/v1alpha1/lib)
+error[E0423]: expected value, found struct `worker_pools::WorkerPoolsActions`
+    --> gen/cloudbuild/v1alpha1/lib/src/lib.rs:1554:13
+     |
+1554 |             worker_pools::WorkerPoolsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `worker_pools::WorkerPoolsActions { /* fields */ }`?
+
+warning: unreachable expression
+   --> gen/cloudbuild/v1alpha1/lib/src/lib.rs:504:13
+    |
+504 | /             Ok(match value {
+505 | |                 _ => {
+506 | |                     return Err(::serde::de::Error::custom(format!(
+507 | |                         "invalid enum for #name: {}",
+...   |
+510 | |                 }
+511 | |             })
+    | |______________^
+    |
+    = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+    --> gen/cloudbuild/v1alpha1/lib/src/lib.rs:1304:13
+     |
+1304 | /             Ok(match value {
+1305 | |                 _ => {
+1306 | |                     return Err(::serde::de::Error::custom(format!(
+1307 | |                         "invalid enum for #name: {}",
+...    |
+1310 | |                 }
+1311 | |             })
+     | |______________^
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-cloudbuild1_alpha1`.
+
+To learn more, run the command again with --verbose.

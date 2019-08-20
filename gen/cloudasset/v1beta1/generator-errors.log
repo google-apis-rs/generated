@@ -1,0 +1,52 @@
+    Blocking waiting for file lock on build directory
+    Checking google-cloudasset1_beta1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/cloudasset/v1beta1/lib)
+error[E0423]: expected value, found struct `operations::OperationsActions`
+   --> gen/cloudasset/v1beta1/lib/src/lib.rs:710:13
+    |
+710 |             operations::OperationsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `operations::OperationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `operations::OperationsActions`
+    --> gen/cloudasset/v1beta1/lib/src/lib.rs:1096:13
+     |
+1096 |             operations::OperationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `operations::OperationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `operations::OperationsActions`
+    --> gen/cloudasset/v1beta1/lib/src/lib.rs:1645:13
+     |
+1645 |             operations::OperationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `operations::OperationsActions { /* fields */ }`?
+
+warning: unreachable expression
+    --> gen/cloudasset/v1beta1/lib/src/lib.rs:1028:17
+     |
+1028 | /                 Ok(match value {
+1029 | |                     _ => {
+1030 | |                         return Err(::serde::de::Error::custom(format!(
+1031 | |                             "invalid enum for #name: {}",
+...    |
+1034 | |                     }
+1035 | |                 })
+     | |__________________^
+     |
+     = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+    --> gen/cloudasset/v1beta1/lib/src/lib.rs:1577:17
+     |
+1577 | /                 Ok(match value {
+1578 | |                     _ => {
+1579 | |                         return Err(::serde::de::Error::custom(format!(
+1580 | |                             "invalid enum for #name: {}",
+...    |
+1583 | |                     }
+1584 | |                 })
+     | |__________________^
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-cloudasset1_beta1`.
+
+To learn more, run the command again with --verbose.

@@ -1,0 +1,67 @@
+    Blocking waiting for file lock on build directory
+    Checking google-poly1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/poly/v1/lib)
+error[E0423]: expected value, found struct `assets::AssetsActions`
+    --> gen/poly/v1/lib/src/lib.rs:1502:13
+     |
+1502 |             assets::AssetsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^ did you mean `assets::AssetsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `likedassets::LikedassetsActions`
+    --> gen/poly/v1/lib/src/lib.rs:1506:13
+     |
+1506 |             likedassets::LikedassetsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `likedassets::LikedassetsActions { /* fields */ }`?
+
+error[E0412]: cannot find type `ListVisibility` in module `crate::assets::params`
+    --> gen/poly/v1/lib/src/lib.rs:1587:55
+     |
+1587 |             visibility: Option<crate::assets::params::ListVisibility>,
+     |                                                       ^^^^^^^^^^^^^^ not found in `crate::assets::params`
+help: possible candidate is found in another module, you can import it into scope
+     |
+1510 |         use crate::users::assets::params::ListVisibility;
+     |
+
+error[E0412]: cannot find type `ListVisibility` in module `crate::assets::params`
+    --> gen/poly/v1/lib/src/lib.rs:1624:47
+     |
+1624 |                 value: crate::assets::params::ListVisibility,
+     |                                               ^^^^^^^^^^^^^^ not found in `crate::assets::params`
+help: possible candidate is found in another module, you can import it into scope
+     |
+1510 |         use crate::users::assets::params::ListVisibility;
+     |
+
+warning: unreachable expression
+    --> gen/poly/v1/lib/src/lib.rs:1052:17
+     |
+1052 | /                 Ok(match value {
+1053 | |                     _ => {
+1054 | |                         return Err(::serde::de::Error::custom(format!(
+1055 | |                             "invalid enum for #name: {}",
+...    |
+1058 | |                     }
+1059 | |                 })
+     | |__________________^
+     |
+     = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+    --> gen/poly/v1/lib/src/lib.rs:1537:21
+     |
+1537 | /                     Ok(match value {
+1538 | |                         _ => {
+1539 | |                             return Err(::serde::de::Error::custom(format!(
+1540 | |                                 "invalid enum for #name: {}",
+...    |
+1543 | |                         }
+1544 | |                     })
+     | |______________________^
+
+error: aborting due to 4 previous errors
+
+Some errors have detailed explanations: E0412, E0423.
+For more information about an error, try `rustc --explain E0412`.
+error: Could not compile `google-poly1`.
+
+To learn more, run the command again with --verbose.

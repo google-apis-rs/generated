@@ -1,0 +1,119 @@
+    Blocking waiting for file lock on build directory
+    Checking google-firebaserules1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/firebaserules/v1/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/firebaserules/v1/lib/src/lib.rs:1647:47
+     |
+1647 |             executable_version: Option<crate::releases::params::GetExecutableExecutableVersion>,
+     |                                               ^^^^^^^^
+     |                                               |
+     |                                               unresolved import
+     |                                               help: a similar path exists: `crate::projects::releases`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/firebaserules/v1/lib/src/lib.rs:1664:31
+     |
+1664 |                 value: crate::releases::params::GetExecutableExecutableVersion,
+     |                               ^^^^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::projects::releases`
+
+error[E0423]: expected value, found struct `releases::ReleasesActions`
+   --> gen/firebaserules/v1/lib/src/lib.rs:943:13
+    |
+943 |             releases::ReleasesActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `releases::ReleasesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `rulesets::RulesetsActions`
+   --> gen/firebaserules/v1/lib/src/lib.rs:947:13
+    |
+947 |             rulesets::RulesetsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `rulesets::RulesetsActions { /* fields */ }`?
+
+error[E0107]: wrong number of type arguments: expected 0, found 2
+   --> gen/firebaserules/v1/lib/src/lib.rs:132:57
+    |
+132 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
+    |                                                         |
+    |                                                         unexpected type argument
+
+error[E0107]: wrong number of type arguments: expected 0, found 2
+   --> gen/firebaserules/v1/lib/src/lib.rs:140:54
+    |
+140 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    |                                                      ^^^^  ^^^^^^^^ unexpected type argument
+    |                                                      |
+    |                                                      unexpected type argument
+
+error[E0107]: wrong number of type arguments: expected 0, found 2
+   --> gen/firebaserules/v1/lib/src/lib.rs:172:57
+    |
+172 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
+    |                                                         |
+    |                                                         unexpected type argument
+
+error[E0107]: wrong number of type arguments: expected 0, found 2
+   --> gen/firebaserules/v1/lib/src/lib.rs:180:54
+    |
+180 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    |                                                      ^^^^  ^^^^^^^^ unexpected type argument
+    |                                                      |
+    |                                                      unexpected type argument
+
+error[E0107]: wrong number of type arguments: expected 0, found 2
+   --> gen/firebaserules/v1/lib/src/lib.rs:268:57
+    |
+268 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
+    |                                                         |
+    |                                                         unexpected type argument
+
+error[E0107]: wrong number of type arguments: expected 0, found 2
+   --> gen/firebaserules/v1/lib/src/lib.rs:276:54
+    |
+276 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    |                                                      ^^^^  ^^^^^^^^ unexpected type argument
+    |                                                      |
+    |                                                      unexpected type argument
+
+error[E0107]: wrong number of type arguments: expected 0, found 2
+   --> gen/firebaserules/v1/lib/src/lib.rs:560:57
+    |
+560 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
+    |                                                         |
+    |                                                         unexpected type argument
+
+error[E0107]: wrong number of type arguments: expected 0, found 2
+   --> gen/firebaserules/v1/lib/src/lib.rs:568:54
+    |
+568 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    |                                                      ^^^^  ^^^^^^^^ unexpected type argument
+    |                                                      |
+    |                                                      unexpected type argument
+
+error[E0107]: wrong number of type arguments: expected 0, found 2
+   --> gen/firebaserules/v1/lib/src/lib.rs:635:57
+    |
+635 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
+    |                                                         |
+    |                                                         unexpected type argument
+
+error[E0107]: wrong number of type arguments: expected 0, found 2
+   --> gen/firebaserules/v1/lib/src/lib.rs:643:54
+    |
+643 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    |                                                      ^^^^  ^^^^^^^^ unexpected type argument
+    |                                                      |
+    |                                                      unexpected type argument
+
+error: aborting due to 14 previous errors
+
+Some errors have detailed explanations: E0107, E0423, E0433.
+For more information about an error, try `rustc --explain E0107`.
+error: Could not compile `google-firebaserules1`.
+
+To learn more, run the command again with --verbose.

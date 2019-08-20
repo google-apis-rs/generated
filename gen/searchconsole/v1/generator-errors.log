@@ -1,0 +1,14 @@
+    Blocking waiting for file lock on build directory
+    Checking google-searchconsole1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/searchconsole/v1/lib)
+error[E0423]: expected value, found struct `mobile_friendly_test::MobileFriendlyTestActions`
+   --> gen/searchconsole/v1/lib/src/lib.rs:500:13
+    |
+500 |             mobile_friendly_test::MobileFriendlyTestActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `mobile_friendly_test::MobileFriendlyTestActions { /* fields */ }`?
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-searchconsole1`.
+
+To learn more, run the command again with --verbose.

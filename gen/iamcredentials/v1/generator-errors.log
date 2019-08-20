@@ -1,0 +1,14 @@
+    Blocking waiting for file lock on build directory
+    Checking google-iamcredentials1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/iamcredentials/v1/lib)
+error[E0423]: expected value, found struct `service_accounts::ServiceAccountsActions`
+   --> gen/iamcredentials/v1/lib/src/lib.rs:372:13
+    |
+372 |             service_accounts::ServiceAccountsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `service_accounts::ServiceAccountsActions { /* fields */ }`?
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-iamcredentials1`.
+
+To learn more, run the command again with --verbose.

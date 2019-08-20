@@ -1,0 +1,161 @@
+    Blocking waiting for file lock on build directory
+    Checking google-cloudsearch1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/cloudsearch/v1/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/cloudsearch/v1/lib/src/lib.rs:7157:35
+     |
+7157 |                     Option<crate::unmappedids::params::ListResolutionStatusCode>,
+     |                                   ^^^^^^^^^^^
+     |                                   |
+     |                                   unresolved import
+     |                                   help: a similar path exists: `crate::debug::identitysources::unmappedids`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/cloudsearch/v1/lib/src/lib.rs:7189:35
+     |
+7189 |                     value: crate::unmappedids::params::ListResolutionStatusCode,
+     |                                   ^^^^^^^^^^^
+     |                                   |
+     |                                   unresolved import
+     |                                   help: a similar path exists: `crate::debug::identitysources::unmappedids`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/cloudsearch/v1/lib/src/lib.rs:8157:37
+     |
+8157 |                 mode: Option<crate::items::params::DeleteMode>,
+     |                                     ^^^^^
+     |                                     |
+     |                                     unresolved import
+     |                                     help: a similar path exists: `crate::debug::datasources::items`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/cloudsearch/v1/lib/src/lib.rs:8183:54
+     |
+8183 |                 pub fn mode(&mut self, value: crate::items::params::DeleteMode) -> &mut Self {
+     |                                                      ^^^^^
+     |                                                      |
+     |                                                      unresolved import
+     |                                                      help: a similar path exists: `crate::debug::datasources::items`
+
+error[E0423]: expected value, found struct `datasources::DatasourcesActions`
+    --> gen/cloudsearch/v1/lib/src/lib.rs:6149:13
+     |
+6149 |             datasources::DatasourcesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `datasources::DatasourcesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `identitysources::IdentitysourcesActions`
+    --> gen/cloudsearch/v1/lib/src/lib.rs:6153:13
+     |
+6153 |             identitysources::IdentitysourcesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `identitysources::IdentitysourcesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `items::ItemsActions`
+    --> gen/cloudsearch/v1/lib/src/lib.rs:6165:17
+     |
+6165 |                 items::ItemsActions
+     |                 ^^^^^^^^^^^^^^^^^^^ did you mean `items::ItemsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `unmappedids::UnmappedidsActions`
+    --> gen/cloudsearch/v1/lib/src/lib.rs:6226:21
+     |
+6226 |                     unmappedids::UnmappedidsActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `unmappedids::UnmappedidsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `items::ItemsActions`
+    --> gen/cloudsearch/v1/lib/src/lib.rs:6785:17
+     |
+6785 |                 items::ItemsActions
+     |                 ^^^^^^^^^^^^^^^^^^^ did you mean `items::ItemsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `unmappedids::UnmappedidsActions`
+    --> gen/cloudsearch/v1/lib/src/lib.rs:6789:17
+     |
+6789 |                 unmappedids::UnmappedidsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `unmappedids::UnmappedidsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `datasources::DatasourcesActions`
+    --> gen/cloudsearch/v1/lib/src/lib.rs:7407:13
+     |
+7407 |             datasources::DatasourcesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `datasources::DatasourcesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `items::ItemsActions`
+    --> gen/cloudsearch/v1/lib/src/lib.rs:7483:17
+     |
+7483 |                 items::ItemsActions
+     |                 ^^^^^^^^^^^^^^^^^^^ did you mean `items::ItemsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `sources::SourcesActions`
+    --> gen/cloudsearch/v1/lib/src/lib.rs:9893:13
+     |
+9893 |             sources::SourcesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `sources::SourcesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `datasources::DatasourcesActions`
+     --> gen/cloudsearch/v1/lib/src/lib.rs:10452:13
+      |
+10452 |             datasources::DatasourcesActions
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `datasources::DatasourcesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `searchapplications::SearchapplicationsActions`
+     --> gen/cloudsearch/v1/lib/src/lib.rs:10456:13
+      |
+10456 |             searchapplications::SearchapplicationsActions
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `searchapplications::SearchapplicationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `index::IndexActions`
+     --> gen/cloudsearch/v1/lib/src/lib.rs:12404:13
+      |
+12404 |             index::IndexActions
+      |             ^^^^^^^^^^^^^^^^^^^ did you mean `index::IndexActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `datasources::DatasourcesActions`
+     --> gen/cloudsearch/v1/lib/src/lib.rs:12584:17
+      |
+12584 |                 datasources::DatasourcesActions
+      |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `datasources::DatasourcesActions { /* fields */ }`?
+
+warning: unreachable expression
+    --> gen/cloudsearch/v1/lib/src/lib.rs:3474:13
+     |
+3474 | /             Ok(match value {
+3475 | |                 _ => {
+3476 | |                     return Err(::serde::de::Error::custom(format!(
+3477 | |                         "invalid enum for #name: {}",
+...    |
+3480 | |                 }
+3481 | |             })
+     | |______________^
+     |
+     = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+    --> gen/cloudsearch/v1/lib/src/lib.rs:7108:25
+     |
+7108 | /                         Ok(match value {
+7109 | |                             _ => {
+7110 | |                                 return Err(::serde::de::Error::custom(format!(
+7111 | |                                     "invalid enum for #name: {}",
+...    |
+7114 | |                             }
+7115 | |                         })
+     | |__________________________^
+
+warning: unreachable expression
+    --> gen/cloudsearch/v1/lib/src/lib.rs:7921:25
+     |
+7921 | /                         Ok(match value {
+7922 | |                             _ => {
+7923 | |                                 return Err(::serde::de::Error::custom(format!(
+7924 | |                                     "invalid enum for #name: {}",
+...    |
+7927 | |                             }
+7928 | |                         })
+     | |__________________________^
+
+error: aborting due to 17 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-cloudsearch1`.
+
+To learn more, run the command again with --verbose.

@@ -1,0 +1,17 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+    Checking google-securitycenter1_p1alpha1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/securitycenter/v1p1alpha1/lib)
+error[E0423]: expected value, found struct `operations::OperationsActions`
+   --> gen/securitycenter/v1p1alpha1/lib/src/lib.rs:402:13
+    |
+402 |             operations::OperationsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `operations::OperationsActions { /* fields */ }`?
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-securitycenter1_p1alpha1`.
+
+To learn more, run the command again with --verbose.

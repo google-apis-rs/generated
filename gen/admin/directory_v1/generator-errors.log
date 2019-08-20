@@ -1,0 +1,193 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+    Checking google-admin1_directory v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/admin/directory_v1/lib)
+error[E0428]: the name `schemas` is defined multiple times
+     --> gen/admin/directory_v1/lib/src/lib.rs:15782:1
+      |
+1     | pub mod schemas {
+      | --------------- previous definition of the module `schemas` here
+...
+15782 | pub mod schemas {
+      | ^^^^^^^^^^^^^^^ `schemas` redefined here
+      |
+      = note: `schemas` must be defined only once in the type namespace of this module
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/admin/directory_v1/lib/src/lib.rs:12061:47
+      |
+12061 |             coordinates_source: Option<crate::buildings::params::InsertCoordinatesSource>,
+      |                                               ^^^^^^^^^
+      |                                               |
+      |                                               unresolved import
+      |                                               help: a similar path exists: `crate::resources::buildings`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/admin/directory_v1/lib/src/lib.rs:12074:31
+      |
+12074 |                 value: crate::buildings::params::InsertCoordinatesSource,
+      |                               ^^^^^^^^^
+      |                               |
+      |                               unresolved import
+      |                               help: a similar path exists: `crate::resources::buildings`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/admin/directory_v1/lib/src/lib.rs:12368:47
+      |
+12368 |             coordinates_source: Option<crate::buildings::params::PatchCoordinatesSource>,
+      |                                               ^^^^^^^^^
+      |                                               |
+      |                                               unresolved import
+      |                                               help: a similar path exists: `crate::resources::buildings`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/admin/directory_v1/lib/src/lib.rs:12381:31
+      |
+12381 |                 value: crate::buildings::params::PatchCoordinatesSource,
+      |                               ^^^^^^^^^
+      |                               |
+      |                               unresolved import
+      |                               help: a similar path exists: `crate::resources::buildings`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/admin/directory_v1/lib/src/lib.rs:12485:47
+      |
+12485 |             coordinates_source: Option<crate::buildings::params::UpdateCoordinatesSource>,
+      |                                               ^^^^^^^^^
+      |                                               |
+      |                                               unresolved import
+      |                                               help: a similar path exists: `crate::resources::buildings`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/admin/directory_v1/lib/src/lib.rs:12498:31
+      |
+12498 |                 value: crate::buildings::params::UpdateCoordinatesSource,
+      |                               ^^^^^^^^^
+      |                               |
+      |                               unresolved import
+      |                               help: a similar path exists: `crate::resources::buildings`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/admin/directory_v1/lib/src/lib.rs:19128:34
+      |
+19128 |             event: Option<crate::aliases::params::ListEvent>,
+      |                                  ^^^^^^^
+      |                                  |
+      |                                  unresolved import
+      |                                  help: a similar path exists: `crate::groups::aliases`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/admin/directory_v1/lib/src/lib.rs:19139:51
+      |
+19139 |             pub fn event(&mut self, value: crate::aliases::params::ListEvent) -> &mut Self {
+      |                                                   ^^^^^^^
+      |                                                   |
+      |                                                   unresolved import
+      |                                                   help: a similar path exists: `crate::groups::aliases`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/admin/directory_v1/lib/src/lib.rs:19238:34
+      |
+19238 |             event: Option<crate::aliases::params::WatchEvent>,
+      |                                  ^^^^^^^
+      |                                  |
+      |                                  unresolved import
+      |                                  help: a similar path exists: `crate::groups::aliases`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/admin/directory_v1/lib/src/lib.rs:19249:51
+      |
+19249 |             pub fn event(&mut self, value: crate::aliases::params::WatchEvent) -> &mut Self {
+      |                                                   ^^^^^^^
+      |                                                   |
+      |                                                   unresolved import
+      |                                                   help: a similar path exists: `crate::groups::aliases`
+
+error[E0412]: cannot find type `UserCustomProperties` in module `crate::schemas`
+    --> gen/admin/directory_v1/lib/src/lib.rs:2552:73
+     |
+2552 |             Option<::std::collections::BTreeMap<String, crate::schemas::UserCustomProperties>>,
+     |                                                                         ^^^^^^^^^^^^^^^^^^^^ not found in `crate::schemas`
+
+error[E0412]: cannot find type `SchemasActions` in module `crate::schemas`
+    --> gen/admin/directory_v1/lib/src/lib.rs:3669:46
+     |
+3669 |     pub fn schemas(&self) -> crate::schemas::SchemasActions<A> {
+     |                                              ^^^^^^^^^^^^^^ not found in `crate::schemas`
+
+error[E0422]: cannot find struct, variant or union type `SchemasActions` in module `crate::schemas`
+    --> gen/admin/directory_v1/lib/src/lib.rs:3670:25
+     |
+3670 |         crate::schemas::SchemasActions {
+     |                         ^^^^^^^^^^^^^^ not found in `crate::schemas`
+
+error[E0423]: expected value, found struct `aliases::AliasesActions`
+    --> gen/admin/directory_v1/lib/src/lib.rs:6879:13
+     |
+6879 |             aliases::AliasesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `aliases::AliasesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `buildings::BuildingsActions`
+     --> gen/admin/directory_v1/lib/src/lib.rs:11580:13
+      |
+11580 |             buildings::BuildingsActions
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `buildings::BuildingsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `calendars::CalendarsActions`
+     --> gen/admin/directory_v1/lib/src/lib.rs:11584:13
+      |
+11584 |             calendars::CalendarsActions
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `calendars::CalendarsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `features::FeaturesActions`
+     --> gen/admin/directory_v1/lib/src/lib.rs:11588:13
+      |
+11588 |             features::FeaturesActions
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `features::FeaturesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `aliases::AliasesActions`
+     --> gen/admin/directory_v1/lib/src/lib.rs:17646:13
+      |
+17646 |             aliases::AliasesActions
+      |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `aliases::AliasesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `photos::PhotosActions`
+     --> gen/admin/directory_v1/lib/src/lib.rs:17650:13
+      |
+17650 |             photos::PhotosActions
+      |             ^^^^^^^^^^^^^^^^^^^^^ did you mean `photos::PhotosActions { /* fields */ }`?
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Alias::_serde::Deserialize<'_>` is not satisfied
+   --> gen/admin/directory_v1/lib/src/lib.rs:477:9
+    |
+477 |         #[doc = "Date of usage"]
+    |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Alias::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+    |
+    = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Alias::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+    = note: required by `schemas::_IMPL_SERIALIZE_FOR_Alias::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Alias::_serde::Deserialize<'_>` is not satisfied
+   --> gen/admin/directory_v1/lib/src/lib.rs:477:9
+    |
+477 |         #[doc = "Date of usage"]
+    |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Alias::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+    |
+    = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Alias::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+    = note: required by `schemas::_IMPL_SERIALIZE_FOR_Alias::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_Alias::_serde::Serialize` is not satisfied
+   --> gen/admin/directory_v1/lib/src/lib.rs:477:9
+    |
+477 |         #[doc = "Date of usage"]
+    |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_Alias::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+    |
+    = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_Alias::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+    = note: required by `schemas::_IMPL_SERIALIZE_FOR_Alias::_serde::ser::SerializeStruct::serialize_field`
+
+error: aborting due to 23 previous errors
+
+Some errors have detailed explanations: E0277, E0412, E0422, E0423, E0428, E0433.
+For more information about an error, try `rustc --explain E0277`.
+error: Could not compile `google-admin1_directory`.
+
+To learn more, run the command again with --verbose.

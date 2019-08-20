@@ -1,0 +1,245 @@
+    Blocking waiting for file lock on build directory
+    Checking google-bigquerydatatransfer1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/bigquerydatatransfer/v1/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:4370:48
+     |
+4370 |                     run_attempt: Option<crate::runs::params::ListRunAttempt>,
+     |                                                ^^^^
+     |                                                |
+     |                                                unresolved import
+     |                                                help: a similar path exists: `crate::projects::transfer_configs::runs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:4371:43
+     |
+4371 |                     states: Option<crate::runs::params::ListStates>,
+     |                                           ^^^^
+     |                                           |
+     |                                           unresolved import
+     |                                           help: a similar path exists: `crate::projects::transfer_configs::runs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:4398:39
+     |
+4398 |                         value: crate::runs::params::ListRunAttempt,
+     |                                       ^^^^
+     |                                       |
+     |                                       unresolved import
+     |                                       help: a similar path exists: `crate::projects::transfer_configs::runs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:4404:60
+     |
+4404 |                     pub fn states(&mut self, value: crate::runs::params::ListStates) -> &mut Self {
+     |                                                            ^^^^
+     |                                                            |
+     |                                                            unresolved import
+     |                                                            help: a similar path exists: `crate::projects::transfer_configs::runs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:4680:54
+     |
+4680 |                         message_types: Option<crate::transfer_logs::params::ListMessageTypes>,
+     |                                                      ^^^^^^^^^^^^^
+     |                                                      |
+     |                                                      unresolved import
+     |                                                      help: a similar path exists: `crate::projects::transfer_configs::runs::transfer_logs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:4699:43
+     |
+4699 |                             value: crate::transfer_logs::params::ListMessageTypes,
+     |                                           ^^^^^^^^^^^^^
+     |                                           |
+     |                                           unresolved import
+     |                                           help: a similar path exists: `crate::projects::transfer_configs::runs::transfer_logs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:6549:44
+     |
+6549 |                 run_attempt: Option<crate::runs::params::ListRunAttempt>,
+     |                                            ^^^^
+     |                                            |
+     |                                            unresolved import
+     |                                            help: a similar path exists: `crate::projects::transfer_configs::runs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:6550:39
+     |
+6550 |                 states: Option<crate::runs::params::ListStates>,
+     |                                       ^^^^
+     |                                       |
+     |                                       unresolved import
+     |                                       help: a similar path exists: `crate::projects::transfer_configs::runs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:6577:35
+     |
+6577 |                     value: crate::runs::params::ListRunAttempt,
+     |                                   ^^^^
+     |                                   |
+     |                                   unresolved import
+     |                                   help: a similar path exists: `crate::projects::transfer_configs::runs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:6583:56
+     |
+6583 |                 pub fn states(&mut self, value: crate::runs::params::ListStates) -> &mut Self {
+     |                                                        ^^^^
+     |                                                        |
+     |                                                        unresolved import
+     |                                                        help: a similar path exists: `crate::projects::transfer_configs::runs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:6857:50
+     |
+6857 |                     message_types: Option<crate::transfer_logs::params::ListMessageTypes>,
+     |                                                  ^^^^^^^^^^^^^
+     |                                                  |
+     |                                                  unresolved import
+     |                                                  help: a similar path exists: `crate::projects::transfer_configs::runs::transfer_logs`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:6876:39
+     |
+6876 |                         value: crate::transfer_logs::params::ListMessageTypes,
+     |                                       ^^^^^^^^^^^^^
+     |                                       |
+     |                                       unresolved import
+     |                                       help: a similar path exists: `crate::projects::transfer_configs::runs::transfer_logs`
+
+error[E0423]: expected value, found struct `data_sources::DataSourcesActions`
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:1187:13
+     |
+1187 |             data_sources::DataSourcesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `data_sources::DataSourcesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `locations::LocationsActions`
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:1191:13
+     |
+1191 |             locations::LocationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `locations::LocationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `transfer_configs::TransferConfigsActions`
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:1195:13
+     |
+1195 |             transfer_configs::TransferConfigsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `transfer_configs::TransferConfigsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `data_sources::DataSourcesActions`
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:1804:17
+     |
+1804 |                 data_sources::DataSourcesActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `data_sources::DataSourcesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `transfer_configs::TransferConfigsActions`
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:1808:17
+     |
+1808 |                 transfer_configs::TransferConfigsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `transfer_configs::TransferConfigsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `runs::RunsActions`
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:2900:21
+     |
+2900 |                     runs::RunsActions
+     |                     ^^^^^^^^^^^^^^^^^ did you mean `runs::RunsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `transfer_logs::TransferLogsActions`
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:4102:25
+     |
+4102 |                         transfer_logs::TransferLogsActions
+     |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `transfer_logs::TransferLogsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `runs::RunsActions`
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:5091:17
+     |
+5091 |                 runs::RunsActions
+     |                 ^^^^^^^^^^^^^^^^^ did you mean `runs::RunsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `transfer_logs::TransferLogsActions`
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:6282:21
+     |
+6282 |                     transfer_logs::TransferLogsActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `transfer_logs::TransferLogsActions { /* fields */ }`?
+
+warning: unreachable expression
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:3987:29
+     |
+3987 | /                             Ok(match value {
+3988 | |                                 _ => {
+3989 | |                                     return Err(::serde::de::Error::custom(format!(
+3990 | |                                         "invalid enum for #name: {}",
+...    |
+3993 | |                                 }
+3994 | |                             })
+     | |______________________________^
+     |
+     = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:4023:29
+     |
+4023 | /                             Ok(match value {
+4024 | |                                 _ => {
+4025 | |                                     return Err(::serde::de::Error::custom(format!(
+4026 | |                                         "invalid enum for #name: {}",
+...    |
+4029 | |                                 }
+4030 | |                             })
+     | |______________________________^
+
+warning: unreachable expression
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:4636:33
+     |
+4636 | /                                 Ok(match value {
+4637 | |                                     _ => {
+4638 | |                                         return Err(::serde::de::Error::custom(format!(
+4639 | |                                             "invalid enum for #name: {}",
+...    |
+4642 | |                                     }
+4643 | |                                 })
+     | |__________________________________^
+
+warning: unreachable expression
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:6167:25
+     |
+6167 | /                         Ok(match value {
+6168 | |                             _ => {
+6169 | |                                 return Err(::serde::de::Error::custom(format!(
+6170 | |                                     "invalid enum for #name: {}",
+...    |
+6173 | |                             }
+6174 | |                         })
+     | |__________________________^
+
+warning: unreachable expression
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:6203:25
+     |
+6203 | /                         Ok(match value {
+6204 | |                             _ => {
+6205 | |                                 return Err(::serde::de::Error::custom(format!(
+6206 | |                                     "invalid enum for #name: {}",
+...    |
+6209 | |                             }
+6210 | |                         })
+     | |__________________________^
+
+warning: unreachable expression
+    --> gen/bigquerydatatransfer/v1/lib/src/lib.rs:6813:29
+     |
+6813 | /                             Ok(match value {
+6814 | |                                 _ => {
+6815 | |                                     return Err(::serde::de::Error::custom(format!(
+6816 | |                                         "invalid enum for #name: {}",
+...    |
+6819 | |                                 }
+6820 | |                             })
+     | |______________________________^
+
+error: aborting due to 21 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-bigquerydatatransfer1`.
+
+To learn more, run the command again with --verbose.

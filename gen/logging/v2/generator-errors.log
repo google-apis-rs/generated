@@ -1,0 +1,86 @@
+    Blocking waiting for file lock on build directory
+    Checking google-logging2 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/logging/v2/lib)
+error[E0423]: expected value, found struct `exclusions::ExclusionsActions`
+    --> gen/logging/v2/lib/src/lib.rs:1924:13
+     |
+1924 |             exclusions::ExclusionsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `exclusions::ExclusionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `logs::LogsActions`
+    --> gen/logging/v2/lib/src/lib.rs:1928:13
+     |
+1928 |             logs::LogsActions
+     |             ^^^^^^^^^^^^^^^^^ did you mean `logs::LogsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `sinks::SinksActions`
+    --> gen/logging/v2/lib/src/lib.rs:1932:13
+     |
+1932 |             sinks::SinksActions
+     |             ^^^^^^^^^^^^^^^^^^^ did you mean `sinks::SinksActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `exclusions::ExclusionsActions`
+    --> gen/logging/v2/lib/src/lib.rs:5426:13
+     |
+5426 |             exclusions::ExclusionsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `exclusions::ExclusionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `logs::LogsActions`
+    --> gen/logging/v2/lib/src/lib.rs:5430:13
+     |
+5430 |             logs::LogsActions
+     |             ^^^^^^^^^^^^^^^^^ did you mean `logs::LogsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `sinks::SinksActions`
+    --> gen/logging/v2/lib/src/lib.rs:5434:13
+     |
+5434 |             sinks::SinksActions
+     |             ^^^^^^^^^^^^^^^^^^^ did you mean `sinks::SinksActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `exclusions::ExclusionsActions`
+    --> gen/logging/v2/lib/src/lib.rs:8408:13
+     |
+8408 |             exclusions::ExclusionsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `exclusions::ExclusionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `logs::LogsActions`
+    --> gen/logging/v2/lib/src/lib.rs:8412:13
+     |
+8412 |             logs::LogsActions
+     |             ^^^^^^^^^^^^^^^^^ did you mean `logs::LogsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `sinks::SinksActions`
+    --> gen/logging/v2/lib/src/lib.rs:8416:13
+     |
+8416 |             sinks::SinksActions
+     |             ^^^^^^^^^^^^^^^^^^^ did you mean `sinks::SinksActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `exclusions::ExclusionsActions`
+     --> gen/logging/v2/lib/src/lib.rs:10741:13
+      |
+10741 |             exclusions::ExclusionsActions
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `exclusions::ExclusionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `logs::LogsActions`
+     --> gen/logging/v2/lib/src/lib.rs:10745:13
+      |
+10745 |             logs::LogsActions
+      |             ^^^^^^^^^^^^^^^^^ did you mean `logs::LogsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `metrics::MetricsActions`
+     --> gen/logging/v2/lib/src/lib.rs:10749:13
+      |
+10749 |             metrics::MetricsActions
+      |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `metrics::MetricsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `sinks::SinksActions`
+     --> gen/logging/v2/lib/src/lib.rs:10753:13
+      |
+10753 |             sinks::SinksActions
+      |             ^^^^^^^^^^^^^^^^^^^ did you mean `sinks::SinksActions { /* fields */ }`?
+
+error: aborting due to 13 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-logging2`.
+
+To learn more, run the command again with --verbose.

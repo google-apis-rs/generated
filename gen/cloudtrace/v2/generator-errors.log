@@ -1,0 +1,20 @@
+    Blocking waiting for file lock on build directory
+    Checking google-cloudtrace2 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/cloudtrace/v2/lib)
+error[E0423]: expected value, found struct `traces::TracesActions`
+   --> gen/cloudtrace/v2/lib/src/lib.rs:770:13
+    |
+770 |             traces::TracesActions
+    |             ^^^^^^^^^^^^^^^^^^^^^ did you mean `traces::TracesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `spans::SpansActions`
+   --> gen/cloudtrace/v2/lib/src/lib.rs:806:17
+    |
+806 |                 spans::SpansActions
+    |                 ^^^^^^^^^^^^^^^^^^^ did you mean `spans::SpansActions { /* fields */ }`?
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-cloudtrace2`.
+
+To learn more, run the command again with --verbose.

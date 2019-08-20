@@ -1,0 +1,28 @@
+    Blocking waiting for file lock on build directory
+    Checking google-genomics2_alpha1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/genomics/v2alpha1/lib)
+error[E0423]: expected value, found struct `operations::OperationsActions`
+    --> gen/genomics/v2alpha1/lib/src/lib.rs:1584:13
+     |
+1584 |             operations::OperationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `operations::OperationsActions { /* fields */ }`?
+
+warning: unreachable expression
+  --> gen/genomics/v2alpha1/lib/src/lib.rs:59:13
+   |
+59 | /             Ok(match value {
+60 | |                 _ => {
+61 | |                     return Err(::serde::de::Error::custom(format!(
+62 | |                         "invalid enum for #name: {}",
+...  |
+65 | |                 }
+66 | |             })
+   | |______________^
+   |
+   = note: #[warn(unreachable_code)] on by default
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-genomics2_alpha1`.
+
+To learn more, run the command again with --verbose.

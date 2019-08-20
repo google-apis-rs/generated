@@ -1,0 +1,32 @@
+    Blocking waiting for file lock on build directory
+    Checking google-runtimeconfig1_beta1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/runtimeconfig/v1beta1/lib)
+error[E0423]: expected value, found struct `configs::ConfigsActions`
+   --> gen/runtimeconfig/v1beta1/lib/src/lib.rs:695:13
+    |
+695 |             configs::ConfigsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `configs::ConfigsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `operations::OperationsActions`
+   --> gen/runtimeconfig/v1beta1/lib/src/lib.rs:886:17
+    |
+886 |                 operations::OperationsActions
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `operations::OperationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `variables::VariablesActions`
+   --> gen/runtimeconfig/v1beta1/lib/src/lib.rs:890:17
+    |
+890 |                 variables::VariablesActions
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `variables::VariablesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `waiters::WaitersActions`
+   --> gen/runtimeconfig/v1beta1/lib/src/lib.rs:894:17
+    |
+894 |                 waiters::WaitersActions
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `waiters::WaitersActions { /* fields */ }`?
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-runtimeconfig1_beta1`.
+
+To learn more, run the command again with --verbose.

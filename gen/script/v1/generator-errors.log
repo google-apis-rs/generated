@@ -1,0 +1,106 @@
+    Blocking waiting for file lock on build directory
+    Checking google-script1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/script/v1/lib)
+error[E0423]: expected value, found struct `deployments::DeploymentsActions`
+    --> gen/script/v1/lib/src/lib.rs:2872:13
+     |
+2872 |             deployments::DeploymentsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `deployments::DeploymentsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `versions::VersionsActions`
+    --> gen/script/v1/lib/src/lib.rs:2876:13
+     |
+2876 |             versions::VersionsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `versions::VersionsActions { /* fields */ }`?
+
+warning: unreachable expression
+    --> gen/script/v1/lib/src/lib.rs:1827:17
+     |
+1827 | /                 Ok(match value {
+1828 | |                     _ => {
+1829 | |                         return Err(::serde::de::Error::custom(format!(
+1830 | |                             "invalid enum for #name: {}",
+...    |
+1833 | |                     }
+1834 | |                 })
+     | |__________________^
+     |
+     = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+    --> gen/script/v1/lib/src/lib.rs:1863:17
+     |
+1863 | /                 Ok(match value {
+1864 | |                     _ => {
+1865 | |                         return Err(::serde::de::Error::custom(format!(
+1866 | |                             "invalid enum for #name: {}",
+...    |
+1869 | |                     }
+1870 | |                 })
+     | |__________________^
+
+warning: unreachable expression
+    --> gen/script/v1/lib/src/lib.rs:1899:17
+     |
+1899 | /                 Ok(match value {
+1900 | |                     _ => {
+1901 | |                         return Err(::serde::de::Error::custom(format!(
+1902 | |                             "invalid enum for #name: {}",
+...    |
+1905 | |                     }
+1906 | |                 })
+     | |__________________^
+
+warning: unreachable expression
+    --> gen/script/v1/lib/src/lib.rs:1935:17
+     |
+1935 | /                 Ok(match value {
+1936 | |                     _ => {
+1937 | |                         return Err(::serde::de::Error::custom(format!(
+1938 | |                             "invalid enum for #name: {}",
+...    |
+1941 | |                     }
+1942 | |                 })
+     | |__________________^
+
+warning: unreachable expression
+    --> gen/script/v1/lib/src/lib.rs:1971:17
+     |
+1971 | /                 Ok(match value {
+1972 | |                     _ => {
+1973 | |                         return Err(::serde::de::Error::custom(format!(
+1974 | |                             "invalid enum for #name: {}",
+...    |
+1977 | |                     }
+1978 | |                 })
+     | |__________________^
+
+warning: unreachable expression
+    --> gen/script/v1/lib/src/lib.rs:2007:17
+     |
+2007 | /                 Ok(match value {
+2008 | |                     _ => {
+2009 | |                         return Err(::serde::de::Error::custom(format!(
+2010 | |                             "invalid enum for #name: {}",
+...    |
+2013 | |                     }
+2014 | |                 })
+     | |__________________^
+
+warning: unreachable expression
+    --> gen/script/v1/lib/src/lib.rs:2748:17
+     |
+2748 | /                 Ok(match value {
+2749 | |                     _ => {
+2750 | |                         return Err(::serde::de::Error::custom(format!(
+2751 | |                             "invalid enum for #name: {}",
+...    |
+2754 | |                     }
+2755 | |                 })
+     | |__________________^
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-script1`.
+
+To learn more, run the command again with --verbose.

@@ -1,0 +1,65 @@
+    Blocking waiting for file lock on build directory
+    Checking google-proximitybeacon1_beta1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/proximitybeacon/v1beta1/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/proximitybeacon/v1beta1/lib/src/lib.rs:3258:41
+     |
+3258 |             alert_filter: Option<crate::diagnostics::params::ListAlertFilter>,
+     |                                         ^^^^^^^^^^^
+     |                                         |
+     |                                         unresolved import
+     |                                         help: a similar path exists: `crate::beacons::diagnostics`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/proximitybeacon/v1beta1/lib/src/lib.rs:3278:31
+     |
+3278 |                 value: crate::diagnostics::params::ListAlertFilter,
+     |                               ^^^^^^^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::beacons::diagnostics`
+
+error[E0423]: expected value, found struct `attachments::AttachmentsActions`
+    --> gen/proximitybeacon/v1beta1/lib/src/lib.rs:1331:13
+     |
+1331 |             attachments::AttachmentsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `attachments::AttachmentsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `diagnostics::DiagnosticsActions`
+    --> gen/proximitybeacon/v1beta1/lib/src/lib.rs:1335:13
+     |
+1335 |             diagnostics::DiagnosticsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `diagnostics::DiagnosticsActions { /* fields */ }`?
+
+warning: unreachable expression
+   --> gen/proximitybeacon/v1beta1/lib/src/lib.rs:414:13
+    |
+414 | /             Ok(match value {
+415 | |                 _ => {
+416 | |                     return Err(::serde::de::Error::custom(format!(
+417 | |                         "invalid enum for #name: {}",
+...   |
+420 | |                 }
+421 | |             })
+    | |______________^
+    |
+    = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+    --> gen/proximitybeacon/v1beta1/lib/src/lib.rs:3213:21
+     |
+3213 | /                     Ok(match value {
+3214 | |                         _ => {
+3215 | |                             return Err(::serde::de::Error::custom(format!(
+3216 | |                                 "invalid enum for #name: {}",
+...    |
+3219 | |                         }
+3220 | |                     })
+     | |______________________^
+
+error: aborting due to 4 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-proximitybeacon1_beta1`.
+
+To learn more, run the command again with --verbose.

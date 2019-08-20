@@ -1,0 +1,48 @@
+    Blocking waiting for file lock on build directory
+    Checking google-storage1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/storage/v1/lib)
+error[E0423]: expected value, found struct `hmac_keys::HmacKeysActions`
+     --> gen/storage/v1/lib/src/lib.rs:10677:13
+      |
+10677 |             hmac_keys::HmacKeysActions
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `hmac_keys::HmacKeysActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `service_account::ServiceAccountActions`
+     --> gen/storage/v1/lib/src/lib.rs:10681:13
+      |
+10681 |             service_account::ServiceAccountActions
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `service_account::ServiceAccountActions { /* fields */ }`?
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_BucketBilling::_serde::Deserialize<'_>` is not satisfied
+   --> gen/storage/v1/lib/src/lib.rs:229:9
+    |
+229 |         #[doc = "A date in RFC 3339 format with only the date part (for instance, \"2013-01-15\"). This condition is satisfied when an object is created before midnight of the specified date in UTC."]
+    |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_BucketBilling::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+    |
+    = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_BucketBilling::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+    = note: required by `schemas::_IMPL_SERIALIZE_FOR_BucketBilling::_serde::de::SeqAccess::next_element`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_BucketBilling::_serde::Deserialize<'_>` is not satisfied
+   --> gen/storage/v1/lib/src/lib.rs:229:9
+    |
+229 |         #[doc = "A date in RFC 3339 format with only the date part (for instance, \"2013-01-15\"). This condition is satisfied when an object is created before midnight of the specified date in UTC."]
+    |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_BucketBilling::_serde::Deserialize<'_>` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+    |
+    = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_BucketBilling::_serde::Deserialize<'_>` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+    = note: required by `schemas::_IMPL_SERIALIZE_FOR_BucketBilling::_serde::de::MapAccess::next_value`
+
+error[E0277]: the trait bound `chrono::date::Date<chrono::offset::utc::Utc>: schemas::_IMPL_SERIALIZE_FOR_BucketBilling::_serde::Serialize` is not satisfied
+   --> gen/storage/v1/lib/src/lib.rs:229:9
+    |
+229 |         #[doc = "A date in RFC 3339 format with only the date part (for instance, \"2013-01-15\"). This condition is satisfied when an object is created before midnight of the specified date in UTC."]
+    |         ^ the trait `schemas::_IMPL_SERIALIZE_FOR_BucketBilling::_serde::Serialize` is not implemented for `chrono::date::Date<chrono::offset::utc::Utc>`
+    |
+    = note: required because of the requirements on the impl of `schemas::_IMPL_SERIALIZE_FOR_BucketBilling::_serde::Serialize` for `std::option::Option<chrono::date::Date<chrono::offset::utc::Utc>>`
+    = note: required by `schemas::_IMPL_SERIALIZE_FOR_BucketBilling::_serde::ser::SerializeStruct::serialize_field`
+
+error: aborting due to 5 previous errors
+
+Some errors have detailed explanations: E0277, E0423.
+For more information about an error, try `rustc --explain E0277`.
+error: Could not compile `google-storage1`.
+
+To learn more, run the command again with --verbose.

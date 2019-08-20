@@ -1,0 +1,77 @@
+    Blocking waiting for file lock on build directory
+    Checking google-manufacturers1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/manufacturers/v1/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/manufacturers/v1/lib/src/lib.rs:1237:36
+     |
+1237 |             include: Option<crate::products::params::GetInclude>,
+     |                                    ^^^^^^^^
+     |                                    |
+     |                                    unresolved import
+     |                                    help: a similar path exists: `crate::accounts::products`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/manufacturers/v1/lib/src/lib.rs:1252:53
+     |
+1252 |             pub fn include(&mut self, value: crate::products::params::GetInclude) -> &mut Self {
+     |                                                     ^^^^^^^^
+     |                                                     |
+     |                                                     unresolved import
+     |                                                     help: a similar path exists: `crate::accounts::products`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/manufacturers/v1/lib/src/lib.rs:1373:36
+     |
+1373 |             include: Option<crate::products::params::ListInclude>,
+     |                                    ^^^^^^^^
+     |                                    |
+     |                                    unresolved import
+     |                                    help: a similar path exists: `crate::accounts::products`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/manufacturers/v1/lib/src/lib.rs:1390:53
+     |
+1390 |             pub fn include(&mut self, value: crate::products::params::ListInclude) -> &mut Self {
+     |                                                     ^^^^^^^^
+     |                                                     |
+     |                                                     unresolved import
+     |                                                     help: a similar path exists: `crate::accounts::products`
+
+error[E0423]: expected value, found struct `products::ProductsActions`
+   --> gen/manufacturers/v1/lib/src/lib.rs:920:13
+    |
+920 |             products::ProductsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `products::ProductsActions { /* fields */ }`?
+
+warning: unreachable expression
+   --> gen/manufacturers/v1/lib/src/lib.rs:951:21
+    |
+951 | /                     Ok(match value {
+952 | |                         _ => {
+953 | |                             return Err(::serde::de::Error::custom(format!(
+954 | |                                 "invalid enum for #name: {}",
+...   |
+957 | |                         }
+958 | |                     })
+    | |______________________^
+    |
+    = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+   --> gen/manufacturers/v1/lib/src/lib.rs:987:21
+    |
+987 | /                     Ok(match value {
+988 | |                         _ => {
+989 | |                             return Err(::serde::de::Error::custom(format!(
+990 | |                                 "invalid enum for #name: {}",
+...   |
+993 | |                         }
+994 | |                     })
+    | |______________________^
+
+error: aborting due to 5 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-manufacturers1`.
+
+To learn more, run the command again with --verbose.

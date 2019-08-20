@@ -1,0 +1,84 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+    Checking google-toolresults1_beta3 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/toolresults/v1beta3/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/toolresults/v1beta3/lib/src/lib.rs:5966:47
+     |
+5966 |                         filter: Option<crate::perf_sample_series::params::ListFilter>,
+     |                                               ^^^^^^^^^^^^^^^^^^
+     |                                               |
+     |                                               unresolved import
+     |                                               help: a similar path exists: `crate::projects::histories::executions::steps::perf_sample_series`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/toolresults/v1beta3/lib/src/lib.rs:5979:43
+     |
+5979 |                             value: crate::perf_sample_series::params::ListFilter,
+     |                                           ^^^^^^^^^^^^^^^^^^
+     |                                           |
+     |                                           unresolved import
+     |                                           help: a similar path exists: `crate::projects::histories::executions::steps::perf_sample_series`
+
+error[E0423]: expected value, found struct `histories::HistoriesActions`
+    --> gen/toolresults/v1beta3/lib/src/lib.rs:2878:13
+     |
+2878 |             histories::HistoriesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `histories::HistoriesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `executions::ExecutionsActions`
+    --> gen/toolresults/v1beta3/lib/src/lib.rs:3147:17
+     |
+3147 |                 executions::ExecutionsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `executions::ExecutionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `clusters::ClustersActions`
+    --> gen/toolresults/v1beta3/lib/src/lib.rs:3666:21
+     |
+3666 |                     clusters::ClustersActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `clusters::ClustersActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `steps::StepsActions`
+    --> gen/toolresults/v1beta3/lib/src/lib.rs:3670:21
+     |
+3670 |                     steps::StepsActions
+     |                     ^^^^^^^^^^^^^^^^^^^ did you mean `steps::StepsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `perf_metrics_summary::PerfMetricsSummaryActions`
+    --> gen/toolresults/v1beta3/lib/src/lib.rs:4630:25
+     |
+4630 |                         perf_metrics_summary::PerfMetricsSummaryActions
+     |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `perf_metrics_summary::PerfMetricsSummaryActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `perf_sample_series::PerfSampleSeriesActions`
+    --> gen/toolresults/v1beta3/lib/src/lib.rs:4636:25
+     |
+4636 |                         perf_sample_series::PerfSampleSeriesActions
+     |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `perf_sample_series::PerfSampleSeriesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `test_cases::TestCasesActions`
+    --> gen/toolresults/v1beta3/lib/src/lib.rs:4640:25
+     |
+4640 |                         test_cases::TestCasesActions
+     |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `test_cases::TestCasesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `thumbnails::ThumbnailsActions`
+    --> gen/toolresults/v1beta3/lib/src/lib.rs:4644:25
+     |
+4644 |                         thumbnails::ThumbnailsActions
+     |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `thumbnails::ThumbnailsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `samples::SamplesActions`
+    --> gen/toolresults/v1beta3/lib/src/lib.rs:5724:29
+     |
+5724 |                             samples::SamplesActions
+     |                             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `samples::SamplesActions { /* fields */ }`?
+
+error: aborting due to 11 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-toolresults1_beta3`.
+
+To learn more, run the command again with --verbose.

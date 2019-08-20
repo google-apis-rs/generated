@@ -1,0 +1,189 @@
+    Blocking waiting for file lock on build directory
+    Checking google-gmail1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/gmail/v1/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/gmail/v1/lib/src/lib.rs:2976:35
+     |
+2976 |             format: Option<crate::drafts::params::GetFormat>,
+     |                                   ^^^^^^
+     |                                   |
+     |                                   unresolved import
+     |                                   help: a similar path exists: `crate::users::drafts`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/gmail/v1/lib/src/lib.rs:2987:52
+     |
+2987 |             pub fn format(&mut self, value: crate::drafts::params::GetFormat) -> &mut Self {
+     |                                                    ^^^^^^
+     |                                                    |
+     |                                                    unresolved import
+     |                                                    help: a similar path exists: `crate::users::drafts`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/gmail/v1/lib/src/lib.rs:3714:42
+     |
+3714 |             history_types: Option<crate::history::params::ListHistoryTypes>,
+     |                                          ^^^^^^^
+     |                                          |
+     |                                          unresolved import
+     |                                          help: a similar path exists: `crate::users::history`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/gmail/v1/lib/src/lib.rs:3731:31
+     |
+3731 |                 value: crate::history::params::ListHistoryTypes,
+     |                               ^^^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::users::history`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/gmail/v1/lib/src/lib.rs:5275:35
+     |
+5275 |             format: Option<crate::messages::params::GetFormat>,
+     |                                   ^^^^^^^^
+     |                                   |
+     |                                   unresolved import
+     |                                   help: a similar path exists: `crate::users::messages`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/gmail/v1/lib/src/lib.rs:5287:52
+     |
+5287 |             pub fn format(&mut self, value: crate::messages::params::GetFormat) -> &mut Self {
+     |                                                    ^^^^^^^^
+     |                                                    |
+     |                                                    unresolved import
+     |                                                    help: a similar path exists: `crate::users::messages`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/gmail/v1/lib/src/lib.rs:5391:49
+     |
+5391 |             internal_date_source: Option<crate::messages::params::ImportInternalDateSource>,
+     |                                                 ^^^^^^^^
+     |                                                 |
+     |                                                 unresolved import
+     |                                                 help: a similar path exists: `crate::users::messages`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/gmail/v1/lib/src/lib.rs:5411:31
+     |
+5411 |                 value: crate::messages::params::ImportInternalDateSource,
+     |                               ^^^^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::users::messages`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/gmail/v1/lib/src/lib.rs:5591:49
+     |
+5591 |             internal_date_source: Option<crate::messages::params::InsertInternalDateSource>,
+     |                                                 ^^^^^^^^
+     |                                                 |
+     |                                                 unresolved import
+     |                                                 help: a similar path exists: `crate::users::messages`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/gmail/v1/lib/src/lib.rs:5609:31
+     |
+5609 |                 value: crate::messages::params::InsertInternalDateSource,
+     |                               ^^^^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::users::messages`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/gmail/v1/lib/src/lib.rs:10952:35
+      |
+10952 |             format: Option<crate::threads::params::GetFormat>,
+      |                                   ^^^^^^^
+      |                                   |
+      |                                   unresolved import
+      |                                   help: a similar path exists: `crate::users::threads`
+
+error[E0433]: failed to resolve: unresolved import
+     --> gen/gmail/v1/lib/src/lib.rs:10964:52
+      |
+10964 |             pub fn format(&mut self, value: crate::threads::params::GetFormat) -> &mut Self {
+      |                                                    ^^^^^^^
+      |                                                    |
+      |                                                    unresolved import
+      |                                                    help: a similar path exists: `crate::users::threads`
+
+error[E0423]: expected value, found struct `drafts::DraftsActions`
+    --> gen/gmail/v1/lib/src/lib.rs:2238:13
+     |
+2238 |             drafts::DraftsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^ did you mean `drafts::DraftsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `history::HistoryActions`
+    --> gen/gmail/v1/lib/src/lib.rs:2242:13
+     |
+2242 |             history::HistoryActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `history::HistoryActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `labels::LabelsActions`
+    --> gen/gmail/v1/lib/src/lib.rs:2246:13
+     |
+2246 |             labels::LabelsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^ did you mean `labels::LabelsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `messages::MessagesActions`
+    --> gen/gmail/v1/lib/src/lib.rs:2250:13
+     |
+2250 |             messages::MessagesActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `messages::MessagesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `settings::SettingsActions`
+    --> gen/gmail/v1/lib/src/lib.rs:2254:13
+     |
+2254 |             settings::SettingsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `settings::SettingsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `threads::ThreadsActions`
+    --> gen/gmail/v1/lib/src/lib.rs:2258:13
+     |
+2258 |             threads::ThreadsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `threads::ThreadsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `attachments::AttachmentsActions`
+    --> gen/gmail/v1/lib/src/lib.rs:5026:17
+     |
+5026 |                 attachments::AttachmentsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `attachments::AttachmentsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `delegates::DelegatesActions`
+    --> gen/gmail/v1/lib/src/lib.rs:6788:17
+     |
+6788 |                 delegates::DelegatesActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `delegates::DelegatesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `filters::FiltersActions`
+    --> gen/gmail/v1/lib/src/lib.rs:6792:17
+     |
+6792 |                 filters::FiltersActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `filters::FiltersActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `forwarding_addresses::ForwardingAddressesActions`
+    --> gen/gmail/v1/lib/src/lib.rs:6798:17
+     |
+6798 |                 forwarding_addresses::ForwardingAddressesActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `forwarding_addresses::ForwardingAddressesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `send_as::SendAsActions`
+    --> gen/gmail/v1/lib/src/lib.rs:6802:17
+     |
+6802 |                 send_as::SendAsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^ did you mean `send_as::SendAsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `smime_info::SmimeInfoActions`
+    --> gen/gmail/v1/lib/src/lib.rs:9391:21
+     |
+9391 |                     smime_info::SmimeInfoActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `smime_info::SmimeInfoActions { /* fields */ }`?
+
+error: aborting due to 24 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+error: Could not compile `google-gmail1`.
+
+To learn more, run the command again with --verbose.

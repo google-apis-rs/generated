@@ -1,0 +1,38 @@
+    Blocking waiting for file lock on build directory
+    Checking google-pubsub1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/pubsub/v1/lib)
+error[E0423]: expected value, found struct `snapshots::SnapshotsActions`
+    --> gen/pubsub/v1/lib/src/lib.rs:1144:13
+     |
+1144 |             snapshots::SnapshotsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `snapshots::SnapshotsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `subscriptions::SubscriptionsActions`
+    --> gen/pubsub/v1/lib/src/lib.rs:1148:13
+     |
+1148 |             subscriptions::SubscriptionsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `subscriptions::SubscriptionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `topics::TopicsActions`
+    --> gen/pubsub/v1/lib/src/lib.rs:1152:13
+     |
+1152 |             topics::TopicsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^ did you mean `topics::TopicsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `snapshots::SnapshotsActions`
+    --> gen/pubsub/v1/lib/src/lib.rs:4793:17
+     |
+4793 |                 snapshots::SnapshotsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `snapshots::SnapshotsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `subscriptions::SubscriptionsActions`
+    --> gen/pubsub/v1/lib/src/lib.rs:4797:17
+     |
+4797 |                 subscriptions::SubscriptionsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `subscriptions::SubscriptionsActions { /* fields */ }`?
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-pubsub1`.
+
+To learn more, run the command again with --verbose.

@@ -1,0 +1,26 @@
+    Blocking waiting for file lock on build directory
+    Checking google-adsensehost4d1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/adsensehost/v4.1/lib)
+error[E0423]: expected value, found struct `adclients::AdclientsActions`
+   --> gen/adsensehost/v4.1/lib/src/lib.rs:880:13
+    |
+880 |             adclients::AdclientsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `adclients::AdclientsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `adunits::AdunitsActions`
+   --> gen/adsensehost/v4.1/lib/src/lib.rs:884:13
+    |
+884 |             adunits::AdunitsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `adunits::AdunitsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `reports::ReportsActions`
+   --> gen/adsensehost/v4.1/lib/src/lib.rs:888:13
+    |
+888 |             reports::ReportsActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `reports::ReportsActions { /* fields */ }`?
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-adsensehost4d1`.
+
+To learn more, run the command again with --verbose.

@@ -1,0 +1,99 @@
+    Blocking waiting for file lock on build directory
+    Checking google-slides1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/slides/v1/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/slides/v1/lib/src/lib.rs:8863:31
+     |
+8863 |                 Option<crate::pages::params::GetThumbnailThumbnailPropertiesMimeType>,
+     |                               ^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::presentations::pages`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/slides/v1/lib/src/lib.rs:8865:31
+     |
+8865 |                 Option<crate::pages::params::GetThumbnailThumbnailPropertiesThumbnailSize>,
+     |                               ^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::presentations::pages`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/slides/v1/lib/src/lib.rs:8882:31
+     |
+8882 |                 value: crate::pages::params::GetThumbnailThumbnailPropertiesMimeType,
+     |                               ^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::presentations::pages`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/slides/v1/lib/src/lib.rs:8890:31
+     |
+8890 |                 value: crate::pages::params::GetThumbnailThumbnailPropertiesThumbnailSize,
+     |                               ^^^^^
+     |                               |
+     |                               unresolved import
+     |                               help: a similar path exists: `crate::presentations::pages`
+
+error[E0423]: expected value, found struct `pages::PagesActions`
+    --> gen/slides/v1/lib/src/lib.rs:8205:13
+     |
+8205 |             pages::PagesActions
+     |             ^^^^^^^^^^^^^^^^^^^ did you mean `pages::PagesActions { /* fields */ }`?
+
+error[E0072]: recursive type `schemas::Page` has infinite size
+    --> gen/slides/v1/lib/src/lib.rs:3510:5
+     |
+3510 |     pub struct Page {
+     |     ^^^^^^^^^^^^^^^ recursive type has infinite size
+...
+3537 |         pub slide_properties: Option<crate::schemas::SlideProperties>,
+     |         ------------------------------------------------------------- recursive without indirection
+     |
+     = help: insert indirection (e.g., a `Box`, `Rc`, or `&`) at some point to make `schemas::Page` representable
+
+error[E0072]: recursive type `schemas::SlideProperties` has infinite size
+    --> gen/slides/v1/lib/src/lib.rs:6156:5
+     |
+6156 |     pub struct SlideProperties {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^ recursive type has infinite size
+...
+6165 |         pub notes_page: Option<crate::schemas::Page>,
+     |         -------------------------------------------- recursive without indirection
+     |
+     = help: insert indirection (e.g., a `Box`, `Rc`, or `&`) at some point to make `schemas::SlideProperties` representable
+
+warning: unreachable expression
+    --> gen/slides/v1/lib/src/lib.rs:8623:21
+     |
+8623 | /                     Ok(match value {
+8624 | |                         _ => {
+8625 | |                             return Err(::serde::de::Error::custom(format!(
+8626 | |                                 "invalid enum for #name: {}",
+...    |
+8629 | |                         }
+8630 | |                     })
+     | |______________________^
+     |
+     = note: #[warn(unreachable_code)] on by default
+
+warning: unreachable expression
+    --> gen/slides/v1/lib/src/lib.rs:8659:21
+     |
+8659 | /                     Ok(match value {
+8660 | |                         _ => {
+8661 | |                             return Err(::serde::de::Error::custom(format!(
+8662 | |                                 "invalid enum for #name: {}",
+...    |
+8665 | |                         }
+8666 | |                     })
+     | |______________________^
+
+error: aborting due to 7 previous errors
+
+Some errors have detailed explanations: E0072, E0423, E0433.
+For more information about an error, try `rustc --explain E0072`.
+error: Could not compile `google-slides1`.
+
+To learn more, run the command again with --verbose.

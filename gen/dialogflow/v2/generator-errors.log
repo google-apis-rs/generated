@@ -1,0 +1,146 @@
+    Blocking waiting for file lock on build directory
+    Checking google-dialogflow2 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/dialogflow/v2/lib)
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dialogflow/v2/lib/src/lib.rs:9241:44
+     |
+9241 |                 intent_view: Option<crate::intents::params::CreateIntentView>,
+     |                                            ^^^^^^^
+     |                                            |
+     |                                            unresolved import
+     |                                            help: a similar path exists: `crate::projects::agent::intents`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dialogflow/v2/lib/src/lib.rs:9259:35
+     |
+9259 |                     value: crate::intents::params::CreateIntentView,
+     |                                   ^^^^^^^
+     |                                   |
+     |                                   unresolved import
+     |                                   help: a similar path exists: `crate::projects::agent::intents`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dialogflow/v2/lib/src/lib.rs:9519:44
+     |
+9519 |                 intent_view: Option<crate::intents::params::GetIntentView>,
+     |                                            ^^^^^^^
+     |                                            |
+     |                                            unresolved import
+     |                                            help: a similar path exists: `crate::projects::agent::intents`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dialogflow/v2/lib/src/lib.rs:9537:35
+     |
+9537 |                     value: crate::intents::params::GetIntentView,
+     |                                   ^^^^^^^
+     |                                   |
+     |                                   unresolved import
+     |                                   help: a similar path exists: `crate::projects::agent::intents`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dialogflow/v2/lib/src/lib.rs:9666:44
+     |
+9666 |                 intent_view: Option<crate::intents::params::ListIntentView>,
+     |                                            ^^^^^^^
+     |                                            |
+     |                                            unresolved import
+     |                                            help: a similar path exists: `crate::projects::agent::intents`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dialogflow/v2/lib/src/lib.rs:9686:35
+     |
+9686 |                     value: crate::intents::params::ListIntentView,
+     |                                   ^^^^^^^
+     |                                   |
+     |                                   unresolved import
+     |                                   help: a similar path exists: `crate::projects::agent::intents`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dialogflow/v2/lib/src/lib.rs:9910:44
+     |
+9910 |                 intent_view: Option<crate::intents::params::PatchIntentView>,
+     |                                            ^^^^^^^
+     |                                            |
+     |                                            unresolved import
+     |                                            help: a similar path exists: `crate::projects::agent::intents`
+
+error[E0433]: failed to resolve: unresolved import
+    --> gen/dialogflow/v2/lib/src/lib.rs:9929:35
+     |
+9929 |                     value: crate::intents::params::PatchIntentView,
+     |                                   ^^^^^^^
+     |                                   |
+     |                                   unresolved import
+     |                                   help: a similar path exists: `crate::projects::agent::intents`
+
+error[E0423]: expected value, found struct `agent::AgentActions`
+    --> gen/dialogflow/v2/lib/src/lib.rs:5648:13
+     |
+5648 |             agent::AgentActions
+     |             ^^^^^^^^^^^^^^^^^^^ did you mean `agent::AgentActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `operations::OperationsActions`
+    --> gen/dialogflow/v2/lib/src/lib.rs:5652:13
+     |
+5652 |             operations::OperationsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `operations::OperationsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `entity_types::EntityTypesActions`
+    --> gen/dialogflow/v2/lib/src/lib.rs:6177:17
+     |
+6177 |                 entity_types::EntityTypesActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `entity_types::EntityTypesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `intents::IntentsActions`
+    --> gen/dialogflow/v2/lib/src/lib.rs:6181:17
+     |
+6181 |                 intents::IntentsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^ did you mean `intents::IntentsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `sessions::SessionsActions`
+    --> gen/dialogflow/v2/lib/src/lib.rs:6185:17
+     |
+6185 |                 sessions::SessionsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `sessions::SessionsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `entities::EntitiesActions`
+    --> gen/dialogflow/v2/lib/src/lib.rs:7111:21
+     |
+7111 |                     entities::EntitiesActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `entities::EntitiesActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `contexts::ContextsActions`
+     --> gen/dialogflow/v2/lib/src/lib.rs:10117:21
+      |
+10117 |                     contexts::ContextsActions
+      |                     ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `contexts::ContextsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `entity_types::EntityTypesActions`
+     --> gen/dialogflow/v2/lib/src/lib.rs:10121:21
+      |
+10121 |                     entity_types::EntityTypesActions
+      |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `entity_types::EntityTypesActions { /* fields */ }`?
+
+error[E0201]: duplicate definitions with name `agent`:
+    --> gen/dialogflow/v2/lib/src/lib.rs:5647:9
+     |
+5584 | /         pub fn agent(
+5585 | |             &self,
+5586 | |             request: crate::schemas::GoogleCloudDialogflowV2Agent,
+5587 | |             parent: impl Into<String>,
+...    |
+5606 | |             }
+5607 | |         }
+     | |_________- previous definition of `agent` here
+...
+5647 | /         pub fn agent(&self) -> agent::AgentActions<A> {
+5648 | |             agent::AgentActions
+5649 | |         }
+     | |_________^ duplicate definition
+
+error: aborting due to 17 previous errors
+
+Some errors have detailed explanations: E0201, E0423, E0433.
+For more information about an error, try `rustc --explain E0201`.
+error: Could not compile `google-dialogflow2`.
+
+To learn more, run the command again with --verbose.

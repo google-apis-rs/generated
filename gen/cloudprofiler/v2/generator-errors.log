@@ -1,0 +1,28 @@
+    Blocking waiting for file lock on build directory
+    Checking google-cloudprofiler2 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/cloudprofiler/v2/lib)
+error[E0423]: expected value, found struct `profiles::ProfilesActions`
+   --> gen/cloudprofiler/v2/lib/src/lib.rs:340:13
+    |
+340 |             profiles::ProfilesActions
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `profiles::ProfilesActions { /* fields */ }`?
+
+warning: unreachable expression
+  --> gen/cloudprofiler/v2/lib/src/lib.rs:28:13
+   |
+28 | /             Ok(match value {
+29 | |                 _ => {
+30 | |                     return Err(::serde::de::Error::custom(format!(
+31 | |                         "invalid enum for #name: {}",
+...  |
+34 | |                 }
+35 | |             })
+   | |______________^
+   |
+   = note: #[warn(unreachable_code)] on by default
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-cloudprofiler2`.
+
+To learn more, run the command again with --verbose.

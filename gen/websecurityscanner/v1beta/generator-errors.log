@@ -1,0 +1,54 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+    Checking google-websecurityscanner1_beta v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/websecurityscanner/v1beta/lib)
+error[E0423]: expected value, found struct `scan_configs::ScanConfigsActions`
+    --> gen/websecurityscanner/v1beta/lib/src/lib.rs:1671:13
+     |
+1671 |             scan_configs::ScanConfigsActions
+     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `scan_configs::ScanConfigsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `scan_runs::ScanRunsActions`
+    --> gen/websecurityscanner/v1beta/lib/src/lib.rs:1815:17
+     |
+1815 |                 scan_runs::ScanRunsActions
+     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `scan_runs::ScanRunsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `crawled_urls::CrawledUrlsActions`
+    --> gen/websecurityscanner/v1beta/lib/src/lib.rs:2768:21
+     |
+2768 |                     crawled_urls::CrawledUrlsActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `crawled_urls::CrawledUrlsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `finding_type_stats::FindingTypeStatsActions`
+    --> gen/websecurityscanner/v1beta/lib/src/lib.rs:2772:21
+     |
+2772 |                     finding_type_stats::FindingTypeStatsActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `finding_type_stats::FindingTypeStatsActions { /* fields */ }`?
+
+error[E0423]: expected value, found struct `findings::FindingsActions`
+    --> gen/websecurityscanner/v1beta/lib/src/lib.rs:2776:21
+     |
+2776 |                     findings::FindingsActions
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^ did you mean `findings::FindingsActions { /* fields */ }`?
+
+warning: unreachable expression
+   --> gen/websecurityscanner/v1beta/lib/src/lib.rs:599:13
+    |
+599 | /             Ok(match value {
+600 | |                 _ => {
+601 | |                     return Err(::serde::de::Error::custom(format!(
+602 | |                         "invalid enum for #name: {}",
+...   |
+605 | |                 }
+606 | |             })
+    | |______________^
+    |
+    = note: #[warn(unreachable_code)] on by default
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0423`.
+error: Could not compile `google-websecurityscanner1_beta`.
+
+To learn more, run the command again with --verbose.
