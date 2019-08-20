@@ -1799,7 +1799,7 @@ pub mod schemas {
         #[doc = "Inserts the image at a specific index in the document.\n\nThe image must be inserted inside the bounds of an existing\nParagraph. For instance, it cannot be\ninserted at a table's start index (i.e. between the table and its\npreceding paragraph).\n\nInline images cannot be inserted inside a footnote or equation."]
         #[serde(rename = "location", default)]
         pub location: Option<crate::schemas::Location>,
-        #[doc = "The size that the image should appear as in the document. This property is\noptional and the final size of the image in the document is determined by\nthe following rules:\n * If neither width nor height is specified, then a default size of the\n image is calculated based on its resolution.\n * If one dimension is specified then the other dimension is calculated to\n preserve the aspect ratio of the image.\n * If both width and height are specified, the image is scaled to fit\n within the provided dimensions while maintaining its aspect ratio."]
+        #[doc = "The size that the image should appear as in the document. This property is\noptional and the final size of the image in the document is determined by\nthe following rules:\n\n* If neither width nor height is specified, then a default size of the\n  image is calculated based on its resolution.\n* If one dimension is specified then the other dimension is calculated to\n  preserve the aspect ratio of the image.\n* If both width and height are specified, the image is scaled to fit\n  within the provided dimensions while maintaining its aspect ratio."]
         #[serde(rename = "objectSize", default)]
         pub object_size: Option<crate::schemas::Size>,
         #[doc = "The image URI.\n\nThe image is fetched once at insertion time and a copy is stored for\ndisplay inside the document. Images must be less than 50MB in size, cannot\nexceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.\n\nThe provided URI can be at most 2 kB in length. The URI itself is saved\nwith the image, and exposed via the ImageProperties.content_uri field."]
@@ -1913,7 +1913,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct InsertTableColumnRequest {
-        #[doc = "Whether to insert new column to the right of the reference cell location.\n\n- `True`: insert to the right.\n- `False`: insert to the left."]
+        #[doc = "Whether to insert new column to the right of the reference cell location.\n\n* `True`: insert to the right.\n* `False`: insert to the left."]
         #[serde(rename = "insertRight", default)]
         pub insert_right: Option<bool>,
         #[doc = "The reference table cell location from which columns will be inserted.\n\nA new column will be inserted to the left (or right) of the column where\nthe reference cell is. If the reference cell is a merged cell, a new\ncolumn will be inserted to the left (or right) of the merged cell."]
@@ -1979,7 +1979,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct InsertTableRowRequest {
-        #[doc = "Whether to insert new row below the reference cell location.\n\n- `True`: insert below the cell.\n- `False`: insert above the cell."]
+        #[doc = "Whether to insert new row below the reference cell location.\n\n* `True`: insert below the cell.\n* `False`: insert above the cell."]
         #[serde(rename = "insertBelow", default)]
         pub insert_below: Option<bool>,
         #[doc = "The reference table cell location from which rows will be inserted.\n\nA new row will be inserted above (or below) the row where the reference\ncell is. If the reference cell is a merged cell, a new row will be\ninserted above (or below) the merged cell."]
@@ -2685,7 +2685,7 @@ pub mod schemas {
         #[doc = "The alignment of the bullet within the space allotted for rendering the\nbullet."]
         #[serde(rename = "bulletAlignment", default)]
         pub bullet_alignment: Option<crate::schemas::NestingLevelBulletAlignment>,
-        #[doc = "The format string used by bullets at this level of nesting.\n\nThe glyph format contains one or more placeholders, and these placeholder\nare replaced with the appropriate values depending on the glyph_type or glyph_symbol. The placeholders follow\nthe pattern `%[nesting_level]`. Furthermore, placeholders can have prefixes\nand suffixes. Thus, the glyph format follows the pattern\n`<prefix>%[nesting_level]<suffix>`. Note that the prefix and suffix are\noptional and can be arbitrary strings.\n\nFor example, the glyph format `%0.` indicates that the rendered glyph will\nreplace the placeholder with the corresponding glyph for nesting level 0\nfollowed by a period as the suffix. So a list with a glyph type of\nUPPER_ALPHA and\nglyph format `%0.` at nesting level 0 will result in a list with rendered\nglyphs\n<p>`A.`\n<p>`B.`\n<p>`C.`\n\nThe glyph format can contain placeholders for the current nesting level as\nwell as placeholders for parent nesting levels. For example, a\nlist can have a glyph format of `%0.` at nesting level 0 and a\nglyph format of `%0.%1.` at nesting level 1. Assuming both nesting levels\nhave DECIMAL glyph\ntypes, this would result in a list with rendered glyphs\n<p>`1.`\n<p>`2.`\n<p>`  2.1.`\n<p>`  2.2.`\n<p>`3.`\n\nFor nesting levels that are ordered, the string that replaces a placeholder\nin the glyph format for a particular paragraph depends on the paragraph's\norder within the list."]
+        #[doc = "The format string used by bullets at this level of nesting.\n\nThe glyph format contains one or more placeholders, and these placeholder\nare replaced with the appropriate values depending on the glyph_type or glyph_symbol. The placeholders follow\nthe pattern `%[nesting_level]`. Furthermore, placeholders can have prefixes\nand suffixes. Thus, the glyph format follows the pattern\n`<prefix>%[nesting_level]<suffix>`. Note that the prefix and suffix are\noptional and can be arbitrary strings.\n\nFor example, the glyph format `%0.` indicates that the rendered glyph will\nreplace the placeholder with the corresponding glyph for nesting level 0\nfollowed by a period as the suffix. So a list with a glyph type of\nUPPER_ALPHA and\nglyph format `%0.` at nesting level 0 will result in a list with rendered\nglyphs\n\n<p>`A.`\n<p>`B.`\n<p>`C.`\n\nThe glyph format can contain placeholders for the current nesting level as\nwell as placeholders for parent nesting levels. For example, a\nlist can have a glyph format of `%0.` at nesting level 0 and a\nglyph format of `%0.%1.` at nesting level 1. Assuming both nesting levels\nhave DECIMAL glyph\ntypes, this would result in a list with rendered glyphs\n\n<p>`1.`\n<p>`2.`\n<p>`  2.1.`\n<p>`  2.2.`\n<p>`3.`\n\nFor nesting levels that are ordered, the string that replaces a placeholder\nin the glyph format for a particular paragraph depends on the paragraph's\norder within the list."]
         #[serde(rename = "glyphFormat", default)]
         pub glyph_format: Option<String>,
         #[doc = "A custom glyph symbol used by bullets when paragraphs at this level of\nnesting are unordered.\n\nThe glyph symbol replaces placeholders within the glyph_format. For example, if the\nglyph_symbol is the solid circle corresponding to Unicode U+25cf code\npoint and the glyph_format is `%0`, the rendered\nglyph would be the solid circle."]
@@ -4227,7 +4227,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SubstringMatchCriteria {
-        #[doc = "Indicates whether the search should respect case:\n\n- `True`: the search is case sensitive.\n- `False`: the search is case insensitive."]
+        #[doc = "Indicates whether the search should respect case:\n\n* `True`: the search is case sensitive.\n* `False`: the search is case insensitive."]
         #[serde(rename = "matchCase", default)]
         pub match_case: Option<bool>,
         #[doc = "The text to search for in the document."]
@@ -5360,7 +5360,7 @@ pub mod schemas {
         #[doc = "The fields that should be updated.\n\nAt least one field must be specified. The root `tableCellStyle` is implied\nand should not be specified. A single `\"*\"` can be used as short-hand for\nlisting every field.\n\nFor example to update the table cell background color, set `fields` to\n`\"backgroundColor\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset."]
         #[serde(rename = "fields", default)]
         pub fields: Option<String>,
-        #[doc = "The style to set on the table cells.\n\nWhen updating borders, if a cell shares a border with an adjacent cell, the\ncorresponding border property of the adjacent cell is updated as well.\nBorders that are merged and invisible are not updated.\n\nSince updating a border shared by adjacent cells in the same request can\ncause conflicting border updates, border updates are applied in the\nfollowing order:\n\n- `border_right`\n- `border_left`\n- `border_bottom`\n- `border_top`"]
+        #[doc = "The style to set on the table cells.\n\nWhen updating borders, if a cell shares a border with an adjacent cell, the\ncorresponding border property of the adjacent cell is updated as well.\nBorders that are merged and invisible are not updated.\n\nSince updating a border shared by adjacent cells in the same request can\ncause conflicting border updates, border updates are applied in the\nfollowing order:\n\n* `border_right`\n* `border_left`\n* `border_bottom`\n* `border_top`"]
         #[serde(rename = "tableCellStyle", default)]
         pub table_cell_style: Option<crate::schemas::TableCellStyle>,
         #[doc = "The table range representing the subset of the table to which the updates\nare applied."]

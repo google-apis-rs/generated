@@ -72,7 +72,7 @@ pub mod schemas {
         #[doc = "Identifies the resource as a subscription change plan request. Value: subscriptions#changePlanRequest"]
         #[serde(rename = "kind", default)]
         pub kind: Option<String>,
-        #[doc = "The planName property is required. This is the name of the subscription's payment plan. For more information about the Google payment plans, see API concepts.\n\nPossible values are:  \n- ANNUAL_MONTHLY_PAY - The annual commitment plan with monthly payments  Caution: ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses.  \n- ANNUAL_YEARLY_PAY - The annual commitment plan with yearly payments  \n- FLEXIBLE - The flexible plan  \n- TRIAL - The 30-day free trial plan"]
+        #[doc = "The planName property is required. This is the name of the subscription's payment plan. For more information about the Google payment plans, see API concepts.\n\nPossible values are:\n\n* ANNUAL_MONTHLY_PAY - The annual commitment plan with monthly payments  Caution: ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses.\n* ANNUAL_YEARLY_PAY - The annual commitment plan with yearly payments\n* FLEXIBLE - The flexible plan\n* TRIAL - The 30-day free trial plan"]
         #[serde(rename = "planName", default)]
         pub plan_name: Option<String>,
         #[doc = "This is an optional property. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters."]
@@ -311,10 +311,10 @@ pub mod schemas {
         #[doc = "In this version of the API, annual commitment plan's interval is one year.  Note: When billingMethod value is OFFLINE, the subscription property object plan.commitmentInterval is omitted in all API responses."]
         #[serde(rename = "commitmentInterval", default)]
         pub commitment_interval: Option<crate::schemas::SubscriptionPlanCommitmentInterval>,
-        #[doc = "The isCommitmentPlan property's boolean value identifies the plan as an annual commitment plan:\n- true \u{2014} The subscription's plan is an annual commitment plan.\n- false \u{2014} The plan is not an annual commitment plan."]
+        #[doc = "The isCommitmentPlan property's boolean value identifies the plan as an annual commitment plan:\n\n* true \u{2014} The subscription's plan is an annual commitment plan.\n* false \u{2014} The plan is not an annual commitment plan."]
         #[serde(rename = "isCommitmentPlan", default)]
         pub is_commitment_plan: Option<bool>,
-        #[doc = "The planName property is required. This is the name of the subscription's plan. For more information about the Google payment plans, see the API concepts.\n\nPossible values are:  \n- ANNUAL_MONTHLY_PAY \u{2014} The annual commitment plan with monthly payments.  Caution: ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses.  \n- ANNUAL_YEARLY_PAY \u{2014} The annual commitment plan with yearly payments  \n- FLEXIBLE \u{2014} The flexible plan  \n- TRIAL \u{2014} The 30-day free trial plan. A subscription in trial will be suspended after the 30th free day if no payment plan is assigned. Calling changePlan will assign a payment plan to a trial but will not activate the plan. A trial will automatically begin its assigned payment plan after its 30th free day or immediately after calling startPaidService.  \n- FREE \u{2014} The free plan is exclusive to the Cloud Identity SKU and does not incur any billing."]
+        #[doc = "The planName property is required. This is the name of the subscription's plan. For more information about the Google payment plans, see the API concepts.\n\nPossible values are:\n\n* ANNUAL_MONTHLY_PAY \u{2014} The annual commitment plan with monthly payments.  Caution: ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses.\n* ANNUAL_YEARLY_PAY \u{2014} The annual commitment plan with yearly payments\n* FLEXIBLE \u{2014} The flexible plan\n* TRIAL \u{2014} The 30-day free trial plan. A subscription in trial will be suspended after the 30th free day if no payment plan is assigned. Calling changePlan will assign a payment plan to a trial but will not activate the plan. A trial will automatically begin its assigned payment plan after its 30th free day or immediately after calling startPaidService.\n* FREE \u{2014} The free plan is exclusive to the Cloud Identity SKU and does not incur any billing."]
         #[serde(rename = "planName", default)]
         pub plan_name: Option<String>,
     }
@@ -372,7 +372,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SubscriptionTrialSettings {
-        #[doc = "Determines if a subscription's plan is in a 30-day free trial or not:\n- true \u{2014} The plan is in trial.\n- false \u{2014} The plan is not in trial."]
+        #[doc = "Determines if a subscription's plan is in a 30-day free trial or not:\n\n* true \u{2014} The plan is in trial.\n* false \u{2014} The plan is not in trial."]
         #[serde(rename = "isInTrial", default)]
         pub is_in_trial: Option<bool>,
         #[doc = "Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example Epoch converter."]
@@ -449,7 +449,7 @@ pub mod schemas {
         #[doc = "The subscriptionId is the subscription identifier and is unique for each customer. This is a required property. Since a subscriptionId changes when a subscription is updated, we recommend not using this ID as a key for persistent data. Use the subscriptionId as described in retrieve all reseller subscriptions."]
         #[serde(rename = "subscriptionId", default)]
         pub subscription_id: Option<String>,
-        #[doc = "Read-only field containing an enumerable of all the current suspension reasons for a subscription. It is possible for a subscription to have many concurrent, overlapping suspension reasons. A subscription's STATUS is SUSPENDED until all pending suspensions are removed.\n\nPossible options include:  \n- PENDING_TOS_ACCEPTANCE - The customer has not logged in and accepted the G Suite Resold Terms of Services.  \n- RENEWAL_WITH_TYPE_CANCEL - The customer's commitment ended and their service was cancelled at the end of their term.  \n- RESELLER_INITIATED - A manual suspension invoked by a Reseller.  \n- TRIAL_ENDED - The customer's trial expired without a plan selected.  \n- OTHER - The customer is suspended for an internal Google reason (e.g. abuse or otherwise)."]
+        #[doc = "Read-only field containing an enumerable of all the current suspension reasons for a subscription. It is possible for a subscription to have many concurrent, overlapping suspension reasons. A subscription's STATUS is SUSPENDED until all pending suspensions are removed.\n\nPossible options include:\n\n* PENDING_TOS_ACCEPTANCE - The customer has not logged in and accepted the G Suite Resold Terms of Services.\n* RENEWAL_WITH_TYPE_CANCEL - The customer's commitment ended and their service was cancelled at the end of their term.\n* RESELLER_INITIATED - A manual suspension invoked by a Reseller.\n* TRIAL_ENDED - The customer's trial expired without a plan selected.\n* OTHER - The customer is suspended for an internal Google reason (e.g. abuse or otherwise)."]
         #[serde(rename = "suspensionReasons", default)]
         pub suspension_reasons: Option<Vec<String>>,
         #[doc = "Read-only transfer related information for the subscription. For more information, see retrieve transferable subscriptions for a customer."]
@@ -2444,7 +2444,7 @@ pub mod subscriptions {
             self.customer_id = Some(value.into());
             self
         }
-        #[doc = "When retrieving all of your subscriptions and filtering for specific customers, you can enter a prefix for a customer name. Using an example customer group that includes exam.com, example20.com and example.com:  \n- exa -- Returns all customer names that start with 'exa' which could include exam.com, example20.com, and example.com. A name prefix is similar to using a regular expression's asterisk, exa*. \n- example -- Returns example20.com and example.com."]
+        #[doc = "When retrieving all of your subscriptions and filtering for specific customers, you can enter a prefix for a customer name. Using an example customer group that includes exam.com, example20.com and example.com:\n\n* exa -- Returns all customer names that start with 'exa' which could include exam.com, example20.com, and example.com. A name prefix is similar to using a regular expression's asterisk, exa*. \n* example -- Returns example20.com and example.com."]
         pub fn customer_name_prefix(&mut self, value: impl Into<String>) -> &mut Self {
             self.customer_name_prefix = Some(value.into());
             self

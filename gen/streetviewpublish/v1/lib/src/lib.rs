@@ -547,7 +547,7 @@ pub mod schemas {
         #[doc = "Required. Photo object containing the\nnew metadata."]
         #[serde(rename = "photo", default)]
         pub photo: Option<crate::schemas::Photo>,
-        #[doc = "Mask that identifies fields on the photo metadata to update.\nIf not present, the old Photo\nmetadata is entirely replaced with the\nnew Photo metadata in this request.\nThe update fails if invalid fields are specified. Multiple fields can be\nspecified in a comma-delimited list.\n\nThe following fields are valid:\n\n* `pose.heading`\n* `pose.latLngPair`\n* `pose.pitch`\n* `pose.roll`\n* `pose.level`\n* `pose.altitude`\n* `connections`\n* `places`\n\n\n<aside class=\"note\"><b>Note:</b> When\nupdateMask\ncontains repeated fields, the entire set of repeated values get replaced\nwith the new contents. For example, if\nupdateMask\ncontains `connections` and `UpdatePhotoRequest.photo.connections` is empty,\nall connections are removed.</aside>"]
+        #[doc = "Mask that identifies fields on the photo metadata to update.\nIf not present, the old Photo\nmetadata is entirely replaced with the\nnew Photo metadata in this request.\nThe update fails if invalid fields are specified. Multiple fields can be\nspecified in a comma-delimited list.\n\nThe following fields are valid:\n\n* `pose.heading`\n* `pose.latLngPair`\n* `pose.pitch`\n* `pose.roll`\n* `pose.level`\n* `pose.altitude`\n* `connections`\n* `places`\n\n<aside class=\"note\"><b>Note:</b> When\nupdateMask\ncontains repeated fields, the entire set of repeated values get replaced\nwith the new contents. For example, if\nupdateMask\ncontains `connections` and `UpdatePhotoRequest.photo.connections` is empty,\nall connections are removed.</aside>"]
         #[serde(rename = "updateMask", default)]
         pub update_mask: Option<String>,
     }
@@ -757,7 +757,7 @@ pub mod photo {
         pub(super) auth: &'a std::sync::Mutex<A>,
     }
     impl<'a, A: yup_oauth2::GetToken> PhotoActions<'a, A> {
-        #[doc = "After the client finishes uploading the photo with the returned\nUploadRef,\nCreatePhoto\npublishes the uploaded Photo to\nStreet View on Google Maps.\n\nCurrently, the only way to set heading, pitch, and roll in CreatePhoto is\nthrough the [Photo Sphere XMP\nmetadata](https://developers.google.com/streetview/spherical-metadata) in\nthe photo bytes. CreatePhoto ignores the  `pose.heading`, `pose.pitch`,\n`pose.roll`, `pose.altitude`, and `pose.level` fields in Pose.\n\nThis method returns the following error codes:\n\n* google.rpc.Code.INVALID_ARGUMENT if the request is malformed or if\nthe uploaded photo is not a 360 photo.\n* google.rpc.Code.NOT_FOUND if the upload reference does not exist.\n* google.rpc.Code.RESOURCE_EXHAUSTED if the account has reached the\nstorage limit."]
+        #[doc = "After the client finishes uploading the photo with the returned\nUploadRef,\nCreatePhoto\npublishes the uploaded Photo to\nStreet View on Google Maps.\n\nCurrently, the only way to set heading, pitch, and roll in CreatePhoto is\nthrough the [Photo Sphere XMP\nmetadata](https://developers.google.com/streetview/spherical-metadata) in\nthe photo bytes. CreatePhoto ignores the  `pose.heading`, `pose.pitch`,\n`pose.roll`, `pose.altitude`, and `pose.level` fields in Pose.\n\nThis method returns the following error codes:\n\n* google.rpc.Code.INVALID_ARGUMENT if the request is malformed or if\n  the uploaded photo is not a 360 photo.\n* google.rpc.Code.NOT_FOUND if the upload reference does not exist.\n* google.rpc.Code.RESOURCE_EXHAUSTED if the account has reached the\n  storage limit."]
         pub fn create(&self, request: crate::schemas::Photo) -> CreateRequestBuilder<A> {
             CreateRequestBuilder {
                 reqwest: &self.reqwest,
@@ -776,7 +776,7 @@ pub mod photo {
                 xgafv: None,
             }
         }
-        #[doc = "Deletes a Photo and its metadata.\n\nThis method returns the following error codes:\n\n* google.rpc.Code.PERMISSION_DENIED if the requesting user did not\ncreate the requested photo.\n* google.rpc.Code.NOT_FOUND if the photo ID does not exist."]
+        #[doc = "Deletes a Photo and its metadata.\n\nThis method returns the following error codes:\n\n* google.rpc.Code.PERMISSION_DENIED if the requesting user did not\n  create the requested photo.\n* google.rpc.Code.NOT_FOUND if the photo ID does not exist."]
         pub fn delete(&self, photo_id: impl Into<String>) -> DeleteRequestBuilder<A> {
             DeleteRequestBuilder {
                 reqwest: &self.reqwest,
@@ -795,7 +795,7 @@ pub mod photo {
                 photo_id: photo_id.into(),
             }
         }
-        #[doc = "Gets the metadata of the specified\nPhoto.\n\nThis method returns the following error codes:\n\n* google.rpc.Code.PERMISSION_DENIED if the requesting user did not\ncreate the requested Photo.\n* google.rpc.Code.NOT_FOUND if the requested\nPhoto does not exist.\n* google.rpc.Code.UNAVAILABLE if the requested\nPhoto is still being indexed."]
+        #[doc = "Gets the metadata of the specified\nPhoto.\n\nThis method returns the following error codes:\n\n* google.rpc.Code.PERMISSION_DENIED if the requesting user did not\n  create the requested Photo.\n* google.rpc.Code.NOT_FOUND if the requested\n  Photo does not exist.\n* google.rpc.Code.UNAVAILABLE if the requested\n  Photo is still being indexed."]
         pub fn get(&self, photo_id: impl Into<String>) -> GetRequestBuilder<A> {
             GetRequestBuilder {
                 reqwest: &self.reqwest,
@@ -816,7 +816,7 @@ pub mod photo {
                 view: None,
             }
         }
-        #[doc = "Creates an upload session to start uploading photo bytes.  The method uses\nthe upload URL of the returned\nUploadRef to upload the bytes for\nthe Photo.\n\nIn addition to the photo requirements shown in\nhttps://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604,\nthe photo must meet the following requirements:\n\n* Photo Sphere XMP metadata must be included in the photo medadata. See\nhttps://developers.google.com/streetview/spherical-metadata for the\nrequired fields.\n* The pixel size of the photo must meet the size requirements listed in\nhttps://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604, and\nthe photo must be a full 360 horizontally.\n\nAfter the upload completes, the method uses\nUploadRef with\nCreatePhoto\nto create the Photo object entry."]
+        #[doc = "Creates an upload session to start uploading photo bytes.  The method uses\nthe upload URL of the returned\nUploadRef to upload the bytes for\nthe Photo.\n\nIn addition to the photo requirements shown in\nhttps://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604,\nthe photo must meet the following requirements:\n\n* Photo Sphere XMP metadata must be included in the photo medadata. See\n  https://developers.google.com/streetview/spherical-metadata for the\n  required fields.\n* The pixel size of the photo must meet the size requirements listed in\n  https://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604, and\n  the photo must be a full 360 horizontally.\n\nAfter the upload completes, the method uses\nUploadRef with\nCreatePhoto\nto create the Photo object entry."]
         pub fn start_upload(&self, request: crate::schemas::Empty) -> StartUploadRequestBuilder<A> {
             StartUploadRequestBuilder {
                 reqwest: &self.reqwest,
@@ -835,7 +835,7 @@ pub mod photo {
                 xgafv: None,
             }
         }
-        #[doc = "Updates the metadata of a Photo, such\nas pose, place association, connections, etc. Changing the pixels of a\nphoto is not supported.\n\nOnly the fields specified in the\nupdateMask\nfield are used. If `updateMask` is not present, the update applies to all\nfields.\n\nThis method returns the following error codes:\n\n* google.rpc.Code.PERMISSION_DENIED if the requesting user did not\ncreate the requested photo.\n* google.rpc.Code.INVALID_ARGUMENT if the request is malformed.\n* google.rpc.Code.NOT_FOUND if the requested photo does not exist.\n* google.rpc.Code.UNAVAILABLE if the requested\nPhoto is still being indexed."]
+        #[doc = "Updates the metadata of a Photo, such\nas pose, place association, connections, etc. Changing the pixels of a\nphoto is not supported.\n\nOnly the fields specified in the\nupdateMask\nfield are used. If `updateMask` is not present, the update applies to all\nfields.\n\nThis method returns the following error codes:\n\n* google.rpc.Code.PERMISSION_DENIED if the requesting user did not\n  create the requested photo.\n* google.rpc.Code.INVALID_ARGUMENT if the request is malformed.\n* google.rpc.Code.NOT_FOUND if the requested photo does not exist.\n* google.rpc.Code.UNAVAILABLE if the requested\n  Photo is still being indexed."]
         pub fn update(
             &self,
             request: crate::schemas::Photo,
@@ -1399,7 +1399,7 @@ pub mod photo {
         xgafv: Option<crate::params::Xgafv>,
     }
     impl<'a, A: yup_oauth2::GetToken> UpdateRequestBuilder<'a, A> {
-        #[doc = "Mask that identifies fields on the photo metadata to update.\nIf not present, the old Photo\nmetadata is entirely replaced with the\nnew Photo metadata in this request.\nThe update fails if invalid fields are specified. Multiple fields can be\nspecified in a comma-delimited list.\n\nThe following fields are valid:\n\n* `pose.heading`\n* `pose.latLngPair`\n* `pose.pitch`\n* `pose.roll`\n* `pose.level`\n* `pose.altitude`\n* `connections`\n* `places`\n\n\n<aside class=\"note\"><b>Note:</b> When\nupdateMask\ncontains repeated fields, the entire set of repeated values get replaced\nwith the new contents. For example, if\nupdateMask\ncontains `connections` and `UpdatePhotoRequest.photo.connections` is empty,\nall connections are removed.</aside>"]
+        #[doc = "Mask that identifies fields on the photo metadata to update.\nIf not present, the old Photo\nmetadata is entirely replaced with the\nnew Photo metadata in this request.\nThe update fails if invalid fields are specified. Multiple fields can be\nspecified in a comma-delimited list.\n\nThe following fields are valid:\n\n* `pose.heading`\n* `pose.latLngPair`\n* `pose.pitch`\n* `pose.roll`\n* `pose.level`\n* `pose.altitude`\n* `connections`\n* `places`\n\n<aside class=\"note\"><b>Note:</b> When\nupdateMask\ncontains repeated fields, the entire set of repeated values get replaced\nwith the new contents. For example, if\nupdateMask\ncontains `connections` and `UpdatePhotoRequest.photo.connections` is empty,\nall connections are removed.</aside>"]
         pub fn update_mask(&mut self, value: impl Into<String>) -> &mut Self {
             self.update_mask = Some(value.into());
             self

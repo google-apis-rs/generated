@@ -1205,10 +1205,10 @@ pub mod schemas {
         #[doc = "The ID of the item from which this permission is inherited. This is an output-only field and is only populated for members of the shared drive."]
         #[serde(rename = "inheritedFrom", default)]
         pub inherited_from: Option<String>,
-        #[doc = "The permission type for this user. While new values may be added in future, the following are currently possible:  \n- file \n- member"]
+        #[doc = "The permission type for this user. While new values may be added in future, the following are currently possible:\n\n* file \n* member"]
         #[serde(rename = "permissionType", default)]
         pub permission_type: Option<String>,
-        #[doc = "The primary role for this user. While new values may be added in the future, the following are currently possible:  \n- organizer \n- fileOrganizer \n- writer \n- commenter \n- reader"]
+        #[doc = "The primary role for this user. While new values may be added in the future, the following are currently possible:\n\n* organizer \n* fileOrganizer \n* writer \n* commenter \n* reader"]
         #[serde(rename = "role", default)]
         pub role: Option<String>,
     }
@@ -1286,7 +1286,7 @@ pub mod schemas {
         #[doc = "The email address of the user or group to which this permission refers."]
         #[serde(rename = "emailAddress", default)]
         pub email_address: Option<String>,
-        #[doc = "The time at which this permission will expire (RFC 3339 date-time). Expiration times have the following restrictions:  \n- They can only be set on user and group permissions \n- The time must be in the future \n- The time cannot be more than a year in the future"]
+        #[doc = "The time at which this permission will expire (RFC 3339 date-time). Expiration times have the following restrictions:\n\n* They can only be set on user and group permissions \n* The time must be in the future \n* The time cannot be more than a year in the future"]
         #[serde(rename = "expirationTime", default)]
         pub expiration_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The ID of this permission. This is a unique identifier for the grantee, and is published in User resources as permissionId."]
@@ -1301,10 +1301,10 @@ pub mod schemas {
         #[doc = "A link to the user's profile photo, if available."]
         #[serde(rename = "photoLink", default)]
         pub photo_link: Option<String>,
-        #[doc = "The type of the grantee. Valid values are:  \n- user \n- group \n- domain \n- anyone"]
+        #[doc = "The type of the grantee. Valid values are:\n\n* user \n* group \n* domain \n* anyone"]
         #[serde(rename = "type", default)]
         pub r#type: Option<String>,
-        #[doc = "The role granted by this permission. While new values may be supported in the future, the following are currently allowed:  \n- owner \n- organizer \n- fileOrganizer \n- writer \n- commenter \n- reader"]
+        #[doc = "The role granted by this permission. While new values may be supported in the future, the following are currently allowed:\n\n* owner \n* organizer \n* fileOrganizer \n* writer \n* commenter \n* reader"]
         #[serde(rename = "role", default)]
         pub role: Option<String>,
         #[doc = "Deprecated - use permissionDetails instead."]
@@ -1368,7 +1368,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Reply {
-        #[doc = "The action the reply performed to the parent comment. Valid values are:  \n- resolve \n- reopen"]
+        #[doc = "The action the reply performed to the parent comment. Valid values are:\n\n* resolve \n* reopen"]
         #[serde(rename = "action", default)]
         pub action: Option<String>,
         #[doc = "The user who created the reply."]

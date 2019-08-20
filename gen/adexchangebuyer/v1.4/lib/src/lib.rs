@@ -12,13 +12,13 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AccountBidderLocationItems {
-        #[doc = "The protocol that the bidder endpoint is using. OpenRTB protocols with prefix PROTOCOL_OPENRTB_PROTOBUF use proto buffer, otherwise use JSON.  Allowed values:  \n- PROTOCOL_ADX \n- PROTOCOL_OPENRTB_2_2 \n- PROTOCOL_OPENRTB_2_3 \n- PROTOCOL_OPENRTB_2_4 \n- PROTOCOL_OPENRTB_2_5 \n- PROTOCOL_OPENRTB_PROTOBUF_2_3 \n- PROTOCOL_OPENRTB_PROTOBUF_2_4 \n- PROTOCOL_OPENRTB_PROTOBUF_2_5"]
+        #[doc = "The protocol that the bidder endpoint is using. OpenRTB protocols with prefix PROTOCOL_OPENRTB_PROTOBUF use proto buffer, otherwise use JSON.  Allowed values:\n\n* PROTOCOL_ADX \n* PROTOCOL_OPENRTB_2_2 \n* PROTOCOL_OPENRTB_2_3 \n* PROTOCOL_OPENRTB_2_4 \n* PROTOCOL_OPENRTB_2_5 \n* PROTOCOL_OPENRTB_PROTOBUF_2_3 \n* PROTOCOL_OPENRTB_PROTOBUF_2_4 \n* PROTOCOL_OPENRTB_PROTOBUF_2_5"]
         #[serde(rename = "bidProtocol", default)]
         pub bid_protocol: Option<String>,
         #[doc = "The maximum queries per second the Ad Exchange will send."]
         #[serde(rename = "maximumQps", default)]
         pub maximum_qps: Option<i32>,
-        #[doc = "The geographical region the Ad Exchange should send requests from. Only used by some quota systems, but always setting the value is recommended. Allowed values:  \n- ASIA \n- EUROPE \n- US_EAST \n- US_WEST"]
+        #[doc = "The geographical region the Ad Exchange should send requests from. Only used by some quota systems, but always setting the value is recommended. Allowed values:\n\n* ASIA \n* EUROPE \n* US_EAST \n* US_WEST"]
         #[serde(rename = "region", default)]
         pub region: Option<String>,
         #[doc = "The URL to which the Ad Exchange will send bid requests."]

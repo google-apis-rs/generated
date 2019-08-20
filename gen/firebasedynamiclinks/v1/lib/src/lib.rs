@@ -1089,7 +1089,7 @@ pub mod schemas {
         #[doc = "APP bundle ID."]
         #[serde(rename = "bundleId", default)]
         pub bundle_id: Option<String>,
-        #[doc = "FDL link to be verified from an app universal link open.\nThe FDL link can be one of:\n1) short FDL.\ne.g. <app_code>.page.link/<ddl_id>, or\n2) long FDL.\ne.g. <app_code>.page.link/?{query params}, or\n3) Invite FDL.\ne.g. <app_code>.page.link/i/<invite_id_or_alias>"]
+        #[doc = "FDL link to be verified from an app universal link open.\nThe FDL link can be one of:\n\n1. short FDL.\n   e.g. <app_code>.page.link/<ddl_id>, or\n1. long FDL.\n   e.g. <app_code>.page.link/?{query params}, or\n1. Invite FDL.\n   e.g. <app_code>.page.link/i/<invite_id_or_alias>"]
         #[serde(rename = "requestedLink", default)]
         pub requested_link: Option<String>,
         #[doc = "Google SDK version. Version takes the form \"$major.$minor.$patch\""]
@@ -1695,7 +1695,7 @@ pub mod managed_short_links {
         pub(super) auth: &'a std::sync::Mutex<A>,
     }
     impl<'a, A: yup_oauth2::GetToken> ManagedShortLinksActions<'a, A> {
-        #[doc = "Creates a managed short Dynamic Link given either a valid long Dynamic Link\nor details such as Dynamic Link domain, Android and iOS app information.\nThe created short Dynamic Link will not expire.\n\nThis differs from CreateShortDynamicLink in the following ways:\n  - The request will also contain a name for the link (non unique name\n    for the front end).\n  - The response must be authenticated with an auth token (generated with\n    the admin service account).\n  - The link will appear in the FDL list of links in the console front end.\n\nThe Dynamic Link domain in the request must be owned by requester's\nFirebase project."]
+        #[doc = "Creates a managed short Dynamic Link given either a valid long Dynamic Link\nor details such as Dynamic Link domain, Android and iOS app information.\nThe created short Dynamic Link will not expire.\n\nThis differs from CreateShortDynamicLink in the following ways:\n\n* The request will also contain a name for the link (non unique name\n  for the front end).\n* The response must be authenticated with an auth token (generated with\n  the admin service account).\n* The link will appear in the FDL list of links in the console front end.\n\nThe Dynamic Link domain in the request must be owned by requester's\nFirebase project."]
         pub fn create(
             &self,
             request: crate::schemas::CreateManagedShortLinkRequest,

@@ -316,7 +316,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DownloadRequest {
-        #[doc = "File types that will be returned. If INVENTORY_SOURCE is requested, no other file types may be requested.\n\nAcceptable values are:  \n- \"AD\" \n- \"AD_GROUP\" \n- \"CAMPAIGN\" \n- \"INSERTION_ORDER\" \n- \"INVENTORY_SOURCE\" \n- \"LINE_ITEM\""]
+        #[doc = "File types that will be returned. If INVENTORY_SOURCE is requested, no other file types may be requested.\n\nAcceptable values are:\n\n* \"AD\" \n* \"AD_GROUP\" \n* \"CAMPAIGN\" \n* \"INSERTION_ORDER\" \n* \"INVENTORY_SOURCE\" \n* \"LINE_ITEM\""]
         #[serde(rename = "fileTypes", default)]
         pub file_types: Option<Vec<crate::schemas::DownloadRequestFileTypesItems>>,
         #[doc = "The IDs of the specified filter type. This is used to filter entities to fetch. At least one ID must be specified."]

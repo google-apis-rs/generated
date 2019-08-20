@@ -93,13 +93,13 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UrlNotification {
-        #[doc = "Creation timestamp for this notification.\nUsers should _not_ specify it, the field is ignored at the request time."]
+        #[doc = "Creation timestamp for this notification.\nUsers should *not* specify it, the field is ignored at the request time."]
         #[serde(rename = "notifyTime", default)]
         pub notify_time: Option<String>,
         #[doc = "The URL life cycle event that Google is being notified about."]
         #[serde(rename = "type", default)]
         pub r#type: Option<crate::schemas::UrlNotificationType>,
-        #[doc = "The object of this notification. The URL must be owned by the publisher\nof this notification and, in case of `URL_UPDATED` notifications, it _must_\nbe crawlable by Google."]
+        #[doc = "The object of this notification. The URL must be owned by the publisher\nof this notification and, in case of `URL_UPDATED` notifications, it *must*\nbe crawlable by Google."]
         #[serde(rename = "url", default)]
         pub url: Option<String>,
     }
@@ -271,7 +271,7 @@ pub mod url_notifications {
         pub(super) auth: &'a std::sync::Mutex<A>,
     }
     impl<'a, A: yup_oauth2::GetToken> UrlNotificationsActions<'a, A> {
-        #[doc = "Gets metadata about a Web Document. This method can _only_ be used to query\nURLs that were previously seen in successful Indexing API notifications.\nIncludes the latest `UrlNotification` received via this API."]
+        #[doc = "Gets metadata about a Web Document. This method can *only* be used to query\nURLs that were previously seen in successful Indexing API notifications.\nIncludes the latest `UrlNotification` received via this API."]
         pub fn get_metadata(&self) -> GetMetadataRequestBuilder<A> {
             GetMetadataRequestBuilder {
                 reqwest: &self.reqwest,

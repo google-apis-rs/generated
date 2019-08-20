@@ -72,7 +72,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AchievementResetResponse {
-        #[doc = "The current state of the achievement. This is the same as the initial state of the achievement.\nPossible values are:  \n- \"HIDDEN\"- Achievement is hidden. \n- \"REVEALED\" - Achievement is revealed. \n- \"UNLOCKED\" - Achievement is unlocked."]
+        #[doc = "The current state of the achievement. This is the same as the initial state of the achievement.\nPossible values are:\n\n* \"HIDDEN\"- Achievement is hidden. \n* \"REVEALED\" - Achievement is revealed. \n* \"UNLOCKED\" - Achievement is unlocked."]
         #[serde(rename = "currentState", default)]
         pub current_state: Option<String>,
         #[doc = "The ID of an achievement for which player state has been updated."]
@@ -435,7 +435,7 @@ pub mod schemas {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#playerScoreResetResponse."]
         #[serde(rename = "kind", default)]
         pub kind: Option<String>,
-        #[doc = "The time spans of the updated score.\nPossible values are:  \n- \"ALL_TIME\" - The score is an all-time score. \n- \"WEEKLY\" - The score is a weekly score. \n- \"DAILY\" - The score is a daily score."]
+        #[doc = "The time spans of the updated score.\nPossible values are:\n\n* \"ALL_TIME\" - The score is an all-time score. \n* \"WEEKLY\" - The score is a weekly score. \n* \"DAILY\" - The score is a daily score."]
         #[serde(rename = "resetScoreTimeSpans", default)]
         pub reset_score_time_spans: Option<Vec<String>>,
     }

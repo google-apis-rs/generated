@@ -15,7 +15,7 @@ pub mod schemas {
         #[doc = "The maximum queries per second the Ad Exchange will send."]
         #[serde(rename = "maximumQps", default)]
         pub maximum_qps: Option<i32>,
-        #[doc = "The geographical region the Ad Exchange should send requests from. Only used by some quota systems, but always setting the value is recommended. Allowed values:  \n- ASIA \n- EUROPE \n- US_EAST \n- US_WEST"]
+        #[doc = "The geographical region the Ad Exchange should send requests from. Only used by some quota systems, but always setting the value is recommended. Allowed values:\n\n* ASIA \n* EUROPE \n* US_EAST \n* US_WEST"]
         #[serde(rename = "region", default)]
         pub region: Option<String>,
         #[doc = "The URL to which the Ad Exchange will send bid requests."]

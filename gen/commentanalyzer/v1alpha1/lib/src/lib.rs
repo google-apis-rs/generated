@@ -18,7 +18,7 @@ pub mod schemas {
         #[doc = "Do not store the comment or context sent in this request. By default, the\nservice may store comments/context for debugging purposes."]
         #[serde(rename = "doNotStore", default)]
         pub do_not_store: Option<bool>,
-        #[doc = "The language(s) of the comment and context (if none are specified, the\nlanguage is automatically detected). If multiple languages are specified,\nthe text is checked in all of them that are supported. Both ISO and BCP-47\nlanguage codes are accepted.\nCurrent Language Restrictions:\n * Only English text (\"en\") is supported.\nIf none of the languages specified by the caller are supported, an\n`UNIMPLEMENTED` error is returned."]
+        #[doc = "The language(s) of the comment and context (if none are specified, the\nlanguage is automatically detected). If multiple languages are specified,\nthe text is checked in all of them that are supported. Both ISO and BCP-47\nlanguage codes are accepted.\nCurrent Language Restrictions:\n\n* Only English text (\"en\") is supported.\n  If none of the languages specified by the caller are supported, an\n  `UNIMPLEMENTED` error is returned."]
         #[serde(rename = "languages", default)]
         pub languages: Option<Vec<String>>,
         #[doc = "Specification of requested attributes. The AttributeParameters serve as\nconfiguration for each associated attribute. The map keys are attribute\nnames. The following attributes are available:\n\"ATTACK_ON_AUTHOR\" - Attack on author of original article or post.\n\"ATTACK_ON_COMMENTER\" - Attack on fellow commenter.\n\"ATTACK_ON_PUBLISHER\" - Attack on publisher of article/post.\n\"INCOHERENT\" - Difficult to understand, nonsensical.\n\"INFLAMMATORY\" - Intending to provoke or inflame.\n\"OBSCENE\" - Obscene, such as cursing.\n\"OFF_TOPIC\" - Not related to the original topic.\n\"SPAM\" - Commercial/advertising spam content.\n\"UNSUBSTANTIAL\" - Trivial."]
@@ -56,7 +56,7 @@ pub mod schemas {
         #[doc = "Contains the languages detected from the text content, sorted in order of\nlikelihood."]
         #[serde(rename = "detectedLanguages", default)]
         pub detected_languages: Option<Vec<String>>,
-        #[doc = "The language(s) used by CommentAnalyzer service to choose which Model to\nuse when analyzing the comment. Might better be called\n\"effective_languages\". The logic used to make the choice is as follows:\n  if Request.languages.empty()\n    effective_languages = detected_languages\n  else\n    effective_languages = Request.languages"]
+        #[doc = "The language(s) used by CommentAnalyzer service to choose which Model to\nuse when analyzing the comment. Might better be called\n\"effective_languages\". The logic used to make the choice is as follows:\nif Request.languages.empty()\neffective_languages = detected_languages\nelse\neffective_languages = Request.languages"]
         #[serde(rename = "languages", default)]
         pub languages: Option<Vec<String>>,
     }
@@ -352,7 +352,7 @@ pub mod schemas {
         #[doc = "The context of the comment."]
         #[serde(rename = "context", default)]
         pub context: Option<crate::schemas::Context>,
-        #[doc = "The language(s) of the comment and context (if none are specified, the\nlanguage is automatically detected). If multiple languages are specified,\nthe text is checked in all of them that are supported. Both ISO and BCP-47\nlanguage codes are accepted.\nCurrent Language Restrictions:\n * Only English text (\"en\") is supported.\nIf none of the languages specified by the caller are supported, an\n`UNIMPLEMENTED` error is returned."]
+        #[doc = "The language(s) of the comment and context (if none are specified, the\nlanguage is automatically detected). If multiple languages are specified,\nthe text is checked in all of them that are supported. Both ISO and BCP-47\nlanguage codes are accepted.\nCurrent Language Restrictions:\n\n* Only English text (\"en\") is supported.\n  If none of the languages specified by the caller are supported, an\n  `UNIMPLEMENTED` error is returned."]
         #[serde(rename = "languages", default)]
         pub languages: Option<Vec<String>>,
         #[doc = "Session ID. Used to join related RPCs into a single session. For example,\nan interactive tool that calls both the AnalyzeComment and\nSuggestCommentScore RPCs should set all invocations of both RPCs to the\nsame Session ID, typically a random 64-bit integer."]

@@ -104,7 +104,7 @@ pub mod schemas {
         #[doc = "A short explanation for the error, which can be shared outside Google.\n\nPlease set domain, code and arguments whenever possible instead of this\nerror message so that external APIs can build safe error messages\nthemselves.\n\nExternal messages built in a RoSy interface will most likely refer to\ninformation and concepts that are not available externally and should not\nbe exposed. It is safer if external APIs can understand the errors and\ndecide what the error message should look like."]
         #[serde(rename = "externalErrorMessage", default)]
         pub external_error_message: Option<String>,
-        #[doc = "Location of the error, as specified by the location type.\n\nIf location_type is PATH, this should be a path to a field that's\nrelative to the request, using FieldPath notation\n(net/proto2/util/public/field_path.h).\n\nExamples:\n  authenticated_user.gaia_id\n  resource.address[2].country"]
+        #[doc = "Location of the error, as specified by the location type.\n\nIf location_type is PATH, this should be a path to a field that's\nrelative to the request, using FieldPath notation\n(net/proto2/util/public/field_path.h).\n\nExamples:\nauthenticated_user.gaia_id\nresource.address[2].country"]
         #[serde(rename = "location", default)]
         pub location: Option<String>,
         #[serde(rename = "locationType", default)]
@@ -274,7 +274,7 @@ pub mod schemas {
         #[serde(rename = "itemCount", default)]
         #[serde(with = "crate::parsed_string")]
         pub item_count: Option<u64>,
-        #[doc = "The type of resources that the group contains.\n\nValid values for this property are:\n * `youtube#channel`\n * `youtube#playlist`\n * `youtube#video`\n * `youtubePartner#asset`"]
+        #[doc = "The type of resources that the group contains.\n\nValid values for this property are:\n\n* `youtube#channel`\n* `youtube#playlist`\n* `youtube#video`\n* `youtubePartner#asset`"]
         #[serde(rename = "itemType", default)]
         pub item_type: Option<String>,
     }
@@ -346,7 +346,7 @@ pub mod schemas {
         #[doc = "The channel, video, playlist, or asset ID that YouTube uses to uniquely\nidentify the item that is being added to the group."]
         #[serde(rename = "id", default)]
         pub id: Option<String>,
-        #[doc = "Identifies the type of resource being added to the group.\n\nValid values for this property are:\n * `youtube#channel`\n * `youtube#playlist`\n * `youtube#video`\n * `youtubePartner#asset`"]
+        #[doc = "Identifies the type of resource being added to the group.\n\nValid values for this property are:\n\n* `youtube#channel`\n* `youtube#playlist`\n* `youtube#video`\n* `youtubePartner#asset`"]
         #[serde(rename = "kind", default)]
         pub kind: Option<String>,
     }
@@ -1952,7 +1952,7 @@ pub mod reports {
             self.filters = Some(value.into());
             self
         }
-        #[doc = "Identifies the YouTube channel or content owner for which you are\nretrieving YouTube Analytics data.\n\n- To request data for a YouTube user, set the `ids` parameter value to\n  `channel==CHANNEL_ID`, where `CHANNEL_ID` specifies the unique YouTube\n  channel ID.\n- To request data for a YouTube CMS content owner, set the `ids` parameter\n  value to `contentOwner==OWNER_NAME`, where `OWNER_NAME` is the CMS name\n  of the content owner.\nrequired: true, pattern: [a-zA-Z]+==[a-zA-Z0-9_+-]+"]
+        #[doc = "Identifies the YouTube channel or content owner for which you are\nretrieving YouTube Analytics data.\n\n* To request data for a YouTube user, set the `ids` parameter value to\n  `channel==CHANNEL_ID`, where `CHANNEL_ID` specifies the unique YouTube\n  channel ID.\n* To request data for a YouTube CMS content owner, set the `ids` parameter\n  value to `contentOwner==OWNER_NAME`, where `OWNER_NAME` is the CMS name\n  of the content owner.\n  required: true, pattern: [a-zA-Z]+==[a-zA-Z0-9_+-]+"]
         pub fn ids(&mut self, value: impl Into<String>) -> &mut Self {
             self.ids = Some(value.into());
             self

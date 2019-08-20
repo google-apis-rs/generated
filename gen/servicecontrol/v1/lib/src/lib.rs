@@ -56,7 +56,7 @@ pub mod schemas {
         #[doc = "The same operation_id value used in the AllocateQuotaRequest. Used for\nlogging and diagnostics purposes."]
         #[serde(rename = "operationId", default)]
         pub operation_id: Option<String>,
-        #[doc = "Quota metrics to indicate the result of allocation. Depending on the\nrequest, one or more of the following metrics will be included:\n\n1. Per quota group or per quota metric incremental usage will be specified\nusing the following delta metric :\n  \"serviceruntime.googleapis.com/api/consumer/quota_used_count\"\n\n2. The quota limit reached condition will be specified using the following\nboolean metric :\n  \"serviceruntime.googleapis.com/quota/exceeded\""]
+        #[doc = "Quota metrics to indicate the result of allocation. Depending on the\nrequest, one or more of the following metrics will be included:\n\n1. Per quota group or per quota metric incremental usage will be specified\n   using the following delta metric :\n   \"serviceruntime.googleapis.com/api/consumer/quota_used_count\"\n\n1. The quota limit reached condition will be specified using the following\n   boolean metric :\n   \"serviceruntime.googleapis.com/quota/exceeded\""]
         #[serde(rename = "quotaMetrics", default)]
         pub quota_metrics: Option<Vec<crate::schemas::MetricValueSet>>,
         #[doc = "ID of the actual config used to process the request."]
@@ -84,7 +84,7 @@ pub mod schemas {
         #[doc = "Other service-specific data about the request, response, and other\ninformation associated with the current audited event."]
         #[serde(rename = "metadata", default)]
         pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "The name of the service method or operation.\nFor API calls, this should be the name of the API method.\nFor example,\n\n    \"google.datastore.v1.Datastore.RunQuery\"\n    \"google.logging.v1.LoggingService.DeleteLog\""]
+        #[doc = "The name of the service method or operation.\nFor API calls, this should be the name of the API method.\nFor example,\n\n````text\n\"google.datastore.v1.Datastore.RunQuery\"\n\"google.logging.v1.LoggingService.DeleteLog\"````"]
         #[serde(rename = "methodName", default)]
         pub method_name: Option<String>,
         #[doc = "The number of items returned from a List or Query API method,\nif applicable."]
@@ -100,7 +100,7 @@ pub mod schemas {
         #[doc = "The resource location information."]
         #[serde(rename = "resourceLocation", default)]
         pub resource_location: Option<crate::schemas::ResourceLocation>,
-        #[doc = "The resource or collection that is the target of the operation.\nThe name is a scheme-less URI, not including the API service name.\nFor example:\n\n    \"shelves/SHELF_ID/books\"\n    \"shelves/SHELF_ID/books/BOOK_ID\""]
+        #[doc = "The resource or collection that is the target of the operation.\nThe name is a scheme-less URI, not including the API service name.\nFor example:\n\n````text\n\"shelves/SHELF_ID/books\"\n\"shelves/SHELF_ID/books/BOOK_ID\"````"]
         #[serde(rename = "resourceName", default)]
         pub resource_name: Option<String>,
         #[doc = "The resource's original state before mutation. Present only for\noperations which have successfully modified the targeted resource(s).\nIn general, this field should contain all changed fields, except those\nthat are already been included in `request`, `response`, `metadata` or\n`service_data` fields.\nWhen the JSON object represented here has a proto equivalent,\nthe proto name will be indicated in the `@type` property."]
@@ -135,10 +135,10 @@ pub mod schemas {
         #[doc = "A list of access level resource names that allow resources to be\naccessed by authenticated requester. It is part of Secure GCP processing\nfor the incoming request. An access level string has the format:\n\"//{api_service_name}/accessPolicies/{policy_id}/accessLevels/{short_name}\"\n\nExample:\n\"//accesscontextmanager.googleapis.com/accessPolicies/MY_POLICY_ID/accessLevels/MY_LEVEL\""]
         #[serde(rename = "accessLevels", default)]
         pub access_levels: Option<Vec<String>>,
-        #[doc = "The intended audience(s) for this authentication information. Reflects\nthe audience (`aud`) claim within a JWT. The audience\nvalue(s) depends on the `issuer`, but typically include one or more of\nthe following pieces of information:\n\n*  The services intended to receive the credential such as\n   [\"pubsub.googleapis.com\", \"storage.googleapis.com\"]\n*  A set of service-based scopes. For example,\n   [\"https://www.googleapis.com/auth/cloud-platform\"]\n*  The client id of an app, such as the Firebase project id for JWTs\n   from Firebase Auth.\n\nConsult the documentation for the credential issuer to determine the\ninformation provided."]
+        #[doc = "The intended audience(s) for this authentication information. Reflects\nthe audience (`aud`) claim within a JWT. The audience\nvalue(s) depends on the `issuer`, but typically include one or more of\nthe following pieces of information:\n\n* The services intended to receive the credential such as\n  [\"pubsub.googleapis.com\", \"storage.googleapis.com\"]\n* A set of service-based scopes. For example,\n  [\"https://www.googleapis.com/auth/cloud-platform\"]\n* The client id of an app, such as the Firebase project id for JWTs\n  from Firebase Auth.\n\nConsult the documentation for the credential issuer to determine the\ninformation provided."]
         #[serde(rename = "audiences", default)]
         pub audiences: Option<Vec<String>>,
-        #[doc = "Structured claims presented with the credential. JWTs include\n`{key: value}` pairs for standard and private claims. The following\nis a subset of the standard required and optional claims that would\ntypically be presented for a Google-based JWT:\n\n   {'iss': 'accounts.google.com',\n    'sub': '113289723416554971153',\n    'aud': ['123456789012', 'pubsub.googleapis.com'],\n    'azp': '123456789012.apps.googleusercontent.com',\n    'email': 'jsmith@example.com',\n    'iat': 1353601026,\n    'exp': 1353604926}\n\nSAML assertions are similarly specified, but with an identity provider\ndependent structure."]
+        #[doc = "Structured claims presented with the credential. JWTs include\n`{key: value}` pairs for standard and private claims. The following\nis a subset of the standard required and optional claims that would\ntypically be presented for a Google-based JWT:\n\n{'iss': 'accounts.google.com',\n'sub': '113289723416554971153',\n'aud': ['123456789012', 'pubsub.googleapis.com'],\n'azp': '123456789012.apps.googleusercontent.com',\n'email': 'jsmith@example.com',\n'iat': 1353601026,\n'exp': 1353604926}\n\nSAML assertions are similarly specified, but with an identity provider\ndependent structure."]
         #[serde(rename = "claims", default)]
         pub claims: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The authorized presenter of the credential. Reflects the optional\nAuthorized Presenter (`azp`) claim within a JWT or the\nOAuth client id. For example, a Google Cloud Platform client id looks\nas follows: \"123456789012.apps.googleusercontent.com\"."]
@@ -207,7 +207,7 @@ pub mod schemas {
         #[doc = "The required IAM permission."]
         #[serde(rename = "permission", default)]
         pub permission: Option<String>,
-        #[doc = "The resource being accessed, as a REST-style string. For example:\n\n    bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID"]
+        #[doc = "The resource being accessed, as a REST-style string. For example:\n\n````text\nbigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID````"]
         #[serde(rename = "resource", default)]
         pub resource: Option<String>,
         #[doc = "Resource attributes used in IAM condition evaluation. This field contains\nresource attributes like resource type and resource name.\n\nTo get the whole view of the attributes used in IAM\ncondition evaluation, the user must also look into\n`AuditLog.request_metadata.request_attributes`."]
@@ -429,7 +429,7 @@ pub mod schemas {
         #[doc = "Contains public information about the check error. If available,\n`status.code` will be non zero and client can propagate it out as public\nerror."]
         #[serde(rename = "status", default)]
         pub status: Option<crate::schemas::Status>,
-        #[doc = "Subject to whom this error applies. See the specific code enum for more\ndetails on this field. For example:\n    - \u{201c}project:<project-id or project-number>\u{201d}\n    - \u{201c}folder:<folder-id>\u{201d}\n    - \u{201c}organization:<organization-id>\u{201d}"]
+        #[doc = "Subject to whom this error applies. See the specific code enum for more\ndetails on this field. For example:\n- \u{201c}project:<project-id or project-number>\u{201d}\n- \u{201c}folder:<folder-id>\u{201d}\n- \u{201c}organization:<organization-id>\u{201d}"]
         #[serde(rename = "subject", default)]
         pub subject: Option<String>,
     }
@@ -509,7 +509,7 @@ pub mod schemas {
         #[doc = "The same operation_id value used in the CheckRequest.\nUsed for logging and diagnostics purposes."]
         #[serde(rename = "operationId", default)]
         pub operation_id: Option<String>,
-        #[doc = "Quota information for the check request associated with this response.\n"]
+        #[doc = "Quota information for the check request associated with this response."]
         #[serde(rename = "quotaInfo", default)]
         pub quota_info: Option<crate::schemas::QuotaInfo>,
         #[doc = "The actual config id used to process the request."]
@@ -624,7 +624,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Distribution {
-        #[doc = "The number of samples in each histogram bucket. `bucket_counts` are\noptional. If present, they must sum to the `count` value.\n\nThe buckets are defined below in `bucket_option`. There are N buckets.\n`bucket_counts[0]` is the number of samples in the underflow bucket.\n`bucket_counts[1]` to `bucket_counts[N-1]` are the numbers of samples\nin each of the finite buckets. And `bucket_counts[N] is the number\nof samples in the overflow bucket. See the comments of `bucket_option`\nbelow for more details.\n\nAny suffix of trailing zeros may be omitted."]
+        #[doc = "The number of samples in each histogram bucket. `bucket_counts` are\noptional. If present, they must sum to the `count` value.\n\nThe buckets are defined below in `bucket_option`. There are N buckets.\n`bucket_counts[0]` is the number of samples in the underflow bucket.\n`bucket_counts[1]` to `bucket_counts[N-1]` are the numbers of samples\nin each of the finite buckets. And `bucket_counts[N] is the number of samples in the overflow bucket. See the comments of `bucket_option`\nbelow for more details.\n\nAny suffix of trailing zeros may be omitted."]
         #[serde(rename = "bucketCounts", default)]
         pub bucket_counts: Option<Vec<i64>>,
         #[doc = "The total number of samples in the distribution. Must be >= 0."]
@@ -652,7 +652,7 @@ pub mod schemas {
         #[doc = "The minimum of the population of values. Ignored if `count` is zero."]
         #[serde(rename = "minimum", default)]
         pub minimum: Option<f64>,
-        #[doc = "The sum of squared deviations from the mean:\n  Sum[i=1..count]((x_i - mean)^2)\nwhere each x_i is a sample values. If `count` is zero then this field\nmust be zero, otherwise validation of the request fails."]
+        #[doc = "The sum of squared deviations from the mean:\nSum[i=1..count]((x_i - mean)^2)\nwhere each x_i is a sample values. If `count` is zero then this field\nmust be zero, otherwise validation of the request fails."]
         #[serde(rename = "sumOfSquaredDeviation", default)]
         pub sum_of_squared_deviation: Option<f64>,
     }
@@ -668,7 +668,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Exemplar {
-        #[doc = "Contextual information about the example value. Examples are:\n\n  Trace: type.googleapis.com/google.monitoring.v3.SpanContext\n\n  Literal string: type.googleapis.com/google.protobuf.StringValue\n\n  Labels dropped during aggregation:\n    type.googleapis.com/google.monitoring.v3.DroppedLabels\n\nThere may be only a single attachment of any given message type in a\nsingle exemplar, and this is enforced by the system."]
+        #[doc = "Contextual information about the example value. Examples are:\n\nTrace: type.googleapis.com/google.monitoring.v3.SpanContext\n\nLiteral string: type.googleapis.com/google.protobuf.StringValue\n\nLabels dropped during aggregation:\ntype.googleapis.com/google.monitoring.v3.DroppedLabels\n\nThere may be only a single attachment of any given message type in a\nsingle exemplar, and this is enforced by the system."]
         #[serde(rename = "attachments", default)]
         pub attachments: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "The observation (sampling) time of the above value."]
@@ -692,7 +692,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ExplicitBuckets {
-        #[doc = "'bound' is a list of strictly increasing boundaries between\nbuckets. Note that a list of length N-1 defines N buckets because\nof fenceposting. See comments on `bucket_options` for details.\n\nThe i'th finite bucket covers the interval\n  [bound[i-1], bound[i])\nwhere i ranges from 1 to bound_size() - 1. Note that there are no\nfinite buckets at all if 'bound' only contains a single element; in\nthat special case the single bound defines the boundary between the\nunderflow and overflow buckets.\n\nbucket number                   lower bound    upper bound\n i == 0 (underflow)              -inf           bound[i]\n 0 < i < bound_size()            bound[i-1]     bound[i]\n i == bound_size() (overflow)    bound[i-1]     +inf"]
+        #[doc = "'bound' is a list of strictly increasing boundaries between\nbuckets. Note that a list of length N-1 defines N buckets because\nof fenceposting. See comments on `bucket_options` for details.\n\nThe i'th finite bucket covers the interval\n[bound[i-1], bound[i])\nwhere i ranges from 1 to bound_size() - 1. Note that there are no\nfinite buckets at all if 'bound' only contains a single element; in\nthat special case the single bound defines the boundary between the\nunderflow and overflow buckets.\n\nbucket number                   lower bound    upper bound\ni == 0 (underflow)              -inf           bound[i]\n0 < i < bound_size()            bound[i-1]     bound[i]\ni == bound_size() (overflow)    bound[i-1]     +inf"]
         #[serde(rename = "bounds", default)]
         pub bounds: Option<Vec<f64>>,
     }
@@ -710,13 +710,13 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ExponentialBuckets {
-        #[doc = "The i'th exponential bucket covers the interval\n  [scale * growth_factor^(i-1), scale * growth_factor^i)\nwhere i ranges from 1 to num_finite_buckets inclusive.\nMust be larger than 1.0."]
+        #[doc = "The i'th exponential bucket covers the interval\n[scale * growth_factor^(i-1), scale * growth_factor^i)\nwhere i ranges from 1 to num_finite_buckets inclusive.\nMust be larger than 1.0."]
         #[serde(rename = "growthFactor", default)]
         pub growth_factor: Option<f64>,
         #[doc = "The number of finite buckets. With the underflow and overflow buckets,\nthe total number of buckets is `num_finite_buckets` + 2.\nSee comments on `bucket_options` for details."]
         #[serde(rename = "numFiniteBuckets", default)]
         pub num_finite_buckets: Option<i32>,
-        #[doc = "The i'th exponential bucket covers the interval\n  [scale * growth_factor^(i-1), scale * growth_factor^i)\nwhere i ranges from 1 to num_finite_buckets inclusive.\nMust be > 0."]
+        #[doc = "The i'th exponential bucket covers the interval\n[scale * growth_factor^(i-1), scale * growth_factor^i)\nwhere i ranges from 1 to num_finite_buckets inclusive.\nMust be > 0."]
         #[serde(rename = "scale", default)]
         pub scale: Option<f64>,
     }
@@ -807,7 +807,7 @@ pub mod schemas {
         #[doc = "The response code indicating the status of the response.\nExamples: 200, 404."]
         #[serde(rename = "status", default)]
         pub status: Option<i32>,
-        #[doc = "The user agent sent by the client. Example:\n`\"Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Q312461; .NET\nCLR 1.0.3705)\"`."]
+        #[doc = "The user agent sent by the client. Example:\n`\"Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Q312461; .NET CLR 1.0.3705)\"`."]
         #[serde(rename = "userAgent", default)]
         pub user_agent: Option<String>,
     }
@@ -828,10 +828,10 @@ pub mod schemas {
         #[doc = "The number of finite buckets. With the underflow and overflow buckets,\nthe total number of buckets is `num_finite_buckets` + 2.\nSee comments on `bucket_options` for details."]
         #[serde(rename = "numFiniteBuckets", default)]
         pub num_finite_buckets: Option<i32>,
-        #[doc = "The i'th linear bucket covers the interval\n  [offset + (i-1) * width, offset + i * width)\nwhere i ranges from 1 to num_finite_buckets, inclusive."]
+        #[doc = "The i'th linear bucket covers the interval\n[offset + (i-1) * width, offset + i * width)\nwhere i ranges from 1 to num_finite_buckets, inclusive."]
         #[serde(rename = "offset", default)]
         pub offset: Option<f64>,
-        #[doc = "The i'th linear bucket covers the interval\n  [offset + (i-1) * width, offset + i * width)\nwhere i ranges from 1 to num_finite_buckets, inclusive.\nMust be strictly positive."]
+        #[doc = "The i'th linear bucket covers the interval\n[offset + (i-1) * width, offset + i * width)\nwhere i ranges from 1 to num_finite_buckets, inclusive.\nMust be strictly positive."]
         #[serde(rename = "width", default)]
         pub width: Option<f64>,
     }
@@ -1184,7 +1184,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
-        #[doc = "Identity of the consumer who is using the service.\nThis field should be filled in for the operations initiated by a\nconsumer, but not for service-initiated operations that are\nnot related to a specific consumer.\n\n- This can be in one of the following formats:\n    - project:PROJECT_ID,\n    - project`_`number:PROJECT_NUMBER,\n    - projects/PROJECT_ID or PROJECT_NUMBER,\n    - folders/FOLDER_NUMBER,\n    - organizations/ORGANIZATION_NUMBER,\n    - api`_`key:API_KEY."]
+        #[doc = "Identity of the consumer who is using the service.\nThis field should be filled in for the operations initiated by a\nconsumer, but not for service-initiated operations that are\nnot related to a specific consumer.\n\n* This can be in one of the following formats:\n  * project:PROJECT_ID,\n  * project`_`number:PROJECT_NUMBER,\n  * projects/PROJECT_ID or PROJECT_NUMBER,\n  * folders/FOLDER_NUMBER,\n  * organizations/ORGANIZATION_NUMBER,\n  * api`_`key:API_KEY."]
         #[serde(rename = "consumerId", default)]
         pub consumer_id: Option<String>,
         #[doc = "End time of the operation.\nRequired when the operation is used in ServiceController.Report,\nbut optional when the operation is used in ServiceController.Check."]
@@ -1193,7 +1193,7 @@ pub mod schemas {
         #[doc = "DO NOT USE. This is an experimental field."]
         #[serde(rename = "importance", default)]
         pub importance: Option<crate::schemas::OperationImportance>,
-        #[doc = "Labels describing the operation. Only the following labels are allowed:\n\n- Labels describing monitored resources as defined in\n  the service configuration.\n- Default labels of metric values. When specified, labels defined in the\n  metric value override these default.\n- The following labels defined by Google Cloud Platform:\n    - `cloud.googleapis.com/location` describing the location where the\n       operation happened,\n    - `servicecontrol.googleapis.com/user_agent` describing the user agent\n       of the API request,\n    - `servicecontrol.googleapis.com/service_agent` describing the service\n       used to handle the API request (e.g. ESP),\n    - `servicecontrol.googleapis.com/platform` describing the platform\n       where the API is served, such as App Engine, Compute Engine, or\n       Kubernetes Engine."]
+        #[doc = "Labels describing the operation. Only the following labels are allowed:\n\n* Labels describing monitored resources as defined in\n  the service configuration.\n* Default labels of metric values. When specified, labels defined in the\n  metric value override these default.\n* The following labels defined by Google Cloud Platform:\n  * `cloud.googleapis.com/location` describing the location where the\n    operation happened,\n  * `servicecontrol.googleapis.com/user_agent` describing the user agent\n    of the API request,\n  * `servicecontrol.googleapis.com/service_agent` describing the service\n    used to handle the API request (e.g. ESP),\n  * `servicecontrol.googleapis.com/platform` describing the platform\n    where the API is served, such as App Engine, Compute Engine, or\n    Kubernetes Engine."]
         #[serde(rename = "labels", default)]
         pub labels: Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Represents information to be logged."]
@@ -1211,7 +1211,7 @@ pub mod schemas {
         #[doc = "Represents the properties needed for quota check. Applicable only if this\noperation is for a quota check request. If this is not specified, no quota\ncheck will be performed."]
         #[serde(rename = "quotaProperties", default)]
         pub quota_properties: Option<crate::schemas::QuotaProperties>,
-        #[doc = "DO NOT USE. This field is deprecated, use \"resources\" field instead.\nThe resource name of the parent of a resource in the resource hierarchy.\n\nThis can be in one of the following formats:\n    - \u{201c}projects/<project-id or project-number>\u{201d}\n    - \u{201c}folders/<folder-id>\u{201d}\n    - \u{201c}organizations/<organization-id>\u{201d}"]
+        #[doc = "DO NOT USE. This field is deprecated, use \"resources\" field instead.\nThe resource name of the parent of a resource in the resource hierarchy.\n\nThis can be in one of the following formats:\n- \u{201c}projects/<project-id or project-number>\u{201d}\n- \u{201c}folders/<folder-id>\u{201d}\n- \u{201c}organizations/<organization-id>\u{201d}"]
         #[serde(rename = "resourceContainer", default)]
         pub resource_container: Option<String>,
         #[doc = "The resources that are involved in the operation.\nThe maximum supported number of entries in this field is 100."]
@@ -1406,10 +1406,10 @@ pub mod schemas {
         #[doc = "Quota Metrics that have exceeded quota limits.\nFor QuotaGroup-based quota, this is QuotaGroup.name\nFor QuotaLimit-based quota, this is QuotaLimit.name\nSee: google.api.Quota\nDeprecated: Use quota_metrics to get per quota group limit exceeded status."]
         #[serde(rename = "limitExceeded", default)]
         pub limit_exceeded: Option<Vec<String>>,
-        #[doc = "Map of quota group name to the actual number of tokens consumed. If the\nquota check was not successful, then this will not be populated due to no\nquota consumption.\n\nWe are not merging this field with 'quota_metrics' field because of the\ncomplexity of scaling in Chemist client code base. For simplicity, we will\nkeep this field for Castor (that scales quota usage) and 'quota_metrics'\nfor SuperQuota (that doesn't scale quota usage).\n"]
+        #[doc = "Map of quota group name to the actual number of tokens consumed. If the\nquota check was not successful, then this will not be populated due to no\nquota consumption.\n\nWe are not merging this field with 'quota_metrics' field because of the\ncomplexity of scaling in Chemist client code base. For simplicity, we will\nkeep this field for Castor (that scales quota usage) and 'quota_metrics'\nfor SuperQuota (that doesn't scale quota usage)."]
         #[serde(rename = "quotaConsumed", default)]
         pub quota_consumed: Option<::std::collections::BTreeMap<String, i32>>,
-        #[doc = "Quota metrics to indicate the usage. Depending on the check request, one or\nmore of the following metrics will be included:\n\n1. For rate quota, per quota group or per quota metric incremental usage\nwill be specified using the following delta metric:\n  \"serviceruntime.googleapis.com/api/consumer/quota_used_count\"\n\n2. For allocation quota, per quota metric total usage will be specified\nusing the following gauge metric:\n  \"serviceruntime.googleapis.com/allocation/consumer/quota_used_count\"\n\n3. For both rate quota and allocation quota, the quota limit reached\ncondition will be specified using the following boolean metric:\n  \"serviceruntime.googleapis.com/quota/exceeded\""]
+        #[doc = "Quota metrics to indicate the usage. Depending on the check request, one or\nmore of the following metrics will be included:\n\n1. For rate quota, per quota group or per quota metric incremental usage\n   will be specified using the following delta metric:\n   \"serviceruntime.googleapis.com/api/consumer/quota_used_count\"\n\n1. For allocation quota, per quota metric total usage will be specified\n   using the following gauge metric:\n   \"serviceruntime.googleapis.com/allocation/consumer/quota_used_count\"\n\n1. For both rate quota and allocation quota, the quota limit reached\n   condition will be specified using the following boolean metric:\n   \"serviceruntime.googleapis.com/quota/exceeded\""]
         #[serde(rename = "quotaMetrics", default)]
         pub quota_metrics: Option<Vec<crate::schemas::MetricValueSet>>,
     }
@@ -1479,13 +1479,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct QuotaOperation {
-        #[doc = "Identity of the consumer for whom this quota operation is being performed.\n\nThis can be in one of the following formats:\n  project:<project_id>,\n  project_number:<project_number>,\n  api_key:<api_key>."]
+        #[doc = "Identity of the consumer for whom this quota operation is being performed.\n\nThis can be in one of the following formats:\nproject:<project_id>,\nproject_number:<project_number>,\napi_key:<api_key>."]
         #[serde(rename = "consumerId", default)]
         pub consumer_id: Option<String>,
         #[doc = "Labels describing the operation."]
         #[serde(rename = "labels", default)]
         pub labels: Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Fully qualified name of the API method for which this quota operation is\nrequested. This name is used for matching quota rules or metric rules and\nbilling status rules defined in service configuration.\n\nThis field should not be set if any of the following is true:\n(1) the quota operation is performed on non-API resources.\n(2) quota_metrics is set because the caller is doing quota override.\n\nExample of an RPC method name:\n    google.example.library.v1.LibraryService.CreateShelf"]
+        #[doc = "Fully qualified name of the API method for which this quota operation is\nrequested. This name is used for matching quota rules or metric rules and\nbilling status rules defined in service configuration.\n\nThis field should not be set if any of the following is true:\n(1) the quota operation is performed on non-API resources.\n(2) quota_metrics is set because the caller is doing quota override.\n\nExample of an RPC method name:\ngoogle.example.library.v1.LibraryService.CreateShelf"]
         #[serde(rename = "methodName", default)]
         pub method_name: Option<String>,
         #[doc = "Identity of the operation. This is expected to be unique within the scope\nof the service that generated the operation, and guarantees idempotency in\ncase of retries.\n\nUUID version 4 is recommended, though not required. In scenarios where an\noperation is computed from existing information and an idempotent id is\ndesirable for deduplication purpose, UUID version 5 is recommended. See\nRFC 4122 for details."]
@@ -1648,10 +1648,10 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ReportResponse {
-        #[doc = "Partial failures, one for each `Operation` in the request that failed\nprocessing. There are three possible combinations of the RPC status:\n\n1. The combination of a successful RPC status and an empty `report_errors`\n   list indicates a complete success where all `Operations` in the\n   request are processed successfully.\n2. The combination of a successful RPC status and a non-empty\n   `report_errors` list indicates a partial success where some\n   `Operations` in the request succeeded. Each\n   `Operation` that failed processing has a corresponding item\n   in this list.\n3. A failed RPC status indicates a general non-deterministic failure.\n   When this happens, it's impossible to know which of the\n   'Operations' in the request succeeded or failed."]
+        #[doc = "Partial failures, one for each `Operation` in the request that failed\nprocessing. There are three possible combinations of the RPC status:\n\n1. The combination of a successful RPC status and an empty `report_errors`\n   list indicates a complete success where all `Operations` in the\n   request are processed successfully.\n1. The combination of a successful RPC status and a non-empty\n   `report_errors` list indicates a partial success where some\n   `Operations` in the request succeeded. Each\n   `Operation` that failed processing has a corresponding item\n   in this list.\n1. A failed RPC status indicates a general non-deterministic failure.\n   When this happens, it's impossible to know which of the\n   'Operations' in the request succeeded or failed."]
         #[serde(rename = "reportErrors", default)]
         pub report_errors: Option<Vec<crate::schemas::ReportError>>,
-        #[doc = "Quota usage for each quota release `Operation` request.\n\nFully or partially failed quota release request may or may not be present\nin `report_quota_info`. For example, a failed quota release request will\nhave the current quota usage info when precise quota library returns the\ninfo. A deadline exceeded quota request will not have quota usage info.\n\nIf there is no quota release request, report_quota_info will be empty.\n"]
+        #[doc = "Quota usage for each quota release `Operation` request.\n\nFully or partially failed quota release request may or may not be present\nin `report_quota_info`. For example, a failed quota release request will\nhave the current quota usage info when precise quota library returns the\ninfo. A deadline exceeded quota request will not have quota usage info.\n\nIf there is no quota release request, report_quota_info will be empty."]
         #[serde(rename = "reportInfos", default)]
         pub report_infos: Option<Vec<crate::schemas::ReportInfo>>,
         #[doc = "The actual config id used to process the request."]
@@ -1726,16 +1726,16 @@ pub mod schemas {
         #[doc = "The IP address of the caller.\nFor caller from internet, this will be public IPv4 or IPv6 address.\nFor caller from a Compute Engine VM with external IP address, this\nwill be the VM's external IP address. For caller from a Compute\nEngine VM without external IP address, if the VM is in the same\norganization (or project) as the accessed resource, `caller_ip` will\nbe the VM's internal IPv4 address, otherwise the `caller_ip` will be\nredacted to \"gce-internal-ip\".\nSee https://cloud.google.com/compute/docs/vpc/ for more information."]
         #[serde(rename = "callerIp", default)]
         pub caller_ip: Option<String>,
-        #[doc = "The network of the caller.\nSet only if the network host project is part of the same GCP organization\n(or project) as the accessed resource.\nSee https://cloud.google.com/compute/docs/vpc/ for more information.\nThis is a scheme-less URI full resource name. For example:\n\n    \"//compute.googleapis.com/projects/PROJECT_ID/global/networks/NETWORK_ID\""]
+        #[doc = "The network of the caller.\nSet only if the network host project is part of the same GCP organization\n(or project) as the accessed resource.\nSee https://cloud.google.com/compute/docs/vpc/ for more information.\nThis is a scheme-less URI full resource name. For example:\n\n````text\n\"//compute.googleapis.com/projects/PROJECT_ID/global/networks/NETWORK_ID\"````"]
         #[serde(rename = "callerNetwork", default)]
         pub caller_network: Option<String>,
-        #[doc = "The user agent of the caller.\nThis information is not authenticated and should be treated accordingly.\nFor example:\n\n+   `google-api-python-client/1.4.0`:\n    The request was made by the Google API client for Python.\n+   `Cloud SDK Command Line Tool apitools-client/1.0 gcloud/0.9.62`:\n    The request was made by the Google Cloud SDK CLI (gcloud).\n+   `AppEngine-Google; (+http://code.google.com/appengine; appid:\ns~my-project`:\n    The request was made from the `my-project` App Engine app.\nNOLINT"]
+        #[doc = "The user agent of the caller.\nThis information is not authenticated and should be treated accordingly.\nFor example:\n\n* `google-api-python-client/1.4.0`:\n  The request was made by the Google API client for Python.\n* `Cloud SDK Command Line Tool apitools-client/1.0 gcloud/0.9.62`:\n  The request was made by the Google Cloud SDK CLI (gcloud).\n* `AppEngine-Google; (+http://code.google.com/appengine; appid: s~my-project`:\n  The request was made from the `my-project` App Engine app.\n  NOLINT"]
         #[serde(rename = "callerSuppliedUserAgent", default)]
         pub caller_supplied_user_agent: Option<String>,
         #[doc = "The destination of a network activity, such as accepting a TCP connection.\nIn a multi hop network activity, the destination represents the receiver of\nthe last hop. Only two fields are used in this message, Peer.port and\nPeer.ip. These fields are optionally populated by those services utilizing\nthe IAM condition feature."]
         #[serde(rename = "destinationAttributes", default)]
         pub destination_attributes: Option<crate::schemas::Peer>,
-        #[doc = "Request attributes used in IAM condition evaluation. This field contains\nrequest attributes like request time and access levels associated with\nthe request.\n\n\nTo get the whole view of the attributes used in IAM\ncondition evaluation, the user must also look into\n`AuditLog.authentication_info.resource_attributes`."]
+        #[doc = "Request attributes used in IAM condition evaluation. This field contains\nrequest attributes like request time and access levels associated with\nthe request.\n\nTo get the whole view of the attributes used in IAM\ncondition evaluation, the user must also look into\n`AuditLog.authentication_info.resource_attributes`."]
         #[serde(rename = "requestAttributes", default)]
         pub request_attributes: Option<crate::schemas::Request>,
     }
@@ -1765,7 +1765,7 @@ pub mod schemas {
         #[doc = "The labels or tags on the resource, such as AWS resource tags and\nKubernetes resource labels."]
         #[serde(rename = "labels", default)]
         pub labels: Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The stable identifier (name) of a resource on the `service`. A resource\ncan be logically identified as \"//{resource.service}/{resource.name}\".\nThe differences between a resource name and a URI are:\n\n*   Resource name is a logical identifier, independent of network\n    protocol and API version. For example,\n    `//pubsub.googleapis.com/projects/123/topics/news-feed`.\n*   URI often includes protocol and version information, so it can\n    be used directly by applications. For example,\n    `https://pubsub.googleapis.com/v1/projects/123/topics/news-feed`.\n\nSee https://cloud.google.com/apis/design/resource_names for details."]
+        #[doc = "The stable identifier (name) of a resource on the `service`. A resource\ncan be logically identified as \"//{resource.service}/{resource.name}\".\nThe differences between a resource name and a URI are:\n\n* Resource name is a logical identifier, independent of network\n  protocol and API version. For example,\n  `//pubsub.googleapis.com/projects/123/topics/news-feed`.\n* URI often includes protocol and version information, so it can\n  be used directly by applications. For example,\n  `https://pubsub.googleapis.com/v1/projects/123/topics/news-feed`.\n\nSee https://cloud.google.com/apis/design/resource_names for details."]
         #[serde(rename = "name", default)]
         pub name: Option<String>,
         #[doc = "The type of the resource. The syntax is platform-specific because\ndifferent platforms define their resources differently.\n\nFor Google APIs, the type format must be \"{service}/{kind}\"."]
@@ -1798,7 +1798,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ResourceInfo {
-        #[doc = "The identifier of the parent of this resource instance.\nMust be in one of the following formats:\n    - \u{201c}projects/<project-id or project-number>\u{201d}\n    - \u{201c}folders/<folder-id>\u{201d}\n    - \u{201c}organizations/<organization-id>\u{201d}"]
+        #[doc = "The identifier of the parent of this resource instance.\nMust be in one of the following formats:\n- \u{201c}projects/<project-id or project-number>\u{201d}\n- \u{201c}folders/<folder-id>\u{201d}\n- \u{201c}organizations/<organization-id>\u{201d}"]
         #[serde(rename = "resourceContainer", default)]
         pub resource_container: Option<String>,
         #[doc = "The location of the resource. If not empty, the resource will be checked\nagainst location policy. The value must be a valid zone, region or\nmultiregion. For example: \"europe-west4\" or \"northamerica-northeast1-a\""]
@@ -1831,10 +1831,10 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ResourceLocation {
-        #[doc = "The locations of a resource after the execution of the operation.\nRequests to create or delete a location based resource must populate\nthe 'current_locations' field and not the 'original_locations' field.\nFor example:\n\n    \"europe-west1-a\"\n    \"us-east1\"\n    \"nam3\""]
+        #[doc = "The locations of a resource after the execution of the operation.\nRequests to create or delete a location based resource must populate\nthe 'current_locations' field and not the 'original_locations' field.\nFor example:\n\n````text\n\"europe-west1-a\"\n\"us-east1\"\n\"nam3\"````"]
         #[serde(rename = "currentLocations", default)]
         pub current_locations: Option<Vec<String>>,
-        #[doc = "The locations of a resource prior to the execution of the operation.\nRequests that mutate the resource's location must populate both the\n'original_locations' as well as the 'current_locations' fields.\nFor example:\n\n    \"europe-west1-a\"\n    \"us-east1\"\n    \"nam3\""]
+        #[doc = "The locations of a resource prior to the execution of the operation.\nRequests that mutate the resource's location must populate both the\n'original_locations' as well as the 'current_locations' fields.\nFor example:\n\n````text\n\"europe-west1-a\"\n\"us-east1\"\n\"nam3\"````"]
         #[serde(rename = "originalLocations", default)]
         pub original_locations: Option<Vec<String>>,
     }

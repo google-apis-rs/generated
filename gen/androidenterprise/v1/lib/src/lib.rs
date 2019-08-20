@@ -664,7 +664,7 @@ pub mod schemas {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#device\"."]
         #[serde(rename = "kind", default)]
         pub kind: Option<String>,
-        #[doc = "Identifies the extent to which the device is controlled by a managed Google Play EMM in various deployment configurations.\n\nPossible values include: \n- \"managedDevice\", a device that has the EMM's device policy controller (DPC) as the device owner. \n- \"managedProfile\", a device that has a profile managed by the DPC (DPC is profile owner) in addition to a separate, personal profile that is unavailable to the DPC. \n- \"containerApp\", no longer used (deprecated). \n- \"unmanagedProfile\", a device that has been allowed (by the domain's admin, using the Admin Console to enable the privilege) to use managed Google Play, but the profile is itself not owned by a DPC."]
+        #[doc = "Identifies the extent to which the device is controlled by a managed Google Play EMM in various deployment configurations.\n\nPossible values include: \n\n* \"managedDevice\", a device that has the EMM's device policy controller (DPC) as the device owner. \n* \"managedProfile\", a device that has a profile managed by the DPC (DPC is profile owner) in addition to a separate, personal profile that is unavailable to the DPC. \n* \"containerApp\", no longer used (deprecated). \n* \"unmanagedProfile\", a device that has been allowed (by the domain's admin, using the Admin Console to enable the privilege) to use managed Google Play, but the profile is itself not owned by a DPC."]
         #[serde(rename = "managementType", default)]
         pub management_type: Option<String>,
         #[doc = "The policy enforced on the device."]
@@ -1028,7 +1028,7 @@ pub mod schemas {
         #[doc = "The number of purchased licenses (possibly in multiple purchases). If this field is omitted, then there is no limit on the number of licenses that can be provisioned (for example, if the acquisition kind is \"free\")."]
         #[serde(rename = "numPurchased", default)]
         pub num_purchased: Option<i32>,
-        #[doc = "The permission approval status of the product. This field is only set if the product is approved. Possible states are: \n- \"currentApproved\", the current set of permissions is approved, but additional permissions will require the administrator to reapprove the product (If the product was approved without specifying the approved permissions setting, then this is the default behavior.), \n- \"needsReapproval\", the product has unapproved permissions. No additional product licenses can be assigned until the product is reapproved, \n- \"allCurrentAndFutureApproved\", the current permissions are approved and any future permission updates will be automatically approved without administrator review."]
+        #[doc = "The permission approval status of the product. This field is only set if the product is approved. Possible states are: \n\n* \"currentApproved\", the current set of permissions is approved, but additional permissions will require the administrator to reapprove the product (If the product was approved without specifying the approved permissions setting, then this is the default behavior.), \n* \"needsReapproval\", the product has unapproved permissions. No additional product licenses can be assigned until the product is reapproved, \n* \"allCurrentAndFutureApproved\", the current permissions are approved and any future permission updates will be automatically approved without administrator review."]
         #[serde(rename = "permissions", default)]
         pub permissions: Option<String>,
         #[doc = "The ID of the product that the license is for. For example, \"app:com.google.android.gm\"."]
@@ -1570,7 +1570,7 @@ pub mod schemas {
         #[doc = "Policy app on the device."]
         #[serde(rename = "dpcPackageName", default)]
         pub dpc_package_name: Option<String>,
-        #[doc = "Identifies the extent to which the device is controlled by an Android EMM in various deployment configurations.\n\nPossible values include: \n- \"managedDevice\", a device where the DPC is set as device owner, \n- \"managedProfile\", a device where the DPC is set as profile owner."]
+        #[doc = "Identifies the extent to which the device is controlled by an Android EMM in various deployment configurations.\n\nPossible values include: \n\n* \"managedDevice\", a device where the DPC is set as device owner, \n* \"managedProfile\", a device where the DPC is set as profile owner."]
         #[serde(rename = "managementType", default)]
         pub management_type: Option<String>,
         #[doc = "The ID of the user. This field will always be present."]
@@ -2781,7 +2781,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WebApp {
-        #[doc = "The display mode of the web app.\n\nPossible values include: \n- \"minimalUi\", the device's status bar, navigation bar, the app's URL, and a refresh button are visible when the app is open. For HTTP URLs, you can only select this option.\n- \"standalone\", the device's status bar and navigation bar are visible when the app is open.\n- \"fullScreen\", the app opens in full screen mode, hiding the device's status and navigation bars. All browser UI elements, page URL, system status bar and back button are not visible, and the web app takes up the entirety of the available display area."]
+        #[doc = "The display mode of the web app.\n\nPossible values include: \n\n* \"minimalUi\", the device's status bar, navigation bar, the app's URL, and a refresh button are visible when the app is open. For HTTP URLs, you can only select this option.\n* \"standalone\", the device's status bar and navigation bar are visible when the app is open.\n* \"fullScreen\", the app opens in full screen mode, hiding the device's status and navigation bars. All browser UI elements, page URL, system status bar and back button are not visible, and the web app takes up the entirety of the available display area."]
         #[serde(rename = "displayMode", default)]
         pub display_mode: Option<String>,
         #[doc = "A list of icons representing this website. If absent, a default icon (for create) or the current icon (for update) will be used."]
@@ -2796,7 +2796,7 @@ pub mod schemas {
         #[doc = "The title of the web app as displayed to the user (e.g., amongst a list of other applications, or as a label for an icon)."]
         #[serde(rename = "title", default)]
         pub title: Option<String>,
-        #[doc = "The current version of the app.\n\n\nNote that the version can automatically increase during the lifetime of the web app, while Google does internal housekeeping to keep the web app up-to-date."]
+        #[doc = "The current version of the app.\n\nNote that the version can automatically increase during the lifetime of the web app, while Google does internal housekeeping to keep the web app up-to-date."]
         #[serde(rename = "versionCode", default)]
         #[serde(with = "crate::parsed_string")]
         pub version_code: Option<i64>,
@@ -2827,7 +2827,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WebAppIcon {
-        #[doc = "The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 \"Base 64 Encoding with URL and Filename Safe Alphabet\").  \n- The image type can be png or jpg.\n- The image should ideally be square.\n- The image should ideally have a size of 512x512."]
+        #[doc = "The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 \"Base 64 Encoding with URL and Filename Safe Alphabet\").\n\n* The image type can be png or jpg.\n* The image should ideally be square.\n* The image should ideally have a size of 512x512."]
         #[serde(rename = "imageData", default)]
         pub image_data: Option<String>,
     }

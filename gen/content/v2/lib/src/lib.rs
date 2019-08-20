@@ -709,7 +709,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AccountsAuthInfoResponse {
-        #[doc = "The account identifiers corresponding to the authenticated user.\n- For an individual account: only the merchant ID is defined\n- For an aggregator: only the aggregator ID is defined\n- For a subaccount of an MCA: both the merchant ID and the aggregator ID are defined."]
+        #[doc = "The account identifiers corresponding to the authenticated user.\n\n* For an individual account: only the merchant ID is defined\n* For an aggregator: only the aggregator ID is defined\n* For a subaccount of an MCA: both the merchant ID and the aggregator ID are defined."]
         #[serde(rename = "accountIdentifiers", default)]
         pub account_identifiers: Option<Vec<crate::schemas::AccountIdentifier>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#accountsAuthInfoResponse\"."]
@@ -4385,7 +4385,7 @@ pub mod schemas {
         #[doc = "The billing phone number."]
         #[serde(rename = "phoneNumber", default)]
         pub phone_number: Option<String>,
-        #[doc = "The type of instrument.\n\nAcceptable values are:  \n- \"AMEX\" \n- \"DISCOVER\" \n- \"JCB\" \n- \"MASTERCARD\" \n- \"UNIONPAY\" \n- \"VISA\" \n- \"\""]
+        #[doc = "The type of instrument.\n\nAcceptable values are:\n\n* \"AMEX\" \n* \"DISCOVER\" \n* \"JCB\" \n* \"MASTERCARD\" \n* \"UNIONPAY\" \n* \"VISA\" \n* \"\""]
         #[serde(rename = "type", default)]
         pub r#type: Option<String>,
     }
@@ -4585,7 +4585,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct OrderShipment {
-        #[doc = "The carrier handling the shipment.\n\nAcceptable values for US are:  \n- \"gsx\" \n- \"ups\" \n- \"usps\" \n- \"fedex\" \n- \"dhl\" \n- \"ecourier\" \n- \"cxt\" \n- \"google\" \n- \"ontrac\" \n- \"emsy\" \n- \"ont\" \n- \"deliv\" \n- \"dynamex\" \n- \"lasership\" \n- \"mpx\" \n- \"uds\" \n- \"efw\"  \n\nAcceptable values for FR are:  \n- \"colissimo\" \n- \"chronopost\" \n- \"gls\" \n- \"dpd\" \n- \"bpost\" \n- \"colis priv\u{fffd}\" \n- \"boxtal\" \n- \"geodis\""]
+        #[doc = "The carrier handling the shipment.\n\nAcceptable values for US are:\n\n* \"gsx\" \n* \"ups\" \n* \"usps\" \n* \"fedex\" \n* \"dhl\" \n* \"ecourier\" \n* \"cxt\" \n* \"google\" \n* \"ontrac\" \n* \"emsy\" \n* \"ont\" \n* \"deliv\" \n* \"dynamex\" \n* \"lasership\" \n* \"mpx\" \n* \"uds\" \n* \"efw\"\n\nAcceptable values for FR are:\n\n* \"colissimo\" \n* \"chronopost\" \n* \"gls\" \n* \"dpd\" \n* \"bpost\" \n* \"colis priv\u{fffd}\" \n* \"boxtal\" \n* \"geodis\""]
         #[serde(rename = "carrier", default)]
         pub carrier: Option<String>,
         #[doc = "Date on which the shipment has been created, in ISO 8601 format."]
@@ -5492,7 +5492,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct OrdersCreateTestOrderRequest {
-        #[doc = "The  CLDR territory code of the country of the test order to create. Affects the currency and addresses of orders created via template_name, or the addresses of orders created via test_order.\n\nAcceptable values are:  \n- \"US\" \n- \"FR\"  Defaults to US."]
+        #[doc = "The  CLDR territory code of the country of the test order to create. Affects the currency and addresses of orders created via template_name, or the addresses of orders created via test_order.\n\nAcceptable values are:\n\n* \"US\" \n* \"FR\"  Defaults to US."]
         #[serde(rename = "country", default)]
         pub country: Option<String>,
         #[doc = "The test order template to use. Specify as an alternative to testOrder as a shortcut for retrieving a template and then creating an order using that template."]
@@ -6257,7 +6257,7 @@ pub mod schemas {
         #[doc = "A list of errors defined if and only if the request failed."]
         #[serde(rename = "errors", default)]
         pub errors: Option<crate::schemas::Errors>,
-        #[doc = "The status of the execution. Only defined if  \n- the request was successful; and \n- the method is not get, getByMerchantOrderId, or one of the test methods."]
+        #[doc = "The status of the execution. Only defined if\n\n* the request was successful; and \n* the method is not get, getByMerchantOrderId, or one of the test methods."]
         #[serde(rename = "executionStatus", default)]
         pub execution_status: Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"content#ordersCustomBatchResponseEntry\"."]
@@ -19715,7 +19715,7 @@ pub mod orders {
             self.max_results = Some(value);
             self
         }
-        #[doc = "Order results by placement date in descending or ascending order.\n\nAcceptable values are:\n- placedDateAsc\n- placedDateDesc"]
+        #[doc = "Order results by placement date in descending or ascending order.\n\nAcceptable values are:\n\n* placedDateAsc\n* placedDateDesc"]
         pub fn order_by(&mut self, value: impl Into<String>) -> &mut Self {
             self.order_by = Some(value.into());
             self

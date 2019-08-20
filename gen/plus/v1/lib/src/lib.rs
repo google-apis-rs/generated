@@ -573,7 +573,7 @@ pub mod schemas {
         #[doc = "The preview image for photos or videos."]
         #[serde(rename = "image", default)]
         pub image: Option<crate::schemas::ActivityObjectAttachmentsItemsImage>,
-        #[doc = "The type of media object. Possible values include, but are not limited to, the following values:  \n- \"photo\" - A photo. \n- \"album\" - A photo album. \n- \"video\" - A video. \n- \"article\" - An article, specified by a link."]
+        #[doc = "The type of media object. Possible values include, but are not limited to, the following values:\n\n* \"photo\" - A photo. \n* \"album\" - A photo album. \n* \"video\" - A video. \n* \"article\" - An article, specified by a link."]
         #[serde(rename = "objectType", default)]
         pub object_type: Option<String>,
         #[doc = "If the attachment is an album, this property is a list of potential additional thumbnails from the album."]
@@ -708,7 +708,7 @@ pub mod schemas {
         #[doc = "The ID of the object. When resharing an activity, this is the ID of the activity that is being reshared."]
         #[serde(rename = "id", default)]
         pub id: Option<String>,
-        #[doc = "The type of the object. Possible values include, but are not limited to, the following values:  \n- \"note\" - Textual content. \n- \"activity\" - A Google+ activity."]
+        #[doc = "The type of the object. Possible values include, but are not limited to, the following values:\n\n* \"note\" - Textual content. \n* \"activity\" - A Google+ activity."]
         #[serde(rename = "objectType", default)]
         pub object_type: Option<String>,
         #[doc = "The content (text) as provided by the author, which is stored without any HTML formatting. When creating or updating an activity, this value must be supplied as plain text in the request."]
@@ -825,7 +825,7 @@ pub mod schemas {
         #[doc = "The link to this activity."]
         #[serde(rename = "url", default)]
         pub url: Option<String>,
-        #[doc = "This activity's verb, which indicates the action that was performed. Possible values include, but are not limited to, the following values:  \n- \"post\" - Publish content to the stream. \n- \"share\" - Reshare an activity."]
+        #[doc = "This activity's verb, which indicates the action that was performed. Possible values include, but are not limited to, the following values:\n\n* \"post\" - Publish content to the stream. \n* \"share\" - Reshare an activity."]
         #[serde(rename = "verb", default)]
         pub verb: Option<String>,
     }
@@ -1078,7 +1078,7 @@ pub mod schemas {
         #[doc = "The HTML-formatted content, suitable for display."]
         #[serde(rename = "content", default)]
         pub content: Option<String>,
-        #[doc = "The object type of this comment. Possible values are:  \n- \"comment\" - A comment in reply to an activity."]
+        #[doc = "The object type of this comment. Possible values are:\n\n* \"comment\" - A comment in reply to an activity."]
         #[serde(rename = "objectType", default)]
         pub object_type: Option<String>,
         #[doc = "The content (text) as provided by the author, stored without any HTML formatting. When creating or updating a comment, this value must be supplied as plain text in the request."]
@@ -1165,7 +1165,7 @@ pub mod schemas {
         #[doc = "The time at which this comment was last updated. Formatted as an RFC 3339 timestamp."]
         #[serde(rename = "updated", default)]
         pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "This comment's verb, indicating what action was performed. Possible values are:  \n- \"post\" - Publish content to the stream."]
+        #[doc = "This comment's verb, indicating what action was performed. Possible values are:\n\n* \"post\" - Publish content to the stream."]
         #[serde(rename = "verb", default)]
         pub verb: Option<String>,
     }
@@ -1285,10 +1285,10 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PersonAgeRange {
-        #[doc = "The age range's upper bound, if any. Possible values include, but are not limited to, the following:  \n- \"17\" - for age 17 \n- \"20\" - for age 20"]
+        #[doc = "The age range's upper bound, if any. Possible values include, but are not limited to, the following:\n\n* \"17\" - for age 17 \n* \"20\" - for age 20"]
         #[serde(rename = "max", default)]
         pub max: Option<i32>,
-        #[doc = "The age range's lower bound, if any. Possible values include, but are not limited to, the following:  \n- \"21\" - for age 21 \n- \"18\" - for age 18"]
+        #[doc = "The age range's lower bound, if any. Possible values include, but are not limited to, the following:\n\n* \"21\" - for age 21 \n* \"18\" - for age 18"]
         #[serde(rename = "min", default)]
         pub min: Option<i32>,
     }
@@ -1384,7 +1384,7 @@ pub mod schemas {
         #[doc = "The person's primary cover image."]
         #[serde(rename = "coverPhoto", default)]
         pub cover_photo: Option<crate::schemas::PersonCoverCoverPhoto>,
-        #[doc = "The layout of the cover art. Possible values include, but are not limited to, the following values:  \n- \"banner\" - One large image banner."]
+        #[doc = "The layout of the cover art. Possible values include, but are not limited to, the following values:\n\n* \"banner\" - One large image banner."]
         #[serde(rename = "layout", default)]
         pub layout: Option<String>,
     }
@@ -1411,7 +1411,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PersonEmailsItems {
-        #[doc = "The type of address. Possible values include, but are not limited to, the following values:  \n- \"account\" - Google account email address. \n- \"home\" - Home email address. \n- \"work\" - Work email address. \n- \"other\" - Other."]
+        #[doc = "The type of address. Possible values include, but are not limited to, the following values:\n\n* \"account\" - Google account email address. \n* \"home\" - Home email address. \n* \"work\" - Work email address. \n* \"other\" - Other."]
         #[serde(rename = "type", default)]
         pub r#type: Option<String>,
         #[doc = "The email address."]
@@ -1531,7 +1531,7 @@ pub mod schemas {
         #[doc = "If \"true\", indicates this organization is the person's primary one, which is typically interpreted as the current one."]
         #[serde(rename = "primary", default)]
         pub primary: Option<bool>,
-        #[doc = "The type of organization. Possible values include, but are not limited to, the following values:  \n- \"work\" - Work. \n- \"school\" - School."]
+        #[doc = "The type of organization. Possible values include, but are not limited to, the following values:\n\n* \"work\" - Work. \n* \"school\" - School."]
         #[serde(rename = "type", default)]
         pub r#type: Option<String>,
         #[doc = "The date that the person joined this organization."]
@@ -1597,7 +1597,7 @@ pub mod schemas {
         #[doc = "The label of the URL."]
         #[serde(rename = "label", default)]
         pub label: Option<String>,
-        #[doc = "The type of URL. Possible values include, but are not limited to, the following values:  \n- \"otherProfile\" - URL for another profile. \n- \"contributor\" - URL to a site for which this person is a contributor. \n- \"website\" - URL for this Google+ Page's primary website. \n- \"other\" - Other URL."]
+        #[doc = "The type of URL. Possible values include, but are not limited to, the following values:\n\n* \"otherProfile\" - URL for another profile. \n* \"contributor\" - URL to a site for which this person is a contributor. \n* \"website\" - URL for this Google+ Page's primary website. \n* \"other\" - Other URL."]
         #[serde(rename = "type", default)]
         pub r#type: Option<String>,
         #[doc = "The URL value."]
@@ -1660,7 +1660,7 @@ pub mod schemas {
         #[doc = "ETag of this response for caching purposes."]
         #[serde(rename = "etag", default)]
         pub etag: Option<String>,
-        #[doc = "The person's gender. Possible values include, but are not limited to, the following values:  \n- \"male\" - Male gender. \n- \"female\" - Female gender. \n- \"other\" - Other."]
+        #[doc = "The person's gender. Possible values include, but are not limited to, the following values:\n\n* \"male\" - Male gender. \n* \"female\" - Female gender. \n* \"other\" - Other."]
         #[serde(rename = "gender", default)]
         pub gender: Option<String>,
         #[doc = "The ID of this person."]
@@ -1684,7 +1684,7 @@ pub mod schemas {
         #[doc = "The nickname of this person."]
         #[serde(rename = "nickname", default)]
         pub nickname: Option<String>,
-        #[doc = "Type of person within Google+. Possible values include, but are not limited to, the following values:  \n- \"person\" - represents an actual person. \n- \"page\" - represents a page."]
+        #[doc = "Type of person within Google+. Possible values include, but are not limited to, the following values:\n\n* \"person\" - represents an actual person. \n* \"page\" - represents a page."]
         #[serde(rename = "objectType", default)]
         pub object_type: Option<String>,
         #[doc = "The occupation of this person."]
@@ -1699,7 +1699,7 @@ pub mod schemas {
         #[doc = "If a Google+ Page, the number of people who have +1'd this page."]
         #[serde(rename = "plusOneCount", default)]
         pub plus_one_count: Option<i32>,
-        #[doc = "The person's relationship status. Possible values include, but are not limited to, the following values:  \n- \"single\" - Person is single. \n- \"in_a_relationship\" - Person is in a relationship. \n- \"engaged\" - Person is engaged. \n- \"married\" - Person is married. \n- \"its_complicated\" - The relationship is complicated. \n- \"open_relationship\" - Person is in an open relationship. \n- \"widowed\" - Person is widowed. \n- \"in_domestic_partnership\" - Person is in a domestic partnership. \n- \"in_civil_union\" - Person is in a civil union."]
+        #[doc = "The person's relationship status. Possible values include, but are not limited to, the following values:\n\n* \"single\" - Person is single. \n* \"in_a_relationship\" - Person is in a relationship. \n* \"engaged\" - Person is engaged. \n* \"married\" - Person is married. \n* \"its_complicated\" - The relationship is complicated. \n* \"open_relationship\" - Person is in an open relationship. \n* \"widowed\" - Person is widowed. \n* \"in_domestic_partnership\" - Person is in a domestic partnership. \n* \"in_civil_union\" - Person is in a civil union."]
         #[serde(rename = "relationshipStatus", default)]
         pub relationship_status: Option<String>,
         #[doc = "The person's skills."]
@@ -1825,7 +1825,7 @@ pub mod schemas {
         #[doc = "The ID of the entry. For entries of type \"person\" or \"circle\", this is the ID of the resource. For other types, this property is not set."]
         #[serde(rename = "id", default)]
         pub id: Option<String>,
-        #[doc = "The type of entry describing to whom access is granted. Possible values are:  \n- \"person\" - Access to an individual. \n- \"circle\" - Access to members of a circle. \n- \"myCircles\" - Access to members of all the person's circles. \n- \"extendedCircles\" - Access to members of all the person's circles, plus all of the people in their circles. \n- \"domain\" - Access to members of the person's Google Apps domain. \n- \"public\" - Access to anyone on the web."]
+        #[doc = "The type of entry describing to whom access is granted. Possible values are:\n\n* \"person\" - Access to an individual. \n* \"circle\" - Access to members of a circle. \n* \"myCircles\" - Access to members of all the person's circles. \n* \"extendedCircles\" - Access to members of all the person's circles, plus all of the people in their circles. \n* \"domain\" - Access to members of the person's Google Apps domain. \n* \"public\" - Access to anyone on the web."]
         #[serde(rename = "type", default)]
         pub r#type: Option<String>,
     }

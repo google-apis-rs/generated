@@ -136,7 +136,7 @@ pub mod schemas {
         #[doc = "The email address associated with the entity, if any."]
         #[serde(rename = "email", default)]
         pub email: Option<String>,
-        #[doc = "The entity holding the permission, in one of the following forms: \n- user-userId \n- user-email \n- group-groupId \n- group-email \n- domain-domain \n- allUsers \n- allAuthenticatedUsers Examples: \n- The user liz@example.com would be user-liz@example.com. \n- The group example@googlegroups.com would be group-example@googlegroups.com. \n- To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com."]
+        #[doc = "The entity holding the permission, in one of the following forms: \n\n* user-userId \n* user-email \n* group-groupId \n* group-email \n* domain-domain \n* allUsers \n* allAuthenticatedUsers Examples: \n* The user liz@example.com would be user-liz@example.com. \n* The group example@googlegroups.com would be group-example@googlegroups.com. \n* To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com."]
         #[serde(rename = "entity", default)]
         pub entity: Option<String>,
         #[doc = "The ID for the entity, if any."]
@@ -389,7 +389,7 @@ pub mod schemas {
         #[doc = "The email address associated with the entity, if any."]
         #[serde(rename = "email", default)]
         pub email: Option<String>,
-        #[doc = "The entity holding the permission, in one of the following forms: \n- user-userId \n- user-email \n- group-groupId \n- group-email \n- domain-domain \n- allUsers \n- allAuthenticatedUsers Examples: \n- The user liz@example.com would be user-liz@example.com. \n- The group example@googlegroups.com would be group-example@googlegroups.com. \n- To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com."]
+        #[doc = "The entity holding the permission, in one of the following forms: \n\n* user-userId \n* user-email \n* group-groupId \n* group-email \n* domain-domain \n* allUsers \n* allAuthenticatedUsers Examples: \n* The user liz@example.com would be user-liz@example.com. \n* The group example@googlegroups.com would be group-example@googlegroups.com. \n* To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com."]
         #[serde(rename = "entity", default)]
         pub entity: Option<String>,
         #[doc = "The ID for the entity, if any."]

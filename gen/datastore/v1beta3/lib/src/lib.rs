@@ -182,7 +182,7 @@ pub mod schemas {
         #[doc = "The type of commit to perform. Defaults to `TRANSACTIONAL`."]
         #[serde(rename = "mode", default)]
         pub mode: Option<crate::schemas::CommitRequestMode>,
-        #[doc = "The mutations to perform.\n\nWhen mode is `TRANSACTIONAL`, mutations affecting a single entity are\napplied in order. The following sequences of mutations affecting a single\nentity are not permitted in a single `Commit` request:\n\n- `insert` followed by `insert`\n- `update` followed by `insert`\n- `upsert` followed by `insert`\n- `delete` followed by `update`\n\nWhen mode is `NON_TRANSACTIONAL`, no two mutations may affect a single\nentity."]
+        #[doc = "The mutations to perform.\n\nWhen mode is `TRANSACTIONAL`, mutations affecting a single entity are\napplied in order. The following sequences of mutations affecting a single\nentity are not permitted in a single `Commit` request:\n\n* `insert` followed by `insert`\n* `update` followed by `insert`\n* `upsert` followed by `insert`\n* `delete` followed by `update`\n\nWhen mode is `NON_TRANSACTIONAL`, no two mutations may affect a single\nentity."]
         #[serde(rename = "mutations", default)]
         pub mutations: Option<Vec<crate::schemas::Mutation>>,
         #[doc = "The identifier of the transaction associated with the commit. A\ntransaction identifier is returned by a call to\nDatastore.BeginTransaction."]
@@ -1141,7 +1141,7 @@ pub mod schemas {
         #[doc = "Entities are partitioned into subsets, currently identified by a project\nID and namespace ID.\nQueries are scoped to a single partition."]
         #[serde(rename = "partitionId", default)]
         pub partition_id: Option<crate::schemas::PartitionId>,
-        #[doc = "The entity path.\nAn entity path consists of one or more elements composed of a kind and a\nstring or numerical identifier, which identify entities. The first\nelement identifies a _root entity_, the second element identifies\na _child_ of the root entity, the third element identifies a child of the\nsecond entity, and so forth. The entities identified by all prefixes of\nthe path are called the element's _ancestors_.\n\nAn entity path is always fully complete: *all* of the entity's ancestors\nare required to be in the path along with the entity identifier itself.\nThe only exception is that in some documented cases, the identifier in the\nlast path element (for the entity) itself may be omitted. For example,\nthe last path element of the key of `Mutation.insert` may have no\nidentifier.\n\nA path can never be empty, and a path can have at most 100 elements."]
+        #[doc = "The entity path.\nAn entity path consists of one or more elements composed of a kind and a\nstring or numerical identifier, which identify entities. The first\nelement identifies a *root entity*, the second element identifies\na *child* of the root entity, the third element identifies a child of the\nsecond entity, and so forth. The entities identified by all prefixes of\nthe path are called the element's *ancestors*.\n\nAn entity path is always fully complete: *all* of the entity's ancestors\nare required to be in the path along with the entity identifier itself.\nThe only exception is that in some documented cases, the identifier in the\nlast path element (for the entity) itself may be omitted. For example,\nthe last path element of the key of `Mutation.insert` may have no\nidentifier.\n\nA path can never be empty, and a path can have at most 100 elements."]
         #[serde(rename = "path", default)]
         pub path: Option<Vec<crate::schemas::PathElement>>,
     }
@@ -2164,7 +2164,7 @@ pub mod schemas {
         #[doc = "A double value."]
         #[serde(rename = "doubleValue", default)]
         pub double_value: Option<f64>,
-        #[doc = "An entity value.\n\n- May have no key.\n- May have a key with an incomplete key path.\n- May have a reserved/read-only key."]
+        #[doc = "An entity value.\n\n* May have no key.\n* May have a key with an incomplete key path.\n* May have a reserved/read-only key."]
         #[serde(rename = "entityValue", default)]
         pub entity_value: Option<crate::schemas::Entity>,
         #[doc = "If the value should be excluded from all indexes including those defined\nexplicitly."]

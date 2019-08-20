@@ -1416,7 +1416,7 @@ pub mod schemas {
         #[doc = "This is always sql#maintenanceWindow."]
         #[serde(rename = "kind", default)]
         pub kind: Option<String>,
-        #[doc = "Maintenance timing setting: canary (Earlier) or stable (Later).\n Learn more."]
+        #[doc = "Maintenance timing setting: canary (Earlier) or stable (Later).\nLearn more."]
         #[serde(rename = "updateTrack", default)]
         pub update_track: Option<String>,
     }

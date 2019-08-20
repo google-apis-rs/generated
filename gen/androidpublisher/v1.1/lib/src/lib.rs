@@ -12,7 +12,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct InappPurchase {
-        #[doc = "The consumption state of the inapp product. Possible values are:  \n- Yet to be consumed \n- Consumed"]
+        #[doc = "The consumption state of the inapp product. Possible values are:\n\n* Yet to be consumed \n* Consumed"]
         #[serde(rename = "consumptionState", default)]
         pub consumption_state: Option<i32>,
         #[doc = "A developer-specified string that contains supplemental information about an order."]
@@ -24,14 +24,14 @@ pub mod schemas {
         #[doc = "The order id associated with the purchase of the inapp product."]
         #[serde(rename = "orderId", default)]
         pub order_id: Option<String>,
-        #[doc = "The purchase state of the order. Possible values are:  \n- Purchased \n- Canceled \n- Pending"]
+        #[doc = "The purchase state of the order. Possible values are:\n\n* Purchased \n* Canceled \n* Pending"]
         #[serde(rename = "purchaseState", default)]
         pub purchase_state: Option<i32>,
         #[doc = "The time the product was purchased, in milliseconds since the epoch (Jan 1, 1970)."]
         #[serde(rename = "purchaseTime", default)]
         #[serde(with = "crate::parsed_string")]
         pub purchase_time: Option<i64>,
-        #[doc = "The type of purchase of the inapp product. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are:  \n- Test (i.e. purchased from a license testing account) \n- Promo (i.e. purchased using a promo code) \n- Rewarded (i.e. from watching a video ad instead of paying)"]
+        #[doc = "The type of purchase of the inapp product. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are:\n\n* Test (i.e. purchased from a license testing account) \n* Promo (i.e. purchased using a promo code) \n* Rewarded (i.e. from watching a video ad instead of paying)"]
         #[serde(rename = "purchaseType", default)]
         pub purchase_type: Option<i32>,
     }

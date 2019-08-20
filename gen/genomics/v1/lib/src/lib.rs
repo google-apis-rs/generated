@@ -236,7 +236,7 @@ pub mod schemas {
         Unauthenticated,
         #[doc = "Some resource has been exhausted, perhaps a per-user quota, or\nperhaps the entire file system is out of space.\n\nHTTP Mapping: 429 Too Many Requests"]
         ResourceExhausted,
-        #[doc = "The operation was rejected because the system is not in a state\nrequired for the operation's execution.  For example, the directory\nto be deleted is non-empty, an rmdir operation is applied to\na non-directory, etc.\n\nService implementors can use the following guidelines to decide\nbetween `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`:\n (a) Use `UNAVAILABLE` if the client can retry just the failing call.\n (b) Use `ABORTED` if the client should retry at a higher level\n     (e.g., when a client-specified test-and-set fails, indicating the\n     client should restart a read-modify-write sequence).\n (c) Use `FAILED_PRECONDITION` if the client should not retry until\n     the system state has been explicitly fixed.  E.g., if an \"rmdir\"\n     fails because the directory is non-empty, `FAILED_PRECONDITION`\n     should be returned since the client should not retry unless\n     the files are deleted from the directory.\n\nHTTP Mapping: 400 Bad Request"]
+        #[doc = "The operation was rejected because the system is not in a state\nrequired for the operation's execution.  For example, the directory\nto be deleted is non-empty, an rmdir operation is applied to\na non-directory, etc.\n\nService implementors can use the following guidelines to decide\nbetween `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`:\n(a) Use `UNAVAILABLE` if the client can retry just the failing call.\n(b) Use `ABORTED` if the client should retry at a higher level\n(e.g., when a client-specified test-and-set fails, indicating the\nclient should restart a read-modify-write sequence).\n(c) Use `FAILED_PRECONDITION` if the client should not retry until\nthe system state has been explicitly fixed.  E.g., if an \"rmdir\"\nfails because the directory is non-empty, `FAILED_PRECONDITION`\nshould be returned since the client should not retry unless\nthe files are deleted from the directory.\n\nHTTP Mapping: 400 Bad Request"]
         FailedPrecondition,
         #[doc = "The operation was aborted, typically due to a concurrency issue such as\na sequencer check failure or transaction abort.\n\nSee the guidelines above for deciding between `FAILED_PRECONDITION`,\n`ABORTED`, and `UNAVAILABLE`.\n\nHTTP Mapping: 409 Conflict"]
         Aborted,
@@ -380,7 +380,7 @@ pub mod schemas {
         #[doc = "An OperationMetadata or Metadata object. This will always be returned with the Operation."]
         #[serde(rename = "metadata", default)]
         pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "The server-assigned name, which is only unique within the same service that originally returns it. For example&#58; `operations/CJHU7Oi_ChDrveSpBRjfuL-qzoWAgEw`"]
+        #[doc = "The server-assigned name, which is only unique within the same service that originally returns it. For example: `operations/CJHU7Oi_ChDrveSpBRjfuL-qzoWAgEw`"]
         #[serde(rename = "name", default)]
         pub name: Option<String>,
         #[doc = "An Empty object."]
@@ -808,7 +808,7 @@ pub mod operations {
         pub(super) auth: &'a std::sync::Mutex<A>,
     }
     impl<'a, A: yup_oauth2::GetToken> OperationsActions<'a, A> {
-        #[doc = "Starts asynchronous cancellation on a long-running operation.\nThe server makes a best effort to cancel the operation, but success is not\nguaranteed. Clients may use Operations.GetOperation\nor Operations.ListOperations\nto check whether the cancellation succeeded or the operation completed\ndespite cancellation.\nAuthorization requires the following [Google IAM](https://cloud.google.com/iam) permission&#58;\n\n* `genomics.operations.cancel`"]
+        #[doc = "Starts asynchronous cancellation on a long-running operation.\nThe server makes a best effort to cancel the operation, but success is not\nguaranteed. Clients may use Operations.GetOperation\nor Operations.ListOperations\nto check whether the cancellation succeeded or the operation completed\ndespite cancellation.\nAuthorization requires the following [Google IAM](https://cloud.google.com/iam) permission:\n\n* `genomics.operations.cancel`"]
         pub fn cancel(
             &self,
             request: crate::schemas::CancelOperationRequest,
@@ -832,7 +832,7 @@ pub mod operations {
                 name: name.into(),
             }
         }
-        #[doc = "Gets the latest state of a long-running operation.\nClients can use this method to poll the operation result at intervals as\nrecommended by the API service.\nAuthorization requires the following [Google IAM](https://cloud.google.com/iam) permission&#58;\n\n* `genomics.operations.get`"]
+        #[doc = "Gets the latest state of a long-running operation.\nClients can use this method to poll the operation result at intervals as\nrecommended by the API service.\nAuthorization requires the following [Google IAM](https://cloud.google.com/iam) permission:\n\n* `genomics.operations.get`"]
         pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder<A> {
             GetRequestBuilder {
                 reqwest: &self.reqwest,
@@ -851,7 +851,7 @@ pub mod operations {
                 name: name.into(),
             }
         }
-        #[doc = "Lists operations that match the specified filter in the request.\nAuthorization requires the following [Google IAM](https://cloud.google.com/iam) permission&#58;\n\n* `genomics.operations.list`"]
+        #[doc = "Lists operations that match the specified filter in the request.\nAuthorization requires the following [Google IAM](https://cloud.google.com/iam) permission:\n\n* `genomics.operations.list`"]
         pub fn list(&self, name: impl Into<String>) -> ListRequestBuilder<A> {
             ListRequestBuilder {
                 reqwest: &self.reqwest,
@@ -1151,7 +1151,7 @@ pub mod operations {
         xgafv: Option<crate::params::Xgafv>,
     }
     impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
-        #[doc = "A string for filtering Operations.\nIn v2alpha1, the following filter fields are supported&#58;\n\n* createTime&#58; The time this job was created\n* events&#58; The set of event (names) that have occurred while running\n  the pipeline.  The &#58; operator can be used to determine if a\n  particular event has occurred.\n* error&#58; If the pipeline is running, this value is NULL.  Once the\n  pipeline finishes, the value is the standard Google error code.\n* labels.key or labels.\"key with space\" where key is a label key.\n* done&#58; If the pipeline is running, this value is false. Once the\n  pipeline finishes, the value is true.\n\nIn v1 and v1alpha2, the following filter fields are supported&#58;\n\n* projectId&#58; Required. Corresponds to\n  OperationMetadata.projectId.\n* createTime&#58; The time this job was created, in seconds from the\n  [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `>=` and/or `<=`\n  operators.\n* status&#58; Can be `RUNNING`, `SUCCESS`, `FAILURE`, or `CANCELED`. Only\n  one status may be specified.\n* labels.key where key is a label key.\n\nExamples&#58;\n\n* `projectId = my-project AND createTime >= 1432140000`\n* `projectId = my-project AND createTime >= 1432140000 AND createTime <= 1432150000 AND status = RUNNING`\n* `projectId = my-project AND labels.color = *`\n* `projectId = my-project AND labels.color = red`"]
+        #[doc = "A string for filtering Operations.\nIn v2alpha1, the following filter fields are supported:\n\n* createTime: The time this job was created\n* events: The set of event (names) that have occurred while running\n  the pipeline.  The : operator can be used to determine if a\n  particular event has occurred.\n* error: If the pipeline is running, this value is NULL.  Once the\n  pipeline finishes, the value is the standard Google error code.\n* labels.key or labels.\"key with space\" where key is a label key.\n* done: If the pipeline is running, this value is false. Once the\n  pipeline finishes, the value is true.\n\nIn v1 and v1alpha2, the following filter fields are supported:\n\n* projectId: Required. Corresponds to\n  OperationMetadata.projectId.\n* createTime: The time this job was created, in seconds from the\n  [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `>=` and/or `<=`\n  operators.\n* status: Can be `RUNNING`, `SUCCESS`, `FAILURE`, or `CANCELED`. Only\n  one status may be specified.\n* labels.key where key is a label key.\n\nExamples:\n\n* `projectId = my-project AND createTime >= 1432140000`\n* `projectId = my-project AND createTime >= 1432140000 AND createTime <= 1432150000 AND status = RUNNING`\n* `projectId = my-project AND labels.color = *`\n* `projectId = my-project AND labels.color = red`"]
         pub fn filter(&mut self, value: impl Into<String>) -> &mut Self {
             self.filter = Some(value.into());
             self
