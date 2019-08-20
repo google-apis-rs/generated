@@ -9,7 +9,7 @@ GEN_MAKEFILE = $(OUTPUT_DIR)/Makefile
 help:
 	$(info -- Targets for files we depend on ----------------------------------------------------)
 	$(info update-all-metadata        | invalidate all specifications from google and fetch the latest versions)
-	$(info update-mapped-index        | invalidate the mapped index and regenerate it)
+	$(info update-mapped-index        | invalidate the mapped index and regenerate it, useful if there are new errors when generating or building)
 	$(info fetch-api-specs            | fetch all apis our local discovery document knows, and store)
 	$(info generate-makefile          | a makefile containing useful targets to build and test generated crates)
 	$(info update-mcp                 | pull latest code and build the mcp program)
