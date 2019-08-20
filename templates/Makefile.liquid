@@ -1,7 +1,13 @@
 MCP ?= ../generator/target/release/mcp
 
 help:
-	$(info -- Target ----------------------------------------------------------------------------)
+	$(info -- Individual Targets ----------------------------------------------------------------)
+	$(info -- Run target <name> like `make foo-cargo ARGS="check" to invoke cargo ---------------)
+	$(info --------------------------------------------------------------------------------------)
+{% for item in api -%}
+	$(info {{ item.make_target }})
+{% endfor -%}
+	$(info -- Combined Targets ------------------------------------------------------------------)
 	$(info gen-all             | generate all libraries and CLIs)
 	$(info cargo-all           | pass args with ARGS="check" for example)
 	$(info --------------------------------------------------------------------------------------)
