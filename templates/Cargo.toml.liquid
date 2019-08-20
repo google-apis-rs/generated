@@ -1,0 +1,7 @@
+[workspace]
+
+members = [
+{%- for item in api %}
+    "{{item.gen_dir}}/{{standard.lib_dir}}",
+{%- endfor %}
+]

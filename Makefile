@@ -4,7 +4,9 @@ API_INDEX_JSON = etc/api-index.v1.json
 API_INDEX_MAPPED_JSON = etc/api-index-mapped.v1.json
 OUTPUT_DIR = gen
 MAKEFILE_TPL = templates/Makefile.liquid
+CARGO_TOML_TPL = templates/Cargo.toml.liquid
 GEN_MAKEFILE = $(OUTPUT_DIR)/Makefile
+GEN_CARGO_TOML = $(OUTPUT_DIR)/Cargo.toml
 
 help:
 	$(info -- Targets for files we depend on ----------------------------------------------------)
@@ -47,9 +49,12 @@ fetch-api-specs: api-index $(MCP)
 	$(MCP) fetch-api-specs $(API_INDEX_MAPPED_JSON) $(OUTPUT_DIR)
 
 $(GEN_MAKEFILE): $(API_INDEX_MAPPED_JSON) $(MCP) $(MAKEFILE_TPL) 
-	$(MCP) substitute $(MAKEFILE_TPL):$@ < $< 
+	$(MCP) substitute $(MAKEFILE_TPL):$@ $(CARGO_TOML_TPL):$(GEN_CARGO_TOML) < $< 
 	
 generate-makefile: $(GEN_MAKEFILE)
 
 show-all-errors:
 	find . -name generator-errors.log | while read -r fp; do echo $$"\n---> $$fp <---\n"; cat "$$fp"; done
+
+$(GEN_CARGO_TOML): $(API_INDEX_MAPPED_JSON) $(MCP) $(CARGO_TOML_TPL)
+	$(MCP) substitute $(CARGO_TOML_TPL):$@ < $< 

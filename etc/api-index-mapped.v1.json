@@ -1,4 +1,9 @@
 {
+  "standard": {
+    "cargo_toml_path": "Cargo.toml",
+    "lib_path": "src/lib.rs",
+    "lib_dir": "lib"
+  },
   "api": [
     {
       "name": "abusiveexperiencereport",
