@@ -15,7 +15,7 @@ help:
 	$(info update-mcp                 | pull latest code and build the mcp program)
 	$(info show-all-errors            | display all error files currently present)
 	$(info --------------------------------------------------------------------------------------)
-	$(info -- `make -f $(GEN_MAKEFILE) ...` is used to interact with the generator and generate code)
+	$(info -- `make -C gen` is used to interact with the generator and generate code)
 	$(info --------------------------------------------------------------------------------------)
 
 $(MCP): $(GENERATOR_DIR)
@@ -31,8 +31,7 @@ $(GENERATOR_DIR):
 	git clone --depth=1 https://github.com/google-apis-rs/generator $@
 
 update-mcp: $(GENERATOR_DIR)
-	cd $(GENERATOR_DIR) && git pull --ff-only
-	$(MAKE) $(MCP)
+	cd $(GENERATOR_DIR) && git pull --ff-only && cargo build --release
 
 update-all-metadata:
 	-rm $(API_INDEX_JSON)

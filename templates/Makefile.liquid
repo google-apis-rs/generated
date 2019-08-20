@@ -1,4 +1,4 @@
-MCP ?= target/release/mcp
+MCP ?= ../_generator/target/release/mcp
 
 help:
 	$(info -- Target ----------------------------------------------------------------------------)
@@ -7,7 +7,7 @@ help:
 	$(info --------------------------------------------------------------------------------------)
 
 gen-all: {% for item in api -%}{{item.make_target}} {% endfor %}
-	$(MAKE) -f Makefile update-mapped-index
+	$(MAKE) -C .. update-mapped-index
 cargo-all: {% for item in api -%}{{item.make_target}}-cargo {% endfor %}
 
 {% for item in api %}
