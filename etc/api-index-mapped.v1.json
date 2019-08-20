@@ -262,24 +262,6 @@
       "rest_url": "https://appengine.googleapis.com/$discovery/rest?version=v1"
     },
     {
-      "name": "appengine",
-      "lib_cargo_file": "appengine/v1beta4/lib/Cargo.toml",
-      "gen_dir": "appengine/v1beta4",
-      "spec_file": "appengine/v1beta4/spec.json",
-      "crate_name": "google-appengine1_beta4",
-      "make_target": "appengine1_beta4",
-      "rest_url": "https://appengine.googleapis.com/$discovery/rest?version=v1beta4"
-    },
-    {
-      "name": "appengine",
-      "lib_cargo_file": "appengine/v1beta5/lib/Cargo.toml",
-      "gen_dir": "appengine/v1beta5",
-      "spec_file": "appengine/v1beta5/spec.json",
-      "crate_name": "google-appengine1_beta5",
-      "make_target": "appengine1_beta5",
-      "rest_url": "https://appengine.googleapis.com/$discovery/rest?version=v1beta5"
-    },
-    {
       "name": "appsactivity",
       "lib_cargo_file": "appsactivity/v1/lib/Cargo.toml",
       "gen_dir": "appsactivity/v1",
@@ -506,15 +488,6 @@
     },
     {
       "name": "cloudiot",
-      "lib_cargo_file": "cloudiot/v1alpha1/lib/Cargo.toml",
-      "gen_dir": "cloudiot/v1alpha1",
-      "spec_file": "cloudiot/v1alpha1/spec.json",
-      "crate_name": "google-cloudiot1_alpha1",
-      "make_target": "cloudiot1_alpha1",
-      "rest_url": "https://cloudiot.googleapis.com/$discovery/rest?version=v1alpha1"
-    },
-    {
-      "name": "cloudiot",
       "lib_cargo_file": "cloudiot/v1/lib/Cargo.toml",
       "gen_dir": "cloudiot/v1",
       "spec_file": "cloudiot/v1/spec.json",
@@ -665,15 +638,6 @@
       "crate_name": "google-cloudtasks2_beta3",
       "make_target": "cloudtasks2_beta3",
       "rest_url": "https://cloudtasks.googleapis.com/$discovery/rest?version=v2beta3"
-    },
-    {
-      "name": "cloudtrace",
-      "lib_cargo_file": "cloudtrace/v2alpha1/lib/Cargo.toml",
-      "gen_dir": "cloudtrace/v2alpha1",
-      "spec_file": "cloudtrace/v2alpha1/spec.json",
-      "crate_name": "google-cloudtrace2_alpha1",
-      "make_target": "cloudtrace2_alpha1",
-      "rest_url": "https://cloudtrace.googleapis.com/$discovery/rest?version=v2alpha1"
     },
     {
       "name": "cloudtrace",
@@ -1451,15 +1415,6 @@
     },
     {
       "name": "monitoring",
-      "lib_cargo_file": "monitoring/v3p1alpha1/lib/Cargo.toml",
-      "gen_dir": "monitoring/v3p1alpha1",
-      "spec_file": "monitoring/v3p1alpha1/spec.json",
-      "crate_name": "google-monitoring3_p1alpha1",
-      "make_target": "monitoring3_p1alpha1",
-      "rest_url": "https://monitoring.googleapis.com/$discovery/rest?version=v3p1alpha1"
-    },
-    {
-      "name": "monitoring",
       "lib_cargo_file": "monitoring/v3/lib/Cargo.toml",
       "gen_dir": "monitoring/v3",
       "spec_file": "monitoring/v3/spec.json",
@@ -1484,24 +1439,6 @@
       "crate_name": "google-oauth2",
       "make_target": "oauth2",
       "rest_url": "https://www.googleapis.com/discovery/v1/apis/oauth2/v2/rest"
-    },
-    {
-      "name": "osconfig",
-      "lib_cargo_file": "osconfig/v1alpha1/lib/Cargo.toml",
-      "gen_dir": "osconfig/v1alpha1",
-      "spec_file": "osconfig/v1alpha1/spec.json",
-      "crate_name": "google-osconfig1_alpha1",
-      "make_target": "osconfig1_alpha1",
-      "rest_url": "https://osconfig.googleapis.com/$discovery/rest?version=v1alpha1"
-    },
-    {
-      "name": "osconfig",
-      "lib_cargo_file": "osconfig/v1alpha2/lib/Cargo.toml",
-      "gen_dir": "osconfig/v1alpha2",
-      "spec_file": "osconfig/v1alpha2/spec.json",
-      "crate_name": "google-osconfig1_alpha2",
-      "make_target": "osconfig1_alpha2",
-      "rest_url": "https://osconfig.googleapis.com/$discovery/rest?version=v1alpha2"
     },
     {
       "name": "oslogin",
