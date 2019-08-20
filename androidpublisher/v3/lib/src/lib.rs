@@ -3,8 +3,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -33,8 +33,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -63,8 +63,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -90,8 +90,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -117,8 +117,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -146,8 +146,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -182,8 +182,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -212,8 +212,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -245,8 +245,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -274,8 +274,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -304,8 +304,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -332,8 +332,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -359,8 +359,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -385,8 +385,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -415,8 +415,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -472,8 +472,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -503,8 +503,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -529,8 +529,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -599,8 +599,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -629,8 +629,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -665,8 +665,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -691,8 +691,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -717,8 +717,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -743,8 +743,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -803,8 +803,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -831,8 +831,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -864,8 +864,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -897,8 +897,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -934,8 +934,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -973,8 +973,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1002,8 +1002,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1032,8 +1032,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1062,8 +1062,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1092,8 +1092,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1122,8 +1122,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1171,8 +1171,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1198,8 +1198,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1228,8 +1228,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1261,8 +1261,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1291,8 +1291,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1321,8 +1321,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1348,8 +1348,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1374,8 +1374,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1407,8 +1407,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1437,8 +1437,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1469,8 +1469,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1499,8 +1499,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1600,8 +1600,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1627,8 +1627,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1654,8 +1654,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1682,8 +1682,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1712,8 +1712,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1741,8 +1741,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1842,8 +1842,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1902,8 +1902,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1914,13 +1914,22 @@ pub mod schemas {
         #[doc = "This kind represents a voided purchase object in the androidpublisher service."]
         #[serde(rename = "kind", default)]
         pub kind: Option<String>,
+        #[doc = "The order id which uniquely identifies a one-time purchase, subscription purchase, or subscription renewal."]
+        #[serde(rename = "orderId", default)]
+        pub order_id: Option<String>,
         #[doc = "The time at which the purchase was made, in milliseconds since the epoch (Jan 1, 1970)."]
         #[serde(rename = "purchaseTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
         pub purchase_time_millis: Option<i64>,
-        #[doc = "The token that was generated when a purchase was made. This uniquely identifies a purchase."]
+        #[doc = "The token which uniquely identifies a one-time purchase or subscription. To uniquely identify subscription renewals use order_id (available starting from version 3 of the API)."]
         #[serde(rename = "purchaseToken", default)]
         pub purchase_token: Option<String>,
+        #[doc = "The reason why the purchase was voided, possible values are:  \n- Other \n- Remorse \n- Not_received \n- Defective \n- Accidental_purchase \n- Fraud \n- Friendly_fraud \n- Chargeback"]
+        #[serde(rename = "voidedReason", default)]
+        pub voided_reason: Option<i32>,
+        #[doc = "The initiator of voided purchase, possible values are:  \n- User \n- Developer \n- Google"]
+        #[serde(rename = "voidedSource", default)]
+        pub voided_source: Option<i32>,
         #[doc = "The time at which the purchase was canceled/refunded/charged-back, in milliseconds since the epoch (Jan 1, 1970)."]
         #[serde(rename = "voidedTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
@@ -1940,8 +1949,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1968,7 +1977,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -3501,7 +3510,7 @@ pub mod edits {
     }
     pub mod deobfuscationfiles {
         pub mod params {
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum UploadDeobfuscationFileType {
                 Proguard,
             }
@@ -4169,7 +4178,7 @@ pub mod edits {
     }
     pub mod expansionfiles {
         pub mod params {
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetExpansionFileType {
                 Main,
                 Patch,
@@ -4213,7 +4222,7 @@ pub mod edits {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum PatchExpansionFileType {
                 Main,
                 Patch,
@@ -4257,7 +4266,7 @@ pub mod edits {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum UpdateExpansionFileType {
                 Main,
                 Patch,
@@ -4301,7 +4310,7 @@ pub mod edits {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum UploadExpansionFileType {
                 Main,
                 Patch,
@@ -5006,7 +5015,7 @@ pub mod edits {
     }
     pub mod images {
         pub mod params {
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum DeleteImageType {
                 FeatureGraphic,
                 Icon,
@@ -5071,7 +5080,7 @@ pub mod edits {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum DeleteallImageType {
                 FeatureGraphic,
                 Icon,
@@ -5136,7 +5145,7 @@ pub mod edits {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListImageType {
                 FeatureGraphic,
                 Icon,
@@ -5201,7 +5210,7 @@ pub mod edits {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum UploadImageType {
                 FeatureGraphic,
                 Icon,
@@ -9815,6 +9824,7 @@ pub mod purchases {
                     package_name: package_name.into(),
                     end_time: None,
                     max_results: None,
+                    r#type: None,
                     start_index: None,
                     start_time: None,
                     token: None,
@@ -9828,6 +9838,7 @@ pub mod purchases {
             package_name: String,
             end_time: Option<i64>,
             max_results: Option<u32>,
+            r#type: Option<i32>,
             start_index: Option<u32>,
             start_time: Option<i64>,
             token: Option<String>,
@@ -9840,7 +9851,7 @@ pub mod purchases {
             user_ip: Option<String>,
         }
         impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
-            #[doc = "The time, in milliseconds since the Epoch, of the newest voided in-app product purchase that you want to see in the response. The value of this parameter cannot be greater than the current time and is ignored if a pagination token is set. Default value is current time. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response."]
+            #[doc = "The time, in milliseconds since the Epoch, of the newest voided purchase that you want to see in the response. The value of this parameter cannot be greater than the current time and is ignored if a pagination token is set. Default value is current time. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response."]
             pub fn end_time(&mut self, value: i64) -> &mut Self {
                 self.end_time = Some(value);
                 self
@@ -9850,12 +9861,17 @@ pub mod purchases {
                 self.max_results = Some(value);
                 self
             }
+            #[doc = "The type of voided purchases that you want to see in the response. Possible values are:  \n- 0: Only voided in-app product purchases will be returned in the response. This is the default value.\n- 1: Both voided in-app purchases and voided subscription purchases will be returned in the response.  Note: Before requesting to receive voided subscription purchases, you must switch to use orderId in the response which uniquely identifies one-time purchases and subscriptions. Otherwise, you will receive multiple subscription orders with the same PurchaseToken, because subscription renewal orders share the same PurchaseToken."]
+            pub fn r_type(&mut self, value: i32) -> &mut Self {
+                self.r#type = Some(value);
+                self
+            }
             #[doc = ""]
             pub fn start_index(&mut self, value: u32) -> &mut Self {
                 self.start_index = Some(value);
                 self
             }
-            #[doc = "The time, in milliseconds since the Epoch, of the oldest voided in-app product purchase that you want to see in the response. The value of this parameter cannot be older than 30 days and is ignored if a pagination token is set. Default value is current time minus 30 days. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response."]
+            #[doc = "The time, in milliseconds since the Epoch, of the oldest voided purchase that you want to see in the response. The value of this parameter cannot be older than 30 days and is ignored if a pagination token is set. Default value is current time minus 30 days. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response."]
             pub fn start_time(&mut self, value: i64) -> &mut Self {
                 self.start_time = Some(value);
                 self
@@ -9938,6 +9954,7 @@ pub mod purchases {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("endTime", &self.end_time)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
+                let req = req.query(&[("type", &self.r#type)]);
                 let req = req.query(&[("startIndex", &self.start_index)]);
                 let req = req.query(&[("startTime", &self.start_time)]);
                 let req = req.query(&[("token", &self.token)]);

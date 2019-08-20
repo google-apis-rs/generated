@@ -3,8 +3,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -39,8 +39,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -75,8 +75,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -114,8 +114,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -150,8 +150,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -180,8 +180,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -206,37 +206,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BasicPerfSampleSeries {
-        #[serde(rename = "perfMetricType", default)]
-        pub perf_metric_type: Option<crate::schemas::BasicPerfSampleSeriesPerfMetricType>,
-        #[serde(rename = "perfUnit", default)]
-        pub perf_unit: Option<crate::schemas::BasicPerfSampleSeriesPerfUnit>,
-        #[serde(rename = "sampleSeriesLabel", default)]
-        pub sample_series_label: Option<crate::schemas::BasicPerfSampleSeriesSampleSeriesLabel>,
-    }
-    impl ::field_selector::FieldSelector for BasicPerfSampleSeries {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BasicPerfSampleSeriesPerfMetricType {
         Cpu,
         Graphics,
@@ -293,7 +263,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BasicPerfSampleSeriesPerfUnit {
         Byte,
         BytesPerSecond,
@@ -349,7 +319,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BasicPerfSampleSeriesSampleSeriesLabel {
         CpuKernel,
         CpuTotal,
@@ -431,6 +401,36 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BasicPerfSampleSeries {
+        #[serde(rename = "perfMetricType", default)]
+        pub perf_metric_type: Option<crate::schemas::BasicPerfSampleSeriesPerfMetricType>,
+        #[serde(rename = "perfUnit", default)]
+        pub perf_unit: Option<crate::schemas::BasicPerfSampleSeriesPerfUnit>,
+        #[serde(rename = "sampleSeriesLabel", default)]
+        pub sample_series_label: Option<crate::schemas::BasicPerfSampleSeriesSampleSeriesLabel>,
+    }
+    impl ::field_selector::FieldSelector for BasicPerfSampleSeries {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct BatchCreatePerfSamplesRequest {
@@ -493,8 +493,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -520,52 +520,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Execution {
-        #[doc = "The time when the Execution status transitioned to COMPLETE.\n\nThis value will be set automatically when state transitions to COMPLETE.\n\n- In response: set if the execution state is COMPLETE. - In create/update request: never set"]
-        #[serde(rename = "completionTime", default)]
-        pub completion_time: Option<crate::schemas::Timestamp>,
-        #[doc = "The time when the Execution was created.\n\nThis value will be set automatically when CreateExecution is called.\n\n- In response: always set - In create/update request: never set"]
-        #[serde(rename = "creationTime", default)]
-        pub creation_time: Option<crate::schemas::Timestamp>,
-        #[doc = "A unique identifier within a History for this Execution.\n\nReturns INVALID_ARGUMENT if this field is set or overwritten by the caller.\n\n- In response always set - In create/update request: never set"]
-        #[serde(rename = "executionId", default)]
-        pub execution_id: Option<String>,
-        #[doc = "Classify the result, for example into SUCCESS or FAILURE\n\n- In response: present if set by create/update request - In create/update request: optional"]
-        #[serde(rename = "outcome", default)]
-        pub outcome: Option<crate::schemas::Outcome>,
-        #[doc = "Lightweight information about execution request.\n\n- In response: present if set by create - In create: optional - In update: optional"]
-        #[serde(rename = "specification", default)]
-        pub specification: Option<crate::schemas::Specification>,
-        #[doc = "The initial state is IN_PROGRESS.\n\nThe only legal state transitions is from IN_PROGRESS to COMPLETE.\n\nA PRECONDITION_FAILED will be returned if an invalid transition is requested.\n\nThe state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times.\n\nIf the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE.\n\n- In response always set - In create/update request: optional"]
-        #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::ExecutionState>,
-        #[doc = "TestExecution Matrix ID that the TestExecutionService uses.\n\n- In response: present if set by create - In create: optional - In update: never set"]
-        #[serde(rename = "testExecutionMatrixId", default)]
-        pub test_execution_matrix_id: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Execution {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ExecutionState {
         Complete,
         InProgress,
@@ -619,8 +574,53 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Execution {
+        #[doc = "The time when the Execution status transitioned to COMPLETE.\n\nThis value will be set automatically when state transitions to COMPLETE.\n\n- In response: set if the execution state is COMPLETE. - In create/update request: never set"]
+        #[serde(rename = "completionTime", default)]
+        pub completion_time: Option<crate::schemas::Timestamp>,
+        #[doc = "The time when the Execution was created.\n\nThis value will be set automatically when CreateExecution is called.\n\n- In response: always set - In create/update request: never set"]
+        #[serde(rename = "creationTime", default)]
+        pub creation_time: Option<crate::schemas::Timestamp>,
+        #[doc = "A unique identifier within a History for this Execution.\n\nReturns INVALID_ARGUMENT if this field is set or overwritten by the caller.\n\n- In response always set - In create/update request: never set"]
+        #[serde(rename = "executionId", default)]
+        pub execution_id: Option<String>,
+        #[doc = "Classify the result, for example into SUCCESS or FAILURE\n\n- In response: present if set by create/update request - In create/update request: optional"]
+        #[serde(rename = "outcome", default)]
+        pub outcome: Option<crate::schemas::Outcome>,
+        #[doc = "Lightweight information about execution request.\n\n- In response: present if set by create - In create: optional - In update: optional"]
+        #[serde(rename = "specification", default)]
+        pub specification: Option<crate::schemas::Specification>,
+        #[doc = "The initial state is IN_PROGRESS.\n\nThe only legal state transitions is from IN_PROGRESS to COMPLETE.\n\nA PRECONDITION_FAILED will be returned if an invalid transition is requested.\n\nThe state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times.\n\nIf the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE.\n\n- In response always set - In create/update request: optional"]
+        #[serde(rename = "state", default)]
+        pub state: Option<crate::schemas::ExecutionState>,
+        #[doc = "TestExecution Matrix ID that the TestExecutionService uses.\n\n- In response: present if set by create - In create: optional - In update: never set"]
+        #[serde(rename = "testExecutionMatrixId", default)]
+        pub test_execution_matrix_id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Execution {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -658,8 +658,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -685,8 +685,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -756,8 +756,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -788,8 +788,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -821,8 +821,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -857,8 +857,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -886,41 +886,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct IndividualOutcome {
-        #[doc = "Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0."]
-        #[serde(rename = "multistepNumber", default)]
-        pub multistep_number: Option<i32>,
-        #[serde(rename = "outcomeSummary", default)]
-        pub outcome_summary: Option<crate::schemas::IndividualOutcomeOutcomeSummary>,
-        #[doc = "How long it took for this step to run."]
-        #[serde(rename = "runDuration", default)]
-        pub run_duration: Option<crate::schemas::Duration>,
-        #[serde(rename = "stepId", default)]
-        pub step_id: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for IndividualOutcome {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum IndividualOutcomeOutcomeSummary {
         Failure,
         Flaky,
@@ -980,8 +946,42 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct IndividualOutcome {
+        #[doc = "Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0."]
+        #[serde(rename = "multistepNumber", default)]
+        pub multistep_number: Option<i32>,
+        #[serde(rename = "outcomeSummary", default)]
+        pub outcome_summary: Option<crate::schemas::IndividualOutcomeOutcomeSummary>,
+        #[doc = "How long it took for this step to run."]
+        #[serde(rename = "runDuration", default)]
+        pub run_duration: Option<crate::schemas::Duration>,
+        #[serde(rename = "stepId", default)]
+        pub step_id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for IndividualOutcome {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1010,8 +1010,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1040,8 +1040,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1087,8 +1087,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1114,8 +1114,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1144,8 +1144,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1174,8 +1174,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1203,8 +1203,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1235,8 +1235,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1264,46 +1264,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Outcome {
-        #[doc = "More information about a FAILURE outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not FAILURE.\n\nOptional"]
-        #[serde(rename = "failureDetail", default)]
-        pub failure_detail: Option<crate::schemas::FailureDetail>,
-        #[doc = "More information about an INCONCLUSIVE outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not INCONCLUSIVE.\n\nOptional"]
-        #[serde(rename = "inconclusiveDetail", default)]
-        pub inconclusive_detail: Option<crate::schemas::InconclusiveDetail>,
-        #[doc = "More information about a SKIPPED outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not SKIPPED.\n\nOptional"]
-        #[serde(rename = "skippedDetail", default)]
-        pub skipped_detail: Option<crate::schemas::SkippedDetail>,
-        #[doc = "More information about a SUCCESS outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS.\n\nOptional"]
-        #[serde(rename = "successDetail", default)]
-        pub success_detail: Option<crate::schemas::SuccessDetail>,
-        #[doc = "The simplest way to interpret a result.\n\nRequired"]
-        #[serde(rename = "summary", default)]
-        pub summary: Option<crate::schemas::OutcomeSummary>,
-    }
-    impl ::field_selector::FieldSelector for Outcome {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OutcomeSummary {
         Failure,
         Flaky,
@@ -1360,6 +1321,45 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Outcome {
+        #[doc = "More information about a FAILURE outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not FAILURE.\n\nOptional"]
+        #[serde(rename = "failureDetail", default)]
+        pub failure_detail: Option<crate::schemas::FailureDetail>,
+        #[doc = "More information about an INCONCLUSIVE outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not INCONCLUSIVE.\n\nOptional"]
+        #[serde(rename = "inconclusiveDetail", default)]
+        pub inconclusive_detail: Option<crate::schemas::InconclusiveDetail>,
+        #[doc = "More information about a SKIPPED outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not SKIPPED.\n\nOptional"]
+        #[serde(rename = "skippedDetail", default)]
+        pub skipped_detail: Option<crate::schemas::SkippedDetail>,
+        #[doc = "More information about a SUCCESS outcome.\n\nReturns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS.\n\nOptional"]
+        #[serde(rename = "successDetail", default)]
+        pub success_detail: Option<crate::schemas::SuccessDetail>,
+        #[doc = "The simplest way to interpret a result.\n\nRequired"]
+        #[serde(rename = "summary", default)]
+        pub summary: Option<crate::schemas::OutcomeSummary>,
+    }
+    impl ::field_selector::FieldSelector for Outcome {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct PerfEnvironment {
@@ -1380,45 +1380,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct PerfMetricsSummary {
-        #[serde(rename = "appStartTime", default)]
-        pub app_start_time: Option<crate::schemas::AppStartTime>,
-        #[doc = "A tool results execution ID."]
-        #[serde(rename = "executionId", default)]
-        pub execution_id: Option<String>,
-        #[doc = "Graphics statistics for the entire run. Statistics are reset at the beginning of the run and collected at the end of the run."]
-        #[serde(rename = "graphicsStats", default)]
-        pub graphics_stats: Option<crate::schemas::GraphicsStats>,
-        #[doc = "A tool results history ID."]
-        #[serde(rename = "historyId", default)]
-        pub history_id: Option<String>,
-        #[doc = "Describes the environment in which the performance metrics were collected"]
-        #[serde(rename = "perfEnvironment", default)]
-        pub perf_environment: Option<crate::schemas::PerfEnvironment>,
-        #[doc = "Set of resource collected"]
-        #[serde(rename = "perfMetrics", default)]
-        pub perf_metrics: Option<Vec<crate::schemas::PerfMetricsSummaryPerfMetricsItems>>,
-        #[doc = "The cloud project"]
-        #[serde(rename = "projectId", default)]
-        pub project_id: Option<String>,
-        #[doc = "A tool results step ID."]
-        #[serde(rename = "stepId", default)]
-        pub step_id: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PerfMetricsSummary {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PerfMetricsSummaryPerfMetricsItems {
         Cpu,
         Graphics,
@@ -1478,6 +1440,44 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct PerfMetricsSummary {
+        #[serde(rename = "appStartTime", default)]
+        pub app_start_time: Option<crate::schemas::AppStartTime>,
+        #[doc = "A tool results execution ID."]
+        #[serde(rename = "executionId", default)]
+        pub execution_id: Option<String>,
+        #[doc = "Graphics statistics for the entire run. Statistics are reset at the beginning of the run and collected at the end of the run."]
+        #[serde(rename = "graphicsStats", default)]
+        pub graphics_stats: Option<crate::schemas::GraphicsStats>,
+        #[doc = "A tool results history ID."]
+        #[serde(rename = "historyId", default)]
+        pub history_id: Option<String>,
+        #[doc = "Describes the environment in which the performance metrics were collected"]
+        #[serde(rename = "perfEnvironment", default)]
+        pub perf_environment: Option<crate::schemas::PerfEnvironment>,
+        #[doc = "Set of resource collected"]
+        #[serde(rename = "perfMetrics", default)]
+        pub perf_metrics: Option<Vec<crate::schemas::PerfMetricsSummaryPerfMetricsItems>>,
+        #[doc = "The cloud project"]
+        #[serde(rename = "projectId", default)]
+        pub project_id: Option<String>,
+        #[doc = "A tool results step ID."]
+        #[serde(rename = "stepId", default)]
+        pub step_id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PerfMetricsSummary {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
     pub struct PerfSample {
         #[doc = "Timestamp of collection"]
         #[serde(rename = "sampleTime", default)]
@@ -1500,8 +1500,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1538,37 +1538,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PrimaryStep {
-        #[doc = "Step Id and outcome of each individual step."]
-        #[serde(rename = "individualOutcome", default)]
-        pub individual_outcome: Option<Vec<crate::schemas::IndividualOutcome>>,
-        #[doc = "Rollup test status of multiple steps that were run with the same configuration as a group."]
-        #[serde(rename = "rollUp", default)]
-        pub roll_up: Option<crate::schemas::PrimaryStepRollUp>,
-    }
-    impl ::field_selector::FieldSelector for PrimaryStep {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PrimaryStepRollUp {
         Failure,
         Flaky,
@@ -1628,8 +1598,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PrimaryStep {
+        #[doc = "Step Id and outcome of each individual step."]
+        #[serde(rename = "individualOutcome", default)]
+        pub individual_outcome: Option<Vec<crate::schemas::IndividualOutcome>>,
+        #[doc = "Rollup test status of multiple steps that were run with the same configuration as a group."]
+        #[serde(rename = "rollUp", default)]
+        pub roll_up: Option<crate::schemas::PrimaryStepRollUp>,
+    }
+    impl ::field_selector::FieldSelector for PrimaryStep {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1658,8 +1658,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1685,8 +1685,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1721,8 +1721,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1757,8 +1757,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1790,8 +1790,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1817,8 +1817,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1844,8 +1844,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1873,12 +1873,62 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum StepState {
+        Complete,
+        InProgress,
+        Pending,
+        UnknownState,
+    }
+    impl StepState {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                StepState::Complete => "complete",
+                StepState::InProgress => "inProgress",
+                StepState::Pending => "pending",
+                StepState::UnknownState => "unknownState",
+            }
+        }
+    }
+    impl ::std::fmt::Display for StepState {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for StepState {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for StepState {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "complete" => StepState::Complete,
+                "inProgress" => StepState::InProgress,
+                "pending" => StepState::Pending,
+                "unknownState" => StepState::UnknownState,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1946,8 +1996,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1974,8 +2024,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1998,62 +2048,12 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum StepState {
-        Complete,
-        InProgress,
-        Pending,
-        UnknownState,
-    }
-    impl StepState {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                StepState::Complete => "complete",
-                StepState::InProgress => "inProgress",
-                StepState::Pending => "pending",
-                StepState::UnknownState => "unknownState",
-            }
-        }
-    }
-    impl ::std::fmt::Display for StepState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for StepState {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for StepState {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "complete" => StepState::Complete,
-                "inProgress" => StepState::InProgress,
-                "pending" => StepState::Pending,
-                "unknownState" => StepState::UnknownState,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2075,91 +2075,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct TestCase {
-        #[doc = "The elapsed run time of the test case.\n\nRequired."]
-        #[serde(rename = "elapsedTime", default)]
-        pub elapsed_time: Option<crate::schemas::Duration>,
-        #[doc = "The end time of the test case.\n\nOptional."]
-        #[serde(rename = "endTime", default)]
-        pub end_time: Option<crate::schemas::Timestamp>,
-        #[doc = "Why the test case was skipped.\n\nPresent only for skipped test case"]
-        #[serde(rename = "skippedMessage", default)]
-        pub skipped_message: Option<String>,
-        #[doc = "The stack trace details if the test case failed or encountered an error.\n\nThe maximum size of the stack traces is 100KiB, beyond which the stack track will be truncated.\n\nZero if the test case passed."]
-        #[serde(rename = "stackTraces", default)]
-        pub stack_traces: Option<Vec<crate::schemas::StackTrace>>,
-        #[doc = "The start time of the test case.\n\nOptional."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: Option<crate::schemas::Timestamp>,
-        #[doc = "The status of the test case.\n\nRequired."]
-        #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::TestCaseStatus>,
-        #[doc = "A unique identifier within a Step for this Test Case."]
-        #[serde(rename = "testCaseId", default)]
-        pub test_case_id: Option<String>,
-        #[doc = "Test case reference, e.g. name, class name and test suite name.\n\nRequired."]
-        #[serde(rename = "testCaseReference", default)]
-        pub test_case_reference: Option<crate::schemas::TestCaseReference>,
-        #[doc = "References to opaque files of any format output by the tool execution."]
-        #[serde(rename = "toolOutputs", default)]
-        pub tool_outputs: Option<Vec<crate::schemas::ToolOutputReference>>,
-    }
-    impl ::field_selector::FieldSelector for TestCase {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct TestCaseReference {
-        #[doc = "The name of the class."]
-        #[serde(rename = "className", default)]
-        pub class_name: Option<String>,
-        #[doc = "The name of the test case.\n\nRequired."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "The name of the test suite to which this test case belongs."]
-        #[serde(rename = "testSuiteName", default)]
-        pub test_suite_name: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for TestCaseReference {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TestCaseStatus {
         Error,
         Failed,
@@ -2216,8 +2132,92 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TestCase {
+        #[doc = "The elapsed run time of the test case.\n\nRequired."]
+        #[serde(rename = "elapsedTime", default)]
+        pub elapsed_time: Option<crate::schemas::Duration>,
+        #[doc = "The end time of the test case.\n\nOptional."]
+        #[serde(rename = "endTime", default)]
+        pub end_time: Option<crate::schemas::Timestamp>,
+        #[doc = "Why the test case was skipped.\n\nPresent only for skipped test case"]
+        #[serde(rename = "skippedMessage", default)]
+        pub skipped_message: Option<String>,
+        #[doc = "The stack trace details if the test case failed or encountered an error.\n\nThe maximum size of the stack traces is 100KiB, beyond which the stack track will be truncated.\n\nZero if the test case passed."]
+        #[serde(rename = "stackTraces", default)]
+        pub stack_traces: Option<Vec<crate::schemas::StackTrace>>,
+        #[doc = "The start time of the test case.\n\nOptional."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: Option<crate::schemas::Timestamp>,
+        #[doc = "The status of the test case.\n\nRequired."]
+        #[serde(rename = "status", default)]
+        pub status: Option<crate::schemas::TestCaseStatus>,
+        #[doc = "A unique identifier within a Step for this Test Case."]
+        #[serde(rename = "testCaseId", default)]
+        pub test_case_id: Option<String>,
+        #[doc = "Test case reference, e.g. name, class name and test suite name.\n\nRequired."]
+        #[serde(rename = "testCaseReference", default)]
+        pub test_case_reference: Option<crate::schemas::TestCaseReference>,
+        #[doc = "References to opaque files of any format output by the tool execution."]
+        #[serde(rename = "toolOutputs", default)]
+        pub tool_outputs: Option<Vec<crate::schemas::ToolOutputReference>>,
+    }
+    impl ::field_selector::FieldSelector for TestCase {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TestCaseReference {
+        #[doc = "The name of the class."]
+        #[serde(rename = "className", default)]
+        pub class_name: Option<String>,
+        #[doc = "The name of the test case.\n\nRequired."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "The name of the test suite to which this test case belongs."]
+        #[serde(rename = "testSuiteName", default)]
+        pub test_suite_name: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for TestCaseReference {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2248,49 +2248,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct TestIssue {
-        #[doc = "Category of issue. Required."]
-        #[serde(rename = "category", default)]
-        pub category: Option<crate::schemas::TestIssueCategory>,
-        #[doc = "A brief human-readable message describing the issue. Required."]
-        #[serde(rename = "errorMessage", default)]
-        pub error_message: Option<String>,
-        #[doc = "Type of issue. Required."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::TestIssueType>,
-        #[doc = "Severity of issue. Required."]
-        #[serde(rename = "severity", default)]
-        pub severity: Option<crate::schemas::TestIssueSeverity>,
-        #[doc = "Deprecated in favor of stack trace fields inside specific warnings."]
-        #[serde(rename = "stackTrace", default)]
-        pub stack_trace: Option<crate::schemas::StackTrace>,
-        #[doc = "Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings"]
-        #[serde(rename = "warning", default)]
-        pub warning: Option<crate::schemas::Any>,
-    }
-    impl ::field_selector::FieldSelector for TestIssue {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TestIssueCategory {
         Common,
         Robo,
@@ -2337,60 +2295,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum TestIssueSeverity {
-        Info,
-        Severe,
-        Suggestion,
-        UnspecifiedSeverity,
-        Warning,
-    }
-    impl TestIssueSeverity {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                TestIssueSeverity::Info => "info",
-                TestIssueSeverity::Severe => "severe",
-                TestIssueSeverity::Suggestion => "suggestion",
-                TestIssueSeverity::UnspecifiedSeverity => "unspecifiedSeverity",
-                TestIssueSeverity::Warning => "warning",
-            }
-        }
-    }
-    impl ::std::fmt::Display for TestIssueSeverity {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for TestIssueSeverity {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for TestIssueSeverity {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "info" => TestIssueSeverity::Info,
-                "severe" => TestIssueSeverity::Severe,
-                "suggestion" => TestIssueSeverity::Suggestion,
-                "unspecifiedSeverity" => TestIssueSeverity::UnspecifiedSeverity,
-                "warning" => TestIssueSeverity::Warning,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TestIssueType {
         Anr,
         AvailableDeepLinks,
@@ -2507,12 +2412,107 @@ pub mod schemas {
             })
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum TestIssueSeverity {
+        Info,
+        Severe,
+        Suggestion,
+        UnspecifiedSeverity,
+        Warning,
+    }
+    impl TestIssueSeverity {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                TestIssueSeverity::Info => "info",
+                TestIssueSeverity::Severe => "severe",
+                TestIssueSeverity::Suggestion => "suggestion",
+                TestIssueSeverity::UnspecifiedSeverity => "unspecifiedSeverity",
+                TestIssueSeverity::Warning => "warning",
+            }
+        }
+    }
+    impl ::std::fmt::Display for TestIssueSeverity {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for TestIssueSeverity {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for TestIssueSeverity {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "info" => TestIssueSeverity::Info,
+                "severe" => TestIssueSeverity::Severe,
+                "suggestion" => TestIssueSeverity::Suggestion,
+                "unspecifiedSeverity" => TestIssueSeverity::UnspecifiedSeverity,
+                "warning" => TestIssueSeverity::Warning,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TestIssue {
+        #[doc = "Category of issue. Required."]
+        #[serde(rename = "category", default)]
+        pub category: Option<crate::schemas::TestIssueCategory>,
+        #[doc = "A brief human-readable message describing the issue. Required."]
+        #[serde(rename = "errorMessage", default)]
+        pub error_message: Option<String>,
+        #[doc = "Type of issue. Required."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::TestIssueType>,
+        #[doc = "Severity of issue. Required."]
+        #[serde(rename = "severity", default)]
+        pub severity: Option<crate::schemas::TestIssueSeverity>,
+        #[doc = "Deprecated in favor of stack trace fields inside specific warnings."]
+        #[serde(rename = "stackTrace", default)]
+        pub stack_trace: Option<crate::schemas::StackTrace>,
+        #[doc = "Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings"]
+        #[serde(rename = "warning", default)]
+        pub warning: Option<crate::schemas::Any>,
+    }
+    impl ::field_selector::FieldSelector for TestIssue {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2556,8 +2556,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2583,8 +2583,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2619,8 +2619,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2650,8 +2650,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2686,8 +2686,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2713,8 +2713,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2740,8 +2740,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2771,7 +2771,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -5579,7 +5579,7 @@ pub mod projects {
                 }
                 pub mod perf_sample_series {
                     pub mod params {
-                        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+                        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                         pub enum ListFilter {
                             Cpu,
                             Graphics,

@@ -3,8 +3,44 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AccountBidderLocationItems {
+        #[doc = "The protocol that the bidder endpoint is using. OpenRTB protocols with prefix PROTOCOL_OPENRTB_PROTOBUF use proto buffer, otherwise use JSON.  Allowed values:  \n- PROTOCOL_ADX \n- PROTOCOL_OPENRTB_2_2 \n- PROTOCOL_OPENRTB_2_3 \n- PROTOCOL_OPENRTB_2_4 \n- PROTOCOL_OPENRTB_2_5 \n- PROTOCOL_OPENRTB_PROTOBUF_2_3 \n- PROTOCOL_OPENRTB_PROTOBUF_2_4 \n- PROTOCOL_OPENRTB_PROTOBUF_2_5"]
+        #[serde(rename = "bidProtocol", default)]
+        pub bid_protocol: Option<String>,
+        #[doc = "The maximum queries per second the Ad Exchange will send."]
+        #[serde(rename = "maximumQps", default)]
+        pub maximum_qps: Option<i32>,
+        #[doc = "The geographical region the Ad Exchange should send requests from. Only used by some quota systems, but always setting the value is recommended. Allowed values:  \n- ASIA \n- EUROPE \n- US_EAST \n- US_WEST"]
+        #[serde(rename = "region", default)]
+        pub region: Option<String>,
+        #[doc = "The URL to which the Ad Exchange will send bid requests."]
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for AccountBidderLocationItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -54,44 +90,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AccountBidderLocationItems {
-        #[doc = "The protocol that the bidder endpoint is using. OpenRTB protocols with prefix PROTOCOL_OPENRTB_PROTOBUF use proto buffer, otherwise use JSON.  Allowed values:  \n- PROTOCOL_ADX \n- PROTOCOL_OPENRTB_2_2 \n- PROTOCOL_OPENRTB_2_3 \n- PROTOCOL_OPENRTB_2_4 \n- PROTOCOL_OPENRTB_2_5 \n- PROTOCOL_OPENRTB_PROTOBUF_2_3 \n- PROTOCOL_OPENRTB_PROTOBUF_2_4 \n- PROTOCOL_OPENRTB_PROTOBUF_2_5"]
-        #[serde(rename = "bidProtocol", default)]
-        pub bid_protocol: Option<String>,
-        #[doc = "The maximum queries per second the Ad Exchange will send."]
-        #[serde(rename = "maximumQps", default)]
-        pub maximum_qps: Option<i32>,
-        #[doc = "The geographical region the Ad Exchange should send requests from. Only used by some quota systems, but always setting the value is recommended. Allowed values:  \n- ASIA \n- EUROPE \n- US_EAST \n- US_WEST"]
-        #[serde(rename = "region", default)]
-        pub region: Option<String>,
-        #[doc = "The URL to which the Ad Exchange will send bid requests."]
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for AccountBidderLocationItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -167,8 +167,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -194,8 +194,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -220,8 +220,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -256,8 +256,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -286,8 +286,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -331,8 +331,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -358,8 +358,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -388,8 +388,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -418,8 +418,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -432,6 +432,407 @@ pub mod schemas {
         pub proposals: Option<Vec<crate::schemas::Proposal>>,
     }
     impl ::field_selector::FieldSelector for CreateOrdersResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeAdTechnologyProviders {
+        #[serde(rename = "detectedProviderIds", default)]
+        pub detected_provider_ids: Option<Vec<i64>>,
+        #[serde(rename = "hasUnidentifiedProvider", default)]
+        pub has_unidentified_provider: Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for CreativeAdTechnologyProviders {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeCorrectionsItemsContextsItems {
+        #[doc = "Only set when contextType=AUCTION_TYPE. Represents the auction types this correction applies to."]
+        #[serde(rename = "auctionType", default)]
+        pub auction_type: Option<Vec<String>>,
+        #[doc = "The type of context (e.g., location, platform, auction type, SSL-ness)."]
+        #[serde(rename = "contextType", default)]
+        pub context_type: Option<String>,
+        #[doc = "Only set when contextType=LOCATION. Represents the geo criterias this correction applies to."]
+        #[serde(rename = "geoCriteriaId", default)]
+        pub geo_criteria_id: Option<Vec<i32>>,
+        #[doc = "Only set when contextType=PLATFORM. Represents the platforms this correction applies to."]
+        #[serde(rename = "platform", default)]
+        pub platform: Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for CreativeCorrectionsItemsContextsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeCorrectionsItems {
+        #[doc = "All known serving contexts containing serving status information."]
+        #[serde(rename = "contexts", default)]
+        pub contexts: Option<Vec<crate::schemas::CreativeCorrectionsItemsContextsItems>>,
+        #[doc = "Additional details about the correction."]
+        #[serde(rename = "details", default)]
+        pub details: Option<Vec<String>>,
+        #[doc = "The type of correction that was applied to the creative."]
+        #[serde(rename = "reason", default)]
+        pub reason: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CreativeCorrectionsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeFilteringReasonsReasonsItems {
+        #[doc = "The number of times the creative was filtered for the status. The count is aggregated across all publishers on the exchange."]
+        #[serde(rename = "filteringCount", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub filtering_count: Option<i64>,
+        #[doc = "The filtering status code as defined in  creative-status-codes.txt."]
+        #[serde(rename = "filteringStatus", default)]
+        pub filtering_status: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for CreativeFilteringReasonsReasonsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeFilteringReasons {
+        #[doc = "The date in ISO 8601 format for the data. The data is collected from 00:00:00 to 23:59:59 in PST."]
+        #[serde(rename = "date", default)]
+        pub date: Option<String>,
+        #[doc = "The filtering reasons."]
+        #[serde(rename = "reasons", default)]
+        pub reasons: Option<Vec<crate::schemas::CreativeFilteringReasonsReasonsItems>>,
+    }
+    impl ::field_selector::FieldSelector for CreativeFilteringReasons {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeNativeAdAppIcon {
+        #[serde(rename = "height", default)]
+        pub height: Option<i32>,
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+        #[serde(rename = "width", default)]
+        pub width: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for CreativeNativeAdAppIcon {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeNativeAdImage {
+        #[serde(rename = "height", default)]
+        pub height: Option<i32>,
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+        #[serde(rename = "width", default)]
+        pub width: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for CreativeNativeAdImage {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeNativeAdLogo {
+        #[serde(rename = "height", default)]
+        pub height: Option<i32>,
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+        #[serde(rename = "width", default)]
+        pub width: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for CreativeNativeAdLogo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct CreativeNativeAd {
+        #[serde(rename = "advertiser", default)]
+        pub advertiser: Option<String>,
+        #[doc = "The app icon, for app download ads."]
+        #[serde(rename = "appIcon", default)]
+        pub app_icon: Option<crate::schemas::CreativeNativeAdAppIcon>,
+        #[doc = "A long description of the ad."]
+        #[serde(rename = "body", default)]
+        pub body: Option<String>,
+        #[doc = "A label for the button that the user is supposed to click."]
+        #[serde(rename = "callToAction", default)]
+        pub call_to_action: Option<String>,
+        #[doc = "The URL that the browser/SDK will load when the user clicks the ad."]
+        #[serde(rename = "clickLinkUrl", default)]
+        pub click_link_url: Option<String>,
+        #[doc = "The URL to use for click tracking."]
+        #[serde(rename = "clickTrackingUrl", default)]
+        pub click_tracking_url: Option<String>,
+        #[doc = "A short title for the ad."]
+        #[serde(rename = "headline", default)]
+        pub headline: Option<String>,
+        #[doc = "A large image."]
+        #[serde(rename = "image", default)]
+        pub image: Option<crate::schemas::CreativeNativeAdImage>,
+        #[doc = "The URLs are called when the impression is rendered."]
+        #[serde(rename = "impressionTrackingUrl", default)]
+        pub impression_tracking_url: Option<Vec<String>>,
+        #[doc = "A smaller image, for the advertiser logo."]
+        #[serde(rename = "logo", default)]
+        pub logo: Option<crate::schemas::CreativeNativeAdLogo>,
+        #[doc = "The price of the promoted app including the currency info."]
+        #[serde(rename = "price", default)]
+        pub price: Option<String>,
+        #[doc = "The app rating in the app store. Must be in the range [0-5]."]
+        #[serde(rename = "starRating", default)]
+        pub star_rating: Option<f64>,
+        #[doc = "The URL of the XML VAST for a native ad. Note this is a separate field from resource.video_url."]
+        #[serde(rename = "videoURL", default)]
+        pub video_url: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CreativeNativeAd {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeServingRestrictionsItemsContextsItems {
+        #[doc = "Only set when contextType=AUCTION_TYPE. Represents the auction types this restriction applies to."]
+        #[serde(rename = "auctionType", default)]
+        pub auction_type: Option<Vec<String>>,
+        #[doc = "The type of context (e.g., location, platform, auction type, SSL-ness)."]
+        #[serde(rename = "contextType", default)]
+        pub context_type: Option<String>,
+        #[doc = "Only set when contextType=LOCATION. Represents the geo criterias this restriction applies to. Impressions are considered to match a context if either the user location or publisher location matches a given geoCriteriaId."]
+        #[serde(rename = "geoCriteriaId", default)]
+        pub geo_criteria_id: Option<Vec<i32>>,
+        #[doc = "Only set when contextType=PLATFORM. Represents the platforms this restriction applies to."]
+        #[serde(rename = "platform", default)]
+        pub platform: Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for CreativeServingRestrictionsItemsContextsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeServingRestrictionsItemsDisapprovalReasonsItems {
+        #[doc = "Additional details about the reason for disapproval."]
+        #[serde(rename = "details", default)]
+        pub details: Option<Vec<String>>,
+        #[doc = "The categorized reason for disapproval."]
+        #[serde(rename = "reason", default)]
+        pub reason: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CreativeServingRestrictionsItemsDisapprovalReasonsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeServingRestrictionsItems {
+        #[doc = "All known contexts/restrictions."]
+        #[serde(rename = "contexts", default)]
+        pub contexts: Option<Vec<crate::schemas::CreativeServingRestrictionsItemsContextsItems>>,
+        #[doc = "The reasons for disapproval within this restriction, if any. Note that not all disapproval reasons may be categorized, so it is possible for the creative to have a status of DISAPPROVED or CONDITIONALLY_APPROVED with an empty list for disapproval_reasons. In this case, please reach out to your TAM to help debug the issue."]
+        #[serde(rename = "disapprovalReasons", default)]
+        pub disapproval_reasons:
+            Option<Vec<crate::schemas::CreativeServingRestrictionsItemsDisapprovalReasonsItems>>,
+        #[doc = "Why the creative is ineligible to serve in this context (e.g., it has been explicitly disapproved or is pending review)."]
+        #[serde(rename = "reason", default)]
+        pub reason: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CreativeServingRestrictionsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -553,135 +954,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeAdTechnologyProviders {
-        #[serde(rename = "detectedProviderIds", default)]
-        pub detected_provider_ids: Option<Vec<i64>>,
-        #[serde(rename = "hasUnidentifiedProvider", default)]
-        pub has_unidentified_provider: Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for CreativeAdTechnologyProviders {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeCorrectionsItems {
-        #[doc = "All known serving contexts containing serving status information."]
-        #[serde(rename = "contexts", default)]
-        pub contexts: Option<Vec<crate::schemas::CreativeCorrectionsItemsContextsItems>>,
-        #[doc = "Additional details about the correction."]
-        #[serde(rename = "details", default)]
-        pub details: Option<Vec<String>>,
-        #[doc = "The type of correction that was applied to the creative."]
-        #[serde(rename = "reason", default)]
-        pub reason: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CreativeCorrectionsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeCorrectionsItemsContextsItems {
-        #[doc = "Only set when contextType=AUCTION_TYPE. Represents the auction types this correction applies to."]
-        #[serde(rename = "auctionType", default)]
-        pub auction_type: Option<Vec<String>>,
-        #[doc = "The type of context (e.g., location, platform, auction type, SSL-ness)."]
-        #[serde(rename = "contextType", default)]
-        pub context_type: Option<String>,
-        #[doc = "Only set when contextType=LOCATION. Represents the geo criterias this correction applies to."]
-        #[serde(rename = "geoCriteriaId", default)]
-        pub geo_criteria_id: Option<Vec<i32>>,
-        #[doc = "Only set when contextType=PLATFORM. Represents the platforms this correction applies to."]
-        #[serde(rename = "platform", default)]
-        pub platform: Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for CreativeCorrectionsItemsContextsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeDealIds {
-        #[doc = "A list of external deal ids and ARC approval status."]
-        #[serde(rename = "dealStatuses", default)]
-        pub deal_statuses: Option<Vec<crate::schemas::CreativeDealIdsDealStatusesItems>>,
-        #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CreativeDealIds {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -714,297 +988,23 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CreativeFilteringReasons {
-        #[doc = "The date in ISO 8601 format for the data. The data is collected from 00:00:00 to 23:59:59 in PST."]
-        #[serde(rename = "date", default)]
-        pub date: Option<String>,
-        #[doc = "The filtering reasons."]
-        #[serde(rename = "reasons", default)]
-        pub reasons: Option<Vec<crate::schemas::CreativeFilteringReasonsReasonsItems>>,
+    pub struct CreativeDealIds {
+        #[doc = "A list of external deal ids and ARC approval status."]
+        #[serde(rename = "dealStatuses", default)]
+        pub deal_statuses: Option<Vec<crate::schemas::CreativeDealIdsDealStatusesItems>>,
+        #[doc = "Resource type."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
     }
-    impl ::field_selector::FieldSelector for CreativeFilteringReasons {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeFilteringReasonsReasonsItems {
-        #[doc = "The number of times the creative was filtered for the status. The count is aggregated across all publishers on the exchange."]
-        #[serde(rename = "filteringCount", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub filtering_count: Option<i64>,
-        #[doc = "The filtering status code as defined in  creative-status-codes.txt."]
-        #[serde(rename = "filteringStatus", default)]
-        pub filtering_status: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for CreativeFilteringReasonsReasonsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct CreativeNativeAd {
-        #[serde(rename = "advertiser", default)]
-        pub advertiser: Option<String>,
-        #[doc = "The app icon, for app download ads."]
-        #[serde(rename = "appIcon", default)]
-        pub app_icon: Option<crate::schemas::CreativeNativeAdAppIcon>,
-        #[doc = "A long description of the ad."]
-        #[serde(rename = "body", default)]
-        pub body: Option<String>,
-        #[doc = "A label for the button that the user is supposed to click."]
-        #[serde(rename = "callToAction", default)]
-        pub call_to_action: Option<String>,
-        #[doc = "The URL that the browser/SDK will load when the user clicks the ad."]
-        #[serde(rename = "clickLinkUrl", default)]
-        pub click_link_url: Option<String>,
-        #[doc = "The URL to use for click tracking."]
-        #[serde(rename = "clickTrackingUrl", default)]
-        pub click_tracking_url: Option<String>,
-        #[doc = "A short title for the ad."]
-        #[serde(rename = "headline", default)]
-        pub headline: Option<String>,
-        #[doc = "A large image."]
-        #[serde(rename = "image", default)]
-        pub image: Option<crate::schemas::CreativeNativeAdImage>,
-        #[doc = "The URLs are called when the impression is rendered."]
-        #[serde(rename = "impressionTrackingUrl", default)]
-        pub impression_tracking_url: Option<Vec<String>>,
-        #[doc = "A smaller image, for the advertiser logo."]
-        #[serde(rename = "logo", default)]
-        pub logo: Option<crate::schemas::CreativeNativeAdLogo>,
-        #[doc = "The price of the promoted app including the currency info."]
-        #[serde(rename = "price", default)]
-        pub price: Option<String>,
-        #[doc = "The app rating in the app store. Must be in the range [0-5]."]
-        #[serde(rename = "starRating", default)]
-        pub star_rating: Option<f64>,
-        #[doc = "The URL of the XML VAST for a native ad. Note this is a separate field from resource.video_url."]
-        #[serde(rename = "videoURL", default)]
-        pub video_url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CreativeNativeAd {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeNativeAdAppIcon {
-        #[serde(rename = "height", default)]
-        pub height: Option<i32>,
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-        #[serde(rename = "width", default)]
-        pub width: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for CreativeNativeAdAppIcon {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeNativeAdImage {
-        #[serde(rename = "height", default)]
-        pub height: Option<i32>,
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-        #[serde(rename = "width", default)]
-        pub width: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for CreativeNativeAdImage {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeNativeAdLogo {
-        #[serde(rename = "height", default)]
-        pub height: Option<i32>,
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-        #[serde(rename = "width", default)]
-        pub width: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for CreativeNativeAdLogo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeServingRestrictionsItems {
-        #[doc = "All known contexts/restrictions."]
-        #[serde(rename = "contexts", default)]
-        pub contexts: Option<Vec<crate::schemas::CreativeServingRestrictionsItemsContextsItems>>,
-        #[doc = "The reasons for disapproval within this restriction, if any. Note that not all disapproval reasons may be categorized, so it is possible for the creative to have a status of DISAPPROVED or CONDITIONALLY_APPROVED with an empty list for disapproval_reasons. In this case, please reach out to your TAM to help debug the issue."]
-        #[serde(rename = "disapprovalReasons", default)]
-        pub disapproval_reasons:
-            Option<Vec<crate::schemas::CreativeServingRestrictionsItemsDisapprovalReasonsItems>>,
-        #[doc = "Why the creative is ineligible to serve in this context (e.g., it has been explicitly disapproved or is pending review)."]
-        #[serde(rename = "reason", default)]
-        pub reason: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CreativeServingRestrictionsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeServingRestrictionsItemsContextsItems {
-        #[doc = "Only set when contextType=AUCTION_TYPE. Represents the auction types this restriction applies to."]
-        #[serde(rename = "auctionType", default)]
-        pub auction_type: Option<Vec<String>>,
-        #[doc = "The type of context (e.g., location, platform, auction type, SSL-ness)."]
-        #[serde(rename = "contextType", default)]
-        pub context_type: Option<String>,
-        #[doc = "Only set when contextType=LOCATION. Represents the geo criterias this restriction applies to. Impressions are considered to match a context if either the user location or publisher location matches a given geoCriteriaId."]
-        #[serde(rename = "geoCriteriaId", default)]
-        pub geo_criteria_id: Option<Vec<i32>>,
-        #[doc = "Only set when contextType=PLATFORM. Represents the platforms this restriction applies to."]
-        #[serde(rename = "platform", default)]
-        pub platform: Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for CreativeServingRestrictionsItemsContextsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeServingRestrictionsItemsDisapprovalReasonsItems {
-        #[doc = "Additional details about the reason for disapproval."]
-        #[serde(rename = "details", default)]
-        pub details: Option<Vec<String>>,
-        #[doc = "The categorized reason for disapproval."]
-        #[serde(rename = "reason", default)]
-        pub reason: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CreativeServingRestrictionsItemsDisapprovalReasonsItems {
+    impl ::field_selector::FieldSelector for CreativeDealIds {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1042,8 +1042,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1072,8 +1072,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1280,8 +1280,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1336,8 +1336,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1366,8 +1366,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1396,8 +1396,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1424,8 +1424,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1543,8 +1543,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1570,8 +1570,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1597,8 +1597,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1717,8 +1717,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1747,8 +1747,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1784,8 +1784,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1830,9 +1830,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct PerformanceReport {
         #[doc = "The number of bid responses with an ad."]
         #[serde(rename = "bidRate", default)]
@@ -1912,9 +1910,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct PerformanceReportList {
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
@@ -1937,8 +1933,135 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PretargetingConfigDimensionsItems {
+        #[doc = "Height in pixels."]
+        #[serde(rename = "height", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub height: Option<i64>,
+        #[doc = "Width in pixels."]
+        #[serde(rename = "width", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub width: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for PretargetingConfigDimensionsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PretargetingConfigExcludedPlacementsItems {
+        #[doc = "The type of the placement."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+        #[doc = "The value of the placement. Interpretation depends on the placement type, e.g. URL for a site placement, channel name for a channel placement, app id for a mobile app placement."]
+        #[serde(rename = "token", default)]
+        pub token: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PretargetingConfigExcludedPlacementsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PretargetingConfigPlacementsItems {
+        #[doc = "The type of the placement."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+        #[doc = "The value of the placement. Interpretation depends on the placement type, e.g. URL for a site placement, channel name for a channel placement, app id for a mobile app placement."]
+        #[serde(rename = "token", default)]
+        pub token: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PretargetingConfigPlacementsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PretargetingConfigVideoPlayerSizesItems {
+        #[doc = "The type of aspect ratio. Leave this field blank to match all aspect ratios."]
+        #[serde(rename = "aspectRatio", default)]
+        pub aspect_ratio: Option<String>,
+        #[doc = "The minimum player height in pixels. Leave this field blank to match any player height."]
+        #[serde(rename = "minHeight", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub min_height: Option<i64>,
+        #[doc = "The minimum player width in pixels. Leave this field blank to match any player width."]
+        #[serde(rename = "minWidth", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub min_width: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for PretargetingConfigVideoPlayerSizesItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2043,70 +2166,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PretargetingConfigDimensionsItems {
-        #[doc = "Height in pixels."]
-        #[serde(rename = "height", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub height: Option<i64>,
-        #[doc = "Width in pixels."]
-        #[serde(rename = "width", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub width: Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for PretargetingConfigDimensionsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PretargetingConfigExcludedPlacementsItems {
-        #[doc = "The type of the placement."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-        #[doc = "The value of the placement. Interpretation depends on the placement type, e.g. URL for a site placement, channel name for a channel placement, app id for a mobile app placement."]
-        #[serde(rename = "token", default)]
-        pub token: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PretargetingConfigExcludedPlacementsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -2122,71 +2183,6 @@ pub mod schemas {
         pub kind: Option<String>,
     }
     impl ::field_selector::FieldSelector for PretargetingConfigList {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PretargetingConfigPlacementsItems {
-        #[doc = "The type of the placement."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-        #[doc = "The value of the placement. Interpretation depends on the placement type, e.g. URL for a site placement, channel name for a channel placement, app id for a mobile app placement."]
-        #[serde(rename = "token", default)]
-        pub token: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PretargetingConfigPlacementsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PretargetingConfigVideoPlayerSizesItems {
-        #[doc = "The type of aspect ratio. Leave this field blank to match all aspect ratios."]
-        #[serde(rename = "aspectRatio", default)]
-        pub aspect_ratio: Option<String>,
-        #[doc = "The minimum player height in pixels. Leave this field blank to match any player height."]
-        #[serde(rename = "minHeight", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub min_height: Option<i64>,
-        #[doc = "The minimum player width in pixels. Leave this field blank to match any player width."]
-        #[serde(rename = "minWidth", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub min_width: Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for PretargetingConfigVideoPlayerSizesItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2254,8 +2250,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2383,8 +2379,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2478,8 +2474,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2567,8 +2563,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2602,8 +2598,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2632,8 +2628,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2665,8 +2661,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2706,8 +2702,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2748,8 +2744,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2776,8 +2772,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2810,8 +2806,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2836,8 +2832,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2862,8 +2858,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2892,8 +2888,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2927,7 +2923,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -4201,7 +4197,7 @@ pub mod budget {
 }
 pub mod creatives {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListDealsStatusFilter {
             #[doc = "Creatives which have been approved for serving on deals."]
             Approved,
@@ -4255,7 +4251,7 @@ pub mod creatives {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListOpenAuctionStatusFilter {
             #[doc = "Creatives which have been approved for serving on the open auction."]
             Approved,
@@ -7159,7 +7155,7 @@ pub mod products {
 }
 pub mod proposals {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum PatchUpdateAction {
             Accept,
             Cancel,
@@ -7215,7 +7211,7 @@ pub mod proposals {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum UpdateUpdateAction {
             Accept,
             Cancel,

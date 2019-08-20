@@ -3,8 +3,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -39,8 +39,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -69,8 +69,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -111,8 +111,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -175,8 +175,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -208,8 +208,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -242,8 +242,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -279,8 +279,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -327,8 +327,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -357,8 +357,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DatabaseInstanceFailoverReplica {
+        #[doc = "The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The master can only failover to the falover replica when the status is true."]
+        #[serde(rename = "available", default)]
+        pub available: Option<bool>,
+        #[doc = "The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for DatabaseInstanceFailoverReplica {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -467,38 +497,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DatabaseInstanceFailoverReplica {
-        #[doc = "The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The master can only failover to the falover replica when the status is true."]
-        #[serde(rename = "available", default)]
-        pub available: Option<bool>,
-        #[doc = "The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for DatabaseInstanceFailoverReplica {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -527,8 +527,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -558,8 +558,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -594,8 +594,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -636,8 +636,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -666,8 +666,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -696,8 +696,96 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ExportContextCsvExportOptions {
+        #[doc = "The select query used to extract the data."]
+        #[serde(rename = "selectQuery", default)]
+        pub select_query: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ExportContextCsvExportOptions {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ExportContextSqlExportOptionsMysqlExportOptions {
+        #[doc = "Option to include SQL statement required to set up replication. If set to 1, the dump file includes a CHANGE MASTER TO statement with the binary log coordinates. If set to 2, the CHANGE MASTER TO statement is written as a SQL comment, and has no effect. All other values are ignored."]
+        #[serde(rename = "masterData", default)]
+        pub master_data: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for ExportContextSqlExportOptionsMysqlExportOptions {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ExportContextSqlExportOptions {
+        #[doc = "Options for exporting from MySQL."]
+        #[serde(rename = "mysqlExportOptions", default)]
+        pub mysql_export_options:
+            Option<crate::schemas::ExportContextSqlExportOptionsMysqlExportOptions>,
+        #[doc = "Export only schemas."]
+        #[serde(rename = "schemaOnly", default)]
+        pub schema_only: Option<bool>,
+        #[doc = "Tables to export, or that were exported, from the specified database. If you specify tables, specify one and only one database. For PostgreSQL instances, you can specify only one table."]
+        #[serde(rename = "tables", default)]
+        pub tables: Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for ExportContextSqlExportOptions {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -738,96 +826,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ExportContextCsvExportOptions {
-        #[doc = "The select query used to extract the data."]
-        #[serde(rename = "selectQuery", default)]
-        pub select_query: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ExportContextCsvExportOptions {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ExportContextSqlExportOptions {
-        #[doc = "Options for exporting from MySQL."]
-        #[serde(rename = "mysqlExportOptions", default)]
-        pub mysql_export_options:
-            Option<crate::schemas::ExportContextSqlExportOptionsMysqlExportOptions>,
-        #[doc = "Export only schemas."]
-        #[serde(rename = "schemaOnly", default)]
-        pub schema_only: Option<bool>,
-        #[doc = "Tables to export, or that were exported, from the specified database. If you specify tables, specify one and only one database. For PostgreSQL instances, you can specify only one table."]
-        #[serde(rename = "tables", default)]
-        pub tables: Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for ExportContextSqlExportOptions {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ExportContextSqlExportOptionsMysqlExportOptions {
-        #[doc = "Option to include SQL statement required to set up replication. If set to 1, the dump file includes a CHANGE MASTER TO statement with the binary log coordinates. If set to 2, the CHANGE MASTER TO statement is written as a SQL comment, and has no effect. All other values are ignored."]
-        #[serde(rename = "masterData", default)]
-        pub master_data: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for ExportContextSqlExportOptionsMysqlExportOptions {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -857,8 +857,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -910,8 +910,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -940,8 +940,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ImportContextCsvImportOptions {
+        #[doc = "The columns to which CSV data is imported. If not specified, all columns of the database table are loaded with CSV data."]
+        #[serde(rename = "columns", default)]
+        pub columns: Option<Vec<String>>,
+        #[doc = "The table to which CSV data is imported."]
+        #[serde(rename = "table", default)]
+        pub table: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ImportContextCsvImportOptions {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -982,38 +1012,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ImportContextCsvImportOptions {
-        #[doc = "The columns to which CSV data is imported. If not specified, all columns of the database table are loaded with CSV data."]
-        #[serde(rename = "columns", default)]
-        pub columns: Option<Vec<String>>,
-        #[doc = "The table to which CSV data is imported."]
-        #[serde(rename = "table", default)]
-        pub table: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ImportContextCsvImportOptions {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -1039,8 +1039,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1066,8 +1066,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1093,8 +1093,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1120,8 +1120,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1147,8 +1147,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1183,8 +1183,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1215,8 +1215,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1242,8 +1242,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1269,8 +1269,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1296,8 +1296,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1332,8 +1332,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1365,8 +1365,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1398,8 +1398,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1434,8 +1434,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1492,8 +1492,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1522,8 +1522,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1590,8 +1590,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1623,8 +1623,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1653,8 +1653,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1686,8 +1686,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1719,8 +1719,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1756,8 +1756,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1786,8 +1786,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1873,8 +1873,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1924,8 +1924,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1954,8 +1954,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1981,8 +1981,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2008,8 +2008,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2044,8 +2044,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2074,8 +2074,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2115,8 +2115,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2145,8 +2145,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2175,8 +2175,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2220,8 +2220,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2251,7 +2251,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,

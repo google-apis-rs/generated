@@ -3,8 +3,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -30,8 +30,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -56,34 +56,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct MobileFriendlyIssue {
-        #[doc = "Rule violated."]
-        #[serde(rename = "rule", default)]
-        pub rule: Option<crate::schemas::MobileFriendlyIssueRule>,
-    }
-    impl ::field_selector::FieldSelector for MobileFriendlyIssue {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MobileFriendlyIssueRule {
         #[doc = "Unknown rule. Sorry, we don't have any description for the rule that was\nbroken."]
         MobileFriendlyRuleUnspecified,
@@ -157,8 +130,35 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct MobileFriendlyIssue {
+        #[doc = "Rule violated."]
+        #[serde(rename = "rule", default)]
+        pub rule: Option<crate::schemas::MobileFriendlyIssueRule>,
+    }
+    impl ::field_selector::FieldSelector for MobileFriendlyIssue {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -184,8 +184,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -210,47 +210,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct RunMobileFriendlyTestResponse {
-        #[doc = "Test verdict, whether the page is mobile friendly or not."]
-        #[serde(rename = "mobileFriendliness", default)]
-        pub mobile_friendliness:
-            Option<crate::schemas::RunMobileFriendlyTestResponseMobileFriendliness>,
-        #[doc = "List of mobile-usability issues."]
-        #[serde(rename = "mobileFriendlyIssues", default)]
-        pub mobile_friendly_issues: Option<Vec<crate::schemas::MobileFriendlyIssue>>,
-        #[doc = "Information about embedded resources issues."]
-        #[serde(rename = "resourceIssues", default)]
-        pub resource_issues: Option<Vec<crate::schemas::ResourceIssue>>,
-        #[doc = "Screenshot of the requested URL."]
-        #[serde(rename = "screenshot", default)]
-        pub screenshot: Option<crate::schemas::Image>,
-        #[doc = "Final state of the test, can be either complete or an error."]
-        #[serde(rename = "testStatus", default)]
-        pub test_status: Option<crate::schemas::TestStatus>,
-    }
-    impl ::field_selector::FieldSelector for RunMobileFriendlyTestResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RunMobileFriendlyTestResponseMobileFriendliness {
         #[doc = "Internal error when running this test. Please try running the test again."]
         MobileFriendlyTestResultUnspecified,
@@ -290,23 +250,33 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct TestStatus {
-        #[doc = "Error details if applicable."]
-        #[serde(rename = "details", default)]
-        pub details: Option<String>,
-        #[doc = "Status of the test."]
-        #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::TestStatusStatus>,
+    pub struct RunMobileFriendlyTestResponse {
+        #[doc = "Test verdict, whether the page is mobile friendly or not."]
+        #[serde(rename = "mobileFriendliness", default)]
+        pub mobile_friendliness:
+            Option<crate::schemas::RunMobileFriendlyTestResponseMobileFriendliness>,
+        #[doc = "List of mobile-usability issues."]
+        #[serde(rename = "mobileFriendlyIssues", default)]
+        pub mobile_friendly_issues: Option<Vec<crate::schemas::MobileFriendlyIssue>>,
+        #[doc = "Information about embedded resources issues."]
+        #[serde(rename = "resourceIssues", default)]
+        pub resource_issues: Option<Vec<crate::schemas::ResourceIssue>>,
+        #[doc = "Screenshot of the requested URL."]
+        #[serde(rename = "screenshot", default)]
+        pub screenshot: Option<crate::schemas::Image>,
+        #[doc = "Final state of the test, can be either complete or an error."]
+        #[serde(rename = "testStatus", default)]
+        pub test_status: Option<crate::schemas::TestStatus>,
     }
-    impl ::field_selector::FieldSelector for TestStatus {
+    impl ::field_selector::FieldSelector for RunMobileFriendlyTestResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -316,7 +286,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TestStatusStatus {
         #[doc = "Internal error when running this test. Please try running the test again."]
         TestStatusUnspecified,
@@ -370,9 +340,39 @@ pub mod schemas {
             })
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TestStatus {
+        #[doc = "Error details if applicable."]
+        #[serde(rename = "details", default)]
+        pub details: Option<String>,
+        #[doc = "Status of the test."]
+        #[serde(rename = "status", default)]
+        pub status: Option<crate::schemas::TestStatusStatus>,
+    }
+    impl ::field_selector::FieldSelector for TestStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -422,7 +422,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,

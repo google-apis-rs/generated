@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/jsczbyyw3iqHIhfzfG42QUqiOo4\"",
+  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/3qicJ9GohF0nzsqFBKgiv8iuS2E\"",
   "discoveryVersion": "v1",
   "id": "androidpublisher:v3",
   "name": "androidpublisher",
   "canonicalName": "Android Publisher",
   "fullyEncodeReservedExpansion": null,
   "version": "v3",
-  "revision": "20190813",
+  "revision": "20190818",
   "title": "Google Play Developer API",
   "description": "Accesses Android application developers' Google Play accounts.",
   "ownerDomain": "google.com",
@@ -2667,6 +2667,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "orderId": {
+          "description": "The order id which uniquely identifies a one-time purchase, subscription purchase, or subscription renewal.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "purchaseTimeMillis": {
           "description": "The time at which the purchase was made, in milliseconds since the epoch (Jan 1, 1970).",
           "type": "string",
@@ -2678,9 +2688,29 @@
           "items": null
         },
         "purchaseToken": {
-          "description": "The token that was generated when a purchase was made. This uniquely identifies a purchase.",
+          "description": "The token which uniquely identifies a one-time purchase or subscription. To uniquely identify subscription renewals use order_id (available starting from version 3 of the API).",
           "type": "string",
           "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "voidedReason": {
+          "description": "The reason why the purchase was voided, possible values are:  \n- Other \n- Remorse \n- Not_received \n- Defective \n- Accidental_purchase \n- Fraud \n- Friendly_fraud \n- Chargeback",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "voidedSource": {
+          "description": "The initiator of voided purchase, possible values are:  \n- User \n- Developer \n- Google",
+          "type": "integer",
+          "format": "int32",
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -6348,7 +6378,7 @@
               "description": "Lists the purchases that were canceled, refunded or charged-back.",
               "parameters": {
                 "endTime": {
-                  "description": "The time, in milliseconds since the Epoch, of the newest voided in-app product purchase that you want to see in the response. The value of this parameter cannot be greater than the current time and is ignored if a pagination token is set. Default value is current time. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response.",
+                  "description": "The time, in milliseconds since the Epoch, of the newest voided purchase that you want to see in the response. The value of this parameter cannot be greater than the current time and is ignored if a pagination token is set. Default value is current time. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -6404,7 +6434,7 @@
                   "repeated": false
                 },
                 "startTime": {
-                  "description": "The time, in milliseconds since the Epoch, of the oldest voided in-app product purchase that you want to see in the response. The value of this parameter cannot be older than 30 days and is ignored if a pagination token is set. Default value is current time minus 30 days. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response.",
+                  "description": "The time, in milliseconds since the Epoch, of the oldest voided purchase that you want to see in the response. The value of this parameter cannot be older than 30 days and is ignored if a pagination token is set. Default value is current time minus 30 days. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -6424,6 +6454,20 @@
                   "required": false,
                   "type": "string",
                   "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "type": {
+                  "description": "The type of voided purchases that you want to see in the response. Possible values are:  \n- 0: Only voided in-app product purchases will be returned in the response. This is the default value.\n- 1: Both voided in-app purchases and voided subscription purchases will be returned in the response.  Note: Before requesting to receive voided subscription purchases, you must switch to use orderId in the response which uniquely identifies one-time purchases and subscriptions. Otherwise, you will receive multiple subscription orders with the same PurchaseToken, because subscription renewal orders share the same PurchaseToken.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "integer",
+                  "format": "int32",
                   "minimum": null,
                   "maximum": null,
                   "pattern": null,

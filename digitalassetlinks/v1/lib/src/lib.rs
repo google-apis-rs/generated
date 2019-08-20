@@ -3,8 +3,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -33,8 +33,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -63,8 +63,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -86,43 +86,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CheckResponse {
-        #[doc = "Human-readable message containing information intended to help end users\nunderstand, reproduce and debug the result.\n\n\nThe message will be in English and we are currently not planning to offer\nany translations.\n\nPlease note that no guarantees are made about the contents or format of\nthis string.  Any aspect of it may be subject to change without notice.\nYou should not attempt to programmatically parse this data.  For\nprogrammatic access, use the error_code field below."]
-        #[serde(rename = "debugString", default)]
-        pub debug_string: Option<String>,
-        #[doc = "Error codes that describe the result of the Check operation."]
-        #[serde(rename = "errorCode", default)]
-        pub error_code: Option<Vec<crate::schemas::CheckResponseErrorCodeItems>>,
-        #[doc = "Set to true if the assets specified in the request are linked by the\nrelation specified in the request."]
-        #[serde(rename = "linked", default)]
-        pub linked: Option<bool>,
-        #[doc = "From serving time, how much longer the response should be considered valid\nbarring further updates.\nREQUIRED"]
-        #[serde(rename = "maxAge", default)]
-        pub max_age: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CheckResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CheckResponseErrorCodeItems {}
     impl CheckResponseErrorCodeItems {
         pub fn as_str(self) -> &'static str {
@@ -162,29 +126,29 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ListResponse {
+    pub struct CheckResponse {
         #[doc = "Human-readable message containing information intended to help end users\nunderstand, reproduce and debug the result.\n\n\nThe message will be in English and we are currently not planning to offer\nany translations.\n\nPlease note that no guarantees are made about the contents or format of\nthis string.  Any aspect of it may be subject to change without notice.\nYou should not attempt to programmatically parse this data.  For\nprogrammatic access, use the error_code field below."]
         #[serde(rename = "debugString", default)]
         pub debug_string: Option<String>,
-        #[doc = "Error codes that describe the result of the List operation."]
+        #[doc = "Error codes that describe the result of the Check operation."]
         #[serde(rename = "errorCode", default)]
-        pub error_code: Option<Vec<crate::schemas::ListResponseErrorCodeItems>>,
+        pub error_code: Option<Vec<crate::schemas::CheckResponseErrorCodeItems>>,
+        #[doc = "Set to true if the assets specified in the request are linked by the\nrelation specified in the request."]
+        #[serde(rename = "linked", default)]
+        pub linked: Option<bool>,
         #[doc = "From serving time, how much longer the response should be considered valid\nbarring further updates.\nREQUIRED"]
         #[serde(rename = "maxAge", default)]
         pub max_age: Option<String>,
-        #[doc = "A list of all the matching statements that have been found."]
-        #[serde(rename = "statements", default)]
-        pub statements: Option<Vec<crate::schemas::Statement>>,
     }
-    impl ::field_selector::FieldSelector for ListResponse {
+    impl ::field_selector::FieldSelector for CheckResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -194,7 +158,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ListResponseErrorCodeItems {}
     impl ListResponseErrorCodeItems {
         pub fn as_str(self) -> &'static str {
@@ -234,8 +198,44 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ListResponse {
+        #[doc = "Human-readable message containing information intended to help end users\nunderstand, reproduce and debug the result.\n\n\nThe message will be in English and we are currently not planning to offer\nany translations.\n\nPlease note that no guarantees are made about the contents or format of\nthis string.  Any aspect of it may be subject to change without notice.\nYou should not attempt to programmatically parse this data.  For\nprogrammatic access, use the error_code field below."]
+        #[serde(rename = "debugString", default)]
+        pub debug_string: Option<String>,
+        #[doc = "Error codes that describe the result of the List operation."]
+        #[serde(rename = "errorCode", default)]
+        pub error_code: Option<Vec<crate::schemas::ListResponseErrorCodeItems>>,
+        #[doc = "From serving time, how much longer the response should be considered valid\nbarring further updates.\nREQUIRED"]
+        #[serde(rename = "maxAge", default)]
+        pub max_age: Option<String>,
+        #[doc = "A list of all the matching statements that have been found."]
+        #[serde(rename = "statements", default)]
+        pub statements: Option<Vec<crate::schemas::Statement>>,
+    }
+    impl ::field_selector::FieldSelector for ListResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -267,8 +267,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -292,7 +292,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -342,7 +342,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,

@@ -3,8 +3,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -39,8 +39,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -72,8 +72,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -111,8 +111,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -147,8 +147,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -177,44 +177,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AdStyle {
-        #[doc = "The colors included in the style. These are represented as six hexadecimal characters, similar to HTML color codes, but without the leading hash."]
-        #[serde(rename = "colors", default)]
-        pub colors: Option<crate::schemas::AdStyleColors>,
-        #[doc = "The style of the corners in the ad (deprecated: never populated, ignored)."]
-        #[serde(rename = "corners", default)]
-        pub corners: Option<String>,
-        #[doc = "The font which is included in the style."]
-        #[serde(rename = "font", default)]
-        pub font: Option<crate::schemas::AdStyleFont>,
-        #[doc = "Kind this is, in this case adsensehost#adStyle."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for AdStyle {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -252,8 +216,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -282,8 +246,146 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AdStyle {
+        #[doc = "The colors included in the style. These are represented as six hexadecimal characters, similar to HTML color codes, but without the leading hash."]
+        #[serde(rename = "colors", default)]
+        pub colors: Option<crate::schemas::AdStyleColors>,
+        #[doc = "The style of the corners in the ad (deprecated: never populated, ignored)."]
+        #[serde(rename = "corners", default)]
+        pub corners: Option<String>,
+        #[doc = "The font which is included in the style."]
+        #[serde(rename = "font", default)]
+        pub font: Option<crate::schemas::AdStyleFont>,
+        #[doc = "Kind this is, in this case adsensehost#adStyle."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for AdStyle {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AdUnitContentAdsSettingsBackupOption {
+        #[doc = "Color to use when type is set to COLOR. These are represented as six hexadecimal characters, similar to HTML color codes, but without the leading hash."]
+        #[serde(rename = "color", default)]
+        pub color: Option<String>,
+        #[doc = "Type of the backup option. Possible values are BLANK, COLOR and URL."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+        #[doc = "URL to use when type is set to URL."]
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for AdUnitContentAdsSettingsBackupOption {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AdUnitContentAdsSettings {
+        #[doc = "The backup option to be used in instances where no ad is available."]
+        #[serde(rename = "backupOption", default)]
+        pub backup_option: Option<crate::schemas::AdUnitContentAdsSettingsBackupOption>,
+        #[doc = "Type of this ad unit. Possible values are TEXT, TEXT_IMAGE, IMAGE and LINK."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+        #[doc = "Size of this ad unit. Size values are in the form SIZE_{width}_{height}."]
+        #[serde(rename = "size", default)]
+        pub size: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for AdUnitContentAdsSettings {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AdUnitMobileContentAdsSettings {
+        #[doc = "The markup language to use for this ad unit."]
+        #[serde(rename = "markupLanguage", default)]
+        pub markup_language: Option<String>,
+        #[doc = "Type of this ad unit."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+        #[doc = "The scripting language to use for this ad unit."]
+        #[serde(rename = "scriptingLanguage", default)]
+        pub scripting_language: Option<String>,
+        #[doc = "Size of this ad unit."]
+        #[serde(rename = "size", default)]
+        pub size: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for AdUnitMobileContentAdsSettings {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -330,110 +432,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AdUnitContentAdsSettings {
-        #[doc = "The backup option to be used in instances where no ad is available."]
-        #[serde(rename = "backupOption", default)]
-        pub backup_option: Option<crate::schemas::AdUnitContentAdsSettingsBackupOption>,
-        #[doc = "Type of this ad unit. Possible values are TEXT, TEXT_IMAGE, IMAGE and LINK."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-        #[doc = "Size of this ad unit. Size values are in the form SIZE_{width}_{height}."]
-        #[serde(rename = "size", default)]
-        pub size: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for AdUnitContentAdsSettings {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AdUnitContentAdsSettingsBackupOption {
-        #[doc = "Color to use when type is set to COLOR. These are represented as six hexadecimal characters, similar to HTML color codes, but without the leading hash."]
-        #[serde(rename = "color", default)]
-        pub color: Option<String>,
-        #[doc = "Type of the backup option. Possible values are BLANK, COLOR and URL."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-        #[doc = "URL to use when type is set to URL."]
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for AdUnitContentAdsSettingsBackupOption {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AdUnitMobileContentAdsSettings {
-        #[doc = "The markup language to use for this ad unit."]
-        #[serde(rename = "markupLanguage", default)]
-        pub markup_language: Option<String>,
-        #[doc = "Type of this ad unit."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-        #[doc = "The scripting language to use for this ad unit."]
-        #[serde(rename = "scriptingLanguage", default)]
-        pub scripting_language: Option<String>,
-        #[doc = "Size of this ad unit."]
-        #[serde(rename = "size", default)]
-        pub size: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for AdUnitMobileContentAdsSettings {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -468,8 +468,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -519,8 +519,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -555,8 +555,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -591,8 +591,41 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReportHeadersItems {
+        #[doc = "The currency of this column. Only present if the header type is METRIC_CURRENCY."]
+        #[serde(rename = "currency", default)]
+        pub currency: Option<String>,
+        #[doc = "The name of the header."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "The type of the header; one of DIMENSION, METRIC_TALLY, METRIC_RATIO, or METRIC_CURRENCY."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ReportHeadersItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -637,41 +670,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReportHeadersItems {
-        #[doc = "The currency of this column. Only present if the header type is METRIC_CURRENCY."]
-        #[serde(rename = "currency", default)]
-        pub currency: Option<String>,
-        #[doc = "The name of the header."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "The type of the header; one of DIMENSION, METRIC_TALLY, METRIC_RATIO, or METRIC_CURRENCY."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ReportHeadersItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -703,8 +703,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -737,7 +737,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of text/csv"]
         Csv,
@@ -2969,7 +2969,7 @@ pub mod adclients {
 }
 pub mod associationsessions {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum StartProductCode {
             #[doc = "AdSense For Content"]
             Afc,

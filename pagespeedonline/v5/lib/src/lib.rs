@@ -1,7 +1,5 @@
 pub mod schemas {
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct LighthouseAuditResultV5 {
         #[doc = "The description of the audit."]
         #[serde(rename = "description", default)]
@@ -45,6 +43,28 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct LighthouseCategoryV5AuditRefsItems {
+        #[doc = "The category group that the audit belongs to (optional)."]
+        #[serde(rename = "group", default)]
+        pub group: Option<String>,
+        #[doc = "The audit ref id."]
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+        #[doc = "The weight this audit's score has on the overall category score."]
+        #[serde(rename = "weight", default)]
+        pub weight: Option<f64>,
+    }
+    impl ::field_selector::FieldSelector for LighthouseCategoryV5AuditRefsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct LighthouseCategoryV5 {
         #[doc = "An array of references to all the audit members of this category."]
         #[serde(rename = "auditRefs", default)]
@@ -74,99 +94,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct LighthouseCategoryV5AuditRefsItems {
-        #[doc = "The category group that the audit belongs to (optional)."]
-        #[serde(rename = "group", default)]
-        pub group: Option<String>,
-        #[doc = "The audit ref id."]
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-        #[doc = "The weight this audit's score has on the overall category score."]
-        #[serde(rename = "weight", default)]
-        pub weight: Option<f64>,
-    }
-    impl ::field_selector::FieldSelector for LighthouseCategoryV5AuditRefsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct LighthouseResultV5 {
-        #[doc = "Map of audits in the LHR."]
-        #[serde(rename = "audits", default)]
-        pub audits:
-            Option<::std::collections::BTreeMap<String, crate::schemas::LighthouseAuditResultV5>>,
-        #[doc = "Map of categories in the LHR."]
-        #[serde(rename = "categories", default)]
-        pub categories: Option<crate::schemas::LighthouseResultV5Categories>,
-        #[doc = "Map of category groups in the LHR."]
-        #[serde(rename = "categoryGroups", default)]
-        pub category_groups: Option<
-            ::std::collections::BTreeMap<
-                String,
-                crate::schemas::LighthouseResultV5CategoryGroupsAdditionalProperties,
-            >,
-        >,
-        #[doc = "The configuration settings for this LHR."]
-        #[serde(rename = "configSettings", default)]
-        pub config_settings: Option<crate::schemas::LighthouseResultV5ConfigSettings>,
-        #[doc = "Environment settings that were used when making this LHR."]
-        #[serde(rename = "environment", default)]
-        pub environment: Option<crate::schemas::LighthouseResultV5Environment>,
-        #[doc = "The time that this run was fetched."]
-        #[serde(rename = "fetchTime", default)]
-        pub fetch_time: Option<String>,
-        #[doc = "The final resolved url that was audited."]
-        #[serde(rename = "finalUrl", default)]
-        pub final_url: Option<String>,
-        #[doc = "The internationalization strings that are required to render the LHR."]
-        #[serde(rename = "i18n", default)]
-        pub i_1_8n: Option<crate::schemas::LighthouseResultV5I18N>,
-        #[doc = "The lighthouse version that was used to generate this LHR."]
-        #[serde(rename = "lighthouseVersion", default)]
-        pub lighthouse_version: Option<String>,
-        #[doc = "The original requested url."]
-        #[serde(rename = "requestedUrl", default)]
-        pub requested_url: Option<String>,
-        #[doc = "List of all run warnings in the LHR. Will always output to at least `[]`."]
-        #[serde(rename = "runWarnings", default)]
-        pub run_warnings: Option<Vec<::serde_json::Value>>,
-        #[doc = "A top-level error message that, if present, indicates a serious enough problem that this Lighthouse result may need to be discarded."]
-        #[serde(rename = "runtimeError", default)]
-        pub runtime_error: Option<crate::schemas::LighthouseResultV5RuntimeError>,
-        #[doc = "The Stack Pack advice strings."]
-        #[serde(rename = "stackPacks", default)]
-        pub stack_packs: Option<Vec<crate::schemas::LighthouseResultV5StackPacksItems>>,
-        #[doc = "Timing information for this LHR."]
-        #[serde(rename = "timing", default)]
-        pub timing: Option<crate::schemas::LighthouseResultV5Timing>,
-        #[doc = "The user agent that was used to run this LHR."]
-        #[serde(rename = "userAgent", default)]
-        pub user_agent: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for LighthouseResultV5 {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct LighthouseResultV5Categories {
         #[doc = "The accessibility category, containing all accessibility related audits."]
         #[serde(rename = "accessibility", default)]
@@ -198,8 +126,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -224,9 +152,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct LighthouseResultV5ConfigSettings {
         #[doc = "The form factor the emulation should use."]
         #[serde(rename = "emulatedFormFactor", default)]
@@ -275,36 +201,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct LighthouseResultV5I18N {
-        #[doc = "Internationalized strings that are formatted to the locale in configSettings."]
-        #[serde(rename = "rendererFormattedStrings", default)]
-        pub renderer_formatted_strings:
-            Option<crate::schemas::LighthouseResultV5I18NRendererFormattedStrings>,
-    }
-    impl ::field_selector::FieldSelector for LighthouseResultV5I18N {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -375,8 +273,36 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct LighthouseResultV5I18N {
+        #[doc = "Internationalized strings that are formatted to the locale in configSettings."]
+        #[serde(rename = "rendererFormattedStrings", default)]
+        pub renderer_formatted_strings:
+            Option<crate::schemas::LighthouseResultV5I18NRendererFormattedStrings>,
+    }
+    impl ::field_selector::FieldSelector for LighthouseResultV5I18N {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -405,8 +331,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -455,42 +381,61 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct PagespeedApiLoadingExperienceV5 {
-        #[doc = "The url, pattern or origin which the metrics are on."]
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-        #[serde(rename = "initial_url", default)]
-        pub initial_url: Option<String>,
-        #[serde(rename = "metrics", default)]
-        pub metrics: Option<
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct LighthouseResultV5 {
+        #[doc = "Map of audits in the LHR."]
+        #[serde(rename = "audits", default)]
+        pub audits:
+            Option<::std::collections::BTreeMap<String, crate::schemas::LighthouseAuditResultV5>>,
+        #[doc = "Map of categories in the LHR."]
+        #[serde(rename = "categories", default)]
+        pub categories: Option<crate::schemas::LighthouseResultV5Categories>,
+        #[doc = "Map of category groups in the LHR."]
+        #[serde(rename = "categoryGroups", default)]
+        pub category_groups: Option<
             ::std::collections::BTreeMap<
                 String,
-                crate::schemas::PagespeedApiLoadingExperienceV5MetricsAdditionalProperties,
+                crate::schemas::LighthouseResultV5CategoryGroupsAdditionalProperties,
             >,
         >,
-        #[serde(rename = "overall_category", default)]
-        pub overall_category: Option<String>,
+        #[doc = "The configuration settings for this LHR."]
+        #[serde(rename = "configSettings", default)]
+        pub config_settings: Option<crate::schemas::LighthouseResultV5ConfigSettings>,
+        #[doc = "Environment settings that were used when making this LHR."]
+        #[serde(rename = "environment", default)]
+        pub environment: Option<crate::schemas::LighthouseResultV5Environment>,
+        #[doc = "The time that this run was fetched."]
+        #[serde(rename = "fetchTime", default)]
+        pub fetch_time: Option<String>,
+        #[doc = "The final resolved url that was audited."]
+        #[serde(rename = "finalUrl", default)]
+        pub final_url: Option<String>,
+        #[doc = "The internationalization strings that are required to render the LHR."]
+        #[serde(rename = "i18n", default)]
+        pub i_1_8n: Option<crate::schemas::LighthouseResultV5I18N>,
+        #[doc = "The lighthouse version that was used to generate this LHR."]
+        #[serde(rename = "lighthouseVersion", default)]
+        pub lighthouse_version: Option<String>,
+        #[doc = "The original requested url."]
+        #[serde(rename = "requestedUrl", default)]
+        pub requested_url: Option<String>,
+        #[doc = "List of all run warnings in the LHR. Will always output to at least `[]`."]
+        #[serde(rename = "runWarnings", default)]
+        pub run_warnings: Option<Vec<::serde_json::Value>>,
+        #[doc = "A top-level error message that, if present, indicates a serious enough problem that this Lighthouse result may need to be discarded."]
+        #[serde(rename = "runtimeError", default)]
+        pub runtime_error: Option<crate::schemas::LighthouseResultV5RuntimeError>,
+        #[doc = "The Stack Pack advice strings."]
+        #[serde(rename = "stackPacks", default)]
+        pub stack_packs: Option<Vec<crate::schemas::LighthouseResultV5StackPacksItems>>,
+        #[doc = "Timing information for this LHR."]
+        #[serde(rename = "timing", default)]
+        pub timing: Option<crate::schemas::LighthouseResultV5Timing>,
+        #[doc = "The user agent that was used to run this LHR."]
+        #[serde(rename = "userAgent", default)]
+        pub user_agent: Option<String>,
     }
-    impl ::field_selector::FieldSelector for PagespeedApiLoadingExperienceV5 {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct PagespeedApiLoadingExperienceV5MetricsAdditionalProperties { # [ serde ( rename = "category" , default ) ] pub category : Option < String > , # [ serde ( rename = "distributions" , default ) ] pub distributions : Option < Vec < crate :: schemas :: PagespeedApiLoadingExperienceV5MetricsAdditionalPropertiesDistributionsItems > > , # [ serde ( rename = "percentile" , default ) ] pub percentile : Option < i32 > , }
-    impl ::field_selector::FieldSelector
-        for PagespeedApiLoadingExperienceV5MetricsAdditionalProperties
-    {
+    impl ::field_selector::FieldSelector for LighthouseResultV5 {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -526,6 +471,79 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct PagespeedApiLoadingExperienceV5MetricsAdditionalProperties { # [ serde ( rename = "category" , default ) ] pub category : Option < String > , # [ serde ( rename = "distributions" , default ) ] pub distributions : Option < Vec < crate :: schemas :: PagespeedApiLoadingExperienceV5MetricsAdditionalPropertiesDistributionsItems > > , # [ serde ( rename = "percentile" , default ) ] pub percentile : Option < i32 > , }
+    impl ::field_selector::FieldSelector
+        for PagespeedApiLoadingExperienceV5MetricsAdditionalProperties
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct PagespeedApiLoadingExperienceV5 {
+        #[doc = "The url, pattern or origin which the metrics are on."]
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+        #[serde(rename = "initial_url", default)]
+        pub initial_url: Option<String>,
+        #[serde(rename = "metrics", default)]
+        pub metrics: Option<
+            ::std::collections::BTreeMap<
+                String,
+                crate::schemas::PagespeedApiLoadingExperienceV5MetricsAdditionalProperties,
+            >,
+        >,
+        #[serde(rename = "overall_category", default)]
+        pub overall_category: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PagespeedApiLoadingExperienceV5 {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PagespeedApiPagespeedResponseV5Version {
+        #[doc = "The major version number of PageSpeed used to generate these results."]
+        #[serde(rename = "major", default)]
+        pub major: Option<i32>,
+        #[doc = "The minor version number of PageSpeed used to generate these results."]
+        #[serde(rename = "minor", default)]
+        pub minor: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for PagespeedApiPagespeedResponseV5Version {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct PagespeedApiPagespeedResponseV5 {
         #[doc = "The UTC timestamp of this analysis."]
         #[serde(rename = "analysisUTCTimestamp", default)]
@@ -562,39 +580,9 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PagespeedApiPagespeedResponseV5Version {
-        #[doc = "The major version number of PageSpeed used to generate these results."]
-        #[serde(rename = "major", default)]
-        pub major: Option<i32>,
-        #[doc = "The minor version number of PageSpeed used to generate these results."]
-        #[serde(rename = "minor", default)]
-        pub minor: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for PagespeedApiPagespeedResponseV5Version {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -658,7 +646,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
 }
 pub mod pagespeedapi {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum RunpagespeedCategory {
             Accessibility,
             BestPractices,
@@ -711,7 +699,7 @@ pub mod pagespeedapi {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum RunpagespeedStrategy {
             #[doc = "Fetch and analyze the URL for desktop browsers"]
             Desktop,

@@ -3,8 +3,281 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BucketCorsItems {
+        #[doc = "The value, in seconds, to return in the  Access-Control-Max-Age header used in preflight responses."]
+        #[serde(rename = "maxAgeSeconds", default)]
+        pub max_age_seconds: Option<i32>,
+        #[doc = "The list of HTTP methods on which to include CORS response headers: GET, OPTIONS, POST, etc. Note, \"*\" is permitted in the list of methods, and means \"any method\"."]
+        #[serde(rename = "method", default)]
+        pub method: Option<Vec<String>>,
+        #[doc = "The list of Origins eligible to receive CORS response headers. Note: \"*\" is permitted in the list of origins, and means \"any Origin\"."]
+        #[serde(rename = "origin", default)]
+        pub origin: Option<Vec<String>>,
+        #[doc = "The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains."]
+        #[serde(rename = "responseHeader", default)]
+        pub response_header: Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for BucketCorsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BucketLifecycleRuleItemsAction {
+        #[doc = "Type of the action. Currently only Delete is supported."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for BucketLifecycleRuleItemsAction {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BucketLifecycleRuleItemsCondition {
+        #[doc = "Age of an object (in days). This condition is satisfied when an object reaches the specified age."]
+        #[serde(rename = "age", default)]
+        pub age: Option<i32>,
+        #[doc = "A date in RFC 3339 format with only the date part, e.g. \"2013-01-15\". This condition is satisfied when an object is created before midnight of the specified date in UTC."]
+        #[serde(rename = "createdBefore", default)]
+        pub created_before: Option<::chrono::Date<chrono::offset::Utc>>,
+        #[doc = "Relevant only for versioned objects. If the value is true, this condition matches live objects; if the value is false, it matches archived objects."]
+        #[serde(rename = "isLive", default)]
+        pub is_live: Option<bool>,
+        #[doc = "Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object."]
+        #[serde(rename = "numNewerVersions", default)]
+        pub num_newer_versions: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for BucketLifecycleRuleItemsCondition {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BucketLifecycleRuleItems {
+        #[doc = "The action to take."]
+        #[serde(rename = "action", default)]
+        pub action: Option<crate::schemas::BucketLifecycleRuleItemsAction>,
+        #[doc = "The condition(s) under which the action will be taken."]
+        #[serde(rename = "condition", default)]
+        pub condition: Option<crate::schemas::BucketLifecycleRuleItemsCondition>,
+    }
+    impl ::field_selector::FieldSelector for BucketLifecycleRuleItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BucketLifecycle {
+        #[doc = "A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken."]
+        #[serde(rename = "rule", default)]
+        pub rule: Option<Vec<crate::schemas::BucketLifecycleRuleItems>>,
+    }
+    impl ::field_selector::FieldSelector for BucketLifecycle {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BucketLogging {
+        #[doc = "The destination bucket where the current bucket's logs should be placed."]
+        #[serde(rename = "logBucket", default)]
+        pub log_bucket: Option<String>,
+        #[doc = "A prefix for log object names."]
+        #[serde(rename = "logObjectPrefix", default)]
+        pub log_object_prefix: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for BucketLogging {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BucketOwner {
+        #[doc = "The entity, in the form group-groupId."]
+        #[serde(rename = "entity", default)]
+        pub entity: Option<String>,
+        #[doc = "The ID for the entity."]
+        #[serde(rename = "entityId", default)]
+        pub entity_id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for BucketOwner {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BucketVersioning {
+        #[doc = "While set to true, versioning is fully enabled for this bucket."]
+        #[serde(rename = "enabled", default)]
+        pub enabled: Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for BucketVersioning {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BucketWebsite {
+        #[doc = "Behaves as the bucket's directory index where missing objects are treated as potential directories."]
+        #[serde(rename = "mainPageSuffix", default)]
+        pub main_page_suffix: Option<String>,
+        #[doc = "The custom object to return when a requested resource is not found."]
+        #[serde(rename = "notFoundPage", default)]
+        pub not_found_page: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for BucketWebsite {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -79,8 +352,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -133,8 +406,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -163,281 +436,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BucketCorsItems {
-        #[doc = "The value, in seconds, to return in the  Access-Control-Max-Age header used in preflight responses."]
-        #[serde(rename = "maxAgeSeconds", default)]
-        pub max_age_seconds: Option<i32>,
-        #[doc = "The list of HTTP methods on which to include CORS response headers: GET, OPTIONS, POST, etc. Note, \"*\" is permitted in the list of methods, and means \"any method\"."]
-        #[serde(rename = "method", default)]
-        pub method: Option<Vec<String>>,
-        #[doc = "The list of Origins eligible to receive CORS response headers. Note: \"*\" is permitted in the list of origins, and means \"any Origin\"."]
-        #[serde(rename = "origin", default)]
-        pub origin: Option<Vec<String>>,
-        #[doc = "The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains."]
-        #[serde(rename = "responseHeader", default)]
-        pub response_header: Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for BucketCorsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BucketLifecycle {
-        #[doc = "A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken."]
-        #[serde(rename = "rule", default)]
-        pub rule: Option<Vec<crate::schemas::BucketLifecycleRuleItems>>,
-    }
-    impl ::field_selector::FieldSelector for BucketLifecycle {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BucketLifecycleRuleItems {
-        #[doc = "The action to take."]
-        #[serde(rename = "action", default)]
-        pub action: Option<crate::schemas::BucketLifecycleRuleItemsAction>,
-        #[doc = "The condition(s) under which the action will be taken."]
-        #[serde(rename = "condition", default)]
-        pub condition: Option<crate::schemas::BucketLifecycleRuleItemsCondition>,
-    }
-    impl ::field_selector::FieldSelector for BucketLifecycleRuleItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BucketLifecycleRuleItemsAction {
-        #[doc = "Type of the action. Currently only Delete is supported."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for BucketLifecycleRuleItemsAction {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BucketLifecycleRuleItemsCondition {
-        #[doc = "Age of an object (in days). This condition is satisfied when an object reaches the specified age."]
-        #[serde(rename = "age", default)]
-        pub age: Option<i32>,
-        #[doc = "A date in RFC 3339 format with only the date part, e.g. \"2013-01-15\". This condition is satisfied when an object is created before midnight of the specified date in UTC."]
-        #[serde(rename = "createdBefore", default)]
-        pub created_before: Option<::chrono::Date<chrono::offset::Utc>>,
-        #[doc = "Relevant only for versioned objects. If the value is true, this condition matches live objects; if the value is false, it matches archived objects."]
-        #[serde(rename = "isLive", default)]
-        pub is_live: Option<bool>,
-        #[doc = "Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object."]
-        #[serde(rename = "numNewerVersions", default)]
-        pub num_newer_versions: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for BucketLifecycleRuleItemsCondition {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BucketLogging {
-        #[doc = "The destination bucket where the current bucket's logs should be placed."]
-        #[serde(rename = "logBucket", default)]
-        pub log_bucket: Option<String>,
-        #[doc = "A prefix for log object names."]
-        #[serde(rename = "logObjectPrefix", default)]
-        pub log_object_prefix: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for BucketLogging {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BucketOwner {
-        #[doc = "The entity, in the form group-groupId."]
-        #[serde(rename = "entity", default)]
-        pub entity: Option<String>,
-        #[doc = "The ID for the entity."]
-        #[serde(rename = "entityId", default)]
-        pub entity_id: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for BucketOwner {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BucketVersioning {
-        #[doc = "While set to true, versioning is fully enabled for this bucket."]
-        #[serde(rename = "enabled", default)]
-        pub enabled: Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for BucketVersioning {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BucketWebsite {
-        #[doc = "Behaves as the bucket's directory index where missing objects are treated as potential directories."]
-        #[serde(rename = "mainPageSuffix", default)]
-        pub main_page_suffix: Option<String>,
-        #[doc = "The custom object to return when a requested resource is not found."]
-        #[serde(rename = "notFoundPage", default)]
-        pub not_found_page: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for BucketWebsite {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -469,8 +469,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -524,26 +524,21 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ComposeRequest {
-        #[doc = "Properties of the resulting object"]
-        #[serde(rename = "destination", default)]
-        pub destination: Option<crate::schemas::Object>,
-        #[doc = "The kind of item this is."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "The list of source objects that will be concatenated into a single object."]
-        #[serde(rename = "sourceObjects", default)]
-        pub source_objects: Option<Vec<crate::schemas::ComposeRequestSourceObjectsItems>>,
+    pub struct ComposeRequestSourceObjectsItemsObjectPreconditions {
+        #[doc = "Only perform the composition if the generation of the source object that would be used matches this value. If this value and a generation are both specified, they must be the same value or the call will fail."]
+        #[serde(rename = "ifGenerationMatch", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub if_generation_match: Option<i64>,
     }
-    impl ::field_selector::FieldSelector for ComposeRequest {
+    impl ::field_selector::FieldSelector for ComposeRequestSourceObjectsItemsObjectPreconditions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -557,8 +552,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -592,21 +587,26 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ComposeRequestSourceObjectsItemsObjectPreconditions {
-        #[doc = "Only perform the composition if the generation of the source object that would be used matches this value. If this value and a generation are both specified, they must be the same value or the call will fail."]
-        #[serde(rename = "ifGenerationMatch", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub if_generation_match: Option<i64>,
+    pub struct ComposeRequest {
+        #[doc = "Properties of the resulting object"]
+        #[serde(rename = "destination", default)]
+        pub destination: Option<crate::schemas::Object>,
+        #[doc = "The kind of item this is."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "The list of source objects that will be concatenated into a single object."]
+        #[serde(rename = "sourceObjects", default)]
+        pub source_objects: Option<Vec<crate::schemas::ComposeRequestSourceObjectsItems>>,
     }
-    impl ::field_selector::FieldSelector for ComposeRequestSourceObjectsItemsObjectPreconditions {
+    impl ::field_selector::FieldSelector for ComposeRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -620,8 +620,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ObjectOwner {
+        #[doc = "The entity, in the form user-userId."]
+        #[serde(rename = "entity", default)]
+        pub entity: Option<String>,
+        #[doc = "The ID for the entity."]
+        #[serde(rename = "entityId", default)]
+        pub entity_id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ObjectOwner {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -719,8 +749,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -776,9 +806,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ObjectAccessControls {
         #[doc = "The list of items."]
         #[serde(rename = "items", default)]
@@ -801,38 +829,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ObjectOwner {
-        #[doc = "The entity, in the form user-userId."]
-        #[serde(rename = "entity", default)]
-        pub entity: Option<String>,
-        #[doc = "The ID for the entity."]
-        #[serde(rename = "entityId", default)]
-        pub entity_id: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ObjectOwner {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -865,7 +863,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -1698,7 +1696,7 @@ pub mod bucket_access_controls {
 }
 pub mod buckets {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum GetProjection {
             #[doc = "Include all properties."]
             Full,
@@ -1744,7 +1742,7 @@ pub mod buckets {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum InsertProjection {
             #[doc = "Include all properties."]
             Full,
@@ -1790,7 +1788,7 @@ pub mod buckets {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListProjection {
             #[doc = "Include all properties."]
             Full,
@@ -1836,7 +1834,7 @@ pub mod buckets {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum PatchProjection {
             #[doc = "Include all properties."]
             Full,
@@ -1882,7 +1880,7 @@ pub mod buckets {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum UpdateProjection {
             #[doc = "Include all properties."]
             Full,
@@ -4480,7 +4478,7 @@ pub mod object_access_controls {
 }
 pub mod objects {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum CopyProjection {
             #[doc = "Include all properties."]
             Full,
@@ -4526,7 +4524,7 @@ pub mod objects {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum GetProjection {
             #[doc = "Include all properties."]
             Full,
@@ -4572,7 +4570,7 @@ pub mod objects {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum InsertProjection {
             #[doc = "Include all properties."]
             Full,
@@ -4618,7 +4616,7 @@ pub mod objects {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListProjection {
             #[doc = "Include all properties."]
             Full,
@@ -4664,7 +4662,7 @@ pub mod objects {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum PatchProjection {
             #[doc = "Include all properties."]
             Full,
@@ -4710,7 +4708,7 @@ pub mod objects {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum UpdateProjection {
             #[doc = "Include all properties."]
             Full,
@@ -4756,7 +4754,7 @@ pub mod objects {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum WatchAllProjection {
             #[doc = "Include all properties."]
             Full,

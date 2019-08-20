@@ -1,7 +1,5 @@
 pub mod schemas {
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Asset {
         #[doc = "Type of the asset. Example: \"google.compute.Disk\"."]
         #[serde(rename = "assetType", default)]
@@ -30,8 +28,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -56,40 +54,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AuditLogConfig {
-        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
-        #[serde(rename = "exemptedMembers", default)]
-        pub exempted_members: Option<Vec<String>>,
-        #[doc = "Specifies whether principals can be exempted for the same LogType in\nlower-level resource policies. If true, any lower-level exemptions will\nbe ignored."]
-        #[serde(rename = "ignoreChildExemptions", default)]
-        pub ignore_child_exemptions: Option<bool>,
-        #[doc = "The log type that this config enables."]
-        #[serde(rename = "logType", default)]
-        pub log_type: Option<crate::schemas::AuditLogConfigLogType>,
-    }
-    impl ::field_selector::FieldSelector for AuditLogConfig {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AuditLogConfigLogType {
         #[doc = "Default case. Should never be this."]
         LogTypeUnspecified,
@@ -144,8 +109,39 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
+    pub struct AuditLogConfig {
+        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
+        #[serde(rename = "exemptedMembers", default)]
+        pub exempted_members: Option<Vec<String>>,
+        #[doc = "Specifies whether principals can be exempted for the same LogType in\nlower-level resource policies. If true, any lower-level exemptions will\nbe ignored."]
+        #[serde(rename = "ignoreChildExemptions", default)]
+        pub ignore_child_exemptions: Option<bool>,
+        #[doc = "The log type that this config enables."]
+        #[serde(rename = "logType", default)]
+        pub log_type: Option<crate::schemas::AuditLogConfigLogType>,
+    }
+    impl ::field_selector::FieldSelector for AuditLogConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchGetAssetsHistoryResponse {
         #[doc = "A list of assets with valid time windows."]
         #[serde(rename = "assets", default)]
@@ -165,8 +161,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -194,43 +190,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ExportAssetsRequest {
-        #[doc = "A list of asset types of which to take a snapshot for. For example:\n\"google.compute.Disk\". If specified, only matching assets will be returned.\nSee [Introduction to Cloud Asset\nInventory](https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/overview)\nfor all supported asset types."]
-        #[serde(rename = "assetTypes", default)]
-        pub asset_types: Option<Vec<String>>,
-        #[doc = "Asset content type. If not specified, no content but the asset name will be\nreturned."]
-        #[serde(rename = "contentType", default)]
-        pub content_type: Option<crate::schemas::ExportAssetsRequestContentType>,
-        #[doc = "Required. Output configuration indicating where the results will be output\nto. All results will be in newline delimited JSON format."]
-        #[serde(rename = "outputConfig", default)]
-        pub output_config: Option<crate::schemas::OutputConfig>,
-        #[doc = "Timestamp to take an asset snapshot. This can only be set to a timestamp\nbetween 2018-10-02 UTC (inclusive) and the current time. If not specified,\nthe current time will be used. Due to delays in resource data collection\nand indexing, there is a volatile window during which running the same\nquery may get different results."]
-        #[serde(rename = "readTime", default)]
-        pub read_time: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ExportAssetsRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ExportAssetsRequestContentType {
         #[doc = "Unspecified content type."]
         ContentTypeUnspecified,
@@ -288,8 +248,44 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ExportAssetsRequest {
+        #[doc = "A list of asset types of which to take a snapshot for. For example:\n\"google.compute.Disk\". If specified, only matching assets will be returned.\nSee [Introduction to Cloud Asset\nInventory](https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/overview)\nfor all supported asset types."]
+        #[serde(rename = "assetTypes", default)]
+        pub asset_types: Option<Vec<String>>,
+        #[doc = "Asset content type. If not specified, no content but the asset name will be\nreturned."]
+        #[serde(rename = "contentType", default)]
+        pub content_type: Option<crate::schemas::ExportAssetsRequestContentType>,
+        #[doc = "Required. Output configuration indicating where the results will be output\nto. All results will be in newline delimited JSON format."]
+        #[serde(rename = "outputConfig", default)]
+        pub output_config: Option<crate::schemas::OutputConfig>,
+        #[doc = "Timestamp to take an asset snapshot. This can only be set to a timestamp\nbetween 2018-10-02 UTC (inclusive) and the current time. If not specified,\nthe current time will be used. Due to delays in resource data collection\nand indexing, there is a volatile window during which running the same\nquery may get different results."]
+        #[serde(rename = "readTime", default)]
+        pub read_time: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ExportAssetsRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -324,8 +320,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -350,9 +346,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
         #[serde(rename = "done", default)]
@@ -384,8 +378,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -411,8 +405,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -443,9 +437,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Resource {
         #[doc = "The content of the resource, in which some sensitive fields are scrubbed\naway and may not be present."]
         #[serde(rename = "data", default)]
@@ -476,9 +468,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
@@ -500,9 +490,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TemporalAsset {
         #[doc = "Asset."]
         #[serde(rename = "asset", default)]
@@ -528,8 +516,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -556,7 +544,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -606,7 +594,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,
@@ -1011,7 +999,7 @@ pub mod folders {
 }
 pub mod organizations {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum BatchGetAssetsHistoryContentType {}
         impl BatchGetAssetsHistoryContentType {
             pub fn as_str(self) -> &'static str {
@@ -1560,7 +1548,7 @@ pub mod organizations {
 }
 pub mod projects {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum BatchGetAssetsHistoryContentType {}
         impl BatchGetAssetsHistoryContentType {
             pub fn as_str(self) -> &'static str {

@@ -1,45 +1,5 @@
 pub mod schemas {
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDatastoreAdminV1Beta1CommonMetadata {
-        #[doc = "The time the operation ended, either successfully or otherwise."]
-        #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
-        #[doc = "The client-assigned labels which were provided when the operation was\ncreated. May also include additional labels."]
-        #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The type of the operation. Can be used as a filter in\nListOperationsRequest."]
-        #[serde(rename = "operationType", default)]
-        pub operation_type:
-            Option<crate::schemas::GoogleDatastoreAdminV1Beta1CommonMetadataOperationType>,
-        #[doc = "The time that work began on the operation."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
-        #[doc = "The current state of the Operation."]
-        #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::GoogleDatastoreAdminV1Beta1CommonMetadataState>,
-    }
-    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1Beta1CommonMetadata {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDatastoreAdminV1Beta1CommonMetadataOperationType {
         #[doc = "Unspecified."]
         OperationTypeUnspecified,
@@ -91,7 +51,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDatastoreAdminV1Beta1CommonMetadataState {
         #[doc = "Unspecified."]
         StateUnspecified,
@@ -169,8 +129,48 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleDatastoreAdminV1Beta1CommonMetadata {
+        #[doc = "The time the operation ended, either successfully or otherwise."]
+        #[serde(rename = "endTime", default)]
+        pub end_time: Option<String>,
+        #[doc = "The client-assigned labels which were provided when the operation was\ncreated. May also include additional labels."]
+        #[serde(rename = "labels", default)]
+        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The type of the operation. Can be used as a filter in\nListOperationsRequest."]
+        #[serde(rename = "operationType", default)]
+        pub operation_type:
+            Option<crate::schemas::GoogleDatastoreAdminV1Beta1CommonMetadataOperationType>,
+        #[doc = "The time that work began on the operation."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: Option<String>,
+        #[doc = "The current state of the Operation."]
+        #[serde(rename = "state", default)]
+        pub state: Option<crate::schemas::GoogleDatastoreAdminV1Beta1CommonMetadataState>,
+    }
+    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1Beta1CommonMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -199,8 +199,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -238,8 +238,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -271,8 +271,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -298,8 +298,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -337,8 +337,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -370,8 +370,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -398,47 +398,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDatastoreAdminV1CommonMetadata {
-        #[doc = "The time the operation ended, either successfully or otherwise."]
-        #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
-        #[doc = "The client-assigned labels which were provided when the operation was\ncreated. May also include additional labels."]
-        #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The type of the operation. Can be used as a filter in\nListOperationsRequest."]
-        #[serde(rename = "operationType", default)]
-        pub operation_type:
-            Option<crate::schemas::GoogleDatastoreAdminV1CommonMetadataOperationType>,
-        #[doc = "The time that work began on the operation."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
-        #[doc = "The current state of the Operation."]
-        #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::GoogleDatastoreAdminV1CommonMetadataState>,
-    }
-    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1CommonMetadata {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDatastoreAdminV1CommonMetadataOperationType {
         #[doc = "Unspecified."]
         OperationTypeUnspecified,
@@ -508,7 +468,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDatastoreAdminV1CommonMetadataState {
         #[doc = "Unspecified."]
         StateUnspecified,
@@ -582,8 +542,48 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleDatastoreAdminV1CommonMetadata {
+        #[doc = "The time the operation ended, either successfully or otherwise."]
+        #[serde(rename = "endTime", default)]
+        pub end_time: Option<String>,
+        #[doc = "The client-assigned labels which were provided when the operation was\ncreated. May also include additional labels."]
+        #[serde(rename = "labels", default)]
+        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The type of the operation. Can be used as a filter in\nListOperationsRequest."]
+        #[serde(rename = "operationType", default)]
+        pub operation_type:
+            Option<crate::schemas::GoogleDatastoreAdminV1CommonMetadataOperationType>,
+        #[doc = "The time that work began on the operation."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: Option<String>,
+        #[doc = "The current state of the Operation."]
+        #[serde(rename = "state", default)]
+        pub state: Option<crate::schemas::GoogleDatastoreAdminV1CommonMetadataState>,
+    }
+    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1CommonMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -612,8 +612,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -651,8 +651,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -678,8 +678,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -717,8 +717,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -750,8 +750,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -778,9 +778,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleLongrunningOperation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
         #[serde(rename = "done", default)]
@@ -808,9 +806,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
@@ -834,7 +830,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -884,7 +880,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,

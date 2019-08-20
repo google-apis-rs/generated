@@ -3,8 +3,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -54,8 +54,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -105,8 +105,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -151,8 +151,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -214,8 +214,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -247,8 +247,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -280,8 +280,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -353,8 +353,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -387,8 +387,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -424,8 +424,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -457,8 +457,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -497,8 +497,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -556,8 +556,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -592,8 +592,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -628,8 +628,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -655,8 +655,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -752,8 +752,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -810,8 +810,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -837,8 +837,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -867,8 +867,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -894,8 +894,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1016,8 +1016,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1081,8 +1081,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1118,8 +1118,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1177,8 +1177,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1216,8 +1216,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1263,8 +1263,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1305,8 +1305,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1374,8 +1374,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1410,8 +1410,44 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SetAccountInfoResponseProviderUserInfoItems {
+        #[doc = "The user's display name at the IDP."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: Option<String>,
+        #[doc = "User's identifier at IDP."]
+        #[serde(rename = "federatedId", default)]
+        pub federated_id: Option<String>,
+        #[doc = "The user's photo url at the IDP."]
+        #[serde(rename = "photoUrl", default)]
+        pub photo_url: Option<String>,
+        #[doc = "The IdP ID. For whitelisted IdPs it's a short domain name, e.g., google.com, aol.com, live.net and yahoo.com. For other OpenID IdPs it's the OP identifier."]
+        #[serde(rename = "providerId", default)]
+        pub provider_id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for SetAccountInfoResponseProviderUserInfoItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1472,44 +1508,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SetAccountInfoResponseProviderUserInfoItems {
-        #[doc = "The user's display name at the IDP."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
-        #[doc = "User's identifier at IDP."]
-        #[serde(rename = "federatedId", default)]
-        pub federated_id: Option<String>,
-        #[doc = "The user's photo url at the IDP."]
-        #[serde(rename = "photoUrl", default)]
-        pub photo_url: Option<String>,
-        #[doc = "The IdP ID. For whitelisted IdPs it's a short domain name, e.g., google.com, aol.com, live.net and yahoo.com. For other OpenID IdPs it's the OP identifier."]
-        #[serde(rename = "providerId", default)]
-        pub provider_id: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for SetAccountInfoResponseProviderUserInfoItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -1554,8 +1554,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UploadAccountResponseErrorItems {
+        #[doc = "The index of the malformed account, starting from 0."]
+        #[serde(rename = "index", default)]
+        pub index: Option<i32>,
+        #[doc = "Detailed error message for the account info."]
+        #[serde(rename = "message", default)]
+        pub message: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UploadAccountResponseErrorItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1584,23 +1614,41 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct UploadAccountResponseErrorItems {
-        #[doc = "The index of the malformed account, starting from 0."]
-        #[serde(rename = "index", default)]
-        pub index: Option<i32>,
-        #[doc = "Detailed error message for the account info."]
-        #[serde(rename = "message", default)]
-        pub message: Option<String>,
+    pub struct UserInfoProviderUserInfoItems {
+        #[doc = "The user's display name at the IDP."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: Option<String>,
+        #[doc = "User's email at IDP."]
+        #[serde(rename = "email", default)]
+        pub email: Option<String>,
+        #[doc = "User's identifier at IDP."]
+        #[serde(rename = "federatedId", default)]
+        pub federated_id: Option<String>,
+        #[doc = "User's phone number."]
+        #[serde(rename = "phoneNumber", default)]
+        pub phone_number: Option<String>,
+        #[doc = "The user's photo url at the IDP."]
+        #[serde(rename = "photoUrl", default)]
+        pub photo_url: Option<String>,
+        #[doc = "The IdP ID. For white listed IdPs it's a short domain name, e.g., google.com, aol.com, live.net and yahoo.com. For other OpenID IdPs it's the OP identifier."]
+        #[serde(rename = "providerId", default)]
+        pub provider_id: Option<String>,
+        #[doc = "User's raw identifier directly returned from IDP."]
+        #[serde(rename = "rawId", default)]
+        pub raw_id: Option<String>,
+        #[doc = "User's screen name at Twitter or login name at Github."]
+        #[serde(rename = "screenName", default)]
+        pub screen_name: Option<String>,
     }
-    impl ::field_selector::FieldSelector for UploadAccountResponseErrorItems {
+    impl ::field_selector::FieldSelector for UserInfoProviderUserInfoItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1689,56 +1737,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UserInfoProviderUserInfoItems {
-        #[doc = "The user's display name at the IDP."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
-        #[doc = "User's email at IDP."]
-        #[serde(rename = "email", default)]
-        pub email: Option<String>,
-        #[doc = "User's identifier at IDP."]
-        #[serde(rename = "federatedId", default)]
-        pub federated_id: Option<String>,
-        #[doc = "User's phone number."]
-        #[serde(rename = "phoneNumber", default)]
-        pub phone_number: Option<String>,
-        #[doc = "The user's photo url at the IDP."]
-        #[serde(rename = "photoUrl", default)]
-        pub photo_url: Option<String>,
-        #[doc = "The IdP ID. For white listed IdPs it's a short domain name, e.g., google.com, aol.com, live.net and yahoo.com. For other OpenID IdPs it's the OP identifier."]
-        #[serde(rename = "providerId", default)]
-        pub provider_id: Option<String>,
-        #[doc = "User's raw identifier directly returned from IDP."]
-        #[serde(rename = "rawId", default)]
-        pub raw_id: Option<String>,
-        #[doc = "User's screen name at Twitter or login name at Github."]
-        #[serde(rename = "screenName", default)]
-        pub screen_name: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for UserInfoProviderUserInfoItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -1879,8 +1879,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1919,8 +1919,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1978,7 +1978,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -3181,8 +3181,10 @@ pub mod relyingparty {
         }
         pub fn execute_debug(
             self,
-        ) -> Result<::std::collections::BTreeMap<String, String>, Box<dyn ::std::error::Error>>
-        {
+        ) -> Result<
+            crate::schemas::IdentitytoolkitRelyingpartyGetPublicKeysResponse,
+            Box<dyn ::std::error::Error>,
+        > {
             self.execute()
         }
         fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>

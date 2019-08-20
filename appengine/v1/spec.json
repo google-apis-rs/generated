@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20190729",
+  "revision": "20190815",
   "title": "App Engine Admin API",
   "description": "Provisions and manages developers' App Engine applications.",
   "ownerDomain": "google.com",

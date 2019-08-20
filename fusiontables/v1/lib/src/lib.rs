@@ -36,8 +36,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ColumnBaseColumn {
+        #[doc = "The id of the column in the base table from which this column is derived."]
+        #[serde(rename = "columnId", default)]
+        pub column_id: Option<i32>,
+        #[doc = "Offset to the entry in the list of base tables in the table definition."]
+        #[serde(rename = "tableIndex", default)]
+        pub table_index: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for ColumnBaseColumn {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -81,38 +111,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ColumnBaseColumn {
-        #[doc = "The id of the column in the base table from which this column is derived."]
-        #[serde(rename = "columnId", default)]
-        pub column_id: Option<i32>,
-        #[doc = "Offset to the entry in the list of base tables in the table definition."]
-        #[serde(rename = "tableIndex", default)]
-        pub table_index: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for ColumnBaseColumn {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -143,9 +143,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Geometry {
         #[doc = "The list of geometries in this geometry collection."]
         #[serde(rename = "geometries", default)]
@@ -170,8 +168,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -350,9 +348,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Sqlresponse {
         #[doc = "Columns in the table."]
         #[serde(rename = "columns", default)]
@@ -377,21 +373,15 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct StyleFunction {
-        #[doc = "Bucket function that assigns a style based on the range a column value falls into."]
-        #[serde(rename = "buckets", default)]
-        pub buckets: Option<Vec<crate::schemas::Bucket>>,
-        #[doc = "Name of the column whose value is used in the style."]
-        #[serde(rename = "columnName", default)]
-        pub column_name: Option<String>,
-        #[doc = "Gradient function that interpolates a range of colors based on column value."]
-        #[serde(rename = "gradient", default)]
-        pub gradient: Option<crate::schemas::StyleFunctionGradient>,
-        #[doc = "Stylers can be one of three kinds: \"fusiontables#fromColumn\" if the column value is to be used as is, i.e., the column values can have colors in #RRGGBBAA format or integer line widths or icon names; \"fusiontables#gradient\" if the styling of the row is to be based on applying the gradient function on the column value; or \"fusiontables#buckets\" if the styling is to based on the bucket into which the the column value falls."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+    pub struct StyleFunctionGradientColorsItems {
+        #[doc = "Color in #RRGGBB format."]
+        #[serde(rename = "color", default)]
+        pub color: Option<String>,
+        #[doc = "Opacity of the color: 0.0 (transparent) to 1.0 (opaque)."]
+        #[serde(rename = "opacity", default)]
+        pub opacity: Option<f64>,
     }
-    impl ::field_selector::FieldSelector for StyleFunction {
+    impl ::field_selector::FieldSelector for StyleFunctionGradientColorsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -428,15 +418,21 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct StyleFunctionGradientColorsItems {
-        #[doc = "Color in #RRGGBB format."]
-        #[serde(rename = "color", default)]
-        pub color: Option<String>,
-        #[doc = "Opacity of the color: 0.0 (transparent) to 1.0 (opaque)."]
-        #[serde(rename = "opacity", default)]
-        pub opacity: Option<f64>,
+    pub struct StyleFunction {
+        #[doc = "Bucket function that assigns a style based on the range a column value falls into."]
+        #[serde(rename = "buckets", default)]
+        pub buckets: Option<Vec<crate::schemas::Bucket>>,
+        #[doc = "Name of the column whose value is used in the style."]
+        #[serde(rename = "columnName", default)]
+        pub column_name: Option<String>,
+        #[doc = "Gradient function that interpolates a range of colors based on column value."]
+        #[serde(rename = "gradient", default)]
+        pub gradient: Option<crate::schemas::StyleFunctionGradient>,
+        #[doc = "Stylers can be one of three kinds: \"fusiontables#fromColumn\" if the column value is to be used as is, i.e., the column values can have colors in #RRGGBBAA format or integer line widths or icon names; \"fusiontables#gradient\" if the styling of the row is to be based on applying the gradient function on the column value; or \"fusiontables#buckets\" if the styling is to based on the bucket into which the the column value falls."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
     }
-    impl ::field_selector::FieldSelector for StyleFunctionGradientColorsItems {
+    impl ::field_selector::FieldSelector for StyleFunction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -513,8 +509,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -567,8 +563,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -600,8 +596,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -640,8 +636,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -676,8 +672,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -718,8 +714,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -752,7 +748,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of text/csv"]
         Csv,

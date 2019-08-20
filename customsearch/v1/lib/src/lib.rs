@@ -3,36 +3,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Context {
-        #[serde(rename = "facets", default)]
-        pub facets: Option<Vec<Vec<crate::schemas::ContextFacetsItemsItems>>>,
-        #[serde(rename = "title", default)]
-        pub title: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Context {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -61,8 +33,98 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Context {
+        #[serde(rename = "facets", default)]
+        pub facets: Option<Vec<Vec<crate::schemas::ContextFacetsItemsItems>>>,
+        #[serde(rename = "title", default)]
+        pub title: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Context {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PromotionBodyLinesItems {
+        #[serde(rename = "htmlTitle", default)]
+        pub html_title: Option<String>,
+        #[serde(rename = "link", default)]
+        pub link: Option<String>,
+        #[serde(rename = "title", default)]
+        pub title: Option<String>,
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PromotionBodyLinesItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PromotionImage {
+        #[serde(rename = "height", default)]
+        pub height: Option<i32>,
+        #[serde(rename = "source", default)]
+        pub source: Option<String>,
+        #[serde(rename = "width", default)]
+        pub width: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for PromotionImage {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -97,70 +159,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PromotionBodyLinesItems {
-        #[serde(rename = "htmlTitle", default)]
-        pub html_title: Option<String>,
-        #[serde(rename = "link", default)]
-        pub link: Option<String>,
-        #[serde(rename = "title", default)]
-        pub title: Option<String>,
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PromotionBodyLinesItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PromotionImage {
-        #[serde(rename = "height", default)]
-        pub height: Option<i32>,
-        #[serde(rename = "source", default)]
-        pub source: Option<String>,
-        #[serde(rename = "width", default)]
-        pub width: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for PromotionImage {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -253,8 +253,74 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
+    pub struct ResultImage {
+        #[serde(rename = "byteSize", default)]
+        pub byte_size: Option<i32>,
+        #[serde(rename = "contextLink", default)]
+        pub context_link: Option<String>,
+        #[serde(rename = "height", default)]
+        pub height: Option<i32>,
+        #[serde(rename = "thumbnailHeight", default)]
+        pub thumbnail_height: Option<i32>,
+        #[serde(rename = "thumbnailLink", default)]
+        pub thumbnail_link: Option<String>,
+        #[serde(rename = "thumbnailWidth", default)]
+        pub thumbnail_width: Option<i32>,
+        #[serde(rename = "width", default)]
+        pub width: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for ResultImage {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ResultLabelsItems {
+        #[serde(rename = "displayName", default)]
+        pub display_name: Option<String>,
+        #[serde(rename = "label_with_op", default)]
+        pub label_with_op: Option<String>,
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ResultLabelsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Result {
         #[serde(rename = "cacheId", default)]
         pub cache_id: Option<String>,
@@ -303,76 +369,86 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ResultImage {
-        #[serde(rename = "byteSize", default)]
-        pub byte_size: Option<i32>,
-        #[serde(rename = "contextLink", default)]
-        pub context_link: Option<String>,
-        #[serde(rename = "height", default)]
-        pub height: Option<i32>,
-        #[serde(rename = "thumbnailHeight", default)]
-        pub thumbnail_height: Option<i32>,
-        #[serde(rename = "thumbnailLink", default)]
-        pub thumbnail_link: Option<String>,
-        #[serde(rename = "thumbnailWidth", default)]
-        pub thumbnail_width: Option<i32>,
-        #[serde(rename = "width", default)]
-        pub width: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for ResultImage {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ResultLabelsItems {
-        #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
-        #[serde(rename = "label_with_op", default)]
-        pub label_with_op: Option<String>,
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ResultLabelsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct SearchSearchInformation {
+        #[serde(rename = "formattedSearchTime", default)]
+        pub formatted_search_time: Option<String>,
+        #[serde(rename = "formattedTotalResults", default)]
+        pub formatted_total_results: Option<String>,
+        #[serde(rename = "searchTime", default)]
+        pub search_time: Option<f64>,
+        #[serde(rename = "totalResults", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub total_results: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for SearchSearchInformation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SearchSpelling {
+        #[serde(rename = "correctedQuery", default)]
+        pub corrected_query: Option<String>,
+        #[serde(rename = "htmlCorrectedQuery", default)]
+        pub html_corrected_query: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for SearchSpelling {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SearchUrl {
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+        #[serde(rename = "template", default)]
+        pub template: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for SearchUrl {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Search {
         #[serde(rename = "context", default)]
         pub context: Option<crate::schemas::Context>,
@@ -401,89 +477,9 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct SearchSearchInformation {
-        #[serde(rename = "formattedSearchTime", default)]
-        pub formatted_search_time: Option<String>,
-        #[serde(rename = "formattedTotalResults", default)]
-        pub formatted_total_results: Option<String>,
-        #[serde(rename = "searchTime", default)]
-        pub search_time: Option<f64>,
-        #[serde(rename = "totalResults", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub total_results: Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for SearchSearchInformation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SearchSpelling {
-        #[serde(rename = "correctedQuery", default)]
-        pub corrected_query: Option<String>,
-        #[serde(rename = "htmlCorrectedQuery", default)]
-        pub html_corrected_query: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for SearchSpelling {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SearchUrl {
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-        #[serde(rename = "template", default)]
-        pub template: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for SearchUrl {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -547,7 +543,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
 }
 pub mod cse {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListFilter {
             #[doc = "Turns off duplicate content filter."]
             _0,
@@ -593,7 +589,7 @@ pub mod cse {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListImgColorType {
             #[doc = "color"]
             Color,
@@ -643,7 +639,7 @@ pub mod cse {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListImgDominantColor {
             #[doc = "black"]
             Black,
@@ -729,7 +725,7 @@ pub mod cse {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListImgSize {
             #[doc = "huge"]
             Huge,
@@ -795,7 +791,7 @@ pub mod cse {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListImgType {
             #[doc = "clipart"]
             Clipart,
@@ -853,7 +849,7 @@ pub mod cse {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListLr {
             #[doc = "Arabic"]
             LangAr,
@@ -1031,7 +1027,7 @@ pub mod cse {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSafe {
             #[doc = "Enables safe search filtering."]
             Active,
@@ -1085,7 +1081,7 @@ pub mod cse {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSearchType {
             #[doc = "custom image search"]
             Image,
@@ -1127,7 +1123,7 @@ pub mod cse {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSiteSearchFilter {
             #[doc = "exclude"]
             E,
@@ -1538,7 +1534,7 @@ pub mod cse {
     }
     pub mod siterestrict {
         pub mod params {
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListFilter {
                 #[doc = "Turns off duplicate content filter."]
                 _0,
@@ -1584,7 +1580,7 @@ pub mod cse {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListImgColorType {
                 #[doc = "color"]
                 Color,
@@ -1634,7 +1630,7 @@ pub mod cse {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListImgDominantColor {
                 #[doc = "black"]
                 Black,
@@ -1720,7 +1716,7 @@ pub mod cse {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListImgSize {
                 #[doc = "huge"]
                 Huge,
@@ -1786,7 +1782,7 @@ pub mod cse {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListImgType {
                 #[doc = "clipart"]
                 Clipart,
@@ -1844,7 +1840,7 @@ pub mod cse {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListLr {
                 #[doc = "Arabic"]
                 LangAr,
@@ -2022,7 +2018,7 @@ pub mod cse {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListSafe {
                 #[doc = "Enables highest level of safe search filtering."]
                 High,
@@ -2072,7 +2068,7 @@ pub mod cse {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListSearchType {
                 #[doc = "custom image search"]
                 Image,
@@ -2114,7 +2110,7 @@ pub mod cse {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListSiteSearchFilter {
                 #[doc = "exclude"]
                 E,

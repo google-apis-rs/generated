@@ -3,8 +3,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -39,8 +39,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -97,8 +97,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -140,8 +140,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -170,8 +170,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -201,8 +201,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -234,8 +234,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -260,43 +260,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BuildBazelRemoteExecutionV2ExecuteOperationMetadata {
-        #[doc = "The digest of the Action\nbeing executed."]
-        #[serde(rename = "actionDigest", default)]
-        pub action_digest: Option<crate::schemas::BuildBazelRemoteExecutionV2Digest>,
-        #[doc = "The current stage of execution."]
-        #[serde(rename = "stage", default)]
-        pub stage: Option<crate::schemas::BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage>,
-        #[doc = "If set, the client can use this name with\nByteStream.Read to stream the\nstandard error."]
-        #[serde(rename = "stderrStreamName", default)]
-        pub stderr_stream_name: Option<String>,
-        #[doc = "If set, the client can use this name with\nByteStream.Read to stream the\nstandard output."]
-        #[serde(rename = "stdoutStreamName", default)]
-        pub stdout_stream_name: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for BuildBazelRemoteExecutionV2ExecuteOperationMetadata {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage {
         #[doc = "Invalid value."]
         Unknown,
@@ -359,8 +323,42 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
+    pub struct BuildBazelRemoteExecutionV2ExecuteOperationMetadata {
+        #[doc = "The digest of the Action\nbeing executed."]
+        #[serde(rename = "actionDigest", default)]
+        pub action_digest: Option<crate::schemas::BuildBazelRemoteExecutionV2Digest>,
+        #[doc = "The current stage of execution."]
+        #[serde(rename = "stage", default)]
+        pub stage: Option<crate::schemas::BuildBazelRemoteExecutionV2ExecuteOperationMetadataStage>,
+        #[doc = "If set, the client can use this name with\nByteStream.Read to stream the\nstandard error."]
+        #[serde(rename = "stderrStreamName", default)]
+        pub stderr_stream_name: Option<String>,
+        #[doc = "If set, the client can use this name with\nByteStream.Read to stream the\nstandard output."]
+        #[serde(rename = "stdoutStreamName", default)]
+        pub stdout_stream_name: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for BuildBazelRemoteExecutionV2ExecuteOperationMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BuildBazelRemoteExecutionV2ExecuteResponse {
         #[doc = "True if the result was served from cache, false if it was executed."]
         #[serde(rename = "cachedResult", default)]
@@ -397,8 +395,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -451,8 +449,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -484,8 +482,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -514,8 +512,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -544,8 +542,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -580,8 +578,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -610,8 +608,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -637,8 +635,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -667,8 +665,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -703,8 +701,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -733,8 +731,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -763,8 +761,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -793,8 +791,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -863,37 +861,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemotebuildbotCommandStatus {
-        #[doc = "The status code."]
-        #[serde(rename = "code", default)]
-        pub code: Option<crate::schemas::GoogleDevtoolsRemotebuildbotCommandStatusCode>,
-        #[doc = "The error message."]
-        #[serde(rename = "message", default)]
-        pub message: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoogleDevtoolsRemotebuildbotCommandStatus {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDevtoolsRemotebuildbotCommandStatusCode {
         #[doc = "The command succeeded."]
         Ok,
@@ -1071,8 +1039,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleDevtoolsRemotebuildbotCommandStatus {
+        #[doc = "The status code."]
+        #[serde(rename = "code", default)]
+        pub code: Option<crate::schemas::GoogleDevtoolsRemotebuildbotCommandStatusCode>,
+        #[doc = "The error message."]
+        #[serde(rename = "message", default)]
+        pub message: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleDevtoolsRemotebuildbotCommandStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1104,8 +1102,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1140,8 +1138,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1176,8 +1174,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1205,8 +1203,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1234,8 +1232,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1263,8 +1261,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1288,44 +1286,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstance {
-        #[doc = "The location is a GCP region. Currently only `us-central1` is supported."]
-        #[serde(rename = "location", default)]
-        pub location: Option<String>,
-        #[doc = "Output only. Whether stack driver logging is enabled for the instance."]
-        #[serde(rename = "loggingEnabled", default)]
-        pub logging_enabled: Option<bool>,
-        #[doc = "Output only. Instance resource name formatted as:\n`projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.\nName should not be populated when creating an instance since it is provided\nin the `instance_id` field."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "Output only. State of the instance."]
-        #[serde(rename = "state", default)]
-        pub state:
-            Option<crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState>,
-    }
-    impl ::field_selector::FieldSelector for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstance {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState {
         #[doc = "Not a valid state, but the default value of the enum."]
         StateUnspecified,
@@ -1389,8 +1350,45 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstance {
+        #[doc = "The location is a GCP region. Currently only `us-central1` is supported."]
+        #[serde(rename = "location", default)]
+        pub location: Option<String>,
+        #[doc = "Output only. Whether stack driver logging is enabled for the instance."]
+        #[serde(rename = "loggingEnabled", default)]
+        pub logging_enabled: Option<bool>,
+        #[doc = "Output only. Instance resource name formatted as:\n`projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.\nName should not be populated when creating an instance since it is provided\nin the `instance_id` field."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "Output only. State of the instance."]
+        #[serde(rename = "state", default)]
+        pub state:
+            Option<crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstanceState>,
+    }
+    impl ::field_selector::FieldSelector for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstance {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1418,8 +1416,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1448,8 +1446,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1480,8 +1478,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1510,8 +1508,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1543,8 +1541,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1588,46 +1586,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPool {
-        #[doc = "WorkerPool resource name formatted as:\n`projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.\nname should not be populated when creating a worker pool since it is\nprovided in the `poolId` field."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "Output only. State of the worker pool."]
-        #[serde(rename = "state", default)]
-        pub state:
-            Option<crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState>,
-        #[doc = "Specifies the properties, such as machine type and disk size, used for\ncreating workers in a worker pool."]
-        #[serde(rename = "workerConfig", default)]
-        pub worker_config:
-            Option<crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerConfig>,
-        #[doc = "The desired number of workers in the worker pool. Must be a value between\n0 and 1000."]
-        #[serde(rename = "workerCount", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub worker_count: Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPool {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState {
         #[doc = "Not a valid state, but the default value of the enum."]
         StateUnspecified,
@@ -1715,8 +1674,47 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPool {
+        #[doc = "WorkerPool resource name formatted as:\n`projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.\nname should not be populated when creating a worker pool since it is\nprovided in the `poolId` field."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "Output only. State of the worker pool."]
+        #[serde(rename = "state", default)]
+        pub state:
+            Option<crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState>,
+        #[doc = "Specifies the properties, such as machine type and disk size, used for\ncreating workers in a worker pool."]
+        #[serde(rename = "workerConfig", default)]
+        pub worker_config:
+            Option<crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerConfig>,
+        #[doc = "The desired number of workers in the worker pool. Must be a value between\n0 and 1000."]
+        #[serde(rename = "workerCount", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub worker_count: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPool {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1762,8 +1760,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1794,8 +1792,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1826,8 +1824,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1857,8 +1855,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1888,8 +1886,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1914,46 +1912,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadata {
-        #[doc = "The digest of the Action\nbeing executed."]
-        #[serde(rename = "actionDigest", default)]
-        pub action_digest: Option<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestDigest>,
-        #[serde(rename = "stage", default)]
-        pub stage: Option<
-            crate::schemas::GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage,
-        >,
-        #[doc = "If set, the client can use this name with\nByteStream.Read to stream the\nstandard error."]
-        #[serde(rename = "stderrStreamName", default)]
-        pub stderr_stream_name: Option<String>,
-        #[doc = "If set, the client can use this name with\nByteStream.Read to stream the\nstandard output."]
-        #[serde(rename = "stdoutStreamName", default)]
-        pub stdout_stream_name: Option<String>,
-    }
-    impl ::field_selector::FieldSelector
-        for GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadata
-    {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage {
         Unknown,
         #[doc = "Checking the result against the cache."]
@@ -2033,8 +1992,45 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
+    pub struct GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadata {
+        #[doc = "The digest of the Action\nbeing executed."]
+        #[serde(rename = "actionDigest", default)]
+        pub action_digest: Option<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestDigest>,
+        #[serde(rename = "stage", default)]
+        pub stage: Option<
+            crate::schemas::GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage,
+        >,
+        #[doc = "If set, the client can use this name with\nByteStream.Read to stream the\nstandard error."]
+        #[serde(rename = "stderrStreamName", default)]
+        pub stderr_stream_name: Option<String>,
+        #[doc = "If set, the client can use this name with\nByteStream.Read to stream the\nstandard output."]
+        #[serde(rename = "stdoutStreamName", default)]
+        pub stdout_stream_name: Option<String>,
+    }
+    impl ::field_selector::FieldSelector
+        for GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadata
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleDevtoolsRemoteexecutionV1TestExecuteResponse {
         #[doc = "True if the result was served from cache, false if it was executed."]
         #[serde(rename = "cachedResult", default)]
@@ -2068,8 +2064,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2101,8 +2097,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2131,8 +2127,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2164,8 +2160,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2200,8 +2196,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2236,8 +2232,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2266,8 +2262,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2292,37 +2288,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemoteworkersV1Test2AdminTemp {
-        #[doc = "The argument to the admin action; see `Command` for semantics."]
-        #[serde(rename = "arg", default)]
-        pub arg: Option<String>,
-        #[doc = "The admin action; see `Command` for legal values."]
-        #[serde(rename = "command", default)]
-        pub command: Option<crate::schemas::GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand>,
-    }
-    impl ::field_selector::FieldSelector for GoogleDevtoolsRemoteworkersV1Test2AdminTemp {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand {
         #[doc = "Illegal value."]
         Unspecified,
@@ -2384,8 +2350,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleDevtoolsRemoteworkersV1Test2AdminTemp {
+        #[doc = "The argument to the admin action; see `Command` for semantics."]
+        #[serde(rename = "arg", default)]
+        pub arg: Option<String>,
+        #[doc = "The admin action; see `Command` for legal values."]
+        #[serde(rename = "command", default)]
+        pub command: Option<crate::schemas::GoogleDevtoolsRemoteworkersV1Test2AdminTempCommand>,
+    }
+    impl ::field_selector::FieldSelector for GoogleDevtoolsRemoteworkersV1Test2AdminTemp {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2414,8 +2410,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2444,8 +2440,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2470,9 +2466,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleDevtoolsRemoteworkersV1Test2CommandResult {
         #[doc = "The elapsed time between calling Accept and Complete. The server will also\nhave its own idea of what this should be, but this excludes the overhead of\nthe RPCs and the bot response time."]
         #[serde(rename = "duration", default)]
@@ -2507,8 +2501,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2541,8 +2535,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2564,8 +2558,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2596,8 +2590,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2632,8 +2626,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2665,8 +2659,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2696,8 +2690,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2727,8 +2721,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2757,8 +2751,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2789,9 +2783,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleLongrunningOperation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
         #[serde(rename = "done", default)]
@@ -2819,9 +2811,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleRpcStatus {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
@@ -2845,7 +2835,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -2895,7 +2885,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,

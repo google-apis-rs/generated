@@ -3,8 +3,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -200,8 +200,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -248,8 +248,37 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
+    pub struct ReportFilesItems {
+        #[doc = "The size of this report file in bytes."]
+        #[serde(rename = "byteCount", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub byte_count: Option<i64>,
+        #[doc = "Use this url to download the report file."]
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ReportFilesItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Report {
         #[doc = "Asynchronous report only. Contains a list of generated report files once the report has succesfully completed."]
         #[serde(rename = "files", default)]
@@ -271,7 +300,7 @@ pub mod schemas {
         pub row_count: Option<i32>,
         #[doc = "Synchronous report only. Generated report rows."]
         #[serde(rename = "rows", default)]
-        pub rows: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub rows: Option<Vec<crate::schemas::ReportRow>>,
         #[doc = "The currency code of all monetary values produced in the report, including values that are set by users (e.g., keyword bid settings) and metrics (e.g., cost and revenue). The currency code of a report is determined by the statisticsCurrency field of the report request."]
         #[serde(rename = "statisticsCurrencyCode", default)]
         pub statistics_currency_code: Option<String>,
@@ -293,8 +322,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -343,28 +372,19 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReportFilesItems {
-        #[doc = "The size of this report file in bytes."]
-        #[serde(rename = "byteCount", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub byte_count: Option<i64>,
-        #[doc = "Use this url to download the report file."]
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct ReportRequestFiltersItems {
+        #[doc = "Column to perform the filter on. This can be a DoubleClick Search column or a saved column."]
+        #[serde(rename = "column", default)]
+        pub column: Option<crate::schemas::ReportApiColumnSpec>,
+        #[doc = "Operator to use in the filter. See the filter reference for a list of available operators."]
+        #[serde(rename = "operator", default)]
+        pub operator: Option<String>,
+        #[doc = "A list of values to filter the column value against.\nThe maximum number of filter values per request is 300."]
+        #[serde(rename = "values", default)]
+        pub values: Option<Vec<::serde_json::Value>>,
     }
-    impl ::field_selector::FieldSelector for ReportFilesItems {
+    impl ::field_selector::FieldSelector for ReportRequestFiltersItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -375,8 +395,124 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
+    pub struct ReportRequestOrderByItems {
+        #[doc = "Column to perform the sort on. This can be a DoubleClick Search-defined column or a saved column."]
+        #[serde(rename = "column", default)]
+        pub column: Option<crate::schemas::ReportApiColumnSpec>,
+        #[doc = "The sort direction, which is either ascending or descending."]
+        #[serde(rename = "sortOrder", default)]
+        pub sort_order: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ReportRequestOrderByItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReportRequestReportScope {
+        #[doc = "DS ad group ID."]
+        #[serde(rename = "adGroupId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub ad_group_id: Option<i64>,
+        #[doc = "DS ad ID."]
+        #[serde(rename = "adId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub ad_id: Option<i64>,
+        #[doc = "DS advertiser ID."]
+        #[serde(rename = "advertiserId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub advertiser_id: Option<i64>,
+        #[doc = "DS agency ID."]
+        #[serde(rename = "agencyId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub agency_id: Option<i64>,
+        #[doc = "DS campaign ID."]
+        #[serde(rename = "campaignId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub campaign_id: Option<i64>,
+        #[doc = "DS engine account ID."]
+        #[serde(rename = "engineAccountId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub engine_account_id: Option<i64>,
+        #[doc = "DS keyword ID."]
+        #[serde(rename = "keywordId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub keyword_id: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for ReportRequestReportScope {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReportRequestTimeRange {
+        #[doc = "Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See additional references on how changed attribute reports work."]
+        #[serde(rename = "changedAttributesSinceTimestamp", default)]
+        pub changed_attributes_since_timestamp: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See additional references on how changed metrics reports work."]
+        #[serde(rename = "changedMetricsSinceTimestamp", default)]
+        pub changed_metrics_since_timestamp: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "Inclusive date in YYYY-MM-DD format."]
+        #[serde(rename = "endDate", default)]
+        pub end_date: Option<String>,
+        #[doc = "Inclusive date in YYYY-MM-DD format."]
+        #[serde(rename = "startDate", default)]
+        pub start_date: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ReportRequestTimeRange {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ReportRequest {
         #[doc = "The columns to include in the report. This includes both DoubleClick Search columns and saved columns. For DoubleClick Search columns, only the columnName parameter is required. For saved columns only the savedColumnName parameter is required. Both columnName and savedColumnName cannot be set in the same stanza.\nThe maximum number of columns per request is 300."]
         #[serde(rename = "columns", default)]
@@ -432,153 +568,11 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct ReportRequestFiltersItems {
-        #[doc = "Column to perform the filter on. This can be a DoubleClick Search column or a saved column."]
-        #[serde(rename = "column", default)]
-        pub column: Option<crate::schemas::ReportApiColumnSpec>,
-        #[doc = "Operator to use in the filter. See the filter reference for a list of available operators."]
-        #[serde(rename = "operator", default)]
-        pub operator: Option<String>,
-        #[doc = "A list of values to filter the column value against.\nThe maximum number of filter values per request is 300."]
-        #[serde(rename = "values", default)]
-        pub values: Option<Vec<::serde_json::Value>>,
-    }
-    impl ::field_selector::FieldSelector for ReportRequestFiltersItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReportRequestOrderByItems {
-        #[doc = "Column to perform the sort on. This can be a DoubleClick Search-defined column or a saved column."]
-        #[serde(rename = "column", default)]
-        pub column: Option<crate::schemas::ReportApiColumnSpec>,
-        #[doc = "The sort direction, which is either ascending or descending."]
-        #[serde(rename = "sortOrder", default)]
-        pub sort_order: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ReportRequestOrderByItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReportRequestReportScope {
-        #[doc = "DS ad group ID."]
-        #[serde(rename = "adGroupId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub ad_group_id: Option<i64>,
-        #[doc = "DS ad ID."]
-        #[serde(rename = "adId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub ad_id: Option<i64>,
-        #[doc = "DS advertiser ID."]
-        #[serde(rename = "advertiserId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub advertiser_id: Option<i64>,
-        #[doc = "DS agency ID."]
-        #[serde(rename = "agencyId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub agency_id: Option<i64>,
-        #[doc = "DS campaign ID."]
-        #[serde(rename = "campaignId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub campaign_id: Option<i64>,
-        #[doc = "DS engine account ID."]
-        #[serde(rename = "engineAccountId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub engine_account_id: Option<i64>,
-        #[doc = "DS keyword ID."]
-        #[serde(rename = "keywordId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub keyword_id: Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for ReportRequestReportScope {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReportRequestTimeRange {
-        #[doc = "Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See additional references on how changed attribute reports work."]
-        #[serde(rename = "changedAttributesSinceTimestamp", default)]
-        pub changed_attributes_since_timestamp: Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See additional references on how changed metrics reports work."]
-        #[serde(rename = "changedMetricsSinceTimestamp", default)]
-        pub changed_metrics_since_timestamp: Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "Inclusive date in YYYY-MM-DD format."]
-        #[serde(rename = "endDate", default)]
-        pub end_date: Option<String>,
-        #[doc = "Inclusive date in YYYY-MM-DD format."]
-        #[serde(rename = "startDate", default)]
-        pub start_date: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ReportRequestTimeRange {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -610,8 +604,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -640,8 +634,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -667,8 +661,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -692,7 +686,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,

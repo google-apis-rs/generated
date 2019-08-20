@@ -1,10 +1,116 @@
 pub mod schemas {
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AccountAccountProfile {
+        AccountProfileBasic,
+        AccountProfileStandard,
+    }
+    impl AccountAccountProfile {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AccountAccountProfile::AccountProfileBasic => "ACCOUNT_PROFILE_BASIC",
+                AccountAccountProfile::AccountProfileStandard => "ACCOUNT_PROFILE_STANDARD",
+            }
+        }
+    }
+    impl ::std::fmt::Display for AccountAccountProfile {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AccountAccountProfile {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AccountAccountProfile {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ACCOUNT_PROFILE_BASIC" => AccountAccountProfile::AccountProfileBasic,
+                "ACCOUNT_PROFILE_STANDARD" => AccountAccountProfile::AccountProfileStandard,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AccountActiveAdsLimitTier {
+        ActiveAdsTier100K,
+        ActiveAdsTier1M,
+        ActiveAdsTier200K,
+        ActiveAdsTier300K,
+        ActiveAdsTier40K,
+        ActiveAdsTier500K,
+        ActiveAdsTier750K,
+        ActiveAdsTier75K,
+    }
+    impl AccountActiveAdsLimitTier {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AccountActiveAdsLimitTier::ActiveAdsTier100K => "ACTIVE_ADS_TIER_100K",
+                AccountActiveAdsLimitTier::ActiveAdsTier1M => "ACTIVE_ADS_TIER_1M",
+                AccountActiveAdsLimitTier::ActiveAdsTier200K => "ACTIVE_ADS_TIER_200K",
+                AccountActiveAdsLimitTier::ActiveAdsTier300K => "ACTIVE_ADS_TIER_300K",
+                AccountActiveAdsLimitTier::ActiveAdsTier40K => "ACTIVE_ADS_TIER_40K",
+                AccountActiveAdsLimitTier::ActiveAdsTier500K => "ACTIVE_ADS_TIER_500K",
+                AccountActiveAdsLimitTier::ActiveAdsTier750K => "ACTIVE_ADS_TIER_750K",
+                AccountActiveAdsLimitTier::ActiveAdsTier75K => "ACTIVE_ADS_TIER_75K",
+            }
+        }
+    }
+    impl ::std::fmt::Display for AccountActiveAdsLimitTier {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AccountActiveAdsLimitTier {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AccountActiveAdsLimitTier {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ACTIVE_ADS_TIER_100K" => AccountActiveAdsLimitTier::ActiveAdsTier100K,
+                "ACTIVE_ADS_TIER_1M" => AccountActiveAdsLimitTier::ActiveAdsTier1M,
+                "ACTIVE_ADS_TIER_200K" => AccountActiveAdsLimitTier::ActiveAdsTier200K,
+                "ACTIVE_ADS_TIER_300K" => AccountActiveAdsLimitTier::ActiveAdsTier300K,
+                "ACTIVE_ADS_TIER_40K" => AccountActiveAdsLimitTier::ActiveAdsTier40K,
+                "ACTIVE_ADS_TIER_500K" => AccountActiveAdsLimitTier::ActiveAdsTier500K,
+                "ACTIVE_ADS_TIER_750K" => AccountActiveAdsLimitTier::ActiveAdsTier750K,
+                "ACTIVE_ADS_TIER_75K" => AccountActiveAdsLimitTier::ActiveAdsTier75K,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -86,93 +192,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum AccountAccountProfile {
-        AccountProfileBasic,
-        AccountProfileStandard,
-    }
-    impl AccountAccountProfile {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                AccountAccountProfile::AccountProfileBasic => "ACCOUNT_PROFILE_BASIC",
-                AccountAccountProfile::AccountProfileStandard => "ACCOUNT_PROFILE_STANDARD",
-            }
-        }
-    }
-    impl ::std::fmt::Display for AccountAccountProfile {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for AccountAccountProfile {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for AccountAccountProfile {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ACCOUNT_PROFILE_BASIC" => AccountAccountProfile::AccountProfileBasic,
-                "ACCOUNT_PROFILE_STANDARD" => AccountAccountProfile::AccountProfileStandard,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AccountActiveAdSummary {
-        #[doc = "ID of the account."]
-        #[serde(rename = "accountId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub account_id: Option<i64>,
-        #[doc = "Ads that have been activated for the account"]
-        #[serde(rename = "activeAds", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub active_ads: Option<i64>,
-        #[doc = "Maximum number of active ads allowed for the account."]
-        #[serde(rename = "activeAdsLimitTier", default)]
-        pub active_ads_limit_tier: Option<crate::schemas::AccountActiveAdSummaryActiveAdsLimitTier>,
-        #[doc = "Ads that can be activated for the account."]
-        #[serde(rename = "availableAds", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub available_ads: Option<i64>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#accountActiveAdSummary\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for AccountActiveAdSummary {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AccountActiveAdSummaryActiveAdsLimitTier {
         ActiveAdsTier100K,
         ActiveAdsTier1M,
@@ -254,103 +274,39 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum AccountActiveAdsLimitTier {
-        ActiveAdsTier100K,
-        ActiveAdsTier1M,
-        ActiveAdsTier200K,
-        ActiveAdsTier300K,
-        ActiveAdsTier40K,
-        ActiveAdsTier500K,
-        ActiveAdsTier750K,
-        ActiveAdsTier75K,
-    }
-    impl AccountActiveAdsLimitTier {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                AccountActiveAdsLimitTier::ActiveAdsTier100K => "ACTIVE_ADS_TIER_100K",
-                AccountActiveAdsLimitTier::ActiveAdsTier1M => "ACTIVE_ADS_TIER_1M",
-                AccountActiveAdsLimitTier::ActiveAdsTier200K => "ACTIVE_ADS_TIER_200K",
-                AccountActiveAdsLimitTier::ActiveAdsTier300K => "ACTIVE_ADS_TIER_300K",
-                AccountActiveAdsLimitTier::ActiveAdsTier40K => "ACTIVE_ADS_TIER_40K",
-                AccountActiveAdsLimitTier::ActiveAdsTier500K => "ACTIVE_ADS_TIER_500K",
-                AccountActiveAdsLimitTier::ActiveAdsTier750K => "ACTIVE_ADS_TIER_750K",
-                AccountActiveAdsLimitTier::ActiveAdsTier75K => "ACTIVE_ADS_TIER_75K",
-            }
-        }
-    }
-    impl ::std::fmt::Display for AccountActiveAdsLimitTier {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for AccountActiveAdsLimitTier {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for AccountActiveAdsLimitTier {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ACTIVE_ADS_TIER_100K" => AccountActiveAdsLimitTier::ActiveAdsTier100K,
-                "ACTIVE_ADS_TIER_1M" => AccountActiveAdsLimitTier::ActiveAdsTier1M,
-                "ACTIVE_ADS_TIER_200K" => AccountActiveAdsLimitTier::ActiveAdsTier200K,
-                "ACTIVE_ADS_TIER_300K" => AccountActiveAdsLimitTier::ActiveAdsTier300K,
-                "ACTIVE_ADS_TIER_40K" => AccountActiveAdsLimitTier::ActiveAdsTier40K,
-                "ACTIVE_ADS_TIER_500K" => AccountActiveAdsLimitTier::ActiveAdsTier500K,
-                "ACTIVE_ADS_TIER_750K" => AccountActiveAdsLimitTier::ActiveAdsTier750K,
-                "ACTIVE_ADS_TIER_75K" => AccountActiveAdsLimitTier::ActiveAdsTier75K,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AccountPermission {
-        #[doc = "Account profiles associated with this account permission.\n\nPossible values are:\n- \"ACCOUNT_PROFILE_BASIC\"\n- \"ACCOUNT_PROFILE_STANDARD\""]
-        #[serde(rename = "accountProfiles", default)]
-        pub account_profiles: Option<Vec<crate::schemas::AccountPermissionAccountProfilesItems>>,
-        #[doc = "ID of this account permission."]
-        #[serde(rename = "id", default)]
+    pub struct AccountActiveAdSummary {
+        #[doc = "ID of the account."]
+        #[serde(rename = "accountId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#accountPermission\"."]
+        pub account_id: Option<i64>,
+        #[doc = "Ads that have been activated for the account"]
+        #[serde(rename = "activeAds", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub active_ads: Option<i64>,
+        #[doc = "Maximum number of active ads allowed for the account."]
+        #[serde(rename = "activeAdsLimitTier", default)]
+        pub active_ads_limit_tier: Option<crate::schemas::AccountActiveAdSummaryActiveAdsLimitTier>,
+        #[doc = "Ads that can be activated for the account."]
+        #[serde(rename = "availableAds", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub available_ads: Option<i64>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#accountActiveAdSummary\"."]
         #[serde(rename = "kind", default)]
         pub kind: Option<String>,
-        #[doc = "Administrative level required to enable this account permission."]
-        #[serde(rename = "level", default)]
-        pub level: Option<crate::schemas::AccountPermissionLevel>,
-        #[doc = "Name of this account permission."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "Permission group of this account permission."]
-        #[serde(rename = "permissionGroupId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub permission_group_id: Option<i64>,
     }
-    impl ::field_selector::FieldSelector for AccountPermission {
+    impl ::field_selector::FieldSelector for AccountActiveAdSummary {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -360,7 +316,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AccountPermissionAccountProfilesItems {
         AccountProfileBasic,
         AccountProfileStandard,
@@ -412,71 +368,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AccountPermissionGroup {
-        #[doc = "ID of this account permission group."]
-        #[serde(rename = "id", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#accountPermissionGroup\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Name of this account permission group."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for AccountPermissionGroup {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AccountPermissionGroupsListResponse {
-        #[doc = "Account permission group collection."]
-        #[serde(rename = "accountPermissionGroups", default)]
-        pub account_permission_groups: Option<Vec<crate::schemas::AccountPermissionGroup>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#accountPermissionGroupsListResponse\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for AccountPermissionGroupsListResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AccountPermissionLevel {
         Administrator,
         User,
@@ -524,8 +416,116 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AccountPermission {
+        #[doc = "Account profiles associated with this account permission.\n\nPossible values are:\n- \"ACCOUNT_PROFILE_BASIC\"\n- \"ACCOUNT_PROFILE_STANDARD\""]
+        #[serde(rename = "accountProfiles", default)]
+        pub account_profiles: Option<Vec<crate::schemas::AccountPermissionAccountProfilesItems>>,
+        #[doc = "ID of this account permission."]
+        #[serde(rename = "id", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub id: Option<i64>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#accountPermission\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Administrative level required to enable this account permission."]
+        #[serde(rename = "level", default)]
+        pub level: Option<crate::schemas::AccountPermissionLevel>,
+        #[doc = "Name of this account permission."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "Permission group of this account permission."]
+        #[serde(rename = "permissionGroupId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub permission_group_id: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for AccountPermission {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AccountPermissionGroup {
+        #[doc = "ID of this account permission group."]
+        #[serde(rename = "id", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub id: Option<i64>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#accountPermissionGroup\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Name of this account permission group."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for AccountPermissionGroup {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AccountPermissionGroupsListResponse {
+        #[doc = "Account permission group collection."]
+        #[serde(rename = "accountPermissionGroups", default)]
+        pub account_permission_groups: Option<Vec<crate::schemas::AccountPermissionGroup>>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#accountPermissionGroupsListResponse\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for AccountPermissionGroupsListResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -550,12 +550,113 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AccountUserProfileTraffickerType {
+        ExternalTrafficker,
+        InternalNonTrafficker,
+        InternalTrafficker,
+    }
+    impl AccountUserProfileTraffickerType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AccountUserProfileTraffickerType::ExternalTrafficker => "EXTERNAL_TRAFFICKER",
+                AccountUserProfileTraffickerType::InternalNonTrafficker => {
+                    "INTERNAL_NON_TRAFFICKER"
+                }
+                AccountUserProfileTraffickerType::InternalTrafficker => "INTERNAL_TRAFFICKER",
+            }
+        }
+    }
+    impl ::std::fmt::Display for AccountUserProfileTraffickerType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AccountUserProfileTraffickerType {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AccountUserProfileTraffickerType {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "EXTERNAL_TRAFFICKER" => AccountUserProfileTraffickerType::ExternalTrafficker,
+                "INTERNAL_NON_TRAFFICKER" => {
+                    AccountUserProfileTraffickerType::InternalNonTrafficker
+                }
+                "INTERNAL_TRAFFICKER" => AccountUserProfileTraffickerType::InternalTrafficker,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AccountUserProfileUserAccessType {
+        InternalAdministrator,
+        NormalUser,
+        ReadOnlySuperUser,
+        SuperUser,
+    }
+    impl AccountUserProfileUserAccessType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AccountUserProfileUserAccessType::InternalAdministrator => "INTERNAL_ADMINISTRATOR",
+                AccountUserProfileUserAccessType::NormalUser => "NORMAL_USER",
+                AccountUserProfileUserAccessType::ReadOnlySuperUser => "READ_ONLY_SUPER_USER",
+                AccountUserProfileUserAccessType::SuperUser => "SUPER_USER",
+            }
+        }
+    }
+    impl ::std::fmt::Display for AccountUserProfileUserAccessType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AccountUserProfileUserAccessType {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AccountUserProfileUserAccessType {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "INTERNAL_ADMINISTRATOR" => AccountUserProfileUserAccessType::InternalAdministrator,
+                "NORMAL_USER" => AccountUserProfileUserAccessType::NormalUser,
+                "READ_ONLY_SUPER_USER" => AccountUserProfileUserAccessType::ReadOnlySuperUser,
+                "SUPER_USER" => AccountUserProfileUserAccessType::SuperUser,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -626,113 +727,12 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum AccountUserProfileTraffickerType {
-        ExternalTrafficker,
-        InternalNonTrafficker,
-        InternalTrafficker,
-    }
-    impl AccountUserProfileTraffickerType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                AccountUserProfileTraffickerType::ExternalTrafficker => "EXTERNAL_TRAFFICKER",
-                AccountUserProfileTraffickerType::InternalNonTrafficker => {
-                    "INTERNAL_NON_TRAFFICKER"
-                }
-                AccountUserProfileTraffickerType::InternalTrafficker => "INTERNAL_TRAFFICKER",
-            }
-        }
-    }
-    impl ::std::fmt::Display for AccountUserProfileTraffickerType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for AccountUserProfileTraffickerType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for AccountUserProfileTraffickerType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "EXTERNAL_TRAFFICKER" => AccountUserProfileTraffickerType::ExternalTrafficker,
-                "INTERNAL_NON_TRAFFICKER" => {
-                    AccountUserProfileTraffickerType::InternalNonTrafficker
-                }
-                "INTERNAL_TRAFFICKER" => AccountUserProfileTraffickerType::InternalTrafficker,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum AccountUserProfileUserAccessType {
-        InternalAdministrator,
-        NormalUser,
-        ReadOnlySuperUser,
-        SuperUser,
-    }
-    impl AccountUserProfileUserAccessType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                AccountUserProfileUserAccessType::InternalAdministrator => "INTERNAL_ADMINISTRATOR",
-                AccountUserProfileUserAccessType::NormalUser => "NORMAL_USER",
-                AccountUserProfileUserAccessType::ReadOnlySuperUser => "READ_ONLY_SUPER_USER",
-                AccountUserProfileUserAccessType::SuperUser => "SUPER_USER",
-            }
-        }
-    }
-    impl ::std::fmt::Display for AccountUserProfileUserAccessType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for AccountUserProfileUserAccessType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for AccountUserProfileUserAccessType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "INTERNAL_ADMINISTRATOR" => AccountUserProfileUserAccessType::InternalAdministrator,
-                "NORMAL_USER" => AccountUserProfileUserAccessType::NormalUser,
-                "READ_ONLY_SUPER_USER" => AccountUserProfileUserAccessType::ReadOnlySuperUser,
-                "SUPER_USER" => AccountUserProfileUserAccessType::SuperUser,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -764,8 +764,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -797,8 +797,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -826,12 +826,118 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AdCompatibility {
+        App,
+        AppInterstitial,
+        Display,
+        DisplayInterstitial,
+        InStreamAudio,
+        InStreamVideo,
+    }
+    impl AdCompatibility {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AdCompatibility::App => "APP",
+                AdCompatibility::AppInterstitial => "APP_INTERSTITIAL",
+                AdCompatibility::Display => "DISPLAY",
+                AdCompatibility::DisplayInterstitial => "DISPLAY_INTERSTITIAL",
+                AdCompatibility::InStreamAudio => "IN_STREAM_AUDIO",
+                AdCompatibility::InStreamVideo => "IN_STREAM_VIDEO",
+            }
+        }
+    }
+    impl ::std::fmt::Display for AdCompatibility {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AdCompatibility {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AdCompatibility {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "APP" => AdCompatibility::App,
+                "APP_INTERSTITIAL" => AdCompatibility::AppInterstitial,
+                "DISPLAY" => AdCompatibility::Display,
+                "DISPLAY_INTERSTITIAL" => AdCompatibility::DisplayInterstitial,
+                "IN_STREAM_AUDIO" => AdCompatibility::InStreamAudio,
+                "IN_STREAM_VIDEO" => AdCompatibility::InStreamVideo,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AdType {
+        AdServingClickTracker,
+        AdServingDefaultAd,
+        AdServingStandardAd,
+        AdServingTracking,
+    }
+    impl AdType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AdType::AdServingClickTracker => "AD_SERVING_CLICK_TRACKER",
+                AdType::AdServingDefaultAd => "AD_SERVING_DEFAULT_AD",
+                AdType::AdServingStandardAd => "AD_SERVING_STANDARD_AD",
+                AdType::AdServingTracking => "AD_SERVING_TRACKING",
+            }
+        }
+    }
+    impl ::std::fmt::Display for AdType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AdType {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AdType {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "AD_SERVING_CLICK_TRACKER" => AdType::AdServingClickTracker,
+                "AD_SERVING_DEFAULT_AD" => AdType::AdServingDefaultAd,
+                "AD_SERVING_STANDARD_AD" => AdType::AdServingStandardAd,
+                "AD_SERVING_TRACKING" => AdType::AdServingTracking,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -980,8 +1086,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1013,114 +1119,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum AdCompatibility {
-        App,
-        AppInterstitial,
-        Display,
-        DisplayInterstitial,
-        InStreamAudio,
-        InStreamVideo,
-    }
-    impl AdCompatibility {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                AdCompatibility::App => "APP",
-                AdCompatibility::AppInterstitial => "APP_INTERSTITIAL",
-                AdCompatibility::Display => "DISPLAY",
-                AdCompatibility::DisplayInterstitial => "DISPLAY_INTERSTITIAL",
-                AdCompatibility::InStreamAudio => "IN_STREAM_AUDIO",
-                AdCompatibility::InStreamVideo => "IN_STREAM_VIDEO",
-            }
-        }
-    }
-    impl ::std::fmt::Display for AdCompatibility {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for AdCompatibility {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for AdCompatibility {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "APP" => AdCompatibility::App,
-                "APP_INTERSTITIAL" => AdCompatibility::AppInterstitial,
-                "DISPLAY" => AdCompatibility::Display,
-                "DISPLAY_INTERSTITIAL" => AdCompatibility::DisplayInterstitial,
-                "IN_STREAM_AUDIO" => AdCompatibility::InStreamAudio,
-                "IN_STREAM_VIDEO" => AdCompatibility::InStreamVideo,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AdSlot {
-        #[doc = "Comment for this ad slot."]
-        #[serde(rename = "comment", default)]
-        pub comment: Option<String>,
-        #[doc = "Ad slot compatibility. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop, mobile devices or in mobile apps for regular or interstitial ads respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard."]
-        #[serde(rename = "compatibility", default)]
-        pub compatibility: Option<crate::schemas::AdSlotCompatibility>,
-        #[doc = "Height of this ad slot."]
-        #[serde(rename = "height", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub height: Option<i64>,
-        #[doc = "ID of the placement from an external platform that is linked to this ad slot."]
-        #[serde(rename = "linkedPlacementId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub linked_placement_id: Option<i64>,
-        #[doc = "Name of this ad slot."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "Payment source type of this ad slot."]
-        #[serde(rename = "paymentSourceType", default)]
-        pub payment_source_type: Option<crate::schemas::AdSlotPaymentSourceType>,
-        #[doc = "Primary ad slot of a roadblock inventory item."]
-        #[serde(rename = "primary", default)]
-        pub primary: Option<bool>,
-        #[doc = "Width of this ad slot."]
-        #[serde(rename = "width", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub width: Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for AdSlot {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AdSlotCompatibility {
         App,
         AppInterstitial,
@@ -1176,7 +1175,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AdSlotPaymentSourceType {
         PlanningPaymentSourceTypeAgencyPaid,
         PlanningPaymentSourceTypePublisherPaid,
@@ -1228,62 +1227,63 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum AdType {
-        AdServingClickTracker,
-        AdServingDefaultAd,
-        AdServingStandardAd,
-        AdServingTracking,
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AdSlot {
+        #[doc = "Comment for this ad slot."]
+        #[serde(rename = "comment", default)]
+        pub comment: Option<String>,
+        #[doc = "Ad slot compatibility. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop, mobile devices or in mobile apps for regular or interstitial ads respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard."]
+        #[serde(rename = "compatibility", default)]
+        pub compatibility: Option<crate::schemas::AdSlotCompatibility>,
+        #[doc = "Height of this ad slot."]
+        #[serde(rename = "height", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub height: Option<i64>,
+        #[doc = "ID of the placement from an external platform that is linked to this ad slot."]
+        #[serde(rename = "linkedPlacementId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub linked_placement_id: Option<i64>,
+        #[doc = "Name of this ad slot."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "Payment source type of this ad slot."]
+        #[serde(rename = "paymentSourceType", default)]
+        pub payment_source_type: Option<crate::schemas::AdSlotPaymentSourceType>,
+        #[doc = "Primary ad slot of a roadblock inventory item."]
+        #[serde(rename = "primary", default)]
+        pub primary: Option<bool>,
+        #[doc = "Width of this ad slot."]
+        #[serde(rename = "width", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub width: Option<i64>,
     }
-    impl AdType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                AdType::AdServingClickTracker => "AD_SERVING_CLICK_TRACKER",
-                AdType::AdServingDefaultAd => "AD_SERVING_DEFAULT_AD",
-                AdType::AdServingStandardAd => "AD_SERVING_STANDARD_AD",
-                AdType::AdServingTracking => "AD_SERVING_TRACKING",
+    impl ::field_selector::FieldSelector for AdSlot {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
             }
-        }
-    }
-    impl ::std::fmt::Display for AdType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for AdType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for AdType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "AD_SERVING_CLICK_TRACKER" => AdType::AdServingClickTracker,
-                "AD_SERVING_DEFAULT_AD" => AdType::AdServingDefaultAd,
-                "AD_SERVING_STANDARD_AD" => AdType::AdServingStandardAd,
-                "AD_SERVING_TRACKING" => AdType::AdServingTracking,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
+            selector.push_str(ident);
+            selector.push_str("*");
         }
     }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1311,12 +1311,56 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AdvertiserStatus {
+        Approved,
+        OnHold,
+    }
+    impl AdvertiserStatus {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AdvertiserStatus::Approved => "APPROVED",
+                AdvertiserStatus::OnHold => "ON_HOLD",
+            }
+        }
+    }
+    impl ::std::fmt::Display for AdvertiserStatus {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AdvertiserStatus {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AdvertiserStatus {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "APPROVED" => AdvertiserStatus::Approved,
+                "ON_HOLD" => AdvertiserStatus::OnHold,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1391,8 +1435,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1429,8 +1473,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1462,8 +1506,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1491,56 +1535,12 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum AdvertiserStatus {
-        Approved,
-        OnHold,
-    }
-    impl AdvertiserStatus {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                AdvertiserStatus::Approved => "APPROVED",
-                AdvertiserStatus::OnHold => "ON_HOLD",
-            }
-        }
-    }
-    impl ::std::fmt::Display for AdvertiserStatus {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for AdvertiserStatus {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for AdvertiserStatus {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "APPROVED" => AdvertiserStatus::Approved,
-                "ON_HOLD" => AdvertiserStatus::OnHold,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1572,8 +1572,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1606,8 +1606,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1640,8 +1640,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1684,8 +1684,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1714,8 +1714,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1832,8 +1832,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1863,8 +1863,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1897,8 +1897,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1930,8 +1930,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2002,8 +2002,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2035,8 +2035,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2065,8 +2065,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2120,8 +2120,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2153,8 +2153,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2190,8 +2190,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2220,8 +2220,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2251,8 +2251,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2287,8 +2287,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2332,8 +2332,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2366,8 +2366,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2396,8 +2396,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2429,8 +2429,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2533,40 +2533,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ConversionError {
-        #[doc = "The error code."]
-        #[serde(rename = "code", default)]
-        pub code: Option<crate::schemas::ConversionErrorCode>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#conversionError\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "A description of the error."]
-        #[serde(rename = "message", default)]
-        pub message: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ConversionError {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ConversionErrorCode {
         Internal,
         InvalidArgument,
@@ -2614,6 +2581,39 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ConversionError {
+        #[doc = "The error code."]
+        #[serde(rename = "code", default)]
+        pub code: Option<crate::schemas::ConversionErrorCode>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#conversionError\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "A description of the error."]
+        #[serde(rename = "message", default)]
+        pub message: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ConversionError {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
         }
     }
     #[derive(
@@ -2740,8 +2740,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2770,8 +2770,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2804,6 +2804,576 @@ pub mod schemas {
             }
             selector.push_str(ident);
             selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CreativeArtworkType {
+        ArtworkTypeFlash,
+        ArtworkTypeHtml5,
+        ArtworkTypeImage,
+        ArtworkTypeMixed,
+    }
+    impl CreativeArtworkType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                CreativeArtworkType::ArtworkTypeFlash => "ARTWORK_TYPE_FLASH",
+                CreativeArtworkType::ArtworkTypeHtml5 => "ARTWORK_TYPE_HTML5",
+                CreativeArtworkType::ArtworkTypeImage => "ARTWORK_TYPE_IMAGE",
+                CreativeArtworkType::ArtworkTypeMixed => "ARTWORK_TYPE_MIXED",
+            }
+        }
+    }
+    impl ::std::fmt::Display for CreativeArtworkType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CreativeArtworkType {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CreativeArtworkType {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ARTWORK_TYPE_FLASH" => CreativeArtworkType::ArtworkTypeFlash,
+                "ARTWORK_TYPE_HTML5" => CreativeArtworkType::ArtworkTypeHtml5,
+                "ARTWORK_TYPE_IMAGE" => CreativeArtworkType::ArtworkTypeImage,
+                "ARTWORK_TYPE_MIXED" => CreativeArtworkType::ArtworkTypeMixed,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CreativeAuthoringSource {
+        CreativeAuthoringSourceDbm,
+        CreativeAuthoringSourceDcm,
+        CreativeAuthoringSourceStudio,
+    }
+    impl CreativeAuthoringSource {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                CreativeAuthoringSource::CreativeAuthoringSourceDbm => {
+                    "CREATIVE_AUTHORING_SOURCE_DBM"
+                }
+                CreativeAuthoringSource::CreativeAuthoringSourceDcm => {
+                    "CREATIVE_AUTHORING_SOURCE_DCM"
+                }
+                CreativeAuthoringSource::CreativeAuthoringSourceStudio => {
+                    "CREATIVE_AUTHORING_SOURCE_STUDIO"
+                }
+            }
+        }
+    }
+    impl ::std::fmt::Display for CreativeAuthoringSource {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CreativeAuthoringSource {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CreativeAuthoringSource {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CREATIVE_AUTHORING_SOURCE_DBM" => {
+                    CreativeAuthoringSource::CreativeAuthoringSourceDbm
+                }
+                "CREATIVE_AUTHORING_SOURCE_DCM" => {
+                    CreativeAuthoringSource::CreativeAuthoringSourceDcm
+                }
+                "CREATIVE_AUTHORING_SOURCE_STUDIO" => {
+                    CreativeAuthoringSource::CreativeAuthoringSourceStudio
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CreativeAuthoringTool {
+        Ninja,
+        Swiffy,
+    }
+    impl CreativeAuthoringTool {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                CreativeAuthoringTool::Ninja => "NINJA",
+                CreativeAuthoringTool::Swiffy => "SWIFFY",
+            }
+        }
+    }
+    impl ::std::fmt::Display for CreativeAuthoringTool {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CreativeAuthoringTool {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CreativeAuthoringTool {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "NINJA" => CreativeAuthoringTool::Ninja,
+                "SWIFFY" => CreativeAuthoringTool::Swiffy,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CreativeBackupImageFeaturesItems {
+        ApplicationCache,
+        Audio,
+        Canvas,
+        CanvasText,
+        CssAnimations,
+        CssBackgroundSize,
+        CssBorderImage,
+        CssBorderRadius,
+        CssBoxShadow,
+        CssColumns,
+        CssFlexBox,
+        CssFontFace,
+        CssGeneratedContent,
+        CssGradients,
+        CssHsla,
+        CssMultipleBgs,
+        CssOpacity,
+        CssReflections,
+        CssRgba,
+        CssTextShadow,
+        CssTransforms,
+        CssTransforms3D,
+        CssTransitions,
+        DragAndDrop,
+        GeoLocation,
+        HashChange,
+        History,
+        IndexedDb,
+        InlineSvg,
+        InputAttrAutocomplete,
+        InputAttrAutofocus,
+        InputAttrList,
+        InputAttrMax,
+        InputAttrMin,
+        InputAttrMultiple,
+        InputAttrPattern,
+        InputAttrPlaceholder,
+        InputAttrRequired,
+        InputAttrStep,
+        InputTypeColor,
+        InputTypeDate,
+        InputTypeDatetime,
+        InputTypeDatetimeLocal,
+        InputTypeEmail,
+        InputTypeMonth,
+        InputTypeNumber,
+        InputTypeRange,
+        InputTypeSearch,
+        InputTypeTel,
+        InputTypeTime,
+        InputTypeUrl,
+        InputTypeWeek,
+        LocalStorage,
+        PostMessage,
+        SessionStorage,
+        Smil,
+        SvgClipPaths,
+        SvgFeImage,
+        SvgFilters,
+        SvgHref,
+        Touch,
+        Video,
+        Webgl,
+        WebSockets,
+        WebSqlDatabase,
+        WebWorkers,
+    }
+    impl CreativeBackupImageFeaturesItems {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                CreativeBackupImageFeaturesItems::ApplicationCache => "APPLICATION_CACHE",
+                CreativeBackupImageFeaturesItems::Audio => "AUDIO",
+                CreativeBackupImageFeaturesItems::Canvas => "CANVAS",
+                CreativeBackupImageFeaturesItems::CanvasText => "CANVAS_TEXT",
+                CreativeBackupImageFeaturesItems::CssAnimations => "CSS_ANIMATIONS",
+                CreativeBackupImageFeaturesItems::CssBackgroundSize => "CSS_BACKGROUND_SIZE",
+                CreativeBackupImageFeaturesItems::CssBorderImage => "CSS_BORDER_IMAGE",
+                CreativeBackupImageFeaturesItems::CssBorderRadius => "CSS_BORDER_RADIUS",
+                CreativeBackupImageFeaturesItems::CssBoxShadow => "CSS_BOX_SHADOW",
+                CreativeBackupImageFeaturesItems::CssColumns => "CSS_COLUMNS",
+                CreativeBackupImageFeaturesItems::CssFlexBox => "CSS_FLEX_BOX",
+                CreativeBackupImageFeaturesItems::CssFontFace => "CSS_FONT_FACE",
+                CreativeBackupImageFeaturesItems::CssGeneratedContent => "CSS_GENERATED_CONTENT",
+                CreativeBackupImageFeaturesItems::CssGradients => "CSS_GRADIENTS",
+                CreativeBackupImageFeaturesItems::CssHsla => "CSS_HSLA",
+                CreativeBackupImageFeaturesItems::CssMultipleBgs => "CSS_MULTIPLE_BGS",
+                CreativeBackupImageFeaturesItems::CssOpacity => "CSS_OPACITY",
+                CreativeBackupImageFeaturesItems::CssReflections => "CSS_REFLECTIONS",
+                CreativeBackupImageFeaturesItems::CssRgba => "CSS_RGBA",
+                CreativeBackupImageFeaturesItems::CssTextShadow => "CSS_TEXT_SHADOW",
+                CreativeBackupImageFeaturesItems::CssTransforms => "CSS_TRANSFORMS",
+                CreativeBackupImageFeaturesItems::CssTransforms3D => "CSS_TRANSFORMS3D",
+                CreativeBackupImageFeaturesItems::CssTransitions => "CSS_TRANSITIONS",
+                CreativeBackupImageFeaturesItems::DragAndDrop => "DRAG_AND_DROP",
+                CreativeBackupImageFeaturesItems::GeoLocation => "GEO_LOCATION",
+                CreativeBackupImageFeaturesItems::HashChange => "HASH_CHANGE",
+                CreativeBackupImageFeaturesItems::History => "HISTORY",
+                CreativeBackupImageFeaturesItems::IndexedDb => "INDEXED_DB",
+                CreativeBackupImageFeaturesItems::InlineSvg => "INLINE_SVG",
+                CreativeBackupImageFeaturesItems::InputAttrAutocomplete => {
+                    "INPUT_ATTR_AUTOCOMPLETE"
+                }
+                CreativeBackupImageFeaturesItems::InputAttrAutofocus => "INPUT_ATTR_AUTOFOCUS",
+                CreativeBackupImageFeaturesItems::InputAttrList => "INPUT_ATTR_LIST",
+                CreativeBackupImageFeaturesItems::InputAttrMax => "INPUT_ATTR_MAX",
+                CreativeBackupImageFeaturesItems::InputAttrMin => "INPUT_ATTR_MIN",
+                CreativeBackupImageFeaturesItems::InputAttrMultiple => "INPUT_ATTR_MULTIPLE",
+                CreativeBackupImageFeaturesItems::InputAttrPattern => "INPUT_ATTR_PATTERN",
+                CreativeBackupImageFeaturesItems::InputAttrPlaceholder => "INPUT_ATTR_PLACEHOLDER",
+                CreativeBackupImageFeaturesItems::InputAttrRequired => "INPUT_ATTR_REQUIRED",
+                CreativeBackupImageFeaturesItems::InputAttrStep => "INPUT_ATTR_STEP",
+                CreativeBackupImageFeaturesItems::InputTypeColor => "INPUT_TYPE_COLOR",
+                CreativeBackupImageFeaturesItems::InputTypeDate => "INPUT_TYPE_DATE",
+                CreativeBackupImageFeaturesItems::InputTypeDatetime => "INPUT_TYPE_DATETIME",
+                CreativeBackupImageFeaturesItems::InputTypeDatetimeLocal => {
+                    "INPUT_TYPE_DATETIME_LOCAL"
+                }
+                CreativeBackupImageFeaturesItems::InputTypeEmail => "INPUT_TYPE_EMAIL",
+                CreativeBackupImageFeaturesItems::InputTypeMonth => "INPUT_TYPE_MONTH",
+                CreativeBackupImageFeaturesItems::InputTypeNumber => "INPUT_TYPE_NUMBER",
+                CreativeBackupImageFeaturesItems::InputTypeRange => "INPUT_TYPE_RANGE",
+                CreativeBackupImageFeaturesItems::InputTypeSearch => "INPUT_TYPE_SEARCH",
+                CreativeBackupImageFeaturesItems::InputTypeTel => "INPUT_TYPE_TEL",
+                CreativeBackupImageFeaturesItems::InputTypeTime => "INPUT_TYPE_TIME",
+                CreativeBackupImageFeaturesItems::InputTypeUrl => "INPUT_TYPE_URL",
+                CreativeBackupImageFeaturesItems::InputTypeWeek => "INPUT_TYPE_WEEK",
+                CreativeBackupImageFeaturesItems::LocalStorage => "LOCAL_STORAGE",
+                CreativeBackupImageFeaturesItems::PostMessage => "POST_MESSAGE",
+                CreativeBackupImageFeaturesItems::SessionStorage => "SESSION_STORAGE",
+                CreativeBackupImageFeaturesItems::Smil => "SMIL",
+                CreativeBackupImageFeaturesItems::SvgClipPaths => "SVG_CLIP_PATHS",
+                CreativeBackupImageFeaturesItems::SvgFeImage => "SVG_FE_IMAGE",
+                CreativeBackupImageFeaturesItems::SvgFilters => "SVG_FILTERS",
+                CreativeBackupImageFeaturesItems::SvgHref => "SVG_HREF",
+                CreativeBackupImageFeaturesItems::Touch => "TOUCH",
+                CreativeBackupImageFeaturesItems::Video => "VIDEO",
+                CreativeBackupImageFeaturesItems::Webgl => "WEBGL",
+                CreativeBackupImageFeaturesItems::WebSockets => "WEB_SOCKETS",
+                CreativeBackupImageFeaturesItems::WebSqlDatabase => "WEB_SQL_DATABASE",
+                CreativeBackupImageFeaturesItems::WebWorkers => "WEB_WORKERS",
+            }
+        }
+    }
+    impl ::std::fmt::Display for CreativeBackupImageFeaturesItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CreativeBackupImageFeaturesItems {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CreativeBackupImageFeaturesItems {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "APPLICATION_CACHE" => CreativeBackupImageFeaturesItems::ApplicationCache,
+                "AUDIO" => CreativeBackupImageFeaturesItems::Audio,
+                "CANVAS" => CreativeBackupImageFeaturesItems::Canvas,
+                "CANVAS_TEXT" => CreativeBackupImageFeaturesItems::CanvasText,
+                "CSS_ANIMATIONS" => CreativeBackupImageFeaturesItems::CssAnimations,
+                "CSS_BACKGROUND_SIZE" => CreativeBackupImageFeaturesItems::CssBackgroundSize,
+                "CSS_BORDER_IMAGE" => CreativeBackupImageFeaturesItems::CssBorderImage,
+                "CSS_BORDER_RADIUS" => CreativeBackupImageFeaturesItems::CssBorderRadius,
+                "CSS_BOX_SHADOW" => CreativeBackupImageFeaturesItems::CssBoxShadow,
+                "CSS_COLUMNS" => CreativeBackupImageFeaturesItems::CssColumns,
+                "CSS_FLEX_BOX" => CreativeBackupImageFeaturesItems::CssFlexBox,
+                "CSS_FONT_FACE" => CreativeBackupImageFeaturesItems::CssFontFace,
+                "CSS_GENERATED_CONTENT" => CreativeBackupImageFeaturesItems::CssGeneratedContent,
+                "CSS_GRADIENTS" => CreativeBackupImageFeaturesItems::CssGradients,
+                "CSS_HSLA" => CreativeBackupImageFeaturesItems::CssHsla,
+                "CSS_MULTIPLE_BGS" => CreativeBackupImageFeaturesItems::CssMultipleBgs,
+                "CSS_OPACITY" => CreativeBackupImageFeaturesItems::CssOpacity,
+                "CSS_REFLECTIONS" => CreativeBackupImageFeaturesItems::CssReflections,
+                "CSS_RGBA" => CreativeBackupImageFeaturesItems::CssRgba,
+                "CSS_TEXT_SHADOW" => CreativeBackupImageFeaturesItems::CssTextShadow,
+                "CSS_TRANSFORMS" => CreativeBackupImageFeaturesItems::CssTransforms,
+                "CSS_TRANSFORMS3D" => CreativeBackupImageFeaturesItems::CssTransforms3D,
+                "CSS_TRANSITIONS" => CreativeBackupImageFeaturesItems::CssTransitions,
+                "DRAG_AND_DROP" => CreativeBackupImageFeaturesItems::DragAndDrop,
+                "GEO_LOCATION" => CreativeBackupImageFeaturesItems::GeoLocation,
+                "HASH_CHANGE" => CreativeBackupImageFeaturesItems::HashChange,
+                "HISTORY" => CreativeBackupImageFeaturesItems::History,
+                "INDEXED_DB" => CreativeBackupImageFeaturesItems::IndexedDb,
+                "INLINE_SVG" => CreativeBackupImageFeaturesItems::InlineSvg,
+                "INPUT_ATTR_AUTOCOMPLETE" => {
+                    CreativeBackupImageFeaturesItems::InputAttrAutocomplete
+                }
+                "INPUT_ATTR_AUTOFOCUS" => CreativeBackupImageFeaturesItems::InputAttrAutofocus,
+                "INPUT_ATTR_LIST" => CreativeBackupImageFeaturesItems::InputAttrList,
+                "INPUT_ATTR_MAX" => CreativeBackupImageFeaturesItems::InputAttrMax,
+                "INPUT_ATTR_MIN" => CreativeBackupImageFeaturesItems::InputAttrMin,
+                "INPUT_ATTR_MULTIPLE" => CreativeBackupImageFeaturesItems::InputAttrMultiple,
+                "INPUT_ATTR_PATTERN" => CreativeBackupImageFeaturesItems::InputAttrPattern,
+                "INPUT_ATTR_PLACEHOLDER" => CreativeBackupImageFeaturesItems::InputAttrPlaceholder,
+                "INPUT_ATTR_REQUIRED" => CreativeBackupImageFeaturesItems::InputAttrRequired,
+                "INPUT_ATTR_STEP" => CreativeBackupImageFeaturesItems::InputAttrStep,
+                "INPUT_TYPE_COLOR" => CreativeBackupImageFeaturesItems::InputTypeColor,
+                "INPUT_TYPE_DATE" => CreativeBackupImageFeaturesItems::InputTypeDate,
+                "INPUT_TYPE_DATETIME" => CreativeBackupImageFeaturesItems::InputTypeDatetime,
+                "INPUT_TYPE_DATETIME_LOCAL" => {
+                    CreativeBackupImageFeaturesItems::InputTypeDatetimeLocal
+                }
+                "INPUT_TYPE_EMAIL" => CreativeBackupImageFeaturesItems::InputTypeEmail,
+                "INPUT_TYPE_MONTH" => CreativeBackupImageFeaturesItems::InputTypeMonth,
+                "INPUT_TYPE_NUMBER" => CreativeBackupImageFeaturesItems::InputTypeNumber,
+                "INPUT_TYPE_RANGE" => CreativeBackupImageFeaturesItems::InputTypeRange,
+                "INPUT_TYPE_SEARCH" => CreativeBackupImageFeaturesItems::InputTypeSearch,
+                "INPUT_TYPE_TEL" => CreativeBackupImageFeaturesItems::InputTypeTel,
+                "INPUT_TYPE_TIME" => CreativeBackupImageFeaturesItems::InputTypeTime,
+                "INPUT_TYPE_URL" => CreativeBackupImageFeaturesItems::InputTypeUrl,
+                "INPUT_TYPE_WEEK" => CreativeBackupImageFeaturesItems::InputTypeWeek,
+                "LOCAL_STORAGE" => CreativeBackupImageFeaturesItems::LocalStorage,
+                "POST_MESSAGE" => CreativeBackupImageFeaturesItems::PostMessage,
+                "SESSION_STORAGE" => CreativeBackupImageFeaturesItems::SessionStorage,
+                "SMIL" => CreativeBackupImageFeaturesItems::Smil,
+                "SVG_CLIP_PATHS" => CreativeBackupImageFeaturesItems::SvgClipPaths,
+                "SVG_FE_IMAGE" => CreativeBackupImageFeaturesItems::SvgFeImage,
+                "SVG_FILTERS" => CreativeBackupImageFeaturesItems::SvgFilters,
+                "SVG_HREF" => CreativeBackupImageFeaturesItems::SvgHref,
+                "TOUCH" => CreativeBackupImageFeaturesItems::Touch,
+                "VIDEO" => CreativeBackupImageFeaturesItems::Video,
+                "WEBGL" => CreativeBackupImageFeaturesItems::Webgl,
+                "WEB_SOCKETS" => CreativeBackupImageFeaturesItems::WebSockets,
+                "WEB_SQL_DATABASE" => CreativeBackupImageFeaturesItems::WebSqlDatabase,
+                "WEB_WORKERS" => CreativeBackupImageFeaturesItems::WebWorkers,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CreativeCompatibilityItems {
+        App,
+        AppInterstitial,
+        Display,
+        DisplayInterstitial,
+        InStreamAudio,
+        InStreamVideo,
+    }
+    impl CreativeCompatibilityItems {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                CreativeCompatibilityItems::App => "APP",
+                CreativeCompatibilityItems::AppInterstitial => "APP_INTERSTITIAL",
+                CreativeCompatibilityItems::Display => "DISPLAY",
+                CreativeCompatibilityItems::DisplayInterstitial => "DISPLAY_INTERSTITIAL",
+                CreativeCompatibilityItems::InStreamAudio => "IN_STREAM_AUDIO",
+                CreativeCompatibilityItems::InStreamVideo => "IN_STREAM_VIDEO",
+            }
+        }
+    }
+    impl ::std::fmt::Display for CreativeCompatibilityItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CreativeCompatibilityItems {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CreativeCompatibilityItems {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "APP" => CreativeCompatibilityItems::App,
+                "APP_INTERSTITIAL" => CreativeCompatibilityItems::AppInterstitial,
+                "DISPLAY" => CreativeCompatibilityItems::Display,
+                "DISPLAY_INTERSTITIAL" => CreativeCompatibilityItems::DisplayInterstitial,
+                "IN_STREAM_AUDIO" => CreativeCompatibilityItems::InStreamAudio,
+                "IN_STREAM_VIDEO" => CreativeCompatibilityItems::InStreamVideo,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CreativeType {
+        BrandSafeDefaultInstreamVideo,
+        CustomDisplay,
+        CustomDisplayInterstitial,
+        Display,
+        DisplayImageGallery,
+        DisplayRedirect,
+        FlashInpage,
+        Html5Banner,
+        Image,
+        InstreamAudio,
+        InstreamVideo,
+        InstreamVideoRedirect,
+        InternalRedirect,
+        InterstitialInternalRedirect,
+        RichMediaDisplayBanner,
+        RichMediaDisplayExpanding,
+        RichMediaDisplayInterstitial,
+        RichMediaDisplayMultiFloatingInterstitial,
+        RichMediaImExpand,
+        RichMediaInpageFloating,
+        RichMediaMobileInApp,
+        RichMediaPeelDown,
+        TrackingText,
+        VpaidLinearVideo,
+        VpaidNonLinearVideo,
+    }
+    impl CreativeType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                CreativeType::BrandSafeDefaultInstreamVideo => "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO",
+                CreativeType::CustomDisplay => "CUSTOM_DISPLAY",
+                CreativeType::CustomDisplayInterstitial => "CUSTOM_DISPLAY_INTERSTITIAL",
+                CreativeType::Display => "DISPLAY",
+                CreativeType::DisplayImageGallery => "DISPLAY_IMAGE_GALLERY",
+                CreativeType::DisplayRedirect => "DISPLAY_REDIRECT",
+                CreativeType::FlashInpage => "FLASH_INPAGE",
+                CreativeType::Html5Banner => "HTML5_BANNER",
+                CreativeType::Image => "IMAGE",
+                CreativeType::InstreamAudio => "INSTREAM_AUDIO",
+                CreativeType::InstreamVideo => "INSTREAM_VIDEO",
+                CreativeType::InstreamVideoRedirect => "INSTREAM_VIDEO_REDIRECT",
+                CreativeType::InternalRedirect => "INTERNAL_REDIRECT",
+                CreativeType::InterstitialInternalRedirect => "INTERSTITIAL_INTERNAL_REDIRECT",
+                CreativeType::RichMediaDisplayBanner => "RICH_MEDIA_DISPLAY_BANNER",
+                CreativeType::RichMediaDisplayExpanding => "RICH_MEDIA_DISPLAY_EXPANDING",
+                CreativeType::RichMediaDisplayInterstitial => "RICH_MEDIA_DISPLAY_INTERSTITIAL",
+                CreativeType::RichMediaDisplayMultiFloatingInterstitial => {
+                    "RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL"
+                }
+                CreativeType::RichMediaImExpand => "RICH_MEDIA_IM_EXPAND",
+                CreativeType::RichMediaInpageFloating => "RICH_MEDIA_INPAGE_FLOATING",
+                CreativeType::RichMediaMobileInApp => "RICH_MEDIA_MOBILE_IN_APP",
+                CreativeType::RichMediaPeelDown => "RICH_MEDIA_PEEL_DOWN",
+                CreativeType::TrackingText => "TRACKING_TEXT",
+                CreativeType::VpaidLinearVideo => "VPAID_LINEAR_VIDEO",
+                CreativeType::VpaidNonLinearVideo => "VPAID_NON_LINEAR_VIDEO",
+            }
+        }
+    }
+    impl ::std::fmt::Display for CreativeType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CreativeType {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CreativeType {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO" => CreativeType::BrandSafeDefaultInstreamVideo,
+                "CUSTOM_DISPLAY" => CreativeType::CustomDisplay,
+                "CUSTOM_DISPLAY_INTERSTITIAL" => CreativeType::CustomDisplayInterstitial,
+                "DISPLAY" => CreativeType::Display,
+                "DISPLAY_IMAGE_GALLERY" => CreativeType::DisplayImageGallery,
+                "DISPLAY_REDIRECT" => CreativeType::DisplayRedirect,
+                "FLASH_INPAGE" => CreativeType::FlashInpage,
+                "HTML5_BANNER" => CreativeType::Html5Banner,
+                "IMAGE" => CreativeType::Image,
+                "INSTREAM_AUDIO" => CreativeType::InstreamAudio,
+                "INSTREAM_VIDEO" => CreativeType::InstreamVideo,
+                "INSTREAM_VIDEO_REDIRECT" => CreativeType::InstreamVideoRedirect,
+                "INTERNAL_REDIRECT" => CreativeType::InternalRedirect,
+                "INTERSTITIAL_INTERNAL_REDIRECT" => CreativeType::InterstitialInternalRedirect,
+                "RICH_MEDIA_DISPLAY_BANNER" => CreativeType::RichMediaDisplayBanner,
+                "RICH_MEDIA_DISPLAY_EXPANDING" => CreativeType::RichMediaDisplayExpanding,
+                "RICH_MEDIA_DISPLAY_INTERSTITIAL" => CreativeType::RichMediaDisplayInterstitial,
+                "RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL" => {
+                    CreativeType::RichMediaDisplayMultiFloatingInterstitial
+                }
+                "RICH_MEDIA_IM_EXPAND" => CreativeType::RichMediaImExpand,
+                "RICH_MEDIA_INPAGE_FLOATING" => CreativeType::RichMediaInpageFloating,
+                "RICH_MEDIA_MOBILE_IN_APP" => CreativeType::RichMediaMobileInApp,
+                "RICH_MEDIA_PEEL_DOWN" => CreativeType::RichMediaPeelDown,
+                "TRACKING_TEXT" => CreativeType::TrackingText,
+                "VPAID_LINEAR_VIDEO" => CreativeType::VpaidLinearVideo,
+                "VPAID_NON_LINEAR_VIDEO" => CreativeType::VpaidNonLinearVideo,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
         }
     }
     #[derive(
@@ -3023,224 +3593,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum CreativeArtworkType {
-        ArtworkTypeFlash,
-        ArtworkTypeHtml5,
-        ArtworkTypeImage,
-        ArtworkTypeMixed,
-    }
-    impl CreativeArtworkType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                CreativeArtworkType::ArtworkTypeFlash => "ARTWORK_TYPE_FLASH",
-                CreativeArtworkType::ArtworkTypeHtml5 => "ARTWORK_TYPE_HTML5",
-                CreativeArtworkType::ArtworkTypeImage => "ARTWORK_TYPE_IMAGE",
-                CreativeArtworkType::ArtworkTypeMixed => "ARTWORK_TYPE_MIXED",
-            }
-        }
-    }
-    impl ::std::fmt::Display for CreativeArtworkType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for CreativeArtworkType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for CreativeArtworkType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ARTWORK_TYPE_FLASH" => CreativeArtworkType::ArtworkTypeFlash,
-                "ARTWORK_TYPE_HTML5" => CreativeArtworkType::ArtworkTypeHtml5,
-                "ARTWORK_TYPE_IMAGE" => CreativeArtworkType::ArtworkTypeImage,
-                "ARTWORK_TYPE_MIXED" => CreativeArtworkType::ArtworkTypeMixed,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct CreativeAsset {
-        #[doc = "Whether ActionScript3 is enabled for the flash asset. This is a read-only field. Applicable to the following creative type: FLASH_INPAGE. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
-        #[serde(rename = "actionScript3", default)]
-        pub action_script_3: Option<bool>,
-        #[doc = "Whether the video or audio asset is active. This is a read-only field for VPAID_NON_LINEAR_VIDEO assets. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID."]
-        #[serde(rename = "active", default)]
-        pub active: Option<bool>,
-        #[doc = "Additional sizes associated with this creative asset. HTML5 asset generated by compatible software such as GWD will be able to support more sizes this creative asset can render."]
-        #[serde(rename = "additionalSizes", default)]
-        pub additional_sizes: Option<Vec<crate::schemas::Size>>,
-        #[doc = "Possible alignments for an asset. This is a read-only field. Applicable to the following creative types: RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL."]
-        #[serde(rename = "alignment", default)]
-        pub alignment: Option<crate::schemas::CreativeAssetAlignment>,
-        #[doc = "Artwork type of rich media creative. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "artworkType", default)]
-        pub artwork_type: Option<crate::schemas::CreativeAssetArtworkType>,
-        #[doc = "Identifier of this asset. This is the same identifier returned during creative asset insert operation. This is a required field. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT."]
-        #[serde(rename = "assetIdentifier", default)]
-        pub asset_identifier: Option<crate::schemas::CreativeAssetId>,
-        #[doc = "Audio stream bit rate in kbps. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID."]
-        #[serde(rename = "audioBitRate", default)]
-        pub audio_bit_rate: Option<i32>,
-        #[doc = "Audio sample bit rate in hertz. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID."]
-        #[serde(rename = "audioSampleRate", default)]
-        pub audio_sample_rate: Option<i32>,
-        #[doc = "Exit event configured for the backup image. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "backupImageExit", default)]
-        pub backup_image_exit: Option<crate::schemas::CreativeCustomEvent>,
-        #[doc = "Detected bit-rate for audio or video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID."]
-        #[serde(rename = "bitRate", default)]
-        pub bit_rate: Option<i32>,
-        #[doc = "Rich media child asset type. This is a read-only field. Applicable to the following creative types: all VPAID."]
-        #[serde(rename = "childAssetType", default)]
-        pub child_asset_type: Option<crate::schemas::CreativeAssetChildAssetType>,
-        #[doc = "Size of an asset when collapsed. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA and all VPAID. Additionally, applicable to assets whose displayType is ASSET_DISPLAY_TYPE_EXPANDING or ASSET_DISPLAY_TYPE_PEEL_DOWN."]
-        #[serde(rename = "collapsedSize", default)]
-        pub collapsed_size: Option<crate::schemas::Size>,
-        #[doc = "List of companion creatives assigned to an in-stream video creative asset. Acceptable values include IDs of existing flash and image creatives. Applicable to INSTREAM_VIDEO creative type with dynamicAssetSelection set to true."]
-        #[serde(rename = "companionCreativeIds", default)]
-        pub companion_creative_ids: Option<Vec<i64>>,
-        #[doc = "Custom start time in seconds for making the asset visible. Applicable to the following creative types: all RICH_MEDIA. Value must be greater than or equal to 0."]
-        #[serde(rename = "customStartTimeValue", default)]
-        pub custom_start_time_value: Option<i32>,
-        #[doc = "List of feature dependencies for the creative asset that are detected by Campaign Manager. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative correctly. This is a read-only, auto-generated field. Applicable to the following creative types: HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
-        #[serde(rename = "detectedFeatures", default)]
-        pub detected_features: Option<Vec<crate::schemas::CreativeAssetDetectedFeaturesItems>>,
-        #[doc = "Type of rich media asset. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "displayType", default)]
-        pub display_type: Option<crate::schemas::CreativeAssetDisplayType>,
-        #[doc = "Duration in seconds for which an asset will be displayed. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and VPAID_LINEAR_VIDEO. Value must be greater than or equal to 1."]
-        #[serde(rename = "duration", default)]
-        pub duration: Option<i32>,
-        #[doc = "Duration type for which an asset will be displayed. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "durationType", default)]
-        pub duration_type: Option<crate::schemas::CreativeAssetDurationType>,
-        #[doc = "Detected expanded dimension for video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID."]
-        #[serde(rename = "expandedDimension", default)]
-        pub expanded_dimension: Option<crate::schemas::Size>,
-        #[doc = "File size associated with this creative asset. This is a read-only field. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT."]
-        #[serde(rename = "fileSize", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub file_size: Option<i64>,
-        #[doc = "Flash version of the asset. This is a read-only field. Applicable to the following creative types: FLASH_INPAGE, all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
-        #[serde(rename = "flashVersion", default)]
-        pub flash_version: Option<i32>,
-        #[doc = "Video frame rate for video asset in frames per second. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID."]
-        #[serde(rename = "frameRate", default)]
-        pub frame_rate: Option<f32>,
-        #[doc = "Whether to hide Flash objects flag for an asset. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "hideFlashObjects", default)]
-        pub hide_flash_objects: Option<bool>,
-        #[doc = "Whether to hide selection boxes flag for an asset. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "hideSelectionBoxes", default)]
-        pub hide_selection_boxes: Option<bool>,
-        #[doc = "Whether the asset is horizontally locked. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "horizontallyLocked", default)]
-        pub horizontally_locked: Option<bool>,
-        #[doc = "Numeric ID of this creative asset. This is a required field and should not be modified. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT."]
-        #[serde(rename = "id", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
-        #[doc = "Dimension value for the ID of the asset. This is a read-only, auto-generated field."]
-        #[serde(rename = "idDimensionValue", default)]
-        pub id_dimension_value: Option<crate::schemas::DimensionValue>,
-        #[doc = "Detected duration for audio or video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID."]
-        #[serde(rename = "mediaDuration", default)]
-        pub media_duration: Option<f32>,
-        #[doc = "Detected MIME type for audio or video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID."]
-        #[serde(rename = "mimeType", default)]
-        pub mime_type: Option<String>,
-        #[doc = "Offset position for an asset in collapsed mode. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA and all VPAID. Additionally, only applicable to assets whose displayType is ASSET_DISPLAY_TYPE_EXPANDING or ASSET_DISPLAY_TYPE_PEEL_DOWN."]
-        #[serde(rename = "offset", default)]
-        pub offset: Option<crate::schemas::OffsetPosition>,
-        #[doc = "Orientation of video asset. This is a read-only, auto-generated field."]
-        #[serde(rename = "orientation", default)]
-        pub orientation: Option<crate::schemas::CreativeAssetOrientation>,
-        #[doc = "Whether the backup asset is original or changed by the user in Campaign Manager. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "originalBackup", default)]
-        pub original_backup: Option<bool>,
-        #[doc = "Whether this asset is used as a polite load asset."]
-        #[serde(rename = "politeLoad", default)]
-        pub polite_load: Option<bool>,
-        #[doc = "Offset position for an asset. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "position", default)]
-        pub position: Option<crate::schemas::OffsetPosition>,
-        #[doc = "Offset left unit for an asset. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "positionLeftUnit", default)]
-        pub position_left_unit: Option<crate::schemas::CreativeAssetPositionLeftUnit>,
-        #[doc = "Offset top unit for an asset. This is a read-only field if the asset displayType is ASSET_DISPLAY_TYPE_OVERLAY. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "positionTopUnit", default)]
-        pub position_top_unit: Option<crate::schemas::CreativeAssetPositionTopUnit>,
-        #[doc = "Progressive URL for video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID."]
-        #[serde(rename = "progressiveServingUrl", default)]
-        pub progressive_serving_url: Option<String>,
-        #[doc = "Whether the asset pushes down other content. Applicable to the following creative types: all RICH_MEDIA. Additionally, only applicable when the asset offsets are 0, the collapsedSize.width matches size.width, and the collapsedSize.height is less than size.height."]
-        #[serde(rename = "pushdown", default)]
-        pub pushdown: Option<bool>,
-        #[doc = "Pushdown duration in seconds for an asset. Applicable to the following creative types: all RICH_MEDIA.Additionally, only applicable when the asset pushdown field is true, the offsets are 0, the collapsedSize.width matches size.width, and the collapsedSize.height is less than size.height. Acceptable values are 0 to 9.99, inclusive."]
-        #[serde(rename = "pushdownDuration", default)]
-        pub pushdown_duration: Option<f32>,
-        #[doc = "Role of the asset in relation to creative. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT. This is a required field.\nPRIMARY applies to DISPLAY, FLASH_INPAGE, HTML5_BANNER, IMAGE, DISPLAY_IMAGE_GALLERY, all RICH_MEDIA (which may contain multiple primary assets), and all VPAID creatives.\nBACKUP_IMAGE applies to FLASH_INPAGE, HTML5_BANNER, all RICH_MEDIA, and all VPAID creatives. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.\nADDITIONAL_IMAGE and ADDITIONAL_FLASH apply to FLASH_INPAGE creatives.\nOTHER refers to assets from sources other than Campaign Manager, such as Studio uploaded assets, applicable to all RICH_MEDIA and all VPAID creatives.\nPARENT_VIDEO refers to videos uploaded by the user in Campaign Manager and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives.\nTRANSCODED_VIDEO refers to videos transcoded by Campaign Manager from PARENT_VIDEO assets and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives.\nALTERNATE_VIDEO refers to the Campaign Manager representation of child asset videos from Studio, and is applicable to VPAID_LINEAR_VIDEO creatives. These cannot be added or removed within Campaign Manager.\nFor VPAID_LINEAR_VIDEO creatives, PARENT_VIDEO, TRANSCODED_VIDEO and ALTERNATE_VIDEO assets that are marked active serve as backup in case the VPAID creative cannot be served. Only PARENT_VIDEO assets can be added or removed for an INSTREAM_VIDEO or VPAID_LINEAR_VIDEO creative.\nPARENT_AUDIO refers to audios uploaded by the user in Campaign Manager and is applicable to INSTREAM_AUDIO creatives.\nTRANSCODED_AUDIO refers to audios transcoded by Campaign Manager from PARENT_AUDIO assets and is applicable to INSTREAM_AUDIO creatives."]
-        #[serde(rename = "role", default)]
-        pub role: Option<crate::schemas::CreativeAssetRole>,
-        #[doc = "Size associated with this creative asset. This is a required field when applicable; however for IMAGE and FLASH_INPAGE, creatives if left blank, this field will be automatically set using the actual size of the associated image asset. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all RICH_MEDIA. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
-        #[serde(rename = "size", default)]
-        pub size: Option<crate::schemas::Size>,
-        #[doc = "Whether the asset is SSL-compliant. This is a read-only field. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT."]
-        #[serde(rename = "sslCompliant", default)]
-        pub ssl_compliant: Option<bool>,
-        #[doc = "Initial wait time type before making the asset visible. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "startTimeType", default)]
-        pub start_time_type: Option<crate::schemas::CreativeAssetStartTimeType>,
-        #[doc = "Streaming URL for video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID."]
-        #[serde(rename = "streamingServingUrl", default)]
-        pub streaming_serving_url: Option<String>,
-        #[doc = "Whether the asset is transparent. Applicable to the following creative types: all RICH_MEDIA. Additionally, only applicable to HTML5 assets."]
-        #[serde(rename = "transparency", default)]
-        pub transparency: Option<bool>,
-        #[doc = "Whether the asset is vertically locked. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA."]
-        #[serde(rename = "verticallyLocked", default)]
-        pub vertically_locked: Option<bool>,
-        #[doc = "Window mode options for flash assets. Applicable to the following creative types: FLASH_INPAGE, RICH_MEDIA_DISPLAY_EXPANDING, RICH_MEDIA_IM_EXPAND, RICH_MEDIA_DISPLAY_BANNER, and RICH_MEDIA_INPAGE_FLOATING."]
-        #[serde(rename = "windowMode", default)]
-        pub window_mode: Option<crate::schemas::CreativeAssetWindowMode>,
-        #[doc = "zIndex value of an asset. Applicable to the following creative types: all RICH_MEDIA.Additionally, only applicable to assets whose displayType is NOT one of the following types: ASSET_DISPLAY_TYPE_INPAGE or ASSET_DISPLAY_TYPE_OVERLAY. Acceptable values are -999999999 to 999999999, inclusive."]
-        #[serde(rename = "zIndex", default)]
-        pub z_index: Option<i32>,
-        #[doc = "File name of zip file. This is a read-only field. Applicable to the following creative types: HTML5_BANNER."]
-        #[serde(rename = "zipFilename", default)]
-        pub zip_filename: Option<String>,
-        #[doc = "Size of zip file. This is a read-only field. Applicable to the following creative types: HTML5_BANNER."]
-        #[serde(rename = "zipFilesize", default)]
-        pub zip_filesize: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CreativeAsset {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeAssetAlignment {
         AlignmentBottom,
         AlignmentLeft,
@@ -3290,7 +3643,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeAssetArtworkType {
         ArtworkTypeFlash,
         ArtworkTypeHtml5,
@@ -3340,7 +3693,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeAssetChildAssetType {
         ChildAssetTypeData,
         ChildAssetTypeFlash,
@@ -3390,7 +3743,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeAssetDetectedFeaturesItems {
         ApplicationCache,
         Audio,
@@ -3638,7 +3991,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeAssetDisplayType {
         AssetDisplayTypeBackdrop,
         AssetDisplayTypeExpanding,
@@ -3730,7 +4083,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeAssetDurationType {
         AssetDurationTypeAuto,
         AssetDurationTypeCustom,
@@ -3777,27 +4130,476 @@ pub mod schemas {
             })
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeAssetId {
-        #[doc = "Name of the creative asset. This is a required field while inserting an asset. After insertion, this assetIdentifier is used to identify the uploaded asset. Characters in the name must be alphanumeric or one of the following: \".-_ \". Spaces are allowed."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "Type of asset to upload. This is a required field. FLASH and IMAGE are no longer supported for new uploads. All image assets should use HTML_IMAGE."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::CreativeAssetIdType>,
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CreativeAssetOrientation {
+        Landscape,
+        Portrait,
+        Square,
     }
-    impl ::field_selector::FieldSelector for CreativeAssetId {
+    impl CreativeAssetOrientation {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                CreativeAssetOrientation::Landscape => "LANDSCAPE",
+                CreativeAssetOrientation::Portrait => "PORTRAIT",
+                CreativeAssetOrientation::Square => "SQUARE",
+            }
+        }
+    }
+    impl ::std::fmt::Display for CreativeAssetOrientation {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CreativeAssetOrientation {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CreativeAssetOrientation {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "LANDSCAPE" => CreativeAssetOrientation::Landscape,
+                "PORTRAIT" => CreativeAssetOrientation::Portrait,
+                "SQUARE" => CreativeAssetOrientation::Square,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CreativeAssetPositionLeftUnit {
+        OffsetUnitPercent,
+        OffsetUnitPixel,
+        OffsetUnitPixelFromCenter,
+    }
+    impl CreativeAssetPositionLeftUnit {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                CreativeAssetPositionLeftUnit::OffsetUnitPercent => "OFFSET_UNIT_PERCENT",
+                CreativeAssetPositionLeftUnit::OffsetUnitPixel => "OFFSET_UNIT_PIXEL",
+                CreativeAssetPositionLeftUnit::OffsetUnitPixelFromCenter => {
+                    "OFFSET_UNIT_PIXEL_FROM_CENTER"
+                }
+            }
+        }
+    }
+    impl ::std::fmt::Display for CreativeAssetPositionLeftUnit {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CreativeAssetPositionLeftUnit {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CreativeAssetPositionLeftUnit {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "OFFSET_UNIT_PERCENT" => CreativeAssetPositionLeftUnit::OffsetUnitPercent,
+                "OFFSET_UNIT_PIXEL" => CreativeAssetPositionLeftUnit::OffsetUnitPixel,
+                "OFFSET_UNIT_PIXEL_FROM_CENTER" => {
+                    CreativeAssetPositionLeftUnit::OffsetUnitPixelFromCenter
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CreativeAssetPositionTopUnit {
+        OffsetUnitPercent,
+        OffsetUnitPixel,
+        OffsetUnitPixelFromCenter,
+    }
+    impl CreativeAssetPositionTopUnit {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                CreativeAssetPositionTopUnit::OffsetUnitPercent => "OFFSET_UNIT_PERCENT",
+                CreativeAssetPositionTopUnit::OffsetUnitPixel => "OFFSET_UNIT_PIXEL",
+                CreativeAssetPositionTopUnit::OffsetUnitPixelFromCenter => {
+                    "OFFSET_UNIT_PIXEL_FROM_CENTER"
+                }
+            }
+        }
+    }
+    impl ::std::fmt::Display for CreativeAssetPositionTopUnit {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CreativeAssetPositionTopUnit {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CreativeAssetPositionTopUnit {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "OFFSET_UNIT_PERCENT" => CreativeAssetPositionTopUnit::OffsetUnitPercent,
+                "OFFSET_UNIT_PIXEL" => CreativeAssetPositionTopUnit::OffsetUnitPixel,
+                "OFFSET_UNIT_PIXEL_FROM_CENTER" => {
+                    CreativeAssetPositionTopUnit::OffsetUnitPixelFromCenter
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CreativeAssetRole {
+        AdditionalFlash,
+        AdditionalImage,
+        AlternateVideo,
+        BackupImage,
+        Other,
+        ParentAudio,
+        ParentVideo,
+        Primary,
+        TranscodedAudio,
+        TranscodedVideo,
+    }
+    impl CreativeAssetRole {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                CreativeAssetRole::AdditionalFlash => "ADDITIONAL_FLASH",
+                CreativeAssetRole::AdditionalImage => "ADDITIONAL_IMAGE",
+                CreativeAssetRole::AlternateVideo => "ALTERNATE_VIDEO",
+                CreativeAssetRole::BackupImage => "BACKUP_IMAGE",
+                CreativeAssetRole::Other => "OTHER",
+                CreativeAssetRole::ParentAudio => "PARENT_AUDIO",
+                CreativeAssetRole::ParentVideo => "PARENT_VIDEO",
+                CreativeAssetRole::Primary => "PRIMARY",
+                CreativeAssetRole::TranscodedAudio => "TRANSCODED_AUDIO",
+                CreativeAssetRole::TranscodedVideo => "TRANSCODED_VIDEO",
+            }
+        }
+    }
+    impl ::std::fmt::Display for CreativeAssetRole {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CreativeAssetRole {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CreativeAssetRole {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ADDITIONAL_FLASH" => CreativeAssetRole::AdditionalFlash,
+                "ADDITIONAL_IMAGE" => CreativeAssetRole::AdditionalImage,
+                "ALTERNATE_VIDEO" => CreativeAssetRole::AlternateVideo,
+                "BACKUP_IMAGE" => CreativeAssetRole::BackupImage,
+                "OTHER" => CreativeAssetRole::Other,
+                "PARENT_AUDIO" => CreativeAssetRole::ParentAudio,
+                "PARENT_VIDEO" => CreativeAssetRole::ParentVideo,
+                "PRIMARY" => CreativeAssetRole::Primary,
+                "TRANSCODED_AUDIO" => CreativeAssetRole::TranscodedAudio,
+                "TRANSCODED_VIDEO" => CreativeAssetRole::TranscodedVideo,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CreativeAssetStartTimeType {
+        AssetStartTimeTypeCustom,
+        AssetStartTimeTypeNone,
+    }
+    impl CreativeAssetStartTimeType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                CreativeAssetStartTimeType::AssetStartTimeTypeCustom => {
+                    "ASSET_START_TIME_TYPE_CUSTOM"
+                }
+                CreativeAssetStartTimeType::AssetStartTimeTypeNone => "ASSET_START_TIME_TYPE_NONE",
+            }
+        }
+    }
+    impl ::std::fmt::Display for CreativeAssetStartTimeType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CreativeAssetStartTimeType {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CreativeAssetStartTimeType {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ASSET_START_TIME_TYPE_CUSTOM" => {
+                    CreativeAssetStartTimeType::AssetStartTimeTypeCustom
+                }
+                "ASSET_START_TIME_TYPE_NONE" => CreativeAssetStartTimeType::AssetStartTimeTypeNone,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CreativeAssetWindowMode {
+        Opaque,
+        Transparent,
+        Window,
+    }
+    impl CreativeAssetWindowMode {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                CreativeAssetWindowMode::Opaque => "OPAQUE",
+                CreativeAssetWindowMode::Transparent => "TRANSPARENT",
+                CreativeAssetWindowMode::Window => "WINDOW",
+            }
+        }
+    }
+    impl ::std::fmt::Display for CreativeAssetWindowMode {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CreativeAssetWindowMode {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CreativeAssetWindowMode {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "OPAQUE" => CreativeAssetWindowMode::Opaque,
+                "TRANSPARENT" => CreativeAssetWindowMode::Transparent,
+                "WINDOW" => CreativeAssetWindowMode::Window,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct CreativeAsset {
+        #[doc = "Whether ActionScript3 is enabled for the flash asset. This is a read-only field. Applicable to the following creative type: FLASH_INPAGE. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
+        #[serde(rename = "actionScript3", default)]
+        pub action_script_3: Option<bool>,
+        #[doc = "Whether the video or audio asset is active. This is a read-only field for VPAID_NON_LINEAR_VIDEO assets. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID."]
+        #[serde(rename = "active", default)]
+        pub active: Option<bool>,
+        #[doc = "Additional sizes associated with this creative asset. HTML5 asset generated by compatible software such as GWD will be able to support more sizes this creative asset can render."]
+        #[serde(rename = "additionalSizes", default)]
+        pub additional_sizes: Option<Vec<crate::schemas::Size>>,
+        #[doc = "Possible alignments for an asset. This is a read-only field. Applicable to the following creative types: RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL."]
+        #[serde(rename = "alignment", default)]
+        pub alignment: Option<crate::schemas::CreativeAssetAlignment>,
+        #[doc = "Artwork type of rich media creative. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA."]
+        #[serde(rename = "artworkType", default)]
+        pub artwork_type: Option<crate::schemas::CreativeAssetArtworkType>,
+        #[doc = "Identifier of this asset. This is the same identifier returned during creative asset insert operation. This is a required field. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT."]
+        #[serde(rename = "assetIdentifier", default)]
+        pub asset_identifier: Option<crate::schemas::CreativeAssetId>,
+        #[doc = "Audio stream bit rate in kbps. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID."]
+        #[serde(rename = "audioBitRate", default)]
+        pub audio_bit_rate: Option<i32>,
+        #[doc = "Audio sample bit rate in hertz. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID."]
+        #[serde(rename = "audioSampleRate", default)]
+        pub audio_sample_rate: Option<i32>,
+        #[doc = "Exit event configured for the backup image. Applicable to the following creative types: all RICH_MEDIA."]
+        #[serde(rename = "backupImageExit", default)]
+        pub backup_image_exit: Option<crate::schemas::CreativeCustomEvent>,
+        #[doc = "Detected bit-rate for audio or video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID."]
+        #[serde(rename = "bitRate", default)]
+        pub bit_rate: Option<i32>,
+        #[doc = "Rich media child asset type. This is a read-only field. Applicable to the following creative types: all VPAID."]
+        #[serde(rename = "childAssetType", default)]
+        pub child_asset_type: Option<crate::schemas::CreativeAssetChildAssetType>,
+        #[doc = "Size of an asset when collapsed. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA and all VPAID. Additionally, applicable to assets whose displayType is ASSET_DISPLAY_TYPE_EXPANDING or ASSET_DISPLAY_TYPE_PEEL_DOWN."]
+        #[serde(rename = "collapsedSize", default)]
+        pub collapsed_size: Option<crate::schemas::Size>,
+        #[doc = "List of companion creatives assigned to an in-stream video creative asset. Acceptable values include IDs of existing flash and image creatives. Applicable to INSTREAM_VIDEO creative type with dynamicAssetSelection set to true."]
+        #[serde(rename = "companionCreativeIds", default)]
+        pub companion_creative_ids: Option<Vec<i64>>,
+        #[doc = "Custom start time in seconds for making the asset visible. Applicable to the following creative types: all RICH_MEDIA. Value must be greater than or equal to 0."]
+        #[serde(rename = "customStartTimeValue", default)]
+        pub custom_start_time_value: Option<i32>,
+        #[doc = "List of feature dependencies for the creative asset that are detected by Campaign Manager. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative correctly. This is a read-only, auto-generated field. Applicable to the following creative types: HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
+        #[serde(rename = "detectedFeatures", default)]
+        pub detected_features: Option<Vec<crate::schemas::CreativeAssetDetectedFeaturesItems>>,
+        #[doc = "Type of rich media asset. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA."]
+        #[serde(rename = "displayType", default)]
+        pub display_type: Option<crate::schemas::CreativeAssetDisplayType>,
+        #[doc = "Duration in seconds for which an asset will be displayed. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and VPAID_LINEAR_VIDEO. Value must be greater than or equal to 1."]
+        #[serde(rename = "duration", default)]
+        pub duration: Option<i32>,
+        #[doc = "Duration type for which an asset will be displayed. Applicable to the following creative types: all RICH_MEDIA."]
+        #[serde(rename = "durationType", default)]
+        pub duration_type: Option<crate::schemas::CreativeAssetDurationType>,
+        #[doc = "Detected expanded dimension for video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID."]
+        #[serde(rename = "expandedDimension", default)]
+        pub expanded_dimension: Option<crate::schemas::Size>,
+        #[doc = "File size associated with this creative asset. This is a read-only field. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT."]
+        #[serde(rename = "fileSize", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub file_size: Option<i64>,
+        #[doc = "Flash version of the asset. This is a read-only field. Applicable to the following creative types: FLASH_INPAGE, all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
+        #[serde(rename = "flashVersion", default)]
+        pub flash_version: Option<i32>,
+        #[doc = "Video frame rate for video asset in frames per second. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID."]
+        #[serde(rename = "frameRate", default)]
+        pub frame_rate: Option<f32>,
+        #[doc = "Whether to hide Flash objects flag for an asset. Applicable to the following creative types: all RICH_MEDIA."]
+        #[serde(rename = "hideFlashObjects", default)]
+        pub hide_flash_objects: Option<bool>,
+        #[doc = "Whether to hide selection boxes flag for an asset. Applicable to the following creative types: all RICH_MEDIA."]
+        #[serde(rename = "hideSelectionBoxes", default)]
+        pub hide_selection_boxes: Option<bool>,
+        #[doc = "Whether the asset is horizontally locked. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA."]
+        #[serde(rename = "horizontallyLocked", default)]
+        pub horizontally_locked: Option<bool>,
+        #[doc = "Numeric ID of this creative asset. This is a required field and should not be modified. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT."]
+        #[serde(rename = "id", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub id: Option<i64>,
+        #[doc = "Dimension value for the ID of the asset. This is a read-only, auto-generated field."]
+        #[serde(rename = "idDimensionValue", default)]
+        pub id_dimension_value: Option<crate::schemas::DimensionValue>,
+        #[doc = "Detected duration for audio or video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID."]
+        #[serde(rename = "mediaDuration", default)]
+        pub media_duration: Option<f32>,
+        #[doc = "Detected MIME type for audio or video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID."]
+        #[serde(rename = "mimeType", default)]
+        pub mime_type: Option<String>,
+        #[doc = "Offset position for an asset in collapsed mode. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA and all VPAID. Additionally, only applicable to assets whose displayType is ASSET_DISPLAY_TYPE_EXPANDING or ASSET_DISPLAY_TYPE_PEEL_DOWN."]
+        #[serde(rename = "offset", default)]
+        pub offset: Option<crate::schemas::OffsetPosition>,
+        #[doc = "Orientation of video asset. This is a read-only, auto-generated field."]
+        #[serde(rename = "orientation", default)]
+        pub orientation: Option<crate::schemas::CreativeAssetOrientation>,
+        #[doc = "Whether the backup asset is original or changed by the user in Campaign Manager. Applicable to the following creative types: all RICH_MEDIA."]
+        #[serde(rename = "originalBackup", default)]
+        pub original_backup: Option<bool>,
+        #[doc = "Whether this asset is used as a polite load asset."]
+        #[serde(rename = "politeLoad", default)]
+        pub polite_load: Option<bool>,
+        #[doc = "Offset position for an asset. Applicable to the following creative types: all RICH_MEDIA."]
+        #[serde(rename = "position", default)]
+        pub position: Option<crate::schemas::OffsetPosition>,
+        #[doc = "Offset left unit for an asset. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA."]
+        #[serde(rename = "positionLeftUnit", default)]
+        pub position_left_unit: Option<crate::schemas::CreativeAssetPositionLeftUnit>,
+        #[doc = "Offset top unit for an asset. This is a read-only field if the asset displayType is ASSET_DISPLAY_TYPE_OVERLAY. Applicable to the following creative types: all RICH_MEDIA."]
+        #[serde(rename = "positionTopUnit", default)]
+        pub position_top_unit: Option<crate::schemas::CreativeAssetPositionTopUnit>,
+        #[doc = "Progressive URL for video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID."]
+        #[serde(rename = "progressiveServingUrl", default)]
+        pub progressive_serving_url: Option<String>,
+        #[doc = "Whether the asset pushes down other content. Applicable to the following creative types: all RICH_MEDIA. Additionally, only applicable when the asset offsets are 0, the collapsedSize.width matches size.width, and the collapsedSize.height is less than size.height."]
+        #[serde(rename = "pushdown", default)]
+        pub pushdown: Option<bool>,
+        #[doc = "Pushdown duration in seconds for an asset. Applicable to the following creative types: all RICH_MEDIA.Additionally, only applicable when the asset pushdown field is true, the offsets are 0, the collapsedSize.width matches size.width, and the collapsedSize.height is less than size.height. Acceptable values are 0 to 9.99, inclusive."]
+        #[serde(rename = "pushdownDuration", default)]
+        pub pushdown_duration: Option<f32>,
+        #[doc = "Role of the asset in relation to creative. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT. This is a required field.\nPRIMARY applies to DISPLAY, FLASH_INPAGE, HTML5_BANNER, IMAGE, DISPLAY_IMAGE_GALLERY, all RICH_MEDIA (which may contain multiple primary assets), and all VPAID creatives.\nBACKUP_IMAGE applies to FLASH_INPAGE, HTML5_BANNER, all RICH_MEDIA, and all VPAID creatives. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.\nADDITIONAL_IMAGE and ADDITIONAL_FLASH apply to FLASH_INPAGE creatives.\nOTHER refers to assets from sources other than Campaign Manager, such as Studio uploaded assets, applicable to all RICH_MEDIA and all VPAID creatives.\nPARENT_VIDEO refers to videos uploaded by the user in Campaign Manager and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives.\nTRANSCODED_VIDEO refers to videos transcoded by Campaign Manager from PARENT_VIDEO assets and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives.\nALTERNATE_VIDEO refers to the Campaign Manager representation of child asset videos from Studio, and is applicable to VPAID_LINEAR_VIDEO creatives. These cannot be added or removed within Campaign Manager.\nFor VPAID_LINEAR_VIDEO creatives, PARENT_VIDEO, TRANSCODED_VIDEO and ALTERNATE_VIDEO assets that are marked active serve as backup in case the VPAID creative cannot be served. Only PARENT_VIDEO assets can be added or removed for an INSTREAM_VIDEO or VPAID_LINEAR_VIDEO creative.\nPARENT_AUDIO refers to audios uploaded by the user in Campaign Manager and is applicable to INSTREAM_AUDIO creatives.\nTRANSCODED_AUDIO refers to audios transcoded by Campaign Manager from PARENT_AUDIO assets and is applicable to INSTREAM_AUDIO creatives."]
+        #[serde(rename = "role", default)]
+        pub role: Option<crate::schemas::CreativeAssetRole>,
+        #[doc = "Size associated with this creative asset. This is a required field when applicable; however for IMAGE and FLASH_INPAGE, creatives if left blank, this field will be automatically set using the actual size of the associated image asset. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all RICH_MEDIA. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE."]
+        #[serde(rename = "size", default)]
+        pub size: Option<crate::schemas::Size>,
+        #[doc = "Whether the asset is SSL-compliant. This is a read-only field. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT."]
+        #[serde(rename = "sslCompliant", default)]
+        pub ssl_compliant: Option<bool>,
+        #[doc = "Initial wait time type before making the asset visible. Applicable to the following creative types: all RICH_MEDIA."]
+        #[serde(rename = "startTimeType", default)]
+        pub start_time_type: Option<crate::schemas::CreativeAssetStartTimeType>,
+        #[doc = "Streaming URL for video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID."]
+        #[serde(rename = "streamingServingUrl", default)]
+        pub streaming_serving_url: Option<String>,
+        #[doc = "Whether the asset is transparent. Applicable to the following creative types: all RICH_MEDIA. Additionally, only applicable to HTML5 assets."]
+        #[serde(rename = "transparency", default)]
+        pub transparency: Option<bool>,
+        #[doc = "Whether the asset is vertically locked. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA."]
+        #[serde(rename = "verticallyLocked", default)]
+        pub vertically_locked: Option<bool>,
+        #[doc = "Window mode options for flash assets. Applicable to the following creative types: FLASH_INPAGE, RICH_MEDIA_DISPLAY_EXPANDING, RICH_MEDIA_IM_EXPAND, RICH_MEDIA_DISPLAY_BANNER, and RICH_MEDIA_INPAGE_FLOATING."]
+        #[serde(rename = "windowMode", default)]
+        pub window_mode: Option<crate::schemas::CreativeAssetWindowMode>,
+        #[doc = "zIndex value of an asset. Applicable to the following creative types: all RICH_MEDIA.Additionally, only applicable to assets whose displayType is NOT one of the following types: ASSET_DISPLAY_TYPE_INPAGE or ASSET_DISPLAY_TYPE_OVERLAY. Acceptable values are -999999999 to 999999999, inclusive."]
+        #[serde(rename = "zIndex", default)]
+        pub z_index: Option<i32>,
+        #[doc = "File name of zip file. This is a read-only field. Applicable to the following creative types: HTML5_BANNER."]
+        #[serde(rename = "zipFilename", default)]
+        pub zip_filename: Option<String>,
+        #[doc = "Size of zip file. This is a read-only field. Applicable to the following creative types: HTML5_BANNER."]
+        #[serde(rename = "zipFilesize", default)]
+        pub zip_filesize: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CreativeAsset {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3807,7 +4609,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeAssetIdType {
         Audio,
         Flash,
@@ -3867,41 +4669,23 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CreativeAssetMetadata {
-        #[doc = "ID of the creative asset. This is a required field."]
-        #[serde(rename = "assetIdentifier", default)]
-        pub asset_identifier: Option<crate::schemas::CreativeAssetId>,
-        #[doc = "List of detected click tags for assets. This is a read-only auto-generated field."]
-        #[serde(rename = "clickTags", default)]
-        pub click_tags: Option<Vec<crate::schemas::ClickTag>>,
-        #[doc = "List of feature dependencies for the creative asset that are detected by Campaign Manager. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative correctly. This is a read-only, auto-generated field."]
-        #[serde(rename = "detectedFeatures", default)]
-        pub detected_features:
-            Option<Vec<crate::schemas::CreativeAssetMetadataDetectedFeaturesItems>>,
-        #[doc = "Numeric ID of the asset. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
-        #[doc = "Dimension value for the numeric ID of the asset. This is a read-only, auto-generated field."]
-        #[serde(rename = "idDimensionValue", default)]
-        pub id_dimension_value: Option<crate::schemas::DimensionValue>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#creativeAssetMetadata\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Rules validated during code generation that generated a warning. This is a read-only, auto-generated field.\n\nPossible values are:\n- \"ADMOB_REFERENCED\"\n- \"ASSET_FORMAT_UNSUPPORTED_DCM\"\n- \"ASSET_INVALID\"\n- \"CLICK_TAG_HARD_CODED\"\n- \"CLICK_TAG_INVALID\"\n- \"CLICK_TAG_IN_GWD\"\n- \"CLICK_TAG_MISSING\"\n- \"CLICK_TAG_MORE_THAN_ONE\"\n- \"CLICK_TAG_NON_TOP_LEVEL\"\n- \"COMPONENT_UNSUPPORTED_DCM\"\n- \"ENABLER_UNSUPPORTED_METHOD_DCM\"\n- \"EXTERNAL_FILE_REFERENCED\"\n- \"FILE_DETAIL_EMPTY\"\n- \"FILE_TYPE_INVALID\"\n- \"GWD_PROPERTIES_INVALID\"\n- \"HTML5_FEATURE_UNSUPPORTED\"\n- \"LINKED_FILE_NOT_FOUND\"\n- \"MAX_FLASH_VERSION_11\"\n- \"MRAID_REFERENCED\"\n- \"NOT_SSL_COMPLIANT\"\n- \"ORPHANED_ASSET\"\n- \"PRIMARY_HTML_MISSING\"\n- \"SVG_INVALID\"\n- \"ZIP_INVALID\""]
-        #[serde(rename = "warnedValidationRules", default)]
-        pub warned_validation_rules:
-            Option<Vec<crate::schemas::CreativeAssetMetadataWarnedValidationRulesItems>>,
+    pub struct CreativeAssetId {
+        #[doc = "Name of the creative asset. This is a required field while inserting an asset. After insertion, this assetIdentifier is used to identify the uploaded asset. Characters in the name must be alphanumeric or one of the following: \".-_ \". Spaces are allowed."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "Type of asset to upload. This is a required field. FLASH and IMAGE are no longer supported for new uploads. All image assets should use HTML_IMAGE."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::CreativeAssetIdType>,
     }
-    impl ::field_selector::FieldSelector for CreativeAssetMetadata {
+    impl ::field_selector::FieldSelector for CreativeAssetId {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3911,7 +4695,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeAssetMetadataDetectedFeaturesItems {
         ApplicationCache,
         Audio,
@@ -4187,7 +4971,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeAssetMetadataWarnedValidationRulesItems {
         AdmobReferenced,
         AssetFormatUnsupportedDcm,
@@ -4377,229 +5161,60 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum CreativeAssetOrientation {
-        Landscape,
-        Portrait,
-        Square,
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeAssetMetadata {
+        #[doc = "ID of the creative asset. This is a required field."]
+        #[serde(rename = "assetIdentifier", default)]
+        pub asset_identifier: Option<crate::schemas::CreativeAssetId>,
+        #[doc = "List of detected click tags for assets. This is a read-only auto-generated field."]
+        #[serde(rename = "clickTags", default)]
+        pub click_tags: Option<Vec<crate::schemas::ClickTag>>,
+        #[doc = "List of feature dependencies for the creative asset that are detected by Campaign Manager. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative correctly. This is a read-only, auto-generated field."]
+        #[serde(rename = "detectedFeatures", default)]
+        pub detected_features:
+            Option<Vec<crate::schemas::CreativeAssetMetadataDetectedFeaturesItems>>,
+        #[doc = "Numeric ID of the asset. This is a read-only, auto-generated field."]
+        #[serde(rename = "id", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub id: Option<i64>,
+        #[doc = "Dimension value for the numeric ID of the asset. This is a read-only, auto-generated field."]
+        #[serde(rename = "idDimensionValue", default)]
+        pub id_dimension_value: Option<crate::schemas::DimensionValue>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#creativeAssetMetadata\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Rules validated during code generation that generated a warning. This is a read-only, auto-generated field.\n\nPossible values are:\n- \"ADMOB_REFERENCED\"\n- \"ASSET_FORMAT_UNSUPPORTED_DCM\"\n- \"ASSET_INVALID\"\n- \"CLICK_TAG_HARD_CODED\"\n- \"CLICK_TAG_INVALID\"\n- \"CLICK_TAG_IN_GWD\"\n- \"CLICK_TAG_MISSING\"\n- \"CLICK_TAG_MORE_THAN_ONE\"\n- \"CLICK_TAG_NON_TOP_LEVEL\"\n- \"COMPONENT_UNSUPPORTED_DCM\"\n- \"ENABLER_UNSUPPORTED_METHOD_DCM\"\n- \"EXTERNAL_FILE_REFERENCED\"\n- \"FILE_DETAIL_EMPTY\"\n- \"FILE_TYPE_INVALID\"\n- \"GWD_PROPERTIES_INVALID\"\n- \"HTML5_FEATURE_UNSUPPORTED\"\n- \"LINKED_FILE_NOT_FOUND\"\n- \"MAX_FLASH_VERSION_11\"\n- \"MRAID_REFERENCED\"\n- \"NOT_SSL_COMPLIANT\"\n- \"ORPHANED_ASSET\"\n- \"PRIMARY_HTML_MISSING\"\n- \"SVG_INVALID\"\n- \"ZIP_INVALID\""]
+        #[serde(rename = "warnedValidationRules", default)]
+        pub warned_validation_rules:
+            Option<Vec<crate::schemas::CreativeAssetMetadataWarnedValidationRulesItems>>,
     }
-    impl CreativeAssetOrientation {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                CreativeAssetOrientation::Landscape => "LANDSCAPE",
-                CreativeAssetOrientation::Portrait => "PORTRAIT",
-                CreativeAssetOrientation::Square => "SQUARE",
+    impl ::field_selector::FieldSelector for CreativeAssetMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
             }
-        }
-    }
-    impl ::std::fmt::Display for CreativeAssetOrientation {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for CreativeAssetOrientation {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for CreativeAssetOrientation {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "LANDSCAPE" => CreativeAssetOrientation::Landscape,
-                "PORTRAIT" => CreativeAssetOrientation::Portrait,
-                "SQUARE" => CreativeAssetOrientation::Square,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum CreativeAssetPositionLeftUnit {
-        OffsetUnitPercent,
-        OffsetUnitPixel,
-        OffsetUnitPixelFromCenter,
-    }
-    impl CreativeAssetPositionLeftUnit {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                CreativeAssetPositionLeftUnit::OffsetUnitPercent => "OFFSET_UNIT_PERCENT",
-                CreativeAssetPositionLeftUnit::OffsetUnitPixel => "OFFSET_UNIT_PIXEL",
-                CreativeAssetPositionLeftUnit::OffsetUnitPixelFromCenter => {
-                    "OFFSET_UNIT_PIXEL_FROM_CENTER"
-                }
-            }
-        }
-    }
-    impl ::std::fmt::Display for CreativeAssetPositionLeftUnit {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for CreativeAssetPositionLeftUnit {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for CreativeAssetPositionLeftUnit {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "OFFSET_UNIT_PERCENT" => CreativeAssetPositionLeftUnit::OffsetUnitPercent,
-                "OFFSET_UNIT_PIXEL" => CreativeAssetPositionLeftUnit::OffsetUnitPixel,
-                "OFFSET_UNIT_PIXEL_FROM_CENTER" => {
-                    CreativeAssetPositionLeftUnit::OffsetUnitPixelFromCenter
-                }
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum CreativeAssetPositionTopUnit {
-        OffsetUnitPercent,
-        OffsetUnitPixel,
-        OffsetUnitPixelFromCenter,
-    }
-    impl CreativeAssetPositionTopUnit {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                CreativeAssetPositionTopUnit::OffsetUnitPercent => "OFFSET_UNIT_PERCENT",
-                CreativeAssetPositionTopUnit::OffsetUnitPixel => "OFFSET_UNIT_PIXEL",
-                CreativeAssetPositionTopUnit::OffsetUnitPixelFromCenter => {
-                    "OFFSET_UNIT_PIXEL_FROM_CENTER"
-                }
-            }
-        }
-    }
-    impl ::std::fmt::Display for CreativeAssetPositionTopUnit {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for CreativeAssetPositionTopUnit {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for CreativeAssetPositionTopUnit {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "OFFSET_UNIT_PERCENT" => CreativeAssetPositionTopUnit::OffsetUnitPercent,
-                "OFFSET_UNIT_PIXEL" => CreativeAssetPositionTopUnit::OffsetUnitPixel,
-                "OFFSET_UNIT_PIXEL_FROM_CENTER" => {
-                    CreativeAssetPositionTopUnit::OffsetUnitPixelFromCenter
-                }
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum CreativeAssetRole {
-        AdditionalFlash,
-        AdditionalImage,
-        AlternateVideo,
-        BackupImage,
-        Other,
-        ParentAudio,
-        ParentVideo,
-        Primary,
-        TranscodedAudio,
-        TranscodedVideo,
-    }
-    impl CreativeAssetRole {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                CreativeAssetRole::AdditionalFlash => "ADDITIONAL_FLASH",
-                CreativeAssetRole::AdditionalImage => "ADDITIONAL_IMAGE",
-                CreativeAssetRole::AlternateVideo => "ALTERNATE_VIDEO",
-                CreativeAssetRole::BackupImage => "BACKUP_IMAGE",
-                CreativeAssetRole::Other => "OTHER",
-                CreativeAssetRole::ParentAudio => "PARENT_AUDIO",
-                CreativeAssetRole::ParentVideo => "PARENT_VIDEO",
-                CreativeAssetRole::Primary => "PRIMARY",
-                CreativeAssetRole::TranscodedAudio => "TRANSCODED_AUDIO",
-                CreativeAssetRole::TranscodedVideo => "TRANSCODED_VIDEO",
-            }
-        }
-    }
-    impl ::std::fmt::Display for CreativeAssetRole {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for CreativeAssetRole {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for CreativeAssetRole {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ADDITIONAL_FLASH" => CreativeAssetRole::AdditionalFlash,
-                "ADDITIONAL_IMAGE" => CreativeAssetRole::AdditionalImage,
-                "ALTERNATE_VIDEO" => CreativeAssetRole::AlternateVideo,
-                "BACKUP_IMAGE" => CreativeAssetRole::BackupImage,
-                "OTHER" => CreativeAssetRole::Other,
-                "PARENT_AUDIO" => CreativeAssetRole::ParentAudio,
-                "PARENT_VIDEO" => CreativeAssetRole::ParentVideo,
-                "PRIMARY" => CreativeAssetRole::Primary,
-                "TRANSCODED_AUDIO" => CreativeAssetRole::TranscodedAudio,
-                "TRANSCODED_VIDEO" => CreativeAssetRole::TranscodedVideo,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
+            selector.push_str(ident);
+            selector.push_str("*");
         }
     }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -4625,107 +5240,12 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum CreativeAssetStartTimeType {
-        AssetStartTimeTypeCustom,
-        AssetStartTimeTypeNone,
-    }
-    impl CreativeAssetStartTimeType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                CreativeAssetStartTimeType::AssetStartTimeTypeCustom => {
-                    "ASSET_START_TIME_TYPE_CUSTOM"
-                }
-                CreativeAssetStartTimeType::AssetStartTimeTypeNone => "ASSET_START_TIME_TYPE_NONE",
-            }
-        }
-    }
-    impl ::std::fmt::Display for CreativeAssetStartTimeType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for CreativeAssetStartTimeType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for CreativeAssetStartTimeType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ASSET_START_TIME_TYPE_CUSTOM" => {
-                    CreativeAssetStartTimeType::AssetStartTimeTypeCustom
-                }
-                "ASSET_START_TIME_TYPE_NONE" => CreativeAssetStartTimeType::AssetStartTimeTypeNone,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum CreativeAssetWindowMode {
-        Opaque,
-        Transparent,
-        Window,
-    }
-    impl CreativeAssetWindowMode {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                CreativeAssetWindowMode::Opaque => "OPAQUE",
-                CreativeAssetWindowMode::Transparent => "TRANSPARENT",
-                CreativeAssetWindowMode::Window => "WINDOW",
-            }
-        }
-    }
-    impl ::std::fmt::Display for CreativeAssetWindowMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for CreativeAssetWindowMode {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for CreativeAssetWindowMode {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "OPAQUE" => CreativeAssetWindowMode::Opaque,
-                "TRANSPARENT" => CreativeAssetWindowMode::Transparent,
-                "WINDOW" => CreativeAssetWindowMode::Window,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -4785,359 +5305,12 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum CreativeAuthoringSource {
-        CreativeAuthoringSourceDbm,
-        CreativeAuthoringSourceDcm,
-        CreativeAuthoringSourceStudio,
-    }
-    impl CreativeAuthoringSource {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                CreativeAuthoringSource::CreativeAuthoringSourceDbm => {
-                    "CREATIVE_AUTHORING_SOURCE_DBM"
-                }
-                CreativeAuthoringSource::CreativeAuthoringSourceDcm => {
-                    "CREATIVE_AUTHORING_SOURCE_DCM"
-                }
-                CreativeAuthoringSource::CreativeAuthoringSourceStudio => {
-                    "CREATIVE_AUTHORING_SOURCE_STUDIO"
-                }
-            }
-        }
-    }
-    impl ::std::fmt::Display for CreativeAuthoringSource {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for CreativeAuthoringSource {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for CreativeAuthoringSource {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "CREATIVE_AUTHORING_SOURCE_DBM" => {
-                    CreativeAuthoringSource::CreativeAuthoringSourceDbm
-                }
-                "CREATIVE_AUTHORING_SOURCE_DCM" => {
-                    CreativeAuthoringSource::CreativeAuthoringSourceDcm
-                }
-                "CREATIVE_AUTHORING_SOURCE_STUDIO" => {
-                    CreativeAuthoringSource::CreativeAuthoringSourceStudio
-                }
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum CreativeAuthoringTool {
-        Ninja,
-        Swiffy,
-    }
-    impl CreativeAuthoringTool {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                CreativeAuthoringTool::Ninja => "NINJA",
-                CreativeAuthoringTool::Swiffy => "SWIFFY",
-            }
-        }
-    }
-    impl ::std::fmt::Display for CreativeAuthoringTool {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for CreativeAuthoringTool {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for CreativeAuthoringTool {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "NINJA" => CreativeAuthoringTool::Ninja,
-                "SWIFFY" => CreativeAuthoringTool::Swiffy,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum CreativeBackupImageFeaturesItems {
-        ApplicationCache,
-        Audio,
-        Canvas,
-        CanvasText,
-        CssAnimations,
-        CssBackgroundSize,
-        CssBorderImage,
-        CssBorderRadius,
-        CssBoxShadow,
-        CssColumns,
-        CssFlexBox,
-        CssFontFace,
-        CssGeneratedContent,
-        CssGradients,
-        CssHsla,
-        CssMultipleBgs,
-        CssOpacity,
-        CssReflections,
-        CssRgba,
-        CssTextShadow,
-        CssTransforms,
-        CssTransforms3D,
-        CssTransitions,
-        DragAndDrop,
-        GeoLocation,
-        HashChange,
-        History,
-        IndexedDb,
-        InlineSvg,
-        InputAttrAutocomplete,
-        InputAttrAutofocus,
-        InputAttrList,
-        InputAttrMax,
-        InputAttrMin,
-        InputAttrMultiple,
-        InputAttrPattern,
-        InputAttrPlaceholder,
-        InputAttrRequired,
-        InputAttrStep,
-        InputTypeColor,
-        InputTypeDate,
-        InputTypeDatetime,
-        InputTypeDatetimeLocal,
-        InputTypeEmail,
-        InputTypeMonth,
-        InputTypeNumber,
-        InputTypeRange,
-        InputTypeSearch,
-        InputTypeTel,
-        InputTypeTime,
-        InputTypeUrl,
-        InputTypeWeek,
-        LocalStorage,
-        PostMessage,
-        SessionStorage,
-        Smil,
-        SvgClipPaths,
-        SvgFeImage,
-        SvgFilters,
-        SvgHref,
-        Touch,
-        Video,
-        Webgl,
-        WebSockets,
-        WebSqlDatabase,
-        WebWorkers,
-    }
-    impl CreativeBackupImageFeaturesItems {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                CreativeBackupImageFeaturesItems::ApplicationCache => "APPLICATION_CACHE",
-                CreativeBackupImageFeaturesItems::Audio => "AUDIO",
-                CreativeBackupImageFeaturesItems::Canvas => "CANVAS",
-                CreativeBackupImageFeaturesItems::CanvasText => "CANVAS_TEXT",
-                CreativeBackupImageFeaturesItems::CssAnimations => "CSS_ANIMATIONS",
-                CreativeBackupImageFeaturesItems::CssBackgroundSize => "CSS_BACKGROUND_SIZE",
-                CreativeBackupImageFeaturesItems::CssBorderImage => "CSS_BORDER_IMAGE",
-                CreativeBackupImageFeaturesItems::CssBorderRadius => "CSS_BORDER_RADIUS",
-                CreativeBackupImageFeaturesItems::CssBoxShadow => "CSS_BOX_SHADOW",
-                CreativeBackupImageFeaturesItems::CssColumns => "CSS_COLUMNS",
-                CreativeBackupImageFeaturesItems::CssFlexBox => "CSS_FLEX_BOX",
-                CreativeBackupImageFeaturesItems::CssFontFace => "CSS_FONT_FACE",
-                CreativeBackupImageFeaturesItems::CssGeneratedContent => "CSS_GENERATED_CONTENT",
-                CreativeBackupImageFeaturesItems::CssGradients => "CSS_GRADIENTS",
-                CreativeBackupImageFeaturesItems::CssHsla => "CSS_HSLA",
-                CreativeBackupImageFeaturesItems::CssMultipleBgs => "CSS_MULTIPLE_BGS",
-                CreativeBackupImageFeaturesItems::CssOpacity => "CSS_OPACITY",
-                CreativeBackupImageFeaturesItems::CssReflections => "CSS_REFLECTIONS",
-                CreativeBackupImageFeaturesItems::CssRgba => "CSS_RGBA",
-                CreativeBackupImageFeaturesItems::CssTextShadow => "CSS_TEXT_SHADOW",
-                CreativeBackupImageFeaturesItems::CssTransforms => "CSS_TRANSFORMS",
-                CreativeBackupImageFeaturesItems::CssTransforms3D => "CSS_TRANSFORMS3D",
-                CreativeBackupImageFeaturesItems::CssTransitions => "CSS_TRANSITIONS",
-                CreativeBackupImageFeaturesItems::DragAndDrop => "DRAG_AND_DROP",
-                CreativeBackupImageFeaturesItems::GeoLocation => "GEO_LOCATION",
-                CreativeBackupImageFeaturesItems::HashChange => "HASH_CHANGE",
-                CreativeBackupImageFeaturesItems::History => "HISTORY",
-                CreativeBackupImageFeaturesItems::IndexedDb => "INDEXED_DB",
-                CreativeBackupImageFeaturesItems::InlineSvg => "INLINE_SVG",
-                CreativeBackupImageFeaturesItems::InputAttrAutocomplete => {
-                    "INPUT_ATTR_AUTOCOMPLETE"
-                }
-                CreativeBackupImageFeaturesItems::InputAttrAutofocus => "INPUT_ATTR_AUTOFOCUS",
-                CreativeBackupImageFeaturesItems::InputAttrList => "INPUT_ATTR_LIST",
-                CreativeBackupImageFeaturesItems::InputAttrMax => "INPUT_ATTR_MAX",
-                CreativeBackupImageFeaturesItems::InputAttrMin => "INPUT_ATTR_MIN",
-                CreativeBackupImageFeaturesItems::InputAttrMultiple => "INPUT_ATTR_MULTIPLE",
-                CreativeBackupImageFeaturesItems::InputAttrPattern => "INPUT_ATTR_PATTERN",
-                CreativeBackupImageFeaturesItems::InputAttrPlaceholder => "INPUT_ATTR_PLACEHOLDER",
-                CreativeBackupImageFeaturesItems::InputAttrRequired => "INPUT_ATTR_REQUIRED",
-                CreativeBackupImageFeaturesItems::InputAttrStep => "INPUT_ATTR_STEP",
-                CreativeBackupImageFeaturesItems::InputTypeColor => "INPUT_TYPE_COLOR",
-                CreativeBackupImageFeaturesItems::InputTypeDate => "INPUT_TYPE_DATE",
-                CreativeBackupImageFeaturesItems::InputTypeDatetime => "INPUT_TYPE_DATETIME",
-                CreativeBackupImageFeaturesItems::InputTypeDatetimeLocal => {
-                    "INPUT_TYPE_DATETIME_LOCAL"
-                }
-                CreativeBackupImageFeaturesItems::InputTypeEmail => "INPUT_TYPE_EMAIL",
-                CreativeBackupImageFeaturesItems::InputTypeMonth => "INPUT_TYPE_MONTH",
-                CreativeBackupImageFeaturesItems::InputTypeNumber => "INPUT_TYPE_NUMBER",
-                CreativeBackupImageFeaturesItems::InputTypeRange => "INPUT_TYPE_RANGE",
-                CreativeBackupImageFeaturesItems::InputTypeSearch => "INPUT_TYPE_SEARCH",
-                CreativeBackupImageFeaturesItems::InputTypeTel => "INPUT_TYPE_TEL",
-                CreativeBackupImageFeaturesItems::InputTypeTime => "INPUT_TYPE_TIME",
-                CreativeBackupImageFeaturesItems::InputTypeUrl => "INPUT_TYPE_URL",
-                CreativeBackupImageFeaturesItems::InputTypeWeek => "INPUT_TYPE_WEEK",
-                CreativeBackupImageFeaturesItems::LocalStorage => "LOCAL_STORAGE",
-                CreativeBackupImageFeaturesItems::PostMessage => "POST_MESSAGE",
-                CreativeBackupImageFeaturesItems::SessionStorage => "SESSION_STORAGE",
-                CreativeBackupImageFeaturesItems::Smil => "SMIL",
-                CreativeBackupImageFeaturesItems::SvgClipPaths => "SVG_CLIP_PATHS",
-                CreativeBackupImageFeaturesItems::SvgFeImage => "SVG_FE_IMAGE",
-                CreativeBackupImageFeaturesItems::SvgFilters => "SVG_FILTERS",
-                CreativeBackupImageFeaturesItems::SvgHref => "SVG_HREF",
-                CreativeBackupImageFeaturesItems::Touch => "TOUCH",
-                CreativeBackupImageFeaturesItems::Video => "VIDEO",
-                CreativeBackupImageFeaturesItems::Webgl => "WEBGL",
-                CreativeBackupImageFeaturesItems::WebSockets => "WEB_SOCKETS",
-                CreativeBackupImageFeaturesItems::WebSqlDatabase => "WEB_SQL_DATABASE",
-                CreativeBackupImageFeaturesItems::WebWorkers => "WEB_WORKERS",
-            }
-        }
-    }
-    impl ::std::fmt::Display for CreativeBackupImageFeaturesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for CreativeBackupImageFeaturesItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for CreativeBackupImageFeaturesItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "APPLICATION_CACHE" => CreativeBackupImageFeaturesItems::ApplicationCache,
-                "AUDIO" => CreativeBackupImageFeaturesItems::Audio,
-                "CANVAS" => CreativeBackupImageFeaturesItems::Canvas,
-                "CANVAS_TEXT" => CreativeBackupImageFeaturesItems::CanvasText,
-                "CSS_ANIMATIONS" => CreativeBackupImageFeaturesItems::CssAnimations,
-                "CSS_BACKGROUND_SIZE" => CreativeBackupImageFeaturesItems::CssBackgroundSize,
-                "CSS_BORDER_IMAGE" => CreativeBackupImageFeaturesItems::CssBorderImage,
-                "CSS_BORDER_RADIUS" => CreativeBackupImageFeaturesItems::CssBorderRadius,
-                "CSS_BOX_SHADOW" => CreativeBackupImageFeaturesItems::CssBoxShadow,
-                "CSS_COLUMNS" => CreativeBackupImageFeaturesItems::CssColumns,
-                "CSS_FLEX_BOX" => CreativeBackupImageFeaturesItems::CssFlexBox,
-                "CSS_FONT_FACE" => CreativeBackupImageFeaturesItems::CssFontFace,
-                "CSS_GENERATED_CONTENT" => CreativeBackupImageFeaturesItems::CssGeneratedContent,
-                "CSS_GRADIENTS" => CreativeBackupImageFeaturesItems::CssGradients,
-                "CSS_HSLA" => CreativeBackupImageFeaturesItems::CssHsla,
-                "CSS_MULTIPLE_BGS" => CreativeBackupImageFeaturesItems::CssMultipleBgs,
-                "CSS_OPACITY" => CreativeBackupImageFeaturesItems::CssOpacity,
-                "CSS_REFLECTIONS" => CreativeBackupImageFeaturesItems::CssReflections,
-                "CSS_RGBA" => CreativeBackupImageFeaturesItems::CssRgba,
-                "CSS_TEXT_SHADOW" => CreativeBackupImageFeaturesItems::CssTextShadow,
-                "CSS_TRANSFORMS" => CreativeBackupImageFeaturesItems::CssTransforms,
-                "CSS_TRANSFORMS3D" => CreativeBackupImageFeaturesItems::CssTransforms3D,
-                "CSS_TRANSITIONS" => CreativeBackupImageFeaturesItems::CssTransitions,
-                "DRAG_AND_DROP" => CreativeBackupImageFeaturesItems::DragAndDrop,
-                "GEO_LOCATION" => CreativeBackupImageFeaturesItems::GeoLocation,
-                "HASH_CHANGE" => CreativeBackupImageFeaturesItems::HashChange,
-                "HISTORY" => CreativeBackupImageFeaturesItems::History,
-                "INDEXED_DB" => CreativeBackupImageFeaturesItems::IndexedDb,
-                "INLINE_SVG" => CreativeBackupImageFeaturesItems::InlineSvg,
-                "INPUT_ATTR_AUTOCOMPLETE" => {
-                    CreativeBackupImageFeaturesItems::InputAttrAutocomplete
-                }
-                "INPUT_ATTR_AUTOFOCUS" => CreativeBackupImageFeaturesItems::InputAttrAutofocus,
-                "INPUT_ATTR_LIST" => CreativeBackupImageFeaturesItems::InputAttrList,
-                "INPUT_ATTR_MAX" => CreativeBackupImageFeaturesItems::InputAttrMax,
-                "INPUT_ATTR_MIN" => CreativeBackupImageFeaturesItems::InputAttrMin,
-                "INPUT_ATTR_MULTIPLE" => CreativeBackupImageFeaturesItems::InputAttrMultiple,
-                "INPUT_ATTR_PATTERN" => CreativeBackupImageFeaturesItems::InputAttrPattern,
-                "INPUT_ATTR_PLACEHOLDER" => CreativeBackupImageFeaturesItems::InputAttrPlaceholder,
-                "INPUT_ATTR_REQUIRED" => CreativeBackupImageFeaturesItems::InputAttrRequired,
-                "INPUT_ATTR_STEP" => CreativeBackupImageFeaturesItems::InputAttrStep,
-                "INPUT_TYPE_COLOR" => CreativeBackupImageFeaturesItems::InputTypeColor,
-                "INPUT_TYPE_DATE" => CreativeBackupImageFeaturesItems::InputTypeDate,
-                "INPUT_TYPE_DATETIME" => CreativeBackupImageFeaturesItems::InputTypeDatetime,
-                "INPUT_TYPE_DATETIME_LOCAL" => {
-                    CreativeBackupImageFeaturesItems::InputTypeDatetimeLocal
-                }
-                "INPUT_TYPE_EMAIL" => CreativeBackupImageFeaturesItems::InputTypeEmail,
-                "INPUT_TYPE_MONTH" => CreativeBackupImageFeaturesItems::InputTypeMonth,
-                "INPUT_TYPE_NUMBER" => CreativeBackupImageFeaturesItems::InputTypeNumber,
-                "INPUT_TYPE_RANGE" => CreativeBackupImageFeaturesItems::InputTypeRange,
-                "INPUT_TYPE_SEARCH" => CreativeBackupImageFeaturesItems::InputTypeSearch,
-                "INPUT_TYPE_TEL" => CreativeBackupImageFeaturesItems::InputTypeTel,
-                "INPUT_TYPE_TIME" => CreativeBackupImageFeaturesItems::InputTypeTime,
-                "INPUT_TYPE_URL" => CreativeBackupImageFeaturesItems::InputTypeUrl,
-                "INPUT_TYPE_WEEK" => CreativeBackupImageFeaturesItems::InputTypeWeek,
-                "LOCAL_STORAGE" => CreativeBackupImageFeaturesItems::LocalStorage,
-                "POST_MESSAGE" => CreativeBackupImageFeaturesItems::PostMessage,
-                "SESSION_STORAGE" => CreativeBackupImageFeaturesItems::SessionStorage,
-                "SMIL" => CreativeBackupImageFeaturesItems::Smil,
-                "SVG_CLIP_PATHS" => CreativeBackupImageFeaturesItems::SvgClipPaths,
-                "SVG_FE_IMAGE" => CreativeBackupImageFeaturesItems::SvgFeImage,
-                "SVG_FILTERS" => CreativeBackupImageFeaturesItems::SvgFilters,
-                "SVG_HREF" => CreativeBackupImageFeaturesItems::SvgHref,
-                "TOUCH" => CreativeBackupImageFeaturesItems::Touch,
-                "VIDEO" => CreativeBackupImageFeaturesItems::Video,
-                "WEBGL" => CreativeBackupImageFeaturesItems::Webgl,
-                "WEB_SOCKETS" => CreativeBackupImageFeaturesItems::WebSockets,
-                "WEB_SQL_DATABASE" => CreativeBackupImageFeaturesItems::WebSqlDatabase,
-                "WEB_WORKERS" => CreativeBackupImageFeaturesItems::WebWorkers,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -5166,120 +5339,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum CreativeCompatibilityItems {
-        App,
-        AppInterstitial,
-        Display,
-        DisplayInterstitial,
-        InStreamAudio,
-        InStreamVideo,
-    }
-    impl CreativeCompatibilityItems {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                CreativeCompatibilityItems::App => "APP",
-                CreativeCompatibilityItems::AppInterstitial => "APP_INTERSTITIAL",
-                CreativeCompatibilityItems::Display => "DISPLAY",
-                CreativeCompatibilityItems::DisplayInterstitial => "DISPLAY_INTERSTITIAL",
-                CreativeCompatibilityItems::InStreamAudio => "IN_STREAM_AUDIO",
-                CreativeCompatibilityItems::InStreamVideo => "IN_STREAM_VIDEO",
-            }
-        }
-    }
-    impl ::std::fmt::Display for CreativeCompatibilityItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for CreativeCompatibilityItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for CreativeCompatibilityItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "APP" => CreativeCompatibilityItems::App,
-                "APP_INTERSTITIAL" => CreativeCompatibilityItems::AppInterstitial,
-                "DISPLAY" => CreativeCompatibilityItems::Display,
-                "DISPLAY_INTERSTITIAL" => CreativeCompatibilityItems::DisplayInterstitial,
-                "IN_STREAM_AUDIO" => CreativeCompatibilityItems::InStreamAudio,
-                "IN_STREAM_VIDEO" => CreativeCompatibilityItems::InStreamVideo,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeCustomEvent {
-        #[doc = "Unique ID of this event used by Reporting and Data Transfer. This is a read-only field."]
-        #[serde(rename = "advertiserCustomEventId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub advertiser_custom_event_id: Option<i64>,
-        #[doc = "User-entered name for the event."]
-        #[serde(rename = "advertiserCustomEventName", default)]
-        pub advertiser_custom_event_name: Option<String>,
-        #[doc = "Type of the event. This is a read-only field."]
-        #[serde(rename = "advertiserCustomEventType", default)]
-        pub advertiser_custom_event_type:
-            Option<crate::schemas::CreativeCustomEventAdvertiserCustomEventType>,
-        #[doc = "Artwork label column, used to link events in Campaign Manager back to events in Studio. This is a required field and should not be modified after insertion."]
-        #[serde(rename = "artworkLabel", default)]
-        pub artwork_label: Option<String>,
-        #[doc = "Artwork type used by the creative.This is a read-only field."]
-        #[serde(rename = "artworkType", default)]
-        pub artwork_type: Option<crate::schemas::CreativeCustomEventArtworkType>,
-        #[doc = "Exit click-through URL for the event. This field is used only for exit events."]
-        #[serde(rename = "exitClickThroughUrl", default)]
-        pub exit_click_through_url: Option<crate::schemas::CreativeClickThroughUrl>,
-        #[doc = "ID of this event. This is a required field and should not be modified after insertion."]
-        #[serde(rename = "id", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
-        #[doc = "Properties for rich media popup windows. This field is used only for exit events."]
-        #[serde(rename = "popupWindowProperties", default)]
-        pub popup_window_properties: Option<crate::schemas::PopupWindowProperties>,
-        #[doc = "Target type used by the event."]
-        #[serde(rename = "targetType", default)]
-        pub target_type: Option<crate::schemas::CreativeCustomEventTargetType>,
-        #[doc = "Video reporting ID, used to differentiate multiple videos in a single creative. This is a read-only field."]
-        #[serde(rename = "videoReportingId", default)]
-        pub video_reporting_id: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CreativeCustomEvent {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeCustomEventAdvertiserCustomEventType {
         AdvertiserEventCounter,
         AdvertiserEventExit,
@@ -5338,7 +5398,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeCustomEventArtworkType {
         ArtworkTypeFlash,
         ArtworkTypeHtml5,
@@ -5388,7 +5448,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeCustomEventTargetType {
         TargetBlank,
         TargetParent,
@@ -5445,8 +5505,65 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeCustomEvent {
+        #[doc = "Unique ID of this event used by Reporting and Data Transfer. This is a read-only field."]
+        #[serde(rename = "advertiserCustomEventId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub advertiser_custom_event_id: Option<i64>,
+        #[doc = "User-entered name for the event."]
+        #[serde(rename = "advertiserCustomEventName", default)]
+        pub advertiser_custom_event_name: Option<String>,
+        #[doc = "Type of the event. This is a read-only field."]
+        #[serde(rename = "advertiserCustomEventType", default)]
+        pub advertiser_custom_event_type:
+            Option<crate::schemas::CreativeCustomEventAdvertiserCustomEventType>,
+        #[doc = "Artwork label column, used to link events in Campaign Manager back to events in Studio. This is a required field and should not be modified after insertion."]
+        #[serde(rename = "artworkLabel", default)]
+        pub artwork_label: Option<String>,
+        #[doc = "Artwork type used by the creative.This is a read-only field."]
+        #[serde(rename = "artworkType", default)]
+        pub artwork_type: Option<crate::schemas::CreativeCustomEventArtworkType>,
+        #[doc = "Exit click-through URL for the event. This field is used only for exit events."]
+        #[serde(rename = "exitClickThroughUrl", default)]
+        pub exit_click_through_url: Option<crate::schemas::CreativeClickThroughUrl>,
+        #[doc = "ID of this event. This is a required field and should not be modified after insertion."]
+        #[serde(rename = "id", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub id: Option<i64>,
+        #[doc = "Properties for rich media popup windows. This field is used only for exit events."]
+        #[serde(rename = "popupWindowProperties", default)]
+        pub popup_window_properties: Option<crate::schemas::PopupWindowProperties>,
+        #[doc = "Target type used by the event."]
+        #[serde(rename = "targetType", default)]
+        pub target_type: Option<crate::schemas::CreativeCustomEventTargetType>,
+        #[doc = "Video reporting ID, used to differentiate multiple videos in a single creative. This is a read-only field."]
+        #[serde(rename = "videoReportingId", default)]
+        pub video_reporting_id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CreativeCustomEvent {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -5494,8 +5611,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -5526,8 +5643,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -5560,8 +5677,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -5593,8 +5710,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -5626,8 +5743,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -5674,39 +5791,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeGroupAssignment {
-        #[doc = "ID of the creative group to be assigned."]
-        #[serde(rename = "creativeGroupId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub creative_group_id: Option<i64>,
-        #[doc = "Creative group number of the creative group assignment."]
-        #[serde(rename = "creativeGroupNumber", default)]
-        pub creative_group_number:
-            Option<crate::schemas::CreativeGroupAssignmentCreativeGroupNumber>,
-    }
-    impl ::field_selector::FieldSelector for CreativeGroupAssignment {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeGroupAssignmentCreativeGroupNumber {
         CreativeGroupOne,
         CreativeGroupTwo,
@@ -5762,8 +5847,40 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeGroupAssignment {
+        #[doc = "ID of the creative group to be assigned."]
+        #[serde(rename = "creativeGroupId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub creative_group_id: Option<i64>,
+        #[doc = "Creative group number of the creative group assignment."]
+        #[serde(rename = "creativeGroupNumber", default)]
+        pub creative_group_number:
+            Option<crate::schemas::CreativeGroupAssignmentCreativeGroupNumber>,
+    }
+    impl ::field_selector::FieldSelector for CreativeGroupAssignment {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -5791,45 +5908,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreativeOptimizationConfiguration {
-        #[doc = "ID of this creative optimization config. This field is auto-generated when the campaign is inserted or updated. It can be null for existing campaigns."]
-        #[serde(rename = "id", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
-        #[doc = "Name of this creative optimization config. This is a required field and must be less than 129 characters long."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "List of optimization activities associated with this configuration."]
-        #[serde(rename = "optimizationActivitys", default)]
-        pub optimization_activitys: Option<Vec<crate::schemas::OptimizationActivity>>,
-        #[doc = "Optimization model for this configuration."]
-        #[serde(rename = "optimizationModel", default)]
-        pub optimization_model:
-            Option<crate::schemas::CreativeOptimizationConfigurationOptimizationModel>,
-    }
-    impl ::field_selector::FieldSelector for CreativeOptimizationConfiguration {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeOptimizationConfigurationOptimizationModel {
         Click,
         PostClick,
@@ -5898,31 +5977,31 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CreativeRotation {
-        #[doc = "Creative assignments in this creative rotation."]
-        #[serde(rename = "creativeAssignments", default)]
-        pub creative_assignments: Option<Vec<crate::schemas::CreativeAssignment>>,
-        #[doc = "Creative optimization configuration that is used by this ad. It should refer to one of the existing optimization configurations in the ad's campaign. If it is unset or set to 0, then the campaign's default optimization configuration will be used for this ad."]
-        #[serde(rename = "creativeOptimizationConfigurationId", default)]
+    pub struct CreativeOptimizationConfiguration {
+        #[doc = "ID of this creative optimization config. This field is auto-generated when the campaign is inserted or updated. It can be null for existing campaigns."]
+        #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub creative_optimization_configuration_id: Option<i64>,
-        #[doc = "Type of creative rotation. Can be used to specify whether to use sequential or random rotation."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::CreativeRotationType>,
-        #[doc = "Strategy for calculating weights. Used with CREATIVE_ROTATION_TYPE_RANDOM."]
-        #[serde(rename = "weightCalculationStrategy", default)]
-        pub weight_calculation_strategy:
-            Option<crate::schemas::CreativeRotationWeightCalculationStrategy>,
+        pub id: Option<i64>,
+        #[doc = "Name of this creative optimization config. This is a required field and must be less than 129 characters long."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "List of optimization activities associated with this configuration."]
+        #[serde(rename = "optimizationActivitys", default)]
+        pub optimization_activitys: Option<Vec<crate::schemas::OptimizationActivity>>,
+        #[doc = "Optimization model for this configuration."]
+        #[serde(rename = "optimizationModel", default)]
+        pub optimization_model:
+            Option<crate::schemas::CreativeOptimizationConfigurationOptimizationModel>,
     }
-    impl ::field_selector::FieldSelector for CreativeRotation {
+    impl ::field_selector::FieldSelector for CreativeOptimizationConfiguration {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -5932,7 +6011,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeRotationType {
         CreativeRotationTypeRandom,
         CreativeRotationTypeSequential,
@@ -5980,7 +6059,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeRotationWeightCalculationStrategy {
         WeightStrategyCustom,
         WeightStrategyEqual,
@@ -6046,121 +6125,42 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum CreativeType {
-        BrandSafeDefaultInstreamVideo,
-        CustomDisplay,
-        CustomDisplayInterstitial,
-        Display,
-        DisplayImageGallery,
-        DisplayRedirect,
-        FlashInpage,
-        Html5Banner,
-        Image,
-        InstreamAudio,
-        InstreamVideo,
-        InstreamVideoRedirect,
-        InternalRedirect,
-        InterstitialInternalRedirect,
-        RichMediaDisplayBanner,
-        RichMediaDisplayExpanding,
-        RichMediaDisplayInterstitial,
-        RichMediaDisplayMultiFloatingInterstitial,
-        RichMediaImExpand,
-        RichMediaInpageFloating,
-        RichMediaMobileInApp,
-        RichMediaPeelDown,
-        TrackingText,
-        VpaidLinearVideo,
-        VpaidNonLinearVideo,
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreativeRotation {
+        #[doc = "Creative assignments in this creative rotation."]
+        #[serde(rename = "creativeAssignments", default)]
+        pub creative_assignments: Option<Vec<crate::schemas::CreativeAssignment>>,
+        #[doc = "Creative optimization configuration that is used by this ad. It should refer to one of the existing optimization configurations in the ad's campaign. If it is unset or set to 0, then the campaign's default optimization configuration will be used for this ad."]
+        #[serde(rename = "creativeOptimizationConfigurationId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub creative_optimization_configuration_id: Option<i64>,
+        #[doc = "Type of creative rotation. Can be used to specify whether to use sequential or random rotation."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::CreativeRotationType>,
+        #[doc = "Strategy for calculating weights. Used with CREATIVE_ROTATION_TYPE_RANDOM."]
+        #[serde(rename = "weightCalculationStrategy", default)]
+        pub weight_calculation_strategy:
+            Option<crate::schemas::CreativeRotationWeightCalculationStrategy>,
     }
-    impl CreativeType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                CreativeType::BrandSafeDefaultInstreamVideo => "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO",
-                CreativeType::CustomDisplay => "CUSTOM_DISPLAY",
-                CreativeType::CustomDisplayInterstitial => "CUSTOM_DISPLAY_INTERSTITIAL",
-                CreativeType::Display => "DISPLAY",
-                CreativeType::DisplayImageGallery => "DISPLAY_IMAGE_GALLERY",
-                CreativeType::DisplayRedirect => "DISPLAY_REDIRECT",
-                CreativeType::FlashInpage => "FLASH_INPAGE",
-                CreativeType::Html5Banner => "HTML5_BANNER",
-                CreativeType::Image => "IMAGE",
-                CreativeType::InstreamAudio => "INSTREAM_AUDIO",
-                CreativeType::InstreamVideo => "INSTREAM_VIDEO",
-                CreativeType::InstreamVideoRedirect => "INSTREAM_VIDEO_REDIRECT",
-                CreativeType::InternalRedirect => "INTERNAL_REDIRECT",
-                CreativeType::InterstitialInternalRedirect => "INTERSTITIAL_INTERNAL_REDIRECT",
-                CreativeType::RichMediaDisplayBanner => "RICH_MEDIA_DISPLAY_BANNER",
-                CreativeType::RichMediaDisplayExpanding => "RICH_MEDIA_DISPLAY_EXPANDING",
-                CreativeType::RichMediaDisplayInterstitial => "RICH_MEDIA_DISPLAY_INTERSTITIAL",
-                CreativeType::RichMediaDisplayMultiFloatingInterstitial => {
-                    "RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL"
-                }
-                CreativeType::RichMediaImExpand => "RICH_MEDIA_IM_EXPAND",
-                CreativeType::RichMediaInpageFloating => "RICH_MEDIA_INPAGE_FLOATING",
-                CreativeType::RichMediaMobileInApp => "RICH_MEDIA_MOBILE_IN_APP",
-                CreativeType::RichMediaPeelDown => "RICH_MEDIA_PEEL_DOWN",
-                CreativeType::TrackingText => "TRACKING_TEXT",
-                CreativeType::VpaidLinearVideo => "VPAID_LINEAR_VIDEO",
-                CreativeType::VpaidNonLinearVideo => "VPAID_NON_LINEAR_VIDEO",
+    impl ::field_selector::FieldSelector for CreativeRotation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
             }
-        }
-    }
-    impl ::std::fmt::Display for CreativeType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for CreativeType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for CreativeType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO" => CreativeType::BrandSafeDefaultInstreamVideo,
-                "CUSTOM_DISPLAY" => CreativeType::CustomDisplay,
-                "CUSTOM_DISPLAY_INTERSTITIAL" => CreativeType::CustomDisplayInterstitial,
-                "DISPLAY" => CreativeType::Display,
-                "DISPLAY_IMAGE_GALLERY" => CreativeType::DisplayImageGallery,
-                "DISPLAY_REDIRECT" => CreativeType::DisplayRedirect,
-                "FLASH_INPAGE" => CreativeType::FlashInpage,
-                "HTML5_BANNER" => CreativeType::Html5Banner,
-                "IMAGE" => CreativeType::Image,
-                "INSTREAM_AUDIO" => CreativeType::InstreamAudio,
-                "INSTREAM_VIDEO" => CreativeType::InstreamVideo,
-                "INSTREAM_VIDEO_REDIRECT" => CreativeType::InstreamVideoRedirect,
-                "INTERNAL_REDIRECT" => CreativeType::InternalRedirect,
-                "INTERSTITIAL_INTERNAL_REDIRECT" => CreativeType::InterstitialInternalRedirect,
-                "RICH_MEDIA_DISPLAY_BANNER" => CreativeType::RichMediaDisplayBanner,
-                "RICH_MEDIA_DISPLAY_EXPANDING" => CreativeType::RichMediaDisplayExpanding,
-                "RICH_MEDIA_DISPLAY_INTERSTITIAL" => CreativeType::RichMediaDisplayInterstitial,
-                "RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL" => {
-                    CreativeType::RichMediaDisplayMultiFloatingInterstitial
-                }
-                "RICH_MEDIA_IM_EXPAND" => CreativeType::RichMediaImExpand,
-                "RICH_MEDIA_INPAGE_FLOATING" => CreativeType::RichMediaInpageFloating,
-                "RICH_MEDIA_MOBILE_IN_APP" => CreativeType::RichMediaMobileInApp,
-                "RICH_MEDIA_PEEL_DOWN" => CreativeType::RichMediaPeelDown,
-                "TRACKING_TEXT" => CreativeType::TrackingText,
-                "VPAID_LINEAR_VIDEO" => CreativeType::VpaidLinearVideo,
-                "VPAID_NON_LINEAR_VIDEO" => CreativeType::VpaidNonLinearVideo,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
+            selector.push_str(ident);
+            selector.push_str("*");
         }
     }
     #[derive(
@@ -6191,8 +6191,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -6226,40 +6226,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CustomFloodlightVariable {
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#customFloodlightVariable\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "The type of custom floodlight variable to supply a value for. These map to the \"u[1-20]=\" in the tags."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::CustomFloodlightVariableType>,
-        #[doc = "The value of the custom floodlight variable. The length of string must not exceed 50 characters."]
-        #[serde(rename = "value", default)]
-        pub value: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CustomFloodlightVariable {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CustomFloodlightVariableType {
         U1,
         U10,
@@ -6601,8 +6568,41 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CustomFloodlightVariable {
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#customFloodlightVariable\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "The type of custom floodlight variable to supply a value for. These map to the \"u[1-20]=\" in the tags."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::CustomFloodlightVariableType>,
+        #[doc = "The value of the custom floodlight variable. The length of string must not exceed 50 characters."]
+        #[serde(rename = "value", default)]
+        pub value: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CustomFloodlightVariable {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -6631,8 +6631,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -6665,8 +6665,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -6697,43 +6697,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DateRange {
-        #[doc = "The end date of the date range, inclusive. A string of the format: \"yyyy-MM-dd\"."]
-        #[serde(rename = "endDate", default)]
-        pub end_date: Option<::chrono::Date<chrono::offset::Utc>>,
-        #[doc = "The kind of resource this is, in this case dfareporting#dateRange."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "The date range relative to the date of when the report is run."]
-        #[serde(rename = "relativeDateRange", default)]
-        pub relative_date_range: Option<crate::schemas::DateRangeRelativeDateRange>,
-        #[doc = "The start date of the date range, inclusive. A string of the format: \"yyyy-MM-dd\"."]
-        #[serde(rename = "startDate", default)]
-        pub start_date: Option<::chrono::Date<chrono::offset::Utc>>,
-    }
-    impl ::field_selector::FieldSelector for DateRange {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DateRangeRelativeDateRange {
         Last14Days,
         Last24Months,
@@ -6826,26 +6790,29 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DayPartTargeting {
-        #[doc = "Days of the week when the ad will serve.\n\nAcceptable values are:\n- \"SUNDAY\"\n- \"MONDAY\"\n- \"TUESDAY\"\n- \"WEDNESDAY\"\n- \"THURSDAY\"\n- \"FRIDAY\"\n- \"SATURDAY\""]
-        #[serde(rename = "daysOfWeek", default)]
-        pub days_of_week: Option<Vec<crate::schemas::DayPartTargetingDaysOfWeekItems>>,
-        #[doc = "Hours of the day when the ad will serve, where 0 is midnight to 1 AM and 23 is 11 PM to midnight. Can be specified with days of week, in which case the ad would serve during these hours on the specified days. For example if Monday, Wednesday, Friday are the days of week specified and 9-10am, 3-5pm (hours 9, 15, and 16) is specified, the ad would serve Monday, Wednesdays, and Fridays at 9-10am and 3-5pm. Acceptable values are 0 to 23, inclusive."]
-        #[serde(rename = "hoursOfDay", default)]
-        pub hours_of_day: Option<Vec<i32>>,
-        #[doc = "Whether or not to use the user's local time. If false, the America/New York time zone applies."]
-        #[serde(rename = "userLocalTime", default)]
-        pub user_local_time: Option<bool>,
+    pub struct DateRange {
+        #[doc = "The end date of the date range, inclusive. A string of the format: \"yyyy-MM-dd\"."]
+        #[serde(rename = "endDate", default)]
+        pub end_date: Option<::chrono::Date<chrono::offset::Utc>>,
+        #[doc = "The kind of resource this is, in this case dfareporting#dateRange."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "The date range relative to the date of when the report is run."]
+        #[serde(rename = "relativeDateRange", default)]
+        pub relative_date_range: Option<crate::schemas::DateRangeRelativeDateRange>,
+        #[doc = "The start date of the date range, inclusive. A string of the format: \"yyyy-MM-dd\"."]
+        #[serde(rename = "startDate", default)]
+        pub start_date: Option<::chrono::Date<chrono::offset::Utc>>,
     }
-    impl ::field_selector::FieldSelector for DayPartTargeting {
+    impl ::field_selector::FieldSelector for DateRange {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -6855,7 +6822,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DayPartTargetingDaysOfWeekItems {
         Friday,
         Monday,
@@ -6918,8 +6885,41 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DayPartTargeting {
+        #[doc = "Days of the week when the ad will serve.\n\nAcceptable values are:\n- \"SUNDAY\"\n- \"MONDAY\"\n- \"TUESDAY\"\n- \"WEDNESDAY\"\n- \"THURSDAY\"\n- \"FRIDAY\"\n- \"SATURDAY\""]
+        #[serde(rename = "daysOfWeek", default)]
+        pub days_of_week: Option<Vec<crate::schemas::DayPartTargetingDaysOfWeekItems>>,
+        #[doc = "Hours of the day when the ad will serve, where 0 is midnight to 1 AM and 23 is 11 PM to midnight. Can be specified with days of week, in which case the ad would serve during these hours on the specified days. For example if Monday, Wednesday, Friday are the days of week specified and 9-10am, 3-5pm (hours 9, 15, and 16) is specified, the ad would serve Monday, Wednesdays, and Fridays at 9-10am and 3-5pm. Acceptable values are 0 to 23, inclusive."]
+        #[serde(rename = "hoursOfDay", default)]
+        pub hours_of_day: Option<Vec<i32>>,
+        #[doc = "Whether or not to use the user's local time. If false, the America/New York time zone applies."]
+        #[serde(rename = "userLocalTime", default)]
+        pub user_local_time: Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for DayPartTargeting {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -6957,8 +6957,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -6984,44 +6984,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DeliverySchedule {
-        #[doc = "Limit on the number of times an individual user can be served the ad within a specified period of time."]
-        #[serde(rename = "frequencyCap", default)]
-        pub frequency_cap: Option<crate::schemas::FrequencyCap>,
-        #[doc = "Whether or not hard cutoff is enabled. If true, the ad will not serve after the end date and time. Otherwise the ad will continue to be served until it has reached its delivery goals."]
-        #[serde(rename = "hardCutoff", default)]
-        pub hard_cutoff: Option<bool>,
-        #[doc = "Impression ratio for this ad. This ratio determines how often each ad is served relative to the others. For example, if ad A has an impression ratio of 1 and ad B has an impression ratio of 3, then Campaign Manager will serve ad B three times as often as ad A. Acceptable values are 1 to 10, inclusive."]
-        #[serde(rename = "impressionRatio", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub impression_ratio: Option<i64>,
-        #[doc = "Serving priority of an ad, with respect to other ads. The lower the priority number, the greater the priority with which it is served."]
-        #[serde(rename = "priority", default)]
-        pub priority: Option<crate::schemas::DeliverySchedulePriority>,
-    }
-    impl ::field_selector::FieldSelector for DeliverySchedule {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DeliverySchedulePriority {
         AdPriority01,
         AdPriority02,
@@ -7111,8 +7074,45 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DeliverySchedule {
+        #[doc = "Limit on the number of times an individual user can be served the ad within a specified period of time."]
+        #[serde(rename = "frequencyCap", default)]
+        pub frequency_cap: Option<crate::schemas::FrequencyCap>,
+        #[doc = "Whether or not hard cutoff is enabled. If true, the ad will not serve after the end date and time. Otherwise the ad will continue to be served until it has reached its delivery goals."]
+        #[serde(rename = "hardCutoff", default)]
+        pub hard_cutoff: Option<bool>,
+        #[doc = "Impression ratio for this ad. This ratio determines how often each ad is served relative to the others. For example, if ad A has an impression ratio of 1 and ad B has an impression ratio of 3, then Campaign Manager will serve ad B three times as often as ad A. Acceptable values are 1 to 10, inclusive."]
+        #[serde(rename = "impressionRatio", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub impression_ratio: Option<i64>,
+        #[doc = "Serving priority of an ad, with respect to other ads. The lower the priority number, the greater the priority with which it is served."]
+        #[serde(rename = "priority", default)]
+        pub priority: Option<crate::schemas::DeliverySchedulePriority>,
+    }
+    impl ::field_selector::FieldSelector for DeliverySchedule {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -7150,8 +7150,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -7180,8 +7180,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -7209,85 +7209,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DimensionValue {
-        #[doc = "The name of the dimension."]
-        #[serde(rename = "dimensionName", default)]
-        pub dimension_name: Option<String>,
-        #[doc = "The eTag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
-        #[doc = "The ID associated with the value if available."]
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-        #[doc = "The kind of resource this is, in this case dfareporting#dimensionValue."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Determines how the 'value' field is matched when filtering. If not specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is allowed as a placeholder for variable length character sequences, and it can be escaped with a backslash. Note, only paid search dimensions ('dfa:paidSearch*') allow a matchType other than EXACT."]
-        #[serde(rename = "matchType", default)]
-        pub match_type: Option<crate::schemas::DimensionValueMatchType>,
-        #[doc = "The value of the dimension."]
-        #[serde(rename = "value", default)]
-        pub value: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for DimensionValue {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DimensionValueList {
-        #[doc = "The eTag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
-        #[doc = "The dimension values returned in this response."]
-        #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::DimensionValue>>,
-        #[doc = "The kind of list this is, in this case dfareporting#dimensionValueList."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Continuation token used to page through dimension values. To retrieve the next page of results, set the next request's \"pageToken\" to the value of this field. The page token is only valid for a limited amount of time and should not be persisted."]
-        #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for DimensionValueList {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DimensionValueMatchType {
         BeginsWith,
         Contains,
@@ -7341,8 +7263,86 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DimensionValue {
+        #[doc = "The name of the dimension."]
+        #[serde(rename = "dimensionName", default)]
+        pub dimension_name: Option<String>,
+        #[doc = "The eTag of this response for caching purposes."]
+        #[serde(rename = "etag", default)]
+        pub etag: Option<String>,
+        #[doc = "The ID associated with the value if available."]
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+        #[doc = "The kind of resource this is, in this case dfareporting#dimensionValue."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Determines how the 'value' field is matched when filtering. If not specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is allowed as a placeholder for variable length character sequences, and it can be escaped with a backslash. Note, only paid search dimensions ('dfa:paidSearch*') allow a matchType other than EXACT."]
+        #[serde(rename = "matchType", default)]
+        pub match_type: Option<crate::schemas::DimensionValueMatchType>,
+        #[doc = "The value of the dimension."]
+        #[serde(rename = "value", default)]
+        pub value: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for DimensionValue {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DimensionValueList {
+        #[doc = "The eTag of this response for caching purposes."]
+        #[serde(rename = "etag", default)]
+        pub etag: Option<String>,
+        #[doc = "The dimension values returned in this response."]
+        #[serde(rename = "items", default)]
+        pub items: Option<Vec<crate::schemas::DimensionValue>>,
+        #[doc = "The kind of list this is, in this case dfareporting#dimensionValueList."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Continuation token used to page through dimension values. To retrieve the next page of results, set the next request's \"pageToken\" to the value of this field. The page token is only valid for a limited amount of time and should not be persisted."]
+        #[serde(rename = "nextPageToken", default)]
+        pub next_page_token: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for DimensionValueList {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -7376,60 +7376,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DirectorySite {
-        #[doc = "Whether this directory site is active."]
-        #[serde(rename = "active", default)]
-        pub active: Option<bool>,
-        #[doc = "ID of this directory site. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
-        #[doc = "Dimension value for the ID of this directory site. This is a read-only, auto-generated field."]
-        #[serde(rename = "idDimensionValue", default)]
-        pub id_dimension_value: Option<crate::schemas::DimensionValue>,
-        #[doc = "Tag types for regular placements.\n\nAcceptable values are:\n- \"STANDARD\"\n- \"IFRAME_JAVASCRIPT_INPAGE\"\n- \"INTERNAL_REDIRECT_INPAGE\"\n- \"JAVASCRIPT_INPAGE\""]
-        #[serde(rename = "inpageTagFormats", default)]
-        pub inpage_tag_formats: Option<Vec<crate::schemas::DirectorySiteInpageTagFormatsItems>>,
-        #[doc = "Tag types for interstitial placements.\n\nAcceptable values are:\n- \"IFRAME_JAVASCRIPT_INTERSTITIAL\"\n- \"INTERNAL_REDIRECT_INTERSTITIAL\"\n- \"JAVASCRIPT_INTERSTITIAL\""]
-        #[serde(rename = "interstitialTagFormats", default)]
-        pub interstitial_tag_formats:
-            Option<Vec<crate::schemas::DirectorySiteInterstitialTagFormatsItems>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#directorySite\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Name of this directory site."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "Directory site settings."]
-        #[serde(rename = "settings", default)]
-        pub settings: Option<crate::schemas::DirectorySiteSettings>,
-        #[doc = "URL of this directory site."]
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for DirectorySite {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DirectorySiteInpageTagFormatsItems {
         IframeJavascriptInpage,
         InternalRedirectInpage,
@@ -7487,7 +7434,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DirectorySiteInterstitialTagFormatsItems {
         IframeJavascriptInterstitial,
         InternalRedirectInterstitial,
@@ -7550,8 +7497,61 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DirectorySite {
+        #[doc = "Whether this directory site is active."]
+        #[serde(rename = "active", default)]
+        pub active: Option<bool>,
+        #[doc = "ID of this directory site. This is a read-only, auto-generated field."]
+        #[serde(rename = "id", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub id: Option<i64>,
+        #[doc = "Dimension value for the ID of this directory site. This is a read-only, auto-generated field."]
+        #[serde(rename = "idDimensionValue", default)]
+        pub id_dimension_value: Option<crate::schemas::DimensionValue>,
+        #[doc = "Tag types for regular placements.\n\nAcceptable values are:\n- \"STANDARD\"\n- \"IFRAME_JAVASCRIPT_INPAGE\"\n- \"INTERNAL_REDIRECT_INPAGE\"\n- \"JAVASCRIPT_INPAGE\""]
+        #[serde(rename = "inpageTagFormats", default)]
+        pub inpage_tag_formats: Option<Vec<crate::schemas::DirectorySiteInpageTagFormatsItems>>,
+        #[doc = "Tag types for interstitial placements.\n\nAcceptable values are:\n- \"IFRAME_JAVASCRIPT_INTERSTITIAL\"\n- \"INTERNAL_REDIRECT_INTERSTITIAL\"\n- \"JAVASCRIPT_INTERSTITIAL\""]
+        #[serde(rename = "interstitialTagFormats", default)]
+        pub interstitial_tag_formats:
+            Option<Vec<crate::schemas::DirectorySiteInterstitialTagFormatsItems>>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#directorySite\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Name of this directory site."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "Directory site settings."]
+        #[serde(rename = "settings", default)]
+        pub settings: Option<crate::schemas::DirectorySiteSettings>,
+        #[doc = "URL of this directory site."]
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for DirectorySite {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -7586,8 +7586,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -7615,44 +7615,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DynamicTargetingKey {
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#dynamicTargetingKey\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Name of this dynamic targeting key. This is a required field. Must be less than 256 characters long and cannot contain commas. All characters are converted to lowercase."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "ID of the object of this dynamic targeting key. This is a required field."]
-        #[serde(rename = "objectId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub object_id: Option<i64>,
-        #[doc = "Type of the object of this dynamic targeting key. This is a required field."]
-        #[serde(rename = "objectType", default)]
-        pub object_type: Option<crate::schemas::DynamicTargetingKeyObjectType>,
-    }
-    impl ::field_selector::FieldSelector for DynamicTargetingKey {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DynamicTargetingKeyObjectType {
         ObjectAd,
         ObjectAdvertiser,
@@ -7706,8 +7669,45 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DynamicTargetingKey {
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#dynamicTargetingKey\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Name of this dynamic targeting key. This is a required field. Must be less than 256 characters long and cannot contain commas. All characters are converted to lowercase."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "ID of the object of this dynamic targeting key. This is a required field."]
+        #[serde(rename = "objectId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub object_id: Option<i64>,
+        #[doc = "Type of the object of this dynamic targeting key. This is a required field."]
+        #[serde(rename = "objectType", default)]
+        pub object_type: Option<crate::schemas::DynamicTargetingKeyObjectType>,
+    }
+    impl ::field_selector::FieldSelector for DynamicTargetingKey {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -7732,44 +7732,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct EncryptionInfo {
-        #[doc = "The encryption entity ID. This should match the encryption configuration for ad serving or Data Transfer."]
-        #[serde(rename = "encryptionEntityId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub encryption_entity_id: Option<i64>,
-        #[doc = "The encryption entity type. This should match the encryption configuration for ad serving or Data Transfer."]
-        #[serde(rename = "encryptionEntityType", default)]
-        pub encryption_entity_type: Option<crate::schemas::EncryptionInfoEncryptionEntityType>,
-        #[doc = "Describes whether the encrypted cookie was received from ad serving (the %m macro) or from Data Transfer."]
-        #[serde(rename = "encryptionSource", default)]
-        pub encryption_source: Option<crate::schemas::EncryptionInfoEncryptionSource>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#encryptionInfo\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for EncryptionInfo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EncryptionInfoEncryptionEntityType {
         AdwordsCustomer,
         DbmAdvertiser,
@@ -7832,7 +7795,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EncryptionInfoEncryptionSource {
         AdServing,
         DataTransfer,
@@ -7887,8 +7850,180 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct EncryptionInfo {
+        #[doc = "The encryption entity ID. This should match the encryption configuration for ad serving or Data Transfer."]
+        #[serde(rename = "encryptionEntityId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub encryption_entity_id: Option<i64>,
+        #[doc = "The encryption entity type. This should match the encryption configuration for ad serving or Data Transfer."]
+        #[serde(rename = "encryptionEntityType", default)]
+        pub encryption_entity_type: Option<crate::schemas::EncryptionInfoEncryptionEntityType>,
+        #[doc = "Describes whether the encrypted cookie was received from ad serving (the %m macro) or from Data Transfer."]
+        #[serde(rename = "encryptionSource", default)]
+        pub encryption_source: Option<crate::schemas::EncryptionInfoEncryptionSource>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#encryptionInfo\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for EncryptionInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum EventTagType {
+        ClickThroughEventTag,
+        ImpressionImageEventTag,
+        ImpressionJavascriptEventTag,
+    }
+    impl EventTagType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                EventTagType::ClickThroughEventTag => "CLICK_THROUGH_EVENT_TAG",
+                EventTagType::ImpressionImageEventTag => "IMPRESSION_IMAGE_EVENT_TAG",
+                EventTagType::ImpressionJavascriptEventTag => "IMPRESSION_JAVASCRIPT_EVENT_TAG",
+            }
+        }
+    }
+    impl ::std::fmt::Display for EventTagType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for EventTagType {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for EventTagType {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CLICK_THROUGH_EVENT_TAG" => EventTagType::ClickThroughEventTag,
+                "IMPRESSION_IMAGE_EVENT_TAG" => EventTagType::ImpressionImageEventTag,
+                "IMPRESSION_JAVASCRIPT_EVENT_TAG" => EventTagType::ImpressionJavascriptEventTag,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum EventTagSiteFilterType {
+        Blacklist,
+        Whitelist,
+    }
+    impl EventTagSiteFilterType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                EventTagSiteFilterType::Blacklist => "BLACKLIST",
+                EventTagSiteFilterType::Whitelist => "WHITELIST",
+            }
+        }
+    }
+    impl ::std::fmt::Display for EventTagSiteFilterType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for EventTagSiteFilterType {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for EventTagSiteFilterType {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "BLACKLIST" => EventTagSiteFilterType::Blacklist,
+                "WHITELIST" => EventTagSiteFilterType::Whitelist,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum EventTagStatus {
+        Disabled,
+        Enabled,
+    }
+    impl EventTagStatus {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                EventTagStatus::Disabled => "DISABLED",
+                EventTagStatus::Enabled => "ENABLED",
+            }
+        }
+    }
+    impl ::std::fmt::Display for EventTagStatus {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for EventTagStatus {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for EventTagStatus {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DISABLED" => EventTagStatus::Disabled,
+                "ENABLED" => EventTagStatus::Enabled,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -7970,8 +8105,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -7997,147 +8132,12 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum EventTagSiteFilterType {
-        Blacklist,
-        Whitelist,
-    }
-    impl EventTagSiteFilterType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                EventTagSiteFilterType::Blacklist => "BLACKLIST",
-                EventTagSiteFilterType::Whitelist => "WHITELIST",
-            }
-        }
-    }
-    impl ::std::fmt::Display for EventTagSiteFilterType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for EventTagSiteFilterType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for EventTagSiteFilterType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "BLACKLIST" => EventTagSiteFilterType::Blacklist,
-                "WHITELIST" => EventTagSiteFilterType::Whitelist,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum EventTagStatus {
-        Disabled,
-        Enabled,
-    }
-    impl EventTagStatus {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                EventTagStatus::Disabled => "DISABLED",
-                EventTagStatus::Enabled => "ENABLED",
-            }
-        }
-    }
-    impl ::std::fmt::Display for EventTagStatus {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for EventTagStatus {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for EventTagStatus {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "DISABLED" => EventTagStatus::Disabled,
-                "ENABLED" => EventTagStatus::Enabled,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum EventTagType {
-        ClickThroughEventTag,
-        ImpressionImageEventTag,
-        ImpressionJavascriptEventTag,
-    }
-    impl EventTagType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                EventTagType::ClickThroughEventTag => "CLICK_THROUGH_EVENT_TAG",
-                EventTagType::ImpressionImageEventTag => "IMPRESSION_IMAGE_EVENT_TAG",
-                EventTagType::ImpressionJavascriptEventTag => "IMPRESSION_JAVASCRIPT_EVENT_TAG",
-            }
-        }
-    }
-    impl ::std::fmt::Display for EventTagType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for EventTagType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for EventTagType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "CLICK_THROUGH_EVENT_TAG" => EventTagType::ClickThroughEventTag,
-                "IMPRESSION_IMAGE_EVENT_TAG" => EventTagType::ImpressionImageEventTag,
-                "IMPRESSION_JAVASCRIPT_EVENT_TAG" => EventTagType::ImpressionJavascriptEventTag,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -8162,64 +8162,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct File {
-        #[doc = "The date range for which the file has report data. The date range will always be the absolute date range for which the report is run."]
-        #[serde(rename = "dateRange", default)]
-        pub date_range: Option<crate::schemas::DateRange>,
-        #[doc = "The eTag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
-        #[doc = "The filename of the file."]
-        #[serde(rename = "fileName", default)]
-        pub file_name: Option<String>,
-        #[doc = "The output format of the report. Only available once the file is available."]
-        #[serde(rename = "format", default)]
-        pub format: Option<crate::schemas::FileFormat>,
-        #[doc = "The unique ID of this report file."]
-        #[serde(rename = "id", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
-        #[doc = "The kind of resource this is, in this case dfareporting#file."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "The timestamp in milliseconds since epoch when this file was last modified."]
-        #[serde(rename = "lastModifiedTime", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub last_modified_time: Option<i64>,
-        #[doc = "The ID of the report this file was generated from."]
-        #[serde(rename = "reportId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub report_id: Option<i64>,
-        #[doc = "The status of the report file."]
-        #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::FileStatus>,
-        #[doc = "The URLs where the completed report file can be downloaded."]
-        #[serde(rename = "urls", default)]
-        pub urls: Option<crate::schemas::FileUrls>,
-    }
-    impl ::field_selector::FieldSelector for File {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FileFormat {
         Csv,
         Excel,
@@ -8263,43 +8206,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FileList {
-        #[doc = "The eTag of this response for caching purposes."]
-        #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
-        #[doc = "The files returned in this response."]
-        #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::File>>,
-        #[doc = "The kind of list this is, in this case dfareporting#fileList."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Continuation token used to page through files. To retrieve the next page of results, set the next request's \"pageToken\" to the value of this field. The page token is only valid for a limited amount of time and should not be persisted."]
-        #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for FileList {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FileStatus {
         Cancelled,
         Failed,
@@ -8353,8 +8260,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -8383,8 +8290,101 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct File {
+        #[doc = "The date range for which the file has report data. The date range will always be the absolute date range for which the report is run."]
+        #[serde(rename = "dateRange", default)]
+        pub date_range: Option<crate::schemas::DateRange>,
+        #[doc = "The eTag of this response for caching purposes."]
+        #[serde(rename = "etag", default)]
+        pub etag: Option<String>,
+        #[doc = "The filename of the file."]
+        #[serde(rename = "fileName", default)]
+        pub file_name: Option<String>,
+        #[doc = "The output format of the report. Only available once the file is available."]
+        #[serde(rename = "format", default)]
+        pub format: Option<crate::schemas::FileFormat>,
+        #[doc = "The unique ID of this report file."]
+        #[serde(rename = "id", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub id: Option<i64>,
+        #[doc = "The kind of resource this is, in this case dfareporting#file."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "The timestamp in milliseconds since epoch when this file was last modified."]
+        #[serde(rename = "lastModifiedTime", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub last_modified_time: Option<i64>,
+        #[doc = "The ID of the report this file was generated from."]
+        #[serde(rename = "reportId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub report_id: Option<i64>,
+        #[doc = "The status of the report file."]
+        #[serde(rename = "status", default)]
+        pub status: Option<crate::schemas::FileStatus>,
+        #[doc = "The URLs where the completed report file can be downloaded."]
+        #[serde(rename = "urls", default)]
+        pub urls: Option<crate::schemas::FileUrls>,
+    }
+    impl ::field_selector::FieldSelector for File {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FileList {
+        #[doc = "The eTag of this response for caching purposes."]
+        #[serde(rename = "etag", default)]
+        pub etag: Option<String>,
+        #[doc = "The files returned in this response."]
+        #[serde(rename = "items", default)]
+        pub items: Option<Vec<crate::schemas::File>>,
+        #[doc = "The kind of list this is, in this case dfareporting#fileList."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Continuation token used to page through files. To retrieve the next page of results, set the next request's \"pageToken\" to the value of this field. The page token is only valid for a limited amount of time and should not be persisted."]
+        #[serde(rename = "nextPageToken", default)]
+        pub next_page_token: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for FileList {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -8421,8 +8421,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -8454,8 +8454,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -8483,123 +8483,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FloodlightActivity {
-        #[doc = "Account ID of this floodlight activity. This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub account_id: Option<i64>,
-        #[doc = "Advertiser ID of this floodlight activity. If this field is left blank, the value will be copied over either from the activity group's advertiser or the existing activity's advertiser."]
-        #[serde(rename = "advertiserId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub advertiser_id: Option<i64>,
-        #[doc = "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."]
-        #[serde(rename = "advertiserIdDimensionValue", default)]
-        pub advertiser_id_dimension_value: Option<crate::schemas::DimensionValue>,
-        #[doc = "Code type used for cache busting in the generated tag. Applicable only when floodlightActivityGroupType is COUNTER and countingMethod is STANDARD_COUNTING or UNIQUE_COUNTING."]
-        #[serde(rename = "cacheBustingType", default)]
-        pub cache_busting_type: Option<crate::schemas::FloodlightActivityCacheBustingType>,
-        #[doc = "Counting method for conversions for this floodlight activity. This is a required field."]
-        #[serde(rename = "countingMethod", default)]
-        pub counting_method: Option<crate::schemas::FloodlightActivityCountingMethod>,
-        #[doc = "Dynamic floodlight tags."]
-        #[serde(rename = "defaultTags", default)]
-        pub default_tags: Option<Vec<crate::schemas::FloodlightActivityDynamicTag>>,
-        #[doc = "URL where this tag will be deployed. If specified, must be less than 256 characters long."]
-        #[serde(rename = "expectedUrl", default)]
-        pub expected_url: Option<String>,
-        #[doc = "Floodlight activity group ID of this floodlight activity. This is a required field."]
-        #[serde(rename = "floodlightActivityGroupId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub floodlight_activity_group_id: Option<i64>,
-        #[doc = "Name of the associated floodlight activity group. This is a read-only field."]
-        #[serde(rename = "floodlightActivityGroupName", default)]
-        pub floodlight_activity_group_name: Option<String>,
-        #[doc = "Tag string of the associated floodlight activity group. This is a read-only field."]
-        #[serde(rename = "floodlightActivityGroupTagString", default)]
-        pub floodlight_activity_group_tag_string: Option<String>,
-        #[doc = "Type of the associated floodlight activity group. This is a read-only field."]
-        #[serde(rename = "floodlightActivityGroupType", default)]
-        pub floodlight_activity_group_type:
-            Option<crate::schemas::FloodlightActivityFloodlightActivityGroupType>,
-        #[doc = "Floodlight configuration ID of this floodlight activity. If this field is left blank, the value will be copied over either from the activity group's floodlight configuration or from the existing activity's floodlight configuration."]
-        #[serde(rename = "floodlightConfigurationId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub floodlight_configuration_id: Option<i64>,
-        #[doc = "Dimension value for the ID of the floodlight configuration. This is a read-only, auto-generated field."]
-        #[serde(rename = "floodlightConfigurationIdDimensionValue", default)]
-        pub floodlight_configuration_id_dimension_value: Option<crate::schemas::DimensionValue>,
-        #[doc = "The type of Floodlight tag this activity will generate. This is a required field."]
-        #[serde(rename = "floodlightTagType", default)]
-        pub floodlight_tag_type: Option<crate::schemas::FloodlightActivityFloodlightTagType>,
-        #[doc = "Whether this activity is archived."]
-        #[serde(rename = "hidden", default)]
-        pub hidden: Option<bool>,
-        #[doc = "ID of this floodlight activity. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
-        #[doc = "Dimension value for the ID of this floodlight activity. This is a read-only, auto-generated field."]
-        #[serde(rename = "idDimensionValue", default)]
-        pub id_dimension_value: Option<crate::schemas::DimensionValue>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#floodlightActivity\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Name of this floodlight activity. This is a required field. Must be less than 129 characters long and cannot contain quotes."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "General notes or implementation instructions for the tag."]
-        #[serde(rename = "notes", default)]
-        pub notes: Option<String>,
-        #[doc = "Publisher dynamic floodlight tags."]
-        #[serde(rename = "publisherTags", default)]
-        pub publisher_tags: Option<Vec<crate::schemas::FloodlightActivityPublisherDynamicTag>>,
-        #[doc = "Whether this tag should use SSL."]
-        #[serde(rename = "secure", default)]
-        pub secure: Option<bool>,
-        #[doc = "Whether the floodlight activity is SSL-compliant. This is a read-only field, its value detected by the system from the floodlight tags."]
-        #[serde(rename = "sslCompliant", default)]
-        pub ssl_compliant: Option<bool>,
-        #[doc = "Whether this floodlight activity must be SSL-compliant."]
-        #[serde(rename = "sslRequired", default)]
-        pub ssl_required: Option<bool>,
-        #[doc = "Subaccount ID of this floodlight activity. This is a read-only field that can be left blank."]
-        #[serde(rename = "subaccountId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub subaccount_id: Option<i64>,
-        #[doc = "Tag format type for the floodlight activity. If left blank, the tag format will default to HTML."]
-        #[serde(rename = "tagFormat", default)]
-        pub tag_format: Option<crate::schemas::FloodlightActivityTagFormat>,
-        #[doc = "Value of the cat= parameter in the floodlight tag, which the ad servers use to identify the activity. This is optional: if empty, a new tag string will be generated for you. This string must be 1 to 8 characters long, with valid characters being [a-z][A-Z][0-9][-][ _ ]. This tag string must also be unique among activities of the same activity group. This field is read-only after insertion."]
-        #[serde(rename = "tagString", default)]
-        pub tag_string: Option<String>,
-        #[doc = "List of the user-defined variables used by this conversion tag. These map to the \"u[1-100]=\" in the tags. Each of these can have a user defined type.\nAcceptable values are U1 to U100, inclusive."]
-        #[serde(rename = "userDefinedVariableTypes", default)]
-        pub user_defined_variable_types:
-            Option<Vec<crate::schemas::FloodlightActivityUserDefinedVariableTypesItems>>,
-    }
-    impl ::field_selector::FieldSelector for FloodlightActivity {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FloodlightActivityCacheBustingType {
         ActiveServerPage,
         ColdFusion,
@@ -8652,7 +8536,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FloodlightActivityCountingMethod {
         ItemsSoldCounting,
         SessionCounting,
@@ -8705,41 +8589,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FloodlightActivityDynamicTag {
-        #[doc = "ID of this dynamic tag. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
-        #[doc = "Name of this tag."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "Tag code."]
-        #[serde(rename = "tag", default)]
-        pub tag: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for FloodlightActivityDynamicTag {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FloodlightActivityFloodlightActivityGroupType {
         Counter,
         Sale,
@@ -8783,7 +8633,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FloodlightActivityFloodlightTagType {
         GlobalSiteTag,
         Iframe,
@@ -8830,193 +8680,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FloodlightActivityGroup {
-        #[doc = "Account ID of this floodlight activity group. This is a read-only field that can be left blank."]
-        #[serde(rename = "accountId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub account_id: Option<i64>,
-        #[doc = "Advertiser ID of this floodlight activity group. If this field is left blank, the value will be copied over either from the floodlight configuration's advertiser or from the existing activity group's advertiser."]
-        #[serde(rename = "advertiserId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub advertiser_id: Option<i64>,
-        #[doc = "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."]
-        #[serde(rename = "advertiserIdDimensionValue", default)]
-        pub advertiser_id_dimension_value: Option<crate::schemas::DimensionValue>,
-        #[doc = "Floodlight configuration ID of this floodlight activity group. This is a required field."]
-        #[serde(rename = "floodlightConfigurationId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub floodlight_configuration_id: Option<i64>,
-        #[doc = "Dimension value for the ID of the floodlight configuration. This is a read-only, auto-generated field."]
-        #[serde(rename = "floodlightConfigurationIdDimensionValue", default)]
-        pub floodlight_configuration_id_dimension_value: Option<crate::schemas::DimensionValue>,
-        #[doc = "ID of this floodlight activity group. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
-        #[doc = "Dimension value for the ID of this floodlight activity group. This is a read-only, auto-generated field."]
-        #[serde(rename = "idDimensionValue", default)]
-        pub id_dimension_value: Option<crate::schemas::DimensionValue>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#floodlightActivityGroup\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Name of this floodlight activity group. This is a required field. Must be less than 65 characters long and cannot contain quotes."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "Type of the floodlight activity group. This is a required field that is read-only after insertion."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::FloodlightActivityGroupType>,
-        #[doc = "Subaccount ID of this floodlight activity group. This is a read-only field that can be left blank."]
-        #[serde(rename = "subaccountId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub subaccount_id: Option<i64>,
-        #[doc = "Value of the type= parameter in the floodlight tag, which the ad servers use to identify the activity group that the activity belongs to. This is optional: if empty, a new tag string will be generated for you. This string must be 1 to 8 characters long, with valid characters being [a-z][A-Z][0-9][-][ _ ]. This tag string must also be unique among activity groups of the same floodlight configuration. This field is read-only after insertion."]
-        #[serde(rename = "tagString", default)]
-        pub tag_string: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for FloodlightActivityGroup {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum FloodlightActivityGroupType {
-        Counter,
-        Sale,
-    }
-    impl FloodlightActivityGroupType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                FloodlightActivityGroupType::Counter => "COUNTER",
-                FloodlightActivityGroupType::Sale => "SALE",
-            }
-        }
-    }
-    impl ::std::fmt::Display for FloodlightActivityGroupType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for FloodlightActivityGroupType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for FloodlightActivityGroupType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "COUNTER" => FloodlightActivityGroupType::Counter,
-                "SALE" => FloodlightActivityGroupType::Sale,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FloodlightActivityGroupsListResponse {
-        #[doc = "Floodlight activity group collection."]
-        #[serde(rename = "floodlightActivityGroups", default)]
-        pub floodlight_activity_groups: Option<Vec<crate::schemas::FloodlightActivityGroup>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#floodlightActivityGroupsListResponse\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Pagination token to be used for the next list operation."]
-        #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for FloodlightActivityGroupsListResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FloodlightActivityPublisherDynamicTag {
-        #[doc = "Whether this tag is applicable only for click-throughs."]
-        #[serde(rename = "clickThrough", default)]
-        pub click_through: Option<bool>,
-        #[doc = "Directory site ID of this dynamic tag. This is a write-only field that can be used as an alternative to the siteId field. When this resource is retrieved, only the siteId field will be populated."]
-        #[serde(rename = "directorySiteId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub directory_site_id: Option<i64>,
-        #[doc = "Dynamic floodlight tag."]
-        #[serde(rename = "dynamicTag", default)]
-        pub dynamic_tag: Option<crate::schemas::FloodlightActivityDynamicTag>,
-        #[doc = "Site ID of this dynamic tag."]
-        #[serde(rename = "siteId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub site_id: Option<i64>,
-        #[doc = "Dimension value for the ID of the site. This is a read-only, auto-generated field."]
-        #[serde(rename = "siteIdDimensionValue", default)]
-        pub site_id_dimension_value: Option<crate::schemas::DimensionValue>,
-        #[doc = "Whether this tag is applicable only for view-throughs."]
-        #[serde(rename = "viewThrough", default)]
-        pub view_through: Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for FloodlightActivityPublisherDynamicTag {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FloodlightActivityTagFormat {
         Html,
         Xhtml,
@@ -9060,7 +8724,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FloodlightActivityUserDefinedVariableTypesItems {
         U1,
         U10,
@@ -9402,8 +9066,423 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FloodlightActivity {
+        #[doc = "Account ID of this floodlight activity. This is a read-only field that can be left blank."]
+        #[serde(rename = "accountId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub account_id: Option<i64>,
+        #[doc = "Advertiser ID of this floodlight activity. If this field is left blank, the value will be copied over either from the activity group's advertiser or the existing activity's advertiser."]
+        #[serde(rename = "advertiserId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub advertiser_id: Option<i64>,
+        #[doc = "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."]
+        #[serde(rename = "advertiserIdDimensionValue", default)]
+        pub advertiser_id_dimension_value: Option<crate::schemas::DimensionValue>,
+        #[doc = "Code type used for cache busting in the generated tag. Applicable only when floodlightActivityGroupType is COUNTER and countingMethod is STANDARD_COUNTING or UNIQUE_COUNTING."]
+        #[serde(rename = "cacheBustingType", default)]
+        pub cache_busting_type: Option<crate::schemas::FloodlightActivityCacheBustingType>,
+        #[doc = "Counting method for conversions for this floodlight activity. This is a required field."]
+        #[serde(rename = "countingMethod", default)]
+        pub counting_method: Option<crate::schemas::FloodlightActivityCountingMethod>,
+        #[doc = "Dynamic floodlight tags."]
+        #[serde(rename = "defaultTags", default)]
+        pub default_tags: Option<Vec<crate::schemas::FloodlightActivityDynamicTag>>,
+        #[doc = "URL where this tag will be deployed. If specified, must be less than 256 characters long."]
+        #[serde(rename = "expectedUrl", default)]
+        pub expected_url: Option<String>,
+        #[doc = "Floodlight activity group ID of this floodlight activity. This is a required field."]
+        #[serde(rename = "floodlightActivityGroupId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub floodlight_activity_group_id: Option<i64>,
+        #[doc = "Name of the associated floodlight activity group. This is a read-only field."]
+        #[serde(rename = "floodlightActivityGroupName", default)]
+        pub floodlight_activity_group_name: Option<String>,
+        #[doc = "Tag string of the associated floodlight activity group. This is a read-only field."]
+        #[serde(rename = "floodlightActivityGroupTagString", default)]
+        pub floodlight_activity_group_tag_string: Option<String>,
+        #[doc = "Type of the associated floodlight activity group. This is a read-only field."]
+        #[serde(rename = "floodlightActivityGroupType", default)]
+        pub floodlight_activity_group_type:
+            Option<crate::schemas::FloodlightActivityFloodlightActivityGroupType>,
+        #[doc = "Floodlight configuration ID of this floodlight activity. If this field is left blank, the value will be copied over either from the activity group's floodlight configuration or from the existing activity's floodlight configuration."]
+        #[serde(rename = "floodlightConfigurationId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub floodlight_configuration_id: Option<i64>,
+        #[doc = "Dimension value for the ID of the floodlight configuration. This is a read-only, auto-generated field."]
+        #[serde(rename = "floodlightConfigurationIdDimensionValue", default)]
+        pub floodlight_configuration_id_dimension_value: Option<crate::schemas::DimensionValue>,
+        #[doc = "The type of Floodlight tag this activity will generate. This is a required field."]
+        #[serde(rename = "floodlightTagType", default)]
+        pub floodlight_tag_type: Option<crate::schemas::FloodlightActivityFloodlightTagType>,
+        #[doc = "Whether this activity is archived."]
+        #[serde(rename = "hidden", default)]
+        pub hidden: Option<bool>,
+        #[doc = "ID of this floodlight activity. This is a read-only, auto-generated field."]
+        #[serde(rename = "id", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub id: Option<i64>,
+        #[doc = "Dimension value for the ID of this floodlight activity. This is a read-only, auto-generated field."]
+        #[serde(rename = "idDimensionValue", default)]
+        pub id_dimension_value: Option<crate::schemas::DimensionValue>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#floodlightActivity\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Name of this floodlight activity. This is a required field. Must be less than 129 characters long and cannot contain quotes."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "General notes or implementation instructions for the tag."]
+        #[serde(rename = "notes", default)]
+        pub notes: Option<String>,
+        #[doc = "Publisher dynamic floodlight tags."]
+        #[serde(rename = "publisherTags", default)]
+        pub publisher_tags: Option<Vec<crate::schemas::FloodlightActivityPublisherDynamicTag>>,
+        #[doc = "Whether this tag should use SSL."]
+        #[serde(rename = "secure", default)]
+        pub secure: Option<bool>,
+        #[doc = "Whether the floodlight activity is SSL-compliant. This is a read-only field, its value detected by the system from the floodlight tags."]
+        #[serde(rename = "sslCompliant", default)]
+        pub ssl_compliant: Option<bool>,
+        #[doc = "Whether this floodlight activity must be SSL-compliant."]
+        #[serde(rename = "sslRequired", default)]
+        pub ssl_required: Option<bool>,
+        #[doc = "Subaccount ID of this floodlight activity. This is a read-only field that can be left blank."]
+        #[serde(rename = "subaccountId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub subaccount_id: Option<i64>,
+        #[doc = "Tag format type for the floodlight activity. If left blank, the tag format will default to HTML."]
+        #[serde(rename = "tagFormat", default)]
+        pub tag_format: Option<crate::schemas::FloodlightActivityTagFormat>,
+        #[doc = "Value of the cat= parameter in the floodlight tag, which the ad servers use to identify the activity. This is optional: if empty, a new tag string will be generated for you. This string must be 1 to 8 characters long, with valid characters being [a-z][A-Z][0-9][-][ _ ]. This tag string must also be unique among activities of the same activity group. This field is read-only after insertion."]
+        #[serde(rename = "tagString", default)]
+        pub tag_string: Option<String>,
+        #[doc = "List of the user-defined variables used by this conversion tag. These map to the \"u[1-100]=\" in the tags. Each of these can have a user defined type.\nAcceptable values are U1 to U100, inclusive."]
+        #[serde(rename = "userDefinedVariableTypes", default)]
+        pub user_defined_variable_types:
+            Option<Vec<crate::schemas::FloodlightActivityUserDefinedVariableTypesItems>>,
+    }
+    impl ::field_selector::FieldSelector for FloodlightActivity {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FloodlightActivityDynamicTag {
+        #[doc = "ID of this dynamic tag. This is a read-only, auto-generated field."]
+        #[serde(rename = "id", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub id: Option<i64>,
+        #[doc = "Name of this tag."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "Tag code."]
+        #[serde(rename = "tag", default)]
+        pub tag: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for FloodlightActivityDynamicTag {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum FloodlightActivityGroupType {
+        Counter,
+        Sale,
+    }
+    impl FloodlightActivityGroupType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                FloodlightActivityGroupType::Counter => "COUNTER",
+                FloodlightActivityGroupType::Sale => "SALE",
+            }
+        }
+    }
+    impl ::std::fmt::Display for FloodlightActivityGroupType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for FloodlightActivityGroupType {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for FloodlightActivityGroupType {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "COUNTER" => FloodlightActivityGroupType::Counter,
+                "SALE" => FloodlightActivityGroupType::Sale,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FloodlightActivityGroup {
+        #[doc = "Account ID of this floodlight activity group. This is a read-only field that can be left blank."]
+        #[serde(rename = "accountId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub account_id: Option<i64>,
+        #[doc = "Advertiser ID of this floodlight activity group. If this field is left blank, the value will be copied over either from the floodlight configuration's advertiser or from the existing activity group's advertiser."]
+        #[serde(rename = "advertiserId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub advertiser_id: Option<i64>,
+        #[doc = "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."]
+        #[serde(rename = "advertiserIdDimensionValue", default)]
+        pub advertiser_id_dimension_value: Option<crate::schemas::DimensionValue>,
+        #[doc = "Floodlight configuration ID of this floodlight activity group. This is a required field."]
+        #[serde(rename = "floodlightConfigurationId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub floodlight_configuration_id: Option<i64>,
+        #[doc = "Dimension value for the ID of the floodlight configuration. This is a read-only, auto-generated field."]
+        #[serde(rename = "floodlightConfigurationIdDimensionValue", default)]
+        pub floodlight_configuration_id_dimension_value: Option<crate::schemas::DimensionValue>,
+        #[doc = "ID of this floodlight activity group. This is a read-only, auto-generated field."]
+        #[serde(rename = "id", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub id: Option<i64>,
+        #[doc = "Dimension value for the ID of this floodlight activity group. This is a read-only, auto-generated field."]
+        #[serde(rename = "idDimensionValue", default)]
+        pub id_dimension_value: Option<crate::schemas::DimensionValue>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#floodlightActivityGroup\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Name of this floodlight activity group. This is a required field. Must be less than 65 characters long and cannot contain quotes."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "Type of the floodlight activity group. This is a required field that is read-only after insertion."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::FloodlightActivityGroupType>,
+        #[doc = "Subaccount ID of this floodlight activity group. This is a read-only field that can be left blank."]
+        #[serde(rename = "subaccountId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub subaccount_id: Option<i64>,
+        #[doc = "Value of the type= parameter in the floodlight tag, which the ad servers use to identify the activity group that the activity belongs to. This is optional: if empty, a new tag string will be generated for you. This string must be 1 to 8 characters long, with valid characters being [a-z][A-Z][0-9][-][ _ ]. This tag string must also be unique among activity groups of the same floodlight configuration. This field is read-only after insertion."]
+        #[serde(rename = "tagString", default)]
+        pub tag_string: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for FloodlightActivityGroup {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FloodlightActivityGroupsListResponse {
+        #[doc = "Floodlight activity group collection."]
+        #[serde(rename = "floodlightActivityGroups", default)]
+        pub floodlight_activity_groups: Option<Vec<crate::schemas::FloodlightActivityGroup>>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#floodlightActivityGroupsListResponse\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Pagination token to be used for the next list operation."]
+        #[serde(rename = "nextPageToken", default)]
+        pub next_page_token: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for FloodlightActivityGroupsListResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FloodlightActivityPublisherDynamicTag {
+        #[doc = "Whether this tag is applicable only for click-throughs."]
+        #[serde(rename = "clickThrough", default)]
+        pub click_through: Option<bool>,
+        #[doc = "Directory site ID of this dynamic tag. This is a write-only field that can be used as an alternative to the siteId field. When this resource is retrieved, only the siteId field will be populated."]
+        #[serde(rename = "directorySiteId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub directory_site_id: Option<i64>,
+        #[doc = "Dynamic floodlight tag."]
+        #[serde(rename = "dynamicTag", default)]
+        pub dynamic_tag: Option<crate::schemas::FloodlightActivityDynamicTag>,
+        #[doc = "Site ID of this dynamic tag."]
+        #[serde(rename = "siteId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub site_id: Option<i64>,
+        #[doc = "Dimension value for the ID of the site. This is a read-only, auto-generated field."]
+        #[serde(rename = "siteIdDimensionValue", default)]
+        pub site_id_dimension_value: Option<crate::schemas::DimensionValue>,
+        #[doc = "Whether this tag is applicable only for view-throughs."]
+        #[serde(rename = "viewThrough", default)]
+        pub view_through: Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for FloodlightActivityPublisherDynamicTag {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum FloodlightConfigurationFirstDayOfWeek {
+        Monday,
+        Sunday,
+    }
+    impl FloodlightConfigurationFirstDayOfWeek {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                FloodlightConfigurationFirstDayOfWeek::Monday => "MONDAY",
+                FloodlightConfigurationFirstDayOfWeek::Sunday => "SUNDAY",
+            }
+        }
+    }
+    impl ::std::fmt::Display for FloodlightConfigurationFirstDayOfWeek {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for FloodlightConfigurationFirstDayOfWeek {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for FloodlightConfigurationFirstDayOfWeek {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "MONDAY" => FloodlightConfigurationFirstDayOfWeek::Monday,
+                "SUNDAY" => FloodlightConfigurationFirstDayOfWeek::Sunday,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum FloodlightConfigurationNaturalSearchConversionAttributionOption {
+        ExcludeNaturalSearchConversionAttribution,
+        IncludeNaturalSearchConversionAttribution,
+        IncludeNaturalSearchTieredConversionAttribution,
+    }
+    impl FloodlightConfigurationNaturalSearchConversionAttributionOption {
+        pub fn as_str(self) -> &'static str {
+            match self { FloodlightConfigurationNaturalSearchConversionAttributionOption :: ExcludeNaturalSearchConversionAttribution => "EXCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION" , FloodlightConfigurationNaturalSearchConversionAttributionOption :: IncludeNaturalSearchConversionAttribution => "INCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION" , FloodlightConfigurationNaturalSearchConversionAttributionOption :: IncludeNaturalSearchTieredConversionAttribution => "INCLUDE_NATURAL_SEARCH_TIERED_CONVERSION_ATTRIBUTION" , }
+        }
+    }
+    impl ::std::fmt::Display for FloodlightConfigurationNaturalSearchConversionAttributionOption {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for FloodlightConfigurationNaturalSearchConversionAttributionOption {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for FloodlightConfigurationNaturalSearchConversionAttributionOption
+    {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "EXCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION" => FloodlightConfigurationNaturalSearchConversionAttributionOption :: ExcludeNaturalSearchConversionAttribution , "INCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION" => FloodlightConfigurationNaturalSearchConversionAttributionOption :: IncludeNaturalSearchConversionAttribution , "INCLUDE_NATURAL_SEARCH_TIERED_CONVERSION_ATTRIBUTION" => FloodlightConfigurationNaturalSearchConversionAttributionOption :: IncludeNaturalSearchTieredConversionAttribution , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -9483,91 +9562,12 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum FloodlightConfigurationFirstDayOfWeek {
-        Monday,
-        Sunday,
-    }
-    impl FloodlightConfigurationFirstDayOfWeek {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                FloodlightConfigurationFirstDayOfWeek::Monday => "MONDAY",
-                FloodlightConfigurationFirstDayOfWeek::Sunday => "SUNDAY",
-            }
-        }
-    }
-    impl ::std::fmt::Display for FloodlightConfigurationFirstDayOfWeek {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for FloodlightConfigurationFirstDayOfWeek {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for FloodlightConfigurationFirstDayOfWeek {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "MONDAY" => FloodlightConfigurationFirstDayOfWeek::Monday,
-                "SUNDAY" => FloodlightConfigurationFirstDayOfWeek::Sunday,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum FloodlightConfigurationNaturalSearchConversionAttributionOption {
-        ExcludeNaturalSearchConversionAttribution,
-        IncludeNaturalSearchConversionAttribution,
-        IncludeNaturalSearchTieredConversionAttribution,
-    }
-    impl FloodlightConfigurationNaturalSearchConversionAttributionOption {
-        pub fn as_str(self) -> &'static str {
-            match self { FloodlightConfigurationNaturalSearchConversionAttributionOption :: ExcludeNaturalSearchConversionAttribution => "EXCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION" , FloodlightConfigurationNaturalSearchConversionAttributionOption :: IncludeNaturalSearchConversionAttribution => "INCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION" , FloodlightConfigurationNaturalSearchConversionAttributionOption :: IncludeNaturalSearchTieredConversionAttribution => "INCLUDE_NATURAL_SEARCH_TIERED_CONVERSION_ATTRIBUTION" , }
-        }
-    }
-    impl ::std::fmt::Display for FloodlightConfigurationNaturalSearchConversionAttributionOption {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for FloodlightConfigurationNaturalSearchConversionAttributionOption {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de>
-        for FloodlightConfigurationNaturalSearchConversionAttributionOption
-    {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "EXCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION" => FloodlightConfigurationNaturalSearchConversionAttributionOption :: ExcludeNaturalSearchConversionAttribution , "INCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION" => FloodlightConfigurationNaturalSearchConversionAttributionOption :: IncludeNaturalSearchConversionAttribution , "INCLUDE_NATURAL_SEARCH_TIERED_CONVERSION_ATTRIBUTION" => FloodlightConfigurationNaturalSearchConversionAttributionOption :: IncludeNaturalSearchTieredConversionAttribution , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
-        }
-    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -9596,8 +9596,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -9632,8 +9632,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -9660,46 +9660,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FsCommand {
-        #[doc = "Distance from the left of the browser.Applicable when positionOption is DISTANCE_FROM_TOP_LEFT_CORNER."]
-        #[serde(rename = "left", default)]
-        pub left: Option<i32>,
-        #[doc = "Position in the browser where the window will open."]
-        #[serde(rename = "positionOption", default)]
-        pub position_option: Option<crate::schemas::FsCommandPositionOption>,
-        #[doc = "Distance from the top of the browser. Applicable when positionOption is DISTANCE_FROM_TOP_LEFT_CORNER."]
-        #[serde(rename = "top", default)]
-        pub top: Option<i32>,
-        #[doc = "Height of the window."]
-        #[serde(rename = "windowHeight", default)]
-        pub window_height: Option<i32>,
-        #[doc = "Width of the window."]
-        #[serde(rename = "windowWidth", default)]
-        pub window_width: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for FsCommand {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FsCommandPositionOption {
         Centered,
         DistanceFromTopLeftCorner,
@@ -9751,8 +9712,47 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FsCommand {
+        #[doc = "Distance from the left of the browser.Applicable when positionOption is DISTANCE_FROM_TOP_LEFT_CORNER."]
+        #[serde(rename = "left", default)]
+        pub left: Option<i32>,
+        #[doc = "Position in the browser where the window will open."]
+        #[serde(rename = "positionOption", default)]
+        pub position_option: Option<crate::schemas::FsCommandPositionOption>,
+        #[doc = "Distance from the top of the browser. Applicable when positionOption is DISTANCE_FROM_TOP_LEFT_CORNER."]
+        #[serde(rename = "top", default)]
+        pub top: Option<i32>,
+        #[doc = "Height of the window."]
+        #[serde(rename = "windowHeight", default)]
+        pub window_height: Option<i32>,
+        #[doc = "Width of the window."]
+        #[serde(rename = "windowWidth", default)]
+        pub window_width: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for FsCommand {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -9789,12 +9789,60 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum InventoryItemType {
+        PlanningPlacementTypeCredit,
+        PlanningPlacementTypeRegular,
+    }
+    impl InventoryItemType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                InventoryItemType::PlanningPlacementTypeCredit => "PLANNING_PLACEMENT_TYPE_CREDIT",
+                InventoryItemType::PlanningPlacementTypeRegular => {
+                    "PLANNING_PLACEMENT_TYPE_REGULAR"
+                }
+            }
+        }
+    }
+    impl ::std::fmt::Display for InventoryItemType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for InventoryItemType {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for InventoryItemType {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "PLANNING_PLACEMENT_TYPE_CREDIT" => InventoryItemType::PlanningPlacementTypeCredit,
+                "PLANNING_PLACEMENT_TYPE_REGULAR" => {
+                    InventoryItemType::PlanningPlacementTypeRegular
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -9886,60 +9934,12 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum InventoryItemType {
-        PlanningPlacementTypeCredit,
-        PlanningPlacementTypeRegular,
-    }
-    impl InventoryItemType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                InventoryItemType::PlanningPlacementTypeCredit => "PLANNING_PLACEMENT_TYPE_CREDIT",
-                InventoryItemType::PlanningPlacementTypeRegular => {
-                    "PLANNING_PLACEMENT_TYPE_REGULAR"
-                }
-            }
-        }
-    }
-    impl ::std::fmt::Display for InventoryItemType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for InventoryItemType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for InventoryItemType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "PLANNING_PLACEMENT_TYPE_CREDIT" => InventoryItemType::PlanningPlacementTypeCredit,
-                "PLANNING_PLACEMENT_TYPE_REGULAR" => {
-                    InventoryItemType::PlanningPlacementTypeRegular
-                }
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -9971,8 +9971,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -9998,8 +9998,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10045,8 +10045,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10082,8 +10082,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10109,8 +10109,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10139,8 +10139,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10167,8 +10167,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10194,8 +10194,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10224,56 +10224,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ListPopulationTerm {
-        #[doc = "Will be true if the term should check if the user is in the list and false if the term should check if the user is not in the list. This field is only relevant when type is set to LIST_MEMBERSHIP_TERM. False by default."]
-        #[serde(rename = "contains", default)]
-        pub contains: Option<bool>,
-        #[doc = "Whether to negate the comparison result of this term during rule evaluation. This field is only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM or REFERRER_TERM."]
-        #[serde(rename = "negation", default)]
-        pub negation: Option<bool>,
-        #[doc = "Comparison operator of this term. This field is only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM or REFERRER_TERM."]
-        #[serde(rename = "operator", default)]
-        pub operator: Option<crate::schemas::ListPopulationTermOperator>,
-        #[doc = "List population term type determines the applicable fields in this object. If left unset or set to CUSTOM_VARIABLE_TERM, then variableName, variableFriendlyName, operator, value, and negation are applicable. If set to LIST_MEMBERSHIP_TERM then remarketingListId and contains are applicable. If set to REFERRER_TERM then operator, value, and negation are applicable."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::ListPopulationTermType>,
-        #[doc = "ID of the list in question. This field is only relevant when type is set to LIST_MEMBERSHIP_TERM."]
-        #[serde(rename = "remarketingListId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub remarketing_list_id: Option<i64>,
-        #[doc = "Literal to compare the variable to. This field is only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM or REFERRER_TERM."]
-        #[serde(rename = "value", default)]
-        pub value: Option<String>,
-        #[doc = "Friendly name of this term's variable. This is a read-only, auto-generated field. This field is only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM."]
-        #[serde(rename = "variableFriendlyName", default)]
-        pub variable_friendly_name: Option<String>,
-        #[doc = "Name of the variable (U1, U2, etc.) being compared in this term. This field is only relevant when type is set to null, CUSTOM_VARIABLE_TERM or REFERRER_TERM."]
-        #[serde(rename = "variableName", default)]
-        pub variable_name: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ListPopulationTerm {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ListPopulationTermOperator {
         NumEquals,
         NumGreaterThan,
@@ -10332,7 +10283,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ListPopulationTermType {
         CustomVariableTerm,
         ListMembershipTerm,
@@ -10383,8 +10334,57 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ListPopulationTerm {
+        #[doc = "Will be true if the term should check if the user is in the list and false if the term should check if the user is not in the list. This field is only relevant when type is set to LIST_MEMBERSHIP_TERM. False by default."]
+        #[serde(rename = "contains", default)]
+        pub contains: Option<bool>,
+        #[doc = "Whether to negate the comparison result of this term during rule evaluation. This field is only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM or REFERRER_TERM."]
+        #[serde(rename = "negation", default)]
+        pub negation: Option<bool>,
+        #[doc = "Comparison operator of this term. This field is only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM or REFERRER_TERM."]
+        #[serde(rename = "operator", default)]
+        pub operator: Option<crate::schemas::ListPopulationTermOperator>,
+        #[doc = "List population term type determines the applicable fields in this object. If left unset or set to CUSTOM_VARIABLE_TERM, then variableName, variableFriendlyName, operator, value, and negation are applicable. If set to LIST_MEMBERSHIP_TERM then remarketingListId and contains are applicable. If set to REFERRER_TERM then operator, value, and negation are applicable."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::ListPopulationTermType>,
+        #[doc = "ID of the list in question. This field is only relevant when type is set to LIST_MEMBERSHIP_TERM."]
+        #[serde(rename = "remarketingListId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub remarketing_list_id: Option<i64>,
+        #[doc = "Literal to compare the variable to. This field is only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM or REFERRER_TERM."]
+        #[serde(rename = "value", default)]
+        pub value: Option<String>,
+        #[doc = "Friendly name of this term's variable. This is a read-only, auto-generated field. This field is only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM."]
+        #[serde(rename = "variableFriendlyName", default)]
+        pub variable_friendly_name: Option<String>,
+        #[doc = "Name of the variable (U1, U2, etc.) being compared in this term. This field is only relevant when type is set to null, CUSTOM_VARIABLE_TERM or REFERRER_TERM."]
+        #[serde(rename = "variableName", default)]
+        pub variable_name: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ListPopulationTerm {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10410,8 +10410,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10440,8 +10440,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10470,8 +10470,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10518,8 +10518,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10544,46 +10544,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct MobileApp {
-        #[doc = "Mobile app directory."]
-        #[serde(rename = "directory", default)]
-        pub directory: Option<crate::schemas::MobileAppDirectory>,
-        #[doc = "ID of this mobile app."]
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#mobileApp\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Publisher name."]
-        #[serde(rename = "publisherName", default)]
-        pub publisher_name: Option<String>,
-        #[doc = "Title of this mobile app."]
-        #[serde(rename = "title", default)]
-        pub title: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for MobileApp {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MobileAppDirectory {
         AppleAppStore,
         GooglePlayStore,
@@ -10634,8 +10595,47 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct MobileApp {
+        #[doc = "Mobile app directory."]
+        #[serde(rename = "directory", default)]
+        pub directory: Option<crate::schemas::MobileAppDirectory>,
+        #[doc = "ID of this mobile app."]
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#mobileApp\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Publisher name."]
+        #[serde(rename = "publisherName", default)]
+        pub publisher_name: Option<String>,
+        #[doc = "Title of this mobile app."]
+        #[serde(rename = "title", default)]
+        pub title: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for MobileApp {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10667,8 +10667,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10708,8 +10708,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10734,40 +10734,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ObjectFilter {
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#objectFilter\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Applicable when status is ASSIGNED. The user has access to objects with these object IDs."]
-        #[serde(rename = "objectIds", default)]
-        pub object_ids: Option<Vec<i64>>,
-        #[doc = "Status of the filter. NONE means the user has access to none of the objects. ALL means the user has access to all objects. ASSIGNED means the user has access to the objects with IDs in the objectIds list."]
-        #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::ObjectFilterStatus>,
-    }
-    impl ::field_selector::FieldSelector for ObjectFilter {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ObjectFilterStatus {
         All,
         Assigned,
@@ -10818,8 +10785,41 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ObjectFilter {
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#objectFilter\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Applicable when status is ASSIGNED. The user has access to objects with these object IDs."]
+        #[serde(rename = "objectIds", default)]
+        pub object_ids: Option<Vec<i64>>,
+        #[doc = "Status of the filter. NONE means the user has access to none of the objects. ALL means the user has access to all objects. ASSIGNED means the user has access to the objects with IDs in the objectIds list."]
+        #[serde(rename = "status", default)]
+        pub status: Option<crate::schemas::ObjectFilterStatus>,
+    }
+    impl ::field_selector::FieldSelector for ObjectFilter {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10848,8 +10848,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10878,8 +10878,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10918,8 +10918,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10961,8 +10961,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -10991,8 +10991,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -11021,8 +11021,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -11055,8 +11055,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -11141,47 +11141,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct OrderContact {
-        #[doc = "Free-form information about this contact. It could be any information related to this contact in addition to type, title, name, and signature user profile ID."]
-        #[serde(rename = "contactInfo", default)]
-        pub contact_info: Option<String>,
-        #[doc = "Name of this contact."]
-        #[serde(rename = "contactName", default)]
-        pub contact_name: Option<String>,
-        #[doc = "Title of this contact."]
-        #[serde(rename = "contactTitle", default)]
-        pub contact_title: Option<String>,
-        #[doc = "Type of this contact."]
-        #[serde(rename = "contactType", default)]
-        pub contact_type: Option<crate::schemas::OrderContactContactType>,
-        #[doc = "ID of the user profile containing the signature that will be embedded into order documents."]
-        #[serde(rename = "signatureUserProfileId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub signature_user_profile_id: Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for OrderContact {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OrderContactContactType {
         PlanningOrderContactBuyerBillingContact,
         PlanningOrderContactBuyerContact,
@@ -11244,8 +11204,100 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct OrderContact {
+        #[doc = "Free-form information about this contact. It could be any information related to this contact in addition to type, title, name, and signature user profile ID."]
+        #[serde(rename = "contactInfo", default)]
+        pub contact_info: Option<String>,
+        #[doc = "Name of this contact."]
+        #[serde(rename = "contactName", default)]
+        pub contact_name: Option<String>,
+        #[doc = "Title of this contact."]
+        #[serde(rename = "contactTitle", default)]
+        pub contact_title: Option<String>,
+        #[doc = "Type of this contact."]
+        #[serde(rename = "contactType", default)]
+        pub contact_type: Option<crate::schemas::OrderContactContactType>,
+        #[doc = "ID of the user profile containing the signature that will be embedded into order documents."]
+        #[serde(rename = "signatureUserProfileId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub signature_user_profile_id: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for OrderContact {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum OrderDocumentType {
+        PlanningOrderTypeChangeOrder,
+        PlanningOrderTypeInsertionOrder,
+    }
+    impl OrderDocumentType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                OrderDocumentType::PlanningOrderTypeChangeOrder => {
+                    "PLANNING_ORDER_TYPE_CHANGE_ORDER"
+                }
+                OrderDocumentType::PlanningOrderTypeInsertionOrder => {
+                    "PLANNING_ORDER_TYPE_INSERTION_ORDER"
+                }
+            }
+        }
+    }
+    impl ::std::fmt::Display for OrderDocumentType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for OrderDocumentType {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for OrderDocumentType {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "PLANNING_ORDER_TYPE_CHANGE_ORDER" => {
+                    OrderDocumentType::PlanningOrderTypeChangeOrder
+                }
+                "PLANNING_ORDER_TYPE_INSERTION_ORDER" => {
+                    OrderDocumentType::PlanningOrderTypeInsertionOrder
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -11322,64 +11374,12 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum OrderDocumentType {
-        PlanningOrderTypeChangeOrder,
-        PlanningOrderTypeInsertionOrder,
-    }
-    impl OrderDocumentType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                OrderDocumentType::PlanningOrderTypeChangeOrder => {
-                    "PLANNING_ORDER_TYPE_CHANGE_ORDER"
-                }
-                OrderDocumentType::PlanningOrderTypeInsertionOrder => {
-                    "PLANNING_ORDER_TYPE_INSERTION_ORDER"
-                }
-            }
-        }
-    }
-    impl ::std::fmt::Display for OrderDocumentType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for OrderDocumentType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for OrderDocumentType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "PLANNING_ORDER_TYPE_CHANGE_ORDER" => {
-                    OrderDocumentType::PlanningOrderTypeChangeOrder
-                }
-                "PLANNING_ORDER_TYPE_INSERTION_ORDER" => {
-                    OrderDocumentType::PlanningOrderTypeInsertionOrder
-                }
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -11411,8 +11411,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -11444,8 +11444,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -11479,12 +11479,373 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum PlacementCompatibility {
+        App,
+        AppInterstitial,
+        Display,
+        DisplayInterstitial,
+        InStreamAudio,
+        InStreamVideo,
+    }
+    impl PlacementCompatibility {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                PlacementCompatibility::App => "APP",
+                PlacementCompatibility::AppInterstitial => "APP_INTERSTITIAL",
+                PlacementCompatibility::Display => "DISPLAY",
+                PlacementCompatibility::DisplayInterstitial => "DISPLAY_INTERSTITIAL",
+                PlacementCompatibility::InStreamAudio => "IN_STREAM_AUDIO",
+                PlacementCompatibility::InStreamVideo => "IN_STREAM_VIDEO",
+            }
+        }
+    }
+    impl ::std::fmt::Display for PlacementCompatibility {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for PlacementCompatibility {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for PlacementCompatibility {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "APP" => PlacementCompatibility::App,
+                "APP_INTERSTITIAL" => PlacementCompatibility::AppInterstitial,
+                "DISPLAY" => PlacementCompatibility::Display,
+                "DISPLAY_INTERSTITIAL" => PlacementCompatibility::DisplayInterstitial,
+                "IN_STREAM_AUDIO" => PlacementCompatibility::InStreamAudio,
+                "IN_STREAM_VIDEO" => PlacementCompatibility::InStreamVideo,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum PlacementPaymentSource {
+        PlacementAgencyPaid,
+        PlacementPublisherPaid,
+    }
+    impl PlacementPaymentSource {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                PlacementPaymentSource::PlacementAgencyPaid => "PLACEMENT_AGENCY_PAID",
+                PlacementPaymentSource::PlacementPublisherPaid => "PLACEMENT_PUBLISHER_PAID",
+            }
+        }
+    }
+    impl ::std::fmt::Display for PlacementPaymentSource {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for PlacementPaymentSource {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for PlacementPaymentSource {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "PLACEMENT_AGENCY_PAID" => PlacementPaymentSource::PlacementAgencyPaid,
+                "PLACEMENT_PUBLISHER_PAID" => PlacementPaymentSource::PlacementPublisherPaid,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum PlacementStatus {
+        AcknowledgeAcceptance,
+        AcknowledgeRejection,
+        Draft,
+        PaymentAccepted,
+        PaymentRejected,
+        PendingReview,
+    }
+    impl PlacementStatus {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                PlacementStatus::AcknowledgeAcceptance => "ACKNOWLEDGE_ACCEPTANCE",
+                PlacementStatus::AcknowledgeRejection => "ACKNOWLEDGE_REJECTION",
+                PlacementStatus::Draft => "DRAFT",
+                PlacementStatus::PaymentAccepted => "PAYMENT_ACCEPTED",
+                PlacementStatus::PaymentRejected => "PAYMENT_REJECTED",
+                PlacementStatus::PendingReview => "PENDING_REVIEW",
+            }
+        }
+    }
+    impl ::std::fmt::Display for PlacementStatus {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for PlacementStatus {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for PlacementStatus {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ACKNOWLEDGE_ACCEPTANCE" => PlacementStatus::AcknowledgeAcceptance,
+                "ACKNOWLEDGE_REJECTION" => PlacementStatus::AcknowledgeRejection,
+                "DRAFT" => PlacementStatus::Draft,
+                "PAYMENT_ACCEPTED" => PlacementStatus::PaymentAccepted,
+                "PAYMENT_REJECTED" => PlacementStatus::PaymentRejected,
+                "PENDING_REVIEW" => PlacementStatus::PendingReview,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum PlacementTagFormatsItems {
+        PlacementTagClickCommands,
+        PlacementTagIframeIlayer,
+        PlacementTagIframeJavascript,
+        PlacementTagIframeJavascriptLegacy,
+        PlacementTagInstreamVideoPrefetch,
+        PlacementTagInstreamVideoPrefetchVast3,
+        PlacementTagInstreamVideoPrefetchVast4,
+        PlacementTagInternalRedirect,
+        PlacementTagInterstitialIframeJavascript,
+        PlacementTagInterstitialIframeJavascriptLegacy,
+        PlacementTagInterstitialInternalRedirect,
+        PlacementTagInterstitialJavascript,
+        PlacementTagInterstitialJavascriptLegacy,
+        PlacementTagJavascript,
+        PlacementTagJavascriptLegacy,
+        PlacementTagStandard,
+        PlacementTagTracking,
+        PlacementTagTrackingIframe,
+        PlacementTagTrackingJavascript,
+    }
+    impl PlacementTagFormatsItems {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                PlacementTagFormatsItems::PlacementTagClickCommands => {
+                    "PLACEMENT_TAG_CLICK_COMMANDS"
+                }
+                PlacementTagFormatsItems::PlacementTagIframeIlayer => "PLACEMENT_TAG_IFRAME_ILAYER",
+                PlacementTagFormatsItems::PlacementTagIframeJavascript => {
+                    "PLACEMENT_TAG_IFRAME_JAVASCRIPT"
+                }
+                PlacementTagFormatsItems::PlacementTagIframeJavascriptLegacy => {
+                    "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY"
+                }
+                PlacementTagFormatsItems::PlacementTagInstreamVideoPrefetch => {
+                    "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH"
+                }
+                PlacementTagFormatsItems::PlacementTagInstreamVideoPrefetchVast3 => {
+                    "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3"
+                }
+                PlacementTagFormatsItems::PlacementTagInstreamVideoPrefetchVast4 => {
+                    "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
+                }
+                PlacementTagFormatsItems::PlacementTagInternalRedirect => {
+                    "PLACEMENT_TAG_INTERNAL_REDIRECT"
+                }
+                PlacementTagFormatsItems::PlacementTagInterstitialIframeJavascript => {
+                    "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT"
+                }
+                PlacementTagFormatsItems::PlacementTagInterstitialIframeJavascriptLegacy => {
+                    "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY"
+                }
+                PlacementTagFormatsItems::PlacementTagInterstitialInternalRedirect => {
+                    "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT"
+                }
+                PlacementTagFormatsItems::PlacementTagInterstitialJavascript => {
+                    "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT"
+                }
+                PlacementTagFormatsItems::PlacementTagInterstitialJavascriptLegacy => {
+                    "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY"
+                }
+                PlacementTagFormatsItems::PlacementTagJavascript => "PLACEMENT_TAG_JAVASCRIPT",
+                PlacementTagFormatsItems::PlacementTagJavascriptLegacy => {
+                    "PLACEMENT_TAG_JAVASCRIPT_LEGACY"
+                }
+                PlacementTagFormatsItems::PlacementTagStandard => "PLACEMENT_TAG_STANDARD",
+                PlacementTagFormatsItems::PlacementTagTracking => "PLACEMENT_TAG_TRACKING",
+                PlacementTagFormatsItems::PlacementTagTrackingIframe => {
+                    "PLACEMENT_TAG_TRACKING_IFRAME"
+                }
+                PlacementTagFormatsItems::PlacementTagTrackingJavascript => {
+                    "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
+                }
+            }
+        }
+    }
+    impl ::std::fmt::Display for PlacementTagFormatsItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for PlacementTagFormatsItems {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for PlacementTagFormatsItems {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "PLACEMENT_TAG_CLICK_COMMANDS" => {
+                    PlacementTagFormatsItems::PlacementTagClickCommands
+                }
+                "PLACEMENT_TAG_IFRAME_ILAYER" => PlacementTagFormatsItems::PlacementTagIframeIlayer,
+                "PLACEMENT_TAG_IFRAME_JAVASCRIPT" => {
+                    PlacementTagFormatsItems::PlacementTagIframeJavascript
+                }
+                "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY" => {
+                    PlacementTagFormatsItems::PlacementTagIframeJavascriptLegacy
+                }
+                "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH" => {
+                    PlacementTagFormatsItems::PlacementTagInstreamVideoPrefetch
+                }
+                "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3" => {
+                    PlacementTagFormatsItems::PlacementTagInstreamVideoPrefetchVast3
+                }
+                "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4" => {
+                    PlacementTagFormatsItems::PlacementTagInstreamVideoPrefetchVast4
+                }
+                "PLACEMENT_TAG_INTERNAL_REDIRECT" => {
+                    PlacementTagFormatsItems::PlacementTagInternalRedirect
+                }
+                "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT" => {
+                    PlacementTagFormatsItems::PlacementTagInterstitialIframeJavascript
+                }
+                "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY" => {
+                    PlacementTagFormatsItems::PlacementTagInterstitialIframeJavascriptLegacy
+                }
+                "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT" => {
+                    PlacementTagFormatsItems::PlacementTagInterstitialInternalRedirect
+                }
+                "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT" => {
+                    PlacementTagFormatsItems::PlacementTagInterstitialJavascript
+                }
+                "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY" => {
+                    PlacementTagFormatsItems::PlacementTagInterstitialJavascriptLegacy
+                }
+                "PLACEMENT_TAG_JAVASCRIPT" => PlacementTagFormatsItems::PlacementTagJavascript,
+                "PLACEMENT_TAG_JAVASCRIPT_LEGACY" => {
+                    PlacementTagFormatsItems::PlacementTagJavascriptLegacy
+                }
+                "PLACEMENT_TAG_STANDARD" => PlacementTagFormatsItems::PlacementTagStandard,
+                "PLACEMENT_TAG_TRACKING" => PlacementTagFormatsItems::PlacementTagTracking,
+                "PLACEMENT_TAG_TRACKING_IFRAME" => {
+                    PlacementTagFormatsItems::PlacementTagTrackingIframe
+                }
+                "PLACEMENT_TAG_TRACKING_JAVASCRIPT" => {
+                    PlacementTagFormatsItems::PlacementTagTrackingJavascript
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum PlacementVpaidAdapterChoice {
+        Both,
+        Default,
+        Flash,
+        Html5,
+    }
+    impl PlacementVpaidAdapterChoice {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                PlacementVpaidAdapterChoice::Both => "BOTH",
+                PlacementVpaidAdapterChoice::Default => "DEFAULT",
+                PlacementVpaidAdapterChoice::Flash => "FLASH",
+                PlacementVpaidAdapterChoice::Html5 => "HTML5",
+            }
+        }
+    }
+    impl ::std::fmt::Display for PlacementVpaidAdapterChoice {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for PlacementVpaidAdapterChoice {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for PlacementVpaidAdapterChoice {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "BOTH" => PlacementVpaidAdapterChoice::Both,
+                "DEFAULT" => PlacementVpaidAdapterChoice::Default,
+                "FLASH" => PlacementVpaidAdapterChoice::Flash,
+                "HTML5" => PlacementVpaidAdapterChoice::Html5,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -11640,8 +12001,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -11673,33 +12034,25 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum PlacementCompatibility {
-        App,
-        AppInterstitial,
-        Display,
-        DisplayInterstitial,
-        InStreamAudio,
-        InStreamVideo,
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum PlacementGroupPlacementGroupType {
+        PlacementPackage,
+        PlacementRoadblock,
     }
-    impl PlacementCompatibility {
+    impl PlacementGroupPlacementGroupType {
         pub fn as_str(self) -> &'static str {
             match self {
-                PlacementCompatibility::App => "APP",
-                PlacementCompatibility::AppInterstitial => "APP_INTERSTITIAL",
-                PlacementCompatibility::Display => "DISPLAY",
-                PlacementCompatibility::DisplayInterstitial => "DISPLAY_INTERSTITIAL",
-                PlacementCompatibility::InStreamAudio => "IN_STREAM_AUDIO",
-                PlacementCompatibility::InStreamVideo => "IN_STREAM_VIDEO",
+                PlacementGroupPlacementGroupType::PlacementPackage => "PLACEMENT_PACKAGE",
+                PlacementGroupPlacementGroupType::PlacementRoadblock => "PLACEMENT_ROADBLOCK",
             }
         }
     }
-    impl ::std::fmt::Display for PlacementCompatibility {
+    impl ::std::fmt::Display for PlacementGroupPlacementGroupType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
-    impl ::serde::Serialize for PlacementCompatibility {
+    impl ::serde::Serialize for PlacementGroupPlacementGroupType {
         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
@@ -11707,19 +12060,15 @@ pub mod schemas {
             serializer.serialize_str(self.as_str())
         }
     }
-    impl<'de> ::serde::Deserialize<'de> for PlacementCompatibility {
+    impl<'de> ::serde::Deserialize<'de> for PlacementGroupPlacementGroupType {
         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "APP" => PlacementCompatibility::App,
-                "APP_INTERSTITIAL" => PlacementCompatibility::AppInterstitial,
-                "DISPLAY" => PlacementCompatibility::Display,
-                "DISPLAY_INTERSTITIAL" => PlacementCompatibility::DisplayInterstitial,
-                "IN_STREAM_AUDIO" => PlacementCompatibility::InStreamAudio,
-                "IN_STREAM_VIDEO" => PlacementCompatibility::InStreamVideo,
+                "PLACEMENT_PACKAGE" => PlacementGroupPlacementGroupType::PlacementPackage,
+                "PLACEMENT_ROADBLOCK" => PlacementGroupPlacementGroupType::PlacementRoadblock,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -11733,8 +12082,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -11841,56 +12190,12 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum PlacementGroupPlacementGroupType {
-        PlacementPackage,
-        PlacementRoadblock,
-    }
-    impl PlacementGroupPlacementGroupType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                PlacementGroupPlacementGroupType::PlacementPackage => "PLACEMENT_PACKAGE",
-                PlacementGroupPlacementGroupType::PlacementRoadblock => "PLACEMENT_ROADBLOCK",
-            }
-        }
-    }
-    impl ::std::fmt::Display for PlacementGroupPlacementGroupType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for PlacementGroupPlacementGroupType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for PlacementGroupPlacementGroupType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "PLACEMENT_PACKAGE" => PlacementGroupPlacementGroupType::PlacementPackage,
-                "PLACEMENT_ROADBLOCK" => PlacementGroupPlacementGroupType::PlacementRoadblock,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -11918,112 +12223,12 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum PlacementPaymentSource {
-        PlacementAgencyPaid,
-        PlacementPublisherPaid,
-    }
-    impl PlacementPaymentSource {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                PlacementPaymentSource::PlacementAgencyPaid => "PLACEMENT_AGENCY_PAID",
-                PlacementPaymentSource::PlacementPublisherPaid => "PLACEMENT_PUBLISHER_PAID",
-            }
-        }
-    }
-    impl ::std::fmt::Display for PlacementPaymentSource {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for PlacementPaymentSource {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for PlacementPaymentSource {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "PLACEMENT_AGENCY_PAID" => PlacementPaymentSource::PlacementAgencyPaid,
-                "PLACEMENT_PUBLISHER_PAID" => PlacementPaymentSource::PlacementPublisherPaid,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum PlacementStatus {
-        AcknowledgeAcceptance,
-        AcknowledgeRejection,
-        Draft,
-        PaymentAccepted,
-        PaymentRejected,
-        PendingReview,
-    }
-    impl PlacementStatus {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                PlacementStatus::AcknowledgeAcceptance => "ACKNOWLEDGE_ACCEPTANCE",
-                PlacementStatus::AcknowledgeRejection => "ACKNOWLEDGE_REJECTION",
-                PlacementStatus::Draft => "DRAFT",
-                PlacementStatus::PaymentAccepted => "PAYMENT_ACCEPTED",
-                PlacementStatus::PaymentRejected => "PAYMENT_REJECTED",
-                PlacementStatus::PendingReview => "PENDING_REVIEW",
-            }
-        }
-    }
-    impl ::std::fmt::Display for PlacementStatus {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for PlacementStatus {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for PlacementStatus {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ACKNOWLEDGE_ACCEPTANCE" => PlacementStatus::AcknowledgeAcceptance,
-                "ACKNOWLEDGE_REJECTION" => PlacementStatus::AcknowledgeRejection,
-                "DRAFT" => PlacementStatus::Draft,
-                "PAYMENT_ACCEPTED" => PlacementStatus::PaymentAccepted,
-                "PAYMENT_REJECTED" => PlacementStatus::PaymentRejected,
-                "PENDING_REVIEW" => PlacementStatus::PendingReview,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -12055,8 +12260,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -12093,8 +12298,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -12120,217 +12325,12 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum PlacementTagFormatsItems {
-        PlacementTagClickCommands,
-        PlacementTagIframeIlayer,
-        PlacementTagIframeJavascript,
-        PlacementTagIframeJavascriptLegacy,
-        PlacementTagInstreamVideoPrefetch,
-        PlacementTagInstreamVideoPrefetchVast3,
-        PlacementTagInstreamVideoPrefetchVast4,
-        PlacementTagInternalRedirect,
-        PlacementTagInterstitialIframeJavascript,
-        PlacementTagInterstitialIframeJavascriptLegacy,
-        PlacementTagInterstitialInternalRedirect,
-        PlacementTagInterstitialJavascript,
-        PlacementTagInterstitialJavascriptLegacy,
-        PlacementTagJavascript,
-        PlacementTagJavascriptLegacy,
-        PlacementTagStandard,
-        PlacementTagTracking,
-        PlacementTagTrackingIframe,
-        PlacementTagTrackingJavascript,
-    }
-    impl PlacementTagFormatsItems {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                PlacementTagFormatsItems::PlacementTagClickCommands => {
-                    "PLACEMENT_TAG_CLICK_COMMANDS"
-                }
-                PlacementTagFormatsItems::PlacementTagIframeIlayer => "PLACEMENT_TAG_IFRAME_ILAYER",
-                PlacementTagFormatsItems::PlacementTagIframeJavascript => {
-                    "PLACEMENT_TAG_IFRAME_JAVASCRIPT"
-                }
-                PlacementTagFormatsItems::PlacementTagIframeJavascriptLegacy => {
-                    "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY"
-                }
-                PlacementTagFormatsItems::PlacementTagInstreamVideoPrefetch => {
-                    "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH"
-                }
-                PlacementTagFormatsItems::PlacementTagInstreamVideoPrefetchVast3 => {
-                    "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3"
-                }
-                PlacementTagFormatsItems::PlacementTagInstreamVideoPrefetchVast4 => {
-                    "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
-                }
-                PlacementTagFormatsItems::PlacementTagInternalRedirect => {
-                    "PLACEMENT_TAG_INTERNAL_REDIRECT"
-                }
-                PlacementTagFormatsItems::PlacementTagInterstitialIframeJavascript => {
-                    "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT"
-                }
-                PlacementTagFormatsItems::PlacementTagInterstitialIframeJavascriptLegacy => {
-                    "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY"
-                }
-                PlacementTagFormatsItems::PlacementTagInterstitialInternalRedirect => {
-                    "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT"
-                }
-                PlacementTagFormatsItems::PlacementTagInterstitialJavascript => {
-                    "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT"
-                }
-                PlacementTagFormatsItems::PlacementTagInterstitialJavascriptLegacy => {
-                    "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY"
-                }
-                PlacementTagFormatsItems::PlacementTagJavascript => "PLACEMENT_TAG_JAVASCRIPT",
-                PlacementTagFormatsItems::PlacementTagJavascriptLegacy => {
-                    "PLACEMENT_TAG_JAVASCRIPT_LEGACY"
-                }
-                PlacementTagFormatsItems::PlacementTagStandard => "PLACEMENT_TAG_STANDARD",
-                PlacementTagFormatsItems::PlacementTagTracking => "PLACEMENT_TAG_TRACKING",
-                PlacementTagFormatsItems::PlacementTagTrackingIframe => {
-                    "PLACEMENT_TAG_TRACKING_IFRAME"
-                }
-                PlacementTagFormatsItems::PlacementTagTrackingJavascript => {
-                    "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
-                }
-            }
-        }
-    }
-    impl ::std::fmt::Display for PlacementTagFormatsItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for PlacementTagFormatsItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for PlacementTagFormatsItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "PLACEMENT_TAG_CLICK_COMMANDS" => {
-                    PlacementTagFormatsItems::PlacementTagClickCommands
-                }
-                "PLACEMENT_TAG_IFRAME_ILAYER" => PlacementTagFormatsItems::PlacementTagIframeIlayer,
-                "PLACEMENT_TAG_IFRAME_JAVASCRIPT" => {
-                    PlacementTagFormatsItems::PlacementTagIframeJavascript
-                }
-                "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY" => {
-                    PlacementTagFormatsItems::PlacementTagIframeJavascriptLegacy
-                }
-                "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH" => {
-                    PlacementTagFormatsItems::PlacementTagInstreamVideoPrefetch
-                }
-                "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3" => {
-                    PlacementTagFormatsItems::PlacementTagInstreamVideoPrefetchVast3
-                }
-                "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4" => {
-                    PlacementTagFormatsItems::PlacementTagInstreamVideoPrefetchVast4
-                }
-                "PLACEMENT_TAG_INTERNAL_REDIRECT" => {
-                    PlacementTagFormatsItems::PlacementTagInternalRedirect
-                }
-                "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT" => {
-                    PlacementTagFormatsItems::PlacementTagInterstitialIframeJavascript
-                }
-                "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY" => {
-                    PlacementTagFormatsItems::PlacementTagInterstitialIframeJavascriptLegacy
-                }
-                "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT" => {
-                    PlacementTagFormatsItems::PlacementTagInterstitialInternalRedirect
-                }
-                "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT" => {
-                    PlacementTagFormatsItems::PlacementTagInterstitialJavascript
-                }
-                "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY" => {
-                    PlacementTagFormatsItems::PlacementTagInterstitialJavascriptLegacy
-                }
-                "PLACEMENT_TAG_JAVASCRIPT" => PlacementTagFormatsItems::PlacementTagJavascript,
-                "PLACEMENT_TAG_JAVASCRIPT_LEGACY" => {
-                    PlacementTagFormatsItems::PlacementTagJavascriptLegacy
-                }
-                "PLACEMENT_TAG_STANDARD" => PlacementTagFormatsItems::PlacementTagStandard,
-                "PLACEMENT_TAG_TRACKING" => PlacementTagFormatsItems::PlacementTagTracking,
-                "PLACEMENT_TAG_TRACKING_IFRAME" => {
-                    PlacementTagFormatsItems::PlacementTagTrackingIframe
-                }
-                "PLACEMENT_TAG_TRACKING_JAVASCRIPT" => {
-                    PlacementTagFormatsItems::PlacementTagTrackingJavascript
-                }
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum PlacementVpaidAdapterChoice {
-        Both,
-        Default,
-        Flash,
-        Html5,
-    }
-    impl PlacementVpaidAdapterChoice {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                PlacementVpaidAdapterChoice::Both => "BOTH",
-                PlacementVpaidAdapterChoice::Default => "DEFAULT",
-                PlacementVpaidAdapterChoice::Flash => "FLASH",
-                PlacementVpaidAdapterChoice::Html5 => "HTML5",
-            }
-        }
-    }
-    impl ::std::fmt::Display for PlacementVpaidAdapterChoice {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for PlacementVpaidAdapterChoice {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for PlacementVpaidAdapterChoice {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "BOTH" => PlacementVpaidAdapterChoice::Both,
-                "DEFAULT" => PlacementVpaidAdapterChoice::Default,
-                "FLASH" => PlacementVpaidAdapterChoice::Flash,
-                "HTML5" => PlacementVpaidAdapterChoice::Html5,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -12359,8 +12359,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -12392,8 +12392,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -12426,8 +12426,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -12452,58 +12452,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PopupWindowProperties {
-        #[doc = "Popup dimension for a creative. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA and all VPAID"]
-        #[serde(rename = "dimension", default)]
-        pub dimension: Option<crate::schemas::Size>,
-        #[doc = "Upper-left corner coordinates of the popup window. Applicable if positionType is COORDINATES."]
-        #[serde(rename = "offset", default)]
-        pub offset: Option<crate::schemas::OffsetPosition>,
-        #[doc = "Popup window position either centered or at specific coordinate."]
-        #[serde(rename = "positionType", default)]
-        pub position_type: Option<crate::schemas::PopupWindowPropertiesPositionType>,
-        #[doc = "Whether to display the browser address bar."]
-        #[serde(rename = "showAddressBar", default)]
-        pub show_address_bar: Option<bool>,
-        #[doc = "Whether to display the browser menu bar."]
-        #[serde(rename = "showMenuBar", default)]
-        pub show_menu_bar: Option<bool>,
-        #[doc = "Whether to display the browser scroll bar."]
-        #[serde(rename = "showScrollBar", default)]
-        pub show_scroll_bar: Option<bool>,
-        #[doc = "Whether to display the browser status bar."]
-        #[serde(rename = "showStatusBar", default)]
-        pub show_status_bar: Option<bool>,
-        #[doc = "Whether to display the browser tool bar."]
-        #[serde(rename = "showToolBar", default)]
-        pub show_tool_bar: Option<bool>,
-        #[doc = "Title of popup window."]
-        #[serde(rename = "title", default)]
-        pub title: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PopupWindowProperties {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PopupWindowPropertiesPositionType {
         Center,
         Coordinates,
@@ -12551,8 +12500,59 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PopupWindowProperties {
+        #[doc = "Popup dimension for a creative. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA and all VPAID"]
+        #[serde(rename = "dimension", default)]
+        pub dimension: Option<crate::schemas::Size>,
+        #[doc = "Upper-left corner coordinates of the popup window. Applicable if positionType is COORDINATES."]
+        #[serde(rename = "offset", default)]
+        pub offset: Option<crate::schemas::OffsetPosition>,
+        #[doc = "Popup window position either centered or at specific coordinate."]
+        #[serde(rename = "positionType", default)]
+        pub position_type: Option<crate::schemas::PopupWindowPropertiesPositionType>,
+        #[doc = "Whether to display the browser address bar."]
+        #[serde(rename = "showAddressBar", default)]
+        pub show_address_bar: Option<bool>,
+        #[doc = "Whether to display the browser menu bar."]
+        #[serde(rename = "showMenuBar", default)]
+        pub show_menu_bar: Option<bool>,
+        #[doc = "Whether to display the browser scroll bar."]
+        #[serde(rename = "showScrollBar", default)]
+        pub show_scroll_bar: Option<bool>,
+        #[doc = "Whether to display the browser status bar."]
+        #[serde(rename = "showStatusBar", default)]
+        pub show_status_bar: Option<bool>,
+        #[doc = "Whether to display the browser tool bar."]
+        #[serde(rename = "showToolBar", default)]
+        pub show_tool_bar: Option<bool>,
+        #[doc = "Title of popup window."]
+        #[serde(rename = "title", default)]
+        pub title: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PopupWindowProperties {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -12591,8 +12591,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -12617,49 +12617,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Pricing {
-        #[doc = "Cap cost type of this inventory item."]
-        #[serde(rename = "capCostType", default)]
-        pub cap_cost_type: Option<crate::schemas::PricingCapCostType>,
-        #[doc = "End date of this inventory item."]
-        #[serde(rename = "endDate", default)]
-        pub end_date: Option<::chrono::Date<chrono::offset::Utc>>,
-        #[doc = "Flights of this inventory item. A flight (a.k.a. pricing period) represents the inventory item pricing information for a specific period of time."]
-        #[serde(rename = "flights", default)]
-        pub flights: Option<Vec<crate::schemas::Flight>>,
-        #[doc = "Group type of this inventory item if it represents a placement group. Is null otherwise. There are two type of placement groups: PLANNING_PLACEMENT_GROUP_TYPE_PACKAGE is a simple group of inventory items that acts as a single pricing point for a group of tags. PLANNING_PLACEMENT_GROUP_TYPE_ROADBLOCK is a group of inventory items that not only acts as a single pricing point, but also assumes that all the tags in it will be served at the same time. A roadblock requires one of its assigned inventory items to be marked as primary."]
-        #[serde(rename = "groupType", default)]
-        pub group_type: Option<crate::schemas::PricingGroupType>,
-        #[doc = "Pricing type of this inventory item."]
-        #[serde(rename = "pricingType", default)]
-        pub pricing_type: Option<crate::schemas::PricingPricingType>,
-        #[doc = "Start date of this inventory item."]
-        #[serde(rename = "startDate", default)]
-        pub start_date: Option<::chrono::Date<chrono::offset::Utc>>,
-    }
-    impl ::field_selector::FieldSelector for Pricing {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PricingCapCostType {
         PlanningPlacementCapCostTypeCumulative,
         PlanningPlacementCapCostTypeMonthly,
@@ -12718,7 +12676,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PricingGroupType {
         PlanningPlacementGroupTypePackage,
         PlanningPlacementGroupTypeRoadblock,
@@ -12770,7 +12728,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PricingPricingType {
         PlanningPlacementPricingTypeClicks,
         PlanningPlacementPricingTypeCpa,
@@ -12868,45 +12826,35 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PricingSchedule {
-        #[doc = "Placement cap cost option."]
-        #[serde(rename = "capCostOption", default)]
-        pub cap_cost_option: Option<crate::schemas::PricingScheduleCapCostOption>,
-        #[doc = "Whether cap costs are ignored by ad serving."]
-        #[serde(rename = "disregardOverdelivery", default)]
-        pub disregard_overdelivery: Option<bool>,
-        #[doc = "Placement end date. This date must be later than, or the same day as, the placement start date, but not later than the campaign end date. If, for example, you set 6/25/2015 as both the start and end dates, the effective placement date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error. This field is required on insertion."]
+    pub struct Pricing {
+        #[doc = "Cap cost type of this inventory item."]
+        #[serde(rename = "capCostType", default)]
+        pub cap_cost_type: Option<crate::schemas::PricingCapCostType>,
+        #[doc = "End date of this inventory item."]
         #[serde(rename = "endDate", default)]
         pub end_date: Option<::chrono::Date<chrono::offset::Utc>>,
-        #[doc = "Whether this placement is flighted. If true, pricing periods will be computed automatically."]
-        #[serde(rename = "flighted", default)]
-        pub flighted: Option<bool>,
-        #[doc = "Floodlight activity ID associated with this placement. This field should be set when placement pricing type is set to PRICING_TYPE_CPA."]
-        #[serde(rename = "floodlightActivityId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub floodlight_activity_id: Option<i64>,
-        #[doc = "Pricing periods for this placement."]
-        #[serde(rename = "pricingPeriods", default)]
-        pub pricing_periods: Option<Vec<crate::schemas::PricingSchedulePricingPeriod>>,
-        #[doc = "Placement pricing type. This field is required on insertion."]
+        #[doc = "Flights of this inventory item. A flight (a.k.a. pricing period) represents the inventory item pricing information for a specific period of time."]
+        #[serde(rename = "flights", default)]
+        pub flights: Option<Vec<crate::schemas::Flight>>,
+        #[doc = "Group type of this inventory item if it represents a placement group. Is null otherwise. There are two type of placement groups: PLANNING_PLACEMENT_GROUP_TYPE_PACKAGE is a simple group of inventory items that acts as a single pricing point for a group of tags. PLANNING_PLACEMENT_GROUP_TYPE_ROADBLOCK is a group of inventory items that not only acts as a single pricing point, but also assumes that all the tags in it will be served at the same time. A roadblock requires one of its assigned inventory items to be marked as primary."]
+        #[serde(rename = "groupType", default)]
+        pub group_type: Option<crate::schemas::PricingGroupType>,
+        #[doc = "Pricing type of this inventory item."]
         #[serde(rename = "pricingType", default)]
-        pub pricing_type: Option<crate::schemas::PricingSchedulePricingType>,
-        #[doc = "Placement start date. This date must be later than, or the same day as, the campaign start date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error. This field is required on insertion."]
+        pub pricing_type: Option<crate::schemas::PricingPricingType>,
+        #[doc = "Start date of this inventory item."]
         #[serde(rename = "startDate", default)]
         pub start_date: Option<::chrono::Date<chrono::offset::Utc>>,
-        #[doc = "Testing start date of this placement. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error."]
-        #[serde(rename = "testingStartDate", default)]
-        pub testing_start_date: Option<::chrono::Date<chrono::offset::Utc>>,
     }
-    impl ::field_selector::FieldSelector for PricingSchedule {
+    impl ::field_selector::FieldSelector for Pricing {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -12916,7 +12864,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PricingScheduleCapCostOption {
         CapCostCumulative,
         CapCostMonthly,
@@ -12963,48 +12911,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PricingSchedulePricingPeriod {
-        #[doc = "Pricing period end date. This date must be later than, or the same day as, the pricing period start date, but not later than the placement end date. The period end date can be the same date as the period start date. If, for example, you set 6/25/2015 as both the start and end dates, the effective pricing period date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error."]
-        #[serde(rename = "endDate", default)]
-        pub end_date: Option<::chrono::Date<chrono::offset::Utc>>,
-        #[doc = "Comments for this pricing period."]
-        #[serde(rename = "pricingComment", default)]
-        pub pricing_comment: Option<String>,
-        #[doc = "Rate or cost of this pricing period in nanos (i.e., multipled by 1000000000). Acceptable values are 0 to 1000000000000000000, inclusive."]
-        #[serde(rename = "rateOrCostNanos", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub rate_or_cost_nanos: Option<i64>,
-        #[doc = "Pricing period start date. This date must be later than, or the same day as, the placement start date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error."]
-        #[serde(rename = "startDate", default)]
-        pub start_date: Option<::chrono::Date<chrono::offset::Utc>>,
-        #[doc = "Units of this pricing period. Acceptable values are 0 to 10000000000, inclusive."]
-        #[serde(rename = "units", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub units: Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for PricingSchedulePricingPeriod {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PricingSchedulePricingType {
         PricingTypeCpa,
         PricingTypeCpc,
@@ -13076,8 +12983,220 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PricingSchedule {
+        #[doc = "Placement cap cost option."]
+        #[serde(rename = "capCostOption", default)]
+        pub cap_cost_option: Option<crate::schemas::PricingScheduleCapCostOption>,
+        #[doc = "Whether cap costs are ignored by ad serving."]
+        #[serde(rename = "disregardOverdelivery", default)]
+        pub disregard_overdelivery: Option<bool>,
+        #[doc = "Placement end date. This date must be later than, or the same day as, the placement start date, but not later than the campaign end date. If, for example, you set 6/25/2015 as both the start and end dates, the effective placement date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error. This field is required on insertion."]
+        #[serde(rename = "endDate", default)]
+        pub end_date: Option<::chrono::Date<chrono::offset::Utc>>,
+        #[doc = "Whether this placement is flighted. If true, pricing periods will be computed automatically."]
+        #[serde(rename = "flighted", default)]
+        pub flighted: Option<bool>,
+        #[doc = "Floodlight activity ID associated with this placement. This field should be set when placement pricing type is set to PRICING_TYPE_CPA."]
+        #[serde(rename = "floodlightActivityId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub floodlight_activity_id: Option<i64>,
+        #[doc = "Pricing periods for this placement."]
+        #[serde(rename = "pricingPeriods", default)]
+        pub pricing_periods: Option<Vec<crate::schemas::PricingSchedulePricingPeriod>>,
+        #[doc = "Placement pricing type. This field is required on insertion."]
+        #[serde(rename = "pricingType", default)]
+        pub pricing_type: Option<crate::schemas::PricingSchedulePricingType>,
+        #[doc = "Placement start date. This date must be later than, or the same day as, the campaign start date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error. This field is required on insertion."]
+        #[serde(rename = "startDate", default)]
+        pub start_date: Option<::chrono::Date<chrono::offset::Utc>>,
+        #[doc = "Testing start date of this placement. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error."]
+        #[serde(rename = "testingStartDate", default)]
+        pub testing_start_date: Option<::chrono::Date<chrono::offset::Utc>>,
+    }
+    impl ::field_selector::FieldSelector for PricingSchedule {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PricingSchedulePricingPeriod {
+        #[doc = "Pricing period end date. This date must be later than, or the same day as, the pricing period start date, but not later than the placement end date. The period end date can be the same date as the period start date. If, for example, you set 6/25/2015 as both the start and end dates, the effective pricing period date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error."]
+        #[serde(rename = "endDate", default)]
+        pub end_date: Option<::chrono::Date<chrono::offset::Utc>>,
+        #[doc = "Comments for this pricing period."]
+        #[serde(rename = "pricingComment", default)]
+        pub pricing_comment: Option<String>,
+        #[doc = "Rate or cost of this pricing period in nanos (i.e., multipled by 1000000000). Acceptable values are 0 to 1000000000000000000, inclusive."]
+        #[serde(rename = "rateOrCostNanos", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub rate_or_cost_nanos: Option<i64>,
+        #[doc = "Pricing period start date. This date must be later than, or the same day as, the placement start date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error."]
+        #[serde(rename = "startDate", default)]
+        pub start_date: Option<::chrono::Date<chrono::offset::Utc>>,
+        #[doc = "Units of this pricing period. Acceptable values are 0 to 10000000000, inclusive."]
+        #[serde(rename = "units", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub units: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for PricingSchedulePricingPeriod {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ProjectAudienceAgeGroup {
+        PlanningAudienceAge1824,
+        PlanningAudienceAge2534,
+        PlanningAudienceAge3544,
+        PlanningAudienceAge4554,
+        PlanningAudienceAge5564,
+        PlanningAudienceAge65OrMore,
+        PlanningAudienceAgeUnknown,
+    }
+    impl ProjectAudienceAgeGroup {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ProjectAudienceAgeGroup::PlanningAudienceAge1824 => "PLANNING_AUDIENCE_AGE_18_24",
+                ProjectAudienceAgeGroup::PlanningAudienceAge2534 => "PLANNING_AUDIENCE_AGE_25_34",
+                ProjectAudienceAgeGroup::PlanningAudienceAge3544 => "PLANNING_AUDIENCE_AGE_35_44",
+                ProjectAudienceAgeGroup::PlanningAudienceAge4554 => "PLANNING_AUDIENCE_AGE_45_54",
+                ProjectAudienceAgeGroup::PlanningAudienceAge5564 => "PLANNING_AUDIENCE_AGE_55_64",
+                ProjectAudienceAgeGroup::PlanningAudienceAge65OrMore => {
+                    "PLANNING_AUDIENCE_AGE_65_OR_MORE"
+                }
+                ProjectAudienceAgeGroup::PlanningAudienceAgeUnknown => {
+                    "PLANNING_AUDIENCE_AGE_UNKNOWN"
+                }
+            }
+        }
+    }
+    impl ::std::fmt::Display for ProjectAudienceAgeGroup {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ProjectAudienceAgeGroup {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ProjectAudienceAgeGroup {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "PLANNING_AUDIENCE_AGE_18_24" => ProjectAudienceAgeGroup::PlanningAudienceAge1824,
+                "PLANNING_AUDIENCE_AGE_25_34" => ProjectAudienceAgeGroup::PlanningAudienceAge2534,
+                "PLANNING_AUDIENCE_AGE_35_44" => ProjectAudienceAgeGroup::PlanningAudienceAge3544,
+                "PLANNING_AUDIENCE_AGE_45_54" => ProjectAudienceAgeGroup::PlanningAudienceAge4554,
+                "PLANNING_AUDIENCE_AGE_55_64" => ProjectAudienceAgeGroup::PlanningAudienceAge5564,
+                "PLANNING_AUDIENCE_AGE_65_OR_MORE" => {
+                    ProjectAudienceAgeGroup::PlanningAudienceAge65OrMore
+                }
+                "PLANNING_AUDIENCE_AGE_UNKNOWN" => {
+                    ProjectAudienceAgeGroup::PlanningAudienceAgeUnknown
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ProjectAudienceGender {
+        PlanningAudienceGenderFemale,
+        PlanningAudienceGenderMale,
+    }
+    impl ProjectAudienceGender {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ProjectAudienceGender::PlanningAudienceGenderFemale => {
+                    "PLANNING_AUDIENCE_GENDER_FEMALE"
+                }
+                ProjectAudienceGender::PlanningAudienceGenderMale => {
+                    "PLANNING_AUDIENCE_GENDER_MALE"
+                }
+            }
+        }
+    }
+    impl ::std::fmt::Display for ProjectAudienceGender {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ProjectAudienceGender {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ProjectAudienceGender {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "PLANNING_AUDIENCE_GENDER_FEMALE" => {
+                    ProjectAudienceGender::PlanningAudienceGenderFemale
+                }
+                "PLANNING_AUDIENCE_GENDER_MALE" => {
+                    ProjectAudienceGender::PlanningAudienceGenderMale
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -13174,131 +13293,12 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum ProjectAudienceAgeGroup {
-        PlanningAudienceAge1824,
-        PlanningAudienceAge2534,
-        PlanningAudienceAge3544,
-        PlanningAudienceAge4554,
-        PlanningAudienceAge5564,
-        PlanningAudienceAge65OrMore,
-        PlanningAudienceAgeUnknown,
-    }
-    impl ProjectAudienceAgeGroup {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ProjectAudienceAgeGroup::PlanningAudienceAge1824 => "PLANNING_AUDIENCE_AGE_18_24",
-                ProjectAudienceAgeGroup::PlanningAudienceAge2534 => "PLANNING_AUDIENCE_AGE_25_34",
-                ProjectAudienceAgeGroup::PlanningAudienceAge3544 => "PLANNING_AUDIENCE_AGE_35_44",
-                ProjectAudienceAgeGroup::PlanningAudienceAge4554 => "PLANNING_AUDIENCE_AGE_45_54",
-                ProjectAudienceAgeGroup::PlanningAudienceAge5564 => "PLANNING_AUDIENCE_AGE_55_64",
-                ProjectAudienceAgeGroup::PlanningAudienceAge65OrMore => {
-                    "PLANNING_AUDIENCE_AGE_65_OR_MORE"
-                }
-                ProjectAudienceAgeGroup::PlanningAudienceAgeUnknown => {
-                    "PLANNING_AUDIENCE_AGE_UNKNOWN"
-                }
-            }
-        }
-    }
-    impl ::std::fmt::Display for ProjectAudienceAgeGroup {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ProjectAudienceAgeGroup {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ProjectAudienceAgeGroup {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "PLANNING_AUDIENCE_AGE_18_24" => ProjectAudienceAgeGroup::PlanningAudienceAge1824,
-                "PLANNING_AUDIENCE_AGE_25_34" => ProjectAudienceAgeGroup::PlanningAudienceAge2534,
-                "PLANNING_AUDIENCE_AGE_35_44" => ProjectAudienceAgeGroup::PlanningAudienceAge3544,
-                "PLANNING_AUDIENCE_AGE_45_54" => ProjectAudienceAgeGroup::PlanningAudienceAge4554,
-                "PLANNING_AUDIENCE_AGE_55_64" => ProjectAudienceAgeGroup::PlanningAudienceAge5564,
-                "PLANNING_AUDIENCE_AGE_65_OR_MORE" => {
-                    ProjectAudienceAgeGroup::PlanningAudienceAge65OrMore
-                }
-                "PLANNING_AUDIENCE_AGE_UNKNOWN" => {
-                    ProjectAudienceAgeGroup::PlanningAudienceAgeUnknown
-                }
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum ProjectAudienceGender {
-        PlanningAudienceGenderFemale,
-        PlanningAudienceGenderMale,
-    }
-    impl ProjectAudienceGender {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ProjectAudienceGender::PlanningAudienceGenderFemale => {
-                    "PLANNING_AUDIENCE_GENDER_FEMALE"
-                }
-                ProjectAudienceGender::PlanningAudienceGenderMale => {
-                    "PLANNING_AUDIENCE_GENDER_MALE"
-                }
-            }
-        }
-    }
-    impl ::std::fmt::Display for ProjectAudienceGender {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ProjectAudienceGender {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ProjectAudienceGender {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "PLANNING_AUDIENCE_GENDER_FEMALE" => {
-                    ProjectAudienceGender::PlanningAudienceGenderFemale
-                }
-                "PLANNING_AUDIENCE_GENDER_MALE" => {
-                    ProjectAudienceGender::PlanningAudienceGenderMale
-                }
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -13330,8 +13330,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -13368,40 +13368,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Recipient {
-        #[doc = "The delivery type for the recipient."]
-        #[serde(rename = "deliveryType", default)]
-        pub delivery_type: Option<crate::schemas::RecipientDeliveryType>,
-        #[doc = "The email address of the recipient."]
-        #[serde(rename = "email", default)]
-        pub email: Option<String>,
-        #[doc = "The kind of resource this is, in this case dfareporting#recipient."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Recipient {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RecipientDeliveryType {
         Attachment,
         Link,
@@ -13449,8 +13416,41 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Recipient {
+        #[doc = "The delivery type for the recipient."]
+        #[serde(rename = "deliveryType", default)]
+        pub delivery_type: Option<crate::schemas::RecipientDeliveryType>,
+        #[doc = "The email address of the recipient."]
+        #[serde(rename = "email", default)]
+        pub email: Option<String>,
+        #[doc = "The kind of resource this is, in this case dfareporting#recipient."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Recipient {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -13493,8 +13493,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -13519,76 +13519,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct RemarketingList {
-        #[doc = "Account ID of this remarketing list. This is a read-only, auto-generated field that is only returned in GET requests."]
-        #[serde(rename = "accountId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub account_id: Option<i64>,
-        #[doc = "Whether this remarketing list is active."]
-        #[serde(rename = "active", default)]
-        pub active: Option<bool>,
-        #[doc = "Dimension value for the advertiser ID that owns this remarketing list. This is a required field."]
-        #[serde(rename = "advertiserId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub advertiser_id: Option<i64>,
-        #[doc = "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."]
-        #[serde(rename = "advertiserIdDimensionValue", default)]
-        pub advertiser_id_dimension_value: Option<crate::schemas::DimensionValue>,
-        #[doc = "Remarketing list description."]
-        #[serde(rename = "description", default)]
-        pub description: Option<String>,
-        #[doc = "Remarketing list ID. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#remarketingList\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Number of days that a user should remain in the remarketing list without an impression. Acceptable values are 1 to 540, inclusive."]
-        #[serde(rename = "lifeSpan", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub life_span: Option<i64>,
-        #[doc = "Rule used to populate the remarketing list with users."]
-        #[serde(rename = "listPopulationRule", default)]
-        pub list_population_rule: Option<crate::schemas::ListPopulationRule>,
-        #[doc = "Number of users currently in the list. This is a read-only field."]
-        #[serde(rename = "listSize", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub list_size: Option<i64>,
-        #[doc = "Product from which this remarketing list was originated."]
-        #[serde(rename = "listSource", default)]
-        pub list_source: Option<crate::schemas::RemarketingListListSource>,
-        #[doc = "Name of the remarketing list. This is a required field. Must be no greater than 128 characters long."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "Subaccount ID of this remarketing list. This is a read-only, auto-generated field that is only returned in GET requests."]
-        #[serde(rename = "subaccountId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub subaccount_id: Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for RemarketingList {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RemarketingListListSource {
         RemarketingListSourceAdx,
         RemarketingListSourceDbm,
@@ -13703,8 +13634,77 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RemarketingList {
+        #[doc = "Account ID of this remarketing list. This is a read-only, auto-generated field that is only returned in GET requests."]
+        #[serde(rename = "accountId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub account_id: Option<i64>,
+        #[doc = "Whether this remarketing list is active."]
+        #[serde(rename = "active", default)]
+        pub active: Option<bool>,
+        #[doc = "Dimension value for the advertiser ID that owns this remarketing list. This is a required field."]
+        #[serde(rename = "advertiserId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub advertiser_id: Option<i64>,
+        #[doc = "Dimension value for the ID of the advertiser. This is a read-only, auto-generated field."]
+        #[serde(rename = "advertiserIdDimensionValue", default)]
+        pub advertiser_id_dimension_value: Option<crate::schemas::DimensionValue>,
+        #[doc = "Remarketing list description."]
+        #[serde(rename = "description", default)]
+        pub description: Option<String>,
+        #[doc = "Remarketing list ID. This is a read-only, auto-generated field."]
+        #[serde(rename = "id", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub id: Option<i64>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#remarketingList\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Number of days that a user should remain in the remarketing list without an impression. Acceptable values are 1 to 540, inclusive."]
+        #[serde(rename = "lifeSpan", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub life_span: Option<i64>,
+        #[doc = "Rule used to populate the remarketing list with users."]
+        #[serde(rename = "listPopulationRule", default)]
+        pub list_population_rule: Option<crate::schemas::ListPopulationRule>,
+        #[doc = "Number of users currently in the list. This is a read-only field."]
+        #[serde(rename = "listSize", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub list_size: Option<i64>,
+        #[doc = "Product from which this remarketing list was originated."]
+        #[serde(rename = "listSource", default)]
+        pub list_source: Option<crate::schemas::RemarketingListListSource>,
+        #[doc = "Name of the remarketing list. This is a required field. Must be no greater than 128 characters long."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "Subaccount ID of this remarketing list. This is a read-only, auto-generated field that is only returned in GET requests."]
+        #[serde(rename = "subaccountId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub subaccount_id: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for RemarketingList {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -13740,8 +13740,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -13773,8 +13773,703 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReportCriteria {
+        #[doc = "Activity group."]
+        #[serde(rename = "activities", default)]
+        pub activities: Option<crate::schemas::Activities>,
+        #[doc = "Custom Rich Media Events group."]
+        #[serde(rename = "customRichMediaEvents", default)]
+        pub custom_rich_media_events: Option<crate::schemas::CustomRichMediaEvents>,
+        #[doc = "The date range for which this report should be run."]
+        #[serde(rename = "dateRange", default)]
+        pub date_range: Option<crate::schemas::DateRange>,
+        #[doc = "The list of filters on which dimensions are filtered.\nFilters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed."]
+        #[serde(rename = "dimensionFilters", default)]
+        pub dimension_filters: Option<Vec<crate::schemas::DimensionValue>>,
+        #[doc = "The list of standard dimensions the report should include."]
+        #[serde(rename = "dimensions", default)]
+        pub dimensions: Option<Vec<crate::schemas::SortedDimension>>,
+        #[doc = "The list of names of metrics the report should include."]
+        #[serde(rename = "metricNames", default)]
+        pub metric_names: Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for ReportCriteria {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ReportCrossDimensionReachCriteriaDimension {
+        Advertiser,
+        Campaign,
+        SiteByAdvertiser,
+        SiteByCampaign,
+    }
+    impl ReportCrossDimensionReachCriteriaDimension {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ReportCrossDimensionReachCriteriaDimension::Advertiser => "ADVERTISER",
+                ReportCrossDimensionReachCriteriaDimension::Campaign => "CAMPAIGN",
+                ReportCrossDimensionReachCriteriaDimension::SiteByAdvertiser => {
+                    "SITE_BY_ADVERTISER"
+                }
+                ReportCrossDimensionReachCriteriaDimension::SiteByCampaign => "SITE_BY_CAMPAIGN",
+            }
+        }
+    }
+    impl ::std::fmt::Display for ReportCrossDimensionReachCriteriaDimension {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ReportCrossDimensionReachCriteriaDimension {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ReportCrossDimensionReachCriteriaDimension {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ADVERTISER" => ReportCrossDimensionReachCriteriaDimension::Advertiser,
+                "CAMPAIGN" => ReportCrossDimensionReachCriteriaDimension::Campaign,
+                "SITE_BY_ADVERTISER" => {
+                    ReportCrossDimensionReachCriteriaDimension::SiteByAdvertiser
+                }
+                "SITE_BY_CAMPAIGN" => ReportCrossDimensionReachCriteriaDimension::SiteByCampaign,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReportCrossDimensionReachCriteria {
+        #[doc = "The list of dimensions the report should include."]
+        #[serde(rename = "breakdown", default)]
+        pub breakdown: Option<Vec<crate::schemas::SortedDimension>>,
+        #[doc = "The date range this report should be run for."]
+        #[serde(rename = "dateRange", default)]
+        pub date_range: Option<crate::schemas::DateRange>,
+        #[doc = "The dimension option."]
+        #[serde(rename = "dimension", default)]
+        pub dimension: Option<crate::schemas::ReportCrossDimensionReachCriteriaDimension>,
+        #[doc = "The list of filters on which dimensions are filtered."]
+        #[serde(rename = "dimensionFilters", default)]
+        pub dimension_filters: Option<Vec<crate::schemas::DimensionValue>>,
+        #[doc = "The list of names of metrics the report should include."]
+        #[serde(rename = "metricNames", default)]
+        pub metric_names: Option<Vec<String>>,
+        #[doc = "The list of names of overlap metrics the report should include."]
+        #[serde(rename = "overlapMetricNames", default)]
+        pub overlap_metric_names: Option<Vec<String>>,
+        #[doc = "Whether the report is pivoted or not. Defaults to true."]
+        #[serde(rename = "pivoted", default)]
+        pub pivoted: Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for ReportCrossDimensionReachCriteria {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ReportDeliveryEmailOwnerDeliveryType {
+        Attachment,
+        Link,
+    }
+    impl ReportDeliveryEmailOwnerDeliveryType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ReportDeliveryEmailOwnerDeliveryType::Attachment => "ATTACHMENT",
+                ReportDeliveryEmailOwnerDeliveryType::Link => "LINK",
+            }
+        }
+    }
+    impl ::std::fmt::Display for ReportDeliveryEmailOwnerDeliveryType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ReportDeliveryEmailOwnerDeliveryType {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ReportDeliveryEmailOwnerDeliveryType {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ATTACHMENT" => ReportDeliveryEmailOwnerDeliveryType::Attachment,
+                "LINK" => ReportDeliveryEmailOwnerDeliveryType::Link,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReportDelivery {
+        #[doc = "Whether the report should be emailed to the report owner."]
+        #[serde(rename = "emailOwner", default)]
+        pub email_owner: Option<bool>,
+        #[doc = "The type of delivery for the owner to receive, if enabled."]
+        #[serde(rename = "emailOwnerDeliveryType", default)]
+        pub email_owner_delivery_type: Option<crate::schemas::ReportDeliveryEmailOwnerDeliveryType>,
+        #[doc = "The message to be sent with each email."]
+        #[serde(rename = "message", default)]
+        pub message: Option<String>,
+        #[doc = "The list of recipients to which to email the report."]
+        #[serde(rename = "recipients", default)]
+        pub recipients: Option<Vec<crate::schemas::Recipient>>,
+    }
+    impl ::field_selector::FieldSelector for ReportDelivery {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReportFloodlightCriteriaReportProperties {
+        #[doc = "Include conversions that have no cookie, but do have an exposure path."]
+        #[serde(rename = "includeAttributedIPConversions", default)]
+        pub include_attributed_ip_conversions: Option<bool>,
+        #[doc = "Include conversions of users with a DoubleClick cookie but without an exposure. That means the user did not click or see an ad from the advertiser within the Floodlight group, or that the interaction happened outside the lookback window."]
+        #[serde(rename = "includeUnattributedCookieConversions", default)]
+        pub include_unattributed_cookie_conversions: Option<bool>,
+        #[doc = "Include conversions that have no associated cookies and no exposures. It\u{2019}s therefore impossible to know how the user was exposed to your ads during the lookback window prior to a conversion."]
+        #[serde(rename = "includeUnattributedIPConversions", default)]
+        pub include_unattributed_ip_conversions: Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for ReportFloodlightCriteriaReportProperties {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReportFloodlightCriteria {
+        #[doc = "The list of custom rich media events to include."]
+        #[serde(rename = "customRichMediaEvents", default)]
+        pub custom_rich_media_events: Option<Vec<crate::schemas::DimensionValue>>,
+        #[doc = "The date range this report should be run for."]
+        #[serde(rename = "dateRange", default)]
+        pub date_range: Option<crate::schemas::DateRange>,
+        #[doc = "The list of filters on which dimensions are filtered.\nFilters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed."]
+        #[serde(rename = "dimensionFilters", default)]
+        pub dimension_filters: Option<Vec<crate::schemas::DimensionValue>>,
+        #[doc = "The list of dimensions the report should include."]
+        #[serde(rename = "dimensions", default)]
+        pub dimensions: Option<Vec<crate::schemas::SortedDimension>>,
+        #[doc = "The floodlight ID for which to show data in this report. All advertisers associated with that ID will automatically be added. The dimension of the value needs to be 'dfa:floodlightConfigId'."]
+        #[serde(rename = "floodlightConfigId", default)]
+        pub floodlight_config_id: Option<crate::schemas::DimensionValue>,
+        #[doc = "The list of names of metrics the report should include."]
+        #[serde(rename = "metricNames", default)]
+        pub metric_names: Option<Vec<String>>,
+        #[doc = "The properties of the report."]
+        #[serde(rename = "reportProperties", default)]
+        pub report_properties: Option<crate::schemas::ReportFloodlightCriteriaReportProperties>,
+    }
+    impl ::field_selector::FieldSelector for ReportFloodlightCriteria {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ReportFormat {
+        Csv,
+        Excel,
+    }
+    impl ReportFormat {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ReportFormat::Csv => "CSV",
+                ReportFormat::Excel => "EXCEL",
+            }
+        }
+    }
+    impl ::std::fmt::Display for ReportFormat {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ReportFormat {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ReportFormat {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CSV" => ReportFormat::Csv,
+                "EXCEL" => ReportFormat::Excel,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReportPathToConversionCriteriaReportProperties {
+        #[doc = "DFA checks to see if a click interaction occurred within the specified period of time before a conversion. By default the value is pulled from Floodlight or you can manually enter a custom value. Valid values: 1-90."]
+        #[serde(rename = "clicksLookbackWindow", default)]
+        pub clicks_lookback_window: Option<i32>,
+        #[doc = "DFA checks to see if an impression interaction occurred within the specified period of time before a conversion. By default the value is pulled from Floodlight or you can manually enter a custom value. Valid values: 1-90."]
+        #[serde(rename = "impressionsLookbackWindow", default)]
+        pub impressions_lookback_window: Option<i32>,
+        #[doc = "Deprecated: has no effect."]
+        #[serde(rename = "includeAttributedIPConversions", default)]
+        pub include_attributed_ip_conversions: Option<bool>,
+        #[doc = "Include conversions of users with a DoubleClick cookie but without an exposure. That means the user did not click or see an ad from the advertiser within the Floodlight group, or that the interaction happened outside the lookback window."]
+        #[serde(rename = "includeUnattributedCookieConversions", default)]
+        pub include_unattributed_cookie_conversions: Option<bool>,
+        #[doc = "Include conversions that have no associated cookies and no exposures. It\u{2019}s therefore impossible to know how the user was exposed to your ads during the lookback window prior to a conversion."]
+        #[serde(rename = "includeUnattributedIPConversions", default)]
+        pub include_unattributed_ip_conversions: Option<bool>,
+        #[doc = "The maximum number of click interactions to include in the report. Advertisers currently paying for E2C reports get up to 200 (100 clicks, 100 impressions). If another advertiser in your network is paying for E2C, you can have up to 5 total exposures per report."]
+        #[serde(rename = "maximumClickInteractions", default)]
+        pub maximum_click_interactions: Option<i32>,
+        #[doc = "The maximum number of click interactions to include in the report. Advertisers currently paying for E2C reports get up to 200 (100 clicks, 100 impressions). If another advertiser in your network is paying for E2C, you can have up to 5 total exposures per report."]
+        #[serde(rename = "maximumImpressionInteractions", default)]
+        pub maximum_impression_interactions: Option<i32>,
+        #[doc = "The maximum amount of time that can take place between interactions (clicks or impressions) by the same user. Valid values: 1-90."]
+        #[serde(rename = "maximumInteractionGap", default)]
+        pub maximum_interaction_gap: Option<i32>,
+        #[doc = "Enable pivoting on interaction path."]
+        #[serde(rename = "pivotOnInteractionPath", default)]
+        pub pivot_on_interaction_path: Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for ReportPathToConversionCriteriaReportProperties {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReportPathToConversionCriteria {
+        #[doc = "The list of 'dfa:activity' values to filter on."]
+        #[serde(rename = "activityFilters", default)]
+        pub activity_filters: Option<Vec<crate::schemas::DimensionValue>>,
+        #[doc = "The list of conversion dimensions the report should include."]
+        #[serde(rename = "conversionDimensions", default)]
+        pub conversion_dimensions: Option<Vec<crate::schemas::SortedDimension>>,
+        #[doc = "The list of custom floodlight variables the report should include."]
+        #[serde(rename = "customFloodlightVariables", default)]
+        pub custom_floodlight_variables: Option<Vec<crate::schemas::SortedDimension>>,
+        #[doc = "The list of custom rich media events to include."]
+        #[serde(rename = "customRichMediaEvents", default)]
+        pub custom_rich_media_events: Option<Vec<crate::schemas::DimensionValue>>,
+        #[doc = "The date range this report should be run for."]
+        #[serde(rename = "dateRange", default)]
+        pub date_range: Option<crate::schemas::DateRange>,
+        #[doc = "The floodlight ID for which to show data in this report. All advertisers associated with that ID will automatically be added. The dimension of the value needs to be 'dfa:floodlightConfigId'."]
+        #[serde(rename = "floodlightConfigId", default)]
+        pub floodlight_config_id: Option<crate::schemas::DimensionValue>,
+        #[doc = "The list of names of metrics the report should include."]
+        #[serde(rename = "metricNames", default)]
+        pub metric_names: Option<Vec<String>>,
+        #[doc = "The list of per interaction dimensions the report should include."]
+        #[serde(rename = "perInteractionDimensions", default)]
+        pub per_interaction_dimensions: Option<Vec<crate::schemas::SortedDimension>>,
+        #[doc = "The properties of the report."]
+        #[serde(rename = "reportProperties", default)]
+        pub report_properties:
+            Option<crate::schemas::ReportPathToConversionCriteriaReportProperties>,
+    }
+    impl ::field_selector::FieldSelector for ReportPathToConversionCriteria {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ReportType {
+        CrossDimensionReach,
+        Floodlight,
+        PathToConversion,
+        Reach,
+        Standard,
+    }
+    impl ReportType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ReportType::CrossDimensionReach => "CROSS_DIMENSION_REACH",
+                ReportType::Floodlight => "FLOODLIGHT",
+                ReportType::PathToConversion => "PATH_TO_CONVERSION",
+                ReportType::Reach => "REACH",
+                ReportType::Standard => "STANDARD",
+            }
+        }
+    }
+    impl ::std::fmt::Display for ReportType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ReportType {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ReportType {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CROSS_DIMENSION_REACH" => ReportType::CrossDimensionReach,
+                "FLOODLIGHT" => ReportType::Floodlight,
+                "PATH_TO_CONVERSION" => ReportType::PathToConversion,
+                "REACH" => ReportType::Reach,
+                "STANDARD" => ReportType::Standard,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReportReachCriteria {
+        #[doc = "Activity group."]
+        #[serde(rename = "activities", default)]
+        pub activities: Option<crate::schemas::Activities>,
+        #[doc = "Custom Rich Media Events group."]
+        #[serde(rename = "customRichMediaEvents", default)]
+        pub custom_rich_media_events: Option<crate::schemas::CustomRichMediaEvents>,
+        #[doc = "The date range this report should be run for."]
+        #[serde(rename = "dateRange", default)]
+        pub date_range: Option<crate::schemas::DateRange>,
+        #[doc = "The list of filters on which dimensions are filtered.\nFilters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed."]
+        #[serde(rename = "dimensionFilters", default)]
+        pub dimension_filters: Option<Vec<crate::schemas::DimensionValue>>,
+        #[doc = "The list of dimensions the report should include."]
+        #[serde(rename = "dimensions", default)]
+        pub dimensions: Option<Vec<crate::schemas::SortedDimension>>,
+        #[doc = "Whether to enable all reach dimension combinations in the report. Defaults to false. If enabled, the date range of the report should be within the last 42 days."]
+        #[serde(rename = "enableAllDimensionCombinations", default)]
+        pub enable_all_dimension_combinations: Option<bool>,
+        #[doc = "The list of names of metrics the report should include."]
+        #[serde(rename = "metricNames", default)]
+        pub metric_names: Option<Vec<String>>,
+        #[doc = "The list of names of  Reach By Frequency metrics the report should include."]
+        #[serde(rename = "reachByFrequencyMetricNames", default)]
+        pub reach_by_frequency_metric_names: Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for ReportReachCriteria {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ReportScheduleRepeatsOnWeekDaysItems {
+        Friday,
+        Monday,
+        Saturday,
+        Sunday,
+        Thursday,
+        Tuesday,
+        Wednesday,
+    }
+    impl ReportScheduleRepeatsOnWeekDaysItems {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ReportScheduleRepeatsOnWeekDaysItems::Friday => "FRIDAY",
+                ReportScheduleRepeatsOnWeekDaysItems::Monday => "MONDAY",
+                ReportScheduleRepeatsOnWeekDaysItems::Saturday => "SATURDAY",
+                ReportScheduleRepeatsOnWeekDaysItems::Sunday => "SUNDAY",
+                ReportScheduleRepeatsOnWeekDaysItems::Thursday => "THURSDAY",
+                ReportScheduleRepeatsOnWeekDaysItems::Tuesday => "TUESDAY",
+                ReportScheduleRepeatsOnWeekDaysItems::Wednesday => "WEDNESDAY",
+            }
+        }
+    }
+    impl ::std::fmt::Display for ReportScheduleRepeatsOnWeekDaysItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ReportScheduleRepeatsOnWeekDaysItems {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ReportScheduleRepeatsOnWeekDaysItems {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "FRIDAY" => ReportScheduleRepeatsOnWeekDaysItems::Friday,
+                "MONDAY" => ReportScheduleRepeatsOnWeekDaysItems::Monday,
+                "SATURDAY" => ReportScheduleRepeatsOnWeekDaysItems::Saturday,
+                "SUNDAY" => ReportScheduleRepeatsOnWeekDaysItems::Sunday,
+                "THURSDAY" => ReportScheduleRepeatsOnWeekDaysItems::Thursday,
+                "TUESDAY" => ReportScheduleRepeatsOnWeekDaysItems::Tuesday,
+                "WEDNESDAY" => ReportScheduleRepeatsOnWeekDaysItems::Wednesday,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ReportScheduleRunsOnDayOfMonth {
+        DayOfMonth,
+        WeekOfMonth,
+    }
+    impl ReportScheduleRunsOnDayOfMonth {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ReportScheduleRunsOnDayOfMonth::DayOfMonth => "DAY_OF_MONTH",
+                ReportScheduleRunsOnDayOfMonth::WeekOfMonth => "WEEK_OF_MONTH",
+            }
+        }
+    }
+    impl ::std::fmt::Display for ReportScheduleRunsOnDayOfMonth {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ReportScheduleRunsOnDayOfMonth {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ReportScheduleRunsOnDayOfMonth {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DAY_OF_MONTH" => ReportScheduleRunsOnDayOfMonth::DayOfMonth,
+                "WEEK_OF_MONTH" => ReportScheduleRunsOnDayOfMonth::WeekOfMonth,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReportSchedule {
+        #[doc = "Whether the schedule is active or not. Must be set to either true or false."]
+        #[serde(rename = "active", default)]
+        pub active: Option<bool>,
+        #[doc = "Defines every how many days, weeks or months the report should be run. Needs to be set when \"repeats\" is either \"DAILY\", \"WEEKLY\" or \"MONTHLY\"."]
+        #[serde(rename = "every", default)]
+        pub every: Option<i32>,
+        #[doc = "The expiration date when the scheduled report stops running."]
+        #[serde(rename = "expirationDate", default)]
+        pub expiration_date: Option<::chrono::Date<chrono::offset::Utc>>,
+        #[doc = "The interval for which the report is repeated. Note:  \n- \"DAILY\" also requires field \"every\" to be set. \n- \"WEEKLY\" also requires fields \"every\" and \"repeatsOnWeekDays\" to be set. \n- \"MONTHLY\" also requires fields \"every\" and \"runsOnDayOfMonth\" to be set."]
+        #[serde(rename = "repeats", default)]
+        pub repeats: Option<String>,
+        #[doc = "List of week days \"WEEKLY\" on which scheduled reports should run."]
+        #[serde(rename = "repeatsOnWeekDays", default)]
+        pub repeats_on_week_days: Option<Vec<crate::schemas::ReportScheduleRepeatsOnWeekDaysItems>>,
+        #[doc = "Enum to define for \"MONTHLY\" scheduled reports whether reports should be repeated on the same day of the month as \"startDate\" or the same day of the week of the month.\nExample: If 'startDate' is Monday, April 2nd 2012 (2012-04-02), \"DAY_OF_MONTH\" would run subsequent reports on the 2nd of every Month, and \"WEEK_OF_MONTH\" would run subsequent reports on the first Monday of the month."]
+        #[serde(rename = "runsOnDayOfMonth", default)]
+        pub runs_on_day_of_month: Option<crate::schemas::ReportScheduleRunsOnDayOfMonth>,
+        #[doc = "Start date of date range for which scheduled reports should be run."]
+        #[serde(rename = "startDate", default)]
+        pub start_date: Option<::chrono::Date<chrono::offset::Utc>>,
+    }
+    impl ::field_selector::FieldSelector for ReportSchedule {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -13857,8 +14552,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -13896,351 +14591,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReportCriteria {
-        #[doc = "Activity group."]
-        #[serde(rename = "activities", default)]
-        pub activities: Option<crate::schemas::Activities>,
-        #[doc = "Custom Rich Media Events group."]
-        #[serde(rename = "customRichMediaEvents", default)]
-        pub custom_rich_media_events: Option<crate::schemas::CustomRichMediaEvents>,
-        #[doc = "The date range for which this report should be run."]
-        #[serde(rename = "dateRange", default)]
-        pub date_range: Option<crate::schemas::DateRange>,
-        #[doc = "The list of filters on which dimensions are filtered.\nFilters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed."]
-        #[serde(rename = "dimensionFilters", default)]
-        pub dimension_filters: Option<Vec<crate::schemas::DimensionValue>>,
-        #[doc = "The list of standard dimensions the report should include."]
-        #[serde(rename = "dimensions", default)]
-        pub dimensions: Option<Vec<crate::schemas::SortedDimension>>,
-        #[doc = "The list of names of metrics the report should include."]
-        #[serde(rename = "metricNames", default)]
-        pub metric_names: Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for ReportCriteria {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReportCrossDimensionReachCriteria {
-        #[doc = "The list of dimensions the report should include."]
-        #[serde(rename = "breakdown", default)]
-        pub breakdown: Option<Vec<crate::schemas::SortedDimension>>,
-        #[doc = "The date range this report should be run for."]
-        #[serde(rename = "dateRange", default)]
-        pub date_range: Option<crate::schemas::DateRange>,
-        #[doc = "The dimension option."]
-        #[serde(rename = "dimension", default)]
-        pub dimension: Option<crate::schemas::ReportCrossDimensionReachCriteriaDimension>,
-        #[doc = "The list of filters on which dimensions are filtered."]
-        #[serde(rename = "dimensionFilters", default)]
-        pub dimension_filters: Option<Vec<crate::schemas::DimensionValue>>,
-        #[doc = "The list of names of metrics the report should include."]
-        #[serde(rename = "metricNames", default)]
-        pub metric_names: Option<Vec<String>>,
-        #[doc = "The list of names of overlap metrics the report should include."]
-        #[serde(rename = "overlapMetricNames", default)]
-        pub overlap_metric_names: Option<Vec<String>>,
-        #[doc = "Whether the report is pivoted or not. Defaults to true."]
-        #[serde(rename = "pivoted", default)]
-        pub pivoted: Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for ReportCrossDimensionReachCriteria {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum ReportCrossDimensionReachCriteriaDimension {
-        Advertiser,
-        Campaign,
-        SiteByAdvertiser,
-        SiteByCampaign,
-    }
-    impl ReportCrossDimensionReachCriteriaDimension {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ReportCrossDimensionReachCriteriaDimension::Advertiser => "ADVERTISER",
-                ReportCrossDimensionReachCriteriaDimension::Campaign => "CAMPAIGN",
-                ReportCrossDimensionReachCriteriaDimension::SiteByAdvertiser => {
-                    "SITE_BY_ADVERTISER"
-                }
-                ReportCrossDimensionReachCriteriaDimension::SiteByCampaign => "SITE_BY_CAMPAIGN",
-            }
-        }
-    }
-    impl ::std::fmt::Display for ReportCrossDimensionReachCriteriaDimension {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ReportCrossDimensionReachCriteriaDimension {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ReportCrossDimensionReachCriteriaDimension {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ADVERTISER" => ReportCrossDimensionReachCriteriaDimension::Advertiser,
-                "CAMPAIGN" => ReportCrossDimensionReachCriteriaDimension::Campaign,
-                "SITE_BY_ADVERTISER" => {
-                    ReportCrossDimensionReachCriteriaDimension::SiteByAdvertiser
-                }
-                "SITE_BY_CAMPAIGN" => ReportCrossDimensionReachCriteriaDimension::SiteByCampaign,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReportDelivery {
-        #[doc = "Whether the report should be emailed to the report owner."]
-        #[serde(rename = "emailOwner", default)]
-        pub email_owner: Option<bool>,
-        #[doc = "The type of delivery for the owner to receive, if enabled."]
-        #[serde(rename = "emailOwnerDeliveryType", default)]
-        pub email_owner_delivery_type: Option<crate::schemas::ReportDeliveryEmailOwnerDeliveryType>,
-        #[doc = "The message to be sent with each email."]
-        #[serde(rename = "message", default)]
-        pub message: Option<String>,
-        #[doc = "The list of recipients to which to email the report."]
-        #[serde(rename = "recipients", default)]
-        pub recipients: Option<Vec<crate::schemas::Recipient>>,
-    }
-    impl ::field_selector::FieldSelector for ReportDelivery {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum ReportDeliveryEmailOwnerDeliveryType {
-        Attachment,
-        Link,
-    }
-    impl ReportDeliveryEmailOwnerDeliveryType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ReportDeliveryEmailOwnerDeliveryType::Attachment => "ATTACHMENT",
-                ReportDeliveryEmailOwnerDeliveryType::Link => "LINK",
-            }
-        }
-    }
-    impl ::std::fmt::Display for ReportDeliveryEmailOwnerDeliveryType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ReportDeliveryEmailOwnerDeliveryType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ReportDeliveryEmailOwnerDeliveryType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ATTACHMENT" => ReportDeliveryEmailOwnerDeliveryType::Attachment,
-                "LINK" => ReportDeliveryEmailOwnerDeliveryType::Link,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReportFloodlightCriteria {
-        #[doc = "The list of custom rich media events to include."]
-        #[serde(rename = "customRichMediaEvents", default)]
-        pub custom_rich_media_events: Option<Vec<crate::schemas::DimensionValue>>,
-        #[doc = "The date range this report should be run for."]
-        #[serde(rename = "dateRange", default)]
-        pub date_range: Option<crate::schemas::DateRange>,
-        #[doc = "The list of filters on which dimensions are filtered.\nFilters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed."]
-        #[serde(rename = "dimensionFilters", default)]
-        pub dimension_filters: Option<Vec<crate::schemas::DimensionValue>>,
-        #[doc = "The list of dimensions the report should include."]
-        #[serde(rename = "dimensions", default)]
-        pub dimensions: Option<Vec<crate::schemas::SortedDimension>>,
-        #[doc = "The floodlight ID for which to show data in this report. All advertisers associated with that ID will automatically be added. The dimension of the value needs to be 'dfa:floodlightConfigId'."]
-        #[serde(rename = "floodlightConfigId", default)]
-        pub floodlight_config_id: Option<crate::schemas::DimensionValue>,
-        #[doc = "The list of names of metrics the report should include."]
-        #[serde(rename = "metricNames", default)]
-        pub metric_names: Option<Vec<String>>,
-        #[doc = "The properties of the report."]
-        #[serde(rename = "reportProperties", default)]
-        pub report_properties: Option<crate::schemas::ReportFloodlightCriteriaReportProperties>,
-    }
-    impl ::field_selector::FieldSelector for ReportFloodlightCriteria {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReportFloodlightCriteriaReportProperties {
-        #[doc = "Include conversions that have no cookie, but do have an exposure path."]
-        #[serde(rename = "includeAttributedIPConversions", default)]
-        pub include_attributed_ip_conversions: Option<bool>,
-        #[doc = "Include conversions of users with a DoubleClick cookie but without an exposure. That means the user did not click or see an ad from the advertiser within the Floodlight group, or that the interaction happened outside the lookback window."]
-        #[serde(rename = "includeUnattributedCookieConversions", default)]
-        pub include_unattributed_cookie_conversions: Option<bool>,
-        #[doc = "Include conversions that have no associated cookies and no exposures. It\u{2019}s therefore impossible to know how the user was exposed to your ads during the lookback window prior to a conversion."]
-        #[serde(rename = "includeUnattributedIPConversions", default)]
-        pub include_unattributed_ip_conversions: Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for ReportFloodlightCriteriaReportProperties {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum ReportFormat {
-        Csv,
-        Excel,
-    }
-    impl ReportFormat {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ReportFormat::Csv => "CSV",
-                ReportFormat::Excel => "EXCEL",
-            }
-        }
-    }
-    impl ::std::fmt::Display for ReportFormat {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ReportFormat {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ReportFormat {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "CSV" => ReportFormat::Csv,
-                "EXCEL" => ReportFormat::Excel,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -14275,360 +14627,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReportPathToConversionCriteria {
-        #[doc = "The list of 'dfa:activity' values to filter on."]
-        #[serde(rename = "activityFilters", default)]
-        pub activity_filters: Option<Vec<crate::schemas::DimensionValue>>,
-        #[doc = "The list of conversion dimensions the report should include."]
-        #[serde(rename = "conversionDimensions", default)]
-        pub conversion_dimensions: Option<Vec<crate::schemas::SortedDimension>>,
-        #[doc = "The list of custom floodlight variables the report should include."]
-        #[serde(rename = "customFloodlightVariables", default)]
-        pub custom_floodlight_variables: Option<Vec<crate::schemas::SortedDimension>>,
-        #[doc = "The list of custom rich media events to include."]
-        #[serde(rename = "customRichMediaEvents", default)]
-        pub custom_rich_media_events: Option<Vec<crate::schemas::DimensionValue>>,
-        #[doc = "The date range this report should be run for."]
-        #[serde(rename = "dateRange", default)]
-        pub date_range: Option<crate::schemas::DateRange>,
-        #[doc = "The floodlight ID for which to show data in this report. All advertisers associated with that ID will automatically be added. The dimension of the value needs to be 'dfa:floodlightConfigId'."]
-        #[serde(rename = "floodlightConfigId", default)]
-        pub floodlight_config_id: Option<crate::schemas::DimensionValue>,
-        #[doc = "The list of names of metrics the report should include."]
-        #[serde(rename = "metricNames", default)]
-        pub metric_names: Option<Vec<String>>,
-        #[doc = "The list of per interaction dimensions the report should include."]
-        #[serde(rename = "perInteractionDimensions", default)]
-        pub per_interaction_dimensions: Option<Vec<crate::schemas::SortedDimension>>,
-        #[doc = "The properties of the report."]
-        #[serde(rename = "reportProperties", default)]
-        pub report_properties:
-            Option<crate::schemas::ReportPathToConversionCriteriaReportProperties>,
-    }
-    impl ::field_selector::FieldSelector for ReportPathToConversionCriteria {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReportPathToConversionCriteriaReportProperties {
-        #[doc = "DFA checks to see if a click interaction occurred within the specified period of time before a conversion. By default the value is pulled from Floodlight or you can manually enter a custom value. Valid values: 1-90."]
-        #[serde(rename = "clicksLookbackWindow", default)]
-        pub clicks_lookback_window: Option<i32>,
-        #[doc = "DFA checks to see if an impression interaction occurred within the specified period of time before a conversion. By default the value is pulled from Floodlight or you can manually enter a custom value. Valid values: 1-90."]
-        #[serde(rename = "impressionsLookbackWindow", default)]
-        pub impressions_lookback_window: Option<i32>,
-        #[doc = "Deprecated: has no effect."]
-        #[serde(rename = "includeAttributedIPConversions", default)]
-        pub include_attributed_ip_conversions: Option<bool>,
-        #[doc = "Include conversions of users with a DoubleClick cookie but without an exposure. That means the user did not click or see an ad from the advertiser within the Floodlight group, or that the interaction happened outside the lookback window."]
-        #[serde(rename = "includeUnattributedCookieConversions", default)]
-        pub include_unattributed_cookie_conversions: Option<bool>,
-        #[doc = "Include conversions that have no associated cookies and no exposures. It\u{2019}s therefore impossible to know how the user was exposed to your ads during the lookback window prior to a conversion."]
-        #[serde(rename = "includeUnattributedIPConversions", default)]
-        pub include_unattributed_ip_conversions: Option<bool>,
-        #[doc = "The maximum number of click interactions to include in the report. Advertisers currently paying for E2C reports get up to 200 (100 clicks, 100 impressions). If another advertiser in your network is paying for E2C, you can have up to 5 total exposures per report."]
-        #[serde(rename = "maximumClickInteractions", default)]
-        pub maximum_click_interactions: Option<i32>,
-        #[doc = "The maximum number of click interactions to include in the report. Advertisers currently paying for E2C reports get up to 200 (100 clicks, 100 impressions). If another advertiser in your network is paying for E2C, you can have up to 5 total exposures per report."]
-        #[serde(rename = "maximumImpressionInteractions", default)]
-        pub maximum_impression_interactions: Option<i32>,
-        #[doc = "The maximum amount of time that can take place between interactions (clicks or impressions) by the same user. Valid values: 1-90."]
-        #[serde(rename = "maximumInteractionGap", default)]
-        pub maximum_interaction_gap: Option<i32>,
-        #[doc = "Enable pivoting on interaction path."]
-        #[serde(rename = "pivotOnInteractionPath", default)]
-        pub pivot_on_interaction_path: Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for ReportPathToConversionCriteriaReportProperties {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReportReachCriteria {
-        #[doc = "Activity group."]
-        #[serde(rename = "activities", default)]
-        pub activities: Option<crate::schemas::Activities>,
-        #[doc = "Custom Rich Media Events group."]
-        #[serde(rename = "customRichMediaEvents", default)]
-        pub custom_rich_media_events: Option<crate::schemas::CustomRichMediaEvents>,
-        #[doc = "The date range this report should be run for."]
-        #[serde(rename = "dateRange", default)]
-        pub date_range: Option<crate::schemas::DateRange>,
-        #[doc = "The list of filters on which dimensions are filtered.\nFilters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed."]
-        #[serde(rename = "dimensionFilters", default)]
-        pub dimension_filters: Option<Vec<crate::schemas::DimensionValue>>,
-        #[doc = "The list of dimensions the report should include."]
-        #[serde(rename = "dimensions", default)]
-        pub dimensions: Option<Vec<crate::schemas::SortedDimension>>,
-        #[doc = "Whether to enable all reach dimension combinations in the report. Defaults to false. If enabled, the date range of the report should be within the last 42 days."]
-        #[serde(rename = "enableAllDimensionCombinations", default)]
-        pub enable_all_dimension_combinations: Option<bool>,
-        #[doc = "The list of names of metrics the report should include."]
-        #[serde(rename = "metricNames", default)]
-        pub metric_names: Option<Vec<String>>,
-        #[doc = "The list of names of  Reach By Frequency metrics the report should include."]
-        #[serde(rename = "reachByFrequencyMetricNames", default)]
-        pub reach_by_frequency_metric_names: Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for ReportReachCriteria {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReportSchedule {
-        #[doc = "Whether the schedule is active or not. Must be set to either true or false."]
-        #[serde(rename = "active", default)]
-        pub active: Option<bool>,
-        #[doc = "Defines every how many days, weeks or months the report should be run. Needs to be set when \"repeats\" is either \"DAILY\", \"WEEKLY\" or \"MONTHLY\"."]
-        #[serde(rename = "every", default)]
-        pub every: Option<i32>,
-        #[doc = "The expiration date when the scheduled report stops running."]
-        #[serde(rename = "expirationDate", default)]
-        pub expiration_date: Option<::chrono::Date<chrono::offset::Utc>>,
-        #[doc = "The interval for which the report is repeated. Note:  \n- \"DAILY\" also requires field \"every\" to be set. \n- \"WEEKLY\" also requires fields \"every\" and \"repeatsOnWeekDays\" to be set. \n- \"MONTHLY\" also requires fields \"every\" and \"runsOnDayOfMonth\" to be set."]
-        #[serde(rename = "repeats", default)]
-        pub repeats: Option<String>,
-        #[doc = "List of week days \"WEEKLY\" on which scheduled reports should run."]
-        #[serde(rename = "repeatsOnWeekDays", default)]
-        pub repeats_on_week_days: Option<Vec<crate::schemas::ReportScheduleRepeatsOnWeekDaysItems>>,
-        #[doc = "Enum to define for \"MONTHLY\" scheduled reports whether reports should be repeated on the same day of the month as \"startDate\" or the same day of the week of the month.\nExample: If 'startDate' is Monday, April 2nd 2012 (2012-04-02), \"DAY_OF_MONTH\" would run subsequent reports on the 2nd of every Month, and \"WEEK_OF_MONTH\" would run subsequent reports on the first Monday of the month."]
-        #[serde(rename = "runsOnDayOfMonth", default)]
-        pub runs_on_day_of_month: Option<crate::schemas::ReportScheduleRunsOnDayOfMonth>,
-        #[doc = "Start date of date range for which scheduled reports should be run."]
-        #[serde(rename = "startDate", default)]
-        pub start_date: Option<::chrono::Date<chrono::offset::Utc>>,
-    }
-    impl ::field_selector::FieldSelector for ReportSchedule {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum ReportScheduleRepeatsOnWeekDaysItems {
-        Friday,
-        Monday,
-        Saturday,
-        Sunday,
-        Thursday,
-        Tuesday,
-        Wednesday,
-    }
-    impl ReportScheduleRepeatsOnWeekDaysItems {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ReportScheduleRepeatsOnWeekDaysItems::Friday => "FRIDAY",
-                ReportScheduleRepeatsOnWeekDaysItems::Monday => "MONDAY",
-                ReportScheduleRepeatsOnWeekDaysItems::Saturday => "SATURDAY",
-                ReportScheduleRepeatsOnWeekDaysItems::Sunday => "SUNDAY",
-                ReportScheduleRepeatsOnWeekDaysItems::Thursday => "THURSDAY",
-                ReportScheduleRepeatsOnWeekDaysItems::Tuesday => "TUESDAY",
-                ReportScheduleRepeatsOnWeekDaysItems::Wednesday => "WEDNESDAY",
-            }
-        }
-    }
-    impl ::std::fmt::Display for ReportScheduleRepeatsOnWeekDaysItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ReportScheduleRepeatsOnWeekDaysItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ReportScheduleRepeatsOnWeekDaysItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "FRIDAY" => ReportScheduleRepeatsOnWeekDaysItems::Friday,
-                "MONDAY" => ReportScheduleRepeatsOnWeekDaysItems::Monday,
-                "SATURDAY" => ReportScheduleRepeatsOnWeekDaysItems::Saturday,
-                "SUNDAY" => ReportScheduleRepeatsOnWeekDaysItems::Sunday,
-                "THURSDAY" => ReportScheduleRepeatsOnWeekDaysItems::Thursday,
-                "TUESDAY" => ReportScheduleRepeatsOnWeekDaysItems::Tuesday,
-                "WEDNESDAY" => ReportScheduleRepeatsOnWeekDaysItems::Wednesday,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum ReportScheduleRunsOnDayOfMonth {
-        DayOfMonth,
-        WeekOfMonth,
-    }
-    impl ReportScheduleRunsOnDayOfMonth {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ReportScheduleRunsOnDayOfMonth::DayOfMonth => "DAY_OF_MONTH",
-                ReportScheduleRunsOnDayOfMonth::WeekOfMonth => "WEEK_OF_MONTH",
-            }
-        }
-    }
-    impl ::std::fmt::Display for ReportScheduleRunsOnDayOfMonth {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ReportScheduleRunsOnDayOfMonth {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ReportScheduleRunsOnDayOfMonth {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "DAY_OF_MONTH" => ReportScheduleRunsOnDayOfMonth::DayOfMonth,
-                "WEEK_OF_MONTH" => ReportScheduleRunsOnDayOfMonth::WeekOfMonth,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum ReportType {
-        CrossDimensionReach,
-        Floodlight,
-        PathToConversion,
-        Reach,
-        Standard,
-    }
-    impl ReportType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ReportType::CrossDimensionReach => "CROSS_DIMENSION_REACH",
-                ReportType::Floodlight => "FLOODLIGHT",
-                ReportType::PathToConversion => "PATH_TO_CONVERSION",
-                ReportType::Reach => "REACH",
-                ReportType::Standard => "STANDARD",
-            }
-        }
-    }
-    impl ::std::fmt::Display for ReportType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ReportType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ReportType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "CROSS_DIMENSION_REACH" => ReportType::CrossDimensionReach,
-                "FLOODLIGHT" => ReportType::Floodlight,
-                "PATH_TO_CONVERSION" => ReportType::PathToConversion,
-                "REACH" => ReportType::Reach,
-                "STANDARD" => ReportType::Standard,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -14661,8 +14661,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -14695,8 +14695,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -14730,8 +14730,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -14797,8 +14797,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -14829,56 +14829,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SiteContact {
-        #[doc = "Address of this site contact."]
-        #[serde(rename = "address", default)]
-        pub address: Option<String>,
-        #[doc = "Site contact type."]
-        #[serde(rename = "contactType", default)]
-        pub contact_type: Option<crate::schemas::SiteContactContactType>,
-        #[doc = "Email address of this site contact. This is a required field."]
-        #[serde(rename = "email", default)]
-        pub email: Option<String>,
-        #[doc = "First name of this site contact."]
-        #[serde(rename = "firstName", default)]
-        pub first_name: Option<String>,
-        #[doc = "ID of this site contact. This is a read-only, auto-generated field."]
-        #[serde(rename = "id", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
-        #[doc = "Last name of this site contact."]
-        #[serde(rename = "lastName", default)]
-        pub last_name: Option<String>,
-        #[doc = "Primary phone number of this site contact."]
-        #[serde(rename = "phone", default)]
-        pub phone: Option<String>,
-        #[doc = "Title or designation of this site contact."]
-        #[serde(rename = "title", default)]
-        pub title: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for SiteContact {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SiteContactContactType {
         SalesPerson,
         Trafficker,
@@ -14926,36 +14877,42 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct SiteSettings {
-        #[doc = "Whether active view creatives are disabled for this site."]
-        #[serde(rename = "activeViewOptOut", default)]
-        pub active_view_opt_out: Option<bool>,
-        #[doc = "Whether this site opts out of ad blocking. When true, ad blocking is disabled for all placements under the site, regardless of the individual placement settings. When false, the campaign and placement settings take effect."]
-        #[serde(rename = "adBlockingOptOut", default)]
-        pub ad_blocking_opt_out: Option<bool>,
-        #[doc = "Whether new cookies are disabled for this site."]
-        #[serde(rename = "disableNewCookie", default)]
-        pub disable_new_cookie: Option<bool>,
-        #[doc = "Configuration settings for dynamic and image floodlight tags."]
-        #[serde(rename = "tagSetting", default)]
-        pub tag_setting: Option<crate::schemas::TagSetting>,
-        #[doc = "Whether Verification and ActiveView for in-stream video creatives are disabled by default for new placements created under this site. This value will be used to populate the placement.videoActiveViewOptOut field, when no value is specified for the new placement."]
-        #[serde(rename = "videoActiveViewOptOutTemplate", default)]
-        pub video_active_view_opt_out_template: Option<bool>,
-        #[doc = "Default VPAID adapter setting for new placements created under this site. This value will be used to populate the placements.vpaidAdapterChoice field, when no value is specified for the new placement. Controls which VPAID format the measurement adapter will use for in-stream video creatives assigned to the placement. The publisher's specifications will typically determine this setting. For VPAID creatives, the adapter format will match the VPAID format (HTML5 VPAID creatives use the HTML5 adapter).\n\nNote: Flash is no longer supported. This field now defaults to HTML5 when the following values are provided: FLASH, BOTH."]
-        #[serde(rename = "vpaidAdapterChoiceTemplate", default)]
-        pub vpaid_adapter_choice_template:
-            Option<crate::schemas::SiteSettingsVpaidAdapterChoiceTemplate>,
+    pub struct SiteContact {
+        #[doc = "Address of this site contact."]
+        #[serde(rename = "address", default)]
+        pub address: Option<String>,
+        #[doc = "Site contact type."]
+        #[serde(rename = "contactType", default)]
+        pub contact_type: Option<crate::schemas::SiteContactContactType>,
+        #[doc = "Email address of this site contact. This is a required field."]
+        #[serde(rename = "email", default)]
+        pub email: Option<String>,
+        #[doc = "First name of this site contact."]
+        #[serde(rename = "firstName", default)]
+        pub first_name: Option<String>,
+        #[doc = "ID of this site contact. This is a read-only, auto-generated field."]
+        #[serde(rename = "id", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub id: Option<i64>,
+        #[doc = "Last name of this site contact."]
+        #[serde(rename = "lastName", default)]
+        pub last_name: Option<String>,
+        #[doc = "Primary phone number of this site contact."]
+        #[serde(rename = "phone", default)]
+        pub phone: Option<String>,
+        #[doc = "Title or designation of this site contact."]
+        #[serde(rename = "title", default)]
+        pub title: Option<String>,
     }
-    impl ::field_selector::FieldSelector for SiteSettings {
+    impl ::field_selector::FieldSelector for SiteContact {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -14965,7 +14922,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SiteSettingsVpaidAdapterChoiceTemplate {
         Both,
         Default,
@@ -15019,8 +14976,51 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SiteSettings {
+        #[doc = "Whether active view creatives are disabled for this site."]
+        #[serde(rename = "activeViewOptOut", default)]
+        pub active_view_opt_out: Option<bool>,
+        #[doc = "Whether this site opts out of ad blocking. When true, ad blocking is disabled for all placements under the site, regardless of the individual placement settings. When false, the campaign and placement settings take effect."]
+        #[serde(rename = "adBlockingOptOut", default)]
+        pub ad_blocking_opt_out: Option<bool>,
+        #[doc = "Whether new cookies are disabled for this site."]
+        #[serde(rename = "disableNewCookie", default)]
+        pub disable_new_cookie: Option<bool>,
+        #[doc = "Configuration settings for dynamic and image floodlight tags."]
+        #[serde(rename = "tagSetting", default)]
+        pub tag_setting: Option<crate::schemas::TagSetting>,
+        #[doc = "Whether Verification and ActiveView for in-stream video creatives are disabled by default for new placements created under this site. This value will be used to populate the placement.videoActiveViewOptOut field, when no value is specified for the new placement."]
+        #[serde(rename = "videoActiveViewOptOutTemplate", default)]
+        pub video_active_view_opt_out_template: Option<bool>,
+        #[doc = "Default VPAID adapter setting for new placements created under this site. This value will be used to populate the placements.vpaidAdapterChoice field, when no value is specified for the new placement. Controls which VPAID format the measurement adapter will use for in-stream video creatives assigned to the placement. The publisher's specifications will typically determine this setting. For VPAID creatives, the adapter format will match the VPAID format (HTML5 VPAID creatives use the HTML5 adapter).\n\nNote: Flash is no longer supported. This field now defaults to HTML5 when the following values are provided: FLASH, BOTH."]
+        #[serde(rename = "vpaidAdapterChoiceTemplate", default)]
+        pub vpaid_adapter_choice_template:
+            Option<crate::schemas::SiteSettingsVpaidAdapterChoiceTemplate>,
+    }
+    impl ::field_selector::FieldSelector for SiteSettings {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -15055,8 +15055,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -15081,46 +15081,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SiteVideoSettings {
-        #[doc = "Settings for the companion creatives of video creatives served to this site."]
-        #[serde(rename = "companionSettings", default)]
-        pub companion_settings: Option<crate::schemas::SiteCompanionSetting>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#siteVideoSettings\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Orientation of a site template used for video. This will act as default for new placements created under this site."]
-        #[serde(rename = "orientation", default)]
-        pub orientation: Option<crate::schemas::SiteVideoSettingsOrientation>,
-        #[doc = "Settings for the skippability of video creatives served to this site. This will act as default for new placements created under this site."]
-        #[serde(rename = "skippableSettings", default)]
-        pub skippable_settings: Option<crate::schemas::SiteSkippableSetting>,
-        #[doc = "Settings for the transcodes of video creatives served to this site. This will act as default for new placements created under this site."]
-        #[serde(rename = "transcodeSettings", default)]
-        pub transcode_settings: Option<crate::schemas::SiteTranscodeSetting>,
-    }
-    impl ::field_selector::FieldSelector for SiteVideoSettings {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SiteVideoSettingsOrientation {
         Any,
         Landscape,
@@ -15171,8 +15132,47 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SiteVideoSettings {
+        #[doc = "Settings for the companion creatives of video creatives served to this site."]
+        #[serde(rename = "companionSettings", default)]
+        pub companion_settings: Option<crate::schemas::SiteCompanionSetting>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#siteVideoSettings\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Orientation of a site template used for video. This will act as default for new placements created under this site."]
+        #[serde(rename = "orientation", default)]
+        pub orientation: Option<crate::schemas::SiteVideoSettingsOrientation>,
+        #[doc = "Settings for the skippability of video creatives served to this site. This will act as default for new placements created under this site."]
+        #[serde(rename = "skippableSettings", default)]
+        pub skippable_settings: Option<crate::schemas::SiteSkippableSetting>,
+        #[doc = "Settings for the transcodes of video creatives served to this site. This will act as default for new placements created under this site."]
+        #[serde(rename = "transcodeSettings", default)]
+        pub transcode_settings: Option<crate::schemas::SiteTranscodeSetting>,
+    }
+    impl ::field_selector::FieldSelector for SiteVideoSettings {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -15204,8 +15204,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -15244,8 +15244,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -15274,8 +15274,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -15306,40 +15306,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SortedDimension {
-        #[doc = "The kind of resource this is, in this case dfareporting#sortedDimension."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "The name of the dimension."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "An optional sort order for the dimension column."]
-        #[serde(rename = "sortOrder", default)]
-        pub sort_order: Option<crate::schemas::SortedDimensionSortOrder>,
-    }
-    impl ::field_selector::FieldSelector for SortedDimension {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SortedDimensionSortOrder {
         Ascending,
         Descending,
@@ -15387,8 +15354,41 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SortedDimension {
+        #[doc = "The kind of resource this is, in this case dfareporting#sortedDimension."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "The name of the dimension."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "An optional sort order for the dimension column."]
+        #[serde(rename = "sortOrder", default)]
+        pub sort_order: Option<crate::schemas::SortedDimensionSortOrder>,
+    }
+    impl ::field_selector::FieldSelector for SortedDimension {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -15428,8 +15428,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -15457,48 +15457,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct TagData {
-        #[doc = "Ad associated with this placement tag. Applicable only when format is PLACEMENT_TAG_TRACKING."]
-        #[serde(rename = "adId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub ad_id: Option<i64>,
-        #[doc = "Tag string to record a click."]
-        #[serde(rename = "clickTag", default)]
-        pub click_tag: Option<String>,
-        #[doc = "Creative associated with this placement tag. Applicable only when format is PLACEMENT_TAG_TRACKING."]
-        #[serde(rename = "creativeId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub creative_id: Option<i64>,
-        #[doc = "TagData tag format of this tag."]
-        #[serde(rename = "format", default)]
-        pub format: Option<crate::schemas::TagDataFormat>,
-        #[doc = "Tag string for serving an ad."]
-        #[serde(rename = "impressionTag", default)]
-        pub impression_tag: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for TagData {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TagDataFormat {
         PlacementTagClickCommands,
         PlacementTagIframeIlayer,
@@ -15637,29 +15596,34 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct TagSetting {
-        #[doc = "Additional key-values to be included in tags. Each key-value pair must be of the form key=value, and pairs must be separated by a semicolon (;). Keys and values must not contain commas. For example, id=2;color=red is a valid value for this field."]
-        #[serde(rename = "additionalKeyValues", default)]
-        pub additional_key_values: Option<String>,
-        #[doc = "Whether static landing page URLs should be included in the tags. This setting applies only to placements."]
-        #[serde(rename = "includeClickThroughUrls", default)]
-        pub include_click_through_urls: Option<bool>,
-        #[doc = "Whether click-tracking string should be included in the tags."]
-        #[serde(rename = "includeClickTracking", default)]
-        pub include_click_tracking: Option<bool>,
-        #[doc = "Option specifying how keywords are embedded in ad tags. This setting can be used to specify whether keyword placeholders are inserted in placement tags for this site. Publishers can then add keywords to those placeholders."]
-        #[serde(rename = "keywordOption", default)]
-        pub keyword_option: Option<crate::schemas::TagSettingKeywordOption>,
+    pub struct TagData {
+        #[doc = "Ad associated with this placement tag. Applicable only when format is PLACEMENT_TAG_TRACKING."]
+        #[serde(rename = "adId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub ad_id: Option<i64>,
+        #[doc = "Tag string to record a click."]
+        #[serde(rename = "clickTag", default)]
+        pub click_tag: Option<String>,
+        #[doc = "Creative associated with this placement tag. Applicable only when format is PLACEMENT_TAG_TRACKING."]
+        #[serde(rename = "creativeId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub creative_id: Option<i64>,
+        #[doc = "TagData tag format of this tag."]
+        #[serde(rename = "format", default)]
+        pub format: Option<crate::schemas::TagDataFormat>,
+        #[doc = "Tag string for serving an ad."]
+        #[serde(rename = "impressionTag", default)]
+        pub impression_tag: Option<String>,
     }
-    impl ::field_selector::FieldSelector for TagSetting {
+    impl ::field_selector::FieldSelector for TagData {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -15669,7 +15633,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TagSettingKeywordOption {
         GenerateSeparateTagForEachKeyword,
         Ignore,
@@ -15728,8 +15692,44 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TagSetting {
+        #[doc = "Additional key-values to be included in tags. Each key-value pair must be of the form key=value, and pairs must be separated by a semicolon (;). Keys and values must not contain commas. For example, id=2;color=red is a valid value for this field."]
+        #[serde(rename = "additionalKeyValues", default)]
+        pub additional_key_values: Option<String>,
+        #[doc = "Whether static landing page URLs should be included in the tags. This setting applies only to placements."]
+        #[serde(rename = "includeClickThroughUrls", default)]
+        pub include_click_through_urls: Option<bool>,
+        #[doc = "Whether click-tracking string should be included in the tags."]
+        #[serde(rename = "includeClickTracking", default)]
+        pub include_click_tracking: Option<bool>,
+        #[doc = "Option specifying how keywords are embedded in ad tags. This setting can be used to specify whether keyword placeholders are inserted in placement tags for this site. Publishers can then add keywords to those placeholders."]
+        #[serde(rename = "keywordOption", default)]
+        pub keyword_option: Option<crate::schemas::TagSettingKeywordOption>,
+    }
+    impl ::field_selector::FieldSelector for TagSetting {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -15754,37 +15754,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct TargetWindow {
-        #[doc = "User-entered value."]
-        #[serde(rename = "customHtml", default)]
-        pub custom_html: Option<String>,
-        #[doc = "Type of browser window for which the backup image of the flash creative can be displayed."]
-        #[serde(rename = "targetWindowOption", default)]
-        pub target_window_option: Option<crate::schemas::TargetWindowTargetWindowOption>,
-    }
-    impl ::field_selector::FieldSelector for TargetWindow {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TargetWindowTargetWindowOption {
         CurrentWindow,
         Custom,
@@ -15835,59 +15805,23 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct TargetableRemarketingList {
-        #[doc = "Account ID of this remarketing list. This is a read-only, auto-generated field that is only returned in GET requests."]
-        #[serde(rename = "accountId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub account_id: Option<i64>,
-        #[doc = "Whether this targetable remarketing list is active."]
-        #[serde(rename = "active", default)]
-        pub active: Option<bool>,
-        #[doc = "Dimension value for the advertiser ID that owns this targetable remarketing list."]
-        #[serde(rename = "advertiserId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub advertiser_id: Option<i64>,
-        #[doc = "Dimension value for the ID of the advertiser."]
-        #[serde(rename = "advertiserIdDimensionValue", default)]
-        pub advertiser_id_dimension_value: Option<crate::schemas::DimensionValue>,
-        #[doc = "Targetable remarketing list description."]
-        #[serde(rename = "description", default)]
-        pub description: Option<String>,
-        #[doc = "Targetable remarketing list ID."]
-        #[serde(rename = "id", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#targetableRemarketingList\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Number of days that a user should remain in the targetable remarketing list without an impression."]
-        #[serde(rename = "lifeSpan", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub life_span: Option<i64>,
-        #[doc = "Number of users currently in the list. This is a read-only field."]
-        #[serde(rename = "listSize", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub list_size: Option<i64>,
-        #[doc = "Product from which this targetable remarketing list was originated."]
-        #[serde(rename = "listSource", default)]
-        pub list_source: Option<crate::schemas::TargetableRemarketingListListSource>,
-        #[doc = "Name of the targetable remarketing list. Is no greater than 128 characters long."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "Subaccount ID of this remarketing list. This is a read-only, auto-generated field that is only returned in GET requests."]
-        #[serde(rename = "subaccountId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub subaccount_id: Option<i64>,
+    pub struct TargetWindow {
+        #[doc = "User-entered value."]
+        #[serde(rename = "customHtml", default)]
+        pub custom_html: Option<String>,
+        #[doc = "Type of browser window for which the backup image of the flash creative can be displayed."]
+        #[serde(rename = "targetWindowOption", default)]
+        pub target_window_option: Option<crate::schemas::TargetWindowTargetWindowOption>,
     }
-    impl ::field_selector::FieldSelector for TargetableRemarketingList {
+    impl ::field_selector::FieldSelector for TargetWindow {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -15897,7 +15831,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TargetableRemarketingListListSource {
         RemarketingListSourceAdx,
         RemarketingListSourceDbm,
@@ -16016,8 +15950,74 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TargetableRemarketingList {
+        #[doc = "Account ID of this remarketing list. This is a read-only, auto-generated field that is only returned in GET requests."]
+        #[serde(rename = "accountId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub account_id: Option<i64>,
+        #[doc = "Whether this targetable remarketing list is active."]
+        #[serde(rename = "active", default)]
+        pub active: Option<bool>,
+        #[doc = "Dimension value for the advertiser ID that owns this targetable remarketing list."]
+        #[serde(rename = "advertiserId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub advertiser_id: Option<i64>,
+        #[doc = "Dimension value for the ID of the advertiser."]
+        #[serde(rename = "advertiserIdDimensionValue", default)]
+        pub advertiser_id_dimension_value: Option<crate::schemas::DimensionValue>,
+        #[doc = "Targetable remarketing list description."]
+        #[serde(rename = "description", default)]
+        pub description: Option<String>,
+        #[doc = "Targetable remarketing list ID."]
+        #[serde(rename = "id", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub id: Option<i64>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#targetableRemarketingList\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Number of days that a user should remain in the targetable remarketing list without an impression."]
+        #[serde(rename = "lifeSpan", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub life_span: Option<i64>,
+        #[doc = "Number of users currently in the list. This is a read-only field."]
+        #[serde(rename = "listSize", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub list_size: Option<i64>,
+        #[doc = "Product from which this targetable remarketing list was originated."]
+        #[serde(rename = "listSource", default)]
+        pub list_source: Option<crate::schemas::TargetableRemarketingListListSource>,
+        #[doc = "Name of the targetable remarketing list. Is no greater than 128 characters long."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "Subaccount ID of this remarketing list. This is a read-only, auto-generated field that is only returned in GET requests."]
+        #[serde(rename = "subaccountId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub subaccount_id: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for TargetableRemarketingList {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -16049,8 +16049,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -16116,8 +16116,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -16149,8 +16149,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -16191,8 +16191,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -16217,37 +16217,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ThirdPartyTrackingUrl {
-        #[doc = "Third-party URL type for in-stream video and in-stream audio creatives."]
-        #[serde(rename = "thirdPartyUrlType", default)]
-        pub third_party_url_type: Option<crate::schemas::ThirdPartyTrackingUrlThirdPartyUrlType>,
-        #[doc = "URL for the specified third-party URL type."]
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ThirdPartyTrackingUrl {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ThirdPartyTrackingUrlThirdPartyUrlType {
         ClickTracking,
         Impression,
@@ -16366,8 +16336,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ThirdPartyTrackingUrl {
+        #[doc = "Third-party URL type for in-stream video and in-stream audio creatives."]
+        #[serde(rename = "thirdPartyUrlType", default)]
+        pub third_party_url_type: Option<crate::schemas::ThirdPartyTrackingUrlThirdPartyUrlType>,
+        #[doc = "URL for the specified third-party URL type."]
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ThirdPartyTrackingUrl {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -16392,37 +16392,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UniversalAdId {
-        #[doc = "Registry used for the Ad ID value."]
-        #[serde(rename = "registry", default)]
-        pub registry: Option<crate::schemas::UniversalAdIdRegistry>,
-        #[doc = "ID value for this creative. Only alphanumeric characters and the following symbols are valid: \"_/\\-\". Maximum length is 64 characters. Read only when registry is DCM."]
-        #[serde(rename = "value", default)]
-        pub value: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for UniversalAdId {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum UniversalAdIdRegistry {
         AdIdOrg,
         Clearcast,
@@ -16476,26 +16446,23 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct UserDefinedVariableConfiguration {
-        #[doc = "Data type for the variable. This is a required field."]
-        #[serde(rename = "dataType", default)]
-        pub data_type: Option<crate::schemas::UserDefinedVariableConfigurationDataType>,
-        #[doc = "User-friendly name for the variable which will appear in reports. This is a required field, must be less than 64 characters long, and cannot contain the following characters: \"\"<>\"."]
-        #[serde(rename = "reportName", default)]
-        pub report_name: Option<String>,
-        #[doc = "Variable name in the tag. This is a required field."]
-        #[serde(rename = "variableType", default)]
-        pub variable_type: Option<crate::schemas::UserDefinedVariableConfigurationVariableType>,
+    pub struct UniversalAdId {
+        #[doc = "Registry used for the Ad ID value."]
+        #[serde(rename = "registry", default)]
+        pub registry: Option<crate::schemas::UniversalAdIdRegistry>,
+        #[doc = "ID value for this creative. Only alphanumeric characters and the following symbols are valid: \"_/\\-\". Maximum length is 64 characters. Read only when registry is DCM."]
+        #[serde(rename = "value", default)]
+        pub value: Option<String>,
     }
-    impl ::field_selector::FieldSelector for UserDefinedVariableConfiguration {
+    impl ::field_selector::FieldSelector for UniversalAdId {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -16505,7 +16472,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum UserDefinedVariableConfigurationDataType {
         Number,
         String,
@@ -16549,7 +16516,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum UserDefinedVariableConfigurationVariableType {
         U1,
         U10,
@@ -16891,8 +16858,41 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UserDefinedVariableConfiguration {
+        #[doc = "Data type for the variable. This is a required field."]
+        #[serde(rename = "dataType", default)]
+        pub data_type: Option<crate::schemas::UserDefinedVariableConfigurationDataType>,
+        #[doc = "User-friendly name for the variable which will appear in reports. This is a required field, must be less than 64 characters long, and cannot contain the following characters: \"\"<>\"."]
+        #[serde(rename = "reportName", default)]
+        pub report_name: Option<String>,
+        #[doc = "Variable name in the tag. This is a required field."]
+        #[serde(rename = "variableType", default)]
+        pub variable_type: Option<crate::schemas::UserDefinedVariableConfigurationVariableType>,
+    }
+    impl ::field_selector::FieldSelector for UserDefinedVariableConfiguration {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -16942,8 +16942,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -16975,8 +16975,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -17023,48 +17023,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UserRolePermission {
-        #[doc = "Levels of availability for a user role permission."]
-        #[serde(rename = "availability", default)]
-        pub availability: Option<crate::schemas::UserRolePermissionAvailability>,
-        #[doc = "ID of this user role permission."]
-        #[serde(rename = "id", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#userRolePermission\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Name of this user role permission."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "ID of the permission group that this user role permission belongs to."]
-        #[serde(rename = "permissionGroupId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub permission_group_id: Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for UserRolePermission {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum UserRolePermissionAvailability {
         AccountAlways,
         AccountByDefault,
@@ -17129,8 +17088,49 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UserRolePermission {
+        #[doc = "Levels of availability for a user role permission."]
+        #[serde(rename = "availability", default)]
+        pub availability: Option<crate::schemas::UserRolePermissionAvailability>,
+        #[doc = "ID of this user role permission."]
+        #[serde(rename = "id", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub id: Option<i64>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#userRolePermission\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Name of this user role permission."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "ID of the permission group that this user role permission belongs to."]
+        #[serde(rename = "permissionGroupId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub permission_group_id: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for UserRolePermission {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -17163,8 +17163,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -17193,8 +17193,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -17223,8 +17223,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -17252,46 +17252,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct VideoFormat {
-        #[doc = "File type of the video format."]
-        #[serde(rename = "fileType", default)]
-        pub file_type: Option<crate::schemas::VideoFormatFileType>,
-        #[doc = "ID of the video format."]
-        #[serde(rename = "id", default)]
-        pub id: Option<i32>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#videoFormat\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "The resolution of this video format."]
-        #[serde(rename = "resolution", default)]
-        pub resolution: Option<crate::schemas::Size>,
-        #[doc = "The target bit rate of this video format."]
-        #[serde(rename = "targetBitRate", default)]
-        pub target_bit_rate: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for VideoFormat {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoFormatFileType {
         Flv,
         M3U8,
@@ -17348,8 +17309,47 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct VideoFormat {
+        #[doc = "File type of the video format."]
+        #[serde(rename = "fileType", default)]
+        pub file_type: Option<crate::schemas::VideoFormatFileType>,
+        #[doc = "ID of the video format."]
+        #[serde(rename = "id", default)]
+        pub id: Option<i32>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#videoFormat\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "The resolution of this video format."]
+        #[serde(rename = "resolution", default)]
+        pub resolution: Option<crate::schemas::Size>,
+        #[doc = "The target bit rate of this video format."]
+        #[serde(rename = "targetBitRate", default)]
+        pub target_bit_rate: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for VideoFormat {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -17378,8 +17378,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -17404,46 +17404,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct VideoSettings {
-        #[doc = "Settings for the companion creatives of video creatives served to this placement."]
-        #[serde(rename = "companionSettings", default)]
-        pub companion_settings: Option<crate::schemas::CompanionSetting>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#videoSettings\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Orientation of a video placement. If this value is set, placement will return assets matching the specified orientation."]
-        #[serde(rename = "orientation", default)]
-        pub orientation: Option<crate::schemas::VideoSettingsOrientation>,
-        #[doc = "Settings for the skippability of video creatives served to this placement. If this object is provided, the creative-level skippable settings will be overridden."]
-        #[serde(rename = "skippableSettings", default)]
-        pub skippable_settings: Option<crate::schemas::SkippableSetting>,
-        #[doc = "Settings for the transcodes of video creatives served to this placement. If this object is provided, the creative-level transcode settings will be overridden."]
-        #[serde(rename = "transcodeSettings", default)]
-        pub transcode_settings: Option<crate::schemas::TranscodeSetting>,
-    }
-    impl ::field_selector::FieldSelector for VideoSettings {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoSettingsOrientation {
         Any,
         Landscape,
@@ -17490,9 +17451,48 @@ pub mod schemas {
             })
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct VideoSettings {
+        #[doc = "Settings for the companion creatives of video creatives served to this placement."]
+        #[serde(rename = "companionSettings", default)]
+        pub companion_settings: Option<crate::schemas::CompanionSetting>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#videoSettings\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Orientation of a video placement. If this value is set, placement will return assets matching the specified orientation."]
+        #[serde(rename = "orientation", default)]
+        pub orientation: Option<crate::schemas::VideoSettingsOrientation>,
+        #[doc = "Settings for the skippability of video creatives served to this placement. If this object is provided, the creative-level skippable settings will be overridden."]
+        #[serde(rename = "skippableSettings", default)]
+        pub skippable_settings: Option<crate::schemas::SkippableSetting>,
+        #[doc = "Settings for the transcodes of video creatives served to this placement. If this object is provided, the creative-level transcode settings will be overridden."]
+        #[serde(rename = "transcodeSettings", default)]
+        pub transcode_settings: Option<crate::schemas::TranscodeSetting>,
+    }
+    impl ::field_selector::FieldSelector for VideoSettings {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -18642,7 +18642,7 @@ pub mod account_permissions {
 }
 pub mod account_user_profiles {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -18686,7 +18686,7 @@ pub mod account_user_profiles {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -19524,7 +19524,7 @@ pub mod account_user_profiles {
 }
 pub mod accounts {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -19568,7 +19568,7 @@ pub mod accounts {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -20257,7 +20257,7 @@ pub mod accounts {
 }
 pub mod ads {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListCompatibility {
             App,
             AppInterstitial,
@@ -20313,7 +20313,7 @@ pub mod ads {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListType {
             AdServingClickTracker,
             AdServingDefaultAd,
@@ -20363,7 +20363,7 @@ pub mod ads {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -20407,7 +20407,7 @@ pub mod ads {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -21345,7 +21345,7 @@ pub mod ads {
 }
 pub mod advertiser_groups {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -21389,7 +21389,7 @@ pub mod advertiser_groups {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -22306,7 +22306,7 @@ pub mod advertiser_groups {
 }
 pub mod advertiser_landing_pages {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -22350,7 +22350,7 @@ pub mod advertiser_landing_pages {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -23196,7 +23196,7 @@ pub mod advertiser_landing_pages {
 }
 pub mod advertisers {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -23240,7 +23240,7 @@ pub mod advertisers {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -23284,7 +23284,7 @@ pub mod advertisers {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListStatus {
             Approved,
             OnHold,
@@ -24278,7 +24278,7 @@ pub mod browsers {
 }
 pub mod campaign_creative_associations {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -24703,7 +24703,7 @@ pub mod campaign_creative_associations {
 }
 pub mod campaigns {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -24747,7 +24747,7 @@ pub mod campaigns {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -25613,7 +25613,7 @@ pub mod campaigns {
 }
 pub mod change_logs {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListAction {
             ActionAdd,
             ActionAssign,
@@ -25702,7 +25702,7 @@ pub mod change_logs {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListObjectType {
             ObjectAccount,
             ObjectAccountBillingFeature,
@@ -26695,7 +26695,7 @@ pub mod connection_types {
 }
 pub mod content_categories {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -26739,7 +26739,7 @@ pub mod content_categories {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -28396,7 +28396,7 @@ pub mod creative_assets {
 }
 pub mod creative_field_values {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Value,
@@ -28440,7 +28440,7 @@ pub mod creative_field_values {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -29412,7 +29412,7 @@ pub mod creative_field_values {
 }
 pub mod creative_fields {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -29456,7 +29456,7 @@ pub mod creative_fields {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -30381,7 +30381,7 @@ pub mod creative_fields {
 }
 pub mod creative_groups {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -30425,7 +30425,7 @@ pub mod creative_groups {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -31255,7 +31255,7 @@ pub mod creative_groups {
 }
 pub mod creatives {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -31299,7 +31299,7 @@ pub mod creatives {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -31343,7 +31343,7 @@ pub mod creatives {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListTypes {
             BrandSafeDefaultInstreamVideo,
             CustomDisplay,
@@ -32535,7 +32535,7 @@ pub mod dimension_values {
 }
 pub mod directory_sites {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -32579,7 +32579,7 @@ pub mod directory_sites {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -33186,7 +33186,7 @@ pub mod directory_sites {
 }
 pub mod dynamic_targeting_keys {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum DeleteObjectType {
             ObjectAd,
             ObjectAdvertiser,
@@ -33236,7 +33236,7 @@ pub mod dynamic_targeting_keys {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListObjectType {
             ObjectAd,
             ObjectAdvertiser,
@@ -33691,7 +33691,7 @@ pub mod dynamic_targeting_keys {
 }
 pub mod event_tags {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListEventTagTypes {
             ClickThroughEventTag,
             ImpressionImageEventTag,
@@ -33742,7 +33742,7 @@ pub mod event_tags {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -33786,7 +33786,7 @@ pub mod event_tags {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -34650,7 +34650,7 @@ pub mod event_tags {
 }
 pub mod files {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListScope {
             #[doc = "All files in account."]
             All,
@@ -34700,7 +34700,7 @@ pub mod files {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             #[doc = "Sort by file ID."]
             Id,
@@ -34746,7 +34746,7 @@ pub mod files {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             #[doc = "Ascending order."]
             Ascending,
@@ -35188,7 +35188,7 @@ pub mod files {
 }
 pub mod floodlight_activities {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListFloodlightActivityGroupType {
             Counter,
             Sale,
@@ -35232,7 +35232,7 @@ pub mod floodlight_activities {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -35276,7 +35276,7 @@ pub mod floodlight_activities {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -36400,7 +36400,7 @@ pub mod floodlight_activities {
 }
 pub mod floodlight_activity_groups {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListType {
             Counter,
             Sale,
@@ -36444,7 +36444,7 @@ pub mod floodlight_activity_groups {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -36488,7 +36488,7 @@ pub mod floodlight_activity_groups {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -37852,7 +37852,7 @@ pub mod floodlight_configurations {
 }
 pub mod inventory_items {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListType {
             PlanningPlacementTypeCredit,
             PlanningPlacementTypeRegular,
@@ -37896,7 +37896,7 @@ pub mod inventory_items {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -37940,7 +37940,7 @@ pub mod inventory_items {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -38664,7 +38664,7 @@ pub mod metros {
 }
 pub mod mobile_apps {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListDirectories {
             AppleAppStore,
             GooglePlayStore,
@@ -39840,7 +39840,7 @@ pub mod operating_systems {
 }
 pub mod order_documents {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -39884,7 +39884,7 @@ pub mod order_documents {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -40354,7 +40354,7 @@ pub mod order_documents {
 }
 pub mod orders {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -40398,7 +40398,7 @@ pub mod orders {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -40843,7 +40843,7 @@ pub mod orders {
 }
 pub mod placement_groups {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListPlacementGroupType {
             PlacementPackage,
             PlacementRoadblock,
@@ -40887,7 +40887,7 @@ pub mod placement_groups {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListPricingTypes {
             PricingTypeCpa,
             PricingTypeCpc,
@@ -40947,7 +40947,7 @@ pub mod placement_groups {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -40991,7 +40991,7 @@ pub mod placement_groups {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -41915,7 +41915,7 @@ pub mod placement_groups {
 }
 pub mod placement_strategies {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -41959,7 +41959,7 @@ pub mod placement_strategies {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -42876,7 +42876,7 @@ pub mod placement_strategies {
 }
 pub mod placements {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum GeneratetagsTagFormats {
             PlacementTagClickCommands,
             PlacementTagIframeIlayer,
@@ -43035,7 +43035,7 @@ pub mod placements {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListCompatibilities {
             App,
             AppInterstitial,
@@ -43091,7 +43091,7 @@ pub mod placements {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListPaymentSource {
             PlacementAgencyPaid,
             PlacementPublisherPaid,
@@ -43135,7 +43135,7 @@ pub mod placements {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListPricingTypes {
             PricingTypeCpa,
             PricingTypeCpc,
@@ -43195,7 +43195,7 @@ pub mod placements {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -43239,7 +43239,7 @@ pub mod placements {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -44829,7 +44829,7 @@ pub mod postal_codes {
 }
 pub mod projects {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -44873,7 +44873,7 @@ pub mod projects {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -45822,7 +45822,7 @@ pub mod remarketing_list_shares {
 }
 pub mod remarketing_lists {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -45866,7 +45866,7 @@ pub mod remarketing_lists {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -46691,7 +46691,7 @@ pub mod remarketing_lists {
 }
 pub mod reports {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListScope {
             #[doc = "All reports in account."]
             All,
@@ -46737,7 +46737,7 @@ pub mod reports {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             #[doc = "Sort by report ID."]
             Id,
@@ -46787,7 +46787,7 @@ pub mod reports {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             #[doc = "Ascending order."]
             Ascending,
@@ -47967,7 +47967,7 @@ pub mod reports {
     }
     pub mod files {
         pub mod params {
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListSortField {
                 #[doc = "Sort by file ID."]
                 Id,
@@ -48013,7 +48013,7 @@ pub mod reports {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListSortOrder {
                 #[doc = "Ascending order."]
                 Ascending,
@@ -48478,7 +48478,7 @@ pub mod reports {
 }
 pub mod sites {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -48522,7 +48522,7 @@ pub mod sites {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -49807,7 +49807,7 @@ pub mod sizes {
 }
 pub mod subaccounts {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -49851,7 +49851,7 @@ pub mod subaccounts {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -50664,7 +50664,7 @@ pub mod subaccounts {
 }
 pub mod targetable_remarketing_lists {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -50708,7 +50708,7 @@ pub mod targetable_remarketing_lists {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -51146,7 +51146,7 @@ pub mod targetable_remarketing_lists {
 }
 pub mod targeting_templates {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -51190,7 +51190,7 @@ pub mod targeting_templates {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,
@@ -52763,7 +52763,7 @@ pub mod user_role_permissions {
 }
 pub mod user_roles {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortField {
             Id,
             Name,
@@ -52807,7 +52807,7 @@ pub mod user_roles {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortOrder {
             Ascending,
             Descending,

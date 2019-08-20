@@ -1,35 +1,5 @@
 pub mod schemas {
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AnalyzeEntitiesRequest {
-        #[doc = "Input document."]
-        #[serde(rename = "document", default)]
-        pub document: Option<crate::schemas::Document>,
-        #[doc = "The encoding type used by the API to calculate offsets."]
-        #[serde(rename = "encodingType", default)]
-        pub encoding_type: Option<crate::schemas::AnalyzeEntitiesRequestEncodingType>,
-    }
-    impl ::field_selector::FieldSelector for AnalyzeEntitiesRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AnalyzeEntitiesRequestEncodingType {
         #[doc = "If `EncodingType` is not specified, encoding-dependent information (such as\n`begin_offset`) will be set at `-1`."]
         None,
@@ -84,6 +54,36 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AnalyzeEntitiesRequest {
+        #[doc = "Input document."]
+        #[serde(rename = "document", default)]
+        pub document: Option<crate::schemas::Document>,
+        #[doc = "The encoding type used by the API to calculate offsets."]
+        #[serde(rename = "encodingType", default)]
+        pub encoding_type: Option<crate::schemas::AnalyzeEntitiesRequestEncodingType>,
+    }
+    impl ::field_selector::FieldSelector for AnalyzeEntitiesRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AnalyzeEntitiesResponse {
@@ -104,37 +104,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AnalyzeSentimentRequest {
-        #[doc = "Input document."]
-        #[serde(rename = "document", default)]
-        pub document: Option<crate::schemas::Document>,
-        #[doc = "The encoding type used by the API to calculate sentence offsets for the\nsentence sentiment."]
-        #[serde(rename = "encodingType", default)]
-        pub encoding_type: Option<crate::schemas::AnalyzeSentimentRequestEncodingType>,
-    }
-    impl ::field_selector::FieldSelector for AnalyzeSentimentRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AnalyzeSentimentRequestEncodingType {
         #[doc = "If `EncodingType` is not specified, encoding-dependent information (such as\n`begin_offset`) will be set at `-1`."]
         None,
@@ -189,6 +159,36 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AnalyzeSentimentRequest {
+        #[doc = "Input document."]
+        #[serde(rename = "document", default)]
+        pub document: Option<crate::schemas::Document>,
+        #[doc = "The encoding type used by the API to calculate sentence offsets for the\nsentence sentiment."]
+        #[serde(rename = "encodingType", default)]
+        pub encoding_type: Option<crate::schemas::AnalyzeSentimentRequestEncodingType>,
+    }
+    impl ::field_selector::FieldSelector for AnalyzeSentimentRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AnalyzeSentimentResponse {
@@ -212,37 +212,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AnalyzeSyntaxRequest {
-        #[doc = "Input document."]
-        #[serde(rename = "document", default)]
-        pub document: Option<crate::schemas::Document>,
-        #[doc = "The encoding type used by the API to calculate offsets."]
-        #[serde(rename = "encodingType", default)]
-        pub encoding_type: Option<crate::schemas::AnalyzeSyntaxRequestEncodingType>,
-    }
-    impl ::field_selector::FieldSelector for AnalyzeSyntaxRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AnalyzeSyntaxRequestEncodingType {
         #[doc = "If `EncodingType` is not specified, encoding-dependent information (such as\n`begin_offset`) will be set at `-1`."]
         None,
@@ -297,6 +267,36 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AnalyzeSyntaxRequest {
+        #[doc = "Input document."]
+        #[serde(rename = "document", default)]
+        pub document: Option<crate::schemas::Document>,
+        #[doc = "The encoding type used by the API to calculate offsets."]
+        #[serde(rename = "encodingType", default)]
+        pub encoding_type: Option<crate::schemas::AnalyzeSyntaxRequestEncodingType>,
+    }
+    impl ::field_selector::FieldSelector for AnalyzeSyntaxRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AnalyzeSyntaxResponse {
@@ -320,40 +320,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AnnotateTextRequest {
-        #[doc = "Input document."]
-        #[serde(rename = "document", default)]
-        pub document: Option<crate::schemas::Document>,
-        #[doc = "The encoding type used by the API to calculate offsets."]
-        #[serde(rename = "encodingType", default)]
-        pub encoding_type: Option<crate::schemas::AnnotateTextRequestEncodingType>,
-        #[doc = "The enabled features."]
-        #[serde(rename = "features", default)]
-        pub features: Option<crate::schemas::Features>,
-    }
-    impl ::field_selector::FieldSelector for AnnotateTextRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AnnotateTextRequestEncodingType {
         #[doc = "If `EncodingType` is not specified, encoding-dependent information (such as\n`begin_offset`) will be set at `-1`."]
         None,
@@ -408,6 +375,39 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AnnotateTextRequest {
+        #[doc = "Input document."]
+        #[serde(rename = "document", default)]
+        pub document: Option<crate::schemas::Document>,
+        #[doc = "The encoding type used by the API to calculate offsets."]
+        #[serde(rename = "encodingType", default)]
+        pub encoding_type: Option<crate::schemas::AnnotateTextRequestEncodingType>,
+        #[doc = "The enabled features."]
+        #[serde(rename = "features", default)]
+        pub features: Option<crate::schemas::Features>,
+    }
+    impl ::field_selector::FieldSelector for AnnotateTextRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AnnotateTextResponse {
@@ -437,37 +437,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DependencyEdge {
-        #[doc = "Represents the head of this token in the dependency tree.\nThis is the index of the token which has an arc going to this token.\nThe index is the position of the token in the array of tokens returned\nby the API method. If this token is a root token, then the\n`head_token_index` is its own index."]
-        #[serde(rename = "headTokenIndex", default)]
-        pub head_token_index: Option<i32>,
-        #[doc = "The parse label for the token."]
-        #[serde(rename = "label", default)]
-        pub label: Option<crate::schemas::DependencyEdgeLabel>,
-    }
-    impl ::field_selector::FieldSelector for DependencyEdge {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DependencyEdgeLabel {
         #[doc = "Unknown"]
         Unknown,
@@ -841,29 +811,23 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Document {
-        #[doc = "The content of the input in string format.\nCloud audit logging exempt since it is based on user data."]
-        #[serde(rename = "content", default)]
-        pub content: Option<String>,
-        #[doc = "The Google Cloud Storage URI where the file content is located.\nThis URI must be of the form: gs://bucket_name/object_name. For more\ndetails, see https://cloud.google.com/storage/docs/reference-uris.\nNOTE: Cloud Storage object versioning is not supported."]
-        #[serde(rename = "gcsContentUri", default)]
-        pub gcs_content_uri: Option<String>,
-        #[doc = "The language of the document (if not specified, the language is\nautomatically detected). Both ISO and BCP-47 language codes are\naccepted.<br>\n[Language Support](/natural-language/docs/languages)\nlists currently supported languages for each API method.\nIf the language (either specified by the caller or automatically detected)\nis not supported by the called API method, an `INVALID_ARGUMENT` error\nis returned."]
-        #[serde(rename = "language", default)]
-        pub language: Option<String>,
-        #[doc = "Required. If the type is not set or is `TYPE_UNSPECIFIED`,\nreturns an `INVALID_ARGUMENT` error."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DocumentType>,
+    pub struct DependencyEdge {
+        #[doc = "Represents the head of this token in the dependency tree.\nThis is the index of the token which has an arc going to this token.\nThe index is the position of the token in the array of tokens returned\nby the API method. If this token is a root token, then the\n`head_token_index` is its own index."]
+        #[serde(rename = "headTokenIndex", default)]
+        pub head_token_index: Option<i32>,
+        #[doc = "The parse label for the token."]
+        #[serde(rename = "label", default)]
+        pub label: Option<crate::schemas::DependencyEdgeLabel>,
     }
-    impl ::field_selector::FieldSelector for Document {
+    impl ::field_selector::FieldSelector for DependencyEdge {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -873,7 +837,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DocumentType {
         #[doc = "The content type is not specified."]
         TypeUnspecified,
@@ -924,56 +888,32 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct Entity {
-        #[doc = "The mentions of this entity in the input document. The API currently\nsupports proper noun mentions."]
-        #[serde(rename = "mentions", default)]
-        pub mentions: Option<Vec<crate::schemas::EntityMention>>,
-        #[doc = "Metadata associated with the entity.\n\nCurrently, Wikipedia URLs and Knowledge Graph MIDs are provided, if\navailable. The associated keys are \"wikipedia_url\" and \"mid\", respectively."]
-        #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The representative name for the entity."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "The entity type."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::EntityType>,
-        #[doc = "The salience score associated with the entity in the [0, 1.0] range.\n\nThe salience score for an entity provides information about the\nimportance or centrality of that entity to the entire document text.\nScores closer to 0 are less salient, while scores closer to 1.0 are highly\nsalient."]
-        #[serde(rename = "salience", default)]
-        pub salience: Option<f32>,
-    }
-    impl ::field_selector::FieldSelector for Entity {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct EntityMention {
-        #[doc = "The type of the entity mention."]
+    pub struct Document {
+        #[doc = "The content of the input in string format.\nCloud audit logging exempt since it is based on user data."]
+        #[serde(rename = "content", default)]
+        pub content: Option<String>,
+        #[doc = "The Google Cloud Storage URI where the file content is located.\nThis URI must be of the form: gs://bucket_name/object_name. For more\ndetails, see https://cloud.google.com/storage/docs/reference-uris.\nNOTE: Cloud Storage object versioning is not supported."]
+        #[serde(rename = "gcsContentUri", default)]
+        pub gcs_content_uri: Option<String>,
+        #[doc = "The language of the document (if not specified, the language is\nautomatically detected). Both ISO and BCP-47 language codes are\naccepted.<br>\n[Language Support](/natural-language/docs/languages)\nlists currently supported languages for each API method.\nIf the language (either specified by the caller or automatically detected)\nis not supported by the called API method, an `INVALID_ARGUMENT` error\nis returned."]
+        #[serde(rename = "language", default)]
+        pub language: Option<String>,
+        #[doc = "Required. If the type is not set or is `TYPE_UNSPECIFIED`,\nreturns an `INVALID_ARGUMENT` error."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::EntityMentionType>,
-        #[doc = "The mention text."]
-        #[serde(rename = "text", default)]
-        pub text: Option<crate::schemas::TextSpan>,
+        pub r#type: Option<crate::schemas::DocumentType>,
     }
-    impl ::field_selector::FieldSelector for EntityMention {
+    impl ::field_selector::FieldSelector for Document {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -983,57 +923,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum EntityMentionType {
-        #[doc = "Unknown"]
-        TypeUnknown,
-        #[doc = "Proper name"]
-        Proper,
-        #[doc = "Common noun (or noun compound)"]
-        Common,
-    }
-    impl EntityMentionType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                EntityMentionType::TypeUnknown => "TYPE_UNKNOWN",
-                EntityMentionType::Proper => "PROPER",
-                EntityMentionType::Common => "COMMON",
-            }
-        }
-    }
-    impl ::std::fmt::Display for EntityMentionType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for EntityMentionType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for EntityMentionType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "TYPE_UNKNOWN" => EntityMentionType::TypeUnknown,
-                "PROPER" => EntityMentionType::Proper,
-                "COMMON" => EntityMentionType::Common,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EntityType {
         #[doc = "Unknown"]
         Unknown,
@@ -1104,11 +994,121 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Entity {
+        #[doc = "The mentions of this entity in the input document. The API currently\nsupports proper noun mentions."]
+        #[serde(rename = "mentions", default)]
+        pub mentions: Option<Vec<crate::schemas::EntityMention>>,
+        #[doc = "Metadata associated with the entity.\n\nCurrently, Wikipedia URLs and Knowledge Graph MIDs are provided, if\navailable. The associated keys are \"wikipedia_url\" and \"mid\", respectively."]
+        #[serde(rename = "metadata", default)]
+        pub metadata: Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The representative name for the entity."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "The entity type."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::EntityType>,
+        #[doc = "The salience score associated with the entity in the [0, 1.0] range.\n\nThe salience score for an entity provides information about the\nimportance or centrality of that entity to the entire document text.\nScores closer to 0 are less salient, while scores closer to 1.0 are highly\nsalient."]
+        #[serde(rename = "salience", default)]
+        pub salience: Option<f32>,
+    }
+    impl ::field_selector::FieldSelector for Entity {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum EntityMentionType {
+        #[doc = "Unknown"]
+        TypeUnknown,
+        #[doc = "Proper name"]
+        Proper,
+        #[doc = "Common noun (or noun compound)"]
+        Common,
+    }
+    impl EntityMentionType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                EntityMentionType::TypeUnknown => "TYPE_UNKNOWN",
+                EntityMentionType::Proper => "PROPER",
+                EntityMentionType::Common => "COMMON",
+            }
+        }
+    }
+    impl ::std::fmt::Display for EntityMentionType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for EntityMentionType {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for EntityMentionType {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "TYPE_UNKNOWN" => EntityMentionType::TypeUnknown,
+                "PROPER" => EntityMentionType::Proper,
+                "COMMON" => EntityMentionType::Common,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct EntityMention {
+        #[doc = "The type of the entity mention."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::EntityMentionType>,
+        #[doc = "The mention text."]
+        #[serde(rename = "text", default)]
+        pub text: Option<crate::schemas::TextSpan>,
+    }
+    impl ::field_selector::FieldSelector for EntityMention {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1136,67 +1136,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PartOfSpeech {
-        #[doc = "The grammatical aspect."]
-        #[serde(rename = "aspect", default)]
-        pub aspect: Option<crate::schemas::PartOfSpeechAspect>,
-        #[doc = "The grammatical case."]
-        #[serde(rename = "case", default)]
-        pub case: Option<crate::schemas::PartOfSpeechCase>,
-        #[doc = "The grammatical form."]
-        #[serde(rename = "form", default)]
-        pub form: Option<crate::schemas::PartOfSpeechForm>,
-        #[doc = "The grammatical gender."]
-        #[serde(rename = "gender", default)]
-        pub gender: Option<crate::schemas::PartOfSpeechGender>,
-        #[doc = "The grammatical mood."]
-        #[serde(rename = "mood", default)]
-        pub mood: Option<crate::schemas::PartOfSpeechMood>,
-        #[doc = "The grammatical number."]
-        #[serde(rename = "number", default)]
-        pub number: Option<crate::schemas::PartOfSpeechNumber>,
-        #[doc = "The grammatical person."]
-        #[serde(rename = "person", default)]
-        pub person: Option<crate::schemas::PartOfSpeechPerson>,
-        #[doc = "The grammatical properness."]
-        #[serde(rename = "proper", default)]
-        pub proper: Option<crate::schemas::PartOfSpeechProper>,
-        #[doc = "The grammatical reciprocity."]
-        #[serde(rename = "reciprocity", default)]
-        pub reciprocity: Option<crate::schemas::PartOfSpeechReciprocity>,
-        #[doc = "The part of speech tag."]
-        #[serde(rename = "tag", default)]
-        pub tag: Option<crate::schemas::PartOfSpeechTag>,
-        #[doc = "The grammatical tense."]
-        #[serde(rename = "tense", default)]
-        pub tense: Option<crate::schemas::PartOfSpeechTense>,
-        #[doc = "The grammatical voice."]
-        #[serde(rename = "voice", default)]
-        pub voice: Option<crate::schemas::PartOfSpeechVoice>,
-    }
-    impl ::field_selector::FieldSelector for PartOfSpeech {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechAspect {
         #[doc = "Aspect is not applicable in the analyzed language or is not predicted."]
         AspectUnknown,
@@ -1250,7 +1190,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechCase {
         #[doc = "Case is not applicable in the analyzed language or is not predicted."]
         CaseUnknown,
@@ -1348,7 +1288,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechForm {
         #[doc = "Form is not applicable in the analyzed language or is not predicted."]
         FormUnknown,
@@ -1434,7 +1374,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechGender {
         #[doc = "Gender is not applicable in the analyzed language or is not predicted."]
         GenderUnknown,
@@ -1488,7 +1428,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechMood {
         #[doc = "Mood is not applicable in the analyzed language or is not predicted."]
         MoodUnknown,
@@ -1554,7 +1494,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechNumber {
         #[doc = "Number is not applicable in the analyzed language or is not predicted."]
         NumberUnknown,
@@ -1608,7 +1548,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechPerson {
         #[doc = "Person is not applicable in the analyzed language or is not predicted."]
         PersonUnknown,
@@ -1666,7 +1606,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechProper {
         #[doc = "Proper is not applicable in the analyzed language or is not predicted."]
         ProperUnknown,
@@ -1716,7 +1656,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechReciprocity {
         #[doc = "Reciprocity is not applicable in the analyzed language or is not\npredicted."]
         ReciprocityUnknown,
@@ -1766,7 +1706,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechTag {
         #[doc = "Unknown"]
         Unknown,
@@ -1860,7 +1800,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechTense {
         #[doc = "Tense is not applicable in the analyzed language or is not predicted."]
         TenseUnknown,
@@ -1926,7 +1866,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechVoice {
         #[doc = "Voice is not applicable in the analyzed language or is not predicted."]
         VoiceUnknown,
@@ -1981,6 +1921,66 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PartOfSpeech {
+        #[doc = "The grammatical aspect."]
+        #[serde(rename = "aspect", default)]
+        pub aspect: Option<crate::schemas::PartOfSpeechAspect>,
+        #[doc = "The grammatical case."]
+        #[serde(rename = "case", default)]
+        pub case: Option<crate::schemas::PartOfSpeechCase>,
+        #[doc = "The grammatical form."]
+        #[serde(rename = "form", default)]
+        pub form: Option<crate::schemas::PartOfSpeechForm>,
+        #[doc = "The grammatical gender."]
+        #[serde(rename = "gender", default)]
+        pub gender: Option<crate::schemas::PartOfSpeechGender>,
+        #[doc = "The grammatical mood."]
+        #[serde(rename = "mood", default)]
+        pub mood: Option<crate::schemas::PartOfSpeechMood>,
+        #[doc = "The grammatical number."]
+        #[serde(rename = "number", default)]
+        pub number: Option<crate::schemas::PartOfSpeechNumber>,
+        #[doc = "The grammatical person."]
+        #[serde(rename = "person", default)]
+        pub person: Option<crate::schemas::PartOfSpeechPerson>,
+        #[doc = "The grammatical properness."]
+        #[serde(rename = "proper", default)]
+        pub proper: Option<crate::schemas::PartOfSpeechProper>,
+        #[doc = "The grammatical reciprocity."]
+        #[serde(rename = "reciprocity", default)]
+        pub reciprocity: Option<crate::schemas::PartOfSpeechReciprocity>,
+        #[doc = "The part of speech tag."]
+        #[serde(rename = "tag", default)]
+        pub tag: Option<crate::schemas::PartOfSpeechTag>,
+        #[doc = "The grammatical tense."]
+        #[serde(rename = "tense", default)]
+        pub tense: Option<crate::schemas::PartOfSpeechTense>,
+        #[doc = "The grammatical voice."]
+        #[serde(rename = "voice", default)]
+        pub voice: Option<crate::schemas::PartOfSpeechVoice>,
+    }
+    impl ::field_selector::FieldSelector for PartOfSpeech {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Sentence {
@@ -2025,9 +2025,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
@@ -2053,8 +2051,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2083,8 +2081,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2117,7 +2115,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -2167,7 +2165,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,

@@ -1,43 +1,27 @@
 pub mod schemas {
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct Result {
-        #[doc = "The captcha verify result"]
-        #[serde(rename = "captchaResult", default)]
-        pub captcha_result: Option<String>,
-        #[doc = "Localized PageSpeed results. Contains a ruleResults entry for each PageSpeed rule instantiated and run by the server."]
-        #[serde(rename = "formattedResults", default)]
-        pub formatted_results: Option<crate::schemas::ResultFormattedResults>,
-        #[doc = "Canonicalized and final URL for the document, after following page redirects (if any)."]
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-        #[doc = "List of rules that were specified in the request, but which the server did not know how to instantiate."]
-        #[serde(rename = "invalidRules", default)]
-        pub invalid_rules: Option<Vec<String>>,
-        #[doc = "Kind of result."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Summary statistics for the page, such as number of JavaScript bytes, number of HTML bytes, etc."]
-        #[serde(rename = "pageStats", default)]
-        pub page_stats: Option<crate::schemas::ResultPageStats>,
-        #[doc = "Response code for the document. 200 indicates a normal page load. 4xx/5xx indicates an error."]
-        #[serde(rename = "responseCode", default)]
-        pub response_code: Option<i32>,
-        #[doc = "The PageSpeed Score (0-100), which indicates how much faster a page could be. A high score indicates little room for improvement, while a lower score indicates more room for improvement."]
-        #[serde(rename = "score", default)]
-        pub score: Option<i32>,
-        #[doc = "Base64-encoded screenshot of the page that was analyzed."]
-        #[serde(rename = "screenshot", default)]
-        pub screenshot: Option<crate::schemas::ResultScreenshot>,
-        #[doc = "Title of the page, as displayed in the browser's title bar."]
-        #[serde(rename = "title", default)]
-        pub title: Option<String>,
-        #[doc = "The version of PageSpeed used to generate these results."]
-        #[serde(rename = "version", default)]
-        pub version: Option<crate::schemas::ResultVersion>,
+    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeaderArgsItems {
+        #[doc = "Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, or DURATION."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+        #[doc = "Argument value, as a localized string."]
+        #[serde(rename = "value", default)]
+        pub value: Option<String>,
     }
-    impl ::field_selector::FieldSelector for Result {
+    impl ::field_selector::FieldSelector
+        for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeaderArgsItems
+    {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -48,22 +32,165 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct ResultFormattedResults {
-        #[doc = "The locale of the formattedResults, e.g. \"en_US\"."]
-        #[serde(rename = "locale", default)]
-        pub locale: Option<String>,
-        #[doc = "Dictionary of formatted rule results, with one entry for each PageSpeed rule instantiated and run by the server."]
-        #[serde(rename = "ruleResults", default)]
-        pub rule_results: Option<
-            ::std::collections::BTreeMap<
-                String,
-                crate::schemas::ResultFormattedResultsRuleResultsAdditionalProperties,
-            >,
-        >,
+    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeader { # [ doc = "List of arguments for the format string." ] # [ serde ( rename = "args" , default ) ] pub args : Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeaderArgsItems > > , # [ doc = "A localized format string with $N placeholders, where N is the 1-indexed argument number, e.g. 'Minifying the following $1 resources would save a total of $2 bytes'." ] # [ serde ( rename = "format" , default ) ] pub format : Option < String > , }
+    impl ::field_selector::FieldSelector
+        for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeader
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
     }
-    impl ::field_selector::FieldSelector for ResultFormattedResults {
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItemsArgsItems
+    {
+        #[doc = "Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, or DURATION."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+        #[doc = "Argument value, as a localized string."]
+        #[serde(rename = "value", default)]
+        pub value: Option<String>,
+    }
+    impl :: field_selector :: FieldSelector for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItemsArgsItems { fn field_selector_with_ident ( ident : & str , selector : & mut String ) { match selector . chars ( ) . rev ( ) . nth ( 0 ) { Some ( ',' ) | None => { } , _ => selector . push_str ( "," ) , } selector . push_str ( ident ) ; selector . push_str ( "*" ) ; } }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItems { # [ doc = "List of arguments for the format string." ] # [ serde ( rename = "args" , default ) ] pub args : Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItemsArgsItems > > , # [ doc = "A localized format string with $N placeholders, where N is the 1-indexed argument number, e.g. 'Unnecessary metadata for this resource adds an additional $1 bytes to its download size'." ] # [ serde ( rename = "format" , default ) ] pub format : Option < String > , }
+    impl ::field_selector::FieldSelector
+        for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItems
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResultArgsItems
+    {
+        #[doc = "Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, or DURATION."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+        #[doc = "Argument value, as a localized string."]
+        #[serde(rename = "value", default)]
+        pub value: Option<String>,
+    }
+    impl :: field_selector :: FieldSelector for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResultArgsItems { fn field_selector_with_ident ( ident : & str , selector : & mut String ) { match selector . chars ( ) . rev ( ) . nth ( 0 ) { Some ( ',' ) | None => { } , _ => selector . push_str ( "," ) , } selector . push_str ( ident ) ; selector . push_str ( "*" ) ; } }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResult { # [ doc = "List of arguments for the format string." ] # [ serde ( rename = "args" , default ) ] pub args : Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResultArgsItems > > , # [ doc = "A localized format string with $N placeholders, where N is the 1-indexed argument number, e.g. 'Minifying the resource at URL $1 can save $2 bytes'." ] # [ serde ( rename = "format" , default ) ] pub format : Option < String > , }
+    impl ::field_selector::FieldSelector
+        for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResult
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems { # [ doc = "List of entries that provide additional details about a single URL. Optional." ] # [ serde ( rename = "details" , default ) ] pub details : Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItems > > , # [ doc = "A format string that gives information about the URL, and a list of arguments for that format string." ] # [ serde ( rename = "result" , default ) ] pub result : Option < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResult > , }
+    impl ::field_selector::FieldSelector
+        for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems { # [ doc = "Heading to be displayed with the list of URLs." ] # [ serde ( rename = "header" , default ) ] pub header : Option < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeader > , # [ doc = "List of entries that provide information about URLs in the url block. Optional." ] # [ serde ( rename = "urls" , default ) ] pub urls : Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems > > , }
+    impl ::field_selector::FieldSelector
+        for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems
+    {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -102,21 +229,22 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems { # [ doc = "Heading to be displayed with the list of URLs." ] # [ serde ( rename = "header" , default ) ] pub header : Option < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeader > , # [ doc = "List of entries that provide information about URLs in the url block. Optional." ] # [ serde ( rename = "urls" , default ) ] pub urls : Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems > > , }
-    impl ::field_selector::FieldSelector
-        for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems
-    {
+    pub struct ResultFormattedResults {
+        #[doc = "The locale of the formattedResults, e.g. \"en_US\"."]
+        #[serde(rename = "locale", default)]
+        pub locale: Option<String>,
+        #[doc = "Dictionary of formatted rule results, with one entry for each PageSpeed rule instantiated and run by the server."]
+        #[serde(rename = "ruleResults", default)]
+        pub rule_results: Option<
+            ::std::collections::BTreeMap<
+                String,
+                crate::schemas::ResultFormattedResultsRuleResultsAdditionalProperties,
+            >,
+        >,
+    }
+    impl ::field_selector::FieldSelector for ResultFormattedResults {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -130,184 +258,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeader { # [ doc = "List of arguments for the format string." ] # [ serde ( rename = "args" , default ) ] pub args : Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeaderArgsItems > > , # [ doc = "A localized format string with $N placeholders, where N is the 1-indexed argument number, e.g. 'Minifying the following $1 resources would save a total of $2 bytes'." ] # [ serde ( rename = "format" , default ) ] pub format : Option < String > , }
-    impl ::field_selector::FieldSelector
-        for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeader
-    {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeaderArgsItems {
-        #[doc = "Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, or DURATION."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-        #[doc = "Argument value, as a localized string."]
-        #[serde(rename = "value", default)]
-        pub value: Option<String>,
-    }
-    impl ::field_selector::FieldSelector
-        for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeaderArgsItems
-    {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems { # [ doc = "List of entries that provide additional details about a single URL. Optional." ] # [ serde ( rename = "details" , default ) ] pub details : Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItems > > , # [ doc = "A format string that gives information about the URL, and a list of arguments for that format string." ] # [ serde ( rename = "result" , default ) ] pub result : Option < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResult > , }
-    impl ::field_selector::FieldSelector
-        for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems
-    {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItems { # [ doc = "List of arguments for the format string." ] # [ serde ( rename = "args" , default ) ] pub args : Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItemsArgsItems > > , # [ doc = "A localized format string with $N placeholders, where N is the 1-indexed argument number, e.g. 'Unnecessary metadata for this resource adds an additional $1 bytes to its download size'." ] # [ serde ( rename = "format" , default ) ] pub format : Option < String > , }
-    impl ::field_selector::FieldSelector
-        for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItems
-    {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItemsArgsItems
-    {
-        #[doc = "Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, or DURATION."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-        #[doc = "Argument value, as a localized string."]
-        #[serde(rename = "value", default)]
-        pub value: Option<String>,
-    }
-    impl :: field_selector :: FieldSelector for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItemsArgsItems { fn field_selector_with_ident ( ident : & str , selector : & mut String ) { match selector . chars ( ) . rev ( ) . nth ( 0 ) { Some ( ',' ) | None => { } , _ => selector . push_str ( "," ) , } selector . push_str ( ident ) ; selector . push_str ( "*" ) ; } }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResult { # [ doc = "List of arguments for the format string." ] # [ serde ( rename = "args" , default ) ] pub args : Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResultArgsItems > > , # [ doc = "A localized format string with $N placeholders, where N is the 1-indexed argument number, e.g. 'Minifying the resource at URL $1 can save $2 bytes'." ] # [ serde ( rename = "format" , default ) ] pub format : Option < String > , }
-    impl ::field_selector::FieldSelector
-        for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResult
-    {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResultArgsItems
-    {
-        #[doc = "Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, or DURATION."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-        #[doc = "Argument value, as a localized string."]
-        #[serde(rename = "value", default)]
-        pub value: Option<String>,
-    }
-    impl :: field_selector :: FieldSelector for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResultArgsItems { fn field_selector_with_ident ( ident : & str , selector : & mut String ) { match selector . chars ( ) . rev ( ) . nth ( 0 ) { Some ( ',' ) | None => { } , _ => selector . push_str ( "," ) , } selector . push_str ( ident ) ; selector . push_str ( "*" ) ; } }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -377,8 +329,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -413,8 +365,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -439,9 +391,57 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Result {
+        #[doc = "The captcha verify result"]
+        #[serde(rename = "captchaResult", default)]
+        pub captcha_result: Option<String>,
+        #[doc = "Localized PageSpeed results. Contains a ruleResults entry for each PageSpeed rule instantiated and run by the server."]
+        #[serde(rename = "formattedResults", default)]
+        pub formatted_results: Option<crate::schemas::ResultFormattedResults>,
+        #[doc = "Canonicalized and final URL for the document, after following page redirects (if any)."]
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+        #[doc = "List of rules that were specified in the request, but which the server did not know how to instantiate."]
+        #[serde(rename = "invalidRules", default)]
+        pub invalid_rules: Option<Vec<String>>,
+        #[doc = "Kind of result."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Summary statistics for the page, such as number of JavaScript bytes, number of HTML bytes, etc."]
+        #[serde(rename = "pageStats", default)]
+        pub page_stats: Option<crate::schemas::ResultPageStats>,
+        #[doc = "Response code for the document. 200 indicates a normal page load. 4xx/5xx indicates an error."]
+        #[serde(rename = "responseCode", default)]
+        pub response_code: Option<i32>,
+        #[doc = "The PageSpeed Score (0-100), which indicates how much faster a page could be. A high score indicates little room for improvement, while a lower score indicates more room for improvement."]
+        #[serde(rename = "score", default)]
+        pub score: Option<i32>,
+        #[doc = "Base64-encoded screenshot of the page that was analyzed."]
+        #[serde(rename = "screenshot", default)]
+        pub screenshot: Option<crate::schemas::ResultScreenshot>,
+        #[doc = "Title of the page, as displayed in the browser's title bar."]
+        #[serde(rename = "title", default)]
+        pub title: Option<String>,
+        #[doc = "The version of PageSpeed used to generate these results."]
+        #[serde(rename = "version", default)]
+        pub version: Option<crate::schemas::ResultVersion>,
+    }
+    impl ::field_selector::FieldSelector for Result {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -505,7 +505,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
 }
 pub mod pagespeedapi {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum RunpagespeedStrategy {
             #[doc = "Fetch and analyze the URL for desktop browsers"]
             Desktop,

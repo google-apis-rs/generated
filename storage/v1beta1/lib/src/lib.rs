@@ -3,8 +3,68 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BucketOwner {
+        #[doc = "The entity, in the form group-groupId."]
+        #[serde(rename = "entity", default)]
+        pub entity: Option<String>,
+        #[doc = "The ID for the entity."]
+        #[serde(rename = "entityId", default)]
+        pub entity_id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for BucketOwner {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BucketWebsite {
+        #[doc = "Behaves as the bucket's directory index where missing objects are treated as potential directories."]
+        #[serde(rename = "mainPageSuffix", default)]
+        pub main_page_suffix: Option<String>,
+        #[doc = "The custom object to return when a requested resource is not found."]
+        #[serde(rename = "notFoundPage", default)]
+        pub not_found_page: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for BucketWebsite {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -58,8 +118,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -109,8 +169,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -139,68 +199,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BucketOwner {
-        #[doc = "The entity, in the form group-groupId."]
-        #[serde(rename = "entity", default)]
-        pub entity: Option<String>,
-        #[doc = "The ID for the entity."]
-        #[serde(rename = "entityId", default)]
-        pub entity_id: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for BucketOwner {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BucketWebsite {
-        #[doc = "Behaves as the bucket's directory index where missing objects are treated as potential directories."]
-        #[serde(rename = "mainPageSuffix", default)]
-        pub main_page_suffix: Option<String>,
-        #[doc = "The custom object to return when a requested resource is not found."]
-        #[serde(rename = "notFoundPage", default)]
-        pub not_found_page: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for BucketWebsite {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -232,8 +232,84 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ObjectMedia {
+        #[doc = "Hash algorithm used. Currently only MD5 is supported. Required if a hash is provided."]
+        #[serde(rename = "algorithm", default)]
+        pub algorithm: Option<String>,
+        #[doc = "Content-Type of the object data."]
+        #[serde(rename = "contentType", default)]
+        pub content_type: Option<String>,
+        #[doc = "URL-safe Base64-encoded data. This property can be used to insert objects under 64KB in size, and will only be returned in response to the get method for objects so created. When this resource is returned in response to the list method, this property is omitted."]
+        #[serde(rename = "data", default)]
+        pub data: Option<Vec<u8>>,
+        #[doc = "Hash of the data. Required if a hash algorithm is provided."]
+        #[serde(rename = "hash", default)]
+        pub hash: Option<String>,
+        #[doc = "Content-Length of the data in bytes."]
+        #[serde(rename = "length", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub length: Option<u64>,
+        #[doc = "Media download link."]
+        #[serde(rename = "link", default)]
+        pub link: Option<String>,
+        #[doc = "Creation time of the data in RFC 3339 format."]
+        #[serde(rename = "timeCreated", default)]
+        pub time_created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+    }
+    impl ::field_selector::FieldSelector for ObjectMedia {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ObjectOwner {
+        #[doc = "The entity, in the form user-userId."]
+        #[serde(rename = "entity", default)]
+        pub entity: Option<String>,
+        #[doc = "The ID for the entity."]
+        #[serde(rename = "entityId", default)]
+        pub entity_id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ObjectOwner {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -295,8 +371,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -349,8 +425,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -379,84 +455,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ObjectMedia {
-        #[doc = "Hash algorithm used. Currently only MD5 is supported. Required if a hash is provided."]
-        #[serde(rename = "algorithm", default)]
-        pub algorithm: Option<String>,
-        #[doc = "Content-Type of the object data."]
-        #[serde(rename = "contentType", default)]
-        pub content_type: Option<String>,
-        #[doc = "URL-safe Base64-encoded data. This property can be used to insert objects under 64KB in size, and will only be returned in response to the get method for objects so created. When this resource is returned in response to the list method, this property is omitted."]
-        #[serde(rename = "data", default)]
-        pub data: Option<Vec<u8>>,
-        #[doc = "Hash of the data. Required if a hash algorithm is provided."]
-        #[serde(rename = "hash", default)]
-        pub hash: Option<String>,
-        #[doc = "Content-Length of the data in bytes."]
-        #[serde(rename = "length", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub length: Option<u64>,
-        #[doc = "Media download link."]
-        #[serde(rename = "link", default)]
-        pub link: Option<String>,
-        #[doc = "Creation time of the data in RFC 3339 format."]
-        #[serde(rename = "timeCreated", default)]
-        pub time_created: Option<::chrono::DateTime<chrono::offset::Utc>>,
-    }
-    impl ::field_selector::FieldSelector for ObjectMedia {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ObjectOwner {
-        #[doc = "The entity, in the form user-userId."]
-        #[serde(rename = "entity", default)]
-        pub entity: Option<String>,
-        #[doc = "The ID for the entity."]
-        #[serde(rename = "entityId", default)]
-        pub entity_id: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ObjectOwner {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -489,7 +489,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -1306,7 +1306,7 @@ pub mod bucket_access_controls {
 }
 pub mod buckets {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum GetProjection {
             #[doc = "Include all properties."]
             Full,
@@ -1352,7 +1352,7 @@ pub mod buckets {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum InsertProjection {
             #[doc = "Include all properties."]
             Full,
@@ -1398,7 +1398,7 @@ pub mod buckets {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListProjection {
             #[doc = "Include all properties."]
             Full,
@@ -1444,7 +1444,7 @@ pub mod buckets {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum PatchProjection {
             #[doc = "Include all properties."]
             Full,
@@ -1490,7 +1490,7 @@ pub mod buckets {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum UpdateProjection {
             #[doc = "Include all properties."]
             Full,
@@ -3112,7 +3112,7 @@ pub mod object_access_controls {
 }
 pub mod objects {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum GetProjection {
             #[doc = "Include all properties."]
             Full,
@@ -3158,7 +3158,7 @@ pub mod objects {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum InsertProjection {
             #[doc = "Include all properties."]
             Full,
@@ -3204,7 +3204,7 @@ pub mod objects {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListProjection {
             #[doc = "Include all properties."]
             Full,
@@ -3250,7 +3250,7 @@ pub mod objects {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum PatchProjection {
             #[doc = "Include all properties."]
             Full,
@@ -3296,7 +3296,7 @@ pub mod objects {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum UpdateProjection {
             #[doc = "Include all properties."]
             Full,

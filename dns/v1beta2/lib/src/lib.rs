@@ -1,50 +1,5 @@
 pub mod schemas {
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Change {
-        #[doc = "Which ResourceRecordSets to add?"]
-        #[serde(rename = "additions", default)]
-        pub additions: Option<Vec<crate::schemas::ResourceRecordSet>>,
-        #[doc = "Which ResourceRecordSets to remove? Must match existing data exactly."]
-        #[serde(rename = "deletions", default)]
-        pub deletions: Option<Vec<crate::schemas::ResourceRecordSet>>,
-        #[doc = "Unique identifier for the resource; defined by the server (output only)."]
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-        #[doc = "If the DNS queries for the zone will be served."]
-        #[serde(rename = "isServing", default)]
-        pub is_serving: Option<bool>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#change\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "The time that this operation was started by the server (output only). This is in RFC3339 text format."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
-        #[doc = "Status of the operation (output only). A status of \"done\" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet."]
-        #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::ChangeStatus>,
-    }
-    impl ::field_selector::FieldSelector for Change {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ChangeStatus {
         Done,
         Pending,
@@ -92,8 +47,53 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Change {
+        #[doc = "Which ResourceRecordSets to add?"]
+        #[serde(rename = "additions", default)]
+        pub additions: Option<Vec<crate::schemas::ResourceRecordSet>>,
+        #[doc = "Which ResourceRecordSets to remove? Must match existing data exactly."]
+        #[serde(rename = "deletions", default)]
+        pub deletions: Option<Vec<crate::schemas::ResourceRecordSet>>,
+        #[doc = "Unique identifier for the resource; defined by the server (output only)."]
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+        #[doc = "If the DNS queries for the zone will be served."]
+        #[serde(rename = "isServing", default)]
+        pub is_serving: Option<bool>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#change\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "The time that this operation was started by the server (output only). This is in RFC3339 text format."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: Option<String>,
+        #[doc = "Status of the operation (output only). A status of \"done\" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet."]
+        #[serde(rename = "status", default)]
+        pub status: Option<crate::schemas::ChangeStatus>,
+    }
+    impl ::field_selector::FieldSelector for Change {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -123,64 +123,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DnsKey {
-        #[doc = "String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time."]
-        #[serde(rename = "algorithm", default)]
-        pub algorithm: Option<crate::schemas::DnsKeyAlgorithm>,
-        #[doc = "The time that this resource was created in the control plane. This is in RFC3339 text format. Output only."]
-        #[serde(rename = "creationTime", default)]
-        pub creation_time: Option<String>,
-        #[doc = "A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the resource's function."]
-        #[serde(rename = "description", default)]
-        pub description: Option<String>,
-        #[doc = "Cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Output only."]
-        #[serde(rename = "digests", default)]
-        pub digests: Option<Vec<crate::schemas::DnsKeyDigest>>,
-        #[doc = "Unique identifier for the resource; defined by the server (output only)."]
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-        #[doc = "Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures."]
-        #[serde(rename = "isActive", default)]
-        pub is_active: Option<bool>,
-        #[doc = "Length of the key in bits. Specified at creation time then immutable."]
-        #[serde(rename = "keyLength", default)]
-        pub key_length: Option<u32>,
-        #[doc = "The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B. Output only."]
-        #[serde(rename = "keyTag", default)]
-        pub key_tag: Option<i32>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#dnsKey\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Base64 encoded public half of this key. Output only."]
-        #[serde(rename = "publicKey", default)]
-        pub public_key: Option<String>,
-        #[doc = "One of \"KEY_SIGNING\" or \"ZONE_SIGNING\". Keys of type KEY_SIGNING have the Secure Entry Point flag set and, when active, will be used to sign only resource record sets of type DNSKEY. Otherwise, the Secure Entry Point flag will be cleared and this key will be used to sign only resource record sets of other types. Immutable after creation time."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DnsKeyType>,
-    }
-    impl ::field_selector::FieldSelector for DnsKey {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DnsKeyAlgorithm {
         Ecdsap256Sha256,
         Ecdsap384Sha384,
@@ -233,27 +176,98 @@ pub mod schemas {
             })
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum DnsKeyType {
+        KeySigning,
+        ZoneSigning,
+    }
+    impl DnsKeyType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                DnsKeyType::KeySigning => "keySigning",
+                DnsKeyType::ZoneSigning => "zoneSigning",
+            }
+        }
+    }
+    impl ::std::fmt::Display for DnsKeyType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for DnsKeyType {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for DnsKeyType {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "keySigning" => DnsKeyType::KeySigning,
+                "zoneSigning" => DnsKeyType::ZoneSigning,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DnsKeyDigest {
-        #[doc = "The base-16 encoded bytes of this digest. Suitable for use in a DS resource record."]
-        #[serde(rename = "digest", default)]
-        pub digest: Option<String>,
-        #[doc = "Specifies the algorithm used to calculate this digest."]
+    pub struct DnsKey {
+        #[doc = "String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time."]
+        #[serde(rename = "algorithm", default)]
+        pub algorithm: Option<crate::schemas::DnsKeyAlgorithm>,
+        #[doc = "The time that this resource was created in the control plane. This is in RFC3339 text format. Output only."]
+        #[serde(rename = "creationTime", default)]
+        pub creation_time: Option<String>,
+        #[doc = "A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the resource's function."]
+        #[serde(rename = "description", default)]
+        pub description: Option<String>,
+        #[doc = "Cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Output only."]
+        #[serde(rename = "digests", default)]
+        pub digests: Option<Vec<crate::schemas::DnsKeyDigest>>,
+        #[doc = "Unique identifier for the resource; defined by the server (output only)."]
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+        #[doc = "Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures."]
+        #[serde(rename = "isActive", default)]
+        pub is_active: Option<bool>,
+        #[doc = "Length of the key in bits. Specified at creation time then immutable."]
+        #[serde(rename = "keyLength", default)]
+        pub key_length: Option<u32>,
+        #[doc = "The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B. Output only."]
+        #[serde(rename = "keyTag", default)]
+        pub key_tag: Option<i32>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#dnsKey\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Base64 encoded public half of this key. Output only."]
+        #[serde(rename = "publicKey", default)]
+        pub public_key: Option<String>,
+        #[doc = "One of \"KEY_SIGNING\" or \"ZONE_SIGNING\". Keys of type KEY_SIGNING have the Secure Entry Point flag set and, when active, will be used to sign only resource record sets of type DNSKEY. Otherwise, the Secure Entry Point flag will be cleared and this key will be used to sign only resource record sets of other types. Immutable after creation time."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DnsKeyDigestType>,
+        pub r#type: Option<crate::schemas::DnsKeyType>,
     }
-    impl ::field_selector::FieldSelector for DnsKeyDigest {
+    impl ::field_selector::FieldSelector for DnsKey {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -263,7 +277,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DnsKeyDigestType {
         Sha1,
         Sha256,
@@ -314,29 +328,23 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DnsKeySpec {
-        #[doc = "String mnemonic specifying the DNSSEC algorithm of this key."]
-        #[serde(rename = "algorithm", default)]
-        pub algorithm: Option<crate::schemas::DnsKeySpecAlgorithm>,
-        #[doc = "Length of the keys in bits."]
-        #[serde(rename = "keyLength", default)]
-        pub key_length: Option<u32>,
-        #[doc = "Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, will only be used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all other types of resource record sets."]
-        #[serde(rename = "keyType", default)]
-        pub key_type: Option<crate::schemas::DnsKeySpecKeyType>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#dnsKeySpec\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+    pub struct DnsKeyDigest {
+        #[doc = "The base-16 encoded bytes of this digest. Suitable for use in a DS resource record."]
+        #[serde(rename = "digest", default)]
+        pub digest: Option<String>,
+        #[doc = "Specifies the algorithm used to calculate this digest."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::DnsKeyDigestType>,
     }
-    impl ::field_selector::FieldSelector for DnsKeySpec {
+    impl ::field_selector::FieldSelector for DnsKeyDigest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -346,7 +354,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DnsKeySpecAlgorithm {
         Ecdsap256Sha256,
         Ecdsap384Sha384,
@@ -399,7 +407,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DnsKeySpecKeyType {
         KeySigning,
         ZoneSigning,
@@ -443,56 +451,48 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum DnsKeyType {
-        KeySigning,
-        ZoneSigning,
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DnsKeySpec {
+        #[doc = "String mnemonic specifying the DNSSEC algorithm of this key."]
+        #[serde(rename = "algorithm", default)]
+        pub algorithm: Option<crate::schemas::DnsKeySpecAlgorithm>,
+        #[doc = "Length of the keys in bits."]
+        #[serde(rename = "keyLength", default)]
+        pub key_length: Option<u32>,
+        #[doc = "Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, will only be used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all other types of resource record sets."]
+        #[serde(rename = "keyType", default)]
+        pub key_type: Option<crate::schemas::DnsKeySpecKeyType>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#dnsKeySpec\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
     }
-    impl DnsKeyType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                DnsKeyType::KeySigning => "keySigning",
-                DnsKeyType::ZoneSigning => "zoneSigning",
+    impl ::field_selector::FieldSelector for DnsKeySpec {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
             }
-        }
-    }
-    impl ::std::fmt::Display for DnsKeyType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for DnsKeyType {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for DnsKeyType {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "keySigning" => DnsKeyType::KeySigning,
-                "zoneSigning" => DnsKeyType::ZoneSigning,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
+            selector.push_str(ident);
+            selector.push_str("*");
         }
     }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -522,12 +522,56 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ManagedZoneVisibility {
+        Private,
+        Public,
+    }
+    impl ManagedZoneVisibility {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ManagedZoneVisibility::Private => "private",
+                ManagedZoneVisibility::Public => "public",
+            }
+        }
+    }
+    impl ::std::fmt::Display for ManagedZoneVisibility {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ManagedZoneVisibility {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ManagedZoneVisibility {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "private" => ManagedZoneVisibility::Private,
+                "public" => ManagedZoneVisibility::Public,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -589,43 +633,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ManagedZoneDnsSecConfig {
-        #[doc = "Specifies parameters that will be used for generating initial DnsKeys for this ManagedZone. Can only be changed while state is OFF."]
-        #[serde(rename = "defaultKeySpecs", default)]
-        pub default_key_specs: Option<Vec<crate::schemas::DnsKeySpec>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZoneDnsSecConfig\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Specifies the mechanism used to provide authenticated denial-of-existence responses. Can only be changed while state is OFF."]
-        #[serde(rename = "nonExistence", default)]
-        pub non_existence: Option<crate::schemas::ManagedZoneDnsSecConfigNonExistence>,
-        #[doc = "Specifies whether DNSSEC is enabled, and what mode it is in."]
-        #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::ManagedZoneDnsSecConfigState>,
-    }
-    impl ::field_selector::FieldSelector for ManagedZoneDnsSecConfig {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ManagedZoneDnsSecConfigNonExistence {
         Nsec,
         Nsec3,
@@ -669,7 +677,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ManagedZoneDnsSecConfigState {
         Off,
         On,
@@ -720,8 +728,44 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ManagedZoneDnsSecConfig {
+        #[doc = "Specifies parameters that will be used for generating initial DnsKeys for this ManagedZone. Can only be changed while state is OFF."]
+        #[serde(rename = "defaultKeySpecs", default)]
+        pub default_key_specs: Option<Vec<crate::schemas::DnsKeySpec>>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZoneDnsSecConfig\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Specifies the mechanism used to provide authenticated denial-of-existence responses. Can only be changed while state is OFF."]
+        #[serde(rename = "nonExistence", default)]
+        pub non_existence: Option<crate::schemas::ManagedZoneDnsSecConfigNonExistence>,
+        #[doc = "Specifies whether DNSSEC is enabled, and what mode it is in."]
+        #[serde(rename = "state", default)]
+        pub state: Option<crate::schemas::ManagedZoneDnsSecConfigState>,
+    }
+    impl ::field_selector::FieldSelector for ManagedZoneDnsSecConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -751,8 +795,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -781,8 +825,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -816,8 +860,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -846,8 +890,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -879,8 +923,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -909,8 +953,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -935,56 +979,12 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum ManagedZoneVisibility {
-        Private,
-        Public,
-    }
-    impl ManagedZoneVisibility {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ManagedZoneVisibility::Private => "private",
-                ManagedZoneVisibility::Public => "public",
-            }
-        }
-    }
-    impl ::std::fmt::Display for ManagedZoneVisibility {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ManagedZoneVisibility {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ManagedZoneVisibility {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "private" => ManagedZoneVisibility::Private,
-                "public" => ManagedZoneVisibility::Public,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1014,115 +1014,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Operation {
-        #[doc = "Only populated if the operation targeted a DnsKey (output only)."]
-        #[serde(rename = "dnsKeyContext", default)]
-        pub dns_key_context: Option<crate::schemas::OperationDnsKeyContext>,
-        #[doc = "Unique identifier for the resource. This is the client_operation_id if the client specified it when the mutation was initiated, otherwise, it is generated by the server. The name must be 1-63 characters long and match the regular expression [-a-z0-9]? (output only)"]
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#operation\"."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Type of the operation. Operations include insert, update, and delete (output only)."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-        #[doc = "The time that this operation was started by the server. This is in RFC3339 text format (output only)."]
-        #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
-        #[doc = "Status of the operation. Can be one of the following: \"PENDING\" or \"DONE\" (output only). A status of \"DONE\" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet."]
-        #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::OperationStatus>,
-        #[doc = "User who requested the operation, for example: user@example.com. cloud-dns-system for operations automatically done by the system. (output only)"]
-        #[serde(rename = "user", default)]
-        pub user: Option<String>,
-        #[doc = "Only populated if the operation targeted a ManagedZone (output only)."]
-        #[serde(rename = "zoneContext", default)]
-        pub zone_context: Option<crate::schemas::OperationManagedZoneContext>,
-    }
-    impl ::field_selector::FieldSelector for Operation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct OperationDnsKeyContext {
-        #[doc = "The post-operation DnsKey resource."]
-        #[serde(rename = "newValue", default)]
-        pub new_value: Option<crate::schemas::DnsKey>,
-        #[doc = "The pre-operation DnsKey resource."]
-        #[serde(rename = "oldValue", default)]
-        pub old_value: Option<crate::schemas::DnsKey>,
-    }
-    impl ::field_selector::FieldSelector for OperationDnsKeyContext {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct OperationManagedZoneContext {
-        #[doc = "The post-operation ManagedZone resource."]
-        #[serde(rename = "newValue", default)]
-        pub new_value: Option<crate::schemas::ManagedZone>,
-        #[doc = "The pre-operation ManagedZone resource."]
-        #[serde(rename = "oldValue", default)]
-        pub old_value: Option<crate::schemas::ManagedZone>,
-    }
-    impl ::field_selector::FieldSelector for OperationManagedZoneContext {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OperationStatus {
         Done,
         Pending,
@@ -1170,8 +1062,116 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Operation {
+        #[doc = "Only populated if the operation targeted a DnsKey (output only)."]
+        #[serde(rename = "dnsKeyContext", default)]
+        pub dns_key_context: Option<crate::schemas::OperationDnsKeyContext>,
+        #[doc = "Unique identifier for the resource. This is the client_operation_id if the client specified it when the mutation was initiated, otherwise, it is generated by the server. The name must be 1-63 characters long and match the regular expression [-a-z0-9]? (output only)"]
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#operation\"."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Type of the operation. Operations include insert, update, and delete (output only)."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+        #[doc = "The time that this operation was started by the server. This is in RFC3339 text format (output only)."]
+        #[serde(rename = "startTime", default)]
+        pub start_time: Option<String>,
+        #[doc = "Status of the operation. Can be one of the following: \"PENDING\" or \"DONE\" (output only). A status of \"DONE\" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet."]
+        #[serde(rename = "status", default)]
+        pub status: Option<crate::schemas::OperationStatus>,
+        #[doc = "User who requested the operation, for example: user@example.com. cloud-dns-system for operations automatically done by the system. (output only)"]
+        #[serde(rename = "user", default)]
+        pub user: Option<String>,
+        #[doc = "Only populated if the operation targeted a ManagedZone (output only)."]
+        #[serde(rename = "zoneContext", default)]
+        pub zone_context: Option<crate::schemas::OperationManagedZoneContext>,
+    }
+    impl ::field_selector::FieldSelector for Operation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct OperationDnsKeyContext {
+        #[doc = "The post-operation DnsKey resource."]
+        #[serde(rename = "newValue", default)]
+        pub new_value: Option<crate::schemas::DnsKey>,
+        #[doc = "The pre-operation DnsKey resource."]
+        #[serde(rename = "oldValue", default)]
+        pub old_value: Option<crate::schemas::DnsKey>,
+    }
+    impl ::field_selector::FieldSelector for OperationDnsKeyContext {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct OperationManagedZoneContext {
+        #[doc = "The post-operation ManagedZone resource."]
+        #[serde(rename = "newValue", default)]
+        pub new_value: Option<crate::schemas::ManagedZone>,
+        #[doc = "The pre-operation ManagedZone resource."]
+        #[serde(rename = "oldValue", default)]
+        pub old_value: Option<crate::schemas::ManagedZone>,
+    }
+    impl ::field_selector::FieldSelector for OperationManagedZoneContext {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1205,8 +1205,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1233,8 +1233,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1261,8 +1261,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1311,8 +1311,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1342,8 +1342,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1372,8 +1372,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1402,8 +1402,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1439,8 +1439,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1508,8 +1508,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1550,8 +1550,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1585,8 +1585,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1610,7 +1610,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -1720,7 +1720,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
 }
 pub mod changes {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortBy {
             ChangeSequence,
         }
@@ -2647,7 +2647,7 @@ pub mod dns_keys {
 }
 pub mod managed_zone_operations {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListSortBy {
             Id,
             StartTime,

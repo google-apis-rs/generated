@@ -74,8 +74,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -100,28 +100,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct AttributeParameters {
-        #[doc = "Don't return scores for this attribute that are below this threshold. If\nunset, a default threshold will be applied. A FloatValue wrapper is used to\ndistinguish between 0 vs. default/unset."]
-        #[serde(rename = "scoreThreshold", default)]
-        pub score_threshold: Option<f32>,
-        #[doc = "What type of scores to return. If unset, defaults to probability scores."]
-        #[serde(rename = "scoreType", default)]
-        pub score_type: Option<crate::schemas::AttributeParametersScoreType>,
-    }
-    impl ::field_selector::FieldSelector for AttributeParameters {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AttributeParametersScoreType {
         #[doc = "Unspecified. Defaults to PROBABILITY scores if available, and otherwise\nRAW. Every model has a RAW score."]
         ScoreTypeUnspecified,
@@ -182,6 +161,27 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct AttributeParameters {
+        #[doc = "Don't return scores for this attribute that are below this threshold. If\nunset, a default threshold will be applied. A FloatValue wrapper is used to\ndistinguish between 0 vs. default/unset."]
+        #[serde(rename = "scoreThreshold", default)]
+        pub score_threshold: Option<f32>,
+        #[doc = "What type of scores to return. If unset, defaults to probability scores."]
+        #[serde(rename = "scoreType", default)]
+        pub score_type: Option<crate::schemas::AttributeParametersScoreType>,
+    }
+    impl ::field_selector::FieldSelector for AttributeParameters {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
     pub struct AttributeScores {
         #[doc = "Per-span scores."]
         #[serde(rename = "spanScores", default)]
@@ -204,8 +204,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -230,28 +230,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct Score {
-        #[doc = "The type of the above value."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::ScoreType>,
-        #[doc = "Score value. Semantics described by type below."]
-        #[serde(rename = "value", default)]
-        pub value: Option<f32>,
-    }
-    impl ::field_selector::FieldSelector for Score {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ScoreType {
         #[doc = "Unspecified. Defaults to PROBABILITY scores if available, and otherwise\nRAW. Every model has a RAW score."]
         ScoreTypeUnspecified,
@@ -307,6 +286,27 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Score {
+        #[doc = "The type of the above value."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::ScoreType>,
+        #[doc = "Score value. Semantics described by type below."]
+        #[serde(rename = "value", default)]
+        pub value: Option<f32>,
+    }
+    impl ::field_selector::FieldSelector for Score {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
         }
     }
     #[derive(
@@ -373,8 +373,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -402,37 +402,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct TextEntry {
-        #[doc = "Type of the text field."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::TextEntryType>,
-        #[doc = "UTF-8 encoded text."]
-        #[serde(rename = "text", default)]
-        pub text: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for TextEntry {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TextEntryType {
         #[doc = "The content type is not specified. Text will be interpreted as plain text\nby default."]
         TextTypeUnspecified,
@@ -482,9 +452,39 @@ pub mod schemas {
             })
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TextEntry {
+        #[doc = "Type of the text field."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::TextEntryType>,
+        #[doc = "UTF-8 encoded text."]
+        #[serde(rename = "text", default)]
+        pub text: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for TextEntry {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -534,7 +534,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,

@@ -3,8 +3,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -45,8 +45,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -80,37 +80,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BasicLevel {
-        #[doc = "How the `conditions` list should be combined to determine if a request is\ngranted this `AccessLevel`. If AND is used, each `Condition` in\n`conditions` must be satisfied for the `AccessLevel` to be applied. If OR\nis used, at least one `Condition` in `conditions` must be satisfied for the\n`AccessLevel` to be applied. Default behavior is AND."]
-        #[serde(rename = "combiningFunction", default)]
-        pub combining_function: Option<crate::schemas::BasicLevelCombiningFunction>,
-        #[doc = "Required. A list of requirements for the `AccessLevel` to be granted."]
-        #[serde(rename = "conditions", default)]
-        pub conditions: Option<Vec<crate::schemas::Condition>>,
-    }
-    impl ::field_selector::FieldSelector for BasicLevel {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BasicLevelCombiningFunction {
         #[doc = "All `Conditions` must be true for the `BasicLevel` to be true."]
         And,
@@ -160,8 +130,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BasicLevel {
+        #[doc = "How the `conditions` list should be combined to determine if a request is\ngranted this `AccessLevel`. If AND is used, each `Condition` in\n`conditions` must be satisfied for the `AccessLevel` to be applied. If OR\nis used, at least one `Condition` in `conditions` must be satisfied for the\n`AccessLevel` to be applied. Default behavior is AND."]
+        #[serde(rename = "combiningFunction", default)]
+        pub combining_function: Option<crate::schemas::BasicLevelCombiningFunction>,
+        #[doc = "Required. A list of requirements for the `AccessLevel` to be granted."]
+        #[serde(rename = "conditions", default)]
+        pub conditions: Option<Vec<crate::schemas::Condition>>,
+    }
+    impl ::field_selector::FieldSelector for BasicLevel {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -190,8 +190,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -228,51 +228,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DevicePolicy {
-        #[doc = "Allowed device management levels, an empty list allows all management\nlevels."]
-        #[serde(rename = "allowedDeviceManagementLevels", default)]
-        pub allowed_device_management_levels:
-            Option<Vec<crate::schemas::DevicePolicyAllowedDeviceManagementLevelsItems>>,
-        #[doc = "Allowed encryptions statuses, an empty list allows all statuses."]
-        #[serde(rename = "allowedEncryptionStatuses", default)]
-        pub allowed_encryption_statuses:
-            Option<Vec<crate::schemas::DevicePolicyAllowedEncryptionStatusesItems>>,
-        #[doc = "Allowed OS versions, an empty list allows all types and all versions."]
-        #[serde(rename = "osConstraints", default)]
-        pub os_constraints: Option<Vec<crate::schemas::OsConstraint>>,
-        #[doc = "Whether the device needs to be approved by the customer admin."]
-        #[serde(rename = "requireAdminApproval", default)]
-        pub require_admin_approval: Option<bool>,
-        #[doc = "Whether the device needs to be corp owned."]
-        #[serde(rename = "requireCorpOwned", default)]
-        pub require_corp_owned: Option<bool>,
-        #[doc = "Whether or not screenlock is required for the DevicePolicy to be true.\nDefaults to `false`."]
-        #[serde(rename = "requireScreenlock", default)]
-        pub require_screenlock: Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for DevicePolicy {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DevicePolicyAllowedDeviceManagementLevelsItems {}
     impl DevicePolicyAllowedDeviceManagementLevelsItems {
         pub fn as_str(self) -> &'static str {
@@ -308,7 +264,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DevicePolicyAllowedEncryptionStatusesItems {}
     impl DevicePolicyAllowedEncryptionStatusesItems {
         pub fn as_str(self) -> &'static str {
@@ -348,8 +304,52 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DevicePolicy {
+        #[doc = "Allowed device management levels, an empty list allows all management\nlevels."]
+        #[serde(rename = "allowedDeviceManagementLevels", default)]
+        pub allowed_device_management_levels:
+            Option<Vec<crate::schemas::DevicePolicyAllowedDeviceManagementLevelsItems>>,
+        #[doc = "Allowed encryptions statuses, an empty list allows all statuses."]
+        #[serde(rename = "allowedEncryptionStatuses", default)]
+        pub allowed_encryption_statuses:
+            Option<Vec<crate::schemas::DevicePolicyAllowedEncryptionStatusesItems>>,
+        #[doc = "Allowed OS versions, an empty list allows all types and all versions."]
+        #[serde(rename = "osConstraints", default)]
+        pub os_constraints: Option<Vec<crate::schemas::OsConstraint>>,
+        #[doc = "Whether the device needs to be approved by the customer admin."]
+        #[serde(rename = "requireAdminApproval", default)]
+        pub require_admin_approval: Option<bool>,
+        #[doc = "Whether the device needs to be corp owned."]
+        #[serde(rename = "requireCorpOwned", default)]
+        pub require_corp_owned: Option<bool>,
+        #[doc = "Whether or not screenlock is required for the DevicePolicy to be true.\nDefaults to `false`."]
+        #[serde(rename = "requireScreenlock", default)]
+        pub require_screenlock: Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for DevicePolicy {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -378,8 +378,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -408,8 +408,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -438,8 +438,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -464,9 +464,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
         #[serde(rename = "done", default)]
@@ -494,40 +492,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct OsConstraint {
-        #[doc = "The minimum allowed OS version. If not set, any version of this OS\nsatisfies the constraint. Format: `\"major.minor.patch\"`.\nExamples: `\"10.5.301\"`, `\"9.2.1\"`."]
-        #[serde(rename = "minimumVersion", default)]
-        pub minimum_version: Option<String>,
-        #[doc = "Required. The allowed OS type."]
-        #[serde(rename = "osType", default)]
-        pub os_type: Option<crate::schemas::OsConstraintOsType>,
-        #[doc = "Only allows requests from devices with a verified Chrome OS.\nVerifications includes requirements that the device is enterprise-managed,\nconformant to Dasher domain policies, and the caller has permission to call\nthe API targeted by the request."]
-        #[serde(rename = "requireVerifiedChromeOs", default)]
-        pub require_verified_chrome_os: Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for OsConstraint {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OsConstraintOsType {
         #[doc = "The operating system of the device is not specified or not known."]
         OsUnspecified,
@@ -589,38 +554,26 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ServicePerimeter {
-        #[doc = "Output only. Time the `ServicePerimeter` was created in UTC."]
-        #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
-        #[doc = "Description of the `ServicePerimeter` and its use. Does not affect\nbehavior."]
-        #[serde(rename = "description", default)]
-        pub description: Option<String>,
-        #[doc = "Required. Resource name for the ServicePerimeter.  The `short_name`\ncomponent must begin with a letter and only include alphanumeric and '_'.\nFormat: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`"]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "Perimeter type indicator. A single project is\nallowed to be a member of single regular perimeter, but multiple service\nperimeter bridges. A project cannot be a included in a perimeter bridge\nwithout being included in regular perimeter. For perimeter bridges,\nrestricted/unrestricted service lists as well as access lists must be\nempty."]
-        #[serde(rename = "perimeterType", default)]
-        pub perimeter_type: Option<crate::schemas::ServicePerimeterPerimeterType>,
-        #[doc = "Current ServicePerimeter configuration. Specifies sets of resources,\nrestricted/unrestricted services and access levels that determine perimeter\ncontent and boundaries."]
-        #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::ServicePerimeterConfig>,
-        #[doc = "Human readable title. Must be unique within the Policy."]
-        #[serde(rename = "title", default)]
-        pub title: Option<String>,
-        #[doc = "Output only. Time the `ServicePerimeter` was updated in UTC."]
-        #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+    pub struct OsConstraint {
+        #[doc = "The minimum allowed OS version. If not set, any version of this OS\nsatisfies the constraint. Format: `\"major.minor.patch\"`.\nExamples: `\"10.5.301\"`, `\"9.2.1\"`."]
+        #[serde(rename = "minimumVersion", default)]
+        pub minimum_version: Option<String>,
+        #[doc = "Required. The allowed OS type."]
+        #[serde(rename = "osType", default)]
+        pub os_type: Option<crate::schemas::OsConstraintOsType>,
+        #[doc = "Only allows requests from devices with a verified Chrome OS.\nVerifications includes requirements that the device is enterprise-managed,\nconformant to Dasher domain policies, and the caller has permission to call\nthe API targeted by the request."]
+        #[serde(rename = "requireVerifiedChromeOs", default)]
+        pub require_verified_chrome_os: Option<bool>,
     }
-    impl ::field_selector::FieldSelector for ServicePerimeter {
+    impl ::field_selector::FieldSelector for OsConstraint {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -630,52 +583,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ServicePerimeterConfig {
-        #[doc = "A list of `AccessLevel` resource names that allow resources within the\n`ServicePerimeter` to be accessed from the internet. `AccessLevels` listed\nmust be in the same policy as this `ServicePerimeter`. Referencing a\nnonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are\nlisted, resources within the perimeter can only be accessed via GCP calls\nwith request origins within the perimeter. Example:\n`\"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL\"`.\nFor Service Perimeter Bridge, must be empty."]
-        #[serde(rename = "accessLevels", default)]
-        pub access_levels: Option<Vec<String>>,
-        #[doc = "Alpha. Configuration for what services are accessible via the Bridge\nPerimeter. Must be empty for non-Bridge Perimeters."]
-        #[serde(rename = "bridgeServiceRestriction", default)]
-        pub bridge_service_restriction: Option<crate::schemas::BridgeServiceRestriction>,
-        #[doc = "Alpha. Configuration for which services may be used with Access Levels."]
-        #[serde(rename = "ingressServiceRestriction", default)]
-        pub ingress_service_restriction: Option<crate::schemas::IngressServiceRestriction>,
-        #[doc = "A list of GCP resources that are inside of the service perimeter.\nCurrently only projects are allowed. Format: `projects/{project_number}`"]
-        #[serde(rename = "resources", default)]
-        pub resources: Option<Vec<String>>,
-        #[doc = "GCP services that are subject to the Service Perimeter restrictions. Must\ncontain a list of services. For example, if\n`storage.googleapis.com` is specified, access to the storage buckets\ninside the perimeter must meet the perimeter's access restrictions."]
-        #[serde(rename = "restrictedServices", default)]
-        pub restricted_services: Option<Vec<String>>,
-        #[doc = "GCP services that are not subject to the Service Perimeter\nrestrictions. Deprecated. Must be set to a single wildcard \"*\".\n\nThe wildcard means that unless explicitly specified by\n\"restricted_services\" list, any service is treated as unrestricted."]
-        #[serde(rename = "unrestrictedServices", default)]
-        pub unrestricted_services: Option<Vec<String>>,
-        #[doc = "Alpha. Configuration for within Perimeter allowed APIs."]
-        #[serde(rename = "vpcServiceRestriction", default)]
-        pub vpc_service_restriction: Option<crate::schemas::VpcServiceRestriction>,
-    }
-    impl ::field_selector::FieldSelector for ServicePerimeterConfig {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ServicePerimeterPerimeterType {
         #[doc = "Regular Perimeter."]
         PerimeterTypeRegular,
@@ -722,8 +630,96 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
+    pub struct ServicePerimeter {
+        #[doc = "Output only. Time the `ServicePerimeter` was created in UTC."]
+        #[serde(rename = "createTime", default)]
+        pub create_time: Option<String>,
+        #[doc = "Description of the `ServicePerimeter` and its use. Does not affect\nbehavior."]
+        #[serde(rename = "description", default)]
+        pub description: Option<String>,
+        #[doc = "Required. Resource name for the ServicePerimeter.  The `short_name`\ncomponent must begin with a letter and only include alphanumeric and '_'.\nFormat: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`"]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "Perimeter type indicator. A single project is\nallowed to be a member of single regular perimeter, but multiple service\nperimeter bridges. A project cannot be a included in a perimeter bridge\nwithout being included in regular perimeter. For perimeter bridges,\nrestricted/unrestricted service lists as well as access lists must be\nempty."]
+        #[serde(rename = "perimeterType", default)]
+        pub perimeter_type: Option<crate::schemas::ServicePerimeterPerimeterType>,
+        #[doc = "Current ServicePerimeter configuration. Specifies sets of resources,\nrestricted/unrestricted services and access levels that determine perimeter\ncontent and boundaries."]
+        #[serde(rename = "status", default)]
+        pub status: Option<crate::schemas::ServicePerimeterConfig>,
+        #[doc = "Human readable title. Must be unique within the Policy."]
+        #[serde(rename = "title", default)]
+        pub title: Option<String>,
+        #[doc = "Output only. Time the `ServicePerimeter` was updated in UTC."]
+        #[serde(rename = "updateTime", default)]
+        pub update_time: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ServicePerimeter {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ServicePerimeterConfig {
+        #[doc = "A list of `AccessLevel` resource names that allow resources within the\n`ServicePerimeter` to be accessed from the internet. `AccessLevels` listed\nmust be in the same policy as this `ServicePerimeter`. Referencing a\nnonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are\nlisted, resources within the perimeter can only be accessed via GCP calls\nwith request origins within the perimeter. Example:\n`\"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL\"`.\nFor Service Perimeter Bridge, must be empty."]
+        #[serde(rename = "accessLevels", default)]
+        pub access_levels: Option<Vec<String>>,
+        #[doc = "Alpha. Configuration for what services are accessible via the Bridge\nPerimeter. Must be empty for non-Bridge Perimeters."]
+        #[serde(rename = "bridgeServiceRestriction", default)]
+        pub bridge_service_restriction: Option<crate::schemas::BridgeServiceRestriction>,
+        #[doc = "Alpha. Configuration for which services may be used with Access Levels."]
+        #[serde(rename = "ingressServiceRestriction", default)]
+        pub ingress_service_restriction: Option<crate::schemas::IngressServiceRestriction>,
+        #[doc = "A list of GCP resources that are inside of the service perimeter.\nCurrently only projects are allowed. Format: `projects/{project_number}`"]
+        #[serde(rename = "resources", default)]
+        pub resources: Option<Vec<String>>,
+        #[doc = "GCP services that are subject to the Service Perimeter restrictions. Must\ncontain a list of services. For example, if\n`storage.googleapis.com` is specified, access to the storage buckets\ninside the perimeter must meet the perimeter's access restrictions."]
+        #[serde(rename = "restrictedServices", default)]
+        pub restricted_services: Option<Vec<String>>,
+        #[doc = "GCP services that are not subject to the Service Perimeter\nrestrictions. Deprecated. Must be set to a single wildcard \"*\".\n\nThe wildcard means that unless explicitly specified by\n\"restricted_services\" list, any service is treated as unrestricted."]
+        #[serde(rename = "unrestrictedServices", default)]
+        pub unrestricted_services: Option<Vec<String>>,
+        #[doc = "Alpha. Configuration for within Perimeter allowed APIs."]
+        #[serde(rename = "vpcServiceRestriction", default)]
+        pub vpc_service_restriction: Option<crate::schemas::VpcServiceRestriction>,
+    }
+    impl ::field_selector::FieldSelector for ServicePerimeterConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
@@ -749,8 +745,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -777,7 +773,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -827,7 +823,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,
@@ -1768,7 +1764,7 @@ pub mod access_policies {
     }
     pub mod access_levels {
         pub mod params {
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetAccessLevelFormat {}
             impl GetAccessLevelFormat {
                 pub fn as_str(self) -> &'static str {
@@ -1804,7 +1800,7 @@ pub mod access_policies {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListAccessLevelFormat {}
             impl ListAccessLevelFormat {
                 pub fn as_str(self) -> &'static str {

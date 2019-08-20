@@ -1,50 +1,5 @@
 pub mod schemas {
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AndroidConfig {
-        #[doc = "An identifier of a group of messages that can be collapsed, so that only\nthe last message gets sent when delivery can be resumed. A maximum of 4\ndifferent collapse keys is allowed at any given time."]
-        #[serde(rename = "collapseKey", default)]
-        pub collapse_key: Option<String>,
-        #[doc = "Arbitrary key/value payload. If present, it will override\ngoogle.firebase.fcm.v1.Message.data."]
-        #[serde(rename = "data", default)]
-        pub data: Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Options for features provided by the FCM SDK for Android."]
-        #[serde(rename = "fcmOptions", default)]
-        pub fcm_options: Option<crate::schemas::AndroidFcmOptions>,
-        #[doc = "Notification to send to android devices."]
-        #[serde(rename = "notification", default)]
-        pub notification: Option<crate::schemas::AndroidNotification>,
-        #[doc = "Message priority. Can take \"normal\" and \"high\" values.\nFor more information, see [Setting the priority of a\nmessage](https://goo.gl/GjONJv)."]
-        #[serde(rename = "priority", default)]
-        pub priority: Option<crate::schemas::AndroidConfigPriority>,
-        #[doc = "Package name of the application where the registration token must match in\norder to receive the message."]
-        #[serde(rename = "restrictedPackageName", default)]
-        pub restricted_package_name: Option<String>,
-        #[doc = "How long (in seconds) the message should be kept in FCM storage if the\ndevice is offline. The maximum time to live supported is 4 weeks, and the\ndefault value is 4 weeks if not set. Set it to 0 if want to send the\nmessage immediately.\nIn JSON format, the Duration type is encoded as a string rather than an\nobject, where the string ends in the suffix \"s\" (indicating seconds) and\nis preceded by the number of seconds, with nanoseconds expressed as\nfractional seconds. For example, 3 seconds with 0 nanoseconds should be\nencoded in JSON format as \"3s\", while 3 seconds and 1 nanosecond should\nbe expressed in JSON format as \"3.000000001s\". The ttl will be rounded down\nto the nearest second."]
-        #[serde(rename = "ttl", default)]
-        pub ttl: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for AndroidConfig {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AndroidConfigPriority {
         #[doc = "Default priority for data messages. Normal priority messages won't open\nnetwork connections on a sleeping device, and their delivery may be\ndelayed to conserve the battery. For less time-sensitive messages, such\nas notifications of new email or other data to sync, choose normal\ndelivery priority."]
         Normal,
@@ -94,8 +49,53 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AndroidConfig {
+        #[doc = "An identifier of a group of messages that can be collapsed, so that only\nthe last message gets sent when delivery can be resumed. A maximum of 4\ndifferent collapse keys is allowed at any given time."]
+        #[serde(rename = "collapseKey", default)]
+        pub collapse_key: Option<String>,
+        #[doc = "Arbitrary key/value payload. If present, it will override\ngoogle.firebase.fcm.v1.Message.data."]
+        #[serde(rename = "data", default)]
+        pub data: Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Options for features provided by the FCM SDK for Android."]
+        #[serde(rename = "fcmOptions", default)]
+        pub fcm_options: Option<crate::schemas::AndroidFcmOptions>,
+        #[doc = "Notification to send to android devices."]
+        #[serde(rename = "notification", default)]
+        pub notification: Option<crate::schemas::AndroidNotification>,
+        #[doc = "Message priority. Can take \"normal\" and \"high\" values.\nFor more information, see [Setting the priority of a\nmessage](https://goo.gl/GjONJv)."]
+        #[serde(rename = "priority", default)]
+        pub priority: Option<crate::schemas::AndroidConfigPriority>,
+        #[doc = "Package name of the application where the registration token must match in\norder to receive the message."]
+        #[serde(rename = "restrictedPackageName", default)]
+        pub restricted_package_name: Option<String>,
+        #[doc = "How long (in seconds) the message should be kept in FCM storage if the\ndevice is offline. The maximum time to live supported is 4 weeks, and the\ndefault value is 4 weeks if not set. Set it to 0 if want to send the\nmessage immediately.\nIn JSON format, the Duration type is encoded as a string rather than an\nobject, where the string ends in the suffix \"s\" (indicating seconds) and\nis preceded by the number of seconds, with nanoseconds expressed as\nfractional seconds. For example, 3 seconds with 0 nanoseconds should be\nencoded in JSON format as \"3s\", while 3 seconds and 1 nanosecond should\nbe expressed in JSON format as \"3.000000001s\". The ttl will be rounded down\nto the nearest second."]
+        #[serde(rename = "ttl", default)]
+        pub ttl: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for AndroidConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -121,8 +121,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -180,9 +180,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ApnsConfig {
         #[doc = "Options for features provided by the FCM SDK for iOS."]
         #[serde(rename = "fcmOptions", default)]
@@ -208,8 +206,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -238,8 +236,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -261,9 +259,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Message {
         #[doc = "Input only. Android specific options for messages sent through\n[FCM connection server](https://goo.gl/4GLdUl)."]
         #[serde(rename = "android", default)]
@@ -310,8 +306,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -339,9 +335,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct SendMessageRequest {
         #[doc = "Required. Message to send."]
         #[serde(rename = "message", default)]
@@ -360,9 +354,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct WebpushConfig {
         #[doc = "Arbitrary key/value payload. If present, it will override\ngoogle.firebase.fcm.v1.Message.data."]
         #[serde(rename = "data", default)]
@@ -391,8 +383,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -416,7 +408,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -466,7 +458,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,

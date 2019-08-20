@@ -3,8 +3,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -32,40 +32,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AmpUrlError {
-        #[doc = "The error code of an API call."]
-        #[serde(rename = "errorCode", default)]
-        pub error_code: Option<crate::schemas::AmpUrlErrorErrorCode>,
-        #[doc = "An optional descriptive error message."]
-        #[serde(rename = "errorMessage", default)]
-        pub error_message: Option<String>,
-        #[doc = "The original non-AMP URL."]
-        #[serde(rename = "originalUrl", default)]
-        pub original_url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for AmpUrlError {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AmpUrlErrorErrorCode {
         #[doc = "Not specified error."]
         ErrorCodeUnspecified,
@@ -131,23 +98,26 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct BatchGetAmpUrlsRequest {
-        #[doc = "The lookup_strategy being requested."]
-        #[serde(rename = "lookupStrategy", default)]
-        pub lookup_strategy: Option<crate::schemas::BatchGetAmpUrlsRequestLookupStrategy>,
-        #[doc = "List of URLs to look up for the paired AMP URLs.\nThe URLs are case-sensitive. Up to 50 URLs per lookup\n(see [Usage Limits](/amp/cache/reference/limits))."]
-        #[serde(rename = "urls", default)]
-        pub urls: Option<Vec<String>>,
+    pub struct AmpUrlError {
+        #[doc = "The error code of an API call."]
+        #[serde(rename = "errorCode", default)]
+        pub error_code: Option<crate::schemas::AmpUrlErrorErrorCode>,
+        #[doc = "An optional descriptive error message."]
+        #[serde(rename = "errorMessage", default)]
+        pub error_message: Option<String>,
+        #[doc = "The original non-AMP URL."]
+        #[serde(rename = "originalUrl", default)]
+        pub original_url: Option<String>,
     }
-    impl ::field_selector::FieldSelector for BatchGetAmpUrlsRequest {
+    impl ::field_selector::FieldSelector for AmpUrlError {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -157,7 +127,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BatchGetAmpUrlsRequestLookupStrategy {
         #[doc = "FETCH_LIVE_DOC strategy involves live document fetch of URLs not found in\nthe index. Any request URL not found in the index is crawled in realtime\nto validate if there is a corresponding AMP URL. This strategy has higher\ncoverage but with extra latency introduced by realtime crawling. This is\nthe default strategy. Applications using this strategy should set higher\nHTTP timeouts of the API calls."]
         FetchLiveDoc,
@@ -207,8 +177,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BatchGetAmpUrlsRequest {
+        #[doc = "The lookup_strategy being requested."]
+        #[serde(rename = "lookupStrategy", default)]
+        pub lookup_strategy: Option<crate::schemas::BatchGetAmpUrlsRequestLookupStrategy>,
+        #[doc = "List of URLs to look up for the paired AMP URLs.\nThe URLs are case-sensitive. Up to 50 URLs per lookup\n(see [Usage Limits](/amp/cache/reference/limits))."]
+        #[serde(rename = "urls", default)]
+        pub urls: Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for BatchGetAmpUrlsRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -235,7 +235,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -285,7 +285,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,

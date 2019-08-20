@@ -3,8 +3,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -26,9 +26,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct AllocateQuotaRequest {
         #[doc = "Operation that describes the quota allocation."]
         #[serde(rename = "allocateOperation", default)]
@@ -47,9 +45,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct AllocateQuotaResponse {
         #[doc = "Indicates the decision of the allocate."]
         #[serde(rename = "allocateErrors", default)]
@@ -77,9 +73,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct AuditLog {
         #[doc = "Authentication information."]
         #[serde(rename = "authenticationInfo", default)]
@@ -136,9 +130,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Auth {
         #[doc = "A list of access level resource names that allow resources to be\naccessed by authenticated requester. It is part of Secure GCP processing\nfor the incoming request. An access level string has the format:\n\"//{api_service_name}/accessPolicies/{policy_id}/accessLevels/{short_name}\"\n\nExample:\n\"//accesscontextmanager.googleapis.com/accessPolicies/MY_POLICY_ID/accessLevels/MY_LEVEL\""]
         #[serde(rename = "accessLevels", default)]
@@ -166,9 +158,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct AuthenticationInfo {
         #[doc = "The authority selector specified by the requestor, if any.\nIt is not guaranteed that the principal was allowed to use this authority."]
         #[serde(rename = "authoritySelector", default)]
@@ -202,8 +192,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -234,34 +224,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct CheckError {
-        #[doc = "The error code."]
-        #[serde(rename = "code", default)]
-        pub code: Option<crate::schemas::CheckErrorCode>,
-        #[doc = "Free-form text providing details on the error cause of the error."]
-        #[serde(rename = "detail", default)]
-        pub detail: Option<String>,
-        #[doc = "Contains public information about the check error. If available,\n`status.code` will be non zero and client can propagate it out as public\nerror."]
-        #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::Status>,
-        #[doc = "Subject to whom this error applies. See the specific code enum for more\ndetails on this field. For example:\n    - \u{201c}project:<project-id or project-number>\u{201d}\n    - \u{201c}folder:<folder-id>\u{201d}\n    - \u{201c}organization:<organization-id>\u{201d}"]
-        #[serde(rename = "subject", default)]
-        pub subject: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CheckError {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CheckErrorCode {
         #[doc = "This is never used in `CheckResponse`."]
         ErrorCodeUnspecified,
@@ -455,12 +418,37 @@ pub mod schemas {
             })
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct CheckError {
+        #[doc = "The error code."]
+        #[serde(rename = "code", default)]
+        pub code: Option<crate::schemas::CheckErrorCode>,
+        #[doc = "Free-form text providing details on the error cause of the error."]
+        #[serde(rename = "detail", default)]
+        pub detail: Option<String>,
+        #[doc = "Contains public information about the check error. If available,\n`status.code` will be non zero and client can propagate it out as public\nerror."]
+        #[serde(rename = "status", default)]
+        pub status: Option<crate::schemas::Status>,
+        #[doc = "Subject to whom this error applies. See the specific code enum for more\ndetails on this field. For example:\n    - \u{201c}project:<project-id or project-number>\u{201d}\n    - \u{201c}folder:<folder-id>\u{201d}\n    - \u{201c}organization:<organization-id>\u{201d}"]
+        #[serde(rename = "subject", default)]
+        pub subject: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CheckError {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -485,9 +473,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CheckRequest {
         #[doc = "The operation to be checked."]
         #[serde(rename = "operation", default)]
@@ -512,9 +498,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CheckResponse {
         #[doc = "Indicate the decision of the check.\n\nIf no check errors are present, the service should process the operation.\nOtherwise the service should use the list of errors to determine the\nappropriate action."]
         #[serde(rename = "checkErrors", default)]
@@ -545,42 +529,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ConsumerInfo {
-        #[doc = "The consumer identity number, can be Google cloud project number, folder\nnumber or organization number e.g. 1234567890. A value of 0 indicates no\nconsumer number is found."]
-        #[serde(rename = "consumerNumber", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub consumer_number: Option<i64>,
-        #[doc = "The Google cloud project number, e.g. 1234567890. A value of 0 indicates\nno project number is found.\n\nNOTE: This field is deprecated after Chemist support flexible consumer\nid. New code should not depend on this field anymore."]
-        #[serde(rename = "projectNumber", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub project_number: Option<i64>,
-        #[doc = "The type of the consumer which should have been defined in\n[Google Resource Manager](https://cloud.google.com/resource-manager/)."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::ConsumerInfoType>,
-    }
-    impl ::field_selector::FieldSelector for ConsumerInfo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ConsumerInfoType {
         #[doc = "This is never used."]
         ConsumerTypeUnspecified,
@@ -639,8 +588,41 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
+    pub struct ConsumerInfo {
+        #[doc = "The consumer identity number, can be Google cloud project number, folder\nnumber or organization number e.g. 1234567890. A value of 0 indicates no\nconsumer number is found."]
+        #[serde(rename = "consumerNumber", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub consumer_number: Option<i64>,
+        #[doc = "The Google cloud project number, e.g. 1234567890. A value of 0 indicates\nno project number is found.\n\nNOTE: This field is deprecated after Chemist support flexible consumer\nid. New code should not depend on this field anymore."]
+        #[serde(rename = "projectNumber", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub project_number: Option<i64>,
+        #[doc = "The type of the consumer which should have been defined in\n[Google Resource Manager](https://cloud.google.com/resource-manager/)."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::ConsumerInfoType>,
+    }
+    impl ::field_selector::FieldSelector for ConsumerInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Distribution {
         #[doc = "The number of samples in each histogram bucket. `bucket_counts` are\noptional. If present, they must sum to the `count` value.\n\nThe buckets are defined below in `bucket_option`. There are N buckets.\n`bucket_counts[0]` is the number of samples in the underflow bucket.\n`bucket_counts[1]` to `bucket_counts[N-1]` are the numbers of samples\nin each of the finite buckets. And `bucket_counts[N] is the number\nof samples in the overflow bucket. See the comments of `bucket_option`\nbelow for more details.\n\nAny suffix of trailing zeros may be omitted."]
         #[serde(rename = "bucketCounts", default)]
@@ -684,9 +666,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Exemplar {
         #[doc = "Contextual information about the example value. Examples are:\n\n  Trace: type.googleapis.com/google.monitoring.v3.SpanContext\n\n  Literal string: type.googleapis.com/google.protobuf.StringValue\n\n  Labels dropped during aggregation:\n    type.googleapis.com/google.monitoring.v3.DroppedLabels\n\nThere may be only a single attachment of any given message type in a\nsingle exemplar, and this is enforced by the system."]
         #[serde(rename = "attachments", default)]
@@ -750,9 +730,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct FirstPartyPrincipal {
         #[doc = "The email address of a Google account.\n."]
         #[serde(rename = "principalEmail", default)]
@@ -775,8 +753,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -867,94 +845,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct LogEntry {
-        #[doc = "Optional. Information about the HTTP request associated with this\nlog entry, if applicable."]
-        #[serde(rename = "httpRequest", default)]
-        pub http_request: Option<crate::schemas::HttpRequest>,
-        #[doc = "A unique ID for the log entry used for deduplication. If omitted,\nthe implementation will generate one based on operation_id."]
-        #[serde(rename = "insertId", default)]
-        pub insert_id: Option<String>,
-        #[doc = "A set of user-defined (key, value) data that provides additional\ninformation about the log entry."]
-        #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Required. The log to which this log entry belongs. Examples: `\"syslog\"`,\n`\"book_log\"`."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "Optional. Information about an operation associated with the log entry, if\napplicable."]
-        #[serde(rename = "operation", default)]
-        pub operation: Option<crate::schemas::LogEntryOperation>,
-        #[doc = "The log entry payload, represented as a protocol buffer that is\nexpressed as a JSON object. The only accepted type currently is\nAuditLog."]
-        #[serde(rename = "protoPayload", default)]
-        pub proto_payload: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "The severity of the log entry. The default value is\n`LogSeverity.DEFAULT`."]
-        #[serde(rename = "severity", default)]
-        pub severity: Option<crate::schemas::LogEntrySeverity>,
-        #[doc = "Optional. Source code location information associated with the log entry,\nif any."]
-        #[serde(rename = "sourceLocation", default)]
-        pub source_location: Option<crate::schemas::LogEntrySourceLocation>,
-        #[doc = "The log entry payload, represented as a structure that\nis expressed as a JSON object."]
-        #[serde(rename = "structPayload", default)]
-        pub struct_payload: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "The log entry payload, represented as a Unicode string (UTF-8)."]
-        #[serde(rename = "textPayload", default)]
-        pub text_payload: Option<String>,
-        #[doc = "The time the event described by the log entry occurred. If\nomitted, defaults to operation start time."]
-        #[serde(rename = "timestamp", default)]
-        pub timestamp: Option<String>,
-        #[doc = "Optional. Resource name of the trace associated with the log entry, if any.\nIf this field contains a relative resource name, you can assume the name is\nrelative to `//tracing.googleapis.com`. Example:\n`projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824`"]
-        #[serde(rename = "trace", default)]
-        pub trace: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for LogEntry {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct LogEntryOperation {
-        #[doc = "Optional. Set this to True if this is the first log entry in the operation."]
-        #[serde(rename = "first", default)]
-        pub first: Option<bool>,
-        #[doc = "Optional. An arbitrary operation identifier. Log entries with the\nsame identifier are assumed to be part of the same operation."]
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-        #[doc = "Optional. Set this to True if this is the last log entry in the operation."]
-        #[serde(rename = "last", default)]
-        pub last: Option<bool>,
-        #[doc = "Optional. An arbitrary producer identifier. The combination of\n`id` and `producer` must be globally unique.  Examples for `producer`:\n`\"MyDivision.MyBigCompany.com\"`, `\"github.com/MyProject/MyApplication\"`."]
-        #[serde(rename = "producer", default)]
-        pub producer: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for LogEntryOperation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LogEntrySeverity {
         #[doc = "(0) The log entry has no assigned severity level."]
         Default,
@@ -1028,12 +919,97 @@ pub mod schemas {
             })
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct LogEntry {
+        #[doc = "Optional. Information about the HTTP request associated with this\nlog entry, if applicable."]
+        #[serde(rename = "httpRequest", default)]
+        pub http_request: Option<crate::schemas::HttpRequest>,
+        #[doc = "A unique ID for the log entry used for deduplication. If omitted,\nthe implementation will generate one based on operation_id."]
+        #[serde(rename = "insertId", default)]
+        pub insert_id: Option<String>,
+        #[doc = "A set of user-defined (key, value) data that provides additional\ninformation about the log entry."]
+        #[serde(rename = "labels", default)]
+        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Required. The log to which this log entry belongs. Examples: `\"syslog\"`,\n`\"book_log\"`."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "Optional. Information about an operation associated with the log entry, if\napplicable."]
+        #[serde(rename = "operation", default)]
+        pub operation: Option<crate::schemas::LogEntryOperation>,
+        #[doc = "The log entry payload, represented as a protocol buffer that is\nexpressed as a JSON object. The only accepted type currently is\nAuditLog."]
+        #[serde(rename = "protoPayload", default)]
+        pub proto_payload: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "The severity of the log entry. The default value is\n`LogSeverity.DEFAULT`."]
+        #[serde(rename = "severity", default)]
+        pub severity: Option<crate::schemas::LogEntrySeverity>,
+        #[doc = "Optional. Source code location information associated with the log entry,\nif any."]
+        #[serde(rename = "sourceLocation", default)]
+        pub source_location: Option<crate::schemas::LogEntrySourceLocation>,
+        #[doc = "The log entry payload, represented as a structure that\nis expressed as a JSON object."]
+        #[serde(rename = "structPayload", default)]
+        pub struct_payload: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "The log entry payload, represented as a Unicode string (UTF-8)."]
+        #[serde(rename = "textPayload", default)]
+        pub text_payload: Option<String>,
+        #[doc = "The time the event described by the log entry occurred. If\nomitted, defaults to operation start time."]
+        #[serde(rename = "timestamp", default)]
+        pub timestamp: Option<String>,
+        #[doc = "Optional. Resource name of the trace associated with the log entry, if any.\nIf this field contains a relative resource name, you can assume the name is\nrelative to `//tracing.googleapis.com`. Example:\n`projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824`"]
+        #[serde(rename = "trace", default)]
+        pub trace: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for LogEntry {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct LogEntryOperation {
+        #[doc = "Optional. Set this to True if this is the first log entry in the operation."]
+        #[serde(rename = "first", default)]
+        pub first: Option<bool>,
+        #[doc = "Optional. An arbitrary operation identifier. Log entries with the\nsame identifier are assumed to be part of the same operation."]
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+        #[doc = "Optional. Set this to True if this is the last log entry in the operation."]
+        #[serde(rename = "last", default)]
+        pub last: Option<bool>,
+        #[doc = "Optional. An arbitrary producer identifier. The combination of\n`id` and `producer` must be globally unique.  Examples for `producer`:\n`\"MyDivision.MyBigCompany.com\"`, `\"github.com/MyProject/MyApplication\"`."]
+        #[serde(rename = "producer", default)]
+        pub producer: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for LogEntryOperation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1062,9 +1038,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct MetricValue {
         #[doc = "A boolean value."]
         #[serde(rename = "boolValue", default)]
@@ -1105,9 +1079,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct MetricValueSet {
         #[doc = "The metric name defined in the service configuration."]
         #[serde(rename = "metricName", default)]
@@ -1130,8 +1102,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1160,9 +1132,57 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum OperationImportance {
+        #[doc = "The API implementation may cache and aggregate the data.\nThe data may be lost when rare and unexpected system failures occur."]
+        Low,
+        #[doc = "The API implementation doesn't cache and aggregate the data.\nIf the method returns successfully, it's guaranteed that the data has\nbeen persisted in durable storage."]
+        High,
+        #[doc = "In addition to the behavior described in HIGH, DEBUG enables\nadditional validation logic that is only useful during the onboarding\nprocess. This is only available to Google internal services and\nthe service must be whitelisted by chemist-dev@google.com in order\nto use this level."]
+        Debug,
+    }
+    impl OperationImportance {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                OperationImportance::Low => "LOW",
+                OperationImportance::High => "HIGH",
+                OperationImportance::Debug => "DEBUG",
+            }
+        }
+    }
+    impl ::std::fmt::Display for OperationImportance {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for OperationImportance {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for OperationImportance {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "LOW" => OperationImportance::Low,
+                "HIGH" => OperationImportance::High,
+                "DEBUG" => OperationImportance::Debug,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "Identity of the consumer who is using the service.\nThis field should be filled in for the operations initiated by a\nconsumer, but not for service-initiated operations that are\nnot related to a specific consumer.\n\n- This can be in one of the following formats:\n    - project:PROJECT_ID,\n    - project`_`number:PROJECT_NUMBER,\n    - projects/PROJECT_ID or PROJECT_NUMBER,\n    - folders/FOLDER_NUMBER,\n    - organizations/ORGANIZATION_NUMBER,\n    - api`_`key:API_KEY."]
         #[serde(rename = "consumerId", default)]
@@ -1214,62 +1234,12 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum OperationImportance {
-        #[doc = "The API implementation may cache and aggregate the data.\nThe data may be lost when rare and unexpected system failures occur."]
-        Low,
-        #[doc = "The API implementation doesn't cache and aggregate the data.\nIf the method returns successfully, it's guaranteed that the data has\nbeen persisted in durable storage."]
-        High,
-        #[doc = "In addition to the behavior described in HIGH, DEBUG enables\nadditional validation logic that is only useful during the onboarding\nprocess. This is only available to Google internal services and\nthe service must be whitelisted by chemist-dev@google.com in order\nto use this level."]
-        Debug,
-    }
-    impl OperationImportance {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                OperationImportance::Low => "LOW",
-                OperationImportance::High => "HIGH",
-                OperationImportance::Debug => "DEBUG",
-            }
-        }
-    }
-    impl ::std::fmt::Display for OperationImportance {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for OperationImportance {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for OperationImportance {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "LOW" => OperationImportance::Low,
-                "HIGH" => OperationImportance::High,
-                "DEBUG" => OperationImportance::Debug,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1304,40 +1274,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct QuotaError {
-        #[doc = "Error code."]
-        #[serde(rename = "code", default)]
-        pub code: Option<crate::schemas::QuotaErrorCode>,
-        #[doc = "Free-form text that provides details on the cause of the error."]
-        #[serde(rename = "description", default)]
-        pub description: Option<String>,
-        #[doc = "Subject to whom this error applies. See the specific enum for more details\non this field. For example, \"clientip:<ip address of client>\" or\n\"project:<Google developer project id>\"."]
-        #[serde(rename = "subject", default)]
-        pub subject: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for QuotaError {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum QuotaErrorCode {
         #[doc = "This is never used."]
         Unspecified,
@@ -1432,8 +1369,39 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
+    pub struct QuotaError {
+        #[doc = "Error code."]
+        #[serde(rename = "code", default)]
+        pub code: Option<crate::schemas::QuotaErrorCode>,
+        #[doc = "Free-form text that provides details on the cause of the error."]
+        #[serde(rename = "description", default)]
+        pub description: Option<String>,
+        #[doc = "Subject to whom this error applies. See the specific enum for more details\non this field. For example, \"clientip:<ip address of client>\" or\n\"project:<Google developer project id>\"."]
+        #[serde(rename = "subject", default)]
+        pub subject: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for QuotaError {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct QuotaInfo {
         #[doc = "Quota Metrics that have exceeded quota limits.\nFor QuotaGroup-based quota, this is QuotaGroup.name\nFor QuotaLimit-based quota, this is QuotaLimit.name\nSee: google.api.Quota\nDeprecated: Use quota_metrics to get per quota group limit exceeded status."]
         #[serde(rename = "limitExceeded", default)]
@@ -1455,40 +1423,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct QuotaOperation {
-        #[doc = "Identity of the consumer for whom this quota operation is being performed.\n\nThis can be in one of the following formats:\n  project:<project_id>,\n  project_number:<project_number>,\n  api_key:<api_key>."]
-        #[serde(rename = "consumerId", default)]
-        pub consumer_id: Option<String>,
-        #[doc = "Labels describing the operation."]
-        #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Fully qualified name of the API method for which this quota operation is\nrequested. This name is used for matching quota rules or metric rules and\nbilling status rules defined in service configuration.\n\nThis field should not be set if any of the following is true:\n(1) the quota operation is performed on non-API resources.\n(2) quota_metrics is set because the caller is doing quota override.\n\nExample of an RPC method name:\n    google.example.library.v1.LibraryService.CreateShelf"]
-        #[serde(rename = "methodName", default)]
-        pub method_name: Option<String>,
-        #[doc = "Identity of the operation. This is expected to be unique within the scope\nof the service that generated the operation, and guarantees idempotency in\ncase of retries.\n\nUUID version 4 is recommended, though not required. In scenarios where an\noperation is computed from existing information and an idempotent id is\ndesirable for deduplication purpose, UUID version 5 is recommended. See\nRFC 4122 for details."]
-        #[serde(rename = "operationId", default)]
-        pub operation_id: Option<String>,
-        #[doc = "Represents information about this operation. Each MetricValueSet\ncorresponds to a metric defined in the service configuration.\nThe data type used in the MetricValueSet must agree with\nthe data type specified in the metric definition.\n\nWithin a single operation, it is not allowed to have more than one\nMetricValue instances that have the same metric names and identical\nlabel value combinations. If a request has such duplicated MetricValue\ninstances, the entire request is rejected with\nan invalid argument error.\n\nThis field is mutually exclusive with method_name."]
-        #[serde(rename = "quotaMetrics", default)]
-        pub quota_metrics: Option<Vec<crate::schemas::MetricValueSet>>,
-        #[doc = "Quota mode for this operation."]
-        #[serde(rename = "quotaMode", default)]
-        pub quota_mode: Option<crate::schemas::QuotaOperationQuotaMode>,
-    }
-    impl ::field_selector::FieldSelector for QuotaOperation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum QuotaOperationQuotaMode {
         #[doc = "Guard against implicit default. Must not be used."]
         Unspecified,
@@ -1542,24 +1477,28 @@ pub mod schemas {
             })
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct QuotaProperties {
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct QuotaOperation {
+        #[doc = "Identity of the consumer for whom this quota operation is being performed.\n\nThis can be in one of the following formats:\n  project:<project_id>,\n  project_number:<project_number>,\n  api_key:<api_key>."]
+        #[serde(rename = "consumerId", default)]
+        pub consumer_id: Option<String>,
+        #[doc = "Labels describing the operation."]
+        #[serde(rename = "labels", default)]
+        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Fully qualified name of the API method for which this quota operation is\nrequested. This name is used for matching quota rules or metric rules and\nbilling status rules defined in service configuration.\n\nThis field should not be set if any of the following is true:\n(1) the quota operation is performed on non-API resources.\n(2) quota_metrics is set because the caller is doing quota override.\n\nExample of an RPC method name:\n    google.example.library.v1.LibraryService.CreateShelf"]
+        #[serde(rename = "methodName", default)]
+        pub method_name: Option<String>,
+        #[doc = "Identity of the operation. This is expected to be unique within the scope\nof the service that generated the operation, and guarantees idempotency in\ncase of retries.\n\nUUID version 4 is recommended, though not required. In scenarios where an\noperation is computed from existing information and an idempotent id is\ndesirable for deduplication purpose, UUID version 5 is recommended. See\nRFC 4122 for details."]
+        #[serde(rename = "operationId", default)]
+        pub operation_id: Option<String>,
+        #[doc = "Represents information about this operation. Each MetricValueSet\ncorresponds to a metric defined in the service configuration.\nThe data type used in the MetricValueSet must agree with\nthe data type specified in the metric definition.\n\nWithin a single operation, it is not allowed to have more than one\nMetricValue instances that have the same metric names and identical\nlabel value combinations. If a request has such duplicated MetricValue\ninstances, the entire request is rejected with\nan invalid argument error.\n\nThis field is mutually exclusive with method_name."]
+        #[serde(rename = "quotaMetrics", default)]
+        pub quota_metrics: Option<Vec<crate::schemas::MetricValueSet>>,
         #[doc = "Quota mode for this operation."]
         #[serde(rename = "quotaMode", default)]
-        pub quota_mode: Option<crate::schemas::QuotaPropertiesQuotaMode>,
+        pub quota_mode: Option<crate::schemas::QuotaOperationQuotaMode>,
     }
-    impl ::field_selector::FieldSelector for QuotaProperties {
+    impl ::field_selector::FieldSelector for QuotaOperation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1569,7 +1508,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum QuotaPropertiesQuotaMode {
         #[doc = "Decreases available quota by the cost specified for the operation.\nIf cost is higher than available quota, operation fails and returns\nerror."]
         Acquire,
@@ -1624,8 +1563,33 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
+    pub struct QuotaProperties {
+        #[doc = "Quota mode for this operation."]
+        #[serde(rename = "quotaMode", default)]
+        pub quota_mode: Option<crate::schemas::QuotaPropertiesQuotaMode>,
+    }
+    impl ::field_selector::FieldSelector for QuotaProperties {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ReportError {
         #[doc = "The Operation.operation_id value from the request."]
         #[serde(rename = "operationId", default)]
@@ -1644,9 +1608,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ReportInfo {
         #[doc = "The Operation.operation_id value from the request."]
         #[serde(rename = "operationId", default)]
@@ -1665,9 +1627,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ReportRequest {
         #[doc = "Operations to be reported.\n\nTypically the service should report one operation per request.\nPutting multiple operations into a single request is allowed, but should\nbe used only when multiple operations are natually available at the time\nof the report.\n\nIf multiple operations are in a single request, the total request size\nshould be no larger than 1MB. See ReportResponse.report_errors for\npartial failure behavior."]
         #[serde(rename = "operations", default)]
@@ -1686,9 +1646,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ReportResponse {
         #[doc = "Partial failures, one for each `Operation` in the request that failed\nprocessing. There are three possible combinations of the RPC status:\n\n1. The combination of a successful RPC status and an empty `report_errors`\n   list indicates a complete success where all `Operations` in the\n   request are processed successfully.\n2. The combination of a successful RPC status and a non-empty\n   `report_errors` list indicates a partial success where some\n   `Operations` in the request succeeded. Each\n   `Operation` that failed processing has a corresponding item\n   in this list.\n3. A failed RPC status indicates a general non-deterministic failure.\n   When this happens, it's impossible to know which of the\n   'Operations' in the request succeeded or failed."]
         #[serde(rename = "reportErrors", default)]
@@ -1713,9 +1671,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Request {
         #[doc = "The request authentication. May be absent for unauthenticated requests.\nDerived from the HTTP request `Authorization` header or equivalent."]
         #[serde(rename = "auth", default)]
@@ -1765,9 +1721,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct RequestMetadata {
         #[doc = "The IP address of the caller.\nFor caller from internet, this will be public IPv4 or IPv6 address.\nFor caller from a Compute Engine VM with external IP address, this\nwill be the VM's external IP address. For caller from a Compute\nEngine VM without external IP address, if the VM is in the same\norganization (or project) as the accessed resource, `caller_ip` will\nbe the VM's internal IPv4 address, otherwise the `caller_ip` will be\nredacted to \"gce-internal-ip\".\nSee https://cloud.google.com/compute/docs/vpc/ for more information."]
         #[serde(rename = "callerIp", default)]
@@ -1799,8 +1753,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1835,8 +1789,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1868,8 +1822,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1894,9 +1848,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ServiceAccountDelegationInfo {
         #[doc = "First party (Google) identity as the real authority."]
         #[serde(rename = "firstPartyPrincipal", default)]
@@ -1915,9 +1867,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
@@ -1939,9 +1889,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ThirdPartyPrincipal {
         #[doc = "Metadata about third party identity."]
         #[serde(rename = "thirdPartyClaims", default)]
@@ -1959,7 +1907,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -2009,7 +1957,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,

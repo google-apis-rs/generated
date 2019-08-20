@@ -3,8 +3,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -33,8 +33,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -69,8 +69,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -108,8 +108,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -141,8 +141,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -177,8 +177,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -210,8 +210,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -237,8 +237,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -280,41 +280,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DynamicLinkEventStat {
-        #[doc = "The number of times this event occurred."]
-        #[serde(rename = "count", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub count: Option<i64>,
-        #[doc = "Link event."]
-        #[serde(rename = "event", default)]
-        pub event: Option<crate::schemas::DynamicLinkEventStatEvent>,
-        #[doc = "Requested platform."]
-        #[serde(rename = "platform", default)]
-        pub platform: Option<crate::schemas::DynamicLinkEventStatPlatform>,
-    }
-    impl ::field_selector::FieldSelector for DynamicLinkEventStat {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DynamicLinkEventStatEvent {
         #[doc = "Unspecified type."]
         DynamicLinkEventUnspecified,
@@ -380,7 +346,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DynamicLinkEventStatPlatform {
         #[doc = "Unspecified platform."]
         DynamicLinkPlatformUnspecified,
@@ -446,8 +412,42 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DynamicLinkEventStat {
+        #[doc = "The number of times this event occurred."]
+        #[serde(rename = "count", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub count: Option<i64>,
+        #[doc = "Link event."]
+        #[serde(rename = "event", default)]
+        pub event: Option<crate::schemas::DynamicLinkEventStatEvent>,
+        #[doc = "Requested platform."]
+        #[serde(rename = "platform", default)]
+        pub platform: Option<crate::schemas::DynamicLinkEventStatPlatform>,
+    }
+    impl ::field_selector::FieldSelector for DynamicLinkEventStat {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -497,8 +497,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -520,40 +520,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DynamicLinkWarning {
-        #[doc = "The warning code."]
-        #[serde(rename = "warningCode", default)]
-        pub warning_code: Option<crate::schemas::DynamicLinkWarningWarningCode>,
-        #[doc = "The document describing the warning, and helps resolve."]
-        #[serde(rename = "warningDocumentLink", default)]
-        pub warning_document_link: Option<String>,
-        #[doc = "The warning message to help developers improve their requests."]
-        #[serde(rename = "warningMessage", default)]
-        pub warning_message: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for DynamicLinkWarning {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DynamicLinkWarningWarningCode {
         #[doc = "Unknown code."]
         CodeUnspecified,
@@ -769,43 +736,26 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GetIosPostInstallAttributionRequest {
-        #[doc = "App installation epoch time (https://en.wikipedia.org/wiki/Unix_time).\nThis is a client signal for a more accurate weak match."]
-        #[serde(rename = "appInstallationTime", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub app_installation_time: Option<i64>,
-        #[doc = "APP bundle ID."]
-        #[serde(rename = "bundleId", default)]
-        pub bundle_id: Option<String>,
-        #[doc = "Device information."]
-        #[serde(rename = "device", default)]
-        pub device: Option<crate::schemas::DeviceInfo>,
-        #[doc = "iOS version, ie: 9.3.5.\nConsider adding \"build\"."]
-        #[serde(rename = "iosVersion", default)]
-        pub ios_version: Option<String>,
-        #[doc = "App post install attribution retrieval information. Disambiguates\nmechanism (iSDK or developer invoked) to retrieve payload from\nclicked link."]
-        #[serde(rename = "retrievalMethod", default)]
-        pub retrieval_method:
-            Option<crate::schemas::GetIosPostInstallAttributionRequestRetrievalMethod>,
-        #[doc = "Google SDK version. Version takes the form \"$major.$minor.$patch\""]
-        #[serde(rename = "sdkVersion", default)]
-        pub sdk_version: Option<String>,
-        #[doc = "Possible unique matched link that server need to check before performing\nfingerprint match. If passed link is short server need to expand the link.\nIf link is long server need to vslidate the link."]
-        #[serde(rename = "uniqueMatchLinkToCheck", default)]
-        pub unique_match_link_to_check: Option<String>,
-        #[doc = "Strong match page information. Disambiguates between default UI and\ncustom page to present when strong match succeeds/fails to find cookie."]
-        #[serde(rename = "visualStyle", default)]
-        pub visual_style: Option<crate::schemas::GetIosPostInstallAttributionRequestVisualStyle>,
+    pub struct DynamicLinkWarning {
+        #[doc = "The warning code."]
+        #[serde(rename = "warningCode", default)]
+        pub warning_code: Option<crate::schemas::DynamicLinkWarningWarningCode>,
+        #[doc = "The document describing the warning, and helps resolve."]
+        #[serde(rename = "warningDocumentLink", default)]
+        pub warning_document_link: Option<String>,
+        #[doc = "The warning message to help developers improve their requests."]
+        #[serde(rename = "warningMessage", default)]
+        pub warning_message: Option<String>,
     }
-    impl ::field_selector::FieldSelector for GetIosPostInstallAttributionRequest {
+    impl ::field_selector::FieldSelector for DynamicLinkWarning {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -815,7 +765,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GetIosPostInstallAttributionRequestRetrievalMethod {
         #[doc = "Unknown method."]
         UnknownPayloadRetrievalMethod,
@@ -853,7 +803,7 @@ pub mod schemas {
             Ok ( match value { "UNKNOWN_PAYLOAD_RETRIEVAL_METHOD" => GetIosPostInstallAttributionRequestRetrievalMethod :: UnknownPayloadRetrievalMethod , "IMPLICIT_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ImplicitWeakMatch , "EXPLICIT_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitWeakMatch , "EXPLICIT_STRONG_AFTER_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitStrongAfterWeakMatch , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GetIosPostInstallAttributionRequestVisualStyle {
         #[doc = "Unknown style."]
         UnknownVisualStyle,
@@ -911,8 +861,150 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GetIosPostInstallAttributionRequest {
+        #[doc = "App installation epoch time (https://en.wikipedia.org/wiki/Unix_time).\nThis is a client signal for a more accurate weak match."]
+        #[serde(rename = "appInstallationTime", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub app_installation_time: Option<i64>,
+        #[doc = "APP bundle ID."]
+        #[serde(rename = "bundleId", default)]
+        pub bundle_id: Option<String>,
+        #[doc = "Device information."]
+        #[serde(rename = "device", default)]
+        pub device: Option<crate::schemas::DeviceInfo>,
+        #[doc = "iOS version, ie: 9.3.5.\nConsider adding \"build\"."]
+        #[serde(rename = "iosVersion", default)]
+        pub ios_version: Option<String>,
+        #[doc = "App post install attribution retrieval information. Disambiguates\nmechanism (iSDK or developer invoked) to retrieve payload from\nclicked link."]
+        #[serde(rename = "retrievalMethod", default)]
+        pub retrieval_method:
+            Option<crate::schemas::GetIosPostInstallAttributionRequestRetrievalMethod>,
+        #[doc = "Google SDK version. Version takes the form \"$major.$minor.$patch\""]
+        #[serde(rename = "sdkVersion", default)]
+        pub sdk_version: Option<String>,
+        #[doc = "Possible unique matched link that server need to check before performing\nfingerprint match. If passed link is short server need to expand the link.\nIf link is long server need to vslidate the link."]
+        #[serde(rename = "uniqueMatchLinkToCheck", default)]
+        pub unique_match_link_to_check: Option<String>,
+        #[doc = "Strong match page information. Disambiguates between default UI and\ncustom page to present when strong match succeeds/fails to find cookie."]
+        #[serde(rename = "visualStyle", default)]
+        pub visual_style: Option<crate::schemas::GetIosPostInstallAttributionRequestVisualStyle>,
+    }
+    impl ::field_selector::FieldSelector for GetIosPostInstallAttributionRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GetIosPostInstallAttributionResponseAttributionConfidence {
+        #[doc = "Unset."]
+        UnknownAttributionConfidence,
+        #[doc = "Weak confidence, more than one matching link found or link suspected to\nbe false positive"]
+        Weak,
+        #[doc = "Default confidence, match based on fingerprint"]
+        Default,
+        #[doc = "Unique confidence, match based on \"unique match link to check\" or other\nmeans"]
+        Unique,
+    }
+    impl GetIosPostInstallAttributionResponseAttributionConfidence {
+        pub fn as_str(self) -> &'static str {
+            match self { GetIosPostInstallAttributionResponseAttributionConfidence :: UnknownAttributionConfidence => "UNKNOWN_ATTRIBUTION_CONFIDENCE" , GetIosPostInstallAttributionResponseAttributionConfidence :: Weak => "WEAK" , GetIosPostInstallAttributionResponseAttributionConfidence :: Default => "DEFAULT" , GetIosPostInstallAttributionResponseAttributionConfidence :: Unique => "UNIQUE" , }
+        }
+    }
+    impl ::std::fmt::Display for GetIosPostInstallAttributionResponseAttributionConfidence {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GetIosPostInstallAttributionResponseAttributionConfidence {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GetIosPostInstallAttributionResponseAttributionConfidence {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "UNKNOWN_ATTRIBUTION_CONFIDENCE" => GetIosPostInstallAttributionResponseAttributionConfidence :: UnknownAttributionConfidence , "WEAK" => GetIosPostInstallAttributionResponseAttributionConfidence :: Weak , "DEFAULT" => GetIosPostInstallAttributionResponseAttributionConfidence :: Default , "UNIQUE" => GetIosPostInstallAttributionResponseAttributionConfidence :: Unique , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GetIosPostInstallAttributionResponseRequestIpVersion {
+        #[doc = "Unset."]
+        UnknownIpVersion,
+        #[doc = "Request made from an IPv4 IP address."]
+        IpV4,
+        #[doc = "Request made from an IPv6 IP address."]
+        IpV6,
+    }
+    impl GetIosPostInstallAttributionResponseRequestIpVersion {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                GetIosPostInstallAttributionResponseRequestIpVersion::UnknownIpVersion => {
+                    "UNKNOWN_IP_VERSION"
+                }
+                GetIosPostInstallAttributionResponseRequestIpVersion::IpV4 => "IP_V4",
+                GetIosPostInstallAttributionResponseRequestIpVersion::IpV6 => "IP_V6",
+            }
+        }
+    }
+    impl ::std::fmt::Display for GetIosPostInstallAttributionResponseRequestIpVersion {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GetIosPostInstallAttributionResponseRequestIpVersion {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GetIosPostInstallAttributionResponseRequestIpVersion {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "UNKNOWN_IP_VERSION" => {
+                    GetIosPostInstallAttributionResponseRequestIpVersion::UnknownIpVersion
+                }
+                "IP_V4" => GetIosPostInstallAttributionResponseRequestIpVersion::IpV4,
+                "IP_V6" => GetIosPostInstallAttributionResponseRequestIpVersion::IpV6,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -981,104 +1073,12 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum GetIosPostInstallAttributionResponseAttributionConfidence {
-        #[doc = "Unset."]
-        UnknownAttributionConfidence,
-        #[doc = "Weak confidence, more than one matching link found or link suspected to\nbe false positive"]
-        Weak,
-        #[doc = "Default confidence, match based on fingerprint"]
-        Default,
-        #[doc = "Unique confidence, match based on \"unique match link to check\" or other\nmeans"]
-        Unique,
-    }
-    impl GetIosPostInstallAttributionResponseAttributionConfidence {
-        pub fn as_str(self) -> &'static str {
-            match self { GetIosPostInstallAttributionResponseAttributionConfidence :: UnknownAttributionConfidence => "UNKNOWN_ATTRIBUTION_CONFIDENCE" , GetIosPostInstallAttributionResponseAttributionConfidence :: Weak => "WEAK" , GetIosPostInstallAttributionResponseAttributionConfidence :: Default => "DEFAULT" , GetIosPostInstallAttributionResponseAttributionConfidence :: Unique => "UNIQUE" , }
-        }
-    }
-    impl ::std::fmt::Display for GetIosPostInstallAttributionResponseAttributionConfidence {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for GetIosPostInstallAttributionResponseAttributionConfidence {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for GetIosPostInstallAttributionResponseAttributionConfidence {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "UNKNOWN_ATTRIBUTION_CONFIDENCE" => GetIosPostInstallAttributionResponseAttributionConfidence :: UnknownAttributionConfidence , "WEAK" => GetIosPostInstallAttributionResponseAttributionConfidence :: Weak , "DEFAULT" => GetIosPostInstallAttributionResponseAttributionConfidence :: Default , "UNIQUE" => GetIosPostInstallAttributionResponseAttributionConfidence :: Unique , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum GetIosPostInstallAttributionResponseRequestIpVersion {
-        #[doc = "Unset."]
-        UnknownIpVersion,
-        #[doc = "Request made from an IPv4 IP address."]
-        IpV4,
-        #[doc = "Request made from an IPv6 IP address."]
-        IpV6,
-    }
-    impl GetIosPostInstallAttributionResponseRequestIpVersion {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                GetIosPostInstallAttributionResponseRequestIpVersion::UnknownIpVersion => {
-                    "UNKNOWN_IP_VERSION"
-                }
-                GetIosPostInstallAttributionResponseRequestIpVersion::IpV4 => "IP_V4",
-                GetIosPostInstallAttributionResponseRequestIpVersion::IpV6 => "IP_V6",
-            }
-        }
-    }
-    impl ::std::fmt::Display for GetIosPostInstallAttributionResponseRequestIpVersion {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for GetIosPostInstallAttributionResponseRequestIpVersion {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for GetIosPostInstallAttributionResponseRequestIpVersion {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "UNKNOWN_IP_VERSION" => {
-                    GetIosPostInstallAttributionResponseRequestIpVersion::UnknownIpVersion
-                }
-                "IP_V4" => GetIosPostInstallAttributionResponseRequestIpVersion::IpV4,
-                "IP_V6" => GetIosPostInstallAttributionResponseRequestIpVersion::IpV6,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1110,8 +1110,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1161,8 +1161,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1203,8 +1203,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1248,8 +1248,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1280,49 +1280,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ManagedShortLink {
-        #[doc = "Creation timestamp of the short link."]
-        #[serde(rename = "creationTime", default)]
-        pub creation_time: Option<String>,
-        #[doc = "Attributes that have been flagged about this short url."]
-        #[serde(rename = "flaggedAttribute", default)]
-        pub flagged_attribute: Option<Vec<crate::schemas::ManagedShortLinkFlaggedAttributeItems>>,
-        #[doc = "Full Dyamic Link info"]
-        #[serde(rename = "info", default)]
-        pub info: Option<crate::schemas::DynamicLinkInfo>,
-        #[doc = "Short durable link url, for example, \"https://sample.app.goo.gl/xyz123\".\n\nRequired."]
-        #[serde(rename = "link", default)]
-        pub link: Option<String>,
-        #[doc = "Link name defined by the creator.\n\nRequired."]
-        #[serde(rename = "linkName", default)]
-        pub link_name: Option<String>,
-        #[doc = "Visibility status of link."]
-        #[serde(rename = "visibility", default)]
-        pub visibility: Option<crate::schemas::ManagedShortLinkVisibility>,
-    }
-    impl ::field_selector::FieldSelector for ManagedShortLink {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ManagedShortLinkFlaggedAttributeItems {}
     impl ManagedShortLinkFlaggedAttributeItems {
         pub fn as_str(self) -> &'static str {
@@ -1358,7 +1316,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ManagedShortLinkVisibility {
         #[doc = "Visibility of the link is not specified."]
         UnspecifiedVisibility,
@@ -1416,8 +1374,50 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ManagedShortLink {
+        #[doc = "Creation timestamp of the short link."]
+        #[serde(rename = "creationTime", default)]
+        pub creation_time: Option<String>,
+        #[doc = "Attributes that have been flagged about this short url."]
+        #[serde(rename = "flaggedAttribute", default)]
+        pub flagged_attribute: Option<Vec<crate::schemas::ManagedShortLinkFlaggedAttributeItems>>,
+        #[doc = "Full Dyamic Link info"]
+        #[serde(rename = "info", default)]
+        pub info: Option<crate::schemas::DynamicLinkInfo>,
+        #[doc = "Short durable link url, for example, \"https://sample.app.goo.gl/xyz123\".\n\nRequired."]
+        #[serde(rename = "link", default)]
+        pub link: Option<String>,
+        #[doc = "Link name defined by the creator.\n\nRequired."]
+        #[serde(rename = "linkName", default)]
+        pub link_name: Option<String>,
+        #[doc = "Visibility status of link."]
+        #[serde(rename = "visibility", default)]
+        pub visibility: Option<crate::schemas::ManagedShortLinkVisibility>,
+    }
+    impl ::field_selector::FieldSelector for ManagedShortLink {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1443,8 +1443,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1472,37 +1472,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Suffix {
-        #[doc = "Only applies to Option.CUSTOM."]
-        #[serde(rename = "customSuffix", default)]
-        pub custom_suffix: Option<String>,
-        #[doc = "Suffix option."]
-        #[serde(rename = "option", default)]
-        pub option: Option<crate::schemas::SuffixOption>,
-    }
-    impl ::field_selector::FieldSelector for Suffix {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SuffixOption {
         #[doc = "The suffix option is not specified, performs as UNGUESSABLE ."]
         OptionUnspecified,
@@ -1556,9 +1526,39 @@ pub mod schemas {
             })
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Suffix {
+        #[doc = "Only applies to Option.CUSTOM."]
+        #[serde(rename = "customSuffix", default)]
+        pub custom_suffix: Option<String>,
+        #[doc = "Suffix option."]
+        #[serde(rename = "option", default)]
+        pub option: Option<crate::schemas::SuffixOption>,
+    }
+    impl ::field_selector::FieldSelector for Suffix {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -1608,7 +1608,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,

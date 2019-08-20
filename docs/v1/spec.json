@@ -7,7 +7,7 @@
   "canonicalName": "Docs",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190808",
+  "revision": "20190813",
   "title": "Google Docs API",
   "description": "Reads and writes Google Docs documents.",
   "ownerDomain": "google.com",

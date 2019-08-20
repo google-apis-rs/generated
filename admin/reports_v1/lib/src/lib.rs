@@ -3,8 +3,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -39,53 +39,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Activity {
-        #[doc = "User doing the action."]
-        #[serde(rename = "actor", default)]
-        pub actor: Option<crate::schemas::ActivityActor>,
-        #[doc = "ETag of the entry."]
-        #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
-        #[doc = "Activity events."]
-        #[serde(rename = "events", default)]
-        pub events: Option<Vec<crate::schemas::ActivityEventsItems>>,
-        #[doc = "Unique identifier for each activity record."]
-        #[serde(rename = "id", default)]
-        pub id: Option<crate::schemas::ActivityId>,
-        #[doc = "IP Address of the user doing the action."]
-        #[serde(rename = "ipAddress", default)]
-        pub ip_address: Option<String>,
-        #[doc = "Kind of resource this is."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Domain of source customer."]
-        #[serde(rename = "ownerDomain", default)]
-        pub owner_domain: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Activity {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -120,26 +75,20 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ActivityEventsItems {
-        #[doc = "Name of event."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "Parameter value pairs for various applications."]
-        #[serde(rename = "parameters", default)]
-        pub parameters: Option<Vec<crate::schemas::ActivityEventsItemsParametersItems>>,
-        #[doc = "Type of event."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+    pub struct ActivityEventsItemsParametersItemsMessageValue {
+        #[doc = "Looping to get parameter values."]
+        #[serde(rename = "parameter", default)]
+        pub parameter: Option<Vec<crate::schemas::NestedParameter>>,
     }
-    impl ::field_selector::FieldSelector for ActivityEventsItems {
+    impl ::field_selector::FieldSelector for ActivityEventsItemsParametersItemsMessageValue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -153,8 +102,35 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ActivityEventsItemsParametersItemsMultiMessageValueItems {
+        #[doc = "Parameter value."]
+        #[serde(rename = "parameter", default)]
+        pub parameter: Option<Vec<crate::schemas::NestedParameter>>,
+    }
+    impl ::field_selector::FieldSelector for ActivityEventsItemsParametersItemsMultiMessageValueItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -203,20 +179,26 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ActivityEventsItemsParametersItemsMessageValue {
-        #[doc = "Looping to get parameter values."]
-        #[serde(rename = "parameter", default)]
-        pub parameter: Option<Vec<crate::schemas::NestedParameter>>,
+    pub struct ActivityEventsItems {
+        #[doc = "Name of event."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "Parameter value pairs for various applications."]
+        #[serde(rename = "parameters", default)]
+        pub parameters: Option<Vec<crate::schemas::ActivityEventsItemsParametersItems>>,
+        #[doc = "Type of event."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
     }
-    impl ::field_selector::FieldSelector for ActivityEventsItemsParametersItemsMessageValue {
+    impl ::field_selector::FieldSelector for ActivityEventsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -230,35 +212,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ActivityEventsItemsParametersItemsMultiMessageValueItems {
-        #[doc = "Parameter value."]
-        #[serde(rename = "parameter", default)]
-        pub parameter: Option<Vec<crate::schemas::NestedParameter>>,
-    }
-    impl ::field_selector::FieldSelector for ActivityEventsItemsParametersItemsMultiMessageValueItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -294,8 +249,53 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Activity {
+        #[doc = "User doing the action."]
+        #[serde(rename = "actor", default)]
+        pub actor: Option<crate::schemas::ActivityActor>,
+        #[doc = "ETag of the entry."]
+        #[serde(rename = "etag", default)]
+        pub etag: Option<String>,
+        #[doc = "Activity events."]
+        #[serde(rename = "events", default)]
+        pub events: Option<Vec<crate::schemas::ActivityEventsItems>>,
+        #[doc = "Unique identifier for each activity record."]
+        #[serde(rename = "id", default)]
+        pub id: Option<crate::schemas::ActivityId>,
+        #[doc = "IP Address of the user doing the action."]
+        #[serde(rename = "ipAddress", default)]
+        pub ip_address: Option<String>,
+        #[doc = "Kind of resource this is."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Domain of source customer."]
+        #[serde(rename = "ownerDomain", default)]
+        pub owner_domain: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Activity {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -349,8 +349,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -392,41 +392,11 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct UsageReport {
-        #[doc = "The date to which the record belongs."]
-        #[serde(rename = "date", default)]
-        pub date: Option<String>,
-        #[doc = "Information about the type of the item."]
-        #[serde(rename = "entity", default)]
-        pub entity: Option<crate::schemas::UsageReportEntity>,
-        #[doc = "ETag of the resource."]
-        #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
-        #[doc = "The kind of object."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Parameter value pairs for various applications."]
-        #[serde(rename = "parameters", default)]
-        pub parameters: Option<Vec<crate::schemas::UsageReportParametersItems>>,
-    }
-    impl ::field_selector::FieldSelector for UsageReport {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -460,9 +430,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct UsageReportParametersItems {
         #[doc = "Boolean value of the parameter."]
         #[serde(rename = "boolValue", default)]
@@ -494,27 +462,25 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct UsageReports {
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct UsageReport {
+        #[doc = "The date to which the record belongs."]
+        #[serde(rename = "date", default)]
+        pub date: Option<String>,
+        #[doc = "Information about the type of the item."]
+        #[serde(rename = "entity", default)]
+        pub entity: Option<crate::schemas::UsageReportEntity>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
         pub etag: Option<String>,
         #[doc = "The kind of object."]
         #[serde(rename = "kind", default)]
         pub kind: Option<String>,
-        #[doc = "Token for retrieving the next page"]
-        #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
-        #[doc = "Various application parameter records."]
-        #[serde(rename = "usageReports", default)]
-        pub usage_reports: Option<Vec<crate::schemas::UsageReport>>,
-        #[doc = "Warnings if any."]
-        #[serde(rename = "warnings", default)]
-        pub warnings: Option<Vec<crate::schemas::UsageReportsWarningsItems>>,
+        #[doc = "Parameter value pairs for various applications."]
+        #[serde(rename = "parameters", default)]
+        pub parameters: Option<Vec<crate::schemas::UsageReportParametersItems>>,
     }
-    impl ::field_selector::FieldSelector for UsageReports {
+    impl ::field_selector::FieldSelector for UsageReport {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -528,8 +494,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UsageReportsWarningsItemsDataItems {
+        #[doc = "Key associated with a key-value pair to give detailed information on the warning."]
+        #[serde(rename = "key", default)]
+        pub key: Option<String>,
+        #[doc = "Value associated with a key-value pair to give detailed information on the warning."]
+        #[serde(rename = "value", default)]
+        pub value: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UsageReportsWarningsItemsDataItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -557,27 +553,25 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UsageReportsWarningsItemsDataItems {
-        #[doc = "Key associated with a key-value pair to give detailed information on the warning."]
-        #[serde(rename = "key", default)]
-        pub key: Option<String>,
-        #[doc = "Value associated with a key-value pair to give detailed information on the warning."]
-        #[serde(rename = "value", default)]
-        pub value: Option<String>,
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct UsageReports {
+        #[doc = "ETag of the resource."]
+        #[serde(rename = "etag", default)]
+        pub etag: Option<String>,
+        #[doc = "The kind of object."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Token for retrieving the next page"]
+        #[serde(rename = "nextPageToken", default)]
+        pub next_page_token: Option<String>,
+        #[doc = "Various application parameter records."]
+        #[serde(rename = "usageReports", default)]
+        pub usage_reports: Option<Vec<crate::schemas::UsageReport>>,
+        #[doc = "Warnings if any."]
+        #[serde(rename = "warnings", default)]
+        pub warnings: Option<Vec<crate::schemas::UsageReportsWarningsItems>>,
     }
-    impl ::field_selector::FieldSelector for UsageReportsWarningsItemsDataItems {
+    impl ::field_selector::FieldSelector for UsageReports {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -589,7 +583,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,

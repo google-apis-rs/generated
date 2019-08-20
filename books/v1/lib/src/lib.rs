@@ -3,8 +3,119 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AnnotationClientVersionRanges {
+        #[doc = "Range in CFI format for this annotation sent by client."]
+        #[serde(rename = "cfiRange", default)]
+        pub cfi_range: Option<crate::schemas::BooksAnnotationsRange>,
+        #[doc = "Content version the client sent in."]
+        #[serde(rename = "contentVersion", default)]
+        pub content_version: Option<String>,
+        #[doc = "Range in GB image format for this annotation sent by client."]
+        #[serde(rename = "gbImageRange", default)]
+        pub gb_image_range: Option<crate::schemas::BooksAnnotationsRange>,
+        #[doc = "Range in GB text format for this annotation sent by client."]
+        #[serde(rename = "gbTextRange", default)]
+        pub gb_text_range: Option<crate::schemas::BooksAnnotationsRange>,
+        #[doc = "Range in image CFI format for this annotation sent by client."]
+        #[serde(rename = "imageCfiRange", default)]
+        pub image_cfi_range: Option<crate::schemas::BooksAnnotationsRange>,
+    }
+    impl ::field_selector::FieldSelector for AnnotationClientVersionRanges {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AnnotationCurrentVersionRanges {
+        #[doc = "Range in CFI format for this annotation for version above."]
+        #[serde(rename = "cfiRange", default)]
+        pub cfi_range: Option<crate::schemas::BooksAnnotationsRange>,
+        #[doc = "Content version applicable to ranges below."]
+        #[serde(rename = "contentVersion", default)]
+        pub content_version: Option<String>,
+        #[doc = "Range in GB image format for this annotation for version above."]
+        #[serde(rename = "gbImageRange", default)]
+        pub gb_image_range: Option<crate::schemas::BooksAnnotationsRange>,
+        #[doc = "Range in GB text format for this annotation for version above."]
+        #[serde(rename = "gbTextRange", default)]
+        pub gb_text_range: Option<crate::schemas::BooksAnnotationsRange>,
+        #[doc = "Range in image CFI format for this annotation for version above."]
+        #[serde(rename = "imageCfiRange", default)]
+        pub image_cfi_range: Option<crate::schemas::BooksAnnotationsRange>,
+    }
+    impl ::field_selector::FieldSelector for AnnotationCurrentVersionRanges {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AnnotationLayerSummary {
+        #[doc = "Maximum allowed characters on this layer, especially for the \"copy\" layer."]
+        #[serde(rename = "allowedCharacterCount", default)]
+        pub allowed_character_count: Option<i32>,
+        #[doc = "Type of limitation on this layer. \"limited\" or \"unlimited\" for the \"copy\" layer."]
+        #[serde(rename = "limitType", default)]
+        pub limit_type: Option<String>,
+        #[doc = "Remaining allowed characters on this layer, especially for the \"copy\" layer."]
+        #[serde(rename = "remainingCharacterCount", default)]
+        pub remaining_character_count: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for AnnotationLayerSummary {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -73,120 +184,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AnnotationClientVersionRanges {
-        #[doc = "Range in CFI format for this annotation sent by client."]
-        #[serde(rename = "cfiRange", default)]
-        pub cfi_range: Option<crate::schemas::BooksAnnotationsRange>,
-        #[doc = "Content version the client sent in."]
-        #[serde(rename = "contentVersion", default)]
-        pub content_version: Option<String>,
-        #[doc = "Range in GB image format for this annotation sent by client."]
-        #[serde(rename = "gbImageRange", default)]
-        pub gb_image_range: Option<crate::schemas::BooksAnnotationsRange>,
-        #[doc = "Range in GB text format for this annotation sent by client."]
-        #[serde(rename = "gbTextRange", default)]
-        pub gb_text_range: Option<crate::schemas::BooksAnnotationsRange>,
-        #[doc = "Range in image CFI format for this annotation sent by client."]
-        #[serde(rename = "imageCfiRange", default)]
-        pub image_cfi_range: Option<crate::schemas::BooksAnnotationsRange>,
-    }
-    impl ::field_selector::FieldSelector for AnnotationClientVersionRanges {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AnnotationCurrentVersionRanges {
-        #[doc = "Range in CFI format for this annotation for version above."]
-        #[serde(rename = "cfiRange", default)]
-        pub cfi_range: Option<crate::schemas::BooksAnnotationsRange>,
-        #[doc = "Content version applicable to ranges below."]
-        #[serde(rename = "contentVersion", default)]
-        pub content_version: Option<String>,
-        #[doc = "Range in GB image format for this annotation for version above."]
-        #[serde(rename = "gbImageRange", default)]
-        pub gb_image_range: Option<crate::schemas::BooksAnnotationsRange>,
-        #[doc = "Range in GB text format for this annotation for version above."]
-        #[serde(rename = "gbTextRange", default)]
-        pub gb_text_range: Option<crate::schemas::BooksAnnotationsRange>,
-        #[doc = "Range in image CFI format for this annotation for version above."]
-        #[serde(rename = "imageCfiRange", default)]
-        pub image_cfi_range: Option<crate::schemas::BooksAnnotationsRange>,
-    }
-    impl ::field_selector::FieldSelector for AnnotationCurrentVersionRanges {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AnnotationLayerSummary {
-        #[doc = "Maximum allowed characters on this layer, especially for the \"copy\" layer."]
-        #[serde(rename = "allowedCharacterCount", default)]
-        pub allowed_character_count: Option<i32>,
-        #[doc = "Type of limitation on this layer. \"limited\" or \"unlimited\" for the \"copy\" layer."]
-        #[serde(rename = "limitType", default)]
-        pub limit_type: Option<String>,
-        #[doc = "Remaining allowed characters on this layer, especially for the \"copy\" layer."]
-        #[serde(rename = "remainingCharacterCount", default)]
-        pub remaining_character_count: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for AnnotationLayerSummary {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Annotationdata {
         #[doc = "The type of annotation this data is for."]
         #[serde(rename = "annotationType", default)]
@@ -229,8 +227,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -265,36 +263,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AnnotationsSummary {
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[serde(rename = "layers", default)]
-        pub layers: Option<Vec<crate::schemas::AnnotationsSummaryLayersItems>>,
-    }
-    impl ::field_selector::FieldSelector for AnnotationsSummary {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -324,8 +294,34 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
+    pub struct AnnotationsSummary {
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[serde(rename = "layers", default)]
+        pub layers: Option<Vec<crate::schemas::AnnotationsSummaryLayersItems>>,
+    }
+    impl ::field_selector::FieldSelector for AnnotationsSummary {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Annotationsdata {
         #[doc = "A list of Annotation Data."]
         #[serde(rename = "items", default)]
@@ -354,8 +350,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -390,8 +386,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -422,8 +418,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -448,8 +444,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -502,8 +498,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -532,38 +528,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Category {
-        #[doc = "A list of onboarding categories."]
-        #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::CategoryItemsItems>>,
-        #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Category {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -592,8 +558,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Category {
+        #[doc = "A list of onboarding categories."]
+        #[serde(rename = "items", default)]
+        pub items: Option<Vec<crate::schemas::CategoryItemsItems>>,
+        #[doc = "Resource type."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Category {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -649,38 +645,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Dictlayerdata {
-        #[serde(rename = "common", default)]
-        pub common: Option<crate::schemas::DictlayerdataCommon>,
-        #[serde(rename = "dict", default)]
-        pub dict: Option<crate::schemas::DictlayerdataDict>,
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Dictlayerdata {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -706,37 +672,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DictlayerdataDict {
-        #[doc = "The source, url and attribution for this dictionary data."]
-        #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::DictlayerdataDictSource>,
-        #[serde(rename = "words", default)]
-        pub words: Option<Vec<crate::schemas::DictlayerdataDictWordsItems>>,
-    }
-    impl ::field_selector::FieldSelector for DictlayerdataDict {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -763,69 +700,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DictlayerdataDictWordsItems {
-        #[serde(rename = "derivatives", default)]
-        pub derivatives: Option<Vec<crate::schemas::DictlayerdataDictWordsItemsDerivativesItems>>,
-        #[serde(rename = "examples", default)]
-        pub examples: Option<Vec<crate::schemas::DictlayerdataDictWordsItemsExamplesItems>>,
-        #[serde(rename = "senses", default)]
-        pub senses: Option<Vec<crate::schemas::DictlayerdataDictWordsItemsSensesItems>>,
-        #[doc = "The words with different meanings but not related words, e.g. \"go\" (game) and \"go\" (verb)."]
-        #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::DictlayerdataDictWordsItemsSource>,
-    }
-    impl ::field_selector::FieldSelector for DictlayerdataDictWordsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DictlayerdataDictWordsItemsDerivativesItems {
-        #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::DictlayerdataDictWordsItemsDerivativesItemsSource>,
-        #[serde(rename = "text", default)]
-        pub text: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsDerivativesItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -852,21 +728,21 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DictlayerdataDictWordsItemsExamplesItems {
+    pub struct DictlayerdataDictWordsItemsDerivativesItems {
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::DictlayerdataDictWordsItemsExamplesItemsSource>,
+        pub source: Option<crate::schemas::DictlayerdataDictWordsItemsDerivativesItemsSource>,
         #[serde(rename = "text", default)]
         pub text: Option<String>,
     }
-    impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsExamplesItems {
+    impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsDerivativesItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -880,8 +756,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -908,8 +784,236 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DictlayerdataDictWordsItemsExamplesItems {
+        #[serde(rename = "source", default)]
+        pub source: Option<crate::schemas::DictlayerdataDictWordsItemsExamplesItemsSource>,
+        #[serde(rename = "text", default)]
+        pub text: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsExamplesItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DictlayerdataDictWordsItemsSensesItemsConjugationsItems {
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+        #[serde(rename = "value", default)]
+        pub value: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsSensesItemsConjugationsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItemsSource {
+        #[serde(rename = "attribution", default)]
+        pub attribution: Option<String>,
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+    }
+    impl ::field_selector::FieldSelector
+        for DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItemsSource
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItems { # [ serde ( rename = "source" , default ) ] pub source : Option < crate :: schemas :: DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItemsSource > , # [ serde ( rename = "text" , default ) ] pub text : Option < String > , }
+    impl ::field_selector::FieldSelector
+        for DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItems
+    {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DictlayerdataDictWordsItemsSensesItemsDefinitionsItems {
+        #[serde(rename = "definition", default)]
+        pub definition: Option<String>,
+        #[serde(rename = "examples", default)]
+        pub examples: Option<
+            Vec<
+                crate::schemas::DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItems,
+            >,
+        >,
+    }
+    impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsSensesItemsDefinitionsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DictlayerdataDictWordsItemsSensesItemsSource {
+        #[serde(rename = "attribution", default)]
+        pub attribution: Option<String>,
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsSensesItemsSource {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DictlayerdataDictWordsItemsSensesItemsSynonymsItemsSource {
+        #[serde(rename = "attribution", default)]
+        pub attribution: Option<String>,
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsSensesItemsSynonymsItemsSource {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DictlayerdataDictWordsItemsSensesItemsSynonymsItems {
+        #[serde(rename = "source", default)]
+        pub source:
+            Option<crate::schemas::DictlayerdataDictWordsItemsSensesItemsSynonymsItemsSource>,
+        #[serde(rename = "text", default)]
+        pub text: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsSensesItemsSynonymsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -951,208 +1055,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DictlayerdataDictWordsItemsSensesItemsConjugationsItems {
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-        #[serde(rename = "value", default)]
-        pub value: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsSensesItemsConjugationsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DictlayerdataDictWordsItemsSensesItemsDefinitionsItems {
-        #[serde(rename = "definition", default)]
-        pub definition: Option<String>,
-        #[serde(rename = "examples", default)]
-        pub examples: Option<
-            Vec<
-                crate::schemas::DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItems,
-            >,
-        >,
-    }
-    impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsSensesItemsDefinitionsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItems { # [ serde ( rename = "source" , default ) ] pub source : Option < crate :: schemas :: DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItemsSource > , # [ serde ( rename = "text" , default ) ] pub text : Option < String > , }
-    impl ::field_selector::FieldSelector
-        for DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItems
-    {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItemsSource {
-        #[serde(rename = "attribution", default)]
-        pub attribution: Option<String>,
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector
-        for DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItemsSource
-    {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DictlayerdataDictWordsItemsSensesItemsSource {
-        #[serde(rename = "attribution", default)]
-        pub attribution: Option<String>,
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsSensesItemsSource {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DictlayerdataDictWordsItemsSensesItemsSynonymsItems {
-        #[serde(rename = "source", default)]
-        pub source:
-            Option<crate::schemas::DictlayerdataDictWordsItemsSensesItemsSynonymsItemsSource>,
-        #[serde(rename = "text", default)]
-        pub text: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsSensesItemsSynonymsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DictlayerdataDictWordsItemsSensesItemsSynonymsItemsSource {
-        #[serde(rename = "attribution", default)]
-        pub attribution: Option<String>,
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsSensesItemsSynonymsItemsSource {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -1176,46 +1080,29 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct Discoveryclusters {
-        #[serde(rename = "clusters", default)]
-        pub clusters: Option<Vec<crate::schemas::DiscoveryclustersClustersItems>>,
-        #[doc = "Resorce type."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[serde(rename = "totalClusters", default)]
-        pub total_clusters: Option<i32>,
+    pub struct DictlayerdataDictWordsItems {
+        #[serde(rename = "derivatives", default)]
+        pub derivatives: Option<Vec<crate::schemas::DictlayerdataDictWordsItemsDerivativesItems>>,
+        #[serde(rename = "examples", default)]
+        pub examples: Option<Vec<crate::schemas::DictlayerdataDictWordsItemsExamplesItems>>,
+        #[serde(rename = "senses", default)]
+        pub senses: Option<Vec<crate::schemas::DictlayerdataDictWordsItemsSensesItems>>,
+        #[doc = "The words with different meanings but not related words, e.g. \"go\" (game) and \"go\" (verb)."]
+        #[serde(rename = "source", default)]
+        pub source: Option<crate::schemas::DictlayerdataDictWordsItemsSource>,
     }
-    impl ::field_selector::FieldSelector for Discoveryclusters {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct DiscoveryclustersClustersItems {
-        #[serde(rename = "banner_with_content_container", default)]
-        pub banner_with_content_container:
-            Option<crate::schemas::DiscoveryclustersClustersItemsBannerWithContentContainer>,
-        #[serde(rename = "subTitle", default)]
-        pub sub_title: Option<String>,
-        #[serde(rename = "title", default)]
-        pub title: Option<String>,
-        #[serde(rename = "totalVolumes", default)]
-        pub total_volumes: Option<i32>,
-        #[serde(rename = "uid", default)]
-        pub uid: Option<String>,
-        #[serde(rename = "volumes", default)]
-        pub volumes: Option<Vec<crate::schemas::Volume>>,
-    }
-    impl ::field_selector::FieldSelector for DiscoveryclustersClustersItems {
+    impl ::field_selector::FieldSelector for DictlayerdataDictWordsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1229,8 +1116,67 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DictlayerdataDict {
+        #[doc = "The source, url and attribution for this dictionary data."]
+        #[serde(rename = "source", default)]
+        pub source: Option<crate::schemas::DictlayerdataDictSource>,
+        #[serde(rename = "words", default)]
+        pub words: Option<Vec<crate::schemas::DictlayerdataDictWordsItems>>,
+    }
+    impl ::field_selector::FieldSelector for DictlayerdataDict {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Dictlayerdata {
+        #[serde(rename = "common", default)]
+        pub common: Option<crate::schemas::DictlayerdataCommon>,
+        #[serde(rename = "dict", default)]
+        pub dict: Option<crate::schemas::DictlayerdataDict>,
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Dictlayerdata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1261,12 +1207,58 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct DiscoveryclustersClustersItems {
+        #[serde(rename = "banner_with_content_container", default)]
+        pub banner_with_content_container:
+            Option<crate::schemas::DiscoveryclustersClustersItemsBannerWithContentContainer>,
+        #[serde(rename = "subTitle", default)]
+        pub sub_title: Option<String>,
+        #[serde(rename = "title", default)]
+        pub title: Option<String>,
+        #[serde(rename = "totalVolumes", default)]
+        pub total_volumes: Option<i32>,
+        #[serde(rename = "uid", default)]
+        pub uid: Option<String>,
+        #[serde(rename = "volumes", default)]
+        pub volumes: Option<Vec<crate::schemas::Volume>>,
+    }
+    impl ::field_selector::FieldSelector for DiscoveryclustersClustersItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Discoveryclusters {
+        #[serde(rename = "clusters", default)]
+        pub clusters: Option<Vec<crate::schemas::DiscoveryclustersClustersItems>>,
+        #[doc = "Resorce type."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[serde(rename = "totalClusters", default)]
+        pub total_clusters: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for Discoveryclusters {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1325,8 +1317,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1355,38 +1347,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FamilyInfo {
-        #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Family membership info of the user that made the request."]
-        #[serde(rename = "membership", default)]
-        pub membership: Option<crate::schemas::FamilyInfoMembership>,
-    }
-    impl ::field_selector::FieldSelector for FamilyInfo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -1420,17 +1382,26 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct Geolayerdata {
-        #[serde(rename = "common", default)]
-        pub common: Option<crate::schemas::GeolayerdataCommon>,
-        #[serde(rename = "geo", default)]
-        pub geo: Option<crate::schemas::GeolayerdataGeo>,
+    pub struct FamilyInfo {
+        #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
         pub kind: Option<String>,
+        #[doc = "Family membership info of the user that made the request."]
+        #[serde(rename = "membership", default)]
+        pub membership: Option<crate::schemas::FamilyInfoMembership>,
     }
-    impl ::field_selector::FieldSelector for Geolayerdata {
+    impl ::field_selector::FieldSelector for FamilyInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1444,8 +1415,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1470,6 +1441,91 @@ pub mod schemas {
         pub title: Option<String>,
     }
     impl ::field_selector::FieldSelector for GeolayerdataCommon {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GeolayerdataGeoBoundaryItemsItems {
+        #[serde(rename = "latitude", default)]
+        pub latitude: Option<u32>,
+        #[serde(rename = "longitude", default)]
+        pub longitude: Option<u32>,
+    }
+    impl ::field_selector::FieldSelector for GeolayerdataGeoBoundaryItemsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GeolayerdataGeoViewportHi {
+        #[serde(rename = "latitude", default)]
+        pub latitude: Option<f64>,
+        #[serde(rename = "longitude", default)]
+        pub longitude: Option<f64>,
+    }
+    impl ::field_selector::FieldSelector for GeolayerdataGeoViewportHi {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GeolayerdataGeoViewportLo {
+        #[serde(rename = "latitude", default)]
+        pub latitude: Option<f64>,
+        #[serde(rename = "longitude", default)]
+        pub longitude: Option<f64>,
+    }
+    impl ::field_selector::FieldSelector for GeolayerdataGeoViewportLo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GeolayerdataGeoViewport {
+        #[serde(rename = "hi", default)]
+        pub hi: Option<crate::schemas::GeolayerdataGeoViewportHi>,
+        #[serde(rename = "lo", default)]
+        pub lo: Option<crate::schemas::GeolayerdataGeoViewportLo>,
+    }
+    impl ::field_selector::FieldSelector for GeolayerdataGeoViewport {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1519,81 +1575,17 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GeolayerdataGeoBoundaryItemsItems {
-        #[serde(rename = "latitude", default)]
-        pub latitude: Option<u32>,
-        #[serde(rename = "longitude", default)]
-        pub longitude: Option<u32>,
-    }
-    impl ::field_selector::FieldSelector for GeolayerdataGeoBoundaryItemsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct GeolayerdataGeoViewport {
-        #[serde(rename = "hi", default)]
-        pub hi: Option<crate::schemas::GeolayerdataGeoViewportHi>,
-        #[serde(rename = "lo", default)]
-        pub lo: Option<crate::schemas::GeolayerdataGeoViewportLo>,
+    pub struct Geolayerdata {
+        #[serde(rename = "common", default)]
+        pub common: Option<crate::schemas::GeolayerdataCommon>,
+        #[serde(rename = "geo", default)]
+        pub geo: Option<crate::schemas::GeolayerdataGeo>,
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
     }
-    impl ::field_selector::FieldSelector for GeolayerdataGeoViewport {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GeolayerdataGeoViewportHi {
-        #[serde(rename = "latitude", default)]
-        pub latitude: Option<f64>,
-        #[serde(rename = "longitude", default)]
-        pub longitude: Option<f64>,
-    }
-    impl ::field_selector::FieldSelector for GeolayerdataGeoViewportHi {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GeolayerdataGeoViewportLo {
-        #[serde(rename = "latitude", default)]
-        pub latitude: Option<f64>,
-        #[serde(rename = "longitude", default)]
-        pub longitude: Option<f64>,
-    }
-    impl ::field_selector::FieldSelector for GeolayerdataGeoViewportLo {
+    impl ::field_selector::FieldSelector for Geolayerdata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1607,8 +1599,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1640,8 +1632,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1703,38 +1695,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Metadata {
-        #[doc = "A list of offline dictionary metadata."]
-        #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::MetadataItemsItems>>,
-        #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Metadata {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -1769,8 +1731,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Metadata {
+        #[doc = "A list of offline dictionary metadata."]
+        #[serde(rename = "items", default)]
+        pub items: Option<Vec<crate::schemas::MetadataItemsItems>>,
+        #[doc = "Resource type."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Metadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1828,70 +1820,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Offers {
-        #[doc = "A list of offers."]
-        #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::OffersItemsItems>>,
-        #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Offers {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct OffersItemsItems {
-        #[serde(rename = "artUrl", default)]
-        pub art_url: Option<String>,
-        #[serde(rename = "gservicesKey", default)]
-        pub gservices_key: Option<String>,
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-        #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::OffersItemsItemsItemsItems>>,
-    }
-    impl ::field_selector::FieldSelector for OffersItemsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -1926,8 +1856,70 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct OffersItemsItems {
+        #[serde(rename = "artUrl", default)]
+        pub art_url: Option<String>,
+        #[serde(rename = "gservicesKey", default)]
+        pub gservices_key: Option<String>,
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+        #[serde(rename = "items", default)]
+        pub items: Option<Vec<crate::schemas::OffersItemsItemsItemsItems>>,
+    }
+    impl ::field_selector::FieldSelector for OffersItemsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Offers {
+        #[doc = "A list of offers."]
+        #[serde(rename = "items", default)]
+        pub items: Option<Vec<crate::schemas::OffersItemsItems>>,
+        #[doc = "Resource type."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Offers {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1971,8 +1963,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2004,8 +1996,68 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReviewAuthor {
+        #[doc = "Name of this person."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ReviewAuthor {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReviewSource {
+        #[doc = "Name of the source."]
+        #[serde(rename = "description", default)]
+        pub description: Option<String>,
+        #[doc = "Extra text about the source of the review."]
+        #[serde(rename = "extraDescription", default)]
+        pub extra_description: Option<String>,
+        #[doc = "URL of the source of the review."]
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ReviewSource {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2058,97 +2110,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReviewAuthor {
-        #[doc = "Name of this person."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ReviewAuthor {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReviewSource {
-        #[doc = "Name of the source."]
-        #[serde(rename = "description", default)]
-        pub description: Option<String>,
-        #[doc = "Extra text about the source of the review."]
-        #[serde(rename = "extraDescription", default)]
-        pub extra_description: Option<String>,
-        #[doc = "URL of the source of the review."]
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ReviewSource {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Series {
-        #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[serde(rename = "series", default)]
-        pub series: Option<Vec<crate::schemas::SeriesSeriesItems>>,
-    }
-    impl ::field_selector::FieldSelector for Series {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -2178,8 +2141,35 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
+    pub struct Series {
+        #[doc = "Resource type."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[serde(rename = "series", default)]
+        pub series: Option<Vec<crate::schemas::SeriesSeriesItems>>,
+    }
+    impl ::field_selector::FieldSelector for Series {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Seriesmembership {
         #[doc = "Resorce type."]
         #[serde(rename = "kind", default)]
@@ -2203,40 +2193,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Usersettings {
-        #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "User settings in sub-objects, each for different purposes."]
-        #[serde(rename = "notesExport", default)]
-        pub notes_export: Option<crate::schemas::UsersettingsNotesExport>,
-        #[serde(rename = "notification", default)]
-        pub notification: Option<crate::schemas::UsersettingsNotification>,
-    }
-    impl ::field_selector::FieldSelector for Usersettings {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -2263,8 +2221,138 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UsersettingsNotificationMatchMyInterests {
+        #[serde(rename = "opted_state", default)]
+        pub opted_state: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UsersettingsNotificationMatchMyInterests {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UsersettingsNotificationMoreFromAuthors {
+        #[serde(rename = "opted_state", default)]
+        pub opted_state: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UsersettingsNotificationMoreFromAuthors {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UsersettingsNotificationMoreFromSeries {
+        #[serde(rename = "opted_state", default)]
+        pub opted_state: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UsersettingsNotificationMoreFromSeries {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UsersettingsNotificationPriceDrop {
+        #[serde(rename = "opted_state", default)]
+        pub opted_state: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UsersettingsNotificationPriceDrop {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UsersettingsNotificationRewardExpirations {
+        #[serde(rename = "opted_state", default)]
+        pub opted_state: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UsersettingsNotificationRewardExpirations {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2297,194 +2385,25 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct UsersettingsNotificationMatchMyInterests {
-        #[serde(rename = "opted_state", default)]
-        pub opted_state: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for UsersettingsNotificationMatchMyInterests {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UsersettingsNotificationMoreFromAuthors {
-        #[serde(rename = "opted_state", default)]
-        pub opted_state: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for UsersettingsNotificationMoreFromAuthors {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UsersettingsNotificationMoreFromSeries {
-        #[serde(rename = "opted_state", default)]
-        pub opted_state: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for UsersettingsNotificationMoreFromSeries {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UsersettingsNotificationPriceDrop {
-        #[serde(rename = "opted_state", default)]
-        pub opted_state: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for UsersettingsNotificationPriceDrop {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UsersettingsNotificationRewardExpirations {
-        #[serde(rename = "opted_state", default)]
-        pub opted_state: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for UsersettingsNotificationRewardExpirations {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct Volume {
-        #[doc = "Any information about a volume related to reading or obtaining that volume text. This information can depend on country (books may be public domain in one country but not in another, e.g.)."]
-        #[serde(rename = "accessInfo", default)]
-        pub access_info: Option<crate::schemas::VolumeAccessInfo>,
-        #[doc = "Opaque identifier for a specific version of a volume resource. (In LITE projection)"]
-        #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
-        #[doc = "Unique identifier for a volume. (In LITE projection.)"]
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-        #[doc = "Resource type for a volume. (In LITE projection.)"]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "What layers exist in this volume and high level information about them."]
-        #[serde(rename = "layerInfo", default)]
-        pub layer_info: Option<crate::schemas::VolumeLayerInfo>,
-        #[doc = "Recommendation related information for this volume."]
-        #[serde(rename = "recommendedInfo", default)]
-        pub recommended_info: Option<crate::schemas::VolumeRecommendedInfo>,
-        #[doc = "Any information about a volume related to the eBookstore and/or purchaseability. This information can depend on the country where the request originates from (i.e. books may not be for sale in certain countries)."]
-        #[serde(rename = "saleInfo", default)]
-        pub sale_info: Option<crate::schemas::VolumeSaleInfo>,
-        #[doc = "Search result information related to this volume."]
-        #[serde(rename = "searchInfo", default)]
-        pub search_info: Option<crate::schemas::VolumeSearchInfo>,
-        #[doc = "URL to this resource. (In LITE projection.)"]
-        #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
-        #[doc = "User specific information related to this volume. (e.g. page this user last read or whether they purchased this book)"]
-        #[serde(rename = "userInfo", default)]
-        pub user_info: Option<crate::schemas::VolumeUserInfo>,
-        #[doc = "General volume information."]
-        #[serde(rename = "volumeInfo", default)]
-        pub volume_info: Option<crate::schemas::VolumeVolumeInfo>,
-    }
-    impl ::field_selector::FieldSelector for Volume {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct Volume2 {
-        #[doc = "A list of volumes."]
-        #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Volume>>,
+    pub struct Usersettings {
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
         pub kind: Option<String>,
-        #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        #[doc = "User settings in sub-objects, each for different purposes."]
+        #[serde(rename = "notesExport", default)]
+        pub notes_export: Option<crate::schemas::UsersettingsNotesExport>,
+        #[serde(rename = "notification", default)]
+        pub notification: Option<crate::schemas::UsersettingsNotification>,
     }
-    impl ::field_selector::FieldSelector for Volume2 {
+    impl ::field_selector::FieldSelector for Usersettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2498,8 +2417,74 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct VolumeAccessInfoEpub {
+        #[doc = "URL to retrieve ACS token for epub download. (In LITE projection.)"]
+        #[serde(rename = "acsTokenLink", default)]
+        pub acs_token_link: Option<String>,
+        #[doc = "URL to download epub. (In LITE projection.)"]
+        #[serde(rename = "downloadLink", default)]
+        pub download_link: Option<String>,
+        #[doc = "Is a flowing text epub available either as public domain or for purchase. (In LITE projection.)"]
+        #[serde(rename = "isAvailable", default)]
+        pub is_available: Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for VolumeAccessInfoEpub {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct VolumeAccessInfoPdf {
+        #[doc = "URL to retrieve ACS token for pdf download. (In LITE projection.)"]
+        #[serde(rename = "acsTokenLink", default)]
+        pub acs_token_link: Option<String>,
+        #[doc = "URL to download pdf. (In LITE projection.)"]
+        #[serde(rename = "downloadLink", default)]
+        pub download_link: Option<String>,
+        #[doc = "Is a scanned image pdf available either as public domain or for purchase. (In LITE projection.)"]
+        #[serde(rename = "isAvailable", default)]
+        pub is_available: Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for VolumeAccessInfoPdf {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2564,101 +2549,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct VolumeAccessInfoEpub {
-        #[doc = "URL to retrieve ACS token for epub download. (In LITE projection.)"]
-        #[serde(rename = "acsTokenLink", default)]
-        pub acs_token_link: Option<String>,
-        #[doc = "URL to download epub. (In LITE projection.)"]
-        #[serde(rename = "downloadLink", default)]
-        pub download_link: Option<String>,
-        #[doc = "Is a flowing text epub available either as public domain or for purchase. (In LITE projection.)"]
-        #[serde(rename = "isAvailable", default)]
-        pub is_available: Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for VolumeAccessInfoEpub {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct VolumeAccessInfoPdf {
-        #[doc = "URL to retrieve ACS token for pdf download. (In LITE projection.)"]
-        #[serde(rename = "acsTokenLink", default)]
-        pub acs_token_link: Option<String>,
-        #[doc = "URL to download pdf. (In LITE projection.)"]
-        #[serde(rename = "downloadLink", default)]
-        pub download_link: Option<String>,
-        #[doc = "Is a scanned image pdf available either as public domain or for purchase. (In LITE projection.)"]
-        #[serde(rename = "isAvailable", default)]
-        pub is_available: Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for VolumeAccessInfoPdf {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct VolumeLayerInfo {
-        #[doc = "A layer should appear here if and only if the layer exists for this book."]
-        #[serde(rename = "layers", default)]
-        pub layers: Option<Vec<crate::schemas::VolumeLayerInfoLayersItems>>,
-    }
-    impl ::field_selector::FieldSelector for VolumeLayerInfo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -2687,8 +2579,35 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct VolumeLayerInfo {
+        #[doc = "A layer should appear here if and only if the layer exists for this book."]
+        #[serde(rename = "layers", default)]
+        pub layers: Option<Vec<crate::schemas::VolumeLayerInfoLayersItems>>,
+    }
+    impl ::field_selector::FieldSelector for VolumeLayerInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2713,45 +2632,6 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct VolumeSaleInfo {
-        #[doc = "URL to purchase this volume on the Google Books site. (In LITE projection)"]
-        #[serde(rename = "buyLink", default)]
-        pub buy_link: Option<String>,
-        #[doc = "The two-letter ISO_3166-1 country code for which this sale information is valid. (In LITE projection.)"]
-        #[serde(rename = "country", default)]
-        pub country: Option<String>,
-        #[doc = "Whether or not this volume is an eBook (can be added to the My eBooks shelf)."]
-        #[serde(rename = "isEbook", default)]
-        pub is_ebook: Option<bool>,
-        #[doc = "Suggested retail price. (In LITE projection.)"]
-        #[serde(rename = "listPrice", default)]
-        pub list_price: Option<crate::schemas::VolumeSaleInfoListPrice>,
-        #[doc = "Offers available for this volume (sales and rentals)."]
-        #[serde(rename = "offers", default)]
-        pub offers: Option<Vec<crate::schemas::VolumeSaleInfoOffersItems>>,
-        #[doc = "The date on which this book is available for sale."]
-        #[serde(rename = "onSaleDate", default)]
-        pub on_sale_date: Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "The actual selling price of the book. This is the same as the suggested retail or list price unless there are offers or discounts on this volume. (In LITE projection.)"]
-        #[serde(rename = "retailPrice", default)]
-        pub retail_price: Option<crate::schemas::VolumeSaleInfoRetailPrice>,
-        #[doc = "Whether or not this book is available for sale or offered for free in the Google eBookstore for the country listed above. Possible values are FOR_SALE, FOR_RENTAL_ONLY, FOR_SALE_AND_RENTAL, FREE, NOT_FOR_SALE, or FOR_PREORDER."]
-        #[serde(rename = "saleability", default)]
-        pub saleability: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for VolumeSaleInfo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
     pub struct VolumeSaleInfoListPrice {
         #[doc = "Amount in the currency listed below. (In LITE projection.)"]
         #[serde(rename = "amount", default)]
@@ -2761,36 +2641,6 @@ pub mod schemas {
         pub currency_code: Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeSaleInfoListPrice {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct VolumeSaleInfoOffersItems {
-        #[doc = "The finsky offer type (e.g., PURCHASE=0 RENTAL=3)"]
-        #[serde(rename = "finskyOfferType", default)]
-        pub finsky_offer_type: Option<i32>,
-        #[doc = "Indicates whether the offer is giftable."]
-        #[serde(rename = "giftable", default)]
-        pub giftable: Option<bool>,
-        #[doc = "Offer list (=undiscounted) price in Micros."]
-        #[serde(rename = "listPrice", default)]
-        pub list_price: Option<crate::schemas::VolumeSaleInfoOffersItemsListPrice>,
-        #[doc = "The rental duration (for rental offers only)."]
-        #[serde(rename = "rentalDuration", default)]
-        pub rental_duration: Option<crate::schemas::VolumeSaleInfoOffersItemsRentalDuration>,
-        #[doc = "Offer retail (=discounted) price in Micros"]
-        #[serde(rename = "retailPrice", default)]
-        pub retail_price: Option<crate::schemas::VolumeSaleInfoOffersItemsRetailPrice>,
-    }
-    impl ::field_selector::FieldSelector for VolumeSaleInfoOffersItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2860,6 +2710,36 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct VolumeSaleInfoOffersItems {
+        #[doc = "The finsky offer type (e.g., PURCHASE=0 RENTAL=3)"]
+        #[serde(rename = "finskyOfferType", default)]
+        pub finsky_offer_type: Option<i32>,
+        #[doc = "Indicates whether the offer is giftable."]
+        #[serde(rename = "giftable", default)]
+        pub giftable: Option<bool>,
+        #[doc = "Offer list (=undiscounted) price in Micros."]
+        #[serde(rename = "listPrice", default)]
+        pub list_price: Option<crate::schemas::VolumeSaleInfoOffersItemsListPrice>,
+        #[doc = "The rental duration (for rental offers only)."]
+        #[serde(rename = "rentalDuration", default)]
+        pub rental_duration: Option<crate::schemas::VolumeSaleInfoOffersItemsRentalDuration>,
+        #[doc = "Offer retail (=discounted) price in Micros"]
+        #[serde(rename = "retailPrice", default)]
+        pub retail_price: Option<crate::schemas::VolumeSaleInfoOffersItemsRetailPrice>,
+    }
+    impl ::field_selector::FieldSelector for VolumeSaleInfoOffersItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
     pub struct VolumeSaleInfoRetailPrice {
         #[doc = "Amount in the currency listed below. (In LITE projection.)"]
         #[serde(rename = "amount", default)]
@@ -2879,11 +2759,50 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct VolumeSaleInfo {
+        #[doc = "URL to purchase this volume on the Google Books site. (In LITE projection)"]
+        #[serde(rename = "buyLink", default)]
+        pub buy_link: Option<String>,
+        #[doc = "The two-letter ISO_3166-1 country code for which this sale information is valid. (In LITE projection.)"]
+        #[serde(rename = "country", default)]
+        pub country: Option<String>,
+        #[doc = "Whether or not this volume is an eBook (can be added to the My eBooks shelf)."]
+        #[serde(rename = "isEbook", default)]
+        pub is_ebook: Option<bool>,
+        #[doc = "Suggested retail price. (In LITE projection.)"]
+        #[serde(rename = "listPrice", default)]
+        pub list_price: Option<crate::schemas::VolumeSaleInfoListPrice>,
+        #[doc = "Offers available for this volume (sales and rentals)."]
+        #[serde(rename = "offers", default)]
+        pub offers: Option<Vec<crate::schemas::VolumeSaleInfoOffersItems>>,
+        #[doc = "The date on which this book is available for sale."]
+        #[serde(rename = "onSaleDate", default)]
+        pub on_sale_date: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The actual selling price of the book. This is the same as the suggested retail or list price unless there are offers or discounts on this volume. (In LITE projection.)"]
+        #[serde(rename = "retailPrice", default)]
+        pub retail_price: Option<crate::schemas::VolumeSaleInfoRetailPrice>,
+        #[doc = "Whether or not this book is available for sale or offered for free in the Google eBookstore for the country listed above. Possible values are FOR_SALE, FOR_RENTAL_ONLY, FOR_SALE_AND_RENTAL, FREE, NOT_FOR_SALE, or FOR_PREORDER."]
+        #[serde(rename = "saleability", default)]
+        pub saleability: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for VolumeSaleInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2909,8 +2828,129 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct VolumeUserInfoCopy {
+        #[serde(rename = "allowedCharacterCount", default)]
+        pub allowed_character_count: Option<i32>,
+        #[serde(rename = "limitType", default)]
+        pub limit_type: Option<String>,
+        #[serde(rename = "remainingCharacterCount", default)]
+        pub remaining_character_count: Option<i32>,
+        #[serde(rename = "updated", default)]
+        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+    }
+    impl ::field_selector::FieldSelector for VolumeUserInfoCopy {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct VolumeUserInfoFamilySharing {
+        #[doc = "The role of the user in the family."]
+        #[serde(rename = "familyRole", default)]
+        pub family_role: Option<String>,
+        #[doc = "Whether or not this volume can be shared with the family by the user. This includes sharing eligibility of both the volume and the user. If the value is true, the user can initiate a family sharing action."]
+        #[serde(rename = "isSharingAllowed", default)]
+        pub is_sharing_allowed: Option<bool>,
+        #[doc = "Whether or not sharing this volume is temporarily disabled due to issues with the Family Wallet."]
+        #[serde(rename = "isSharingDisabledByFop", default)]
+        pub is_sharing_disabled_by_fop: Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for VolumeUserInfoFamilySharing {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct VolumeUserInfoRentalPeriod {
+        #[serde(rename = "endUtcSec", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub end_utc_sec: Option<i64>,
+        #[serde(rename = "startUtcSec", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub start_utc_sec: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for VolumeUserInfoRentalPeriod {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct VolumeUserInfoUserUploadedVolumeInfo {
+        #[serde(rename = "processingState", default)]
+        pub processing_state: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for VolumeUserInfoUserUploadedVolumeInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2989,25 +3029,26 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct VolumeUserInfoCopy {
-        #[serde(rename = "allowedCharacterCount", default)]
-        pub allowed_character_count: Option<i32>,
-        #[serde(rename = "limitType", default)]
-        pub limit_type: Option<String>,
-        #[serde(rename = "remainingCharacterCount", default)]
-        pub remaining_character_count: Option<i32>,
-        #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+    pub struct VolumeVolumeInfoDimensions {
+        #[doc = "Height or length of this volume (in cm)."]
+        #[serde(rename = "height", default)]
+        pub height: Option<String>,
+        #[doc = "Thickness of this volume (in cm)."]
+        #[serde(rename = "thickness", default)]
+        pub thickness: Option<String>,
+        #[doc = "Width of this volume (in cm)."]
+        #[serde(rename = "width", default)]
+        pub width: Option<String>,
     }
-    impl ::field_selector::FieldSelector for VolumeUserInfoCopy {
+    impl ::field_selector::FieldSelector for VolumeVolumeInfoDimensions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3021,26 +3062,35 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct VolumeUserInfoFamilySharing {
-        #[doc = "The role of the user in the family."]
-        #[serde(rename = "familyRole", default)]
-        pub family_role: Option<String>,
-        #[doc = "Whether or not this volume can be shared with the family by the user. This includes sharing eligibility of both the volume and the user. If the value is true, the user can initiate a family sharing action."]
-        #[serde(rename = "isSharingAllowed", default)]
-        pub is_sharing_allowed: Option<bool>,
-        #[doc = "Whether or not sharing this volume is temporarily disabled due to issues with the Family Wallet."]
-        #[serde(rename = "isSharingDisabledByFop", default)]
-        pub is_sharing_disabled_by_fop: Option<bool>,
+    pub struct VolumeVolumeInfoImageLinks {
+        #[doc = "Image link for extra large size (width of ~1280 pixels). (In LITE projection)"]
+        #[serde(rename = "extraLarge", default)]
+        pub extra_large: Option<String>,
+        #[doc = "Image link for large size (width of ~800 pixels). (In LITE projection)"]
+        #[serde(rename = "large", default)]
+        pub large: Option<String>,
+        #[doc = "Image link for medium size (width of ~575 pixels). (In LITE projection)"]
+        #[serde(rename = "medium", default)]
+        pub medium: Option<String>,
+        #[doc = "Image link for small size (width of ~300 pixels). (In LITE projection)"]
+        #[serde(rename = "small", default)]
+        pub small: Option<String>,
+        #[doc = "Image link for small thumbnail size (width of ~80 pixels). (In LITE projection)"]
+        #[serde(rename = "smallThumbnail", default)]
+        pub small_thumbnail: Option<String>,
+        #[doc = "Image link for thumbnail size (width of ~128 pixels). (In LITE projection)"]
+        #[serde(rename = "thumbnail", default)]
+        pub thumbnail: Option<String>,
     }
-    impl ::field_selector::FieldSelector for VolumeUserInfoFamilySharing {
+    impl ::field_selector::FieldSelector for VolumeVolumeInfoImageLinks {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3054,23 +3104,23 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct VolumeUserInfoRentalPeriod {
-        #[serde(rename = "endUtcSec", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub end_utc_sec: Option<i64>,
-        #[serde(rename = "startUtcSec", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub start_utc_sec: Option<i64>,
+    pub struct VolumeVolumeInfoIndustryIdentifiersItems {
+        #[doc = "Industry specific volume identifier."]
+        #[serde(rename = "identifier", default)]
+        pub identifier: Option<String>,
+        #[doc = "Identifier type. Possible values are ISBN_10, ISBN_13, ISSN and OTHER."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
     }
-    impl ::field_selector::FieldSelector for VolumeUserInfoRentalPeriod {
+    impl ::field_selector::FieldSelector for VolumeVolumeInfoIndustryIdentifiersItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3084,19 +3134,25 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct VolumeUserInfoUserUploadedVolumeInfo {
-        #[serde(rename = "processingState", default)]
-        pub processing_state: Option<String>,
+    pub struct VolumeVolumeInfoPanelizationSummary {
+        #[serde(rename = "containsEpubBubbles", default)]
+        pub contains_epub_bubbles: Option<bool>,
+        #[serde(rename = "containsImageBubbles", default)]
+        pub contains_image_bubbles: Option<bool>,
+        #[serde(rename = "epubBubbleVersion", default)]
+        pub epub_bubble_version: Option<String>,
+        #[serde(rename = "imageBubbleVersion", default)]
+        pub image_bubble_version: Option<String>,
     }
-    impl ::field_selector::FieldSelector for VolumeUserInfoUserUploadedVolumeInfo {
+    impl ::field_selector::FieldSelector for VolumeVolumeInfoPanelizationSummary {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3106,9 +3162,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct VolumeVolumeInfo {
         #[doc = "Whether anonymous logging should be allowed."]
         #[serde(rename = "allowAnonLogging", default)]
@@ -3204,30 +3258,64 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct VolumeVolumeInfoDimensions {
-        #[doc = "Height or length of this volume (in cm)."]
-        #[serde(rename = "height", default)]
-        pub height: Option<String>,
-        #[doc = "Thickness of this volume (in cm)."]
-        #[serde(rename = "thickness", default)]
-        pub thickness: Option<String>,
-        #[doc = "Width of this volume (in cm)."]
-        #[serde(rename = "width", default)]
-        pub width: Option<String>,
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Volume {
+        #[doc = "Any information about a volume related to reading or obtaining that volume text. This information can depend on country (books may be public domain in one country but not in another, e.g.)."]
+        #[serde(rename = "accessInfo", default)]
+        pub access_info: Option<crate::schemas::VolumeAccessInfo>,
+        #[doc = "Opaque identifier for a specific version of a volume resource. (In LITE projection)"]
+        #[serde(rename = "etag", default)]
+        pub etag: Option<String>,
+        #[doc = "Unique identifier for a volume. (In LITE projection.)"]
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+        #[doc = "Resource type for a volume. (In LITE projection.)"]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "What layers exist in this volume and high level information about them."]
+        #[serde(rename = "layerInfo", default)]
+        pub layer_info: Option<crate::schemas::VolumeLayerInfo>,
+        #[doc = "Recommendation related information for this volume."]
+        #[serde(rename = "recommendedInfo", default)]
+        pub recommended_info: Option<crate::schemas::VolumeRecommendedInfo>,
+        #[doc = "Any information about a volume related to the eBookstore and/or purchaseability. This information can depend on the country where the request originates from (i.e. books may not be for sale in certain countries)."]
+        #[serde(rename = "saleInfo", default)]
+        pub sale_info: Option<crate::schemas::VolumeSaleInfo>,
+        #[doc = "Search result information related to this volume."]
+        #[serde(rename = "searchInfo", default)]
+        pub search_info: Option<crate::schemas::VolumeSearchInfo>,
+        #[doc = "URL to this resource. (In LITE projection.)"]
+        #[serde(rename = "selfLink", default)]
+        pub self_link: Option<String>,
+        #[doc = "User specific information related to this volume. (e.g. page this user last read or whether they purchased this book)"]
+        #[serde(rename = "userInfo", default)]
+        pub user_info: Option<crate::schemas::VolumeUserInfo>,
+        #[doc = "General volume information."]
+        #[serde(rename = "volumeInfo", default)]
+        pub volume_info: Option<crate::schemas::VolumeVolumeInfo>,
     }
-    impl ::field_selector::FieldSelector for VolumeVolumeInfoDimensions {
+    impl ::field_selector::FieldSelector for Volume {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct Volume2 {
+        #[doc = "A list of volumes."]
+        #[serde(rename = "items", default)]
+        pub items: Option<Vec<crate::schemas::Volume>>,
+        #[doc = "Resource type."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[serde(rename = "nextPageToken", default)]
+        pub next_page_token: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Volume2 {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3241,35 +3329,29 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct VolumeVolumeInfoImageLinks {
-        #[doc = "Image link for extra large size (width of ~1280 pixels). (In LITE projection)"]
-        #[serde(rename = "extraLarge", default)]
-        pub extra_large: Option<String>,
-        #[doc = "Image link for large size (width of ~800 pixels). (In LITE projection)"]
-        #[serde(rename = "large", default)]
-        pub large: Option<String>,
-        #[doc = "Image link for medium size (width of ~575 pixels). (In LITE projection)"]
-        #[serde(rename = "medium", default)]
-        pub medium: Option<String>,
-        #[doc = "Image link for small size (width of ~300 pixels). (In LITE projection)"]
-        #[serde(rename = "small", default)]
-        pub small: Option<String>,
-        #[doc = "Image link for small thumbnail size (width of ~80 pixels). (In LITE projection)"]
-        #[serde(rename = "smallThumbnail", default)]
-        pub small_thumbnail: Option<String>,
-        #[doc = "Image link for thumbnail size (width of ~128 pixels). (In LITE projection)"]
-        #[serde(rename = "thumbnail", default)]
-        pub thumbnail: Option<String>,
+    pub struct VolumeannotationContentRanges {
+        #[doc = "Range in CFI format for this annotation for version above."]
+        #[serde(rename = "cfiRange", default)]
+        pub cfi_range: Option<crate::schemas::BooksAnnotationsRange>,
+        #[doc = "Content version applicable to ranges below."]
+        #[serde(rename = "contentVersion", default)]
+        pub content_version: Option<String>,
+        #[doc = "Range in GB image format for this annotation for version above."]
+        #[serde(rename = "gbImageRange", default)]
+        pub gb_image_range: Option<crate::schemas::BooksAnnotationsRange>,
+        #[doc = "Range in GB text format for this annotation for version above."]
+        #[serde(rename = "gbTextRange", default)]
+        pub gb_text_range: Option<crate::schemas::BooksAnnotationsRange>,
     }
-    impl ::field_selector::FieldSelector for VolumeVolumeInfoImageLinks {
+    impl ::field_selector::FieldSelector for VolumeannotationContentRanges {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3283,70 +3365,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct VolumeVolumeInfoIndustryIdentifiersItems {
-        #[doc = "Industry specific volume identifier."]
-        #[serde(rename = "identifier", default)]
-        pub identifier: Option<String>,
-        #[doc = "Identifier type. Possible values are ISBN_10, ISBN_13, ISSN and OTHER."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for VolumeVolumeInfoIndustryIdentifiersItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct VolumeVolumeInfoPanelizationSummary {
-        #[serde(rename = "containsEpubBubbles", default)]
-        pub contains_epub_bubbles: Option<bool>,
-        #[serde(rename = "containsImageBubbles", default)]
-        pub contains_image_bubbles: Option<bool>,
-        #[serde(rename = "epubBubbleVersion", default)]
-        pub epub_bubble_version: Option<String>,
-        #[serde(rename = "imageBubbleVersion", default)]
-        pub image_bubble_version: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for VolumeVolumeInfoPanelizationSummary {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -3411,44 +3431,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct VolumeannotationContentRanges {
-        #[doc = "Range in CFI format for this annotation for version above."]
-        #[serde(rename = "cfiRange", default)]
-        pub cfi_range: Option<crate::schemas::BooksAnnotationsRange>,
-        #[doc = "Content version applicable to ranges below."]
-        #[serde(rename = "contentVersion", default)]
-        pub content_version: Option<String>,
-        #[doc = "Range in GB image format for this annotation for version above."]
-        #[serde(rename = "gbImageRange", default)]
-        pub gb_image_range: Option<crate::schemas::BooksAnnotationsRange>,
-        #[doc = "Range in GB text format for this annotation for version above."]
-        #[serde(rename = "gbTextRange", default)]
-        pub gb_text_range: Option<crate::schemas::BooksAnnotationsRange>,
-    }
-    impl ::field_selector::FieldSelector for VolumeannotationContentRanges {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -3482,9 +3466,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Volumes {
         #[doc = "A list of volumes."]
         #[serde(rename = "items", default)]
@@ -3510,28 +3492,21 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Volumeseriesinfo {
-        #[doc = "The display number string. This should be used only for display purposes and the actual sequence should be inferred from the below orderNumber."]
-        #[serde(rename = "bookDisplayNumber", default)]
-        pub book_display_number: Option<String>,
-        #[doc = "Resource type."]
-        #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
-        #[doc = "Short book title in the context of the series."]
-        #[serde(rename = "shortSeriesBookTitle", default)]
-        pub short_series_book_title: Option<String>,
-        #[serde(rename = "volumeSeries", default)]
-        pub volume_series: Option<Vec<crate::schemas::VolumeseriesinfoVolumeSeriesItems>>,
+    pub struct VolumeseriesinfoVolumeSeriesItemsIssueItems {
+        #[serde(rename = "issueDisplayNumber", default)]
+        pub issue_display_number: Option<String>,
+        #[serde(rename = "issueOrderNumber", default)]
+        pub issue_order_number: Option<i32>,
     }
-    impl ::field_selector::FieldSelector for Volumeseriesinfo {
+    impl ::field_selector::FieldSelector for VolumeseriesinfoVolumeSeriesItemsIssueItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3545,8 +3520,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -3581,21 +3556,28 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct VolumeseriesinfoVolumeSeriesItemsIssueItems {
-        #[serde(rename = "issueDisplayNumber", default)]
-        pub issue_display_number: Option<String>,
-        #[serde(rename = "issueOrderNumber", default)]
-        pub issue_order_number: Option<i32>,
+    pub struct Volumeseriesinfo {
+        #[doc = "The display number string. This should be used only for display purposes and the actual sequence should be inferred from the below orderNumber."]
+        #[serde(rename = "bookDisplayNumber", default)]
+        pub book_display_number: Option<String>,
+        #[doc = "Resource type."]
+        #[serde(rename = "kind", default)]
+        pub kind: Option<String>,
+        #[doc = "Short book title in the context of the series."]
+        #[serde(rename = "shortSeriesBookTitle", default)]
+        pub short_series_book_title: Option<String>,
+        #[serde(rename = "volumeSeries", default)]
+        pub volume_series: Option<Vec<crate::schemas::VolumeseriesinfoVolumeSeriesItems>>,
     }
-    impl ::field_selector::FieldSelector for VolumeseriesinfoVolumeSeriesItemsIssueItems {
+    impl ::field_selector::FieldSelector for Volumeseriesinfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3607,7 +3589,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -6268,7 +6250,7 @@ pub mod layers {
 }
 pub mod myconfig {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum RequestAccessLicenseTypes {
             #[doc = "Both concurrent and download licenses."]
             Both,
@@ -6318,7 +6300,7 @@ pub mod myconfig {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum SyncVolumeLicensesFeatures {
             #[doc = "Client supports rentals."]
             Rentals,
@@ -7856,7 +7838,7 @@ pub mod mylibrary {
     }
     pub mod bookshelves {
         pub mod params {
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum AddVolumeReason {
                 #[doc = "Volumes added from the PREX flow on iOS."]
                 IosPrex,
@@ -7906,7 +7888,7 @@ pub mod mylibrary {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum RemoveVolumeReason {
                 #[doc = "Samples removed from the Onboarding flow."]
                 Onboarding,
@@ -8657,7 +8639,7 @@ pub mod mylibrary {
         }
         pub mod volumes {
             pub mod params {
-                #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+                #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListProjection {
                     #[doc = "Includes all volume data."]
                     Full,
@@ -8888,7 +8870,7 @@ pub mod mylibrary {
     }
     pub mod readingpositions {
         pub mod params {
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum SetPositionAction {
                 #[doc = "User chose bookmark within volume."]
                 Bookmark,
@@ -9370,7 +9352,7 @@ pub mod notification {
 }
 pub mod onboarding {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListCategoryVolumesMaxAllowedMaturityRating {
             #[doc = "Show books which are rated mature or lower."]
             Mature,
@@ -9786,7 +9768,7 @@ pub mod onboarding {
 }
 pub mod personalizedstream {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum GetMaxAllowedMaturityRating {
             #[doc = "Show books which are rated mature or lower."]
             Mature,
@@ -10715,7 +10697,7 @@ pub mod series {
 }
 pub mod volumes {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum GetProjection {
             #[doc = "Includes all volume data."]
             Full,
@@ -10761,7 +10743,7 @@ pub mod volumes {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListDownload {
             #[doc = "All volumes with epub."]
             Epub,
@@ -10803,7 +10785,7 @@ pub mod volumes {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListFilter {
             #[doc = "All Google eBooks."]
             Ebooks,
@@ -10861,7 +10843,7 @@ pub mod volumes {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListLibraryRestrict {
             #[doc = "Restrict to the user's library, any shelf."]
             MyLibrary,
@@ -10907,7 +10889,7 @@ pub mod volumes {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListMaxAllowedMaturityRating {
             #[doc = "Show books which are rated mature or lower."]
             Mature,
@@ -10953,7 +10935,7 @@ pub mod volumes {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListOrderBy {
             #[doc = "Most recently published."]
             Newest,
@@ -10999,7 +10981,7 @@ pub mod volumes {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListPrintType {
             #[doc = "All volume content types."]
             All,
@@ -11049,7 +11031,7 @@ pub mod volumes {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListProjection {
             #[doc = "Includes all volume data."]
             Full,
@@ -11510,7 +11492,7 @@ pub mod volumes {
     }
     pub mod associated {
         pub mod params {
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListAssociation {
                 #[doc = "Recommendations for display end-of-sample."]
                 EndOfSample,
@@ -11560,7 +11542,7 @@ pub mod volumes {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListMaxAllowedMaturityRating {
                 #[doc = "Show books which are rated mature or lower."]
                 Mature,
@@ -11773,7 +11755,7 @@ pub mod volumes {
     }
     pub mod mybooks {
         pub mod params {
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListAcquireMethod {
                 #[doc = "Books acquired via Family Sharing"]
                 FamilyShared,
@@ -11843,7 +11825,7 @@ pub mod volumes {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListProcessingState {
                 #[doc = "The volume processing hase failed."]
                 CompletedFailed,
@@ -12076,7 +12058,7 @@ pub mod volumes {
     }
     pub mod recommended {
         pub mod params {
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListMaxAllowedMaturityRating {
                 #[doc = "Show books which are rated mature or lower."]
                 Mature,
@@ -12122,7 +12104,7 @@ pub mod volumes {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum RateRating {
                 #[doc = "Rating indicating a dismissal due to ownership."]
                 HaveIt,
@@ -12460,7 +12442,7 @@ pub mod volumes {
     }
     pub mod useruploaded {
         pub mod params {
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListProcessingState {
                 #[doc = "The volume processing hase failed."]
                 CompletedFailed,

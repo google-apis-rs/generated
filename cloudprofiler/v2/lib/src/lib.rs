@@ -1,35 +1,5 @@
 pub mod schemas {
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CreateProfileRequest {
-        #[doc = "Deployment details."]
-        #[serde(rename = "deployment", default)]
-        pub deployment: Option<crate::schemas::Deployment>,
-        #[doc = "One or more profile types that the agent is capable of providing."]
-        #[serde(rename = "profileType", default)]
-        pub profile_type: Option<Vec<crate::schemas::CreateProfileRequestProfileTypeItems>>,
-    }
-    impl ::field_selector::FieldSelector for CreateProfileRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreateProfileRequestProfileTypeItems {}
     impl CreateProfileRequestProfileTypeItems {
         pub fn as_str(self) -> &'static str {
@@ -69,8 +39,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreateProfileRequest {
+        #[doc = "Deployment details."]
+        #[serde(rename = "deployment", default)]
+        pub deployment: Option<crate::schemas::Deployment>,
+        #[doc = "One or more profile types that the agent is capable of providing."]
+        #[serde(rename = "profileType", default)]
+        pub profile_type: Option<Vec<crate::schemas::CreateProfileRequestProfileTypeItems>>,
+    }
+    impl ::field_selector::FieldSelector for CreateProfileRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -98,49 +98,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Profile {
-        #[doc = "Deployment this profile corresponds to."]
-        #[serde(rename = "deployment", default)]
-        pub deployment: Option<crate::schemas::Deployment>,
-        #[doc = "Duration of the profiling session.\nInput (for the offline mode) or output (for the online mode).\nThe field represents requested profiling duration. It may slightly differ\nfrom the effective profiling duration, which is recorded in the profile\ndata, in case the profiling can't be stopped immediately (e.g. in case\nstopping the profiling is handled asynchronously)."]
-        #[serde(rename = "duration", default)]
-        pub duration: Option<String>,
-        #[doc = "Input only. Labels associated to this specific profile. These labels will\nget merged with the deployment labels for the final data set.  See\ndocumentation on deployment labels for validation rules and limits."]
-        #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Output only. Opaque, server-assigned, unique ID for this profile."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "Input only. Profile bytes, as a gzip compressed serialized proto, the\nformat is https://github.com/google/pprof/blob/master/proto/profile.proto."]
-        #[serde(rename = "profileBytes", default)]
-        pub profile_bytes: Option<Vec<u8>>,
-        #[doc = "Type of profile.\nFor offline mode, this must be specified when creating the profile. For\nonline mode it is assigned and returned by the server."]
-        #[serde(rename = "profileType", default)]
-        pub profile_type: Option<crate::schemas::ProfileProfileType>,
-    }
-    impl ::field_selector::FieldSelector for Profile {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ProfileProfileType {
         #[doc = "Unspecified profile type."]
         ProfileTypeUnspecified,
@@ -210,9 +168,51 @@ pub mod schemas {
             })
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Profile {
+        #[doc = "Deployment this profile corresponds to."]
+        #[serde(rename = "deployment", default)]
+        pub deployment: Option<crate::schemas::Deployment>,
+        #[doc = "Duration of the profiling session.\nInput (for the offline mode) or output (for the online mode).\nThe field represents requested profiling duration. It may slightly differ\nfrom the effective profiling duration, which is recorded in the profile\ndata, in case the profiling can't be stopped immediately (e.g. in case\nstopping the profiling is handled asynchronously)."]
+        #[serde(rename = "duration", default)]
+        pub duration: Option<String>,
+        #[doc = "Input only. Labels associated to this specific profile. These labels will\nget merged with the deployment labels for the final data set.  See\ndocumentation on deployment labels for validation rules and limits."]
+        #[serde(rename = "labels", default)]
+        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Output only. Opaque, server-assigned, unique ID for this profile."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "Input only. Profile bytes, as a gzip compressed serialized proto, the\nformat is https://github.com/google/pprof/blob/master/proto/profile.proto."]
+        #[serde(rename = "profileBytes", default)]
+        pub profile_bytes: Option<Vec<u8>>,
+        #[doc = "Type of profile.\nFor offline mode, this must be specified when creating the profile. For\nonline mode it is assigned and returned by the server."]
+        #[serde(rename = "profileType", default)]
+        pub profile_type: Option<crate::schemas::ProfileProfileType>,
+    }
+    impl ::field_selector::FieldSelector for Profile {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -262,7 +262,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,

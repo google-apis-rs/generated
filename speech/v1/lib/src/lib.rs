@@ -1,7 +1,5 @@
 pub mod schemas {
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
         #[serde(rename = "nextPageToken", default)]
@@ -24,8 +22,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -57,8 +55,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -101,9 +99,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
         #[serde(rename = "done", default)]
@@ -135,8 +131,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -161,70 +157,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct RecognitionConfig {
-        #[doc = "*Optional* The number of channels in the input audio data.\nONLY set this for MULTI-CHANNEL recognition.\nValid values for LINEAR16 and FLAC are `1`-`8`.\nValid values for OGG_OPUS are '1'-'254'.\nValid value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`.\nIf `0` or omitted, defaults to one channel (mono).\nNote: We only recognize the first channel by default.\nTo perform independent recognition on each channel set\n`enable_separate_recognition_per_channel` to 'true'."]
-        #[serde(rename = "audioChannelCount", default)]
-        pub audio_channel_count: Option<i32>,
-        #[doc = "*Optional* If 'true', adds punctuation to recognition result hypotheses.\nThis feature is only available in select languages. Setting this for\nrequests in other languages has no effect at all.\nThe default 'false' value does not add punctuation to result hypotheses.\nNote: This is currently offered as an experimental service, complimentary\nto all users. In the future this may be exclusively available as a\npremium feature."]
-        #[serde(rename = "enableAutomaticPunctuation", default)]
-        pub enable_automatic_punctuation: Option<bool>,
-        #[doc = "This needs to be set to `true` explicitly and `audio_channel_count` > 1\nto get each channel recognized separately. The recognition result will\ncontain a `channel_tag` field to state which channel that result belongs\nto. If this is not true, we will only recognize the first channel. The\nrequest is billed cumulatively for all channels recognized:\n`audio_channel_count` multiplied by the length of the audio."]
-        #[serde(rename = "enableSeparateRecognitionPerChannel", default)]
-        pub enable_separate_recognition_per_channel: Option<bool>,
-        #[doc = "*Optional* If `true`, the top result includes a list of words and\nthe start and end time offsets (timestamps) for those words. If\n`false`, no word-level time offset information is returned. The default is\n`false`."]
-        #[serde(rename = "enableWordTimeOffsets", default)]
-        pub enable_word_time_offsets: Option<bool>,
-        #[doc = "Encoding of audio data sent in all `RecognitionAudio` messages.\nThis field is optional for `FLAC` and `WAV` audio files and required\nfor all other audio formats. For details, see AudioEncoding."]
-        #[serde(rename = "encoding", default)]
-        pub encoding: Option<crate::schemas::RecognitionConfigEncoding>,
-        #[doc = "*Required* The language of the supplied audio as a\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.\nExample: \"en-US\".\nSee [Language Support](/speech-to-text/docs/languages)\nfor a list of the currently supported language codes."]
-        #[serde(rename = "languageCode", default)]
-        pub language_code: Option<String>,
-        #[doc = "*Optional* Maximum number of recognition hypotheses to be returned.\nSpecifically, the maximum number of `SpeechRecognitionAlternative` messages\nwithin each `SpeechRecognitionResult`.\nThe server may return fewer than `max_alternatives`.\nValid values are `0`-`30`. A value of `0` or `1` will return a maximum of\none. If omitted, will return a maximum of one."]
-        #[serde(rename = "maxAlternatives", default)]
-        pub max_alternatives: Option<i32>,
-        #[doc = "*Optional* Metadata regarding this request."]
-        #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::RecognitionMetadata>,
-        #[doc = "*Optional* Which model to select for the given request. Select the model\nbest suited to your domain to get best results. If a model is not\nexplicitly specified, then we auto-select a model based on the parameters\nin the RecognitionConfig.\n<table>\n  <tr>\n    <td><b>Model</b></td>\n    <td><b>Description</b></td>\n  </tr>\n  <tr>\n    <td><code>command_and_search</code></td>\n    <td>Best for short queries such as voice commands or voice search.</td>\n  </tr>\n  <tr>\n    <td><code>phone_call</code></td>\n    <td>Best for audio that originated from a phone call (typically\n    recorded at an 8khz sampling rate).</td>\n  </tr>\n  <tr>\n    <td><code>video</code></td>\n    <td>Best for audio that originated from from video or includes multiple\n        speakers. Ideally the audio is recorded at a 16khz or greater\n        sampling rate. This is a premium model that costs more than the\n        standard rate.</td>\n  </tr>\n  <tr>\n    <td><code>default</code></td>\n    <td>Best for audio that is not one of the specific audio models.\n        For example, long-form audio. Ideally the audio is high-fidelity,\n        recorded at a 16khz or greater sampling rate.</td>\n  </tr>\n</table>"]
-        #[serde(rename = "model", default)]
-        pub model: Option<String>,
-        #[doc = "*Optional* If set to `true`, the server will attempt to filter out\nprofanities, replacing all but the initial character in each filtered word\nwith asterisks, e.g. \"f***\". If set to `false` or omitted, profanities\nwon't be filtered out."]
-        #[serde(rename = "profanityFilter", default)]
-        pub profanity_filter: Option<bool>,
-        #[doc = "Sample rate in Hertz of the audio data sent in all\n`RecognitionAudio` messages. Valid values are: 8000-48000.\n16000 is optimal. For best results, set the sampling rate of the audio\nsource to 16000 Hz. If that's not possible, use the native sample rate of\nthe audio source (instead of re-sampling).\nThis field is optional for FLAC and WAV audio files, but is\nrequired for all other audio formats. For details, see AudioEncoding."]
-        #[serde(rename = "sampleRateHertz", default)]
-        pub sample_rate_hertz: Option<i32>,
-        #[doc = "*Optional* array of SpeechContext.\nA means to provide context to assist the speech recognition. For more\ninformation, see\n[speech adaptation](/speech-to-text/docs/context-strength)."]
-        #[serde(rename = "speechContexts", default)]
-        pub speech_contexts: Option<Vec<crate::schemas::SpeechContext>>,
-        #[doc = "*Optional* Set to true to use an enhanced model for speech recognition.\nIf `use_enhanced` is set to true and the `model` field is not set, then\nan appropriate enhanced model is chosen if an enhanced model exists for\nthe audio.\n\nIf `use_enhanced` is true and an enhanced version of the specified model\ndoes not exist, then the speech is recognized using the standard version\nof the specified model."]
-        #[serde(rename = "useEnhanced", default)]
-        pub use_enhanced: Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for RecognitionConfig {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RecognitionConfigEncoding {
         #[doc = "Not specified."]
         EncodingUnspecified,
@@ -298,45 +231,56 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RecognitionMetadata {
-        #[doc = "Description of the content. Eg. \"Recordings of federal supreme court\nhearings from 2012\"."]
-        #[serde(rename = "audioTopic", default)]
-        pub audio_topic: Option<String>,
-        #[doc = "The industry vertical to which this speech recognition request most\nclosely applies. This is most indicative of the topics contained\nin the audio.  Use the 6-digit NAICS code to identify the industry\nvertical - see https://www.naics.com/search/."]
-        #[serde(rename = "industryNaicsCodeOfAudio", default)]
-        pub industry_naics_code_of_audio: Option<u32>,
-        #[doc = "The use case most closely describing the audio content to be recognized."]
-        #[serde(rename = "interactionType", default)]
-        pub interaction_type: Option<crate::schemas::RecognitionMetadataInteractionType>,
-        #[doc = "The audio type that most closely describes the audio being recognized."]
-        #[serde(rename = "microphoneDistance", default)]
-        pub microphone_distance: Option<crate::schemas::RecognitionMetadataMicrophoneDistance>,
-        #[doc = "Obfuscated (privacy-protected) ID of the user, to identify number of\nunique users using the service."]
-        #[serde(rename = "obfuscatedId", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub obfuscated_id: Option<i64>,
-        #[doc = "The original media the speech was recorded on."]
-        #[serde(rename = "originalMediaType", default)]
-        pub original_media_type: Option<crate::schemas::RecognitionMetadataOriginalMediaType>,
-        #[doc = "Mime type of the original audio file.  For example `audio/m4a`,\n`audio/x-alaw-basic`, `audio/mp3`, `audio/3gpp`.\nA list of possible audio mime types is maintained at\nhttp://www.iana.org/assignments/media-types/media-types.xhtml#audio"]
-        #[serde(rename = "originalMimeType", default)]
-        pub original_mime_type: Option<String>,
-        #[doc = "The device used to make the recording.  Examples 'Nexus 5X' or\n'Polycom SoundStation IP 6000' or 'POTS' or 'VoIP' or\n'Cardioid Microphone'."]
-        #[serde(rename = "recordingDeviceName", default)]
-        pub recording_device_name: Option<String>,
-        #[doc = "The type of device the speech was recorded with."]
-        #[serde(rename = "recordingDeviceType", default)]
-        pub recording_device_type: Option<crate::schemas::RecognitionMetadataRecordingDeviceType>,
+    pub struct RecognitionConfig {
+        #[doc = "*Optional* The number of channels in the input audio data.\nONLY set this for MULTI-CHANNEL recognition.\nValid values for LINEAR16 and FLAC are `1`-`8`.\nValid values for OGG_OPUS are '1'-'254'.\nValid value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`.\nIf `0` or omitted, defaults to one channel (mono).\nNote: We only recognize the first channel by default.\nTo perform independent recognition on each channel set\n`enable_separate_recognition_per_channel` to 'true'."]
+        #[serde(rename = "audioChannelCount", default)]
+        pub audio_channel_count: Option<i32>,
+        #[doc = "*Optional* If 'true', adds punctuation to recognition result hypotheses.\nThis feature is only available in select languages. Setting this for\nrequests in other languages has no effect at all.\nThe default 'false' value does not add punctuation to result hypotheses.\nNote: This is currently offered as an experimental service, complimentary\nto all users. In the future this may be exclusively available as a\npremium feature."]
+        #[serde(rename = "enableAutomaticPunctuation", default)]
+        pub enable_automatic_punctuation: Option<bool>,
+        #[doc = "This needs to be set to `true` explicitly and `audio_channel_count` > 1\nto get each channel recognized separately. The recognition result will\ncontain a `channel_tag` field to state which channel that result belongs\nto. If this is not true, we will only recognize the first channel. The\nrequest is billed cumulatively for all channels recognized:\n`audio_channel_count` multiplied by the length of the audio."]
+        #[serde(rename = "enableSeparateRecognitionPerChannel", default)]
+        pub enable_separate_recognition_per_channel: Option<bool>,
+        #[doc = "*Optional* If `true`, the top result includes a list of words and\nthe start and end time offsets (timestamps) for those words. If\n`false`, no word-level time offset information is returned. The default is\n`false`."]
+        #[serde(rename = "enableWordTimeOffsets", default)]
+        pub enable_word_time_offsets: Option<bool>,
+        #[doc = "Encoding of audio data sent in all `RecognitionAudio` messages.\nThis field is optional for `FLAC` and `WAV` audio files and required\nfor all other audio formats. For details, see AudioEncoding."]
+        #[serde(rename = "encoding", default)]
+        pub encoding: Option<crate::schemas::RecognitionConfigEncoding>,
+        #[doc = "*Required* The language of the supplied audio as a\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.\nExample: \"en-US\".\nSee [Language Support](/speech-to-text/docs/languages)\nfor a list of the currently supported language codes."]
+        #[serde(rename = "languageCode", default)]
+        pub language_code: Option<String>,
+        #[doc = "*Optional* Maximum number of recognition hypotheses to be returned.\nSpecifically, the maximum number of `SpeechRecognitionAlternative` messages\nwithin each `SpeechRecognitionResult`.\nThe server may return fewer than `max_alternatives`.\nValid values are `0`-`30`. A value of `0` or `1` will return a maximum of\none. If omitted, will return a maximum of one."]
+        #[serde(rename = "maxAlternatives", default)]
+        pub max_alternatives: Option<i32>,
+        #[doc = "*Optional* Metadata regarding this request."]
+        #[serde(rename = "metadata", default)]
+        pub metadata: Option<crate::schemas::RecognitionMetadata>,
+        #[doc = "*Optional* Which model to select for the given request. Select the model\nbest suited to your domain to get best results. If a model is not\nexplicitly specified, then we auto-select a model based on the parameters\nin the RecognitionConfig.\n<table>\n  <tr>\n    <td><b>Model</b></td>\n    <td><b>Description</b></td>\n  </tr>\n  <tr>\n    <td><code>command_and_search</code></td>\n    <td>Best for short queries such as voice commands or voice search.</td>\n  </tr>\n  <tr>\n    <td><code>phone_call</code></td>\n    <td>Best for audio that originated from a phone call (typically\n    recorded at an 8khz sampling rate).</td>\n  </tr>\n  <tr>\n    <td><code>video</code></td>\n    <td>Best for audio that originated from from video or includes multiple\n        speakers. Ideally the audio is recorded at a 16khz or greater\n        sampling rate. This is a premium model that costs more than the\n        standard rate.</td>\n  </tr>\n  <tr>\n    <td><code>default</code></td>\n    <td>Best for audio that is not one of the specific audio models.\n        For example, long-form audio. Ideally the audio is high-fidelity,\n        recorded at a 16khz or greater sampling rate.</td>\n  </tr>\n</table>"]
+        #[serde(rename = "model", default)]
+        pub model: Option<String>,
+        #[doc = "*Optional* If set to `true`, the server will attempt to filter out\nprofanities, replacing all but the initial character in each filtered word\nwith asterisks, e.g. \"f***\". If set to `false` or omitted, profanities\nwon't be filtered out."]
+        #[serde(rename = "profanityFilter", default)]
+        pub profanity_filter: Option<bool>,
+        #[doc = "Sample rate in Hertz of the audio data sent in all\n`RecognitionAudio` messages. Valid values are: 8000-48000.\n16000 is optimal. For best results, set the sampling rate of the audio\nsource to 16000 Hz. If that's not possible, use the native sample rate of\nthe audio source (instead of re-sampling).\nThis field is optional for FLAC and WAV audio files, but is\nrequired for all other audio formats. For details, see AudioEncoding."]
+        #[serde(rename = "sampleRateHertz", default)]
+        pub sample_rate_hertz: Option<i32>,
+        #[doc = "*Optional* array of SpeechContext.\nA means to provide context to assist the speech recognition. For more\ninformation, see\n[speech adaptation](/speech-to-text/docs/context-strength)."]
+        #[serde(rename = "speechContexts", default)]
+        pub speech_contexts: Option<Vec<crate::schemas::SpeechContext>>,
+        #[doc = "*Optional* Set to true to use an enhanced model for speech recognition.\nIf `use_enhanced` is set to true and the `model` field is not set, then\nan appropriate enhanced model is chosen if an enhanced model exists for\nthe audio.\n\nIf `use_enhanced` is true and an enhanced version of the specified model\ndoes not exist, then the speech is recognized using the standard version\nof the specified model."]
+        #[serde(rename = "useEnhanced", default)]
+        pub use_enhanced: Option<bool>,
     }
-    impl ::field_selector::FieldSelector for RecognitionMetadata {
+    impl ::field_selector::FieldSelector for RecognitionConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -346,7 +290,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RecognitionMetadataInteractionType {
         #[doc = "Use case is either unknown or is something other than one of the other\nvalues below."]
         InteractionTypeUnspecified,
@@ -428,7 +372,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RecognitionMetadataMicrophoneDistance {
         #[doc = "Audio type is not known."]
         MicrophoneDistanceUnspecified,
@@ -486,7 +430,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RecognitionMetadataOriginalMediaType {
         #[doc = "Unknown original media type."]
         OriginalMediaTypeUnspecified,
@@ -540,7 +484,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RecognitionMetadataRecordingDeviceType {
         #[doc = "The recording device is unknown."]
         RecordingDeviceTypeUnspecified,
@@ -618,8 +562,60 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RecognitionMetadata {
+        #[doc = "Description of the content. Eg. \"Recordings of federal supreme court\nhearings from 2012\"."]
+        #[serde(rename = "audioTopic", default)]
+        pub audio_topic: Option<String>,
+        #[doc = "The industry vertical to which this speech recognition request most\nclosely applies. This is most indicative of the topics contained\nin the audio.  Use the 6-digit NAICS code to identify the industry\nvertical - see https://www.naics.com/search/."]
+        #[serde(rename = "industryNaicsCodeOfAudio", default)]
+        pub industry_naics_code_of_audio: Option<u32>,
+        #[doc = "The use case most closely describing the audio content to be recognized."]
+        #[serde(rename = "interactionType", default)]
+        pub interaction_type: Option<crate::schemas::RecognitionMetadataInteractionType>,
+        #[doc = "The audio type that most closely describes the audio being recognized."]
+        #[serde(rename = "microphoneDistance", default)]
+        pub microphone_distance: Option<crate::schemas::RecognitionMetadataMicrophoneDistance>,
+        #[doc = "Obfuscated (privacy-protected) ID of the user, to identify number of\nunique users using the service."]
+        #[serde(rename = "obfuscatedId", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub obfuscated_id: Option<i64>,
+        #[doc = "The original media the speech was recorded on."]
+        #[serde(rename = "originalMediaType", default)]
+        pub original_media_type: Option<crate::schemas::RecognitionMetadataOriginalMediaType>,
+        #[doc = "Mime type of the original audio file.  For example `audio/m4a`,\n`audio/x-alaw-basic`, `audio/mp3`, `audio/3gpp`.\nA list of possible audio mime types is maintained at\nhttp://www.iana.org/assignments/media-types/media-types.xhtml#audio"]
+        #[serde(rename = "originalMimeType", default)]
+        pub original_mime_type: Option<String>,
+        #[doc = "The device used to make the recording.  Examples 'Nexus 5X' or\n'Polycom SoundStation IP 6000' or 'POTS' or 'VoIP' or\n'Cardioid Microphone'."]
+        #[serde(rename = "recordingDeviceName", default)]
+        pub recording_device_name: Option<String>,
+        #[doc = "The type of device the speech was recorded with."]
+        #[serde(rename = "recordingDeviceType", default)]
+        pub recording_device_type: Option<crate::schemas::RecognitionMetadataRecordingDeviceType>,
+    }
+    impl ::field_selector::FieldSelector for RecognitionMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -666,8 +662,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -734,9 +730,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
@@ -762,8 +756,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -793,7 +787,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -843,7 +837,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,

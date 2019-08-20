@@ -3,38 +3,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SiteVerificationWebResourceGettokenRequest {
-        #[doc = "The site for which a verification token will be generated."]
-        #[serde(rename = "site", default)]
-        pub site: Option<crate::schemas::SiteVerificationWebResourceGettokenRequestSite>,
-        #[doc = "The verification method that will be used to verify this site. For sites, 'FILE' or 'META' methods may be used. For domains, only 'DNS' may be used."]
-        #[serde(rename = "verificationMethod", default)]
-        pub verification_method: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for SiteVerificationWebResourceGettokenRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -63,8 +33,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SiteVerificationWebResourceGettokenRequest {
+        #[doc = "The site for which a verification token will be generated."]
+        #[serde(rename = "site", default)]
+        pub site: Option<crate::schemas::SiteVerificationWebResourceGettokenRequestSite>,
+        #[doc = "The verification method that will be used to verify this site. For sites, 'FILE' or 'META' methods may be used. For domains, only 'DNS' may be used."]
+        #[serde(rename = "verificationMethod", default)]
+        pub verification_method: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for SiteVerificationWebResourceGettokenRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -93,8 +93,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -120,8 +120,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SiteVerificationWebResourceResourceSite {
+        #[doc = "The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to INET_DOMAIN, the site identifier is a domain name."]
+        #[serde(rename = "identifier", default)]
+        pub identifier: Option<String>,
+        #[doc = "The site type. Can be SITE or INET_DOMAIN (domain name)."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for SiteVerificationWebResourceResourceSite {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -149,39 +179,9 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SiteVerificationWebResourceResourceSite {
-        #[doc = "The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to INET_DOMAIN, the site identifier is a domain name."]
-        #[serde(rename = "identifier", default)]
-        pub identifier: Option<String>,
-        #[doc = "The site type. Can be SITE or INET_DOMAIN (domain name)."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for SiteVerificationWebResourceResourceSite {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,

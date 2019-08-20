@@ -7,7 +7,7 @@
   "canonicalName": "Vault",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190626",
+  "revision": "20190731",
   "title": "G Suite Vault API",
   "description": "Archiving and eDiscovery for G Suite.",
   "ownerDomain": "google.com",

@@ -3,8 +3,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -57,8 +57,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -96,8 +96,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -144,8 +144,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -174,8 +174,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -204,8 +204,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -231,8 +231,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -267,8 +267,135 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SubscriptionPlanCommitmentInterval {
+        #[doc = "An annual commitment plan's interval's endTime in milliseconds using the UNIX Epoch format. See an example Epoch converter."]
+        #[serde(rename = "endTime", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub end_time: Option<i64>,
+        #[doc = "An annual commitment plan's interval's startTime in milliseconds using UNIX Epoch format. See an example Epoch converter."]
+        #[serde(rename = "startTime", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub start_time: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for SubscriptionPlanCommitmentInterval {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SubscriptionPlan {
+        #[doc = "In this version of the API, annual commitment plan's interval is one year.  Note: When billingMethod value is OFFLINE, the subscription property object plan.commitmentInterval is omitted in all API responses."]
+        #[serde(rename = "commitmentInterval", default)]
+        pub commitment_interval: Option<crate::schemas::SubscriptionPlanCommitmentInterval>,
+        #[doc = "The isCommitmentPlan property's boolean value identifies the plan as an annual commitment plan:\n- true \u{2014} The subscription's plan is an annual commitment plan.\n- false \u{2014} The plan is not an annual commitment plan."]
+        #[serde(rename = "isCommitmentPlan", default)]
+        pub is_commitment_plan: Option<bool>,
+        #[doc = "The planName property is required. This is the name of the subscription's plan. For more information about the Google payment plans, see the API concepts.\n\nPossible values are:  \n- ANNUAL_MONTHLY_PAY \u{2014} The annual commitment plan with monthly payments.  Caution: ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses.  \n- ANNUAL_YEARLY_PAY \u{2014} The annual commitment plan with yearly payments  \n- FLEXIBLE \u{2014} The flexible plan  \n- TRIAL \u{2014} The 30-day free trial plan. A subscription in trial will be suspended after the 30th free day if no payment plan is assigned. Calling changePlan will assign a payment plan to a trial but will not activate the plan. A trial will automatically begin its assigned payment plan after its 30th free day or immediately after calling startPaidService.  \n- FREE \u{2014} The free plan is exclusive to the Cloud Identity SKU and does not incur any billing."]
+        #[serde(rename = "planName", default)]
+        pub plan_name: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for SubscriptionPlan {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SubscriptionTransferInfo {
+        #[doc = "When inserting a subscription, this is the minimum number of seats listed in the transfer order for this product. For example, if the customer has 20 users, the reseller cannot place a transfer order of 15 seats. The minimum is 20 seats."]
+        #[serde(rename = "minimumTransferableSeats", default)]
+        pub minimum_transferable_seats: Option<i32>,
+        #[doc = "The time when transfer token or intent to transfer will expire. The time is in milliseconds using UNIX Epoch format."]
+        #[serde(rename = "transferabilityExpirationTime", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub transferability_expiration_time: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for SubscriptionTransferInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SubscriptionTrialSettings {
+        #[doc = "Determines if a subscription's plan is in a 30-day free trial or not:\n- true \u{2014} The plan is in trial.\n- false \u{2014} The plan is not in trial."]
+        #[serde(rename = "isInTrial", default)]
+        pub is_in_trial: Option<bool>,
+        #[doc = "Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example Epoch converter."]
+        #[serde(rename = "trialEndTime", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub trial_end_time: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for SubscriptionTrialSettings {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -346,135 +473,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SubscriptionPlan {
-        #[doc = "In this version of the API, annual commitment plan's interval is one year.  Note: When billingMethod value is OFFLINE, the subscription property object plan.commitmentInterval is omitted in all API responses."]
-        #[serde(rename = "commitmentInterval", default)]
-        pub commitment_interval: Option<crate::schemas::SubscriptionPlanCommitmentInterval>,
-        #[doc = "The isCommitmentPlan property's boolean value identifies the plan as an annual commitment plan:\n- true \u{2014} The subscription's plan is an annual commitment plan.\n- false \u{2014} The plan is not an annual commitment plan."]
-        #[serde(rename = "isCommitmentPlan", default)]
-        pub is_commitment_plan: Option<bool>,
-        #[doc = "The planName property is required. This is the name of the subscription's plan. For more information about the Google payment plans, see the API concepts.\n\nPossible values are:  \n- ANNUAL_MONTHLY_PAY \u{2014} The annual commitment plan with monthly payments.  Caution: ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses.  \n- ANNUAL_YEARLY_PAY \u{2014} The annual commitment plan with yearly payments  \n- FLEXIBLE \u{2014} The flexible plan  \n- TRIAL \u{2014} The 30-day free trial plan. A subscription in trial will be suspended after the 30th free day if no payment plan is assigned. Calling changePlan will assign a payment plan to a trial but will not activate the plan. A trial will automatically begin its assigned payment plan after its 30th free day or immediately after calling startPaidService.  \n- FREE \u{2014} The free plan is exclusive to the Cloud Identity SKU and does not incur any billing."]
-        #[serde(rename = "planName", default)]
-        pub plan_name: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for SubscriptionPlan {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SubscriptionPlanCommitmentInterval {
-        #[doc = "An annual commitment plan's interval's endTime in milliseconds using the UNIX Epoch format. See an example Epoch converter."]
-        #[serde(rename = "endTime", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub end_time: Option<i64>,
-        #[doc = "An annual commitment plan's interval's startTime in milliseconds using UNIX Epoch format. See an example Epoch converter."]
-        #[serde(rename = "startTime", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub start_time: Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for SubscriptionPlanCommitmentInterval {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SubscriptionTransferInfo {
-        #[doc = "When inserting a subscription, this is the minimum number of seats listed in the transfer order for this product. For example, if the customer has 20 users, the reseller cannot place a transfer order of 15 seats. The minimum is 20 seats."]
-        #[serde(rename = "minimumTransferableSeats", default)]
-        pub minimum_transferable_seats: Option<i32>,
-        #[doc = "The time when transfer token or intent to transfer will expire. The time is in milliseconds using UNIX Epoch format."]
-        #[serde(rename = "transferabilityExpirationTime", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub transferability_expiration_time: Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for SubscriptionTransferInfo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SubscriptionTrialSettings {
-        #[doc = "Determines if a subscription's plan is in a 30-day free trial or not:\n- true \u{2014} The plan is in trial.\n- false \u{2014} The plan is not in trial."]
-        #[serde(rename = "isInTrial", default)]
-        pub is_in_trial: Option<bool>,
-        #[doc = "Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example Epoch converter."]
-        #[serde(rename = "trialEndTime", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub trial_end_time: Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for SubscriptionTrialSettings {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -504,7 +504,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -1439,7 +1439,7 @@ pub mod resellernotify {
 }
 pub mod subscriptions {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum DeleteDeletionType {
             #[doc = "Cancels the subscription immediately. This does not apply to a G Suite subscription."]
             Cancel,

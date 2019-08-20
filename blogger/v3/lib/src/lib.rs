@@ -1,5 +1,92 @@
 pub mod schemas {
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BlogLocale {
+        #[doc = "The country this blog's locale is set to."]
+        #[serde(rename = "country", default)]
+        pub country: Option<String>,
+        #[doc = "The language this blog is authored in."]
+        #[serde(rename = "language", default)]
+        pub language: Option<String>,
+        #[doc = "The language variant this blog is authored in."]
+        #[serde(rename = "variant", default)]
+        pub variant: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for BlogLocale {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BlogPages {
+        #[doc = "The URL of the container for pages in this blog."]
+        #[serde(rename = "selfLink", default)]
+        pub self_link: Option<String>,
+        #[doc = "The count of pages in this blog."]
+        #[serde(rename = "totalItems", default)]
+        pub total_items: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for BlogPages {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct BlogPosts {
+        #[doc = "The List of Posts for this Blog."]
+        #[serde(rename = "items", default)]
+        pub items: Option<Vec<crate::schemas::Post>>,
+        #[doc = "The URL of the container for posts in this blog."]
+        #[serde(rename = "selfLink", default)]
+        pub self_link: Option<String>,
+        #[doc = "The count of posts in this blog."]
+        #[serde(rename = "totalItems", default)]
+        pub total_items: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for BlogPosts {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Blog {
@@ -81,71 +168,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BlogLocale {
-        #[doc = "The country this blog's locale is set to."]
-        #[serde(rename = "country", default)]
-        pub country: Option<String>,
-        #[doc = "The language this blog is authored in."]
-        #[serde(rename = "language", default)]
-        pub language: Option<String>,
-        #[doc = "The language variant this blog is authored in."]
-        #[serde(rename = "variant", default)]
-        pub variant: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for BlogLocale {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BlogPages {
-        #[doc = "The URL of the container for pages in this blog."]
-        #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
-        #[doc = "The count of pages in this blog."]
-        #[serde(rename = "totalItems", default)]
-        pub total_items: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for BlogPages {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -185,30 +209,6 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct BlogPosts {
-        #[doc = "The List of Posts for this Blog."]
-        #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Post>>,
-        #[doc = "The URL of the container for posts in this blog."]
-        #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
-        #[doc = "The count of posts in this blog."]
-        #[serde(rename = "totalItems", default)]
-        pub total_items: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for BlogPosts {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
     pub struct BlogUserInfo {
         #[doc = "The Blog resource."]
         #[serde(rename = "blog", default)]
@@ -234,8 +234,152 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CommentAuthorImage {
+        #[doc = "The comment creator's avatar URL."]
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CommentAuthorImage {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CommentAuthor {
+        #[doc = "The display name."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: Option<String>,
+        #[doc = "The identifier of the Comment creator."]
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+        #[doc = "The comment creator's avatar."]
+        #[serde(rename = "image", default)]
+        pub image: Option<crate::schemas::CommentAuthorImage>,
+        #[doc = "The URL of the Comment creator's Profile page."]
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CommentAuthor {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CommentBlog {
+        #[doc = "The identifier of the blog containing this comment."]
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CommentBlog {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CommentInReplyTo {
+        #[doc = "The identified of the parent of this comment."]
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CommentInReplyTo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CommentPost {
+        #[doc = "The identifier of the post containing this comment."]
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CommentPost {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -291,125 +435,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CommentAuthor {
-        #[doc = "The display name."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
-        #[doc = "The identifier of the Comment creator."]
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-        #[doc = "The comment creator's avatar."]
-        #[serde(rename = "image", default)]
-        pub image: Option<crate::schemas::CommentAuthorImage>,
-        #[doc = "The URL of the Comment creator's Profile page."]
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CommentAuthor {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CommentAuthorImage {
-        #[doc = "The comment creator's avatar URL."]
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CommentAuthorImage {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CommentBlog {
-        #[doc = "The identifier of the blog containing this comment."]
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CommentBlog {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CommentInReplyTo {
-        #[doc = "The identified of the parent of this comment."]
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CommentInReplyTo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -447,20 +474,20 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct CommentPost {
-        #[doc = "The identifier of the post containing this comment."]
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
+    pub struct PageAuthorImage {
+        #[doc = "The page author's avatar URL."]
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
     }
-    impl ::field_selector::FieldSelector for CommentPost {
+    impl ::field_selector::FieldSelector for PageAuthorImage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -474,8 +501,71 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PageAuthor {
+        #[doc = "The display name."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: Option<String>,
+        #[doc = "The identifier of the Page creator."]
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+        #[doc = "The page author's avatar."]
+        #[serde(rename = "image", default)]
+        pub image: Option<crate::schemas::PageAuthorImage>,
+        #[doc = "The URL of the Page creator's Profile page."]
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PageAuthor {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PageBlog {
+        #[doc = "The identifier of the blog containing this page."]
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PageBlog {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -534,98 +624,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PageAuthor {
-        #[doc = "The display name."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
-        #[doc = "The identifier of the Page creator."]
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-        #[doc = "The page author's avatar."]
-        #[serde(rename = "image", default)]
-        pub image: Option<crate::schemas::PageAuthorImage>,
-        #[doc = "The URL of the Page creator's Profile page."]
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PageAuthor {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PageAuthorImage {
-        #[doc = "The page author's avatar URL."]
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PageAuthorImage {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PageBlog {
-        #[doc = "The identifier of the blog containing this page."]
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PageBlog {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -660,8 +660,39 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PageviewsCountsItems {
+        #[doc = "Count of page views for the given time range"]
+        #[serde(rename = "count", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub count: Option<i64>,
+        #[doc = "Time range the given count applies to"]
+        #[serde(rename = "timeRange", default)]
+        pub time_range: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PageviewsCountsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -693,24 +724,170 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PageviewsCountsItems {
-        #[doc = "Count of page views for the given time range"]
-        #[serde(rename = "count", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub count: Option<i64>,
-        #[doc = "Time range the given count applies to"]
-        #[serde(rename = "timeRange", default)]
-        pub time_range: Option<String>,
+    pub struct PostAuthorImage {
+        #[doc = "The Post author's avatar URL."]
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
     }
-    impl ::field_selector::FieldSelector for PageviewsCountsItems {
+    impl ::field_selector::FieldSelector for PostAuthorImage {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PostAuthor {
+        #[doc = "The display name."]
+        #[serde(rename = "displayName", default)]
+        pub display_name: Option<String>,
+        #[doc = "The identifier of the Post creator."]
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+        #[doc = "The Post author's avatar."]
+        #[serde(rename = "image", default)]
+        pub image: Option<crate::schemas::PostAuthorImage>,
+        #[doc = "The URL of the Post creator's Profile page."]
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PostAuthor {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PostBlog {
+        #[doc = "The identifier of the Blog that contains this Post."]
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PostBlog {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PostImagesItems {
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PostImagesItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct PostLocation {
+        #[doc = "Location's latitude."]
+        #[serde(rename = "lat", default)]
+        pub lat: Option<f64>,
+        #[doc = "Location's longitude."]
+        #[serde(rename = "lng", default)]
+        pub lng: Option<f64>,
+        #[doc = "Location name."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "Location's viewport span. Can be used when rendering a map preview."]
+        #[serde(rename = "span", default)]
+        pub span: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for PostLocation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PostReplies {
+        #[doc = "The List of Comments for this Post."]
+        #[serde(rename = "items", default)]
+        pub items: Option<Vec<crate::schemas::Comment>>,
+        #[doc = "The URL of the comments on this post."]
+        #[serde(rename = "selfLink", default)]
+        pub self_link: Option<String>,
+        #[doc = "The count of comments on this post."]
+        #[serde(rename = "totalItems", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub total_items: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for PostReplies {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -793,122 +970,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PostAuthor {
-        #[doc = "The display name."]
-        #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
-        #[doc = "The identifier of the Post creator."]
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-        #[doc = "The Post author's avatar."]
-        #[serde(rename = "image", default)]
-        pub image: Option<crate::schemas::PostAuthorImage>,
-        #[doc = "The URL of the Post creator's Profile page."]
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PostAuthor {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PostAuthorImage {
-        #[doc = "The Post author's avatar URL."]
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PostAuthorImage {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PostBlog {
-        #[doc = "The identifier of the Blog that contains this Post."]
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PostBlog {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PostImagesItems {
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PostImagesItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct PostList {
@@ -936,38 +997,11 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct PostLocation {
-        #[doc = "Location's latitude."]
-        #[serde(rename = "lat", default)]
-        pub lat: Option<f64>,
-        #[doc = "Location's longitude."]
-        #[serde(rename = "lng", default)]
-        pub lng: Option<f64>,
-        #[doc = "Location name."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "Location's viewport span. Can be used when rendering a map preview."]
-        #[serde(rename = "span", default)]
-        pub span: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for PostLocation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -992,40 +1026,6 @@ pub mod schemas {
         pub user_id: Option<String>,
     }
     impl ::field_selector::FieldSelector for PostPerUserInfo {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PostReplies {
-        #[doc = "The List of Comments for this Post."]
-        #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Comment>>,
-        #[doc = "The URL of the comments on this post."]
-        #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
-        #[doc = "The count of comments on this post."]
-        #[serde(rename = "totalItems", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub total_items: Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for PostReplies {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1087,8 +1087,68 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UserBlogs {
+        #[doc = "The URL of the Blogs for this user."]
+        #[serde(rename = "selfLink", default)]
+        pub self_link: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UserBlogs {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UserLocale {
+        #[doc = "The user's country setting."]
+        #[serde(rename = "country", default)]
+        pub country: Option<String>,
+        #[doc = "The user's language setting."]
+        #[serde(rename = "language", default)]
+        pub language: Option<String>,
+        #[doc = "The user's language variant setting."]
+        #[serde(rename = "variant", default)]
+        pub variant: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UserLocale {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1134,69 +1194,9 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UserBlogs {
-        #[doc = "The URL of the Blogs for this user."]
-        #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for UserBlogs {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UserLocale {
-        #[doc = "The user's country setting."]
-        #[serde(rename = "country", default)]
-        pub country: Option<String>,
-        #[doc = "The user's language setting."]
-        #[serde(rename = "language", default)]
-        pub language: Option<String>,
-        #[doc = "The user's language variant setting."]
-        #[serde(rename = "variant", default)]
-        pub variant: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for UserLocale {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -1448,7 +1448,7 @@ pub mod blog_user_infos {
 }
 pub mod blogs {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum GetView {
             #[doc = "Admin level detail."]
             Admin,
@@ -1498,7 +1498,7 @@ pub mod blogs {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum GetByUrlView {
             #[doc = "Admin level detail."]
             Admin,
@@ -1548,7 +1548,7 @@ pub mod blogs {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListByUserRole {
             #[doc = "Admin role - Blogs where the user has Admin level access."]
             Admin,
@@ -1598,7 +1598,7 @@ pub mod blogs {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListByUserStatus {
             #[doc = "Blog has been deleted by an administrator."]
             Deleted,
@@ -1644,7 +1644,7 @@ pub mod blogs {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListByUserView {
             #[doc = "Admin level detail."]
             Admin,
@@ -2099,7 +2099,7 @@ pub mod blogs {
 }
 pub mod comments {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum GetView {
             #[doc = "Admin level detail"]
             Admin,
@@ -2149,7 +2149,7 @@ pub mod comments {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListStatus {
             #[doc = "Comments that have had their content removed"]
             Emptied,
@@ -2203,7 +2203,7 @@ pub mod comments {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListView {
             #[doc = "Admin level detail"]
             Admin,
@@ -2253,7 +2253,7 @@ pub mod comments {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListByBlogStatus {
             #[doc = "Comments that have had their content removed"]
             Emptied,
@@ -3446,7 +3446,7 @@ pub mod comments {
 }
 pub mod page_views {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum GetRange {
             #[doc = "Page view counts from the last thirty days."]
             _30Days,
@@ -3629,7 +3629,7 @@ pub mod page_views {
 }
 pub mod pages {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum GetView {
             #[doc = "Admin level detail"]
             Admin,
@@ -3679,7 +3679,7 @@ pub mod pages {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListStatus {
             #[doc = "Draft (unpublished) Pages"]
             Draft,
@@ -3725,7 +3725,7 @@ pub mod pages {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListView {
             #[doc = "Admin level detail"]
             Admin,
@@ -4903,7 +4903,7 @@ pub mod pages {
 }
 pub mod post_user_infos {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListOrderBy {
             #[doc = "Order by the date the post was published"]
             Published,
@@ -4949,7 +4949,7 @@ pub mod post_user_infos {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListStatus {
             #[doc = "Draft posts"]
             Draft,
@@ -4999,7 +4999,7 @@ pub mod post_user_infos {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListView {
             #[doc = "Admin level detail"]
             Admin,
@@ -5473,7 +5473,7 @@ pub mod post_user_infos {
 }
 pub mod posts {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum GetView {
             #[doc = "Admin level detail"]
             Admin,
@@ -5523,7 +5523,7 @@ pub mod posts {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum GetByPathView {
             #[doc = "Admin level detail"]
             Admin,
@@ -5573,7 +5573,7 @@ pub mod posts {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListOrderBy {
             #[doc = "Order by the date the post was published"]
             Published,
@@ -5619,7 +5619,7 @@ pub mod posts {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListStatus {
             #[doc = "Draft (non-published) posts."]
             Draft,
@@ -5669,7 +5669,7 @@ pub mod posts {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListView {
             #[doc = "Admin level detail"]
             Admin,
@@ -5719,7 +5719,7 @@ pub mod posts {
                 })
             }
         }
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum SearchOrderBy {
             #[doc = "Order by the date the post was published"]
             Published,

@@ -1,50 +1,5 @@
 pub mod schemas {
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SiteSummaryResponse {
-        #[doc = "The status of the site reviewed for the abusive experiences."]
-        #[serde(rename = "abusiveStatus", default)]
-        pub abusive_status: Option<crate::schemas::SiteSummaryResponseAbusiveStatus>,
-        #[doc = "The date on which enforcement begins."]
-        #[serde(rename = "enforcementTime", default)]
-        pub enforcement_time: Option<String>,
-        #[doc = "The abusive experience enforcement status of the site."]
-        #[serde(rename = "filterStatus", default)]
-        pub filter_status: Option<crate::schemas::SiteSummaryResponseFilterStatus>,
-        #[doc = "The last time that the site changed status."]
-        #[serde(rename = "lastChangeTime", default)]
-        pub last_change_time: Option<String>,
-        #[doc = "A link that leads to a full abusive experience report."]
-        #[serde(rename = "reportUrl", default)]
-        pub report_url: Option<String>,
-        #[doc = "The name of the site reviewed."]
-        #[serde(rename = "reviewedSite", default)]
-        pub reviewed_site: Option<String>,
-        #[doc = "Whether the site is currently under review."]
-        #[serde(rename = "underReview", default)]
-        pub under_review: Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for SiteSummaryResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SiteSummaryResponseAbusiveStatus {
         #[doc = "Not reviewed."]
         Unknown,
@@ -94,7 +49,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SiteSummaryResponseFilterStatus {
         #[doc = "N/A."]
         Unknown,
@@ -156,8 +111,53 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SiteSummaryResponse {
+        #[doc = "The status of the site reviewed for the abusive experiences."]
+        #[serde(rename = "abusiveStatus", default)]
+        pub abusive_status: Option<crate::schemas::SiteSummaryResponseAbusiveStatus>,
+        #[doc = "The date on which enforcement begins."]
+        #[serde(rename = "enforcementTime", default)]
+        pub enforcement_time: Option<String>,
+        #[doc = "The abusive experience enforcement status of the site."]
+        #[serde(rename = "filterStatus", default)]
+        pub filter_status: Option<crate::schemas::SiteSummaryResponseFilterStatus>,
+        #[doc = "The last time that the site changed status."]
+        #[serde(rename = "lastChangeTime", default)]
+        pub last_change_time: Option<String>,
+        #[doc = "A link that leads to a full abusive experience report."]
+        #[serde(rename = "reportUrl", default)]
+        pub report_url: Option<String>,
+        #[doc = "The name of the site reviewed."]
+        #[serde(rename = "reviewedSite", default)]
+        pub reviewed_site: Option<String>,
+        #[doc = "Whether the site is currently under review."]
+        #[serde(rename = "underReview", default)]
+        pub under_review: Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for SiteSummaryResponse {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -181,7 +181,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -231,7 +231,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,

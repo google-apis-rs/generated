@@ -1,41 +1,5 @@
 pub mod schemas {
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DownloadLineItemsRequest {
-        #[doc = "File specification (column names, types, order) in which the line items will be returned. Default to EWF."]
-        #[serde(rename = "fileSpec", default)]
-        pub file_spec: Option<crate::schemas::DownloadLineItemsRequestFileSpec>,
-        #[doc = "Ids of the specified filter type used to filter line items to fetch. If omitted, all the line items will be returned."]
-        #[serde(rename = "filterIds", default)]
-        pub filter_ids: Option<Vec<i64>>,
-        #[doc = "Filter type used to filter line items to fetch."]
-        #[serde(rename = "filterType", default)]
-        pub filter_type: Option<crate::schemas::DownloadLineItemsRequestFilterType>,
-        #[doc = "Format in which the line items will be returned. Default to CSV."]
-        #[serde(rename = "format", default)]
-        pub format: Option<crate::schemas::DownloadLineItemsRequestFormat>,
-    }
-    impl ::field_selector::FieldSelector for DownloadLineItemsRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DownloadLineItemsRequestFileSpec {
         Ewf,
     }
@@ -76,7 +40,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DownloadLineItemsRequestFilterType {
         AdvertiserId,
         InsertionOrderId,
@@ -123,7 +87,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DownloadLineItemsRequestFormat {
         Csv,
     }
@@ -168,8 +132,44 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DownloadLineItemsRequest {
+        #[doc = "File specification (column names, types, order) in which the line items will be returned. Default to EWF."]
+        #[serde(rename = "fileSpec", default)]
+        pub file_spec: Option<crate::schemas::DownloadLineItemsRequestFileSpec>,
+        #[doc = "Ids of the specified filter type used to filter line items to fetch. If omitted, all the line items will be returned."]
+        #[serde(rename = "filterIds", default)]
+        pub filter_ids: Option<Vec<i64>>,
+        #[doc = "Filter type used to filter line items to fetch."]
+        #[serde(rename = "filterType", default)]
+        pub filter_type: Option<crate::schemas::DownloadLineItemsRequestFilterType>,
+        #[doc = "Format in which the line items will be returned. Default to CSV."]
+        #[serde(rename = "format", default)]
+        pub format: Option<crate::schemas::DownloadLineItemsRequestFormat>,
+    }
+    impl ::field_selector::FieldSelector for DownloadLineItemsRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -191,43 +191,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DownloadRequest {
-        #[doc = "File types that will be returned. If INVENTORY_SOURCE is requested, no other file types may be requested.\n\nAcceptable values are:  \n- \"AD\" \n- \"AD_GROUP\" \n- \"CAMPAIGN\" \n- \"INSERTION_ORDER\" \n- \"INVENTORY_SOURCE\" \n- \"LINE_ITEM\""]
-        #[serde(rename = "fileTypes", default)]
-        pub file_types: Option<Vec<crate::schemas::DownloadRequestFileTypesItems>>,
-        #[doc = "The IDs of the specified filter type. This is used to filter entities to fetch. At least one ID must be specified."]
-        #[serde(rename = "filterIds", default)]
-        pub filter_ids: Option<Vec<i64>>,
-        #[doc = "Filter type used to filter entities to fetch. PARTNER_ID and INVENTORY_SOURCE_ID may only be used when downloading inventory sources."]
-        #[serde(rename = "filterType", default)]
-        pub filter_type: Option<crate::schemas::DownloadRequestFilterType>,
-        #[doc = "SDF Version (column names, types, order) in which the entities will be returned. Default to 3.1."]
-        #[serde(rename = "version", default)]
-        pub version: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for DownloadRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DownloadRequestFileTypesItems {
         Ad,
         AdGroup,
@@ -283,7 +247,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DownloadRequestFilterType {
         AdvertiserId,
         CampaignId,
@@ -343,8 +307,44 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DownloadRequest {
+        #[doc = "File types that will be returned. If INVENTORY_SOURCE is requested, no other file types may be requested.\n\nAcceptable values are:  \n- \"AD\" \n- \"AD_GROUP\" \n- \"CAMPAIGN\" \n- \"INSERTION_ORDER\" \n- \"INVENTORY_SOURCE\" \n- \"LINE_ITEM\""]
+        #[serde(rename = "fileTypes", default)]
+        pub file_types: Option<Vec<crate::schemas::DownloadRequestFileTypesItems>>,
+        #[doc = "The IDs of the specified filter type. This is used to filter entities to fetch. At least one ID must be specified."]
+        #[serde(rename = "filterIds", default)]
+        pub filter_ids: Option<Vec<i64>>,
+        #[doc = "Filter type used to filter entities to fetch. PARTNER_ID and INVENTORY_SOURCE_ID may only be used when downloading inventory sources."]
+        #[serde(rename = "filterType", default)]
+        pub filter_type: Option<crate::schemas::DownloadRequestFilterType>,
+        #[doc = "SDF Version (column names, types, order) in which the entities will be returned. Default to 3.1."]
+        #[serde(rename = "version", default)]
+        pub version: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for DownloadRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -380,37 +380,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FilterPair {
-        #[doc = "Filter type."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::FilterPairType>,
-        #[doc = "Filter value."]
-        #[serde(rename = "value", default)]
-        pub value: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for FilterPair {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FilterPairType {
         FilterActiveViewExpectedViewability,
         FilterActivityId,
@@ -880,8 +850,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FilterPair {
+        #[doc = "Filter type."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::FilterPairType>,
+        #[doc = "Filter value."]
+        #[serde(rename = "value", default)]
+        pub value: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for FilterPair {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -910,8 +910,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -936,46 +936,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Parameters {
-        #[doc = "Filters used to match traffic data in your report."]
-        #[serde(rename = "filters", default)]
-        pub filters: Option<Vec<crate::schemas::FilterPair>>,
-        #[doc = "Data is grouped by the filters listed in this field."]
-        #[serde(rename = "groupBys", default)]
-        pub group_bys: Option<Vec<crate::schemas::ParametersGroupBysItems>>,
-        #[doc = "Deprecated. This field is no longer in use."]
-        #[serde(rename = "includeInviteData", default)]
-        pub include_invite_data: Option<bool>,
-        #[doc = "Metrics to include as columns in your report."]
-        #[serde(rename = "metrics", default)]
-        pub metrics: Option<Vec<crate::schemas::ParametersMetricsItems>>,
-        #[doc = "Report type."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::ParametersType>,
-    }
-    impl ::field_selector::FieldSelector for Parameters {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ParametersGroupBysItems {
         FilterActiveViewExpectedViewability,
         FilterActivityId,
@@ -1525,7 +1486,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ParametersMetricsItems {
         MetricActiveViewAudibleVisibleOnCompleteImpressions,
         MetricActiveViewAverageViewableTime,
@@ -3091,7 +3052,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ParametersType {
         TypeActiveGrp,
         TypeAudienceComposition,
@@ -3249,8 +3210,47 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Parameters {
+        #[doc = "Filters used to match traffic data in your report."]
+        #[serde(rename = "filters", default)]
+        pub filters: Option<Vec<crate::schemas::FilterPair>>,
+        #[doc = "Data is grouped by the filters listed in this field."]
+        #[serde(rename = "groupBys", default)]
+        pub group_bys: Option<Vec<crate::schemas::ParametersGroupBysItems>>,
+        #[doc = "Deprecated. This field is no longer in use."]
+        #[serde(rename = "includeInviteData", default)]
+        pub include_invite_data: Option<bool>,
+        #[doc = "Metrics to include as columns in your report."]
+        #[serde(rename = "metrics", default)]
+        pub metrics: Option<Vec<crate::schemas::ParametersMetricsItems>>,
+        #[doc = "Report type."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::ParametersType>,
+    }
+    impl ::field_selector::FieldSelector for Parameters {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -3296,65 +3296,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct QueryMetadata {
-        #[doc = "Range of report data."]
-        #[serde(rename = "dataRange", default)]
-        pub data_range: Option<crate::schemas::QueryMetadataDataRange>,
-        #[doc = "Format of the generated report."]
-        #[serde(rename = "format", default)]
-        pub format: Option<crate::schemas::QueryMetadataFormat>,
-        #[doc = "The path to the location in Google Cloud Storage where the latest report is stored."]
-        #[serde(rename = "googleCloudStoragePathForLatestReport", default)]
-        pub google_cloud_storage_path_for_latest_report: Option<String>,
-        #[doc = "The path in Google Drive for the latest report."]
-        #[serde(rename = "googleDrivePathForLatestReport", default)]
-        pub google_drive_path_for_latest_report: Option<String>,
-        #[doc = "The time when the latest report started to run."]
-        #[serde(rename = "latestReportRunTimeMs", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub latest_report_run_time_ms: Option<i64>,
-        #[doc = "Locale of the generated reports. Valid values are cs CZECH de GERMAN en ENGLISH es SPANISH fr FRENCH it ITALIAN ja JAPANESE ko KOREAN pl POLISH pt-BR BRAZILIAN_PORTUGUESE ru RUSSIAN tr TURKISH uk UKRAINIAN zh-CN CHINA_CHINESE zh-TW TAIWAN_CHINESE\n\nAn locale string not in the list above will generate reports in English."]
-        #[serde(rename = "locale", default)]
-        pub locale: Option<String>,
-        #[doc = "Number of reports that have been generated for the query."]
-        #[serde(rename = "reportCount", default)]
-        pub report_count: Option<i32>,
-        #[doc = "Whether the latest report is currently running."]
-        #[serde(rename = "running", default)]
-        pub running: Option<bool>,
-        #[doc = "Whether to send an email notification when a report is ready. Default to false."]
-        #[serde(rename = "sendNotification", default)]
-        pub send_notification: Option<bool>,
-        #[doc = "List of email addresses which are sent email notifications when the report is finished. Separate from sendNotification."]
-        #[serde(rename = "shareEmailAddress", default)]
-        pub share_email_address: Option<Vec<String>>,
-        #[doc = "Query title. It is used to name the reports generated from this query."]
-        #[serde(rename = "title", default)]
-        pub title: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for QueryMetadata {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum QueryMetadataDataRange {
         AllTime,
         CurrentDay,
@@ -3449,7 +3391,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum QueryMetadataFormat {
         Csv,
         ExcelCsv,
@@ -3500,30 +3442,51 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct QuerySchedule {
-        #[doc = "Datetime to periodically run the query until."]
-        #[serde(rename = "endTimeMs", default)]
+    pub struct QueryMetadata {
+        #[doc = "Range of report data."]
+        #[serde(rename = "dataRange", default)]
+        pub data_range: Option<crate::schemas::QueryMetadataDataRange>,
+        #[doc = "Format of the generated report."]
+        #[serde(rename = "format", default)]
+        pub format: Option<crate::schemas::QueryMetadataFormat>,
+        #[doc = "The path to the location in Google Cloud Storage where the latest report is stored."]
+        #[serde(rename = "googleCloudStoragePathForLatestReport", default)]
+        pub google_cloud_storage_path_for_latest_report: Option<String>,
+        #[doc = "The path in Google Drive for the latest report."]
+        #[serde(rename = "googleDrivePathForLatestReport", default)]
+        pub google_drive_path_for_latest_report: Option<String>,
+        #[doc = "The time when the latest report started to run."]
+        #[serde(rename = "latestReportRunTimeMs", default)]
         #[serde(with = "crate::parsed_string")]
-        pub end_time_ms: Option<i64>,
-        #[doc = "How often the query is run."]
-        #[serde(rename = "frequency", default)]
-        pub frequency: Option<crate::schemas::QueryScheduleFrequency>,
-        #[doc = "Time of day at which a new report will be generated, represented as minutes past midnight. Range is 0 to 1439. Only applies to scheduled reports."]
-        #[serde(rename = "nextRunMinuteOfDay", default)]
-        pub next_run_minute_of_day: Option<i32>,
-        #[doc = "Canonical timezone code for report generation time. Defaults to America/New_York."]
-        #[serde(rename = "nextRunTimezoneCode", default)]
-        pub next_run_timezone_code: Option<String>,
+        pub latest_report_run_time_ms: Option<i64>,
+        #[doc = "Locale of the generated reports. Valid values are cs CZECH de GERMAN en ENGLISH es SPANISH fr FRENCH it ITALIAN ja JAPANESE ko KOREAN pl POLISH pt-BR BRAZILIAN_PORTUGUESE ru RUSSIAN tr TURKISH uk UKRAINIAN zh-CN CHINA_CHINESE zh-TW TAIWAN_CHINESE\n\nAn locale string not in the list above will generate reports in English."]
+        #[serde(rename = "locale", default)]
+        pub locale: Option<String>,
+        #[doc = "Number of reports that have been generated for the query."]
+        #[serde(rename = "reportCount", default)]
+        pub report_count: Option<i32>,
+        #[doc = "Whether the latest report is currently running."]
+        #[serde(rename = "running", default)]
+        pub running: Option<bool>,
+        #[doc = "Whether to send an email notification when a report is ready. Default to false."]
+        #[serde(rename = "sendNotification", default)]
+        pub send_notification: Option<bool>,
+        #[doc = "List of email addresses which are sent email notifications when the report is finished. Separate from sendNotification."]
+        #[serde(rename = "shareEmailAddress", default)]
+        pub share_email_address: Option<Vec<String>>,
+        #[doc = "Query title. It is used to name the reports generated from this query."]
+        #[serde(rename = "title", default)]
+        pub title: Option<String>,
     }
-    impl ::field_selector::FieldSelector for QuerySchedule {
+    impl ::field_selector::FieldSelector for QueryMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3533,7 +3496,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum QueryScheduleFrequency {
         Daily,
         Monthly,
@@ -3593,8 +3556,45 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct QuerySchedule {
+        #[doc = "Datetime to periodically run the query until."]
+        #[serde(rename = "endTimeMs", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub end_time_ms: Option<i64>,
+        #[doc = "How often the query is run."]
+        #[serde(rename = "frequency", default)]
+        pub frequency: Option<crate::schemas::QueryScheduleFrequency>,
+        #[doc = "Time of day at which a new report will be generated, represented as minutes past midnight. Range is 0 to 1439. Only applies to scheduled reports."]
+        #[serde(rename = "nextRunMinuteOfDay", default)]
+        pub next_run_minute_of_day: Option<i32>,
+        #[doc = "Canonical timezone code for report generation time. Defaults to America/New_York."]
+        #[serde(rename = "nextRunTimezoneCode", default)]
+        pub next_run_timezone_code: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for QuerySchedule {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -3622,34 +3622,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReportFailure {
-        #[doc = "Error code that shows why the report was not created."]
-        #[serde(rename = "errorCode", default)]
-        pub error_code: Option<crate::schemas::ReportFailureErrorCode>,
-    }
-    impl ::field_selector::FieldSelector for ReportFailure {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReportFailureErrorCode {
         AuthenticationError,
         DeprecatedReportingInvalidQuery,
@@ -3781,8 +3754,35 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReportFailure {
+        #[doc = "Error code that shows why the report was not created."]
+        #[serde(rename = "errorCode", default)]
+        pub error_code: Option<crate::schemas::ReportFailureErrorCode>,
+    }
+    impl ::field_selector::FieldSelector for ReportFailure {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -3813,8 +3813,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -3847,44 +3847,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ReportStatus {
-        #[doc = "If the report failed, this records the cause."]
-        #[serde(rename = "failure", default)]
-        pub failure: Option<crate::schemas::ReportFailure>,
-        #[doc = "The time when this report either completed successfully or failed."]
-        #[serde(rename = "finishTimeMs", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub finish_time_ms: Option<i64>,
-        #[doc = "The file type of the report."]
-        #[serde(rename = "format", default)]
-        pub format: Option<crate::schemas::ReportStatusFormat>,
-        #[doc = "The state of the report."]
-        #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::ReportStatusState>,
-    }
-    impl ::field_selector::FieldSelector for ReportStatus {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReportStatusFormat {
         Csv,
         ExcelCsv,
@@ -3931,7 +3894,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReportStatusState {
         Done,
         Failed,
@@ -3982,8 +3945,45 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReportStatus {
+        #[doc = "If the report failed, this records the cause."]
+        #[serde(rename = "failure", default)]
+        pub failure: Option<crate::schemas::ReportFailure>,
+        #[doc = "The time when this report either completed successfully or failed."]
+        #[serde(rename = "finishTimeMs", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub finish_time_ms: Option<i64>,
+        #[doc = "The file type of the report."]
+        #[serde(rename = "format", default)]
+        pub format: Option<crate::schemas::ReportStatusFormat>,
+        #[doc = "The state of the report."]
+        #[serde(rename = "state", default)]
+        pub state: Option<crate::schemas::ReportStatusState>,
+    }
+    impl ::field_selector::FieldSelector for ReportStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -4021,45 +4021,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct RunQueryRequest {
-        #[doc = "Report data range used to generate the report."]
-        #[serde(rename = "dataRange", default)]
-        pub data_range: Option<crate::schemas::RunQueryRequestDataRange>,
-        #[doc = "The ending time for the data that is shown in the report. Note, reportDataEndTimeMs is required if dataRange is CUSTOM_DATES and ignored otherwise."]
-        #[serde(rename = "reportDataEndTimeMs", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub report_data_end_time_ms: Option<i64>,
-        #[doc = "The starting time for the data that is shown in the report. Note, reportDataStartTimeMs is required if dataRange is CUSTOM_DATES and ignored otherwise."]
-        #[serde(rename = "reportDataStartTimeMs", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub report_data_start_time_ms: Option<i64>,
-        #[doc = "Canonical timezone code for report data time. Defaults to America/New_York."]
-        #[serde(rename = "timezoneCode", default)]
-        pub timezone_code: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for RunQueryRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RunQueryRequestDataRange {
         AllTime,
         CurrentDay,
@@ -4158,26 +4120,31 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct UploadLineItemsRequest {
-        #[doc = "Set to true to get upload status without actually persisting the line items."]
-        #[serde(rename = "dryRun", default)]
-        pub dry_run: Option<bool>,
-        #[doc = "Format the line items are in. Default to CSV."]
-        #[serde(rename = "format", default)]
-        pub format: Option<crate::schemas::UploadLineItemsRequestFormat>,
-        #[doc = "Line items in CSV to upload. Refer to  Entity Write File Format for more information on file format."]
-        #[serde(rename = "lineItems", default)]
-        pub line_items: Option<String>,
+    pub struct RunQueryRequest {
+        #[doc = "Report data range used to generate the report."]
+        #[serde(rename = "dataRange", default)]
+        pub data_range: Option<crate::schemas::RunQueryRequestDataRange>,
+        #[doc = "The ending time for the data that is shown in the report. Note, reportDataEndTimeMs is required if dataRange is CUSTOM_DATES and ignored otherwise."]
+        #[serde(rename = "reportDataEndTimeMs", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub report_data_end_time_ms: Option<i64>,
+        #[doc = "The starting time for the data that is shown in the report. Note, reportDataStartTimeMs is required if dataRange is CUSTOM_DATES and ignored otherwise."]
+        #[serde(rename = "reportDataStartTimeMs", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub report_data_start_time_ms: Option<i64>,
+        #[doc = "Canonical timezone code for report data time. Defaults to America/New_York."]
+        #[serde(rename = "timezoneCode", default)]
+        pub timezone_code: Option<String>,
     }
-    impl ::field_selector::FieldSelector for UploadLineItemsRequest {
+    impl ::field_selector::FieldSelector for RunQueryRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -4187,7 +4154,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum UploadLineItemsRequestFormat {
         Csv,
     }
@@ -4232,8 +4199,41 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UploadLineItemsRequest {
+        #[doc = "Set to true to get upload status without actually persisting the line items."]
+        #[serde(rename = "dryRun", default)]
+        pub dry_run: Option<bool>,
+        #[doc = "Format the line items are in. Default to CSV."]
+        #[serde(rename = "format", default)]
+        pub format: Option<crate::schemas::UploadLineItemsRequestFormat>,
+        #[doc = "Line items in CSV to upload. Refer to  Entity Write File Format for more information on file format."]
+        #[serde(rename = "lineItems", default)]
+        pub line_items: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UploadLineItemsRequest {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -4259,8 +4259,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -4287,7 +4287,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,

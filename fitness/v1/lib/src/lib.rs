@@ -1,40 +1,5 @@
 pub mod schemas {
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct AggregateBucket {
-        #[doc = "Available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT"]
-        #[serde(rename = "activity", default)]
-        pub activity: Option<i32>,
-        #[doc = "There will be one dataset per AggregateBy in the request."]
-        #[serde(rename = "dataset", default)]
-        pub dataset: Option<Vec<crate::schemas::Dataset>>,
-        #[doc = "The end time for the aggregated data, in milliseconds since epoch, inclusive."]
-        #[serde(rename = "endTimeMillis", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub end_time_millis: Option<i64>,
-        #[doc = "The type of a bucket signifies how the data aggregation is performed in the bucket."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::AggregateBucketType>,
-        #[doc = "Available for Bucket.Type.SESSION"]
-        #[serde(rename = "session", default)]
-        pub session: Option<crate::schemas::Session>,
-        #[doc = "The start time for the aggregated data, in milliseconds since epoch, inclusive."]
-        #[serde(rename = "startTimeMillis", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub start_time_millis: Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for AggregateBucket {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AggregateBucketType {
         ActivitySegment,
         ActivityType,
@@ -88,11 +53,46 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct AggregateBucket {
+        #[doc = "Available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT"]
+        #[serde(rename = "activity", default)]
+        pub activity: Option<i32>,
+        #[doc = "There will be one dataset per AggregateBy in the request."]
+        #[serde(rename = "dataset", default)]
+        pub dataset: Option<Vec<crate::schemas::Dataset>>,
+        #[doc = "The end time for the aggregated data, in milliseconds since epoch, inclusive."]
+        #[serde(rename = "endTimeMillis", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub end_time_millis: Option<i64>,
+        #[doc = "The type of a bucket signifies how the data aggregation is performed in the bucket."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::AggregateBucketType>,
+        #[doc = "Available for Bucket.Type.SESSION"]
+        #[serde(rename = "session", default)]
+        pub session: Option<crate::schemas::Session>,
+        #[doc = "The start time for the aggregated data, in milliseconds since epoch, inclusive."]
+        #[serde(rename = "startTimeMillis", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub start_time_millis: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for AggregateBucket {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -117,12 +117,52 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AggregateRequestFilteredDataQualityStandardItems {
+        DataQualityBloodGlucoseIso151972003,
+        DataQualityBloodGlucoseIso151972013,
+        DataQualityBloodPressureAami,
+        DataQualityBloodPressureBhsAA,
+        DataQualityBloodPressureBhsAB,
+        DataQualityBloodPressureBhsBA,
+        DataQualityBloodPressureBhsBB,
+        DataQualityBloodPressureEsh2002,
+        DataQualityBloodPressureEsh2010,
+        DataQualityUnknown,
+    }
+    impl AggregateRequestFilteredDataQualityStandardItems {
+        pub fn as_str(self) -> &'static str {
+            match self { AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodGlucoseIso151972003 => "dataQualityBloodGlucoseIso151972003" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodGlucoseIso151972013 => "dataQualityBloodGlucoseIso151972013" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureAami => "dataQualityBloodPressureAami" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsAA => "dataQualityBloodPressureBhsAA" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsAB => "dataQualityBloodPressureBhsAB" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsBA => "dataQualityBloodPressureBhsBA" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsBB => "dataQualityBloodPressureBhsBB" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureEsh2002 => "dataQualityBloodPressureEsh2002" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureEsh2010 => "dataQualityBloodPressureEsh2010" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityUnknown => "dataQualityUnknown" , }
+        }
+    }
+    impl ::std::fmt::Display for AggregateRequestFilteredDataQualityStandardItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AggregateRequestFilteredDataQualityStandardItems {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AggregateRequestFilteredDataQualityStandardItems {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "dataQualityBloodGlucoseIso151972003" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodGlucoseIso151972003 , "dataQualityBloodGlucoseIso151972013" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodGlucoseIso151972013 , "dataQualityBloodPressureAami" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureAami , "dataQualityBloodPressureBhsAA" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsAA , "dataQualityBloodPressureBhsAB" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsAB , "dataQualityBloodPressureBhsBA" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsBA , "dataQualityBloodPressureBhsBB" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsBB , "dataQualityBloodPressureEsh2002" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureEsh2002 , "dataQualityBloodPressureEsh2010" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureEsh2010 , "dataQualityUnknown" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityUnknown , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -168,46 +208,6 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum AggregateRequestFilteredDataQualityStandardItems {
-        DataQualityBloodGlucoseIso151972003,
-        DataQualityBloodGlucoseIso151972013,
-        DataQualityBloodPressureAami,
-        DataQualityBloodPressureBhsAA,
-        DataQualityBloodPressureBhsAB,
-        DataQualityBloodPressureBhsBA,
-        DataQualityBloodPressureBhsBB,
-        DataQualityBloodPressureEsh2002,
-        DataQualityBloodPressureEsh2010,
-        DataQualityUnknown,
-    }
-    impl AggregateRequestFilteredDataQualityStandardItems {
-        pub fn as_str(self) -> &'static str {
-            match self { AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodGlucoseIso151972003 => "dataQualityBloodGlucoseIso151972003" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodGlucoseIso151972013 => "dataQualityBloodGlucoseIso151972013" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureAami => "dataQualityBloodPressureAami" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsAA => "dataQualityBloodPressureBhsAA" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsAB => "dataQualityBloodPressureBhsAB" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsBA => "dataQualityBloodPressureBhsBA" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsBB => "dataQualityBloodPressureBhsBB" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureEsh2002 => "dataQualityBloodPressureEsh2002" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureEsh2010 => "dataQualityBloodPressureEsh2010" , AggregateRequestFilteredDataQualityStandardItems :: DataQualityUnknown => "dataQualityUnknown" , }
-        }
-    }
-    impl ::std::fmt::Display for AggregateRequestFilteredDataQualityStandardItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for AggregateRequestFilteredDataQualityStandardItems {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for AggregateRequestFilteredDataQualityStandardItems {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "dataQualityBloodGlucoseIso151972003" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodGlucoseIso151972003 , "dataQualityBloodGlucoseIso151972013" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodGlucoseIso151972013 , "dataQualityBloodPressureAami" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureAami , "dataQualityBloodPressureBhsAA" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsAA , "dataQualityBloodPressureBhsAB" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsAB , "dataQualityBloodPressureBhsBA" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsBA , "dataQualityBloodPressureBhsBB" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsBB , "dataQualityBloodPressureEsh2002" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureEsh2002 , "dataQualityBloodPressureEsh2010" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureEsh2010 , "dataQualityUnknown" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityUnknown , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
-        }
-    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
@@ -230,8 +230,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -266,8 +266,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -297,8 +297,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -325,8 +325,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -351,38 +351,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct BucketByTimePeriod {
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::BucketByTimePeriodType>,
-        #[doc = "org.joda.timezone.DateTimeZone"]
-        #[serde(rename = "timeZoneId", default)]
-        pub time_zone_id: Option<String>,
-        #[serde(rename = "value", default)]
-        pub value: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for BucketByTimePeriod {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BucketByTimePeriodType {
         Day,
         Month,
@@ -430,6 +399,37 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BucketByTimePeriod {
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::BucketByTimePeriodType>,
+        #[doc = "org.joda.timezone.DateTimeZone"]
+        #[serde(rename = "timeZoneId", default)]
+        pub time_zone_id: Option<String>,
+        #[serde(rename = "value", default)]
+        pub value: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for BucketByTimePeriod {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct DataPoint {
@@ -473,55 +473,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DataSource {
-        #[doc = "Information about an application which feeds sensor data into the platform."]
-        #[serde(rename = "application", default)]
-        pub application: Option<crate::schemas::Application>,
-        #[doc = "DO NOT POPULATE THIS FIELD. It is never populated in responses from the platform, and is ignored in queries. It will be removed in a future version entirely."]
-        #[serde(rename = "dataQualityStandard", default)]
-        pub data_quality_standard: Option<Vec<crate::schemas::DataSourceDataQualityStandardItems>>,
-        #[doc = "A unique identifier for the data stream produced by this data source. The identifier includes:\n\n \n- The physical device's manufacturer, model, and serial number (UID). \n- The application's package name or name. Package name is used when the data source was created by an Android application. The developer project number is used when the data source was created by a REST client. \n- The data source's type. \n- The data source's stream name.  Note that not all attributes of the data source are used as part of the stream identifier. In particular, the version of the hardware/the application isn't used. This allows us to preserve the same stream through version updates. This also means that two DataSource objects may represent the same data stream even if they're not equal.\n\nThe exact format of the data stream ID created by an Android application is: type:dataType.name:application.packageName:device.manufacturer:device.model:device.uid:dataStreamName \n\nThe exact format of the data stream ID created by a REST client is: type:dataType.name:developer project number:device.manufacturer:device.model:device.uid:dataStreamName \n\nWhen any of the optional fields that make up the data stream ID are absent, they will be omitted from the data stream ID. The minimum viable data stream ID would be: type:dataType.name:developer project number\n\nFinally, the developer project number is obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the developer project number in clear and normal form."]
-        #[serde(rename = "dataStreamId", default)]
-        pub data_stream_id: Option<String>,
-        #[doc = "The stream name uniquely identifies this particular data source among other data sources of the same type from the same underlying producer. Setting the stream name is optional, but should be done whenever an application exposes two streams for the same data type, or when a device has two equivalent sensors."]
-        #[serde(rename = "dataStreamName", default)]
-        pub data_stream_name: Option<String>,
-        #[doc = "The data type defines the schema for a stream of data being collected by, inserted into, or queried from the Fitness API."]
-        #[serde(rename = "dataType", default)]
-        pub data_type: Option<crate::schemas::DataType>,
-        #[doc = "Representation of an integrated device (such as a phone or a wearable) that can hold sensors."]
-        #[serde(rename = "device", default)]
-        pub device: Option<crate::schemas::Device>,
-        #[doc = "An end-user visible name for this data source."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "A constant describing the type of this data source. Indicates whether this data source produces raw or derived data."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DataSourceType>,
-    }
-    impl ::field_selector::FieldSelector for DataSource {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DataSourceDataQualityStandardItems {
         DataQualityBloodGlucoseIso151972003,
         DataQualityBloodGlucoseIso151972013,
@@ -625,7 +577,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DataSourceType {
         Derived,
         Raw,
@@ -673,8 +625,56 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DataSource {
+        #[doc = "Information about an application which feeds sensor data into the platform."]
+        #[serde(rename = "application", default)]
+        pub application: Option<crate::schemas::Application>,
+        #[doc = "DO NOT POPULATE THIS FIELD. It is never populated in responses from the platform, and is ignored in queries. It will be removed in a future version entirely."]
+        #[serde(rename = "dataQualityStandard", default)]
+        pub data_quality_standard: Option<Vec<crate::schemas::DataSourceDataQualityStandardItems>>,
+        #[doc = "A unique identifier for the data stream produced by this data source. The identifier includes:\n\n \n- The physical device's manufacturer, model, and serial number (UID). \n- The application's package name or name. Package name is used when the data source was created by an Android application. The developer project number is used when the data source was created by a REST client. \n- The data source's type. \n- The data source's stream name.  Note that not all attributes of the data source are used as part of the stream identifier. In particular, the version of the hardware/the application isn't used. This allows us to preserve the same stream through version updates. This also means that two DataSource objects may represent the same data stream even if they're not equal.\n\nThe exact format of the data stream ID created by an Android application is: type:dataType.name:application.packageName:device.manufacturer:device.model:device.uid:dataStreamName \n\nThe exact format of the data stream ID created by a REST client is: type:dataType.name:developer project number:device.manufacturer:device.model:device.uid:dataStreamName \n\nWhen any of the optional fields that make up the data stream ID are absent, they will be omitted from the data stream ID. The minimum viable data stream ID would be: type:dataType.name:developer project number\n\nFinally, the developer project number is obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the developer project number in clear and normal form."]
+        #[serde(rename = "dataStreamId", default)]
+        pub data_stream_id: Option<String>,
+        #[doc = "The stream name uniquely identifies this particular data source among other data sources of the same type from the same underlying producer. Setting the stream name is optional, but should be done whenever an application exposes two streams for the same data type, or when a device has two equivalent sensors."]
+        #[serde(rename = "dataStreamName", default)]
+        pub data_stream_name: Option<String>,
+        #[doc = "The data type defines the schema for a stream of data being collected by, inserted into, or queried from the Fitness API."]
+        #[serde(rename = "dataType", default)]
+        pub data_type: Option<crate::schemas::DataType>,
+        #[doc = "Representation of an integrated device (such as a phone or a wearable) that can hold sensors."]
+        #[serde(rename = "device", default)]
+        pub device: Option<crate::schemas::Device>,
+        #[doc = "An end-user visible name for this data source."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "A constant describing the type of this data source. Indicates whether this data source produces raw or derived data."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::DataSourceType>,
+    }
+    impl ::field_selector::FieldSelector for DataSource {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -699,39 +699,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DataTypeField {
-        #[doc = "The different supported formats for each field in a data type."]
-        #[serde(rename = "format", default)]
-        pub format: Option<crate::schemas::DataTypeFieldFormat>,
-        #[doc = "Defines the name and format of data. Unlike data type names, field names are not namespaced, and only need to be unique within the data type."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[serde(rename = "optional", default)]
-        pub optional: Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for DataTypeField {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DataTypeFieldFormat {
         Blob,
         FloatList,
@@ -791,6 +759,38 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DataTypeField {
+        #[doc = "The different supported formats for each field in a data type."]
+        #[serde(rename = "format", default)]
+        pub format: Option<crate::schemas::DataTypeFieldFormat>,
+        #[doc = "Defines the name and format of data. Unlike data type names, field names are not namespaced, and only need to be unique within the data type."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[serde(rename = "optional", default)]
+        pub optional: Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for DataTypeField {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Dataset {
@@ -822,46 +822,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Device {
-        #[doc = "Manufacturer of the product/hardware."]
-        #[serde(rename = "manufacturer", default)]
-        pub manufacturer: Option<String>,
-        #[doc = "End-user visible model name for the device."]
-        #[serde(rename = "model", default)]
-        pub model: Option<String>,
-        #[doc = "A constant representing the type of the device."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DeviceType>,
-        #[doc = "The serial number or other unique ID for the hardware. This field is obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the uid field in clear and normal form."]
-        #[serde(rename = "uid", default)]
-        pub uid: Option<String>,
-        #[doc = "Version string for the device hardware/software."]
-        #[serde(rename = "version", default)]
-        pub version: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for Device {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DeviceType {
         ChestStrap,
         HeadMounted,
@@ -921,6 +882,45 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Device {
+        #[doc = "Manufacturer of the product/hardware."]
+        #[serde(rename = "manufacturer", default)]
+        pub manufacturer: Option<String>,
+        #[doc = "End-user visible model name for the device."]
+        #[serde(rename = "model", default)]
+        pub model: Option<String>,
+        #[doc = "A constant representing the type of the device."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::DeviceType>,
+        #[doc = "The serial number or other unique ID for the hardware. This field is obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the uid field in clear and normal form."]
+        #[serde(rename = "uid", default)]
+        pub uid: Option<String>,
+        #[doc = "Version string for the device hardware/software."]
+        #[serde(rename = "version", default)]
+        pub version: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for Device {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ListDataPointChangesResponse {
@@ -951,8 +951,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -978,8 +978,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1032,8 +1032,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1131,7 +1131,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,

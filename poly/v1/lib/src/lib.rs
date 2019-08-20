@@ -1,4 +1,108 @@
 pub mod schemas {
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AssetLicense {
+        #[doc = "Unknown license value."]
+        Unknown,
+        #[doc = "Creative Commons CC-BY 3.0. https://creativecommons.org/licenses/by/3.0/"]
+        CreativeCommonsBy,
+        #[doc = "Unlicensed: All Rights Reserved by the author. Unlicensed assets are\n**not** returned by List Assets."]
+        AllRightsReserved,
+    }
+    impl AssetLicense {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AssetLicense::Unknown => "UNKNOWN",
+                AssetLicense::CreativeCommonsBy => "CREATIVE_COMMONS_BY",
+                AssetLicense::AllRightsReserved => "ALL_RIGHTS_RESERVED",
+            }
+        }
+    }
+    impl ::std::fmt::Display for AssetLicense {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AssetLicense {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AssetLicense {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "UNKNOWN" => AssetLicense::Unknown,
+                "CREATIVE_COMMONS_BY" => AssetLicense::CreativeCommonsBy,
+                "ALL_RIGHTS_RESERVED" => AssetLicense::AllRightsReserved,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AssetVisibility {
+        #[doc = "Unknown (and invalid) visibility."]
+        VisibilityUnspecified,
+        #[doc = "Access to the asset and its underlying files and resources is restricted to\nthe author.\n**Authentication:** You must supply an OAuth token that corresponds to the\nauthor's account."]
+        Private,
+        #[doc = "Access to the asset and its underlying files and resources is available to\nanyone with the asset's name. Unlisted assets are **not**\nreturned by List Assets."]
+        Unlisted,
+        #[doc = "Access to the asset and its underlying files and resources is available\nto anyone."]
+        Public,
+    }
+    impl AssetVisibility {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AssetVisibility::VisibilityUnspecified => "VISIBILITY_UNSPECIFIED",
+                AssetVisibility::Private => "PRIVATE",
+                AssetVisibility::Unlisted => "UNLISTED",
+                AssetVisibility::Public => "PUBLIC",
+            }
+        }
+    }
+    impl ::std::fmt::Display for AssetVisibility {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AssetVisibility {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AssetVisibility {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "VISIBILITY_UNSPECIFIED" => AssetVisibility::VisibilityUnspecified,
+                "PRIVATE" => AssetVisibility::Private,
+                "UNLISTED" => AssetVisibility::Unlisted,
+                "PUBLIC" => AssetVisibility::Public,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
@@ -56,43 +160,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AssetImportMessage {
-        #[doc = "The code associated with this message."]
-        #[serde(rename = "code", default)]
-        pub code: Option<crate::schemas::AssetImportMessageCode>,
-        #[doc = "An optional file path. Only present for those error codes that specify it."]
-        #[serde(rename = "filePath", default)]
-        pub file_path: Option<String>,
-        #[doc = "An optional image error. Only present for INVALID_IMAGE_FILE."]
-        #[serde(rename = "imageError", default)]
-        pub image_error: Option<crate::schemas::ImageError>,
-        #[doc = "An optional OBJ parse error. Only present for OBJ_PARSE_ERROR."]
-        #[serde(rename = "objParseError", default)]
-        pub obj_parse_error: Option<crate::schemas::ObjParseError>,
-    }
-    impl ::field_selector::FieldSelector for AssetImportMessage {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AssetImportMessageCode {
         #[doc = "Unknown error code."]
         CodeUnspecified,
@@ -170,116 +238,48 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum AssetLicense {
-        #[doc = "Unknown license value."]
-        Unknown,
-        #[doc = "Creative Commons CC-BY 3.0. https://creativecommons.org/licenses/by/3.0/"]
-        CreativeCommonsBy,
-        #[doc = "Unlicensed: All Rights Reserved by the author. Unlicensed assets are\n**not** returned by List Assets."]
-        AllRightsReserved,
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AssetImportMessage {
+        #[doc = "The code associated with this message."]
+        #[serde(rename = "code", default)]
+        pub code: Option<crate::schemas::AssetImportMessageCode>,
+        #[doc = "An optional file path. Only present for those error codes that specify it."]
+        #[serde(rename = "filePath", default)]
+        pub file_path: Option<String>,
+        #[doc = "An optional image error. Only present for INVALID_IMAGE_FILE."]
+        #[serde(rename = "imageError", default)]
+        pub image_error: Option<crate::schemas::ImageError>,
+        #[doc = "An optional OBJ parse error. Only present for OBJ_PARSE_ERROR."]
+        #[serde(rename = "objParseError", default)]
+        pub obj_parse_error: Option<crate::schemas::ObjParseError>,
     }
-    impl AssetLicense {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                AssetLicense::Unknown => "UNKNOWN",
-                AssetLicense::CreativeCommonsBy => "CREATIVE_COMMONS_BY",
-                AssetLicense::AllRightsReserved => "ALL_RIGHTS_RESERVED",
+    impl ::field_selector::FieldSelector for AssetImportMessage {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
             }
-        }
-    }
-    impl ::std::fmt::Display for AssetLicense {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for AssetLicense {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for AssetLicense {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "UNKNOWN" => AssetLicense::Unknown,
-                "CREATIVE_COMMONS_BY" => AssetLicense::CreativeCommonsBy,
-                "ALL_RIGHTS_RESERVED" => AssetLicense::AllRightsReserved,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum AssetVisibility {
-        #[doc = "Unknown (and invalid) visibility."]
-        VisibilityUnspecified,
-        #[doc = "Access to the asset and its underlying files and resources is restricted to\nthe author.\n**Authentication:** You must supply an OAuth token that corresponds to the\nauthor's account."]
-        Private,
-        #[doc = "Access to the asset and its underlying files and resources is available to\nanyone with the asset's name. Unlisted assets are **not**\nreturned by List Assets."]
-        Unlisted,
-        #[doc = "Access to the asset and its underlying files and resources is available\nto anyone."]
-        Public,
-    }
-    impl AssetVisibility {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                AssetVisibility::VisibilityUnspecified => "VISIBILITY_UNSPECIFIED",
-                AssetVisibility::Private => "PRIVATE",
-                AssetVisibility::Unlisted => "UNLISTED",
-                AssetVisibility::Public => "PUBLIC",
-            }
-        }
-    }
-    impl ::std::fmt::Display for AssetVisibility {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for AssetVisibility {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for AssetVisibility {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "VISIBILITY_UNSPECIFIED" => AssetVisibility::VisibilityUnspecified,
-                "PRIVATE" => AssetVisibility::Private,
-                "UNLISTED" => AssetVisibility::Unlisted,
-                "PUBLIC" => AssetVisibility::Public,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
+            selector.push_str(ident);
+            selector.push_str("*");
         }
     }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -311,8 +311,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -347,8 +347,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -374,37 +374,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ImageError {
-        #[doc = "The type of image error encountered. Optional for older image errors."]
-        #[serde(rename = "code", default)]
-        pub code: Option<crate::schemas::ImageErrorCode>,
-        #[doc = "The file path in the import of the image that was rejected."]
-        #[serde(rename = "filePath", default)]
-        pub file_path: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ImageError {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ImageErrorCode {
         #[doc = "Unknown error code."]
         CodeUnspecified,
@@ -456,6 +426,36 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ImageError {
+        #[doc = "The type of image error encountered. Optional for older image errors."]
+        #[serde(rename = "code", default)]
+        pub code: Option<crate::schemas::ImageErrorCode>,
+        #[doc = "The file path in the import of the image that was rejected."]
+        #[serde(rename = "filePath", default)]
+        pub file_path: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ImageError {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
         }
     }
     #[derive(
@@ -530,49 +530,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ObjParseError {
-        #[doc = "The type of problem found (required)."]
-        #[serde(rename = "code", default)]
-        pub code: Option<crate::schemas::ObjParseErrorCode>,
-        #[doc = "The ending character index at which the problem was found."]
-        #[serde(rename = "endIndex", default)]
-        pub end_index: Option<i32>,
-        #[doc = "The file path in which the problem was found."]
-        #[serde(rename = "filePath", default)]
-        pub file_path: Option<String>,
-        #[doc = "The text of the line. Note that this may be truncated if the line was very\nlong. This may not include the error if it occurs after line truncation."]
-        #[serde(rename = "line", default)]
-        pub line: Option<String>,
-        #[doc = "Line number at which the problem was found."]
-        #[serde(rename = "lineNumber", default)]
-        pub line_number: Option<i32>,
-        #[doc = "The starting character index at which the problem was found."]
-        #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for ObjParseError {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ObjParseErrorCode {
         #[doc = "Unknown error code."]
         CodeUnspecified,
@@ -715,20 +673,38 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct PresentationParams {
-        #[doc = "A background color which could be used for displaying the 3D asset in a\n'thumbnail' or 'palette' style view. Authors have the option to set this\nbackground color when publishing or editing their asset.\n\nThis is represented as a six-digit hexademical triplet specifying the\nRGB components of the background color, e.g. #FF0000 for Red."]
-        #[serde(rename = "backgroundColor", default)]
-        pub background_color: Option<String>,
-        #[doc = "The materials' diffuse/albedo color. This does not apply to vertex colors\nor texture maps."]
-        #[serde(rename = "colorSpace", default)]
-        pub color_space: Option<crate::schemas::PresentationParamsColorSpace>,
-        #[doc = "A rotation that should be applied to the object root to make it upright.\nMore precisely, this quaternion transforms from \"object space\" (the space\nin which the object is defined) to \"presentation space\", a coordinate\nsystem where +Y is up, +X is right, -Z is forward. For example, if\nthe object is the Eiffel Tower, in its local coordinate system the\nobject might be laid out such that the base of the tower is on the\nYZ plane and the tip of the tower is towards positive X. In this case\nthis quaternion would specify a rotation (of 90 degrees about the Z\naxis) such that in the presentation space the base of the tower is\naligned with the XZ plane, and the tip of the tower lies towards +Y.\n\nThis rotation is unrelated to the object's pose in the web preview,\nwhich is just a camera position setting and is *not* reflected in this\nrotation.\n\nPlease note: this is applicable only to the gLTF."]
-        #[serde(rename = "orientingRotation", default)]
-        pub orienting_rotation: Option<crate::schemas::Quaternion>,
+    pub struct ObjParseError {
+        #[doc = "The type of problem found (required)."]
+        #[serde(rename = "code", default)]
+        pub code: Option<crate::schemas::ObjParseErrorCode>,
+        #[doc = "The ending character index at which the problem was found."]
+        #[serde(rename = "endIndex", default)]
+        pub end_index: Option<i32>,
+        #[doc = "The file path in which the problem was found."]
+        #[serde(rename = "filePath", default)]
+        pub file_path: Option<String>,
+        #[doc = "The text of the line. Note that this may be truncated if the line was very\nlong. This may not include the error if it occurs after line truncation."]
+        #[serde(rename = "line", default)]
+        pub line: Option<String>,
+        #[doc = "Line number at which the problem was found."]
+        #[serde(rename = "lineNumber", default)]
+        pub line_number: Option<i32>,
+        #[doc = "The starting character index at which the problem was found."]
+        #[serde(rename = "startIndex", default)]
+        pub start_index: Option<i32>,
     }
-    impl ::field_selector::FieldSelector for PresentationParams {
+    impl ::field_selector::FieldSelector for ObjParseError {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -738,7 +714,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PresentationParamsColorSpace {
         #[doc = "Invalid color value."]
         Unknown,
@@ -791,6 +767,30 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct PresentationParams {
+        #[doc = "A background color which could be used for displaying the 3D asset in a\n'thumbnail' or 'palette' style view. Authors have the option to set this\nbackground color when publishing or editing their asset.\n\nThis is represented as a six-digit hexademical triplet specifying the\nRGB components of the background color, e.g. #FF0000 for Red."]
+        #[serde(rename = "backgroundColor", default)]
+        pub background_color: Option<String>,
+        #[doc = "The materials' diffuse/albedo color. This does not apply to vertex colors\nor texture maps."]
+        #[serde(rename = "colorSpace", default)]
+        pub color_space: Option<crate::schemas::PresentationParamsColorSpace>,
+        #[doc = "A rotation that should be applied to the object root to make it upright.\nMore precisely, this quaternion transforms from \"object space\" (the space\nin which the object is defined) to \"presentation space\", a coordinate\nsystem where +Y is up, +X is right, -Z is forward. For example, if\nthe object is the Eiffel Tower, in its local coordinate system the\nobject might be laid out such that the base of the tower is on the\nYZ plane and the tip of the tower is towards positive X. In this case\nthis quaternion would specify a rotation (of 90 degrees about the Z\naxis) such that in the presentation space the base of the tower is\naligned with the XZ plane, and the tip of the tower lies towards +Y.\n\nThis rotation is unrelated to the object's pose in the web preview,\nwhich is just a camera position setting and is *not* reflected in this\nrotation.\n\nPlease note: this is applicable only to the gLTF."]
+        #[serde(rename = "orientingRotation", default)]
+        pub orienting_rotation: Option<crate::schemas::Quaternion>,
+    }
+    impl ::field_selector::FieldSelector for PresentationParams {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
     pub struct Quaternion {
         #[doc = "The scalar component."]
         #[serde(rename = "w", default)]
@@ -819,8 +819,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -846,8 +846,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -898,7 +898,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -948,7 +948,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,
@@ -1023,7 +1023,7 @@ impl<A: yup_oauth2::GetToken> Client<A> {
 }
 pub mod assets {
     pub mod params {
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
         pub enum ListMaxComplexity {}
         impl ListMaxComplexity {
             pub fn as_str(self) -> &'static str {
@@ -1508,7 +1508,7 @@ pub mod users {
     }
     pub mod assets {
         pub mod params {
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListVisibility {}
             impl ListVisibility {
                 pub fn as_str(self) -> &'static str {

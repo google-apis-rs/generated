@@ -1,50 +1,5 @@
 pub mod schemas {
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PlatformSummary {
-        #[doc = "The status of the site reviewed for the Better Ads Standards."]
-        #[serde(rename = "betterAdsStatus", default)]
-        pub better_ads_status: Option<crate::schemas::PlatformSummaryBetterAdsStatus>,
-        #[doc = "The date on which ad filtering begins."]
-        #[serde(rename = "enforcementTime", default)]
-        pub enforcement_time: Option<String>,
-        #[doc = "The ad filtering status of the site."]
-        #[serde(rename = "filterStatus", default)]
-        pub filter_status: Option<crate::schemas::PlatformSummaryFilterStatus>,
-        #[doc = "The last time that the site changed status."]
-        #[serde(rename = "lastChangeTime", default)]
-        pub last_change_time: Option<String>,
-        #[doc = "The assigned regions for the site and platform.\nNo longer populated, because there is no longer any semantic difference\nbetween sites in different regions."]
-        #[serde(rename = "region", default)]
-        pub region: Option<Vec<crate::schemas::PlatformSummaryRegionItems>>,
-        #[doc = "A link that leads to a full ad experience report."]
-        #[serde(rename = "reportUrl", default)]
-        pub report_url: Option<String>,
-        #[doc = "Whether the site is currently under review."]
-        #[serde(rename = "underReview", default)]
-        pub under_review: Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for PlatformSummary {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PlatformSummaryBetterAdsStatus {
         #[doc = "Not reviewed."]
         Unknown,
@@ -98,7 +53,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PlatformSummaryFilterStatus {
         #[doc = "N/A."]
         Unknown,
@@ -156,7 +111,7 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PlatformSummaryRegionItems {}
     impl PlatformSummaryRegionItems {
         pub fn as_str(self) -> &'static str {
@@ -196,8 +151,53 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PlatformSummary {
+        #[doc = "The status of the site reviewed for the Better Ads Standards."]
+        #[serde(rename = "betterAdsStatus", default)]
+        pub better_ads_status: Option<crate::schemas::PlatformSummaryBetterAdsStatus>,
+        #[doc = "The date on which ad filtering begins."]
+        #[serde(rename = "enforcementTime", default)]
+        pub enforcement_time: Option<String>,
+        #[doc = "The ad filtering status of the site."]
+        #[serde(rename = "filterStatus", default)]
+        pub filter_status: Option<crate::schemas::PlatformSummaryFilterStatus>,
+        #[doc = "The last time that the site changed status."]
+        #[serde(rename = "lastChangeTime", default)]
+        pub last_change_time: Option<String>,
+        #[doc = "The assigned regions for the site and platform.\nNo longer populated, because there is no longer any semantic difference\nbetween sites in different regions."]
+        #[serde(rename = "region", default)]
+        pub region: Option<Vec<crate::schemas::PlatformSummaryRegionItems>>,
+        #[doc = "A link that leads to a full ad experience report."]
+        #[serde(rename = "reportUrl", default)]
+        pub report_url: Option<String>,
+        #[doc = "Whether the site is currently under review."]
+        #[serde(rename = "underReview", default)]
+        pub under_review: Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for PlatformSummary {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -229,8 +229,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -254,7 +254,7 @@ pub mod schemas {
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -304,7 +304,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,

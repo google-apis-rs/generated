@@ -1,38 +1,5 @@
 pub mod schemas {
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct AudioConfig {
-        #[doc = "Required. The format of the audio byte stream."]
-        #[serde(rename = "audioEncoding", default)]
-        pub audio_encoding: Option<crate::schemas::AudioConfigAudioEncoding>,
-        #[doc = "Optional. Input only. An identifier which selects 'audio effects' profiles\nthat are applied on (post synthesized) text to speech. Effects are applied\non top of each other in the order they are given. See\n[audio\nprofiles](https://cloud.google.com/text-to-speech/docs/audio-profiles) for\ncurrent supported profile ids."]
-        #[serde(rename = "effectsProfileId", default)]
-        pub effects_profile_id: Option<Vec<String>>,
-        #[doc = "Optional. Input only. Speaking pitch, in the range [-20.0, 20.0]. 20 means\nincrease 20 semitones from the original pitch. -20 means decrease 20\nsemitones from the original pitch."]
-        #[serde(rename = "pitch", default)]
-        pub pitch: Option<f64>,
-        #[doc = "The synthesis sample rate (in hertz) for this audio. Optional. When this is\nspecified in SynthesizeSpeechRequest, if this is different from the voice's\nnatural sample rate, then the synthesizer will honor this request by\nconverting to the desired sample rate (which might result in worse audio\nquality), unless the specified sample rate is not supported for the\nencoding chosen, in which case it will fail the request and return\ngoogle.rpc.Code.INVALID_ARGUMENT."]
-        #[serde(rename = "sampleRateHertz", default)]
-        pub sample_rate_hertz: Option<i32>,
-        #[doc = "Optional. Input only. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is\nthe normal native speed supported by the specific voice. 2.0 is twice as\nfast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0\nspeed. Any other values < 0.25 or > 4.0 will return an error."]
-        #[serde(rename = "speakingRate", default)]
-        pub speaking_rate: Option<f64>,
-        #[doc = "Optional. Input only. Volume gain (in dB) of the normal native volume\nsupported by the specific voice, in the range [-96.0, 16.0]. If unset, or\nset to a value of 0.0 (dB), will play at normal native signal amplitude. A\nvalue of -6.0 (dB) will play at approximately half the amplitude of the\nnormal native signal amplitude. A value of +6.0 (dB) will play at\napproximately twice the amplitude of the normal native signal amplitude.\nStrongly recommend not to exceed +10 (dB) as there's usually no effective\nincrease in loudness for any value greater than that."]
-        #[serde(rename = "volumeGainDb", default)]
-        pub volume_gain_db: Option<f64>,
-    }
-    impl ::field_selector::FieldSelector for AudioConfig {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AudioConfigAudioEncoding {
         #[doc = "Not specified. Will return result google.rpc.Code.INVALID_ARGUMENT."]
         AudioEncodingUnspecified,
@@ -87,11 +54,44 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct AudioConfig {
+        #[doc = "Required. The format of the audio byte stream."]
+        #[serde(rename = "audioEncoding", default)]
+        pub audio_encoding: Option<crate::schemas::AudioConfigAudioEncoding>,
+        #[doc = "Optional. Input only. An identifier which selects 'audio effects' profiles\nthat are applied on (post synthesized) text to speech. Effects are applied\non top of each other in the order they are given. See\n[audio\nprofiles](https://cloud.google.com/text-to-speech/docs/audio-profiles) for\ncurrent supported profile ids."]
+        #[serde(rename = "effectsProfileId", default)]
+        pub effects_profile_id: Option<Vec<String>>,
+        #[doc = "Optional. Input only. Speaking pitch, in the range [-20.0, 20.0]. 20 means\nincrease 20 semitones from the original pitch. -20 means decrease 20\nsemitones from the original pitch."]
+        #[serde(rename = "pitch", default)]
+        pub pitch: Option<f64>,
+        #[doc = "The synthesis sample rate (in hertz) for this audio. Optional. When this is\nspecified in SynthesizeSpeechRequest, if this is different from the voice's\nnatural sample rate, then the synthesizer will honor this request by\nconverting to the desired sample rate (which might result in worse audio\nquality), unless the specified sample rate is not supported for the\nencoding chosen, in which case it will fail the request and return\ngoogle.rpc.Code.INVALID_ARGUMENT."]
+        #[serde(rename = "sampleRateHertz", default)]
+        pub sample_rate_hertz: Option<i32>,
+        #[doc = "Optional. Input only. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is\nthe normal native speed supported by the specific voice. 2.0 is twice as\nfast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0\nspeed. Any other values < 0.25 or > 4.0 will return an error."]
+        #[serde(rename = "speakingRate", default)]
+        pub speaking_rate: Option<f64>,
+        #[doc = "Optional. Input only. Volume gain (in dB) of the normal native volume\nsupported by the specific voice, in the range [-96.0, 16.0]. If unset, or\nset to a value of 0.0 (dB), will play at normal native signal amplitude. A\nvalue of -6.0 (dB) will play at approximately half the amplitude of the\nnormal native signal amplitude. A value of +6.0 (dB) will play at\napproximately twice the amplitude of the normal native signal amplitude.\nStrongly recommend not to exceed +10 (dB) as there's usually no effective\nincrease in loudness for any value greater than that."]
+        #[serde(rename = "volumeGainDb", default)]
+        pub volume_gain_db: Option<f64>,
+    }
+    impl ::field_selector::FieldSelector for AudioConfig {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -117,8 +117,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -171,8 +171,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -194,12 +194,66 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum VoiceSsmlGender {
+        #[doc = "An unspecified gender.\nIn VoiceSelectionParams, this means that the client doesn't care which\ngender the selected voice will have. In the Voice field of\nListVoicesResponse, this may mean that the voice doesn't fit any of the\nother categories in this enum, or that the gender of the voice isn't known."]
+        SsmlVoiceGenderUnspecified,
+        #[doc = "A male voice."]
+        Male,
+        #[doc = "A female voice."]
+        Female,
+        #[doc = "A gender-neutral voice."]
+        Neutral,
+    }
+    impl VoiceSsmlGender {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                VoiceSsmlGender::SsmlVoiceGenderUnspecified => "SSML_VOICE_GENDER_UNSPECIFIED",
+                VoiceSsmlGender::Male => "MALE",
+                VoiceSsmlGender::Female => "FEMALE",
+                VoiceSsmlGender::Neutral => "NEUTRAL",
+            }
+        }
+    }
+    impl ::std::fmt::Display for VoiceSsmlGender {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for VoiceSsmlGender {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for VoiceSsmlGender {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "SSML_VOICE_GENDER_UNSPECIFIED" => VoiceSsmlGender::SsmlVoiceGenderUnspecified,
+                "MALE" => VoiceSsmlGender::Male,
+                "FEMALE" => VoiceSsmlGender::Female,
+                "NEUTRAL" => VoiceSsmlGender::Neutral,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
     #[derive(
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -230,40 +284,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct VoiceSelectionParams {
-        #[doc = "The language (and optionally also the region) of the voice expressed as a\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g.\n\"en-US\". Required. This should not include a script tag (e.g. use\n\"cmn-cn\" rather than \"cmn-Hant-cn\"), because the script will be inferred\nfrom the input provided in the SynthesisInput.  The TTS service\nwill use this parameter to help choose an appropriate voice.  Note that\nthe TTS service may choose a voice with a slightly different language code\nthan the one selected; it may substitute a different region\n(e.g. using en-US rather than en-CA if there isn't a Canadian voice\navailable), or even a different language, e.g. using \"nb\" (Norwegian\nBokmal) instead of \"no\" (Norwegian)\"."]
-        #[serde(rename = "languageCode", default)]
-        pub language_code: Option<String>,
-        #[doc = "The name of the voice. Optional; if not set, the service will choose a\nvoice based on the other parameters such as language_code and gender."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "The preferred gender of the voice. Optional; if not set, the service will\nchoose a voice based on the other parameters such as language_code and\nname. Note that this is only a preference, not requirement; if a\nvoice of the appropriate gender is not available, the synthesizer should\nsubstitute a voice with a different gender rather than failing the request."]
-        #[serde(rename = "ssmlGender", default)]
-        pub ssml_gender: Option<crate::schemas::VoiceSelectionParamsSsmlGender>,
-    }
-    impl ::field_selector::FieldSelector for VoiceSelectionParams {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VoiceSelectionParamsSsmlGender {
         #[doc = "An unspecified gender.\nIn VoiceSelectionParams, this means that the client doesn't care which\ngender the selected voice will have. In the Voice field of\nListVoicesResponse, this may mean that the voice doesn't fit any of the\nother categories in this enum, or that the gender of the voice isn't known."]
         SsmlVoiceGenderUnspecified,
@@ -321,63 +342,42 @@ pub mod schemas {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
-    pub enum VoiceSsmlGender {
-        #[doc = "An unspecified gender.\nIn VoiceSelectionParams, this means that the client doesn't care which\ngender the selected voice will have. In the Voice field of\nListVoicesResponse, this may mean that the voice doesn't fit any of the\nother categories in this enum, or that the gender of the voice isn't known."]
-        SsmlVoiceGenderUnspecified,
-        #[doc = "A male voice."]
-        Male,
-        #[doc = "A female voice."]
-        Female,
-        #[doc = "A gender-neutral voice."]
-        Neutral,
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct VoiceSelectionParams {
+        #[doc = "The language (and optionally also the region) of the voice expressed as a\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g.\n\"en-US\". Required. This should not include a script tag (e.g. use\n\"cmn-cn\" rather than \"cmn-Hant-cn\"), because the script will be inferred\nfrom the input provided in the SynthesisInput.  The TTS service\nwill use this parameter to help choose an appropriate voice.  Note that\nthe TTS service may choose a voice with a slightly different language code\nthan the one selected; it may substitute a different region\n(e.g. using en-US rather than en-CA if there isn't a Canadian voice\navailable), or even a different language, e.g. using \"nb\" (Norwegian\nBokmal) instead of \"no\" (Norwegian)\"."]
+        #[serde(rename = "languageCode", default)]
+        pub language_code: Option<String>,
+        #[doc = "The name of the voice. Optional; if not set, the service will choose a\nvoice based on the other parameters such as language_code and gender."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "The preferred gender of the voice. Optional; if not set, the service will\nchoose a voice based on the other parameters such as language_code and\nname. Note that this is only a preference, not requirement; if a\nvoice of the appropriate gender is not available, the synthesizer should\nsubstitute a voice with a different gender rather than failing the request."]
+        #[serde(rename = "ssmlGender", default)]
+        pub ssml_gender: Option<crate::schemas::VoiceSelectionParamsSsmlGender>,
     }
-    impl VoiceSsmlGender {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                VoiceSsmlGender::SsmlVoiceGenderUnspecified => "SSML_VOICE_GENDER_UNSPECIFIED",
-                VoiceSsmlGender::Male => "MALE",
-                VoiceSsmlGender::Female => "FEMALE",
-                VoiceSsmlGender::Neutral => "NEUTRAL",
+    impl ::field_selector::FieldSelector for VoiceSelectionParams {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
             }
-        }
-    }
-    impl ::std::fmt::Display for VoiceSsmlGender {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for VoiceSsmlGender {
-        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for VoiceSsmlGender {
-        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "SSML_VOICE_GENDER_UNSPECIFIED" => VoiceSsmlGender::SsmlVoiceGenderUnspecified,
-                "MALE" => VoiceSsmlGender::Male,
-                "FEMALE" => VoiceSsmlGender::Female,
-                "NEUTRAL" => VoiceSsmlGender::Neutral,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
+            selector.push_str(ident);
+            selector.push_str("*");
         }
     }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -427,7 +427,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,

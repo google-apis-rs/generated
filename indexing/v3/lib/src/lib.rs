@@ -3,8 +3,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -26,73 +26,7 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UrlNotification {
-        #[doc = "Creation timestamp for this notification.\nUsers should _not_ specify it, the field is ignored at the request time."]
-        #[serde(rename = "notifyTime", default)]
-        pub notify_time: Option<String>,
-        #[doc = "The URL life cycle event that Google is being notified about."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::UrlNotificationType>,
-        #[doc = "The object of this notification. The URL must be owned by the publisher\nof this notification and, in case of `URL_UPDATED` notifications, it _must_\nbe crawlable by Google."]
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for UrlNotification {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UrlNotificationMetadata {
-        #[doc = "Latest notification received with type `URL_REMOVED`."]
-        #[serde(rename = "latestRemove", default)]
-        pub latest_remove: Option<crate::schemas::UrlNotification>,
-        #[doc = "Latest notification received with type `URL_UPDATED`."]
-        #[serde(rename = "latestUpdate", default)]
-        pub latest_update: Option<crate::schemas::UrlNotification>,
-        #[doc = "URL to which this metadata refers."]
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for UrlNotificationMetadata {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum UrlNotificationType {
         #[doc = "Unspecified."]
         UrlNotificationTypeUnspecified,
@@ -146,9 +80,75 @@ pub mod schemas {
             })
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UrlNotification {
+        #[doc = "Creation timestamp for this notification.\nUsers should _not_ specify it, the field is ignored at the request time."]
+        #[serde(rename = "notifyTime", default)]
+        pub notify_time: Option<String>,
+        #[doc = "The URL life cycle event that Google is being notified about."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<crate::schemas::UrlNotificationType>,
+        #[doc = "The object of this notification. The URL must be owned by the publisher\nof this notification and, in case of `URL_UPDATED` notifications, it _must_\nbe crawlable by Google."]
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UrlNotification {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UrlNotificationMetadata {
+        #[doc = "Latest notification received with type `URL_REMOVED`."]
+        #[serde(rename = "latestRemove", default)]
+        pub latest_remove: Option<crate::schemas::UrlNotification>,
+        #[doc = "Latest notification received with type `URL_UPDATED`."]
+        #[serde(rename = "latestUpdate", default)]
+        pub latest_update: Option<crate::schemas::UrlNotification>,
+        #[doc = "URL to which this metadata refers."]
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UrlNotificationMetadata {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -198,7 +198,7 @@ pub mod params {
             })
         }
     }
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
         _1,

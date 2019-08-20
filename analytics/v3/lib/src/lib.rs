@@ -3,8 +3,65 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AccountChildLink {
+        #[doc = "Link to the list of web properties for this account."]
+        #[serde(rename = "href", default)]
+        pub href: Option<String>,
+        #[doc = "Type of the child link. Its value is \"analytics#webproperties\"."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for AccountChildLink {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AccountPermissions {
+        #[doc = "All the permissions that the user has for this account. These include any implied permissions (e.g., EDIT implies VIEW)."]
+        #[serde(rename = "effective", default)]
+        pub effective: Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for AccountPermissions {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -54,65 +111,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AccountChildLink {
-        #[doc = "Link to the list of web properties for this account."]
-        #[serde(rename = "href", default)]
-        pub href: Option<String>,
-        #[doc = "Type of the child link. Its value is \"analytics#webproperties\"."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for AccountChildLink {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct AccountPermissions {
-        #[doc = "All the permissions that the user has for this account. These include any implied permissions (e.g., EDIT implies VIEW)."]
-        #[serde(rename = "effective", default)]
-        pub effective: Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for AccountPermissions {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -147,8 +147,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -195,8 +195,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -234,8 +234,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -276,8 +276,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -313,8 +313,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -349,8 +349,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -397,8 +397,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -430,8 +430,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -457,8 +457,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -490,8 +490,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -529,8 +529,68 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CustomDataSourceChildLink {
+        #[doc = "Link to the list of daily uploads for this custom data source. Link to the list of uploads for this custom data source."]
+        #[serde(rename = "href", default)]
+        pub href: Option<String>,
+        #[doc = "Value is \"analytics#dailyUploads\". Value is \"analytics#uploads\"."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CustomDataSourceChildLink {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CustomDataSourceParentLink {
+        #[doc = "Link to the web property to which this custom data source belongs."]
+        #[serde(rename = "href", default)]
+        pub href: Option<String>,
+        #[doc = "Value is \"analytics#webproperty\"."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CustomDataSourceParentLink {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -599,68 +659,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CustomDataSourceChildLink {
-        #[doc = "Link to the list of daily uploads for this custom data source. Link to the list of uploads for this custom data source."]
-        #[serde(rename = "href", default)]
-        pub href: Option<String>,
-        #[doc = "Value is \"analytics#dailyUploads\". Value is \"analytics#uploads\"."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CustomDataSourceChildLink {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CustomDataSourceParentLink {
-        #[doc = "Link to the web property to which this custom data source belongs."]
-        #[serde(rename = "href", default)]
-        pub href: Option<String>,
-        #[doc = "Value is \"analytics#webproperty\"."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CustomDataSourceParentLink {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -707,8 +707,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CustomDimensionParentLink {
+        #[doc = "Link to the property to which the custom dimension belongs."]
+        #[serde(rename = "href", default)]
+        pub href: Option<String>,
+        #[doc = "Type of the parent link. Set to \"analytics#webproperty\"."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CustomDimensionParentLink {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -767,38 +797,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CustomDimensionParentLink {
-        #[doc = "Link to the property to which the custom dimension belongs."]
-        #[serde(rename = "href", default)]
-        pub href: Option<String>,
-        #[doc = "Type of the parent link. Set to \"analytics#webproperty\"."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CustomDimensionParentLink {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -845,8 +845,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CustomMetricParentLink {
+        #[doc = "Link to the property to which the custom metric belongs."]
+        #[serde(rename = "href", default)]
+        pub href: Option<String>,
+        #[doc = "Type of the parent link. Set to \"analytics#webproperty\"."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for CustomMetricParentLink {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -914,38 +944,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CustomMetricParentLink {
-        #[doc = "Link to the property to which the custom metric belongs."]
-        #[serde(rename = "href", default)]
-        pub href: Option<String>,
-        #[doc = "Type of the parent link. Set to \"analytics#webproperty\"."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for CustomMetricParentLink {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -992,8 +992,34 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct EntityAdWordsLinkEntity {
+        #[serde(rename = "webPropertyRef", default)]
+        pub web_property_ref: Option<crate::schemas::WebPropertyRef>,
+    }
+    impl ::field_selector::FieldSelector for EntityAdWordsLinkEntity {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1037,34 +1063,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct EntityAdWordsLinkEntity {
-        #[serde(rename = "webPropertyRef", default)]
-        pub web_property_ref: Option<crate::schemas::WebPropertyRef>,
-    }
-    impl ::field_selector::FieldSelector for EntityAdWordsLinkEntity {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -1108,8 +1108,71 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct EntityUserLinkEntity {
+        #[doc = "Account for this link."]
+        #[serde(rename = "accountRef", default)]
+        pub account_ref: Option<crate::schemas::AccountRef>,
+        #[doc = "View (Profile) for this link."]
+        #[serde(rename = "profileRef", default)]
+        pub profile_ref: Option<crate::schemas::ProfileRef>,
+        #[doc = "Web property for this link."]
+        #[serde(rename = "webPropertyRef", default)]
+        pub web_property_ref: Option<crate::schemas::WebPropertyRef>,
+    }
+    impl ::field_selector::FieldSelector for EntityUserLinkEntity {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct EntityUserLinkPermissions {
+        #[doc = "Effective permissions represent all the permissions that a user has for this entity. These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent entity. Effective permissions are read-only."]
+        #[serde(rename = "effective", default)]
+        pub effective: Option<Vec<String>>,
+        #[doc = "Permissions that a user has been assigned at this very level. Does not include any implied or inherited permissions. Local permissions are modifiable."]
+        #[serde(rename = "local", default)]
+        pub local: Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for EntityUserLinkPermissions {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1150,71 +1213,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct EntityUserLinkEntity {
-        #[doc = "Account for this link."]
-        #[serde(rename = "accountRef", default)]
-        pub account_ref: Option<crate::schemas::AccountRef>,
-        #[doc = "View (Profile) for this link."]
-        #[serde(rename = "profileRef", default)]
-        pub profile_ref: Option<crate::schemas::ProfileRef>,
-        #[doc = "Web property for this link."]
-        #[serde(rename = "webPropertyRef", default)]
-        pub web_property_ref: Option<crate::schemas::WebPropertyRef>,
-    }
-    impl ::field_selector::FieldSelector for EntityUserLinkEntity {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct EntityUserLinkPermissions {
-        #[doc = "Effective permissions represent all the permissions that a user has for this entity. These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent entity. Effective permissions are read-only."]
-        #[serde(rename = "effective", default)]
-        pub effective: Option<Vec<String>>,
-        #[doc = "Permissions that a user has been assigned at this very level. Does not include any implied or inherited permissions. Local permissions are modifiable."]
-        #[serde(rename = "local", default)]
-        pub local: Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for EntityUserLinkPermissions {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -1245,6 +1245,66 @@ pub mod schemas {
         pub total_results: Option<i32>,
     }
     impl ::field_selector::FieldSelector for EntityUserLinks {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ExperimentParentLink {
+        #[doc = "Link to the view (profile) to which this experiment belongs. This field is read-only."]
+        #[serde(rename = "href", default)]
+        pub href: Option<String>,
+        #[doc = "Value is \"analytics#profile\". This field is read-only."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for ExperimentParentLink {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct ExperimentVariationsItems {
+        #[doc = "The name of the variation. This field is required when creating an experiment. This field may not be changed for an experiment whose status is ENDED."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "Status of the variation. Possible values: \"ACTIVE\", \"INACTIVE\". INACTIVE variations are not served. This field may not be changed for an experiment whose status is ENDED."]
+        #[serde(rename = "status", default)]
+        pub status: Option<String>,
+        #[doc = "The URL of the variation. This field may not be changed for an experiment whose status is RUNNING or ENDED."]
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
+        #[doc = "Weight that this variation should receive. Only present if the experiment is running. This field is read-only."]
+        #[serde(rename = "weight", default)]
+        pub weight: Option<f64>,
+        #[doc = "True if the experiment has ended and this variation performed (statistically) significantly better than the original. This field is read-only."]
+        #[serde(rename = "won", default)]
+        pub won: Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for ExperimentVariationsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -1354,66 +1414,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ExperimentParentLink {
-        #[doc = "Link to the view (profile) to which this experiment belongs. This field is read-only."]
-        #[serde(rename = "href", default)]
-        pub href: Option<String>,
-        #[doc = "Value is \"analytics#profile\". This field is read-only."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ExperimentParentLink {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct ExperimentVariationsItems {
-        #[doc = "The name of the variation. This field is required when creating an experiment. This field may not be changed for an experiment whose status is ENDED."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "Status of the variation. Possible values: \"ACTIVE\", \"INACTIVE\". INACTIVE variations are not served. This field may not be changed for an experiment whose status is ENDED."]
-        #[serde(rename = "status", default)]
-        pub status: Option<String>,
-        #[doc = "The URL of the variation. This field may not be changed for an experiment whose status is RUNNING or ENDED."]
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-        #[doc = "Weight that this variation should receive. Only present if the experiment is running. This field is read-only."]
-        #[serde(rename = "weight", default)]
-        pub weight: Option<f64>,
-        #[doc = "True if the experiment has ended and this variation performed (statistically) significantly better than the original. This field is read-only."]
-        #[serde(rename = "won", default)]
-        pub won: Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for ExperimentVariationsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Experiments {
@@ -1456,8 +1456,200 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FilterAdvancedDetails {
+        #[doc = "Indicates if the filter expressions are case sensitive."]
+        #[serde(rename = "caseSensitive", default)]
+        pub case_sensitive: Option<bool>,
+        #[doc = "Expression to extract from field A."]
+        #[serde(rename = "extractA", default)]
+        pub extract_a: Option<String>,
+        #[doc = "Expression to extract from field B."]
+        #[serde(rename = "extractB", default)]
+        pub extract_b: Option<String>,
+        #[doc = "Field A."]
+        #[serde(rename = "fieldA", default)]
+        pub field_a: Option<String>,
+        #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
+        #[serde(rename = "fieldAIndex", default)]
+        pub field_a_index: Option<i32>,
+        #[doc = "Indicates if field A is required to match."]
+        #[serde(rename = "fieldARequired", default)]
+        pub field_a_required: Option<bool>,
+        #[doc = "Field B."]
+        #[serde(rename = "fieldB", default)]
+        pub field_b: Option<String>,
+        #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
+        #[serde(rename = "fieldBIndex", default)]
+        pub field_b_index: Option<i32>,
+        #[doc = "Indicates if field B is required to match."]
+        #[serde(rename = "fieldBRequired", default)]
+        pub field_b_required: Option<bool>,
+        #[doc = "Expression used to construct the output value."]
+        #[serde(rename = "outputConstructor", default)]
+        pub output_constructor: Option<String>,
+        #[doc = "Output field."]
+        #[serde(rename = "outputToField", default)]
+        pub output_to_field: Option<String>,
+        #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
+        #[serde(rename = "outputToFieldIndex", default)]
+        pub output_to_field_index: Option<i32>,
+        #[doc = "Indicates if the existing value of the output field, if any, should be overridden by the output expression."]
+        #[serde(rename = "overrideOutputField", default)]
+        pub override_output_field: Option<bool>,
+    }
+    impl ::field_selector::FieldSelector for FilterAdvancedDetails {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FilterLowercaseDetails {
+        #[doc = "Field to use in the filter."]
+        #[serde(rename = "field", default)]
+        pub field: Option<String>,
+        #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
+        #[serde(rename = "fieldIndex", default)]
+        pub field_index: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for FilterLowercaseDetails {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FilterParentLink {
+        #[doc = "Link to the account to which this filter belongs."]
+        #[serde(rename = "href", default)]
+        pub href: Option<String>,
+        #[doc = "Value is \"analytics#account\"."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for FilterParentLink {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FilterSearchAndReplaceDetails {
+        #[doc = "Determines if the filter is case sensitive."]
+        #[serde(rename = "caseSensitive", default)]
+        pub case_sensitive: Option<bool>,
+        #[doc = "Field to use in the filter."]
+        #[serde(rename = "field", default)]
+        pub field: Option<String>,
+        #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
+        #[serde(rename = "fieldIndex", default)]
+        pub field_index: Option<i32>,
+        #[doc = "Term to replace the search term with."]
+        #[serde(rename = "replaceString", default)]
+        pub replace_string: Option<String>,
+        #[doc = "Term to search."]
+        #[serde(rename = "searchString", default)]
+        pub search_string: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for FilterSearchAndReplaceDetails {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FilterUppercaseDetails {
+        #[doc = "Field to use in the filter."]
+        #[serde(rename = "field", default)]
+        pub field: Option<String>,
+        #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
+        #[serde(rename = "fieldIndex", default)]
+        pub field_index: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for FilterUppercaseDetails {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1525,71 +1717,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FilterAdvancedDetails {
-        #[doc = "Indicates if the filter expressions are case sensitive."]
-        #[serde(rename = "caseSensitive", default)]
-        pub case_sensitive: Option<bool>,
-        #[doc = "Expression to extract from field A."]
-        #[serde(rename = "extractA", default)]
-        pub extract_a: Option<String>,
-        #[doc = "Expression to extract from field B."]
-        #[serde(rename = "extractB", default)]
-        pub extract_b: Option<String>,
-        #[doc = "Field A."]
-        #[serde(rename = "fieldA", default)]
-        pub field_a: Option<String>,
-        #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
-        #[serde(rename = "fieldAIndex", default)]
-        pub field_a_index: Option<i32>,
-        #[doc = "Indicates if field A is required to match."]
-        #[serde(rename = "fieldARequired", default)]
-        pub field_a_required: Option<bool>,
-        #[doc = "Field B."]
-        #[serde(rename = "fieldB", default)]
-        pub field_b: Option<String>,
-        #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
-        #[serde(rename = "fieldBIndex", default)]
-        pub field_b_index: Option<i32>,
-        #[doc = "Indicates if field B is required to match."]
-        #[serde(rename = "fieldBRequired", default)]
-        pub field_b_required: Option<bool>,
-        #[doc = "Expression used to construct the output value."]
-        #[serde(rename = "outputConstructor", default)]
-        pub output_constructor: Option<String>,
-        #[doc = "Output field."]
-        #[serde(rename = "outputToField", default)]
-        pub output_to_field: Option<String>,
-        #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
-        #[serde(rename = "outputToFieldIndex", default)]
-        pub output_to_field_index: Option<i32>,
-        #[doc = "Indicates if the existing value of the output field, if any, should be overridden by the output expression."]
-        #[serde(rename = "overrideOutputField", default)]
-        pub override_output_field: Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for FilterAdvancedDetails {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -1630,68 +1759,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FilterLowercaseDetails {
-        #[doc = "Field to use in the filter."]
-        #[serde(rename = "field", default)]
-        pub field: Option<String>,
-        #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
-        #[serde(rename = "fieldIndex", default)]
-        pub field_index: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for FilterLowercaseDetails {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FilterParentLink {
-        #[doc = "Link to the account to which this filter belongs."]
-        #[serde(rename = "href", default)]
-        pub href: Option<String>,
-        #[doc = "Value is \"analytics#account\"."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for FilterParentLink {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -1729,77 +1798,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FilterSearchAndReplaceDetails {
-        #[doc = "Determines if the filter is case sensitive."]
-        #[serde(rename = "caseSensitive", default)]
-        pub case_sensitive: Option<bool>,
-        #[doc = "Field to use in the filter."]
-        #[serde(rename = "field", default)]
-        pub field: Option<String>,
-        #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
-        #[serde(rename = "fieldIndex", default)]
-        pub field_index: Option<i32>,
-        #[doc = "Term to replace the search term with."]
-        #[serde(rename = "replaceString", default)]
-        pub replace_string: Option<String>,
-        #[doc = "Term to search."]
-        #[serde(rename = "searchString", default)]
-        pub search_string: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for FilterSearchAndReplaceDetails {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FilterUppercaseDetails {
-        #[doc = "Field to use in the filter."]
-        #[serde(rename = "field", default)]
-        pub field: Option<String>,
-        #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
-        #[serde(rename = "fieldIndex", default)]
-        pub field_index: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for FilterUppercaseDetails {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -1846,8 +1846,250 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GaDataColumnHeadersItems {
+        #[doc = "Column Type. Either DIMENSION or METRIC."]
+        #[serde(rename = "columnType", default)]
+        pub column_type: Option<String>,
+        #[doc = "Data type. Dimension column headers have only STRING as the data type. Metric column headers have data types for metric values such as INTEGER, DOUBLE, CURRENCY etc."]
+        #[serde(rename = "dataType", default)]
+        pub data_type: Option<String>,
+        #[doc = "Column name."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GaDataColumnHeadersItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GaDataDataTableColsItems {
+        #[serde(rename = "id", default)]
+        pub id: Option<String>,
+        #[serde(rename = "label", default)]
+        pub label: Option<String>,
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GaDataDataTableColsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GaDataDataTableRowsItemsCItems {
+        #[serde(rename = "v", default)]
+        pub v: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GaDataDataTableRowsItemsCItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GaDataDataTableRowsItems {
+        #[serde(rename = "c", default)]
+        pub c: Option<Vec<crate::schemas::GaDataDataTableRowsItemsCItems>>,
+    }
+    impl ::field_selector::FieldSelector for GaDataDataTableRowsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GaDataDataTable {
+        #[serde(rename = "cols", default)]
+        pub cols: Option<Vec<crate::schemas::GaDataDataTableColsItems>>,
+        #[serde(rename = "rows", default)]
+        pub rows: Option<Vec<crate::schemas::GaDataDataTableRowsItems>>,
+    }
+    impl ::field_selector::FieldSelector for GaDataDataTable {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GaDataProfileInfo {
+        #[doc = "Account ID to which this view (profile) belongs."]
+        #[serde(rename = "accountId", default)]
+        pub account_id: Option<String>,
+        #[doc = "Internal ID for the web property to which this view (profile) belongs."]
+        #[serde(rename = "internalWebPropertyId", default)]
+        pub internal_web_property_id: Option<String>,
+        #[doc = "View (Profile) ID."]
+        #[serde(rename = "profileId", default)]
+        pub profile_id: Option<String>,
+        #[doc = "View (Profile) name."]
+        #[serde(rename = "profileName", default)]
+        pub profile_name: Option<String>,
+        #[doc = "Table ID for view (profile)."]
+        #[serde(rename = "tableId", default)]
+        pub table_id: Option<String>,
+        #[doc = "Web Property ID to which this view (profile) belongs."]
+        #[serde(rename = "webPropertyId", default)]
+        pub web_property_id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GaDataProfileInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GaDataQuery {
+        #[doc = "List of analytics dimensions."]
+        #[serde(rename = "dimensions", default)]
+        pub dimensions: Option<String>,
+        #[doc = "End date."]
+        #[serde(rename = "end-date", default)]
+        pub end_date: Option<String>,
+        #[doc = "Comma-separated list of dimension or metric filters."]
+        #[serde(rename = "filters", default)]
+        pub filters: Option<String>,
+        #[doc = "Unique table ID."]
+        #[serde(rename = "ids", default)]
+        pub ids: Option<String>,
+        #[doc = "Maximum results per page."]
+        #[serde(rename = "max-results", default)]
+        pub max_results: Option<i32>,
+        #[doc = "List of analytics metrics."]
+        #[serde(rename = "metrics", default)]
+        pub metrics: Option<Vec<String>>,
+        #[doc = "Desired sampling level"]
+        #[serde(rename = "samplingLevel", default)]
+        pub sampling_level: Option<String>,
+        #[doc = "Analytics advanced segment."]
+        #[serde(rename = "segment", default)]
+        pub segment: Option<String>,
+        #[doc = "List of dimensions or metrics based on which Analytics data is sorted."]
+        #[serde(rename = "sort", default)]
+        pub sort: Option<Vec<String>>,
+        #[doc = "Start date."]
+        #[serde(rename = "start-date", default)]
+        pub start_date: Option<String>,
+        #[doc = "Start index."]
+        #[serde(rename = "start-index", default)]
+        pub start_index: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for GaDataQuery {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -1923,84 +2165,33 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GaDataColumnHeadersItems {
-        #[doc = "Column Type. Either DIMENSION or METRIC."]
-        #[serde(rename = "columnType", default)]
-        pub column_type: Option<String>,
-        #[doc = "Data type. Dimension column headers have only STRING as the data type. Metric column headers have data types for metric values such as INTEGER, DOUBLE, CURRENCY etc."]
-        #[serde(rename = "dataType", default)]
-        pub data_type: Option<String>,
-        #[doc = "Column name."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GaDataColumnHeadersItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GaDataDataTable {
-        #[serde(rename = "cols", default)]
-        pub cols: Option<Vec<crate::schemas::GaDataDataTableColsItems>>,
-        #[serde(rename = "rows", default)]
-        pub rows: Option<Vec<crate::schemas::GaDataDataTableRowsItems>>,
-    }
-    impl ::field_selector::FieldSelector for GaDataDataTable {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GaDataDataTableColsItems {
-        #[serde(rename = "id", default)]
-        pub id: Option<String>,
-        #[serde(rename = "label", default)]
-        pub label: Option<String>,
+    pub struct GoalEventDetailsEventConditionsItems {
+        #[doc = "Type of comparison. Possible values are LESS_THAN, GREATER_THAN or EQUAL."]
+        #[serde(rename = "comparisonType", default)]
+        pub comparison_type: Option<String>,
+        #[doc = "Value used for this comparison."]
+        #[serde(rename = "comparisonValue", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub comparison_value: Option<i64>,
+        #[doc = "Expression used for this match."]
+        #[serde(rename = "expression", default)]
+        pub expression: Option<String>,
+        #[doc = "Type of the match to be performed. Possible values are REGEXP, BEGINS_WITH, or EXACT."]
+        #[serde(rename = "matchType", default)]
+        pub match_type: Option<String>,
+        #[doc = "Type of this event condition. Possible values are CATEGORY, ACTION, LABEL, or VALUE."]
         #[serde(rename = "type", default)]
         pub r#type: Option<String>,
     }
-    impl ::field_selector::FieldSelector for GaDataDataTableColsItems {
+    impl ::field_selector::FieldSelector for GoalEventDetailsEventConditionsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2014,19 +2205,23 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GaDataDataTableRowsItems {
-        #[serde(rename = "c", default)]
-        pub c: Option<Vec<crate::schemas::GaDataDataTableRowsItemsCItems>>,
+    pub struct GoalEventDetails {
+        #[doc = "List of event conditions."]
+        #[serde(rename = "eventConditions", default)]
+        pub event_conditions: Option<Vec<crate::schemas::GoalEventDetailsEventConditionsItems>>,
+        #[doc = "Determines if the event value should be used as the value for this goal."]
+        #[serde(rename = "useEventValue", default)]
+        pub use_event_value: Option<bool>,
     }
-    impl ::field_selector::FieldSelector for GaDataDataTableRowsItems {
+    impl ::field_selector::FieldSelector for GoalEventDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2040,19 +2235,23 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GaDataDataTableRowsItemsCItems {
-        #[serde(rename = "v", default)]
-        pub v: Option<String>,
+    pub struct GoalParentLink {
+        #[doc = "Link to the view (profile) to which this goal belongs."]
+        #[serde(rename = "href", default)]
+        pub href: Option<String>,
+        #[doc = "Value is \"analytics#profile\"."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
     }
-    impl ::field_selector::FieldSelector for GaDataDataTableRowsItemsCItems {
+    impl ::field_selector::FieldSelector for GoalParentLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2066,35 +2265,26 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GaDataProfileInfo {
-        #[doc = "Account ID to which this view (profile) belongs."]
-        #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
-        #[doc = "Internal ID for the web property to which this view (profile) belongs."]
-        #[serde(rename = "internalWebPropertyId", default)]
-        pub internal_web_property_id: Option<String>,
-        #[doc = "View (Profile) ID."]
-        #[serde(rename = "profileId", default)]
-        pub profile_id: Option<String>,
-        #[doc = "View (Profile) name."]
-        #[serde(rename = "profileName", default)]
-        pub profile_name: Option<String>,
-        #[doc = "Table ID for view (profile)."]
-        #[serde(rename = "tableId", default)]
-        pub table_id: Option<String>,
-        #[doc = "Web Property ID to which this view (profile) belongs."]
-        #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+    pub struct GoalUrlDestinationDetailsStepsItems {
+        #[doc = "Step name."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+        #[doc = "Step number."]
+        #[serde(rename = "number", default)]
+        pub number: Option<i32>,
+        #[doc = "URL for this step."]
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
     }
-    impl ::field_selector::FieldSelector for GaDataProfileInfo {
+    impl ::field_selector::FieldSelector for GoalUrlDestinationDetailsStepsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2108,50 +2298,94 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GaDataQuery {
-        #[doc = "List of analytics dimensions."]
-        #[serde(rename = "dimensions", default)]
-        pub dimensions: Option<String>,
-        #[doc = "End date."]
-        #[serde(rename = "end-date", default)]
-        pub end_date: Option<String>,
-        #[doc = "Comma-separated list of dimension or metric filters."]
-        #[serde(rename = "filters", default)]
-        pub filters: Option<String>,
-        #[doc = "Unique table ID."]
-        #[serde(rename = "ids", default)]
-        pub ids: Option<String>,
-        #[doc = "Maximum results per page."]
-        #[serde(rename = "max-results", default)]
-        pub max_results: Option<i32>,
-        #[doc = "List of analytics metrics."]
-        #[serde(rename = "metrics", default)]
-        pub metrics: Option<Vec<String>>,
-        #[doc = "Desired sampling level"]
-        #[serde(rename = "samplingLevel", default)]
-        pub sampling_level: Option<String>,
-        #[doc = "Analytics advanced segment."]
-        #[serde(rename = "segment", default)]
-        pub segment: Option<String>,
-        #[doc = "List of dimensions or metrics based on which Analytics data is sorted."]
-        #[serde(rename = "sort", default)]
-        pub sort: Option<Vec<String>>,
-        #[doc = "Start date."]
-        #[serde(rename = "start-date", default)]
-        pub start_date: Option<String>,
-        #[doc = "Start index."]
-        #[serde(rename = "start-index", default)]
-        pub start_index: Option<i32>,
+    pub struct GoalUrlDestinationDetails {
+        #[doc = "Determines if the goal URL must exactly match the capitalization of visited URLs."]
+        #[serde(rename = "caseSensitive", default)]
+        pub case_sensitive: Option<bool>,
+        #[doc = "Determines if the first step in this goal is required."]
+        #[serde(rename = "firstStepRequired", default)]
+        pub first_step_required: Option<bool>,
+        #[doc = "Match type for the goal URL. Possible values are HEAD, EXACT, or REGEX."]
+        #[serde(rename = "matchType", default)]
+        pub match_type: Option<String>,
+        #[doc = "List of steps configured for this goal funnel."]
+        #[serde(rename = "steps", default)]
+        pub steps: Option<Vec<crate::schemas::GoalUrlDestinationDetailsStepsItems>>,
+        #[doc = "URL for this goal."]
+        #[serde(rename = "url", default)]
+        pub url: Option<String>,
     }
-    impl ::field_selector::FieldSelector for GaDataQuery {
+    impl ::field_selector::FieldSelector for GoalUrlDestinationDetails {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoalVisitNumPagesDetails {
+        #[doc = "Type of comparison. Possible values are LESS_THAN, GREATER_THAN, or EQUAL."]
+        #[serde(rename = "comparisonType", default)]
+        pub comparison_type: Option<String>,
+        #[doc = "Value used for this comparison."]
+        #[serde(rename = "comparisonValue", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub comparison_value: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for GoalVisitNumPagesDetails {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoalVisitTimeOnSiteDetails {
+        #[doc = "Type of comparison. Possible values are LESS_THAN or GREATER_THAN."]
+        #[serde(rename = "comparisonType", default)]
+        pub comparison_type: Option<String>,
+        #[doc = "Value used for this comparison."]
+        #[serde(rename = "comparisonValue", default)]
+        #[serde(with = "crate::parsed_string")]
+        pub comparison_value: Option<i64>,
+    }
+    impl ::field_selector::FieldSelector for GoalVisitTimeOnSiteDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2231,240 +2465,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoalEventDetails {
-        #[doc = "List of event conditions."]
-        #[serde(rename = "eventConditions", default)]
-        pub event_conditions: Option<Vec<crate::schemas::GoalEventDetailsEventConditionsItems>>,
-        #[doc = "Determines if the event value should be used as the value for this goal."]
-        #[serde(rename = "useEventValue", default)]
-        pub use_event_value: Option<bool>,
-    }
-    impl ::field_selector::FieldSelector for GoalEventDetails {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoalEventDetailsEventConditionsItems {
-        #[doc = "Type of comparison. Possible values are LESS_THAN, GREATER_THAN or EQUAL."]
-        #[serde(rename = "comparisonType", default)]
-        pub comparison_type: Option<String>,
-        #[doc = "Value used for this comparison."]
-        #[serde(rename = "comparisonValue", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub comparison_value: Option<i64>,
-        #[doc = "Expression used for this match."]
-        #[serde(rename = "expression", default)]
-        pub expression: Option<String>,
-        #[doc = "Type of the match to be performed. Possible values are REGEXP, BEGINS_WITH, or EXACT."]
-        #[serde(rename = "matchType", default)]
-        pub match_type: Option<String>,
-        #[doc = "Type of this event condition. Possible values are CATEGORY, ACTION, LABEL, or VALUE."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoalEventDetailsEventConditionsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoalParentLink {
-        #[doc = "Link to the view (profile) to which this goal belongs."]
-        #[serde(rename = "href", default)]
-        pub href: Option<String>,
-        #[doc = "Value is \"analytics#profile\"."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoalParentLink {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoalUrlDestinationDetails {
-        #[doc = "Determines if the goal URL must exactly match the capitalization of visited URLs."]
-        #[serde(rename = "caseSensitive", default)]
-        pub case_sensitive: Option<bool>,
-        #[doc = "Determines if the first step in this goal is required."]
-        #[serde(rename = "firstStepRequired", default)]
-        pub first_step_required: Option<bool>,
-        #[doc = "Match type for the goal URL. Possible values are HEAD, EXACT, or REGEX."]
-        #[serde(rename = "matchType", default)]
-        pub match_type: Option<String>,
-        #[doc = "List of steps configured for this goal funnel."]
-        #[serde(rename = "steps", default)]
-        pub steps: Option<Vec<crate::schemas::GoalUrlDestinationDetailsStepsItems>>,
-        #[doc = "URL for this goal."]
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoalUrlDestinationDetails {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoalUrlDestinationDetailsStepsItems {
-        #[doc = "Step name."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
-        #[doc = "Step number."]
-        #[serde(rename = "number", default)]
-        pub number: Option<i32>,
-        #[doc = "URL for this step."]
-        #[serde(rename = "url", default)]
-        pub url: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for GoalUrlDestinationDetailsStepsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoalVisitNumPagesDetails {
-        #[doc = "Type of comparison. Possible values are LESS_THAN, GREATER_THAN, or EQUAL."]
-        #[serde(rename = "comparisonType", default)]
-        pub comparison_type: Option<String>,
-        #[doc = "Value used for this comparison."]
-        #[serde(rename = "comparisonValue", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub comparison_value: Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for GoalVisitNumPagesDetails {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoalVisitTimeOnSiteDetails {
-        #[doc = "Type of comparison. Possible values are LESS_THAN or GREATER_THAN."]
-        #[serde(rename = "comparisonType", default)]
-        pub comparison_type: Option<String>,
-        #[doc = "Value used for this comparison."]
-        #[serde(rename = "comparisonValue", default)]
-        #[serde(with = "crate::parsed_string")]
-        pub comparison_value: Option<i64>,
-    }
-    impl ::field_selector::FieldSelector for GoalVisitTimeOnSiteDetails {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Goals {
@@ -2507,8 +2507,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2537,8 +2537,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2569,8 +2569,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2608,8 +2608,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2662,8 +2662,201 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct McfDataColumnHeadersItems {
+        #[doc = "Column Type. Either DIMENSION or METRIC."]
+        #[serde(rename = "columnType", default)]
+        pub column_type: Option<String>,
+        #[doc = "Data type. Dimension and metric values data types such as INTEGER, DOUBLE, CURRENCY, MCF_SEQUENCE etc."]
+        #[serde(rename = "dataType", default)]
+        pub data_type: Option<String>,
+        #[doc = "Column name."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for McfDataColumnHeadersItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct McfDataProfileInfo {
+        #[doc = "Account ID to which this view (profile) belongs."]
+        #[serde(rename = "accountId", default)]
+        pub account_id: Option<String>,
+        #[doc = "Internal ID for the web property to which this view (profile) belongs."]
+        #[serde(rename = "internalWebPropertyId", default)]
+        pub internal_web_property_id: Option<String>,
+        #[doc = "View (Profile) ID."]
+        #[serde(rename = "profileId", default)]
+        pub profile_id: Option<String>,
+        #[doc = "View (Profile) name."]
+        #[serde(rename = "profileName", default)]
+        pub profile_name: Option<String>,
+        #[doc = "Table ID for view (profile)."]
+        #[serde(rename = "tableId", default)]
+        pub table_id: Option<String>,
+        #[doc = "Web Property ID to which this view (profile) belongs."]
+        #[serde(rename = "webPropertyId", default)]
+        pub web_property_id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for McfDataProfileInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct McfDataQuery {
+        #[doc = "List of analytics dimensions."]
+        #[serde(rename = "dimensions", default)]
+        pub dimensions: Option<String>,
+        #[doc = "End date."]
+        #[serde(rename = "end-date", default)]
+        pub end_date: Option<String>,
+        #[doc = "Comma-separated list of dimension or metric filters."]
+        #[serde(rename = "filters", default)]
+        pub filters: Option<String>,
+        #[doc = "Unique table ID."]
+        #[serde(rename = "ids", default)]
+        pub ids: Option<String>,
+        #[doc = "Maximum results per page."]
+        #[serde(rename = "max-results", default)]
+        pub max_results: Option<i32>,
+        #[doc = "List of analytics metrics."]
+        #[serde(rename = "metrics", default)]
+        pub metrics: Option<Vec<String>>,
+        #[doc = "Desired sampling level"]
+        #[serde(rename = "samplingLevel", default)]
+        pub sampling_level: Option<String>,
+        #[doc = "Analytics advanced segment."]
+        #[serde(rename = "segment", default)]
+        pub segment: Option<String>,
+        #[doc = "List of dimensions or metrics based on which Analytics data is sorted."]
+        #[serde(rename = "sort", default)]
+        pub sort: Option<Vec<String>>,
+        #[doc = "Start date."]
+        #[serde(rename = "start-date", default)]
+        pub start_date: Option<String>,
+        #[doc = "Start index."]
+        #[serde(rename = "start-index", default)]
+        pub start_index: Option<i32>,
+    }
+    impl ::field_selector::FieldSelector for McfDataQuery {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct McfDataRowsItemsItemsConversionPathValueItems {
+        #[doc = "Type of an interaction on conversion path. Such as CLICK, IMPRESSION etc."]
+        #[serde(rename = "interactionType", default)]
+        pub interaction_type: Option<String>,
+        #[doc = "Node value of an interaction on conversion path. Such as source, medium etc."]
+        #[serde(rename = "nodeValue", default)]
+        pub node_value: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for McfDataRowsItemsItemsConversionPathValueItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct McfDataRowsItemsItems {
+        #[doc = "A conversion path dimension value, containing a list of interactions with their attributes."]
+        #[serde(rename = "conversionPathValue", default)]
+        pub conversion_path_value:
+            Option<Vec<crate::schemas::McfDataRowsItemsItemsConversionPathValueItems>>,
+        #[doc = "A primitive dimension value. A primitive metric value."]
+        #[serde(rename = "primitiveValue", default)]
+        pub primitive_value: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for McfDataRowsItemsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -2733,26 +2926,23 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct McfDataColumnHeadersItems {
-        #[doc = "Column Type. Either DIMENSION or METRIC."]
-        #[serde(rename = "columnType", default)]
-        pub column_type: Option<String>,
-        #[doc = "Data type. Dimension and metric values data types such as INTEGER, DOUBLE, CURRENCY, MCF_SEQUENCE etc."]
-        #[serde(rename = "dataType", default)]
-        pub data_type: Option<String>,
-        #[doc = "Column name."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
+    pub struct ProfileChildLink {
+        #[doc = "Link to the list of goals for this view (profile)."]
+        #[serde(rename = "href", default)]
+        pub href: Option<String>,
+        #[doc = "Value is \"analytics#goals\"."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
     }
-    impl ::field_selector::FieldSelector for McfDataColumnHeadersItems {
+    impl ::field_selector::FieldSelector for ProfileChildLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2766,35 +2956,23 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct McfDataProfileInfo {
-        #[doc = "Account ID to which this view (profile) belongs."]
-        #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
-        #[doc = "Internal ID for the web property to which this view (profile) belongs."]
-        #[serde(rename = "internalWebPropertyId", default)]
-        pub internal_web_property_id: Option<String>,
-        #[doc = "View (Profile) ID."]
-        #[serde(rename = "profileId", default)]
-        pub profile_id: Option<String>,
-        #[doc = "View (Profile) name."]
-        #[serde(rename = "profileName", default)]
-        pub profile_name: Option<String>,
-        #[doc = "Table ID for view (profile)."]
-        #[serde(rename = "tableId", default)]
-        pub table_id: Option<String>,
-        #[doc = "Web Property ID to which this view (profile) belongs."]
-        #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+    pub struct ProfileParentLink {
+        #[doc = "Link to the web property to which this view (profile) belongs."]
+        #[serde(rename = "href", default)]
+        pub href: Option<String>,
+        #[doc = "Value is \"analytics#webproperty\"."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
     }
-    impl ::field_selector::FieldSelector for McfDataProfileInfo {
+    impl ::field_selector::FieldSelector for ProfileParentLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2808,50 +2986,20 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct McfDataQuery {
-        #[doc = "List of analytics dimensions."]
-        #[serde(rename = "dimensions", default)]
-        pub dimensions: Option<String>,
-        #[doc = "End date."]
-        #[serde(rename = "end-date", default)]
-        pub end_date: Option<String>,
-        #[doc = "Comma-separated list of dimension or metric filters."]
-        #[serde(rename = "filters", default)]
-        pub filters: Option<String>,
-        #[doc = "Unique table ID."]
-        #[serde(rename = "ids", default)]
-        pub ids: Option<String>,
-        #[doc = "Maximum results per page."]
-        #[serde(rename = "max-results", default)]
-        pub max_results: Option<i32>,
-        #[doc = "List of analytics metrics."]
-        #[serde(rename = "metrics", default)]
-        pub metrics: Option<Vec<String>>,
-        #[doc = "Desired sampling level"]
-        #[serde(rename = "samplingLevel", default)]
-        pub sampling_level: Option<String>,
-        #[doc = "Analytics advanced segment."]
-        #[serde(rename = "segment", default)]
-        pub segment: Option<String>,
-        #[doc = "List of dimensions or metrics based on which Analytics data is sorted."]
-        #[serde(rename = "sort", default)]
-        pub sort: Option<Vec<String>>,
-        #[doc = "Start date."]
-        #[serde(rename = "start-date", default)]
-        pub start_date: Option<String>,
-        #[doc = "Start index."]
-        #[serde(rename = "start-index", default)]
-        pub start_index: Option<i32>,
+    pub struct ProfilePermissions {
+        #[doc = "All the permissions that the user has for this view (profile). These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent web property."]
+        #[serde(rename = "effective", default)]
+        pub effective: Option<Vec<String>>,
     }
-    impl ::field_selector::FieldSelector for McfDataQuery {
+    impl ::field_selector::FieldSelector for ProfilePermissions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -2865,69 +3013,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct McfDataRowsItemsItems {
-        #[doc = "A conversion path dimension value, containing a list of interactions with their attributes."]
-        #[serde(rename = "conversionPathValue", default)]
-        pub conversion_path_value:
-            Option<Vec<crate::schemas::McfDataRowsItemsItemsConversionPathValueItems>>,
-        #[doc = "A primitive dimension value. A primitive metric value."]
-        #[serde(rename = "primitiveValue", default)]
-        pub primitive_value: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for McfDataRowsItemsItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct McfDataRowsItemsItemsConversionPathValueItems {
-        #[doc = "Type of an interaction on conversion path. Such as CLICK, IMPRESSION etc."]
-        #[serde(rename = "interactionType", default)]
-        pub interaction_type: Option<String>,
-        #[doc = "Node value of an interaction on conversion path. Such as source, medium etc."]
-        #[serde(rename = "nodeValue", default)]
-        pub node_value: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for McfDataRowsItemsItemsConversionPathValueItems {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -3028,38 +3115,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ProfileChildLink {
-        #[doc = "Link to the list of goals for this view (profile)."]
-        #[serde(rename = "href", default)]
-        pub href: Option<String>,
-        #[doc = "Value is \"analytics#goals\"."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ProfileChildLink {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -3100,8 +3157,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -3148,65 +3205,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ProfileParentLink {
-        #[doc = "Link to the web property to which this view (profile) belongs."]
-        #[serde(rename = "href", default)]
-        pub href: Option<String>,
-        #[doc = "Value is \"analytics#webproperty\"."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for ProfileParentLink {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ProfilePermissions {
-        #[doc = "All the permissions that the user has for this view (profile). These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent web property."]
-        #[serde(rename = "effective", default)]
-        pub effective: Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for ProfilePermissions {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -3250,8 +3250,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -3289,8 +3289,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -3337,8 +3337,125 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RealtimeDataColumnHeadersItems {
+        #[doc = "Column Type. Either DIMENSION or METRIC."]
+        #[serde(rename = "columnType", default)]
+        pub column_type: Option<String>,
+        #[doc = "Data type. Dimension column headers have only STRING as the data type. Metric column headers have data types for metric values such as INTEGER, DOUBLE, CURRENCY etc."]
+        #[serde(rename = "dataType", default)]
+        pub data_type: Option<String>,
+        #[doc = "Column name."]
+        #[serde(rename = "name", default)]
+        pub name: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for RealtimeDataColumnHeadersItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RealtimeDataProfileInfo {
+        #[doc = "Account ID to which this view (profile) belongs."]
+        #[serde(rename = "accountId", default)]
+        pub account_id: Option<String>,
+        #[doc = "Internal ID for the web property to which this view (profile) belongs."]
+        #[serde(rename = "internalWebPropertyId", default)]
+        pub internal_web_property_id: Option<String>,
+        #[doc = "View (Profile) ID."]
+        #[serde(rename = "profileId", default)]
+        pub profile_id: Option<String>,
+        #[doc = "View (Profile) name."]
+        #[serde(rename = "profileName", default)]
+        pub profile_name: Option<String>,
+        #[doc = "Table ID for view (profile)."]
+        #[serde(rename = "tableId", default)]
+        pub table_id: Option<String>,
+        #[doc = "Web Property ID to which this view (profile) belongs."]
+        #[serde(rename = "webPropertyId", default)]
+        pub web_property_id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for RealtimeDataProfileInfo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RealtimeDataQuery {
+        #[doc = "List of real time dimensions."]
+        #[serde(rename = "dimensions", default)]
+        pub dimensions: Option<String>,
+        #[doc = "Comma-separated list of dimension or metric filters."]
+        #[serde(rename = "filters", default)]
+        pub filters: Option<String>,
+        #[doc = "Unique table ID."]
+        #[serde(rename = "ids", default)]
+        pub ids: Option<String>,
+        #[doc = "Maximum results per page."]
+        #[serde(rename = "max-results", default)]
+        pub max_results: Option<i32>,
+        #[doc = "List of real time metrics."]
+        #[serde(rename = "metrics", default)]
+        pub metrics: Option<Vec<String>>,
+        #[doc = "List of dimensions or metrics based on which real time data is sorted."]
+        #[serde(rename = "sort", default)]
+        pub sort: Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for RealtimeDataQuery {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -3388,26 +3505,20 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RealtimeDataColumnHeadersItems {
-        #[doc = "Column Type. Either DIMENSION or METRIC."]
-        #[serde(rename = "columnType", default)]
-        pub column_type: Option<String>,
-        #[doc = "Data type. Dimension column headers have only STRING as the data type. Metric column headers have data types for metric values such as INTEGER, DOUBLE, CURRENCY etc."]
-        #[serde(rename = "dataType", default)]
-        pub data_type: Option<String>,
-        #[doc = "Column name."]
-        #[serde(rename = "name", default)]
-        pub name: Option<String>,
+    pub struct RemarketingAudienceAudienceDefinition {
+        #[doc = "Defines the conditions to include users to the audience."]
+        #[serde(rename = "includeConditions", default)]
+        pub include_conditions: Option<crate::schemas::IncludeConditions>,
     }
-    impl ::field_selector::FieldSelector for RealtimeDataColumnHeadersItems {
+    impl ::field_selector::FieldSelector for RemarketingAudienceAudienceDefinition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3421,35 +3532,25 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RealtimeDataProfileInfo {
-        #[doc = "Account ID to which this view (profile) belongs."]
-        #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
-        #[doc = "Internal ID for the web property to which this view (profile) belongs."]
-        #[serde(rename = "internalWebPropertyId", default)]
-        pub internal_web_property_id: Option<String>,
-        #[doc = "View (Profile) ID."]
-        #[serde(rename = "profileId", default)]
-        pub profile_id: Option<String>,
-        #[doc = "View (Profile) name."]
-        #[serde(rename = "profileName", default)]
-        pub profile_name: Option<String>,
-        #[doc = "Table ID for view (profile)."]
-        #[serde(rename = "tableId", default)]
-        pub table_id: Option<String>,
-        #[doc = "Web Property ID to which this view (profile) belongs."]
-        #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+    pub struct RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions {
+        #[doc = "Whether to make the exclusion TEMPORARY or PERMANENT."]
+        #[serde(rename = "exclusionDuration", default)]
+        pub exclusion_duration: Option<String>,
+        #[doc = "The segment condition that will cause a user to be removed from an audience."]
+        #[serde(rename = "segment", default)]
+        pub segment: Option<String>,
     }
-    impl ::field_selector::FieldSelector for RealtimeDataProfileInfo {
+    impl ::field_selector::FieldSelector
+        for RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions
+    {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3463,35 +3564,25 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RealtimeDataQuery {
-        #[doc = "List of real time dimensions."]
-        #[serde(rename = "dimensions", default)]
-        pub dimensions: Option<String>,
-        #[doc = "Comma-separated list of dimension or metric filters."]
-        #[serde(rename = "filters", default)]
-        pub filters: Option<String>,
-        #[doc = "Unique table ID."]
-        #[serde(rename = "ids", default)]
-        pub ids: Option<String>,
-        #[doc = "Maximum results per page."]
-        #[serde(rename = "max-results", default)]
-        pub max_results: Option<i32>,
-        #[doc = "List of real time metrics."]
-        #[serde(rename = "metrics", default)]
-        pub metrics: Option<Vec<String>>,
-        #[doc = "List of dimensions or metrics based on which real time data is sorted."]
-        #[serde(rename = "sort", default)]
-        pub sort: Option<Vec<String>>,
+    pub struct RemarketingAudienceStateBasedAudienceDefinition {
+        #[doc = "Defines the conditions to exclude users from the audience."]
+        #[serde(rename = "excludeConditions", default)]
+        pub exclude_conditions: Option<
+            crate::schemas::RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions,
+        >,
+        #[doc = "Defines the conditions to include users to the audience."]
+        #[serde(rename = "includeConditions", default)]
+        pub include_conditions: Option<crate::schemas::IncludeConditions>,
     }
-    impl ::field_selector::FieldSelector for RealtimeDataQuery {
+    impl ::field_selector::FieldSelector for RemarketingAudienceStateBasedAudienceDefinition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -3505,8 +3596,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -3572,99 +3663,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct RemarketingAudienceAudienceDefinition {
-        #[doc = "Defines the conditions to include users to the audience."]
-        #[serde(rename = "includeConditions", default)]
-        pub include_conditions: Option<crate::schemas::IncludeConditions>,
-    }
-    impl ::field_selector::FieldSelector for RemarketingAudienceAudienceDefinition {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct RemarketingAudienceStateBasedAudienceDefinition {
-        #[doc = "Defines the conditions to exclude users from the audience."]
-        #[serde(rename = "excludeConditions", default)]
-        pub exclude_conditions: Option<
-            crate::schemas::RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions,
-        >,
-        #[doc = "Defines the conditions to include users to the audience."]
-        #[serde(rename = "includeConditions", default)]
-        pub include_conditions: Option<crate::schemas::IncludeConditions>,
-    }
-    impl ::field_selector::FieldSelector for RemarketingAudienceStateBasedAudienceDefinition {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions {
-        #[doc = "Whether to make the exclusion TEMPORARY or PERMANENT."]
-        #[serde(rename = "exclusionDuration", default)]
-        pub exclusion_duration: Option<String>,
-        #[doc = "The segment condition that will cause a user to be removed from an audience."]
-        #[serde(rename = "segment", default)]
-        pub segment: Option<String>,
-    }
-    impl ::field_selector::FieldSelector
-        for RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions
-    {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -3711,8 +3711,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -3762,8 +3762,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -3810,8 +3810,65 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UnsampledReportCloudStorageDownloadDetails {
+        #[doc = "Id of the bucket the file object is stored in."]
+        #[serde(rename = "bucketId", default)]
+        pub bucket_id: Option<String>,
+        #[doc = "Id of the file object containing the report data."]
+        #[serde(rename = "objectId", default)]
+        pub object_id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UnsampledReportCloudStorageDownloadDetails {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UnsampledReportDriveDownloadDetails {
+        #[doc = "Id of the document/file containing the report data."]
+        #[serde(rename = "documentId", default)]
+        pub document_id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UnsampledReportDriveDownloadDetails {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -3892,65 +3949,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UnsampledReportCloudStorageDownloadDetails {
-        #[doc = "Id of the bucket the file object is stored in."]
-        #[serde(rename = "bucketId", default)]
-        pub bucket_id: Option<String>,
-        #[doc = "Id of the file object containing the report data."]
-        #[serde(rename = "objectId", default)]
-        pub object_id: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for UnsampledReportCloudStorageDownloadDetails {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UnsampledReportDriveDownloadDetails {
-        #[doc = "Id of the document/file containing the report data."]
-        #[serde(rename = "documentId", default)]
-        pub document_id: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for UnsampledReportDriveDownloadDetails {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -3997,8 +3997,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -4043,8 +4043,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -4088,8 +4088,38 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UserDeletionRequestId {
+        #[doc = "Type of user"]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+        #[doc = "The User's id"]
+        #[serde(rename = "userId", default)]
+        pub user_id: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for UserDeletionRequestId {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -4130,38 +4160,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct UserDeletionRequestId {
-        #[doc = "Type of user"]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-        #[doc = "The User's id"]
-        #[serde(rename = "userId", default)]
-        pub user_id: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for UserDeletionRequestId {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
         PartialOrd,
-        Hash,
         Ord,
         Eq,
         Default,
@@ -4192,8 +4192,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -4234,8 +4234,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -4282,8 +4282,8 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -4330,8 +4330,95 @@ pub mod schemas {
         Debug,
         Clone,
         PartialEq,
-        PartialOrd,
         Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct WebpropertyChildLink {
+        #[doc = "Link to the list of views (profiles) for this web property."]
+        #[serde(rename = "href", default)]
+        pub href: Option<String>,
+        #[doc = "Type of the parent link. Its value is \"analytics#profiles\"."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for WebpropertyChildLink {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct WebpropertyParentLink {
+        #[doc = "Link to the account for this web property."]
+        #[serde(rename = "href", default)]
+        pub href: Option<String>,
+        #[doc = "Type of the parent link. Its value is \"analytics#account\"."]
+        #[serde(rename = "type", default)]
+        pub r#type: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for WebpropertyParentLink {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct WebpropertyPermissions {
+        #[doc = "All the permissions that the user has for this web property. These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent account."]
+        #[serde(rename = "effective", default)]
+        pub effective: Option<Vec<String>>,
+    }
+    impl ::field_selector::FieldSelector for WebpropertyPermissions {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
         Ord,
         Eq,
         Default,
@@ -4408,96 +4495,9 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct WebpropertyChildLink {
-        #[doc = "Link to the list of views (profiles) for this web property."]
-        #[serde(rename = "href", default)]
-        pub href: Option<String>,
-        #[doc = "Type of the parent link. Its value is \"analytics#profiles\"."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for WebpropertyChildLink {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct WebpropertyParentLink {
-        #[doc = "Link to the account for this web property."]
-        #[serde(rename = "href", default)]
-        pub href: Option<String>,
-        #[doc = "Type of the parent link. Its value is \"analytics#account\"."]
-        #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
-    }
-    impl ::field_selector::FieldSelector for WebpropertyParentLink {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        PartialOrd,
-        Hash,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct WebpropertyPermissions {
-        #[doc = "All the permissions that the user has for this web property. These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent account."]
-        #[serde(rename = "effective", default)]
-        pub effective: Option<Vec<String>>,
-    }
-    impl ::field_selector::FieldSelector for WebpropertyPermissions {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
 }
 pub mod params {
-    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
@@ -4609,7 +4609,7 @@ pub mod data {
     }
     pub mod ga {
         pub mod params {
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetOutput {
                 #[doc = "Returns the response in Google Charts Data Table format. This is useful in creating visualization using Google Charts."]
                 DataTable,
@@ -4655,7 +4655,7 @@ pub mod data {
                     })
                 }
             }
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetSamplingLevel {
                 #[doc = "Returns response with a sample size that balances speed and accuracy."]
                 Default,
@@ -4919,7 +4919,7 @@ pub mod data {
     }
     pub mod mcf {
         pub mod params {
-            #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Ord, Eq, Copy)]
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetSamplingLevel {
                 #[doc = "Returns response with a sample size that balances speed and accuracy."]
                 Default,
