@@ -1,5 +1,5 @@
 [package]
-name = "google_webfonts_v1"
+name = "google-webfonts1"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

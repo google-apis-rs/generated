@@ -1,5 +1,5 @@
 [package]
-name = "google_analyticsreporting_v4"
+name = "google-analyticsreporting4"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

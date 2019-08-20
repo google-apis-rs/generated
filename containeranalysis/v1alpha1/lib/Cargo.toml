@@ -1,5 +1,5 @@
 [package]
-name = "google_containeranalysis_v1alpha1"
+name = "google-containeranalysis1_alpha1"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

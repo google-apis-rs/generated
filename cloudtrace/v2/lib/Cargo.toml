@@ -1,5 +1,5 @@
 [package]
-name = "google_cloudtrace_v2"
+name = "google-cloudtrace2"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

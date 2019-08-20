@@ -1,5 +1,5 @@
 [package]
-name = "google_firestore_v1beta2"
+name = "google-firestore1_beta2"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

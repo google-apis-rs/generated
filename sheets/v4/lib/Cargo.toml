@@ -1,5 +1,5 @@
 [package]
-name = "google_sheets_v4"
+name = "google-sheets4"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

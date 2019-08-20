@@ -1,5 +1,5 @@
 [package]
-name = "google_securitycenter_v1p1alpha1"
+name = "google-securitycenter1_p1alpha1"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

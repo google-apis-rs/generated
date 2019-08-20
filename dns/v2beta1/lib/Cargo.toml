@@ -1,5 +1,5 @@
 [package]
-name = "google_dns_v2beta1"
+name = "google-dns2_beta1"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

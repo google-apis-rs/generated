@@ -1,5 +1,5 @@
 [package]
-name = "google_admin_datatransfer_v1"
+name = "google-admin1_datatransfer"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

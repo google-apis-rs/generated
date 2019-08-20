@@ -1,5 +1,5 @@
 [package]
-name = "google_dataflow_v1b3"
+name = "google-dataflow1_b3"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

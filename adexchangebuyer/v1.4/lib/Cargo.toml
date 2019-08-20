@@ -1,5 +1,5 @@
 [package]
-name = "google_adexchangebuyer_v1.4"
+name = "google-adexchangebuyer1d4"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

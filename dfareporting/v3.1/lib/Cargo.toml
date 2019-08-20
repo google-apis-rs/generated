@@ -1,5 +1,5 @@
 [package]
-name = "google_dfareporting_v3.1"
+name = "google-dfareporting3d1"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

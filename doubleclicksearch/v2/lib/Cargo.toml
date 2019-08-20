@@ -1,5 +1,5 @@
 [package]
-name = "google_doubleclicksearch_v2"
+name = "google-doubleclicksearch2"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

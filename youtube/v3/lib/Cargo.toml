@@ -1,5 +1,5 @@
 [package]
-name = "google_youtube_v3"
+name = "google-youtube3"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

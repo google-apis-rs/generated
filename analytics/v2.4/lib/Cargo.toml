@@ -1,5 +1,5 @@
 [package]
-name = "google_analytics_v2.4"
+name = "google-analytics2d4"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

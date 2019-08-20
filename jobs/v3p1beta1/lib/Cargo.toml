@@ -1,5 +1,5 @@
 [package]
-name = "google_jobs_v3p1beta1"
+name = "google-jobs3_p1beta1"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

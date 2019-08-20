@@ -1,5 +1,5 @@
 [package]
-name = "google_androidmanagement_v1"
+name = "google-androidmanagement1"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

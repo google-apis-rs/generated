@@ -1,5 +1,5 @@
 [package]
-name = "google_androidpublisher_v1.1"
+name = "google-androidpublisher1d1"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

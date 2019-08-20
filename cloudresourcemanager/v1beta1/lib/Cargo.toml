@@ -1,5 +1,5 @@
 [package]
-name = "google_cloudresourcemanager_v1beta1"
+name = "google-cloudresourcemanager1_beta1"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

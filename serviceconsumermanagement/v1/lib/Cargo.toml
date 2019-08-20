@@ -1,5 +1,5 @@
 [package]
-name = "google_serviceconsumermanagement_v1"
+name = "google-serviceconsumermanagement1"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

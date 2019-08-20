@@ -1,5 +1,5 @@
 [package]
-name = "google_safebrowsing_v4"
+name = "google-safebrowsing4"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

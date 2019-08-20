@@ -1,5 +1,5 @@
 [package]
-name = "google_remotebuildexecution_v1alpha"
+name = "google-remotebuildexecution1_alpha"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"

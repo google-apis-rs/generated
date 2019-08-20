@@ -1,5 +1,5 @@
 [package]
-name = "google_pubsub_v1beta1a"
+name = "google-pubsub1_beta1a"
 version = "0.1.0"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"
