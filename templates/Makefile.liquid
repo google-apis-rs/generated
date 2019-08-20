@@ -15,5 +15,5 @@ cargo-all: {% for item in api -%}{{item.make_target}}-cargo {% endfor %}
 	$(MCP) generate $< {{item.gen_dir}} 2>{{item.error_file}} && rm {{item.error_file}}
 {{item.make_target}}: {{item.lib_cargo_file}}
 {{item.make_target}}-cargo: {{item.make_target}}
-	cd {{item.gen_dir}} && cargo $(ARGS)
+	cd {{item.gen_dir}}/{{standard.lib_dir}} && cargo $(ARGS)
 {% endfor %}
