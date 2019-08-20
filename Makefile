@@ -11,6 +11,7 @@ help:
 	$(info update-all-metadata        | invalidate all specifications from google and fetch the latest versions)
 	$(info fetch-api-specs            | fetch all apis our local discovery document knows, and store)
 	$(info generate-gen-makefile      | a makefile containing useful targets to build and test generated crates)
+	$(info update-mcp                 | pull latest code and build the mcp program)
 	$(info --------------------------------------------------------------------------------------)
 	$(info -- `make -f $(GEN_MAKEFILE) ...` is used to interact with the generator and generate code)
 	$(info --------------------------------------------------------------------------------------)
@@ -26,6 +27,10 @@ $(API_INDEX_MAPPED_JSON): $(API_INDEX_JSON) $(MCP)
 
 $(GENERATOR_DIR):
 	git clone --depth=1 https://github.com/google-apis-rs/generator $@
+
+update-mcp: $(GENERATOR_DIR)
+	cd $(GENERATOR_DIR) && git pull --ff-only
+	$(MAKE) $(MCP)
 
 update-all-metadata:
 	-rm $(API_INDEX_JSON)
