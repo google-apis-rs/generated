@@ -1,8 +1,8 @@
-MCP ?= target/release/mcp
+GENERATOR_DIR = _generator
+MCP ?= $(GENERATOR_DIR)/target/release/mcp
 API_INDEX_JSON = etc/api-index.v1.json
 API_INDEX_MAPPED_JSON = etc/api-index-mapped.v1.json
-OUTPUT_DIR = .
-GENERATOR_DIR = _generator
+OUTPUT_DIR = gen
 MAKEFILE_TPL = templates/Makefile.liquid
 GEN_MAKEFILE = Makefile.generated
 
@@ -44,7 +44,7 @@ update-mapped-index:
 
 api-index: $(API_INDEX_JSON) $(GEN_MAKEFILE)
 
-fetch-api-specs: api-index $(MCP) $(OUTPUT_DIR)
+fetch-api-specs: api-index $(MCP) 
 	$(MCP) fetch-api-specs $(API_INDEX_MAPPED_JSON) $(OUTPUT_DIR)
 
 $(GEN_MAKEFILE): $(API_INDEX_MAPPED_JSON) $(MCP) $(MAKEFILE_TPL) 
