@@ -2,6 +2,7 @@
   "api": [
     {
       "name": "abusiveexperiencereport",
+      "lib_cargo_file": "abusiveexperiencereport/v1/lib/Cargo.toml",
       "gen_dir": "abusiveexperiencereport/v1",
       "spec_file": "abusiveexperiencereport/v1/spec.json",
       "crate_name": "google-abusiveexperiencereport1",
@@ -10,6 +11,7 @@
     },
     {
       "name": "acceleratedmobilepageurl",
+      "lib_cargo_file": "acceleratedmobilepageurl/v1/lib/Cargo.toml",
       "gen_dir": "acceleratedmobilepageurl/v1",
       "spec_file": "acceleratedmobilepageurl/v1/spec.json",
       "crate_name": "google-acceleratedmobilepageurl1",
@@ -18,6 +20,7 @@
     },
     {
       "name": "accessapproval",
+      "lib_cargo_file": "accessapproval/v1beta1/lib/Cargo.toml",
       "gen_dir": "accessapproval/v1beta1",
       "spec_file": "accessapproval/v1beta1/spec.json",
       "crate_name": "google-accessapproval1_beta1",
@@ -26,6 +29,7 @@
     },
     {
       "name": "accesscontextmanager",
+      "lib_cargo_file": "accesscontextmanager/v1beta/lib/Cargo.toml",
       "gen_dir": "accesscontextmanager/v1beta",
       "spec_file": "accesscontextmanager/v1beta/spec.json",
       "crate_name": "google-accesscontextmanager1_beta",
@@ -34,6 +38,7 @@
     },
     {
       "name": "accesscontextmanager",
+      "lib_cargo_file": "accesscontextmanager/v1/lib/Cargo.toml",
       "gen_dir": "accesscontextmanager/v1",
       "spec_file": "accesscontextmanager/v1/spec.json",
       "crate_name": "google-accesscontextmanager1",
@@ -42,6 +47,7 @@
     },
     {
       "name": "adexchangebuyer",
+      "lib_cargo_file": "adexchangebuyer/v1.2/lib/Cargo.toml",
       "gen_dir": "adexchangebuyer/v1.2",
       "spec_file": "adexchangebuyer/v1.2/spec.json",
       "crate_name": "google-adexchangebuyer1d2",
@@ -50,6 +56,7 @@
     },
     {
       "name": "adexchangebuyer",
+      "lib_cargo_file": "adexchangebuyer/v1.3/lib/Cargo.toml",
       "gen_dir": "adexchangebuyer/v1.3",
       "spec_file": "adexchangebuyer/v1.3/spec.json",
       "crate_name": "google-adexchangebuyer1d3",
@@ -58,6 +65,7 @@
     },
     {
       "name": "adexchangebuyer",
+      "lib_cargo_file": "adexchangebuyer/v1.4/lib/Cargo.toml",
       "gen_dir": "adexchangebuyer/v1.4",
       "spec_file": "adexchangebuyer/v1.4/spec.json",
       "crate_name": "google-adexchangebuyer1d4",
@@ -66,6 +74,7 @@
     },
     {
       "name": "adexchangebuyer",
+      "lib_cargo_file": "adexchangebuyer/v2beta1/lib/Cargo.toml",
       "gen_dir": "adexchangebuyer/v2beta1",
       "spec_file": "adexchangebuyer/v2beta1/spec.json",
       "crate_name": "google-adexchangebuyer2_beta1",
@@ -74,6 +83,7 @@
     },
     {
       "name": "adexperiencereport",
+      "lib_cargo_file": "adexperiencereport/v1/lib/Cargo.toml",
       "gen_dir": "adexperiencereport/v1",
       "spec_file": "adexperiencereport/v1/spec.json",
       "crate_name": "google-adexperiencereport1",
@@ -82,6 +92,7 @@
     },
     {
       "name": "admin",
+      "lib_cargo_file": "admin/datatransfer_v1/lib/Cargo.toml",
       "gen_dir": "admin/datatransfer_v1",
       "spec_file": "admin/datatransfer_v1/spec.json",
       "crate_name": "google-admin1_datatransfer",
@@ -90,6 +101,7 @@
     },
     {
       "name": "admin",
+      "lib_cargo_file": "admin/directory_v1/lib/Cargo.toml",
       "gen_dir": "admin/directory_v1",
       "spec_file": "admin/directory_v1/spec.json",
       "crate_name": "google-admin1_directory",
@@ -98,6 +110,7 @@
     },
     {
       "name": "admin",
+      "lib_cargo_file": "admin/reports_v1/lib/Cargo.toml",
       "gen_dir": "admin/reports_v1",
       "spec_file": "admin/reports_v1/spec.json",
       "crate_name": "google-admin1_reports",
@@ -106,6 +119,7 @@
     },
     {
       "name": "adsense",
+      "lib_cargo_file": "adsense/v1.4/lib/Cargo.toml",
       "gen_dir": "adsense/v1.4",
       "spec_file": "adsense/v1.4/spec.json",
       "crate_name": "google-adsense1d4",
@@ -114,6 +128,7 @@
     },
     {
       "name": "adsensehost",
+      "lib_cargo_file": "adsensehost/v4.1/lib/Cargo.toml",
       "gen_dir": "adsensehost/v4.1",
       "spec_file": "adsensehost/v4.1/spec.json",
       "crate_name": "google-adsensehost4d1",
@@ -122,6 +137,7 @@
     },
     {
       "name": "alertcenter",
+      "lib_cargo_file": "alertcenter/v1beta1/lib/Cargo.toml",
       "gen_dir": "alertcenter/v1beta1",
       "spec_file": "alertcenter/v1beta1/spec.json",
       "crate_name": "google-alertcenter1_beta1",
@@ -130,6 +146,7 @@
     },
     {
       "name": "analytics",
+      "lib_cargo_file": "analytics/v2.4/lib/Cargo.toml",
       "gen_dir": "analytics/v2.4",
       "spec_file": "analytics/v2.4/spec.json",
       "crate_name": "google-analytics2d4",
@@ -138,6 +155,7 @@
     },
     {
       "name": "analytics",
+      "lib_cargo_file": "analytics/v3/lib/Cargo.toml",
       "gen_dir": "analytics/v3",
       "spec_file": "analytics/v3/spec.json",
       "crate_name": "google-analytics3",
@@ -146,6 +164,7 @@
     },
     {
       "name": "analyticsreporting",
+      "lib_cargo_file": "analyticsreporting/v4/lib/Cargo.toml",
       "gen_dir": "analyticsreporting/v4",
       "spec_file": "analyticsreporting/v4/spec.json",
       "crate_name": "google-analyticsreporting4",
@@ -154,6 +173,7 @@
     },
     {
       "name": "androiddeviceprovisioning",
+      "lib_cargo_file": "androiddeviceprovisioning/v1/lib/Cargo.toml",
       "gen_dir": "androiddeviceprovisioning/v1",
       "spec_file": "androiddeviceprovisioning/v1/spec.json",
       "crate_name": "google-androiddeviceprovisioning1",
@@ -162,6 +182,7 @@
     },
     {
       "name": "androidenterprise",
+      "lib_cargo_file": "androidenterprise/v1/lib/Cargo.toml",
       "gen_dir": "androidenterprise/v1",
       "spec_file": "androidenterprise/v1/spec.json",
       "crate_name": "google-androidenterprise1",
@@ -170,6 +191,7 @@
     },
     {
       "name": "androidmanagement",
+      "lib_cargo_file": "androidmanagement/v1/lib/Cargo.toml",
       "gen_dir": "androidmanagement/v1",
       "spec_file": "androidmanagement/v1/spec.json",
       "crate_name": "google-androidmanagement1",
@@ -178,6 +200,7 @@
     },
     {
       "name": "androidpublisher",
+      "lib_cargo_file": "androidpublisher/v1/lib/Cargo.toml",
       "gen_dir": "androidpublisher/v1",
       "spec_file": "androidpublisher/v1/spec.json",
       "crate_name": "google-androidpublisher1",
@@ -186,6 +209,7 @@
     },
     {
       "name": "androidpublisher",
+      "lib_cargo_file": "androidpublisher/v1.1/lib/Cargo.toml",
       "gen_dir": "androidpublisher/v1.1",
       "spec_file": "androidpublisher/v1.1/spec.json",
       "crate_name": "google-androidpublisher1d1",
@@ -194,6 +218,7 @@
     },
     {
       "name": "androidpublisher",
+      "lib_cargo_file": "androidpublisher/v2/lib/Cargo.toml",
       "gen_dir": "androidpublisher/v2",
       "spec_file": "androidpublisher/v2/spec.json",
       "crate_name": "google-androidpublisher2",
@@ -202,6 +227,7 @@
     },
     {
       "name": "androidpublisher",
+      "lib_cargo_file": "androidpublisher/v3/lib/Cargo.toml",
       "gen_dir": "androidpublisher/v3",
       "spec_file": "androidpublisher/v3/spec.json",
       "crate_name": "google-androidpublisher3",
@@ -210,6 +236,7 @@
     },
     {
       "name": "appengine",
+      "lib_cargo_file": "appengine/v1alpha/lib/Cargo.toml",
       "gen_dir": "appengine/v1alpha",
       "spec_file": "appengine/v1alpha/spec.json",
       "crate_name": "google-appengine1_alpha",
@@ -218,6 +245,7 @@
     },
     {
       "name": "appengine",
+      "lib_cargo_file": "appengine/v1beta/lib/Cargo.toml",
       "gen_dir": "appengine/v1beta",
       "spec_file": "appengine/v1beta/spec.json",
       "crate_name": "google-appengine1_beta",
@@ -226,6 +254,7 @@
     },
     {
       "name": "appengine",
+      "lib_cargo_file": "appengine/v1/lib/Cargo.toml",
       "gen_dir": "appengine/v1",
       "spec_file": "appengine/v1/spec.json",
       "crate_name": "google-appengine1",
@@ -234,6 +263,7 @@
     },
     {
       "name": "appengine",
+      "lib_cargo_file": "appengine/v1beta4/lib/Cargo.toml",
       "gen_dir": "appengine/v1beta4",
       "spec_file": "appengine/v1beta4/spec.json",
       "crate_name": "google-appengine1_beta4",
@@ -242,6 +272,7 @@
     },
     {
       "name": "appengine",
+      "lib_cargo_file": "appengine/v1beta5/lib/Cargo.toml",
       "gen_dir": "appengine/v1beta5",
       "spec_file": "appengine/v1beta5/spec.json",
       "crate_name": "google-appengine1_beta5",
@@ -250,6 +281,7 @@
     },
     {
       "name": "appsactivity",
+      "lib_cargo_file": "appsactivity/v1/lib/Cargo.toml",
       "gen_dir": "appsactivity/v1",
       "spec_file": "appsactivity/v1/spec.json",
       "crate_name": "google-appsactivity1",
@@ -258,6 +290,7 @@
     },
     {
       "name": "appstate",
+      "lib_cargo_file": "appstate/v1/lib/Cargo.toml",
       "gen_dir": "appstate/v1",
       "spec_file": "appstate/v1/spec.json",
       "crate_name": "google-appstate1",
@@ -266,6 +299,7 @@
     },
     {
       "name": "bigquery",
+      "lib_cargo_file": "bigquery/v2/lib/Cargo.toml",
       "gen_dir": "bigquery/v2",
       "spec_file": "bigquery/v2/spec.json",
       "crate_name": "google-bigquery2",
@@ -274,6 +308,7 @@
     },
     {
       "name": "bigquerydatatransfer",
+      "lib_cargo_file": "bigquerydatatransfer/v1/lib/Cargo.toml",
       "gen_dir": "bigquerydatatransfer/v1",
       "spec_file": "bigquerydatatransfer/v1/spec.json",
       "crate_name": "google-bigquerydatatransfer1",
@@ -282,6 +317,7 @@
     },
     {
       "name": "bigtableadmin",
+      "lib_cargo_file": "bigtableadmin/v1/lib/Cargo.toml",
       "gen_dir": "bigtableadmin/v1",
       "spec_file": "bigtableadmin/v1/spec.json",
       "crate_name": "google-bigtableadmin1",
@@ -290,6 +326,7 @@
     },
     {
       "name": "bigtableadmin",
+      "lib_cargo_file": "bigtableadmin/v2/lib/Cargo.toml",
       "gen_dir": "bigtableadmin/v2",
       "spec_file": "bigtableadmin/v2/spec.json",
       "crate_name": "google-bigtableadmin2",
@@ -298,6 +335,7 @@
     },
     {
       "name": "binaryauthorization",
+      "lib_cargo_file": "binaryauthorization/v1beta1/lib/Cargo.toml",
       "gen_dir": "binaryauthorization/v1beta1",
       "spec_file": "binaryauthorization/v1beta1/spec.json",
       "crate_name": "google-binaryauthorization1_beta1",
@@ -306,6 +344,7 @@
     },
     {
       "name": "blogger",
+      "lib_cargo_file": "blogger/v2/lib/Cargo.toml",
       "gen_dir": "blogger/v2",
       "spec_file": "blogger/v2/spec.json",
       "crate_name": "google-blogger2",
@@ -314,6 +353,7 @@
     },
     {
       "name": "blogger",
+      "lib_cargo_file": "blogger/v3/lib/Cargo.toml",
       "gen_dir": "blogger/v3",
       "spec_file": "blogger/v3/spec.json",
       "crate_name": "google-blogger3",
@@ -322,6 +362,7 @@
     },
     {
       "name": "books",
+      "lib_cargo_file": "books/v1/lib/Cargo.toml",
       "gen_dir": "books/v1",
       "spec_file": "books/v1/spec.json",
       "crate_name": "google-books1",
@@ -330,6 +371,7 @@
     },
     {
       "name": "calendar",
+      "lib_cargo_file": "calendar/v3/lib/Cargo.toml",
       "gen_dir": "calendar/v3",
       "spec_file": "calendar/v3/spec.json",
       "crate_name": "google-calendar3",
@@ -338,6 +380,7 @@
     },
     {
       "name": "chat",
+      "lib_cargo_file": "chat/v1/lib/Cargo.toml",
       "gen_dir": "chat/v1",
       "spec_file": "chat/v1/spec.json",
       "crate_name": "google-chat1",
@@ -346,6 +389,7 @@
     },
     {
       "name": "civicinfo",
+      "lib_cargo_file": "civicinfo/v2/lib/Cargo.toml",
       "gen_dir": "civicinfo/v2",
       "spec_file": "civicinfo/v2/spec.json",
       "crate_name": "google-civicinfo2",
@@ -354,6 +398,7 @@
     },
     {
       "name": "classroom",
+      "lib_cargo_file": "classroom/v1/lib/Cargo.toml",
       "gen_dir": "classroom/v1",
       "spec_file": "classroom/v1/spec.json",
       "crate_name": "google-classroom1",
@@ -362,6 +407,7 @@
     },
     {
       "name": "cloudasset",
+      "lib_cargo_file": "cloudasset/v1/lib/Cargo.toml",
       "gen_dir": "cloudasset/v1",
       "spec_file": "cloudasset/v1/spec.json",
       "crate_name": "google-cloudasset1",
@@ -370,6 +416,7 @@
     },
     {
       "name": "cloudasset",
+      "lib_cargo_file": "cloudasset/v1beta1/lib/Cargo.toml",
       "gen_dir": "cloudasset/v1beta1",
       "spec_file": "cloudasset/v1beta1/spec.json",
       "crate_name": "google-cloudasset1_beta1",
@@ -378,6 +425,7 @@
     },
     {
       "name": "cloudbilling",
+      "lib_cargo_file": "cloudbilling/v1/lib/Cargo.toml",
       "gen_dir": "cloudbilling/v1",
       "spec_file": "cloudbilling/v1/spec.json",
       "crate_name": "google-cloudbilling1",
@@ -386,6 +434,7 @@
     },
     {
       "name": "cloudbuild",
+      "lib_cargo_file": "cloudbuild/v1alpha1/lib/Cargo.toml",
       "gen_dir": "cloudbuild/v1alpha1",
       "spec_file": "cloudbuild/v1alpha1/spec.json",
       "crate_name": "google-cloudbuild1_alpha1",
@@ -394,6 +443,7 @@
     },
     {
       "name": "cloudbuild",
+      "lib_cargo_file": "cloudbuild/v1/lib/Cargo.toml",
       "gen_dir": "cloudbuild/v1",
       "spec_file": "cloudbuild/v1/spec.json",
       "crate_name": "google-cloudbuild1",
@@ -402,6 +452,7 @@
     },
     {
       "name": "clouddebugger",
+      "lib_cargo_file": "clouddebugger/v2/lib/Cargo.toml",
       "gen_dir": "clouddebugger/v2",
       "spec_file": "clouddebugger/v2/spec.json",
       "crate_name": "google-clouddebugger2",
@@ -410,6 +461,7 @@
     },
     {
       "name": "clouderrorreporting",
+      "lib_cargo_file": "clouderrorreporting/v1beta1/lib/Cargo.toml",
       "gen_dir": "clouderrorreporting/v1beta1",
       "spec_file": "clouderrorreporting/v1beta1/spec.json",
       "crate_name": "google-clouderrorreporting1_beta1",
@@ -418,6 +470,7 @@
     },
     {
       "name": "cloudfunctions",
+      "lib_cargo_file": "cloudfunctions/v1/lib/Cargo.toml",
       "gen_dir": "cloudfunctions/v1",
       "spec_file": "cloudfunctions/v1/spec.json",
       "crate_name": "google-cloudfunctions1",
@@ -426,6 +479,7 @@
     },
     {
       "name": "cloudfunctions",
+      "lib_cargo_file": "cloudfunctions/v1beta2/lib/Cargo.toml",
       "gen_dir": "cloudfunctions/v1beta2",
       "spec_file": "cloudfunctions/v1beta2/spec.json",
       "crate_name": "google-cloudfunctions1_beta2",
@@ -434,6 +488,7 @@
     },
     {
       "name": "cloudidentity",
+      "lib_cargo_file": "cloudidentity/v1/lib/Cargo.toml",
       "gen_dir": "cloudidentity/v1",
       "spec_file": "cloudidentity/v1/spec.json",
       "crate_name": "google-cloudidentity1",
@@ -442,6 +497,7 @@
     },
     {
       "name": "cloudidentity",
+      "lib_cargo_file": "cloudidentity/v1beta1/lib/Cargo.toml",
       "gen_dir": "cloudidentity/v1beta1",
       "spec_file": "cloudidentity/v1beta1/spec.json",
       "crate_name": "google-cloudidentity1_beta1",
@@ -450,6 +506,7 @@
     },
     {
       "name": "cloudiot",
+      "lib_cargo_file": "cloudiot/v1alpha1/lib/Cargo.toml",
       "gen_dir": "cloudiot/v1alpha1",
       "spec_file": "cloudiot/v1alpha1/spec.json",
       "crate_name": "google-cloudiot1_alpha1",
@@ -458,6 +515,7 @@
     },
     {
       "name": "cloudiot",
+      "lib_cargo_file": "cloudiot/v1/lib/Cargo.toml",
       "gen_dir": "cloudiot/v1",
       "spec_file": "cloudiot/v1/spec.json",
       "crate_name": "google-cloudiot1",
@@ -466,6 +524,7 @@
     },
     {
       "name": "cloudkms",
+      "lib_cargo_file": "cloudkms/v1/lib/Cargo.toml",
       "gen_dir": "cloudkms/v1",
       "spec_file": "cloudkms/v1/spec.json",
       "crate_name": "google-cloudkms1",
@@ -474,6 +533,7 @@
     },
     {
       "name": "cloudprivatecatalog",
+      "lib_cargo_file": "cloudprivatecatalog/v1beta1/lib/Cargo.toml",
       "gen_dir": "cloudprivatecatalog/v1beta1",
       "spec_file": "cloudprivatecatalog/v1beta1/spec.json",
       "crate_name": "google-cloudprivatecatalog1_beta1",
@@ -482,6 +542,7 @@
     },
     {
       "name": "cloudprivatecatalogproducer",
+      "lib_cargo_file": "cloudprivatecatalogproducer/v1beta1/lib/Cargo.toml",
       "gen_dir": "cloudprivatecatalogproducer/v1beta1",
       "spec_file": "cloudprivatecatalogproducer/v1beta1/spec.json",
       "crate_name": "google-cloudprivatecatalogproducer1_beta1",
@@ -490,6 +551,7 @@
     },
     {
       "name": "cloudprofiler",
+      "lib_cargo_file": "cloudprofiler/v2/lib/Cargo.toml",
       "gen_dir": "cloudprofiler/v2",
       "spec_file": "cloudprofiler/v2/spec.json",
       "crate_name": "google-cloudprofiler2",
@@ -498,6 +560,7 @@
     },
     {
       "name": "cloudresourcemanager",
+      "lib_cargo_file": "cloudresourcemanager/v1/lib/Cargo.toml",
       "gen_dir": "cloudresourcemanager/v1",
       "spec_file": "cloudresourcemanager/v1/spec.json",
       "crate_name": "google-cloudresourcemanager1",
@@ -506,6 +569,7 @@
     },
     {
       "name": "cloudresourcemanager",
+      "lib_cargo_file": "cloudresourcemanager/v1beta1/lib/Cargo.toml",
       "gen_dir": "cloudresourcemanager/v1beta1",
       "spec_file": "cloudresourcemanager/v1beta1/spec.json",
       "crate_name": "google-cloudresourcemanager1_beta1",
@@ -514,6 +578,7 @@
     },
     {
       "name": "cloudresourcemanager",
+      "lib_cargo_file": "cloudresourcemanager/v2/lib/Cargo.toml",
       "gen_dir": "cloudresourcemanager/v2",
       "spec_file": "cloudresourcemanager/v2/spec.json",
       "crate_name": "google-cloudresourcemanager2",
@@ -522,6 +587,7 @@
     },
     {
       "name": "cloudresourcemanager",
+      "lib_cargo_file": "cloudresourcemanager/v2beta1/lib/Cargo.toml",
       "gen_dir": "cloudresourcemanager/v2beta1",
       "spec_file": "cloudresourcemanager/v2beta1/spec.json",
       "crate_name": "google-cloudresourcemanager2_beta1",
@@ -530,6 +596,7 @@
     },
     {
       "name": "cloudscheduler",
+      "lib_cargo_file": "cloudscheduler/v1/lib/Cargo.toml",
       "gen_dir": "cloudscheduler/v1",
       "spec_file": "cloudscheduler/v1/spec.json",
       "crate_name": "google-cloudscheduler1",
@@ -538,6 +605,7 @@
     },
     {
       "name": "cloudscheduler",
+      "lib_cargo_file": "cloudscheduler/v1beta1/lib/Cargo.toml",
       "gen_dir": "cloudscheduler/v1beta1",
       "spec_file": "cloudscheduler/v1beta1/spec.json",
       "crate_name": "google-cloudscheduler1_beta1",
@@ -546,6 +614,7 @@
     },
     {
       "name": "cloudsearch",
+      "lib_cargo_file": "cloudsearch/v1/lib/Cargo.toml",
       "gen_dir": "cloudsearch/v1",
       "spec_file": "cloudsearch/v1/spec.json",
       "crate_name": "google-cloudsearch1",
@@ -554,6 +623,7 @@
     },
     {
       "name": "cloudshell",
+      "lib_cargo_file": "cloudshell/v1alpha1/lib/Cargo.toml",
       "gen_dir": "cloudshell/v1alpha1",
       "spec_file": "cloudshell/v1alpha1/spec.json",
       "crate_name": "google-cloudshell1_alpha1",
@@ -562,6 +632,7 @@
     },
     {
       "name": "cloudshell",
+      "lib_cargo_file": "cloudshell/v1/lib/Cargo.toml",
       "gen_dir": "cloudshell/v1",
       "spec_file": "cloudshell/v1/spec.json",
       "crate_name": "google-cloudshell1",
@@ -570,6 +641,7 @@
     },
     {
       "name": "cloudtasks",
+      "lib_cargo_file": "cloudtasks/v2/lib/Cargo.toml",
       "gen_dir": "cloudtasks/v2",
       "spec_file": "cloudtasks/v2/spec.json",
       "crate_name": "google-cloudtasks2",
@@ -578,6 +650,7 @@
     },
     {
       "name": "cloudtasks",
+      "lib_cargo_file": "cloudtasks/v2beta2/lib/Cargo.toml",
       "gen_dir": "cloudtasks/v2beta2",
       "spec_file": "cloudtasks/v2beta2/spec.json",
       "crate_name": "google-cloudtasks2_beta2",
@@ -586,6 +659,7 @@
     },
     {
       "name": "cloudtasks",
+      "lib_cargo_file": "cloudtasks/v2beta3/lib/Cargo.toml",
       "gen_dir": "cloudtasks/v2beta3",
       "spec_file": "cloudtasks/v2beta3/spec.json",
       "crate_name": "google-cloudtasks2_beta3",
@@ -594,6 +668,7 @@
     },
     {
       "name": "cloudtrace",
+      "lib_cargo_file": "cloudtrace/v2alpha1/lib/Cargo.toml",
       "gen_dir": "cloudtrace/v2alpha1",
       "spec_file": "cloudtrace/v2alpha1/spec.json",
       "crate_name": "google-cloudtrace2_alpha1",
@@ -602,6 +677,7 @@
     },
     {
       "name": "cloudtrace",
+      "lib_cargo_file": "cloudtrace/v1/lib/Cargo.toml",
       "gen_dir": "cloudtrace/v1",
       "spec_file": "cloudtrace/v1/spec.json",
       "crate_name": "google-cloudtrace1",
@@ -610,6 +686,7 @@
     },
     {
       "name": "cloudtrace",
+      "lib_cargo_file": "cloudtrace/v2/lib/Cargo.toml",
       "gen_dir": "cloudtrace/v2",
       "spec_file": "cloudtrace/v2/spec.json",
       "crate_name": "google-cloudtrace2",
@@ -618,6 +695,7 @@
     },
     {
       "name": "commentanalyzer",
+      "lib_cargo_file": "commentanalyzer/v1alpha1/lib/Cargo.toml",
       "gen_dir": "commentanalyzer/v1alpha1",
       "spec_file": "commentanalyzer/v1alpha1/spec.json",
       "crate_name": "google-commentanalyzer1_alpha1",
@@ -626,6 +704,7 @@
     },
     {
       "name": "composer",
+      "lib_cargo_file": "composer/v1/lib/Cargo.toml",
       "gen_dir": "composer/v1",
       "spec_file": "composer/v1/spec.json",
       "crate_name": "google-composer1",
@@ -634,6 +713,7 @@
     },
     {
       "name": "composer",
+      "lib_cargo_file": "composer/v1beta1/lib/Cargo.toml",
       "gen_dir": "composer/v1beta1",
       "spec_file": "composer/v1beta1/spec.json",
       "crate_name": "google-composer1_beta1",
@@ -642,6 +722,7 @@
     },
     {
       "name": "compute",
+      "lib_cargo_file": "compute/alpha/lib/Cargo.toml",
       "gen_dir": "compute/alpha",
       "spec_file": "compute/alpha/spec.json",
       "crate_name": "google-computealpha",
@@ -650,6 +731,7 @@
     },
     {
       "name": "compute",
+      "lib_cargo_file": "compute/beta/lib/Cargo.toml",
       "gen_dir": "compute/beta",
       "spec_file": "compute/beta/spec.json",
       "crate_name": "google-computebeta",
@@ -658,6 +740,7 @@
     },
     {
       "name": "compute",
+      "lib_cargo_file": "compute/v1/lib/Cargo.toml",
       "gen_dir": "compute/v1",
       "spec_file": "compute/v1/spec.json",
       "crate_name": "google-compute1",
@@ -666,6 +749,7 @@
     },
     {
       "name": "container",
+      "lib_cargo_file": "container/v1/lib/Cargo.toml",
       "gen_dir": "container/v1",
       "spec_file": "container/v1/spec.json",
       "crate_name": "google-container1",
@@ -674,6 +758,7 @@
     },
     {
       "name": "container",
+      "lib_cargo_file": "container/v1beta1/lib/Cargo.toml",
       "gen_dir": "container/v1beta1",
       "spec_file": "container/v1beta1/spec.json",
       "crate_name": "google-container1_beta1",
@@ -682,6 +767,7 @@
     },
     {
       "name": "containeranalysis",
+      "lib_cargo_file": "containeranalysis/v1alpha1/lib/Cargo.toml",
       "gen_dir": "containeranalysis/v1alpha1",
       "spec_file": "containeranalysis/v1alpha1/spec.json",
       "crate_name": "google-containeranalysis1_alpha1",
@@ -690,6 +776,7 @@
     },
     {
       "name": "containeranalysis",
+      "lib_cargo_file": "containeranalysis/v1beta1/lib/Cargo.toml",
       "gen_dir": "containeranalysis/v1beta1",
       "spec_file": "containeranalysis/v1beta1/spec.json",
       "crate_name": "google-containeranalysis1_beta1",
@@ -698,6 +785,7 @@
     },
     {
       "name": "content",
+      "lib_cargo_file": "content/v2/lib/Cargo.toml",
       "gen_dir": "content/v2",
       "spec_file": "content/v2/spec.json",
       "crate_name": "google-content2",
@@ -706,6 +794,7 @@
     },
     {
       "name": "content",
+      "lib_cargo_file": "content/v2.1/lib/Cargo.toml",
       "gen_dir": "content/v2.1",
       "spec_file": "content/v2.1/spec.json",
       "crate_name": "google-content2d1",
@@ -714,6 +803,7 @@
     },
     {
       "name": "customsearch",
+      "lib_cargo_file": "customsearch/v1/lib/Cargo.toml",
       "gen_dir": "customsearch/v1",
       "spec_file": "customsearch/v1/spec.json",
       "crate_name": "google-customsearch1",
@@ -722,6 +812,7 @@
     },
     {
       "name": "dataflow",
+      "lib_cargo_file": "dataflow/v1b3/lib/Cargo.toml",
       "gen_dir": "dataflow/v1b3",
       "spec_file": "dataflow/v1b3/spec.json",
       "crate_name": "google-dataflow1_b3",
@@ -730,6 +821,7 @@
     },
     {
       "name": "datafusion",
+      "lib_cargo_file": "datafusion/v1beta1/lib/Cargo.toml",
       "gen_dir": "datafusion/v1beta1",
       "spec_file": "datafusion/v1beta1/spec.json",
       "crate_name": "google-datafusion1_beta1",
@@ -738,6 +830,7 @@
     },
     {
       "name": "dataproc",
+      "lib_cargo_file": "dataproc/v1/lib/Cargo.toml",
       "gen_dir": "dataproc/v1",
       "spec_file": "dataproc/v1/spec.json",
       "crate_name": "google-dataproc1",
@@ -746,6 +839,7 @@
     },
     {
       "name": "dataproc",
+      "lib_cargo_file": "dataproc/v1beta2/lib/Cargo.toml",
       "gen_dir": "dataproc/v1beta2",
       "spec_file": "dataproc/v1beta2/spec.json",
       "crate_name": "google-dataproc1_beta2",
@@ -754,6 +848,7 @@
     },
     {
       "name": "datastore",
+      "lib_cargo_file": "datastore/v1/lib/Cargo.toml",
       "gen_dir": "datastore/v1",
       "spec_file": "datastore/v1/spec.json",
       "crate_name": "google-datastore1",
@@ -762,6 +857,7 @@
     },
     {
       "name": "datastore",
+      "lib_cargo_file": "datastore/v1beta1/lib/Cargo.toml",
       "gen_dir": "datastore/v1beta1",
       "spec_file": "datastore/v1beta1/spec.json",
       "crate_name": "google-datastore1_beta1",
@@ -770,6 +866,7 @@
     },
     {
       "name": "datastore",
+      "lib_cargo_file": "datastore/v1beta3/lib/Cargo.toml",
       "gen_dir": "datastore/v1beta3",
       "spec_file": "datastore/v1beta3/spec.json",
       "crate_name": "google-datastore1_beta3",
@@ -778,6 +875,7 @@
     },
     {
       "name": "deploymentmanager",
+      "lib_cargo_file": "deploymentmanager/alpha/lib/Cargo.toml",
       "gen_dir": "deploymentmanager/alpha",
       "spec_file": "deploymentmanager/alpha/spec.json",
       "crate_name": "google-deploymentmanageralpha",
@@ -786,6 +884,7 @@
     },
     {
       "name": "deploymentmanager",
+      "lib_cargo_file": "deploymentmanager/v2beta/lib/Cargo.toml",
       "gen_dir": "deploymentmanager/v2beta",
       "spec_file": "deploymentmanager/v2beta/spec.json",
       "crate_name": "google-deploymentmanager2_beta",
@@ -794,6 +893,7 @@
     },
     {
       "name": "deploymentmanager",
+      "lib_cargo_file": "deploymentmanager/v2/lib/Cargo.toml",
       "gen_dir": "deploymentmanager/v2",
       "spec_file": "deploymentmanager/v2/spec.json",
       "crate_name": "google-deploymentmanager2",
@@ -802,6 +902,7 @@
     },
     {
       "name": "dfareporting",
+      "lib_cargo_file": "dfareporting/v3.1/lib/Cargo.toml",
       "gen_dir": "dfareporting/v3.1",
       "spec_file": "dfareporting/v3.1/spec.json",
       "crate_name": "google-dfareporting3d1",
@@ -810,6 +911,7 @@
     },
     {
       "name": "dfareporting",
+      "lib_cargo_file": "dfareporting/v3.2/lib/Cargo.toml",
       "gen_dir": "dfareporting/v3.2",
       "spec_file": "dfareporting/v3.2/spec.json",
       "crate_name": "google-dfareporting3d2",
@@ -818,6 +920,7 @@
     },
     {
       "name": "dfareporting",
+      "lib_cargo_file": "dfareporting/v3.3/lib/Cargo.toml",
       "gen_dir": "dfareporting/v3.3",
       "spec_file": "dfareporting/v3.3/spec.json",
       "crate_name": "google-dfareporting3d3",
@@ -826,6 +929,7 @@
     },
     {
       "name": "dialogflow",
+      "lib_cargo_file": "dialogflow/v2/lib/Cargo.toml",
       "gen_dir": "dialogflow/v2",
       "spec_file": "dialogflow/v2/spec.json",
       "crate_name": "google-dialogflow2",
@@ -834,6 +938,7 @@
     },
     {
       "name": "dialogflow",
+      "lib_cargo_file": "dialogflow/v2beta1/lib/Cargo.toml",
       "gen_dir": "dialogflow/v2beta1",
       "spec_file": "dialogflow/v2beta1/spec.json",
       "crate_name": "google-dialogflow2_beta1",
@@ -842,6 +947,7 @@
     },
     {
       "name": "digitalassetlinks",
+      "lib_cargo_file": "digitalassetlinks/v1/lib/Cargo.toml",
       "gen_dir": "digitalassetlinks/v1",
       "spec_file": "digitalassetlinks/v1/spec.json",
       "crate_name": "google-digitalassetlinks1",
@@ -850,6 +956,7 @@
     },
     {
       "name": "discovery",
+      "lib_cargo_file": "discovery/v1/lib/Cargo.toml",
       "gen_dir": "discovery/v1",
       "spec_file": "discovery/v1/spec.json",
       "crate_name": "google-discovery1",
@@ -858,6 +965,7 @@
     },
     {
       "name": "dlp",
+      "lib_cargo_file": "dlp/v2/lib/Cargo.toml",
       "gen_dir": "dlp/v2",
       "spec_file": "dlp/v2/spec.json",
       "crate_name": "google-dlp2",
@@ -866,6 +974,7 @@
     },
     {
       "name": "dns",
+      "lib_cargo_file": "dns/v1/lib/Cargo.toml",
       "gen_dir": "dns/v1",
       "spec_file": "dns/v1/spec.json",
       "crate_name": "google-dns1",
@@ -874,6 +983,7 @@
     },
     {
       "name": "dns",
+      "lib_cargo_file": "dns/v1beta2/lib/Cargo.toml",
       "gen_dir": "dns/v1beta2",
       "spec_file": "dns/v1beta2/spec.json",
       "crate_name": "google-dns1_beta2",
@@ -882,6 +992,7 @@
     },
     {
       "name": "dns",
+      "lib_cargo_file": "dns/v2beta1/lib/Cargo.toml",
       "gen_dir": "dns/v2beta1",
       "spec_file": "dns/v2beta1/spec.json",
       "crate_name": "google-dns2_beta1",
@@ -890,6 +1001,7 @@
     },
     {
       "name": "docs",
+      "lib_cargo_file": "docs/v1/lib/Cargo.toml",
       "gen_dir": "docs/v1",
       "spec_file": "docs/v1/spec.json",
       "crate_name": "google-docs1",
@@ -898,6 +1010,7 @@
     },
     {
       "name": "doubleclickbidmanager",
+      "lib_cargo_file": "doubleclickbidmanager/v1/lib/Cargo.toml",
       "gen_dir": "doubleclickbidmanager/v1",
       "spec_file": "doubleclickbidmanager/v1/spec.json",
       "crate_name": "google-doubleclickbidmanager1",
@@ -906,6 +1019,7 @@
     },
     {
       "name": "doubleclicksearch",
+      "lib_cargo_file": "doubleclicksearch/v2/lib/Cargo.toml",
       "gen_dir": "doubleclicksearch/v2",
       "spec_file": "doubleclicksearch/v2/spec.json",
       "crate_name": "google-doubleclicksearch2",
@@ -914,6 +1028,7 @@
     },
     {
       "name": "drive",
+      "lib_cargo_file": "drive/v2/lib/Cargo.toml",
       "gen_dir": "drive/v2",
       "spec_file": "drive/v2/spec.json",
       "crate_name": "google-drive2",
@@ -922,6 +1037,7 @@
     },
     {
       "name": "drive",
+      "lib_cargo_file": "drive/v3/lib/Cargo.toml",
       "gen_dir": "drive/v3",
       "spec_file": "drive/v3/spec.json",
       "crate_name": "google-drive3",
@@ -930,6 +1046,7 @@
     },
     {
       "name": "driveactivity",
+      "lib_cargo_file": "driveactivity/v2/lib/Cargo.toml",
       "gen_dir": "driveactivity/v2",
       "spec_file": "driveactivity/v2/spec.json",
       "crate_name": "google-driveactivity2",
@@ -938,6 +1055,7 @@
     },
     {
       "name": "factchecktools",
+      "lib_cargo_file": "factchecktools/v1alpha1/lib/Cargo.toml",
       "gen_dir": "factchecktools/v1alpha1",
       "spec_file": "factchecktools/v1alpha1/spec.json",
       "crate_name": "google-factchecktools1_alpha1",
@@ -946,6 +1064,7 @@
     },
     {
       "name": "fcm",
+      "lib_cargo_file": "fcm/v1/lib/Cargo.toml",
       "gen_dir": "fcm/v1",
       "spec_file": "fcm/v1/spec.json",
       "crate_name": "google-fcm1",
@@ -954,6 +1073,7 @@
     },
     {
       "name": "file",
+      "lib_cargo_file": "file/v1/lib/Cargo.toml",
       "gen_dir": "file/v1",
       "spec_file": "file/v1/spec.json",
       "crate_name": "google-file1",
@@ -962,6 +1082,7 @@
     },
     {
       "name": "file",
+      "lib_cargo_file": "file/v1beta1/lib/Cargo.toml",
       "gen_dir": "file/v1beta1",
       "spec_file": "file/v1beta1/spec.json",
       "crate_name": "google-file1_beta1",
@@ -970,6 +1091,7 @@
     },
     {
       "name": "firebase",
+      "lib_cargo_file": "firebase/v1beta1/lib/Cargo.toml",
       "gen_dir": "firebase/v1beta1",
       "spec_file": "firebase/v1beta1/spec.json",
       "crate_name": "google-firebase1_beta1",
@@ -978,6 +1100,7 @@
     },
     {
       "name": "firebasedynamiclinks",
+      "lib_cargo_file": "firebasedynamiclinks/v1/lib/Cargo.toml",
       "gen_dir": "firebasedynamiclinks/v1",
       "spec_file": "firebasedynamiclinks/v1/spec.json",
       "crate_name": "google-firebasedynamiclinks1",
@@ -986,6 +1109,7 @@
     },
     {
       "name": "firebasehosting",
+      "lib_cargo_file": "firebasehosting/v1beta1/lib/Cargo.toml",
       "gen_dir": "firebasehosting/v1beta1",
       "spec_file": "firebasehosting/v1beta1/spec.json",
       "crate_name": "google-firebasehosting1_beta1",
@@ -994,6 +1118,7 @@
     },
     {
       "name": "firebaserules",
+      "lib_cargo_file": "firebaserules/v1/lib/Cargo.toml",
       "gen_dir": "firebaserules/v1",
       "spec_file": "firebaserules/v1/spec.json",
       "crate_name": "google-firebaserules1",
@@ -1002,6 +1127,7 @@
     },
     {
       "name": "firestore",
+      "lib_cargo_file": "firestore/v1/lib/Cargo.toml",
       "gen_dir": "firestore/v1",
       "spec_file": "firestore/v1/spec.json",
       "crate_name": "google-firestore1",
@@ -1010,6 +1136,7 @@
     },
     {
       "name": "firestore",
+      "lib_cargo_file": "firestore/v1beta1/lib/Cargo.toml",
       "gen_dir": "firestore/v1beta1",
       "spec_file": "firestore/v1beta1/spec.json",
       "crate_name": "google-firestore1_beta1",
@@ -1018,6 +1145,7 @@
     },
     {
       "name": "firestore",
+      "lib_cargo_file": "firestore/v1beta2/lib/Cargo.toml",
       "gen_dir": "firestore/v1beta2",
       "spec_file": "firestore/v1beta2/spec.json",
       "crate_name": "google-firestore1_beta2",
@@ -1026,6 +1154,7 @@
     },
     {
       "name": "fitness",
+      "lib_cargo_file": "fitness/v1/lib/Cargo.toml",
       "gen_dir": "fitness/v1",
       "spec_file": "fitness/v1/spec.json",
       "crate_name": "google-fitness1",
@@ -1034,6 +1163,7 @@
     },
     {
       "name": "fusiontables",
+      "lib_cargo_file": "fusiontables/v1/lib/Cargo.toml",
       "gen_dir": "fusiontables/v1",
       "spec_file": "fusiontables/v1/spec.json",
       "crate_name": "google-fusiontables1",
@@ -1042,6 +1172,7 @@
     },
     {
       "name": "fusiontables",
+      "lib_cargo_file": "fusiontables/v2/lib/Cargo.toml",
       "gen_dir": "fusiontables/v2",
       "spec_file": "fusiontables/v2/spec.json",
       "crate_name": "google-fusiontables2",
@@ -1050,6 +1181,7 @@
     },
     {
       "name": "games",
+      "lib_cargo_file": "games/v1/lib/Cargo.toml",
       "gen_dir": "games/v1",
       "spec_file": "games/v1/spec.json",
       "crate_name": "google-games1",
@@ -1058,6 +1190,7 @@
     },
     {
       "name": "gamesConfiguration",
+      "lib_cargo_file": "gamesConfiguration/v1configuration/lib/Cargo.toml",
       "gen_dir": "gamesConfiguration/v1configuration",
       "spec_file": "gamesConfiguration/v1configuration/spec.json",
       "crate_name": "google-gamesConfiguration1_configuration",
@@ -1066,6 +1199,7 @@
     },
     {
       "name": "gamesManagement",
+      "lib_cargo_file": "gamesManagement/v1management/lib/Cargo.toml",
       "gen_dir": "gamesManagement/v1management",
       "spec_file": "gamesManagement/v1management/spec.json",
       "crate_name": "google-gamesManagement1_management",
@@ -1074,6 +1208,7 @@
     },
     {
       "name": "genomics",
+      "lib_cargo_file": "genomics/v1alpha2/lib/Cargo.toml",
       "gen_dir": "genomics/v1alpha2",
       "spec_file": "genomics/v1alpha2/spec.json",
       "crate_name": "google-genomics1_alpha2",
@@ -1082,6 +1217,7 @@
     },
     {
       "name": "genomics",
+      "lib_cargo_file": "genomics/v2alpha1/lib/Cargo.toml",
       "gen_dir": "genomics/v2alpha1",
       "spec_file": "genomics/v2alpha1/spec.json",
       "crate_name": "google-genomics2_alpha1",
@@ -1090,6 +1226,7 @@
     },
     {
       "name": "genomics",
+      "lib_cargo_file": "genomics/v1/lib/Cargo.toml",
       "gen_dir": "genomics/v1",
       "spec_file": "genomics/v1/spec.json",
       "crate_name": "google-genomics1",
@@ -1098,6 +1235,7 @@
     },
     {
       "name": "gmail",
+      "lib_cargo_file": "gmail/v1/lib/Cargo.toml",
       "gen_dir": "gmail/v1",
       "spec_file": "gmail/v1/spec.json",
       "crate_name": "google-gmail1",
@@ -1106,6 +1244,7 @@
     },
     {
       "name": "groupsmigration",
+      "lib_cargo_file": "groupsmigration/v1/lib/Cargo.toml",
       "gen_dir": "groupsmigration/v1",
       "spec_file": "groupsmigration/v1/spec.json",
       "crate_name": "google-groupsmigration1",
@@ -1114,6 +1253,7 @@
     },
     {
       "name": "groupssettings",
+      "lib_cargo_file": "groupssettings/v1/lib/Cargo.toml",
       "gen_dir": "groupssettings/v1",
       "spec_file": "groupssettings/v1/spec.json",
       "crate_name": "google-groupssettings1",
@@ -1122,6 +1262,7 @@
     },
     {
       "name": "healthcare",
+      "lib_cargo_file": "healthcare/v1alpha2/lib/Cargo.toml",
       "gen_dir": "healthcare/v1alpha2",
       "spec_file": "healthcare/v1alpha2/spec.json",
       "crate_name": "google-healthcare1_alpha2",
@@ -1130,6 +1271,7 @@
     },
     {
       "name": "healthcare",
+      "lib_cargo_file": "healthcare/v1beta1/lib/Cargo.toml",
       "gen_dir": "healthcare/v1beta1",
       "spec_file": "healthcare/v1beta1/spec.json",
       "crate_name": "google-healthcare1_beta1",
@@ -1138,6 +1280,7 @@
     },
     {
       "name": "iam",
+      "lib_cargo_file": "iam/v1/lib/Cargo.toml",
       "gen_dir": "iam/v1",
       "spec_file": "iam/v1/spec.json",
       "crate_name": "google-iam1",
@@ -1146,6 +1289,7 @@
     },
     {
       "name": "iamcredentials",
+      "lib_cargo_file": "iamcredentials/v1/lib/Cargo.toml",
       "gen_dir": "iamcredentials/v1",
       "spec_file": "iamcredentials/v1/spec.json",
       "crate_name": "google-iamcredentials1",
@@ -1154,6 +1298,7 @@
     },
     {
       "name": "iap",
+      "lib_cargo_file": "iap/v1/lib/Cargo.toml",
       "gen_dir": "iap/v1",
       "spec_file": "iap/v1/spec.json",
       "crate_name": "google-iap1",
@@ -1162,6 +1307,7 @@
     },
     {
       "name": "iap",
+      "lib_cargo_file": "iap/v1beta1/lib/Cargo.toml",
       "gen_dir": "iap/v1beta1",
       "spec_file": "iap/v1beta1/spec.json",
       "crate_name": "google-iap1_beta1",
@@ -1170,6 +1316,7 @@
     },
     {
       "name": "identitytoolkit",
+      "lib_cargo_file": "identitytoolkit/v3/lib/Cargo.toml",
       "gen_dir": "identitytoolkit/v3",
       "spec_file": "identitytoolkit/v3/spec.json",
       "crate_name": "google-identitytoolkit3",
@@ -1178,6 +1325,7 @@
     },
     {
       "name": "indexing",
+      "lib_cargo_file": "indexing/v3/lib/Cargo.toml",
       "gen_dir": "indexing/v3",
       "spec_file": "indexing/v3/spec.json",
       "crate_name": "google-indexing3",
@@ -1186,6 +1334,7 @@
     },
     {
       "name": "jobs",
+      "lib_cargo_file": "jobs/v3p1beta1/lib/Cargo.toml",
       "gen_dir": "jobs/v3p1beta1",
       "spec_file": "jobs/v3p1beta1/spec.json",
       "crate_name": "google-jobs3_p1beta1",
@@ -1194,6 +1343,7 @@
     },
     {
       "name": "jobs",
+      "lib_cargo_file": "jobs/v2/lib/Cargo.toml",
       "gen_dir": "jobs/v2",
       "spec_file": "jobs/v2/spec.json",
       "crate_name": "google-jobs2",
@@ -1202,6 +1352,7 @@
     },
     {
       "name": "jobs",
+      "lib_cargo_file": "jobs/v3/lib/Cargo.toml",
       "gen_dir": "jobs/v3",
       "spec_file": "jobs/v3/spec.json",
       "crate_name": "google-jobs3",
@@ -1210,6 +1361,7 @@
     },
     {
       "name": "kgsearch",
+      "lib_cargo_file": "kgsearch/v1/lib/Cargo.toml",
       "gen_dir": "kgsearch/v1",
       "spec_file": "kgsearch/v1/spec.json",
       "crate_name": "google-kgsearch1",
@@ -1218,6 +1370,7 @@
     },
     {
       "name": "language",
+      "lib_cargo_file": "language/v1/lib/Cargo.toml",
       "gen_dir": "language/v1",
       "spec_file": "language/v1/spec.json",
       "crate_name": "google-language1",
@@ -1226,6 +1379,7 @@
     },
     {
       "name": "language",
+      "lib_cargo_file": "language/v1beta1/lib/Cargo.toml",
       "gen_dir": "language/v1beta1",
       "spec_file": "language/v1beta1/spec.json",
       "crate_name": "google-language1_beta1",
@@ -1234,6 +1388,7 @@
     },
     {
       "name": "language",
+      "lib_cargo_file": "language/v1beta2/lib/Cargo.toml",
       "gen_dir": "language/v1beta2",
       "spec_file": "language/v1beta2/spec.json",
       "crate_name": "google-language1_beta2",
@@ -1242,6 +1397,7 @@
     },
     {
       "name": "libraryagent",
+      "lib_cargo_file": "libraryagent/v1/lib/Cargo.toml",
       "gen_dir": "libraryagent/v1",
       "spec_file": "libraryagent/v1/spec.json",
       "crate_name": "google-libraryagent1",
@@ -1250,6 +1406,7 @@
     },
     {
       "name": "licensing",
+      "lib_cargo_file": "licensing/v1/lib/Cargo.toml",
       "gen_dir": "licensing/v1",
       "spec_file": "licensing/v1/spec.json",
       "crate_name": "google-licensing1",
@@ -1258,6 +1415,7 @@
     },
     {
       "name": "logging",
+      "lib_cargo_file": "logging/v2/lib/Cargo.toml",
       "gen_dir": "logging/v2",
       "spec_file": "logging/v2/spec.json",
       "crate_name": "google-logging2",
@@ -1266,6 +1424,7 @@
     },
     {
       "name": "manufacturers",
+      "lib_cargo_file": "manufacturers/v1/lib/Cargo.toml",
       "gen_dir": "manufacturers/v1",
       "spec_file": "manufacturers/v1/spec.json",
       "crate_name": "google-manufacturers1",
@@ -1274,6 +1433,7 @@
     },
     {
       "name": "mirror",
+      "lib_cargo_file": "mirror/v1/lib/Cargo.toml",
       "gen_dir": "mirror/v1",
       "spec_file": "mirror/v1/spec.json",
       "crate_name": "google-mirror1",
@@ -1282,6 +1442,7 @@
     },
     {
       "name": "ml",
+      "lib_cargo_file": "ml/v1/lib/Cargo.toml",
       "gen_dir": "ml/v1",
       "spec_file": "ml/v1/spec.json",
       "crate_name": "google-ml1",
@@ -1290,6 +1451,7 @@
     },
     {
       "name": "monitoring",
+      "lib_cargo_file": "monitoring/v3p1alpha1/lib/Cargo.toml",
       "gen_dir": "monitoring/v3p1alpha1",
       "spec_file": "monitoring/v3p1alpha1/spec.json",
       "crate_name": "google-monitoring3_p1alpha1",
@@ -1298,6 +1460,7 @@
     },
     {
       "name": "monitoring",
+      "lib_cargo_file": "monitoring/v3/lib/Cargo.toml",
       "gen_dir": "monitoring/v3",
       "spec_file": "monitoring/v3/spec.json",
       "crate_name": "google-monitoring3",
@@ -1306,6 +1469,7 @@
     },
     {
       "name": "oauth",
+      "lib_cargo_file": "oauth/v1/lib/Cargo.toml",
       "gen_dir": "oauth/v1",
       "spec_file": "oauth/v1/spec.json",
       "crate_name": "google-oauth1",
@@ -1314,6 +1478,7 @@
     },
     {
       "name": "oauth",
+      "lib_cargo_file": "oauth/v2/lib/Cargo.toml",
       "gen_dir": "oauth/v2",
       "spec_file": "oauth/v2/spec.json",
       "crate_name": "google-oauth2",
@@ -1322,6 +1487,7 @@
     },
     {
       "name": "osconfig",
+      "lib_cargo_file": "osconfig/v1alpha1/lib/Cargo.toml",
       "gen_dir": "osconfig/v1alpha1",
       "spec_file": "osconfig/v1alpha1/spec.json",
       "crate_name": "google-osconfig1_alpha1",
@@ -1330,6 +1496,7 @@
     },
     {
       "name": "osconfig",
+      "lib_cargo_file": "osconfig/v1alpha2/lib/Cargo.toml",
       "gen_dir": "osconfig/v1alpha2",
       "spec_file": "osconfig/v1alpha2/spec.json",
       "crate_name": "google-osconfig1_alpha2",
@@ -1338,6 +1505,7 @@
     },
     {
       "name": "oslogin",
+      "lib_cargo_file": "oslogin/v1alpha/lib/Cargo.toml",
       "gen_dir": "oslogin/v1alpha",
       "spec_file": "oslogin/v1alpha/spec.json",
       "crate_name": "google-oslogin1_alpha",
@@ -1346,6 +1514,7 @@
     },
     {
       "name": "oslogin",
+      "lib_cargo_file": "oslogin/v1beta/lib/Cargo.toml",
       "gen_dir": "oslogin/v1beta",
       "spec_file": "oslogin/v1beta/spec.json",
       "crate_name": "google-oslogin1_beta",
@@ -1354,6 +1523,7 @@
     },
     {
       "name": "oslogin",
+      "lib_cargo_file": "oslogin/v1/lib/Cargo.toml",
       "gen_dir": "oslogin/v1",
       "spec_file": "oslogin/v1/spec.json",
       "crate_name": "google-oslogin1",
@@ -1362,6 +1532,7 @@
     },
     {
       "name": "pagespeedonline",
+      "lib_cargo_file": "pagespeedonline/v1/lib/Cargo.toml",
       "gen_dir": "pagespeedonline/v1",
       "spec_file": "pagespeedonline/v1/spec.json",
       "crate_name": "google-pagespeedonline1",
@@ -1370,6 +1541,7 @@
     },
     {
       "name": "pagespeedonline",
+      "lib_cargo_file": "pagespeedonline/v2/lib/Cargo.toml",
       "gen_dir": "pagespeedonline/v2",
       "spec_file": "pagespeedonline/v2/spec.json",
       "crate_name": "google-pagespeedonline2",
@@ -1378,6 +1550,7 @@
     },
     {
       "name": "pagespeedonline",
+      "lib_cargo_file": "pagespeedonline/v4/lib/Cargo.toml",
       "gen_dir": "pagespeedonline/v4",
       "spec_file": "pagespeedonline/v4/spec.json",
       "crate_name": "google-pagespeedonline4",
@@ -1386,6 +1559,7 @@
     },
     {
       "name": "pagespeedonline",
+      "lib_cargo_file": "pagespeedonline/v5/lib/Cargo.toml",
       "gen_dir": "pagespeedonline/v5",
       "spec_file": "pagespeedonline/v5/spec.json",
       "crate_name": "google-pagespeedonline5",
@@ -1394,6 +1568,7 @@
     },
     {
       "name": "people",
+      "lib_cargo_file": "people/v1/lib/Cargo.toml",
       "gen_dir": "people/v1",
       "spec_file": "people/v1/spec.json",
       "crate_name": "google-people1",
@@ -1402,6 +1577,7 @@
     },
     {
       "name": "playcustomapp",
+      "lib_cargo_file": "playcustomapp/v1/lib/Cargo.toml",
       "gen_dir": "playcustomapp/v1",
       "spec_file": "playcustomapp/v1/spec.json",
       "crate_name": "google-playcustomapp1",
@@ -1410,6 +1586,7 @@
     },
     {
       "name": "plus",
+      "lib_cargo_file": "plus/v1/lib/Cargo.toml",
       "gen_dir": "plus/v1",
       "spec_file": "plus/v1/spec.json",
       "crate_name": "google-plus1",
@@ -1418,6 +1595,7 @@
     },
     {
       "name": "plusDomains",
+      "lib_cargo_file": "plusDomains/v1/lib/Cargo.toml",
       "gen_dir": "plusDomains/v1",
       "spec_file": "plusDomains/v1/spec.json",
       "crate_name": "google-plusDomains1",
@@ -1426,6 +1604,7 @@
     },
     {
       "name": "poly",
+      "lib_cargo_file": "poly/v1/lib/Cargo.toml",
       "gen_dir": "poly/v1",
       "spec_file": "poly/v1/spec.json",
       "crate_name": "google-poly1",
@@ -1434,6 +1613,7 @@
     },
     {
       "name": "proximitybeacon",
+      "lib_cargo_file": "proximitybeacon/v1beta1/lib/Cargo.toml",
       "gen_dir": "proximitybeacon/v1beta1",
       "spec_file": "proximitybeacon/v1beta1/spec.json",
       "crate_name": "google-proximitybeacon1_beta1",
@@ -1442,6 +1622,7 @@
     },
     {
       "name": "pubsub",
+      "lib_cargo_file": "pubsub/v1beta1a/lib/Cargo.toml",
       "gen_dir": "pubsub/v1beta1a",
       "spec_file": "pubsub/v1beta1a/spec.json",
       "crate_name": "google-pubsub1_beta1a",
@@ -1450,6 +1631,7 @@
     },
     {
       "name": "pubsub",
+      "lib_cargo_file": "pubsub/v1/lib/Cargo.toml",
       "gen_dir": "pubsub/v1",
       "spec_file": "pubsub/v1/spec.json",
       "crate_name": "google-pubsub1",
@@ -1458,6 +1640,7 @@
     },
     {
       "name": "pubsub",
+      "lib_cargo_file": "pubsub/v1beta2/lib/Cargo.toml",
       "gen_dir": "pubsub/v1beta2",
       "spec_file": "pubsub/v1beta2/spec.json",
       "crate_name": "google-pubsub1_beta2",
@@ -1466,6 +1649,7 @@
     },
     {
       "name": "redis",
+      "lib_cargo_file": "redis/v1/lib/Cargo.toml",
       "gen_dir": "redis/v1",
       "spec_file": "redis/v1/spec.json",
       "crate_name": "google-redis1",
@@ -1474,6 +1658,7 @@
     },
     {
       "name": "redis",
+      "lib_cargo_file": "redis/v1beta1/lib/Cargo.toml",
       "gen_dir": "redis/v1beta1",
       "spec_file": "redis/v1beta1/spec.json",
       "crate_name": "google-redis1_beta1",
@@ -1482,6 +1667,7 @@
     },
     {
       "name": "remotebuildexecution",
+      "lib_cargo_file": "remotebuildexecution/v1alpha/lib/Cargo.toml",
       "gen_dir": "remotebuildexecution/v1alpha",
       "spec_file": "remotebuildexecution/v1alpha/spec.json",
       "crate_name": "google-remotebuildexecution1_alpha",
@@ -1490,6 +1676,7 @@
     },
     {
       "name": "remotebuildexecution",
+      "lib_cargo_file": "remotebuildexecution/v1/lib/Cargo.toml",
       "gen_dir": "remotebuildexecution/v1",
       "spec_file": "remotebuildexecution/v1/spec.json",
       "crate_name": "google-remotebuildexecution1",
@@ -1498,6 +1685,7 @@
     },
     {
       "name": "remotebuildexecution",
+      "lib_cargo_file": "remotebuildexecution/v2/lib/Cargo.toml",
       "gen_dir": "remotebuildexecution/v2",
       "spec_file": "remotebuildexecution/v2/spec.json",
       "crate_name": "google-remotebuildexecution2",
@@ -1506,6 +1694,7 @@
     },
     {
       "name": "replicapool",
+      "lib_cargo_file": "replicapool/v1beta1/lib/Cargo.toml",
       "gen_dir": "replicapool/v1beta1",
       "spec_file": "replicapool/v1beta1/spec.json",
       "crate_name": "google-replicapool1_beta1",
@@ -1514,6 +1703,7 @@
     },
     {
       "name": "reseller",
+      "lib_cargo_file": "reseller/v1/lib/Cargo.toml",
       "gen_dir": "reseller/v1",
       "spec_file": "reseller/v1/spec.json",
       "crate_name": "google-reseller1",
@@ -1522,6 +1712,7 @@
     },
     {
       "name": "run",
+      "lib_cargo_file": "run/v1alpha1/lib/Cargo.toml",
       "gen_dir": "run/v1alpha1",
       "spec_file": "run/v1alpha1/spec.json",
       "crate_name": "google-run1_alpha1",
@@ -1530,6 +1721,7 @@
     },
     {
       "name": "run",
+      "lib_cargo_file": "run/v1/lib/Cargo.toml",
       "gen_dir": "run/v1",
       "spec_file": "run/v1/spec.json",
       "crate_name": "google-run1",
@@ -1538,6 +1730,7 @@
     },
     {
       "name": "runtimeconfig",
+      "lib_cargo_file": "runtimeconfig/v1/lib/Cargo.toml",
       "gen_dir": "runtimeconfig/v1",
       "spec_file": "runtimeconfig/v1/spec.json",
       "crate_name": "google-runtimeconfig1",
@@ -1546,6 +1739,7 @@
     },
     {
       "name": "runtimeconfig",
+      "lib_cargo_file": "runtimeconfig/v1beta1/lib/Cargo.toml",
       "gen_dir": "runtimeconfig/v1beta1",
       "spec_file": "runtimeconfig/v1beta1/spec.json",
       "crate_name": "google-runtimeconfig1_beta1",
@@ -1554,6 +1748,7 @@
     },
     {
       "name": "safebrowsing",
+      "lib_cargo_file": "safebrowsing/v4/lib/Cargo.toml",
       "gen_dir": "safebrowsing/v4",
       "spec_file": "safebrowsing/v4/spec.json",
       "crate_name": "google-safebrowsing4",
@@ -1562,6 +1757,7 @@
     },
     {
       "name": "script",
+      "lib_cargo_file": "script/v1/lib/Cargo.toml",
       "gen_dir": "script/v1",
       "spec_file": "script/v1/spec.json",
       "crate_name": "google-script1",
@@ -1570,6 +1766,7 @@
     },
     {
       "name": "searchconsole",
+      "lib_cargo_file": "searchconsole/v1/lib/Cargo.toml",
       "gen_dir": "searchconsole/v1",
       "spec_file": "searchconsole/v1/spec.json",
       "crate_name": "google-searchconsole1",
@@ -1578,6 +1775,7 @@
     },
     {
       "name": "securitycenter",
+      "lib_cargo_file": "securitycenter/v1p1alpha1/lib/Cargo.toml",
       "gen_dir": "securitycenter/v1p1alpha1",
       "spec_file": "securitycenter/v1p1alpha1/spec.json",
       "crate_name": "google-securitycenter1_p1alpha1",
@@ -1586,6 +1784,7 @@
     },
     {
       "name": "securitycenter",
+      "lib_cargo_file": "securitycenter/v1/lib/Cargo.toml",
       "gen_dir": "securitycenter/v1",
       "spec_file": "securitycenter/v1/spec.json",
       "crate_name": "google-securitycenter1",
@@ -1594,6 +1793,7 @@
     },
     {
       "name": "securitycenter",
+      "lib_cargo_file": "securitycenter/v1beta1/lib/Cargo.toml",
       "gen_dir": "securitycenter/v1beta1",
       "spec_file": "securitycenter/v1beta1/spec.json",
       "crate_name": "google-securitycenter1_beta1",
@@ -1602,6 +1802,7 @@
     },
     {
       "name": "servicebroker",
+      "lib_cargo_file": "servicebroker/v1alpha1/lib/Cargo.toml",
       "gen_dir": "servicebroker/v1alpha1",
       "spec_file": "servicebroker/v1alpha1/spec.json",
       "crate_name": "google-servicebroker1_alpha1",
@@ -1610,6 +1811,7 @@
     },
     {
       "name": "servicebroker",
+      "lib_cargo_file": "servicebroker/v1/lib/Cargo.toml",
       "gen_dir": "servicebroker/v1",
       "spec_file": "servicebroker/v1/spec.json",
       "crate_name": "google-servicebroker1",
@@ -1618,6 +1820,7 @@
     },
     {
       "name": "servicebroker",
+      "lib_cargo_file": "servicebroker/v1beta1/lib/Cargo.toml",
       "gen_dir": "servicebroker/v1beta1",
       "spec_file": "servicebroker/v1beta1/spec.json",
       "crate_name": "google-servicebroker1_beta1",
@@ -1626,6 +1829,7 @@
     },
     {
       "name": "serviceconsumermanagement",
+      "lib_cargo_file": "serviceconsumermanagement/v1/lib/Cargo.toml",
       "gen_dir": "serviceconsumermanagement/v1",
       "spec_file": "serviceconsumermanagement/v1/spec.json",
       "crate_name": "google-serviceconsumermanagement1",
@@ -1634,6 +1838,7 @@
     },
     {
       "name": "servicecontrol",
+      "lib_cargo_file": "servicecontrol/v1/lib/Cargo.toml",
       "gen_dir": "servicecontrol/v1",
       "spec_file": "servicecontrol/v1/spec.json",
       "crate_name": "google-servicecontrol1",
@@ -1642,6 +1847,7 @@
     },
     {
       "name": "servicemanagement",
+      "lib_cargo_file": "servicemanagement/v1/lib/Cargo.toml",
       "gen_dir": "servicemanagement/v1",
       "spec_file": "servicemanagement/v1/spec.json",
       "crate_name": "google-servicemanagement1",
@@ -1650,6 +1856,7 @@
     },
     {
       "name": "servicenetworking",
+      "lib_cargo_file": "servicenetworking/v1beta/lib/Cargo.toml",
       "gen_dir": "servicenetworking/v1beta",
       "spec_file": "servicenetworking/v1beta/spec.json",
       "crate_name": "google-servicenetworking1_beta",
@@ -1658,6 +1865,7 @@
     },
     {
       "name": "servicenetworking",
+      "lib_cargo_file": "servicenetworking/v1/lib/Cargo.toml",
       "gen_dir": "servicenetworking/v1",
       "spec_file": "servicenetworking/v1/spec.json",
       "crate_name": "google-servicenetworking1",
@@ -1666,6 +1874,7 @@
     },
     {
       "name": "serviceusage",
+      "lib_cargo_file": "serviceusage/v1/lib/Cargo.toml",
       "gen_dir": "serviceusage/v1",
       "spec_file": "serviceusage/v1/spec.json",
       "crate_name": "google-serviceusage1",
@@ -1674,6 +1883,7 @@
     },
     {
       "name": "serviceusage",
+      "lib_cargo_file": "serviceusage/v1beta1/lib/Cargo.toml",
       "gen_dir": "serviceusage/v1beta1",
       "spec_file": "serviceusage/v1beta1/spec.json",
       "crate_name": "google-serviceusage1_beta1",
@@ -1682,6 +1892,7 @@
     },
     {
       "name": "sheets",
+      "lib_cargo_file": "sheets/v4/lib/Cargo.toml",
       "gen_dir": "sheets/v4",
       "spec_file": "sheets/v4/spec.json",
       "crate_name": "google-sheets4",
@@ -1690,6 +1901,7 @@
     },
     {
       "name": "siteVerification",
+      "lib_cargo_file": "siteVerification/v1/lib/Cargo.toml",
       "gen_dir": "siteVerification/v1",
       "spec_file": "siteVerification/v1/spec.json",
       "crate_name": "google-siteVerification1",
@@ -1698,6 +1910,7 @@
     },
     {
       "name": "slides",
+      "lib_cargo_file": "slides/v1/lib/Cargo.toml",
       "gen_dir": "slides/v1",
       "spec_file": "slides/v1/spec.json",
       "crate_name": "google-slides1",
@@ -1706,6 +1919,7 @@
     },
     {
       "name": "sourcerepo",
+      "lib_cargo_file": "sourcerepo/v1/lib/Cargo.toml",
       "gen_dir": "sourcerepo/v1",
       "spec_file": "sourcerepo/v1/spec.json",
       "crate_name": "google-sourcerepo1",
@@ -1714,6 +1928,7 @@
     },
     {
       "name": "spanner",
+      "lib_cargo_file": "spanner/v1/lib/Cargo.toml",
       "gen_dir": "spanner/v1",
       "spec_file": "spanner/v1/spec.json",
       "crate_name": "google-spanner1",
@@ -1722,6 +1937,7 @@
     },
     {
       "name": "speech",
+      "lib_cargo_file": "speech/v1p1beta1/lib/Cargo.toml",
       "gen_dir": "speech/v1p1beta1",
       "spec_file": "speech/v1p1beta1/spec.json",
       "crate_name": "google-speech1_p1beta1",
@@ -1730,6 +1946,7 @@
     },
     {
       "name": "speech",
+      "lib_cargo_file": "speech/v1/lib/Cargo.toml",
       "gen_dir": "speech/v1",
       "spec_file": "speech/v1/spec.json",
       "crate_name": "google-speech1",
@@ -1738,6 +1955,7 @@
     },
     {
       "name": "sqladmin",
+      "lib_cargo_file": "sqladmin/v1beta4/lib/Cargo.toml",
       "gen_dir": "sqladmin/v1beta4",
       "spec_file": "sqladmin/v1beta4/spec.json",
       "crate_name": "google-sqladmin1_beta4",
@@ -1746,6 +1964,7 @@
     },
     {
       "name": "storage",
+      "lib_cargo_file": "storage/v1/lib/Cargo.toml",
       "gen_dir": "storage/v1",
       "spec_file": "storage/v1/spec.json",
       "crate_name": "google-storage1",
@@ -1754,6 +1973,7 @@
     },
     {
       "name": "storage",
+      "lib_cargo_file": "storage/v1beta1/lib/Cargo.toml",
       "gen_dir": "storage/v1beta1",
       "spec_file": "storage/v1beta1/spec.json",
       "crate_name": "google-storage1_beta1",
@@ -1762,6 +1982,7 @@
     },
     {
       "name": "storage",
+      "lib_cargo_file": "storage/v1beta2/lib/Cargo.toml",
       "gen_dir": "storage/v1beta2",
       "spec_file": "storage/v1beta2/spec.json",
       "crate_name": "google-storage1_beta2",
@@ -1770,6 +1991,7 @@
     },
     {
       "name": "storagetransfer",
+      "lib_cargo_file": "storagetransfer/v1/lib/Cargo.toml",
       "gen_dir": "storagetransfer/v1",
       "spec_file": "storagetransfer/v1/spec.json",
       "crate_name": "google-storagetransfer1",
@@ -1778,6 +2000,7 @@
     },
     {
       "name": "streetviewpublish",
+      "lib_cargo_file": "streetviewpublish/v1/lib/Cargo.toml",
       "gen_dir": "streetviewpublish/v1",
       "spec_file": "streetviewpublish/v1/spec.json",
       "crate_name": "google-streetviewpublish1",
@@ -1786,6 +2009,7 @@
     },
     {
       "name": "surveys",
+      "lib_cargo_file": "surveys/v2/lib/Cargo.toml",
       "gen_dir": "surveys/v2",
       "spec_file": "surveys/v2/spec.json",
       "crate_name": "google-surveys2",
@@ -1794,6 +2018,7 @@
     },
     {
       "name": "tagmanager",
+      "lib_cargo_file": "tagmanager/v1/lib/Cargo.toml",
       "gen_dir": "tagmanager/v1",
       "spec_file": "tagmanager/v1/spec.json",
       "crate_name": "google-tagmanager1",
@@ -1802,6 +2027,7 @@
     },
     {
       "name": "tagmanager",
+      "lib_cargo_file": "tagmanager/v2/lib/Cargo.toml",
       "gen_dir": "tagmanager/v2",
       "spec_file": "tagmanager/v2/spec.json",
       "crate_name": "google-tagmanager2",
@@ -1810,6 +2036,7 @@
     },
     {
       "name": "tasks",
+      "lib_cargo_file": "tasks/v1/lib/Cargo.toml",
       "gen_dir": "tasks/v1",
       "spec_file": "tasks/v1/spec.json",
       "crate_name": "google-tasks1",
@@ -1818,6 +2045,7 @@
     },
     {
       "name": "testing",
+      "lib_cargo_file": "testing/v1/lib/Cargo.toml",
       "gen_dir": "testing/v1",
       "spec_file": "testing/v1/spec.json",
       "crate_name": "google-testing1",
@@ -1826,6 +2054,7 @@
     },
     {
       "name": "texttospeech",
+      "lib_cargo_file": "texttospeech/v1/lib/Cargo.toml",
       "gen_dir": "texttospeech/v1",
       "spec_file": "texttospeech/v1/spec.json",
       "crate_name": "google-texttospeech1",
@@ -1834,6 +2063,7 @@
     },
     {
       "name": "texttospeech",
+      "lib_cargo_file": "texttospeech/v1beta1/lib/Cargo.toml",
       "gen_dir": "texttospeech/v1beta1",
       "spec_file": "texttospeech/v1beta1/spec.json",
       "crate_name": "google-texttospeech1_beta1",
@@ -1842,6 +2072,7 @@
     },
     {
       "name": "toolresults",
+      "lib_cargo_file": "toolresults/v1beta3/lib/Cargo.toml",
       "gen_dir": "toolresults/v1beta3",
       "spec_file": "toolresults/v1beta3/spec.json",
       "crate_name": "google-toolresults1_beta3",
@@ -1850,6 +2081,7 @@
     },
     {
       "name": "tpu",
+      "lib_cargo_file": "tpu/v1alpha1/lib/Cargo.toml",
       "gen_dir": "tpu/v1alpha1",
       "spec_file": "tpu/v1alpha1/spec.json",
       "crate_name": "google-tpu1_alpha1",
@@ -1858,6 +2090,7 @@
     },
     {
       "name": "tpu",
+      "lib_cargo_file": "tpu/v1/lib/Cargo.toml",
       "gen_dir": "tpu/v1",
       "spec_file": "tpu/v1/spec.json",
       "crate_name": "google-tpu1",
@@ -1866,6 +2099,7 @@
     },
     {
       "name": "translate",
+      "lib_cargo_file": "translate/v2/lib/Cargo.toml",
       "gen_dir": "translate/v2",
       "spec_file": "translate/v2/spec.json",
       "crate_name": "google-translate2",
@@ -1874,6 +2108,7 @@
     },
     {
       "name": "translate",
+      "lib_cargo_file": "translate/v3beta1/lib/Cargo.toml",
       "gen_dir": "translate/v3beta1",
       "spec_file": "translate/v3beta1/spec.json",
       "crate_name": "google-translate3_beta1",
@@ -1882,6 +2117,7 @@
     },
     {
       "name": "urlshortener",
+      "lib_cargo_file": "urlshortener/v1/lib/Cargo.toml",
       "gen_dir": "urlshortener/v1",
       "spec_file": "urlshortener/v1/spec.json",
       "crate_name": "google-urlshortener1",
@@ -1890,6 +2126,7 @@
     },
     {
       "name": "vault",
+      "lib_cargo_file": "vault/v1/lib/Cargo.toml",
       "gen_dir": "vault/v1",
       "spec_file": "vault/v1/spec.json",
       "crate_name": "google-vault1",
@@ -1898,6 +2135,7 @@
     },
     {
       "name": "videointelligence",
+      "lib_cargo_file": "videointelligence/v1p1beta1/lib/Cargo.toml",
       "gen_dir": "videointelligence/v1p1beta1",
       "spec_file": "videointelligence/v1p1beta1/spec.json",
       "crate_name": "google-videointelligence1_p1beta1",
@@ -1906,6 +2144,7 @@
     },
     {
       "name": "videointelligence",
+      "lib_cargo_file": "videointelligence/v1p2beta1/lib/Cargo.toml",
       "gen_dir": "videointelligence/v1p2beta1",
       "spec_file": "videointelligence/v1p2beta1/spec.json",
       "crate_name": "google-videointelligence1_p2beta1",
@@ -1914,6 +2153,7 @@
     },
     {
       "name": "videointelligence",
+      "lib_cargo_file": "videointelligence/v1p3beta1/lib/Cargo.toml",
       "gen_dir": "videointelligence/v1p3beta1",
       "spec_file": "videointelligence/v1p3beta1/spec.json",
       "crate_name": "google-videointelligence1_p3beta1",
@@ -1922,6 +2162,7 @@
     },
     {
       "name": "videointelligence",
+      "lib_cargo_file": "videointelligence/v1/lib/Cargo.toml",
       "gen_dir": "videointelligence/v1",
       "spec_file": "videointelligence/v1/spec.json",
       "crate_name": "google-videointelligence1",
@@ -1930,6 +2171,7 @@
     },
     {
       "name": "videointelligence",
+      "lib_cargo_file": "videointelligence/v1beta2/lib/Cargo.toml",
       "gen_dir": "videointelligence/v1beta2",
       "spec_file": "videointelligence/v1beta2/spec.json",
       "crate_name": "google-videointelligence1_beta2",
@@ -1938,6 +2180,7 @@
     },
     {
       "name": "vision",
+      "lib_cargo_file": "vision/v1p1beta1/lib/Cargo.toml",
       "gen_dir": "vision/v1p1beta1",
       "spec_file": "vision/v1p1beta1/spec.json",
       "crate_name": "google-vision1_p1beta1",
@@ -1946,6 +2189,7 @@
     },
     {
       "name": "vision",
+      "lib_cargo_file": "vision/v1p2beta1/lib/Cargo.toml",
       "gen_dir": "vision/v1p2beta1",
       "spec_file": "vision/v1p2beta1/spec.json",
       "crate_name": "google-vision1_p2beta1",
@@ -1954,6 +2198,7 @@
     },
     {
       "name": "vision",
+      "lib_cargo_file": "vision/v1/lib/Cargo.toml",
       "gen_dir": "vision/v1",
       "spec_file": "vision/v1/spec.json",
       "crate_name": "google-vision1",
@@ -1962,6 +2207,7 @@
     },
     {
       "name": "webfonts",
+      "lib_cargo_file": "webfonts/v1/lib/Cargo.toml",
       "gen_dir": "webfonts/v1",
       "spec_file": "webfonts/v1/spec.json",
       "crate_name": "google-webfonts1",
@@ -1970,6 +2216,7 @@
     },
     {
       "name": "webmasters",
+      "lib_cargo_file": "webmasters/v3/lib/Cargo.toml",
       "gen_dir": "webmasters/v3",
       "spec_file": "webmasters/v3/spec.json",
       "crate_name": "google-webmasters3",
@@ -1978,6 +2225,7 @@
     },
     {
       "name": "websecurityscanner",
+      "lib_cargo_file": "websecurityscanner/v1alpha/lib/Cargo.toml",
       "gen_dir": "websecurityscanner/v1alpha",
       "spec_file": "websecurityscanner/v1alpha/spec.json",
       "crate_name": "google-websecurityscanner1_alpha",
@@ -1986,6 +2234,7 @@
     },
     {
       "name": "websecurityscanner",
+      "lib_cargo_file": "websecurityscanner/v1beta/lib/Cargo.toml",
       "gen_dir": "websecurityscanner/v1beta",
       "spec_file": "websecurityscanner/v1beta/spec.json",
       "crate_name": "google-websecurityscanner1_beta",
@@ -1994,6 +2243,7 @@
     },
     {
       "name": "websecurityscanner",
+      "lib_cargo_file": "websecurityscanner/v1/lib/Cargo.toml",
       "gen_dir": "websecurityscanner/v1",
       "spec_file": "websecurityscanner/v1/spec.json",
       "crate_name": "google-websecurityscanner1",
@@ -2002,6 +2252,7 @@
     },
     {
       "name": "youtube",
+      "lib_cargo_file": "youtube/v3/lib/Cargo.toml",
       "gen_dir": "youtube/v3",
       "spec_file": "youtube/v3/spec.json",
       "crate_name": "google-youtube3",
@@ -2010,6 +2261,7 @@
     },
     {
       "name": "youtubeAnalytics",
+      "lib_cargo_file": "youtubeAnalytics/v1/lib/Cargo.toml",
       "gen_dir": "youtubeAnalytics/v1",
       "spec_file": "youtubeAnalytics/v1/spec.json",
       "crate_name": "google-youtubeAnalytics1",
@@ -2018,6 +2270,7 @@
     },
     {
       "name": "youtubeAnalytics",
+      "lib_cargo_file": "youtubeAnalytics/v2/lib/Cargo.toml",
       "gen_dir": "youtubeAnalytics/v2",
       "spec_file": "youtubeAnalytics/v2/spec.json",
       "crate_name": "google-youtubeAnalytics2",
@@ -2026,6 +2279,7 @@
     },
     {
       "name": "youtubereporting",
+      "lib_cargo_file": "youtubereporting/v1/lib/Cargo.toml",
       "gen_dir": "youtubereporting/v1",
       "spec_file": "youtubereporting/v1/spec.json",
       "crate_name": "google-youtubereporting1",
