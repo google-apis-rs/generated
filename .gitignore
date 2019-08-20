@@ -17,7 +17,7 @@ Cargo.lock
 # End of https://www.gitignore.io/api/rust
 
 # Code for the generator
-/_generator/
+/generator/
 
 # This file can be used to mark errors during generation.
 # Run `make update-mapped-index` if one of these changes.

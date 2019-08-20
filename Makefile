@@ -1,4 +1,4 @@
-GENERATOR_DIR = _generator
+GENERATOR_DIR = generator
 MCP ?= $(GENERATOR_DIR)/target/release/mcp
 API_INDEX_JSON = etc/api-index.v1.json
 API_INDEX_MAPPED_JSON = etc/api-index-mapped.v1.json
