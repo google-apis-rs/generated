@@ -13,6 +13,7 @@ help:
 	$(info fetch-api-specs            | fetch all apis our local discovery document knows, and store)
 	$(info generate-makefile          | a makefile containing useful targets to build and test generated crates)
 	$(info update-mcp                 | pull latest code and build the mcp program)
+	$(info show-all-errors            | display all error files currently present)
 	$(info --------------------------------------------------------------------------------------)
 	$(info -- `make -f $(GEN_MAKEFILE) ...` is used to interact with the generator and generate code)
 	$(info --------------------------------------------------------------------------------------)
@@ -35,7 +36,7 @@ update-mcp: $(GENERATOR_DIR)
 
 update-all-metadata:
 	-rm $(API_INDEX_JSON)
-	$(MAKE) fetch-api-specs
+	$(MAKE) fetch-api-specs update-mapped-index
 
 update-mapped-index:
 	-rm $(API_INDEX_MAPPED_JSON)
@@ -50,3 +51,6 @@ $(GEN_MAKEFILE): $(API_INDEX_MAPPED_JSON) $(MCP) $(MAKEFILE_TPL)
 	$(MCP) substitute $(MAKEFILE_TPL):$@ < $< 
 	
 generate-makefile: $(GEN_MAKEFILE)
+
+show-all-errors:
+	find . -name generator-errors.log | while read -r fp; do echo $$"\n---> $$fp <---\n"; cat "$$fp"; done
