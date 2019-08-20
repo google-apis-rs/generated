@@ -7,7 +7,7 @@
   "canonicalName": "Pubsub",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20190808",
+  "revision": "20190812",
   "title": "Cloud Pub/Sub API",
   "description": "Provides reliable, many-to-many, asynchronous messaging between applications.\n",
   "ownerDomain": "google.com",
@@ -878,7 +878,7 @@
       "enumDescriptions": [],
       "properties": {
         "maxMessages": {
-          "description": "The maximum number of messages returned for this request. The Pub/Sub\nsystem may return fewer than the number specified.",
+          "description": "The maximum number of messages to return for this request. Must be a\npositive integer. The Pub/Sub system may return fewer than the number\nspecified.",
           "type": "integer",
           "format": "int32",
           "enum": [],

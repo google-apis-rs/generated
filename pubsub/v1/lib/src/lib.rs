@@ -569,7 +569,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PullRequest {
-        #[doc = "The maximum number of messages returned for this request. The Pub/Sub\nsystem may return fewer than the number specified."]
+        #[doc = "The maximum number of messages to return for this request. Must be a\npositive integer. The Pub/Sub system may return fewer than the number\nspecified."]
         #[serde(rename = "maxMessages", default)]
         pub max_messages: Option<i32>,
         #[doc = "If this field set to true, the system will respond immediately even if\nit there are no messages available to return in the `Pull` response.\nOtherwise, the system may wait (for a bounded amount of time) until at\nleast one message is available, rather than returning no messages."]

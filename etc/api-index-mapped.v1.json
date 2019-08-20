@@ -401,16 +401,6 @@
       "rest_url": "https://www.googleapis.com/discovery/v1/apis/civicinfo/v2/rest"
     },
     {
-      "name": "classroom",
-      "lib_cargo_file": "classroom/v1/lib/Cargo.toml",
-      "error_file": "classroom/v1/generator-errors.log",
-      "gen_dir": "classroom/v1",
-      "spec_file": "classroom/v1/spec.json",
-      "crate_name": "google-classroom1",
-      "make_target": "classroom1",
-      "rest_url": "https://classroom.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
       "name": "cloudasset",
       "lib_cargo_file": "cloudasset/v1/lib/Cargo.toml",
       "error_file": "cloudasset/v1/generator-errors.log",
@@ -589,26 +579,6 @@
       "crate_name": "google-cloudresourcemanager1_beta1",
       "make_target": "cloudresourcemanager1_beta1",
       "rest_url": "https://cloudresourcemanager.googleapis.com/$discovery/rest?version=v1beta1"
-    },
-    {
-      "name": "cloudresourcemanager",
-      "lib_cargo_file": "cloudresourcemanager/v2/lib/Cargo.toml",
-      "error_file": "cloudresourcemanager/v2/generator-errors.log",
-      "gen_dir": "cloudresourcemanager/v2",
-      "spec_file": "cloudresourcemanager/v2/spec.json",
-      "crate_name": "google-cloudresourcemanager2",
-      "make_target": "cloudresourcemanager2",
-      "rest_url": "https://cloudresourcemanager.googleapis.com/$discovery/rest?version=v2"
-    },
-    {
-      "name": "cloudresourcemanager",
-      "lib_cargo_file": "cloudresourcemanager/v2beta1/lib/Cargo.toml",
-      "error_file": "cloudresourcemanager/v2beta1/generator-errors.log",
-      "gen_dir": "cloudresourcemanager/v2beta1",
-      "spec_file": "cloudresourcemanager/v2beta1/spec.json",
-      "crate_name": "google-cloudresourcemanager2_beta1",
-      "make_target": "cloudresourcemanager2_beta1",
-      "rest_url": "https://cloudresourcemanager.googleapis.com/$discovery/rest?version=v2beta1"
     },
     {
       "name": "cloudscheduler",
@@ -1431,16 +1401,6 @@
       "rest_url": "https://language.googleapis.com/$discovery/rest?version=v1beta2"
     },
     {
-      "name": "libraryagent",
-      "lib_cargo_file": "libraryagent/v1/lib/Cargo.toml",
-      "error_file": "libraryagent/v1/generator-errors.log",
-      "gen_dir": "libraryagent/v1",
-      "spec_file": "libraryagent/v1/spec.json",
-      "crate_name": "google-libraryagent1",
-      "make_target": "libraryagent1",
-      "rest_url": "https://libraryagent.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
       "name": "licensing",
       "lib_cargo_file": "licensing/v1/lib/Cargo.toml",
       "error_file": "licensing/v1/generator-errors.log",
@@ -1781,16 +1741,6 @@
       "rest_url": "https://runtimeconfig.googleapis.com/$discovery/rest?version=v1beta1"
     },
     {
-      "name": "safebrowsing",
-      "lib_cargo_file": "safebrowsing/v4/lib/Cargo.toml",
-      "error_file": "safebrowsing/v4/generator-errors.log",
-      "gen_dir": "safebrowsing/v4",
-      "spec_file": "safebrowsing/v4/spec.json",
-      "crate_name": "google-safebrowsing4",
-      "make_target": "safebrowsing4",
-      "rest_url": "https://safebrowsing.googleapis.com/$discovery/rest?version=v4"
-    },
-    {
       "name": "script",
       "lib_cargo_file": "script/v1/lib/Cargo.toml",
       "error_file": "script/v1/generator-errors.log",
@@ -2089,16 +2039,6 @@
       "crate_name": "google-tagmanager2",
       "make_target": "tagmanager2",
       "rest_url": "https://www.googleapis.com/discovery/v1/apis/tagmanager/v2/rest"
-    },
-    {
-      "name": "tasks",
-      "lib_cargo_file": "tasks/v1/lib/Cargo.toml",
-      "error_file": "tasks/v1/generator-errors.log",
-      "gen_dir": "tasks/v1",
-      "spec_file": "tasks/v1/spec.json",
-      "crate_name": "google-tasks1",
-      "make_target": "tasks1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/tasks/v1/rest"
     },
     {
       "name": "testing",

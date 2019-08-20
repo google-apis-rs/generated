@@ -7,7 +7,7 @@
   "canonicalName": "BigQuery Data Transfer",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190813",
+  "revision": "20190811",
   "title": "BigQuery Data Transfer API",
   "description": "Schedule queries or transfer external data from SaaS applications to Google BigQuery on a regular basis.",
   "ownerDomain": "google.com",
