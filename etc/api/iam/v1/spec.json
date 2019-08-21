@@ -7,7 +7,7 @@
   "canonicalName": "iam",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190809",
+  "revision": "20190816",
   "title": "Identity and Access Management (IAM) API",
   "description": "Manages identity and access control for Google Cloud Platform resources, including the creation of service accounts, which you can use to authenticate to Google and make API calls.",
   "ownerDomain": "google.com",
@@ -1945,6 +1945,28 @@
       },
       "additionalProperties": null,
       "items": null
+    },
+    "UploadServiceAccountKeyRequest": {
+      "id": "UploadServiceAccountKeyRequest",
+      "description": "The service account key upload request.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "publicKeyData": {
+          "description": "A field that allows clients to upload their own public key. If set,\nuse this public key data to create a service account key for given\nservice account.\nPlease note, the expected format for this field is X509_PEM.",
+          "type": "string",
+          "format": "byte",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
     }
   },
   "resources": {
@@ -2852,6 +2874,45 @@
                   "request": null,
                   "response": {
                     "$ref": "ListServiceAccountKeysResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "upload": {
+                  "id": "iam.projects.serviceAccounts.keys.upload",
+                  "path": "v1/{+name}/keys:upload",
+                  "httpMethod": "POST",
+                  "description": "Upload public key for a given service account.\nThis rpc will create a\nServiceAccountKey that has the\nprovided public key and returns it.",
+                  "parameters": {
+                    "name": {
+                      "description": "The resource name of the service account in the following format:\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.\nUsing `-` as a wildcard for the `PROJECT_ID` will infer the project from\nthe account. The `ACCOUNT` value can be the `email` address or the\n`unique_id` of the service account.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": {
+                    "$ref": "UploadServiceAccountKeyRequest"
+                  },
+                  "response": {
+                    "$ref": "ServiceAccountKey"
                   },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
