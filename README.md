@@ -23,9 +23,15 @@ This can be done manually, or by force.
 ```
 make clear-all-errors
 ```
-
+**OR** use the big hammer to also refetch all specs
 ```
 make force-update-all-metadata
+```
+
+From there you would usually go with the following to gather all error data with refreshed code:
+```
+make update-mcp
+make -C gen gen-all update-mapped-index cargo-all update-mapped-index ARGS=check -k
 ```
 
 ### Forcefully update the Makefile after a change affecting the mapped index
