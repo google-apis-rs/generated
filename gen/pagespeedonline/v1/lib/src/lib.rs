@@ -496,221 +496,287 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
     #[doc = "Actions that can be performed on the pagespeedapi resource"]
-    pub fn pagespeedapi(&self) -> crate::pagespeedapi::PagespeedapiActions<A> {
-        crate::pagespeedapi::PagespeedapiActions {
+    pub fn pagespeedapi(&self) -> crate::resources::pagespeedapi::PagespeedapiActions<A> {
+        crate::resources::pagespeedapi::PagespeedapiActions {
             reqwest: &self.reqwest,
             auth: &self.auth,
         }
     }
 }
-pub mod pagespeedapi {
-    pub mod params {
-        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-        pub enum RunpagespeedStrategy {
-            #[doc = "Fetch and analyze the URL for desktop browsers"]
-            Desktop,
-            #[doc = "Fetch and analyze the URL for mobile devices"]
-            Mobile,
-        }
-        impl RunpagespeedStrategy {
-            pub fn as_str(self) -> &'static str {
-                match self {
-                    RunpagespeedStrategy::Desktop => "desktop",
-                    RunpagespeedStrategy::Mobile => "mobile",
+mod resources {
+    pub mod pagespeedapi {
+        pub mod params {
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum RunpagespeedStrategy {
+                #[doc = "Fetch and analyze the URL for desktop browsers"]
+                Desktop,
+                #[doc = "Fetch and analyze the URL for mobile devices"]
+                Mobile,
+            }
+            impl RunpagespeedStrategy {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        RunpagespeedStrategy::Desktop => "desktop",
+                        RunpagespeedStrategy::Mobile => "mobile",
+                    }
+                }
+            }
+            impl ::std::fmt::Display for RunpagespeedStrategy {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for RunpagespeedStrategy {
+                fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for RunpagespeedStrategy {
+                fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "desktop" => RunpagespeedStrategy::Desktop,
+                        "mobile" => RunpagespeedStrategy::Mobile,
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
                 }
             }
         }
-        impl ::std::fmt::Display for RunpagespeedStrategy {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                f.write_str(self.as_str())
+        pub struct PagespeedapiActions<'a, A> {
+            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) auth: &'a std::sync::Mutex<A>,
+        }
+        impl<'a, A: yup_oauth2::GetToken> PagespeedapiActions<'a, A> {
+            #[doc = "Runs PageSpeed analysis on the page at the specified URL, and returns a PageSpeed score, a list of suggestions to make that page faster, and other information."]
+            pub fn runpagespeed(&self, url: impl Into<String>) -> RunpagespeedRequestBuilder<A> {
+                RunpagespeedRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: &self.auth,
+                    alt: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    user_ip: None,
+                    url: url.into(),
+                    filter_third_party_resources: None,
+                    locale: None,
+                    rule: None,
+                    screenshot: None,
+                    strategy: None,
+                }
             }
         }
-        impl ::serde::Serialize for RunpagespeedStrategy {
-            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        #[derive(Debug, Clone)]
+        pub struct RunpagespeedRequestBuilder<'a, A> {
+            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) auth: &'a ::std::sync::Mutex<A>,
+            url: String,
+            filter_third_party_resources: Option<bool>,
+            locale: Option<String>,
+            rule: Option<Vec<String>>,
+            screenshot: Option<bool>,
+            strategy: Option<crate::resources::pagespeedapi::params::RunpagespeedStrategy>,
+            alt: Option<crate::params::Alt>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            user_ip: Option<String>,
+        }
+        impl<'a, A: yup_oauth2::GetToken> RunpagespeedRequestBuilder<'a, A> {
+            #[doc = "Indicates if third party resources should be filtered out before PageSpeed analysis."]
+            pub fn filter_third_party_resources(mut self, value: bool) -> Self {
+                self.filter_third_party_resources = Some(value);
+                self
+            }
+            #[doc = "The locale used to localize formatted results"]
+            pub fn locale(mut self, value: impl Into<String>) -> Self {
+                self.locale = Some(value.into());
+                self
+            }
+            #[doc = "A PageSpeed rule to run; if none are given, all rules are run"]
+            pub fn rule(mut self, value: impl Into<Vec<String>>) -> Self {
+                self.rule = Some(value.into());
+                self
+            }
+            #[doc = "Indicates if binary data containing a screenshot should be included"]
+            pub fn screenshot(mut self, value: bool) -> Self {
+                self.screenshot = Some(value);
+                self
+            }
+            #[doc = "The analysis strategy to use"]
+            pub fn strategy(
+                mut self,
+                value: crate::resources::pagespeedapi::params::RunpagespeedStrategy,
+            ) -> Self {
+                self.strategy = Some(value);
+                self
+            }
+            #[doc = "Data format for the response."]
+            pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                self.alt = Some(value);
+                self
+            }
+            #[doc = "Selector specifying which fields to include in a partial response."]
+            pub fn fields(mut self, value: impl Into<String>) -> Self {
+                self.fields = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Deprecated. Please use quotaUser instead."]
+            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
+                self.user_ip = Some(value.into());
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
             where
-                S: ::serde::ser::Serializer,
+                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
             {
-                serializer.serialize_str(self.as_str())
+                let fields = T::field_selector();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_fields(fields)
             }
-        }
-        impl<'de> ::serde::Deserialize<'de> for RunpagespeedStrategy {
-            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_standard(
+                self,
+            ) -> Result<crate::schemas::Result, Box<dyn ::std::error::Error>> {
+                self.execute_fields::<_, &str>(None)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_debug(
+                self,
+            ) -> Result<crate::schemas::Result, Box<dyn ::std::error::Error>> {
+                self.execute_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, Box<dyn ::std::error::Error>>
             where
-                D: ::serde::de::Deserializer<'de>,
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
             {
-                let value: &'de str = <&str>::deserialize(deserializer)?;
-                Ok(match value {
-                    "desktop" => RunpagespeedStrategy::Desktop,
-                    "mobile" => RunpagespeedStrategy::Mobile,
-                    _ => {
-                        return Err(::serde::de::Error::custom(format!(
-                            "invalid enum for #name: {}",
-                            value
-                        )))
-                    }
-                })
+                self.fields = fields.map(Into::into);
+                self._execute()
             }
-        }
-    }
-    pub struct PagespeedapiActions<'a, A> {
-        pub(super) reqwest: &'a reqwest::Client,
-        pub(super) auth: &'a std::sync::Mutex<A>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> PagespeedapiActions<'a, A> {
-        #[doc = "Runs PageSpeed analysis on the page at the specified URL, and returns a PageSpeed score, a list of suggestions to make that page faster, and other information."]
-        pub fn runpagespeed(&self, url: impl Into<String>) -> RunpagespeedRequestBuilder<A> {
-            RunpagespeedRequestBuilder {
-                reqwest: &self.reqwest,
-                auth: &self.auth,
-                alt: None,
-                fields: None,
-                key: None,
-                oauth_token: None,
-                pretty_print: None,
-                quota_user: None,
-                user_ip: None,
-                url: url.into(),
-                filter_third_party_resources: None,
-                locale: None,
-                rule: None,
-                screenshot: None,
-                strategy: None,
+            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path());
+                Ok(req.send()?.error_for_status()?.json()?)
             }
-        }
-    }
-    #[derive(Debug, Clone)]
-    pub struct RunpagespeedRequestBuilder<'a, A> {
-        pub(crate) reqwest: &'a ::reqwest::Client,
-        pub(crate) auth: &'a ::std::sync::Mutex<A>,
-        url: String,
-        filter_third_party_resources: Option<bool>,
-        locale: Option<String>,
-        rule: Option<String>,
-        screenshot: Option<bool>,
-        strategy: Option<crate::pagespeedapi::params::RunpagespeedStrategy>,
-        alt: Option<crate::params::Alt>,
-        fields: Option<String>,
-        key: Option<String>,
-        oauth_token: Option<String>,
-        pretty_print: Option<bool>,
-        quota_user: Option<String>,
-        user_ip: Option<String>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> RunpagespeedRequestBuilder<'a, A> {
-        #[doc = "Indicates if third party resources should be filtered out before PageSpeed analysis."]
-        pub fn filter_third_party_resources(&mut self, value: bool) -> &mut Self {
-            self.filter_third_party_resources = Some(value);
-            self
-        }
-        #[doc = "The locale used to localize formatted results"]
-        pub fn locale(&mut self, value: impl Into<String>) -> &mut Self {
-            self.locale = Some(value.into());
-            self
-        }
-        #[doc = "A PageSpeed rule to run; if none are given, all rules are run"]
-        pub fn rule(&mut self, value: impl Into<String>) -> &mut Self {
-            self.rule = Some(value.into());
-            self
-        }
-        #[doc = "Indicates if binary data containing a screenshot should be included"]
-        pub fn screenshot(&mut self, value: bool) -> &mut Self {
-            self.screenshot = Some(value);
-            self
-        }
-        #[doc = "The analysis strategy to use"]
-        pub fn strategy(
-            &mut self,
-            value: crate::pagespeedapi::params::RunpagespeedStrategy,
-        ) -> &mut Self {
-            self.strategy = Some(value);
-            self
-        }
-        #[doc = "Data format for the response."]
-        pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-            self.alt = Some(value);
-            self
-        }
-        #[doc = "Selector specifying which fields to include in a partial response."]
-        pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-            self.fields = Some(value.into());
-            self
-        }
-        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-        pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-            self.key = Some(value.into());
-            self
-        }
-        #[doc = "OAuth 2.0 token for the current user."]
-        pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-            self.oauth_token = Some(value.into());
-            self
-        }
-        #[doc = "Returns response with indentations and line breaks."]
-        pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-            self.pretty_print = Some(value);
-            self
-        }
-        #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-        pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-            self.quota_user = Some(value.into());
-            self
-        }
-        #[doc = "Deprecated. Please use quotaUser instead."]
-        pub fn user_ip(&mut self, value: impl Into<String>) -> &mut Self {
-            self.user_ip = Some(value.into());
-            self
-        }
-        pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            self._execute()
-        }
-        #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-        pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-            let req = self._request(&self._path());
-            Ok(req.send()?.error_for_status()?.text()?)
-        }
-        pub fn execute_debug(self) -> Result<crate::schemas::Result, Box<dyn ::std::error::Error>> {
-            self.execute()
-        }
-        fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            if self.fields.is_none() {
-                self.fields = Some(T::field_selector());
+            fn _path(&self) -> String {
+                let mut output = "https://www.googleapis.com/pagespeedonline/v1/".to_owned();
+                output.push_str("runPagespeed");
+                output
             }
-            let req = self._request(&self._path());
-            Ok(req.send()?.error_for_status()?.json()?)
-        }
-        fn _path(&self) -> String {
-            let mut output = "https://www.googleapis.com/pagespeedonline/v1/".to_owned();
-            output.push_str("runPagespeed");
-            output
-        }
-        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-            let req = self.reqwest.request(::reqwest::Method::GET, path);
-            let req = req.query(&[("url", &self.url)]);
-            let req = req.query(&[(
-                "filter_third_party_resources",
-                &self.filter_third_party_resources,
-            )]);
-            let req = req.query(&[("locale", &self.locale)]);
-            let req = req.query(&[("rule", &self.rule)]);
-            let req = req.query(&[("screenshot", &self.screenshot)]);
-            let req = req.query(&[("strategy", &self.strategy)]);
-            let req = req.query(&[("alt", &self.alt)]);
-            let req = req.query(&[("fields", &self.fields)]);
-            let req = req.query(&[("key", &self.key)]);
-            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-            let req = req.query(&[("quotaUser", &self.quota_user)]);
-            let req = req.query(&[("userIp", &self.user_ip)]);
-            req
+            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[("url", &self.url)]);
+                let req = req.query(&[(
+                    "filter_third_party_resources",
+                    &self.filter_third_party_resources,
+                )]);
+                let req = req.query(&[("locale", &self.locale)]);
+                let req = req.query(&[("rule", &self.rule)]);
+                let req = req.query(&[("screenshot", &self.screenshot)]);
+                let req = req.query(&[("strategy", &self.strategy)]);
+                let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("fields", &self.fields)]);
+                let req = req.query(&[("key", &self.key)]);
+                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                let req = req.query(&[("userIp", &self.user_ip)]);
+                req
+            }
         }
     }
 }
+#[allow(dead_code)]
+const SIMPLE: &::percent_encoding::AsciiSet = &::percent_encoding::NON_ALPHANUMERIC
+    .remove(b'-')
+    .remove(b'.')
+    .remove(b'_')
+    .remove(b'~');
+
+#[allow(dead_code)]
+const RESERVED: &::percent_encoding::AsciiSet = &SIMPLE
+    .remove(b'%')
+    .remove(b':')
+    .remove(b'/')
+    .remove(b'?')
+    .remove(b'#')
+    .remove(b'[')
+    .remove(b']')
+    .remove(b'@')
+    .remove(b'!')
+    .remove(b'$')
+    .remove(b'&')
+    .remove(b'\'')
+    .remove(b'(')
+    .remove(b')')
+    .remove(b'*')
+    .remove(b'+')
+    .remove(b',')
+    .remove(b';')
+    .remove(b'=');
+#[allow(dead_code)]
 mod multipart {
     pub(crate) struct RelatedMultiPart {
         parts: Vec<Part>,
@@ -969,13 +1035,14 @@ trait IterableMethod {
         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
 }
 
-struct PageIter<'a, M, T> {
-    method: &'a mut M,
+#[allow(dead_code)]
+struct PageIter<M, T> {
+    method: M,
     finished: bool,
     _phantom: ::std::marker::PhantomData<T>,
 }
 
-impl<'a, M, T> Iterator for PageIter<'a, M, T>
+impl<M, T> Iterator for PageIter<M, T>
 where
     M: IterableMethod,
     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,

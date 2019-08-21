@@ -573,7 +573,7 @@ pub mod schemas {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
         #[serde(rename = "condition", default)]
         pub condition: Option<crate::schemas::GoogleTypeExpr>,
-        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n"]
+        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
         #[serde(rename = "members", default)]
         pub members: Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
@@ -868,632 +868,70 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
     #[doc = "Actions that can be performed on the projects resource"]
-    pub fn projects(&self) -> crate::projects::ProjectsActions<A> {
-        crate::projects::ProjectsActions {
+    pub fn projects(&self) -> crate::resources::projects::ProjectsActions<A> {
+        crate::resources::projects::ProjectsActions {
             reqwest: &self.reqwest,
             auth: &self.auth,
         }
     }
     #[doc = "Actions that can be performed on the v_1beta_1 resource"]
-    pub fn v_1beta_1(&self) -> crate::v_1beta_1::V1Beta1Actions<A> {
-        crate::v_1beta_1::V1Beta1Actions {
+    pub fn v_1beta_1(&self) -> crate::resources::v_1beta_1::V1Beta1Actions<A> {
+        crate::resources::v_1beta_1::V1Beta1Actions {
             reqwest: &self.reqwest,
             auth: &self.auth,
         }
     }
 }
-pub mod projects {
-    pub mod params {}
-    pub struct ProjectsActions<'a, A> {
-        pub(super) reqwest: &'a reqwest::Client,
-        pub(super) auth: &'a std::sync::Mutex<A>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> ProjectsActions<'a, A> {
-        #[doc = "Actions that can be performed on the brokers resource"]
-        pub fn brokers(&self) -> brokers::BrokersActions<A> {
-            brokers::BrokersActions
-        }
-    }
-    pub mod brokers {
+mod resources {
+    pub mod projects {
         pub mod params {}
-        pub struct BrokersActions<'a, A> {
-            pub(super) reqwest: &'a reqwest::Client,
-            pub(super) auth: &'a std::sync::Mutex<A>,
+        pub struct ProjectsActions<'a, A> {
+            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) auth: &'a std::sync::Mutex<A>,
         }
-        impl<'a, A: yup_oauth2::GetToken> BrokersActions<'a, A> {
-            #[doc = "CreateBroker creates a Broker."]
-            pub fn create(
-                &self,
-                request: crate::schemas::GoogleCloudServicebrokerV1Beta1Broker,
-                parent: impl Into<String>,
-            ) -> CreateRequestBuilder<A> {
-                CreateRequestBuilder {
+        impl<'a, A: yup_oauth2::GetToken> ProjectsActions<'a, A> {
+            #[doc = "Actions that can be performed on the brokers resource"]
+            pub fn brokers(&self) -> crate::resources::projects::brokers::BrokersActions<A> {
+                crate::resources::projects::brokers::BrokersActions {
                     reqwest: &self.reqwest,
                     auth: &self.auth,
-                    request,
-                    access_token: None,
-                    alt: None,
-                    callback: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    upload_protocol: None,
-                    upload_type: None,
-                    xgafv: None,
-                    parent: parent.into(),
                 }
-            }
-            #[doc = "DeleteBroker deletes a Broker."]
-            pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder<A> {
-                DeleteRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: &self.auth,
-                    access_token: None,
-                    alt: None,
-                    callback: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    upload_protocol: None,
-                    upload_type: None,
-                    xgafv: None,
-                    name: name.into(),
-                }
-            }
-            #[doc = "ListBrokers lists brokers."]
-            pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder<A> {
-                ListRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: &self.auth,
-                    access_token: None,
-                    alt: None,
-                    callback: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    upload_protocol: None,
-                    upload_type: None,
-                    xgafv: None,
-                    parent: parent.into(),
-                    page_size: None,
-                    page_token: None,
-                }
-            }
-            #[doc = "Actions that can be performed on the instances resource"]
-            pub fn instances(&self) -> instances::InstancesActions<A> {
-                instances::InstancesActions
-            }
-            #[doc = "Actions that can be performed on the v_2 resource"]
-            pub fn v_2(&self) -> v_2::V2Actions<A> {
-                v_2::V2Actions
             }
         }
-        #[derive(Debug, Clone)]
-        pub struct CreateRequestBuilder<'a, A> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a ::std::sync::Mutex<A>,
-            request: crate::schemas::GoogleCloudServicebrokerV1Beta1Broker,
-            parent: String,
-            access_token: Option<String>,
-            alt: Option<crate::params::Alt>,
-            callback: Option<String>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            upload_protocol: Option<String>,
-            upload_type: Option<String>,
-            xgafv: Option<crate::params::Xgafv>,
-        }
-        impl<'a, A: yup_oauth2::GetToken> CreateRequestBuilder<'a, A> {
-            #[doc = "OAuth access token."]
-            pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
-                self.access_token = Some(value.into());
-                self
-            }
-            #[doc = "Data format for response."]
-            pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "JSONP"]
-            pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
-                self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-                self.fields = Some(value.into());
-                self
-            }
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-            pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-            pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
-                self.upload_protocol = Some(value.into());
-                self
-            }
-            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-            pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
-                self.upload_type = Some(value.into());
-                self
-            }
-            #[doc = "V1 error format."]
-            pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
-                self.xgafv = Some(value);
-                self
-            }
-            pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-            where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-            {
-                self._execute()
-            }
-            #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-            pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                let req = self._request(&self._path());
-                let req = req.json(&self.request);
-                Ok(req.send()?.error_for_status()?.text()?)
-            }
-            pub fn execute_debug(
-                self,
-            ) -> Result<
-                crate::schemas::GoogleCloudServicebrokerV1Beta1Broker,
-                Box<dyn ::std::error::Error>,
-            > {
-                self.execute()
-            }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-            where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-            {
-                if self.fields.is_none() {
-                    self.fields = Some(T::field_selector());
-                }
-                let req = self._request(&self._path());
-                let req = req.json(&self.request);
-                Ok(req.send()?.error_for_status()?.json()?)
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://servicebroker.googleapis.com/".to_owned();
-                output.push_str("v1beta1/");
-                output.push_str(&self.parent);
-                output.push_str("/brokers");
-                output
-            }
-            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let mut auth = self.auth.lock().unwrap();
-                let req = req.bearer_auth(
-                    auth.token::<_, &str>(&["https://www.googleapis.com/auth/cloud-platform"])
-                        .unwrap()
-                        .access_token,
-                );
-                req
-            }
-        }
-        #[derive(Debug, Clone)]
-        pub struct DeleteRequestBuilder<'a, A> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a ::std::sync::Mutex<A>,
-            name: String,
-            access_token: Option<String>,
-            alt: Option<crate::params::Alt>,
-            callback: Option<String>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            upload_protocol: Option<String>,
-            upload_type: Option<String>,
-            xgafv: Option<crate::params::Xgafv>,
-        }
-        impl<'a, A: yup_oauth2::GetToken> DeleteRequestBuilder<'a, A> {
-            #[doc = "OAuth access token."]
-            pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
-                self.access_token = Some(value.into());
-                self
-            }
-            #[doc = "Data format for response."]
-            pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "JSONP"]
-            pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
-                self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-                self.fields = Some(value.into());
-                self
-            }
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-            pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-            pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
-                self.upload_protocol = Some(value.into());
-                self
-            }
-            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-            pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
-                self.upload_type = Some(value.into());
-                self
-            }
-            #[doc = "V1 error format."]
-            pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
-                self.xgafv = Some(value);
-                self
-            }
-            pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-            where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-            {
-                self._execute()
-            }
-            #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-            pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                let req = self._request(&self._path());
-                Ok(req.send()?.error_for_status()?.text()?)
-            }
-            pub fn execute_debug(
-                self,
-            ) -> Result<crate::schemas::GoogleProtobufEmpty, Box<dyn ::std::error::Error>>
-            {
-                self.execute()
-            }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-            where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-            {
-                if self.fields.is_none() {
-                    self.fields = Some(T::field_selector());
-                }
-                let req = self._request(&self._path());
-                Ok(req.send()?.error_for_status()?.json()?)
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://servicebroker.googleapis.com/".to_owned();
-                output.push_str("v1beta1/");
-                output.push_str(&self.name);
-                output
-            }
-            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let mut auth = self.auth.lock().unwrap();
-                let req = req.bearer_auth(
-                    auth.token::<_, &str>(&["https://www.googleapis.com/auth/cloud-platform"])
-                        .unwrap()
-                        .access_token,
-                );
-                req
-            }
-        }
-        #[derive(Debug, Clone)]
-        pub struct ListRequestBuilder<'a, A> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a ::std::sync::Mutex<A>,
-            parent: String,
-            page_size: Option<i32>,
-            page_token: Option<String>,
-            access_token: Option<String>,
-            alt: Option<crate::params::Alt>,
-            callback: Option<String>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            upload_protocol: Option<String>,
-            upload_type: Option<String>,
-            xgafv: Option<crate::params::Xgafv>,
-        }
-        impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
-            #[doc = "Specifies the number of results to return per page. If there are fewer\nelements than the specified number, returns all elements.\nOptional. Acceptable values are 0 to 200, inclusive. (Default: 100)"]
-            pub fn page_size(&mut self, value: i32) -> &mut Self {
-                self.page_size = Some(value);
-                self
-            }
-            #[doc = "Specifies a page token to use. Set `pageToken` to a `nextPageToken`\nreturned by a previous list request to get the next page of results."]
-            pub fn page_token(&mut self, value: impl Into<String>) -> &mut Self {
-                self.page_token = Some(value.into());
-                self
-            }
-            #[doc = "OAuth access token."]
-            pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
-                self.access_token = Some(value.into());
-                self
-            }
-            #[doc = "Data format for response."]
-            pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "JSONP"]
-            pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
-                self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-                self.fields = Some(value.into());
-                self
-            }
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-            pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-            pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
-                self.upload_protocol = Some(value.into());
-                self
-            }
-            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-            pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
-                self.upload_type = Some(value.into());
-                self
-            }
-            #[doc = "V1 error format."]
-            pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
-                self.xgafv = Some(value);
-                self
-            }
-            pub fn iter_brokers<T>(
-                &'a mut self,
-            ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error>>> + 'a
-            where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
-            {
-                struct ItemIter<'a, M, T> {
-                    method: &'a mut M,
-                    finished: bool,
-                    items_iter: Option<::std::vec::IntoIter<T>>,
-                }
-                impl<'a, M, T> Iterator for ItemIter<'a, M, T>
-                where
-                    M: crate::IterableMethod,
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-                {
-                    type Item = Result<T, Box<dyn ::std::error::Error>>;
-                    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                        use ::field_selector::FieldSelector;
-                        #[derive(:: serde :: Deserialize, FieldSelector)]
-                        struct Resp<T>
-                        where
-                            T: FieldSelector,
-                        {
-                            #[serde(rename = "brokers")]
-                            items: Option<Vec<T>>,
-                            #[serde(rename = "nextPageToken")]
-                            next_page_token: Option<String>,
-                        }
-                        loop {
-                            if let Some(iter) = self.items_iter.as_mut() {
-                                match iter.next() {
-                                    Some(v) => return Some(Ok(v)),
-                                    None => {}
-                                }
-                            }
-                            if self.finished {
-                                return None;
-                            }
-                            let resp: Resp<T> = match self.method.execute() {
-                                Ok(r) => r,
-                                Err(err) => return Some(Err(err)),
-                            };
-                            if let Some(next_page_token) = resp.next_page_token {
-                                self.method.set_page_token(next_page_token);
-                            } else {
-                                self.finished = true;
-                            }
-                            self.items_iter = resp.items.map(|i| i.into_iter());
-                        }
-                    }
-                }
-                ItemIter {
-                    method: self,
-                    finished: false,
-                    items_iter: None,
-                }
-            }
-            pub fn iter<T>(
-                &'a mut self,
-            ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error>>> + 'a
-            where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
-            {
-                crate::PageIter {
-                    method: self,
-                    finished: false,
-                    _phantom: ::std::default::Default::default(),
-                }
-            }
-            pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-            where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-            {
-                self._execute()
-            }
-            #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-            pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                let req = self._request(&self._path());
-                Ok(req.send()?.error_for_status()?.text()?)
-            }
-            pub fn execute_debug(
-                self,
-            ) -> Result<
-                crate::schemas::GoogleCloudServicebrokerV1Beta1ListBrokersResponse,
-                Box<dyn ::std::error::Error>,
-            > {
-                self.execute()
-            }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-            where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-            {
-                if self.fields.is_none() {
-                    self.fields = Some(T::field_selector());
-                }
-                let req = self._request(&self._path());
-                Ok(req.send()?.error_for_status()?.json()?)
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://servicebroker.googleapis.com/".to_owned();
-                output.push_str("v1beta1/");
-                output.push_str(&self.parent);
-                output.push_str("/brokers");
-                output
-            }
-            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("pageSize", &self.page_size)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let mut auth = self.auth.lock().unwrap();
-                let req = req.bearer_auth(
-                    auth.token::<_, &str>(&["https://www.googleapis.com/auth/cloud-platform"])
-                        .unwrap()
-                        .access_token,
-                );
-                req
-            }
-        }
-        impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
-            fn set_page_token(&mut self, value: String) {
-                self.page_token = value.into();
-            }
-            fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-            where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-            {
-                self._execute()
-            }
-        }
-        pub mod instances {
+        pub mod brokers {
             pub mod params {}
-            pub struct InstancesActions<'a, A> {
-                pub(super) reqwest: &'a reqwest::Client,
-                pub(super) auth: &'a std::sync::Mutex<A>,
+            pub struct BrokersActions<'a, A> {
+                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) auth: &'a std::sync::Mutex<A>,
             }
-            impl<'a, A: yup_oauth2::GetToken> InstancesActions<'a, A> {
-                #[doc = "Gets the given service instance from the system.\nThe API call accepts both OSB style API and standard google style API\nresource path.\ni.e. both `projects/*/brokers/*/instances/*`\n and `projects/*/brokers/*/v2/service_instances/*` are acceptable paths."]
-                pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder<A> {
-                    GetRequestBuilder {
-                        reqwest: &self.reqwest,
-                        auth: &self.auth,
-                        access_token: None,
-                        alt: None,
-                        callback: None,
-                        fields: None,
-                        key: None,
-                        oauth_token: None,
-                        pretty_print: None,
-                        quota_user: None,
-                        upload_protocol: None,
-                        upload_type: None,
-                        xgafv: None,
-                        name: name.into(),
-                    }
-                }
-                #[doc = "Returns the state of the last operation for the service instance.\nOnly last (or current) operation can be polled."]
-                pub fn get_last_operation(
+            impl<'a, A: yup_oauth2::GetToken> BrokersActions<'a, A> {
+                #[doc = "CreateBroker creates a Broker."]
+                pub fn create(
                     &self,
-                    name: impl Into<String>,
-                ) -> GetLastOperationRequestBuilder<A> {
-                    GetLastOperationRequestBuilder {
+                    request: crate::schemas::GoogleCloudServicebrokerV1Beta1Broker,
+                    parent: impl Into<String>,
+                ) -> CreateRequestBuilder<A> {
+                    CreateRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: &self.auth,
+                        request,
+                        access_token: None,
+                        alt: None,
+                        callback: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
+                        parent: parent.into(),
+                    }
+                }
+                #[doc = "DeleteBroker deletes a Broker."]
+                pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder<A> {
+                    DeleteRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: &self.auth,
                         access_token: None,
@@ -1508,12 +946,9 @@ pub mod projects {
                         upload_type: None,
                         xgafv: None,
                         name: name.into(),
-                        operation: None,
-                        plan_id: None,
-                        service_id: None,
                     }
                 }
-                #[doc = "Lists all the instances in the brokers\nThis API is an extension and not part of the OSB spec.\nHence the path is a standard Google API URL."]
+                #[doc = "ListBrokers lists brokers."]
                 pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder<A> {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -1534,16 +969,30 @@ pub mod projects {
                         page_token: None,
                     }
                 }
-                #[doc = "Actions that can be performed on the bindings resource"]
-                pub fn bindings(&self) -> bindings::BindingsActions<A> {
-                    bindings::BindingsActions
+                #[doc = "Actions that can be performed on the instances resource"]
+                pub fn instances(
+                    &self,
+                ) -> crate::resources::projects::brokers::instances::InstancesActions<A>
+                {
+                    crate::resources::projects::brokers::instances::InstancesActions {
+                        reqwest: &self.reqwest,
+                        auth: &self.auth,
+                    }
+                }
+                #[doc = "Actions that can be performed on the v_2 resource"]
+                pub fn v_2(&self) -> crate::resources::projects::brokers::v_2::V2Actions<A> {
+                    crate::resources::projects::brokers::v_2::V2Actions {
+                        reqwest: &self.reqwest,
+                        auth: &self.auth,
+                    }
                 }
             }
             #[derive(Debug, Clone)]
-            pub struct GetRequestBuilder<'a, A> {
+            pub struct CreateRequestBuilder<'a, A> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
                 pub(crate) auth: &'a ::std::sync::Mutex<A>,
-                name: String,
+                request: crate::schemas::GoogleCloudServicebrokerV1Beta1Broker,
+                parent: String,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
@@ -1556,99 +1005,143 @@ pub mod projects {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: yup_oauth2::GetToken> GetRequestBuilder<'a, A> {
+            impl<'a, A: yup_oauth2::GetToken> CreateRequestBuilder<'a, A> {
                 #[doc = "OAuth access token."]
-                pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
                     self.access_token = Some(value.into());
                     self
                 }
                 #[doc = "Data format for response."]
-                pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
+                pub fn alt(mut self, value: crate::params::Alt) -> Self {
                     self.alt = Some(value);
                     self
                 }
                 #[doc = "JSONP"]
-                pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
                     self
                 }
                 #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn fields(mut self, value: impl Into<String>) -> Self {
                     self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-                pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
                     self
                 }
                 #[doc = "OAuth 2.0 token for the current user."]
-                pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
                     self.oauth_token = Some(value.into());
                     self
                 }
                 #[doc = "Returns response with indentations and line breaks."]
-                pub fn pretty_print(&mut self, value: bool) -> &mut Self {
+                pub fn pretty_print(mut self, value: bool) -> Self {
                     self.pretty_print = Some(value);
                     self
                 }
                 #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-                pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                     self.quota_user = Some(value.into());
                     self
                 }
                 #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-                pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
                     self.upload_protocol = Some(value.into());
                     self
                 }
                 #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-                pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
                     self.upload_type = Some(value.into());
                     self
                 }
                 #[doc = "V1 error format."]
-                pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
                     self.xgafv = Some(value);
                     self
                 }
-                pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    self._execute()
+                    let fields = T::field_selector();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_fields(fields)
                 }
-                #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-                pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                    let req = self._request(&self._path());
-                    Ok(req.send()?.error_for_status()?.text()?)
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_standard(
+                    self,
+                ) -> Result<
+                    crate::schemas::GoogleCloudServicebrokerV1Beta1Broker,
+                    Box<dyn ::std::error::Error>,
+                > {
+                    self.execute_fields::<_, &str>(None)
                 }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
                 pub fn execute_debug(
                     self,
                 ) -> Result<
-                    crate::schemas::GoogleCloudServicebrokerV1Beta1ServiceInstance,
+                    crate::schemas::GoogleCloudServicebrokerV1Beta1Broker,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute()
+                    self.execute_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, Box<dyn ::std::error::Error>>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
                 }
                 fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned,
                 {
-                    if self.fields.is_none() {
-                        self.fields = Some(T::field_selector());
-                    }
                     let req = self._request(&self._path());
+                    let req = req.json(&self.request);
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://servicebroker.googleapis.com/".to_owned();
                     output.push_str("v1beta1/");
-                    output.push_str(&self.name);
+                    {
+                        let var_as_str = &self.parent;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::RESERVED,
+                        ));
+                    }
+                    output.push_str("/brokers");
                     output
                 }
                 fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
+                    let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
@@ -1661,22 +1154,18 @@ pub mod projects {
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
                     let mut auth = self.auth.lock().unwrap();
-                    let req = req.bearer_auth(
-                        auth.token::<_, &str>(&["https://www.googleapis.com/auth/cloud-platform"])
-                            .unwrap()
-                            .access_token,
-                    );
+                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                    let token = runtime.block_on(fut).unwrap().access_token;
+                    let req = req.bearer_auth(&token);
                     req
                 }
             }
             #[derive(Debug, Clone)]
-            pub struct GetLastOperationRequestBuilder<'a, A> {
+            pub struct DeleteRequestBuilder<'a, A> {
                 pub(crate) reqwest: &'a ::reqwest::Client,
                 pub(crate) auth: &'a ::std::sync::Mutex<A>,
                 name: String,
-                operation: Option<String>,
-                plan_id: Option<String>,
-                service_id: Option<String>,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
@@ -1689,118 +1178,137 @@ pub mod projects {
                 upload_type: Option<String>,
                 xgafv: Option<crate::params::Xgafv>,
             }
-            impl<'a, A: yup_oauth2::GetToken> GetLastOperationRequestBuilder<'a, A> {
-                #[doc = "If `operation` was returned during mutation operation, this field must be\npopulated with the provided value."]
-                pub fn operation(&mut self, value: impl Into<String>) -> &mut Self {
-                    self.operation = Some(value.into());
-                    self
-                }
-                #[doc = "Plan id."]
-                pub fn plan_id(&mut self, value: impl Into<String>) -> &mut Self {
-                    self.plan_id = Some(value.into());
-                    self
-                }
-                #[doc = "Service id."]
-                pub fn service_id(&mut self, value: impl Into<String>) -> &mut Self {
-                    self.service_id = Some(value.into());
-                    self
-                }
+            impl<'a, A: yup_oauth2::GetToken> DeleteRequestBuilder<'a, A> {
                 #[doc = "OAuth access token."]
-                pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
                     self.access_token = Some(value.into());
                     self
                 }
                 #[doc = "Data format for response."]
-                pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
+                pub fn alt(mut self, value: crate::params::Alt) -> Self {
                     self.alt = Some(value);
                     self
                 }
                 #[doc = "JSONP"]
-                pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
                     self
                 }
                 #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn fields(mut self, value: impl Into<String>) -> Self {
                     self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-                pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
                     self
                 }
                 #[doc = "OAuth 2.0 token for the current user."]
-                pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
                     self.oauth_token = Some(value.into());
                     self
                 }
                 #[doc = "Returns response with indentations and line breaks."]
-                pub fn pretty_print(&mut self, value: bool) -> &mut Self {
+                pub fn pretty_print(mut self, value: bool) -> Self {
                     self.pretty_print = Some(value);
                     self
                 }
                 #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-                pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                     self.quota_user = Some(value.into());
                     self
                 }
                 #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-                pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
                     self.upload_protocol = Some(value.into());
                     self
                 }
                 #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-                pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
                     self.upload_type = Some(value.into());
                     self
                 }
                 #[doc = "V1 error format."]
-                pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
                     self.xgafv = Some(value);
                     self
                 }
-                pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    self._execute()
+                    let fields = T::field_selector();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_fields(fields)
                 }
-                #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-                pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                    let req = self._request(&self._path());
-                    Ok(req.send()?.error_for_status()?.text()?)
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_standard(
+                    self,
+                ) -> Result<crate::schemas::GoogleProtobufEmpty, Box<dyn ::std::error::Error>>
+                {
+                    self.execute_fields::<_, &str>(None)
                 }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
                 pub fn execute_debug(
                     self,
-                ) -> Result<
-                    crate::schemas::GoogleCloudServicebrokerV1Beta1Operation,
-                    Box<dyn ::std::error::Error>,
-                > {
-                    self.execute()
+                ) -> Result<crate::schemas::GoogleProtobufEmpty, Box<dyn ::std::error::Error>>
+                {
+                    self.execute_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, Box<dyn ::std::error::Error>>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
                 }
                 fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned,
                 {
-                    if self.fields.is_none() {
-                        self.fields = Some(T::field_selector());
-                    }
                     let req = self._request(&self._path());
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://servicebroker.googleapis.com/".to_owned();
                     output.push_str("v1beta1/");
-                    output.push_str(&self.name);
-                    output.push_str("/last_operation");
+                    {
+                        let var_as_str = &self.name;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::RESERVED,
+                        ));
+                    }
                     output
                 }
                 fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("operation", &self.operation)]);
-                    let req = req.query(&[("planId", &self.plan_id)]);
-                    let req = req.query(&[("serviceId", &self.service_id)]);
+                    let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
@@ -1813,11 +1321,10 @@ pub mod projects {
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
                     let mut auth = self.auth.lock().unwrap();
-                    let req = req.bearer_auth(
-                        auth.token::<_, &str>(&["https://www.googleapis.com/auth/cloud-platform"])
-                            .unwrap()
-                            .access_token,
-                    );
+                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                    let token = runtime.block_on(fut).unwrap().access_token;
+                    let req = req.bearer_auth(&token);
                     req
                 }
             }
@@ -1842,131 +1349,121 @@ pub mod projects {
             }
             impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
                 #[doc = "Specifies the number of results to return per page. If there are fewer\nelements than the specified number, returns all elements.\nOptional. Acceptable values are 0 to 200, inclusive. (Default: 100)"]
-                pub fn page_size(&mut self, value: i32) -> &mut Self {
+                pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
                 }
                 #[doc = "Specifies a page token to use. Set `pageToken` to a `nextPageToken`\nreturned by a previous list request to get the next page of results."]
-                pub fn page_token(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
                 }
                 #[doc = "OAuth access token."]
-                pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
                     self.access_token = Some(value.into());
                     self
                 }
                 #[doc = "Data format for response."]
-                pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
+                pub fn alt(mut self, value: crate::params::Alt) -> Self {
                     self.alt = Some(value);
                     self
                 }
                 #[doc = "JSONP"]
-                pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
                     self
                 }
                 #[doc = "Selector specifying which fields to include in a partial response."]
-                pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn fields(mut self, value: impl Into<String>) -> Self {
                     self.fields = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-                pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
                     self
                 }
                 #[doc = "OAuth 2.0 token for the current user."]
-                pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
                     self.oauth_token = Some(value.into());
                     self
                 }
                 #[doc = "Returns response with indentations and line breaks."]
-                pub fn pretty_print(&mut self, value: bool) -> &mut Self {
+                pub fn pretty_print(mut self, value: bool) -> Self {
                     self.pretty_print = Some(value);
                     self
                 }
                 #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-                pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                     self.quota_user = Some(value.into());
                     self
                 }
                 #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-                pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
                     self.upload_protocol = Some(value.into());
                     self
                 }
                 #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-                pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
                     self.upload_type = Some(value.into());
                     self
                 }
                 #[doc = "V1 error format."]
-                pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
                     self.xgafv = Some(value);
                     self
                 }
-                pub fn iter_instances<T>(
-                    &'a mut self,
-                ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error>>> + 'a
+                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                #[doc = r" items yielded by the iterator are chosen by the caller of this"]
+                #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
+                #[doc = r" populated fields in the yielded items will be determined by the"]
+                #[doc = r" `FieldSelector` implementation."]
+                pub fn iter_brokers<T>(self) -> ListBrokersIter<'a, A, T>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    struct ItemIter<'a, M, T> {
-                        method: &'a mut M,
-                        finished: bool,
-                        items_iter: Option<::std::vec::IntoIter<T>>,
-                    }
-                    impl<'a, M, T> Iterator for ItemIter<'a, M, T>
-                    where
-                        M: crate::IterableMethod,
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-                    {
-                        type Item = Result<T, Box<dyn ::std::error::Error>>;
-                        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                            use ::field_selector::FieldSelector;
-                            #[derive(:: serde :: Deserialize, FieldSelector)]
-                            struct Resp<T>
-                            where
-                                T: FieldSelector,
-                            {
-                                #[serde(rename = "instances")]
-                                items: Option<Vec<T>>,
-                                #[serde(rename = "nextPageToken")]
-                                next_page_token: Option<String>,
-                            }
-                            loop {
-                                if let Some(iter) = self.items_iter.as_mut() {
-                                    match iter.next() {
-                                        Some(v) => return Some(Ok(v)),
-                                        None => {}
-                                    }
-                                }
-                                if self.finished {
-                                    return None;
-                                }
-                                let resp: Resp<T> = match self.method.execute() {
-                                    Ok(r) => r,
-                                    Err(err) => return Some(Err(err)),
-                                };
-                                if let Some(next_page_token) = resp.next_page_token {
-                                    self.method.set_page_token(next_page_token);
-                                } else {
-                                    self.finished = true;
-                                }
-                                self.items_iter = resp.items.map(|i| i.into_iter());
-                            }
-                        }
-                    }
-                    ItemIter {
+                    ListBrokersIter {
                         method: self,
-                        finished: false,
+                        last_page_reached: false,
                         items_iter: None,
                     }
                 }
+                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+                #[doc = r" fields in `#items_type` will be the default fields populated by"]
+                #[doc = r" the server."]
+                pub fn iter_brokers_standard(
+                    mut self,
+                ) -> ListBrokersIter<'a, A, crate::schemas::GoogleCloudServicebrokerV1Beta1Broker>
+                {
+                    self.fields = Some(concat!("nextPageToken,", "brokers").to_owned());
+                    ListBrokersIter {
+                        method: self,
+                        last_page_reached: false,
+                        items_iter: None,
+                    }
+                }
+                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+                #[doc = r" fields in `#items_type` will be all fields available. This should"]
+                #[doc = r" primarily be used during developement and debugging as fetching"]
+                #[doc = r" all fields can be expensive both in bandwidth and server"]
+                #[doc = r" resources."]
+                pub fn iter_brokers_debug(
+                    mut self,
+                ) -> ListBrokersIter<'a, A, crate::schemas::GoogleCloudServicebrokerV1Beta1Broker>
+                {
+                    self.fields = Some(concat!("nextPageToken,", "brokers", "(*)").to_owned());
+                    ListBrokersIter {
+                        method: self,
+                        last_page_reached: false,
+                        items_iter: None,
+                    }
+                }
+                #[doc = r" Return an iterator that"]
                 pub fn iter<T>(
-                    &'a mut self,
-                ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error>>> + 'a
+                    self,
+                ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
                 {
@@ -1976,40 +1473,82 @@ pub mod projects {
                         _phantom: ::std::default::Default::default(),
                     }
                 }
-                pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
                     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                 {
-                    self._execute()
+                    let fields = T::field_selector();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_fields(fields)
                 }
-                #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-                pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                    let req = self._request(&self._path());
-                    Ok(req.send()?.error_for_status()?.text()?)
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_standard(
+                    self,
+                ) -> Result<
+                    crate::schemas::GoogleCloudServicebrokerV1Beta1ListBrokersResponse,
+                    Box<dyn ::std::error::Error>,
+                > {
+                    self.execute_fields::<_, &str>(None)
                 }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
                 pub fn execute_debug(
                     self,
                 ) -> Result<
-                    crate::schemas::GoogleCloudServicebrokerV1Beta1ListServiceInstancesResponse,
+                    crate::schemas::GoogleCloudServicebrokerV1Beta1ListBrokersResponse,
                     Box<dyn ::std::error::Error>,
                 > {
-                    self.execute()
+                    self.execute_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, Box<dyn ::std::error::Error>>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
                 }
                 fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                 where
-                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    T: ::serde::de::DeserializeOwned,
                 {
-                    if self.fields.is_none() {
-                        self.fields = Some(T::field_selector());
-                    }
                     let req = self._request(&self._path());
                     Ok(req.send()?.error_for_status()?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://servicebroker.googleapis.com/".to_owned();
                     output.push_str("v1beta1/");
-                    output.push_str(&self.parent);
-                    output.push_str("/instances");
+                    {
+                        let var_as_str = &self.parent;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::RESERVED,
+                        ));
+                    }
+                    output.push_str("/brokers");
                     output
                 }
                 fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
@@ -2028,12 +1567,50 @@ pub mod projects {
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
                     let mut auth = self.auth.lock().unwrap();
-                    let req = req.bearer_auth(
-                        auth.token::<_, &str>(&["https://www.googleapis.com/auth/cloud-platform"])
-                            .unwrap()
-                            .access_token,
-                    );
+                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                    let token = runtime.block_on(fut).unwrap().access_token;
+                    let req = req.bearer_auth(&token);
                     req
+                }
+            }
+            pub struct ListBrokersIter<'a, A, T> {
+                method: ListRequestBuilder<'a, A>,
+                last_page_reached: bool,
+                items_iter: Option<::std::vec::IntoIter<T>>,
+            }
+            impl<'a, A, T> Iterator for ListBrokersIter<'a, A, T>
+            where
+                A: ::yup_oauth2::GetToken,
+                T: ::serde::de::DeserializeOwned,
+            {
+                type Item = Result<T, Box<dyn ::std::error::Error>>;
+                fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+                    #[derive(:: serde :: Deserialize)]
+                    struct Resp<T> {
+                        #[serde(rename = "brokers")]
+                        items: Option<Vec<T>>,
+                        #[serde(rename = "nextPageToken")]
+                        next_page_token: Option<String>,
+                    }
+                    loop {
+                        if let Some(iter) = self.items_iter.as_mut() {
+                            match iter.next() {
+                                Some(v) => return Some(Ok(v)),
+                                None => {}
+                            }
+                        }
+                        if self.last_page_reached {
+                            return None;
+                        }
+                        let resp: Resp<T> = match self.method._execute() {
+                            Ok(r) => r,
+                            Err(err) => return Some(Err(err)),
+                        };
+                        self.last_page_reached = resp.next_page_token.as_ref().is_none();
+                        self.method.page_token = resp.next_page_token;
+                        self.items_iter = resp.items.map(|i| i.into_iter());
+                    }
                 }
             }
             impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
@@ -2047,775 +1624,14 @@ pub mod projects {
                     self._execute()
                 }
             }
-            pub mod bindings {
+            pub mod instances {
                 pub mod params {}
-                pub struct BindingsActions<'a, A> {
-                    pub(super) reqwest: &'a reqwest::Client,
-                    pub(super) auth: &'a std::sync::Mutex<A>,
+                pub struct InstancesActions<'a, A> {
+                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) auth: &'a std::sync::Mutex<A>,
                 }
-                impl<'a, A: yup_oauth2::GetToken> BindingsActions<'a, A> {
-                    #[doc = "Returns the state of the last operation for the binding.\nOnly last (or current) operation can be polled."]
-                    pub fn get_last_operation(
-                        &self,
-                        name: impl Into<String>,
-                    ) -> GetLastOperationRequestBuilder<A> {
-                        GetLastOperationRequestBuilder {
-                            reqwest: &self.reqwest,
-                            auth: &self.auth,
-                            access_token: None,
-                            alt: None,
-                            callback: None,
-                            fields: None,
-                            key: None,
-                            oauth_token: None,
-                            pretty_print: None,
-                            quota_user: None,
-                            upload_protocol: None,
-                            upload_type: None,
-                            xgafv: None,
-                            name: name.into(),
-                            operation: None,
-                            plan_id: None,
-                            service_id: None,
-                        }
-                    }
-                    #[doc = "Lists all the bindings in the instance."]
-                    pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder<A> {
-                        ListRequestBuilder {
-                            reqwest: &self.reqwest,
-                            auth: &self.auth,
-                            access_token: None,
-                            alt: None,
-                            callback: None,
-                            fields: None,
-                            key: None,
-                            oauth_token: None,
-                            pretty_print: None,
-                            quota_user: None,
-                            upload_protocol: None,
-                            upload_type: None,
-                            xgafv: None,
-                            parent: parent.into(),
-                            page_size: None,
-                            page_token: None,
-                        }
-                    }
-                }
-                #[derive(Debug, Clone)]
-                pub struct GetLastOperationRequestBuilder<'a, A> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
-                    pub(crate) auth: &'a ::std::sync::Mutex<A>,
-                    name: String,
-                    operation: Option<String>,
-                    plan_id: Option<String>,
-                    service_id: Option<String>,
-                    access_token: Option<String>,
-                    alt: Option<crate::params::Alt>,
-                    callback: Option<String>,
-                    fields: Option<String>,
-                    key: Option<String>,
-                    oauth_token: Option<String>,
-                    pretty_print: Option<bool>,
-                    quota_user: Option<String>,
-                    upload_protocol: Option<String>,
-                    upload_type: Option<String>,
-                    xgafv: Option<crate::params::Xgafv>,
-                }
-                impl<'a, A: yup_oauth2::GetToken> GetLastOperationRequestBuilder<'a, A> {
-                    #[doc = "If `operation` was returned during mutation operation, this field must be\npopulated with the provided value."]
-                    pub fn operation(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.operation = Some(value.into());
-                        self
-                    }
-                    #[doc = "Plan id."]
-                    pub fn plan_id(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.plan_id = Some(value.into());
-                        self
-                    }
-                    #[doc = "Service id."]
-                    pub fn service_id(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.service_id = Some(value.into());
-                        self
-                    }
-                    #[doc = "OAuth access token."]
-                    pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.access_token = Some(value.into());
-                        self
-                    }
-                    #[doc = "Data format for response."]
-                    pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-                        self.alt = Some(value);
-                        self
-                    }
-                    #[doc = "JSONP"]
-                    pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.fields = Some(value.into());
-                        self
-                    }
-                    #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-                    pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.key = Some(value.into());
-                        self
-                    }
-                    #[doc = "OAuth 2.0 token for the current user."]
-                    pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.oauth_token = Some(value.into());
-                        self
-                    }
-                    #[doc = "Returns response with indentations and line breaks."]
-                    pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-                        self.pretty_print = Some(value);
-                        self
-                    }
-                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-                    pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.quota_user = Some(value.into());
-                        self
-                    }
-                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-                    pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.upload_protocol = Some(value.into());
-                        self
-                    }
-                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-                    pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.upload_type = Some(value.into());
-                        self
-                    }
-                    #[doc = "V1 error format."]
-                    pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
-                        self.xgafv = Some(value);
-                        self
-                    }
-                    pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-                    {
-                        self._execute()
-                    }
-                    #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-                    pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                        let req = self._request(&self._path());
-                        Ok(req.send()?.error_for_status()?.text()?)
-                    }
-                    pub fn execute_debug(
-                        self,
-                    ) -> Result<
-                        crate::schemas::GoogleCloudServicebrokerV1Beta1Operation,
-                        Box<dyn ::std::error::Error>,
-                    > {
-                        self.execute()
-                    }
-                    fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-                    {
-                        if self.fields.is_none() {
-                            self.fields = Some(T::field_selector());
-                        }
-                        let req = self._request(&self._path());
-                        Ok(req.send()?.error_for_status()?.json()?)
-                    }
-                    fn _path(&self) -> String {
-                        let mut output = "https://servicebroker.googleapis.com/".to_owned();
-                        output.push_str("v1beta1/");
-                        output.push_str(&self.name);
-                        output.push_str("/last_operation");
-                        output
-                    }
-                    fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("operation", &self.operation)]);
-                        let req = req.query(&[("planId", &self.plan_id)]);
-                        let req = req.query(&[("serviceId", &self.service_id)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let mut auth = self.auth.lock().unwrap();
-                        let req = req.bearer_auth(
-                            auth.token::<_, &str>(&[
-                                "https://www.googleapis.com/auth/cloud-platform",
-                            ])
-                            .unwrap()
-                            .access_token,
-                        );
-                        req
-                    }
-                }
-                #[derive(Debug, Clone)]
-                pub struct ListRequestBuilder<'a, A> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
-                    pub(crate) auth: &'a ::std::sync::Mutex<A>,
-                    parent: String,
-                    page_size: Option<i32>,
-                    page_token: Option<String>,
-                    access_token: Option<String>,
-                    alt: Option<crate::params::Alt>,
-                    callback: Option<String>,
-                    fields: Option<String>,
-                    key: Option<String>,
-                    oauth_token: Option<String>,
-                    pretty_print: Option<bool>,
-                    quota_user: Option<String>,
-                    upload_protocol: Option<String>,
-                    upload_type: Option<String>,
-                    xgafv: Option<crate::params::Xgafv>,
-                }
-                impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
-                    #[doc = "Specifies the number of results to return per page. If there are fewer\nelements than the specified number, returns all elements.\nOptional. Acceptable values are 0 to 200, inclusive. (Default: 100)"]
-                    pub fn page_size(&mut self, value: i32) -> &mut Self {
-                        self.page_size = Some(value);
-                        self
-                    }
-                    #[doc = "Specifies a page token to use. Set `pageToken` to a `nextPageToken`\nreturned by a previous list request to get the next page of results."]
-                    pub fn page_token(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.page_token = Some(value.into());
-                        self
-                    }
-                    #[doc = "OAuth access token."]
-                    pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.access_token = Some(value.into());
-                        self
-                    }
-                    #[doc = "Data format for response."]
-                    pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-                        self.alt = Some(value);
-                        self
-                    }
-                    #[doc = "JSONP"]
-                    pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.fields = Some(value.into());
-                        self
-                    }
-                    #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-                    pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.key = Some(value.into());
-                        self
-                    }
-                    #[doc = "OAuth 2.0 token for the current user."]
-                    pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.oauth_token = Some(value.into());
-                        self
-                    }
-                    #[doc = "Returns response with indentations and line breaks."]
-                    pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-                        self.pretty_print = Some(value);
-                        self
-                    }
-                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-                    pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.quota_user = Some(value.into());
-                        self
-                    }
-                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-                    pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.upload_protocol = Some(value.into());
-                        self
-                    }
-                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-                    pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.upload_type = Some(value.into());
-                        self
-                    }
-                    #[doc = "V1 error format."]
-                    pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
-                        self.xgafv = Some(value);
-                        self
-                    }
-                    pub fn iter_bindings<T>(
-                        &'a mut self,
-                    ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error>>> + 'a
-                    where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
-                    {
-                        struct ItemIter<'a, M, T> {
-                            method: &'a mut M,
-                            finished: bool,
-                            items_iter: Option<::std::vec::IntoIter<T>>,
-                        }
-                        impl<'a, M, T> Iterator for ItemIter<'a, M, T>
-                        where
-                            M: crate::IterableMethod,
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-                        {
-                            type Item = Result<T, Box<dyn ::std::error::Error>>;
-                            fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                                use ::field_selector::FieldSelector;
-                                #[derive(:: serde :: Deserialize, FieldSelector)]
-                                struct Resp<T>
-                                where
-                                    T: FieldSelector,
-                                {
-                                    #[serde(rename = "bindings")]
-                                    items: Option<Vec<T>>,
-                                    #[serde(rename = "nextPageToken")]
-                                    next_page_token: Option<String>,
-                                }
-                                loop {
-                                    if let Some(iter) = self.items_iter.as_mut() {
-                                        match iter.next() {
-                                            Some(v) => return Some(Ok(v)),
-                                            None => {}
-                                        }
-                                    }
-                                    if self.finished {
-                                        return None;
-                                    }
-                                    let resp: Resp<T> = match self.method.execute() {
-                                        Ok(r) => r,
-                                        Err(err) => return Some(Err(err)),
-                                    };
-                                    if let Some(next_page_token) = resp.next_page_token {
-                                        self.method.set_page_token(next_page_token);
-                                    } else {
-                                        self.finished = true;
-                                    }
-                                    self.items_iter = resp.items.map(|i| i.into_iter());
-                                }
-                            }
-                        }
-                        ItemIter {
-                            method: self,
-                            finished: false,
-                            items_iter: None,
-                        }
-                    }
-                    pub fn iter<T>(
-                        &'a mut self,
-                    ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error>>> + 'a
-                    where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
-                    {
-                        crate::PageIter {
-                            method: self,
-                            finished: false,
-                            _phantom: ::std::default::Default::default(),
-                        }
-                    }
-                    pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-                    {
-                        self._execute()
-                    }
-                    #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-                    pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                        let req = self._request(&self._path());
-                        Ok(req.send()?.error_for_status()?.text()?)
-                    }
-                    pub fn execute_debug(
-                        self,
-                    ) -> Result<
-                        crate::schemas::GoogleCloudServicebrokerV1Beta1ListBindingsResponse,
-                        Box<dyn ::std::error::Error>,
-                    > {
-                        self.execute()
-                    }
-                    fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-                    {
-                        if self.fields.is_none() {
-                            self.fields = Some(T::field_selector());
-                        }
-                        let req = self._request(&self._path());
-                        Ok(req.send()?.error_for_status()?.json()?)
-                    }
-                    fn _path(&self) -> String {
-                        let mut output = "https://servicebroker.googleapis.com/".to_owned();
-                        output.push_str("v1beta1/");
-                        output.push_str(&self.parent);
-                        output.push_str("/bindings");
-                        output
-                    }
-                    fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let mut auth = self.auth.lock().unwrap();
-                        let req = req.bearer_auth(
-                            auth.token::<_, &str>(&[
-                                "https://www.googleapis.com/auth/cloud-platform",
-                            ])
-                            .unwrap()
-                            .access_token,
-                        );
-                        req
-                    }
-                }
-                impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
-                    fn set_page_token(&mut self, value: String) {
-                        self.page_token = value.into();
-                    }
-                    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-                    {
-                        self._execute()
-                    }
-                }
-            }
-        }
-        pub mod v_2 {
-            pub mod params {}
-            pub struct V2Actions<'a, A> {
-                pub(super) reqwest: &'a reqwest::Client,
-                pub(super) auth: &'a std::sync::Mutex<A>,
-            }
-            impl<'a, A: yup_oauth2::GetToken> V2Actions<'a, A> {
-                #[doc = "Actions that can be performed on the catalog resource"]
-                pub fn catalog(&self) -> catalog::CatalogActions<A> {
-                    catalog::CatalogActions
-                }
-                #[doc = "Actions that can be performed on the service_instances resource"]
-                pub fn service_instances(&self) -> service_instances::ServiceInstancesActions<A> {
-                    service_instances::ServiceInstancesActions
-                }
-            }
-            pub mod catalog {
-                pub mod params {}
-                pub struct CatalogActions<'a, A> {
-                    pub(super) reqwest: &'a reqwest::Client,
-                    pub(super) auth: &'a std::sync::Mutex<A>,
-                }
-                impl<'a, A: yup_oauth2::GetToken> CatalogActions<'a, A> {
-                    #[doc = "Lists all the Services registered with this broker for consumption for\ngiven service registry broker, which contains an set of services.\nNote, that Service producer API is separate from Broker API."]
-                    pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder<A> {
-                        ListRequestBuilder {
-                            reqwest: &self.reqwest,
-                            auth: &self.auth,
-                            access_token: None,
-                            alt: None,
-                            callback: None,
-                            fields: None,
-                            key: None,
-                            oauth_token: None,
-                            pretty_print: None,
-                            quota_user: None,
-                            upload_protocol: None,
-                            upload_type: None,
-                            xgafv: None,
-                            parent: parent.into(),
-                            page_size: None,
-                            page_token: None,
-                        }
-                    }
-                }
-                #[derive(Debug, Clone)]
-                pub struct ListRequestBuilder<'a, A> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
-                    pub(crate) auth: &'a ::std::sync::Mutex<A>,
-                    parent: String,
-                    page_size: Option<i32>,
-                    page_token: Option<String>,
-                    access_token: Option<String>,
-                    alt: Option<crate::params::Alt>,
-                    callback: Option<String>,
-                    fields: Option<String>,
-                    key: Option<String>,
-                    oauth_token: Option<String>,
-                    pretty_print: Option<bool>,
-                    quota_user: Option<String>,
-                    upload_protocol: Option<String>,
-                    upload_type: Option<String>,
-                    xgafv: Option<crate::params::Xgafv>,
-                }
-                impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
-                    #[doc = "Specifies the number of results to return per page. If there are fewer\nelements than the specified number, returns all elements.\nOptional. If unset or 0, all the results will be returned."]
-                    pub fn page_size(&mut self, value: i32) -> &mut Self {
-                        self.page_size = Some(value);
-                        self
-                    }
-                    #[doc = "Specifies a page token to use. Set `pageToken` to a `nextPageToken`\nreturned by a previous list request to get the next page of results."]
-                    pub fn page_token(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.page_token = Some(value.into());
-                        self
-                    }
-                    #[doc = "OAuth access token."]
-                    pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.access_token = Some(value.into());
-                        self
-                    }
-                    #[doc = "Data format for response."]
-                    pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-                        self.alt = Some(value);
-                        self
-                    }
-                    #[doc = "JSONP"]
-                    pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.fields = Some(value.into());
-                        self
-                    }
-                    #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-                    pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.key = Some(value.into());
-                        self
-                    }
-                    #[doc = "OAuth 2.0 token for the current user."]
-                    pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.oauth_token = Some(value.into());
-                        self
-                    }
-                    #[doc = "Returns response with indentations and line breaks."]
-                    pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-                        self.pretty_print = Some(value);
-                        self
-                    }
-                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-                    pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.quota_user = Some(value.into());
-                        self
-                    }
-                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-                    pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.upload_protocol = Some(value.into());
-                        self
-                    }
-                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-                    pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.upload_type = Some(value.into());
-                        self
-                    }
-                    #[doc = "V1 error format."]
-                    pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
-                        self.xgafv = Some(value);
-                        self
-                    }
-                    pub fn iter_services<T>(
-                        &'a mut self,
-                    ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error>>> + 'a
-                    where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
-                    {
-                        struct ItemIter<'a, M, T> {
-                            method: &'a mut M,
-                            finished: bool,
-                            items_iter: Option<::std::vec::IntoIter<T>>,
-                        }
-                        impl<'a, M, T> Iterator for ItemIter<'a, M, T>
-                        where
-                            M: crate::IterableMethod,
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-                        {
-                            type Item = Result<T, Box<dyn ::std::error::Error>>;
-                            fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
-                                use ::field_selector::FieldSelector;
-                                #[derive(:: serde :: Deserialize, FieldSelector)]
-                                struct Resp<T>
-                                where
-                                    T: FieldSelector,
-                                {
-                                    #[serde(rename = "services")]
-                                    items: Option<Vec<T>>,
-                                    #[serde(rename = "nextPageToken")]
-                                    next_page_token: Option<String>,
-                                }
-                                loop {
-                                    if let Some(iter) = self.items_iter.as_mut() {
-                                        match iter.next() {
-                                            Some(v) => return Some(Ok(v)),
-                                            None => {}
-                                        }
-                                    }
-                                    if self.finished {
-                                        return None;
-                                    }
-                                    let resp: Resp<T> = match self.method.execute() {
-                                        Ok(r) => r,
-                                        Err(err) => return Some(Err(err)),
-                                    };
-                                    if let Some(next_page_token) = resp.next_page_token {
-                                        self.method.set_page_token(next_page_token);
-                                    } else {
-                                        self.finished = true;
-                                    }
-                                    self.items_iter = resp.items.map(|i| i.into_iter());
-                                }
-                            }
-                        }
-                        ItemIter {
-                            method: self,
-                            finished: false,
-                            items_iter: None,
-                        }
-                    }
-                    pub fn iter<T>(
-                        &'a mut self,
-                    ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error>>> + 'a
-                    where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
-                    {
-                        crate::PageIter {
-                            method: self,
-                            finished: false,
-                            _phantom: ::std::default::Default::default(),
-                        }
-                    }
-                    pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-                    {
-                        self._execute()
-                    }
-                    #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-                    pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                        let req = self._request(&self._path());
-                        Ok(req.send()?.error_for_status()?.text()?)
-                    }
-                    pub fn execute_debug(
-                        self,
-                    ) -> Result<
-                        crate::schemas::GoogleCloudServicebrokerV1Beta1ListCatalogResponse,
-                        Box<dyn ::std::error::Error>,
-                    > {
-                        self.execute()
-                    }
-                    fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-                    {
-                        if self.fields.is_none() {
-                            self.fields = Some(T::field_selector());
-                        }
-                        let req = self._request(&self._path());
-                        Ok(req.send()?.error_for_status()?.json()?)
-                    }
-                    fn _path(&self) -> String {
-                        let mut output = "https://servicebroker.googleapis.com/".to_owned();
-                        output.push_str("v1beta1/");
-                        output.push_str(&self.parent);
-                        output.push_str("/v2/catalog");
-                        output
-                    }
-                    fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let mut auth = self.auth.lock().unwrap();
-                        let req = req.bearer_auth(
-                            auth.token::<_, &str>(&[
-                                "https://www.googleapis.com/auth/cloud-platform",
-                            ])
-                            .unwrap()
-                            .access_token,
-                        );
-                        req
-                    }
-                }
-                impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
-                    fn set_page_token(&mut self, value: String) {
-                        self.page_token = value.into();
-                    }
-                    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-                    {
-                        self._execute()
-                    }
-                }
-            }
-            pub mod service_instances {
-                pub mod params {}
-                pub struct ServiceInstancesActions<'a, A> {
-                    pub(super) reqwest: &'a reqwest::Client,
-                    pub(super) auth: &'a std::sync::Mutex<A>,
-                }
-                impl<'a, A: yup_oauth2::GetToken> ServiceInstancesActions<'a, A> {
-                    #[doc = "Provisions a service instance.\nIf `request.accepts_incomplete` is false and Broker cannot execute request\nsynchronously HTTP 422 error will be returned along with\nFAILED_PRECONDITION status.\nIf `request.accepts_incomplete` is true and the Broker decides to execute\nresource asynchronously then HTTP 202 response code will be returned and a\nvalid polling operation in the response will be included.\nIf Broker executes the request synchronously and it succeeds HTTP 201\nresponse will be furnished.\nIf identical instance exists, then HTTP 200 response will be returned.\nIf an instance with identical ID but mismatching parameters exists, then\nHTTP 409 status code will be returned."]
-                    pub fn create(
-                        &self,
-                        request: crate::schemas::GoogleCloudServicebrokerV1Beta1ServiceInstance,
-                        parent: impl Into<String>,
-                        instance_id: impl Into<String>,
-                    ) -> CreateRequestBuilder<A> {
-                        CreateRequestBuilder {
-                            reqwest: &self.reqwest,
-                            auth: &self.auth,
-                            request,
-                            access_token: None,
-                            alt: None,
-                            callback: None,
-                            fields: None,
-                            key: None,
-                            oauth_token: None,
-                            pretty_print: None,
-                            quota_user: None,
-                            upload_protocol: None,
-                            upload_type: None,
-                            xgafv: None,
-                            parent: parent.into(),
-                            instance_id: instance_id.into(),
-                            accepts_incomplete: None,
-                        }
-                    }
-                    #[doc = "Deprovisions a service instance.\nFor synchronous/asynchronous request details see CreateServiceInstance\nmethod.\nIf service instance does not exist HTTP 410 status will be returned."]
-                    pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder<A> {
-                        DeleteRequestBuilder {
-                            reqwest: &self.reqwest,
-                            auth: &self.auth,
-                            access_token: None,
-                            alt: None,
-                            callback: None,
-                            fields: None,
-                            key: None,
-                            oauth_token: None,
-                            pretty_print: None,
-                            quota_user: None,
-                            upload_protocol: None,
-                            upload_type: None,
-                            xgafv: None,
-                            name: name.into(),
-                            accepts_incomplete: None,
-                            plan_id: None,
-                            service_id: None,
-                        }
-                    }
-                    #[doc = "Gets the given service instance from the system.\nThe API call accepts both OSB style API and standard google style API\nresource path.\ni.e. both `projects/*/brokers/*/instances/*`\n and `projects/*/brokers/*/v2/service_instances/*` are acceptable paths."]
+                impl<'a, A: yup_oauth2::GetToken> InstancesActions<'a, A> {
+                    #[doc = "Gets the given service instance from the system.\nThe API call accepts both OSB style API and standard google style API\nresource path.\ni.e. both `projects/*/brokers/*/instances/*`\nand `projects/*/brokers/*/v2/service_instances/*` are acceptable paths."]
                     pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder<A> {
                         GetRequestBuilder {
                             reqwest: &self.reqwest,
@@ -2859,16 +1675,11 @@ pub mod projects {
                             service_id: None,
                         }
                     }
-                    #[doc = "Updates an existing service instance.\nSee CreateServiceInstance for possible response codes."]
-                    pub fn patch(
-                        &self,
-                        request: crate::schemas::GoogleCloudServicebrokerV1Beta1ServiceInstance,
-                        name: impl Into<String>,
-                    ) -> PatchRequestBuilder<A> {
-                        PatchRequestBuilder {
+                    #[doc = "Lists all the instances in the brokers\nThis API is an extension and not part of the OSB spec.\nHence the path is a standard Google API URL."]
+                    pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder<A> {
+                        ListRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: &self.auth,
-                            request,
                             access_token: None,
                             alt: None,
                             callback: None,
@@ -2880,299 +1691,20 @@ pub mod projects {
                             upload_protocol: None,
                             upload_type: None,
                             xgafv: None,
-                            name: name.into(),
-                            accepts_incomplete: None,
+                            parent: parent.into(),
+                            page_size: None,
+                            page_token: None,
                         }
                     }
-                    #[doc = "Actions that can be performed on the service_bindings resource"]
-                    pub fn service_bindings(&self) -> service_bindings::ServiceBindingsActions<A> {
-                        service_bindings::ServiceBindingsActions
-                    }
-                }
-                #[derive(Debug, Clone)]
-                pub struct CreateRequestBuilder<'a, A> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
-                    pub(crate) auth: &'a ::std::sync::Mutex<A>,
-                    request: crate::schemas::GoogleCloudServicebrokerV1Beta1ServiceInstance,
-                    parent: String,
-                    instance_id: String,
-                    accepts_incomplete: Option<bool>,
-                    access_token: Option<String>,
-                    alt: Option<crate::params::Alt>,
-                    callback: Option<String>,
-                    fields: Option<String>,
-                    key: Option<String>,
-                    oauth_token: Option<String>,
-                    pretty_print: Option<bool>,
-                    quota_user: Option<String>,
-                    upload_protocol: Option<String>,
-                    upload_type: Option<String>,
-                    xgafv: Option<crate::params::Xgafv>,
-                }
-                impl<'a, A: yup_oauth2::GetToken> CreateRequestBuilder<'a, A> {
-                    #[doc = "Value indicating that API client supports asynchronous operations. If\nBroker cannot execute the request synchronously HTTP 422 code will be\nreturned to HTTP clients along with FAILED_PRECONDITION error.\nIf true and broker will execute request asynchronously 202 HTTP code will\nbe returned.\nThis broker always requires this to be true as all mutator operations are\nasynchronous."]
-                    pub fn accepts_incomplete(&mut self, value: bool) -> &mut Self {
-                        self.accepts_incomplete = Some(value);
-                        self
-                    }
-                    #[doc = "OAuth access token."]
-                    pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.access_token = Some(value.into());
-                        self
-                    }
-                    #[doc = "Data format for response."]
-                    pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-                        self.alt = Some(value);
-                        self
-                    }
-                    #[doc = "JSONP"]
-                    pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.fields = Some(value.into());
-                        self
-                    }
-                    #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-                    pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.key = Some(value.into());
-                        self
-                    }
-                    #[doc = "OAuth 2.0 token for the current user."]
-                    pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.oauth_token = Some(value.into());
-                        self
-                    }
-                    #[doc = "Returns response with indentations and line breaks."]
-                    pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-                        self.pretty_print = Some(value);
-                        self
-                    }
-                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-                    pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.quota_user = Some(value.into());
-                        self
-                    }
-                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-                    pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.upload_protocol = Some(value.into());
-                        self
-                    }
-                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-                    pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.upload_type = Some(value.into());
-                        self
-                    }
-                    #[doc = "V1 error format."]
-                    pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
-                        self.xgafv = Some(value);
-                        self
-                    }
-                    pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    #[doc = "Actions that can be performed on the bindings resource"]
+                    pub fn bindings(
+                        &self,
+                    ) -> crate::resources::projects::brokers::instances::bindings::BindingsActions<A>
                     {
-                        self._execute()
-                    }
-                    #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-                    pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                        let req = self._request(&self._path());
-                        let req = req.json(&self.request);
-                        Ok(req.send()?.error_for_status()?.text()?)
-                    }pub fn execute_debug ( self ) -> Result < crate :: schemas :: GoogleCloudServicebrokerV1Beta1CreateServiceInstanceResponse , Box < dyn :: std :: error :: Error >>{
-                        self.execute()
-                    }
-                    fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-                    {
-                        if self.fields.is_none() {
-                            self.fields = Some(T::field_selector());
+                        crate::resources::projects::brokers::instances::bindings::BindingsActions {
+                            reqwest: &self.reqwest,
+                            auth: &self.auth,
                         }
-                        let req = self._request(&self._path());
-                        let req = req.json(&self.request);
-                        Ok(req.send()?.error_for_status()?.json()?)
-                    }
-                    fn _path(&self) -> String {
-                        let mut output = "https://servicebroker.googleapis.com/".to_owned();
-                        output.push_str("v1beta1/");
-                        output.push_str(&self.parent);
-                        output.push_str("/v2/service_instances/");
-                        output.push_str(&self.instance_id);
-                        output
-                    }
-                    fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-                        let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                        let req = req.query(&[("acceptsIncomplete", &self.accepts_incomplete)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let mut auth = self.auth.lock().unwrap();
-                        let req = req.bearer_auth(
-                            auth.token::<_, &str>(&[
-                                "https://www.googleapis.com/auth/cloud-platform",
-                            ])
-                            .unwrap()
-                            .access_token,
-                        );
-                        req
-                    }
-                }
-                #[derive(Debug, Clone)]
-                pub struct DeleteRequestBuilder<'a, A> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
-                    pub(crate) auth: &'a ::std::sync::Mutex<A>,
-                    name: String,
-                    accepts_incomplete: Option<bool>,
-                    plan_id: Option<String>,
-                    service_id: Option<String>,
-                    access_token: Option<String>,
-                    alt: Option<crate::params::Alt>,
-                    callback: Option<String>,
-                    fields: Option<String>,
-                    key: Option<String>,
-                    oauth_token: Option<String>,
-                    pretty_print: Option<bool>,
-                    quota_user: Option<String>,
-                    upload_protocol: Option<String>,
-                    upload_type: Option<String>,
-                    xgafv: Option<crate::params::Xgafv>,
-                }
-                impl<'a, A: yup_oauth2::GetToken> DeleteRequestBuilder<'a, A> {
-                    #[doc = "See CreateServiceInstanceRequest for details."]
-                    pub fn accepts_incomplete(&mut self, value: bool) -> &mut Self {
-                        self.accepts_incomplete = Some(value);
-                        self
-                    }
-                    #[doc = "The plan id of the service instance."]
-                    pub fn plan_id(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.plan_id = Some(value.into());
-                        self
-                    }
-                    #[doc = "The service id of the service instance."]
-                    pub fn service_id(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.service_id = Some(value.into());
-                        self
-                    }
-                    #[doc = "OAuth access token."]
-                    pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.access_token = Some(value.into());
-                        self
-                    }
-                    #[doc = "Data format for response."]
-                    pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-                        self.alt = Some(value);
-                        self
-                    }
-                    #[doc = "JSONP"]
-                    pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.fields = Some(value.into());
-                        self
-                    }
-                    #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-                    pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.key = Some(value.into());
-                        self
-                    }
-                    #[doc = "OAuth 2.0 token for the current user."]
-                    pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.oauth_token = Some(value.into());
-                        self
-                    }
-                    #[doc = "Returns response with indentations and line breaks."]
-                    pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-                        self.pretty_print = Some(value);
-                        self
-                    }
-                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-                    pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.quota_user = Some(value.into());
-                        self
-                    }
-                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-                    pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.upload_protocol = Some(value.into());
-                        self
-                    }
-                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-                    pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
-                        self.upload_type = Some(value.into());
-                        self
-                    }
-                    #[doc = "V1 error format."]
-                    pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
-                        self.xgafv = Some(value);
-                        self
-                    }
-                    pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-                    {
-                        self._execute()
-                    }
-                    #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-                    pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                        let req = self._request(&self._path());
-                        Ok(req.send()?.error_for_status()?.text()?)
-                    }pub fn execute_debug ( self ) -> Result < crate :: schemas :: GoogleCloudServicebrokerV1Beta1DeleteServiceInstanceResponse , Box < dyn :: std :: error :: Error >>{
-                        self.execute()
-                    }
-                    fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-                    {
-                        if self.fields.is_none() {
-                            self.fields = Some(T::field_selector());
-                        }
-                        let req = self._request(&self._path());
-                        Ok(req.send()?.error_for_status()?.json()?)
-                    }
-                    fn _path(&self) -> String {
-                        let mut output = "https://servicebroker.googleapis.com/".to_owned();
-                        output.push_str("v1beta1/");
-                        output.push_str(&self.name);
-                        output
-                    }
-                    fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-                        let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                        let req = req.query(&[("acceptsIncomplete", &self.accepts_incomplete)]);
-                        let req = req.query(&[("planId", &self.plan_id)]);
-                        let req = req.query(&[("serviceId", &self.service_id)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let mut auth = self.auth.lock().unwrap();
-                        let req = req.bearer_auth(
-                            auth.token::<_, &str>(&[
-                                "https://www.googleapis.com/auth/cloud-platform",
-                            ])
-                            .unwrap()
-                            .access_token,
-                        );
-                        req
                     }
                 }
                 #[derive(Debug, Clone)]
@@ -3194,93 +1726,135 @@ pub mod projects {
                 }
                 impl<'a, A: yup_oauth2::GetToken> GetRequestBuilder<'a, A> {
                     #[doc = "OAuth access token."]
-                    pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
                         self.access_token = Some(value.into());
                         self
                     }
                     #[doc = "Data format for response."]
-                    pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
+                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
                         self.alt = Some(value);
                         self
                     }
                     #[doc = "JSONP"]
-                    pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
                         self
                     }
                     #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn fields(mut self, value: impl Into<String>) -> Self {
                         self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-                    pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
                         self
                     }
                     #[doc = "OAuth 2.0 token for the current user."]
-                    pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
                         self.oauth_token = Some(value.into());
                         self
                     }
                     #[doc = "Returns response with indentations and line breaks."]
-                    pub fn pretty_print(&mut self, value: bool) -> &mut Self {
+                    pub fn pretty_print(mut self, value: bool) -> Self {
                         self.pretty_print = Some(value);
                         self
                     }
                     #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-                    pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
                     #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-                    pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
                         self.upload_protocol = Some(value.into());
                         self
                     }
                     #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-                    pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
                         self.upload_type = Some(value.into());
                         self
                     }
                     #[doc = "V1 error format."]
-                    pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
                         self.xgafv = Some(value);
                         self
                     }
-                    pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                    #[doc = r" Execute the given operation. The fields requested are"]
+                    #[doc = r" determined by the FieldSelector attribute of the return type."]
+                    #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                    #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                    #[doc = r" are not generic over the return type and deserialize the"]
+                    #[doc = r" response into an auto-generated struct will all possible"]
+                    #[doc = r" fields."]
+                    pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                     where
                         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        self._execute()
+                        let fields = T::field_selector();
+                        let fields: Option<String> = if fields.is_empty() {
+                            None
+                        } else {
+                            Some(fields)
+                        };
+                        self.execute_fields(fields)
                     }
-                    #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-                    pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                        let req = self._request(&self._path());
-                        Ok(req.send()?.error_for_status()?.text()?)
+                    #[doc = r" Execute the given operation. This will not provide any"]
+                    #[doc = r" `fields` selector indicating that the server will determine"]
+                    #[doc = r" the fields returned. This typically includes the most common"]
+                    #[doc = r" fields, but it will not include every possible attribute of"]
+                    #[doc = r" the response resource."]
+                    pub fn execute_standard(
+                        self,
+                    ) -> Result<
+                        crate::schemas::GoogleCloudServicebrokerV1Beta1ServiceInstance,
+                        Box<dyn ::std::error::Error>,
+                    > {
+                        self.execute_fields::<_, &str>(None)
                     }
+                    #[doc = r" Execute the given operation. This will provide a `fields`"]
+                    #[doc = r" selector of `*`. This will include every attribute of the"]
+                    #[doc = r" response resource and should be limited to use during"]
+                    #[doc = r" development or debugging."]
                     pub fn execute_debug(
                         self,
                     ) -> Result<
                         crate::schemas::GoogleCloudServicebrokerV1Beta1ServiceInstance,
                         Box<dyn ::std::error::Error>,
                     > {
-                        self.execute()
+                        self.execute_fields(Some("*"))
+                    }
+                    #[doc = r" Execute the given operation. This will use the `fields`"]
+                    #[doc = r" selector provided and will deserialize the response into"]
+                    #[doc = r" whatever return value is provided."]
+                    pub fn execute_fields<T, F>(
+                        mut self,
+                        fields: Option<F>,
+                    ) -> Result<T, Box<dyn ::std::error::Error>>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                        F: Into<String>,
+                    {
+                        self.fields = fields.map(Into::into);
+                        self._execute()
                     }
                     fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                     where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        T: ::serde::de::DeserializeOwned,
                     {
-                        if self.fields.is_none() {
-                            self.fields = Some(T::field_selector());
-                        }
                         let req = self._request(&self._path());
                         Ok(req.send()?.error_for_status()?.json()?)
                     }
                     fn _path(&self) -> String {
                         let mut output = "https://servicebroker.googleapis.com/".to_owned();
                         output.push_str("v1beta1/");
-                        output.push_str(&self.name);
+                        {
+                            let var_as_str = &self.name;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::RESERVED,
+                            ));
+                        }
                         output
                     }
                     fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
@@ -3297,13 +1871,11 @@ pub mod projects {
                         let req = req.query(&[("uploadType", &self.upload_type)]);
                         let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let mut auth = self.auth.lock().unwrap();
-                        let req = req.bearer_auth(
-                            auth.token::<_, &str>(&[
-                                "https://www.googleapis.com/auth/cloud-platform",
-                            ])
-                            .unwrap()
-                            .access_token,
-                        );
+                        let fut =
+                            auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                        let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                        let token = runtime.block_on(fut).unwrap().access_token;
+                        let req = req.bearer_auth(&token);
                         req
                     }
                 }
@@ -3329,108 +1901,150 @@ pub mod projects {
                 }
                 impl<'a, A: yup_oauth2::GetToken> GetLastOperationRequestBuilder<'a, A> {
                     #[doc = "If `operation` was returned during mutation operation, this field must be\npopulated with the provided value."]
-                    pub fn operation(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn operation(mut self, value: impl Into<String>) -> Self {
                         self.operation = Some(value.into());
                         self
                     }
                     #[doc = "Plan id."]
-                    pub fn plan_id(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn plan_id(mut self, value: impl Into<String>) -> Self {
                         self.plan_id = Some(value.into());
                         self
                     }
                     #[doc = "Service id."]
-                    pub fn service_id(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn service_id(mut self, value: impl Into<String>) -> Self {
                         self.service_id = Some(value.into());
                         self
                     }
                     #[doc = "OAuth access token."]
-                    pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
                         self.access_token = Some(value.into());
                         self
                     }
                     #[doc = "Data format for response."]
-                    pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
+                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
                         self.alt = Some(value);
                         self
                     }
                     #[doc = "JSONP"]
-                    pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
                         self
                     }
                     #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn fields(mut self, value: impl Into<String>) -> Self {
                         self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-                    pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
                         self
                     }
                     #[doc = "OAuth 2.0 token for the current user."]
-                    pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
                         self.oauth_token = Some(value.into());
                         self
                     }
                     #[doc = "Returns response with indentations and line breaks."]
-                    pub fn pretty_print(&mut self, value: bool) -> &mut Self {
+                    pub fn pretty_print(mut self, value: bool) -> Self {
                         self.pretty_print = Some(value);
                         self
                     }
                     #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-                    pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
                     #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-                    pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
                         self.upload_protocol = Some(value.into());
                         self
                     }
                     #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-                    pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
                         self.upload_type = Some(value.into());
                         self
                     }
                     #[doc = "V1 error format."]
-                    pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
                         self.xgafv = Some(value);
                         self
                     }
-                    pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                    #[doc = r" Execute the given operation. The fields requested are"]
+                    #[doc = r" determined by the FieldSelector attribute of the return type."]
+                    #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                    #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                    #[doc = r" are not generic over the return type and deserialize the"]
+                    #[doc = r" response into an auto-generated struct will all possible"]
+                    #[doc = r" fields."]
+                    pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                     where
                         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        self._execute()
+                        let fields = T::field_selector();
+                        let fields: Option<String> = if fields.is_empty() {
+                            None
+                        } else {
+                            Some(fields)
+                        };
+                        self.execute_fields(fields)
                     }
-                    #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-                    pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                        let req = self._request(&self._path());
-                        Ok(req.send()?.error_for_status()?.text()?)
+                    #[doc = r" Execute the given operation. This will not provide any"]
+                    #[doc = r" `fields` selector indicating that the server will determine"]
+                    #[doc = r" the fields returned. This typically includes the most common"]
+                    #[doc = r" fields, but it will not include every possible attribute of"]
+                    #[doc = r" the response resource."]
+                    pub fn execute_standard(
+                        self,
+                    ) -> Result<
+                        crate::schemas::GoogleCloudServicebrokerV1Beta1Operation,
+                        Box<dyn ::std::error::Error>,
+                    > {
+                        self.execute_fields::<_, &str>(None)
                     }
+                    #[doc = r" Execute the given operation. This will provide a `fields`"]
+                    #[doc = r" selector of `*`. This will include every attribute of the"]
+                    #[doc = r" response resource and should be limited to use during"]
+                    #[doc = r" development or debugging."]
                     pub fn execute_debug(
                         self,
                     ) -> Result<
                         crate::schemas::GoogleCloudServicebrokerV1Beta1Operation,
                         Box<dyn ::std::error::Error>,
                     > {
-                        self.execute()
+                        self.execute_fields(Some("*"))
+                    }
+                    #[doc = r" Execute the given operation. This will use the `fields`"]
+                    #[doc = r" selector provided and will deserialize the response into"]
+                    #[doc = r" whatever return value is provided."]
+                    pub fn execute_fields<T, F>(
+                        mut self,
+                        fields: Option<F>,
+                    ) -> Result<T, Box<dyn ::std::error::Error>>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                        F: Into<String>,
+                    {
+                        self.fields = fields.map(Into::into);
+                        self._execute()
                     }
                     fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                     where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        T: ::serde::de::DeserializeOwned,
                     {
-                        if self.fields.is_none() {
-                            self.fields = Some(T::field_selector());
-                        }
                         let req = self._request(&self._path());
                         Ok(req.send()?.error_for_status()?.json()?)
                     }
                     fn _path(&self) -> String {
                         let mut output = "https://servicebroker.googleapis.com/".to_owned();
                         output.push_str("v1beta1/");
-                        output.push_str(&self.name);
+                        {
+                            let var_as_str = &self.name;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::RESERVED,
+                            ));
+                        }
                         output.push_str("/last_operation");
                         output
                     }
@@ -3451,23 +2065,21 @@ pub mod projects {
                         let req = req.query(&[("uploadType", &self.upload_type)]);
                         let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let mut auth = self.auth.lock().unwrap();
-                        let req = req.bearer_auth(
-                            auth.token::<_, &str>(&[
-                                "https://www.googleapis.com/auth/cloud-platform",
-                            ])
-                            .unwrap()
-                            .access_token,
-                        );
+                        let fut =
+                            auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                        let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                        let token = runtime.block_on(fut).unwrap().access_token;
+                        let req = req.bearer_auth(&token);
                         req
                     }
                 }
                 #[derive(Debug, Clone)]
-                pub struct PatchRequestBuilder<'a, A> {
+                pub struct ListRequestBuilder<'a, A> {
                     pub(crate) reqwest: &'a ::reqwest::Client,
                     pub(crate) auth: &'a ::std::sync::Mutex<A>,
-                    request: crate::schemas::GoogleCloudServicebrokerV1Beta1ServiceInstance,
-                    name: String,
-                    accepts_incomplete: Option<bool>,
+                    parent: String,
+                    page_size: Option<i32>,
+                    page_token: Option<String>,
                     access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
                     callback: Option<String>,
@@ -3480,101 +2092,221 @@ pub mod projects {
                     upload_type: Option<String>,
                     xgafv: Option<crate::params::Xgafv>,
                 }
-                impl<'a, A: yup_oauth2::GetToken> PatchRequestBuilder<'a, A> {
-                    #[doc = "See CreateServiceInstanceRequest for details."]
-                    pub fn accepts_incomplete(&mut self, value: bool) -> &mut Self {
-                        self.accepts_incomplete = Some(value);
+                impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
+                    #[doc = "Specifies the number of results to return per page. If there are fewer\nelements than the specified number, returns all elements.\nOptional. Acceptable values are 0 to 200, inclusive. (Default: 100)"]
+                    pub fn page_size(mut self, value: i32) -> Self {
+                        self.page_size = Some(value);
+                        self
+                    }
+                    #[doc = "Specifies a page token to use. Set `pageToken` to a `nextPageToken`\nreturned by a previous list request to get the next page of results."]
+                    pub fn page_token(mut self, value: impl Into<String>) -> Self {
+                        self.page_token = Some(value.into());
                         self
                     }
                     #[doc = "OAuth access token."]
-                    pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
                         self.access_token = Some(value.into());
                         self
                     }
                     #[doc = "Data format for response."]
-                    pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
+                    pub fn alt(mut self, value: crate::params::Alt) -> Self {
                         self.alt = Some(value);
                         self
                     }
                     #[doc = "JSONP"]
-                    pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
                         self
                     }
                     #[doc = "Selector specifying which fields to include in a partial response."]
-                    pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn fields(mut self, value: impl Into<String>) -> Self {
                         self.fields = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-                    pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
                         self
                     }
                     #[doc = "OAuth 2.0 token for the current user."]
-                    pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
                         self.oauth_token = Some(value.into());
                         self
                     }
                     #[doc = "Returns response with indentations and line breaks."]
-                    pub fn pretty_print(&mut self, value: bool) -> &mut Self {
+                    pub fn pretty_print(mut self, value: bool) -> Self {
                         self.pretty_print = Some(value);
                         self
                     }
                     #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-                    pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
                     #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-                    pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
                         self.upload_protocol = Some(value.into());
                         self
                     }
                     #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-                    pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
                         self.upload_type = Some(value.into());
                         self
                     }
                     #[doc = "V1 error format."]
-                    pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
                         self.xgafv = Some(value);
                         self
                     }
-                    pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                    #[doc = r" items yielded by the iterator are chosen by the caller of this"]
+                    #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
+                    #[doc = r" populated fields in the yielded items will be determined by the"]
+                    #[doc = r" `FieldSelector` implementation."]
+                    pub fn iter_instances<T>(self) -> ListInstancesIter<'a, A, T>
                     where
                         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                     {
-                        self._execute()
+                        ListInstancesIter {
+                            method: self,
+                            last_page_reached: false,
+                            items_iter: None,
+                        }
                     }
-                    #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-                    pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                        let req = self._request(&self._path());
-                        let req = req.json(&self.request);
-                        Ok(req.send()?.error_for_status()?.text()?)
-                    }pub fn execute_debug ( self ) -> Result < crate :: schemas :: GoogleCloudServicebrokerV1Beta1UpdateServiceInstanceResponse , Box < dyn :: std :: error :: Error >>{
-                        self.execute()
+                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                    #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+                    #[doc = r" fields in `#items_type` will be the default fields populated by"]
+                    #[doc = r" the server."]
+                    pub fn iter_instances_standard(
+                        mut self,
+                    ) -> ListInstancesIter<
+                        'a,
+                        A,
+                        crate::schemas::GoogleCloudServicebrokerV1Beta1ServiceInstance,
+                    > {
+                        self.fields = Some(concat!("nextPageToken,", "instances").to_owned());
+                        ListInstancesIter {
+                            method: self,
+                            last_page_reached: false,
+                            items_iter: None,
+                        }
+                    }
+                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                    #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+                    #[doc = r" fields in `#items_type` will be all fields available. This should"]
+                    #[doc = r" primarily be used during developement and debugging as fetching"]
+                    #[doc = r" all fields can be expensive both in bandwidth and server"]
+                    #[doc = r" resources."]
+                    pub fn iter_instances_debug(
+                        mut self,
+                    ) -> ListInstancesIter<
+                        'a,
+                        A,
+                        crate::schemas::GoogleCloudServicebrokerV1Beta1ServiceInstance,
+                    > {
+                        self.fields =
+                            Some(concat!("nextPageToken,", "instances", "(*)").to_owned());
+                        ListInstancesIter {
+                            method: self,
+                            last_page_reached: false,
+                            items_iter: None,
+                        }
+                    }
+                    #[doc = r" Return an iterator that"]
+                    pub fn iter<T>(
+                        self,
+                    ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                    where
+                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                    {
+                        crate::PageIter {
+                            method: self,
+                            finished: false,
+                            _phantom: ::std::default::Default::default(),
+                        }
+                    }
+                    #[doc = r" Execute the given operation. The fields requested are"]
+                    #[doc = r" determined by the FieldSelector attribute of the return type."]
+                    #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                    #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                    #[doc = r" are not generic over the return type and deserialize the"]
+                    #[doc = r" response into an auto-generated struct will all possible"]
+                    #[doc = r" fields."]
+                    pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                    where
+                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    {
+                        let fields = T::field_selector();
+                        let fields: Option<String> = if fields.is_empty() {
+                            None
+                        } else {
+                            Some(fields)
+                        };
+                        self.execute_fields(fields)
+                    }
+                    #[doc = r" Execute the given operation. This will not provide any"]
+                    #[doc = r" `fields` selector indicating that the server will determine"]
+                    #[doc = r" the fields returned. This typically includes the most common"]
+                    #[doc = r" fields, but it will not include every possible attribute of"]
+                    #[doc = r" the response resource."]
+                    pub fn execute_standard(
+                        self,
+                    ) -> Result<
+                        crate::schemas::GoogleCloudServicebrokerV1Beta1ListServiceInstancesResponse,
+                        Box<dyn ::std::error::Error>,
+                    > {
+                        self.execute_fields::<_, &str>(None)
+                    }
+                    #[doc = r" Execute the given operation. This will provide a `fields`"]
+                    #[doc = r" selector of `*`. This will include every attribute of the"]
+                    #[doc = r" response resource and should be limited to use during"]
+                    #[doc = r" development or debugging."]
+                    pub fn execute_debug(
+                        self,
+                    ) -> Result<
+                        crate::schemas::GoogleCloudServicebrokerV1Beta1ListServiceInstancesResponse,
+                        Box<dyn ::std::error::Error>,
+                    > {
+                        self.execute_fields(Some("*"))
+                    }
+                    #[doc = r" Execute the given operation. This will use the `fields`"]
+                    #[doc = r" selector provided and will deserialize the response into"]
+                    #[doc = r" whatever return value is provided."]
+                    pub fn execute_fields<T, F>(
+                        mut self,
+                        fields: Option<F>,
+                    ) -> Result<T, Box<dyn ::std::error::Error>>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                        F: Into<String>,
+                    {
+                        self.fields = fields.map(Into::into);
+                        self._execute()
                     }
                     fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                     where
-                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        T: ::serde::de::DeserializeOwned,
                     {
-                        if self.fields.is_none() {
-                            self.fields = Some(T::field_selector());
-                        }
                         let req = self._request(&self._path());
-                        let req = req.json(&self.request);
                         Ok(req.send()?.error_for_status()?.json()?)
                     }
                     fn _path(&self) -> String {
                         let mut output = "https://servicebroker.googleapis.com/".to_owned();
                         output.push_str("v1beta1/");
-                        output.push_str(&self.name);
+                        {
+                            let var_as_str = &self.parent;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::RESERVED,
+                            ));
+                        }
+                        output.push_str("/instances");
                         output
                     }
                     fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-                        let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                        let req = req.query(&[("acceptsIncomplete", &self.accepts_incomplete)]);
+                        let req = self.reqwest.request(::reqwest::Method::GET, path);
+                        let req = req.query(&[("pageSize", &self.page_size)]);
+                        let req = req.query(&[("pageToken", &self.page_token)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
                         let req = req.query(&[("callback", &self.callback)]);
@@ -3587,93 +2319,71 @@ pub mod projects {
                         let req = req.query(&[("uploadType", &self.upload_type)]);
                         let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let mut auth = self.auth.lock().unwrap();
-                        let req = req.bearer_auth(
-                            auth.token::<_, &str>(&[
-                                "https://www.googleapis.com/auth/cloud-platform",
-                            ])
-                            .unwrap()
-                            .access_token,
-                        );
+                        let fut =
+                            auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                        let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                        let token = runtime.block_on(fut).unwrap().access_token;
+                        let req = req.bearer_auth(&token);
                         req
                     }
                 }
-                pub mod service_bindings {
-                    pub mod params {}
-                    pub struct ServiceBindingsActions<'a, A> {
-                        pub(super) reqwest: &'a reqwest::Client,
-                        pub(super) auth: &'a std::sync::Mutex<A>,
+                pub struct ListInstancesIter<'a, A, T> {
+                    method: ListRequestBuilder<'a, A>,
+                    last_page_reached: bool,
+                    items_iter: Option<::std::vec::IntoIter<T>>,
+                }
+                impl<'a, A, T> Iterator for ListInstancesIter<'a, A, T>
+                where
+                    A: ::yup_oauth2::GetToken,
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    type Item = Result<T, Box<dyn ::std::error::Error>>;
+                    fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+                        #[derive(:: serde :: Deserialize)]
+                        struct Resp<T> {
+                            #[serde(rename = "instances")]
+                            items: Option<Vec<T>>,
+                            #[serde(rename = "nextPageToken")]
+                            next_page_token: Option<String>,
+                        }
+                        loop {
+                            if let Some(iter) = self.items_iter.as_mut() {
+                                match iter.next() {
+                                    Some(v) => return Some(Ok(v)),
+                                    None => {}
+                                }
+                            }
+                            if self.last_page_reached {
+                                return None;
+                            }
+                            let resp: Resp<T> = match self.method._execute() {
+                                Ok(r) => r,
+                                Err(err) => return Some(Err(err)),
+                            };
+                            self.last_page_reached = resp.next_page_token.as_ref().is_none();
+                            self.method.page_token = resp.next_page_token;
+                            self.items_iter = resp.items.map(|i| i.into_iter());
+                        }
                     }
-                    impl<'a, A: yup_oauth2::GetToken> ServiceBindingsActions<'a, A> {
-                        #[doc = "CreateBinding generates a service binding to an existing service instance.\nSee ProviServiceInstance for async operation details."]
-                        pub fn create(
-                            &self,
-                            request: crate::schemas::GoogleCloudServicebrokerV1Beta1Binding,
-                            parent: impl Into<String>,
-                            binding_id: impl Into<String>,
-                        ) -> CreateRequestBuilder<A> {
-                            CreateRequestBuilder {
-                                reqwest: &self.reqwest,
-                                auth: &self.auth,
-                                request,
-                                access_token: None,
-                                alt: None,
-                                callback: None,
-                                fields: None,
-                                key: None,
-                                oauth_token: None,
-                                pretty_print: None,
-                                quota_user: None,
-                                upload_protocol: None,
-                                upload_type: None,
-                                xgafv: None,
-                                parent: parent.into(),
-                                binding_id: binding_id.into(),
-                                accepts_incomplete: None,
-                            }
-                        }
-                        #[doc = "Unbinds from a service instance.\nFor synchronous/asynchronous request details see CreateServiceInstance\nmethod.\nIf binding does not exist HTTP 410 status will be returned."]
-                        pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder<A> {
-                            DeleteRequestBuilder {
-                                reqwest: &self.reqwest,
-                                auth: &self.auth,
-                                access_token: None,
-                                alt: None,
-                                callback: None,
-                                fields: None,
-                                key: None,
-                                oauth_token: None,
-                                pretty_print: None,
-                                quota_user: None,
-                                upload_protocol: None,
-                                upload_type: None,
-                                xgafv: None,
-                                name: name.into(),
-                                accepts_incomplete: None,
-                                plan_id: None,
-                                service_id: None,
-                            }
-                        }
-                        #[doc = "GetBinding returns the binding information."]
-                        pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder<A> {
-                            GetRequestBuilder {
-                                reqwest: &self.reqwest,
-                                auth: &self.auth,
-                                access_token: None,
-                                alt: None,
-                                callback: None,
-                                fields: None,
-                                key: None,
-                                oauth_token: None,
-                                pretty_print: None,
-                                quota_user: None,
-                                upload_protocol: None,
-                                upload_type: None,
-                                xgafv: None,
-                                name: name.into(),
-                                plan_id: None,
-                                service_id: None,
-                            }
-                        }
+                }
+                impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                    fn set_page_token(&mut self, value: String) {
+                        self.page_token = value.into();
+                    }
+                    fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                    where
+                        T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                    {
+                        self._execute()
+                    }
+                }
+                pub mod bindings {
+                    pub mod params {}
+                    pub struct BindingsActions<'a, A> {
+                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) auth: &'a std::sync::Mutex<A>,
+                    }
+                    impl<'a, A: yup_oauth2::GetToken> BindingsActions<'a, A> {
                         #[doc = "Returns the state of the last operation for the binding.\nOnly last (or current) operation can be polled."]
                         pub fn get_last_operation(
                             &self,
@@ -3699,14 +2409,1019 @@ pub mod projects {
                                 service_id: None,
                             }
                         }
+                        #[doc = "Lists all the bindings in the instance."]
+                        pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder<A> {
+                            ListRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: &self.auth,
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                parent: parent.into(),
+                                page_size: None,
+                                page_token: None,
+                            }
+                        }
+                    }
+                    #[derive(Debug, Clone)]
+                    pub struct GetLastOperationRequestBuilder<'a, A> {
+                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                        name: String,
+                        operation: Option<String>,
+                        plan_id: Option<String>,
+                        service_id: Option<String>,
+                        access_token: Option<String>,
+                        alt: Option<crate::params::Alt>,
+                        callback: Option<String>,
+                        fields: Option<String>,
+                        key: Option<String>,
+                        oauth_token: Option<String>,
+                        pretty_print: Option<bool>,
+                        quota_user: Option<String>,
+                        upload_protocol: Option<String>,
+                        upload_type: Option<String>,
+                        xgafv: Option<crate::params::Xgafv>,
+                    }
+                    impl<'a, A: yup_oauth2::GetToken> GetLastOperationRequestBuilder<'a, A> {
+                        #[doc = "If `operation` was returned during mutation operation, this field must be\npopulated with the provided value."]
+                        pub fn operation(mut self, value: impl Into<String>) -> Self {
+                            self.operation = Some(value.into());
+                            self
+                        }
+                        #[doc = "Plan id."]
+                        pub fn plan_id(mut self, value: impl Into<String>) -> Self {
+                            self.plan_id = Some(value.into());
+                            self
+                        }
+                        #[doc = "Service id."]
+                        pub fn service_id(mut self, value: impl Into<String>) -> Self {
+                            self.service_id = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth access token."]
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                            self.access_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Data format for response."]
+                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                            self.alt = Some(value);
+                            self
+                        }
+                        #[doc = "JSONP"]
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
+                            self.callback = Some(value.into());
+                            self
+                        }
+                        #[doc = "Selector specifying which fields to include in a partial response."]
+                        pub fn fields(mut self, value: impl Into<String>) -> Self {
+                            self.fields = Some(value.into());
+                            self
+                        }
+                        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
+                            self.key = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth 2.0 token for the current user."]
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                            self.oauth_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Returns response with indentations and line breaks."]
+                        pub fn pretty_print(mut self, value: bool) -> Self {
+                            self.pretty_print = Some(value);
+                            self
+                        }
+                        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                            self.quota_user = Some(value.into());
+                            self
+                        }
+                        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                            self.upload_protocol = Some(value.into());
+                            self
+                        }
+                        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                            self.upload_type = Some(value.into());
+                            self
+                        }
+                        #[doc = "V1 error format."]
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                            self.xgafv = Some(value);
+                            self
+                        }
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                        where
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        {
+                            let fields = T::field_selector();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_fields(fields)
+                        }
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]
+                        pub fn execute_standard(
+                            self,
+                        ) -> Result<
+                            crate::schemas::GoogleCloudServicebrokerV1Beta1Operation,
+                            Box<dyn ::std::error::Error>,
+                        > {
+                            self.execute_fields::<_, &str>(None)
+                        }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]
+                        pub fn execute_debug(
+                            self,
+                        ) -> Result<
+                            crate::schemas::GoogleCloudServicebrokerV1Beta1Operation,
+                            Box<dyn ::std::error::Error>,
+                        > {
+                            self.execute_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, Box<dyn ::std::error::Error>>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
+                            self._execute()
+                        }
+                        fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                        {
+                            let req = self._request(&self._path());
+                            Ok(req.send()?.error_for_status()?.json()?)
+                        }
+                        fn _path(&self) -> String {
+                            let mut output = "https://servicebroker.googleapis.com/".to_owned();
+                            output.push_str("v1beta1/");
+                            {
+                                let var_as_str = &self.name;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
+                            output.push_str("/last_operation");
+                            output
+                        }
+                        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                            let req = self.reqwest.request(::reqwest::Method::GET, path);
+                            let req = req.query(&[("operation", &self.operation)]);
+                            let req = req.query(&[("planId", &self.plan_id)]);
+                            let req = req.query(&[("serviceId", &self.service_id)]);
+                            let req = req.query(&[("access_token", &self.access_token)]);
+                            let req = req.query(&[("alt", &self.alt)]);
+                            let req = req.query(&[("callback", &self.callback)]);
+                            let req = req.query(&[("fields", &self.fields)]);
+                            let req = req.query(&[("key", &self.key)]);
+                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            let req = req.query(&[("quotaUser", &self.quota_user)]);
+                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            let req = req.query(&[("uploadType", &self.upload_type)]);
+                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let mut auth = self.auth.lock().unwrap();
+                            let fut =
+                                auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                            let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                            let token = runtime.block_on(fut).unwrap().access_token;
+                            let req = req.bearer_auth(&token);
+                            req
+                        }
+                    }
+                    #[derive(Debug, Clone)]
+                    pub struct ListRequestBuilder<'a, A> {
+                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                        parent: String,
+                        page_size: Option<i32>,
+                        page_token: Option<String>,
+                        access_token: Option<String>,
+                        alt: Option<crate::params::Alt>,
+                        callback: Option<String>,
+                        fields: Option<String>,
+                        key: Option<String>,
+                        oauth_token: Option<String>,
+                        pretty_print: Option<bool>,
+                        quota_user: Option<String>,
+                        upload_protocol: Option<String>,
+                        upload_type: Option<String>,
+                        xgafv: Option<crate::params::Xgafv>,
+                    }
+                    impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
+                        #[doc = "Specifies the number of results to return per page. If there are fewer\nelements than the specified number, returns all elements.\nOptional. Acceptable values are 0 to 200, inclusive. (Default: 100)"]
+                        pub fn page_size(mut self, value: i32) -> Self {
+                            self.page_size = Some(value);
+                            self
+                        }
+                        #[doc = "Specifies a page token to use. Set `pageToken` to a `nextPageToken`\nreturned by a previous list request to get the next page of results."]
+                        pub fn page_token(mut self, value: impl Into<String>) -> Self {
+                            self.page_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth access token."]
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                            self.access_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Data format for response."]
+                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                            self.alt = Some(value);
+                            self
+                        }
+                        #[doc = "JSONP"]
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
+                            self.callback = Some(value.into());
+                            self
+                        }
+                        #[doc = "Selector specifying which fields to include in a partial response."]
+                        pub fn fields(mut self, value: impl Into<String>) -> Self {
+                            self.fields = Some(value.into());
+                            self
+                        }
+                        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
+                            self.key = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth 2.0 token for the current user."]
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                            self.oauth_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Returns response with indentations and line breaks."]
+                        pub fn pretty_print(mut self, value: bool) -> Self {
+                            self.pretty_print = Some(value);
+                            self
+                        }
+                        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                            self.quota_user = Some(value.into());
+                            self
+                        }
+                        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                            self.upload_protocol = Some(value.into());
+                            self
+                        }
+                        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                            self.upload_type = Some(value.into());
+                            self
+                        }
+                        #[doc = "V1 error format."]
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                            self.xgafv = Some(value);
+                            self
+                        }
+                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                        #[doc = r" items yielded by the iterator are chosen by the caller of this"]
+                        #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
+                        #[doc = r" populated fields in the yielded items will be determined by the"]
+                        #[doc = r" `FieldSelector` implementation."]
+                        pub fn iter_bindings<T>(self) -> ListBindingsIter<'a, A, T>
+                        where
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        {
+                            ListBindingsIter {
+                                method: self,
+                                last_page_reached: false,
+                                items_iter: None,
+                            }
+                        }
+                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+                        #[doc = r" fields in `#items_type` will be the default fields populated by"]
+                        #[doc = r" the server."]
+                        pub fn iter_bindings_standard(
+                            mut self,
+                        ) -> ListBindingsIter<
+                            'a,
+                            A,
+                            crate::schemas::GoogleCloudServicebrokerV1Beta1Binding,
+                        > {
+                            self.fields = Some(concat!("nextPageToken,", "bindings").to_owned());
+                            ListBindingsIter {
+                                method: self,
+                                last_page_reached: false,
+                                items_iter: None,
+                            }
+                        }
+                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+                        #[doc = r" fields in `#items_type` will be all fields available. This should"]
+                        #[doc = r" primarily be used during developement and debugging as fetching"]
+                        #[doc = r" all fields can be expensive both in bandwidth and server"]
+                        #[doc = r" resources."]
+                        pub fn iter_bindings_debug(
+                            mut self,
+                        ) -> ListBindingsIter<
+                            'a,
+                            A,
+                            crate::schemas::GoogleCloudServicebrokerV1Beta1Binding,
+                        > {
+                            self.fields =
+                                Some(concat!("nextPageToken,", "bindings", "(*)").to_owned());
+                            ListBindingsIter {
+                                method: self,
+                                last_page_reached: false,
+                                items_iter: None,
+                            }
+                        }
+                        #[doc = r" Return an iterator that"]
+                        pub fn iter<T>(
+                            self,
+                        ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                        where
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                        {
+                            crate::PageIter {
+                                method: self,
+                                finished: false,
+                                _phantom: ::std::default::Default::default(),
+                            }
+                        }
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                        where
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        {
+                            let fields = T::field_selector();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_fields(fields)
+                        }
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]
+                        pub fn execute_standard(
+                            self,
+                        ) -> Result<
+                            crate::schemas::GoogleCloudServicebrokerV1Beta1ListBindingsResponse,
+                            Box<dyn ::std::error::Error>,
+                        > {
+                            self.execute_fields::<_, &str>(None)
+                        }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]
+                        pub fn execute_debug(
+                            self,
+                        ) -> Result<
+                            crate::schemas::GoogleCloudServicebrokerV1Beta1ListBindingsResponse,
+                            Box<dyn ::std::error::Error>,
+                        > {
+                            self.execute_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, Box<dyn ::std::error::Error>>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
+                            self._execute()
+                        }
+                        fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                        {
+                            let req = self._request(&self._path());
+                            Ok(req.send()?.error_for_status()?.json()?)
+                        }
+                        fn _path(&self) -> String {
+                            let mut output = "https://servicebroker.googleapis.com/".to_owned();
+                            output.push_str("v1beta1/");
+                            {
+                                let var_as_str = &self.parent;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
+                            output.push_str("/bindings");
+                            output
+                        }
+                        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                            let req = self.reqwest.request(::reqwest::Method::GET, path);
+                            let req = req.query(&[("pageSize", &self.page_size)]);
+                            let req = req.query(&[("pageToken", &self.page_token)]);
+                            let req = req.query(&[("access_token", &self.access_token)]);
+                            let req = req.query(&[("alt", &self.alt)]);
+                            let req = req.query(&[("callback", &self.callback)]);
+                            let req = req.query(&[("fields", &self.fields)]);
+                            let req = req.query(&[("key", &self.key)]);
+                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            let req = req.query(&[("quotaUser", &self.quota_user)]);
+                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            let req = req.query(&[("uploadType", &self.upload_type)]);
+                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let mut auth = self.auth.lock().unwrap();
+                            let fut =
+                                auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                            let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                            let token = runtime.block_on(fut).unwrap().access_token;
+                            let req = req.bearer_auth(&token);
+                            req
+                        }
+                    }
+                    pub struct ListBindingsIter<'a, A, T> {
+                        method: ListRequestBuilder<'a, A>,
+                        last_page_reached: bool,
+                        items_iter: Option<::std::vec::IntoIter<T>>,
+                    }
+                    impl<'a, A, T> Iterator for ListBindingsIter<'a, A, T>
+                    where
+                        A: ::yup_oauth2::GetToken,
+                        T: ::serde::de::DeserializeOwned,
+                    {
+                        type Item = Result<T, Box<dyn ::std::error::Error>>;
+                        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+                            #[derive(:: serde :: Deserialize)]
+                            struct Resp<T> {
+                                #[serde(rename = "bindings")]
+                                items: Option<Vec<T>>,
+                                #[serde(rename = "nextPageToken")]
+                                next_page_token: Option<String>,
+                            }
+                            loop {
+                                if let Some(iter) = self.items_iter.as_mut() {
+                                    match iter.next() {
+                                        Some(v) => return Some(Ok(v)),
+                                        None => {}
+                                    }
+                                }
+                                if self.last_page_reached {
+                                    return None;
+                                }
+                                let resp: Resp<T> = match self.method._execute() {
+                                    Ok(r) => r,
+                                    Err(err) => return Some(Err(err)),
+                                };
+                                self.last_page_reached = resp.next_page_token.as_ref().is_none();
+                                self.method.page_token = resp.next_page_token;
+                                self.items_iter = resp.items.map(|i| i.into_iter());
+                            }
+                        }
+                    }
+                    impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                        fn set_page_token(&mut self, value: String) {
+                            self.page_token = value.into();
+                        }
+                        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                        where
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        {
+                            self._execute()
+                        }
+                    }
+                }
+            }
+            pub mod v_2 {
+                pub mod params {}
+                pub struct V2Actions<'a, A> {
+                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) auth: &'a std::sync::Mutex<A>,
+                }
+                impl<'a, A: yup_oauth2::GetToken> V2Actions<'a, A> {
+                    #[doc = "Actions that can be performed on the catalog resource"]
+                    pub fn catalog(
+                        &self,
+                    ) -> crate::resources::projects::brokers::v_2::catalog::CatalogActions<A>
+                    {
+                        crate::resources::projects::brokers::v_2::catalog::CatalogActions {
+                            reqwest: &self.reqwest,
+                            auth: &self.auth,
+                        }
+                    }
+                    #[doc = "Actions that can be performed on the service_instances resource"]pub fn service_instances ( & self ) -> crate :: resources :: projects :: brokers :: v_2 :: service_instances :: ServiceInstancesActions < A >{
+                        crate :: resources :: projects :: brokers :: v_2 :: service_instances :: ServiceInstancesActions { reqwest : & self . reqwest , auth : & self . auth }
+                    }
+                }
+                pub mod catalog {
+                    pub mod params {}
+                    pub struct CatalogActions<'a, A> {
+                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) auth: &'a std::sync::Mutex<A>,
+                    }
+                    impl<'a, A: yup_oauth2::GetToken> CatalogActions<'a, A> {
+                        #[doc = "Lists all the Services registered with this broker for consumption for\ngiven service registry broker, which contains an set of services.\nNote, that Service producer API is separate from Broker API."]
+                        pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder<A> {
+                            ListRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: &self.auth,
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                parent: parent.into(),
+                                page_size: None,
+                                page_token: None,
+                            }
+                        }
+                    }
+                    #[derive(Debug, Clone)]
+                    pub struct ListRequestBuilder<'a, A> {
+                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                        parent: String,
+                        page_size: Option<i32>,
+                        page_token: Option<String>,
+                        access_token: Option<String>,
+                        alt: Option<crate::params::Alt>,
+                        callback: Option<String>,
+                        fields: Option<String>,
+                        key: Option<String>,
+                        oauth_token: Option<String>,
+                        pretty_print: Option<bool>,
+                        quota_user: Option<String>,
+                        upload_protocol: Option<String>,
+                        upload_type: Option<String>,
+                        xgafv: Option<crate::params::Xgafv>,
+                    }
+                    impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
+                        #[doc = "Specifies the number of results to return per page. If there are fewer\nelements than the specified number, returns all elements.\nOptional. If unset or 0, all the results will be returned."]
+                        pub fn page_size(mut self, value: i32) -> Self {
+                            self.page_size = Some(value);
+                            self
+                        }
+                        #[doc = "Specifies a page token to use. Set `pageToken` to a `nextPageToken`\nreturned by a previous list request to get the next page of results."]
+                        pub fn page_token(mut self, value: impl Into<String>) -> Self {
+                            self.page_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth access token."]
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                            self.access_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Data format for response."]
+                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                            self.alt = Some(value);
+                            self
+                        }
+                        #[doc = "JSONP"]
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
+                            self.callback = Some(value.into());
+                            self
+                        }
+                        #[doc = "Selector specifying which fields to include in a partial response."]
+                        pub fn fields(mut self, value: impl Into<String>) -> Self {
+                            self.fields = Some(value.into());
+                            self
+                        }
+                        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
+                            self.key = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth 2.0 token for the current user."]
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                            self.oauth_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Returns response with indentations and line breaks."]
+                        pub fn pretty_print(mut self, value: bool) -> Self {
+                            self.pretty_print = Some(value);
+                            self
+                        }
+                        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                            self.quota_user = Some(value.into());
+                            self
+                        }
+                        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                            self.upload_protocol = Some(value.into());
+                            self
+                        }
+                        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                            self.upload_type = Some(value.into());
+                            self
+                        }
+                        #[doc = "V1 error format."]
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                            self.xgafv = Some(value);
+                            self
+                        }
+                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                        #[doc = r" items yielded by the iterator are chosen by the caller of this"]
+                        #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
+                        #[doc = r" populated fields in the yielded items will be determined by the"]
+                        #[doc = r" `FieldSelector` implementation."]
+                        pub fn iter_services<T>(self) -> ListServicesIter<'a, A, T>
+                        where
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        {
+                            ListServicesIter {
+                                method: self,
+                                last_page_reached: false,
+                                items_iter: None,
+                            }
+                        }
+                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+                        #[doc = r" fields in `#items_type` will be the default fields populated by"]
+                        #[doc = r" the server."]
+                        pub fn iter_services_standard(
+                            mut self,
+                        ) -> ListServicesIter<
+                            'a,
+                            A,
+                            crate::schemas::GoogleCloudServicebrokerV1Beta1Service,
+                        > {
+                            self.fields = Some(concat!("nextPageToken,", "services").to_owned());
+                            ListServicesIter {
+                                method: self,
+                                last_page_reached: false,
+                                items_iter: None,
+                            }
+                        }
+                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+                        #[doc = r" fields in `#items_type` will be all fields available. This should"]
+                        #[doc = r" primarily be used during developement and debugging as fetching"]
+                        #[doc = r" all fields can be expensive both in bandwidth and server"]
+                        #[doc = r" resources."]
+                        pub fn iter_services_debug(
+                            mut self,
+                        ) -> ListServicesIter<
+                            'a,
+                            A,
+                            crate::schemas::GoogleCloudServicebrokerV1Beta1Service,
+                        > {
+                            self.fields =
+                                Some(concat!("nextPageToken,", "services", "(*)").to_owned());
+                            ListServicesIter {
+                                method: self,
+                                last_page_reached: false,
+                                items_iter: None,
+                            }
+                        }
+                        #[doc = r" Return an iterator that"]
+                        pub fn iter<T>(
+                            self,
+                        ) -> impl Iterator<Item = Result<T, Box<dyn ::std::error::Error + 'static>>> + 'a
+                        where
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector + 'a,
+                        {
+                            crate::PageIter {
+                                method: self,
+                                finished: false,
+                                _phantom: ::std::default::Default::default(),
+                            }
+                        }
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                        where
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        {
+                            let fields = T::field_selector();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_fields(fields)
+                        }
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]
+                        pub fn execute_standard(
+                            self,
+                        ) -> Result<
+                            crate::schemas::GoogleCloudServicebrokerV1Beta1ListCatalogResponse,
+                            Box<dyn ::std::error::Error>,
+                        > {
+                            self.execute_fields::<_, &str>(None)
+                        }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]
+                        pub fn execute_debug(
+                            self,
+                        ) -> Result<
+                            crate::schemas::GoogleCloudServicebrokerV1Beta1ListCatalogResponse,
+                            Box<dyn ::std::error::Error>,
+                        > {
+                            self.execute_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, Box<dyn ::std::error::Error>>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
+                            self._execute()
+                        }
+                        fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                        {
+                            let req = self._request(&self._path());
+                            Ok(req.send()?.error_for_status()?.json()?)
+                        }
+                        fn _path(&self) -> String {
+                            let mut output = "https://servicebroker.googleapis.com/".to_owned();
+                            output.push_str("v1beta1/");
+                            {
+                                let var_as_str = &self.parent;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
+                            output.push_str("/v2/catalog");
+                            output
+                        }
+                        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                            let req = self.reqwest.request(::reqwest::Method::GET, path);
+                            let req = req.query(&[("pageSize", &self.page_size)]);
+                            let req = req.query(&[("pageToken", &self.page_token)]);
+                            let req = req.query(&[("access_token", &self.access_token)]);
+                            let req = req.query(&[("alt", &self.alt)]);
+                            let req = req.query(&[("callback", &self.callback)]);
+                            let req = req.query(&[("fields", &self.fields)]);
+                            let req = req.query(&[("key", &self.key)]);
+                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            let req = req.query(&[("quotaUser", &self.quota_user)]);
+                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            let req = req.query(&[("uploadType", &self.upload_type)]);
+                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let mut auth = self.auth.lock().unwrap();
+                            let fut =
+                                auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                            let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                            let token = runtime.block_on(fut).unwrap().access_token;
+                            let req = req.bearer_auth(&token);
+                            req
+                        }
+                    }
+                    pub struct ListServicesIter<'a, A, T> {
+                        method: ListRequestBuilder<'a, A>,
+                        last_page_reached: bool,
+                        items_iter: Option<::std::vec::IntoIter<T>>,
+                    }
+                    impl<'a, A, T> Iterator for ListServicesIter<'a, A, T>
+                    where
+                        A: ::yup_oauth2::GetToken,
+                        T: ::serde::de::DeserializeOwned,
+                    {
+                        type Item = Result<T, Box<dyn ::std::error::Error>>;
+                        fn next(&mut self) -> Option<Result<T, Box<dyn ::std::error::Error>>> {
+                            #[derive(:: serde :: Deserialize)]
+                            struct Resp<T> {
+                                #[serde(rename = "services")]
+                                items: Option<Vec<T>>,
+                                #[serde(rename = "nextPageToken")]
+                                next_page_token: Option<String>,
+                            }
+                            loop {
+                                if let Some(iter) = self.items_iter.as_mut() {
+                                    match iter.next() {
+                                        Some(v) => return Some(Ok(v)),
+                                        None => {}
+                                    }
+                                }
+                                if self.last_page_reached {
+                                    return None;
+                                }
+                                let resp: Resp<T> = match self.method._execute() {
+                                    Ok(r) => r,
+                                    Err(err) => return Some(Err(err)),
+                                };
+                                self.last_page_reached = resp.next_page_token.as_ref().is_none();
+                                self.method.page_token = resp.next_page_token;
+                                self.items_iter = resp.items.map(|i| i.into_iter());
+                            }
+                        }
+                    }
+                    impl<'a, A: yup_oauth2::GetToken> crate::IterableMethod for ListRequestBuilder<'a, A> {
+                        fn set_page_token(&mut self, value: String) {
+                            self.page_token = value.into();
+                        }
+                        fn execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                        where
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        {
+                            self._execute()
+                        }
+                    }
+                }
+                pub mod service_instances {
+                    pub mod params {}
+                    pub struct ServiceInstancesActions<'a, A> {
+                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) auth: &'a std::sync::Mutex<A>,
+                    }
+                    impl<'a, A: yup_oauth2::GetToken> ServiceInstancesActions<'a, A> {
+                        #[doc = "Provisions a service instance.\nIf `request.accepts_incomplete` is false and Broker cannot execute request\nsynchronously HTTP 422 error will be returned along with\nFAILED_PRECONDITION status.\nIf `request.accepts_incomplete` is true and the Broker decides to execute\nresource asynchronously then HTTP 202 response code will be returned and a\nvalid polling operation in the response will be included.\nIf Broker executes the request synchronously and it succeeds HTTP 201\nresponse will be furnished.\nIf identical instance exists, then HTTP 200 response will be returned.\nIf an instance with identical ID but mismatching parameters exists, then\nHTTP 409 status code will be returned."]
+                        pub fn create(
+                            &self,
+                            request: crate::schemas::GoogleCloudServicebrokerV1Beta1ServiceInstance,
+                            parent: impl Into<String>,
+                            instance_id: impl Into<String>,
+                        ) -> CreateRequestBuilder<A> {
+                            CreateRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: &self.auth,
+                                request,
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                parent: parent.into(),
+                                instance_id: instance_id.into(),
+                                accepts_incomplete: None,
+                            }
+                        }
+                        #[doc = "Deprovisions a service instance.\nFor synchronous/asynchronous request details see CreateServiceInstance\nmethod.\nIf service instance does not exist HTTP 410 status will be returned."]
+                        pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder<A> {
+                            DeleteRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: &self.auth,
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                name: name.into(),
+                                accepts_incomplete: None,
+                                plan_id: None,
+                                service_id: None,
+                            }
+                        }
+                        #[doc = "Gets the given service instance from the system.\nThe API call accepts both OSB style API and standard google style API\nresource path.\ni.e. both `projects/*/brokers/*/instances/*`\nand `projects/*/brokers/*/v2/service_instances/*` are acceptable paths."]
+                        pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder<A> {
+                            GetRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: &self.auth,
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                name: name.into(),
+                            }
+                        }
+                        #[doc = "Returns the state of the last operation for the service instance.\nOnly last (or current) operation can be polled."]
+                        pub fn get_last_operation(
+                            &self,
+                            name: impl Into<String>,
+                        ) -> GetLastOperationRequestBuilder<A> {
+                            GetLastOperationRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: &self.auth,
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                name: name.into(),
+                                operation: None,
+                                plan_id: None,
+                                service_id: None,
+                            }
+                        }
+                        #[doc = "Updates an existing service instance.\nSee CreateServiceInstance for possible response codes."]
+                        pub fn patch(
+                            &self,
+                            request: crate::schemas::GoogleCloudServicebrokerV1Beta1ServiceInstance,
+                            name: impl Into<String>,
+                        ) -> PatchRequestBuilder<A> {
+                            PatchRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: &self.auth,
+                                request,
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                name: name.into(),
+                                accepts_incomplete: None,
+                            }
+                        }
+                        #[doc = "Actions that can be performed on the service_bindings resource"]pub fn service_bindings ( & self ) -> crate :: resources :: projects :: brokers :: v_2 :: service_instances :: service_bindings :: ServiceBindingsActions < A >{
+                            crate :: resources :: projects :: brokers :: v_2 :: service_instances :: service_bindings :: ServiceBindingsActions { reqwest : & self . reqwest , auth : & self . auth }
+                        }
                     }
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a, A> {
                         pub(crate) reqwest: &'a ::reqwest::Client,
                         pub(crate) auth: &'a ::std::sync::Mutex<A>,
-                        request: crate::schemas::GoogleCloudServicebrokerV1Beta1Binding,
+                        request: crate::schemas::GoogleCloudServicebrokerV1Beta1ServiceInstance,
                         parent: String,
-                        binding_id: String,
+                        instance_id: String,
                         accepts_incomplete: Option<bool>,
                         access_token: Option<String>,
                         alt: Option<crate::params::Alt>,
@@ -3721,93 +3436,116 @@ pub mod projects {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a, A: yup_oauth2::GetToken> CreateRequestBuilder<'a, A> {
-                        #[doc = "See CreateServiceInstanceRequest for details."]
-                        pub fn accepts_incomplete(&mut self, value: bool) -> &mut Self {
+                        #[doc = "Value indicating that API client supports asynchronous operations. If\nBroker cannot execute the request synchronously HTTP 422 code will be\nreturned to HTTP clients along with FAILED_PRECONDITION error.\nIf true and broker will execute request asynchronously 202 HTTP code will\nbe returned.\nThis broker always requires this to be true as all mutator operations are\nasynchronous."]
+                        pub fn accepts_incomplete(mut self, value: bool) -> Self {
                             self.accepts_incomplete = Some(value);
                             self
                         }
                         #[doc = "OAuth access token."]
-                        pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
                             self.access_token = Some(value.into());
                             self
                         }
                         #[doc = "Data format for response."]
-                        pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
+                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
                             self.alt = Some(value);
                             self
                         }
                         #[doc = "JSONP"]
-                        pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
                             self
                         }
                         #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn fields(mut self, value: impl Into<String>) -> Self {
                             self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-                        pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
                             self.key = Some(value.into());
                             self
                         }
                         #[doc = "OAuth 2.0 token for the current user."]
-                        pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
                             self.oauth_token = Some(value.into());
                             self
                         }
                         #[doc = "Returns response with indentations and line breaks."]
-                        pub fn pretty_print(&mut self, value: bool) -> &mut Self {
+                        pub fn pretty_print(mut self, value: bool) -> Self {
                             self.pretty_print = Some(value);
                             self
                         }
                         #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-                        pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                             self.quota_user = Some(value.into());
                             self
                         }
                         #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-                        pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
                             self.upload_protocol = Some(value.into());
                             self
                         }
                         #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-                        pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
                             self.upload_type = Some(value.into());
                             self
                         }
                         #[doc = "V1 error format."]
-                        pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
                             self.xgafv = Some(value);
                             self
                         }
-                        pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
                             T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
+                            let fields = T::field_selector();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_fields(fields)
+                        }
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]pub fn execute_standard ( self ) -> Result < crate :: schemas :: GoogleCloudServicebrokerV1Beta1CreateServiceInstanceResponse , Box < dyn :: std :: error :: Error >>{
+                            self.execute_fields::<_, &str>(None)
+                        }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]pub fn execute_debug ( self ) -> Result < crate :: schemas :: GoogleCloudServicebrokerV1Beta1CreateServiceInstanceResponse , Box < dyn :: std :: error :: Error >>{
+                            self.execute_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, Box<dyn ::std::error::Error>>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
                             self._execute()
-                        }
-                        #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-                        pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                            let req = self._request(&self._path());
-                            let req = req.json(&self.request);
-                            Ok(req.send()?.error_for_status()?.text()?)
-                        }
-                        pub fn execute_debug(
-                            self,
-                        ) -> Result<
-                            crate::schemas::GoogleCloudServicebrokerV1Beta1CreateBindingResponse,
-                            Box<dyn ::std::error::Error>,
-                        > {
-                            self.execute()
                         }
                         fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned,
                         {
-                            if self.fields.is_none() {
-                                self.fields = Some(T::field_selector());
-                            }
                             let req = self._request(&self._path());
                             let req = req.json(&self.request);
                             Ok(req.send()?.error_for_status()?.json()?)
@@ -3815,9 +3553,21 @@ pub mod projects {
                         fn _path(&self) -> String {
                             let mut output = "https://servicebroker.googleapis.com/".to_owned();
                             output.push_str("v1beta1/");
-                            output.push_str(&self.parent);
-                            output.push_str("/service_bindings/");
-                            output.push_str(&self.binding_id);
+                            {
+                                let var_as_str = &self.parent;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
+                            output.push_str("/v2/service_instances/");
+                            {
+                                let var_as_str = &self.instance_id;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
                             output
                         }
                         fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
@@ -3835,13 +3585,11 @@ pub mod projects {
                             let req = req.query(&[("uploadType", &self.upload_type)]);
                             let req = req.query(&[("$.xgafv", &self.xgafv)]);
                             let mut auth = self.auth.lock().unwrap();
-                            let req = req.bearer_auth(
-                                auth.token::<_, &str>(&[
-                                    "https://www.googleapis.com/auth/cloud-platform",
-                                ])
-                                .unwrap()
-                                .access_token,
-                            );
+                            let fut =
+                                auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                            let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                            let token = runtime.block_on(fut).unwrap().access_token;
+                            let req = req.bearer_auth(&token);
                             req
                         }
                     }
@@ -3867,108 +3615,138 @@ pub mod projects {
                     }
                     impl<'a, A: yup_oauth2::GetToken> DeleteRequestBuilder<'a, A> {
                         #[doc = "See CreateServiceInstanceRequest for details."]
-                        pub fn accepts_incomplete(&mut self, value: bool) -> &mut Self {
+                        pub fn accepts_incomplete(mut self, value: bool) -> Self {
                             self.accepts_incomplete = Some(value);
                             self
                         }
                         #[doc = "The plan id of the service instance."]
-                        pub fn plan_id(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn plan_id(mut self, value: impl Into<String>) -> Self {
                             self.plan_id = Some(value.into());
                             self
                         }
-                        #[doc = "Additional query parameter hints.\nThe service id of the service instance."]
-                        pub fn service_id(&mut self, value: impl Into<String>) -> &mut Self {
+                        #[doc = "The service id of the service instance."]
+                        pub fn service_id(mut self, value: impl Into<String>) -> Self {
                             self.service_id = Some(value.into());
                             self
                         }
                         #[doc = "OAuth access token."]
-                        pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
                             self.access_token = Some(value.into());
                             self
                         }
                         #[doc = "Data format for response."]
-                        pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
+                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
                             self.alt = Some(value);
                             self
                         }
                         #[doc = "JSONP"]
-                        pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
                             self
                         }
                         #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn fields(mut self, value: impl Into<String>) -> Self {
                             self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-                        pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
                             self.key = Some(value.into());
                             self
                         }
                         #[doc = "OAuth 2.0 token for the current user."]
-                        pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
                             self.oauth_token = Some(value.into());
                             self
                         }
                         #[doc = "Returns response with indentations and line breaks."]
-                        pub fn pretty_print(&mut self, value: bool) -> &mut Self {
+                        pub fn pretty_print(mut self, value: bool) -> Self {
                             self.pretty_print = Some(value);
                             self
                         }
                         #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-                        pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                             self.quota_user = Some(value.into());
                             self
                         }
                         #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-                        pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
                             self.upload_protocol = Some(value.into());
                             self
                         }
                         #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-                        pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
                             self.upload_type = Some(value.into());
                             self
                         }
                         #[doc = "V1 error format."]
-                        pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
                             self.xgafv = Some(value);
                             self
                         }
-                        pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
                             T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
+                            let fields = T::field_selector();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_fields(fields)
+                        }
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]pub fn execute_standard ( self ) -> Result < crate :: schemas :: GoogleCloudServicebrokerV1Beta1DeleteServiceInstanceResponse , Box < dyn :: std :: error :: Error >>{
+                            self.execute_fields::<_, &str>(None)
+                        }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]pub fn execute_debug ( self ) -> Result < crate :: schemas :: GoogleCloudServicebrokerV1Beta1DeleteServiceInstanceResponse , Box < dyn :: std :: error :: Error >>{
+                            self.execute_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, Box<dyn ::std::error::Error>>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
                             self._execute()
-                        }
-                        #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-                        pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                            let req = self._request(&self._path());
-                            Ok(req.send()?.error_for_status()?.text()?)
-                        }
-                        pub fn execute_debug(
-                            self,
-                        ) -> Result<
-                            crate::schemas::GoogleCloudServicebrokerV1Beta1DeleteBindingResponse,
-                            Box<dyn ::std::error::Error>,
-                        > {
-                            self.execute()
                         }
                         fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned,
                         {
-                            if self.fields.is_none() {
-                                self.fields = Some(T::field_selector());
-                            }
                             let req = self._request(&self._path());
                             Ok(req.send()?.error_for_status()?.json()?)
                         }
                         fn _path(&self) -> String {
                             let mut output = "https://servicebroker.googleapis.com/".to_owned();
                             output.push_str("v1beta1/");
-                            output.push_str(&self.name);
+                            {
+                                let var_as_str = &self.name;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
                             output
                         }
                         fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
@@ -3988,13 +3766,11 @@ pub mod projects {
                             let req = req.query(&[("uploadType", &self.upload_type)]);
                             let req = req.query(&[("$.xgafv", &self.xgafv)]);
                             let mut auth = self.auth.lock().unwrap();
-                            let req = req.bearer_auth(
-                                auth.token::<_, &str>(&[
-                                    "https://www.googleapis.com/auth/cloud-platform",
-                                ])
-                                .unwrap()
-                                .access_token,
-                            );
+                            let fut =
+                                auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                            let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                            let token = runtime.block_on(fut).unwrap().access_token;
+                            let req = req.bearer_auth(&token);
                             req
                         }
                     }
@@ -4003,8 +3779,6 @@ pub mod projects {
                         pub(crate) reqwest: &'a ::reqwest::Client,
                         pub(crate) auth: &'a ::std::sync::Mutex<A>,
                         name: String,
-                        plan_id: Option<String>,
-                        service_id: Option<String>,
                         access_token: Option<String>,
                         alt: Option<crate::params::Alt>,
                         callback: Option<String>,
@@ -4018,110 +3792,140 @@ pub mod projects {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a, A: yup_oauth2::GetToken> GetRequestBuilder<'a, A> {
-                        #[doc = "Plan id."]
-                        pub fn plan_id(&mut self, value: impl Into<String>) -> &mut Self {
-                            self.plan_id = Some(value.into());
-                            self
-                        }
-                        #[doc = "Service id."]
-                        pub fn service_id(&mut self, value: impl Into<String>) -> &mut Self {
-                            self.service_id = Some(value.into());
-                            self
-                        }
                         #[doc = "OAuth access token."]
-                        pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
                             self.access_token = Some(value.into());
                             self
                         }
                         #[doc = "Data format for response."]
-                        pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
+                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
                             self.alt = Some(value);
                             self
                         }
                         #[doc = "JSONP"]
-                        pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
                             self
                         }
                         #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn fields(mut self, value: impl Into<String>) -> Self {
                             self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-                        pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
                             self.key = Some(value.into());
                             self
                         }
                         #[doc = "OAuth 2.0 token for the current user."]
-                        pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
                             self.oauth_token = Some(value.into());
                             self
                         }
                         #[doc = "Returns response with indentations and line breaks."]
-                        pub fn pretty_print(&mut self, value: bool) -> &mut Self {
+                        pub fn pretty_print(mut self, value: bool) -> Self {
                             self.pretty_print = Some(value);
                             self
                         }
                         #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-                        pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                             self.quota_user = Some(value.into());
                             self
                         }
                         #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-                        pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
                             self.upload_protocol = Some(value.into());
                             self
                         }
                         #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-                        pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
                             self.upload_type = Some(value.into());
                             self
                         }
                         #[doc = "V1 error format."]
-                        pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
                             self.xgafv = Some(value);
                             self
                         }
-                        pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
                             T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            self._execute()
+                            let fields = T::field_selector();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_fields(fields)
                         }
-                        #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-                        pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                            let req = self._request(&self._path());
-                            Ok(req.send()?.error_for_status()?.text()?)
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]
+                        pub fn execute_standard(
+                            self,
+                        ) -> Result<
+                            crate::schemas::GoogleCloudServicebrokerV1Beta1ServiceInstance,
+                            Box<dyn ::std::error::Error>,
+                        > {
+                            self.execute_fields::<_, &str>(None)
                         }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]
                         pub fn execute_debug(
                             self,
                         ) -> Result<
-                            crate::schemas::GoogleCloudServicebrokerV1Beta1GetBindingResponse,
+                            crate::schemas::GoogleCloudServicebrokerV1Beta1ServiceInstance,
                             Box<dyn ::std::error::Error>,
                         > {
-                            self.execute()
+                            self.execute_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, Box<dyn ::std::error::Error>>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
+                            self._execute()
                         }
                         fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned,
                         {
-                            if self.fields.is_none() {
-                                self.fields = Some(T::field_selector());
-                            }
                             let req = self._request(&self._path());
                             Ok(req.send()?.error_for_status()?.json()?)
                         }
                         fn _path(&self) -> String {
                             let mut output = "https://servicebroker.googleapis.com/".to_owned();
                             output.push_str("v1beta1/");
-                            output.push_str(&self.name);
+                            {
+                                let var_as_str = &self.name;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
                             output
                         }
                         fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("planId", &self.plan_id)]);
-                            let req = req.query(&[("serviceId", &self.service_id)]);
                             let req = req.query(&[("access_token", &self.access_token)]);
                             let req = req.query(&[("alt", &self.alt)]);
                             let req = req.query(&[("callback", &self.callback)]);
@@ -4134,13 +3938,11 @@ pub mod projects {
                             let req = req.query(&[("uploadType", &self.upload_type)]);
                             let req = req.query(&[("$.xgafv", &self.xgafv)]);
                             let mut auth = self.auth.lock().unwrap();
-                            let req = req.bearer_auth(
-                                auth.token::<_, &str>(&[
-                                    "https://www.googleapis.com/auth/cloud-platform",
-                                ])
-                                .unwrap()
-                                .access_token,
-                            );
+                            let fut =
+                                auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                            let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                            let token = runtime.block_on(fut).unwrap().access_token;
+                            let req = req.bearer_auth(&token);
                             req
                         }
                     }
@@ -4166,108 +3968,150 @@ pub mod projects {
                     }
                     impl<'a, A: yup_oauth2::GetToken> GetLastOperationRequestBuilder<'a, A> {
                         #[doc = "If `operation` was returned during mutation operation, this field must be\npopulated with the provided value."]
-                        pub fn operation(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn operation(mut self, value: impl Into<String>) -> Self {
                             self.operation = Some(value.into());
                             self
                         }
                         #[doc = "Plan id."]
-                        pub fn plan_id(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn plan_id(mut self, value: impl Into<String>) -> Self {
                             self.plan_id = Some(value.into());
                             self
                         }
                         #[doc = "Service id."]
-                        pub fn service_id(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn service_id(mut self, value: impl Into<String>) -> Self {
                             self.service_id = Some(value.into());
                             self
                         }
                         #[doc = "OAuth access token."]
-                        pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
                             self.access_token = Some(value.into());
                             self
                         }
                         #[doc = "Data format for response."]
-                        pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
+                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
                             self.alt = Some(value);
                             self
                         }
                         #[doc = "JSONP"]
-                        pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
                             self.callback = Some(value.into());
                             self
                         }
                         #[doc = "Selector specifying which fields to include in a partial response."]
-                        pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn fields(mut self, value: impl Into<String>) -> Self {
                             self.fields = Some(value.into());
                             self
                         }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-                        pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
                             self.key = Some(value.into());
                             self
                         }
                         #[doc = "OAuth 2.0 token for the current user."]
-                        pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
                             self.oauth_token = Some(value.into());
                             self
                         }
                         #[doc = "Returns response with indentations and line breaks."]
-                        pub fn pretty_print(&mut self, value: bool) -> &mut Self {
+                        pub fn pretty_print(mut self, value: bool) -> Self {
                             self.pretty_print = Some(value);
                             self
                         }
                         #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-                        pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                             self.quota_user = Some(value.into());
                             self
                         }
                         #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-                        pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
                             self.upload_protocol = Some(value.into());
                             self
                         }
                         #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-                        pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
                             self.upload_type = Some(value.into());
                             self
                         }
                         #[doc = "V1 error format."]
-                        pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
                             self.xgafv = Some(value);
                             self
                         }
-                        pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
                             T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
                         {
-                            self._execute()
+                            let fields = T::field_selector();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_fields(fields)
                         }
-                        #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-                        pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                            let req = self._request(&self._path());
-                            Ok(req.send()?.error_for_status()?.text()?)
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]
+                        pub fn execute_standard(
+                            self,
+                        ) -> Result<
+                            crate::schemas::GoogleCloudServicebrokerV1Beta1Operation,
+                            Box<dyn ::std::error::Error>,
+                        > {
+                            self.execute_fields::<_, &str>(None)
                         }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]
                         pub fn execute_debug(
                             self,
                         ) -> Result<
                             crate::schemas::GoogleCloudServicebrokerV1Beta1Operation,
                             Box<dyn ::std::error::Error>,
                         > {
-                            self.execute()
+                            self.execute_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, Box<dyn ::std::error::Error>>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
+                            self._execute()
                         }
                         fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
                         where
-                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            T: ::serde::de::DeserializeOwned,
                         {
-                            if self.fields.is_none() {
-                                self.fields = Some(T::field_selector());
-                            }
                             let req = self._request(&self._path());
                             Ok(req.send()?.error_for_status()?.json()?)
                         }
                         fn _path(&self) -> String {
                             let mut output = "https://servicebroker.googleapis.com/".to_owned();
                             output.push_str("v1beta1/");
-                            output.push_str(&self.name);
+                            {
+                                let var_as_str = &self.name;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
                             output.push_str("/last_operation");
                             output
                         }
@@ -4288,501 +4132,1667 @@ pub mod projects {
                             let req = req.query(&[("uploadType", &self.upload_type)]);
                             let req = req.query(&[("$.xgafv", &self.xgafv)]);
                             let mut auth = self.auth.lock().unwrap();
-                            let req = req.bearer_auth(
-                                auth.token::<_, &str>(&[
-                                    "https://www.googleapis.com/auth/cloud-platform",
-                                ])
-                                .unwrap()
-                                .access_token,
-                            );
+                            let fut =
+                                auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                            let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                            let token = runtime.block_on(fut).unwrap().access_token;
+                            let req = req.bearer_auth(&token);
                             req
+                        }
+                    }
+                    #[derive(Debug, Clone)]
+                    pub struct PatchRequestBuilder<'a, A> {
+                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                        request: crate::schemas::GoogleCloudServicebrokerV1Beta1ServiceInstance,
+                        name: String,
+                        accepts_incomplete: Option<bool>,
+                        access_token: Option<String>,
+                        alt: Option<crate::params::Alt>,
+                        callback: Option<String>,
+                        fields: Option<String>,
+                        key: Option<String>,
+                        oauth_token: Option<String>,
+                        pretty_print: Option<bool>,
+                        quota_user: Option<String>,
+                        upload_protocol: Option<String>,
+                        upload_type: Option<String>,
+                        xgafv: Option<crate::params::Xgafv>,
+                    }
+                    impl<'a, A: yup_oauth2::GetToken> PatchRequestBuilder<'a, A> {
+                        #[doc = "See CreateServiceInstanceRequest for details."]
+                        pub fn accepts_incomplete(mut self, value: bool) -> Self {
+                            self.accepts_incomplete = Some(value);
+                            self
+                        }
+                        #[doc = "OAuth access token."]
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                            self.access_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Data format for response."]
+                        pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                            self.alt = Some(value);
+                            self
+                        }
+                        #[doc = "JSONP"]
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
+                            self.callback = Some(value.into());
+                            self
+                        }
+                        #[doc = "Selector specifying which fields to include in a partial response."]
+                        pub fn fields(mut self, value: impl Into<String>) -> Self {
+                            self.fields = Some(value.into());
+                            self
+                        }
+                        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
+                            self.key = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth 2.0 token for the current user."]
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                            self.oauth_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Returns response with indentations and line breaks."]
+                        pub fn pretty_print(mut self, value: bool) -> Self {
+                            self.pretty_print = Some(value);
+                            self
+                        }
+                        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                            self.quota_user = Some(value.into());
+                            self
+                        }
+                        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                            self.upload_protocol = Some(value.into());
+                            self
+                        }
+                        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                            self.upload_type = Some(value.into());
+                            self
+                        }
+                        #[doc = "V1 error format."]
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                            self.xgafv = Some(value);
+                            self
+                        }
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                        where
+                            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                        {
+                            let fields = T::field_selector();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_fields(fields)
+                        }
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]pub fn execute_standard ( self ) -> Result < crate :: schemas :: GoogleCloudServicebrokerV1Beta1UpdateServiceInstanceResponse , Box < dyn :: std :: error :: Error >>{
+                            self.execute_fields::<_, &str>(None)
+                        }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]pub fn execute_debug ( self ) -> Result < crate :: schemas :: GoogleCloudServicebrokerV1Beta1UpdateServiceInstanceResponse , Box < dyn :: std :: error :: Error >>{
+                            self.execute_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, Box<dyn ::std::error::Error>>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
+                            self._execute()
+                        }
+                        fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                        {
+                            let req = self._request(&self._path());
+                            let req = req.json(&self.request);
+                            Ok(req.send()?.error_for_status()?.json()?)
+                        }
+                        fn _path(&self) -> String {
+                            let mut output = "https://servicebroker.googleapis.com/".to_owned();
+                            output.push_str("v1beta1/");
+                            {
+                                let var_as_str = &self.name;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
+                            output
+                        }
+                        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                            let req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                            let req = req.query(&[("acceptsIncomplete", &self.accepts_incomplete)]);
+                            let req = req.query(&[("access_token", &self.access_token)]);
+                            let req = req.query(&[("alt", &self.alt)]);
+                            let req = req.query(&[("callback", &self.callback)]);
+                            let req = req.query(&[("fields", &self.fields)]);
+                            let req = req.query(&[("key", &self.key)]);
+                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            let req = req.query(&[("quotaUser", &self.quota_user)]);
+                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            let req = req.query(&[("uploadType", &self.upload_type)]);
+                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let mut auth = self.auth.lock().unwrap();
+                            let fut =
+                                auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                            let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                            let token = runtime.block_on(fut).unwrap().access_token;
+                            let req = req.bearer_auth(&token);
+                            req
+                        }
+                    }
+                    pub mod service_bindings {
+                        pub mod params {}
+                        pub struct ServiceBindingsActions<'a, A> {
+                            pub(crate) reqwest: &'a reqwest::Client,
+                            pub(crate) auth: &'a std::sync::Mutex<A>,
+                        }
+                        impl<'a, A: yup_oauth2::GetToken> ServiceBindingsActions<'a, A> {
+                            #[doc = "CreateBinding generates a service binding to an existing service instance.\nSee ProviServiceInstance for async operation details."]
+                            pub fn create(
+                                &self,
+                                request: crate::schemas::GoogleCloudServicebrokerV1Beta1Binding,
+                                parent: impl Into<String>,
+                                binding_id: impl Into<String>,
+                            ) -> CreateRequestBuilder<A> {
+                                CreateRequestBuilder {
+                                    reqwest: &self.reqwest,
+                                    auth: &self.auth,
+                                    request,
+                                    access_token: None,
+                                    alt: None,
+                                    callback: None,
+                                    fields: None,
+                                    key: None,
+                                    oauth_token: None,
+                                    pretty_print: None,
+                                    quota_user: None,
+                                    upload_protocol: None,
+                                    upload_type: None,
+                                    xgafv: None,
+                                    parent: parent.into(),
+                                    binding_id: binding_id.into(),
+                                    accepts_incomplete: None,
+                                }
+                            }
+                            #[doc = "Unbinds from a service instance.\nFor synchronous/asynchronous request details see CreateServiceInstance\nmethod.\nIf binding does not exist HTTP 410 status will be returned."]
+                            pub fn delete(
+                                &self,
+                                name: impl Into<String>,
+                            ) -> DeleteRequestBuilder<A> {
+                                DeleteRequestBuilder {
+                                    reqwest: &self.reqwest,
+                                    auth: &self.auth,
+                                    access_token: None,
+                                    alt: None,
+                                    callback: None,
+                                    fields: None,
+                                    key: None,
+                                    oauth_token: None,
+                                    pretty_print: None,
+                                    quota_user: None,
+                                    upload_protocol: None,
+                                    upload_type: None,
+                                    xgafv: None,
+                                    name: name.into(),
+                                    accepts_incomplete: None,
+                                    plan_id: None,
+                                    service_id: None,
+                                }
+                            }
+                            #[doc = "GetBinding returns the binding information."]
+                            pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder<A> {
+                                GetRequestBuilder {
+                                    reqwest: &self.reqwest,
+                                    auth: &self.auth,
+                                    access_token: None,
+                                    alt: None,
+                                    callback: None,
+                                    fields: None,
+                                    key: None,
+                                    oauth_token: None,
+                                    pretty_print: None,
+                                    quota_user: None,
+                                    upload_protocol: None,
+                                    upload_type: None,
+                                    xgafv: None,
+                                    name: name.into(),
+                                    plan_id: None,
+                                    service_id: None,
+                                }
+                            }
+                            #[doc = "Returns the state of the last operation for the binding.\nOnly last (or current) operation can be polled."]
+                            pub fn get_last_operation(
+                                &self,
+                                name: impl Into<String>,
+                            ) -> GetLastOperationRequestBuilder<A> {
+                                GetLastOperationRequestBuilder {
+                                    reqwest: &self.reqwest,
+                                    auth: &self.auth,
+                                    access_token: None,
+                                    alt: None,
+                                    callback: None,
+                                    fields: None,
+                                    key: None,
+                                    oauth_token: None,
+                                    pretty_print: None,
+                                    quota_user: None,
+                                    upload_protocol: None,
+                                    upload_type: None,
+                                    xgafv: None,
+                                    name: name.into(),
+                                    operation: None,
+                                    plan_id: None,
+                                    service_id: None,
+                                }
+                            }
+                        }
+                        #[derive(Debug, Clone)]
+                        pub struct CreateRequestBuilder<'a, A> {
+                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                            request: crate::schemas::GoogleCloudServicebrokerV1Beta1Binding,
+                            parent: String,
+                            binding_id: String,
+                            accepts_incomplete: Option<bool>,
+                            access_token: Option<String>,
+                            alt: Option<crate::params::Alt>,
+                            callback: Option<String>,
+                            fields: Option<String>,
+                            key: Option<String>,
+                            oauth_token: Option<String>,
+                            pretty_print: Option<bool>,
+                            quota_user: Option<String>,
+                            upload_protocol: Option<String>,
+                            upload_type: Option<String>,
+                            xgafv: Option<crate::params::Xgafv>,
+                        }
+                        impl<'a, A: yup_oauth2::GetToken> CreateRequestBuilder<'a, A> {
+                            #[doc = "See CreateServiceInstanceRequest for details."]
+                            pub fn accepts_incomplete(mut self, value: bool) -> Self {
+                                self.accepts_incomplete = Some(value);
+                                self
+                            }
+                            #[doc = "OAuth access token."]
+                            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                                self.access_token = Some(value.into());
+                                self
+                            }
+                            #[doc = "Data format for response."]
+                            pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                                self.alt = Some(value);
+                                self
+                            }
+                            #[doc = "JSONP"]
+                            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                                self.callback = Some(value.into());
+                                self
+                            }
+                            #[doc = "Selector specifying which fields to include in a partial response."]
+                            pub fn fields(mut self, value: impl Into<String>) -> Self {
+                                self.fields = Some(value.into());
+                                self
+                            }
+                            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                            pub fn key(mut self, value: impl Into<String>) -> Self {
+                                self.key = Some(value.into());
+                                self
+                            }
+                            #[doc = "OAuth 2.0 token for the current user."]
+                            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                                self.oauth_token = Some(value.into());
+                                self
+                            }
+                            #[doc = "Returns response with indentations and line breaks."]
+                            pub fn pretty_print(mut self, value: bool) -> Self {
+                                self.pretty_print = Some(value);
+                                self
+                            }
+                            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                                self.quota_user = Some(value.into());
+                                self
+                            }
+                            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                                self.upload_protocol = Some(value.into());
+                                self
+                            }
+                            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                                self.upload_type = Some(value.into());
+                                self
+                            }
+                            #[doc = "V1 error format."]
+                            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                                self.xgafv = Some(value);
+                                self
+                            }
+                            #[doc = r" Execute the given operation. The fields requested are"]
+                            #[doc = r" determined by the FieldSelector attribute of the return type."]
+                            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                            #[doc = r" are not generic over the return type and deserialize the"]
+                            #[doc = r" response into an auto-generated struct will all possible"]
+                            #[doc = r" fields."]
+                            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                            where
+                                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            {
+                                let fields = T::field_selector();
+                                let fields: Option<String> = if fields.is_empty() {
+                                    None
+                                } else {
+                                    Some(fields)
+                                };
+                                self.execute_fields(fields)
+                            }
+                            #[doc = r" Execute the given operation. This will not provide any"]
+                            #[doc = r" `fields` selector indicating that the server will determine"]
+                            #[doc = r" the fields returned. This typically includes the most common"]
+                            #[doc = r" fields, but it will not include every possible attribute of"]
+                            #[doc = r" the response resource."]pub fn execute_standard ( self ) -> Result < crate :: schemas :: GoogleCloudServicebrokerV1Beta1CreateBindingResponse , Box < dyn :: std :: error :: Error >>{
+                                self.execute_fields::<_, &str>(None)
+                            }
+                            #[doc = r" Execute the given operation. This will provide a `fields`"]
+                            #[doc = r" selector of `*`. This will include every attribute of the"]
+                            #[doc = r" response resource and should be limited to use during"]
+                            #[doc = r" development or debugging."]pub fn execute_debug ( self ) -> Result < crate :: schemas :: GoogleCloudServicebrokerV1Beta1CreateBindingResponse , Box < dyn :: std :: error :: Error >>{
+                                self.execute_fields(Some("*"))
+                            }
+                            #[doc = r" Execute the given operation. This will use the `fields`"]
+                            #[doc = r" selector provided and will deserialize the response into"]
+                            #[doc = r" whatever return value is provided."]
+                            pub fn execute_fields<T, F>(
+                                mut self,
+                                fields: Option<F>,
+                            ) -> Result<T, Box<dyn ::std::error::Error>>
+                            where
+                                T: ::serde::de::DeserializeOwned,
+                                F: Into<String>,
+                            {
+                                self.fields = fields.map(Into::into);
+                                self._execute()
+                            }
+                            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                            where
+                                T: ::serde::de::DeserializeOwned,
+                            {
+                                let req = self._request(&self._path());
+                                let req = req.json(&self.request);
+                                Ok(req.send()?.error_for_status()?.json()?)
+                            }
+                            fn _path(&self) -> String {
+                                let mut output = "https://servicebroker.googleapis.com/".to_owned();
+                                output.push_str("v1beta1/");
+                                {
+                                    let var_as_str = &self.parent;
+                                    output.extend(::percent_encoding::utf8_percent_encode(
+                                        &var_as_str,
+                                        crate::RESERVED,
+                                    ));
+                                }
+                                output.push_str("/service_bindings/");
+                                {
+                                    let var_as_str = &self.binding_id;
+                                    output.extend(::percent_encoding::utf8_percent_encode(
+                                        &var_as_str,
+                                        crate::RESERVED,
+                                    ));
+                                }
+                                output
+                            }
+                            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                                let req = self.reqwest.request(::reqwest::Method::PUT, path);
+                                let req =
+                                    req.query(&[("acceptsIncomplete", &self.accepts_incomplete)]);
+                                let req = req.query(&[("access_token", &self.access_token)]);
+                                let req = req.query(&[("alt", &self.alt)]);
+                                let req = req.query(&[("callback", &self.callback)]);
+                                let req = req.query(&[("fields", &self.fields)]);
+                                let req = req.query(&[("key", &self.key)]);
+                                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                                let req = req.query(&[("uploadType", &self.upload_type)]);
+                                let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                                let mut auth = self.auth.lock().unwrap();
+                                let fut = auth
+                                    .token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                                let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                                let token = runtime.block_on(fut).unwrap().access_token;
+                                let req = req.bearer_auth(&token);
+                                req
+                            }
+                        }
+                        #[derive(Debug, Clone)]
+                        pub struct DeleteRequestBuilder<'a, A> {
+                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                            name: String,
+                            accepts_incomplete: Option<bool>,
+                            plan_id: Option<String>,
+                            service_id: Option<String>,
+                            access_token: Option<String>,
+                            alt: Option<crate::params::Alt>,
+                            callback: Option<String>,
+                            fields: Option<String>,
+                            key: Option<String>,
+                            oauth_token: Option<String>,
+                            pretty_print: Option<bool>,
+                            quota_user: Option<String>,
+                            upload_protocol: Option<String>,
+                            upload_type: Option<String>,
+                            xgafv: Option<crate::params::Xgafv>,
+                        }
+                        impl<'a, A: yup_oauth2::GetToken> DeleteRequestBuilder<'a, A> {
+                            #[doc = "See CreateServiceInstanceRequest for details."]
+                            pub fn accepts_incomplete(mut self, value: bool) -> Self {
+                                self.accepts_incomplete = Some(value);
+                                self
+                            }
+                            #[doc = "The plan id of the service instance."]
+                            pub fn plan_id(mut self, value: impl Into<String>) -> Self {
+                                self.plan_id = Some(value.into());
+                                self
+                            }
+                            #[doc = "Additional query parameter hints.\nThe service id of the service instance."]
+                            pub fn service_id(mut self, value: impl Into<String>) -> Self {
+                                self.service_id = Some(value.into());
+                                self
+                            }
+                            #[doc = "OAuth access token."]
+                            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                                self.access_token = Some(value.into());
+                                self
+                            }
+                            #[doc = "Data format for response."]
+                            pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                                self.alt = Some(value);
+                                self
+                            }
+                            #[doc = "JSONP"]
+                            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                                self.callback = Some(value.into());
+                                self
+                            }
+                            #[doc = "Selector specifying which fields to include in a partial response."]
+                            pub fn fields(mut self, value: impl Into<String>) -> Self {
+                                self.fields = Some(value.into());
+                                self
+                            }
+                            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                            pub fn key(mut self, value: impl Into<String>) -> Self {
+                                self.key = Some(value.into());
+                                self
+                            }
+                            #[doc = "OAuth 2.0 token for the current user."]
+                            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                                self.oauth_token = Some(value.into());
+                                self
+                            }
+                            #[doc = "Returns response with indentations and line breaks."]
+                            pub fn pretty_print(mut self, value: bool) -> Self {
+                                self.pretty_print = Some(value);
+                                self
+                            }
+                            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                                self.quota_user = Some(value.into());
+                                self
+                            }
+                            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                                self.upload_protocol = Some(value.into());
+                                self
+                            }
+                            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                                self.upload_type = Some(value.into());
+                                self
+                            }
+                            #[doc = "V1 error format."]
+                            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                                self.xgafv = Some(value);
+                                self
+                            }
+                            #[doc = r" Execute the given operation. The fields requested are"]
+                            #[doc = r" determined by the FieldSelector attribute of the return type."]
+                            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                            #[doc = r" are not generic over the return type and deserialize the"]
+                            #[doc = r" response into an auto-generated struct will all possible"]
+                            #[doc = r" fields."]
+                            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                            where
+                                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            {
+                                let fields = T::field_selector();
+                                let fields: Option<String> = if fields.is_empty() {
+                                    None
+                                } else {
+                                    Some(fields)
+                                };
+                                self.execute_fields(fields)
+                            }
+                            #[doc = r" Execute the given operation. This will not provide any"]
+                            #[doc = r" `fields` selector indicating that the server will determine"]
+                            #[doc = r" the fields returned. This typically includes the most common"]
+                            #[doc = r" fields, but it will not include every possible attribute of"]
+                            #[doc = r" the response resource."]pub fn execute_standard ( self ) -> Result < crate :: schemas :: GoogleCloudServicebrokerV1Beta1DeleteBindingResponse , Box < dyn :: std :: error :: Error >>{
+                                self.execute_fields::<_, &str>(None)
+                            }
+                            #[doc = r" Execute the given operation. This will provide a `fields`"]
+                            #[doc = r" selector of `*`. This will include every attribute of the"]
+                            #[doc = r" response resource and should be limited to use during"]
+                            #[doc = r" development or debugging."]pub fn execute_debug ( self ) -> Result < crate :: schemas :: GoogleCloudServicebrokerV1Beta1DeleteBindingResponse , Box < dyn :: std :: error :: Error >>{
+                                self.execute_fields(Some("*"))
+                            }
+                            #[doc = r" Execute the given operation. This will use the `fields`"]
+                            #[doc = r" selector provided and will deserialize the response into"]
+                            #[doc = r" whatever return value is provided."]
+                            pub fn execute_fields<T, F>(
+                                mut self,
+                                fields: Option<F>,
+                            ) -> Result<T, Box<dyn ::std::error::Error>>
+                            where
+                                T: ::serde::de::DeserializeOwned,
+                                F: Into<String>,
+                            {
+                                self.fields = fields.map(Into::into);
+                                self._execute()
+                            }
+                            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                            where
+                                T: ::serde::de::DeserializeOwned,
+                            {
+                                let req = self._request(&self._path());
+                                Ok(req.send()?.error_for_status()?.json()?)
+                            }
+                            fn _path(&self) -> String {
+                                let mut output = "https://servicebroker.googleapis.com/".to_owned();
+                                output.push_str("v1beta1/");
+                                {
+                                    let var_as_str = &self.name;
+                                    output.extend(::percent_encoding::utf8_percent_encode(
+                                        &var_as_str,
+                                        crate::RESERVED,
+                                    ));
+                                }
+                                output
+                            }
+                            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                                let req =
+                                    req.query(&[("acceptsIncomplete", &self.accepts_incomplete)]);
+                                let req = req.query(&[("planId", &self.plan_id)]);
+                                let req = req.query(&[("serviceId", &self.service_id)]);
+                                let req = req.query(&[("access_token", &self.access_token)]);
+                                let req = req.query(&[("alt", &self.alt)]);
+                                let req = req.query(&[("callback", &self.callback)]);
+                                let req = req.query(&[("fields", &self.fields)]);
+                                let req = req.query(&[("key", &self.key)]);
+                                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                                let req = req.query(&[("uploadType", &self.upload_type)]);
+                                let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                                let mut auth = self.auth.lock().unwrap();
+                                let fut = auth
+                                    .token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                                let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                                let token = runtime.block_on(fut).unwrap().access_token;
+                                let req = req.bearer_auth(&token);
+                                req
+                            }
+                        }
+                        #[derive(Debug, Clone)]
+                        pub struct GetRequestBuilder<'a, A> {
+                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                            name: String,
+                            plan_id: Option<String>,
+                            service_id: Option<String>,
+                            access_token: Option<String>,
+                            alt: Option<crate::params::Alt>,
+                            callback: Option<String>,
+                            fields: Option<String>,
+                            key: Option<String>,
+                            oauth_token: Option<String>,
+                            pretty_print: Option<bool>,
+                            quota_user: Option<String>,
+                            upload_protocol: Option<String>,
+                            upload_type: Option<String>,
+                            xgafv: Option<crate::params::Xgafv>,
+                        }
+                        impl<'a, A: yup_oauth2::GetToken> GetRequestBuilder<'a, A> {
+                            #[doc = "Plan id."]
+                            pub fn plan_id(mut self, value: impl Into<String>) -> Self {
+                                self.plan_id = Some(value.into());
+                                self
+                            }
+                            #[doc = "Service id."]
+                            pub fn service_id(mut self, value: impl Into<String>) -> Self {
+                                self.service_id = Some(value.into());
+                                self
+                            }
+                            #[doc = "OAuth access token."]
+                            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                                self.access_token = Some(value.into());
+                                self
+                            }
+                            #[doc = "Data format for response."]
+                            pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                                self.alt = Some(value);
+                                self
+                            }
+                            #[doc = "JSONP"]
+                            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                                self.callback = Some(value.into());
+                                self
+                            }
+                            #[doc = "Selector specifying which fields to include in a partial response."]
+                            pub fn fields(mut self, value: impl Into<String>) -> Self {
+                                self.fields = Some(value.into());
+                                self
+                            }
+                            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                            pub fn key(mut self, value: impl Into<String>) -> Self {
+                                self.key = Some(value.into());
+                                self
+                            }
+                            #[doc = "OAuth 2.0 token for the current user."]
+                            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                                self.oauth_token = Some(value.into());
+                                self
+                            }
+                            #[doc = "Returns response with indentations and line breaks."]
+                            pub fn pretty_print(mut self, value: bool) -> Self {
+                                self.pretty_print = Some(value);
+                                self
+                            }
+                            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                                self.quota_user = Some(value.into());
+                                self
+                            }
+                            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                                self.upload_protocol = Some(value.into());
+                                self
+                            }
+                            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                                self.upload_type = Some(value.into());
+                                self
+                            }
+                            #[doc = "V1 error format."]
+                            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                                self.xgafv = Some(value);
+                                self
+                            }
+                            #[doc = r" Execute the given operation. The fields requested are"]
+                            #[doc = r" determined by the FieldSelector attribute of the return type."]
+                            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                            #[doc = r" are not generic over the return type and deserialize the"]
+                            #[doc = r" response into an auto-generated struct will all possible"]
+                            #[doc = r" fields."]
+                            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                            where
+                                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            {
+                                let fields = T::field_selector();
+                                let fields: Option<String> = if fields.is_empty() {
+                                    None
+                                } else {
+                                    Some(fields)
+                                };
+                                self.execute_fields(fields)
+                            }
+                            #[doc = r" Execute the given operation. This will not provide any"]
+                            #[doc = r" `fields` selector indicating that the server will determine"]
+                            #[doc = r" the fields returned. This typically includes the most common"]
+                            #[doc = r" fields, but it will not include every possible attribute of"]
+                            #[doc = r" the response resource."]
+                            pub fn execute_standard(
+                                self,
+                            ) -> Result<
+                                crate::schemas::GoogleCloudServicebrokerV1Beta1GetBindingResponse,
+                                Box<dyn ::std::error::Error>,
+                            > {
+                                self.execute_fields::<_, &str>(None)
+                            }
+                            #[doc = r" Execute the given operation. This will provide a `fields`"]
+                            #[doc = r" selector of `*`. This will include every attribute of the"]
+                            #[doc = r" response resource and should be limited to use during"]
+                            #[doc = r" development or debugging."]
+                            pub fn execute_debug(
+                                self,
+                            ) -> Result<
+                                crate::schemas::GoogleCloudServicebrokerV1Beta1GetBindingResponse,
+                                Box<dyn ::std::error::Error>,
+                            > {
+                                self.execute_fields(Some("*"))
+                            }
+                            #[doc = r" Execute the given operation. This will use the `fields`"]
+                            #[doc = r" selector provided and will deserialize the response into"]
+                            #[doc = r" whatever return value is provided."]
+                            pub fn execute_fields<T, F>(
+                                mut self,
+                                fields: Option<F>,
+                            ) -> Result<T, Box<dyn ::std::error::Error>>
+                            where
+                                T: ::serde::de::DeserializeOwned,
+                                F: Into<String>,
+                            {
+                                self.fields = fields.map(Into::into);
+                                self._execute()
+                            }
+                            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                            where
+                                T: ::serde::de::DeserializeOwned,
+                            {
+                                let req = self._request(&self._path());
+                                Ok(req.send()?.error_for_status()?.json()?)
+                            }
+                            fn _path(&self) -> String {
+                                let mut output = "https://servicebroker.googleapis.com/".to_owned();
+                                output.push_str("v1beta1/");
+                                {
+                                    let var_as_str = &self.name;
+                                    output.extend(::percent_encoding::utf8_percent_encode(
+                                        &var_as_str,
+                                        crate::RESERVED,
+                                    ));
+                                }
+                                output
+                            }
+                            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                                let req = self.reqwest.request(::reqwest::Method::GET, path);
+                                let req = req.query(&[("planId", &self.plan_id)]);
+                                let req = req.query(&[("serviceId", &self.service_id)]);
+                                let req = req.query(&[("access_token", &self.access_token)]);
+                                let req = req.query(&[("alt", &self.alt)]);
+                                let req = req.query(&[("callback", &self.callback)]);
+                                let req = req.query(&[("fields", &self.fields)]);
+                                let req = req.query(&[("key", &self.key)]);
+                                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                                let req = req.query(&[("uploadType", &self.upload_type)]);
+                                let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                                let mut auth = self.auth.lock().unwrap();
+                                let fut = auth
+                                    .token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                                let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                                let token = runtime.block_on(fut).unwrap().access_token;
+                                let req = req.bearer_auth(&token);
+                                req
+                            }
+                        }
+                        #[derive(Debug, Clone)]
+                        pub struct GetLastOperationRequestBuilder<'a, A> {
+                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                            name: String,
+                            operation: Option<String>,
+                            plan_id: Option<String>,
+                            service_id: Option<String>,
+                            access_token: Option<String>,
+                            alt: Option<crate::params::Alt>,
+                            callback: Option<String>,
+                            fields: Option<String>,
+                            key: Option<String>,
+                            oauth_token: Option<String>,
+                            pretty_print: Option<bool>,
+                            quota_user: Option<String>,
+                            upload_protocol: Option<String>,
+                            upload_type: Option<String>,
+                            xgafv: Option<crate::params::Xgafv>,
+                        }
+                        impl<'a, A: yup_oauth2::GetToken> GetLastOperationRequestBuilder<'a, A> {
+                            #[doc = "If `operation` was returned during mutation operation, this field must be\npopulated with the provided value."]
+                            pub fn operation(mut self, value: impl Into<String>) -> Self {
+                                self.operation = Some(value.into());
+                                self
+                            }
+                            #[doc = "Plan id."]
+                            pub fn plan_id(mut self, value: impl Into<String>) -> Self {
+                                self.plan_id = Some(value.into());
+                                self
+                            }
+                            #[doc = "Service id."]
+                            pub fn service_id(mut self, value: impl Into<String>) -> Self {
+                                self.service_id = Some(value.into());
+                                self
+                            }
+                            #[doc = "OAuth access token."]
+                            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                                self.access_token = Some(value.into());
+                                self
+                            }
+                            #[doc = "Data format for response."]
+                            pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                                self.alt = Some(value);
+                                self
+                            }
+                            #[doc = "JSONP"]
+                            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                                self.callback = Some(value.into());
+                                self
+                            }
+                            #[doc = "Selector specifying which fields to include in a partial response."]
+                            pub fn fields(mut self, value: impl Into<String>) -> Self {
+                                self.fields = Some(value.into());
+                                self
+                            }
+                            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                            pub fn key(mut self, value: impl Into<String>) -> Self {
+                                self.key = Some(value.into());
+                                self
+                            }
+                            #[doc = "OAuth 2.0 token for the current user."]
+                            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                                self.oauth_token = Some(value.into());
+                                self
+                            }
+                            #[doc = "Returns response with indentations and line breaks."]
+                            pub fn pretty_print(mut self, value: bool) -> Self {
+                                self.pretty_print = Some(value);
+                                self
+                            }
+                            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                                self.quota_user = Some(value.into());
+                                self
+                            }
+                            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                                self.upload_protocol = Some(value.into());
+                                self
+                            }
+                            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                                self.upload_type = Some(value.into());
+                                self
+                            }
+                            #[doc = "V1 error format."]
+                            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                                self.xgafv = Some(value);
+                                self
+                            }
+                            #[doc = r" Execute the given operation. The fields requested are"]
+                            #[doc = r" determined by the FieldSelector attribute of the return type."]
+                            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                            #[doc = r" are not generic over the return type and deserialize the"]
+                            #[doc = r" response into an auto-generated struct will all possible"]
+                            #[doc = r" fields."]
+                            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                            where
+                                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                            {
+                                let fields = T::field_selector();
+                                let fields: Option<String> = if fields.is_empty() {
+                                    None
+                                } else {
+                                    Some(fields)
+                                };
+                                self.execute_fields(fields)
+                            }
+                            #[doc = r" Execute the given operation. This will not provide any"]
+                            #[doc = r" `fields` selector indicating that the server will determine"]
+                            #[doc = r" the fields returned. This typically includes the most common"]
+                            #[doc = r" fields, but it will not include every possible attribute of"]
+                            #[doc = r" the response resource."]
+                            pub fn execute_standard(
+                                self,
+                            ) -> Result<
+                                crate::schemas::GoogleCloudServicebrokerV1Beta1Operation,
+                                Box<dyn ::std::error::Error>,
+                            > {
+                                self.execute_fields::<_, &str>(None)
+                            }
+                            #[doc = r" Execute the given operation. This will provide a `fields`"]
+                            #[doc = r" selector of `*`. This will include every attribute of the"]
+                            #[doc = r" response resource and should be limited to use during"]
+                            #[doc = r" development or debugging."]
+                            pub fn execute_debug(
+                                self,
+                            ) -> Result<
+                                crate::schemas::GoogleCloudServicebrokerV1Beta1Operation,
+                                Box<dyn ::std::error::Error>,
+                            > {
+                                self.execute_fields(Some("*"))
+                            }
+                            #[doc = r" Execute the given operation. This will use the `fields`"]
+                            #[doc = r" selector provided and will deserialize the response into"]
+                            #[doc = r" whatever return value is provided."]
+                            pub fn execute_fields<T, F>(
+                                mut self,
+                                fields: Option<F>,
+                            ) -> Result<T, Box<dyn ::std::error::Error>>
+                            where
+                                T: ::serde::de::DeserializeOwned,
+                                F: Into<String>,
+                            {
+                                self.fields = fields.map(Into::into);
+                                self._execute()
+                            }
+                            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                            where
+                                T: ::serde::de::DeserializeOwned,
+                            {
+                                let req = self._request(&self._path());
+                                Ok(req.send()?.error_for_status()?.json()?)
+                            }
+                            fn _path(&self) -> String {
+                                let mut output = "https://servicebroker.googleapis.com/".to_owned();
+                                output.push_str("v1beta1/");
+                                {
+                                    let var_as_str = &self.name;
+                                    output.extend(::percent_encoding::utf8_percent_encode(
+                                        &var_as_str,
+                                        crate::RESERVED,
+                                    ));
+                                }
+                                output.push_str("/last_operation");
+                                output
+                            }
+                            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                                let req = self.reqwest.request(::reqwest::Method::GET, path);
+                                let req = req.query(&[("operation", &self.operation)]);
+                                let req = req.query(&[("planId", &self.plan_id)]);
+                                let req = req.query(&[("serviceId", &self.service_id)]);
+                                let req = req.query(&[("access_token", &self.access_token)]);
+                                let req = req.query(&[("alt", &self.alt)]);
+                                let req = req.query(&[("callback", &self.callback)]);
+                                let req = req.query(&[("fields", &self.fields)]);
+                                let req = req.query(&[("key", &self.key)]);
+                                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                                let req = req.query(&[("uploadType", &self.upload_type)]);
+                                let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                                let mut auth = self.auth.lock().unwrap();
+                                let fut = auth
+                                    .token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                                let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                                let token = runtime.block_on(fut).unwrap().access_token;
+                                let req = req.bearer_auth(&token);
+                                req
+                            }
                         }
                     }
                 }
             }
         }
     }
-}
-pub mod v_1beta_1 {
-    pub mod params {}
-    pub struct V1Beta1Actions<'a, A> {
-        pub(super) reqwest: &'a reqwest::Client,
-        pub(super) auth: &'a std::sync::Mutex<A>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> V1Beta1Actions<'a, A> {
-        #[doc = "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset."]
-        pub fn get_iam_policy(&self, resource: impl Into<String>) -> GetIamPolicyRequestBuilder<A> {
-            GetIamPolicyRequestBuilder {
-                reqwest: &self.reqwest,
-                auth: &self.auth,
-                access_token: None,
-                alt: None,
-                callback: None,
-                fields: None,
-                key: None,
-                oauth_token: None,
-                pretty_print: None,
-                quota_user: None,
-                upload_protocol: None,
-                upload_type: None,
-                xgafv: None,
-                resource: resource.into(),
-                options_requested_policy_version: None,
+    pub mod v_1beta_1 {
+        pub mod params {}
+        pub struct V1Beta1Actions<'a, A> {
+            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) auth: &'a std::sync::Mutex<A>,
+        }
+        impl<'a, A: yup_oauth2::GetToken> V1Beta1Actions<'a, A> {
+            #[doc = "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset."]
+            pub fn get_iam_policy(
+                &self,
+                resource: impl Into<String>,
+            ) -> GetIamPolicyRequestBuilder<A> {
+                GetIamPolicyRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: &self.auth,
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    resource: resource.into(),
+                    options_requested_policy_version: None,
+                }
+            }
+            #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy."]
+            pub fn set_iam_policy(
+                &self,
+                request: crate::schemas::GoogleIamV1SetIamPolicyRequest,
+                resource: impl Into<String>,
+            ) -> SetIamPolicyRequestBuilder<A> {
+                SetIamPolicyRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: &self.auth,
+                    request,
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    resource: resource.into(),
+                }
+            }
+            #[doc = "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning."]
+            pub fn test_iam_permissions(
+                &self,
+                request: crate::schemas::GoogleIamV1TestIamPermissionsRequest,
+                resource: impl Into<String>,
+            ) -> TestIamPermissionsRequestBuilder<A> {
+                TestIamPermissionsRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: &self.auth,
+                    request,
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    resource: resource.into(),
+                }
             }
         }
-        #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy."]
-        pub fn set_iam_policy(
-            &self,
+        #[derive(Debug, Clone)]
+        pub struct GetIamPolicyRequestBuilder<'a, A> {
+            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) auth: &'a ::std::sync::Mutex<A>,
+            resource: String,
+            options_requested_policy_version: Option<i32>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a, A: yup_oauth2::GetToken> GetIamPolicyRequestBuilder<'a, A> {
+            #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+            pub fn options_requested_policy_version(mut self, value: i32) -> Self {
+                self.options_requested_policy_version = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "Data format for response."]
+            pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                self.alt = Some(value);
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "Selector specifying which fields to include in a partial response."]
+            pub fn fields(mut self, value: impl Into<String>) -> Self {
+                self.fields = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+            {
+                let fields = T::field_selector();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_standard(
+                self,
+            ) -> Result<crate::schemas::GoogleIamV1Policy, Box<dyn ::std::error::Error>>
+            {
+                self.execute_fields::<_, &str>(None)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_debug(
+                self,
+            ) -> Result<crate::schemas::GoogleIamV1Policy, Box<dyn ::std::error::Error>>
+            {
+                self.execute_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path());
+                Ok(req.send()?.error_for_status()?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://servicebroker.googleapis.com/".to_owned();
+                output.push_str("v1beta1/");
+                {
+                    let var_as_str = &self.resource;
+                    output.extend(::percent_encoding::utf8_percent_encode(
+                        &var_as_str,
+                        crate::RESERVED,
+                    ));
+                }
+                output.push_str(":getIamPolicy");
+                output
+            }
+            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[(
+                    "options.requestedPolicyVersion",
+                    &self.options_requested_policy_version,
+                )]);
+                let req = req.query(&[("access_token", &self.access_token)]);
+                let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
+                let req = req.query(&[("fields", &self.fields)]);
+                let req = req.query(&[("key", &self.key)]);
+                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let mut auth = self.auth.lock().unwrap();
+                let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                let token = runtime.block_on(fut).unwrap().access_token;
+                let req = req.bearer_auth(&token);
+                req
+            }
+        }
+        #[derive(Debug, Clone)]
+        pub struct SetIamPolicyRequestBuilder<'a, A> {
+            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) auth: &'a ::std::sync::Mutex<A>,
             request: crate::schemas::GoogleIamV1SetIamPolicyRequest,
-            resource: impl Into<String>,
-        ) -> SetIamPolicyRequestBuilder<A> {
-            SetIamPolicyRequestBuilder {
-                reqwest: &self.reqwest,
-                auth: &self.auth,
-                request,
-                access_token: None,
-                alt: None,
-                callback: None,
-                fields: None,
-                key: None,
-                oauth_token: None,
-                pretty_print: None,
-                quota_user: None,
-                upload_protocol: None,
-                upload_type: None,
-                xgafv: None,
-                resource: resource.into(),
+            resource: String,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a, A: yup_oauth2::GetToken> SetIamPolicyRequestBuilder<'a, A> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "Data format for response."]
+            pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                self.alt = Some(value);
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "Selector specifying which fields to include in a partial response."]
+            pub fn fields(mut self, value: impl Into<String>) -> Self {
+                self.fields = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+            {
+                let fields = T::field_selector();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_standard(
+                self,
+            ) -> Result<crate::schemas::GoogleIamV1Policy, Box<dyn ::std::error::Error>>
+            {
+                self.execute_fields::<_, &str>(None)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_debug(
+                self,
+            ) -> Result<crate::schemas::GoogleIamV1Policy, Box<dyn ::std::error::Error>>
+            {
+                self.execute_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path());
+                let req = req.json(&self.request);
+                Ok(req.send()?.error_for_status()?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://servicebroker.googleapis.com/".to_owned();
+                output.push_str("v1beta1/");
+                {
+                    let var_as_str = &self.resource;
+                    output.extend(::percent_encoding::utf8_percent_encode(
+                        &var_as_str,
+                        crate::RESERVED,
+                    ));
+                }
+                output.push_str(":setIamPolicy");
+                output
+            }
+            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                let req = self.reqwest.request(::reqwest::Method::POST, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
+                let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
+                let req = req.query(&[("fields", &self.fields)]);
+                let req = req.query(&[("key", &self.key)]);
+                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let mut auth = self.auth.lock().unwrap();
+                let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                let token = runtime.block_on(fut).unwrap().access_token;
+                let req = req.bearer_auth(&token);
+                req
             }
         }
-        #[doc = "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning."]
-        pub fn test_iam_permissions(
-            &self,
+        #[derive(Debug, Clone)]
+        pub struct TestIamPermissionsRequestBuilder<'a, A> {
+            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) auth: &'a ::std::sync::Mutex<A>,
             request: crate::schemas::GoogleIamV1TestIamPermissionsRequest,
-            resource: impl Into<String>,
-        ) -> TestIamPermissionsRequestBuilder<A> {
-            TestIamPermissionsRequestBuilder {
-                reqwest: &self.reqwest,
-                auth: &self.auth,
-                request,
-                access_token: None,
-                alt: None,
-                callback: None,
-                fields: None,
-                key: None,
-                oauth_token: None,
-                pretty_print: None,
-                quota_user: None,
-                upload_protocol: None,
-                upload_type: None,
-                xgafv: None,
-                resource: resource.into(),
+            resource: String,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a, A: yup_oauth2::GetToken> TestIamPermissionsRequestBuilder<'a, A> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
             }
-        }
-    }
-    #[derive(Debug, Clone)]
-    pub struct GetIamPolicyRequestBuilder<'a, A> {
-        pub(crate) reqwest: &'a ::reqwest::Client,
-        pub(crate) auth: &'a ::std::sync::Mutex<A>,
-        resource: String,
-        options_requested_policy_version: Option<i32>,
-        access_token: Option<String>,
-        alt: Option<crate::params::Alt>,
-        callback: Option<String>,
-        fields: Option<String>,
-        key: Option<String>,
-        oauth_token: Option<String>,
-        pretty_print: Option<bool>,
-        quota_user: Option<String>,
-        upload_protocol: Option<String>,
-        upload_type: Option<String>,
-        xgafv: Option<crate::params::Xgafv>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> GetIamPolicyRequestBuilder<'a, A> {
-        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
-        pub fn options_requested_policy_version(&mut self, value: i32) -> &mut Self {
-            self.options_requested_policy_version = Some(value);
-            self
-        }
-        #[doc = "OAuth access token."]
-        pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
-            self.access_token = Some(value.into());
-            self
-        }
-        #[doc = "Data format for response."]
-        pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-            self.alt = Some(value);
-            self
-        }
-        #[doc = "JSONP"]
-        pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
-            self.callback = Some(value.into());
-            self
-        }
-        #[doc = "Selector specifying which fields to include in a partial response."]
-        pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-            self.fields = Some(value.into());
-            self
-        }
-        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-        pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-            self.key = Some(value.into());
-            self
-        }
-        #[doc = "OAuth 2.0 token for the current user."]
-        pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-            self.oauth_token = Some(value.into());
-            self
-        }
-        #[doc = "Returns response with indentations and line breaks."]
-        pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-            self.pretty_print = Some(value);
-            self
-        }
-        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-        pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-            self.quota_user = Some(value.into());
-            self
-        }
-        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-        pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
-            self.upload_protocol = Some(value.into());
-            self
-        }
-        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-        pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
-            self.upload_type = Some(value.into());
-            self
-        }
-        #[doc = "V1 error format."]
-        pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
-            self.xgafv = Some(value);
-            self
-        }
-        pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            self._execute()
-        }
-        #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-        pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-            let req = self._request(&self._path());
-            Ok(req.send()?.error_for_status()?.text()?)
-        }
-        pub fn execute_debug(
-            self,
-        ) -> Result<crate::schemas::GoogleIamV1Policy, Box<dyn ::std::error::Error>> {
-            self.execute()
-        }
-        fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            if self.fields.is_none() {
-                self.fields = Some(T::field_selector());
+            #[doc = "Data format for response."]
+            pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                self.alt = Some(value);
+                self
             }
-            let req = self._request(&self._path());
-            Ok(req.send()?.error_for_status()?.json()?)
-        }
-        fn _path(&self) -> String {
-            let mut output = "https://servicebroker.googleapis.com/".to_owned();
-            output.push_str("v1beta1/");
-            output.push_str(&self.resource);
-            output.push_str(":getIamPolicy");
-            output
-        }
-        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-            let req = self.reqwest.request(::reqwest::Method::GET, path);
-            let req = req.query(&[(
-                "options.requestedPolicyVersion",
-                &self.options_requested_policy_version,
-            )]);
-            let req = req.query(&[("access_token", &self.access_token)]);
-            let req = req.query(&[("alt", &self.alt)]);
-            let req = req.query(&[("callback", &self.callback)]);
-            let req = req.query(&[("fields", &self.fields)]);
-            let req = req.query(&[("key", &self.key)]);
-            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-            let req = req.query(&[("quotaUser", &self.quota_user)]);
-            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-            let req = req.query(&[("uploadType", &self.upload_type)]);
-            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-            let mut auth = self.auth.lock().unwrap();
-            let req = req.bearer_auth(
-                auth.token::<_, &str>(&["https://www.googleapis.com/auth/cloud-platform"])
-                    .unwrap()
-                    .access_token,
-            );
-            req
-        }
-    }
-    #[derive(Debug, Clone)]
-    pub struct SetIamPolicyRequestBuilder<'a, A> {
-        pub(crate) reqwest: &'a ::reqwest::Client,
-        pub(crate) auth: &'a ::std::sync::Mutex<A>,
-        request: crate::schemas::GoogleIamV1SetIamPolicyRequest,
-        resource: String,
-        access_token: Option<String>,
-        alt: Option<crate::params::Alt>,
-        callback: Option<String>,
-        fields: Option<String>,
-        key: Option<String>,
-        oauth_token: Option<String>,
-        pretty_print: Option<bool>,
-        quota_user: Option<String>,
-        upload_protocol: Option<String>,
-        upload_type: Option<String>,
-        xgafv: Option<crate::params::Xgafv>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> SetIamPolicyRequestBuilder<'a, A> {
-        #[doc = "OAuth access token."]
-        pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
-            self.access_token = Some(value.into());
-            self
-        }
-        #[doc = "Data format for response."]
-        pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-            self.alt = Some(value);
-            self
-        }
-        #[doc = "JSONP"]
-        pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
-            self.callback = Some(value.into());
-            self
-        }
-        #[doc = "Selector specifying which fields to include in a partial response."]
-        pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-            self.fields = Some(value.into());
-            self
-        }
-        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-        pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-            self.key = Some(value.into());
-            self
-        }
-        #[doc = "OAuth 2.0 token for the current user."]
-        pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-            self.oauth_token = Some(value.into());
-            self
-        }
-        #[doc = "Returns response with indentations and line breaks."]
-        pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-            self.pretty_print = Some(value);
-            self
-        }
-        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-        pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-            self.quota_user = Some(value.into());
-            self
-        }
-        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-        pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
-            self.upload_protocol = Some(value.into());
-            self
-        }
-        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-        pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
-            self.upload_type = Some(value.into());
-            self
-        }
-        #[doc = "V1 error format."]
-        pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
-            self.xgafv = Some(value);
-            self
-        }
-        pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            self._execute()
-        }
-        #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-        pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-            let req = self._request(&self._path());
-            let req = req.json(&self.request);
-            Ok(req.send()?.error_for_status()?.text()?)
-        }
-        pub fn execute_debug(
-            self,
-        ) -> Result<crate::schemas::GoogleIamV1Policy, Box<dyn ::std::error::Error>> {
-            self.execute()
-        }
-        fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            if self.fields.is_none() {
-                self.fields = Some(T::field_selector());
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
             }
-            let req = self._request(&self._path());
-            let req = req.json(&self.request);
-            Ok(req.send()?.error_for_status()?.json()?)
-        }
-        fn _path(&self) -> String {
-            let mut output = "https://servicebroker.googleapis.com/".to_owned();
-            output.push_str("v1beta1/");
-            output.push_str(&self.resource);
-            output.push_str(":setIamPolicy");
-            output
-        }
-        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-            let req = self.reqwest.request(::reqwest::Method::POST, path);
-            let req = req.query(&[("access_token", &self.access_token)]);
-            let req = req.query(&[("alt", &self.alt)]);
-            let req = req.query(&[("callback", &self.callback)]);
-            let req = req.query(&[("fields", &self.fields)]);
-            let req = req.query(&[("key", &self.key)]);
-            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-            let req = req.query(&[("quotaUser", &self.quota_user)]);
-            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-            let req = req.query(&[("uploadType", &self.upload_type)]);
-            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-            let mut auth = self.auth.lock().unwrap();
-            let req = req.bearer_auth(
-                auth.token::<_, &str>(&["https://www.googleapis.com/auth/cloud-platform"])
-                    .unwrap()
-                    .access_token,
-            );
-            req
-        }
-    }
-    #[derive(Debug, Clone)]
-    pub struct TestIamPermissionsRequestBuilder<'a, A> {
-        pub(crate) reqwest: &'a ::reqwest::Client,
-        pub(crate) auth: &'a ::std::sync::Mutex<A>,
-        request: crate::schemas::GoogleIamV1TestIamPermissionsRequest,
-        resource: String,
-        access_token: Option<String>,
-        alt: Option<crate::params::Alt>,
-        callback: Option<String>,
-        fields: Option<String>,
-        key: Option<String>,
-        oauth_token: Option<String>,
-        pretty_print: Option<bool>,
-        quota_user: Option<String>,
-        upload_protocol: Option<String>,
-        upload_type: Option<String>,
-        xgafv: Option<crate::params::Xgafv>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> TestIamPermissionsRequestBuilder<'a, A> {
-        #[doc = "OAuth access token."]
-        pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
-            self.access_token = Some(value.into());
-            self
-        }
-        #[doc = "Data format for response."]
-        pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-            self.alt = Some(value);
-            self
-        }
-        #[doc = "JSONP"]
-        pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
-            self.callback = Some(value.into());
-            self
-        }
-        #[doc = "Selector specifying which fields to include in a partial response."]
-        pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-            self.fields = Some(value.into());
-            self
-        }
-        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-        pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-            self.key = Some(value.into());
-            self
-        }
-        #[doc = "OAuth 2.0 token for the current user."]
-        pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-            self.oauth_token = Some(value.into());
-            self
-        }
-        #[doc = "Returns response with indentations and line breaks."]
-        pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-            self.pretty_print = Some(value);
-            self
-        }
-        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-        pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-            self.quota_user = Some(value.into());
-            self
-        }
-        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-        pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
-            self.upload_protocol = Some(value.into());
-            self
-        }
-        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-        pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
-            self.upload_type = Some(value.into());
-            self
-        }
-        #[doc = "V1 error format."]
-        pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
-            self.xgafv = Some(value);
-            self
-        }
-        pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            self._execute()
-        }
-        #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-        pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-            let req = self._request(&self._path());
-            let req = req.json(&self.request);
-            Ok(req.send()?.error_for_status()?.text()?)
-        }
-        pub fn execute_debug(
-            self,
-        ) -> Result<
-            crate::schemas::GoogleIamV1TestIamPermissionsResponse,
-            Box<dyn ::std::error::Error>,
-        > {
-            self.execute()
-        }
-        fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            if self.fields.is_none() {
-                self.fields = Some(T::field_selector());
+            #[doc = "Selector specifying which fields to include in a partial response."]
+            pub fn fields(mut self, value: impl Into<String>) -> Self {
+                self.fields = Some(value.into());
+                self
             }
-            let req = self._request(&self._path());
-            let req = req.json(&self.request);
-            Ok(req.send()?.error_for_status()?.json()?)
-        }
-        fn _path(&self) -> String {
-            let mut output = "https://servicebroker.googleapis.com/".to_owned();
-            output.push_str("v1beta1/");
-            output.push_str(&self.resource);
-            output.push_str(":testIamPermissions");
-            output
-        }
-        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-            let req = self.reqwest.request(::reqwest::Method::POST, path);
-            let req = req.query(&[("access_token", &self.access_token)]);
-            let req = req.query(&[("alt", &self.alt)]);
-            let req = req.query(&[("callback", &self.callback)]);
-            let req = req.query(&[("fields", &self.fields)]);
-            let req = req.query(&[("key", &self.key)]);
-            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-            let req = req.query(&[("quotaUser", &self.quota_user)]);
-            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-            let req = req.query(&[("uploadType", &self.upload_type)]);
-            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-            let mut auth = self.auth.lock().unwrap();
-            let req = req.bearer_auth(
-                auth.token::<_, &str>(&["https://www.googleapis.com/auth/cloud-platform"])
-                    .unwrap()
-                    .access_token,
-            );
-            req
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+            {
+                let fields = T::field_selector();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_standard(
+                self,
+            ) -> Result<
+                crate::schemas::GoogleIamV1TestIamPermissionsResponse,
+                Box<dyn ::std::error::Error>,
+            > {
+                self.execute_fields::<_, &str>(None)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_debug(
+                self,
+            ) -> Result<
+                crate::schemas::GoogleIamV1TestIamPermissionsResponse,
+                Box<dyn ::std::error::Error>,
+            > {
+                self.execute_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path());
+                let req = req.json(&self.request);
+                Ok(req.send()?.error_for_status()?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://servicebroker.googleapis.com/".to_owned();
+                output.push_str("v1beta1/");
+                {
+                    let var_as_str = &self.resource;
+                    output.extend(::percent_encoding::utf8_percent_encode(
+                        &var_as_str,
+                        crate::RESERVED,
+                    ));
+                }
+                output.push_str(":testIamPermissions");
+                output
+            }
+            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                let req = self.reqwest.request(::reqwest::Method::POST, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
+                let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
+                let req = req.query(&[("fields", &self.fields)]);
+                let req = req.query(&[("key", &self.key)]);
+                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let mut auth = self.auth.lock().unwrap();
+                let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                let token = runtime.block_on(fut).unwrap().access_token;
+                let req = req.bearer_auth(&token);
+                req
+            }
         }
     }
 }
+#[allow(dead_code)]
+const SIMPLE: &::percent_encoding::AsciiSet = &::percent_encoding::NON_ALPHANUMERIC
+    .remove(b'-')
+    .remove(b'.')
+    .remove(b'_')
+    .remove(b'~');
+
+#[allow(dead_code)]
+const RESERVED: &::percent_encoding::AsciiSet = &SIMPLE
+    .remove(b'%')
+    .remove(b':')
+    .remove(b'/')
+    .remove(b'?')
+    .remove(b'#')
+    .remove(b'[')
+    .remove(b']')
+    .remove(b'@')
+    .remove(b'!')
+    .remove(b'$')
+    .remove(b'&')
+    .remove(b'\'')
+    .remove(b'(')
+    .remove(b')')
+    .remove(b'*')
+    .remove(b'+')
+    .remove(b',')
+    .remove(b';')
+    .remove(b'=');
+#[allow(dead_code)]
 mod multipart {
     pub(crate) struct RelatedMultiPart {
         parts: Vec<Part>,
@@ -5041,13 +6051,14 @@ trait IterableMethod {
         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
 }
 
-struct PageIter<'a, M, T> {
-    method: &'a mut M,
+#[allow(dead_code)]
+struct PageIter<M, T> {
+    method: M,
     finished: bool,
     _phantom: ::std::marker::PhantomData<T>,
 }
 
-impl<'a, M, T> Iterator for PageIter<'a, M, T>
+impl<M, T> Iterator for PageIter<M, T>
 where
     M: IterableMethod,
     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,

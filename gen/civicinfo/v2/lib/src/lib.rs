@@ -1573,1020 +1573,899 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
     #[doc = "Actions that can be performed on the divisions resource"]
-    pub fn divisions(&self) -> crate::divisions::DivisionsActions<A> {
-        crate::divisions::DivisionsActions {
+    pub fn divisions(&self) -> crate::resources::divisions::DivisionsActions<A> {
+        crate::resources::divisions::DivisionsActions {
             reqwest: &self.reqwest,
             auth: &self.auth,
         }
     }
     #[doc = "Actions that can be performed on the elections resource"]
-    pub fn elections(&self) -> crate::elections::ElectionsActions<A> {
-        crate::elections::ElectionsActions {
+    pub fn elections(&self) -> crate::resources::elections::ElectionsActions<A> {
+        crate::resources::elections::ElectionsActions {
             reqwest: &self.reqwest,
             auth: &self.auth,
         }
     }
     #[doc = "Actions that can be performed on the representatives resource"]
-    pub fn representatives(&self) -> crate::representatives::RepresentativesActions<A> {
-        crate::representatives::RepresentativesActions {
+    pub fn representatives(&self) -> crate::resources::representatives::RepresentativesActions<A> {
+        crate::resources::representatives::RepresentativesActions {
             reqwest: &self.reqwest,
             auth: &self.auth,
         }
     }
 }
-pub mod divisions {
-    pub mod params {}
-    pub struct DivisionsActions<'a, A> {
-        pub(super) reqwest: &'a reqwest::Client,
-        pub(super) auth: &'a std::sync::Mutex<A>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> DivisionsActions<'a, A> {
-        #[doc = "Searches for political divisions by their natural name or OCD ID."]
-        pub fn search(
-            &self,
+mod resources {
+    pub mod divisions {
+        pub mod params {}
+        pub struct DivisionsActions<'a, A> {
+            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) auth: &'a std::sync::Mutex<A>,
+        }
+        impl<'a, A: yup_oauth2::GetToken> DivisionsActions<'a, A> {
+            #[doc = "Searches for political divisions by their natural name or OCD ID."]
+            pub fn search(
+                &self,
+                request: crate::schemas::DivisionSearchRequest,
+            ) -> SearchRequestBuilder<A> {
+                SearchRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: &self.auth,
+                    request,
+                    alt: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    user_ip: None,
+                    query: None,
+                }
+            }
+        }
+        #[derive(Debug, Clone)]
+        pub struct SearchRequestBuilder<'a, A> {
+            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) auth: &'a ::std::sync::Mutex<A>,
             request: crate::schemas::DivisionSearchRequest,
-        ) -> SearchRequestBuilder<A> {
-            SearchRequestBuilder {
-                reqwest: &self.reqwest,
-                auth: &self.auth,
-                request,
-                alt: None,
-                fields: None,
-                key: None,
-                oauth_token: None,
-                pretty_print: None,
-                quota_user: None,
-                user_ip: None,
-                query: None,
+            query: Option<String>,
+            alt: Option<crate::params::Alt>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            user_ip: Option<String>,
+        }
+        impl<'a, A: yup_oauth2::GetToken> SearchRequestBuilder<'a, A> {
+            #[doc = "The search query. Queries can cover any parts of a OCD ID or a human readable division name. All words given in the query are treated as required patterns. In addition to that, most query operators of the Apache Lucene library are supported. See http://lucene.apache.org/core/2_9_4/queryparsersyntax.html"]
+            pub fn query(mut self, value: impl Into<String>) -> Self {
+                self.query = Some(value.into());
+                self
+            }
+            #[doc = "Data format for the response."]
+            pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                self.alt = Some(value);
+                self
+            }
+            #[doc = "Selector specifying which fields to include in a partial response."]
+            pub fn fields(mut self, value: impl Into<String>) -> Self {
+                self.fields = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Deprecated. Please use quotaUser instead."]
+            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
+                self.user_ip = Some(value.into());
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+            {
+                let fields = T::field_selector();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_standard(
+                self,
+            ) -> Result<crate::schemas::DivisionSearchResponse, Box<dyn ::std::error::Error>>
+            {
+                self.execute_fields::<_, &str>(None)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_debug(
+                self,
+            ) -> Result<crate::schemas::DivisionSearchResponse, Box<dyn ::std::error::Error>>
+            {
+                self.execute_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path());
+                let req = req.json(&self.request);
+                Ok(req.send()?.error_for_status()?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://www.googleapis.com/civicinfo/v2/".to_owned();
+                output.push_str("divisions");
+                output
+            }
+            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[("query", &self.query)]);
+                let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("fields", &self.fields)]);
+                let req = req.query(&[("key", &self.key)]);
+                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                let req = req.query(&[("userIp", &self.user_ip)]);
+                req
             }
         }
     }
-    #[derive(Debug, Clone)]
-    pub struct SearchRequestBuilder<'a, A> {
-        pub(crate) reqwest: &'a ::reqwest::Client,
-        pub(crate) auth: &'a ::std::sync::Mutex<A>,
-        request: crate::schemas::DivisionSearchRequest,
-        query: Option<String>,
-        alt: Option<crate::params::Alt>,
-        fields: Option<String>,
-        key: Option<String>,
-        oauth_token: Option<String>,
-        pretty_print: Option<bool>,
-        quota_user: Option<String>,
-        user_ip: Option<String>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> SearchRequestBuilder<'a, A> {
-        #[doc = "The search query. Queries can cover any parts of a OCD ID or a human readable division name. All words given in the query are treated as required patterns. In addition to that, most query operators of the Apache Lucene library are supported. See http://lucene.apache.org/core/2_9_4/queryparsersyntax.html"]
-        pub fn query(&mut self, value: impl Into<String>) -> &mut Self {
-            self.query = Some(value.into());
-            self
+    pub mod elections {
+        pub mod params {}
+        pub struct ElectionsActions<'a, A> {
+            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) auth: &'a std::sync::Mutex<A>,
         }
-        #[doc = "Data format for the response."]
-        pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-            self.alt = Some(value);
-            self
-        }
-        #[doc = "Selector specifying which fields to include in a partial response."]
-        pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-            self.fields = Some(value.into());
-            self
-        }
-        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-        pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-            self.key = Some(value.into());
-            self
-        }
-        #[doc = "OAuth 2.0 token for the current user."]
-        pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-            self.oauth_token = Some(value.into());
-            self
-        }
-        #[doc = "Returns response with indentations and line breaks."]
-        pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-            self.pretty_print = Some(value);
-            self
-        }
-        #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-        pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-            self.quota_user = Some(value.into());
-            self
-        }
-        #[doc = "Deprecated. Please use quotaUser instead."]
-        pub fn user_ip(&mut self, value: impl Into<String>) -> &mut Self {
-            self.user_ip = Some(value.into());
-            self
-        }
-        pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            self._execute()
-        }
-        #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-        pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-            let req = self._request(&self._path());
-            let req = req.json(&self.request);
-            Ok(req.send()?.error_for_status()?.text()?)
-        }
-        pub fn execute_debug(
-            self,
-        ) -> Result<crate::schemas::DivisionSearchResponse, Box<dyn ::std::error::Error>> {
-            self.execute()
-        }
-        fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            if self.fields.is_none() {
-                self.fields = Some(T::field_selector());
+        impl<'a, A: yup_oauth2::GetToken> ElectionsActions<'a, A> {
+            #[doc = "List of available elections to query."]
+            pub fn election_query(
+                &self,
+                request: crate::schemas::ElectionsQueryRequest,
+            ) -> ElectionQueryRequestBuilder<A> {
+                ElectionQueryRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: &self.auth,
+                    request,
+                    alt: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    user_ip: None,
+                }
             }
-            let req = self._request(&self._path());
-            let req = req.json(&self.request);
-            Ok(req.send()?.error_for_status()?.json()?)
+            #[doc = "Looks up information relevant to a voter based on the voter's registered address."]
+            pub fn voter_info_query(
+                &self,
+                request: crate::schemas::VoterInfoRequest,
+                address: impl Into<String>,
+            ) -> VoterInfoQueryRequestBuilder<A> {
+                VoterInfoQueryRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: &self.auth,
+                    request,
+                    alt: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    user_ip: None,
+                    address: address.into(),
+                    election_id: None,
+                    official_only: None,
+                    return_all_available_data: None,
+                }
+            }
         }
-        fn _path(&self) -> String {
-            let mut output = "https://www.googleapis.com/civicinfo/v2/".to_owned();
-            output.push_str("divisions");
-            output
-        }
-        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-            let req = self.reqwest.request(::reqwest::Method::GET, path);
-            let req = req.query(&[("query", &self.query)]);
-            let req = req.query(&[("alt", &self.alt)]);
-            let req = req.query(&[("fields", &self.fields)]);
-            let req = req.query(&[("key", &self.key)]);
-            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-            let req = req.query(&[("quotaUser", &self.quota_user)]);
-            let req = req.query(&[("userIp", &self.user_ip)]);
-            req
-        }
-    }
-}
-pub mod elections {
-    pub mod params {}
-    pub struct ElectionsActions<'a, A> {
-        pub(super) reqwest: &'a reqwest::Client,
-        pub(super) auth: &'a std::sync::Mutex<A>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> ElectionsActions<'a, A> {
-        #[doc = "List of available elections to query."]
-        pub fn election_query(
-            &self,
+        #[derive(Debug, Clone)]
+        pub struct ElectionQueryRequestBuilder<'a, A> {
+            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) auth: &'a ::std::sync::Mutex<A>,
             request: crate::schemas::ElectionsQueryRequest,
-        ) -> ElectionQueryRequestBuilder<A> {
-            ElectionQueryRequestBuilder {
-                reqwest: &self.reqwest,
-                auth: &self.auth,
-                request,
-                alt: None,
-                fields: None,
-                key: None,
-                oauth_token: None,
-                pretty_print: None,
-                quota_user: None,
-                user_ip: None,
+            alt: Option<crate::params::Alt>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            user_ip: Option<String>,
+        }
+        impl<'a, A: yup_oauth2::GetToken> ElectionQueryRequestBuilder<'a, A> {
+            #[doc = "Data format for the response."]
+            pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                self.alt = Some(value);
+                self
+            }
+            #[doc = "Selector specifying which fields to include in a partial response."]
+            pub fn fields(mut self, value: impl Into<String>) -> Self {
+                self.fields = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Deprecated. Please use quotaUser instead."]
+            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
+                self.user_ip = Some(value.into());
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+            {
+                let fields = T::field_selector();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_standard(
+                self,
+            ) -> Result<crate::schemas::ElectionsQueryResponse, Box<dyn ::std::error::Error>>
+            {
+                self.execute_fields::<_, &str>(None)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_debug(
+                self,
+            ) -> Result<crate::schemas::ElectionsQueryResponse, Box<dyn ::std::error::Error>>
+            {
+                self.execute_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path());
+                let req = req.json(&self.request);
+                Ok(req.send()?.error_for_status()?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://www.googleapis.com/civicinfo/v2/".to_owned();
+                output.push_str("elections");
+                output
+            }
+            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("fields", &self.fields)]);
+                let req = req.query(&[("key", &self.key)]);
+                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                let req = req.query(&[("userIp", &self.user_ip)]);
+                req
             }
         }
-        #[doc = "Looks up information relevant to a voter based on the voter's registered address."]
-        pub fn voter_info_query(
-            &self,
+        #[derive(Debug, Clone)]
+        pub struct VoterInfoQueryRequestBuilder<'a, A> {
+            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) auth: &'a ::std::sync::Mutex<A>,
             request: crate::schemas::VoterInfoRequest,
-            address: impl Into<String>,
-        ) -> VoterInfoQueryRequestBuilder<A> {
-            VoterInfoQueryRequestBuilder {
-                reqwest: &self.reqwest,
-                auth: &self.auth,
-                request,
-                alt: None,
-                fields: None,
-                key: None,
-                oauth_token: None,
-                pretty_print: None,
-                quota_user: None,
-                user_ip: None,
-                address: address.into(),
-                election_id: None,
-                official_only: None,
-                return_all_available_data: None,
+            address: String,
+            election_id: Option<i64>,
+            official_only: Option<bool>,
+            return_all_available_data: Option<bool>,
+            alt: Option<crate::params::Alt>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            user_ip: Option<String>,
+        }
+        impl<'a, A: yup_oauth2::GetToken> VoterInfoQueryRequestBuilder<'a, A> {
+            #[doc = "The unique ID of the election to look up. A list of election IDs can be obtained at https://www.googleapis.com/civicinfo/{version}/electionsIf no election ID is specified in the query and there is more than one election with data for the given voter, the additional elections are provided in the otherElections response field."]
+            pub fn election_id(mut self, value: i64) -> Self {
+                self.election_id = Some(value);
+                self
+            }
+            #[doc = "If set to true, only data from official state sources will be returned."]
+            pub fn official_only(mut self, value: bool) -> Self {
+                self.official_only = Some(value);
+                self
+            }
+            #[doc = "If set to true, the query will return the success codeand include any partial information when it is unable to determine a matching address or unable to determine the election for electionId=0 queries."]
+            pub fn return_all_available_data(mut self, value: bool) -> Self {
+                self.return_all_available_data = Some(value);
+                self
+            }
+            #[doc = "Data format for the response."]
+            pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                self.alt = Some(value);
+                self
+            }
+            #[doc = "Selector specifying which fields to include in a partial response."]
+            pub fn fields(mut self, value: impl Into<String>) -> Self {
+                self.fields = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Deprecated. Please use quotaUser instead."]
+            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
+                self.user_ip = Some(value.into());
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+            {
+                let fields = T::field_selector();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_standard(
+                self,
+            ) -> Result<crate::schemas::VoterInfoResponse, Box<dyn ::std::error::Error>>
+            {
+                self.execute_fields::<_, &str>(None)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_debug(
+                self,
+            ) -> Result<crate::schemas::VoterInfoResponse, Box<dyn ::std::error::Error>>
+            {
+                self.execute_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path());
+                let req = req.json(&self.request);
+                Ok(req.send()?.error_for_status()?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://www.googleapis.com/civicinfo/v2/".to_owned();
+                output.push_str("voterinfo");
+                output
+            }
+            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[("address", &self.address)]);
+                let req = req.query(&[("electionId", &self.election_id)]);
+                let req = req.query(&[("officialOnly", &self.official_only)]);
+                let req = req.query(&[("returnAllAvailableData", &self.return_all_available_data)]);
+                let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("fields", &self.fields)]);
+                let req = req.query(&[("key", &self.key)]);
+                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                let req = req.query(&[("userIp", &self.user_ip)]);
+                req
             }
         }
     }
-    #[derive(Debug, Clone)]
-    pub struct ElectionQueryRequestBuilder<'a, A> {
-        pub(crate) reqwest: &'a ::reqwest::Client,
-        pub(crate) auth: &'a ::std::sync::Mutex<A>,
-        request: crate::schemas::ElectionsQueryRequest,
-        alt: Option<crate::params::Alt>,
-        fields: Option<String>,
-        key: Option<String>,
-        oauth_token: Option<String>,
-        pretty_print: Option<bool>,
-        quota_user: Option<String>,
-        user_ip: Option<String>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> ElectionQueryRequestBuilder<'a, A> {
-        #[doc = "Data format for the response."]
-        pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-            self.alt = Some(value);
-            self
+    pub mod representatives {
+        pub mod params {}
+        pub struct RepresentativesActions<'a, A> {
+            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) auth: &'a std::sync::Mutex<A>,
         }
-        #[doc = "Selector specifying which fields to include in a partial response."]
-        pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-            self.fields = Some(value.into());
-            self
-        }
-        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-        pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-            self.key = Some(value.into());
-            self
-        }
-        #[doc = "OAuth 2.0 token for the current user."]
-        pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-            self.oauth_token = Some(value.into());
-            self
-        }
-        #[doc = "Returns response with indentations and line breaks."]
-        pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-            self.pretty_print = Some(value);
-            self
-        }
-        #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-        pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-            self.quota_user = Some(value.into());
-            self
-        }
-        #[doc = "Deprecated. Please use quotaUser instead."]
-        pub fn user_ip(&mut self, value: impl Into<String>) -> &mut Self {
-            self.user_ip = Some(value.into());
-            self
-        }
-        pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            self._execute()
-        }
-        #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-        pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-            let req = self._request(&self._path());
-            let req = req.json(&self.request);
-            Ok(req.send()?.error_for_status()?.text()?)
-        }
-        pub fn execute_debug(
-            self,
-        ) -> Result<crate::schemas::ElectionsQueryResponse, Box<dyn ::std::error::Error>> {
-            self.execute()
-        }
-        fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            if self.fields.is_none() {
-                self.fields = Some(T::field_selector());
+        impl<'a, A: yup_oauth2::GetToken> RepresentativesActions<'a, A> {
+            #[doc = "Looks up political geography and representative information for a single address."]
+            pub fn representative_info_by_address(
+                &self,
+                request: crate::schemas::RepresentativeInfoRequest,
+            ) -> RepresentativeInfoByAddressRequestBuilder<A> {
+                RepresentativeInfoByAddressRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: &self.auth,
+                    request,
+                    alt: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    user_ip: None,
+                    address: None,
+                    include_offices: None,
+                    levels: None,
+                    roles: None,
+                }
             }
-            let req = self._request(&self._path());
-            let req = req.json(&self.request);
-            Ok(req.send()?.error_for_status()?.json()?)
-        }
-        fn _path(&self) -> String {
-            let mut output = "https://www.googleapis.com/civicinfo/v2/".to_owned();
-            output.push_str("elections");
-            output
-        }
-        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-            let req = self.reqwest.request(::reqwest::Method::GET, path);
-            let req = req.query(&[("alt", &self.alt)]);
-            let req = req.query(&[("fields", &self.fields)]);
-            let req = req.query(&[("key", &self.key)]);
-            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-            let req = req.query(&[("quotaUser", &self.quota_user)]);
-            let req = req.query(&[("userIp", &self.user_ip)]);
-            req
-        }
-    }
-    #[derive(Debug, Clone)]
-    pub struct VoterInfoQueryRequestBuilder<'a, A> {
-        pub(crate) reqwest: &'a ::reqwest::Client,
-        pub(crate) auth: &'a ::std::sync::Mutex<A>,
-        request: crate::schemas::VoterInfoRequest,
-        address: String,
-        election_id: Option<i64>,
-        official_only: Option<bool>,
-        return_all_available_data: Option<bool>,
-        alt: Option<crate::params::Alt>,
-        fields: Option<String>,
-        key: Option<String>,
-        oauth_token: Option<String>,
-        pretty_print: Option<bool>,
-        quota_user: Option<String>,
-        user_ip: Option<String>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> VoterInfoQueryRequestBuilder<'a, A> {
-        #[doc = "The unique ID of the election to look up. A list of election IDs can be obtained at https://www.googleapis.com/civicinfo/{version}/electionsIf no election ID is specified in the query and there is more than one election with data for the given voter, the additional elections are provided in the otherElections response field."]
-        pub fn election_id(&mut self, value: i64) -> &mut Self {
-            self.election_id = Some(value);
-            self
-        }
-        #[doc = "If set to true, only data from official state sources will be returned."]
-        pub fn official_only(&mut self, value: bool) -> &mut Self {
-            self.official_only = Some(value);
-            self
-        }
-        #[doc = "If set to true, the query will return the success codeand include any partial information when it is unable to determine a matching address or unable to determine the election for electionId=0 queries."]
-        pub fn return_all_available_data(&mut self, value: bool) -> &mut Self {
-            self.return_all_available_data = Some(value);
-            self
-        }
-        #[doc = "Data format for the response."]
-        pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-            self.alt = Some(value);
-            self
-        }
-        #[doc = "Selector specifying which fields to include in a partial response."]
-        pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-            self.fields = Some(value.into());
-            self
-        }
-        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-        pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-            self.key = Some(value.into());
-            self
-        }
-        #[doc = "OAuth 2.0 token for the current user."]
-        pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-            self.oauth_token = Some(value.into());
-            self
-        }
-        #[doc = "Returns response with indentations and line breaks."]
-        pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-            self.pretty_print = Some(value);
-            self
-        }
-        #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-        pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-            self.quota_user = Some(value.into());
-            self
-        }
-        #[doc = "Deprecated. Please use quotaUser instead."]
-        pub fn user_ip(&mut self, value: impl Into<String>) -> &mut Self {
-            self.user_ip = Some(value.into());
-            self
-        }
-        pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            self._execute()
-        }
-        #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-        pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-            let req = self._request(&self._path());
-            let req = req.json(&self.request);
-            Ok(req.send()?.error_for_status()?.text()?)
-        }
-        pub fn execute_debug(
-            self,
-        ) -> Result<crate::schemas::VoterInfoResponse, Box<dyn ::std::error::Error>> {
-            self.execute()
-        }
-        fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            if self.fields.is_none() {
-                self.fields = Some(T::field_selector());
+            #[doc = "Looks up representative information for a single geographic division."]
+            pub fn representative_info_by_division(
+                &self,
+                request: crate::schemas::DivisionRepresentativeInfoRequest,
+                ocd_id: impl Into<String>,
+            ) -> RepresentativeInfoByDivisionRequestBuilder<A> {
+                RepresentativeInfoByDivisionRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: &self.auth,
+                    request,
+                    alt: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    user_ip: None,
+                    ocd_id: ocd_id.into(),
+                    levels: None,
+                    recursive: None,
+                    roles: None,
+                }
             }
-            let req = self._request(&self._path());
-            let req = req.json(&self.request);
-            Ok(req.send()?.error_for_status()?.json()?)
         }
-        fn _path(&self) -> String {
-            let mut output = "https://www.googleapis.com/civicinfo/v2/".to_owned();
-            output.push_str("voterinfo");
-            output
+        #[derive(Debug, Clone)]
+        pub struct RepresentativeInfoByAddressRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , request : crate :: schemas :: RepresentativeInfoRequest , address : Option < String > , include_offices : Option < bool > , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressLevelsItems > > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressRolesItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
+        impl<'a, A: yup_oauth2::GetToken> RepresentativeInfoByAddressRequestBuilder<'a, A> {
+            #[doc = "The address to look up. May only be specified if the field ocdId is not given in the URL."]
+            pub fn address(mut self, value: impl Into<String>) -> Self {
+                self.address = Some(value.into());
+                self
+            }
+            #[doc = "Whether to return information about offices and officials. If false, only the top-level district information will be returned."]
+            pub fn include_offices(mut self, value: bool) -> Self {
+                self.include_offices = Some(value);
+                self
+            }
+            #[doc = "A list of office levels to filter by. Only offices that serve at least one of these levels will be returned. Divisions that don't contain a matching office will not be returned."]
+            pub fn levels(
+                mut self,
+                value : impl Into < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressLevelsItems > >,
+            ) -> Self {
+                self.levels = Some(value.into());
+                self
+            }
+            #[doc = "A list of office roles to filter by. Only offices fulfilling one of these roles will be returned. Divisions that don't contain a matching office will not be returned."]
+            pub fn roles(
+                mut self,
+                value : impl Into < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressRolesItems > >,
+            ) -> Self {
+                self.roles = Some(value.into());
+                self
+            }
+            #[doc = "Data format for the response."]
+            pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                self.alt = Some(value);
+                self
+            }
+            #[doc = "Selector specifying which fields to include in a partial response."]
+            pub fn fields(mut self, value: impl Into<String>) -> Self {
+                self.fields = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Deprecated. Please use quotaUser instead."]
+            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
+                self.user_ip = Some(value.into());
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+            {
+                let fields = T::field_selector();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_standard(
+                self,
+            ) -> Result<crate::schemas::RepresentativeInfoResponse, Box<dyn ::std::error::Error>>
+            {
+                self.execute_fields::<_, &str>(None)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_debug(
+                self,
+            ) -> Result<crate::schemas::RepresentativeInfoResponse, Box<dyn ::std::error::Error>>
+            {
+                self.execute_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path());
+                let req = req.json(&self.request);
+                Ok(req.send()?.error_for_status()?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://www.googleapis.com/civicinfo/v2/".to_owned();
+                output.push_str("representatives");
+                output
+            }
+            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[("address", &self.address)]);
+                let req = req.query(&[("includeOffices", &self.include_offices)]);
+                let req = req.query(&[("levels", &self.levels)]);
+                let req = req.query(&[("roles", &self.roles)]);
+                let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("fields", &self.fields)]);
+                let req = req.query(&[("key", &self.key)]);
+                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                let req = req.query(&[("userIp", &self.user_ip)]);
+                req
+            }
         }
-        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-            let req = self.reqwest.request(::reqwest::Method::GET, path);
-            let req = req.query(&[("address", &self.address)]);
-            let req = req.query(&[("electionId", &self.election_id)]);
-            let req = req.query(&[("officialOnly", &self.official_only)]);
-            let req = req.query(&[("returnAllAvailableData", &self.return_all_available_data)]);
-            let req = req.query(&[("alt", &self.alt)]);
-            let req = req.query(&[("fields", &self.fields)]);
-            let req = req.query(&[("key", &self.key)]);
-            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-            let req = req.query(&[("quotaUser", &self.quota_user)]);
-            let req = req.query(&[("userIp", &self.user_ip)]);
-            req
+        #[derive(Debug, Clone)]
+        pub struct RepresentativeInfoByDivisionRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , request : crate :: schemas :: DivisionRepresentativeInfoRequest , ocd_id : String , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionLevelsItems > > , recursive : Option < bool > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionRolesItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
+        impl<'a, A: yup_oauth2::GetToken> RepresentativeInfoByDivisionRequestBuilder<'a, A> {
+            #[doc = "A list of office levels to filter by. Only offices that serve at least one of these levels will be returned. Divisions that don't contain a matching office will not be returned."]
+            pub fn levels(
+                mut self,
+                value : impl Into < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionLevelsItems > >,
+            ) -> Self {
+                self.levels = Some(value.into());
+                self
+            }
+            #[doc = "If true, information about all divisions contained in the division requested will be included as well. For example, if querying ocd-division/country:us/district:dc, this would also return all DC's wards and ANCs."]
+            pub fn recursive(mut self, value: bool) -> Self {
+                self.recursive = Some(value);
+                self
+            }
+            #[doc = "A list of office roles to filter by. Only offices fulfilling one of these roles will be returned. Divisions that don't contain a matching office will not be returned."]
+            pub fn roles(
+                mut self,
+                value : impl Into < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionRolesItems > >,
+            ) -> Self {
+                self.roles = Some(value.into());
+                self
+            }
+            #[doc = "Data format for the response."]
+            pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                self.alt = Some(value);
+                self
+            }
+            #[doc = "Selector specifying which fields to include in a partial response."]
+            pub fn fields(mut self, value: impl Into<String>) -> Self {
+                self.fields = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Deprecated. Please use quotaUser instead."]
+            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
+                self.user_ip = Some(value.into());
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+            {
+                let fields = T::field_selector();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_standard(
+                self,
+            ) -> Result<crate::schemas::RepresentativeInfoData, Box<dyn ::std::error::Error>>
+            {
+                self.execute_fields::<_, &str>(None)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_debug(
+                self,
+            ) -> Result<crate::schemas::RepresentativeInfoData, Box<dyn ::std::error::Error>>
+            {
+                self.execute_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path());
+                let req = req.json(&self.request);
+                Ok(req.send()?.error_for_status()?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://www.googleapis.com/civicinfo/v2/".to_owned();
+                output.push_str("representatives/");
+                {
+                    let var_as_str = &self.ocd_id;
+                    output.extend(::percent_encoding::utf8_percent_encode(
+                        &var_as_str,
+                        crate::SIMPLE,
+                    ));
+                }
+                output
+            }
+            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[("levels", &self.levels)]);
+                let req = req.query(&[("recursive", &self.recursive)]);
+                let req = req.query(&[("roles", &self.roles)]);
+                let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("fields", &self.fields)]);
+                let req = req.query(&[("key", &self.key)]);
+                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                let req = req.query(&[("userIp", &self.user_ip)]);
+                req
+            }
         }
     }
 }
-pub mod representatives {
-    pub mod params {
-        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-        pub enum RepresentativeInfoByAddressLevels {
-            AdministrativeArea1,
-            AdministrativeArea2,
-            Country,
-            International,
-            Locality,
-            Regional,
-            Special,
-            SubLocality1,
-            SubLocality2,
-        }
-        impl RepresentativeInfoByAddressLevels {
-            pub fn as_str(self) -> &'static str {
-                match self {
-                    RepresentativeInfoByAddressLevels::AdministrativeArea1 => "administrativeArea1",
-                    RepresentativeInfoByAddressLevels::AdministrativeArea2 => "administrativeArea2",
-                    RepresentativeInfoByAddressLevels::Country => "country",
-                    RepresentativeInfoByAddressLevels::International => "international",
-                    RepresentativeInfoByAddressLevels::Locality => "locality",
-                    RepresentativeInfoByAddressLevels::Regional => "regional",
-                    RepresentativeInfoByAddressLevels::Special => "special",
-                    RepresentativeInfoByAddressLevels::SubLocality1 => "subLocality1",
-                    RepresentativeInfoByAddressLevels::SubLocality2 => "subLocality2",
-                }
-            }
-        }
-        impl ::std::fmt::Display for RepresentativeInfoByAddressLevels {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                f.write_str(self.as_str())
-            }
-        }
-        impl ::serde::Serialize for RepresentativeInfoByAddressLevels {
-            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-            where
-                S: ::serde::ser::Serializer,
-            {
-                serializer.serialize_str(self.as_str())
-            }
-        }
-        impl<'de> ::serde::Deserialize<'de> for RepresentativeInfoByAddressLevels {
-            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-            where
-                D: ::serde::de::Deserializer<'de>,
-            {
-                let value: &'de str = <&str>::deserialize(deserializer)?;
-                Ok(match value {
-                    "administrativeArea1" => RepresentativeInfoByAddressLevels::AdministrativeArea1,
-                    "administrativeArea2" => RepresentativeInfoByAddressLevels::AdministrativeArea2,
-                    "country" => RepresentativeInfoByAddressLevels::Country,
-                    "international" => RepresentativeInfoByAddressLevels::International,
-                    "locality" => RepresentativeInfoByAddressLevels::Locality,
-                    "regional" => RepresentativeInfoByAddressLevels::Regional,
-                    "special" => RepresentativeInfoByAddressLevels::Special,
-                    "subLocality1" => RepresentativeInfoByAddressLevels::SubLocality1,
-                    "subLocality2" => RepresentativeInfoByAddressLevels::SubLocality2,
-                    _ => {
-                        return Err(::serde::de::Error::custom(format!(
-                            "invalid enum for #name: {}",
-                            value
-                        )))
-                    }
-                })
-            }
-        }
-        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-        pub enum RepresentativeInfoByAddressRoles {
-            DeputyHeadOfGovernment,
-            ExecutiveCouncil,
-            GovernmentOfficer,
-            HeadOfGovernment,
-            HeadOfState,
-            HighestCourtJudge,
-            Judge,
-            LegislatorLowerBody,
-            LegislatorUpperBody,
-            SchoolBoard,
-            SpecialPurposeOfficer,
-        }
-        impl RepresentativeInfoByAddressRoles {
-            pub fn as_str(self) -> &'static str {
-                match self {
-                    RepresentativeInfoByAddressRoles::DeputyHeadOfGovernment => {
-                        "deputyHeadOfGovernment"
-                    }
-                    RepresentativeInfoByAddressRoles::ExecutiveCouncil => "executiveCouncil",
-                    RepresentativeInfoByAddressRoles::GovernmentOfficer => "governmentOfficer",
-                    RepresentativeInfoByAddressRoles::HeadOfGovernment => "headOfGovernment",
-                    RepresentativeInfoByAddressRoles::HeadOfState => "headOfState",
-                    RepresentativeInfoByAddressRoles::HighestCourtJudge => "highestCourtJudge",
-                    RepresentativeInfoByAddressRoles::Judge => "judge",
-                    RepresentativeInfoByAddressRoles::LegislatorLowerBody => "legislatorLowerBody",
-                    RepresentativeInfoByAddressRoles::LegislatorUpperBody => "legislatorUpperBody",
-                    RepresentativeInfoByAddressRoles::SchoolBoard => "schoolBoard",
-                    RepresentativeInfoByAddressRoles::SpecialPurposeOfficer => {
-                        "specialPurposeOfficer"
-                    }
-                }
-            }
-        }
-        impl ::std::fmt::Display for RepresentativeInfoByAddressRoles {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                f.write_str(self.as_str())
-            }
-        }
-        impl ::serde::Serialize for RepresentativeInfoByAddressRoles {
-            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-            where
-                S: ::serde::ser::Serializer,
-            {
-                serializer.serialize_str(self.as_str())
-            }
-        }
-        impl<'de> ::serde::Deserialize<'de> for RepresentativeInfoByAddressRoles {
-            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-            where
-                D: ::serde::de::Deserializer<'de>,
-            {
-                let value: &'de str = <&str>::deserialize(deserializer)?;
-                Ok(match value {
-                    "deputyHeadOfGovernment" => {
-                        RepresentativeInfoByAddressRoles::DeputyHeadOfGovernment
-                    }
-                    "executiveCouncil" => RepresentativeInfoByAddressRoles::ExecutiveCouncil,
-                    "governmentOfficer" => RepresentativeInfoByAddressRoles::GovernmentOfficer,
-                    "headOfGovernment" => RepresentativeInfoByAddressRoles::HeadOfGovernment,
-                    "headOfState" => RepresentativeInfoByAddressRoles::HeadOfState,
-                    "highestCourtJudge" => RepresentativeInfoByAddressRoles::HighestCourtJudge,
-                    "judge" => RepresentativeInfoByAddressRoles::Judge,
-                    "legislatorLowerBody" => RepresentativeInfoByAddressRoles::LegislatorLowerBody,
-                    "legislatorUpperBody" => RepresentativeInfoByAddressRoles::LegislatorUpperBody,
-                    "schoolBoard" => RepresentativeInfoByAddressRoles::SchoolBoard,
-                    "specialPurposeOfficer" => {
-                        RepresentativeInfoByAddressRoles::SpecialPurposeOfficer
-                    }
-                    _ => {
-                        return Err(::serde::de::Error::custom(format!(
-                            "invalid enum for #name: {}",
-                            value
-                        )))
-                    }
-                })
-            }
-        }
-        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-        pub enum RepresentativeInfoByDivisionLevels {
-            AdministrativeArea1,
-            AdministrativeArea2,
-            Country,
-            International,
-            Locality,
-            Regional,
-            Special,
-            SubLocality1,
-            SubLocality2,
-        }
-        impl RepresentativeInfoByDivisionLevels {
-            pub fn as_str(self) -> &'static str {
-                match self {
-                    RepresentativeInfoByDivisionLevels::AdministrativeArea1 => {
-                        "administrativeArea1"
-                    }
-                    RepresentativeInfoByDivisionLevels::AdministrativeArea2 => {
-                        "administrativeArea2"
-                    }
-                    RepresentativeInfoByDivisionLevels::Country => "country",
-                    RepresentativeInfoByDivisionLevels::International => "international",
-                    RepresentativeInfoByDivisionLevels::Locality => "locality",
-                    RepresentativeInfoByDivisionLevels::Regional => "regional",
-                    RepresentativeInfoByDivisionLevels::Special => "special",
-                    RepresentativeInfoByDivisionLevels::SubLocality1 => "subLocality1",
-                    RepresentativeInfoByDivisionLevels::SubLocality2 => "subLocality2",
-                }
-            }
-        }
-        impl ::std::fmt::Display for RepresentativeInfoByDivisionLevels {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                f.write_str(self.as_str())
-            }
-        }
-        impl ::serde::Serialize for RepresentativeInfoByDivisionLevels {
-            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-            where
-                S: ::serde::ser::Serializer,
-            {
-                serializer.serialize_str(self.as_str())
-            }
-        }
-        impl<'de> ::serde::Deserialize<'de> for RepresentativeInfoByDivisionLevels {
-            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-            where
-                D: ::serde::de::Deserializer<'de>,
-            {
-                let value: &'de str = <&str>::deserialize(deserializer)?;
-                Ok(match value {
-                    "administrativeArea1" => {
-                        RepresentativeInfoByDivisionLevels::AdministrativeArea1
-                    }
-                    "administrativeArea2" => {
-                        RepresentativeInfoByDivisionLevels::AdministrativeArea2
-                    }
-                    "country" => RepresentativeInfoByDivisionLevels::Country,
-                    "international" => RepresentativeInfoByDivisionLevels::International,
-                    "locality" => RepresentativeInfoByDivisionLevels::Locality,
-                    "regional" => RepresentativeInfoByDivisionLevels::Regional,
-                    "special" => RepresentativeInfoByDivisionLevels::Special,
-                    "subLocality1" => RepresentativeInfoByDivisionLevels::SubLocality1,
-                    "subLocality2" => RepresentativeInfoByDivisionLevels::SubLocality2,
-                    _ => {
-                        return Err(::serde::de::Error::custom(format!(
-                            "invalid enum for #name: {}",
-                            value
-                        )))
-                    }
-                })
-            }
-        }
-        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-        pub enum RepresentativeInfoByDivisionRoles {
-            DeputyHeadOfGovernment,
-            ExecutiveCouncil,
-            GovernmentOfficer,
-            HeadOfGovernment,
-            HeadOfState,
-            HighestCourtJudge,
-            Judge,
-            LegislatorLowerBody,
-            LegislatorUpperBody,
-            SchoolBoard,
-            SpecialPurposeOfficer,
-        }
-        impl RepresentativeInfoByDivisionRoles {
-            pub fn as_str(self) -> &'static str {
-                match self {
-                    RepresentativeInfoByDivisionRoles::DeputyHeadOfGovernment => {
-                        "deputyHeadOfGovernment"
-                    }
-                    RepresentativeInfoByDivisionRoles::ExecutiveCouncil => "executiveCouncil",
-                    RepresentativeInfoByDivisionRoles::GovernmentOfficer => "governmentOfficer",
-                    RepresentativeInfoByDivisionRoles::HeadOfGovernment => "headOfGovernment",
-                    RepresentativeInfoByDivisionRoles::HeadOfState => "headOfState",
-                    RepresentativeInfoByDivisionRoles::HighestCourtJudge => "highestCourtJudge",
-                    RepresentativeInfoByDivisionRoles::Judge => "judge",
-                    RepresentativeInfoByDivisionRoles::LegislatorLowerBody => "legislatorLowerBody",
-                    RepresentativeInfoByDivisionRoles::LegislatorUpperBody => "legislatorUpperBody",
-                    RepresentativeInfoByDivisionRoles::SchoolBoard => "schoolBoard",
-                    RepresentativeInfoByDivisionRoles::SpecialPurposeOfficer => {
-                        "specialPurposeOfficer"
-                    }
-                }
-            }
-        }
-        impl ::std::fmt::Display for RepresentativeInfoByDivisionRoles {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                f.write_str(self.as_str())
-            }
-        }
-        impl ::serde::Serialize for RepresentativeInfoByDivisionRoles {
-            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-            where
-                S: ::serde::ser::Serializer,
-            {
-                serializer.serialize_str(self.as_str())
-            }
-        }
-        impl<'de> ::serde::Deserialize<'de> for RepresentativeInfoByDivisionRoles {
-            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-            where
-                D: ::serde::de::Deserializer<'de>,
-            {
-                let value: &'de str = <&str>::deserialize(deserializer)?;
-                Ok(match value {
-                    "deputyHeadOfGovernment" => {
-                        RepresentativeInfoByDivisionRoles::DeputyHeadOfGovernment
-                    }
-                    "executiveCouncil" => RepresentativeInfoByDivisionRoles::ExecutiveCouncil,
-                    "governmentOfficer" => RepresentativeInfoByDivisionRoles::GovernmentOfficer,
-                    "headOfGovernment" => RepresentativeInfoByDivisionRoles::HeadOfGovernment,
-                    "headOfState" => RepresentativeInfoByDivisionRoles::HeadOfState,
-                    "highestCourtJudge" => RepresentativeInfoByDivisionRoles::HighestCourtJudge,
-                    "judge" => RepresentativeInfoByDivisionRoles::Judge,
-                    "legislatorLowerBody" => RepresentativeInfoByDivisionRoles::LegislatorLowerBody,
-                    "legislatorUpperBody" => RepresentativeInfoByDivisionRoles::LegislatorUpperBody,
-                    "schoolBoard" => RepresentativeInfoByDivisionRoles::SchoolBoard,
-                    "specialPurposeOfficer" => {
-                        RepresentativeInfoByDivisionRoles::SpecialPurposeOfficer
-                    }
-                    _ => {
-                        return Err(::serde::de::Error::custom(format!(
-                            "invalid enum for #name: {}",
-                            value
-                        )))
-                    }
-                })
-            }
-        }
-    }
-    pub struct RepresentativesActions<'a, A> {
-        pub(super) reqwest: &'a reqwest::Client,
-        pub(super) auth: &'a std::sync::Mutex<A>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> RepresentativesActions<'a, A> {
-        #[doc = "Looks up political geography and representative information for a single address."]
-        pub fn representative_info_by_address(
-            &self,
-            request: crate::schemas::RepresentativeInfoRequest,
-        ) -> RepresentativeInfoByAddressRequestBuilder<A> {
-            RepresentativeInfoByAddressRequestBuilder {
-                reqwest: &self.reqwest,
-                auth: &self.auth,
-                request,
-                alt: None,
-                fields: None,
-                key: None,
-                oauth_token: None,
-                pretty_print: None,
-                quota_user: None,
-                user_ip: None,
-                address: None,
-                include_offices: None,
-                levels: None,
-                roles: None,
-            }
-        }
-        #[doc = "Looks up representative information for a single geographic division."]
-        pub fn representative_info_by_division(
-            &self,
-            request: crate::schemas::DivisionRepresentativeInfoRequest,
-            ocd_id: impl Into<String>,
-        ) -> RepresentativeInfoByDivisionRequestBuilder<A> {
-            RepresentativeInfoByDivisionRequestBuilder {
-                reqwest: &self.reqwest,
-                auth: &self.auth,
-                request,
-                alt: None,
-                fields: None,
-                key: None,
-                oauth_token: None,
-                pretty_print: None,
-                quota_user: None,
-                user_ip: None,
-                ocd_id: ocd_id.into(),
-                levels: None,
-                recursive: None,
-                roles: None,
-            }
-        }
-    }
-    #[derive(Debug, Clone)]
-    pub struct RepresentativeInfoByAddressRequestBuilder<'a, A> {
-        pub(crate) reqwest: &'a ::reqwest::Client,
-        pub(crate) auth: &'a ::std::sync::Mutex<A>,
-        request: crate::schemas::RepresentativeInfoRequest,
-        address: Option<String>,
-        include_offices: Option<bool>,
-        levels: Option<crate::representatives::params::RepresentativeInfoByAddressLevels>,
-        roles: Option<crate::representatives::params::RepresentativeInfoByAddressRoles>,
-        alt: Option<crate::params::Alt>,
-        fields: Option<String>,
-        key: Option<String>,
-        oauth_token: Option<String>,
-        pretty_print: Option<bool>,
-        quota_user: Option<String>,
-        user_ip: Option<String>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> RepresentativeInfoByAddressRequestBuilder<'a, A> {
-        #[doc = "The address to look up. May only be specified if the field ocdId is not given in the URL."]
-        pub fn address(&mut self, value: impl Into<String>) -> &mut Self {
-            self.address = Some(value.into());
-            self
-        }
-        #[doc = "Whether to return information about offices and officials. If false, only the top-level district information will be returned."]
-        pub fn include_offices(&mut self, value: bool) -> &mut Self {
-            self.include_offices = Some(value);
-            self
-        }
-        #[doc = "A list of office levels to filter by. Only offices that serve at least one of these levels will be returned. Divisions that don't contain a matching office will not be returned."]
-        pub fn levels(
-            &mut self,
-            value: crate::representatives::params::RepresentativeInfoByAddressLevels,
-        ) -> &mut Self {
-            self.levels = Some(value);
-            self
-        }
-        #[doc = "A list of office roles to filter by. Only offices fulfilling one of these roles will be returned. Divisions that don't contain a matching office will not be returned."]
-        pub fn roles(
-            &mut self,
-            value: crate::representatives::params::RepresentativeInfoByAddressRoles,
-        ) -> &mut Self {
-            self.roles = Some(value);
-            self
-        }
-        #[doc = "Data format for the response."]
-        pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-            self.alt = Some(value);
-            self
-        }
-        #[doc = "Selector specifying which fields to include in a partial response."]
-        pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-            self.fields = Some(value.into());
-            self
-        }
-        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-        pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-            self.key = Some(value.into());
-            self
-        }
-        #[doc = "OAuth 2.0 token for the current user."]
-        pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-            self.oauth_token = Some(value.into());
-            self
-        }
-        #[doc = "Returns response with indentations and line breaks."]
-        pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-            self.pretty_print = Some(value);
-            self
-        }
-        #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-        pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-            self.quota_user = Some(value.into());
-            self
-        }
-        #[doc = "Deprecated. Please use quotaUser instead."]
-        pub fn user_ip(&mut self, value: impl Into<String>) -> &mut Self {
-            self.user_ip = Some(value.into());
-            self
-        }
-        pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            self._execute()
-        }
-        #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-        pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-            let req = self._request(&self._path());
-            let req = req.json(&self.request);
-            Ok(req.send()?.error_for_status()?.text()?)
-        }
-        pub fn execute_debug(
-            self,
-        ) -> Result<crate::schemas::RepresentativeInfoResponse, Box<dyn ::std::error::Error>>
-        {
-            self.execute()
-        }
-        fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            if self.fields.is_none() {
-                self.fields = Some(T::field_selector());
-            }
-            let req = self._request(&self._path());
-            let req = req.json(&self.request);
-            Ok(req.send()?.error_for_status()?.json()?)
-        }
-        fn _path(&self) -> String {
-            let mut output = "https://www.googleapis.com/civicinfo/v2/".to_owned();
-            output.push_str("representatives");
-            output
-        }
-        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-            let req = self.reqwest.request(::reqwest::Method::GET, path);
-            let req = req.query(&[("address", &self.address)]);
-            let req = req.query(&[("includeOffices", &self.include_offices)]);
-            let req = req.query(&[("levels", &self.levels)]);
-            let req = req.query(&[("roles", &self.roles)]);
-            let req = req.query(&[("alt", &self.alt)]);
-            let req = req.query(&[("fields", &self.fields)]);
-            let req = req.query(&[("key", &self.key)]);
-            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-            let req = req.query(&[("quotaUser", &self.quota_user)]);
-            let req = req.query(&[("userIp", &self.user_ip)]);
-            req
-        }
-    }
-    #[derive(Debug, Clone)]
-    pub struct RepresentativeInfoByDivisionRequestBuilder<'a, A> {
-        pub(crate) reqwest: &'a ::reqwest::Client,
-        pub(crate) auth: &'a ::std::sync::Mutex<A>,
-        request: crate::schemas::DivisionRepresentativeInfoRequest,
-        ocd_id: String,
-        levels: Option<crate::representatives::params::RepresentativeInfoByDivisionLevels>,
-        recursive: Option<bool>,
-        roles: Option<crate::representatives::params::RepresentativeInfoByDivisionRoles>,
-        alt: Option<crate::params::Alt>,
-        fields: Option<String>,
-        key: Option<String>,
-        oauth_token: Option<String>,
-        pretty_print: Option<bool>,
-        quota_user: Option<String>,
-        user_ip: Option<String>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> RepresentativeInfoByDivisionRequestBuilder<'a, A> {
-        #[doc = "A list of office levels to filter by. Only offices that serve at least one of these levels will be returned. Divisions that don't contain a matching office will not be returned."]
-        pub fn levels(
-            &mut self,
-            value: crate::representatives::params::RepresentativeInfoByDivisionLevels,
-        ) -> &mut Self {
-            self.levels = Some(value);
-            self
-        }
-        #[doc = "If true, information about all divisions contained in the division requested will be included as well. For example, if querying ocd-division/country:us/district:dc, this would also return all DC's wards and ANCs."]
-        pub fn recursive(&mut self, value: bool) -> &mut Self {
-            self.recursive = Some(value);
-            self
-        }
-        #[doc = "A list of office roles to filter by. Only offices fulfilling one of these roles will be returned. Divisions that don't contain a matching office will not be returned."]
-        pub fn roles(
-            &mut self,
-            value: crate::representatives::params::RepresentativeInfoByDivisionRoles,
-        ) -> &mut Self {
-            self.roles = Some(value);
-            self
-        }
-        #[doc = "Data format for the response."]
-        pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-            self.alt = Some(value);
-            self
-        }
-        #[doc = "Selector specifying which fields to include in a partial response."]
-        pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-            self.fields = Some(value.into());
-            self
-        }
-        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-        pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-            self.key = Some(value.into());
-            self
-        }
-        #[doc = "OAuth 2.0 token for the current user."]
-        pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-            self.oauth_token = Some(value.into());
-            self
-        }
-        #[doc = "Returns response with indentations and line breaks."]
-        pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-            self.pretty_print = Some(value);
-            self
-        }
-        #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-        pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-            self.quota_user = Some(value.into());
-            self
-        }
-        #[doc = "Deprecated. Please use quotaUser instead."]
-        pub fn user_ip(&mut self, value: impl Into<String>) -> &mut Self {
-            self.user_ip = Some(value.into());
-            self
-        }
-        pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            self._execute()
-        }
-        #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-        pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-            let req = self._request(&self._path());
-            let req = req.json(&self.request);
-            Ok(req.send()?.error_for_status()?.text()?)
-        }
-        pub fn execute_debug(
-            self,
-        ) -> Result<crate::schemas::RepresentativeInfoData, Box<dyn ::std::error::Error>> {
-            self.execute()
-        }
-        fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            if self.fields.is_none() {
-                self.fields = Some(T::field_selector());
-            }
-            let req = self._request(&self._path());
-            let req = req.json(&self.request);
-            Ok(req.send()?.error_for_status()?.json()?)
-        }
-        fn _path(&self) -> String {
-            let mut output = "https://www.googleapis.com/civicinfo/v2/".to_owned();
-            output.push_str("representatives/");
-            output.push_str(&self.ocd_id);
-            output
-        }
-        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-            let req = self.reqwest.request(::reqwest::Method::GET, path);
-            let req = req.query(&[("levels", &self.levels)]);
-            let req = req.query(&[("recursive", &self.recursive)]);
-            let req = req.query(&[("roles", &self.roles)]);
-            let req = req.query(&[("alt", &self.alt)]);
-            let req = req.query(&[("fields", &self.fields)]);
-            let req = req.query(&[("key", &self.key)]);
-            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-            let req = req.query(&[("quotaUser", &self.quota_user)]);
-            let req = req.query(&[("userIp", &self.user_ip)]);
-            req
-        }
-    }
-}
+#[allow(dead_code)]
+const SIMPLE: &::percent_encoding::AsciiSet = &::percent_encoding::NON_ALPHANUMERIC
+    .remove(b'-')
+    .remove(b'.')
+    .remove(b'_')
+    .remove(b'~');
+
+#[allow(dead_code)]
+const RESERVED: &::percent_encoding::AsciiSet = &SIMPLE
+    .remove(b'%')
+    .remove(b':')
+    .remove(b'/')
+    .remove(b'?')
+    .remove(b'#')
+    .remove(b'[')
+    .remove(b']')
+    .remove(b'@')
+    .remove(b'!')
+    .remove(b'$')
+    .remove(b'&')
+    .remove(b'\'')
+    .remove(b'(')
+    .remove(b')')
+    .remove(b'*')
+    .remove(b'+')
+    .remove(b',')
+    .remove(b';')
+    .remove(b'=');
+#[allow(dead_code)]
 mod multipart {
     pub(crate) struct RelatedMultiPart {
         parts: Vec<Part>,
@@ -2845,13 +2724,14 @@ trait IterableMethod {
         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
 }
 
-struct PageIter<'a, M, T> {
-    method: &'a mut M,
+#[allow(dead_code)]
+struct PageIter<M, T> {
+    method: M,
     finished: bool,
     _phantom: ::std::marker::PhantomData<T>,
 }
 
-impl<'a, M, T> Iterator for PageIter<'a, M, T>
+impl<M, T> Iterator for PageIter<M, T>
 where
     M: IterableMethod,
     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,

@@ -31,7 +31,10 @@ make force-update-all-metadata
 From there you would usually go with the following to gather all error data with refreshed code:
 ```
 make update-mcp
-make -C gen gen-all update-mapped-index cargo-all update-mapped-index ARGS=check -k
+make -C gen gen-all -kj8
+make update-mapped-index 
+make -C gen cargo-all ARGS=check  -k
+make update-mapped-index
 ```
 
 ### Forcefully update the Makefile after a change affecting the mapped index

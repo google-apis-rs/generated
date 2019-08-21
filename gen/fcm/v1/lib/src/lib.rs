@@ -46,16 +46,7 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AndroidConfig {
         #[doc = "An identifier of a group of messages that can be collapsed, so that only\nthe last message gets sent when delivery can be resumed. A maximum of 4\ndifferent collapse keys is allowed at any given time."]
@@ -117,17 +108,128 @@ pub mod schemas {
             selector.push_str("*");
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AndroidNotificationNotificationPriority {
+        #[doc = "If priority is unspecified, notification priority is set to\n`PRIORITY_DEFAULT`."]
+        PriorityUnspecified,
+        #[doc = "Lowest notification priority. Notifications with this `PRIORITY_MIN`\nmight not be shown to the user except under special circumstances,\nsuch as detailed notification logs."]
+        PriorityMin,
+        #[doc = "Lower notification priority. The UI may choose to show the notifications\nsmaller, or at a different position in the list, compared with\nnotifications with `PRIORITY_DEFAULT`."]
+        PriorityLow,
+        #[doc = "Default notification priority. If the application does not prioritize its\nown notifications, use this value for all notifications."]
+        PriorityDefault,
+        #[doc = "Higher notification priority. Use this for more important notifications\nor alerts. The UI may choose to show these notifications larger, or at a\ndifferent position in the notification lists, compared with notifications\nwith `PRIORITY_DEFAULT`."]
+        PriorityHigh,
+        #[doc = "Highest notification priority. Use this for the application's most\nimportant items that require the user's prompt attention or input."]
+        PriorityMax,
+    }
+    impl AndroidNotificationNotificationPriority {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AndroidNotificationNotificationPriority::PriorityUnspecified => {
+                    "PRIORITY_UNSPECIFIED"
+                }
+                AndroidNotificationNotificationPriority::PriorityMin => "PRIORITY_MIN",
+                AndroidNotificationNotificationPriority::PriorityLow => "PRIORITY_LOW",
+                AndroidNotificationNotificationPriority::PriorityDefault => "PRIORITY_DEFAULT",
+                AndroidNotificationNotificationPriority::PriorityHigh => "PRIORITY_HIGH",
+                AndroidNotificationNotificationPriority::PriorityMax => "PRIORITY_MAX",
+            }
+        }
+    }
+    impl ::std::fmt::Display for AndroidNotificationNotificationPriority {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AndroidNotificationNotificationPriority {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AndroidNotificationNotificationPriority {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "PRIORITY_UNSPECIFIED" => {
+                    AndroidNotificationNotificationPriority::PriorityUnspecified
+                }
+                "PRIORITY_MIN" => AndroidNotificationNotificationPriority::PriorityMin,
+                "PRIORITY_LOW" => AndroidNotificationNotificationPriority::PriorityLow,
+                "PRIORITY_DEFAULT" => AndroidNotificationNotificationPriority::PriorityDefault,
+                "PRIORITY_HIGH" => AndroidNotificationNotificationPriority::PriorityHigh,
+                "PRIORITY_MAX" => AndroidNotificationNotificationPriority::PriorityMax,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AndroidNotificationVisibility {
+        #[doc = "If unspecified, default to `Visibility.PRIVATE`."]
+        VisibilityUnspecified,
+        #[doc = "Show this notification on all lockscreens, but conceal sensitive or\nprivate information on secure lockscreens."]
+        Private,
+        #[doc = "Show this notification in its entirety on all lockscreens."]
+        Public,
+        #[doc = "Do not reveal any part of this notification on a secure lockscreen."]
+        Secret,
+    }
+    impl AndroidNotificationVisibility {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AndroidNotificationVisibility::VisibilityUnspecified => "VISIBILITY_UNSPECIFIED",
+                AndroidNotificationVisibility::Private => "PRIVATE",
+                AndroidNotificationVisibility::Public => "PUBLIC",
+                AndroidNotificationVisibility::Secret => "SECRET",
+            }
+        }
+    }
+    impl ::std::fmt::Display for AndroidNotificationVisibility {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AndroidNotificationVisibility {
+        fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AndroidNotificationVisibility {
+        fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "VISIBILITY_UNSPECIFIED" => AndroidNotificationVisibility::VisibilityUnspecified,
+                "PRIVATE" => AndroidNotificationVisibility::Private,
+                "PUBLIC" => AndroidNotificationVisibility::Public,
+                "SECRET" => AndroidNotificationVisibility::Secret,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AndroidNotification {
         #[doc = "The notification's body text. If present, it will override\ngoogle.firebase.fcm.v1.Notification.body."]
@@ -148,18 +250,48 @@ pub mod schemas {
         #[doc = "The notification's icon color, expressed in #rrggbb format."]
         #[serde(rename = "color", default)]
         pub color: Option<String>,
+        #[doc = "If set to true, use the Android framework's default LED light settings for\nthe notification. Default values are specified in\n[config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).\nIf `default_light_settings` is set to true and `light_settings` is also\nset, the user-specified `light_settings` is used instead of the\ndefault value."]
+        #[serde(rename = "defaultLightSettings", default)]
+        pub default_light_settings: Option<bool>,
+        #[doc = "If set to true, use the Android framework's default sound for the\nnotification. Default values are specified in\n[config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml)."]
+        #[serde(rename = "defaultSound", default)]
+        pub default_sound: Option<bool>,
+        #[doc = "If set to true, use the Android framework's default vibrate pattern for the\nnotification. Default values are specified in\n[config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).\nIf `default_vibrate_timings` is set to true and `vibrate_timings` is also\nset, the default value is used instead of the user-specified\n`vibrate_timings`."]
+        #[serde(rename = "defaultVibrateTimings", default)]
+        pub default_vibrate_timings: Option<bool>,
+        #[doc = "Set the time that the event in the notification occurred. Notifications in\nthe panel are sorted by this time. A point in time is represented using\n[protobuf.Timestamp](https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/Timestamp)."]
+        #[serde(rename = "eventTime", default)]
+        pub event_time: Option<String>,
         #[doc = "The notification's icon.\nSets the notification icon to myicon for drawable resource myicon.\nIf you don't send this key in the request, FCM displays the launcher icon\nspecified in your app manifest."]
         #[serde(rename = "icon", default)]
         pub icon: Option<String>,
         #[doc = "Contains the URL of an image that is going to be displayed in a\nnotification. If present, it will override\ngoogle.firebase.fcm.v1.Notification.image."]
         #[serde(rename = "image", default)]
         pub image: Option<String>,
+        #[doc = "Settings to control the notification's LED blinking rate and color if LED\nis available on the device. The total blinking time is controlled by the\nOS."]
+        #[serde(rename = "lightSettings", default)]
+        pub light_settings: Option<crate::schemas::LightSettings>,
+        #[doc = "Set whether or not this notification is relevant only to the current\ndevice. Some notifications can be bridged to other devices for remote\ndisplay, such as a Wear OS watch. This hint can be set to recommend this\nnotification not be bridged. See [Wear OS\nguides](https://developer.android.com/training/wearables/notifications/bridger#existing-method-of-preventing-bridging)"]
+        #[serde(rename = "localOnly", default)]
+        pub local_only: Option<bool>,
+        #[doc = "Sets the number of items this notification represents. May be displayed as\na badge count for launchers that support badging.See [Notification\nBadge](https://developer.android.com/training/notify-user/badges).\nFor example, this might be useful if you're using just one notification to\nrepresent multiple new messages but you want the count here to represent\nthe number of total new messages.\nIf zero or unspecified, systems that support badging use the default, which\nis to increment a number displayed on the long-press menu each time a new\nnotification arrives."]
+        #[serde(rename = "notificationCount", default)]
+        pub notification_count: Option<i32>,
+        #[doc = "Set the relative priority for this notification. Priority is an indication\nof how much of the user's attention should be consumed by this\nnotification. Low-priority notifications may be hidden from the user in\ncertain situations, while the user might be interrupted for a\nhigher-priority notification. The effect of setting the same priorities may\ndiffer slightly on different platforms. Note this priority differs from\n`AndroidMessagePriority`. This priority is processed by the client after\nthe message has been delivered, whereas\n[AndroidMessagePriority](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidmessagepriority)\nis an FCM concept that controls when the message is delivered."]
+        #[serde(rename = "notificationPriority", default)]
+        pub notification_priority: Option<crate::schemas::AndroidNotificationNotificationPriority>,
         #[doc = "The sound to play when the device receives the notification.\nSupports \"default\" or the filename of a sound resource bundled in the app.\nSound files must reside in /res/raw/."]
         #[serde(rename = "sound", default)]
         pub sound: Option<String>,
+        #[doc = "When set to false or unset, the notification is automatically\ndismissed when the user clicks it in the panel. When set to true, the\nnotification persists even when the user clicks it."]
+        #[serde(rename = "sticky", default)]
+        pub sticky: Option<bool>,
         #[doc = "Identifier used to replace existing notifications in the notification\ndrawer.\nIf not specified, each request creates a new notification.\nIf specified and a notification with the same tag is already being shown,\nthe new notification replaces the existing one in the notification drawer."]
         #[serde(rename = "tag", default)]
         pub tag: Option<String>,
+        #[doc = "Sets the \"ticker\" text, which is sent to accessibility services.\nPrior to API level 21 (`Lollipop`), sets the text that is displayed in the\nstatus bar when the notification first arrives."]
+        #[serde(rename = "ticker", default)]
+        pub ticker: Option<String>,
         #[doc = "The notification's title. If present, it will override\ngoogle.firebase.fcm.v1.Notification.title."]
         #[serde(rename = "title", default)]
         pub title: Option<String>,
@@ -169,6 +301,12 @@ pub mod schemas {
         #[doc = "The key to the title string in the app's string resources to use to\nlocalize the title text to the user's current localization.\nSee [String Resources](https://goo.gl/NdFZGI) for more information."]
         #[serde(rename = "titleLocKey", default)]
         pub title_loc_key: Option<String>,
+        #[doc = "Set the vibration pattern to use. Pass in an array of\n[protobuf.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)\nto turn on or off the vibrator. The first value indicates the `Duration` to\nwait before turning the vibrator on. The next value indicates the\n`Duration` to keep the vibrator on. Subsequent values alternate between\n`Duration` to turn the vibrator off and to turn the vibrator on.\nIf `vibrate_timings` is set and `default_vibrate_timings` is set to `true`,\nthe default value is used instead of the user-specified `vibrate_timings`."]
+        #[serde(rename = "vibrateTimings", default)]
+        pub vibrate_timings: Option<Vec<String>>,
+        #[doc = "Set the\n[Notification.visibility](https://developer.android.com/reference/android/app/Notification.html#visibility)\nof the notification."]
+        #[serde(rename = "visibility", default)]
+        pub visibility: Option<crate::schemas::AndroidNotificationVisibility>,
     }
     impl ::field_selector::FieldSelector for AndroidNotification {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -233,6 +371,33 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Color {
+        #[doc = "The fraction of this color that should be applied to the pixel. That is,\nthe final pixel color is defined by the equation:\n\npixel color = alpha * (this color) + (1.0 - alpha) * (background color)\n\nThis means that a value of 1.0 corresponds to a solid color, whereas\na value of 0.0 corresponds to a completely transparent color. This\nuses a wrapper message rather than a simple float scalar so that it is\npossible to distinguish between a default value and the value being unset.\nIf omitted, this color object is to be rendered as a solid color\n(as if the alpha value had been explicitly given with a value of 1.0)."]
+        #[serde(rename = "alpha", default)]
+        pub alpha: Option<f32>,
+        #[doc = "The amount of blue in the color as a value in the interval [0, 1]."]
+        #[serde(rename = "blue", default)]
+        pub blue: Option<f32>,
+        #[doc = "The amount of green in the color as a value in the interval [0, 1]."]
+        #[serde(rename = "green", default)]
+        pub green: Option<f32>,
+        #[doc = "The amount of red in the color as a value in the interval [0, 1]."]
+        #[serde(rename = "red", default)]
+        pub red: Option<f32>,
+    }
+    impl ::field_selector::FieldSelector for Color {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -250,6 +415,30 @@ pub mod schemas {
         pub analytics_label: Option<String>,
     }
     impl ::field_selector::FieldSelector for FcmOptions {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+            selector.push_str("*");
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct LightSettings {
+        #[doc = "Required. Set `color` of the LED with\n[google.type.Color](https://github.com/googleapis/googleapis/blob/master/google/type/color.proto)."]
+        #[serde(rename = "color", default)]
+        pub color: Option<crate::schemas::Color>,
+        #[doc = "Required. Along with `light_on_duration `, define the blink rate of LED\nflashes. Resolution defined by\n[proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)"]
+        #[serde(rename = "lightOffDuration", default)]
+        pub light_off_duration: Option<String>,
+        #[doc = "Required. Along with `light_off_duration`, define the blink rate of LED\nflashes. Resolution defined by\n[proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)"]
+        #[serde(rename = "lightOnDuration", default)]
+        pub light_on_duration: Option<String>,
+    }
+    impl ::field_selector::FieldSelector for LightSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
                 Some(',') | None => {}
@@ -517,190 +706,261 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
     #[doc = "Actions that can be performed on the projects resource"]
-    pub fn projects(&self) -> crate::projects::ProjectsActions<A> {
-        crate::projects::ProjectsActions {
+    pub fn projects(&self) -> crate::resources::projects::ProjectsActions<A> {
+        crate::resources::projects::ProjectsActions {
             reqwest: &self.reqwest,
             auth: &self.auth,
         }
     }
 }
-pub mod projects {
-    pub mod params {}
-    pub struct ProjectsActions<'a, A> {
-        pub(super) reqwest: &'a reqwest::Client,
-        pub(super) auth: &'a std::sync::Mutex<A>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> ProjectsActions<'a, A> {
-        #[doc = "Actions that can be performed on the messages resource"]
-        pub fn messages(&self) -> messages::MessagesActions<A> {
-            messages::MessagesActions
-        }
-    }
-    pub mod messages {
+mod resources {
+    pub mod projects {
         pub mod params {}
-        pub struct MessagesActions<'a, A> {
-            pub(super) reqwest: &'a reqwest::Client,
-            pub(super) auth: &'a std::sync::Mutex<A>,
+        pub struct ProjectsActions<'a, A> {
+            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) auth: &'a std::sync::Mutex<A>,
         }
-        impl<'a, A: yup_oauth2::GetToken> MessagesActions<'a, A> {
-            #[doc = "Send a message to specified target (a registration token, topic\nor condition)."]
-            pub fn send(
-                &self,
-                request: crate::schemas::SendMessageRequest,
-                parent: impl Into<String>,
-            ) -> SendRequestBuilder<A> {
-                SendRequestBuilder {
+        impl<'a, A: yup_oauth2::GetToken> ProjectsActions<'a, A> {
+            #[doc = "Actions that can be performed on the messages resource"]
+            pub fn messages(&self) -> crate::resources::projects::messages::MessagesActions<A> {
+                crate::resources::projects::messages::MessagesActions {
                     reqwest: &self.reqwest,
                     auth: &self.auth,
-                    request,
-                    access_token: None,
-                    alt: None,
-                    callback: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    upload_protocol: None,
-                    upload_type: None,
-                    xgafv: None,
-                    parent: parent.into(),
                 }
             }
         }
-        #[derive(Debug, Clone)]
-        pub struct SendRequestBuilder<'a, A> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a ::std::sync::Mutex<A>,
-            request: crate::schemas::SendMessageRequest,
-            parent: String,
-            access_token: Option<String>,
-            alt: Option<crate::params::Alt>,
-            callback: Option<String>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            upload_protocol: Option<String>,
-            upload_type: Option<String>,
-            xgafv: Option<crate::params::Xgafv>,
-        }
-        impl<'a, A: yup_oauth2::GetToken> SendRequestBuilder<'a, A> {
-            #[doc = "OAuth access token."]
-            pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
-                self.access_token = Some(value.into());
-                self
+        pub mod messages {
+            pub mod params {}
+            pub struct MessagesActions<'a, A> {
+                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) auth: &'a std::sync::Mutex<A>,
             }
-            #[doc = "Data format for response."]
-            pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "JSONP"]
-            pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
-                self.callback = Some(value.into());
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-                self.fields = Some(value.into());
-                self
-            }
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-            pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-            pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
-                self.upload_protocol = Some(value.into());
-                self
-            }
-            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-            pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
-                self.upload_type = Some(value.into());
-                self
-            }
-            #[doc = "V1 error format."]
-            pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
-                self.xgafv = Some(value);
-                self
-            }
-            pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-            where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-            {
-                self._execute()
-            }
-            #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-            pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                let req = self._request(&self._path());
-                let req = req.json(&self.request);
-                Ok(req.send()?.error_for_status()?.text()?)
-            }
-            pub fn execute_debug(
-                self,
-            ) -> Result<crate::schemas::Message, Box<dyn ::std::error::Error>> {
-                self.execute()
-            }
-            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-            where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-            {
-                if self.fields.is_none() {
-                    self.fields = Some(T::field_selector());
+            impl<'a, A: yup_oauth2::GetToken> MessagesActions<'a, A> {
+                #[doc = "Send a message to specified target (a registration token, topic\nor condition)."]
+                pub fn send(
+                    &self,
+                    request: crate::schemas::SendMessageRequest,
+                    parent: impl Into<String>,
+                ) -> SendRequestBuilder<A> {
+                    SendRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: &self.auth,
+                        request,
+                        access_token: None,
+                        alt: None,
+                        callback: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
+                        parent: parent.into(),
+                    }
                 }
-                let req = self._request(&self._path());
-                let req = req.json(&self.request);
-                Ok(req.send()?.error_for_status()?.json()?)
             }
-            fn _path(&self) -> String {
-                let mut output = "https://fcm.googleapis.com/".to_owned();
-                output.push_str("v1/");
-                output.push_str(&self.parent);
-                output.push_str("/messages:send");
-                output
+            #[derive(Debug, Clone)]
+            pub struct SendRequestBuilder<'a, A> {
+                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                request: crate::schemas::SendMessageRequest,
+                parent: String,
+                access_token: Option<String>,
+                alt: Option<crate::params::Alt>,
+                callback: Option<String>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
             }
-            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let mut auth = self.auth.lock().unwrap();
-                let req = req.bearer_auth(
-                    auth.token::<_, &str>(&["https://www.googleapis.com/auth/cloud-platform"])
-                        .unwrap()
-                        .access_token,
-                );
-                req
+            impl<'a, A: yup_oauth2::GetToken> SendRequestBuilder<'a, A> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "Data format for response."]
+                pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                    self.alt = Some(value);
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
+                #[doc = "Selector specifying which fields to include in a partial response."]
+                pub fn fields(mut self, value: impl Into<String>) -> Self {
+                    self.fields = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
+                    self
+                }
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                where
+                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                {
+                    let fields = T::field_selector();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_fields(fields)
+                }
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_standard(
+                    self,
+                ) -> Result<crate::schemas::Message, Box<dyn ::std::error::Error>> {
+                    self.execute_fields::<_, &str>(None)
+                }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
+                pub fn execute_debug(
+                    self,
+                ) -> Result<crate::schemas::Message, Box<dyn ::std::error::Error>> {
+                    self.execute_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, Box<dyn ::std::error::Error>>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
+                }
+                fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    let req = self._request(&self._path());
+                    let req = req.json(&self.request);
+                    Ok(req.send()?.error_for_status()?.json()?)
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://fcm.googleapis.com/".to_owned();
+                    output.push_str("v1/");
+                    {
+                        let var_as_str = &self.parent;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::RESERVED,
+                        ));
+                    }
+                    output.push_str("/messages:send");
+                    output
+                }
+                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                    let req = self.reqwest.request(::reqwest::Method::POST, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let mut auth = self.auth.lock().unwrap();
+                    let fut = auth.token(vec!["https://www.googleapis.com/auth/cloud-platform"]);
+                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                    let token = runtime.block_on(fut).unwrap().access_token;
+                    let req = req.bearer_auth(&token);
+                    req
+                }
             }
         }
     }
 }
+#[allow(dead_code)]
+const SIMPLE: &::percent_encoding::AsciiSet = &::percent_encoding::NON_ALPHANUMERIC
+    .remove(b'-')
+    .remove(b'.')
+    .remove(b'_')
+    .remove(b'~');
+
+#[allow(dead_code)]
+const RESERVED: &::percent_encoding::AsciiSet = &SIMPLE
+    .remove(b'%')
+    .remove(b':')
+    .remove(b'/')
+    .remove(b'?')
+    .remove(b'#')
+    .remove(b'[')
+    .remove(b']')
+    .remove(b'@')
+    .remove(b'!')
+    .remove(b'$')
+    .remove(b'&')
+    .remove(b'\'')
+    .remove(b'(')
+    .remove(b')')
+    .remove(b'*')
+    .remove(b'+')
+    .remove(b',')
+    .remove(b';')
+    .remove(b'=');
+#[allow(dead_code)]
 mod multipart {
     pub(crate) struct RelatedMultiPart {
         parts: Vec<Part>,
@@ -959,13 +1219,14 @@ trait IterableMethod {
         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
 }
 
-struct PageIter<'a, M, T> {
-    method: &'a mut M,
+#[allow(dead_code)]
+struct PageIter<M, T> {
+    method: M,
     finished: bool,
     _phantom: ::std::marker::PhantomData<T>,
 }
 
-impl<'a, M, T> Iterator for PageIter<'a, M, T>
+impl<M, T> Iterator for PageIter<M, T>
 where
     M: IterableMethod,
     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,

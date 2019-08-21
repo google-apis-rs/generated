@@ -55,343 +55,37 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
     #[doc = "Actions that can be performed on the data resource"]
-    pub fn data(&self) -> crate::data::DataActions<A> {
-        crate::data::DataActions {
+    pub fn data(&self) -> crate::resources::data::DataActions<A> {
+        crate::resources::data::DataActions {
             reqwest: &self.reqwest,
             auth: &self.auth,
         }
     }
     #[doc = "Actions that can be performed on the management resource"]
-    pub fn management(&self) -> crate::management::ManagementActions<A> {
-        crate::management::ManagementActions {
+    pub fn management(&self) -> crate::resources::management::ManagementActions<A> {
+        crate::resources::management::ManagementActions {
             reqwest: &self.reqwest,
             auth: &self.auth,
         }
     }
 }
-pub mod data {
-    pub mod params {}
-    pub struct DataActions<'a, A> {
-        pub(super) reqwest: &'a reqwest::Client,
-        pub(super) auth: &'a std::sync::Mutex<A>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> DataActions<'a, A> {
-        #[doc = "Returns Analytics report data for a view (profile)."]
-        pub fn get(
-            &self,
-            ids: impl Into<String>,
-            start_date: impl Into<String>,
-            end_date: impl Into<String>,
-            metrics: impl Into<String>,
-        ) -> GetRequestBuilder<A> {
-            GetRequestBuilder {
-                reqwest: &self.reqwest,
-                auth: &self.auth,
-                alt: None,
-                fields: None,
-                key: None,
-                oauth_token: None,
-                pretty_print: None,
-                quota_user: None,
-                user_ip: None,
-                ids: ids.into(),
-                start_date: start_date.into(),
-                end_date: end_date.into(),
-                metrics: metrics.into(),
-                dimensions: None,
-                filters: None,
-                max_results: None,
-                segment: None,
-                sort: None,
-                start_index: None,
-            }
-        }
-    }
-    #[derive(Debug, Clone)]
-    pub struct GetRequestBuilder<'a, A> {
-        pub(crate) reqwest: &'a ::reqwest::Client,
-        pub(crate) auth: &'a ::std::sync::Mutex<A>,
-        ids: String,
-        start_date: String,
-        end_date: String,
-        metrics: String,
-        dimensions: Option<String>,
-        filters: Option<String>,
-        max_results: Option<i32>,
-        segment: Option<String>,
-        sort: Option<String>,
-        start_index: Option<i32>,
-        alt: Option<crate::params::Alt>,
-        fields: Option<String>,
-        key: Option<String>,
-        oauth_token: Option<String>,
-        pretty_print: Option<bool>,
-        quota_user: Option<String>,
-        user_ip: Option<String>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> GetRequestBuilder<'a, A> {
-        #[doc = "A comma-separated list of Analytics dimensions. E.g., 'ga:browser,ga:city'."]
-        pub fn dimensions(&mut self, value: impl Into<String>) -> &mut Self {
-            self.dimensions = Some(value.into());
-            self
-        }
-        #[doc = "A comma-separated list of dimension or metric filters to be applied to the report data."]
-        pub fn filters(&mut self, value: impl Into<String>) -> &mut Self {
-            self.filters = Some(value.into());
-            self
-        }
-        #[doc = "The maximum number of entries to include in this feed."]
-        pub fn max_results(&mut self, value: i32) -> &mut Self {
-            self.max_results = Some(value);
-            self
-        }
-        #[doc = "An Analytics advanced segment to be applied to the report data."]
-        pub fn segment(&mut self, value: impl Into<String>) -> &mut Self {
-            self.segment = Some(value.into());
-            self
-        }
-        #[doc = "A comma-separated list of dimensions or metrics that determine the sort order for the report data."]
-        pub fn sort(&mut self, value: impl Into<String>) -> &mut Self {
-            self.sort = Some(value.into());
-            self
-        }
-        #[doc = "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."]
-        pub fn start_index(&mut self, value: i32) -> &mut Self {
-            self.start_index = Some(value);
-            self
-        }
-        #[doc = "Data format for the response."]
-        pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-            self.alt = Some(value);
-            self
-        }
-        #[doc = "Selector specifying which fields to include in a partial response."]
-        pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-            self.fields = Some(value.into());
-            self
-        }
-        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-        pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-            self.key = Some(value.into());
-            self
-        }
-        #[doc = "OAuth 2.0 token for the current user."]
-        pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-            self.oauth_token = Some(value.into());
-            self
-        }
-        #[doc = "Returns response with indentations and line breaks."]
-        pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-            self.pretty_print = Some(value);
-            self
-        }
-        #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-        pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-            self.quota_user = Some(value.into());
-            self
-        }
-        #[doc = "Deprecated. Please use quotaUser instead."]
-        pub fn user_ip(&mut self, value: impl Into<String>) -> &mut Self {
-            self.user_ip = Some(value.into());
-            self
-        }
-        pub fn execute(self) -> Result<(), Box<dyn ::std::error::Error>> {
-            let req = self._request(&self._path());
-            req.send()?.error_for_status()?;
-            Ok(())
-        }
-        fn _path(&self) -> String {
-            let mut output = "https://www.googleapis.com/analytics/v2.4/".to_owned();
-            output.push_str("data");
-            output
-        }
-        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-            let req = self.reqwest.request(::reqwest::Method::GET, path);
-            let req = req.query(&[("ids", &self.ids)]);
-            let req = req.query(&[("start-date", &self.start_date)]);
-            let req = req.query(&[("end-date", &self.end_date)]);
-            let req = req.query(&[("metrics", &self.metrics)]);
-            let req = req.query(&[("dimensions", &self.dimensions)]);
-            let req = req.query(&[("filters", &self.filters)]);
-            let req = req.query(&[("max-results", &self.max_results)]);
-            let req = req.query(&[("segment", &self.segment)]);
-            let req = req.query(&[("sort", &self.sort)]);
-            let req = req.query(&[("start-index", &self.start_index)]);
-            let req = req.query(&[("alt", &self.alt)]);
-            let req = req.query(&[("fields", &self.fields)]);
-            let req = req.query(&[("key", &self.key)]);
-            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-            let req = req.query(&[("quotaUser", &self.quota_user)]);
-            let req = req.query(&[("userIp", &self.user_ip)]);
-            let mut auth = self.auth.lock().unwrap();
-            let req = req.bearer_auth(
-                auth.token::<_, &str>(&["https://www.googleapis.com/auth/analytics.readonly"])
-                    .unwrap()
-                    .access_token,
-            );
-            req
-        }
-    }
-}
-pub mod management {
-    pub mod params {}
-    pub struct ManagementActions<'a, A> {
-        pub(super) reqwest: &'a reqwest::Client,
-        pub(super) auth: &'a std::sync::Mutex<A>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> ManagementActions<'a, A> {
-        #[doc = "Actions that can be performed on the accounts resource"]
-        pub fn accounts(&self) -> accounts::AccountsActions<A> {
-            accounts::AccountsActions
-        }
-        #[doc = "Actions that can be performed on the goals resource"]
-        pub fn goals(&self) -> goals::GoalsActions<A> {
-            goals::GoalsActions
-        }
-        #[doc = "Actions that can be performed on the profiles resource"]
-        pub fn profiles(&self) -> profiles::ProfilesActions<A> {
-            profiles::ProfilesActions
-        }
-        #[doc = "Actions that can be performed on the segments resource"]
-        pub fn segments(&self) -> segments::SegmentsActions<A> {
-            segments::SegmentsActions
-        }
-        #[doc = "Actions that can be performed on the webproperties resource"]
-        pub fn webproperties(&self) -> webproperties::WebpropertiesActions<A> {
-            webproperties::WebpropertiesActions
-        }
-    }
-    pub mod accounts {
+mod resources {
+    pub mod data {
         pub mod params {}
-        pub struct AccountsActions<'a, A> {
-            pub(super) reqwest: &'a reqwest::Client,
-            pub(super) auth: &'a std::sync::Mutex<A>,
+        pub struct DataActions<'a, A> {
+            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) auth: &'a std::sync::Mutex<A>,
         }
-        impl<'a, A: yup_oauth2::GetToken> AccountsActions<'a, A> {
-            #[doc = "Lists all accounts to which the user has access."]
-            pub fn list(&self) -> ListRequestBuilder<A> {
-                ListRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: &self.auth,
-                    alt: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    user_ip: None,
-                    max_results: None,
-                    start_index: None,
-                }
-            }
-        }
-        #[derive(Debug, Clone)]
-        pub struct ListRequestBuilder<'a, A> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a ::std::sync::Mutex<A>,
-            max_results: Option<i32>,
-            start_index: Option<i32>,
-            alt: Option<crate::params::Alt>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            user_ip: Option<String>,
-        }
-        impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
-            #[doc = "The maximum number of accounts to include in this response."]
-            pub fn max_results(&mut self, value: i32) -> &mut Self {
-                self.max_results = Some(value);
-                self
-            }
-            #[doc = "An index of the first account to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."]
-            pub fn start_index(&mut self, value: i32) -> &mut Self {
-                self.start_index = Some(value);
-                self
-            }
-            #[doc = "Data format for the response."]
-            pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-                self.fields = Some(value.into());
-                self
-            }
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(&mut self, value: impl Into<String>) -> &mut Self {
-                self.user_ip = Some(value.into());
-                self
-            }
-            pub fn execute(self) -> Result<(), Box<dyn ::std::error::Error>> {
-                let req = self._request(&self._path());
-                req.send()?.error_for_status()?;
-                Ok(())
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/analytics/v2.4/".to_owned();
-                output.push_str("management/accounts");
-                output
-            }
-            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("max-results", &self.max_results)]);
-                let req = req.query(&[("start-index", &self.start_index)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let mut auth = self.auth.lock().unwrap();
-                let req = req.bearer_auth(
-                    auth.token::<_, &str>(&["https://www.googleapis.com/auth/analytics.readonly"])
-                        .unwrap()
-                        .access_token,
-                );
-                req
-            }
-        }
-    }
-    pub mod goals {
-        pub mod params {}
-        pub struct GoalsActions<'a, A> {
-            pub(super) reqwest: &'a reqwest::Client,
-            pub(super) auth: &'a std::sync::Mutex<A>,
-        }
-        impl<'a, A: yup_oauth2::GetToken> GoalsActions<'a, A> {
-            #[doc = "Lists goals to which the user has access."]
-            pub fn list(
+        impl<'a, A: yup_oauth2::GetToken> DataActions<'a, A> {
+            #[doc = "Returns Analytics report data for a view (profile)."]
+            pub fn get(
                 &self,
-                account_id: impl Into<String>,
-                web_property_id: impl Into<String>,
-                profile_id: impl Into<String>,
-            ) -> ListRequestBuilder<A> {
-                ListRequestBuilder {
+                ids: impl Into<String>,
+                start_date: impl Into<String>,
+                end_date: impl Into<String>,
+                metrics: impl Into<String>,
+            ) -> GetRequestBuilder<A> {
+                GetRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: &self.auth,
                     alt: None,
@@ -401,22 +95,32 @@ pub mod management {
                     pretty_print: None,
                     quota_user: None,
                     user_ip: None,
-                    account_id: account_id.into(),
-                    web_property_id: web_property_id.into(),
-                    profile_id: profile_id.into(),
+                    ids: ids.into(),
+                    start_date: start_date.into(),
+                    end_date: end_date.into(),
+                    metrics: metrics.into(),
+                    dimensions: None,
+                    filters: None,
                     max_results: None,
+                    segment: None,
+                    sort: None,
                     start_index: None,
                 }
             }
         }
         #[derive(Debug, Clone)]
-        pub struct ListRequestBuilder<'a, A> {
+        pub struct GetRequestBuilder<'a, A> {
             pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a ::std::sync::Mutex<A>,
-            account_id: String,
-            web_property_id: String,
-            profile_id: String,
+            ids: String,
+            start_date: String,
+            end_date: String,
+            metrics: String,
+            dimensions: Option<String>,
+            filters: Option<String>,
             max_results: Option<i32>,
+            segment: Option<String>,
+            sort: Option<String>,
             start_index: Option<i32>,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -426,178 +130,69 @@ pub mod management {
             quota_user: Option<String>,
             user_ip: Option<String>,
         }
-        impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
-            #[doc = "The maximum number of goals to include in this response."]
-            pub fn max_results(&mut self, value: i32) -> &mut Self {
+        impl<'a, A: yup_oauth2::GetToken> GetRequestBuilder<'a, A> {
+            #[doc = "A comma-separated list of Analytics dimensions. E.g., 'ga:browser,ga:city'."]
+            pub fn dimensions(mut self, value: impl Into<String>) -> Self {
+                self.dimensions = Some(value.into());
+                self
+            }
+            #[doc = "A comma-separated list of dimension or metric filters to be applied to the report data."]
+            pub fn filters(mut self, value: impl Into<String>) -> Self {
+                self.filters = Some(value.into());
+                self
+            }
+            #[doc = "The maximum number of entries to include in this feed."]
+            pub fn max_results(mut self, value: i32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "An index of the first goal to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."]
-            pub fn start_index(&mut self, value: i32) -> &mut Self {
-                self.start_index = Some(value);
+            #[doc = "An Analytics advanced segment to be applied to the report data."]
+            pub fn segment(mut self, value: impl Into<String>) -> Self {
+                self.segment = Some(value.into());
                 self
             }
-            #[doc = "Data format for the response."]
-            pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-                self.alt = Some(value);
-                self
-            }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-                self.fields = Some(value.into());
-                self
-            }
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(&mut self, value: impl Into<String>) -> &mut Self {
-                self.user_ip = Some(value.into());
-                self
-            }
-            pub fn execute(self) -> Result<(), Box<dyn ::std::error::Error>> {
-                let req = self._request(&self._path());
-                req.send()?.error_for_status()?;
-                Ok(())
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/analytics/v2.4/".to_owned();
-                output.push_str("management/accounts/");
-                output.push_str(&self.account_id);
-                output.push_str("/webproperties/");
-                output.push_str(&self.web_property_id);
-                output.push_str("/profiles/");
-                output.push_str(&self.profile_id);
-                output.push_str("/goals");
-                output
-            }
-            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("max-results", &self.max_results)]);
-                let req = req.query(&[("start-index", &self.start_index)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let mut auth = self.auth.lock().unwrap();
-                let req = req.bearer_auth(
-                    auth.token::<_, &str>(&["https://www.googleapis.com/auth/analytics.readonly"])
-                        .unwrap()
-                        .access_token,
-                );
-                req
-            }
-        }
-    }
-    pub mod profiles {
-        pub mod params {}
-        pub struct ProfilesActions<'a, A> {
-            pub(super) reqwest: &'a reqwest::Client,
-            pub(super) auth: &'a std::sync::Mutex<A>,
-        }
-        impl<'a, A: yup_oauth2::GetToken> ProfilesActions<'a, A> {
-            #[doc = "Lists views (profiles) to which the user has access."]
-            pub fn list(
-                &self,
-                account_id: impl Into<String>,
-                web_property_id: impl Into<String>,
-            ) -> ListRequestBuilder<A> {
-                ListRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: &self.auth,
-                    alt: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    user_ip: None,
-                    account_id: account_id.into(),
-                    web_property_id: web_property_id.into(),
-                    max_results: None,
-                    start_index: None,
-                }
-            }
-        }
-        #[derive(Debug, Clone)]
-        pub struct ListRequestBuilder<'a, A> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a ::std::sync::Mutex<A>,
-            account_id: String,
-            web_property_id: String,
-            max_results: Option<i32>,
-            start_index: Option<i32>,
-            alt: Option<crate::params::Alt>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            user_ip: Option<String>,
-        }
-        impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
-            #[doc = "The maximum number of views (profiles) to include in this response."]
-            pub fn max_results(&mut self, value: i32) -> &mut Self {
-                self.max_results = Some(value);
+            #[doc = "A comma-separated list of dimensions or metrics that determine the sort order for the report data."]
+            pub fn sort(mut self, value: impl Into<String>) -> Self {
+                self.sort = Some(value.into());
                 self
             }
             #[doc = "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."]
-            pub fn start_index(&mut self, value: i32) -> &mut Self {
+            pub fn start_index(mut self, value: i32) -> Self {
                 self.start_index = Some(value);
                 self
             }
             #[doc = "Data format for the response."]
-            pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
+            pub fn alt(mut self, value: crate::params::Alt) -> Self {
                 self.alt = Some(value);
                 self
             }
             #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn fields(mut self, value: impl Into<String>) -> Self {
                 self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
                 self
             }
             #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
                 self.oauth_token = Some(value.into());
                 self
             }
             #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(&mut self, value: bool) -> &mut Self {
+            pub fn pretty_print(mut self, value: bool) -> Self {
                 self.pretty_print = Some(value);
                 self
             }
             #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
             #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
                 self.user_ip = Some(value.into());
                 self
             }
@@ -608,16 +203,20 @@ pub mod management {
             }
             fn _path(&self) -> String {
                 let mut output = "https://www.googleapis.com/analytics/v2.4/".to_owned();
-                output.push_str("management/accounts/");
-                output.push_str(&self.account_id);
-                output.push_str("/webproperties/");
-                output.push_str(&self.web_property_id);
-                output.push_str("/profiles");
+                output.push_str("data");
                 output
             }
             fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[("ids", &self.ids)]);
+                let req = req.query(&[("start-date", &self.start_date)]);
+                let req = req.query(&[("end-date", &self.end_date)]);
+                let req = req.query(&[("metrics", &self.metrics)]);
+                let req = req.query(&[("dimensions", &self.dimensions)]);
+                let req = req.query(&[("filters", &self.filters)]);
                 let req = req.query(&[("max-results", &self.max_results)]);
+                let req = req.query(&[("segment", &self.segment)]);
+                let req = req.query(&[("sort", &self.sort)]);
                 let req = req.query(&[("start-index", &self.start_index)]);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -627,250 +226,734 @@ pub mod management {
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
                 let mut auth = self.auth.lock().unwrap();
-                let req = req.bearer_auth(
-                    auth.token::<_, &str>(&["https://www.googleapis.com/auth/analytics.readonly"])
-                        .unwrap()
-                        .access_token,
-                );
+                let fut = auth.token(vec!["https://www.googleapis.com/auth/analytics.readonly"]);
+                let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                let token = runtime.block_on(fut).unwrap().access_token;
+                let req = req.bearer_auth(&token);
                 req
             }
         }
     }
-    pub mod segments {
+    pub mod management {
         pub mod params {}
-        pub struct SegmentsActions<'a, A> {
-            pub(super) reqwest: &'a reqwest::Client,
-            pub(super) auth: &'a std::sync::Mutex<A>,
+        pub struct ManagementActions<'a, A> {
+            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) auth: &'a std::sync::Mutex<A>,
         }
-        impl<'a, A: yup_oauth2::GetToken> SegmentsActions<'a, A> {
-            #[doc = "Lists advanced segments to which the user has access."]
-            pub fn list(&self) -> ListRequestBuilder<A> {
-                ListRequestBuilder {
+        impl<'a, A: yup_oauth2::GetToken> ManagementActions<'a, A> {
+            #[doc = "Actions that can be performed on the accounts resource"]
+            pub fn accounts(&self) -> crate::resources::management::accounts::AccountsActions<A> {
+                crate::resources::management::accounts::AccountsActions {
                     reqwest: &self.reqwest,
                     auth: &self.auth,
-                    alt: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    user_ip: None,
-                    max_results: None,
-                    start_index: None,
+                }
+            }
+            #[doc = "Actions that can be performed on the goals resource"]
+            pub fn goals(&self) -> crate::resources::management::goals::GoalsActions<A> {
+                crate::resources::management::goals::GoalsActions {
+                    reqwest: &self.reqwest,
+                    auth: &self.auth,
+                }
+            }
+            #[doc = "Actions that can be performed on the profiles resource"]
+            pub fn profiles(&self) -> crate::resources::management::profiles::ProfilesActions<A> {
+                crate::resources::management::profiles::ProfilesActions {
+                    reqwest: &self.reqwest,
+                    auth: &self.auth,
+                }
+            }
+            #[doc = "Actions that can be performed on the segments resource"]
+            pub fn segments(&self) -> crate::resources::management::segments::SegmentsActions<A> {
+                crate::resources::management::segments::SegmentsActions {
+                    reqwest: &self.reqwest,
+                    auth: &self.auth,
+                }
+            }
+            #[doc = "Actions that can be performed on the webproperties resource"]
+            pub fn webproperties(
+                &self,
+            ) -> crate::resources::management::webproperties::WebpropertiesActions<A> {
+                crate::resources::management::webproperties::WebpropertiesActions {
+                    reqwest: &self.reqwest,
+                    auth: &self.auth,
                 }
             }
         }
-        #[derive(Debug, Clone)]
-        pub struct ListRequestBuilder<'a, A> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a ::std::sync::Mutex<A>,
-            max_results: Option<i32>,
-            start_index: Option<i32>,
-            alt: Option<crate::params::Alt>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            user_ip: Option<String>,
-        }
-        impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
-            #[doc = "The maximum number of advanced segments to include in this response."]
-            pub fn max_results(&mut self, value: i32) -> &mut Self {
-                self.max_results = Some(value);
-                self
+        pub mod accounts {
+            pub mod params {}
+            pub struct AccountsActions<'a, A> {
+                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) auth: &'a std::sync::Mutex<A>,
             }
-            #[doc = "An index of the first advanced segment to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."]
-            pub fn start_index(&mut self, value: i32) -> &mut Self {
-                self.start_index = Some(value);
-                self
+            impl<'a, A: yup_oauth2::GetToken> AccountsActions<'a, A> {
+                #[doc = "Lists all accounts to which the user has access."]
+                pub fn list(&self) -> ListRequestBuilder<A> {
+                    ListRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: &self.auth,
+                        alt: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        user_ip: None,
+                        max_results: None,
+                        start_index: None,
+                    }
+                }
             }
-            #[doc = "Data format for the response."]
-            pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-                self.alt = Some(value);
-                self
+            #[derive(Debug, Clone)]
+            pub struct ListRequestBuilder<'a, A> {
+                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                max_results: Option<i32>,
+                start_index: Option<i32>,
+                alt: Option<crate::params::Alt>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                user_ip: Option<String>,
             }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-                self.fields = Some(value.into());
-                self
-            }
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(&mut self, value: impl Into<String>) -> &mut Self {
-                self.user_ip = Some(value.into());
-                self
-            }
-            pub fn execute(self) -> Result<(), Box<dyn ::std::error::Error>> {
-                let req = self._request(&self._path());
-                req.send()?.error_for_status()?;
-                Ok(())
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/analytics/v2.4/".to_owned();
-                output.push_str("management/segments");
-                output
-            }
-            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("max-results", &self.max_results)]);
-                let req = req.query(&[("start-index", &self.start_index)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let mut auth = self.auth.lock().unwrap();
-                let req = req.bearer_auth(
-                    auth.token::<_, &str>(&["https://www.googleapis.com/auth/analytics.readonly"])
-                        .unwrap()
-                        .access_token,
-                );
-                req
-            }
-        }
-    }
-    pub mod webproperties {
-        pub mod params {}
-        pub struct WebpropertiesActions<'a, A> {
-            pub(super) reqwest: &'a reqwest::Client,
-            pub(super) auth: &'a std::sync::Mutex<A>,
-        }
-        impl<'a, A: yup_oauth2::GetToken> WebpropertiesActions<'a, A> {
-            #[doc = "Lists web properties to which the user has access."]
-            pub fn list(&self, account_id: impl Into<String>) -> ListRequestBuilder<A> {
-                ListRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: &self.auth,
-                    alt: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    user_ip: None,
-                    account_id: account_id.into(),
-                    max_results: None,
-                    start_index: None,
+            impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
+                #[doc = "The maximum number of accounts to include in this response."]
+                pub fn max_results(mut self, value: i32) -> Self {
+                    self.max_results = Some(value);
+                    self
+                }
+                #[doc = "An index of the first account to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."]
+                pub fn start_index(mut self, value: i32) -> Self {
+                    self.start_index = Some(value);
+                    self
+                }
+                #[doc = "Data format for the response."]
+                pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                    self.alt = Some(value);
+                    self
+                }
+                #[doc = "Selector specifying which fields to include in a partial response."]
+                pub fn fields(mut self, value: impl Into<String>) -> Self {
+                    self.fields = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Deprecated. Please use quotaUser instead."]
+                pub fn user_ip(mut self, value: impl Into<String>) -> Self {
+                    self.user_ip = Some(value.into());
+                    self
+                }
+                pub fn execute(self) -> Result<(), Box<dyn ::std::error::Error>> {
+                    let req = self._request(&self._path());
+                    req.send()?.error_for_status()?;
+                    Ok(())
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://www.googleapis.com/analytics/v2.4/".to_owned();
+                    output.push_str("management/accounts");
+                    output
+                }
+                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                    let req = self.reqwest.request(::reqwest::Method::GET, path);
+                    let req = req.query(&[("max-results", &self.max_results)]);
+                    let req = req.query(&[("start-index", &self.start_index)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let mut auth = self.auth.lock().unwrap();
+                    let fut =
+                        auth.token(vec!["https://www.googleapis.com/auth/analytics.readonly"]);
+                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                    let token = runtime.block_on(fut).unwrap().access_token;
+                    let req = req.bearer_auth(&token);
+                    req
                 }
             }
         }
-        #[derive(Debug, Clone)]
-        pub struct ListRequestBuilder<'a, A> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a ::std::sync::Mutex<A>,
-            account_id: String,
-            max_results: Option<i32>,
-            start_index: Option<i32>,
-            alt: Option<crate::params::Alt>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            user_ip: Option<String>,
+        pub mod goals {
+            pub mod params {}
+            pub struct GoalsActions<'a, A> {
+                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) auth: &'a std::sync::Mutex<A>,
+            }
+            impl<'a, A: yup_oauth2::GetToken> GoalsActions<'a, A> {
+                #[doc = "Lists goals to which the user has access."]
+                pub fn list(
+                    &self,
+                    account_id: impl Into<String>,
+                    web_property_id: impl Into<String>,
+                    profile_id: impl Into<String>,
+                ) -> ListRequestBuilder<A> {
+                    ListRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: &self.auth,
+                        alt: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        user_ip: None,
+                        account_id: account_id.into(),
+                        web_property_id: web_property_id.into(),
+                        profile_id: profile_id.into(),
+                        max_results: None,
+                        start_index: None,
+                    }
+                }
+            }
+            #[derive(Debug, Clone)]
+            pub struct ListRequestBuilder<'a, A> {
+                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                account_id: String,
+                web_property_id: String,
+                profile_id: String,
+                max_results: Option<i32>,
+                start_index: Option<i32>,
+                alt: Option<crate::params::Alt>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                user_ip: Option<String>,
+            }
+            impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
+                #[doc = "The maximum number of goals to include in this response."]
+                pub fn max_results(mut self, value: i32) -> Self {
+                    self.max_results = Some(value);
+                    self
+                }
+                #[doc = "An index of the first goal to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."]
+                pub fn start_index(mut self, value: i32) -> Self {
+                    self.start_index = Some(value);
+                    self
+                }
+                #[doc = "Data format for the response."]
+                pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                    self.alt = Some(value);
+                    self
+                }
+                #[doc = "Selector specifying which fields to include in a partial response."]
+                pub fn fields(mut self, value: impl Into<String>) -> Self {
+                    self.fields = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Deprecated. Please use quotaUser instead."]
+                pub fn user_ip(mut self, value: impl Into<String>) -> Self {
+                    self.user_ip = Some(value.into());
+                    self
+                }
+                pub fn execute(self) -> Result<(), Box<dyn ::std::error::Error>> {
+                    let req = self._request(&self._path());
+                    req.send()?.error_for_status()?;
+                    Ok(())
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://www.googleapis.com/analytics/v2.4/".to_owned();
+                    output.push_str("management/accounts/");
+                    {
+                        let var_as_str = &self.account_id;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::SIMPLE,
+                        ));
+                    }
+                    output.push_str("/webproperties/");
+                    {
+                        let var_as_str = &self.web_property_id;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::SIMPLE,
+                        ));
+                    }
+                    output.push_str("/profiles/");
+                    {
+                        let var_as_str = &self.profile_id;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::SIMPLE,
+                        ));
+                    }
+                    output.push_str("/goals");
+                    output
+                }
+                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                    let req = self.reqwest.request(::reqwest::Method::GET, path);
+                    let req = req.query(&[("max-results", &self.max_results)]);
+                    let req = req.query(&[("start-index", &self.start_index)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let mut auth = self.auth.lock().unwrap();
+                    let fut =
+                        auth.token(vec!["https://www.googleapis.com/auth/analytics.readonly"]);
+                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                    let token = runtime.block_on(fut).unwrap().access_token;
+                    let req = req.bearer_auth(&token);
+                    req
+                }
+            }
         }
-        impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
-            #[doc = "The maximum number of web properties to include in this response."]
-            pub fn max_results(&mut self, value: i32) -> &mut Self {
-                self.max_results = Some(value);
-                self
+        pub mod profiles {
+            pub mod params {}
+            pub struct ProfilesActions<'a, A> {
+                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) auth: &'a std::sync::Mutex<A>,
             }
-            #[doc = "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."]
-            pub fn start_index(&mut self, value: i32) -> &mut Self {
-                self.start_index = Some(value);
-                self
+            impl<'a, A: yup_oauth2::GetToken> ProfilesActions<'a, A> {
+                #[doc = "Lists views (profiles) to which the user has access."]
+                pub fn list(
+                    &self,
+                    account_id: impl Into<String>,
+                    web_property_id: impl Into<String>,
+                ) -> ListRequestBuilder<A> {
+                    ListRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: &self.auth,
+                        alt: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        user_ip: None,
+                        account_id: account_id.into(),
+                        web_property_id: web_property_id.into(),
+                        max_results: None,
+                        start_index: None,
+                    }
+                }
             }
-            #[doc = "Data format for the response."]
-            pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-                self.alt = Some(value);
-                self
+            #[derive(Debug, Clone)]
+            pub struct ListRequestBuilder<'a, A> {
+                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                account_id: String,
+                web_property_id: String,
+                max_results: Option<i32>,
+                start_index: Option<i32>,
+                alt: Option<crate::params::Alt>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                user_ip: Option<String>,
             }
-            #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-                self.fields = Some(value.into());
-                self
+            impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
+                #[doc = "The maximum number of views (profiles) to include in this response."]
+                pub fn max_results(mut self, value: i32) -> Self {
+                    self.max_results = Some(value);
+                    self
+                }
+                #[doc = "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."]
+                pub fn start_index(mut self, value: i32) -> Self {
+                    self.start_index = Some(value);
+                    self
+                }
+                #[doc = "Data format for the response."]
+                pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                    self.alt = Some(value);
+                    self
+                }
+                #[doc = "Selector specifying which fields to include in a partial response."]
+                pub fn fields(mut self, value: impl Into<String>) -> Self {
+                    self.fields = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Deprecated. Please use quotaUser instead."]
+                pub fn user_ip(mut self, value: impl Into<String>) -> Self {
+                    self.user_ip = Some(value.into());
+                    self
+                }
+                pub fn execute(self) -> Result<(), Box<dyn ::std::error::Error>> {
+                    let req = self._request(&self._path());
+                    req.send()?.error_for_status()?;
+                    Ok(())
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://www.googleapis.com/analytics/v2.4/".to_owned();
+                    output.push_str("management/accounts/");
+                    {
+                        let var_as_str = &self.account_id;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::SIMPLE,
+                        ));
+                    }
+                    output.push_str("/webproperties/");
+                    {
+                        let var_as_str = &self.web_property_id;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::SIMPLE,
+                        ));
+                    }
+                    output.push_str("/profiles");
+                    output
+                }
+                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                    let req = self.reqwest.request(::reqwest::Method::GET, path);
+                    let req = req.query(&[("max-results", &self.max_results)]);
+                    let req = req.query(&[("start-index", &self.start_index)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let mut auth = self.auth.lock().unwrap();
+                    let fut =
+                        auth.token(vec!["https://www.googleapis.com/auth/analytics.readonly"]);
+                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                    let token = runtime.block_on(fut).unwrap().access_token;
+                    let req = req.bearer_auth(&token);
+                    req
+                }
             }
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-                self.key = Some(value.into());
-                self
+        }
+        pub mod segments {
+            pub mod params {}
+            pub struct SegmentsActions<'a, A> {
+                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) auth: &'a std::sync::Mutex<A>,
             }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-                self.oauth_token = Some(value.into());
-                self
+            impl<'a, A: yup_oauth2::GetToken> SegmentsActions<'a, A> {
+                #[doc = "Lists advanced segments to which the user has access."]
+                pub fn list(&self) -> ListRequestBuilder<A> {
+                    ListRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: &self.auth,
+                        alt: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        user_ip: None,
+                        max_results: None,
+                        start_index: None,
+                    }
+                }
             }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-                self.pretty_print = Some(value);
-                self
+            #[derive(Debug, Clone)]
+            pub struct ListRequestBuilder<'a, A> {
+                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                max_results: Option<i32>,
+                start_index: Option<i32>,
+                alt: Option<crate::params::Alt>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                user_ip: Option<String>,
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-                self.quota_user = Some(value.into());
-                self
+            impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
+                #[doc = "The maximum number of advanced segments to include in this response."]
+                pub fn max_results(mut self, value: i32) -> Self {
+                    self.max_results = Some(value);
+                    self
+                }
+                #[doc = "An index of the first advanced segment to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."]
+                pub fn start_index(mut self, value: i32) -> Self {
+                    self.start_index = Some(value);
+                    self
+                }
+                #[doc = "Data format for the response."]
+                pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                    self.alt = Some(value);
+                    self
+                }
+                #[doc = "Selector specifying which fields to include in a partial response."]
+                pub fn fields(mut self, value: impl Into<String>) -> Self {
+                    self.fields = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Deprecated. Please use quotaUser instead."]
+                pub fn user_ip(mut self, value: impl Into<String>) -> Self {
+                    self.user_ip = Some(value.into());
+                    self
+                }
+                pub fn execute(self) -> Result<(), Box<dyn ::std::error::Error>> {
+                    let req = self._request(&self._path());
+                    req.send()?.error_for_status()?;
+                    Ok(())
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://www.googleapis.com/analytics/v2.4/".to_owned();
+                    output.push_str("management/segments");
+                    output
+                }
+                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                    let req = self.reqwest.request(::reqwest::Method::GET, path);
+                    let req = req.query(&[("max-results", &self.max_results)]);
+                    let req = req.query(&[("start-index", &self.start_index)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let mut auth = self.auth.lock().unwrap();
+                    let fut =
+                        auth.token(vec!["https://www.googleapis.com/auth/analytics.readonly"]);
+                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                    let token = runtime.block_on(fut).unwrap().access_token;
+                    let req = req.bearer_auth(&token);
+                    req
+                }
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(&mut self, value: impl Into<String>) -> &mut Self {
-                self.user_ip = Some(value.into());
-                self
+        }
+        pub mod webproperties {
+            pub mod params {}
+            pub struct WebpropertiesActions<'a, A> {
+                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) auth: &'a std::sync::Mutex<A>,
             }
-            pub fn execute(self) -> Result<(), Box<dyn ::std::error::Error>> {
-                let req = self._request(&self._path());
-                req.send()?.error_for_status()?;
-                Ok(())
+            impl<'a, A: yup_oauth2::GetToken> WebpropertiesActions<'a, A> {
+                #[doc = "Lists web properties to which the user has access."]
+                pub fn list(&self, account_id: impl Into<String>) -> ListRequestBuilder<A> {
+                    ListRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: &self.auth,
+                        alt: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        user_ip: None,
+                        account_id: account_id.into(),
+                        max_results: None,
+                        start_index: None,
+                    }
+                }
             }
-            fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/analytics/v2.4/".to_owned();
-                output.push_str("management/accounts/");
-                output.push_str(&self.account_id);
-                output.push_str("/webproperties");
-                output
+            #[derive(Debug, Clone)]
+            pub struct ListRequestBuilder<'a, A> {
+                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                account_id: String,
+                max_results: Option<i32>,
+                start_index: Option<i32>,
+                alt: Option<crate::params::Alt>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                user_ip: Option<String>,
             }
-            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("max-results", &self.max_results)]);
-                let req = req.query(&[("start-index", &self.start_index)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let mut auth = self.auth.lock().unwrap();
-                let req = req.bearer_auth(
-                    auth.token::<_, &str>(&["https://www.googleapis.com/auth/analytics.readonly"])
-                        .unwrap()
-                        .access_token,
-                );
-                req
+            impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
+                #[doc = "The maximum number of web properties to include in this response."]
+                pub fn max_results(mut self, value: i32) -> Self {
+                    self.max_results = Some(value);
+                    self
+                }
+                #[doc = "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."]
+                pub fn start_index(mut self, value: i32) -> Self {
+                    self.start_index = Some(value);
+                    self
+                }
+                #[doc = "Data format for the response."]
+                pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                    self.alt = Some(value);
+                    self
+                }
+                #[doc = "Selector specifying which fields to include in a partial response."]
+                pub fn fields(mut self, value: impl Into<String>) -> Self {
+                    self.fields = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Deprecated. Please use quotaUser instead."]
+                pub fn user_ip(mut self, value: impl Into<String>) -> Self {
+                    self.user_ip = Some(value.into());
+                    self
+                }
+                pub fn execute(self) -> Result<(), Box<dyn ::std::error::Error>> {
+                    let req = self._request(&self._path());
+                    req.send()?.error_for_status()?;
+                    Ok(())
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://www.googleapis.com/analytics/v2.4/".to_owned();
+                    output.push_str("management/accounts/");
+                    {
+                        let var_as_str = &self.account_id;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::SIMPLE,
+                        ));
+                    }
+                    output.push_str("/webproperties");
+                    output
+                }
+                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                    let req = self.reqwest.request(::reqwest::Method::GET, path);
+                    let req = req.query(&[("max-results", &self.max_results)]);
+                    let req = req.query(&[("start-index", &self.start_index)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let mut auth = self.auth.lock().unwrap();
+                    let fut =
+                        auth.token(vec!["https://www.googleapis.com/auth/analytics.readonly"]);
+                    let mut runtime = ::tokio::runtime::Runtime::new().unwrap();
+                    let token = runtime.block_on(fut).unwrap().access_token;
+                    let req = req.bearer_auth(&token);
+                    req
+                }
             }
         }
     }
 }
+#[allow(dead_code)]
+const SIMPLE: &::percent_encoding::AsciiSet = &::percent_encoding::NON_ALPHANUMERIC
+    .remove(b'-')
+    .remove(b'.')
+    .remove(b'_')
+    .remove(b'~');
+
+#[allow(dead_code)]
+const RESERVED: &::percent_encoding::AsciiSet = &SIMPLE
+    .remove(b'%')
+    .remove(b':')
+    .remove(b'/')
+    .remove(b'?')
+    .remove(b'#')
+    .remove(b'[')
+    .remove(b']')
+    .remove(b'@')
+    .remove(b'!')
+    .remove(b'$')
+    .remove(b'&')
+    .remove(b'\'')
+    .remove(b'(')
+    .remove(b')')
+    .remove(b'*')
+    .remove(b'+')
+    .remove(b',')
+    .remove(b';')
+    .remove(b'=');
+#[allow(dead_code)]
 mod multipart {
     pub(crate) struct RelatedMultiPart {
         parts: Vec<Part>,
@@ -1129,13 +1212,14 @@ trait IterableMethod {
         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
 }
 
-struct PageIter<'a, M, T> {
-    method: &'a mut M,
+#[allow(dead_code)]
+struct PageIter<M, T> {
+    method: M,
     finished: bool,
     _phantom: ::std::marker::PhantomData<T>,
 }
 
-impl<'a, M, T> Iterator for PageIter<'a, M, T>
+impl<M, T> Iterator for PageIter<M, T>
 where
     M: IterableMethod,
     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,

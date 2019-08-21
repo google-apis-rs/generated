@@ -87,10 +87,46 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum CheckResponseErrorCodeItems {}
+    pub enum CheckResponseErrorCodeItems {
+        ErrorCodeUnspecified,
+        ErrorCodeInvalidQuery,
+        ErrorCodeFetchError,
+        ErrorCodeFailedSslValidation,
+        ErrorCodeRedirect,
+        ErrorCodeTooLarge,
+        ErrorCodeMalformedHttpResponse,
+        ErrorCodeWrongContentType,
+        ErrorCodeMalformedContent,
+        ErrorCodeSecureAssetIncludesInsecure,
+        ErrorCodeFetchBudgetExhausted,
+    }
     impl CheckResponseErrorCodeItems {
         pub fn as_str(self) -> &'static str {
-            match self {}
+            match self {
+                CheckResponseErrorCodeItems::ErrorCodeUnspecified => "ERROR_CODE_UNSPECIFIED",
+                CheckResponseErrorCodeItems::ErrorCodeInvalidQuery => "ERROR_CODE_INVALID_QUERY",
+                CheckResponseErrorCodeItems::ErrorCodeFetchError => "ERROR_CODE_FETCH_ERROR",
+                CheckResponseErrorCodeItems::ErrorCodeFailedSslValidation => {
+                    "ERROR_CODE_FAILED_SSL_VALIDATION"
+                }
+                CheckResponseErrorCodeItems::ErrorCodeRedirect => "ERROR_CODE_REDIRECT",
+                CheckResponseErrorCodeItems::ErrorCodeTooLarge => "ERROR_CODE_TOO_LARGE",
+                CheckResponseErrorCodeItems::ErrorCodeMalformedHttpResponse => {
+                    "ERROR_CODE_MALFORMED_HTTP_RESPONSE"
+                }
+                CheckResponseErrorCodeItems::ErrorCodeWrongContentType => {
+                    "ERROR_CODE_WRONG_CONTENT_TYPE"
+                }
+                CheckResponseErrorCodeItems::ErrorCodeMalformedContent => {
+                    "ERROR_CODE_MALFORMED_CONTENT"
+                }
+                CheckResponseErrorCodeItems::ErrorCodeSecureAssetIncludesInsecure => {
+                    "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE"
+                }
+                CheckResponseErrorCodeItems::ErrorCodeFetchBudgetExhausted => {
+                    "ERROR_CODE_FETCH_BUDGET_EXHAUSTED"
+                }
+            }
         }
     }
     impl ::std::fmt::Display for CheckResponseErrorCodeItems {
@@ -113,6 +149,29 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ERROR_CODE_UNSPECIFIED" => CheckResponseErrorCodeItems::ErrorCodeUnspecified,
+                "ERROR_CODE_INVALID_QUERY" => CheckResponseErrorCodeItems::ErrorCodeInvalidQuery,
+                "ERROR_CODE_FETCH_ERROR" => CheckResponseErrorCodeItems::ErrorCodeFetchError,
+                "ERROR_CODE_FAILED_SSL_VALIDATION" => {
+                    CheckResponseErrorCodeItems::ErrorCodeFailedSslValidation
+                }
+                "ERROR_CODE_REDIRECT" => CheckResponseErrorCodeItems::ErrorCodeRedirect,
+                "ERROR_CODE_TOO_LARGE" => CheckResponseErrorCodeItems::ErrorCodeTooLarge,
+                "ERROR_CODE_MALFORMED_HTTP_RESPONSE" => {
+                    CheckResponseErrorCodeItems::ErrorCodeMalformedHttpResponse
+                }
+                "ERROR_CODE_WRONG_CONTENT_TYPE" => {
+                    CheckResponseErrorCodeItems::ErrorCodeWrongContentType
+                }
+                "ERROR_CODE_MALFORMED_CONTENT" => {
+                    CheckResponseErrorCodeItems::ErrorCodeMalformedContent
+                }
+                "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE" => {
+                    CheckResponseErrorCodeItems::ErrorCodeSecureAssetIncludesInsecure
+                }
+                "ERROR_CODE_FETCH_BUDGET_EXHAUSTED" => {
+                    CheckResponseErrorCodeItems::ErrorCodeFetchBudgetExhausted
+                }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -159,10 +218,46 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ListResponseErrorCodeItems {}
+    pub enum ListResponseErrorCodeItems {
+        ErrorCodeUnspecified,
+        ErrorCodeInvalidQuery,
+        ErrorCodeFetchError,
+        ErrorCodeFailedSslValidation,
+        ErrorCodeRedirect,
+        ErrorCodeTooLarge,
+        ErrorCodeMalformedHttpResponse,
+        ErrorCodeWrongContentType,
+        ErrorCodeMalformedContent,
+        ErrorCodeSecureAssetIncludesInsecure,
+        ErrorCodeFetchBudgetExhausted,
+    }
     impl ListResponseErrorCodeItems {
         pub fn as_str(self) -> &'static str {
-            match self {}
+            match self {
+                ListResponseErrorCodeItems::ErrorCodeUnspecified => "ERROR_CODE_UNSPECIFIED",
+                ListResponseErrorCodeItems::ErrorCodeInvalidQuery => "ERROR_CODE_INVALID_QUERY",
+                ListResponseErrorCodeItems::ErrorCodeFetchError => "ERROR_CODE_FETCH_ERROR",
+                ListResponseErrorCodeItems::ErrorCodeFailedSslValidation => {
+                    "ERROR_CODE_FAILED_SSL_VALIDATION"
+                }
+                ListResponseErrorCodeItems::ErrorCodeRedirect => "ERROR_CODE_REDIRECT",
+                ListResponseErrorCodeItems::ErrorCodeTooLarge => "ERROR_CODE_TOO_LARGE",
+                ListResponseErrorCodeItems::ErrorCodeMalformedHttpResponse => {
+                    "ERROR_CODE_MALFORMED_HTTP_RESPONSE"
+                }
+                ListResponseErrorCodeItems::ErrorCodeWrongContentType => {
+                    "ERROR_CODE_WRONG_CONTENT_TYPE"
+                }
+                ListResponseErrorCodeItems::ErrorCodeMalformedContent => {
+                    "ERROR_CODE_MALFORMED_CONTENT"
+                }
+                ListResponseErrorCodeItems::ErrorCodeSecureAssetIncludesInsecure => {
+                    "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE"
+                }
+                ListResponseErrorCodeItems::ErrorCodeFetchBudgetExhausted => {
+                    "ERROR_CODE_FETCH_BUDGET_EXHAUSTED"
+                }
+            }
         }
     }
     impl ::std::fmt::Display for ListResponseErrorCodeItems {
@@ -185,6 +280,29 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ERROR_CODE_UNSPECIFIED" => ListResponseErrorCodeItems::ErrorCodeUnspecified,
+                "ERROR_CODE_INVALID_QUERY" => ListResponseErrorCodeItems::ErrorCodeInvalidQuery,
+                "ERROR_CODE_FETCH_ERROR" => ListResponseErrorCodeItems::ErrorCodeFetchError,
+                "ERROR_CODE_FAILED_SSL_VALIDATION" => {
+                    ListResponseErrorCodeItems::ErrorCodeFailedSslValidation
+                }
+                "ERROR_CODE_REDIRECT" => ListResponseErrorCodeItems::ErrorCodeRedirect,
+                "ERROR_CODE_TOO_LARGE" => ListResponseErrorCodeItems::ErrorCodeTooLarge,
+                "ERROR_CODE_MALFORMED_HTTP_RESPONSE" => {
+                    ListResponseErrorCodeItems::ErrorCodeMalformedHttpResponse
+                }
+                "ERROR_CODE_WRONG_CONTENT_TYPE" => {
+                    ListResponseErrorCodeItems::ErrorCodeWrongContentType
+                }
+                "ERROR_CODE_MALFORMED_CONTENT" => {
+                    ListResponseErrorCodeItems::ErrorCodeMalformedContent
+                }
+                "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE" => {
+                    ListResponseErrorCodeItems::ErrorCodeSecureAssetIncludesInsecure
+                }
+                "ERROR_CODE_FETCH_BUDGET_EXHAUSTED" => {
+                    ListResponseErrorCodeItems::ErrorCodeFetchBudgetExhausted
+                }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -401,427 +519,524 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
     #[doc = "Actions that can be performed on the assetlinks resource"]
-    pub fn assetlinks(&self) -> crate::assetlinks::AssetlinksActions<A> {
-        crate::assetlinks::AssetlinksActions {
+    pub fn assetlinks(&self) -> crate::resources::assetlinks::AssetlinksActions<A> {
+        crate::resources::assetlinks::AssetlinksActions {
             reqwest: &self.reqwest,
             auth: &self.auth,
         }
     }
     #[doc = "Actions that can be performed on the statements resource"]
-    pub fn statements(&self) -> crate::statements::StatementsActions<A> {
-        crate::statements::StatementsActions {
+    pub fn statements(&self) -> crate::resources::statements::StatementsActions<A> {
+        crate::resources::statements::StatementsActions {
             reqwest: &self.reqwest,
             auth: &self.auth,
         }
     }
 }
-pub mod assetlinks {
-    pub mod params {}
-    pub struct AssetlinksActions<'a, A> {
-        pub(super) reqwest: &'a reqwest::Client,
-        pub(super) auth: &'a std::sync::Mutex<A>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> AssetlinksActions<'a, A> {
-        #[doc = "Determines whether the specified (directional) relationship exists between\nthe specified source and target assets.\n\nThe relation describes the intent of the link between the two assets as\nclaimed by the source asset.  An example for such relationships is the\ndelegation of privileges or permissions.\n\nThis command is most often used by infrastructure systems to check\npreconditions for an action.  For example, a client may want to know if it\nis OK to send a web URL to a particular mobile app instead. The client can\ncheck for the relevant asset link from the website to the mobile app to\ndecide if the operation should be allowed.\n\nA note about security: if you specify a secure asset as the source, such as\nan HTTPS website or an Android app, the API will ensure that any\nstatements used to generate the response have been made in a secure way by\nthe owner of that asset.  Conversely, if the source asset is an insecure\nHTTP website (that is, the URL starts with `http://` instead of\n`https://`), the API cannot verify its statements securely, and it is not\npossible to ensure that the website's statements have not been altered by a\nthird party.  For more information, see the [Digital Asset Links technical\ndesign\nspecification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md)."]
-        pub fn check(&self) -> CheckRequestBuilder<A> {
-            CheckRequestBuilder {
-                reqwest: &self.reqwest,
-                auth: &self.auth,
-                access_token: None,
-                alt: None,
-                callback: None,
-                fields: None,
-                key: None,
-                oauth_token: None,
-                pretty_print: None,
-                quota_user: None,
-                upload_protocol: None,
-                upload_type: None,
-                xgafv: None,
-                relation: None,
-                source_android_app_certificate_sha_256_fingerprint: None,
-                source_android_app_package_name: None,
-                source_web_site: None,
-                target_android_app_certificate_sha_256_fingerprint: None,
-                target_android_app_package_name: None,
-                target_web_site: None,
+mod resources {
+    pub mod assetlinks {
+        pub mod params {}
+        pub struct AssetlinksActions<'a, A> {
+            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) auth: &'a std::sync::Mutex<A>,
+        }
+        impl<'a, A: yup_oauth2::GetToken> AssetlinksActions<'a, A> {
+            #[doc = "Determines whether the specified (directional) relationship exists between\nthe specified source and target assets.\n\nThe relation describes the intent of the link between the two assets as\nclaimed by the source asset.  An example for such relationships is the\ndelegation of privileges or permissions.\n\nThis command is most often used by infrastructure systems to check\npreconditions for an action.  For example, a client may want to know if it\nis OK to send a web URL to a particular mobile app instead. The client can\ncheck for the relevant asset link from the website to the mobile app to\ndecide if the operation should be allowed.\n\nA note about security: if you specify a secure asset as the source, such as\nan HTTPS website or an Android app, the API will ensure that any\nstatements used to generate the response have been made in a secure way by\nthe owner of that asset.  Conversely, if the source asset is an insecure\nHTTP website (that is, the URL starts with `http://` instead of\n`https://`), the API cannot verify its statements securely, and it is not\npossible to ensure that the website's statements have not been altered by a\nthird party.  For more information, see the [Digital Asset Links technical\ndesign\nspecification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md)."]
+            pub fn check(&self) -> CheckRequestBuilder<A> {
+                CheckRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: &self.auth,
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    relation: None,
+                    source_android_app_certificate_sha_256_fingerprint: None,
+                    source_android_app_package_name: None,
+                    source_web_site: None,
+                    target_android_app_certificate_sha_256_fingerprint: None,
+                    target_android_app_package_name: None,
+                    target_web_site: None,
+                }
+            }
+        }
+        #[derive(Debug, Clone)]
+        pub struct CheckRequestBuilder<'a, A> {
+            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) auth: &'a ::std::sync::Mutex<A>,
+            relation: Option<String>,
+            source_android_app_certificate_sha_256_fingerprint: Option<String>,
+            source_android_app_package_name: Option<String>,
+            source_web_site: Option<String>,
+            target_android_app_certificate_sha_256_fingerprint: Option<String>,
+            target_android_app_package_name: Option<String>,
+            target_web_site: Option<String>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a, A: yup_oauth2::GetToken> CheckRequestBuilder<'a, A> {
+            #[doc = "Query string for the relation.\n\nWe identify relations with strings of the format `<kind>/<detail>`, where\n`<kind>` must be one of a set of pre-defined purpose categories, and\n`<detail>` is a free-form lowercase alphanumeric string that describes the\nspecific use case of the statement.\n\nRefer to [our API documentation](/digital-asset-links/v1/relation-strings)\nfor the current list of supported relations.\n\nFor a query to match an asset link, both the query's and the asset link's\nrelation strings must match exactly.\n\nExample: A query with relation `delegate_permission/common.handle_all_urls`\nmatches an asset link with relation\n`delegate_permission/common.handle_all_urls`."]
+            pub fn relation(mut self, value: impl Into<String>) -> Self {
+                self.relation = Some(value.into());
+                self
+            }
+            #[doc = "The uppercase SHA-265 fingerprint of the certificate.  From the PEM\ncertificate, it can be acquired like this:\n\n````text\n$ keytool -printcert -file $CERTFILE | grep SHA256:\nSHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \\\n    42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n````\n\nor like this:\n\n````text\n$ openssl x509 -in $CERTFILE -noout -fingerprint -sha256\nSHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \\\n    16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n````\n\nIn this example, the contents of this field would be `14:6D:E9:83:C5:73: 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`.\n\nIf these tools are not available to you, you can convert the PEM\ncertificate into the DER format, compute the SHA-256 hash of that string\nand represent the result as a hexstring (that is, uppercase hexadecimal\nrepresentations of each octet, separated by colons)."]
+            pub fn source_android_app_certificate_sha_256_fingerprint(
+                mut self,
+                value: impl Into<String>,
+            ) -> Self {
+                self.source_android_app_certificate_sha_256_fingerprint = Some(value.into());
+                self
+            }
+            #[doc = "Android App assets are naturally identified by their Java package name.\nFor example, the Google Maps app uses the package name\n`com.google.android.apps.maps`.\nREQUIRED"]
+            pub fn source_android_app_package_name(mut self, value: impl Into<String>) -> Self {
+                self.source_android_app_package_name = Some(value.into());
+                self
+            }
+            #[doc = "Web assets are identified by a URL that contains only the scheme, hostname\nand port parts.  The format is\n\n````text\nhttp[s]://<hostname>[:<port>]\n````\n\nHostnames must be fully qualified: they must end in a single period\n(\"`.`\").\n\nOnly the schemes \"http\" and \"https\" are currently allowed.\n\nPort numbers are given as a decimal number, and they must be omitted if the\nstandard port numbers are used: 80 for http and 443 for https.\n\nWe call this limited URL the \"site\".  All URLs that share the same scheme,\nhostname and port are considered to be a part of the site and thus belong\nto the web asset.\n\nExample: the asset with the site `https://www.google.com` contains all\nthese URLs:\n\n* `https://www.google.com/`\n* `https://www.google.com:443/`\n* `https://www.google.com/foo`\n* `https://www.google.com/foo?bar`\n* `https://www.google.com/foo#bar`\n* `https://user@password:www.google.com/`\n\nBut it does not contain these URLs:\n\n* `http://www.google.com/`       (wrong scheme)\n* `https://google.com/`          (hostname does not match)\n* `https://www.google.com:444/`  (port does not match)\n  REQUIRED"]
+            pub fn source_web_site(mut self, value: impl Into<String>) -> Self {
+                self.source_web_site = Some(value.into());
+                self
+            }
+            #[doc = "The uppercase SHA-265 fingerprint of the certificate.  From the PEM\ncertificate, it can be acquired like this:\n\n````text\n$ keytool -printcert -file $CERTFILE | grep SHA256:\nSHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \\\n    42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n````\n\nor like this:\n\n````text\n$ openssl x509 -in $CERTFILE -noout -fingerprint -sha256\nSHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \\\n    16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n````\n\nIn this example, the contents of this field would be `14:6D:E9:83:C5:73: 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`.\n\nIf these tools are not available to you, you can convert the PEM\ncertificate into the DER format, compute the SHA-256 hash of that string\nand represent the result as a hexstring (that is, uppercase hexadecimal\nrepresentations of each octet, separated by colons)."]
+            pub fn target_android_app_certificate_sha_256_fingerprint(
+                mut self,
+                value: impl Into<String>,
+            ) -> Self {
+                self.target_android_app_certificate_sha_256_fingerprint = Some(value.into());
+                self
+            }
+            #[doc = "Android App assets are naturally identified by their Java package name.\nFor example, the Google Maps app uses the package name\n`com.google.android.apps.maps`.\nREQUIRED"]
+            pub fn target_android_app_package_name(mut self, value: impl Into<String>) -> Self {
+                self.target_android_app_package_name = Some(value.into());
+                self
+            }
+            #[doc = "Web assets are identified by a URL that contains only the scheme, hostname\nand port parts.  The format is\n\n````text\nhttp[s]://<hostname>[:<port>]\n````\n\nHostnames must be fully qualified: they must end in a single period\n(\"`.`\").\n\nOnly the schemes \"http\" and \"https\" are currently allowed.\n\nPort numbers are given as a decimal number, and they must be omitted if the\nstandard port numbers are used: 80 for http and 443 for https.\n\nWe call this limited URL the \"site\".  All URLs that share the same scheme,\nhostname and port are considered to be a part of the site and thus belong\nto the web asset.\n\nExample: the asset with the site `https://www.google.com` contains all\nthese URLs:\n\n* `https://www.google.com/`\n* `https://www.google.com:443/`\n* `https://www.google.com/foo`\n* `https://www.google.com/foo?bar`\n* `https://www.google.com/foo#bar`\n* `https://user@password:www.google.com/`\n\nBut it does not contain these URLs:\n\n* `http://www.google.com/`       (wrong scheme)\n* `https://google.com/`          (hostname does not match)\n* `https://www.google.com:444/`  (port does not match)\n  REQUIRED"]
+            pub fn target_web_site(mut self, value: impl Into<String>) -> Self {
+                self.target_web_site = Some(value.into());
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "Data format for response."]
+            pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                self.alt = Some(value);
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "Selector specifying which fields to include in a partial response."]
+            pub fn fields(mut self, value: impl Into<String>) -> Self {
+                self.fields = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+            {
+                let fields = T::field_selector();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_standard(
+                self,
+            ) -> Result<crate::schemas::CheckResponse, Box<dyn ::std::error::Error>> {
+                self.execute_fields::<_, &str>(None)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_debug(
+                self,
+            ) -> Result<crate::schemas::CheckResponse, Box<dyn ::std::error::Error>> {
+                self.execute_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path());
+                Ok(req.send()?.error_for_status()?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://digitalassetlinks.googleapis.com/".to_owned();
+                output.push_str("v1/assetlinks:check");
+                output
+            }
+            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[("relation", &self.relation)]);
+                let req = req.query(&[(
+                    "source.androidApp.certificate.sha256Fingerprint",
+                    &self.source_android_app_certificate_sha_256_fingerprint,
+                )]);
+                let req = req.query(&[(
+                    "source.androidApp.packageName",
+                    &self.source_android_app_package_name,
+                )]);
+                let req = req.query(&[("source.web.site", &self.source_web_site)]);
+                let req = req.query(&[(
+                    "target.androidApp.certificate.sha256Fingerprint",
+                    &self.target_android_app_certificate_sha_256_fingerprint,
+                )]);
+                let req = req.query(&[(
+                    "target.androidApp.packageName",
+                    &self.target_android_app_package_name,
+                )]);
+                let req = req.query(&[("target.web.site", &self.target_web_site)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
+                let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
+                let req = req.query(&[("fields", &self.fields)]);
+                let req = req.query(&[("key", &self.key)]);
+                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req
             }
         }
     }
-    #[derive(Debug, Clone)]
-    pub struct CheckRequestBuilder<'a, A> {
-        pub(crate) reqwest: &'a ::reqwest::Client,
-        pub(crate) auth: &'a ::std::sync::Mutex<A>,
-        relation: Option<String>,
-        source_android_app_certificate_sha_256_fingerprint: Option<String>,
-        source_android_app_package_name: Option<String>,
-        source_web_site: Option<String>,
-        target_android_app_certificate_sha_256_fingerprint: Option<String>,
-        target_android_app_package_name: Option<String>,
-        target_web_site: Option<String>,
-        access_token: Option<String>,
-        alt: Option<crate::params::Alt>,
-        callback: Option<String>,
-        fields: Option<String>,
-        key: Option<String>,
-        oauth_token: Option<String>,
-        pretty_print: Option<bool>,
-        quota_user: Option<String>,
-        upload_protocol: Option<String>,
-        upload_type: Option<String>,
-        xgafv: Option<crate::params::Xgafv>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> CheckRequestBuilder<'a, A> {
-        #[doc = "Query string for the relation.\n\nWe identify relations with strings of the format `<kind>/<detail>`, where\n`<kind>` must be one of a set of pre-defined purpose categories, and\n`<detail>` is a free-form lowercase alphanumeric string that describes the\nspecific use case of the statement.\n\nRefer to [our API documentation](/digital-asset-links/v1/relation-strings)\nfor the current list of supported relations.\n\nFor a query to match an asset link, both the query's and the asset link's\nrelation strings must match exactly.\n\nExample: A query with relation `delegate_permission/common.handle_all_urls`\nmatches an asset link with relation\n`delegate_permission/common.handle_all_urls`."]
-        pub fn relation(&mut self, value: impl Into<String>) -> &mut Self {
-            self.relation = Some(value.into());
-            self
+    pub mod statements {
+        pub mod params {}
+        pub struct StatementsActions<'a, A> {
+            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) auth: &'a std::sync::Mutex<A>,
         }
-        #[doc = "The uppercase SHA-265 fingerprint of the certificate.  From the PEM\ncertificate, it can be acquired like this:\n\n````text\n$ keytool -printcert -file $CERTFILE | grep SHA256:\nSHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \\\n    42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n````\n\nor like this:\n\n````text\n$ openssl x509 -in $CERTFILE -noout -fingerprint -sha256\nSHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \\\n    16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n````\n\nIn this example, the contents of this field would be `14:6D:E9:83:C5:73: 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`.\n\nIf these tools are not available to you, you can convert the PEM\ncertificate into the DER format, compute the SHA-256 hash of that string\nand represent the result as a hexstring (that is, uppercase hexadecimal\nrepresentations of each octet, separated by colons)."]
-        pub fn source_android_app_certificate_sha_256_fingerprint(
-            &mut self,
-            value: impl Into<String>,
-        ) -> &mut Self {
-            self.source_android_app_certificate_sha_256_fingerprint = Some(value.into());
-            self
-        }
-        #[doc = "Android App assets are naturally identified by their Java package name.\nFor example, the Google Maps app uses the package name\n`com.google.android.apps.maps`.\nREQUIRED"]
-        pub fn source_android_app_package_name(&mut self, value: impl Into<String>) -> &mut Self {
-            self.source_android_app_package_name = Some(value.into());
-            self
-        }
-        #[doc = "Web assets are identified by a URL that contains only the scheme, hostname\nand port parts.  The format is\n\n````text\nhttp[s]://<hostname>[:<port>]\n````\n\nHostnames must be fully qualified: they must end in a single period\n(\"`.`\").\n\nOnly the schemes \"http\" and \"https\" are currently allowed.\n\nPort numbers are given as a decimal number, and they must be omitted if the\nstandard port numbers are used: 80 for http and 443 for https.\n\nWe call this limited URL the \"site\".  All URLs that share the same scheme,\nhostname and port are considered to be a part of the site and thus belong\nto the web asset.\n\nExample: the asset with the site `https://www.google.com` contains all\nthese URLs:\n\n* `https://www.google.com/`\n* `https://www.google.com:443/`\n* `https://www.google.com/foo`\n* `https://www.google.com/foo?bar`\n* `https://www.google.com/foo#bar`\n* `https://user@password:www.google.com/`\n\nBut it does not contain these URLs:\n\n* `http://www.google.com/`       (wrong scheme)\n* `https://google.com/`          (hostname does not match)\n* `https://www.google.com:444/`  (port does not match)\n  REQUIRED"]
-        pub fn source_web_site(&mut self, value: impl Into<String>) -> &mut Self {
-            self.source_web_site = Some(value.into());
-            self
-        }
-        #[doc = "The uppercase SHA-265 fingerprint of the certificate.  From the PEM\ncertificate, it can be acquired like this:\n\n````text\n$ keytool -printcert -file $CERTFILE | grep SHA256:\nSHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \\\n    42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n````\n\nor like this:\n\n````text\n$ openssl x509 -in $CERTFILE -noout -fingerprint -sha256\nSHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \\\n    16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n````\n\nIn this example, the contents of this field would be `14:6D:E9:83:C5:73: 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`.\n\nIf these tools are not available to you, you can convert the PEM\ncertificate into the DER format, compute the SHA-256 hash of that string\nand represent the result as a hexstring (that is, uppercase hexadecimal\nrepresentations of each octet, separated by colons)."]
-        pub fn target_android_app_certificate_sha_256_fingerprint(
-            &mut self,
-            value: impl Into<String>,
-        ) -> &mut Self {
-            self.target_android_app_certificate_sha_256_fingerprint = Some(value.into());
-            self
-        }
-        #[doc = "Android App assets are naturally identified by their Java package name.\nFor example, the Google Maps app uses the package name\n`com.google.android.apps.maps`.\nREQUIRED"]
-        pub fn target_android_app_package_name(&mut self, value: impl Into<String>) -> &mut Self {
-            self.target_android_app_package_name = Some(value.into());
-            self
-        }
-        #[doc = "Web assets are identified by a URL that contains only the scheme, hostname\nand port parts.  The format is\n\n````text\nhttp[s]://<hostname>[:<port>]\n````\n\nHostnames must be fully qualified: they must end in a single period\n(\"`.`\").\n\nOnly the schemes \"http\" and \"https\" are currently allowed.\n\nPort numbers are given as a decimal number, and they must be omitted if the\nstandard port numbers are used: 80 for http and 443 for https.\n\nWe call this limited URL the \"site\".  All URLs that share the same scheme,\nhostname and port are considered to be a part of the site and thus belong\nto the web asset.\n\nExample: the asset with the site `https://www.google.com` contains all\nthese URLs:\n\n* `https://www.google.com/`\n* `https://www.google.com:443/`\n* `https://www.google.com/foo`\n* `https://www.google.com/foo?bar`\n* `https://www.google.com/foo#bar`\n* `https://user@password:www.google.com/`\n\nBut it does not contain these URLs:\n\n* `http://www.google.com/`       (wrong scheme)\n* `https://google.com/`          (hostname does not match)\n* `https://www.google.com:444/`  (port does not match)\n  REQUIRED"]
-        pub fn target_web_site(&mut self, value: impl Into<String>) -> &mut Self {
-            self.target_web_site = Some(value.into());
-            self
-        }
-        #[doc = "OAuth access token."]
-        pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
-            self.access_token = Some(value.into());
-            self
-        }
-        #[doc = "Data format for response."]
-        pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-            self.alt = Some(value);
-            self
-        }
-        #[doc = "JSONP"]
-        pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
-            self.callback = Some(value.into());
-            self
-        }
-        #[doc = "Selector specifying which fields to include in a partial response."]
-        pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-            self.fields = Some(value.into());
-            self
-        }
-        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-        pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-            self.key = Some(value.into());
-            self
-        }
-        #[doc = "OAuth 2.0 token for the current user."]
-        pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-            self.oauth_token = Some(value.into());
-            self
-        }
-        #[doc = "Returns response with indentations and line breaks."]
-        pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-            self.pretty_print = Some(value);
-            self
-        }
-        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-        pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-            self.quota_user = Some(value.into());
-            self
-        }
-        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-        pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
-            self.upload_protocol = Some(value.into());
-            self
-        }
-        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-        pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
-            self.upload_type = Some(value.into());
-            self
-        }
-        #[doc = "V1 error format."]
-        pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
-            self.xgafv = Some(value);
-            self
-        }
-        pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            self._execute()
-        }
-        #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-        pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-            let req = self._request(&self._path());
-            Ok(req.send()?.error_for_status()?.text()?)
-        }
-        pub fn execute_debug(
-            self,
-        ) -> Result<crate::schemas::CheckResponse, Box<dyn ::std::error::Error>> {
-            self.execute()
-        }
-        fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            if self.fields.is_none() {
-                self.fields = Some(T::field_selector());
+        impl<'a, A: yup_oauth2::GetToken> StatementsActions<'a, A> {
+            #[doc = "Retrieves a list of all statements from a given source that match the\nspecified target and statement string.\n\nThe API guarantees that all statements with secure source assets, such as\nHTTPS websites or Android apps, have been made in a secure way by the owner\nof those assets, as described in the [Digital Asset Links technical design\nspecification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md).\nSpecifically, you should consider that for insecure websites (that is,\nwhere the URL starts with `http://` instead of `https://`), this guarantee\ncannot be made.\n\nThe `List` command is most useful in cases where the API client wants to\nknow all the ways in which two assets are related, or enumerate all the\nrelationships from a particular source asset.  Example: a feature that\nhelps users navigate to related items.  When a mobile app is running on a\ndevice, the feature would make it easy to navigate to the corresponding web\nsite or Google+ profile."]
+            pub fn list(&self) -> ListRequestBuilder<A> {
+                ListRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: &self.auth,
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    relation: None,
+                    source_android_app_certificate_sha_256_fingerprint: None,
+                    source_android_app_package_name: None,
+                    source_web_site: None,
+                }
             }
-            let req = self._request(&self._path());
-            Ok(req.send()?.error_for_status()?.json()?)
         }
-        fn _path(&self) -> String {
-            let mut output = "https://digitalassetlinks.googleapis.com/".to_owned();
-            output.push_str("v1/assetlinks:check");
-            output
+        #[derive(Debug, Clone)]
+        pub struct ListRequestBuilder<'a, A> {
+            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) auth: &'a ::std::sync::Mutex<A>,
+            relation: Option<String>,
+            source_android_app_certificate_sha_256_fingerprint: Option<String>,
+            source_android_app_package_name: Option<String>,
+            source_web_site: Option<String>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
-        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-            let req = self.reqwest.request(::reqwest::Method::GET, path);
-            let req = req.query(&[("relation", &self.relation)]);
-            let req = req.query(&[(
-                "source.androidApp.certificate.sha256Fingerprint",
-                &self.source_android_app_certificate_sha_256_fingerprint,
-            )]);
-            let req = req.query(&[(
-                "source.androidApp.packageName",
-                &self.source_android_app_package_name,
-            )]);
-            let req = req.query(&[("source.web.site", &self.source_web_site)]);
-            let req = req.query(&[(
-                "target.androidApp.certificate.sha256Fingerprint",
-                &self.target_android_app_certificate_sha_256_fingerprint,
-            )]);
-            let req = req.query(&[(
-                "target.androidApp.packageName",
-                &self.target_android_app_package_name,
-            )]);
-            let req = req.query(&[("target.web.site", &self.target_web_site)]);
-            let req = req.query(&[("access_token", &self.access_token)]);
-            let req = req.query(&[("alt", &self.alt)]);
-            let req = req.query(&[("callback", &self.callback)]);
-            let req = req.query(&[("fields", &self.fields)]);
-            let req = req.query(&[("key", &self.key)]);
-            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-            let req = req.query(&[("quotaUser", &self.quota_user)]);
-            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-            let req = req.query(&[("uploadType", &self.upload_type)]);
-            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-            req
+        impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
+            #[doc = "Use only associations that match the specified relation.\n\nSee the [`Statement`](#Statement) message for a detailed definition of\nrelation strings.\n\nFor a query to match a statement, one of the following must be true:\n\n* both the query's and the statement's relation strings match exactly,\n  or\n* the query's relation string is empty or missing.\n\nExample: A query with relation `delegate_permission/common.handle_all_urls`\nmatches an asset link with relation\n`delegate_permission/common.handle_all_urls`."]
+            pub fn relation(mut self, value: impl Into<String>) -> Self {
+                self.relation = Some(value.into());
+                self
+            }
+            #[doc = "The uppercase SHA-265 fingerprint of the certificate.  From the PEM\ncertificate, it can be acquired like this:\n\n````text\n$ keytool -printcert -file $CERTFILE | grep SHA256:\nSHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \\\n    42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n````\n\nor like this:\n\n````text\n$ openssl x509 -in $CERTFILE -noout -fingerprint -sha256\nSHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \\\n    16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n````\n\nIn this example, the contents of this field would be `14:6D:E9:83:C5:73: 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`.\n\nIf these tools are not available to you, you can convert the PEM\ncertificate into the DER format, compute the SHA-256 hash of that string\nand represent the result as a hexstring (that is, uppercase hexadecimal\nrepresentations of each octet, separated by colons)."]
+            pub fn source_android_app_certificate_sha_256_fingerprint(
+                mut self,
+                value: impl Into<String>,
+            ) -> Self {
+                self.source_android_app_certificate_sha_256_fingerprint = Some(value.into());
+                self
+            }
+            #[doc = "Android App assets are naturally identified by their Java package name.\nFor example, the Google Maps app uses the package name\n`com.google.android.apps.maps`.\nREQUIRED"]
+            pub fn source_android_app_package_name(mut self, value: impl Into<String>) -> Self {
+                self.source_android_app_package_name = Some(value.into());
+                self
+            }
+            #[doc = "Web assets are identified by a URL that contains only the scheme, hostname\nand port parts.  The format is\n\n````text\nhttp[s]://<hostname>[:<port>]\n````\n\nHostnames must be fully qualified: they must end in a single period\n(\"`.`\").\n\nOnly the schemes \"http\" and \"https\" are currently allowed.\n\nPort numbers are given as a decimal number, and they must be omitted if the\nstandard port numbers are used: 80 for http and 443 for https.\n\nWe call this limited URL the \"site\".  All URLs that share the same scheme,\nhostname and port are considered to be a part of the site and thus belong\nto the web asset.\n\nExample: the asset with the site `https://www.google.com` contains all\nthese URLs:\n\n* `https://www.google.com/`\n* `https://www.google.com:443/`\n* `https://www.google.com/foo`\n* `https://www.google.com/foo?bar`\n* `https://www.google.com/foo#bar`\n* `https://user@password:www.google.com/`\n\nBut it does not contain these URLs:\n\n* `http://www.google.com/`       (wrong scheme)\n* `https://google.com/`          (hostname does not match)\n* `https://www.google.com:444/`  (port does not match)\n  REQUIRED"]
+            pub fn source_web_site(mut self, value: impl Into<String>) -> Self {
+                self.source_web_site = Some(value.into());
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "Data format for response."]
+            pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                self.alt = Some(value);
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "Selector specifying which fields to include in a partial response."]
+            pub fn fields(mut self, value: impl Into<String>) -> Self {
+                self.fields = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+            {
+                let fields = T::field_selector();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_standard(
+                self,
+            ) -> Result<crate::schemas::ListResponse, Box<dyn ::std::error::Error>> {
+                self.execute_fields::<_, &str>(None)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_debug(
+                self,
+            ) -> Result<crate::schemas::ListResponse, Box<dyn ::std::error::Error>> {
+                self.execute_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path());
+                Ok(req.send()?.error_for_status()?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://digitalassetlinks.googleapis.com/".to_owned();
+                output.push_str("v1/statements:list");
+                output
+            }
+            fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[("relation", &self.relation)]);
+                let req = req.query(&[(
+                    "source.androidApp.certificate.sha256Fingerprint",
+                    &self.source_android_app_certificate_sha_256_fingerprint,
+                )]);
+                let req = req.query(&[(
+                    "source.androidApp.packageName",
+                    &self.source_android_app_package_name,
+                )]);
+                let req = req.query(&[("source.web.site", &self.source_web_site)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
+                let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
+                let req = req.query(&[("fields", &self.fields)]);
+                let req = req.query(&[("key", &self.key)]);
+                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req
+            }
         }
     }
 }
-pub mod statements {
-    pub mod params {}
-    pub struct StatementsActions<'a, A> {
-        pub(super) reqwest: &'a reqwest::Client,
-        pub(super) auth: &'a std::sync::Mutex<A>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> StatementsActions<'a, A> {
-        #[doc = "Retrieves a list of all statements from a given source that match the\nspecified target and statement string.\n\nThe API guarantees that all statements with secure source assets, such as\nHTTPS websites or Android apps, have been made in a secure way by the owner\nof those assets, as described in the [Digital Asset Links technical design\nspecification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md).\nSpecifically, you should consider that for insecure websites (that is,\nwhere the URL starts with `http://` instead of `https://`), this guarantee\ncannot be made.\n\nThe `List` command is most useful in cases where the API client wants to\nknow all the ways in which two assets are related, or enumerate all the\nrelationships from a particular source asset.  Example: a feature that\nhelps users navigate to related items.  When a mobile app is running on a\ndevice, the feature would make it easy to navigate to the corresponding web\nsite or Google+ profile."]
-        pub fn list(&self) -> ListRequestBuilder<A> {
-            ListRequestBuilder {
-                reqwest: &self.reqwest,
-                auth: &self.auth,
-                access_token: None,
-                alt: None,
-                callback: None,
-                fields: None,
-                key: None,
-                oauth_token: None,
-                pretty_print: None,
-                quota_user: None,
-                upload_protocol: None,
-                upload_type: None,
-                xgafv: None,
-                relation: None,
-                source_android_app_certificate_sha_256_fingerprint: None,
-                source_android_app_package_name: None,
-                source_web_site: None,
-            }
-        }
-    }
-    #[derive(Debug, Clone)]
-    pub struct ListRequestBuilder<'a, A> {
-        pub(crate) reqwest: &'a ::reqwest::Client,
-        pub(crate) auth: &'a ::std::sync::Mutex<A>,
-        relation: Option<String>,
-        source_android_app_certificate_sha_256_fingerprint: Option<String>,
-        source_android_app_package_name: Option<String>,
-        source_web_site: Option<String>,
-        access_token: Option<String>,
-        alt: Option<crate::params::Alt>,
-        callback: Option<String>,
-        fields: Option<String>,
-        key: Option<String>,
-        oauth_token: Option<String>,
-        pretty_print: Option<bool>,
-        quota_user: Option<String>,
-        upload_protocol: Option<String>,
-        upload_type: Option<String>,
-        xgafv: Option<crate::params::Xgafv>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
-        #[doc = "Use only associations that match the specified relation.\n\nSee the [`Statement`](#Statement) message for a detailed definition of\nrelation strings.\n\nFor a query to match a statement, one of the following must be true:\n\n* both the query's and the statement's relation strings match exactly,\n  or\n* the query's relation string is empty or missing.\n\nExample: A query with relation `delegate_permission/common.handle_all_urls`\nmatches an asset link with relation\n`delegate_permission/common.handle_all_urls`."]
-        pub fn relation(&mut self, value: impl Into<String>) -> &mut Self {
-            self.relation = Some(value.into());
-            self
-        }
-        #[doc = "The uppercase SHA-265 fingerprint of the certificate.  From the PEM\ncertificate, it can be acquired like this:\n\n````text\n$ keytool -printcert -file $CERTFILE | grep SHA256:\nSHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \\\n    42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n````\n\nor like this:\n\n````text\n$ openssl x509 -in $CERTFILE -noout -fingerprint -sha256\nSHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \\\n    16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n````\n\nIn this example, the contents of this field would be `14:6D:E9:83:C5:73: 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`.\n\nIf these tools are not available to you, you can convert the PEM\ncertificate into the DER format, compute the SHA-256 hash of that string\nand represent the result as a hexstring (that is, uppercase hexadecimal\nrepresentations of each octet, separated by colons)."]
-        pub fn source_android_app_certificate_sha_256_fingerprint(
-            &mut self,
-            value: impl Into<String>,
-        ) -> &mut Self {
-            self.source_android_app_certificate_sha_256_fingerprint = Some(value.into());
-            self
-        }
-        #[doc = "Android App assets are naturally identified by their Java package name.\nFor example, the Google Maps app uses the package name\n`com.google.android.apps.maps`.\nREQUIRED"]
-        pub fn source_android_app_package_name(&mut self, value: impl Into<String>) -> &mut Self {
-            self.source_android_app_package_name = Some(value.into());
-            self
-        }
-        #[doc = "Web assets are identified by a URL that contains only the scheme, hostname\nand port parts.  The format is\n\n````text\nhttp[s]://<hostname>[:<port>]\n````\n\nHostnames must be fully qualified: they must end in a single period\n(\"`.`\").\n\nOnly the schemes \"http\" and \"https\" are currently allowed.\n\nPort numbers are given as a decimal number, and they must be omitted if the\nstandard port numbers are used: 80 for http and 443 for https.\n\nWe call this limited URL the \"site\".  All URLs that share the same scheme,\nhostname and port are considered to be a part of the site and thus belong\nto the web asset.\n\nExample: the asset with the site `https://www.google.com` contains all\nthese URLs:\n\n* `https://www.google.com/`\n* `https://www.google.com:443/`\n* `https://www.google.com/foo`\n* `https://www.google.com/foo?bar`\n* `https://www.google.com/foo#bar`\n* `https://user@password:www.google.com/`\n\nBut it does not contain these URLs:\n\n* `http://www.google.com/`       (wrong scheme)\n* `https://google.com/`          (hostname does not match)\n* `https://www.google.com:444/`  (port does not match)\n  REQUIRED"]
-        pub fn source_web_site(&mut self, value: impl Into<String>) -> &mut Self {
-            self.source_web_site = Some(value.into());
-            self
-        }
-        #[doc = "OAuth access token."]
-        pub fn access_token(&mut self, value: impl Into<String>) -> &mut Self {
-            self.access_token = Some(value.into());
-            self
-        }
-        #[doc = "Data format for response."]
-        pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-            self.alt = Some(value);
-            self
-        }
-        #[doc = "JSONP"]
-        pub fn callback(&mut self, value: impl Into<String>) -> &mut Self {
-            self.callback = Some(value.into());
-            self
-        }
-        #[doc = "Selector specifying which fields to include in a partial response."]
-        pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-            self.fields = Some(value.into());
-            self
-        }
-        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-        pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-            self.key = Some(value.into());
-            self
-        }
-        #[doc = "OAuth 2.0 token for the current user."]
-        pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-            self.oauth_token = Some(value.into());
-            self
-        }
-        #[doc = "Returns response with indentations and line breaks."]
-        pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-            self.pretty_print = Some(value);
-            self
-        }
-        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-        pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-            self.quota_user = Some(value.into());
-            self
-        }
-        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-        pub fn upload_protocol(&mut self, value: impl Into<String>) -> &mut Self {
-            self.upload_protocol = Some(value.into());
-            self
-        }
-        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-        pub fn upload_type(&mut self, value: impl Into<String>) -> &mut Self {
-            self.upload_type = Some(value.into());
-            self
-        }
-        #[doc = "V1 error format."]
-        pub fn xgafv(&mut self, value: crate::params::Xgafv) -> &mut Self {
-            self.xgafv = Some(value);
-            self
-        }
-        pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            self._execute()
-        }
-        #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-        pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-            let req = self._request(&self._path());
-            Ok(req.send()?.error_for_status()?.text()?)
-        }
-        pub fn execute_debug(
-            self,
-        ) -> Result<crate::schemas::ListResponse, Box<dyn ::std::error::Error>> {
-            self.execute()
-        }
-        fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            if self.fields.is_none() {
-                self.fields = Some(T::field_selector());
-            }
-            let req = self._request(&self._path());
-            Ok(req.send()?.error_for_status()?.json()?)
-        }
-        fn _path(&self) -> String {
-            let mut output = "https://digitalassetlinks.googleapis.com/".to_owned();
-            output.push_str("v1/statements:list");
-            output
-        }
-        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-            let req = self.reqwest.request(::reqwest::Method::GET, path);
-            let req = req.query(&[("relation", &self.relation)]);
-            let req = req.query(&[(
-                "source.androidApp.certificate.sha256Fingerprint",
-                &self.source_android_app_certificate_sha_256_fingerprint,
-            )]);
-            let req = req.query(&[(
-                "source.androidApp.packageName",
-                &self.source_android_app_package_name,
-            )]);
-            let req = req.query(&[("source.web.site", &self.source_web_site)]);
-            let req = req.query(&[("access_token", &self.access_token)]);
-            let req = req.query(&[("alt", &self.alt)]);
-            let req = req.query(&[("callback", &self.callback)]);
-            let req = req.query(&[("fields", &self.fields)]);
-            let req = req.query(&[("key", &self.key)]);
-            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-            let req = req.query(&[("quotaUser", &self.quota_user)]);
-            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-            let req = req.query(&[("uploadType", &self.upload_type)]);
-            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-            req
-        }
-    }
-}
+#[allow(dead_code)]
+const SIMPLE: &::percent_encoding::AsciiSet = &::percent_encoding::NON_ALPHANUMERIC
+    .remove(b'-')
+    .remove(b'.')
+    .remove(b'_')
+    .remove(b'~');
+
+#[allow(dead_code)]
+const RESERVED: &::percent_encoding::AsciiSet = &SIMPLE
+    .remove(b'%')
+    .remove(b':')
+    .remove(b'/')
+    .remove(b'?')
+    .remove(b'#')
+    .remove(b'[')
+    .remove(b']')
+    .remove(b'@')
+    .remove(b'!')
+    .remove(b'$')
+    .remove(b'&')
+    .remove(b'\'')
+    .remove(b'(')
+    .remove(b')')
+    .remove(b'*')
+    .remove(b'+')
+    .remove(b',')
+    .remove(b';')
+    .remove(b'=');
+#[allow(dead_code)]
 mod multipart {
     pub(crate) struct RelatedMultiPart {
         parts: Vec<Part>,
@@ -1080,13 +1295,14 @@ trait IterableMethod {
         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
 }
 
-struct PageIter<'a, M, T> {
-    method: &'a mut M,
+#[allow(dead_code)]
+struct PageIter<M, T> {
+    method: M,
     finished: bool,
     _phantom: ::std::marker::PhantomData<T>,
 }
 
-impl<'a, M, T> Iterator for PageIter<'a, M, T>
+impl<M, T> Iterator for PageIter<M, T>
 where
     M: IterableMethod,
     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,

@@ -534,1005 +534,15 @@ impl<A: yup_oauth2::GetToken> Client<A> {
         }
     }
     #[doc = "Actions that can be performed on the cse resource"]
-    pub fn cse(&self) -> crate::cse::CseActions<A> {
-        crate::cse::CseActions {
+    pub fn cse(&self) -> crate::resources::cse::CseActions<A> {
+        crate::resources::cse::CseActions {
             reqwest: &self.reqwest,
             auth: &self.auth,
         }
     }
 }
-pub mod cse {
-    pub mod params {
-        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-        pub enum ListFilter {
-            #[doc = "Turns off duplicate content filter."]
-            _0,
-            #[doc = "Turns on duplicate content filter."]
-            _1,
-        }
-        impl ListFilter {
-            pub fn as_str(self) -> &'static str {
-                match self {
-                    ListFilter::_0 => "0",
-                    ListFilter::_1 => "1",
-                }
-            }
-        }
-        impl ::std::fmt::Display for ListFilter {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                f.write_str(self.as_str())
-            }
-        }
-        impl ::serde::Serialize for ListFilter {
-            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-            where
-                S: ::serde::ser::Serializer,
-            {
-                serializer.serialize_str(self.as_str())
-            }
-        }
-        impl<'de> ::serde::Deserialize<'de> for ListFilter {
-            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-            where
-                D: ::serde::de::Deserializer<'de>,
-            {
-                let value: &'de str = <&str>::deserialize(deserializer)?;
-                Ok(match value {
-                    "0" => ListFilter::_0,
-                    "1" => ListFilter::_1,
-                    _ => {
-                        return Err(::serde::de::Error::custom(format!(
-                            "invalid enum for #name: {}",
-                            value
-                        )))
-                    }
-                })
-            }
-        }
-        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-        pub enum ListImgColorType {
-            #[doc = "color"]
-            Color,
-            #[doc = "gray"]
-            Gray,
-            #[doc = "mono"]
-            Mono,
-        }
-        impl ListImgColorType {
-            pub fn as_str(self) -> &'static str {
-                match self {
-                    ListImgColorType::Color => "color",
-                    ListImgColorType::Gray => "gray",
-                    ListImgColorType::Mono => "mono",
-                }
-            }
-        }
-        impl ::std::fmt::Display for ListImgColorType {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                f.write_str(self.as_str())
-            }
-        }
-        impl ::serde::Serialize for ListImgColorType {
-            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-            where
-                S: ::serde::ser::Serializer,
-            {
-                serializer.serialize_str(self.as_str())
-            }
-        }
-        impl<'de> ::serde::Deserialize<'de> for ListImgColorType {
-            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-            where
-                D: ::serde::de::Deserializer<'de>,
-            {
-                let value: &'de str = <&str>::deserialize(deserializer)?;
-                Ok(match value {
-                    "color" => ListImgColorType::Color,
-                    "gray" => ListImgColorType::Gray,
-                    "mono" => ListImgColorType::Mono,
-                    _ => {
-                        return Err(::serde::de::Error::custom(format!(
-                            "invalid enum for #name: {}",
-                            value
-                        )))
-                    }
-                })
-            }
-        }
-        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-        pub enum ListImgDominantColor {
-            #[doc = "black"]
-            Black,
-            #[doc = "blue"]
-            Blue,
-            #[doc = "brown"]
-            Brown,
-            #[doc = "gray"]
-            Gray,
-            #[doc = "green"]
-            Green,
-            #[doc = "orange"]
-            Orange,
-            #[doc = "pink"]
-            Pink,
-            #[doc = "purple"]
-            Purple,
-            #[doc = "red"]
-            Red,
-            #[doc = "teal"]
-            Teal,
-            #[doc = "white"]
-            White,
-            #[doc = "yellow"]
-            Yellow,
-        }
-        impl ListImgDominantColor {
-            pub fn as_str(self) -> &'static str {
-                match self {
-                    ListImgDominantColor::Black => "black",
-                    ListImgDominantColor::Blue => "blue",
-                    ListImgDominantColor::Brown => "brown",
-                    ListImgDominantColor::Gray => "gray",
-                    ListImgDominantColor::Green => "green",
-                    ListImgDominantColor::Orange => "orange",
-                    ListImgDominantColor::Pink => "pink",
-                    ListImgDominantColor::Purple => "purple",
-                    ListImgDominantColor::Red => "red",
-                    ListImgDominantColor::Teal => "teal",
-                    ListImgDominantColor::White => "white",
-                    ListImgDominantColor::Yellow => "yellow",
-                }
-            }
-        }
-        impl ::std::fmt::Display for ListImgDominantColor {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                f.write_str(self.as_str())
-            }
-        }
-        impl ::serde::Serialize for ListImgDominantColor {
-            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-            where
-                S: ::serde::ser::Serializer,
-            {
-                serializer.serialize_str(self.as_str())
-            }
-        }
-        impl<'de> ::serde::Deserialize<'de> for ListImgDominantColor {
-            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-            where
-                D: ::serde::de::Deserializer<'de>,
-            {
-                let value: &'de str = <&str>::deserialize(deserializer)?;
-                Ok(match value {
-                    "black" => ListImgDominantColor::Black,
-                    "blue" => ListImgDominantColor::Blue,
-                    "brown" => ListImgDominantColor::Brown,
-                    "gray" => ListImgDominantColor::Gray,
-                    "green" => ListImgDominantColor::Green,
-                    "orange" => ListImgDominantColor::Orange,
-                    "pink" => ListImgDominantColor::Pink,
-                    "purple" => ListImgDominantColor::Purple,
-                    "red" => ListImgDominantColor::Red,
-                    "teal" => ListImgDominantColor::Teal,
-                    "white" => ListImgDominantColor::White,
-                    "yellow" => ListImgDominantColor::Yellow,
-                    _ => {
-                        return Err(::serde::de::Error::custom(format!(
-                            "invalid enum for #name: {}",
-                            value
-                        )))
-                    }
-                })
-            }
-        }
-        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-        pub enum ListImgSize {
-            #[doc = "huge"]
-            Huge,
-            #[doc = "icon"]
-            Icon,
-            #[doc = "large"]
-            Large,
-            #[doc = "medium"]
-            Medium,
-            #[doc = "small"]
-            Small,
-            #[doc = "xlarge"]
-            Xlarge,
-            #[doc = "xxlarge"]
-            Xxlarge,
-        }
-        impl ListImgSize {
-            pub fn as_str(self) -> &'static str {
-                match self {
-                    ListImgSize::Huge => "huge",
-                    ListImgSize::Icon => "icon",
-                    ListImgSize::Large => "large",
-                    ListImgSize::Medium => "medium",
-                    ListImgSize::Small => "small",
-                    ListImgSize::Xlarge => "xlarge",
-                    ListImgSize::Xxlarge => "xxlarge",
-                }
-            }
-        }
-        impl ::std::fmt::Display for ListImgSize {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                f.write_str(self.as_str())
-            }
-        }
-        impl ::serde::Serialize for ListImgSize {
-            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-            where
-                S: ::serde::ser::Serializer,
-            {
-                serializer.serialize_str(self.as_str())
-            }
-        }
-        impl<'de> ::serde::Deserialize<'de> for ListImgSize {
-            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-            where
-                D: ::serde::de::Deserializer<'de>,
-            {
-                let value: &'de str = <&str>::deserialize(deserializer)?;
-                Ok(match value {
-                    "huge" => ListImgSize::Huge,
-                    "icon" => ListImgSize::Icon,
-                    "large" => ListImgSize::Large,
-                    "medium" => ListImgSize::Medium,
-                    "small" => ListImgSize::Small,
-                    "xlarge" => ListImgSize::Xlarge,
-                    "xxlarge" => ListImgSize::Xxlarge,
-                    _ => {
-                        return Err(::serde::de::Error::custom(format!(
-                            "invalid enum for #name: {}",
-                            value
-                        )))
-                    }
-                })
-            }
-        }
-        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-        pub enum ListImgType {
-            #[doc = "clipart"]
-            Clipart,
-            #[doc = "face"]
-            Face,
-            #[doc = "lineart"]
-            Lineart,
-            #[doc = "news"]
-            News,
-            #[doc = "photo"]
-            Photo,
-        }
-        impl ListImgType {
-            pub fn as_str(self) -> &'static str {
-                match self {
-                    ListImgType::Clipart => "clipart",
-                    ListImgType::Face => "face",
-                    ListImgType::Lineart => "lineart",
-                    ListImgType::News => "news",
-                    ListImgType::Photo => "photo",
-                }
-            }
-        }
-        impl ::std::fmt::Display for ListImgType {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                f.write_str(self.as_str())
-            }
-        }
-        impl ::serde::Serialize for ListImgType {
-            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-            where
-                S: ::serde::ser::Serializer,
-            {
-                serializer.serialize_str(self.as_str())
-            }
-        }
-        impl<'de> ::serde::Deserialize<'de> for ListImgType {
-            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-            where
-                D: ::serde::de::Deserializer<'de>,
-            {
-                let value: &'de str = <&str>::deserialize(deserializer)?;
-                Ok(match value {
-                    "clipart" => ListImgType::Clipart,
-                    "face" => ListImgType::Face,
-                    "lineart" => ListImgType::Lineart,
-                    "news" => ListImgType::News,
-                    "photo" => ListImgType::Photo,
-                    _ => {
-                        return Err(::serde::de::Error::custom(format!(
-                            "invalid enum for #name: {}",
-                            value
-                        )))
-                    }
-                })
-            }
-        }
-        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-        pub enum ListLr {
-            #[doc = "Arabic"]
-            LangAr,
-            #[doc = "Bulgarian"]
-            LangBg,
-            #[doc = "Catalan"]
-            LangCa,
-            #[doc = "Czech"]
-            LangCs,
-            #[doc = "Danish"]
-            LangDa,
-            #[doc = "German"]
-            LangDe,
-            #[doc = "Greek"]
-            LangEl,
-            #[doc = "English"]
-            LangEn,
-            #[doc = "Spanish"]
-            LangEs,
-            #[doc = "Estonian"]
-            LangEt,
-            #[doc = "Finnish"]
-            LangFi,
-            #[doc = "French"]
-            LangFr,
-            #[doc = "Croatian"]
-            LangHr,
-            #[doc = "Hungarian"]
-            LangHu,
-            #[doc = "Indonesian"]
-            LangId,
-            #[doc = "Icelandic"]
-            LangIs,
-            #[doc = "Italian"]
-            LangIt,
-            #[doc = "Hebrew"]
-            LangIw,
-            #[doc = "Japanese"]
-            LangJa,
-            #[doc = "Korean"]
-            LangKo,
-            #[doc = "Lithuanian"]
-            LangLt,
-            #[doc = "Latvian"]
-            LangLv,
-            #[doc = "Dutch"]
-            LangNl,
-            #[doc = "Norwegian"]
-            LangNo,
-            #[doc = "Polish"]
-            LangPl,
-            #[doc = "Portuguese"]
-            LangPt,
-            #[doc = "Romanian"]
-            LangRo,
-            #[doc = "Russian"]
-            LangRu,
-            #[doc = "Slovak"]
-            LangSk,
-            #[doc = "Slovenian"]
-            LangSl,
-            #[doc = "Serbian"]
-            LangSr,
-            #[doc = "Swedish"]
-            LangSv,
-            #[doc = "Turkish"]
-            LangTr,
-            #[doc = "Chinese (Simplified)"]
-            LangZhCN,
-            #[doc = "Chinese (Traditional)"]
-            LangZhTW,
-        }
-        impl ListLr {
-            pub fn as_str(self) -> &'static str {
-                match self {
-                    ListLr::LangAr => "lang_ar",
-                    ListLr::LangBg => "lang_bg",
-                    ListLr::LangCa => "lang_ca",
-                    ListLr::LangCs => "lang_cs",
-                    ListLr::LangDa => "lang_da",
-                    ListLr::LangDe => "lang_de",
-                    ListLr::LangEl => "lang_el",
-                    ListLr::LangEn => "lang_en",
-                    ListLr::LangEs => "lang_es",
-                    ListLr::LangEt => "lang_et",
-                    ListLr::LangFi => "lang_fi",
-                    ListLr::LangFr => "lang_fr",
-                    ListLr::LangHr => "lang_hr",
-                    ListLr::LangHu => "lang_hu",
-                    ListLr::LangId => "lang_id",
-                    ListLr::LangIs => "lang_is",
-                    ListLr::LangIt => "lang_it",
-                    ListLr::LangIw => "lang_iw",
-                    ListLr::LangJa => "lang_ja",
-                    ListLr::LangKo => "lang_ko",
-                    ListLr::LangLt => "lang_lt",
-                    ListLr::LangLv => "lang_lv",
-                    ListLr::LangNl => "lang_nl",
-                    ListLr::LangNo => "lang_no",
-                    ListLr::LangPl => "lang_pl",
-                    ListLr::LangPt => "lang_pt",
-                    ListLr::LangRo => "lang_ro",
-                    ListLr::LangRu => "lang_ru",
-                    ListLr::LangSk => "lang_sk",
-                    ListLr::LangSl => "lang_sl",
-                    ListLr::LangSr => "lang_sr",
-                    ListLr::LangSv => "lang_sv",
-                    ListLr::LangTr => "lang_tr",
-                    ListLr::LangZhCN => "lang_zh-CN",
-                    ListLr::LangZhTW => "lang_zh-TW",
-                }
-            }
-        }
-        impl ::std::fmt::Display for ListLr {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                f.write_str(self.as_str())
-            }
-        }
-        impl ::serde::Serialize for ListLr {
-            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-            where
-                S: ::serde::ser::Serializer,
-            {
-                serializer.serialize_str(self.as_str())
-            }
-        }
-        impl<'de> ::serde::Deserialize<'de> for ListLr {
-            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-            where
-                D: ::serde::de::Deserializer<'de>,
-            {
-                let value: &'de str = <&str>::deserialize(deserializer)?;
-                Ok(match value {
-                    "lang_ar" => ListLr::LangAr,
-                    "lang_bg" => ListLr::LangBg,
-                    "lang_ca" => ListLr::LangCa,
-                    "lang_cs" => ListLr::LangCs,
-                    "lang_da" => ListLr::LangDa,
-                    "lang_de" => ListLr::LangDe,
-                    "lang_el" => ListLr::LangEl,
-                    "lang_en" => ListLr::LangEn,
-                    "lang_es" => ListLr::LangEs,
-                    "lang_et" => ListLr::LangEt,
-                    "lang_fi" => ListLr::LangFi,
-                    "lang_fr" => ListLr::LangFr,
-                    "lang_hr" => ListLr::LangHr,
-                    "lang_hu" => ListLr::LangHu,
-                    "lang_id" => ListLr::LangId,
-                    "lang_is" => ListLr::LangIs,
-                    "lang_it" => ListLr::LangIt,
-                    "lang_iw" => ListLr::LangIw,
-                    "lang_ja" => ListLr::LangJa,
-                    "lang_ko" => ListLr::LangKo,
-                    "lang_lt" => ListLr::LangLt,
-                    "lang_lv" => ListLr::LangLv,
-                    "lang_nl" => ListLr::LangNl,
-                    "lang_no" => ListLr::LangNo,
-                    "lang_pl" => ListLr::LangPl,
-                    "lang_pt" => ListLr::LangPt,
-                    "lang_ro" => ListLr::LangRo,
-                    "lang_ru" => ListLr::LangRu,
-                    "lang_sk" => ListLr::LangSk,
-                    "lang_sl" => ListLr::LangSl,
-                    "lang_sr" => ListLr::LangSr,
-                    "lang_sv" => ListLr::LangSv,
-                    "lang_tr" => ListLr::LangTr,
-                    "lang_zh-CN" => ListLr::LangZhCN,
-                    "lang_zh-TW" => ListLr::LangZhTW,
-                    _ => {
-                        return Err(::serde::de::Error::custom(format!(
-                            "invalid enum for #name: {}",
-                            value
-                        )))
-                    }
-                })
-            }
-        }
-        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-        pub enum ListSafe {
-            #[doc = "Enables safe search filtering."]
-            Active,
-            #[doc = "(Deprecated) Same as active."]
-            High,
-            #[doc = "(Deprecated) Same as active."]
-            Medium,
-            #[doc = "Disables safe search filtering."]
-            Off,
-        }
-        impl ListSafe {
-            pub fn as_str(self) -> &'static str {
-                match self {
-                    ListSafe::Active => "active",
-                    ListSafe::High => "high",
-                    ListSafe::Medium => "medium",
-                    ListSafe::Off => "off",
-                }
-            }
-        }
-        impl ::std::fmt::Display for ListSafe {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                f.write_str(self.as_str())
-            }
-        }
-        impl ::serde::Serialize for ListSafe {
-            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-            where
-                S: ::serde::ser::Serializer,
-            {
-                serializer.serialize_str(self.as_str())
-            }
-        }
-        impl<'de> ::serde::Deserialize<'de> for ListSafe {
-            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-            where
-                D: ::serde::de::Deserializer<'de>,
-            {
-                let value: &'de str = <&str>::deserialize(deserializer)?;
-                Ok(match value {
-                    "active" => ListSafe::Active,
-                    "high" => ListSafe::High,
-                    "medium" => ListSafe::Medium,
-                    "off" => ListSafe::Off,
-                    _ => {
-                        return Err(::serde::de::Error::custom(format!(
-                            "invalid enum for #name: {}",
-                            value
-                        )))
-                    }
-                })
-            }
-        }
-        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-        pub enum ListSearchType {
-            #[doc = "custom image search"]
-            Image,
-        }
-        impl ListSearchType {
-            pub fn as_str(self) -> &'static str {
-                match self {
-                    ListSearchType::Image => "image",
-                }
-            }
-        }
-        impl ::std::fmt::Display for ListSearchType {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                f.write_str(self.as_str())
-            }
-        }
-        impl ::serde::Serialize for ListSearchType {
-            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-            where
-                S: ::serde::ser::Serializer,
-            {
-                serializer.serialize_str(self.as_str())
-            }
-        }
-        impl<'de> ::serde::Deserialize<'de> for ListSearchType {
-            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-            where
-                D: ::serde::de::Deserializer<'de>,
-            {
-                let value: &'de str = <&str>::deserialize(deserializer)?;
-                Ok(match value {
-                    "image" => ListSearchType::Image,
-                    _ => {
-                        return Err(::serde::de::Error::custom(format!(
-                            "invalid enum for #name: {}",
-                            value
-                        )))
-                    }
-                })
-            }
-        }
-        #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-        pub enum ListSiteSearchFilter {
-            #[doc = "exclude"]
-            E,
-            #[doc = "include"]
-            I,
-        }
-        impl ListSiteSearchFilter {
-            pub fn as_str(self) -> &'static str {
-                match self {
-                    ListSiteSearchFilter::E => "e",
-                    ListSiteSearchFilter::I => "i",
-                }
-            }
-        }
-        impl ::std::fmt::Display for ListSiteSearchFilter {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                f.write_str(self.as_str())
-            }
-        }
-        impl ::serde::Serialize for ListSiteSearchFilter {
-            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-            where
-                S: ::serde::ser::Serializer,
-            {
-                serializer.serialize_str(self.as_str())
-            }
-        }
-        impl<'de> ::serde::Deserialize<'de> for ListSiteSearchFilter {
-            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-            where
-                D: ::serde::de::Deserializer<'de>,
-            {
-                let value: &'de str = <&str>::deserialize(deserializer)?;
-                Ok(match value {
-                    "e" => ListSiteSearchFilter::E,
-                    "i" => ListSiteSearchFilter::I,
-                    _ => {
-                        return Err(::serde::de::Error::custom(format!(
-                            "invalid enum for #name: {}",
-                            value
-                        )))
-                    }
-                })
-            }
-        }
-    }
-    pub struct CseActions<'a, A> {
-        pub(super) reqwest: &'a reqwest::Client,
-        pub(super) auth: &'a std::sync::Mutex<A>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> CseActions<'a, A> {
-        #[doc = "Returns metadata about the search performed, metadata about the custom search engine used for the search, and the search results."]
-        pub fn list(&self, q: impl Into<String>) -> ListRequestBuilder<A> {
-            ListRequestBuilder {
-                reqwest: &self.reqwest,
-                auth: &self.auth,
-                alt: None,
-                fields: None,
-                key: None,
-                oauth_token: None,
-                pretty_print: None,
-                quota_user: None,
-                user_ip: None,
-                q: q.into(),
-                c_2coff: None,
-                cr: None,
-                cx: None,
-                date_restrict: None,
-                exact_terms: None,
-                exclude_terms: None,
-                file_type: None,
-                filter: None,
-                gl: None,
-                googlehost: None,
-                high_range: None,
-                hl: None,
-                hq: None,
-                img_color_type: None,
-                img_dominant_color: None,
-                img_size: None,
-                img_type: None,
-                link_site: None,
-                low_range: None,
-                lr: None,
-                num: None,
-                or_terms: None,
-                related_site: None,
-                rights: None,
-                safe: None,
-                search_type: None,
-                site_search: None,
-                site_search_filter: None,
-                sort: None,
-                start: None,
-            }
-        }
-        #[doc = "Actions that can be performed on the siterestrict resource"]
-        pub fn siterestrict(&self) -> siterestrict::SiterestrictActions<A> {
-            siterestrict::SiterestrictActions
-        }
-    }
-    #[derive(Debug, Clone)]
-    pub struct ListRequestBuilder<'a, A> {
-        pub(crate) reqwest: &'a ::reqwest::Client,
-        pub(crate) auth: &'a ::std::sync::Mutex<A>,
-        q: String,
-        c_2coff: Option<String>,
-        cr: Option<String>,
-        cx: Option<String>,
-        date_restrict: Option<String>,
-        exact_terms: Option<String>,
-        exclude_terms: Option<String>,
-        file_type: Option<String>,
-        filter: Option<crate::cse::params::ListFilter>,
-        gl: Option<String>,
-        googlehost: Option<String>,
-        high_range: Option<String>,
-        hl: Option<String>,
-        hq: Option<String>,
-        img_color_type: Option<crate::cse::params::ListImgColorType>,
-        img_dominant_color: Option<crate::cse::params::ListImgDominantColor>,
-        img_size: Option<crate::cse::params::ListImgSize>,
-        img_type: Option<crate::cse::params::ListImgType>,
-        link_site: Option<String>,
-        low_range: Option<String>,
-        lr: Option<crate::cse::params::ListLr>,
-        num: Option<u32>,
-        or_terms: Option<String>,
-        related_site: Option<String>,
-        rights: Option<String>,
-        safe: Option<crate::cse::params::ListSafe>,
-        search_type: Option<crate::cse::params::ListSearchType>,
-        site_search: Option<String>,
-        site_search_filter: Option<crate::cse::params::ListSiteSearchFilter>,
-        sort: Option<String>,
-        start: Option<u32>,
-        alt: Option<crate::params::Alt>,
-        fields: Option<String>,
-        key: Option<String>,
-        oauth_token: Option<String>,
-        pretty_print: Option<bool>,
-        quota_user: Option<String>,
-        user_ip: Option<String>,
-    }
-    impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
-        #[doc = "Turns off the translation between zh-CN and zh-TW."]
-        pub fn c_2coff(&mut self, value: impl Into<String>) -> &mut Self {
-            self.c_2coff = Some(value.into());
-            self
-        }
-        #[doc = "Country restrict(s)."]
-        pub fn cr(&mut self, value: impl Into<String>) -> &mut Self {
-            self.cr = Some(value.into());
-            self
-        }
-        #[doc = "The custom search engine ID to scope this search query"]
-        pub fn cx(&mut self, value: impl Into<String>) -> &mut Self {
-            self.cx = Some(value.into());
-            self
-        }
-        #[doc = "Specifies all search results are from a time period"]
-        pub fn date_restrict(&mut self, value: impl Into<String>) -> &mut Self {
-            self.date_restrict = Some(value.into());
-            self
-        }
-        #[doc = "Identifies a phrase that all documents in the search results must contain"]
-        pub fn exact_terms(&mut self, value: impl Into<String>) -> &mut Self {
-            self.exact_terms = Some(value.into());
-            self
-        }
-        #[doc = "Identifies a word or phrase that should not appear in any documents in the search results"]
-        pub fn exclude_terms(&mut self, value: impl Into<String>) -> &mut Self {
-            self.exclude_terms = Some(value.into());
-            self
-        }
-        #[doc = "Returns images of a specified type. Some of the allowed values are: bmp, gif, png, jpg, svg, pdf, ..."]
-        pub fn file_type(&mut self, value: impl Into<String>) -> &mut Self {
-            self.file_type = Some(value.into());
-            self
-        }
-        #[doc = "Controls turning on or off the duplicate content filter."]
-        pub fn filter(&mut self, value: crate::cse::params::ListFilter) -> &mut Self {
-            self.filter = Some(value);
-            self
-        }
-        #[doc = "Geolocation of end user."]
-        pub fn gl(&mut self, value: impl Into<String>) -> &mut Self {
-            self.gl = Some(value.into());
-            self
-        }
-        #[doc = "The local Google domain to use to perform the search."]
-        pub fn googlehost(&mut self, value: impl Into<String>) -> &mut Self {
-            self.googlehost = Some(value.into());
-            self
-        }
-        #[doc = "Creates a range in form as_nlo value..as_nhi value and attempts to append it to query"]
-        pub fn high_range(&mut self, value: impl Into<String>) -> &mut Self {
-            self.high_range = Some(value.into());
-            self
-        }
-        #[doc = "Sets the user interface language."]
-        pub fn hl(&mut self, value: impl Into<String>) -> &mut Self {
-            self.hl = Some(value.into());
-            self
-        }
-        #[doc = "Appends the extra query terms to the query."]
-        pub fn hq(&mut self, value: impl Into<String>) -> &mut Self {
-            self.hq = Some(value.into());
-            self
-        }
-        #[doc = "Returns black and white, grayscale, or color images: mono, gray, and color."]
-        pub fn img_color_type(&mut self, value: crate::cse::params::ListImgColorType) -> &mut Self {
-            self.img_color_type = Some(value);
-            self
-        }
-        #[doc = "Returns images of a specific dominant color: red, orange, yellow, green, teal, blue, purple, pink, white, gray, black and brown."]
-        pub fn img_dominant_color(
-            &mut self,
-            value: crate::cse::params::ListImgDominantColor,
-        ) -> &mut Self {
-            self.img_dominant_color = Some(value);
-            self
-        }
-        #[doc = "Returns images of a specified size, where size can be one of: icon, small, medium, large, xlarge, xxlarge, and huge."]
-        pub fn img_size(&mut self, value: crate::cse::params::ListImgSize) -> &mut Self {
-            self.img_size = Some(value);
-            self
-        }
-        #[doc = "Returns images of a type, which can be one of: clipart, face, lineart, news, and photo."]
-        pub fn img_type(&mut self, value: crate::cse::params::ListImgType) -> &mut Self {
-            self.img_type = Some(value);
-            self
-        }
-        #[doc = "Specifies that all search results should contain a link to a particular URL"]
-        pub fn link_site(&mut self, value: impl Into<String>) -> &mut Self {
-            self.link_site = Some(value.into());
-            self
-        }
-        #[doc = "Creates a range in form as_nlo value..as_nhi value and attempts to append it to query"]
-        pub fn low_range(&mut self, value: impl Into<String>) -> &mut Self {
-            self.low_range = Some(value.into());
-            self
-        }
-        #[doc = "The language restriction for the search results"]
-        pub fn lr(&mut self, value: crate::cse::params::ListLr) -> &mut Self {
-            self.lr = Some(value);
-            self
-        }
-        #[doc = "Number of search results to return"]
-        pub fn num(&mut self, value: u32) -> &mut Self {
-            self.num = Some(value);
-            self
-        }
-        #[doc = "Provides additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms"]
-        pub fn or_terms(&mut self, value: impl Into<String>) -> &mut Self {
-            self.or_terms = Some(value.into());
-            self
-        }
-        #[doc = "Specifies that all search results should be pages that are related to the specified URL"]
-        pub fn related_site(&mut self, value: impl Into<String>) -> &mut Self {
-            self.related_site = Some(value.into());
-            self
-        }
-        #[doc = "Filters based on licensing. Supported values include: cc_publicdomain, cc_attribute, cc_sharealike, cc_noncommercial, cc_nonderived and combinations of these."]
-        pub fn rights(&mut self, value: impl Into<String>) -> &mut Self {
-            self.rights = Some(value.into());
-            self
-        }
-        #[doc = "Search safety level"]
-        pub fn safe(&mut self, value: crate::cse::params::ListSafe) -> &mut Self {
-            self.safe = Some(value);
-            self
-        }
-        #[doc = "Specifies the search type: image."]
-        pub fn search_type(&mut self, value: crate::cse::params::ListSearchType) -> &mut Self {
-            self.search_type = Some(value);
-            self
-        }
-        #[doc = "Specifies all search results should be pages from a given site"]
-        pub fn site_search(&mut self, value: impl Into<String>) -> &mut Self {
-            self.site_search = Some(value.into());
-            self
-        }
-        #[doc = "Controls whether to include or exclude results from the site named in the as_sitesearch parameter"]
-        pub fn site_search_filter(
-            &mut self,
-            value: crate::cse::params::ListSiteSearchFilter,
-        ) -> &mut Self {
-            self.site_search_filter = Some(value);
-            self
-        }
-        #[doc = "The sort expression to apply to the results"]
-        pub fn sort(&mut self, value: impl Into<String>) -> &mut Self {
-            self.sort = Some(value.into());
-            self
-        }
-        #[doc = "The index of the first result to return"]
-        pub fn start(&mut self, value: u32) -> &mut Self {
-            self.start = Some(value);
-            self
-        }
-        #[doc = "Data format for the response."]
-        pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
-            self.alt = Some(value);
-            self
-        }
-        #[doc = "Selector specifying which fields to include in a partial response."]
-        pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
-            self.fields = Some(value.into());
-            self
-        }
-        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-        pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
-            self.key = Some(value.into());
-            self
-        }
-        #[doc = "OAuth 2.0 token for the current user."]
-        pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
-            self.oauth_token = Some(value.into());
-            self
-        }
-        #[doc = "Returns response with indentations and line breaks."]
-        pub fn pretty_print(&mut self, value: bool) -> &mut Self {
-            self.pretty_print = Some(value);
-            self
-        }
-        #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-        pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
-            self.quota_user = Some(value.into());
-            self
-        }
-        #[doc = "Deprecated. Please use quotaUser instead."]
-        pub fn user_ip(&mut self, value: impl Into<String>) -> &mut Self {
-            self.user_ip = Some(value.into());
-            self
-        }
-        pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            self._execute()
-        }
-        #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-        pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-            let req = self._request(&self._path());
-            Ok(req.send()?.error_for_status()?.text()?)
-        }
-        pub fn execute_debug(self) -> Result<crate::schemas::Search, Box<dyn ::std::error::Error>> {
-            self.execute()
-        }
-        fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
-        where
-            T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
-        {
-            if self.fields.is_none() {
-                self.fields = Some(T::field_selector());
-            }
-            let req = self._request(&self._path());
-            Ok(req.send()?.error_for_status()?.json()?)
-        }
-        fn _path(&self) -> String {
-            let mut output = "https://www.googleapis.com/customsearch/".to_owned();
-            output.push_str("v1");
-            output
-        }
-        fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
-            let req = self.reqwest.request(::reqwest::Method::GET, path);
-            let req = req.query(&[("q", &self.q)]);
-            let req = req.query(&[("c2coff", &self.c_2coff)]);
-            let req = req.query(&[("cr", &self.cr)]);
-            let req = req.query(&[("cx", &self.cx)]);
-            let req = req.query(&[("dateRestrict", &self.date_restrict)]);
-            let req = req.query(&[("exactTerms", &self.exact_terms)]);
-            let req = req.query(&[("excludeTerms", &self.exclude_terms)]);
-            let req = req.query(&[("fileType", &self.file_type)]);
-            let req = req.query(&[("filter", &self.filter)]);
-            let req = req.query(&[("gl", &self.gl)]);
-            let req = req.query(&[("googlehost", &self.googlehost)]);
-            let req = req.query(&[("highRange", &self.high_range)]);
-            let req = req.query(&[("hl", &self.hl)]);
-            let req = req.query(&[("hq", &self.hq)]);
-            let req = req.query(&[("imgColorType", &self.img_color_type)]);
-            let req = req.query(&[("imgDominantColor", &self.img_dominant_color)]);
-            let req = req.query(&[("imgSize", &self.img_size)]);
-            let req = req.query(&[("imgType", &self.img_type)]);
-            let req = req.query(&[("linkSite", &self.link_site)]);
-            let req = req.query(&[("lowRange", &self.low_range)]);
-            let req = req.query(&[("lr", &self.lr)]);
-            let req = req.query(&[("num", &self.num)]);
-            let req = req.query(&[("orTerms", &self.or_terms)]);
-            let req = req.query(&[("relatedSite", &self.related_site)]);
-            let req = req.query(&[("rights", &self.rights)]);
-            let req = req.query(&[("safe", &self.safe)]);
-            let req = req.query(&[("searchType", &self.search_type)]);
-            let req = req.query(&[("siteSearch", &self.site_search)]);
-            let req = req.query(&[("siteSearchFilter", &self.site_search_filter)]);
-            let req = req.query(&[("sort", &self.sort)]);
-            let req = req.query(&[("start", &self.start)]);
-            let req = req.query(&[("alt", &self.alt)]);
-            let req = req.query(&[("fields", &self.fields)]);
-            let req = req.query(&[("key", &self.key)]);
-            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-            let req = req.query(&[("quotaUser", &self.quota_user)]);
-            let req = req.query(&[("userIp", &self.user_ip)]);
-            req
-        }
-    }
-    pub mod siterestrict {
+mod resources {
+    pub mod cse {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListFilter {
@@ -2020,9 +1030,11 @@ pub mod cse {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListSafe {
-                #[doc = "Enables highest level of safe search filtering."]
+                #[doc = "Enables safe search filtering."]
+                Active,
+                #[doc = "(Deprecated) Same as active."]
                 High,
-                #[doc = "Enables moderate safe search filtering."]
+                #[doc = "(Deprecated) Same as active."]
                 Medium,
                 #[doc = "Disables safe search filtering."]
                 Off,
@@ -2030,6 +1042,7 @@ pub mod cse {
             impl ListSafe {
                 pub fn as_str(self) -> &'static str {
                     match self {
+                        ListSafe::Active => "active",
                         ListSafe::High => "high",
                         ListSafe::Medium => "medium",
                         ListSafe::Off => "off",
@@ -2056,6 +1069,7 @@ pub mod cse {
                 {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
+                        "active" => ListSafe::Active,
                         "high" => ListSafe::High,
                         "medium" => ListSafe::Medium,
                         "off" => ListSafe::Off,
@@ -2157,12 +1171,12 @@ pub mod cse {
                 }
             }
         }
-        pub struct SiterestrictActions<'a, A> {
-            pub(super) reqwest: &'a reqwest::Client,
-            pub(super) auth: &'a std::sync::Mutex<A>,
+        pub struct CseActions<'a, A> {
+            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) auth: &'a std::sync::Mutex<A>,
         }
-        impl<'a, A: yup_oauth2::GetToken> SiterestrictActions<'a, A> {
-            #[doc = "Returns metadata about the search performed, metadata about the custom search engine used for the search, and the search results. Uses a small set of url patterns."]
+        impl<'a, A: yup_oauth2::GetToken> CseActions<'a, A> {
+            #[doc = "Returns metadata about the search performed, metadata about the custom search engine used for the search, and the search results."]
             pub fn list(&self, q: impl Into<String>) -> ListRequestBuilder<A> {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
@@ -2207,6 +1221,15 @@ pub mod cse {
                     start: None,
                 }
             }
+            #[doc = "Actions that can be performed on the siterestrict resource"]
+            pub fn siterestrict(
+                &self,
+            ) -> crate::resources::cse::siterestrict::SiterestrictActions<A> {
+                crate::resources::cse::siterestrict::SiterestrictActions {
+                    reqwest: &self.reqwest,
+                    auth: &self.auth,
+                }
+            }
         }
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a, A> {
@@ -2220,27 +1243,27 @@ pub mod cse {
             exact_terms: Option<String>,
             exclude_terms: Option<String>,
             file_type: Option<String>,
-            filter: Option<crate::siterestrict::params::ListFilter>,
+            filter: Option<crate::resources::cse::params::ListFilter>,
             gl: Option<String>,
             googlehost: Option<String>,
             high_range: Option<String>,
             hl: Option<String>,
             hq: Option<String>,
-            img_color_type: Option<crate::siterestrict::params::ListImgColorType>,
-            img_dominant_color: Option<crate::siterestrict::params::ListImgDominantColor>,
-            img_size: Option<crate::siterestrict::params::ListImgSize>,
-            img_type: Option<crate::siterestrict::params::ListImgType>,
+            img_color_type: Option<crate::resources::cse::params::ListImgColorType>,
+            img_dominant_color: Option<crate::resources::cse::params::ListImgDominantColor>,
+            img_size: Option<crate::resources::cse::params::ListImgSize>,
+            img_type: Option<crate::resources::cse::params::ListImgType>,
             link_site: Option<String>,
             low_range: Option<String>,
-            lr: Option<crate::siterestrict::params::ListLr>,
+            lr: Option<crate::resources::cse::params::ListLr>,
             num: Option<u32>,
             or_terms: Option<String>,
             related_site: Option<String>,
             rights: Option<String>,
-            safe: Option<crate::siterestrict::params::ListSafe>,
-            search_type: Option<crate::siterestrict::params::ListSearchType>,
+            safe: Option<crate::resources::cse::params::ListSafe>,
+            search_type: Option<crate::resources::cse::params::ListSearchType>,
             site_search: Option<String>,
-            site_search_filter: Option<crate::siterestrict::params::ListSiteSearchFilter>,
+            site_search_filter: Option<crate::resources::cse::params::ListSiteSearchFilter>,
             sort: Option<String>,
             start: Option<u32>,
             alt: Option<crate::params::Alt>,
@@ -2253,237 +1276,264 @@ pub mod cse {
         }
         impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
             #[doc = "Turns off the translation between zh-CN and zh-TW."]
-            pub fn c_2coff(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn c_2coff(mut self, value: impl Into<String>) -> Self {
                 self.c_2coff = Some(value.into());
                 self
             }
             #[doc = "Country restrict(s)."]
-            pub fn cr(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn cr(mut self, value: impl Into<String>) -> Self {
                 self.cr = Some(value.into());
                 self
             }
             #[doc = "The custom search engine ID to scope this search query"]
-            pub fn cx(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn cx(mut self, value: impl Into<String>) -> Self {
                 self.cx = Some(value.into());
                 self
             }
             #[doc = "Specifies all search results are from a time period"]
-            pub fn date_restrict(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn date_restrict(mut self, value: impl Into<String>) -> Self {
                 self.date_restrict = Some(value.into());
                 self
             }
             #[doc = "Identifies a phrase that all documents in the search results must contain"]
-            pub fn exact_terms(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn exact_terms(mut self, value: impl Into<String>) -> Self {
                 self.exact_terms = Some(value.into());
                 self
             }
             #[doc = "Identifies a word or phrase that should not appear in any documents in the search results"]
-            pub fn exclude_terms(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn exclude_terms(mut self, value: impl Into<String>) -> Self {
                 self.exclude_terms = Some(value.into());
                 self
             }
             #[doc = "Returns images of a specified type. Some of the allowed values are: bmp, gif, png, jpg, svg, pdf, ..."]
-            pub fn file_type(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn file_type(mut self, value: impl Into<String>) -> Self {
                 self.file_type = Some(value.into());
                 self
             }
             #[doc = "Controls turning on or off the duplicate content filter."]
-            pub fn filter(&mut self, value: crate::siterestrict::params::ListFilter) -> &mut Self {
+            pub fn filter(mut self, value: crate::resources::cse::params::ListFilter) -> Self {
                 self.filter = Some(value);
                 self
             }
             #[doc = "Geolocation of end user."]
-            pub fn gl(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn gl(mut self, value: impl Into<String>) -> Self {
                 self.gl = Some(value.into());
                 self
             }
             #[doc = "The local Google domain to use to perform the search."]
-            pub fn googlehost(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn googlehost(mut self, value: impl Into<String>) -> Self {
                 self.googlehost = Some(value.into());
                 self
             }
             #[doc = "Creates a range in form as_nlo value..as_nhi value and attempts to append it to query"]
-            pub fn high_range(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn high_range(mut self, value: impl Into<String>) -> Self {
                 self.high_range = Some(value.into());
                 self
             }
             #[doc = "Sets the user interface language."]
-            pub fn hl(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn hl(mut self, value: impl Into<String>) -> Self {
                 self.hl = Some(value.into());
                 self
             }
             #[doc = "Appends the extra query terms to the query."]
-            pub fn hq(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn hq(mut self, value: impl Into<String>) -> Self {
                 self.hq = Some(value.into());
                 self
             }
             #[doc = "Returns black and white, grayscale, or color images: mono, gray, and color."]
             pub fn img_color_type(
-                &mut self,
-                value: crate::siterestrict::params::ListImgColorType,
-            ) -> &mut Self {
+                mut self,
+                value: crate::resources::cse::params::ListImgColorType,
+            ) -> Self {
                 self.img_color_type = Some(value);
                 self
             }
             #[doc = "Returns images of a specific dominant color: red, orange, yellow, green, teal, blue, purple, pink, white, gray, black and brown."]
             pub fn img_dominant_color(
-                &mut self,
-                value: crate::siterestrict::params::ListImgDominantColor,
-            ) -> &mut Self {
+                mut self,
+                value: crate::resources::cse::params::ListImgDominantColor,
+            ) -> Self {
                 self.img_dominant_color = Some(value);
                 self
             }
             #[doc = "Returns images of a specified size, where size can be one of: icon, small, medium, large, xlarge, xxlarge, and huge."]
-            pub fn img_size(
-                &mut self,
-                value: crate::siterestrict::params::ListImgSize,
-            ) -> &mut Self {
+            pub fn img_size(mut self, value: crate::resources::cse::params::ListImgSize) -> Self {
                 self.img_size = Some(value);
                 self
             }
             #[doc = "Returns images of a type, which can be one of: clipart, face, lineart, news, and photo."]
-            pub fn img_type(
-                &mut self,
-                value: crate::siterestrict::params::ListImgType,
-            ) -> &mut Self {
+            pub fn img_type(mut self, value: crate::resources::cse::params::ListImgType) -> Self {
                 self.img_type = Some(value);
                 self
             }
             #[doc = "Specifies that all search results should contain a link to a particular URL"]
-            pub fn link_site(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn link_site(mut self, value: impl Into<String>) -> Self {
                 self.link_site = Some(value.into());
                 self
             }
             #[doc = "Creates a range in form as_nlo value..as_nhi value and attempts to append it to query"]
-            pub fn low_range(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn low_range(mut self, value: impl Into<String>) -> Self {
                 self.low_range = Some(value.into());
                 self
             }
             #[doc = "The language restriction for the search results"]
-            pub fn lr(&mut self, value: crate::siterestrict::params::ListLr) -> &mut Self {
+            pub fn lr(mut self, value: crate::resources::cse::params::ListLr) -> Self {
                 self.lr = Some(value);
                 self
             }
             #[doc = "Number of search results to return"]
-            pub fn num(&mut self, value: u32) -> &mut Self {
+            pub fn num(mut self, value: u32) -> Self {
                 self.num = Some(value);
                 self
             }
             #[doc = "Provides additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms"]
-            pub fn or_terms(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn or_terms(mut self, value: impl Into<String>) -> Self {
                 self.or_terms = Some(value.into());
                 self
             }
             #[doc = "Specifies that all search results should be pages that are related to the specified URL"]
-            pub fn related_site(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn related_site(mut self, value: impl Into<String>) -> Self {
                 self.related_site = Some(value.into());
                 self
             }
             #[doc = "Filters based on licensing. Supported values include: cc_publicdomain, cc_attribute, cc_sharealike, cc_noncommercial, cc_nonderived and combinations of these."]
-            pub fn rights(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn rights(mut self, value: impl Into<String>) -> Self {
                 self.rights = Some(value.into());
                 self
             }
             #[doc = "Search safety level"]
-            pub fn safe(&mut self, value: crate::siterestrict::params::ListSafe) -> &mut Self {
+            pub fn safe(mut self, value: crate::resources::cse::params::ListSafe) -> Self {
                 self.safe = Some(value);
                 self
             }
             #[doc = "Specifies the search type: image."]
             pub fn search_type(
-                &mut self,
-                value: crate::siterestrict::params::ListSearchType,
-            ) -> &mut Self {
+                mut self,
+                value: crate::resources::cse::params::ListSearchType,
+            ) -> Self {
                 self.search_type = Some(value);
                 self
             }
             #[doc = "Specifies all search results should be pages from a given site"]
-            pub fn site_search(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn site_search(mut self, value: impl Into<String>) -> Self {
                 self.site_search = Some(value.into());
                 self
             }
             #[doc = "Controls whether to include or exclude results from the site named in the as_sitesearch parameter"]
             pub fn site_search_filter(
-                &mut self,
-                value: crate::siterestrict::params::ListSiteSearchFilter,
-            ) -> &mut Self {
+                mut self,
+                value: crate::resources::cse::params::ListSiteSearchFilter,
+            ) -> Self {
                 self.site_search_filter = Some(value);
                 self
             }
             #[doc = "The sort expression to apply to the results"]
-            pub fn sort(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn sort(mut self, value: impl Into<String>) -> Self {
                 self.sort = Some(value.into());
                 self
             }
             #[doc = "The index of the first result to return"]
-            pub fn start(&mut self, value: u32) -> &mut Self {
+            pub fn start(mut self, value: u32) -> Self {
                 self.start = Some(value);
                 self
             }
             #[doc = "Data format for the response."]
-            pub fn alt(&mut self, value: crate::params::Alt) -> &mut Self {
+            pub fn alt(mut self, value: crate::params::Alt) -> Self {
                 self.alt = Some(value);
                 self
             }
             #[doc = "Selector specifying which fields to include in a partial response."]
-            pub fn fields(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn fields(mut self, value: impl Into<String>) -> Self {
                 self.fields = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
                 self
             }
             #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
                 self.oauth_token = Some(value.into());
                 self
             }
             #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(&mut self, value: bool) -> &mut Self {
+            pub fn pretty_print(mut self, value: bool) -> Self {
                 self.pretty_print = Some(value);
                 self
             }
             #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
             #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(&mut self, value: impl Into<String>) -> &mut Self {
+            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute<T>(mut self) -> Result<T, Box<dyn ::std::error::Error>>
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
             where
                 T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
             {
-                self._execute()
+                let fields = T::field_selector();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_fields(fields)
             }
-            #[doc = r" TODO: Remove once development debugging is no longer a priority."]
-            pub fn execute_text(self) -> Result<String, Box<dyn ::std::error::Error>> {
-                let req = self._request(&self._path());
-                Ok(req.send()?.error_for_status()?.text()?)
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_standard(
+                self,
+            ) -> Result<crate::schemas::Search, Box<dyn ::std::error::Error>> {
+                self.execute_fields::<_, &str>(None)
             }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
             pub fn execute_debug(
                 self,
             ) -> Result<crate::schemas::Search, Box<dyn ::std::error::Error>> {
-                self.execute()
+                self.execute_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, Box<dyn ::std::error::Error>>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
             }
             fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
             where
-                T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                T: ::serde::de::DeserializeOwned,
             {
-                if self.fields.is_none() {
-                    self.fields = Some(T::field_selector());
-                }
                 let req = self._request(&self._path());
                 Ok(req.send()?.error_for_status()?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://www.googleapis.com/customsearch/".to_owned();
-                output.push_str("v1/siterestrict");
+                output.push_str("v1");
                 output
             }
             fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
@@ -2529,8 +1579,1080 @@ pub mod cse {
                 req
             }
         }
+        pub mod siterestrict {
+            pub mod params {
+                #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+                pub enum ListFilter {
+                    #[doc = "Turns off duplicate content filter."]
+                    _0,
+                    #[doc = "Turns on duplicate content filter."]
+                    _1,
+                }
+                impl ListFilter {
+                    pub fn as_str(self) -> &'static str {
+                        match self {
+                            ListFilter::_0 => "0",
+                            ListFilter::_1 => "1",
+                        }
+                    }
+                }
+                impl ::std::fmt::Display for ListFilter {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        f.write_str(self.as_str())
+                    }
+                }
+                impl ::serde::Serialize for ListFilter {
+                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    where
+                        S: ::serde::ser::Serializer,
+                    {
+                        serializer.serialize_str(self.as_str())
+                    }
+                }
+                impl<'de> ::serde::Deserialize<'de> for ListFilter {
+                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    where
+                        D: ::serde::de::Deserializer<'de>,
+                    {
+                        let value: &'de str = <&str>::deserialize(deserializer)?;
+                        Ok(match value {
+                            "0" => ListFilter::_0,
+                            "1" => ListFilter::_1,
+                            _ => {
+                                return Err(::serde::de::Error::custom(format!(
+                                    "invalid enum for #name: {}",
+                                    value
+                                )))
+                            }
+                        })
+                    }
+                }
+                #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+                pub enum ListImgColorType {
+                    #[doc = "color"]
+                    Color,
+                    #[doc = "gray"]
+                    Gray,
+                    #[doc = "mono"]
+                    Mono,
+                }
+                impl ListImgColorType {
+                    pub fn as_str(self) -> &'static str {
+                        match self {
+                            ListImgColorType::Color => "color",
+                            ListImgColorType::Gray => "gray",
+                            ListImgColorType::Mono => "mono",
+                        }
+                    }
+                }
+                impl ::std::fmt::Display for ListImgColorType {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        f.write_str(self.as_str())
+                    }
+                }
+                impl ::serde::Serialize for ListImgColorType {
+                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    where
+                        S: ::serde::ser::Serializer,
+                    {
+                        serializer.serialize_str(self.as_str())
+                    }
+                }
+                impl<'de> ::serde::Deserialize<'de> for ListImgColorType {
+                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    where
+                        D: ::serde::de::Deserializer<'de>,
+                    {
+                        let value: &'de str = <&str>::deserialize(deserializer)?;
+                        Ok(match value {
+                            "color" => ListImgColorType::Color,
+                            "gray" => ListImgColorType::Gray,
+                            "mono" => ListImgColorType::Mono,
+                            _ => {
+                                return Err(::serde::de::Error::custom(format!(
+                                    "invalid enum for #name: {}",
+                                    value
+                                )))
+                            }
+                        })
+                    }
+                }
+                #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+                pub enum ListImgDominantColor {
+                    #[doc = "black"]
+                    Black,
+                    #[doc = "blue"]
+                    Blue,
+                    #[doc = "brown"]
+                    Brown,
+                    #[doc = "gray"]
+                    Gray,
+                    #[doc = "green"]
+                    Green,
+                    #[doc = "orange"]
+                    Orange,
+                    #[doc = "pink"]
+                    Pink,
+                    #[doc = "purple"]
+                    Purple,
+                    #[doc = "red"]
+                    Red,
+                    #[doc = "teal"]
+                    Teal,
+                    #[doc = "white"]
+                    White,
+                    #[doc = "yellow"]
+                    Yellow,
+                }
+                impl ListImgDominantColor {
+                    pub fn as_str(self) -> &'static str {
+                        match self {
+                            ListImgDominantColor::Black => "black",
+                            ListImgDominantColor::Blue => "blue",
+                            ListImgDominantColor::Brown => "brown",
+                            ListImgDominantColor::Gray => "gray",
+                            ListImgDominantColor::Green => "green",
+                            ListImgDominantColor::Orange => "orange",
+                            ListImgDominantColor::Pink => "pink",
+                            ListImgDominantColor::Purple => "purple",
+                            ListImgDominantColor::Red => "red",
+                            ListImgDominantColor::Teal => "teal",
+                            ListImgDominantColor::White => "white",
+                            ListImgDominantColor::Yellow => "yellow",
+                        }
+                    }
+                }
+                impl ::std::fmt::Display for ListImgDominantColor {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        f.write_str(self.as_str())
+                    }
+                }
+                impl ::serde::Serialize for ListImgDominantColor {
+                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    where
+                        S: ::serde::ser::Serializer,
+                    {
+                        serializer.serialize_str(self.as_str())
+                    }
+                }
+                impl<'de> ::serde::Deserialize<'de> for ListImgDominantColor {
+                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    where
+                        D: ::serde::de::Deserializer<'de>,
+                    {
+                        let value: &'de str = <&str>::deserialize(deserializer)?;
+                        Ok(match value {
+                            "black" => ListImgDominantColor::Black,
+                            "blue" => ListImgDominantColor::Blue,
+                            "brown" => ListImgDominantColor::Brown,
+                            "gray" => ListImgDominantColor::Gray,
+                            "green" => ListImgDominantColor::Green,
+                            "orange" => ListImgDominantColor::Orange,
+                            "pink" => ListImgDominantColor::Pink,
+                            "purple" => ListImgDominantColor::Purple,
+                            "red" => ListImgDominantColor::Red,
+                            "teal" => ListImgDominantColor::Teal,
+                            "white" => ListImgDominantColor::White,
+                            "yellow" => ListImgDominantColor::Yellow,
+                            _ => {
+                                return Err(::serde::de::Error::custom(format!(
+                                    "invalid enum for #name: {}",
+                                    value
+                                )))
+                            }
+                        })
+                    }
+                }
+                #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+                pub enum ListImgSize {
+                    #[doc = "huge"]
+                    Huge,
+                    #[doc = "icon"]
+                    Icon,
+                    #[doc = "large"]
+                    Large,
+                    #[doc = "medium"]
+                    Medium,
+                    #[doc = "small"]
+                    Small,
+                    #[doc = "xlarge"]
+                    Xlarge,
+                    #[doc = "xxlarge"]
+                    Xxlarge,
+                }
+                impl ListImgSize {
+                    pub fn as_str(self) -> &'static str {
+                        match self {
+                            ListImgSize::Huge => "huge",
+                            ListImgSize::Icon => "icon",
+                            ListImgSize::Large => "large",
+                            ListImgSize::Medium => "medium",
+                            ListImgSize::Small => "small",
+                            ListImgSize::Xlarge => "xlarge",
+                            ListImgSize::Xxlarge => "xxlarge",
+                        }
+                    }
+                }
+                impl ::std::fmt::Display for ListImgSize {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        f.write_str(self.as_str())
+                    }
+                }
+                impl ::serde::Serialize for ListImgSize {
+                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    where
+                        S: ::serde::ser::Serializer,
+                    {
+                        serializer.serialize_str(self.as_str())
+                    }
+                }
+                impl<'de> ::serde::Deserialize<'de> for ListImgSize {
+                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    where
+                        D: ::serde::de::Deserializer<'de>,
+                    {
+                        let value: &'de str = <&str>::deserialize(deserializer)?;
+                        Ok(match value {
+                            "huge" => ListImgSize::Huge,
+                            "icon" => ListImgSize::Icon,
+                            "large" => ListImgSize::Large,
+                            "medium" => ListImgSize::Medium,
+                            "small" => ListImgSize::Small,
+                            "xlarge" => ListImgSize::Xlarge,
+                            "xxlarge" => ListImgSize::Xxlarge,
+                            _ => {
+                                return Err(::serde::de::Error::custom(format!(
+                                    "invalid enum for #name: {}",
+                                    value
+                                )))
+                            }
+                        })
+                    }
+                }
+                #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+                pub enum ListImgType {
+                    #[doc = "clipart"]
+                    Clipart,
+                    #[doc = "face"]
+                    Face,
+                    #[doc = "lineart"]
+                    Lineart,
+                    #[doc = "news"]
+                    News,
+                    #[doc = "photo"]
+                    Photo,
+                }
+                impl ListImgType {
+                    pub fn as_str(self) -> &'static str {
+                        match self {
+                            ListImgType::Clipart => "clipart",
+                            ListImgType::Face => "face",
+                            ListImgType::Lineart => "lineart",
+                            ListImgType::News => "news",
+                            ListImgType::Photo => "photo",
+                        }
+                    }
+                }
+                impl ::std::fmt::Display for ListImgType {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        f.write_str(self.as_str())
+                    }
+                }
+                impl ::serde::Serialize for ListImgType {
+                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    where
+                        S: ::serde::ser::Serializer,
+                    {
+                        serializer.serialize_str(self.as_str())
+                    }
+                }
+                impl<'de> ::serde::Deserialize<'de> for ListImgType {
+                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    where
+                        D: ::serde::de::Deserializer<'de>,
+                    {
+                        let value: &'de str = <&str>::deserialize(deserializer)?;
+                        Ok(match value {
+                            "clipart" => ListImgType::Clipart,
+                            "face" => ListImgType::Face,
+                            "lineart" => ListImgType::Lineart,
+                            "news" => ListImgType::News,
+                            "photo" => ListImgType::Photo,
+                            _ => {
+                                return Err(::serde::de::Error::custom(format!(
+                                    "invalid enum for #name: {}",
+                                    value
+                                )))
+                            }
+                        })
+                    }
+                }
+                #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+                pub enum ListLr {
+                    #[doc = "Arabic"]
+                    LangAr,
+                    #[doc = "Bulgarian"]
+                    LangBg,
+                    #[doc = "Catalan"]
+                    LangCa,
+                    #[doc = "Czech"]
+                    LangCs,
+                    #[doc = "Danish"]
+                    LangDa,
+                    #[doc = "German"]
+                    LangDe,
+                    #[doc = "Greek"]
+                    LangEl,
+                    #[doc = "English"]
+                    LangEn,
+                    #[doc = "Spanish"]
+                    LangEs,
+                    #[doc = "Estonian"]
+                    LangEt,
+                    #[doc = "Finnish"]
+                    LangFi,
+                    #[doc = "French"]
+                    LangFr,
+                    #[doc = "Croatian"]
+                    LangHr,
+                    #[doc = "Hungarian"]
+                    LangHu,
+                    #[doc = "Indonesian"]
+                    LangId,
+                    #[doc = "Icelandic"]
+                    LangIs,
+                    #[doc = "Italian"]
+                    LangIt,
+                    #[doc = "Hebrew"]
+                    LangIw,
+                    #[doc = "Japanese"]
+                    LangJa,
+                    #[doc = "Korean"]
+                    LangKo,
+                    #[doc = "Lithuanian"]
+                    LangLt,
+                    #[doc = "Latvian"]
+                    LangLv,
+                    #[doc = "Dutch"]
+                    LangNl,
+                    #[doc = "Norwegian"]
+                    LangNo,
+                    #[doc = "Polish"]
+                    LangPl,
+                    #[doc = "Portuguese"]
+                    LangPt,
+                    #[doc = "Romanian"]
+                    LangRo,
+                    #[doc = "Russian"]
+                    LangRu,
+                    #[doc = "Slovak"]
+                    LangSk,
+                    #[doc = "Slovenian"]
+                    LangSl,
+                    #[doc = "Serbian"]
+                    LangSr,
+                    #[doc = "Swedish"]
+                    LangSv,
+                    #[doc = "Turkish"]
+                    LangTr,
+                    #[doc = "Chinese (Simplified)"]
+                    LangZhCN,
+                    #[doc = "Chinese (Traditional)"]
+                    LangZhTW,
+                }
+                impl ListLr {
+                    pub fn as_str(self) -> &'static str {
+                        match self {
+                            ListLr::LangAr => "lang_ar",
+                            ListLr::LangBg => "lang_bg",
+                            ListLr::LangCa => "lang_ca",
+                            ListLr::LangCs => "lang_cs",
+                            ListLr::LangDa => "lang_da",
+                            ListLr::LangDe => "lang_de",
+                            ListLr::LangEl => "lang_el",
+                            ListLr::LangEn => "lang_en",
+                            ListLr::LangEs => "lang_es",
+                            ListLr::LangEt => "lang_et",
+                            ListLr::LangFi => "lang_fi",
+                            ListLr::LangFr => "lang_fr",
+                            ListLr::LangHr => "lang_hr",
+                            ListLr::LangHu => "lang_hu",
+                            ListLr::LangId => "lang_id",
+                            ListLr::LangIs => "lang_is",
+                            ListLr::LangIt => "lang_it",
+                            ListLr::LangIw => "lang_iw",
+                            ListLr::LangJa => "lang_ja",
+                            ListLr::LangKo => "lang_ko",
+                            ListLr::LangLt => "lang_lt",
+                            ListLr::LangLv => "lang_lv",
+                            ListLr::LangNl => "lang_nl",
+                            ListLr::LangNo => "lang_no",
+                            ListLr::LangPl => "lang_pl",
+                            ListLr::LangPt => "lang_pt",
+                            ListLr::LangRo => "lang_ro",
+                            ListLr::LangRu => "lang_ru",
+                            ListLr::LangSk => "lang_sk",
+                            ListLr::LangSl => "lang_sl",
+                            ListLr::LangSr => "lang_sr",
+                            ListLr::LangSv => "lang_sv",
+                            ListLr::LangTr => "lang_tr",
+                            ListLr::LangZhCN => "lang_zh-CN",
+                            ListLr::LangZhTW => "lang_zh-TW",
+                        }
+                    }
+                }
+                impl ::std::fmt::Display for ListLr {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        f.write_str(self.as_str())
+                    }
+                }
+                impl ::serde::Serialize for ListLr {
+                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    where
+                        S: ::serde::ser::Serializer,
+                    {
+                        serializer.serialize_str(self.as_str())
+                    }
+                }
+                impl<'de> ::serde::Deserialize<'de> for ListLr {
+                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    where
+                        D: ::serde::de::Deserializer<'de>,
+                    {
+                        let value: &'de str = <&str>::deserialize(deserializer)?;
+                        Ok(match value {
+                            "lang_ar" => ListLr::LangAr,
+                            "lang_bg" => ListLr::LangBg,
+                            "lang_ca" => ListLr::LangCa,
+                            "lang_cs" => ListLr::LangCs,
+                            "lang_da" => ListLr::LangDa,
+                            "lang_de" => ListLr::LangDe,
+                            "lang_el" => ListLr::LangEl,
+                            "lang_en" => ListLr::LangEn,
+                            "lang_es" => ListLr::LangEs,
+                            "lang_et" => ListLr::LangEt,
+                            "lang_fi" => ListLr::LangFi,
+                            "lang_fr" => ListLr::LangFr,
+                            "lang_hr" => ListLr::LangHr,
+                            "lang_hu" => ListLr::LangHu,
+                            "lang_id" => ListLr::LangId,
+                            "lang_is" => ListLr::LangIs,
+                            "lang_it" => ListLr::LangIt,
+                            "lang_iw" => ListLr::LangIw,
+                            "lang_ja" => ListLr::LangJa,
+                            "lang_ko" => ListLr::LangKo,
+                            "lang_lt" => ListLr::LangLt,
+                            "lang_lv" => ListLr::LangLv,
+                            "lang_nl" => ListLr::LangNl,
+                            "lang_no" => ListLr::LangNo,
+                            "lang_pl" => ListLr::LangPl,
+                            "lang_pt" => ListLr::LangPt,
+                            "lang_ro" => ListLr::LangRo,
+                            "lang_ru" => ListLr::LangRu,
+                            "lang_sk" => ListLr::LangSk,
+                            "lang_sl" => ListLr::LangSl,
+                            "lang_sr" => ListLr::LangSr,
+                            "lang_sv" => ListLr::LangSv,
+                            "lang_tr" => ListLr::LangTr,
+                            "lang_zh-CN" => ListLr::LangZhCN,
+                            "lang_zh-TW" => ListLr::LangZhTW,
+                            _ => {
+                                return Err(::serde::de::Error::custom(format!(
+                                    "invalid enum for #name: {}",
+                                    value
+                                )))
+                            }
+                        })
+                    }
+                }
+                #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+                pub enum ListSafe {
+                    #[doc = "Enables highest level of safe search filtering."]
+                    High,
+                    #[doc = "Enables moderate safe search filtering."]
+                    Medium,
+                    #[doc = "Disables safe search filtering."]
+                    Off,
+                }
+                impl ListSafe {
+                    pub fn as_str(self) -> &'static str {
+                        match self {
+                            ListSafe::High => "high",
+                            ListSafe::Medium => "medium",
+                            ListSafe::Off => "off",
+                        }
+                    }
+                }
+                impl ::std::fmt::Display for ListSafe {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        f.write_str(self.as_str())
+                    }
+                }
+                impl ::serde::Serialize for ListSafe {
+                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    where
+                        S: ::serde::ser::Serializer,
+                    {
+                        serializer.serialize_str(self.as_str())
+                    }
+                }
+                impl<'de> ::serde::Deserialize<'de> for ListSafe {
+                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    where
+                        D: ::serde::de::Deserializer<'de>,
+                    {
+                        let value: &'de str = <&str>::deserialize(deserializer)?;
+                        Ok(match value {
+                            "high" => ListSafe::High,
+                            "medium" => ListSafe::Medium,
+                            "off" => ListSafe::Off,
+                            _ => {
+                                return Err(::serde::de::Error::custom(format!(
+                                    "invalid enum for #name: {}",
+                                    value
+                                )))
+                            }
+                        })
+                    }
+                }
+                #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+                pub enum ListSearchType {
+                    #[doc = "custom image search"]
+                    Image,
+                }
+                impl ListSearchType {
+                    pub fn as_str(self) -> &'static str {
+                        match self {
+                            ListSearchType::Image => "image",
+                        }
+                    }
+                }
+                impl ::std::fmt::Display for ListSearchType {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        f.write_str(self.as_str())
+                    }
+                }
+                impl ::serde::Serialize for ListSearchType {
+                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    where
+                        S: ::serde::ser::Serializer,
+                    {
+                        serializer.serialize_str(self.as_str())
+                    }
+                }
+                impl<'de> ::serde::Deserialize<'de> for ListSearchType {
+                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    where
+                        D: ::serde::de::Deserializer<'de>,
+                    {
+                        let value: &'de str = <&str>::deserialize(deserializer)?;
+                        Ok(match value {
+                            "image" => ListSearchType::Image,
+                            _ => {
+                                return Err(::serde::de::Error::custom(format!(
+                                    "invalid enum for #name: {}",
+                                    value
+                                )))
+                            }
+                        })
+                    }
+                }
+                #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+                pub enum ListSiteSearchFilter {
+                    #[doc = "exclude"]
+                    E,
+                    #[doc = "include"]
+                    I,
+                }
+                impl ListSiteSearchFilter {
+                    pub fn as_str(self) -> &'static str {
+                        match self {
+                            ListSiteSearchFilter::E => "e",
+                            ListSiteSearchFilter::I => "i",
+                        }
+                    }
+                }
+                impl ::std::fmt::Display for ListSiteSearchFilter {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        f.write_str(self.as_str())
+                    }
+                }
+                impl ::serde::Serialize for ListSiteSearchFilter {
+                    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                    where
+                        S: ::serde::ser::Serializer,
+                    {
+                        serializer.serialize_str(self.as_str())
+                    }
+                }
+                impl<'de> ::serde::Deserialize<'de> for ListSiteSearchFilter {
+                    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+                    where
+                        D: ::serde::de::Deserializer<'de>,
+                    {
+                        let value: &'de str = <&str>::deserialize(deserializer)?;
+                        Ok(match value {
+                            "e" => ListSiteSearchFilter::E,
+                            "i" => ListSiteSearchFilter::I,
+                            _ => {
+                                return Err(::serde::de::Error::custom(format!(
+                                    "invalid enum for #name: {}",
+                                    value
+                                )))
+                            }
+                        })
+                    }
+                }
+            }
+            pub struct SiterestrictActions<'a, A> {
+                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) auth: &'a std::sync::Mutex<A>,
+            }
+            impl<'a, A: yup_oauth2::GetToken> SiterestrictActions<'a, A> {
+                #[doc = "Returns metadata about the search performed, metadata about the custom search engine used for the search, and the search results. Uses a small set of url patterns."]
+                pub fn list(&self, q: impl Into<String>) -> ListRequestBuilder<A> {
+                    ListRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: &self.auth,
+                        alt: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        user_ip: None,
+                        q: q.into(),
+                        c_2coff: None,
+                        cr: None,
+                        cx: None,
+                        date_restrict: None,
+                        exact_terms: None,
+                        exclude_terms: None,
+                        file_type: None,
+                        filter: None,
+                        gl: None,
+                        googlehost: None,
+                        high_range: None,
+                        hl: None,
+                        hq: None,
+                        img_color_type: None,
+                        img_dominant_color: None,
+                        img_size: None,
+                        img_type: None,
+                        link_site: None,
+                        low_range: None,
+                        lr: None,
+                        num: None,
+                        or_terms: None,
+                        related_site: None,
+                        rights: None,
+                        safe: None,
+                        search_type: None,
+                        site_search: None,
+                        site_search_filter: None,
+                        sort: None,
+                        start: None,
+                    }
+                }
+            }
+            #[derive(Debug, Clone)]
+            pub struct ListRequestBuilder<'a, A> {
+                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) auth: &'a ::std::sync::Mutex<A>,
+                q: String,
+                c_2coff: Option<String>,
+                cr: Option<String>,
+                cx: Option<String>,
+                date_restrict: Option<String>,
+                exact_terms: Option<String>,
+                exclude_terms: Option<String>,
+                file_type: Option<String>,
+                filter: Option<crate::resources::cse::siterestrict::params::ListFilter>,
+                gl: Option<String>,
+                googlehost: Option<String>,
+                high_range: Option<String>,
+                hl: Option<String>,
+                hq: Option<String>,
+                img_color_type:
+                    Option<crate::resources::cse::siterestrict::params::ListImgColorType>,
+                img_dominant_color:
+                    Option<crate::resources::cse::siterestrict::params::ListImgDominantColor>,
+                img_size: Option<crate::resources::cse::siterestrict::params::ListImgSize>,
+                img_type: Option<crate::resources::cse::siterestrict::params::ListImgType>,
+                link_site: Option<String>,
+                low_range: Option<String>,
+                lr: Option<crate::resources::cse::siterestrict::params::ListLr>,
+                num: Option<u32>,
+                or_terms: Option<String>,
+                related_site: Option<String>,
+                rights: Option<String>,
+                safe: Option<crate::resources::cse::siterestrict::params::ListSafe>,
+                search_type: Option<crate::resources::cse::siterestrict::params::ListSearchType>,
+                site_search: Option<String>,
+                site_search_filter:
+                    Option<crate::resources::cse::siterestrict::params::ListSiteSearchFilter>,
+                sort: Option<String>,
+                start: Option<u32>,
+                alt: Option<crate::params::Alt>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                user_ip: Option<String>,
+            }
+            impl<'a, A: yup_oauth2::GetToken> ListRequestBuilder<'a, A> {
+                #[doc = "Turns off the translation between zh-CN and zh-TW."]
+                pub fn c_2coff(mut self, value: impl Into<String>) -> Self {
+                    self.c_2coff = Some(value.into());
+                    self
+                }
+                #[doc = "Country restrict(s)."]
+                pub fn cr(mut self, value: impl Into<String>) -> Self {
+                    self.cr = Some(value.into());
+                    self
+                }
+                #[doc = "The custom search engine ID to scope this search query"]
+                pub fn cx(mut self, value: impl Into<String>) -> Self {
+                    self.cx = Some(value.into());
+                    self
+                }
+                #[doc = "Specifies all search results are from a time period"]
+                pub fn date_restrict(mut self, value: impl Into<String>) -> Self {
+                    self.date_restrict = Some(value.into());
+                    self
+                }
+                #[doc = "Identifies a phrase that all documents in the search results must contain"]
+                pub fn exact_terms(mut self, value: impl Into<String>) -> Self {
+                    self.exact_terms = Some(value.into());
+                    self
+                }
+                #[doc = "Identifies a word or phrase that should not appear in any documents in the search results"]
+                pub fn exclude_terms(mut self, value: impl Into<String>) -> Self {
+                    self.exclude_terms = Some(value.into());
+                    self
+                }
+                #[doc = "Returns images of a specified type. Some of the allowed values are: bmp, gif, png, jpg, svg, pdf, ..."]
+                pub fn file_type(mut self, value: impl Into<String>) -> Self {
+                    self.file_type = Some(value.into());
+                    self
+                }
+                #[doc = "Controls turning on or off the duplicate content filter."]
+                pub fn filter(
+                    mut self,
+                    value: crate::resources::cse::siterestrict::params::ListFilter,
+                ) -> Self {
+                    self.filter = Some(value);
+                    self
+                }
+                #[doc = "Geolocation of end user."]
+                pub fn gl(mut self, value: impl Into<String>) -> Self {
+                    self.gl = Some(value.into());
+                    self
+                }
+                #[doc = "The local Google domain to use to perform the search."]
+                pub fn googlehost(mut self, value: impl Into<String>) -> Self {
+                    self.googlehost = Some(value.into());
+                    self
+                }
+                #[doc = "Creates a range in form as_nlo value..as_nhi value and attempts to append it to query"]
+                pub fn high_range(mut self, value: impl Into<String>) -> Self {
+                    self.high_range = Some(value.into());
+                    self
+                }
+                #[doc = "Sets the user interface language."]
+                pub fn hl(mut self, value: impl Into<String>) -> Self {
+                    self.hl = Some(value.into());
+                    self
+                }
+                #[doc = "Appends the extra query terms to the query."]
+                pub fn hq(mut self, value: impl Into<String>) -> Self {
+                    self.hq = Some(value.into());
+                    self
+                }
+                #[doc = "Returns black and white, grayscale, or color images: mono, gray, and color."]
+                pub fn img_color_type(
+                    mut self,
+                    value: crate::resources::cse::siterestrict::params::ListImgColorType,
+                ) -> Self {
+                    self.img_color_type = Some(value);
+                    self
+                }
+                #[doc = "Returns images of a specific dominant color: red, orange, yellow, green, teal, blue, purple, pink, white, gray, black and brown."]
+                pub fn img_dominant_color(
+                    mut self,
+                    value: crate::resources::cse::siterestrict::params::ListImgDominantColor,
+                ) -> Self {
+                    self.img_dominant_color = Some(value);
+                    self
+                }
+                #[doc = "Returns images of a specified size, where size can be one of: icon, small, medium, large, xlarge, xxlarge, and huge."]
+                pub fn img_size(
+                    mut self,
+                    value: crate::resources::cse::siterestrict::params::ListImgSize,
+                ) -> Self {
+                    self.img_size = Some(value);
+                    self
+                }
+                #[doc = "Returns images of a type, which can be one of: clipart, face, lineart, news, and photo."]
+                pub fn img_type(
+                    mut self,
+                    value: crate::resources::cse::siterestrict::params::ListImgType,
+                ) -> Self {
+                    self.img_type = Some(value);
+                    self
+                }
+                #[doc = "Specifies that all search results should contain a link to a particular URL"]
+                pub fn link_site(mut self, value: impl Into<String>) -> Self {
+                    self.link_site = Some(value.into());
+                    self
+                }
+                #[doc = "Creates a range in form as_nlo value..as_nhi value and attempts to append it to query"]
+                pub fn low_range(mut self, value: impl Into<String>) -> Self {
+                    self.low_range = Some(value.into());
+                    self
+                }
+                #[doc = "The language restriction for the search results"]
+                pub fn lr(
+                    mut self,
+                    value: crate::resources::cse::siterestrict::params::ListLr,
+                ) -> Self {
+                    self.lr = Some(value);
+                    self
+                }
+                #[doc = "Number of search results to return"]
+                pub fn num(mut self, value: u32) -> Self {
+                    self.num = Some(value);
+                    self
+                }
+                #[doc = "Provides additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms"]
+                pub fn or_terms(mut self, value: impl Into<String>) -> Self {
+                    self.or_terms = Some(value.into());
+                    self
+                }
+                #[doc = "Specifies that all search results should be pages that are related to the specified URL"]
+                pub fn related_site(mut self, value: impl Into<String>) -> Self {
+                    self.related_site = Some(value.into());
+                    self
+                }
+                #[doc = "Filters based on licensing. Supported values include: cc_publicdomain, cc_attribute, cc_sharealike, cc_noncommercial, cc_nonderived and combinations of these."]
+                pub fn rights(mut self, value: impl Into<String>) -> Self {
+                    self.rights = Some(value.into());
+                    self
+                }
+                #[doc = "Search safety level"]
+                pub fn safe(
+                    mut self,
+                    value: crate::resources::cse::siterestrict::params::ListSafe,
+                ) -> Self {
+                    self.safe = Some(value);
+                    self
+                }
+                #[doc = "Specifies the search type: image."]
+                pub fn search_type(
+                    mut self,
+                    value: crate::resources::cse::siterestrict::params::ListSearchType,
+                ) -> Self {
+                    self.search_type = Some(value);
+                    self
+                }
+                #[doc = "Specifies all search results should be pages from a given site"]
+                pub fn site_search(mut self, value: impl Into<String>) -> Self {
+                    self.site_search = Some(value.into());
+                    self
+                }
+                #[doc = "Controls whether to include or exclude results from the site named in the as_sitesearch parameter"]
+                pub fn site_search_filter(
+                    mut self,
+                    value: crate::resources::cse::siterestrict::params::ListSiteSearchFilter,
+                ) -> Self {
+                    self.site_search_filter = Some(value);
+                    self
+                }
+                #[doc = "The sort expression to apply to the results"]
+                pub fn sort(mut self, value: impl Into<String>) -> Self {
+                    self.sort = Some(value.into());
+                    self
+                }
+                #[doc = "The index of the first result to return"]
+                pub fn start(mut self, value: u32) -> Self {
+                    self.start = Some(value);
+                    self
+                }
+                #[doc = "Data format for the response."]
+                pub fn alt(mut self, value: crate::params::Alt) -> Self {
+                    self.alt = Some(value);
+                    self
+                }
+                #[doc = "Selector specifying which fields to include in a partial response."]
+                pub fn fields(mut self, value: impl Into<String>) -> Self {
+                    self.fields = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Deprecated. Please use quotaUser instead."]
+                pub fn user_ip(mut self, value: impl Into<String>) -> Self {
+                    self.user_ip = Some(value.into());
+                    self
+                }
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, Box<dyn ::std::error::Error>>
+                where
+                    T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,
+                {
+                    let fields = T::field_selector();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_fields(fields)
+                }
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_standard(
+                    self,
+                ) -> Result<crate::schemas::Search, Box<dyn ::std::error::Error>> {
+                    self.execute_fields::<_, &str>(None)
+                }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
+                pub fn execute_debug(
+                    self,
+                ) -> Result<crate::schemas::Search, Box<dyn ::std::error::Error>> {
+                    self.execute_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, Box<dyn ::std::error::Error>>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
+                }
+                fn _execute<T>(&mut self) -> Result<T, Box<dyn ::std::error::Error>>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    let req = self._request(&self._path());
+                    Ok(req.send()?.error_for_status()?.json()?)
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://www.googleapis.com/customsearch/".to_owned();
+                    output.push_str("v1/siterestrict");
+                    output
+                }
+                fn _request(&self, path: &str) -> ::reqwest::RequestBuilder {
+                    let req = self.reqwest.request(::reqwest::Method::GET, path);
+                    let req = req.query(&[("q", &self.q)]);
+                    let req = req.query(&[("c2coff", &self.c_2coff)]);
+                    let req = req.query(&[("cr", &self.cr)]);
+                    let req = req.query(&[("cx", &self.cx)]);
+                    let req = req.query(&[("dateRestrict", &self.date_restrict)]);
+                    let req = req.query(&[("exactTerms", &self.exact_terms)]);
+                    let req = req.query(&[("excludeTerms", &self.exclude_terms)]);
+                    let req = req.query(&[("fileType", &self.file_type)]);
+                    let req = req.query(&[("filter", &self.filter)]);
+                    let req = req.query(&[("gl", &self.gl)]);
+                    let req = req.query(&[("googlehost", &self.googlehost)]);
+                    let req = req.query(&[("highRange", &self.high_range)]);
+                    let req = req.query(&[("hl", &self.hl)]);
+                    let req = req.query(&[("hq", &self.hq)]);
+                    let req = req.query(&[("imgColorType", &self.img_color_type)]);
+                    let req = req.query(&[("imgDominantColor", &self.img_dominant_color)]);
+                    let req = req.query(&[("imgSize", &self.img_size)]);
+                    let req = req.query(&[("imgType", &self.img_type)]);
+                    let req = req.query(&[("linkSite", &self.link_site)]);
+                    let req = req.query(&[("lowRange", &self.low_range)]);
+                    let req = req.query(&[("lr", &self.lr)]);
+                    let req = req.query(&[("num", &self.num)]);
+                    let req = req.query(&[("orTerms", &self.or_terms)]);
+                    let req = req.query(&[("relatedSite", &self.related_site)]);
+                    let req = req.query(&[("rights", &self.rights)]);
+                    let req = req.query(&[("safe", &self.safe)]);
+                    let req = req.query(&[("searchType", &self.search_type)]);
+                    let req = req.query(&[("siteSearch", &self.site_search)]);
+                    let req = req.query(&[("siteSearchFilter", &self.site_search_filter)]);
+                    let req = req.query(&[("sort", &self.sort)]);
+                    let req = req.query(&[("start", &self.start)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    req
+                }
+            }
+        }
     }
 }
+#[allow(dead_code)]
+const SIMPLE: &::percent_encoding::AsciiSet = &::percent_encoding::NON_ALPHANUMERIC
+    .remove(b'-')
+    .remove(b'.')
+    .remove(b'_')
+    .remove(b'~');
+
+#[allow(dead_code)]
+const RESERVED: &::percent_encoding::AsciiSet = &SIMPLE
+    .remove(b'%')
+    .remove(b':')
+    .remove(b'/')
+    .remove(b'?')
+    .remove(b'#')
+    .remove(b'[')
+    .remove(b']')
+    .remove(b'@')
+    .remove(b'!')
+    .remove(b'$')
+    .remove(b'&')
+    .remove(b'\'')
+    .remove(b'(')
+    .remove(b')')
+    .remove(b'*')
+    .remove(b'+')
+    .remove(b',')
+    .remove(b';')
+    .remove(b'=');
+#[allow(dead_code)]
 mod multipart {
     pub(crate) struct RelatedMultiPart {
         parts: Vec<Part>,
@@ -2789,13 +2911,14 @@ trait IterableMethod {
         T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector;
 }
 
-struct PageIter<'a, M, T> {
-    method: &'a mut M,
+#[allow(dead_code)]
+struct PageIter<M, T> {
+    method: M,
     finished: bool,
     _phantom: ::std::marker::PhantomData<T>,
 }
 
-impl<'a, M, T> Iterator for PageIter<'a, M, T>
+impl<M, T> Iterator for PageIter<M, T>
 where
     M: IterableMethod,
     T: ::serde::de::DeserializeOwned + ::field_selector::FieldSelector,

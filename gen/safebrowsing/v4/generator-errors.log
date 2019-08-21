@@ -1,0 +1,2 @@
+thread 'main' panicked at 'Unsupported parameter type in path: variable: encodedRequest, type: Bytes', google_rest_api_generator/src/method_builder.rs:268:34
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace.
