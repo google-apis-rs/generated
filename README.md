@@ -32,9 +32,9 @@ From there you would usually go with the following to gather all error data with
 ```
 make update-mcp
 make -C gen gen-all -kj8
-make update-mapped-index 
+make api-index
 make -C gen cargo-all ARGS=check  -k
-make update-mapped-index
+make api-index
 ```
 
 ### Forcefully update the Makefile after a change affecting the mapped index
