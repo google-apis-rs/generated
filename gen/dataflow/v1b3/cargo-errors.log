@@ -1,0 +1,29 @@
+    Checking google-dataflow1_b3 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/dataflow/v1b3/lib)
+error[E0072]: recursive type `schemas::ConcatPosition` has infinite size
+   --> dataflow/v1b3/lib/src/lib.rs:453:5
+    |
+453 |     pub struct ConcatPosition {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^ recursive type has infinite size
+...
+459 |         pub position: Option<crate::schemas::Position>,
+    |         ---------------------------------------------- recursive without indirection
+    |
+    = help: insert indirection (e.g., a `Box`, `Rc`, or `&`) at some point to make `schemas::ConcatPosition` representable
+
+error[E0072]: recursive type `schemas::Position` has infinite size
+    --> dataflow/v1b3/lib/src/lib.rs:3349:5
+     |
+3349 |     pub struct Position {
+     |     ^^^^^^^^^^^^^^^^^^^ recursive type has infinite size
+...
+3356 |         pub concat_position: Option<crate::schemas::ConcatPosition>,
+     |         ----------------------------------------------------------- recursive without indirection
+     |
+     = help: insert indirection (e.g., a `Box`, `Rc`, or `&`) at some point to make `schemas::Position` representable
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0072`.
+error: Could not compile `google-dataflow1_b3`.
+
+To learn more, run the command again with --verbose.

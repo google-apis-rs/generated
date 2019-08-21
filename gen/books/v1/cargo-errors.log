@@ -1,0 +1,55 @@
+    Checking google-books1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/books/v1/lib)
+error[E0412]: cannot find type `SyncVolumeLicensesFeaturesItems` in module `crate::resources::myconfig::params`
+    --> books/v1/lib/src/lib.rs:7456:64
+     |
+7456 |                 Option<Vec<crate::resources::myconfig::params::SyncVolumeLicensesFeaturesItems>>,
+     |                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::myconfig::params`
+
+error[E0412]: cannot find type `SyncVolumeLicensesFeaturesItems` in module `crate::resources::myconfig::params`
+    --> books/v1/lib/src/lib.rs:7474:61
+     |
+7474 |                     Vec<crate::resources::myconfig::params::SyncVolumeLicensesFeaturesItems>,
+     |                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::myconfig::params`
+
+error[E0412]: cannot find type `ListAcquireMethodItems` in module `crate::resources::volumes::mybooks::params`
+     --> books/v1/lib/src/lib.rs:13299:76
+      |
+13299 |                     Option<Vec<crate::resources::volumes::mybooks::params::ListAcquireMethodItems>>,
+      |                                                                            ^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::volumes::mybooks::params`
+
+error[E0412]: cannot find type `ListProcessingStateItems` in module `crate::resources::volumes::mybooks::params`
+     --> books/v1/lib/src/lib.rs:13304:69
+      |
+13304 |                     Vec<crate::resources::volumes::mybooks::params::ListProcessingStateItems>,
+      |                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::volumes::mybooks::params`
+
+error[E0412]: cannot find type `ListAcquireMethodItems` in module `crate::resources::volumes::mybooks::params`
+     --> books/v1/lib/src/lib.rs:13321:73
+      |
+13321 |                         Vec<crate::resources::volumes::mybooks::params::ListAcquireMethodItems>,
+      |                                                                         ^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::volumes::mybooks::params`
+
+error[E0412]: cannot find type `ListProcessingStateItems` in module `crate::resources::volumes::mybooks::params`
+     --> books/v1/lib/src/lib.rs:13346:73
+      |
+13346 |                         Vec<crate::resources::volumes::mybooks::params::ListProcessingStateItems>,
+      |                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::volumes::mybooks::params`
+
+error[E0412]: cannot find type `ListProcessingStateItems` in module `crate::resources::volumes::useruploaded::params`
+     --> books/v1/lib/src/lib.rs:13973:74
+      |
+13973 |                     Vec<crate::resources::volumes::useruploaded::params::ListProcessingStateItems>,
+      |                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::volumes::useruploaded::params`
+
+error[E0412]: cannot find type `ListProcessingStateItems` in module `crate::resources::volumes::useruploaded::params`
+     --> books/v1/lib/src/lib.rs:14000:106
+      |
+14000 |                     value : impl Into < Vec < crate :: resources :: volumes :: useruploaded :: params :: ListProcessingStateItems > >,
+      |                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::volumes::useruploaded::params`
+
+error: aborting due to 8 previous errors
+
+For more information about this error, try `rustc --explain E0412`.
+error: Could not compile `google-books1`.
+
+To learn more, run the command again with --verbose.

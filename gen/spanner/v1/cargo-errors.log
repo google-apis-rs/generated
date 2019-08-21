@@ -1,0 +1,18 @@
+    Checking google-spanner1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/spanner/v1/lib)
+error[E0072]: recursive type `schemas::Type` has infinite size
+    --> spanner/v1/lib/src/lib.rs:2131:5
+     |
+2131 |     pub struct Type {
+     |     ^^^^^^^^^^^^^^^ recursive type has infinite size
+...
+2134 |         pub array_element_type: Option<crate::schemas::Type>,
+     |         ---------------------------------------------------- recursive without indirection
+     |
+     = help: insert indirection (e.g., a `Box`, `Rc`, or `&`) at some point to make `schemas::Type` representable
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0072`.
+error: Could not compile `google-spanner1`.
+
+To learn more, run the command again with --verbose.

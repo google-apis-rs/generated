@@ -1,0 +1,19 @@
+    Checking google-toolresults1_beta3 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/toolresults/v1beta3/lib)
+error[E0412]: cannot find type `ListFilterItems` in module `crate::resources::projects::histories::executions::steps::perf_sample_series::params`
+    --> toolresults/v1beta3/lib/src/lib.rs:7013:391
+     |
+7013 |                         pub struct ListRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , project_id : String , history_id : String , execution_id : String , step_id : String , filter : Option < Vec < crate :: resources :: projects :: histories :: executions :: steps :: perf_sample_series :: params :: ListFilterItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
+     |                                                                                                                                                                                                                                                                                                                                                                                                       ^^^^^^^^^^^^^^^ not found in `crate::resources::projects::histories::executions::steps::perf_sample_series::params`
+
+error[E0412]: cannot find type `ListFilterItems` in module `crate::resources::projects::histories::executions::steps::perf_sample_series::params`
+    --> toolresults/v1beta3/lib/src/lib.rs:7018:161
+     |
+7018 |                                 value : impl Into < Vec < crate :: resources :: projects :: histories :: executions :: steps :: perf_sample_series :: params :: ListFilterItems > >,
+     |                                                                                                                                                                 ^^^^^^^^^^^^^^^ not found in `crate::resources::projects::histories::executions::steps::perf_sample_series::params`
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0412`.
+error: Could not compile `google-toolresults1_beta3`.
+
+To learn more, run the command again with --verbose.

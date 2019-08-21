@@ -1,0 +1,13 @@
+    Checking google-gamesConfiguration1_configuration v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/gamesConfiguration/v1configuration/lib)
+error[E0609]: no field `request` on type `resources::image_configurations::UploadRequestBuilder<'a, A>`
+    --> gamesConfiguration/v1configuration/lib/src/lib.rs:1703:63
+     |
+1703 |                 let request_json = ::serde_json::to_vec(&self.request)?;
+     |                                                               ^^^^^^^ help: a field with a similar name exists: `reqwest`
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0609`.
+error: Could not compile `google-gamesConfiguration1_configuration`.
+
+To learn more, run the command again with --verbose.

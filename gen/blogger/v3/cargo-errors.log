@@ -95,3 +95,9 @@ error[E0412]: cannot find type `ListStatusItems` in module `crate::resources::po
 7283 |                 value: impl Into<Vec<crate::resources::posts::params::ListStatusItems>>,
      |                                                                       ^^^^^^^^^^^^^^^ not found in `crate::resources::posts::params`
 
+error: aborting due to 16 previous errors
+
+For more information about this error, try `rustc --explain E0412`.
+error: Could not compile `google-blogger3`.
+
+To learn more, run the command again with --verbose.

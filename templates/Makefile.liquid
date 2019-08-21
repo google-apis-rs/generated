@@ -17,6 +17,8 @@ gen-all: {% for item in api -%}{{item.make_target}} {% endfor %}
 	@echo "Consider running the following line to ignore crates with errors"
 	@echo $(MAKE) -C .. update-drivers
 cargo-all: {% for item in api -%}{{item.make_target}}-cargo {% endfor %}
+	@echo "Consider running the following line to ignore crates with errors"
+	@echo $(MAKE) -C .. update-drivers
 
 {% for item in api %}
 {{item.lib_cargo_file}}: ../{{standard.spec_dir}}/{{item.spec_file}} $(MCP)

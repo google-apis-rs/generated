@@ -1,2 +1,9 @@
+2019-08-21 10:35:21,287 [36mINFO [0m [google_rest_api_generator] building api desc
+2019-08-21 10:35:21,290 [36mINFO [0m [google_rest_api_generator] creating directory and Cargo.toml
+2019-08-21 10:35:21,291 [36mINFO [0m [google_rest_api_generator] writing lib 'safebrowsing/v4/lib/src/lib.rs'
+2019-08-21 10:35:21,376 [36mINFO [0m [google_rest_api_generator] getting all types
+2019-08-21 10:35:21,388 [36mINFO [0m [google_rest_api_generator] generating resources
+2019-08-21 10:35:21,388 [36mINFO [0m [google_rest_api_generator] creating resource actions
+2019-08-21 10:35:21,388 [36mINFO [0m [google_rest_api_generator] outputting
 thread 'main' panicked at 'Unsupported parameter type in path: variable: encodedRequest, type: Bytes', google_rest_api_generator/src/method_builder.rs:268:34
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace.

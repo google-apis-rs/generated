@@ -1,0 +1,31 @@
+    Checking google-firestore1_beta1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/firestore/v1beta1/lib)
+error[E0308]: mismatched types
+    --> firestore/v1beta1/lib/src/lib.rs:4169:49
+     |
+4169 |                         self.transaction = Some(value.into());
+     |                                                 ^^^^^^^^^^^^
+     |                                                 |
+     |                                                 expected struct `std::vec::Vec`, found struct `std::boxed::Box`
+     |                                                 help: try using a conversion method: `value.into().to_vec()`
+     |
+     = note: expected type `std::vec::Vec<u8>`
+                found type `std::boxed::Box<[u8]>`
+
+error[E0308]: mismatched types
+    --> firestore/v1beta1/lib/src/lib.rs:4383:49
+     |
+4383 |                         self.transaction = Some(value.into());
+     |                                                 ^^^^^^^^^^^^
+     |                                                 |
+     |                                                 expected struct `std::vec::Vec`, found struct `std::boxed::Box`
+     |                                                 help: try using a conversion method: `value.into().to_vec()`
+     |
+     = note: expected type `std::vec::Vec<u8>`
+                found type `std::boxed::Box<[u8]>`
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0308`.
+error: Could not compile `google-firestore1_beta1`.
+
+To learn more, run the command again with --verbose.

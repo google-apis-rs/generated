@@ -1,0 +1,67 @@
+    Checking google-classroom1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/classroom/v1/lib)
+error[E0412]: cannot find type `ListCourseStatesItems` in module `crate::resources::courses::params`
+    --> classroom/v1/lib/src/lib.rs:3769:74
+     |
+3769 |             course_states: Option<Vec<crate::resources::courses::params::ListCourseStatesItems>>,
+     |                                                                          ^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::courses::params`
+
+error[E0412]: cannot find type `ListCourseStatesItems` in module `crate::resources::courses::params`
+    --> classroom/v1/lib/src/lib.rs:3790:73
+     |
+3790 |                 value: impl Into<Vec<crate::resources::courses::params::ListCourseStatesItems>>,
+     |                                                                         ^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::courses::params`
+
+error[E0412]: cannot find type `ListAnnouncementStatesItems` in module `crate::resources::courses::announcements::params`
+    --> classroom/v1/lib/src/lib.rs:5808:284
+     |
+5808 |             pub struct ListRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , course_id : String , announcement_states : Option < Vec < crate :: resources :: courses :: announcements :: params :: ListAnnouncementStatesItems > > , order_by : Option < String > , page_size : Option < i32 > , page_token : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+     |                                                                                                                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::courses::announcements::params`
+
+error[E0412]: cannot find type `ListAnnouncementStatesItems` in module `crate::resources::courses::announcements::params`
+    --> classroom/v1/lib/src/lib.rs:5813:107
+     |
+5813 |                     value : impl Into < Vec < crate :: resources :: courses :: announcements :: params :: ListAnnouncementStatesItems > >,
+     |                                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::courses::announcements::params`
+
+error[E0412]: cannot find type `ListCourseWorkStatesItems` in module `crate::resources::courses::course_work::params`
+    --> classroom/v1/lib/src/lib.rs:7158:73
+     |
+7158 |                     Vec<crate::resources::courses::course_work::params::ListCourseWorkStatesItems>,
+     |                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::courses::course_work::params`
+
+error[E0412]: cannot find type `ListCourseWorkStatesItems` in module `crate::resources::courses::course_work::params`
+    --> classroom/v1/lib/src/lib.rs:7179:105
+     |
+7179 |                     value : impl Into < Vec < crate :: resources :: courses :: course_work :: params :: ListCourseWorkStatesItems > >,
+     |                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::courses::course_work::params`
+
+error[E0412]: cannot find type `ListStatesItems` in module `crate::resources::courses::course_work::student_submissions::params`
+    --> classroom/v1/lib/src/lib.rs:8271:494
+     |
+8271 |                 pub struct ListRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , course_id : String , course_work_id : String , late : Option < crate :: resources :: courses :: course_work :: student_submissions :: params :: ListLate > , page_size : Option < i32 > , page_token : Option < String > , states : Option < Vec < crate :: resources :: courses :: course_work :: student_submissions :: params :: ListStatesItems > > , user_id : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^^^^^^^^^^^^^^^ not found in `crate::resources::courses::course_work::student_submissions::params`
+
+error[E0412]: cannot find type `ListStatesItems` in module `crate::resources::courses::course_work::student_submissions::params`
+    --> classroom/v1/lib/src/lib.rs:8294:132
+     |
+8294 |                         value : impl Into < Vec < crate :: resources :: courses :: course_work :: student_submissions :: params :: ListStatesItems > >,
+     |                                                                                                                                    ^^^^^^^^^^^^^^^ not found in `crate::resources::courses::course_work::student_submissions::params`
+
+error[E0412]: cannot find type `ListStatesItems` in module `crate::resources::user_profiles::guardian_invitations::params`
+     --> classroom/v1/lib/src/lib.rs:14606:391
+      |
+14606 |             pub struct ListRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , student_id : String , invited_email_address : Option < String > , page_size : Option < i32 > , page_token : Option < String > , states : Option < Vec < crate :: resources :: user_profiles :: guardian_invitations :: params :: ListStatesItems > > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+      |                                                                                                                                                                                                                                                                                                                                                                                                       ^^^^^^^^^^^^^^^ not found in `crate::resources::user_profiles::guardian_invitations::params`
+
+error[E0412]: cannot find type `ListStatesItems` in module `crate::resources::user_profiles::guardian_invitations::params`
+     --> classroom/v1/lib/src/lib.rs:14626:120
+      |
+14626 |                     value : impl Into < Vec < crate :: resources :: user_profiles :: guardian_invitations :: params :: ListStatesItems > >,
+      |                                                                                                                        ^^^^^^^^^^^^^^^ not found in `crate::resources::user_profiles::guardian_invitations::params`
+
+error: aborting due to 10 previous errors
+
+For more information about this error, try `rustc --explain E0412`.
+error: Could not compile `google-classroom1`.
+
+To learn more, run the command again with --verbose.

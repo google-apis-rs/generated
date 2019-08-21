@@ -1,0 +1,31 @@
+    Checking google-manufacturers1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/manufacturers/v1/lib)
+error[E0412]: cannot find type `GetIncludeItems` in module `crate::resources::accounts::products::params`
+    --> manufacturers/v1/lib/src/lib.rs:1213:83
+     |
+1213 |                 include: Option<Vec<crate::resources::accounts::products::params::GetIncludeItems>>,
+     |                                                                                   ^^^^^^^^^^^^^^^ not found in `crate::resources::accounts::products::params`
+
+error[E0412]: cannot find type `GetIncludeItems` in module `crate::resources::accounts::products::params`
+    --> manufacturers/v1/lib/src/lib.rs:1230:88
+     |
+1230 |                     value: impl Into<Vec<crate::resources::accounts::products::params::GetIncludeItems>>,
+     |                                                                                        ^^^^^^^^^^^^^^^ not found in `crate::resources::accounts::products::params`
+
+error[E0412]: cannot find type `ListIncludeItems` in module `crate::resources::accounts::products::params`
+    --> manufacturers/v1/lib/src/lib.rs:1398:78
+     |
+1398 |                     Option<Vec<crate::resources::accounts::products::params::ListIncludeItems>>,
+     |                                                                              ^^^^^^^^^^^^^^^^ not found in `crate::resources::accounts::products::params`
+
+error[E0412]: cannot find type `ListIncludeItems` in module `crate::resources::accounts::products::params`
+    --> manufacturers/v1/lib/src/lib.rs:1418:75
+     |
+1418 |                         Vec<crate::resources::accounts::products::params::ListIncludeItems>,
+     |                                                                           ^^^^^^^^^^^^^^^^ not found in `crate::resources::accounts::products::params`
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0412`.
+error: Could not compile `google-manufacturers1`.
+
+To learn more, run the command again with --verbose.

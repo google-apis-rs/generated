@@ -1,0 +1,19 @@
+    Checking google-remotebuildexecution1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/remotebuildexecution/v1/lib)
+error[E0308]: mismatched types
+    --> remotebuildexecution/v1/lib/src/lib.rs:4582:43
+     |
+4582 |                 self.resume_marker = Some(value.into());
+     |                                           ^^^^^^^^^^^^
+     |                                           |
+     |                                           expected struct `std::vec::Vec`, found struct `std::boxed::Box`
+     |                                           help: try using a conversion method: `value.into().to_vec()`
+     |
+     = note: expected type `std::vec::Vec<u8>`
+                found type `std::boxed::Box<[u8]>`
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0308`.
+error: Could not compile `google-remotebuildexecution1`.
+
+To learn more, run the command again with --verbose.

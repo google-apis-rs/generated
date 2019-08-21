@@ -1,0 +1,13 @@
+    Checking google-translate2 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/translate/v2/lib)
+error[E0412]: cannot find type `DetectionsResourceItems` in module `crate::schemas`
+  --> translate/v2/lib/src/lib.rs:47:51
+   |
+47 |     type DetectionsResource = Vec<crate::schemas::DetectionsResourceItems>;
+   |                                                   ^^^^^^^^^^^^^^^^^^^^^^^ help: a type alias with a similar name exists: `DetectionsResource`
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0412`.
+error: Could not compile `google-translate2`.
+
+To learn more, run the command again with --verbose.

@@ -1,0 +1,25 @@
+    Checking google-fusiontables2 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/fusiontables/v2/lib)
+error[E0609]: no field `request` on type `resources::table::ImportRowsRequestBuilder<'a, A>`
+    --> fusiontables/v2/lib/src/lib.rs:4068:63
+     |
+4068 |                 let request_json = ::serde_json::to_vec(&self.request)?;
+     |                                                               ^^^^^^^ help: a field with a similar name exists: `reqwest`
+
+error[E0609]: no field `request` on type `resources::table::ImportTableRequestBuilder<'a, A>`
+    --> fusiontables/v2/lib/src/lib.rs:4293:63
+     |
+4293 |                 let request_json = ::serde_json::to_vec(&self.request)?;
+     |                                                               ^^^^^^^ help: a field with a similar name exists: `reqwest`
+
+error[E0609]: no field `request` on type `resources::table::ReplaceRowsRequestBuilder<'a, A>`
+    --> fusiontables/v2/lib/src/lib.rs:5190:63
+     |
+5190 |                 let request_json = ::serde_json::to_vec(&self.request)?;
+     |                                                               ^^^^^^^ help: a field with a similar name exists: `reqwest`
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0609`.
+error: Could not compile `google-fusiontables2`.
+
+To learn more, run the command again with --verbose.

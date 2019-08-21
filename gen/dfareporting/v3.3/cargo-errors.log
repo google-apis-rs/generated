@@ -1,0 +1,103 @@
+    Checking google-dfareporting3d3 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/dfareporting/v3.3/lib)
+error[E0412]: cannot find type `ListTypeItems` in module `crate::resources::ads::params`
+     --> dfareporting/v3.3/lib/src/lib.rs:21457:63
+      |
+21457 |             r#type: Option<Vec<crate::resources::ads::params::ListTypeItems>>,
+      |                                                               ^^^^^^^^^^^^^ not found in `crate::resources::ads::params`
+
+error[E0412]: cannot find type `ListTypeItems` in module `crate::resources::ads::params`
+     --> dfareporting/v3.3/lib/src/lib.rs:21558:69
+      |
+21558 |                 value: impl Into<Vec<crate::resources::ads::params::ListTypeItems>>,
+      |                                                                     ^^^^^^^^^^^^^ not found in `crate::resources::ads::params`
+
+error[E0412]: cannot find type `ListTypesItems` in module `crate::resources::creatives::params`
+     --> dfareporting/v3.3/lib/src/lib.rs:34912:68
+      |
+34912 |             types: Option<Vec<crate::resources::creatives::params::ListTypesItems>>,
+      |                                                                    ^^^^^^^^^^^^^^ not found in `crate::resources::creatives::params`
+
+error[E0412]: cannot find type `ListTypesItems` in module `crate::resources::creatives::params`
+     --> dfareporting/v3.3/lib/src/lib.rs:35006:75
+      |
+35006 |                 value: impl Into<Vec<crate::resources::creatives::params::ListTypesItems>>,
+      |                                                                           ^^^^^^^^^^^^^^ not found in `crate::resources::creatives::params`
+
+error[E0412]: cannot find type `ListEventTagTypesItems` in module `crate::resources::event_tags::params`
+     --> dfareporting/v3.3/lib/src/lib.rs:37833:66
+      |
+37833 |                 Option<Vec<crate::resources::event_tags::params::ListEventTagTypesItems>>,
+      |                                                                  ^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::event_tags::params`
+
+error[E0412]: cannot find type `ListEventTagTypesItems` in module `crate::resources::event_tags::params`
+     --> dfareporting/v3.3/lib/src/lib.rs:37875:76
+      |
+37875 |                 value: impl Into<Vec<crate::resources::event_tags::params::ListEventTagTypesItems>>,
+      |                                                                            ^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::event_tags::params`
+
+error[E0412]: cannot find type `ListDirectoriesItems` in module `crate::resources::mobile_apps::params`
+     --> dfareporting/v3.3/lib/src/lib.rs:43499:76
+      |
+43499 |             directories: Option<Vec<crate::resources::mobile_apps::params::ListDirectoriesItems>>,
+      |                                                                            ^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::mobile_apps::params`
+
+error[E0412]: cannot find type `ListDirectoriesItems` in module `crate::resources::mobile_apps::params`
+     --> dfareporting/v3.3/lib/src/lib.rs:43516:77
+      |
+43516 |                 value: impl Into<Vec<crate::resources::mobile_apps::params::ListDirectoriesItems>>,
+      |                                                                             ^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::mobile_apps::params`
+
+error[E0412]: cannot find type `ListPricingTypesItems` in module `crate::resources::placement_groups::params`
+     --> dfareporting/v3.3/lib/src/lib.rs:46570:72
+      |
+46570 |                 Option<Vec<crate::resources::placement_groups::params::ListPricingTypesItems>>,
+      |                                                                        ^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::placement_groups::params`
+
+error[E0412]: cannot find type `ListPricingTypesItems` in module `crate::resources::placement_groups::params`
+     --> dfareporting/v3.3/lib/src/lib.rs:46660:82
+      |
+46660 |                 value: impl Into<Vec<crate::resources::placement_groups::params::ListPricingTypesItems>>,
+      |                                                                                  ^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::placement_groups::params`
+
+error[E0412]: cannot find type `GeneratetagsTagFormatsItems` in module `crate::resources::placements::params`
+     --> dfareporting/v3.3/lib/src/lib.rs:48698:66
+      |
+48698 |                 Option<Vec<crate::resources::placements::params::GeneratetagsTagFormatsItems>>,
+      |                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::placements::params`
+
+error[E0412]: cannot find type `GeneratetagsTagFormatsItems` in module `crate::resources::placements::params`
+     --> dfareporting/v3.3/lib/src/lib.rs:48721:76
+      |
+48721 |                 value: impl Into<Vec<crate::resources::placements::params::GeneratetagsTagFormatsItems>>,
+      |                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::placements::params`
+
+error[E0412]: cannot find type `ListCompatibilitiesItems` in module `crate::resources::placements::params`
+     --> dfareporting/v3.3/lib/src/lib.rs:49154:66
+      |
+49154 |                 Option<Vec<crate::resources::placements::params::ListCompatibilitiesItems>>,
+      |                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::placements::params`
+
+error[E0412]: cannot find type `ListPricingTypesItems` in module `crate::resources::placements::params`
+     --> dfareporting/v3.3/lib/src/lib.rs:49167:77
+      |
+49167 |             pricing_types: Option<Vec<crate::resources::placements::params::ListPricingTypesItems>>,
+      |                                                                             ^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::placements::params`
+
+error[E0412]: cannot find type `ListCompatibilitiesItems` in module `crate::resources::placements::params`
+     --> dfareporting/v3.3/lib/src/lib.rs:49200:76
+      |
+49200 |                 value: impl Into<Vec<crate::resources::placements::params::ListCompatibilitiesItems>>,
+      |                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::placements::params`
+
+error[E0412]: cannot find type `ListPricingTypesItems` in module `crate::resources::placements::params`
+     --> dfareporting/v3.3/lib/src/lib.rs:49271:76
+      |
+49271 |                 value: impl Into<Vec<crate::resources::placements::params::ListPricingTypesItems>>,
+      |                                                                            ^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::placements::params`
+
+error: aborting due to 16 previous errors
+
+For more information about this error, try `rustc --explain E0412`.
+error: Could not compile `google-dfareporting3d3`.
+
+To learn more, run the command again with --verbose.

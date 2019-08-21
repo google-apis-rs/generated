@@ -34,11 +34,8 @@ help:
 	$(info bigtableadmin1)
 	$(info binaryauthorization1_beta1)
 	$(info blogger2)
-	$(info books1)
 	$(info calendar3)
 	$(info chat1)
-	$(info civicinfo2)
-	$(info classroom1)
 	$(info cloudasset1)
 	$(info cloudasset1_beta1)
 	$(info cloudbilling1)
@@ -61,7 +58,6 @@ help:
 	$(info cloudresourcemanager2_beta1)
 	$(info cloudscheduler1)
 	$(info cloudscheduler1_beta1)
-	$(info cloudsearch1)
 	$(info cloudshell1_alpha1)
 	$(info cloudshell1)
 	$(info cloudtasks2)
@@ -78,10 +74,7 @@ help:
 	$(info container1_beta1)
 	$(info containeranalysis1_alpha1)
 	$(info containeranalysis1_beta1)
-	$(info content2)
-	$(info content2d1)
 	$(info customsearch1)
-	$(info dataflow1_b3)
 	$(info datafusion1_beta1)
 	$(info dataproc1)
 	$(info dataproc1_beta2)
@@ -91,13 +84,7 @@ help:
 	$(info deploymentmanageralpha)
 	$(info deploymentmanager2_beta)
 	$(info deploymentmanager2)
-	$(info dfareporting3d1)
-	$(info dfareporting3d2)
-	$(info dfareporting3d3)
-	$(info dialogflow2)
-	$(info dialogflow2_beta1)
 	$(info digitalassetlinks1)
-	$(info discovery1)
 	$(info dlp2)
 	$(info dns1)
 	$(info dns1_beta2)
@@ -105,7 +92,6 @@ help:
 	$(info docs1)
 	$(info doubleclickbidmanager1)
 	$(info doubleclicksearch2)
-	$(info drive2)
 	$(info drive3)
 	$(info driveactivity2)
 	$(info factchecktools1_alpha1)
@@ -115,29 +101,18 @@ help:
 	$(info firebase1_beta1)
 	$(info firebasedynamiclinks1)
 	$(info firebasehosting1_beta1)
-	$(info firebaserules1)
-	$(info firestore1)
-	$(info firestore1_beta1)
 	$(info firestore1_beta2)
 	$(info fitness1)
-	$(info fusiontables1)
-	$(info fusiontables2)
-	$(info games1)
-	$(info gamesConfiguration1_configuration)
 	$(info gamesManagement1_management)
 	$(info genomics1_alpha2)
 	$(info genomics2_alpha1)
 	$(info genomics1)
-	$(info gmail1)
-	$(info groupsmigration1)
 	$(info groupssettings1)
 	$(info healthcare1_alpha2)
 	$(info healthcare1_beta1)
-	$(info iam1)
 	$(info iamcredentials1)
 	$(info iap1)
 	$(info iap1_beta1)
-	$(info identitytoolkit3)
 	$(info indexing3)
 	$(info jobs3_p1beta1)
 	$(info jobs2)
@@ -149,19 +124,13 @@ help:
 	$(info libraryagent1)
 	$(info licensing1)
 	$(info logging2)
-	$(info manufacturers1)
-	$(info mirror1)
 	$(info ml1)
-	$(info monitoring3)
-	$(info oauth1)
-	$(info oauth2)
 	$(info oslogin1_alpha)
 	$(info oslogin1_beta)
 	$(info oslogin1)
 	$(info pagespeedonline1)
 	$(info pagespeedonline2)
 	$(info pagespeedonline4)
-	$(info pagespeedonline5)
 	$(info people1)
 	$(info playcustomapp1)
 	$(info plus1)
@@ -174,7 +143,6 @@ help:
 	$(info redis1)
 	$(info redis1_beta1)
 	$(info remotebuildexecution1_alpha)
-	$(info remotebuildexecution1)
 	$(info remotebuildexecution2)
 	$(info replicapool1_beta1)
 	$(info reseller1)
@@ -182,7 +150,6 @@ help:
 	$(info run1)
 	$(info runtimeconfig1)
 	$(info runtimeconfig1_beta1)
-	$(info script1)
 	$(info searchconsole1)
 	$(info securitycenter1_p1alpha1)
 	$(info securitycenter1)
@@ -190,18 +157,10 @@ help:
 	$(info servicebroker1_alpha1)
 	$(info servicebroker1)
 	$(info servicebroker1_beta1)
-	$(info serviceconsumermanagement1)
 	$(info servicecontrol1)
-	$(info servicemanagement1)
-	$(info servicenetworking1_beta)
-	$(info servicenetworking1)
-	$(info serviceusage1)
-	$(info serviceusage1_beta1)
 	$(info sheets4)
 	$(info siteVerification1)
-	$(info slides1)
 	$(info sourcerepo1)
-	$(info spanner1)
 	$(info speech1_p1beta1)
 	$(info speech1)
 	$(info sqladmin1_beta4)
@@ -211,15 +170,12 @@ help:
 	$(info storagetransfer1)
 	$(info streetviewpublish1)
 	$(info surveys2)
-	$(info tagmanager2)
 	$(info tasks1)
 	$(info testing1)
 	$(info texttospeech1)
 	$(info texttospeech1_beta1)
-	$(info toolresults1_beta3)
 	$(info tpu1_alpha1)
 	$(info tpu1)
-	$(info translate2)
 	$(info translate3_beta1)
 	$(info urlshortener1)
 	$(info vault1)
@@ -228,15 +184,11 @@ help:
 	$(info videointelligence1_p3beta1)
 	$(info videointelligence1)
 	$(info videointelligence1_beta2)
-	$(info vision1_p1beta1)
-	$(info vision1_p2beta1)
-	$(info vision1)
 	$(info webfonts1)
 	$(info webmasters3)
 	$(info websecurityscanner1_alpha)
 	$(info websecurityscanner1_beta)
 	$(info websecurityscanner1)
-	$(info youtube3)
 	$(info youtubeAnalytics1)
 	$(info youtubeAnalytics2)
 	$(info youtubereporting1)
@@ -245,10 +197,12 @@ help:
 	$(info cargo-all           | pass args with ARGS="check" for example)
 	$(info --------------------------------------------------------------------------------------)
 
-gen-all: abusiveexperiencereport1 acceleratedmobilepageurl1 accessapproval1_beta1 accesscontextmanager1_beta accesscontextmanager1 adexchangebuyer1d2 adexchangebuyer1d3 adexchangebuyer1d4 adexchangebuyer2_beta1 adexperiencereport1 admin1_datatransfer admin1_directory admin1_reports adsense1d4 alertcenter1_beta1 analytics2d4 analyticsreporting4 androiddeviceprovisioning1 androidenterprise1 androidpublisher1 androidpublisher1d1 appengine1_alpha appengine1_beta appengine1 appsactivity1 appstate1 bigtableadmin1 binaryauthorization1_beta1 blogger2 books1 calendar3 chat1 civicinfo2 classroom1 cloudasset1 cloudasset1_beta1 cloudbilling1 cloudbuild1_alpha1 cloudbuild1 clouddebugger2 clouderrorreporting1_beta1 cloudfunctions1 cloudfunctions1_beta2 cloudidentity1 cloudidentity1_beta1 cloudiot1 cloudkms1 cloudprivatecatalog1_beta1 cloudprivatecatalogproducer1_beta1 cloudprofiler2 cloudresourcemanager1 cloudresourcemanager1_beta1 cloudresourcemanager2 cloudresourcemanager2_beta1 cloudscheduler1 cloudscheduler1_beta1 cloudsearch1 cloudshell1_alpha1 cloudshell1 cloudtasks2 cloudtasks2_beta2 cloudtasks2_beta3 cloudtrace1 cloudtrace2 commentanalyzer1_alpha1 composer1 composer1_beta1 computebeta compute1 container1 container1_beta1 containeranalysis1_alpha1 containeranalysis1_beta1 content2 content2d1 customsearch1 dataflow1_b3 datafusion1_beta1 dataproc1 dataproc1_beta2 datastore1 datastore1_beta1 datastore1_beta3 deploymentmanageralpha deploymentmanager2_beta deploymentmanager2 dfareporting3d1 dfareporting3d2 dfareporting3d3 dialogflow2 dialogflow2_beta1 digitalassetlinks1 discovery1 dlp2 dns1 dns1_beta2 dns2_beta1 docs1 doubleclickbidmanager1 doubleclicksearch2 drive2 drive3 driveactivity2 factchecktools1_alpha1 fcm1 file1 file1_beta1 firebase1_beta1 firebasedynamiclinks1 firebasehosting1_beta1 firebaserules1 firestore1 firestore1_beta1 firestore1_beta2 fitness1 fusiontables1 fusiontables2 games1 gamesConfiguration1_configuration gamesManagement1_management genomics1_alpha2 genomics2_alpha1 genomics1 gmail1 groupsmigration1 groupssettings1 healthcare1_alpha2 healthcare1_beta1 iam1 iamcredentials1 iap1 iap1_beta1 identitytoolkit3 indexing3 jobs3_p1beta1 jobs2 jobs3 kgsearch1 language1 language1_beta1 language1_beta2 libraryagent1 licensing1 logging2 manufacturers1 mirror1 ml1 monitoring3 oauth1 oauth2 oslogin1_alpha oslogin1_beta oslogin1 pagespeedonline1 pagespeedonline2 pagespeedonline4 pagespeedonline5 people1 playcustomapp1 plus1 plusDomains1 poly1 proximitybeacon1_beta1 pubsub1_beta1a pubsub1 pubsub1_beta2 redis1 redis1_beta1 remotebuildexecution1_alpha remotebuildexecution1 remotebuildexecution2 replicapool1_beta1 reseller1 run1_alpha1 run1 runtimeconfig1 runtimeconfig1_beta1 script1 searchconsole1 securitycenter1_p1alpha1 securitycenter1 securitycenter1_beta1 servicebroker1_alpha1 servicebroker1 servicebroker1_beta1 serviceconsumermanagement1 servicecontrol1 servicemanagement1 servicenetworking1_beta servicenetworking1 serviceusage1 serviceusage1_beta1 sheets4 siteVerification1 slides1 sourcerepo1 spanner1 speech1_p1beta1 speech1 sqladmin1_beta4 storage1 storage1_beta1 storage1_beta2 storagetransfer1 streetviewpublish1 surveys2 tagmanager2 tasks1 testing1 texttospeech1 texttospeech1_beta1 toolresults1_beta3 tpu1_alpha1 tpu1 translate2 translate3_beta1 urlshortener1 vault1 videointelligence1_p1beta1 videointelligence1_p2beta1 videointelligence1_p3beta1 videointelligence1 videointelligence1_beta2 vision1_p1beta1 vision1_p2beta1 vision1 webfonts1 webmasters3 websecurityscanner1_alpha websecurityscanner1_beta websecurityscanner1 youtube3 youtubeAnalytics1 youtubeAnalytics2 youtubereporting1 
+gen-all: abusiveexperiencereport1 acceleratedmobilepageurl1 accessapproval1_beta1 accesscontextmanager1_beta accesscontextmanager1 adexchangebuyer1d2 adexchangebuyer1d3 adexchangebuyer1d4 adexchangebuyer2_beta1 adexperiencereport1 admin1_datatransfer admin1_directory admin1_reports adsense1d4 alertcenter1_beta1 analytics2d4 analyticsreporting4 androiddeviceprovisioning1 androidenterprise1 androidpublisher1 androidpublisher1d1 appengine1_alpha appengine1_beta appengine1 appsactivity1 appstate1 bigtableadmin1 binaryauthorization1_beta1 blogger2 calendar3 chat1 cloudasset1 cloudasset1_beta1 cloudbilling1 cloudbuild1_alpha1 cloudbuild1 clouddebugger2 clouderrorreporting1_beta1 cloudfunctions1 cloudfunctions1_beta2 cloudidentity1 cloudidentity1_beta1 cloudiot1 cloudkms1 cloudprivatecatalog1_beta1 cloudprivatecatalogproducer1_beta1 cloudprofiler2 cloudresourcemanager1 cloudresourcemanager1_beta1 cloudresourcemanager2 cloudresourcemanager2_beta1 cloudscheduler1 cloudscheduler1_beta1 cloudshell1_alpha1 cloudshell1 cloudtasks2 cloudtasks2_beta2 cloudtasks2_beta3 cloudtrace1 cloudtrace2 commentanalyzer1_alpha1 composer1 composer1_beta1 computebeta compute1 container1 container1_beta1 containeranalysis1_alpha1 containeranalysis1_beta1 customsearch1 datafusion1_beta1 dataproc1 dataproc1_beta2 datastore1 datastore1_beta1 datastore1_beta3 deploymentmanageralpha deploymentmanager2_beta deploymentmanager2 digitalassetlinks1 dlp2 dns1 dns1_beta2 dns2_beta1 docs1 doubleclickbidmanager1 doubleclicksearch2 drive3 driveactivity2 factchecktools1_alpha1 fcm1 file1 file1_beta1 firebase1_beta1 firebasedynamiclinks1 firebasehosting1_beta1 firestore1_beta2 fitness1 gamesManagement1_management genomics1_alpha2 genomics2_alpha1 genomics1 groupssettings1 healthcare1_alpha2 healthcare1_beta1 iamcredentials1 iap1 iap1_beta1 indexing3 jobs3_p1beta1 jobs2 jobs3 kgsearch1 language1 language1_beta1 language1_beta2 libraryagent1 licensing1 logging2 ml1 oslogin1_alpha oslogin1_beta oslogin1 pagespeedonline1 pagespeedonline2 pagespeedonline4 people1 playcustomapp1 plus1 plusDomains1 poly1 proximitybeacon1_beta1 pubsub1_beta1a pubsub1 pubsub1_beta2 redis1 redis1_beta1 remotebuildexecution1_alpha remotebuildexecution2 replicapool1_beta1 reseller1 run1_alpha1 run1 runtimeconfig1 runtimeconfig1_beta1 searchconsole1 securitycenter1_p1alpha1 securitycenter1 securitycenter1_beta1 servicebroker1_alpha1 servicebroker1 servicebroker1_beta1 servicecontrol1 sheets4 siteVerification1 sourcerepo1 speech1_p1beta1 speech1 sqladmin1_beta4 storage1 storage1_beta1 storage1_beta2 storagetransfer1 streetviewpublish1 surveys2 tasks1 testing1 texttospeech1 texttospeech1_beta1 tpu1_alpha1 tpu1 translate3_beta1 urlshortener1 vault1 videointelligence1_p1beta1 videointelligence1_p2beta1 videointelligence1_p3beta1 videointelligence1 videointelligence1_beta2 webfonts1 webmasters3 websecurityscanner1_alpha websecurityscanner1_beta websecurityscanner1 youtubeAnalytics1 youtubeAnalytics2 youtubereporting1 
 	@echo "Consider running the following line to ignore crates with errors"
 	@echo $(MAKE) -C .. update-drivers
-cargo-all: abusiveexperiencereport1-cargo acceleratedmobilepageurl1-cargo accessapproval1_beta1-cargo accesscontextmanager1_beta-cargo accesscontextmanager1-cargo adexchangebuyer1d2-cargo adexchangebuyer1d3-cargo adexchangebuyer1d4-cargo adexchangebuyer2_beta1-cargo adexperiencereport1-cargo admin1_datatransfer-cargo admin1_directory-cargo admin1_reports-cargo adsense1d4-cargo alertcenter1_beta1-cargo analytics2d4-cargo analyticsreporting4-cargo androiddeviceprovisioning1-cargo androidenterprise1-cargo androidpublisher1-cargo androidpublisher1d1-cargo appengine1_alpha-cargo appengine1_beta-cargo appengine1-cargo appsactivity1-cargo appstate1-cargo bigtableadmin1-cargo binaryauthorization1_beta1-cargo blogger2-cargo books1-cargo calendar3-cargo chat1-cargo civicinfo2-cargo classroom1-cargo cloudasset1-cargo cloudasset1_beta1-cargo cloudbilling1-cargo cloudbuild1_alpha1-cargo cloudbuild1-cargo clouddebugger2-cargo clouderrorreporting1_beta1-cargo cloudfunctions1-cargo cloudfunctions1_beta2-cargo cloudidentity1-cargo cloudidentity1_beta1-cargo cloudiot1-cargo cloudkms1-cargo cloudprivatecatalog1_beta1-cargo cloudprivatecatalogproducer1_beta1-cargo cloudprofiler2-cargo cloudresourcemanager1-cargo cloudresourcemanager1_beta1-cargo cloudresourcemanager2-cargo cloudresourcemanager2_beta1-cargo cloudscheduler1-cargo cloudscheduler1_beta1-cargo cloudsearch1-cargo cloudshell1_alpha1-cargo cloudshell1-cargo cloudtasks2-cargo cloudtasks2_beta2-cargo cloudtasks2_beta3-cargo cloudtrace1-cargo cloudtrace2-cargo commentanalyzer1_alpha1-cargo composer1-cargo composer1_beta1-cargo computebeta-cargo compute1-cargo container1-cargo container1_beta1-cargo containeranalysis1_alpha1-cargo containeranalysis1_beta1-cargo content2-cargo content2d1-cargo customsearch1-cargo dataflow1_b3-cargo datafusion1_beta1-cargo dataproc1-cargo dataproc1_beta2-cargo datastore1-cargo datastore1_beta1-cargo datastore1_beta3-cargo deploymentmanageralpha-cargo deploymentmanager2_beta-cargo deploymentmanager2-cargo dfareporting3d1-cargo dfareporting3d2-cargo dfareporting3d3-cargo dialogflow2-cargo dialogflow2_beta1-cargo digitalassetlinks1-cargo discovery1-cargo dlp2-cargo dns1-cargo dns1_beta2-cargo dns2_beta1-cargo docs1-cargo doubleclickbidmanager1-cargo doubleclicksearch2-cargo drive2-cargo drive3-cargo driveactivity2-cargo factchecktools1_alpha1-cargo fcm1-cargo file1-cargo file1_beta1-cargo firebase1_beta1-cargo firebasedynamiclinks1-cargo firebasehosting1_beta1-cargo firebaserules1-cargo firestore1-cargo firestore1_beta1-cargo firestore1_beta2-cargo fitness1-cargo fusiontables1-cargo fusiontables2-cargo games1-cargo gamesConfiguration1_configuration-cargo gamesManagement1_management-cargo genomics1_alpha2-cargo genomics2_alpha1-cargo genomics1-cargo gmail1-cargo groupsmigration1-cargo groupssettings1-cargo healthcare1_alpha2-cargo healthcare1_beta1-cargo iam1-cargo iamcredentials1-cargo iap1-cargo iap1_beta1-cargo identitytoolkit3-cargo indexing3-cargo jobs3_p1beta1-cargo jobs2-cargo jobs3-cargo kgsearch1-cargo language1-cargo language1_beta1-cargo language1_beta2-cargo libraryagent1-cargo licensing1-cargo logging2-cargo manufacturers1-cargo mirror1-cargo ml1-cargo monitoring3-cargo oauth1-cargo oauth2-cargo oslogin1_alpha-cargo oslogin1_beta-cargo oslogin1-cargo pagespeedonline1-cargo pagespeedonline2-cargo pagespeedonline4-cargo pagespeedonline5-cargo people1-cargo playcustomapp1-cargo plus1-cargo plusDomains1-cargo poly1-cargo proximitybeacon1_beta1-cargo pubsub1_beta1a-cargo pubsub1-cargo pubsub1_beta2-cargo redis1-cargo redis1_beta1-cargo remotebuildexecution1_alpha-cargo remotebuildexecution1-cargo remotebuildexecution2-cargo replicapool1_beta1-cargo reseller1-cargo run1_alpha1-cargo run1-cargo runtimeconfig1-cargo runtimeconfig1_beta1-cargo script1-cargo searchconsole1-cargo securitycenter1_p1alpha1-cargo securitycenter1-cargo securitycenter1_beta1-cargo servicebroker1_alpha1-cargo servicebroker1-cargo servicebroker1_beta1-cargo serviceconsumermanagement1-cargo servicecontrol1-cargo servicemanagement1-cargo servicenetworking1_beta-cargo servicenetworking1-cargo serviceusage1-cargo serviceusage1_beta1-cargo sheets4-cargo siteVerification1-cargo slides1-cargo sourcerepo1-cargo spanner1-cargo speech1_p1beta1-cargo speech1-cargo sqladmin1_beta4-cargo storage1-cargo storage1_beta1-cargo storage1_beta2-cargo storagetransfer1-cargo streetviewpublish1-cargo surveys2-cargo tagmanager2-cargo tasks1-cargo testing1-cargo texttospeech1-cargo texttospeech1_beta1-cargo toolresults1_beta3-cargo tpu1_alpha1-cargo tpu1-cargo translate2-cargo translate3_beta1-cargo urlshortener1-cargo vault1-cargo videointelligence1_p1beta1-cargo videointelligence1_p2beta1-cargo videointelligence1_p3beta1-cargo videointelligence1-cargo videointelligence1_beta2-cargo vision1_p1beta1-cargo vision1_p2beta1-cargo vision1-cargo webfonts1-cargo webmasters3-cargo websecurityscanner1_alpha-cargo websecurityscanner1_beta-cargo websecurityscanner1-cargo youtube3-cargo youtubeAnalytics1-cargo youtubeAnalytics2-cargo youtubereporting1-cargo 
+cargo-all: abusiveexperiencereport1-cargo acceleratedmobilepageurl1-cargo accessapproval1_beta1-cargo accesscontextmanager1_beta-cargo accesscontextmanager1-cargo adexchangebuyer1d2-cargo adexchangebuyer1d3-cargo adexchangebuyer1d4-cargo adexchangebuyer2_beta1-cargo adexperiencereport1-cargo admin1_datatransfer-cargo admin1_directory-cargo admin1_reports-cargo adsense1d4-cargo alertcenter1_beta1-cargo analytics2d4-cargo analyticsreporting4-cargo androiddeviceprovisioning1-cargo androidenterprise1-cargo androidpublisher1-cargo androidpublisher1d1-cargo appengine1_alpha-cargo appengine1_beta-cargo appengine1-cargo appsactivity1-cargo appstate1-cargo bigtableadmin1-cargo binaryauthorization1_beta1-cargo blogger2-cargo calendar3-cargo chat1-cargo cloudasset1-cargo cloudasset1_beta1-cargo cloudbilling1-cargo cloudbuild1_alpha1-cargo cloudbuild1-cargo clouddebugger2-cargo clouderrorreporting1_beta1-cargo cloudfunctions1-cargo cloudfunctions1_beta2-cargo cloudidentity1-cargo cloudidentity1_beta1-cargo cloudiot1-cargo cloudkms1-cargo cloudprivatecatalog1_beta1-cargo cloudprivatecatalogproducer1_beta1-cargo cloudprofiler2-cargo cloudresourcemanager1-cargo cloudresourcemanager1_beta1-cargo cloudresourcemanager2-cargo cloudresourcemanager2_beta1-cargo cloudscheduler1-cargo cloudscheduler1_beta1-cargo cloudshell1_alpha1-cargo cloudshell1-cargo cloudtasks2-cargo cloudtasks2_beta2-cargo cloudtasks2_beta3-cargo cloudtrace1-cargo cloudtrace2-cargo commentanalyzer1_alpha1-cargo composer1-cargo composer1_beta1-cargo computebeta-cargo compute1-cargo container1-cargo container1_beta1-cargo containeranalysis1_alpha1-cargo containeranalysis1_beta1-cargo customsearch1-cargo datafusion1_beta1-cargo dataproc1-cargo dataproc1_beta2-cargo datastore1-cargo datastore1_beta1-cargo datastore1_beta3-cargo deploymentmanageralpha-cargo deploymentmanager2_beta-cargo deploymentmanager2-cargo digitalassetlinks1-cargo dlp2-cargo dns1-cargo dns1_beta2-cargo dns2_beta1-cargo docs1-cargo doubleclickbidmanager1-cargo doubleclicksearch2-cargo drive3-cargo driveactivity2-cargo factchecktools1_alpha1-cargo fcm1-cargo file1-cargo file1_beta1-cargo firebase1_beta1-cargo firebasedynamiclinks1-cargo firebasehosting1_beta1-cargo firestore1_beta2-cargo fitness1-cargo gamesManagement1_management-cargo genomics1_alpha2-cargo genomics2_alpha1-cargo genomics1-cargo groupssettings1-cargo healthcare1_alpha2-cargo healthcare1_beta1-cargo iamcredentials1-cargo iap1-cargo iap1_beta1-cargo indexing3-cargo jobs3_p1beta1-cargo jobs2-cargo jobs3-cargo kgsearch1-cargo language1-cargo language1_beta1-cargo language1_beta2-cargo libraryagent1-cargo licensing1-cargo logging2-cargo ml1-cargo oslogin1_alpha-cargo oslogin1_beta-cargo oslogin1-cargo pagespeedonline1-cargo pagespeedonline2-cargo pagespeedonline4-cargo people1-cargo playcustomapp1-cargo plus1-cargo plusDomains1-cargo poly1-cargo proximitybeacon1_beta1-cargo pubsub1_beta1a-cargo pubsub1-cargo pubsub1_beta2-cargo redis1-cargo redis1_beta1-cargo remotebuildexecution1_alpha-cargo remotebuildexecution2-cargo replicapool1_beta1-cargo reseller1-cargo run1_alpha1-cargo run1-cargo runtimeconfig1-cargo runtimeconfig1_beta1-cargo searchconsole1-cargo securitycenter1_p1alpha1-cargo securitycenter1-cargo securitycenter1_beta1-cargo servicebroker1_alpha1-cargo servicebroker1-cargo servicebroker1_beta1-cargo servicecontrol1-cargo sheets4-cargo siteVerification1-cargo sourcerepo1-cargo speech1_p1beta1-cargo speech1-cargo sqladmin1_beta4-cargo storage1-cargo storage1_beta1-cargo storage1_beta2-cargo storagetransfer1-cargo streetviewpublish1-cargo surveys2-cargo tasks1-cargo testing1-cargo texttospeech1-cargo texttospeech1_beta1-cargo tpu1_alpha1-cargo tpu1-cargo translate3_beta1-cargo urlshortener1-cargo vault1-cargo videointelligence1_p1beta1-cargo videointelligence1_p2beta1-cargo videointelligence1_p3beta1-cargo videointelligence1-cargo videointelligence1_beta2-cargo webfonts1-cargo webmasters3-cargo websecurityscanner1_alpha-cargo websecurityscanner1_beta-cargo websecurityscanner1-cargo youtubeAnalytics1-cargo youtubeAnalytics2-cargo youtubereporting1-cargo 
+	@echo "Consider running the following line to ignore crates with errors"
+	@echo $(MAKE) -C .. update-drivers
 
 
 abusiveexperiencereport/v1/lib/Cargo.toml: ../etc/api/abusiveexperiencereport/v1/spec.json $(MCP)
@@ -425,12 +379,6 @@ blogger2: blogger/v2/lib/Cargo.toml
 blogger2-cargo: blogger2
 	set -o pipefail; ( cd blogger/v2/lib && cargo $(ARGS) ) 2>&1 | tee blogger/v2/cargo-errors.log && rm blogger/v2/cargo-errors.log
 
-books/v1/lib/Cargo.toml: ../etc/api/books/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< books/v1 2>&1 | tee books/v1/generator-errors.log && rm books/v1/generator-errors.log
-books1: books/v1/lib/Cargo.toml
-books1-cargo: books1
-	set -o pipefail; ( cd books/v1/lib && cargo $(ARGS) ) 2>&1 | tee books/v1/cargo-errors.log && rm books/v1/cargo-errors.log
-
 calendar/v3/lib/Cargo.toml: ../etc/api/calendar/v3/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< calendar/v3 2>&1 | tee calendar/v3/generator-errors.log && rm calendar/v3/generator-errors.log
 calendar3: calendar/v3/lib/Cargo.toml
@@ -442,18 +390,6 @@ chat/v1/lib/Cargo.toml: ../etc/api/chat/v1/spec.json $(MCP)
 chat1: chat/v1/lib/Cargo.toml
 chat1-cargo: chat1
 	set -o pipefail; ( cd chat/v1/lib && cargo $(ARGS) ) 2>&1 | tee chat/v1/cargo-errors.log && rm chat/v1/cargo-errors.log
-
-civicinfo/v2/lib/Cargo.toml: ../etc/api/civicinfo/v2/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< civicinfo/v2 2>&1 | tee civicinfo/v2/generator-errors.log && rm civicinfo/v2/generator-errors.log
-civicinfo2: civicinfo/v2/lib/Cargo.toml
-civicinfo2-cargo: civicinfo2
-	set -o pipefail; ( cd civicinfo/v2/lib && cargo $(ARGS) ) 2>&1 | tee civicinfo/v2/cargo-errors.log && rm civicinfo/v2/cargo-errors.log
-
-classroom/v1/lib/Cargo.toml: ../etc/api/classroom/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< classroom/v1 2>&1 | tee classroom/v1/generator-errors.log && rm classroom/v1/generator-errors.log
-classroom1: classroom/v1/lib/Cargo.toml
-classroom1-cargo: classroom1
-	set -o pipefail; ( cd classroom/v1/lib && cargo $(ARGS) ) 2>&1 | tee classroom/v1/cargo-errors.log && rm classroom/v1/cargo-errors.log
 
 cloudasset/v1/lib/Cargo.toml: ../etc/api/cloudasset/v1/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< cloudasset/v1 2>&1 | tee cloudasset/v1/generator-errors.log && rm cloudasset/v1/generator-errors.log
@@ -587,12 +523,6 @@ cloudscheduler1_beta1: cloudscheduler/v1beta1/lib/Cargo.toml
 cloudscheduler1_beta1-cargo: cloudscheduler1_beta1
 	set -o pipefail; ( cd cloudscheduler/v1beta1/lib && cargo $(ARGS) ) 2>&1 | tee cloudscheduler/v1beta1/cargo-errors.log && rm cloudscheduler/v1beta1/cargo-errors.log
 
-cloudsearch/v1/lib/Cargo.toml: ../etc/api/cloudsearch/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< cloudsearch/v1 2>&1 | tee cloudsearch/v1/generator-errors.log && rm cloudsearch/v1/generator-errors.log
-cloudsearch1: cloudsearch/v1/lib/Cargo.toml
-cloudsearch1-cargo: cloudsearch1
-	set -o pipefail; ( cd cloudsearch/v1/lib && cargo $(ARGS) ) 2>&1 | tee cloudsearch/v1/cargo-errors.log && rm cloudsearch/v1/cargo-errors.log
-
 cloudshell/v1alpha1/lib/Cargo.toml: ../etc/api/cloudshell/v1alpha1/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< cloudshell/v1alpha1 2>&1 | tee cloudshell/v1alpha1/generator-errors.log && rm cloudshell/v1alpha1/generator-errors.log
 cloudshell1_alpha1: cloudshell/v1alpha1/lib/Cargo.toml
@@ -689,29 +619,11 @@ containeranalysis1_beta1: containeranalysis/v1beta1/lib/Cargo.toml
 containeranalysis1_beta1-cargo: containeranalysis1_beta1
 	set -o pipefail; ( cd containeranalysis/v1beta1/lib && cargo $(ARGS) ) 2>&1 | tee containeranalysis/v1beta1/cargo-errors.log && rm containeranalysis/v1beta1/cargo-errors.log
 
-content/v2/lib/Cargo.toml: ../etc/api/content/v2/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< content/v2 2>&1 | tee content/v2/generator-errors.log && rm content/v2/generator-errors.log
-content2: content/v2/lib/Cargo.toml
-content2-cargo: content2
-	set -o pipefail; ( cd content/v2/lib && cargo $(ARGS) ) 2>&1 | tee content/v2/cargo-errors.log && rm content/v2/cargo-errors.log
-
-content/v2.1/lib/Cargo.toml: ../etc/api/content/v2.1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< content/v2.1 2>&1 | tee content/v2.1/generator-errors.log && rm content/v2.1/generator-errors.log
-content2d1: content/v2.1/lib/Cargo.toml
-content2d1-cargo: content2d1
-	set -o pipefail; ( cd content/v2.1/lib && cargo $(ARGS) ) 2>&1 | tee content/v2.1/cargo-errors.log && rm content/v2.1/cargo-errors.log
-
 customsearch/v1/lib/Cargo.toml: ../etc/api/customsearch/v1/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< customsearch/v1 2>&1 | tee customsearch/v1/generator-errors.log && rm customsearch/v1/generator-errors.log
 customsearch1: customsearch/v1/lib/Cargo.toml
 customsearch1-cargo: customsearch1
 	set -o pipefail; ( cd customsearch/v1/lib && cargo $(ARGS) ) 2>&1 | tee customsearch/v1/cargo-errors.log && rm customsearch/v1/cargo-errors.log
-
-dataflow/v1b3/lib/Cargo.toml: ../etc/api/dataflow/v1b3/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< dataflow/v1b3 2>&1 | tee dataflow/v1b3/generator-errors.log && rm dataflow/v1b3/generator-errors.log
-dataflow1_b3: dataflow/v1b3/lib/Cargo.toml
-dataflow1_b3-cargo: dataflow1_b3
-	set -o pipefail; ( cd dataflow/v1b3/lib && cargo $(ARGS) ) 2>&1 | tee dataflow/v1b3/cargo-errors.log && rm dataflow/v1b3/cargo-errors.log
 
 datafusion/v1beta1/lib/Cargo.toml: ../etc/api/datafusion/v1beta1/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< datafusion/v1beta1 2>&1 | tee datafusion/v1beta1/generator-errors.log && rm datafusion/v1beta1/generator-errors.log
@@ -767,47 +679,11 @@ deploymentmanager2: deploymentmanager/v2/lib/Cargo.toml
 deploymentmanager2-cargo: deploymentmanager2
 	set -o pipefail; ( cd deploymentmanager/v2/lib && cargo $(ARGS) ) 2>&1 | tee deploymentmanager/v2/cargo-errors.log && rm deploymentmanager/v2/cargo-errors.log
 
-dfareporting/v3.1/lib/Cargo.toml: ../etc/api/dfareporting/v3.1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< dfareporting/v3.1 2>&1 | tee dfareporting/v3.1/generator-errors.log && rm dfareporting/v3.1/generator-errors.log
-dfareporting3d1: dfareporting/v3.1/lib/Cargo.toml
-dfareporting3d1-cargo: dfareporting3d1
-	set -o pipefail; ( cd dfareporting/v3.1/lib && cargo $(ARGS) ) 2>&1 | tee dfareporting/v3.1/cargo-errors.log && rm dfareporting/v3.1/cargo-errors.log
-
-dfareporting/v3.2/lib/Cargo.toml: ../etc/api/dfareporting/v3.2/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< dfareporting/v3.2 2>&1 | tee dfareporting/v3.2/generator-errors.log && rm dfareporting/v3.2/generator-errors.log
-dfareporting3d2: dfareporting/v3.2/lib/Cargo.toml
-dfareporting3d2-cargo: dfareporting3d2
-	set -o pipefail; ( cd dfareporting/v3.2/lib && cargo $(ARGS) ) 2>&1 | tee dfareporting/v3.2/cargo-errors.log && rm dfareporting/v3.2/cargo-errors.log
-
-dfareporting/v3.3/lib/Cargo.toml: ../etc/api/dfareporting/v3.3/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< dfareporting/v3.3 2>&1 | tee dfareporting/v3.3/generator-errors.log && rm dfareporting/v3.3/generator-errors.log
-dfareporting3d3: dfareporting/v3.3/lib/Cargo.toml
-dfareporting3d3-cargo: dfareporting3d3
-	set -o pipefail; ( cd dfareporting/v3.3/lib && cargo $(ARGS) ) 2>&1 | tee dfareporting/v3.3/cargo-errors.log && rm dfareporting/v3.3/cargo-errors.log
-
-dialogflow/v2/lib/Cargo.toml: ../etc/api/dialogflow/v2/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< dialogflow/v2 2>&1 | tee dialogflow/v2/generator-errors.log && rm dialogflow/v2/generator-errors.log
-dialogflow2: dialogflow/v2/lib/Cargo.toml
-dialogflow2-cargo: dialogflow2
-	set -o pipefail; ( cd dialogflow/v2/lib && cargo $(ARGS) ) 2>&1 | tee dialogflow/v2/cargo-errors.log && rm dialogflow/v2/cargo-errors.log
-
-dialogflow/v2beta1/lib/Cargo.toml: ../etc/api/dialogflow/v2beta1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< dialogflow/v2beta1 2>&1 | tee dialogflow/v2beta1/generator-errors.log && rm dialogflow/v2beta1/generator-errors.log
-dialogflow2_beta1: dialogflow/v2beta1/lib/Cargo.toml
-dialogflow2_beta1-cargo: dialogflow2_beta1
-	set -o pipefail; ( cd dialogflow/v2beta1/lib && cargo $(ARGS) ) 2>&1 | tee dialogflow/v2beta1/cargo-errors.log && rm dialogflow/v2beta1/cargo-errors.log
-
 digitalassetlinks/v1/lib/Cargo.toml: ../etc/api/digitalassetlinks/v1/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< digitalassetlinks/v1 2>&1 | tee digitalassetlinks/v1/generator-errors.log && rm digitalassetlinks/v1/generator-errors.log
 digitalassetlinks1: digitalassetlinks/v1/lib/Cargo.toml
 digitalassetlinks1-cargo: digitalassetlinks1
 	set -o pipefail; ( cd digitalassetlinks/v1/lib && cargo $(ARGS) ) 2>&1 | tee digitalassetlinks/v1/cargo-errors.log && rm digitalassetlinks/v1/cargo-errors.log
-
-discovery/v1/lib/Cargo.toml: ../etc/api/discovery/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< discovery/v1 2>&1 | tee discovery/v1/generator-errors.log && rm discovery/v1/generator-errors.log
-discovery1: discovery/v1/lib/Cargo.toml
-discovery1-cargo: discovery1
-	set -o pipefail; ( cd discovery/v1/lib && cargo $(ARGS) ) 2>&1 | tee discovery/v1/cargo-errors.log && rm discovery/v1/cargo-errors.log
 
 dlp/v2/lib/Cargo.toml: ../etc/api/dlp/v2/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< dlp/v2 2>&1 | tee dlp/v2/generator-errors.log && rm dlp/v2/generator-errors.log
@@ -850,12 +726,6 @@ doubleclicksearch/v2/lib/Cargo.toml: ../etc/api/doubleclicksearch/v2/spec.json $
 doubleclicksearch2: doubleclicksearch/v2/lib/Cargo.toml
 doubleclicksearch2-cargo: doubleclicksearch2
 	set -o pipefail; ( cd doubleclicksearch/v2/lib && cargo $(ARGS) ) 2>&1 | tee doubleclicksearch/v2/cargo-errors.log && rm doubleclicksearch/v2/cargo-errors.log
-
-drive/v2/lib/Cargo.toml: ../etc/api/drive/v2/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< drive/v2 2>&1 | tee drive/v2/generator-errors.log && rm drive/v2/generator-errors.log
-drive2: drive/v2/lib/Cargo.toml
-drive2-cargo: drive2
-	set -o pipefail; ( cd drive/v2/lib && cargo $(ARGS) ) 2>&1 | tee drive/v2/cargo-errors.log && rm drive/v2/cargo-errors.log
 
 drive/v3/lib/Cargo.toml: ../etc/api/drive/v3/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< drive/v3 2>&1 | tee drive/v3/generator-errors.log && rm drive/v3/generator-errors.log
@@ -911,24 +781,6 @@ firebasehosting1_beta1: firebasehosting/v1beta1/lib/Cargo.toml
 firebasehosting1_beta1-cargo: firebasehosting1_beta1
 	set -o pipefail; ( cd firebasehosting/v1beta1/lib && cargo $(ARGS) ) 2>&1 | tee firebasehosting/v1beta1/cargo-errors.log && rm firebasehosting/v1beta1/cargo-errors.log
 
-firebaserules/v1/lib/Cargo.toml: ../etc/api/firebaserules/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< firebaserules/v1 2>&1 | tee firebaserules/v1/generator-errors.log && rm firebaserules/v1/generator-errors.log
-firebaserules1: firebaserules/v1/lib/Cargo.toml
-firebaserules1-cargo: firebaserules1
-	set -o pipefail; ( cd firebaserules/v1/lib && cargo $(ARGS) ) 2>&1 | tee firebaserules/v1/cargo-errors.log && rm firebaserules/v1/cargo-errors.log
-
-firestore/v1/lib/Cargo.toml: ../etc/api/firestore/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< firestore/v1 2>&1 | tee firestore/v1/generator-errors.log && rm firestore/v1/generator-errors.log
-firestore1: firestore/v1/lib/Cargo.toml
-firestore1-cargo: firestore1
-	set -o pipefail; ( cd firestore/v1/lib && cargo $(ARGS) ) 2>&1 | tee firestore/v1/cargo-errors.log && rm firestore/v1/cargo-errors.log
-
-firestore/v1beta1/lib/Cargo.toml: ../etc/api/firestore/v1beta1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< firestore/v1beta1 2>&1 | tee firestore/v1beta1/generator-errors.log && rm firestore/v1beta1/generator-errors.log
-firestore1_beta1: firestore/v1beta1/lib/Cargo.toml
-firestore1_beta1-cargo: firestore1_beta1
-	set -o pipefail; ( cd firestore/v1beta1/lib && cargo $(ARGS) ) 2>&1 | tee firestore/v1beta1/cargo-errors.log && rm firestore/v1beta1/cargo-errors.log
-
 firestore/v1beta2/lib/Cargo.toml: ../etc/api/firestore/v1beta2/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< firestore/v1beta2 2>&1 | tee firestore/v1beta2/generator-errors.log && rm firestore/v1beta2/generator-errors.log
 firestore1_beta2: firestore/v1beta2/lib/Cargo.toml
@@ -940,30 +792,6 @@ fitness/v1/lib/Cargo.toml: ../etc/api/fitness/v1/spec.json $(MCP)
 fitness1: fitness/v1/lib/Cargo.toml
 fitness1-cargo: fitness1
 	set -o pipefail; ( cd fitness/v1/lib && cargo $(ARGS) ) 2>&1 | tee fitness/v1/cargo-errors.log && rm fitness/v1/cargo-errors.log
-
-fusiontables/v1/lib/Cargo.toml: ../etc/api/fusiontables/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< fusiontables/v1 2>&1 | tee fusiontables/v1/generator-errors.log && rm fusiontables/v1/generator-errors.log
-fusiontables1: fusiontables/v1/lib/Cargo.toml
-fusiontables1-cargo: fusiontables1
-	set -o pipefail; ( cd fusiontables/v1/lib && cargo $(ARGS) ) 2>&1 | tee fusiontables/v1/cargo-errors.log && rm fusiontables/v1/cargo-errors.log
-
-fusiontables/v2/lib/Cargo.toml: ../etc/api/fusiontables/v2/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< fusiontables/v2 2>&1 | tee fusiontables/v2/generator-errors.log && rm fusiontables/v2/generator-errors.log
-fusiontables2: fusiontables/v2/lib/Cargo.toml
-fusiontables2-cargo: fusiontables2
-	set -o pipefail; ( cd fusiontables/v2/lib && cargo $(ARGS) ) 2>&1 | tee fusiontables/v2/cargo-errors.log && rm fusiontables/v2/cargo-errors.log
-
-games/v1/lib/Cargo.toml: ../etc/api/games/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< games/v1 2>&1 | tee games/v1/generator-errors.log && rm games/v1/generator-errors.log
-games1: games/v1/lib/Cargo.toml
-games1-cargo: games1
-	set -o pipefail; ( cd games/v1/lib && cargo $(ARGS) ) 2>&1 | tee games/v1/cargo-errors.log && rm games/v1/cargo-errors.log
-
-gamesConfiguration/v1configuration/lib/Cargo.toml: ../etc/api/gamesConfiguration/v1configuration/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< gamesConfiguration/v1configuration 2>&1 | tee gamesConfiguration/v1configuration/generator-errors.log && rm gamesConfiguration/v1configuration/generator-errors.log
-gamesConfiguration1_configuration: gamesConfiguration/v1configuration/lib/Cargo.toml
-gamesConfiguration1_configuration-cargo: gamesConfiguration1_configuration
-	set -o pipefail; ( cd gamesConfiguration/v1configuration/lib && cargo $(ARGS) ) 2>&1 | tee gamesConfiguration/v1configuration/cargo-errors.log && rm gamesConfiguration/v1configuration/cargo-errors.log
 
 gamesManagement/v1management/lib/Cargo.toml: ../etc/api/gamesManagement/v1management/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< gamesManagement/v1management 2>&1 | tee gamesManagement/v1management/generator-errors.log && rm gamesManagement/v1management/generator-errors.log
@@ -989,18 +817,6 @@ genomics1: genomics/v1/lib/Cargo.toml
 genomics1-cargo: genomics1
 	set -o pipefail; ( cd genomics/v1/lib && cargo $(ARGS) ) 2>&1 | tee genomics/v1/cargo-errors.log && rm genomics/v1/cargo-errors.log
 
-gmail/v1/lib/Cargo.toml: ../etc/api/gmail/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< gmail/v1 2>&1 | tee gmail/v1/generator-errors.log && rm gmail/v1/generator-errors.log
-gmail1: gmail/v1/lib/Cargo.toml
-gmail1-cargo: gmail1
-	set -o pipefail; ( cd gmail/v1/lib && cargo $(ARGS) ) 2>&1 | tee gmail/v1/cargo-errors.log && rm gmail/v1/cargo-errors.log
-
-groupsmigration/v1/lib/Cargo.toml: ../etc/api/groupsmigration/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< groupsmigration/v1 2>&1 | tee groupsmigration/v1/generator-errors.log && rm groupsmigration/v1/generator-errors.log
-groupsmigration1: groupsmigration/v1/lib/Cargo.toml
-groupsmigration1-cargo: groupsmigration1
-	set -o pipefail; ( cd groupsmigration/v1/lib && cargo $(ARGS) ) 2>&1 | tee groupsmigration/v1/cargo-errors.log && rm groupsmigration/v1/cargo-errors.log
-
 groupssettings/v1/lib/Cargo.toml: ../etc/api/groupssettings/v1/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< groupssettings/v1 2>&1 | tee groupssettings/v1/generator-errors.log && rm groupssettings/v1/generator-errors.log
 groupssettings1: groupssettings/v1/lib/Cargo.toml
@@ -1019,12 +835,6 @@ healthcare1_beta1: healthcare/v1beta1/lib/Cargo.toml
 healthcare1_beta1-cargo: healthcare1_beta1
 	set -o pipefail; ( cd healthcare/v1beta1/lib && cargo $(ARGS) ) 2>&1 | tee healthcare/v1beta1/cargo-errors.log && rm healthcare/v1beta1/cargo-errors.log
 
-iam/v1/lib/Cargo.toml: ../etc/api/iam/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< iam/v1 2>&1 | tee iam/v1/generator-errors.log && rm iam/v1/generator-errors.log
-iam1: iam/v1/lib/Cargo.toml
-iam1-cargo: iam1
-	set -o pipefail; ( cd iam/v1/lib && cargo $(ARGS) ) 2>&1 | tee iam/v1/cargo-errors.log && rm iam/v1/cargo-errors.log
-
 iamcredentials/v1/lib/Cargo.toml: ../etc/api/iamcredentials/v1/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< iamcredentials/v1 2>&1 | tee iamcredentials/v1/generator-errors.log && rm iamcredentials/v1/generator-errors.log
 iamcredentials1: iamcredentials/v1/lib/Cargo.toml
@@ -1042,12 +852,6 @@ iap/v1beta1/lib/Cargo.toml: ../etc/api/iap/v1beta1/spec.json $(MCP)
 iap1_beta1: iap/v1beta1/lib/Cargo.toml
 iap1_beta1-cargo: iap1_beta1
 	set -o pipefail; ( cd iap/v1beta1/lib && cargo $(ARGS) ) 2>&1 | tee iap/v1beta1/cargo-errors.log && rm iap/v1beta1/cargo-errors.log
-
-identitytoolkit/v3/lib/Cargo.toml: ../etc/api/identitytoolkit/v3/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< identitytoolkit/v3 2>&1 | tee identitytoolkit/v3/generator-errors.log && rm identitytoolkit/v3/generator-errors.log
-identitytoolkit3: identitytoolkit/v3/lib/Cargo.toml
-identitytoolkit3-cargo: identitytoolkit3
-	set -o pipefail; ( cd identitytoolkit/v3/lib && cargo $(ARGS) ) 2>&1 | tee identitytoolkit/v3/cargo-errors.log && rm identitytoolkit/v3/cargo-errors.log
 
 indexing/v3/lib/Cargo.toml: ../etc/api/indexing/v3/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< indexing/v3 2>&1 | tee indexing/v3/generator-errors.log && rm indexing/v3/generator-errors.log
@@ -1115,41 +919,11 @@ logging2: logging/v2/lib/Cargo.toml
 logging2-cargo: logging2
 	set -o pipefail; ( cd logging/v2/lib && cargo $(ARGS) ) 2>&1 | tee logging/v2/cargo-errors.log && rm logging/v2/cargo-errors.log
 
-manufacturers/v1/lib/Cargo.toml: ../etc/api/manufacturers/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< manufacturers/v1 2>&1 | tee manufacturers/v1/generator-errors.log && rm manufacturers/v1/generator-errors.log
-manufacturers1: manufacturers/v1/lib/Cargo.toml
-manufacturers1-cargo: manufacturers1
-	set -o pipefail; ( cd manufacturers/v1/lib && cargo $(ARGS) ) 2>&1 | tee manufacturers/v1/cargo-errors.log && rm manufacturers/v1/cargo-errors.log
-
-mirror/v1/lib/Cargo.toml: ../etc/api/mirror/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< mirror/v1 2>&1 | tee mirror/v1/generator-errors.log && rm mirror/v1/generator-errors.log
-mirror1: mirror/v1/lib/Cargo.toml
-mirror1-cargo: mirror1
-	set -o pipefail; ( cd mirror/v1/lib && cargo $(ARGS) ) 2>&1 | tee mirror/v1/cargo-errors.log && rm mirror/v1/cargo-errors.log
-
 ml/v1/lib/Cargo.toml: ../etc/api/ml/v1/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< ml/v1 2>&1 | tee ml/v1/generator-errors.log && rm ml/v1/generator-errors.log
 ml1: ml/v1/lib/Cargo.toml
 ml1-cargo: ml1
 	set -o pipefail; ( cd ml/v1/lib && cargo $(ARGS) ) 2>&1 | tee ml/v1/cargo-errors.log && rm ml/v1/cargo-errors.log
-
-monitoring/v3/lib/Cargo.toml: ../etc/api/monitoring/v3/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< monitoring/v3 2>&1 | tee monitoring/v3/generator-errors.log && rm monitoring/v3/generator-errors.log
-monitoring3: monitoring/v3/lib/Cargo.toml
-monitoring3-cargo: monitoring3
-	set -o pipefail; ( cd monitoring/v3/lib && cargo $(ARGS) ) 2>&1 | tee monitoring/v3/cargo-errors.log && rm monitoring/v3/cargo-errors.log
-
-oauth/v1/lib/Cargo.toml: ../etc/api/oauth/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< oauth/v1 2>&1 | tee oauth/v1/generator-errors.log && rm oauth/v1/generator-errors.log
-oauth1: oauth/v1/lib/Cargo.toml
-oauth1-cargo: oauth1
-	set -o pipefail; ( cd oauth/v1/lib && cargo $(ARGS) ) 2>&1 | tee oauth/v1/cargo-errors.log && rm oauth/v1/cargo-errors.log
-
-oauth/v2/lib/Cargo.toml: ../etc/api/oauth/v2/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< oauth/v2 2>&1 | tee oauth/v2/generator-errors.log && rm oauth/v2/generator-errors.log
-oauth2: oauth/v2/lib/Cargo.toml
-oauth2-cargo: oauth2
-	set -o pipefail; ( cd oauth/v2/lib && cargo $(ARGS) ) 2>&1 | tee oauth/v2/cargo-errors.log && rm oauth/v2/cargo-errors.log
 
 oslogin/v1alpha/lib/Cargo.toml: ../etc/api/oslogin/v1alpha/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< oslogin/v1alpha 2>&1 | tee oslogin/v1alpha/generator-errors.log && rm oslogin/v1alpha/generator-errors.log
@@ -1186,12 +960,6 @@ pagespeedonline/v4/lib/Cargo.toml: ../etc/api/pagespeedonline/v4/spec.json $(MCP
 pagespeedonline4: pagespeedonline/v4/lib/Cargo.toml
 pagespeedonline4-cargo: pagespeedonline4
 	set -o pipefail; ( cd pagespeedonline/v4/lib && cargo $(ARGS) ) 2>&1 | tee pagespeedonline/v4/cargo-errors.log && rm pagespeedonline/v4/cargo-errors.log
-
-pagespeedonline/v5/lib/Cargo.toml: ../etc/api/pagespeedonline/v5/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< pagespeedonline/v5 2>&1 | tee pagespeedonline/v5/generator-errors.log && rm pagespeedonline/v5/generator-errors.log
-pagespeedonline5: pagespeedonline/v5/lib/Cargo.toml
-pagespeedonline5-cargo: pagespeedonline5
-	set -o pipefail; ( cd pagespeedonline/v5/lib && cargo $(ARGS) ) 2>&1 | tee pagespeedonline/v5/cargo-errors.log && rm pagespeedonline/v5/cargo-errors.log
 
 people/v1/lib/Cargo.toml: ../etc/api/people/v1/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< people/v1 2>&1 | tee people/v1/generator-errors.log && rm people/v1/generator-errors.log
@@ -1265,12 +1033,6 @@ remotebuildexecution1_alpha: remotebuildexecution/v1alpha/lib/Cargo.toml
 remotebuildexecution1_alpha-cargo: remotebuildexecution1_alpha
 	set -o pipefail; ( cd remotebuildexecution/v1alpha/lib && cargo $(ARGS) ) 2>&1 | tee remotebuildexecution/v1alpha/cargo-errors.log && rm remotebuildexecution/v1alpha/cargo-errors.log
 
-remotebuildexecution/v1/lib/Cargo.toml: ../etc/api/remotebuildexecution/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< remotebuildexecution/v1 2>&1 | tee remotebuildexecution/v1/generator-errors.log && rm remotebuildexecution/v1/generator-errors.log
-remotebuildexecution1: remotebuildexecution/v1/lib/Cargo.toml
-remotebuildexecution1-cargo: remotebuildexecution1
-	set -o pipefail; ( cd remotebuildexecution/v1/lib && cargo $(ARGS) ) 2>&1 | tee remotebuildexecution/v1/cargo-errors.log && rm remotebuildexecution/v1/cargo-errors.log
-
 remotebuildexecution/v2/lib/Cargo.toml: ../etc/api/remotebuildexecution/v2/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< remotebuildexecution/v2 2>&1 | tee remotebuildexecution/v2/generator-errors.log && rm remotebuildexecution/v2/generator-errors.log
 remotebuildexecution2: remotebuildexecution/v2/lib/Cargo.toml
@@ -1312,12 +1074,6 @@ runtimeconfig/v1beta1/lib/Cargo.toml: ../etc/api/runtimeconfig/v1beta1/spec.json
 runtimeconfig1_beta1: runtimeconfig/v1beta1/lib/Cargo.toml
 runtimeconfig1_beta1-cargo: runtimeconfig1_beta1
 	set -o pipefail; ( cd runtimeconfig/v1beta1/lib && cargo $(ARGS) ) 2>&1 | tee runtimeconfig/v1beta1/cargo-errors.log && rm runtimeconfig/v1beta1/cargo-errors.log
-
-script/v1/lib/Cargo.toml: ../etc/api/script/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< script/v1 2>&1 | tee script/v1/generator-errors.log && rm script/v1/generator-errors.log
-script1: script/v1/lib/Cargo.toml
-script1-cargo: script1
-	set -o pipefail; ( cd script/v1/lib && cargo $(ARGS) ) 2>&1 | tee script/v1/cargo-errors.log && rm script/v1/cargo-errors.log
 
 searchconsole/v1/lib/Cargo.toml: ../etc/api/searchconsole/v1/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< searchconsole/v1 2>&1 | tee searchconsole/v1/generator-errors.log && rm searchconsole/v1/generator-errors.log
@@ -1361,47 +1117,11 @@ servicebroker1_beta1: servicebroker/v1beta1/lib/Cargo.toml
 servicebroker1_beta1-cargo: servicebroker1_beta1
 	set -o pipefail; ( cd servicebroker/v1beta1/lib && cargo $(ARGS) ) 2>&1 | tee servicebroker/v1beta1/cargo-errors.log && rm servicebroker/v1beta1/cargo-errors.log
 
-serviceconsumermanagement/v1/lib/Cargo.toml: ../etc/api/serviceconsumermanagement/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< serviceconsumermanagement/v1 2>&1 | tee serviceconsumermanagement/v1/generator-errors.log && rm serviceconsumermanagement/v1/generator-errors.log
-serviceconsumermanagement1: serviceconsumermanagement/v1/lib/Cargo.toml
-serviceconsumermanagement1-cargo: serviceconsumermanagement1
-	set -o pipefail; ( cd serviceconsumermanagement/v1/lib && cargo $(ARGS) ) 2>&1 | tee serviceconsumermanagement/v1/cargo-errors.log && rm serviceconsumermanagement/v1/cargo-errors.log
-
 servicecontrol/v1/lib/Cargo.toml: ../etc/api/servicecontrol/v1/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< servicecontrol/v1 2>&1 | tee servicecontrol/v1/generator-errors.log && rm servicecontrol/v1/generator-errors.log
 servicecontrol1: servicecontrol/v1/lib/Cargo.toml
 servicecontrol1-cargo: servicecontrol1
 	set -o pipefail; ( cd servicecontrol/v1/lib && cargo $(ARGS) ) 2>&1 | tee servicecontrol/v1/cargo-errors.log && rm servicecontrol/v1/cargo-errors.log
-
-servicemanagement/v1/lib/Cargo.toml: ../etc/api/servicemanagement/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< servicemanagement/v1 2>&1 | tee servicemanagement/v1/generator-errors.log && rm servicemanagement/v1/generator-errors.log
-servicemanagement1: servicemanagement/v1/lib/Cargo.toml
-servicemanagement1-cargo: servicemanagement1
-	set -o pipefail; ( cd servicemanagement/v1/lib && cargo $(ARGS) ) 2>&1 | tee servicemanagement/v1/cargo-errors.log && rm servicemanagement/v1/cargo-errors.log
-
-servicenetworking/v1beta/lib/Cargo.toml: ../etc/api/servicenetworking/v1beta/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< servicenetworking/v1beta 2>&1 | tee servicenetworking/v1beta/generator-errors.log && rm servicenetworking/v1beta/generator-errors.log
-servicenetworking1_beta: servicenetworking/v1beta/lib/Cargo.toml
-servicenetworking1_beta-cargo: servicenetworking1_beta
-	set -o pipefail; ( cd servicenetworking/v1beta/lib && cargo $(ARGS) ) 2>&1 | tee servicenetworking/v1beta/cargo-errors.log && rm servicenetworking/v1beta/cargo-errors.log
-
-servicenetworking/v1/lib/Cargo.toml: ../etc/api/servicenetworking/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< servicenetworking/v1 2>&1 | tee servicenetworking/v1/generator-errors.log && rm servicenetworking/v1/generator-errors.log
-servicenetworking1: servicenetworking/v1/lib/Cargo.toml
-servicenetworking1-cargo: servicenetworking1
-	set -o pipefail; ( cd servicenetworking/v1/lib && cargo $(ARGS) ) 2>&1 | tee servicenetworking/v1/cargo-errors.log && rm servicenetworking/v1/cargo-errors.log
-
-serviceusage/v1/lib/Cargo.toml: ../etc/api/serviceusage/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< serviceusage/v1 2>&1 | tee serviceusage/v1/generator-errors.log && rm serviceusage/v1/generator-errors.log
-serviceusage1: serviceusage/v1/lib/Cargo.toml
-serviceusage1-cargo: serviceusage1
-	set -o pipefail; ( cd serviceusage/v1/lib && cargo $(ARGS) ) 2>&1 | tee serviceusage/v1/cargo-errors.log && rm serviceusage/v1/cargo-errors.log
-
-serviceusage/v1beta1/lib/Cargo.toml: ../etc/api/serviceusage/v1beta1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< serviceusage/v1beta1 2>&1 | tee serviceusage/v1beta1/generator-errors.log && rm serviceusage/v1beta1/generator-errors.log
-serviceusage1_beta1: serviceusage/v1beta1/lib/Cargo.toml
-serviceusage1_beta1-cargo: serviceusage1_beta1
-	set -o pipefail; ( cd serviceusage/v1beta1/lib && cargo $(ARGS) ) 2>&1 | tee serviceusage/v1beta1/cargo-errors.log && rm serviceusage/v1beta1/cargo-errors.log
 
 sheets/v4/lib/Cargo.toml: ../etc/api/sheets/v4/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< sheets/v4 2>&1 | tee sheets/v4/generator-errors.log && rm sheets/v4/generator-errors.log
@@ -1415,23 +1135,11 @@ siteVerification1: siteVerification/v1/lib/Cargo.toml
 siteVerification1-cargo: siteVerification1
 	set -o pipefail; ( cd siteVerification/v1/lib && cargo $(ARGS) ) 2>&1 | tee siteVerification/v1/cargo-errors.log && rm siteVerification/v1/cargo-errors.log
 
-slides/v1/lib/Cargo.toml: ../etc/api/slides/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< slides/v1 2>&1 | tee slides/v1/generator-errors.log && rm slides/v1/generator-errors.log
-slides1: slides/v1/lib/Cargo.toml
-slides1-cargo: slides1
-	set -o pipefail; ( cd slides/v1/lib && cargo $(ARGS) ) 2>&1 | tee slides/v1/cargo-errors.log && rm slides/v1/cargo-errors.log
-
 sourcerepo/v1/lib/Cargo.toml: ../etc/api/sourcerepo/v1/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< sourcerepo/v1 2>&1 | tee sourcerepo/v1/generator-errors.log && rm sourcerepo/v1/generator-errors.log
 sourcerepo1: sourcerepo/v1/lib/Cargo.toml
 sourcerepo1-cargo: sourcerepo1
 	set -o pipefail; ( cd sourcerepo/v1/lib && cargo $(ARGS) ) 2>&1 | tee sourcerepo/v1/cargo-errors.log && rm sourcerepo/v1/cargo-errors.log
-
-spanner/v1/lib/Cargo.toml: ../etc/api/spanner/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< spanner/v1 2>&1 | tee spanner/v1/generator-errors.log && rm spanner/v1/generator-errors.log
-spanner1: spanner/v1/lib/Cargo.toml
-spanner1-cargo: spanner1
-	set -o pipefail; ( cd spanner/v1/lib && cargo $(ARGS) ) 2>&1 | tee spanner/v1/cargo-errors.log && rm spanner/v1/cargo-errors.log
 
 speech/v1p1beta1/lib/Cargo.toml: ../etc/api/speech/v1p1beta1/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< speech/v1p1beta1 2>&1 | tee speech/v1p1beta1/generator-errors.log && rm speech/v1p1beta1/generator-errors.log
@@ -1487,12 +1195,6 @@ surveys2: surveys/v2/lib/Cargo.toml
 surveys2-cargo: surveys2
 	set -o pipefail; ( cd surveys/v2/lib && cargo $(ARGS) ) 2>&1 | tee surveys/v2/cargo-errors.log && rm surveys/v2/cargo-errors.log
 
-tagmanager/v2/lib/Cargo.toml: ../etc/api/tagmanager/v2/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< tagmanager/v2 2>&1 | tee tagmanager/v2/generator-errors.log && rm tagmanager/v2/generator-errors.log
-tagmanager2: tagmanager/v2/lib/Cargo.toml
-tagmanager2-cargo: tagmanager2
-	set -o pipefail; ( cd tagmanager/v2/lib && cargo $(ARGS) ) 2>&1 | tee tagmanager/v2/cargo-errors.log && rm tagmanager/v2/cargo-errors.log
-
 tasks/v1/lib/Cargo.toml: ../etc/api/tasks/v1/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< tasks/v1 2>&1 | tee tasks/v1/generator-errors.log && rm tasks/v1/generator-errors.log
 tasks1: tasks/v1/lib/Cargo.toml
@@ -1517,12 +1219,6 @@ texttospeech1_beta1: texttospeech/v1beta1/lib/Cargo.toml
 texttospeech1_beta1-cargo: texttospeech1_beta1
 	set -o pipefail; ( cd texttospeech/v1beta1/lib && cargo $(ARGS) ) 2>&1 | tee texttospeech/v1beta1/cargo-errors.log && rm texttospeech/v1beta1/cargo-errors.log
 
-toolresults/v1beta3/lib/Cargo.toml: ../etc/api/toolresults/v1beta3/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< toolresults/v1beta3 2>&1 | tee toolresults/v1beta3/generator-errors.log && rm toolresults/v1beta3/generator-errors.log
-toolresults1_beta3: toolresults/v1beta3/lib/Cargo.toml
-toolresults1_beta3-cargo: toolresults1_beta3
-	set -o pipefail; ( cd toolresults/v1beta3/lib && cargo $(ARGS) ) 2>&1 | tee toolresults/v1beta3/cargo-errors.log && rm toolresults/v1beta3/cargo-errors.log
-
 tpu/v1alpha1/lib/Cargo.toml: ../etc/api/tpu/v1alpha1/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< tpu/v1alpha1 2>&1 | tee tpu/v1alpha1/generator-errors.log && rm tpu/v1alpha1/generator-errors.log
 tpu1_alpha1: tpu/v1alpha1/lib/Cargo.toml
@@ -1534,12 +1230,6 @@ tpu/v1/lib/Cargo.toml: ../etc/api/tpu/v1/spec.json $(MCP)
 tpu1: tpu/v1/lib/Cargo.toml
 tpu1-cargo: tpu1
 	set -o pipefail; ( cd tpu/v1/lib && cargo $(ARGS) ) 2>&1 | tee tpu/v1/cargo-errors.log && rm tpu/v1/cargo-errors.log
-
-translate/v2/lib/Cargo.toml: ../etc/api/translate/v2/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< translate/v2 2>&1 | tee translate/v2/generator-errors.log && rm translate/v2/generator-errors.log
-translate2: translate/v2/lib/Cargo.toml
-translate2-cargo: translate2
-	set -o pipefail; ( cd translate/v2/lib && cargo $(ARGS) ) 2>&1 | tee translate/v2/cargo-errors.log && rm translate/v2/cargo-errors.log
 
 translate/v3beta1/lib/Cargo.toml: ../etc/api/translate/v3beta1/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< translate/v3beta1 2>&1 | tee translate/v3beta1/generator-errors.log && rm translate/v3beta1/generator-errors.log
@@ -1589,24 +1279,6 @@ videointelligence1_beta2: videointelligence/v1beta2/lib/Cargo.toml
 videointelligence1_beta2-cargo: videointelligence1_beta2
 	set -o pipefail; ( cd videointelligence/v1beta2/lib && cargo $(ARGS) ) 2>&1 | tee videointelligence/v1beta2/cargo-errors.log && rm videointelligence/v1beta2/cargo-errors.log
 
-vision/v1p1beta1/lib/Cargo.toml: ../etc/api/vision/v1p1beta1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< vision/v1p1beta1 2>&1 | tee vision/v1p1beta1/generator-errors.log && rm vision/v1p1beta1/generator-errors.log
-vision1_p1beta1: vision/v1p1beta1/lib/Cargo.toml
-vision1_p1beta1-cargo: vision1_p1beta1
-	set -o pipefail; ( cd vision/v1p1beta1/lib && cargo $(ARGS) ) 2>&1 | tee vision/v1p1beta1/cargo-errors.log && rm vision/v1p1beta1/cargo-errors.log
-
-vision/v1p2beta1/lib/Cargo.toml: ../etc/api/vision/v1p2beta1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< vision/v1p2beta1 2>&1 | tee vision/v1p2beta1/generator-errors.log && rm vision/v1p2beta1/generator-errors.log
-vision1_p2beta1: vision/v1p2beta1/lib/Cargo.toml
-vision1_p2beta1-cargo: vision1_p2beta1
-	set -o pipefail; ( cd vision/v1p2beta1/lib && cargo $(ARGS) ) 2>&1 | tee vision/v1p2beta1/cargo-errors.log && rm vision/v1p2beta1/cargo-errors.log
-
-vision/v1/lib/Cargo.toml: ../etc/api/vision/v1/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< vision/v1 2>&1 | tee vision/v1/generator-errors.log && rm vision/v1/generator-errors.log
-vision1: vision/v1/lib/Cargo.toml
-vision1-cargo: vision1
-	set -o pipefail; ( cd vision/v1/lib && cargo $(ARGS) ) 2>&1 | tee vision/v1/cargo-errors.log && rm vision/v1/cargo-errors.log
-
 webfonts/v1/lib/Cargo.toml: ../etc/api/webfonts/v1/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< webfonts/v1 2>&1 | tee webfonts/v1/generator-errors.log && rm webfonts/v1/generator-errors.log
 webfonts1: webfonts/v1/lib/Cargo.toml
@@ -1636,12 +1308,6 @@ websecurityscanner/v1/lib/Cargo.toml: ../etc/api/websecurityscanner/v1/spec.json
 websecurityscanner1: websecurityscanner/v1/lib/Cargo.toml
 websecurityscanner1-cargo: websecurityscanner1
 	set -o pipefail; ( cd websecurityscanner/v1/lib && cargo $(ARGS) ) 2>&1 | tee websecurityscanner/v1/cargo-errors.log && rm websecurityscanner/v1/cargo-errors.log
-
-youtube/v3/lib/Cargo.toml: ../etc/api/youtube/v3/spec.json $(MCP)
-	set -o pipefail; $(MCP) generate $< youtube/v3 2>&1 | tee youtube/v3/generator-errors.log && rm youtube/v3/generator-errors.log
-youtube3: youtube/v3/lib/Cargo.toml
-youtube3-cargo: youtube3
-	set -o pipefail; ( cd youtube/v3/lib && cargo $(ARGS) ) 2>&1 | tee youtube/v3/cargo-errors.log && rm youtube/v3/cargo-errors.log
 
 youtubeAnalytics/v1/lib/Cargo.toml: ../etc/api/youtubeAnalytics/v1/spec.json $(MCP)
 	set -o pipefail; $(MCP) generate $< youtubeAnalytics/v1 2>&1 | tee youtubeAnalytics/v1/generator-errors.log && rm youtubeAnalytics/v1/generator-errors.log
