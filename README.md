@@ -25,7 +25,13 @@ make clear-all-errors
 ```
 
 ```
+make force-update-all-metadata
+```
 
+### Forcefully update the Makefile after a change affecting the mapped index
+
+```
+(cd ../generator && cargo build) && MCP=../generator/target/debug/mcp make update-mapped-index gen/Makefile
 ```
 
 
