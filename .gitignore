@@ -20,5 +20,5 @@ Cargo.lock
 /generator/
 
 # This file can be used to mark errors during generation.
-# Run `make update-mapped-index` if one of these changes.
+# Run `make update-drivers` if one of these changes.
 !generator-errors.log

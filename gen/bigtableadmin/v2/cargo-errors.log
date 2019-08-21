@@ -1,0 +1,120 @@
+    Checking google-bigtableadmin2 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/bigtableadmin/v2/lib)
+error[E0428]: the name `ClusterState` is defined multiple times
+   --> bigtableadmin/v2/lib/src/lib.rs:459:5
+    |
+293 |     pub enum ClusterState {
+    |     --------------------- previous definition of the type `ClusterState` here
+...
+459 |     pub struct ClusterState {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^ `ClusterState` redefined here
+    |
+    = note: `ClusterState` must be defined only once in the type namespace of this module
+
+error[E0574]: expected struct, variant or union type, found enum `ClusterState`
+
+error[E0574]: expected struct, variant or union type, found enum `ClusterState`
+   --> bigtableadmin/v2/lib/src/lib.rs:449:9
+    |
+449 |         Clone,
+    |         ^^^^^ not a struct, variant or union type
+
+error[E0574]: expected struct, variant or union type, found enum `ClusterState`
+   --> bigtableadmin/v2/lib/src/lib.rs:455:9
+    |
+455 |         Default,
+    |         ^^^^^^^ not a struct, variant or union type
+
+error[E0574]: expected struct, variant or union type, found enum `ClusterState`
+   --> bigtableadmin/v2/lib/src/lib.rs:459:16
+    |
+459 |     pub struct ClusterState {
+    |                ^^^^^^^^^^^^ not a struct, variant or union type
+
+error[E0119]: conflicting implementations of trait `std::cmp::PartialEq` for type `schemas::ClusterState`:
+   --> bigtableadmin/v2/lib/src/lib.rs:450:9
+    |
+292 |     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    |                            --------- first implementation here
+...
+450 |         PartialEq,
+    |         ^^^^^^^^^ conflicting implementation for `schemas::ClusterState`
+
+error[E0119]: conflicting implementations of trait `std::cmp::Eq` for type `schemas::ClusterState`:
+   --> bigtableadmin/v2/lib/src/lib.rs:454:9
+    |
+292 |     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    |                                                              -- first implementation here
+...
+454 |         Eq,
+    |         ^^ conflicting implementation for `schemas::ClusterState`
+
+error[E0119]: conflicting implementations of trait `std::cmp::Ord` for type `schemas::ClusterState`:
+   --> bigtableadmin/v2/lib/src/lib.rs:453:9
+    |
+292 |     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    |                                                         --- first implementation here
+...
+453 |         Ord,
+    |         ^^^ conflicting implementation for `schemas::ClusterState`
+
+error[E0119]: conflicting implementations of trait `std::cmp::PartialOrd` for type `schemas::ClusterState`:
+   --> bigtableadmin/v2/lib/src/lib.rs:452:9
+    |
+292 |     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    |                                             ---------- first implementation here
+...
+452 |         PartialOrd,
+    |         ^^^^^^^^^^ conflicting implementation for `schemas::ClusterState`
+
+error[E0119]: conflicting implementations of trait `std::clone::Clone` for type `schemas::ClusterState`:
+   --> bigtableadmin/v2/lib/src/lib.rs:449:9
+    |
+292 |     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    |                     ----- first implementation here
+...
+449 |         Clone,
+    |         ^^^^^ conflicting implementation for `schemas::ClusterState`
+
+error[E0119]: conflicting implementations of trait `std::hash::Hash` for type `schemas::ClusterState`:
+   --> bigtableadmin/v2/lib/src/lib.rs:451:9
+    |
+292 |     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    |                                       ---- first implementation here
+...
+451 |         Hash,
+    |         ^^^^ conflicting implementation for `schemas::ClusterState`
+
+error[E0119]: conflicting implementations of trait `std::fmt::Debug` for type `schemas::ClusterState`:
+   --> bigtableadmin/v2/lib/src/lib.rs:448:9
+    |
+292 |     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    |              ----- first implementation here
+...
+448 |         Debug,
+    |         ^^^^^ conflicting implementation for `schemas::ClusterState`
+
+error[E0119]: conflicting implementations of trait `schemas::_IMPL_SERIALIZE_FOR_AppProfile::_serde::Deserialize<'_>` for type `schemas::ClusterState`:
+   --> bigtableadmin/v2/lib/src/lib.rs:456:9
+    |
+329 |     impl<'de> ::serde::Deserialize<'de> for ClusterState {
+    |     ---------------------------------------------------- first implementation here
+...
+456 |         :: serde :: Deserialize,
+    |         ^^^^^^^^^^^^^^^^^^^^^^^ conflicting implementation for `schemas::ClusterState`
+
+error[E0119]: conflicting implementations of trait `schemas::_IMPL_SERIALIZE_FOR_AppProfile::_serde::Serialize` for type `schemas::ClusterState`:
+   --> bigtableadmin/v2/lib/src/lib.rs:457:9
+    |
+321 |     impl ::serde::Serialize for ClusterState {
+    |     ---------------------------------------- first implementation here
+...
+457 |         :: serde :: Serialize,
+    |         ^^^^^^^^^^^^^^^^^^^^^ conflicting implementation for `schemas::ClusterState`
+
+error: aborting due to 14 previous errors
+
+Some errors have detailed explanations: E0119, E0428.
+For more information about an error, try `rustc --explain E0119`.
+error: Could not compile `google-bigtableadmin2`.
+
+To learn more, run the command again with --verbose.

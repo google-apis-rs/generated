@@ -1,4 +1,5 @@
 MCP ?= ../generator/target/release/mcp
+SHELL = /bin/bash
 
 help:
 	$(info -- Individual Targets ----------------------------------------------------------------)
@@ -18,30 +19,21 @@ help:
 	$(info admin1_directory)
 	$(info admin1_reports)
 	$(info adsense1d4)
-	$(info adsensehost4d1)
 	$(info alertcenter1_beta1)
 	$(info analytics2d4)
-	$(info analytics3)
 	$(info analyticsreporting4)
 	$(info androiddeviceprovisioning1)
 	$(info androidenterprise1)
-	$(info androidmanagement1)
 	$(info androidpublisher1)
 	$(info androidpublisher1d1)
-	$(info androidpublisher2)
-	$(info androidpublisher3)
 	$(info appengine1_alpha)
 	$(info appengine1_beta)
 	$(info appengine1)
 	$(info appsactivity1)
 	$(info appstate1)
-	$(info bigquery2)
-	$(info bigquerydatatransfer1)
 	$(info bigtableadmin1)
-	$(info bigtableadmin2)
 	$(info binaryauthorization1_beta1)
 	$(info blogger2)
-	$(info blogger3)
 	$(info books1)
 	$(info calendar3)
 	$(info chat1)
@@ -253,10 +245,10 @@ help:
 	$(info cargo-all           | pass args with ARGS="check" for example)
 	$(info --------------------------------------------------------------------------------------)
 
-gen-all: abusiveexperiencereport1 acceleratedmobilepageurl1 accessapproval1_beta1 accesscontextmanager1_beta accesscontextmanager1 adexchangebuyer1d2 adexchangebuyer1d3 adexchangebuyer1d4 adexchangebuyer2_beta1 adexperiencereport1 admin1_datatransfer admin1_directory admin1_reports adsense1d4 adsensehost4d1 alertcenter1_beta1 analytics2d4 analytics3 analyticsreporting4 androiddeviceprovisioning1 androidenterprise1 androidmanagement1 androidpublisher1 androidpublisher1d1 androidpublisher2 androidpublisher3 appengine1_alpha appengine1_beta appengine1 appsactivity1 appstate1 bigquery2 bigquerydatatransfer1 bigtableadmin1 bigtableadmin2 binaryauthorization1_beta1 blogger2 blogger3 books1 calendar3 chat1 civicinfo2 classroom1 cloudasset1 cloudasset1_beta1 cloudbilling1 cloudbuild1_alpha1 cloudbuild1 clouddebugger2 clouderrorreporting1_beta1 cloudfunctions1 cloudfunctions1_beta2 cloudidentity1 cloudidentity1_beta1 cloudiot1 cloudkms1 cloudprivatecatalog1_beta1 cloudprivatecatalogproducer1_beta1 cloudprofiler2 cloudresourcemanager1 cloudresourcemanager1_beta1 cloudresourcemanager2 cloudresourcemanager2_beta1 cloudscheduler1 cloudscheduler1_beta1 cloudsearch1 cloudshell1_alpha1 cloudshell1 cloudtasks2 cloudtasks2_beta2 cloudtasks2_beta3 cloudtrace1 cloudtrace2 commentanalyzer1_alpha1 composer1 composer1_beta1 computebeta compute1 container1 container1_beta1 containeranalysis1_alpha1 containeranalysis1_beta1 content2 content2d1 customsearch1 dataflow1_b3 datafusion1_beta1 dataproc1 dataproc1_beta2 datastore1 datastore1_beta1 datastore1_beta3 deploymentmanageralpha deploymentmanager2_beta deploymentmanager2 dfareporting3d1 dfareporting3d2 dfareporting3d3 dialogflow2 dialogflow2_beta1 digitalassetlinks1 discovery1 dlp2 dns1 dns1_beta2 dns2_beta1 docs1 doubleclickbidmanager1 doubleclicksearch2 drive2 drive3 driveactivity2 factchecktools1_alpha1 fcm1 file1 file1_beta1 firebase1_beta1 firebasedynamiclinks1 firebasehosting1_beta1 firebaserules1 firestore1 firestore1_beta1 firestore1_beta2 fitness1 fusiontables1 fusiontables2 games1 gamesConfiguration1_configuration gamesManagement1_management genomics1_alpha2 genomics2_alpha1 genomics1 gmail1 groupsmigration1 groupssettings1 healthcare1_alpha2 healthcare1_beta1 iam1 iamcredentials1 iap1 iap1_beta1 identitytoolkit3 indexing3 jobs3_p1beta1 jobs2 jobs3 kgsearch1 language1 language1_beta1 language1_beta2 libraryagent1 licensing1 logging2 manufacturers1 mirror1 ml1 monitoring3 oauth1 oauth2 oslogin1_alpha oslogin1_beta oslogin1 pagespeedonline1 pagespeedonline2 pagespeedonline4 pagespeedonline5 people1 playcustomapp1 plus1 plusDomains1 poly1 proximitybeacon1_beta1 pubsub1_beta1a pubsub1 pubsub1_beta2 redis1 redis1_beta1 remotebuildexecution1_alpha remotebuildexecution1 remotebuildexecution2 replicapool1_beta1 reseller1 run1_alpha1 run1 runtimeconfig1 runtimeconfig1_beta1 script1 searchconsole1 securitycenter1_p1alpha1 securitycenter1 securitycenter1_beta1 servicebroker1_alpha1 servicebroker1 servicebroker1_beta1 serviceconsumermanagement1 servicecontrol1 servicemanagement1 servicenetworking1_beta servicenetworking1 serviceusage1 serviceusage1_beta1 sheets4 siteVerification1 slides1 sourcerepo1 spanner1 speech1_p1beta1 speech1 sqladmin1_beta4 storage1 storage1_beta1 storage1_beta2 storagetransfer1 streetviewpublish1 surveys2 tagmanager2 tasks1 testing1 texttospeech1 texttospeech1_beta1 toolresults1_beta3 tpu1_alpha1 tpu1 translate2 translate3_beta1 urlshortener1 vault1 videointelligence1_p1beta1 videointelligence1_p2beta1 videointelligence1_p3beta1 videointelligence1 videointelligence1_beta2 vision1_p1beta1 vision1_p2beta1 vision1 webfonts1 webmasters3 websecurityscanner1_alpha websecurityscanner1_beta websecurityscanner1 youtube3 youtubeAnalytics1 youtubeAnalytics2 youtubereporting1 
+gen-all: abusiveexperiencereport1 acceleratedmobilepageurl1 accessapproval1_beta1 accesscontextmanager1_beta accesscontextmanager1 adexchangebuyer1d2 adexchangebuyer1d3 adexchangebuyer1d4 adexchangebuyer2_beta1 adexperiencereport1 admin1_datatransfer admin1_directory admin1_reports adsense1d4 alertcenter1_beta1 analytics2d4 analyticsreporting4 androiddeviceprovisioning1 androidenterprise1 androidpublisher1 androidpublisher1d1 appengine1_alpha appengine1_beta appengine1 appsactivity1 appstate1 bigtableadmin1 binaryauthorization1_beta1 blogger2 books1 calendar3 chat1 civicinfo2 classroom1 cloudasset1 cloudasset1_beta1 cloudbilling1 cloudbuild1_alpha1 cloudbuild1 clouddebugger2 clouderrorreporting1_beta1 cloudfunctions1 cloudfunctions1_beta2 cloudidentity1 cloudidentity1_beta1 cloudiot1 cloudkms1 cloudprivatecatalog1_beta1 cloudprivatecatalogproducer1_beta1 cloudprofiler2 cloudresourcemanager1 cloudresourcemanager1_beta1 cloudresourcemanager2 cloudresourcemanager2_beta1 cloudscheduler1 cloudscheduler1_beta1 cloudsearch1 cloudshell1_alpha1 cloudshell1 cloudtasks2 cloudtasks2_beta2 cloudtasks2_beta3 cloudtrace1 cloudtrace2 commentanalyzer1_alpha1 composer1 composer1_beta1 computebeta compute1 container1 container1_beta1 containeranalysis1_alpha1 containeranalysis1_beta1 content2 content2d1 customsearch1 dataflow1_b3 datafusion1_beta1 dataproc1 dataproc1_beta2 datastore1 datastore1_beta1 datastore1_beta3 deploymentmanageralpha deploymentmanager2_beta deploymentmanager2 dfareporting3d1 dfareporting3d2 dfareporting3d3 dialogflow2 dialogflow2_beta1 digitalassetlinks1 discovery1 dlp2 dns1 dns1_beta2 dns2_beta1 docs1 doubleclickbidmanager1 doubleclicksearch2 drive2 drive3 driveactivity2 factchecktools1_alpha1 fcm1 file1 file1_beta1 firebase1_beta1 firebasedynamiclinks1 firebasehosting1_beta1 firebaserules1 firestore1 firestore1_beta1 firestore1_beta2 fitness1 fusiontables1 fusiontables2 games1 gamesConfiguration1_configuration gamesManagement1_management genomics1_alpha2 genomics2_alpha1 genomics1 gmail1 groupsmigration1 groupssettings1 healthcare1_alpha2 healthcare1_beta1 iam1 iamcredentials1 iap1 iap1_beta1 identitytoolkit3 indexing3 jobs3_p1beta1 jobs2 jobs3 kgsearch1 language1 language1_beta1 language1_beta2 libraryagent1 licensing1 logging2 manufacturers1 mirror1 ml1 monitoring3 oauth1 oauth2 oslogin1_alpha oslogin1_beta oslogin1 pagespeedonline1 pagespeedonline2 pagespeedonline4 pagespeedonline5 people1 playcustomapp1 plus1 plusDomains1 poly1 proximitybeacon1_beta1 pubsub1_beta1a pubsub1 pubsub1_beta2 redis1 redis1_beta1 remotebuildexecution1_alpha remotebuildexecution1 remotebuildexecution2 replicapool1_beta1 reseller1 run1_alpha1 run1 runtimeconfig1 runtimeconfig1_beta1 script1 searchconsole1 securitycenter1_p1alpha1 securitycenter1 securitycenter1_beta1 servicebroker1_alpha1 servicebroker1 servicebroker1_beta1 serviceconsumermanagement1 servicecontrol1 servicemanagement1 servicenetworking1_beta servicenetworking1 serviceusage1 serviceusage1_beta1 sheets4 siteVerification1 slides1 sourcerepo1 spanner1 speech1_p1beta1 speech1 sqladmin1_beta4 storage1 storage1_beta1 storage1_beta2 storagetransfer1 streetviewpublish1 surveys2 tagmanager2 tasks1 testing1 texttospeech1 texttospeech1_beta1 toolresults1_beta3 tpu1_alpha1 tpu1 translate2 translate3_beta1 urlshortener1 vault1 videointelligence1_p1beta1 videointelligence1_p2beta1 videointelligence1_p3beta1 videointelligence1 videointelligence1_beta2 vision1_p1beta1 vision1_p2beta1 vision1 webfonts1 webmasters3 websecurityscanner1_alpha websecurityscanner1_beta websecurityscanner1 youtube3 youtubeAnalytics1 youtubeAnalytics2 youtubereporting1 
 	@echo "Consider running the following line to ignore crates with errors"
-	@echo $(MAKE) -C .. update-mapped-index
-cargo-all: abusiveexperiencereport1-cargo acceleratedmobilepageurl1-cargo accessapproval1_beta1-cargo accesscontextmanager1_beta-cargo accesscontextmanager1-cargo adexchangebuyer1d2-cargo adexchangebuyer1d3-cargo adexchangebuyer1d4-cargo adexchangebuyer2_beta1-cargo adexperiencereport1-cargo admin1_datatransfer-cargo admin1_directory-cargo admin1_reports-cargo adsense1d4-cargo adsensehost4d1-cargo alertcenter1_beta1-cargo analytics2d4-cargo analytics3-cargo analyticsreporting4-cargo androiddeviceprovisioning1-cargo androidenterprise1-cargo androidmanagement1-cargo androidpublisher1-cargo androidpublisher1d1-cargo androidpublisher2-cargo androidpublisher3-cargo appengine1_alpha-cargo appengine1_beta-cargo appengine1-cargo appsactivity1-cargo appstate1-cargo bigquery2-cargo bigquerydatatransfer1-cargo bigtableadmin1-cargo bigtableadmin2-cargo binaryauthorization1_beta1-cargo blogger2-cargo blogger3-cargo books1-cargo calendar3-cargo chat1-cargo civicinfo2-cargo classroom1-cargo cloudasset1-cargo cloudasset1_beta1-cargo cloudbilling1-cargo cloudbuild1_alpha1-cargo cloudbuild1-cargo clouddebugger2-cargo clouderrorreporting1_beta1-cargo cloudfunctions1-cargo cloudfunctions1_beta2-cargo cloudidentity1-cargo cloudidentity1_beta1-cargo cloudiot1-cargo cloudkms1-cargo cloudprivatecatalog1_beta1-cargo cloudprivatecatalogproducer1_beta1-cargo cloudprofiler2-cargo cloudresourcemanager1-cargo cloudresourcemanager1_beta1-cargo cloudresourcemanager2-cargo cloudresourcemanager2_beta1-cargo cloudscheduler1-cargo cloudscheduler1_beta1-cargo cloudsearch1-cargo cloudshell1_alpha1-cargo cloudshell1-cargo cloudtasks2-cargo cloudtasks2_beta2-cargo cloudtasks2_beta3-cargo cloudtrace1-cargo cloudtrace2-cargo commentanalyzer1_alpha1-cargo composer1-cargo composer1_beta1-cargo computebeta-cargo compute1-cargo container1-cargo container1_beta1-cargo containeranalysis1_alpha1-cargo containeranalysis1_beta1-cargo content2-cargo content2d1-cargo customsearch1-cargo dataflow1_b3-cargo datafusion1_beta1-cargo dataproc1-cargo dataproc1_beta2-cargo datastore1-cargo datastore1_beta1-cargo datastore1_beta3-cargo deploymentmanageralpha-cargo deploymentmanager2_beta-cargo deploymentmanager2-cargo dfareporting3d1-cargo dfareporting3d2-cargo dfareporting3d3-cargo dialogflow2-cargo dialogflow2_beta1-cargo digitalassetlinks1-cargo discovery1-cargo dlp2-cargo dns1-cargo dns1_beta2-cargo dns2_beta1-cargo docs1-cargo doubleclickbidmanager1-cargo doubleclicksearch2-cargo drive2-cargo drive3-cargo driveactivity2-cargo factchecktools1_alpha1-cargo fcm1-cargo file1-cargo file1_beta1-cargo firebase1_beta1-cargo firebasedynamiclinks1-cargo firebasehosting1_beta1-cargo firebaserules1-cargo firestore1-cargo firestore1_beta1-cargo firestore1_beta2-cargo fitness1-cargo fusiontables1-cargo fusiontables2-cargo games1-cargo gamesConfiguration1_configuration-cargo gamesManagement1_management-cargo genomics1_alpha2-cargo genomics2_alpha1-cargo genomics1-cargo gmail1-cargo groupsmigration1-cargo groupssettings1-cargo healthcare1_alpha2-cargo healthcare1_beta1-cargo iam1-cargo iamcredentials1-cargo iap1-cargo iap1_beta1-cargo identitytoolkit3-cargo indexing3-cargo jobs3_p1beta1-cargo jobs2-cargo jobs3-cargo kgsearch1-cargo language1-cargo language1_beta1-cargo language1_beta2-cargo libraryagent1-cargo licensing1-cargo logging2-cargo manufacturers1-cargo mirror1-cargo ml1-cargo monitoring3-cargo oauth1-cargo oauth2-cargo oslogin1_alpha-cargo oslogin1_beta-cargo oslogin1-cargo pagespeedonline1-cargo pagespeedonline2-cargo pagespeedonline4-cargo pagespeedonline5-cargo people1-cargo playcustomapp1-cargo plus1-cargo plusDomains1-cargo poly1-cargo proximitybeacon1_beta1-cargo pubsub1_beta1a-cargo pubsub1-cargo pubsub1_beta2-cargo redis1-cargo redis1_beta1-cargo remotebuildexecution1_alpha-cargo remotebuildexecution1-cargo remotebuildexecution2-cargo replicapool1_beta1-cargo reseller1-cargo run1_alpha1-cargo run1-cargo runtimeconfig1-cargo runtimeconfig1_beta1-cargo script1-cargo searchconsole1-cargo securitycenter1_p1alpha1-cargo securitycenter1-cargo securitycenter1_beta1-cargo servicebroker1_alpha1-cargo servicebroker1-cargo servicebroker1_beta1-cargo serviceconsumermanagement1-cargo servicecontrol1-cargo servicemanagement1-cargo servicenetworking1_beta-cargo servicenetworking1-cargo serviceusage1-cargo serviceusage1_beta1-cargo sheets4-cargo siteVerification1-cargo slides1-cargo sourcerepo1-cargo spanner1-cargo speech1_p1beta1-cargo speech1-cargo sqladmin1_beta4-cargo storage1-cargo storage1_beta1-cargo storage1_beta2-cargo storagetransfer1-cargo streetviewpublish1-cargo surveys2-cargo tagmanager2-cargo tasks1-cargo testing1-cargo texttospeech1-cargo texttospeech1_beta1-cargo toolresults1_beta3-cargo tpu1_alpha1-cargo tpu1-cargo translate2-cargo translate3_beta1-cargo urlshortener1-cargo vault1-cargo videointelligence1_p1beta1-cargo videointelligence1_p2beta1-cargo videointelligence1_p3beta1-cargo videointelligence1-cargo videointelligence1_beta2-cargo vision1_p1beta1-cargo vision1_p2beta1-cargo vision1-cargo webfonts1-cargo webmasters3-cargo websecurityscanner1_alpha-cargo websecurityscanner1_beta-cargo websecurityscanner1-cargo youtube3-cargo youtubeAnalytics1-cargo youtubeAnalytics2-cargo youtubereporting1-cargo 
+	@echo $(MAKE) -C .. update-drivers
+cargo-all: abusiveexperiencereport1-cargo acceleratedmobilepageurl1-cargo accessapproval1_beta1-cargo accesscontextmanager1_beta-cargo accesscontextmanager1-cargo adexchangebuyer1d2-cargo adexchangebuyer1d3-cargo adexchangebuyer1d4-cargo adexchangebuyer2_beta1-cargo adexperiencereport1-cargo admin1_datatransfer-cargo admin1_directory-cargo admin1_reports-cargo adsense1d4-cargo alertcenter1_beta1-cargo analytics2d4-cargo analyticsreporting4-cargo androiddeviceprovisioning1-cargo androidenterprise1-cargo androidpublisher1-cargo androidpublisher1d1-cargo appengine1_alpha-cargo appengine1_beta-cargo appengine1-cargo appsactivity1-cargo appstate1-cargo bigtableadmin1-cargo binaryauthorization1_beta1-cargo blogger2-cargo books1-cargo calendar3-cargo chat1-cargo civicinfo2-cargo classroom1-cargo cloudasset1-cargo cloudasset1_beta1-cargo cloudbilling1-cargo cloudbuild1_alpha1-cargo cloudbuild1-cargo clouddebugger2-cargo clouderrorreporting1_beta1-cargo cloudfunctions1-cargo cloudfunctions1_beta2-cargo cloudidentity1-cargo cloudidentity1_beta1-cargo cloudiot1-cargo cloudkms1-cargo cloudprivatecatalog1_beta1-cargo cloudprivatecatalogproducer1_beta1-cargo cloudprofiler2-cargo cloudresourcemanager1-cargo cloudresourcemanager1_beta1-cargo cloudresourcemanager2-cargo cloudresourcemanager2_beta1-cargo cloudscheduler1-cargo cloudscheduler1_beta1-cargo cloudsearch1-cargo cloudshell1_alpha1-cargo cloudshell1-cargo cloudtasks2-cargo cloudtasks2_beta2-cargo cloudtasks2_beta3-cargo cloudtrace1-cargo cloudtrace2-cargo commentanalyzer1_alpha1-cargo composer1-cargo composer1_beta1-cargo computebeta-cargo compute1-cargo container1-cargo container1_beta1-cargo containeranalysis1_alpha1-cargo containeranalysis1_beta1-cargo content2-cargo content2d1-cargo customsearch1-cargo dataflow1_b3-cargo datafusion1_beta1-cargo dataproc1-cargo dataproc1_beta2-cargo datastore1-cargo datastore1_beta1-cargo datastore1_beta3-cargo deploymentmanageralpha-cargo deploymentmanager2_beta-cargo deploymentmanager2-cargo dfareporting3d1-cargo dfareporting3d2-cargo dfareporting3d3-cargo dialogflow2-cargo dialogflow2_beta1-cargo digitalassetlinks1-cargo discovery1-cargo dlp2-cargo dns1-cargo dns1_beta2-cargo dns2_beta1-cargo docs1-cargo doubleclickbidmanager1-cargo doubleclicksearch2-cargo drive2-cargo drive3-cargo driveactivity2-cargo factchecktools1_alpha1-cargo fcm1-cargo file1-cargo file1_beta1-cargo firebase1_beta1-cargo firebasedynamiclinks1-cargo firebasehosting1_beta1-cargo firebaserules1-cargo firestore1-cargo firestore1_beta1-cargo firestore1_beta2-cargo fitness1-cargo fusiontables1-cargo fusiontables2-cargo games1-cargo gamesConfiguration1_configuration-cargo gamesManagement1_management-cargo genomics1_alpha2-cargo genomics2_alpha1-cargo genomics1-cargo gmail1-cargo groupsmigration1-cargo groupssettings1-cargo healthcare1_alpha2-cargo healthcare1_beta1-cargo iam1-cargo iamcredentials1-cargo iap1-cargo iap1_beta1-cargo identitytoolkit3-cargo indexing3-cargo jobs3_p1beta1-cargo jobs2-cargo jobs3-cargo kgsearch1-cargo language1-cargo language1_beta1-cargo language1_beta2-cargo libraryagent1-cargo licensing1-cargo logging2-cargo manufacturers1-cargo mirror1-cargo ml1-cargo monitoring3-cargo oauth1-cargo oauth2-cargo oslogin1_alpha-cargo oslogin1_beta-cargo oslogin1-cargo pagespeedonline1-cargo pagespeedonline2-cargo pagespeedonline4-cargo pagespeedonline5-cargo people1-cargo playcustomapp1-cargo plus1-cargo plusDomains1-cargo poly1-cargo proximitybeacon1_beta1-cargo pubsub1_beta1a-cargo pubsub1-cargo pubsub1_beta2-cargo redis1-cargo redis1_beta1-cargo remotebuildexecution1_alpha-cargo remotebuildexecution1-cargo remotebuildexecution2-cargo replicapool1_beta1-cargo reseller1-cargo run1_alpha1-cargo run1-cargo runtimeconfig1-cargo runtimeconfig1_beta1-cargo script1-cargo searchconsole1-cargo securitycenter1_p1alpha1-cargo securitycenter1-cargo securitycenter1_beta1-cargo servicebroker1_alpha1-cargo servicebroker1-cargo servicebroker1_beta1-cargo serviceconsumermanagement1-cargo servicecontrol1-cargo servicemanagement1-cargo servicenetworking1_beta-cargo servicenetworking1-cargo serviceusage1-cargo serviceusage1_beta1-cargo sheets4-cargo siteVerification1-cargo slides1-cargo sourcerepo1-cargo spanner1-cargo speech1_p1beta1-cargo speech1-cargo sqladmin1_beta4-cargo storage1-cargo storage1_beta1-cargo storage1_beta2-cargo storagetransfer1-cargo streetviewpublish1-cargo surveys2-cargo tagmanager2-cargo tasks1-cargo testing1-cargo texttospeech1-cargo texttospeech1_beta1-cargo toolresults1_beta3-cargo tpu1_alpha1-cargo tpu1-cargo translate2-cargo translate3_beta1-cargo urlshortener1-cargo vault1-cargo videointelligence1_p1beta1-cargo videointelligence1_p2beta1-cargo videointelligence1_p3beta1-cargo videointelligence1-cargo videointelligence1_beta2-cargo vision1_p1beta1-cargo vision1_p2beta1-cargo vision1-cargo webfonts1-cargo webmasters3-cargo websecurityscanner1_alpha-cargo websecurityscanner1_beta-cargo websecurityscanner1-cargo youtube3-cargo youtubeAnalytics1-cargo youtubeAnalytics2-cargo youtubereporting1-cargo 
 
 
 abusiveexperiencereport/v1/lib/Cargo.toml: ../etc/api/abusiveexperiencereport/v1/spec.json $(MCP)
@@ -343,12 +335,6 @@ adsense1d4: adsense/v1.4/lib/Cargo.toml
 adsense1d4-cargo: adsense1d4
 	( cd adsense/v1.4/lib && cargo $(ARGS) ) 2> adsense/v1.4/cargo-errors.log && rm adsense/v1.4/cargo-errors.log
 
-adsensehost/v4.1/lib/Cargo.toml: ../etc/api/adsensehost/v4.1/spec.json $(MCP)
-	$(MCP) generate $< adsensehost/v4.1 2>adsensehost/v4.1/generator-errors.log && rm adsensehost/v4.1/generator-errors.log
-adsensehost4d1: adsensehost/v4.1/lib/Cargo.toml
-adsensehost4d1-cargo: adsensehost4d1
-	( cd adsensehost/v4.1/lib && cargo $(ARGS) ) 2> adsensehost/v4.1/cargo-errors.log && rm adsensehost/v4.1/cargo-errors.log
-
 alertcenter/v1beta1/lib/Cargo.toml: ../etc/api/alertcenter/v1beta1/spec.json $(MCP)
 	$(MCP) generate $< alertcenter/v1beta1 2>alertcenter/v1beta1/generator-errors.log && rm alertcenter/v1beta1/generator-errors.log
 alertcenter1_beta1: alertcenter/v1beta1/lib/Cargo.toml
@@ -360,12 +346,6 @@ analytics/v2.4/lib/Cargo.toml: ../etc/api/analytics/v2.4/spec.json $(MCP)
 analytics2d4: analytics/v2.4/lib/Cargo.toml
 analytics2d4-cargo: analytics2d4
 	( cd analytics/v2.4/lib && cargo $(ARGS) ) 2> analytics/v2.4/cargo-errors.log && rm analytics/v2.4/cargo-errors.log
-
-analytics/v3/lib/Cargo.toml: ../etc/api/analytics/v3/spec.json $(MCP)
-	$(MCP) generate $< analytics/v3 2>analytics/v3/generator-errors.log && rm analytics/v3/generator-errors.log
-analytics3: analytics/v3/lib/Cargo.toml
-analytics3-cargo: analytics3
-	( cd analytics/v3/lib && cargo $(ARGS) ) 2> analytics/v3/cargo-errors.log && rm analytics/v3/cargo-errors.log
 
 analyticsreporting/v4/lib/Cargo.toml: ../etc/api/analyticsreporting/v4/spec.json $(MCP)
 	$(MCP) generate $< analyticsreporting/v4 2>analyticsreporting/v4/generator-errors.log && rm analyticsreporting/v4/generator-errors.log
@@ -385,12 +365,6 @@ androidenterprise1: androidenterprise/v1/lib/Cargo.toml
 androidenterprise1-cargo: androidenterprise1
 	( cd androidenterprise/v1/lib && cargo $(ARGS) ) 2> androidenterprise/v1/cargo-errors.log && rm androidenterprise/v1/cargo-errors.log
 
-androidmanagement/v1/lib/Cargo.toml: ../etc/api/androidmanagement/v1/spec.json $(MCP)
-	$(MCP) generate $< androidmanagement/v1 2>androidmanagement/v1/generator-errors.log && rm androidmanagement/v1/generator-errors.log
-androidmanagement1: androidmanagement/v1/lib/Cargo.toml
-androidmanagement1-cargo: androidmanagement1
-	( cd androidmanagement/v1/lib && cargo $(ARGS) ) 2> androidmanagement/v1/cargo-errors.log && rm androidmanagement/v1/cargo-errors.log
-
 androidpublisher/v1/lib/Cargo.toml: ../etc/api/androidpublisher/v1/spec.json $(MCP)
 	$(MCP) generate $< androidpublisher/v1 2>androidpublisher/v1/generator-errors.log && rm androidpublisher/v1/generator-errors.log
 androidpublisher1: androidpublisher/v1/lib/Cargo.toml
@@ -402,18 +376,6 @@ androidpublisher/v1.1/lib/Cargo.toml: ../etc/api/androidpublisher/v1.1/spec.json
 androidpublisher1d1: androidpublisher/v1.1/lib/Cargo.toml
 androidpublisher1d1-cargo: androidpublisher1d1
 	( cd androidpublisher/v1.1/lib && cargo $(ARGS) ) 2> androidpublisher/v1.1/cargo-errors.log && rm androidpublisher/v1.1/cargo-errors.log
-
-androidpublisher/v2/lib/Cargo.toml: ../etc/api/androidpublisher/v2/spec.json $(MCP)
-	$(MCP) generate $< androidpublisher/v2 2>androidpublisher/v2/generator-errors.log && rm androidpublisher/v2/generator-errors.log
-androidpublisher2: androidpublisher/v2/lib/Cargo.toml
-androidpublisher2-cargo: androidpublisher2
-	( cd androidpublisher/v2/lib && cargo $(ARGS) ) 2> androidpublisher/v2/cargo-errors.log && rm androidpublisher/v2/cargo-errors.log
-
-androidpublisher/v3/lib/Cargo.toml: ../etc/api/androidpublisher/v3/spec.json $(MCP)
-	$(MCP) generate $< androidpublisher/v3 2>androidpublisher/v3/generator-errors.log && rm androidpublisher/v3/generator-errors.log
-androidpublisher3: androidpublisher/v3/lib/Cargo.toml
-androidpublisher3-cargo: androidpublisher3
-	( cd androidpublisher/v3/lib && cargo $(ARGS) ) 2> androidpublisher/v3/cargo-errors.log && rm androidpublisher/v3/cargo-errors.log
 
 appengine/v1alpha/lib/Cargo.toml: ../etc/api/appengine/v1alpha/spec.json $(MCP)
 	$(MCP) generate $< appengine/v1alpha 2>appengine/v1alpha/generator-errors.log && rm appengine/v1alpha/generator-errors.log
@@ -445,29 +407,11 @@ appstate1: appstate/v1/lib/Cargo.toml
 appstate1-cargo: appstate1
 	( cd appstate/v1/lib && cargo $(ARGS) ) 2> appstate/v1/cargo-errors.log && rm appstate/v1/cargo-errors.log
 
-bigquery/v2/lib/Cargo.toml: ../etc/api/bigquery/v2/spec.json $(MCP)
-	$(MCP) generate $< bigquery/v2 2>bigquery/v2/generator-errors.log && rm bigquery/v2/generator-errors.log
-bigquery2: bigquery/v2/lib/Cargo.toml
-bigquery2-cargo: bigquery2
-	( cd bigquery/v2/lib && cargo $(ARGS) ) 2> bigquery/v2/cargo-errors.log && rm bigquery/v2/cargo-errors.log
-
-bigquerydatatransfer/v1/lib/Cargo.toml: ../etc/api/bigquerydatatransfer/v1/spec.json $(MCP)
-	$(MCP) generate $< bigquerydatatransfer/v1 2>bigquerydatatransfer/v1/generator-errors.log && rm bigquerydatatransfer/v1/generator-errors.log
-bigquerydatatransfer1: bigquerydatatransfer/v1/lib/Cargo.toml
-bigquerydatatransfer1-cargo: bigquerydatatransfer1
-	( cd bigquerydatatransfer/v1/lib && cargo $(ARGS) ) 2> bigquerydatatransfer/v1/cargo-errors.log && rm bigquerydatatransfer/v1/cargo-errors.log
-
 bigtableadmin/v1/lib/Cargo.toml: ../etc/api/bigtableadmin/v1/spec.json $(MCP)
 	$(MCP) generate $< bigtableadmin/v1 2>bigtableadmin/v1/generator-errors.log && rm bigtableadmin/v1/generator-errors.log
 bigtableadmin1: bigtableadmin/v1/lib/Cargo.toml
 bigtableadmin1-cargo: bigtableadmin1
 	( cd bigtableadmin/v1/lib && cargo $(ARGS) ) 2> bigtableadmin/v1/cargo-errors.log && rm bigtableadmin/v1/cargo-errors.log
-
-bigtableadmin/v2/lib/Cargo.toml: ../etc/api/bigtableadmin/v2/spec.json $(MCP)
-	$(MCP) generate $< bigtableadmin/v2 2>bigtableadmin/v2/generator-errors.log && rm bigtableadmin/v2/generator-errors.log
-bigtableadmin2: bigtableadmin/v2/lib/Cargo.toml
-bigtableadmin2-cargo: bigtableadmin2
-	( cd bigtableadmin/v2/lib && cargo $(ARGS) ) 2> bigtableadmin/v2/cargo-errors.log && rm bigtableadmin/v2/cargo-errors.log
 
 binaryauthorization/v1beta1/lib/Cargo.toml: ../etc/api/binaryauthorization/v1beta1/spec.json $(MCP)
 	$(MCP) generate $< binaryauthorization/v1beta1 2>binaryauthorization/v1beta1/generator-errors.log && rm binaryauthorization/v1beta1/generator-errors.log
@@ -480,12 +424,6 @@ blogger/v2/lib/Cargo.toml: ../etc/api/blogger/v2/spec.json $(MCP)
 blogger2: blogger/v2/lib/Cargo.toml
 blogger2-cargo: blogger2
 	( cd blogger/v2/lib && cargo $(ARGS) ) 2> blogger/v2/cargo-errors.log && rm blogger/v2/cargo-errors.log
-
-blogger/v3/lib/Cargo.toml: ../etc/api/blogger/v3/spec.json $(MCP)
-	$(MCP) generate $< blogger/v3 2>blogger/v3/generator-errors.log && rm blogger/v3/generator-errors.log
-blogger3: blogger/v3/lib/Cargo.toml
-blogger3-cargo: blogger3
-	( cd blogger/v3/lib && cargo $(ARGS) ) 2> blogger/v3/cargo-errors.log && rm blogger/v3/cargo-errors.log
 
 books/v1/lib/Cargo.toml: ../etc/api/books/v1/spec.json $(MCP)
 	$(MCP) generate $< books/v1 2>books/v1/generator-errors.log && rm books/v1/generator-errors.log

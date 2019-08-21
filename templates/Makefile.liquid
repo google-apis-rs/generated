@@ -1,4 +1,5 @@
 MCP ?= ../generator/target/release/mcp
+SHELL = /bin/bash
 
 help:
 	$(info -- Individual Targets ----------------------------------------------------------------)
@@ -14,7 +15,7 @@ help:
 
 gen-all: {% for item in api -%}{{item.make_target}} {% endfor %}
 	@echo "Consider running the following line to ignore crates with errors"
-	@echo $(MAKE) -C .. update-mapped-index
+	@echo $(MAKE) -C .. update-drivers
 cargo-all: {% for item in api -%}{{item.make_target}}-cargo {% endfor %}
 
 {% for item in api %}

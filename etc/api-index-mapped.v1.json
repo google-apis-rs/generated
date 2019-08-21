@@ -175,18 +175,6 @@
       "rest_url": "https://www.googleapis.com/discovery/v1/apis/adsense/v1.4/rest"
     },
     {
-      "name": "adsensehost",
-      "id": "adsensehost:v4.1",
-      "lib_cargo_file": "adsensehost/v4.1/lib/Cargo.toml",
-      "gen_error_file": "adsensehost/v4.1/generator-errors.log",
-      "cargo_error_file": "adsensehost/v4.1/cargo-errors.log",
-      "gen_dir": "adsensehost/v4.1",
-      "spec_file": "adsensehost/v4.1/spec.json",
-      "crate_name": "google-adsensehost4d1",
-      "make_target": "adsensehost4d1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/adsensehost/v4.1/rest"
-    },
-    {
       "name": "alertcenter",
       "id": "alertcenter:v1beta1",
       "lib_cargo_file": "alertcenter/v1beta1/lib/Cargo.toml",
@@ -209,18 +197,6 @@
       "crate_name": "google-analytics2d4",
       "make_target": "analytics2d4",
       "rest_url": "https://www.googleapis.com/discovery/v1/apis/analytics/v2.4/rest"
-    },
-    {
-      "name": "analytics",
-      "id": "analytics:v3",
-      "lib_cargo_file": "analytics/v3/lib/Cargo.toml",
-      "gen_error_file": "analytics/v3/generator-errors.log",
-      "cargo_error_file": "analytics/v3/cargo-errors.log",
-      "gen_dir": "analytics/v3",
-      "spec_file": "analytics/v3/spec.json",
-      "crate_name": "google-analytics3",
-      "make_target": "analytics3",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/analytics/v3/rest"
     },
     {
       "name": "analyticsreporting",
@@ -259,18 +235,6 @@
       "rest_url": "https://www.googleapis.com/discovery/v1/apis/androidenterprise/v1/rest"
     },
     {
-      "name": "androidmanagement",
-      "id": "androidmanagement:v1",
-      "lib_cargo_file": "androidmanagement/v1/lib/Cargo.toml",
-      "gen_error_file": "androidmanagement/v1/generator-errors.log",
-      "cargo_error_file": "androidmanagement/v1/cargo-errors.log",
-      "gen_dir": "androidmanagement/v1",
-      "spec_file": "androidmanagement/v1/spec.json",
-      "crate_name": "google-androidmanagement1",
-      "make_target": "androidmanagement1",
-      "rest_url": "https://androidmanagement.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
       "name": "androidpublisher",
       "id": "androidpublisher:v1",
       "lib_cargo_file": "androidpublisher/v1/lib/Cargo.toml",
@@ -293,30 +257,6 @@
       "crate_name": "google-androidpublisher1d1",
       "make_target": "androidpublisher1d1",
       "rest_url": "https://www.googleapis.com/discovery/v1/apis/androidpublisher/v1.1/rest"
-    },
-    {
-      "name": "androidpublisher",
-      "id": "androidpublisher:v2",
-      "lib_cargo_file": "androidpublisher/v2/lib/Cargo.toml",
-      "gen_error_file": "androidpublisher/v2/generator-errors.log",
-      "cargo_error_file": "androidpublisher/v2/cargo-errors.log",
-      "gen_dir": "androidpublisher/v2",
-      "spec_file": "androidpublisher/v2/spec.json",
-      "crate_name": "google-androidpublisher2",
-      "make_target": "androidpublisher2",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/androidpublisher/v2/rest"
-    },
-    {
-      "name": "androidpublisher",
-      "id": "androidpublisher:v3",
-      "lib_cargo_file": "androidpublisher/v3/lib/Cargo.toml",
-      "gen_error_file": "androidpublisher/v3/generator-errors.log",
-      "cargo_error_file": "androidpublisher/v3/cargo-errors.log",
-      "gen_dir": "androidpublisher/v3",
-      "spec_file": "androidpublisher/v3/spec.json",
-      "crate_name": "google-androidpublisher3",
-      "make_target": "androidpublisher3",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/androidpublisher/v3/rest"
     },
     {
       "name": "appengine",
@@ -379,30 +319,6 @@
       "rest_url": "https://www.googleapis.com/discovery/v1/apis/appstate/v1/rest"
     },
     {
-      "name": "bigquery",
-      "id": "bigquery:v2",
-      "lib_cargo_file": "bigquery/v2/lib/Cargo.toml",
-      "gen_error_file": "bigquery/v2/generator-errors.log",
-      "cargo_error_file": "bigquery/v2/cargo-errors.log",
-      "gen_dir": "bigquery/v2",
-      "spec_file": "bigquery/v2/spec.json",
-      "crate_name": "google-bigquery2",
-      "make_target": "bigquery2",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/bigquery/v2/rest"
-    },
-    {
-      "name": "bigquerydatatransfer",
-      "id": "bigquerydatatransfer:v1",
-      "lib_cargo_file": "bigquerydatatransfer/v1/lib/Cargo.toml",
-      "gen_error_file": "bigquerydatatransfer/v1/generator-errors.log",
-      "cargo_error_file": "bigquerydatatransfer/v1/cargo-errors.log",
-      "gen_dir": "bigquerydatatransfer/v1",
-      "spec_file": "bigquerydatatransfer/v1/spec.json",
-      "crate_name": "google-bigquerydatatransfer1",
-      "make_target": "bigquerydatatransfer1",
-      "rest_url": "https://bigquerydatatransfer.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
       "name": "bigtableadmin",
       "id": "bigtableadmin:v1",
       "lib_cargo_file": "bigtableadmin/v1/lib/Cargo.toml",
@@ -413,18 +329,6 @@
       "crate_name": "google-bigtableadmin1",
       "make_target": "bigtableadmin1",
       "rest_url": "https://bigtableadmin.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "bigtableadmin",
-      "id": "bigtableadmin:v2",
-      "lib_cargo_file": "bigtableadmin/v2/lib/Cargo.toml",
-      "gen_error_file": "bigtableadmin/v2/generator-errors.log",
-      "cargo_error_file": "bigtableadmin/v2/cargo-errors.log",
-      "gen_dir": "bigtableadmin/v2",
-      "spec_file": "bigtableadmin/v2/spec.json",
-      "crate_name": "google-bigtableadmin2",
-      "make_target": "bigtableadmin2",
-      "rest_url": "https://bigtableadmin.googleapis.com/$discovery/rest?version=v2"
     },
     {
       "name": "binaryauthorization",
@@ -449,18 +353,6 @@
       "crate_name": "google-blogger2",
       "make_target": "blogger2",
       "rest_url": "https://www.googleapis.com/discovery/v1/apis/blogger/v2/rest"
-    },
-    {
-      "name": "blogger",
-      "id": "blogger:v3",
-      "lib_cargo_file": "blogger/v3/lib/Cargo.toml",
-      "gen_error_file": "blogger/v3/generator-errors.log",
-      "cargo_error_file": "blogger/v3/cargo-errors.log",
-      "gen_dir": "blogger/v3",
-      "spec_file": "blogger/v3/spec.json",
-      "crate_name": "google-blogger3",
-      "make_target": "blogger3",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/blogger/v3/rest"
     },
     {
       "name": "books",
