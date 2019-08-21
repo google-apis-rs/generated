@@ -94,7 +94,9 @@ show-errors prefix=any_error:
 # Best after 'refresh-with-force', it generates all code and runs cargo against it, collecting errors
 collect-errors:
     just mcp 
-    just gen/all 
+    just gen/all
     just update-drivers 
-    just gen/cargo-check 
+    just gen/check 
+    just update-drivers
+    just gen/doc 
     just update-drivers
