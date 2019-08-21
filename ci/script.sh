@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -eu
+set -eux
 
 make update-all-metadata generate-makefile
 

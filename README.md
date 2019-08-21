@@ -12,7 +12,7 @@ To easily alter MCP code without having to commit, run `make` with an overridden
 to one that you just build. Typical invocations would look like this:
 
 ```
-(cd ../generator && cargo build) && MCP=../../generator/target/debug/mcp make -C gen
+(cd ../generator && cargo build) && MCP=$PWD/../../generator/target/debug/mcp make -C gen
 ```
 
 ### Forcefully regenerating/rebuilding crates even if they errorred before
@@ -40,7 +40,7 @@ make update-drivers
 ### Forcefully update the Makefile after a change affecting the mapped index
 
 ```
-(cd ../generator && cargo build) && MCP=../generator/target/debug/mcp make update-drivers
+(cd ../generator && cargo build) && MCP=$PWD/../generator/target/debug/mcp make update-drivers
 ```
 
 
