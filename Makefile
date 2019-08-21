@@ -41,11 +41,12 @@ update-mcp: $(GENERATOR_DIR)
 	cd $(GENERATOR_DIR) && git pull --ff-only && cargo build --release
 
 update-all-metadata:
+	@echo Removing original Google API index
 	-rm $(API_INDEX_JSON)
 	$(MAKE) fetch-api-specs update-mapped-index generate-makefile
 
 force-update-all-metadata: clear-all-errors
-	$(MAKE) update-all-metadata
+	MCP_FETCH_ARGS=--use-original-index-at=$(API_INDEX_JSON) $(MAKE) update-all-metadata
 
 update-mapped-index:
 	-rm $(API_INDEX_MAPPED_JSON)
@@ -54,7 +55,7 @@ update-mapped-index:
 api-index: $(API_INDEX_JSON) $(GEN_MAKEFILE)
 
 fetch-api-specs: $(API_INDEX_MAPPED_JSON) $(MCP) 
-	$(MCP) fetch-api-specs $(API_INDEX_MAPPED_JSON) $(SPEC_DIR)
+	$(MCP) fetch-api-specs $(MCP_FETCH_ARGS) $(API_INDEX_MAPPED_JSON) $(SPEC_DIR)
 
 $(GEN_MAKEFILE): $(API_INDEX_MAPPED_JSON) $(MCP) $(MAKEFILE_TPL) 
 	$(MCP) substitute $(MAKEFILE_TPL):$@ $(CARGO_TOML_TPL):$(GEN_CARGO_TOML) < $<
@@ -62,6 +63,7 @@ $(GEN_MAKEFILE): $(API_INDEX_MAPPED_JSON) $(MCP) $(MAKEFILE_TPL)
 generate-makefile: $(GEN_MAKEFILE)
 
 clear-all-errors:
+	@echo Clearing all errors...
 	find $(OUTPUT_DIR) -name '$(ERRORS_FILE_GLOB)' -exec rm -v '{}' \;
 
 show-all-errors:

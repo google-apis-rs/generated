@@ -1,0 +1,2464 @@
+{
+  "kind": "discovery#restDescription",
+  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/DuDrBlvHLFXE8uorI6UhfoH-kUs\"",
+  "discoveryVersion": "v1",
+  "id": "customsearch:v1",
+  "name": "customsearch",
+  "canonicalName": null,
+  "fullyEncodeReservedExpansion": null,
+  "version": "v1",
+  "revision": "20181001",
+  "title": "CustomSearch API",
+  "description": "Searches over a website or collection of websites",
+  "ownerDomain": "google.com",
+  "ownerName": "Google",
+  "icons": {
+    "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+    "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+  },
+  "documentationLink": "https://developers.google.com/custom-search/v1/using_rest",
+  "protocol": "rest",
+  "baseUrl": "https://www.googleapis.com/customsearch/",
+  "basePath": "/customsearch/",
+  "rootUrl": "https://www.googleapis.com/",
+  "servicePath": "customsearch/",
+  "batchPath": "batch/customsearch/v1",
+  "version_module": null,
+  "packagePath": null,
+  "labels": null,
+  "features": null,
+  "parameters": {
+    "alt": {
+      "description": "Data format for the response.",
+      "default": "json",
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "json"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json"
+      ],
+      "repeated": false
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "location": "query",
+      "required": false,
+      "type": "boolean",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "quotaUser": {
+      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "userIp": {
+      "description": "Deprecated. Please use quotaUser instead.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    }
+  },
+  "auth": null,
+  "schemas": {
+    "Context": {
+      "id": "Context",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "facets": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "array",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": {
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "anchor": {
+                  "description": null,
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "label": {
+                  "description": null,
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "label_with_op": {
+                  "description": null,
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            }
+          }
+        },
+        "title": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Promotion": {
+      "id": "Promotion",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "bodyLines": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "htmlTitle": {
+                "description": null,
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "link": {
+                "description": null,
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "title": {
+                "description": null,
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "url": {
+                "description": null,
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "displayLink": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "htmlTitle": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "image": {
+          "description": null,
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "height": {
+              "description": null,
+              "type": "integer",
+              "format": "int32",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "source": {
+              "description": null,
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "width": {
+              "description": null,
+              "type": "integer",
+              "format": "int32",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "link": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "title": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Query": {
+      "id": "Query",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "count": {
+          "description": null,
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "cr": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "cx": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "dateRestrict": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "disableCnTwTranslation": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "exactTerms": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "excludeTerms": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "fileType": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "filter": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "gl": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "googleHost": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "highRange": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "hl": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "hq": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "imgColorType": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "imgDominantColor": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "imgSize": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "imgType": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "inputEncoding": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "language": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "linkSite": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "lowRange": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "orTerms": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "outputEncoding": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "relatedSite": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "rights": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "safe": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "searchTerms": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "searchType": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "siteSearch": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "siteSearchFilter": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "sort": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "startIndex": {
+          "description": null,
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "startPage": {
+          "description": null,
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "title": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "totalResults": {
+          "description": null,
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Result": {
+      "id": "Result",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "cacheId": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "displayLink": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "fileFormat": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "formattedUrl": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "htmlFormattedUrl": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "htmlSnippet": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "htmlTitle": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "image": {
+          "description": null,
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "byteSize": {
+              "description": null,
+              "type": "integer",
+              "format": "int32",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "contextLink": {
+              "description": null,
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "height": {
+              "description": null,
+              "type": "integer",
+              "format": "int32",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "thumbnailHeight": {
+              "description": null,
+              "type": "integer",
+              "format": "int32",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "thumbnailLink": {
+              "description": null,
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "thumbnailWidth": {
+              "description": null,
+              "type": "integer",
+              "format": "int32",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "width": {
+              "description": null,
+              "type": "integer",
+              "format": "int32",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "labels": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "displayName": {
+                "description": null,
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "label_with_op": {
+                "description": null,
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "name": {
+                "description": null,
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "link": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "mime": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "pagemap": {
+          "description": null,
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "array",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": {
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": {
+                "description": null,
+                "type": "any",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "items": null
+            }
+          },
+          "items": null
+        },
+        "snippet": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "title": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Search": {
+      "id": "Search",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "context": {
+          "description": null,
+          "$ref": "Context"
+        },
+        "items": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Result"
+          }
+        },
+        "kind": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "promotions": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Promotion"
+          }
+        },
+        "queries": {
+          "description": null,
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "array",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": {
+              "$ref": "Query"
+            }
+          },
+          "items": null
+        },
+        "searchInformation": {
+          "description": null,
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "formattedSearchTime": {
+              "description": null,
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "formattedTotalResults": {
+              "description": null,
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "searchTime": {
+              "description": null,
+              "type": "number",
+              "format": "double",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "totalResults": {
+              "description": null,
+              "type": "string",
+              "format": "int64",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "spelling": {
+          "description": null,
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "correctedQuery": {
+              "description": null,
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "htmlCorrectedQuery": {
+              "description": null,
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "url": {
+          "description": null,
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "template": {
+              "description": null,
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "type": {
+              "description": null,
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    }
+  },
+  "resources": {
+    "cse": {
+      "resources": {
+        "siterestrict": {
+          "resources": {},
+          "methods": {
+            "list": {
+              "id": "search.cse.siterestrict.list",
+              "path": "v1/siterestrict",
+              "httpMethod": "GET",
+              "description": "Returns metadata about the search performed, metadata about the custom search engine used for the search, and the search results. Uses a small set of url patterns.",
+              "parameters": {
+                "c2coff": {
+                  "description": "Turns off the translation between zh-CN and zh-TW.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "cr": {
+                  "description": "Country restrict(s).",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "cx": {
+                  "description": "The custom search engine ID to scope this search query",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "dateRestrict": {
+                  "description": "Specifies all search results are from a time period",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "exactTerms": {
+                  "description": "Identifies a phrase that all documents in the search results must contain",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "excludeTerms": {
+                  "description": "Identifies a word or phrase that should not appear in any documents in the search results",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "fileType": {
+                  "description": "Returns images of a specified type. Some of the allowed values are: bmp, gif, png, jpg, svg, pdf, ...",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "filter": {
+                  "description": "Controls turning on or off the duplicate content filter.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [
+                    "0",
+                    "1"
+                  ],
+                  "enumDescriptions": [
+                    "Turns off duplicate content filter.",
+                    "Turns on duplicate content filter."
+                  ],
+                  "repeated": false
+                },
+                "gl": {
+                  "description": "Geolocation of end user.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "googlehost": {
+                  "description": "The local Google domain to use to perform the search.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "highRange": {
+                  "description": "Creates a range in form as_nlo value..as_nhi value and attempts to append it to query",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "hl": {
+                  "description": "Sets the user interface language.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "hq": {
+                  "description": "Appends the extra query terms to the query.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "imgColorType": {
+                  "description": "Returns black and white, grayscale, or color images: mono, gray, and color.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [
+                    "color",
+                    "gray",
+                    "mono"
+                  ],
+                  "enumDescriptions": [
+                    "color",
+                    "gray",
+                    "mono"
+                  ],
+                  "repeated": false
+                },
+                "imgDominantColor": {
+                  "description": "Returns images of a specific dominant color: red, orange, yellow, green, teal, blue, purple, pink, white, gray, black and brown.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [
+                    "black",
+                    "blue",
+                    "brown",
+                    "gray",
+                    "green",
+                    "orange",
+                    "pink",
+                    "purple",
+                    "red",
+                    "teal",
+                    "white",
+                    "yellow"
+                  ],
+                  "enumDescriptions": [
+                    "black",
+                    "blue",
+                    "brown",
+                    "gray",
+                    "green",
+                    "orange",
+                    "pink",
+                    "purple",
+                    "red",
+                    "teal",
+                    "white",
+                    "yellow"
+                  ],
+                  "repeated": false
+                },
+                "imgSize": {
+                  "description": "Returns images of a specified size, where size can be one of: icon, small, medium, large, xlarge, xxlarge, and huge.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [
+                    "huge",
+                    "icon",
+                    "large",
+                    "medium",
+                    "small",
+                    "xlarge",
+                    "xxlarge"
+                  ],
+                  "enumDescriptions": [
+                    "huge",
+                    "icon",
+                    "large",
+                    "medium",
+                    "small",
+                    "xlarge",
+                    "xxlarge"
+                  ],
+                  "repeated": false
+                },
+                "imgType": {
+                  "description": "Returns images of a type, which can be one of: clipart, face, lineart, news, and photo.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [
+                    "clipart",
+                    "face",
+                    "lineart",
+                    "news",
+                    "photo"
+                  ],
+                  "enumDescriptions": [
+                    "clipart",
+                    "face",
+                    "lineart",
+                    "news",
+                    "photo"
+                  ],
+                  "repeated": false
+                },
+                "linkSite": {
+                  "description": "Specifies that all search results should contain a link to a particular URL",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "lowRange": {
+                  "description": "Creates a range in form as_nlo value..as_nhi value and attempts to append it to query",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "lr": {
+                  "description": "The language restriction for the search results",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [
+                    "lang_ar",
+                    "lang_bg",
+                    "lang_ca",
+                    "lang_cs",
+                    "lang_da",
+                    "lang_de",
+                    "lang_el",
+                    "lang_en",
+                    "lang_es",
+                    "lang_et",
+                    "lang_fi",
+                    "lang_fr",
+                    "lang_hr",
+                    "lang_hu",
+                    "lang_id",
+                    "lang_is",
+                    "lang_it",
+                    "lang_iw",
+                    "lang_ja",
+                    "lang_ko",
+                    "lang_lt",
+                    "lang_lv",
+                    "lang_nl",
+                    "lang_no",
+                    "lang_pl",
+                    "lang_pt",
+                    "lang_ro",
+                    "lang_ru",
+                    "lang_sk",
+                    "lang_sl",
+                    "lang_sr",
+                    "lang_sv",
+                    "lang_tr",
+                    "lang_zh-CN",
+                    "lang_zh-TW"
+                  ],
+                  "enumDescriptions": [
+                    "Arabic",
+                    "Bulgarian",
+                    "Catalan",
+                    "Czech",
+                    "Danish",
+                    "German",
+                    "Greek",
+                    "English",
+                    "Spanish",
+                    "Estonian",
+                    "Finnish",
+                    "French",
+                    "Croatian",
+                    "Hungarian",
+                    "Indonesian",
+                    "Icelandic",
+                    "Italian",
+                    "Hebrew",
+                    "Japanese",
+                    "Korean",
+                    "Lithuanian",
+                    "Latvian",
+                    "Dutch",
+                    "Norwegian",
+                    "Polish",
+                    "Portuguese",
+                    "Romanian",
+                    "Russian",
+                    "Slovak",
+                    "Slovenian",
+                    "Serbian",
+                    "Swedish",
+                    "Turkish",
+                    "Chinese (Simplified)",
+                    "Chinese (Traditional)"
+                  ],
+                  "repeated": false
+                },
+                "num": {
+                  "description": "Number of search results to return",
+                  "default": "10",
+                  "location": "query",
+                  "required": false,
+                  "type": "integer",
+                  "format": "uint32",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "orTerms": {
+                  "description": "Provides additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "q": {
+                  "description": "Query",
+                  "default": null,
+                  "location": "query",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "relatedSite": {
+                  "description": "Specifies that all search results should be pages that are related to the specified URL",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "rights": {
+                  "description": "Filters based on licensing. Supported values include: cc_publicdomain, cc_attribute, cc_sharealike, cc_noncommercial, cc_nonderived and combinations of these.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "safe": {
+                  "description": "Search safety level",
+                  "default": "off",
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [
+                    "high",
+                    "medium",
+                    "off"
+                  ],
+                  "enumDescriptions": [
+                    "Enables highest level of safe search filtering.",
+                    "Enables moderate safe search filtering.",
+                    "Disables safe search filtering."
+                  ],
+                  "repeated": false
+                },
+                "searchType": {
+                  "description": "Specifies the search type: image.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [
+                    "image"
+                  ],
+                  "enumDescriptions": [
+                    "custom image search"
+                  ],
+                  "repeated": false
+                },
+                "siteSearch": {
+                  "description": "Specifies all search results should be pages from a given site",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "siteSearchFilter": {
+                  "description": "Controls whether to include or exclude results from the site named in the as_sitesearch parameter",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [
+                    "e",
+                    "i"
+                  ],
+                  "enumDescriptions": [
+                    "exclude",
+                    "include"
+                  ],
+                  "repeated": false
+                },
+                "sort": {
+                  "description": "The sort expression to apply to the results",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "start": {
+                  "description": "The index of the first result to return",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "integer",
+                  "format": "uint32",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "q"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "Search"
+              },
+              "scopes": [],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            }
+          }
+        }
+      },
+      "methods": {
+        "list": {
+          "id": "search.cse.list",
+          "path": "v1",
+          "httpMethod": "GET",
+          "description": "Returns metadata about the search performed, metadata about the custom search engine used for the search, and the search results.",
+          "parameters": {
+            "c2coff": {
+              "description": "Turns off the translation between zh-CN and zh-TW.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "cr": {
+              "description": "Country restrict(s).",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "cx": {
+              "description": "The custom search engine ID to scope this search query",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "dateRestrict": {
+              "description": "Specifies all search results are from a time period",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "exactTerms": {
+              "description": "Identifies a phrase that all documents in the search results must contain",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "excludeTerms": {
+              "description": "Identifies a word or phrase that should not appear in any documents in the search results",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "fileType": {
+              "description": "Returns images of a specified type. Some of the allowed values are: bmp, gif, png, jpg, svg, pdf, ...",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "filter": {
+              "description": "Controls turning on or off the duplicate content filter.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "0",
+                "1"
+              ],
+              "enumDescriptions": [
+                "Turns off duplicate content filter.",
+                "Turns on duplicate content filter."
+              ],
+              "repeated": false
+            },
+            "gl": {
+              "description": "Geolocation of end user.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "googlehost": {
+              "description": "The local Google domain to use to perform the search.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "highRange": {
+              "description": "Creates a range in form as_nlo value..as_nhi value and attempts to append it to query",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "hl": {
+              "description": "Sets the user interface language.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "hq": {
+              "description": "Appends the extra query terms to the query.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "imgColorType": {
+              "description": "Returns black and white, grayscale, or color images: mono, gray, and color.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "color",
+                "gray",
+                "mono"
+              ],
+              "enumDescriptions": [
+                "color",
+                "gray",
+                "mono"
+              ],
+              "repeated": false
+            },
+            "imgDominantColor": {
+              "description": "Returns images of a specific dominant color: red, orange, yellow, green, teal, blue, purple, pink, white, gray, black and brown.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "black",
+                "blue",
+                "brown",
+                "gray",
+                "green",
+                "orange",
+                "pink",
+                "purple",
+                "red",
+                "teal",
+                "white",
+                "yellow"
+              ],
+              "enumDescriptions": [
+                "black",
+                "blue",
+                "brown",
+                "gray",
+                "green",
+                "orange",
+                "pink",
+                "purple",
+                "red",
+                "teal",
+                "white",
+                "yellow"
+              ],
+              "repeated": false
+            },
+            "imgSize": {
+              "description": "Returns images of a specified size, where size can be one of: icon, small, medium, large, xlarge, xxlarge, and huge.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "huge",
+                "icon",
+                "large",
+                "medium",
+                "small",
+                "xlarge",
+                "xxlarge"
+              ],
+              "enumDescriptions": [
+                "huge",
+                "icon",
+                "large",
+                "medium",
+                "small",
+                "xlarge",
+                "xxlarge"
+              ],
+              "repeated": false
+            },
+            "imgType": {
+              "description": "Returns images of a type, which can be one of: clipart, face, lineart, news, and photo.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "clipart",
+                "face",
+                "lineart",
+                "news",
+                "photo"
+              ],
+              "enumDescriptions": [
+                "clipart",
+                "face",
+                "lineart",
+                "news",
+                "photo"
+              ],
+              "repeated": false
+            },
+            "linkSite": {
+              "description": "Specifies that all search results should contain a link to a particular URL",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "lowRange": {
+              "description": "Creates a range in form as_nlo value..as_nhi value and attempts to append it to query",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "lr": {
+              "description": "The language restriction for the search results",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "lang_ar",
+                "lang_bg",
+                "lang_ca",
+                "lang_cs",
+                "lang_da",
+                "lang_de",
+                "lang_el",
+                "lang_en",
+                "lang_es",
+                "lang_et",
+                "lang_fi",
+                "lang_fr",
+                "lang_hr",
+                "lang_hu",
+                "lang_id",
+                "lang_is",
+                "lang_it",
+                "lang_iw",
+                "lang_ja",
+                "lang_ko",
+                "lang_lt",
+                "lang_lv",
+                "lang_nl",
+                "lang_no",
+                "lang_pl",
+                "lang_pt",
+                "lang_ro",
+                "lang_ru",
+                "lang_sk",
+                "lang_sl",
+                "lang_sr",
+                "lang_sv",
+                "lang_tr",
+                "lang_zh-CN",
+                "lang_zh-TW"
+              ],
+              "enumDescriptions": [
+                "Arabic",
+                "Bulgarian",
+                "Catalan",
+                "Czech",
+                "Danish",
+                "German",
+                "Greek",
+                "English",
+                "Spanish",
+                "Estonian",
+                "Finnish",
+                "French",
+                "Croatian",
+                "Hungarian",
+                "Indonesian",
+                "Icelandic",
+                "Italian",
+                "Hebrew",
+                "Japanese",
+                "Korean",
+                "Lithuanian",
+                "Latvian",
+                "Dutch",
+                "Norwegian",
+                "Polish",
+                "Portuguese",
+                "Romanian",
+                "Russian",
+                "Slovak",
+                "Slovenian",
+                "Serbian",
+                "Swedish",
+                "Turkish",
+                "Chinese (Simplified)",
+                "Chinese (Traditional)"
+              ],
+              "repeated": false
+            },
+            "num": {
+              "description": "Number of search results to return",
+              "default": "10",
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "uint32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "orTerms": {
+              "description": "Provides additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "q": {
+              "description": "Query",
+              "default": null,
+              "location": "query",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "relatedSite": {
+              "description": "Specifies that all search results should be pages that are related to the specified URL",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "rights": {
+              "description": "Filters based on licensing. Supported values include: cc_publicdomain, cc_attribute, cc_sharealike, cc_noncommercial, cc_nonderived and combinations of these.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "safe": {
+              "description": "Search safety level",
+              "default": "off",
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "active",
+                "high",
+                "medium",
+                "off"
+              ],
+              "enumDescriptions": [
+                "Enables safe search filtering.",
+                "(Deprecated) Same as active.",
+                "(Deprecated) Same as active.",
+                "Disables safe search filtering."
+              ],
+              "repeated": false
+            },
+            "searchType": {
+              "description": "Specifies the search type: image.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "image"
+              ],
+              "enumDescriptions": [
+                "custom image search"
+              ],
+              "repeated": false
+            },
+            "siteSearch": {
+              "description": "Specifies all search results should be pages from a given site",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "siteSearchFilter": {
+              "description": "Controls whether to include or exclude results from the site named in the as_sitesearch parameter",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "e",
+                "i"
+              ],
+              "enumDescriptions": [
+                "exclude",
+                "include"
+              ],
+              "repeated": false
+            },
+            "sort": {
+              "description": "The sort expression to apply to the results",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "start": {
+              "description": "The index of the first result to return",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "uint32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "q"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Search"
+          },
+          "scopes": [],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    }
+  },
+  "methods": {}
+}

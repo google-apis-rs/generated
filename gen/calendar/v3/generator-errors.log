@@ -1,2 +1,0 @@
-thread 'main' panicked at 'failed to make ident from: self', google_rest_api_generator/src/lib.rs:540:42
-note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace.

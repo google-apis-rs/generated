@@ -1,0 +1,1486 @@
+{
+  "kind": "discovery#restDescription",
+  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/SIVmVTlGwAFXXOJnsEvmHFujBHU\"",
+  "discoveryVersion": "v1",
+  "id": "discovery:v1",
+  "name": "discovery",
+  "canonicalName": null,
+  "fullyEncodeReservedExpansion": null,
+  "version": "v1",
+  "revision": "20190814",
+  "title": "API Discovery Service",
+  "description": "Provides information about other Google APIs, such as what APIs are available, the resource, and method details for each API.",
+  "ownerDomain": "google.com",
+  "ownerName": "Google",
+  "icons": {
+    "x16": "http://www.google.com/images/icons/feature/filing_cabinet_search-g16.png",
+    "x32": "http://www.google.com/images/icons/feature/filing_cabinet_search-g32.png"
+  },
+  "documentationLink": "https://developers.google.com/discovery/",
+  "protocol": "rest",
+  "baseUrl": "https://www.googleapis.com/discovery/v1/",
+  "basePath": "/discovery/v1/",
+  "rootUrl": "https://www.googleapis.com/",
+  "servicePath": "discovery/v1/",
+  "batchPath": "batch/discovery/v1",
+  "version_module": null,
+  "packagePath": null,
+  "labels": null,
+  "features": null,
+  "parameters": {
+    "alt": {
+      "description": "Data format for the response.",
+      "default": "json",
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "json"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json"
+      ],
+      "repeated": false
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "location": "query",
+      "required": false,
+      "type": "boolean",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "quotaUser": {
+      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "userIp": {
+      "description": "Deprecated. Please use quotaUser instead.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    }
+  },
+  "auth": null,
+  "schemas": {
+    "DirectoryList": {
+      "id": "DirectoryList",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "discoveryVersion": {
+          "description": "Indicate the version of the Discovery API used to generate this doc.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "items": {
+          "description": "The individual directory entries. One entry per api/version pair.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "description": {
+                "description": "The description of this API.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "discoveryLink": {
+                "description": "A link to the discovery document.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "discoveryRestUrl": {
+                "description": "The URL for the discovery REST document.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "documentationLink": {
+                "description": "A link to human readable documentation for the API.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "icons": {
+                "description": "Links to 16x16 and 32x32 icons representing the API.",
+                "type": "object",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {
+                  "x16": {
+                    "description": "The URL of the 16x16 icon.",
+                    "type": "string",
+                    "format": null,
+                    "enum": [],
+                    "enumDescriptions": [],
+                    "properties": {},
+                    "additionalProperties": null,
+                    "items": null
+                  },
+                  "x32": {
+                    "description": "The URL of the 32x32 icon.",
+                    "type": "string",
+                    "format": null,
+                    "enum": [],
+                    "enumDescriptions": [],
+                    "properties": {},
+                    "additionalProperties": null,
+                    "items": null
+                  }
+                },
+                "additionalProperties": null,
+                "items": null
+              },
+              "id": {
+                "description": "The id of this API.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "kind": {
+                "description": "The kind for this response.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "labels": {
+                "description": "Labels for the status of this API, such as labs or deprecated.",
+                "type": "array",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": {
+                  "type": "string",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "name": {
+                "description": "The name of the API.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "preferred": {
+                "description": "True if this version is the preferred version to use.",
+                "type": "boolean",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "title": {
+                "description": "The title of this API.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "version": {
+                "description": "The version of the API.",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "kind": {
+          "description": "The kind for this response.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "JsonSchema": {
+      "id": "JsonSchema",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "$ref": {
+          "description": "A reference to another schema. The value of this property is the \"id\" of another schema.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "additionalProperties": {
+          "description": "If this is a schema for an object, this property is the schema for any additional properties with dynamic keys on this object.",
+          "$ref": "JsonSchema"
+        },
+        "annotations": {
+          "description": "Additional information about this property.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "required": {
+              "description": "A list of methods for which this property is required on requests.",
+              "type": "array",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": {
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "default": {
+          "description": "The default value of this property (if one exists).",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "description": {
+          "description": "A description of this object.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "enum": {
+          "description": "Values this parameter may take (if it is an enum).",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "enumDescriptions": {
+          "description": "The descriptions for the enums. Each position maps to the corresponding value in the \"enum\" array.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "format": {
+          "description": "An additional regular expression or key that helps constrain the value. For more details see: http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.23",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "Unique identifier for this schema.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "items": {
+          "description": "If this is a schema for an array, this property is the schema for each element in the array.",
+          "$ref": "JsonSchema"
+        },
+        "location": {
+          "description": "Whether this parameter goes in the query or the path for REST requests.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "maximum": {
+          "description": "The maximum value of this parameter.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "minimum": {
+          "description": "The minimum value of this parameter.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "pattern": {
+          "description": "The regular expression this parameter must conform to. Uses Java 6 regex format: http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "properties": {
+          "description": "If this is a schema for an object, list the schema for each property of this object.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "A single property of this object. The value is itself a JSON Schema object describing this property.",
+            "$ref": "JsonSchema"
+          },
+          "items": null
+        },
+        "readOnly": {
+          "description": "The value is read-only, generated by the service. The value cannot be modified by the client. If the value is included in a POST, PUT, or PATCH request, it is ignored by the service.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "repeated": {
+          "description": "Whether this parameter may appear multiple times.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "required": {
+          "description": "Whether the parameter is required.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "type": {
+          "description": "The value type for this schema. A list of values can be found here: http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.1",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "variant": {
+          "description": "In a variant data type, the value of one property is used to determine how to interpret the entire entity. Its value must exist in a map of descriminant values to schema names.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "discriminant": {
+              "description": "The name of the type discriminant property.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "map": {
+              "description": "The map of discriminant value to schema to use for parsing..",
+              "type": "array",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": {
+                "type": "object",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {
+                  "$ref": {
+                    "description": null,
+                    "type": "string",
+                    "format": null,
+                    "enum": [],
+                    "enumDescriptions": [],
+                    "properties": {},
+                    "additionalProperties": null,
+                    "items": null
+                  },
+                  "type_value": {
+                    "description": null,
+                    "type": "string",
+                    "format": null,
+                    "enum": [],
+                    "enumDescriptions": [],
+                    "properties": {},
+                    "additionalProperties": null,
+                    "items": null
+                  }
+                },
+                "additionalProperties": null,
+                "items": null
+              }
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "RestDescription": {
+      "id": "RestDescription",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "auth": {
+          "description": "Authentication information.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "oauth2": {
+              "description": "OAuth 2.0 authentication information.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "scopes": {
+                  "description": "Available OAuth 2.0 scopes.",
+                  "type": "object",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {},
+                  "additionalProperties": {
+                    "description": "The scope value.",
+                    "type": "object",
+                    "format": null,
+                    "enum": [],
+                    "enumDescriptions": [],
+                    "properties": {
+                      "description": {
+                        "description": "Description of scope.",
+                        "type": "string",
+                        "format": null,
+                        "enum": [],
+                        "enumDescriptions": [],
+                        "properties": {},
+                        "additionalProperties": null,
+                        "items": null
+                      }
+                    },
+                    "additionalProperties": null,
+                    "items": null
+                  },
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "basePath": {
+          "description": "[DEPRECATED] The base path for REST requests.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "baseUrl": {
+          "description": "[DEPRECATED] The base URL for REST requests.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "batchPath": {
+          "description": "The path for REST batch requests.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "canonicalName": {
+          "description": "Indicates how the API name should be capitalized and split into various parts. Useful for generating pretty class names.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "description": {
+          "description": "The description of this API.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "discoveryVersion": {
+          "description": "Indicate the version of the Discovery API used to generate this doc.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "documentationLink": {
+          "description": "A link to human readable documentation for the API.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "etag": {
+          "description": "The ETag for this response.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "exponentialBackoffDefault": {
+          "description": "Enable exponential backoff for suitable methods in the generated clients.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "features": {
+          "description": "A list of supported features for this API.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "icons": {
+          "description": "Links to 16x16 and 32x32 icons representing the API.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "x16": {
+              "description": "The URL of the 16x16 icon.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "x32": {
+              "description": "The URL of the 32x32 icon.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "The ID of this API.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "The kind for this response.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "labels": {
+          "description": "Labels for the status of this API, such as labs or deprecated.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "methods": {
+          "description": "API-level methods for this API.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "An individual method description.",
+            "$ref": "RestMethod"
+          },
+          "items": null
+        },
+        "name": {
+          "description": "The name of this API.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "ownerDomain": {
+          "description": "The domain of the owner of this API. Together with the ownerName and a packagePath values, this can be used to generate a library for this API which would have a unique fully qualified name.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "ownerName": {
+          "description": "The name of the owner of this API. See ownerDomain.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "packagePath": {
+          "description": "The package of the owner of this API. See ownerDomain.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "parameters": {
+          "description": "Common parameters that apply across all apis.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "Description of a single parameter.",
+            "$ref": "JsonSchema"
+          },
+          "items": null
+        },
+        "protocol": {
+          "description": "The protocol described by this document.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "resources": {
+          "description": "The resources in this API.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "An individual resource description. Contains methods and sub-resources related to this resource.",
+            "$ref": "RestResource"
+          },
+          "items": null
+        },
+        "revision": {
+          "description": "The version of this API.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "rootUrl": {
+          "description": "The root URL under which all API services live.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "schemas": {
+          "description": "The schemas for this API.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "An individual schema description.",
+            "$ref": "JsonSchema"
+          },
+          "items": null
+        },
+        "servicePath": {
+          "description": "The base path for all REST requests.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "title": {
+          "description": "The title of this API.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "version": {
+          "description": "The version of this API.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "version_module": {
+          "description": null,
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "RestMethod": {
+      "id": "RestMethod",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "description": {
+          "description": "Description of this method.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "etagRequired": {
+          "description": "Whether this method requires an ETag to be specified. The ETag is sent as an HTTP If-Match or If-None-Match header.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "httpMethod": {
+          "description": "HTTP method used by this method.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "A unique ID for this method. This property can be used to match methods between different versions of Discovery.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "mediaUpload": {
+          "description": "Media upload parameters.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "accept": {
+              "description": "MIME Media Ranges for acceptable media uploads to this method.",
+              "type": "array",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": {
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "maxSize": {
+              "description": "Maximum size of a media upload, such as \"1MB\", \"2GB\" or \"3TB\".",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "protocols": {
+              "description": "Supported upload protocols.",
+              "type": "object",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {
+                "resumable": {
+                  "description": "Supports the Resumable Media Upload protocol.",
+                  "type": "object",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {
+                    "multipart": {
+                      "description": "True if this endpoint supports uploading multipart media.",
+                      "type": "boolean",
+                      "format": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "properties": {},
+                      "additionalProperties": null,
+                      "items": null
+                    },
+                    "path": {
+                      "description": "The URI path to be used for upload. Should be used in conjunction with the basePath property at the api-level.",
+                      "type": "string",
+                      "format": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "properties": {},
+                      "additionalProperties": null,
+                      "items": null
+                    }
+                  },
+                  "additionalProperties": null,
+                  "items": null
+                },
+                "simple": {
+                  "description": "Supports uploading as a single HTTP request.",
+                  "type": "object",
+                  "format": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "properties": {
+                    "multipart": {
+                      "description": "True if this endpoint supports upload multipart media.",
+                      "type": "boolean",
+                      "format": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "properties": {},
+                      "additionalProperties": null,
+                      "items": null
+                    },
+                    "path": {
+                      "description": "The URI path to be used for upload. Should be used in conjunction with the basePath property at the api-level.",
+                      "type": "string",
+                      "format": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "properties": {},
+                      "additionalProperties": null,
+                      "items": null
+                    }
+                  },
+                  "additionalProperties": null,
+                  "items": null
+                }
+              },
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "parameterOrder": {
+          "description": "Ordered list of required parameters, serves as a hint to clients on how to structure their method signatures. The array is ordered such that the \"most-significant\" parameter appears first.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "parameters": {
+          "description": "Details for all parameters in this method.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "Details for a single parameter in this method.",
+            "$ref": "JsonSchema"
+          },
+          "items": null
+        },
+        "path": {
+          "description": "The URI path of this REST method. Should be used in conjunction with the basePath property at the api-level.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "request": {
+          "description": "The schema for the request.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "$ref": {
+              "description": "Schema ID for the request schema.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "parameterName": {
+              "description": "parameter name.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "response": {
+          "description": "The schema for the response.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "$ref": {
+              "description": "Schema ID for the response schema.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
+        "scopes": {
+          "description": "OAuth 2.0 scopes applicable to this method.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "supportsMediaDownload": {
+          "description": "Whether this method supports media downloads.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "supportsMediaUpload": {
+          "description": "Whether this method supports media uploads.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "supportsSubscription": {
+          "description": "Whether this method supports subscriptions.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "useMediaDownloadService": {
+          "description": "Indicates that downloads from this method should use the download service URL (i.e. \"/download\"). Only applies if the method supports media download.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "RestResource": {
+      "id": "RestResource",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "methods": {
+          "description": "Methods on this resource.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "Description for any methods on this resource.",
+            "$ref": "RestMethod"
+          },
+          "items": null
+        },
+        "resources": {
+          "description": "Sub-resources on this resource.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "Description for any sub-resources on this resource.",
+            "$ref": "RestResource"
+          },
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    }
+  },
+  "resources": {
+    "apis": {
+      "resources": {},
+      "methods": {
+        "getRest": {
+          "id": "discovery.apis.getRest",
+          "path": "apis/{api}/{version}/rest",
+          "httpMethod": "GET",
+          "description": "Retrieve the description of a particular version of an api.",
+          "parameters": {
+            "api": {
+              "description": "The name of the API.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "version": {
+              "description": "The version of the API.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "api",
+            "version"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "RestDescription"
+          },
+          "scopes": [],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "discovery.apis.list",
+          "path": "apis",
+          "httpMethod": "GET",
+          "description": "Retrieve the list of APIs supported at this endpoint.",
+          "parameters": {
+            "name": {
+              "description": "Only include APIs with the given name.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "preferred": {
+              "description": "Return only the preferred version of an API.",
+              "default": "false",
+              "location": "query",
+              "required": false,
+              "type": "boolean",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [],
+          "request": null,
+          "response": {
+            "$ref": "DirectoryList"
+          },
+          "scopes": [],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    }
+  },
+  "methods": {}
+}
