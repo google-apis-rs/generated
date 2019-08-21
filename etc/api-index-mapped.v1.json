@@ -2,11 +2,13 @@
   "standard": {
     "cargo_toml_path": "Cargo.toml",
     "lib_path": "src/lib.rs",
-    "lib_dir": "lib"
+    "lib_dir": "lib",
+    "spec_dir": "etc/api"
   },
   "api": [
     {
       "name": "abusiveexperiencereport",
+      "id": "abusiveexperiencereport:v1",
       "lib_cargo_file": "abusiveexperiencereport/v1/lib/Cargo.toml",
       "error_file": "abusiveexperiencereport/v1/generator-errors.log",
       "gen_dir": "abusiveexperiencereport/v1",
@@ -17,6 +19,7 @@
     },
     {
       "name": "acceleratedmobilepageurl",
+      "id": "acceleratedmobilepageurl:v1",
       "lib_cargo_file": "acceleratedmobilepageurl/v1/lib/Cargo.toml",
       "error_file": "acceleratedmobilepageurl/v1/generator-errors.log",
       "gen_dir": "acceleratedmobilepageurl/v1",
@@ -27,6 +30,7 @@
     },
     {
       "name": "adexchangebuyer",
+      "id": "adexchangebuyer:v1.2",
       "lib_cargo_file": "adexchangebuyer/v1.2/lib/Cargo.toml",
       "error_file": "adexchangebuyer/v1.2/generator-errors.log",
       "gen_dir": "adexchangebuyer/v1.2",
@@ -37,6 +41,7 @@
     },
     {
       "name": "adexchangebuyer",
+      "id": "adexchangebuyer:v1.3",
       "lib_cargo_file": "adexchangebuyer/v1.3/lib/Cargo.toml",
       "error_file": "adexchangebuyer/v1.3/generator-errors.log",
       "gen_dir": "adexchangebuyer/v1.3",
@@ -47,6 +52,7 @@
     },
     {
       "name": "adexchangebuyer",
+      "id": "adexchangebuyer:v1.4",
       "lib_cargo_file": "adexchangebuyer/v1.4/lib/Cargo.toml",
       "error_file": "adexchangebuyer/v1.4/generator-errors.log",
       "gen_dir": "adexchangebuyer/v1.4",
@@ -57,6 +63,7 @@
     },
     {
       "name": "adexperiencereport",
+      "id": "adexperiencereport:v1",
       "lib_cargo_file": "adexperiencereport/v1/lib/Cargo.toml",
       "error_file": "adexperiencereport/v1/generator-errors.log",
       "gen_dir": "adexperiencereport/v1",
@@ -67,6 +74,7 @@
     },
     {
       "name": "admin",
+      "id": "admin:datatransfer_v1",
       "lib_cargo_file": "admin/datatransfer_v1/lib/Cargo.toml",
       "error_file": "admin/datatransfer_v1/generator-errors.log",
       "gen_dir": "admin/datatransfer_v1",
@@ -77,6 +85,7 @@
     },
     {
       "name": "admin",
+      "id": "admin:reports_v1",
       "lib_cargo_file": "admin/reports_v1/lib/Cargo.toml",
       "error_file": "admin/reports_v1/generator-errors.log",
       "gen_dir": "admin/reports_v1",
@@ -87,6 +96,7 @@
     },
     {
       "name": "analyticsreporting",
+      "id": "analyticsreporting:v4",
       "lib_cargo_file": "analyticsreporting/v4/lib/Cargo.toml",
       "error_file": "analyticsreporting/v4/generator-errors.log",
       "gen_dir": "analyticsreporting/v4",
@@ -97,6 +107,7 @@
     },
     {
       "name": "androidenterprise",
+      "id": "androidenterprise:v1",
       "lib_cargo_file": "androidenterprise/v1/lib/Cargo.toml",
       "error_file": "androidenterprise/v1/generator-errors.log",
       "gen_dir": "androidenterprise/v1",
@@ -107,6 +118,7 @@
     },
     {
       "name": "androidpublisher",
+      "id": "androidpublisher:v1",
       "lib_cargo_file": "androidpublisher/v1/lib/Cargo.toml",
       "error_file": "androidpublisher/v1/generator-errors.log",
       "gen_dir": "androidpublisher/v1",
@@ -117,6 +129,7 @@
     },
     {
       "name": "androidpublisher",
+      "id": "androidpublisher:v1.1",
       "lib_cargo_file": "androidpublisher/v1.1/lib/Cargo.toml",
       "error_file": "androidpublisher/v1.1/generator-errors.log",
       "gen_dir": "androidpublisher/v1.1",
@@ -127,6 +140,7 @@
     },
     {
       "name": "appstate",
+      "id": "appstate:v1",
       "lib_cargo_file": "appstate/v1/lib/Cargo.toml",
       "error_file": "appstate/v1/generator-errors.log",
       "gen_dir": "appstate/v1",
@@ -137,6 +151,7 @@
     },
     {
       "name": "bigtableadmin",
+      "id": "bigtableadmin:v1",
       "lib_cargo_file": "bigtableadmin/v1/lib/Cargo.toml",
       "error_file": "bigtableadmin/v1/generator-errors.log",
       "gen_dir": "bigtableadmin/v1",
@@ -147,6 +162,7 @@
     },
     {
       "name": "blogger",
+      "id": "blogger:v3",
       "lib_cargo_file": "blogger/v3/lib/Cargo.toml",
       "error_file": "blogger/v3/generator-errors.log",
       "gen_dir": "blogger/v3",
@@ -157,6 +173,7 @@
     },
     {
       "name": "cloudasset",
+      "id": "cloudasset:v1",
       "lib_cargo_file": "cloudasset/v1/lib/Cargo.toml",
       "error_file": "cloudasset/v1/generator-errors.log",
       "gen_dir": "cloudasset/v1",
@@ -167,6 +184,7 @@
     },
     {
       "name": "cloudresourcemanager",
+      "id": "cloudresourcemanager:v1",
       "lib_cargo_file": "cloudresourcemanager/v1/lib/Cargo.toml",
       "error_file": "cloudresourcemanager/v1/generator-errors.log",
       "gen_dir": "cloudresourcemanager/v1",
@@ -177,6 +195,7 @@
     },
     {
       "name": "cloudresourcemanager",
+      "id": "cloudresourcemanager:v1beta1",
       "lib_cargo_file": "cloudresourcemanager/v1beta1/lib/Cargo.toml",
       "error_file": "cloudresourcemanager/v1beta1/generator-errors.log",
       "gen_dir": "cloudresourcemanager/v1beta1",
@@ -187,6 +206,7 @@
     },
     {
       "name": "cloudshell",
+      "id": "cloudshell:v1",
       "lib_cargo_file": "cloudshell/v1/lib/Cargo.toml",
       "error_file": "cloudshell/v1/generator-errors.log",
       "gen_dir": "cloudshell/v1",
@@ -197,6 +217,7 @@
     },
     {
       "name": "commentanalyzer",
+      "id": "commentanalyzer:v1alpha1",
       "lib_cargo_file": "commentanalyzer/v1alpha1/lib/Cargo.toml",
       "error_file": "commentanalyzer/v1alpha1/generator-errors.log",
       "gen_dir": "commentanalyzer/v1alpha1",
@@ -207,6 +228,7 @@
     },
     {
       "name": "compute",
+      "id": "compute:beta",
       "lib_cargo_file": "compute/beta/lib/Cargo.toml",
       "error_file": "compute/beta/generator-errors.log",
       "gen_dir": "compute/beta",
@@ -217,6 +239,7 @@
     },
     {
       "name": "compute",
+      "id": "compute:v1",
       "lib_cargo_file": "compute/v1/lib/Cargo.toml",
       "error_file": "compute/v1/generator-errors.log",
       "gen_dir": "compute/v1",
@@ -227,6 +250,7 @@
     },
     {
       "name": "content",
+      "id": "content:v2",
       "lib_cargo_file": "content/v2/lib/Cargo.toml",
       "error_file": "content/v2/generator-errors.log",
       "gen_dir": "content/v2",
@@ -237,6 +261,7 @@
     },
     {
       "name": "content",
+      "id": "content:v2.1",
       "lib_cargo_file": "content/v2.1/lib/Cargo.toml",
       "error_file": "content/v2.1/generator-errors.log",
       "gen_dir": "content/v2.1",
@@ -247,6 +272,7 @@
     },
     {
       "name": "datastore",
+      "id": "datastore:v1beta1",
       "lib_cargo_file": "datastore/v1beta1/lib/Cargo.toml",
       "error_file": "datastore/v1beta1/generator-errors.log",
       "gen_dir": "datastore/v1beta1",
@@ -257,6 +283,7 @@
     },
     {
       "name": "datastore",
+      "id": "datastore:v1beta3",
       "lib_cargo_file": "datastore/v1beta3/lib/Cargo.toml",
       "error_file": "datastore/v1beta3/generator-errors.log",
       "gen_dir": "datastore/v1beta3",
@@ -267,6 +294,7 @@
     },
     {
       "name": "deploymentmanager",
+      "id": "deploymentmanager:alpha",
       "lib_cargo_file": "deploymentmanager/alpha/lib/Cargo.toml",
       "error_file": "deploymentmanager/alpha/generator-errors.log",
       "gen_dir": "deploymentmanager/alpha",
@@ -277,6 +305,7 @@
     },
     {
       "name": "deploymentmanager",
+      "id": "deploymentmanager:v2beta",
       "lib_cargo_file": "deploymentmanager/v2beta/lib/Cargo.toml",
       "error_file": "deploymentmanager/v2beta/generator-errors.log",
       "gen_dir": "deploymentmanager/v2beta",
@@ -287,6 +316,7 @@
     },
     {
       "name": "deploymentmanager",
+      "id": "deploymentmanager:v2",
       "lib_cargo_file": "deploymentmanager/v2/lib/Cargo.toml",
       "error_file": "deploymentmanager/v2/generator-errors.log",
       "gen_dir": "deploymentmanager/v2",
@@ -297,6 +327,7 @@
     },
     {
       "name": "digitalassetlinks",
+      "id": "digitalassetlinks:v1",
       "lib_cargo_file": "digitalassetlinks/v1/lib/Cargo.toml",
       "error_file": "digitalassetlinks/v1/generator-errors.log",
       "gen_dir": "digitalassetlinks/v1",
@@ -307,6 +338,7 @@
     },
     {
       "name": "dns",
+      "id": "dns:v1",
       "lib_cargo_file": "dns/v1/lib/Cargo.toml",
       "error_file": "dns/v1/generator-errors.log",
       "gen_dir": "dns/v1",
@@ -317,6 +349,7 @@
     },
     {
       "name": "dns",
+      "id": "dns:v1beta2",
       "lib_cargo_file": "dns/v1beta2/lib/Cargo.toml",
       "error_file": "dns/v1beta2/generator-errors.log",
       "gen_dir": "dns/v1beta2",
@@ -327,6 +360,7 @@
     },
     {
       "name": "dns",
+      "id": "dns:v2beta1",
       "lib_cargo_file": "dns/v2beta1/lib/Cargo.toml",
       "error_file": "dns/v2beta1/generator-errors.log",
       "gen_dir": "dns/v2beta1",
@@ -337,6 +371,7 @@
     },
     {
       "name": "docs",
+      "id": "docs:v1",
       "lib_cargo_file": "docs/v1/lib/Cargo.toml",
       "error_file": "docs/v1/generator-errors.log",
       "gen_dir": "docs/v1",
@@ -347,6 +382,7 @@
     },
     {
       "name": "doubleclickbidmanager",
+      "id": "doubleclickbidmanager:v1",
       "lib_cargo_file": "doubleclickbidmanager/v1/lib/Cargo.toml",
       "error_file": "doubleclickbidmanager/v1/generator-errors.log",
       "gen_dir": "doubleclickbidmanager/v1",
@@ -357,6 +393,7 @@
     },
     {
       "name": "drive",
+      "id": "drive:v3",
       "lib_cargo_file": "drive/v3/lib/Cargo.toml",
       "error_file": "drive/v3/generator-errors.log",
       "gen_dir": "drive/v3",
@@ -367,6 +404,7 @@
     },
     {
       "name": "factchecktools",
+      "id": "factchecktools:v1alpha1",
       "lib_cargo_file": "factchecktools/v1alpha1/lib/Cargo.toml",
       "error_file": "factchecktools/v1alpha1/generator-errors.log",
       "gen_dir": "factchecktools/v1alpha1",
@@ -377,6 +415,7 @@
     },
     {
       "name": "firebasedynamiclinks",
+      "id": "firebasedynamiclinks:v1",
       "lib_cargo_file": "firebasedynamiclinks/v1/lib/Cargo.toml",
       "error_file": "firebasedynamiclinks/v1/generator-errors.log",
       "gen_dir": "firebasedynamiclinks/v1",
@@ -387,6 +426,7 @@
     },
     {
       "name": "gamesManagement",
+      "id": "gamesManagement:v1management",
       "lib_cargo_file": "gamesManagement/v1management/lib/Cargo.toml",
       "error_file": "gamesManagement/v1management/generator-errors.log",
       "gen_dir": "gamesManagement/v1management",
@@ -397,6 +437,7 @@
     },
     {
       "name": "genomics",
+      "id": "genomics:v1alpha2",
       "lib_cargo_file": "genomics/v1alpha2/lib/Cargo.toml",
       "error_file": "genomics/v1alpha2/generator-errors.log",
       "gen_dir": "genomics/v1alpha2",
@@ -407,6 +448,7 @@
     },
     {
       "name": "genomics",
+      "id": "genomics:v1",
       "lib_cargo_file": "genomics/v1/lib/Cargo.toml",
       "error_file": "genomics/v1/generator-errors.log",
       "gen_dir": "genomics/v1",
@@ -417,6 +459,7 @@
     },
     {
       "name": "groupssettings",
+      "id": "groupssettings:v1",
       "lib_cargo_file": "groupssettings/v1/lib/Cargo.toml",
       "error_file": "groupssettings/v1/generator-errors.log",
       "gen_dir": "groupssettings/v1",
@@ -427,6 +470,7 @@
     },
     {
       "name": "iap",
+      "id": "iap:v1",
       "lib_cargo_file": "iap/v1/lib/Cargo.toml",
       "error_file": "iap/v1/generator-errors.log",
       "gen_dir": "iap/v1",
@@ -437,6 +481,7 @@
     },
     {
       "name": "iap",
+      "id": "iap:v1beta1",
       "lib_cargo_file": "iap/v1beta1/lib/Cargo.toml",
       "error_file": "iap/v1beta1/generator-errors.log",
       "gen_dir": "iap/v1beta1",
@@ -447,6 +492,7 @@
     },
     {
       "name": "indexing",
+      "id": "indexing:v3",
       "lib_cargo_file": "indexing/v3/lib/Cargo.toml",
       "error_file": "indexing/v3/generator-errors.log",
       "gen_dir": "indexing/v3",
@@ -457,6 +503,7 @@
     },
     {
       "name": "kgsearch",
+      "id": "kgsearch:v1",
       "lib_cargo_file": "kgsearch/v1/lib/Cargo.toml",
       "error_file": "kgsearch/v1/generator-errors.log",
       "gen_dir": "kgsearch/v1",
@@ -467,6 +514,7 @@
     },
     {
       "name": "language",
+      "id": "language:v1",
       "lib_cargo_file": "language/v1/lib/Cargo.toml",
       "error_file": "language/v1/generator-errors.log",
       "gen_dir": "language/v1",
@@ -477,6 +525,7 @@
     },
     {
       "name": "language",
+      "id": "language:v1beta1",
       "lib_cargo_file": "language/v1beta1/lib/Cargo.toml",
       "error_file": "language/v1beta1/generator-errors.log",
       "gen_dir": "language/v1beta1",
@@ -487,6 +536,7 @@
     },
     {
       "name": "language",
+      "id": "language:v1beta2",
       "lib_cargo_file": "language/v1beta2/lib/Cargo.toml",
       "error_file": "language/v1beta2/generator-errors.log",
       "gen_dir": "language/v1beta2",
@@ -497,6 +547,7 @@
     },
     {
       "name": "licensing",
+      "id": "licensing:v1",
       "lib_cargo_file": "licensing/v1/lib/Cargo.toml",
       "error_file": "licensing/v1/generator-errors.log",
       "gen_dir": "licensing/v1",
@@ -507,6 +558,7 @@
     },
     {
       "name": "pagespeedonline",
+      "id": "pagespeedonline:v1",
       "lib_cargo_file": "pagespeedonline/v1/lib/Cargo.toml",
       "error_file": "pagespeedonline/v1/generator-errors.log",
       "gen_dir": "pagespeedonline/v1",
@@ -517,6 +569,7 @@
     },
     {
       "name": "pagespeedonline",
+      "id": "pagespeedonline:v2",
       "lib_cargo_file": "pagespeedonline/v2/lib/Cargo.toml",
       "error_file": "pagespeedonline/v2/generator-errors.log",
       "gen_dir": "pagespeedonline/v2",
@@ -527,6 +580,7 @@
     },
     {
       "name": "pagespeedonline",
+      "id": "pagespeedonline:v4",
       "lib_cargo_file": "pagespeedonline/v4/lib/Cargo.toml",
       "error_file": "pagespeedonline/v4/generator-errors.log",
       "gen_dir": "pagespeedonline/v4",
@@ -537,6 +591,7 @@
     },
     {
       "name": "pagespeedonline",
+      "id": "pagespeedonline:v5",
       "lib_cargo_file": "pagespeedonline/v5/lib/Cargo.toml",
       "error_file": "pagespeedonline/v5/generator-errors.log",
       "gen_dir": "pagespeedonline/v5",
@@ -547,6 +602,7 @@
     },
     {
       "name": "plus",
+      "id": "plus:v1",
       "lib_cargo_file": "plus/v1/lib/Cargo.toml",
       "error_file": "plus/v1/generator-errors.log",
       "gen_dir": "plus/v1",
@@ -557,6 +613,7 @@
     },
     {
       "name": "plusDomains",
+      "id": "plusDomains:v1",
       "lib_cargo_file": "plusDomains/v1/lib/Cargo.toml",
       "error_file": "plusDomains/v1/generator-errors.log",
       "gen_dir": "plusDomains/v1",
@@ -567,6 +624,7 @@
     },
     {
       "name": "pubsub",
+      "id": "pubsub:v1beta1a",
       "lib_cargo_file": "pubsub/v1beta1a/lib/Cargo.toml",
       "error_file": "pubsub/v1beta1a/generator-errors.log",
       "gen_dir": "pubsub/v1beta1a",
@@ -577,6 +635,7 @@
     },
     {
       "name": "remotebuildexecution",
+      "id": "remotebuildexecution:v2",
       "lib_cargo_file": "remotebuildexecution/v2/lib/Cargo.toml",
       "error_file": "remotebuildexecution/v2/generator-errors.log",
       "gen_dir": "remotebuildexecution/v2",
@@ -587,6 +646,7 @@
     },
     {
       "name": "replicapool",
+      "id": "replicapool:v1beta1",
       "lib_cargo_file": "replicapool/v1beta1/lib/Cargo.toml",
       "error_file": "replicapool/v1beta1/generator-errors.log",
       "gen_dir": "replicapool/v1beta1",
@@ -597,6 +657,7 @@
     },
     {
       "name": "reseller",
+      "id": "reseller:v1",
       "lib_cargo_file": "reseller/v1/lib/Cargo.toml",
       "error_file": "reseller/v1/generator-errors.log",
       "gen_dir": "reseller/v1",
@@ -607,6 +668,7 @@
     },
     {
       "name": "runtimeconfig",
+      "id": "runtimeconfig:v1",
       "lib_cargo_file": "runtimeconfig/v1/lib/Cargo.toml",
       "error_file": "runtimeconfig/v1/generator-errors.log",
       "gen_dir": "runtimeconfig/v1",
@@ -617,6 +679,7 @@
     },
     {
       "name": "servicebroker",
+      "id": "servicebroker:v1",
       "lib_cargo_file": "servicebroker/v1/lib/Cargo.toml",
       "error_file": "servicebroker/v1/generator-errors.log",
       "gen_dir": "servicebroker/v1",
@@ -627,6 +690,7 @@
     },
     {
       "name": "servicecontrol",
+      "id": "servicecontrol:v1",
       "lib_cargo_file": "servicecontrol/v1/lib/Cargo.toml",
       "error_file": "servicecontrol/v1/generator-errors.log",
       "gen_dir": "servicecontrol/v1",
@@ -637,6 +701,7 @@
     },
     {
       "name": "siteVerification",
+      "id": "siteVerification:v1",
       "lib_cargo_file": "siteVerification/v1/lib/Cargo.toml",
       "error_file": "siteVerification/v1/generator-errors.log",
       "gen_dir": "siteVerification/v1",
@@ -647,6 +712,7 @@
     },
     {
       "name": "sqladmin",
+      "id": "sqladmin:v1beta4",
       "lib_cargo_file": "sqladmin/v1beta4/lib/Cargo.toml",
       "error_file": "sqladmin/v1beta4/generator-errors.log",
       "gen_dir": "sqladmin/v1beta4",
@@ -657,6 +723,7 @@
     },
     {
       "name": "storage",
+      "id": "storage:v1beta1",
       "lib_cargo_file": "storage/v1beta1/lib/Cargo.toml",
       "error_file": "storage/v1beta1/generator-errors.log",
       "gen_dir": "storage/v1beta1",
@@ -667,6 +734,7 @@
     },
     {
       "name": "storagetransfer",
+      "id": "storagetransfer:v1",
       "lib_cargo_file": "storagetransfer/v1/lib/Cargo.toml",
       "error_file": "storagetransfer/v1/generator-errors.log",
       "gen_dir": "storagetransfer/v1",
@@ -677,6 +745,7 @@
     },
     {
       "name": "streetviewpublish",
+      "id": "streetviewpublish:v1",
       "lib_cargo_file": "streetviewpublish/v1/lib/Cargo.toml",
       "error_file": "streetviewpublish/v1/generator-errors.log",
       "gen_dir": "streetviewpublish/v1",
@@ -687,6 +756,7 @@
     },
     {
       "name": "surveys",
+      "id": "surveys:v2",
       "lib_cargo_file": "surveys/v2/lib/Cargo.toml",
       "error_file": "surveys/v2/generator-errors.log",
       "gen_dir": "surveys/v2",
@@ -697,6 +767,7 @@
     },
     {
       "name": "texttospeech",
+      "id": "texttospeech:v1",
       "lib_cargo_file": "texttospeech/v1/lib/Cargo.toml",
       "error_file": "texttospeech/v1/generator-errors.log",
       "gen_dir": "texttospeech/v1",
@@ -707,6 +778,7 @@
     },
     {
       "name": "texttospeech",
+      "id": "texttospeech:v1beta1",
       "lib_cargo_file": "texttospeech/v1beta1/lib/Cargo.toml",
       "error_file": "texttospeech/v1beta1/generator-errors.log",
       "gen_dir": "texttospeech/v1beta1",
@@ -717,6 +789,7 @@
     },
     {
       "name": "urlshortener",
+      "id": "urlshortener:v1",
       "lib_cargo_file": "urlshortener/v1/lib/Cargo.toml",
       "error_file": "urlshortener/v1/generator-errors.log",
       "gen_dir": "urlshortener/v1",
@@ -727,6 +800,7 @@
     },
     {
       "name": "videointelligence",
+      "id": "videointelligence:v1p1beta1",
       "lib_cargo_file": "videointelligence/v1p1beta1/lib/Cargo.toml",
       "error_file": "videointelligence/v1p1beta1/generator-errors.log",
       "gen_dir": "videointelligence/v1p1beta1",
@@ -737,6 +811,7 @@
     },
     {
       "name": "videointelligence",
+      "id": "videointelligence:v1p2beta1",
       "lib_cargo_file": "videointelligence/v1p2beta1/lib/Cargo.toml",
       "error_file": "videointelligence/v1p2beta1/generator-errors.log",
       "gen_dir": "videointelligence/v1p2beta1",
@@ -747,6 +822,7 @@
     },
     {
       "name": "videointelligence",
+      "id": "videointelligence:v1p3beta1",
       "lib_cargo_file": "videointelligence/v1p3beta1/lib/Cargo.toml",
       "error_file": "videointelligence/v1p3beta1/generator-errors.log",
       "gen_dir": "videointelligence/v1p3beta1",
@@ -757,6 +833,7 @@
     },
     {
       "name": "videointelligence",
+      "id": "videointelligence:v1beta2",
       "lib_cargo_file": "videointelligence/v1beta2/lib/Cargo.toml",
       "error_file": "videointelligence/v1beta2/generator-errors.log",
       "gen_dir": "videointelligence/v1beta2",
@@ -767,6 +844,7 @@
     },
     {
       "name": "webmasters",
+      "id": "webmasters:v3",
       "lib_cargo_file": "webmasters/v3/lib/Cargo.toml",
       "error_file": "webmasters/v3/generator-errors.log",
       "gen_dir": "webmasters/v3",
@@ -777,6 +855,7 @@
     },
     {
       "name": "youtubeAnalytics",
+      "id": "youtubeAnalytics:v1",
       "lib_cargo_file": "youtubeAnalytics/v1/lib/Cargo.toml",
       "error_file": "youtubeAnalytics/v1/generator-errors.log",
       "gen_dir": "youtubeAnalytics/v1",
@@ -787,6 +866,7 @@
     },
     {
       "name": "youtubeAnalytics",
+      "id": "youtubeAnalytics:v2",
       "lib_cargo_file": "youtubeAnalytics/v2/lib/Cargo.toml",
       "error_file": "youtubeAnalytics/v2/generator-errors.log",
       "gen_dir": "youtubeAnalytics/v2",

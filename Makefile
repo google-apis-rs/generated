@@ -3,6 +3,7 @@ MCP ?= $(GENERATOR_DIR)/target/release/mcp
 API_INDEX_JSON = etc/api-index.v1.json
 API_INDEX_MAPPED_JSON = etc/api-index-mapped.v1.json
 OUTPUT_DIR = gen
+SPEC_DIR = etc/api  # keep in sync with Standard::config_dir
 MAKEFILE_TPL = templates/Makefile.liquid
 CARGO_TOML_TPL = templates/Cargo.toml.liquid
 GEN_MAKEFILE = $(OUTPUT_DIR)/Makefile
@@ -46,7 +47,7 @@ update-mapped-index:
 api-index: $(API_INDEX_JSON) $(GEN_MAKEFILE)
 
 fetch-api-specs: api-index $(MCP) 
-	$(MCP) fetch-api-specs $(API_INDEX_MAPPED_JSON) $(OUTPUT_DIR)
+	$(MCP) fetch-api-specs $(API_INDEX_MAPPED_JSON) $(SPEC_DIR)
 
 $(GEN_MAKEFILE): $(API_INDEX_MAPPED_JSON) $(MCP) $(MAKEFILE_TPL) 
 	$(MCP) substitute $(MAKEFILE_TPL):$@ $(CARGO_TOML_TPL):$(GEN_CARGO_TOML) < $< 
