@@ -8,6 +8,7 @@ MAKEFILE_TPL = templates/Makefile.liquid
 CARGO_TOML_TPL = templates/Cargo.toml.liquid
 GEN_MAKEFILE = $(OUTPUT_DIR)/Makefile
 GEN_CARGO_TOML = $(OUTPUT_DIR)/Cargo.toml
+ERRORS_FILE_GLOB = *-errors.log
 
 help:
 	$(info -- Targets for files we depend on ----------------------------------------------------)
@@ -15,8 +16,11 @@ help:
 	$(info update-mapped-index        | invalidate the mapped index and regenerate it, useful if there are new errors when generating or building)
 	$(info fetch-api-specs            | fetch all apis our local discovery document knows, and store)
 	$(info generate-makefile          | a makefile containing useful targets to build and test generated crates)
+	$(info -- Developer Targets ---------------------------------------------------------------)
 	$(info update-mcp                 | pull latest code and build the mcp program)
+	$(info force-update-all-metadata  | like update-all-metadata, but will forget all local state beforehand)
 	$(info show-all-errors            | display all error files currently present)
+	$(info clear-all-errors           | remove all error records. Then run )
 	$(info --------------------------------------------------------------------------------------)
 	$(info -- `make -C gen` is used to interact with the generator and generate code)
 	$(info --------------------------------------------------------------------------------------)
@@ -38,7 +42,10 @@ update-mcp: $(GENERATOR_DIR)
 
 update-all-metadata:
 	-rm $(API_INDEX_JSON)
-	$(MAKE) fetch-api-specs update-mapped-index
+	$(MAKE) fetch-api-specs update-mapped-index generate-makefile
+
+force-update-all-metadata: clear-all-errors
+	$(MAKE) update-all-metadata
 
 update-mapped-index:
 	-rm $(API_INDEX_MAPPED_JSON)
@@ -46,16 +53,19 @@ update-mapped-index:
 
 api-index: $(API_INDEX_JSON) $(GEN_MAKEFILE)
 
-fetch-api-specs: api-index $(MCP) 
+fetch-api-specs: $(API_INDEX_MAPPED_JSON) $(MCP) 
 	$(MCP) fetch-api-specs $(API_INDEX_MAPPED_JSON) $(SPEC_DIR)
 
 $(GEN_MAKEFILE): $(API_INDEX_MAPPED_JSON) $(MCP) $(MAKEFILE_TPL) 
-	$(MCP) substitute $(MAKEFILE_TPL):$@ $(CARGO_TOML_TPL):$(GEN_CARGO_TOML) < $< 
+	$(MCP) substitute $(MAKEFILE_TPL):$@ $(CARGO_TOML_TPL):$(GEN_CARGO_TOML) < $<
 	
 generate-makefile: $(GEN_MAKEFILE)
 
+clear-all-errors:
+	find $(OUTPUT_DIR) -name '$(ERRORS_FILE_GLOB)' -exec rm -v '{}' \;
+
 show-all-errors:
-	find . -name generator-errors.log | while read -r fp; do echo $$"\n---> $$fp <---\n"; cat "$$fp"; done
+	find $(OUTPUT_DIR) -name '$(ERRORS_FILE_GLOB)' | while read -r fp; do echo $$"\n---> $$fp <---\n"; cat "$$fp"; done
 
 $(GEN_CARGO_TOML): $(API_INDEX_MAPPED_JSON) $(MCP) $(CARGO_TOML_TPL)
 	$(MCP) substitute $(CARGO_TOML_TPL):$@ < $< 
