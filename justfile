@@ -14,7 +14,7 @@ ERRORS_FILE_SUFFIX := "-errors.log"
 help:
     #!/bin/sh
     cat <<EOF
-    Run 'just --list' for mor details, here is an overview
+    Run 'just --list' for more details, here is an overview
     -- Used most often... ---------------------------------------------------------------------------)
     'refresh-pruned-specs' and 'refresh-with-force'
     -- The source of it all -- first mentioned serve as input for these mentioned later -------------)
@@ -40,15 +40,15 @@ mcp:
     cd {{generator_dir}} && cargo build --release
 
 # Using the API index and known errors, generate a pruned API index containing only working APIs
-map-api-index: mcp
+_map-api-index: mcp
     {{MCP}} map-api-index {{API_INDEX_JSON}} {{API_INDEX_MAPPED_JSON}} {{SPEC_DIR}} {{OUTPUT_DIR}}
 
 # update files we can use to run the tooling
-update-drivers: map-api-index mcp
+update-drivers: _map-api-index mcp
     {{MCP}} substitute {{MAKEFILE_TPL}}:{{GEN_MAKEFILE}} {{CARGO_TOML_TPL}}:{{GEN_CARGO_TOML}} < {{API_INDEX_MAPPED_JSON}}
 
 # fetch API specifications from Google's discovery service, based on the list of ones we know work
-fetch-api-specs-pruned: map-api-index mcp
+fetch-api-specs-pruned: _map-api-index mcp
     {{MCP}} fetch-api-specs {{API_INDEX_MAPPED_JSON}} {{SPEC_DIR}}
 
 # fetch API specifications from Google's discovery service, based the entire index of available APIs
@@ -76,7 +76,8 @@ clear-errors prefix=any_error:
 
 # valid prefixes: generator or cargo or '*'
 show-errors prefix=any_error:
-    #!/usr/bin/env bash -eu
+    #!/usr/bin/env sh -eu
     find {{OUTPUT_DIR}} -name '{{prefix}}{{ERRORS_FILE_SUFFIX}}' | while read -r fp; do 
-        echo $$"\n---> $fp <---\n"; cat "$fp"
+        echo $"\n---> $fp <---\n"
+        cat "$fp"
     done
