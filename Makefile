@@ -1,8 +1,8 @@
 GENERATOR_DIR = generator
 MCP ?= $(GENERATOR_DIR)/target/release/mcp
-API_INDEX_JSON = etc/api-index.v1.json
-API_INDEX_MAPPED_JSON = etc/api-index-mapped.v1.json
 OUTPUT_DIR = gen
+API_INDEX_JSON = etc/api-index.v1.json
+API_INDEX_MAPPED_JSON = $(OUTPUT_DIR)/etc/api-index-mapped.v1.json
 MAKEFILE_TPL = templates/Makefile.liquid
 CARGO_TOML_TPL = templates/Cargo.toml.liquid
 GEN_MAKEFILE = $(OUTPUT_DIR)/Makefile
