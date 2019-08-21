@@ -28,11 +28,7 @@ just refresh-with-force
 
 From there you would usually go with the following to gather all error data with refreshed code:
 ```
-just mcp 
-just gen/all 
-just update-drivers 
-just gen/cargo-check 
-just update-drivers
+just collect-errors
 ```
 
 ### Forcefully update the Makefile after a change affecting the mapped index

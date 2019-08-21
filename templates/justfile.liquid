@@ -9,8 +9,12 @@ check := "check"
 cargo +arguments=check:
     cargo {{arguments}}
 
-# Run cargo via Make, one by one, and collect errors
+# Run cargo via Make, one by one, and collect errors when checking
 cargo-check:
     make cargo-all ARGS=check  -k
+
+# Run cargo via Make, one by one, and collect errors when making docs
+cargo-doc:
+    make cargo-all ARGS=docs  -k
 
 {%- endraw -%}

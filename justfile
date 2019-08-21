@@ -19,6 +19,7 @@ help:
     Run 'just --list' for more details, here is an overview
     -- Used most often... ---------------------------------------------------------------------------)
     'refresh-pruned-specs' and 'refresh-with-force'
+    'gen/all' and 'gen/cargo check'
     -- The source of it all -- first mentioned serve as input for these mentioned later -------------)
     'refresh-google-api-index'  and 'fetch-api-specs-pruned' and 'fetch-api-specs-google'
     -- Drive the generator and update its inputs ----------------------------------------------------)
@@ -89,3 +90,11 @@ show-errors prefix=any_error:
         echo $"\n---> $fp <---\n"
         cat "$fp"
     done
+
+# Best after 'refresh-with-force', it generates all code and runs cargo against it, collecting errors
+collect-errors:
+    just mcp 
+    just gen/all 
+    just update-drivers 
+    just gen/cargo-check 
+    just update-drivers
