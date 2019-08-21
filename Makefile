@@ -32,7 +32,7 @@ $(API_INDEX_JSON):
 	curl -S https://www.googleapis.com/discovery/v1/apis > $@
 
 $(API_INDEX_MAPPED_JSON): $(API_INDEX_JSON) $(MCP) 
-	$(MCP) map-api-index $< $@ $(OUTPUT_DIR)
+	$(MCP) map-api-index $< $@ $(SPEC_DIR)
 
 $(GENERATOR_DIR):
 	git clone --depth=1 https://github.com/google-apis-rs/generator $@
