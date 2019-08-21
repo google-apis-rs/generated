@@ -9,6 +9,7 @@ CARGO_TOML_TPL := "templates/Cargo.toml.liquid"
 GEN_MAKEFILE := OUTPUT_DIR + "/Makefile"
 GEN_CARGO_TOML := OUTPUT_DIR + "/Cargo.toml"
 ERRORS_FILE_SUFFIX := "-errors.log"
+SKIP_MCP := "no"
 
 # display an overview
 help:
@@ -31,7 +32,9 @@ refresh-api-index:
 
 # build or update the MCP tool, used for generation and much more
 mcp:
-    #!/usr/bin/env bash -eux -o pipefail
+    #!/usr/bin/env bash 
+    set -eux -o pipefail
+    [[ "{{SKIP_MCP}}" = "yes" ]] && exit 0
     if [ ! -d {{generator_dir}} ]; then
         git clone --depth=1 https://github.com/google-apis-rs/generator {{generator_dir}}
     else
@@ -76,7 +79,8 @@ clear-errors prefix=any_error:
 
 # valid prefixes: generator or cargo or '*'
 show-errors prefix=any_error:
-    #!/usr/bin/env sh -eu
+    #!/usr/bin/env sh
+    set -eu
     find {{OUTPUT_DIR}} -name '{{prefix}}{{ERRORS_FILE_SUFFIX}}' | while read -r fp; do 
         echo $"\n---> $fp <---\n"
         cat "$fp"
