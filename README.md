@@ -28,10 +28,10 @@ just refresh-with-force
 
 From there you would usually go with the following to gather all error data with refreshed code:
 ```
-just update-mcp
-make -C gen gen-all -kj8
-just update-drivers
-make -C gen cargo-all ARGS=check  -k
+just mcp 
+just gen/all 
+just update-drivers 
+just gen/cargo-check 
 just update-drivers
 ```
 

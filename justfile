@@ -4,10 +4,11 @@ API_INDEX_JSON := "etc/api-index.v1.json"
 API_INDEX_MAPPED_JSON := "etc/api-index-mapped.v1.json"
 OUTPUT_DIR := "gen"
 SPEC_DIR := "etc/api"  # keep in sync with Standard::config_dir: TODO: can we write an .env file instead?
-MAKEFILE_TPL := "templates/Makefile.liquid"
-CARGO_TOML_TPL := "templates/Cargo.toml.liquid"
+MAKEFILE_TPL := ""
+CARGO_TOML_TPL := ""
 GEN_MAKEFILE := OUTPUT_DIR + "/Makefile"
 GEN_CARGO_TOML := OUTPUT_DIR + "/Cargo.toml"
+GEN_JUSTFILE := OUTPUT_DIR + "/justfile"
 ERRORS_FILE_SUFFIX := "-errors.log"
 SKIP_MCP := "no"
 
@@ -48,7 +49,10 @@ _map-api-index: mcp
 
 # update files we can use to run the tooling
 update-drivers: _map-api-index mcp
-    {{MCP}} substitute {{MAKEFILE_TPL}}:{{GEN_MAKEFILE}} {{CARGO_TOML_TPL}}:{{GEN_CARGO_TOML}} < {{API_INDEX_MAPPED_JSON}}
+    cat {{API_INDEX_MAPPED_JSON}} | {{MCP}} substitute \
+        templates/Makefile.liquid:{{GEN_MAKEFILE}} \
+        templates/Cargo.toml.liquid:{{GEN_CARGO_TOML}} \
+        templates/justfile.liquid:{{GEN_JUSTFILE}}
 
 # fetch API specifications from Google's discovery service, based on the list of ones we know work
 fetch-api-specs-pruned: _map-api-index mcp

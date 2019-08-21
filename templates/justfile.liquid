@@ -1,0 +1,16 @@
+{%- raw -%}
+
+# generate as many APIs as possible, in parallel
+all:
+    make gen-all -kj8
+
+check := "check"
+# Run cargo on the workspace with all projects
+cargo +arguments=check:
+    cargo {{arguments}}
+
+# Run cargo via Make, one by one, and collect errors
+cargo-check:
+    make cargo-all ARGS=check  -k
+
+{%- endraw -%}
