@@ -920,18 +920,6 @@
     },
     {
       "name": "compute",
-      "id": "compute:alpha",
-      "lib_cargo_file": "compute/alpha/lib/Cargo.toml",
-      "gen_error_file": "compute/alpha/generator-errors.log",
-      "cargo_error_file": "compute/alpha/cargo-errors.log",
-      "gen_dir": "compute/alpha",
-      "spec_file": "compute/alpha/spec.json",
-      "crate_name": "google-computealpha",
-      "make_target": "computealpha",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/compute/alpha/rest"
-    },
-    {
-      "name": "compute",
       "id": "compute:beta",
       "lib_cargo_file": "compute/beta/lib/Cargo.toml",
       "gen_error_file": "compute/beta/generator-errors.log",
@@ -2251,18 +2239,6 @@
       "rest_url": "https://runtimeconfig.googleapis.com/$discovery/rest?version=v1beta1"
     },
     {
-      "name": "safebrowsing",
-      "id": "safebrowsing:v4",
-      "lib_cargo_file": "safebrowsing/v4/lib/Cargo.toml",
-      "gen_error_file": "safebrowsing/v4/generator-errors.log",
-      "cargo_error_file": "safebrowsing/v4/cargo-errors.log",
-      "gen_dir": "safebrowsing/v4",
-      "spec_file": "safebrowsing/v4/spec.json",
-      "crate_name": "google-safebrowsing4",
-      "make_target": "safebrowsing4",
-      "rest_url": "https://safebrowsing.googleapis.com/$discovery/rest?version=v4"
-    },
-    {
       "name": "script",
       "id": "script:v1",
       "lib_cargo_file": "script/v1/lib/Cargo.toml",
@@ -2609,18 +2585,6 @@
       "crate_name": "google-surveys2",
       "make_target": "surveys2",
       "rest_url": "https://www.googleapis.com/discovery/v1/apis/surveys/v2/rest"
-    },
-    {
-      "name": "tagmanager",
-      "id": "tagmanager:v1",
-      "lib_cargo_file": "tagmanager/v1/lib/Cargo.toml",
-      "gen_error_file": "tagmanager/v1/generator-errors.log",
-      "cargo_error_file": "tagmanager/v1/cargo-errors.log",
-      "gen_dir": "tagmanager/v1",
-      "spec_file": "tagmanager/v1/spec.json",
-      "crate_name": "google-tagmanager1",
-      "make_target": "tagmanager1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/tagmanager/v1/rest"
     },
     {
       "name": "tagmanager",

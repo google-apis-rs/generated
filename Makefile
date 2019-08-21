@@ -13,9 +13,10 @@ ERRORS_FILE_GLOB = *-errors.log
 help:
 	$(info -- Targets for files we depend on ----------------------------------------------------)
 	$(info update-all-metadata        | invalidate all specifications from google and fetch the latest versions)
-	$(info update-mapped-index        | invalidate the mapped index and regenerate it, useful if there are new errors when generating or building)
-	$(info fetch-api-specs            | fetch all apis our local discovery document knows, and store)
+	$(info update-drivers             | update mapped index, generated Makefile and Cargo workspace file)
+	$(info force-update-mapped-index  | invalidate the mapped index and regenerate it, useful if there are new errors when generating or building)
 	$(info generate-makefile          | a makefile containing useful targets to build and test generated crates)
+	$(info fetch-api-specs            | fetch all apis our local discovery document knows, and store them)
 	$(info -- Developer Targets ---------------------------------------------------------------)
 	$(info update-mcp                 | pull latest code and build the mcp program)
 	$(info force-update-all-metadata  | like update-all-metadata, but will forget all local state beforehand)
@@ -32,7 +33,7 @@ $(API_INDEX_JSON):
 	curl -S https://www.googleapis.com/discovery/v1/apis > $@
 
 $(API_INDEX_MAPPED_JSON): $(API_INDEX_JSON) $(MCP) 
-	$(MCP) map-api-index $< $@ $(SPEC_DIR)
+	$(MCP) map-api-index $< $@ $(SPEC_DIR) $(OUTPUT_DIR)
 
 $(GENERATOR_DIR):
 	git clone --depth=1 https://github.com/google-apis-rs/generator $@
@@ -43,16 +44,17 @@ update-mcp: $(GENERATOR_DIR)
 update-all-metadata:
 	@echo Removing original Google API index
 	-rm $(API_INDEX_JSON)
-	$(MAKE) fetch-api-specs update-mapped-index generate-makefile
+	$(MAKE) fetch-api-specs update-drivers
+
+update-drivers: 
+	$(MAKE) force-update-mapped-index generate-makefile
 
 force-update-all-metadata: clear-all-errors
 	MCP_FETCH_ARGS=--use-original-index-at=$(API_INDEX_JSON) $(MAKE) update-all-metadata
 
-update-mapped-index:
+force-update-mapped-index:
 	-rm $(API_INDEX_MAPPED_JSON)
 	$(MAKE) $(API_INDEX_MAPPED_JSON)
-
-api-index: $(API_INDEX_JSON) $(GEN_MAKEFILE)
 
 fetch-api-specs: $(API_INDEX_MAPPED_JSON) $(MCP) 
 	$(MCP) fetch-api-specs $(MCP_FETCH_ARGS) $(API_INDEX_MAPPED_JSON) $(SPEC_DIR)

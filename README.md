@@ -32,15 +32,15 @@ From there you would usually go with the following to gather all error data with
 ```
 make update-mcp
 make -C gen gen-all -kj8
-make api-index
+make update-drivers
 make -C gen cargo-all ARGS=check  -k
-make api-index
+make update-drivers
 ```
 
 ### Forcefully update the Makefile after a change affecting the mapped index
 
 ```
-(cd ../generator && cargo build) && MCP=../generator/target/debug/mcp make update-mapped-index gen/Makefile
+(cd ../generator && cargo build) && MCP=../generator/target/debug/mcp make update-drivers
 ```
 
 

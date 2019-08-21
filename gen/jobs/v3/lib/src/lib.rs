@@ -2136,7 +2136,7 @@ pub mod schemas {
         #[doc = "Required. The title of the job, such as \"Software Engineer\"\n\nThe maximum number of allowed characters is 500."]
         #[serde(rename = "title", default)]
         pub title: Option<String>,
-        #[doc = "Optional. The visibility of the job.\n\nDefaults to Visibility.ACCOUNT_ONLY if not specified."]
+        #[doc = "Deprecated. The job is only visible to the owner.\n\nThe visibility of the job.\n\nDefaults to Visibility.ACCOUNT_ONLY if not specified."]
         #[serde(rename = "visibility", default)]
         pub visibility: Option<crate::schemas::JobVisibility>,
     }

@@ -212,7 +212,7 @@ pub mod schemas {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
         #[serde(rename = "condition", default)]
         pub condition: Option<crate::schemas::Expr>,
-        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
+        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@gmail.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
         #[serde(rename = "members", default)]
         pub members: Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
@@ -284,7 +284,7 @@ pub mod schemas {
         #[doc = "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource."]
         #[serde(rename = "responseView", default)]
         pub response_view: Option<crate::schemas::CreateTaskRequestResponseView>,
-        #[doc = "Required. The task to add.\n\nTask names have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`.\nThe user can optionally specify a task name. If a\nname is not specified then the system will generate a random\nunique task id, which will be set in the task returned in the\nresponse.\n\nIf schedule_time is not set or is in the\npast then Cloud Tasks will set it to the current time.\n\nTask De-duplication:\n\nExplicitly specifying a task ID enables task de-duplication.  If\na task's ID is identical to that of an existing task or a task\nthat was deleted or executed recently then the call will fail\nwith ALREADY_EXISTS.\nIf the task's queue was created using Cloud Tasks, then another task with\nthe same name can't be created for ~1hour after the original task was\ndeleted or executed. If the task's queue was created using queue.yaml or\nqueue.xml, then another task with the same name can't be created\nfor ~9days after the original task was deleted or executed.\n\nBecause there is an extra lookup cost to identify duplicate task\nnames, these CreateTask calls have significantly\nincreased latency. Using hashed strings for the task id or for\nthe prefix of the task id is recommended. Choosing task ids that\nare sequential or have sequential prefixes, for example using a\ntimestamp, causes an increase in latency and error rates in all\ntask commands. The infrastructure relies on an approximately\nuniform distribution of task ids to store and serve tasks\nefficiently."]
+        #[doc = "Required.\n\nThe task to add.\n\nTask names have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`.\nThe user can optionally specify a task name. If a\nname is not specified then the system will generate a random\nunique task id, which will be set in the task returned in the\nresponse.\n\nIf schedule_time is not set or is in the\npast then Cloud Tasks will set it to the current time.\n\nTask De-duplication:\n\nExplicitly specifying a task ID enables task de-duplication.  If\na task's ID is identical to that of an existing task or a task\nthat was deleted or executed recently then the call will fail\nwith ALREADY_EXISTS.\nIf the task's queue was created using Cloud Tasks, then another task with\nthe same name can't be created for ~1hour after the original task was\ndeleted or executed. If the task's queue was created using queue.yaml or\nqueue.xml, then another task with the same name can't be created\nfor ~9days after the original task was deleted or executed.\n\nBecause there is an extra lookup cost to identify duplicate task\nnames, these CreateTask calls have significantly\nincreased latency. Using hashed strings for the task id or for\nthe prefix of the task id is recommended. Choosing task ids that\nare sequential or have sequential prefixes, for example using a\ntimestamp, causes an increase in latency and error rates in all\ntask commands. The infrastructure relies on an approximately\nuniform distribution of task ids to store and serve tasks\nefficiently."]
         #[serde(rename = "task", default)]
         pub task: Option<crate::schemas::Task>,
     }
@@ -359,51 +359,14 @@ pub mod schemas {
         PartialOrd,
         Ord,
         Eq,
+        Copy,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GetIamPolicyRequest {
-        #[doc = "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM."]
-        #[serde(rename = "options", default)]
-        pub options: Option<crate::schemas::GetPolicyOptions>,
-    }
+    pub struct GetIamPolicyRequest;
     impl ::field_selector::FieldSelector for GetIamPolicyRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GetPolicyOptions {
-        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
-        #[serde(rename = "requestedPolicyVersion", default)]
-        pub requested_policy_version: Option<i32>,
-    }
-    impl ::field_selector::FieldSelector for GetPolicyOptions {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {
-            match selector.chars().rev().nth(0) {
-                Some(',') | None => {}
-                _ => selector.push_str(","),
-            }
-            selector.push_str(ident);
-            selector.push_str("*");
-        }
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum HttpRequestHttpMethod {
@@ -697,7 +660,7 @@ pub mod schemas {
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
         #[serde(rename = "bindings", default)]
         pub bindings: Option<Vec<crate::schemas::Binding>>,
-        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
+        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten blindly."]
         #[serde(rename = "etag", default)]
         pub etag: Option<Vec<u8>>,
         #[doc = "Deprecated."]
