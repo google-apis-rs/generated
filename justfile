@@ -116,4 +116,4 @@ gen-check:
 
 # Run cargo via Make, one by one, and collect errors when making docs
 gen-doc:
-    make -C {{OUTPUT_DIR}} cargo-all ARGS=docs  -k
+    make -C {{OUTPUT_DIR}} cargo-all ARGS=doc  -k
