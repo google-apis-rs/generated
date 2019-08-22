@@ -14,13 +14,13 @@ pub mod schemas {
     pub struct AccessConfig {
         #[doc = "Name of this access configuration."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "An external IP address associated with this instance."]
         #[serde(rename = "natIp", default)]
-        pub nat_ip: Option<String>,
+        pub nat_ip: ::std::option::Option<String>,
         #[doc = "Type of this access configuration file. Currently only ONE_TO_ONE_NAT is supported."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AccessConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -29,7 +29,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -47,13 +46,13 @@ pub mod schemas {
     pub struct Action {
         #[doc = "A list of commands to run, one per line. If any command fails, the whole action is considered a failure and no further actions are run. This also marks the virtual machine or replica as a failure."]
         #[serde(rename = "commands", default)]
-        pub commands: Option<Vec<String>>,
+        pub commands: ::std::option::Option<Vec<String>>,
         #[doc = "A list of environment variables to use for the commands in this action."]
         #[serde(rename = "envVariables", default)]
-        pub env_variables: Option<Vec<crate::schemas::EnvVariable>>,
+        pub env_variables: ::std::option::Option<Vec<crate::schemas::EnvVariable>>,
         #[doc = "If an action's commands on a particular replica do not finish in the specified timeoutMilliSeconds, the replica is considered to be in a FAILING state. No efforts are made to stop any processes that were spawned or created as the result of running the action's commands. The default is the max allowed value, 1 hour (i.e. 3600000 milliseconds)."]
         #[serde(rename = "timeoutMilliSeconds", default)]
-        pub timeout_milli_seconds: Option<i32>,
+        pub timeout_milli_seconds: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Action {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -62,7 +61,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -80,10 +78,10 @@ pub mod schemas {
     pub struct DiskAttachment {
         #[doc = "The device name of this disk."]
         #[serde(rename = "deviceName", default)]
-        pub device_name: Option<String>,
+        pub device_name: ::std::option::Option<String>,
         #[doc = "A zero-based index to assign to this disk, where 0 is reserved for the boot disk. If not specified, this is assigned by the server."]
         #[serde(rename = "index", default)]
-        pub index: Option<u32>,
+        pub index: ::std::option::Option<u32>,
     }
     impl ::field_selector::FieldSelector for DiskAttachment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -92,7 +90,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -110,13 +107,13 @@ pub mod schemas {
     pub struct EnvVariable {
         #[doc = "Deprecated, do not use."]
         #[serde(rename = "hidden", default)]
-        pub hidden: Option<bool>,
+        pub hidden: ::std::option::Option<bool>,
         #[doc = "The name of the environment variable."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The value of the variable."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EnvVariable {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -125,7 +122,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -143,10 +139,10 @@ pub mod schemas {
     pub struct ExistingDisk {
         #[doc = "How the disk will be attached to the Replica."]
         #[serde(rename = "attachment", default)]
-        pub attachment: Option<crate::schemas::DiskAttachment>,
+        pub attachment: ::std::option::Option<crate::schemas::DiskAttachment>,
         #[doc = "The name of the Persistent Disk resource. The Persistent Disk resource must be in the same zone as the Pool."]
         #[serde(rename = "source", default)]
-        pub source: Option<String>,
+        pub source: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ExistingDisk {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -155,7 +151,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -173,31 +168,31 @@ pub mod schemas {
     pub struct HealthCheck {
         #[doc = "How often (in seconds) to make HTTP requests for this healthcheck. The default value is 5 seconds."]
         #[serde(rename = "checkIntervalSec", default)]
-        pub check_interval_sec: Option<i32>,
+        pub check_interval_sec: ::std::option::Option<i32>,
         #[doc = "The description for this health check."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The number of consecutive health check requests that need to succeed before the replica is considered healthy again. The default value is 2."]
         #[serde(rename = "healthyThreshold", default)]
-        pub healthy_threshold: Option<i32>,
+        pub healthy_threshold: ::std::option::Option<i32>,
         #[doc = "The value of the host header in the HTTP health check request. If left empty (default value), the localhost IP 127.0.0.1 will be used."]
         #[serde(rename = "host", default)]
-        pub host: Option<String>,
+        pub host: ::std::option::Option<String>,
         #[doc = "The name of this health check."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The localhost request path to send this health check, in the format /path/to/use. For example, /healthcheck."]
         #[serde(rename = "path", default)]
-        pub path: Option<String>,
+        pub path: ::std::option::Option<String>,
         #[doc = "The TCP port for the health check requests."]
         #[serde(rename = "port", default)]
-        pub port: Option<i32>,
+        pub port: ::std::option::Option<i32>,
         #[doc = "How long (in seconds) to wait before a timeout failure for this healthcheck. The default value is 5 seconds."]
         #[serde(rename = "timeoutSec", default)]
-        pub timeout_sec: Option<i32>,
+        pub timeout_sec: ::std::option::Option<i32>,
         #[doc = "The number of consecutive health check requests that need to fail in order to consider the replica unhealthy. The default value is 2."]
         #[serde(rename = "unhealthyThreshold", default)]
-        pub unhealthy_threshold: Option<i32>,
+        pub unhealthy_threshold: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for HealthCheck {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -206,7 +201,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -224,10 +218,10 @@ pub mod schemas {
     pub struct Label {
         #[doc = "The key for this label."]
         #[serde(rename = "key", default)]
-        pub key: Option<String>,
+        pub key: ::std::option::Option<String>,
         #[doc = "The value of this label."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Label {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -236,7 +230,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -254,10 +247,10 @@ pub mod schemas {
     pub struct Metadata {
         #[doc = "The fingerprint of the metadata. Required for updating the metadata entries for this instance."]
         #[serde(rename = "fingerPrint", default)]
-        pub finger_print: Option<String>,
+        pub finger_print: ::std::option::Option<String>,
         #[doc = "A list of metadata items."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::MetadataItem>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::MetadataItem>>,
     }
     impl ::field_selector::FieldSelector for Metadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -266,7 +259,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -284,10 +276,10 @@ pub mod schemas {
     pub struct MetadataItem {
         #[doc = "A metadata key."]
         #[serde(rename = "key", default)]
-        pub key: Option<String>,
+        pub key: ::std::option::Option<String>,
         #[doc = "A metadata value."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for MetadataItem {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -296,7 +288,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -314,13 +305,13 @@ pub mod schemas {
     pub struct NetworkInterface {
         #[doc = "An array of configurations for this interface. This specifies how this interface is configured to interact with other network services."]
         #[serde(rename = "accessConfigs", default)]
-        pub access_configs: Option<Vec<crate::schemas::AccessConfig>>,
+        pub access_configs: ::std::option::Option<Vec<crate::schemas::AccessConfig>>,
         #[doc = "Name the Network resource to which this interface applies."]
         #[serde(rename = "network", default)]
-        pub network: Option<String>,
+        pub network: ::std::option::Option<String>,
         #[doc = "An optional IPV4 internal network address to assign to the instance for this network interface."]
         #[serde(rename = "networkIp", default)]
-        pub network_ip: Option<String>,
+        pub network_ip: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for NetworkInterface {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -329,7 +320,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -347,16 +337,16 @@ pub mod schemas {
     pub struct NewDisk {
         #[doc = "How the disk will be attached to the Replica."]
         #[serde(rename = "attachment", default)]
-        pub attachment: Option<crate::schemas::DiskAttachment>,
+        pub attachment: ::std::option::Option<crate::schemas::DiskAttachment>,
         #[doc = "If true, then this disk will be deleted when the instance is deleted. The default value is true."]
         #[serde(rename = "autoDelete", default)]
-        pub auto_delete: Option<bool>,
+        pub auto_delete: ::std::option::Option<bool>,
         #[doc = "If true, indicates that this is the root persistent disk."]
         #[serde(rename = "boot", default)]
-        pub boot: Option<bool>,
+        pub boot: ::std::option::Option<bool>,
         #[doc = "Create the new disk using these parameters. The name of the disk will be <instance_name>-<four_random_charactersgt;."]
         #[serde(rename = "initializeParams", default)]
-        pub initialize_params: Option<crate::schemas::NewDiskInitializeParams>,
+        pub initialize_params: ::std::option::Option<crate::schemas::NewDiskInitializeParams>,
     }
     impl ::field_selector::FieldSelector for NewDisk {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -365,7 +355,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -384,13 +373,13 @@ pub mod schemas {
         #[doc = "The size of the created disk in gigabytes."]
         #[serde(rename = "diskSizeGb", default)]
         #[serde(with = "crate::parsed_string")]
-        pub disk_size_gb: Option<i64>,
+        pub disk_size_gb: ::std::option::Option<i64>,
         #[doc = "Name of the disk type resource describing which disk type to use to create the disk. For example 'pd-ssd' or 'pd-standard'. Default is 'pd-standard'"]
         #[serde(rename = "diskType", default)]
-        pub disk_type: Option<String>,
+        pub disk_type: ::std::option::Option<String>,
         #[doc = "The name or fully-qualified URL of a source image to use to create this disk. If you provide a name of the source image, Replica Pool will look for an image with that name in your project. If you are specifying an image provided by Compute Engine, you will need to provide the full URL with the correct project, such as:\nhttp://www.googleapis.com/compute/v1/projects/debian-cloud/ global/images/debian-wheezy-7-vYYYYMMDD"]
         #[serde(rename = "sourceImage", default)]
-        pub source_image: Option<String>,
+        pub source_image: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for NewDiskInitializeParams {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -399,7 +388,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -417,49 +405,49 @@ pub mod schemas {
     pub struct Pool {
         #[doc = "Whether replicas in this pool should be restarted if they experience a failure. The default value is true."]
         #[serde(rename = "autoRestart", default)]
-        pub auto_restart: Option<bool>,
+        pub auto_restart: ::std::option::Option<bool>,
         #[doc = "The base instance name to use for the replicas in this pool. This must match the regex [a-z]([-a-z0-9]*[a-z0-9])?. If specified, the instances in this replica pool will be named in the format <base-instance-name>-<ID>. The <ID> postfix will be a four character alphanumeric identifier generated by the service.\n\nIf this is not specified by the user, a random base instance name is generated by the service."]
         #[serde(rename = "baseInstanceName", default)]
-        pub base_instance_name: Option<String>,
+        pub base_instance_name: ::std::option::Option<String>,
         #[doc = "[Output Only] The current number of replicas in the pool."]
         #[serde(rename = "currentNumReplicas", default)]
-        pub current_num_replicas: Option<i32>,
+        pub current_num_replicas: ::std::option::Option<i32>,
         #[doc = "An optional description of the replica pool."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Deprecated. Please use template[].healthChecks instead."]
         #[serde(rename = "healthChecks", default)]
-        pub health_checks: Option<Vec<crate::schemas::HealthCheck>>,
+        pub health_checks: ::std::option::Option<Vec<crate::schemas::HealthCheck>>,
         #[doc = "The initial number of replicas this pool should have. You must provide a value greater than or equal to 0."]
         #[serde(rename = "initialNumReplicas", default)]
-        pub initial_num_replicas: Option<i32>,
+        pub initial_num_replicas: ::std::option::Option<i32>,
         #[doc = "A list of labels to attach to this replica pool and all created virtual machines in this replica pool."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<Vec<crate::schemas::Label>>,
+        pub labels: ::std::option::Option<Vec<crate::schemas::Label>>,
         #[doc = "The name of the replica pool. Must follow the regex [a-z]([-a-z0-9]*[a-z0-9])? and be 1-28 characters long."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Deprecated! Use initial_num_replicas instead."]
         #[serde(rename = "numReplicas", default)]
-        pub num_replicas: Option<i32>,
+        pub num_replicas: ::std::option::Option<i32>,
         #[doc = "Deprecated! Do not set."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "The list of resource views that should be updated with all the replicas that are managed by this pool."]
         #[serde(rename = "resourceViews", default)]
-        pub resource_views: Option<Vec<String>>,
+        pub resource_views: ::std::option::Option<Vec<String>>,
         #[doc = "[Output Only] A self-link to the replica pool."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Deprecated, please use target_pools instead."]
         #[serde(rename = "targetPool", default)]
-        pub target_pool: Option<String>,
+        pub target_pool: ::std::option::Option<String>,
         #[doc = "A list of target pools to update with the replicas that are managed by this pool. If specified, the replicas in this replica pool will be added to the specified target pools for load balancing purposes. The replica pool must live in the same region as the specified target pools. These values must be the target pool resource names, and not fully qualified URLs."]
         #[serde(rename = "targetPools", default)]
-        pub target_pools: Option<Vec<String>>,
+        pub target_pools: ::std::option::Option<Vec<String>>,
         #[doc = "The template to use when creating replicas in this pool. This template is used during initial instance creation of the pool, when growing the pool in size, or when a replica restarts."]
         #[serde(rename = "template", default)]
-        pub template: Option<crate::schemas::Template>,
+        pub template: ::std::option::Option<crate::schemas::Template>,
     }
     impl ::field_selector::FieldSelector for Pool {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -468,7 +456,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -486,7 +473,7 @@ pub mod schemas {
     pub struct PoolsDeleteRequest {
         #[doc = "If there are instances you would like to keep, you can specify them here. These instances won't be deleted, but the associated replica objects will be removed."]
         #[serde(rename = "abandonInstances", default)]
-        pub abandon_instances: Option<Vec<String>>,
+        pub abandon_instances: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for PoolsDeleteRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -495,7 +482,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -512,9 +498,9 @@ pub mod schemas {
     )]
     pub struct PoolsListResponse {
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "resources", default)]
-        pub resources: Option<Vec<crate::schemas::Pool>>,
+        pub resources: ::std::option::Option<Vec<crate::schemas::Pool>>,
     }
     impl ::field_selector::FieldSelector for PoolsListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -523,7 +509,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -541,13 +526,13 @@ pub mod schemas {
     pub struct Replica {
         #[doc = "[Output Only] The name of the Replica object."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "[Output Only] The self-link of the Replica."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "[Output Only] Last known status of the Replica."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::ReplicaStatus>,
+        pub status: ::std::option::Option<crate::schemas::ReplicaStatus>,
     }
     impl ::field_selector::FieldSelector for Replica {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -556,7 +541,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -574,19 +558,19 @@ pub mod schemas {
     pub struct ReplicaStatus {
         #[doc = "[Output Only] Human-readable details about the current state of the replica"]
         #[serde(rename = "details", default)]
-        pub details: Option<String>,
+        pub details: ::std::option::Option<String>,
         #[doc = "[Output Only] The state of the Replica."]
         #[serde(rename = "state", default)]
-        pub state: Option<String>,
+        pub state: ::std::option::Option<String>,
         #[doc = "[Output Only] The template used to build the replica."]
         #[serde(rename = "templateVersion", default)]
-        pub template_version: Option<String>,
+        pub template_version: ::std::option::Option<String>,
         #[doc = "[Output Only] Link to the virtual machine that this Replica represents."]
         #[serde(rename = "vmLink", default)]
-        pub vm_link: Option<String>,
+        pub vm_link: ::std::option::Option<String>,
         #[doc = "[Output Only] The time that this Replica got to the RUNNING state, in RFC 3339 format. If the start time is unknown, UNKNOWN is returned."]
         #[serde(rename = "vmStartTime", default)]
-        pub vm_start_time: Option<String>,
+        pub vm_start_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ReplicaStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -595,7 +579,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -613,7 +596,7 @@ pub mod schemas {
     pub struct ReplicasDeleteRequest {
         #[doc = "Whether the instance resource represented by this replica should be deleted or abandoned. If abandoned, the replica will be deleted but the virtual machine instance will remain. By default, this is set to false and the instance will be deleted along with the replica."]
         #[serde(rename = "abandonInstance", default)]
-        pub abandon_instance: Option<bool>,
+        pub abandon_instance: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for ReplicasDeleteRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -622,7 +605,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -639,9 +621,9 @@ pub mod schemas {
     )]
     pub struct ReplicasListResponse {
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "resources", default)]
-        pub resources: Option<Vec<crate::schemas::Replica>>,
+        pub resources: ::std::option::Option<Vec<crate::schemas::Replica>>,
     }
     impl ::field_selector::FieldSelector for ReplicasListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -650,7 +632,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -668,10 +649,10 @@ pub mod schemas {
     pub struct ServiceAccount {
         #[doc = "The service account email address, for example: 123845678986@project.gserviceaccount.com"]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The list of OAuth2 scopes to obtain for the service account, for example: https://www.googleapis.com/auth/devstorage.full_control"]
         #[serde(rename = "scopes", default)]
-        pub scopes: Option<Vec<String>>,
+        pub scopes: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ServiceAccount {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -680,7 +661,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -698,10 +678,10 @@ pub mod schemas {
     pub struct Tag {
         #[doc = "The fingerprint of the tag. Required for updating the list of tags."]
         #[serde(rename = "fingerPrint", default)]
-        pub finger_print: Option<String>,
+        pub finger_print: ::std::option::Option<String>,
         #[doc = "Items contained in this tag."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<String>>,
+        pub items: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for Tag {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -710,7 +690,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -728,16 +707,16 @@ pub mod schemas {
     pub struct Template {
         #[doc = "An action to run during initialization of your replicas. An action is run as shell commands which are executed one after the other in the same bash shell, so any state established by one command is inherited by later commands."]
         #[serde(rename = "action", default)]
-        pub action: Option<crate::schemas::Action>,
+        pub action: ::std::option::Option<crate::schemas::Action>,
         #[doc = "A list of HTTP Health Checks to configure for this replica pool and all virtual machines in this replica pool."]
         #[serde(rename = "healthChecks", default)]
-        pub health_checks: Option<Vec<crate::schemas::HealthCheck>>,
+        pub health_checks: ::std::option::Option<Vec<crate::schemas::HealthCheck>>,
         #[doc = "A free-form string describing the version of this template. You can provide any versioning string you would like. For example, version1 or template-v1."]
         #[serde(rename = "version", default)]
-        pub version: Option<String>,
+        pub version: ::std::option::Option<String>,
         #[doc = "The virtual machine parameters to use for creating replicas. You can define settings such as the machine type and the image of replicas in this pool. This is required if replica type is SMART_VM."]
         #[serde(rename = "vmParams", default)]
-        pub vm_params: Option<crate::schemas::VmParams>,
+        pub vm_params: ::std::option::Option<crate::schemas::VmParams>,
     }
     impl ::field_selector::FieldSelector for Template {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -746,7 +725,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -764,36 +742,36 @@ pub mod schemas {
     pub struct VmParams {
         #[doc = "Deprecated. Please use baseInstanceName instead."]
         #[serde(rename = "baseInstanceName", default)]
-        pub base_instance_name: Option<String>,
+        pub base_instance_name: ::std::option::Option<String>,
         #[doc = "Enables IP Forwarding, which allows this instance to receive packets destined for a different IP address, and send packets with a different source IP. See IP Forwarding for more information."]
         #[serde(rename = "canIpForward", default)]
-        pub can_ip_forward: Option<bool>,
+        pub can_ip_forward: ::std::option::Option<bool>,
         #[doc = "An optional textual description of the instance."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "A list of existing Persistent Disk resources to attach to each replica in the pool. Each disk will be attached in read-only mode to every replica."]
         #[serde(rename = "disksToAttach", default)]
-        pub disks_to_attach: Option<Vec<crate::schemas::ExistingDisk>>,
+        pub disks_to_attach: ::std::option::Option<Vec<crate::schemas::ExistingDisk>>,
         #[doc = "A list of Disk resources to create and attach to each Replica in the Pool. Currently, you can only define one disk and it must be a root persistent disk. Note that Replica Pool will create a root persistent disk for each replica."]
         #[serde(rename = "disksToCreate", default)]
-        pub disks_to_create: Option<Vec<crate::schemas::NewDisk>>,
+        pub disks_to_create: ::std::option::Option<Vec<crate::schemas::NewDisk>>,
         #[doc = "The machine type for this instance. The resource name (e.g. n1-standard-1)."]
         #[serde(rename = "machineType", default)]
-        pub machine_type: Option<String>,
+        pub machine_type: ::std::option::Option<String>,
         #[doc = "The metadata key/value pairs assigned to this instance."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::Metadata>,
+        pub metadata: ::std::option::Option<crate::schemas::Metadata>,
         #[doc = "A list of network interfaces for the instance. Currently only one interface is supported by Google Compute Engine, ONE_TO_ONE_NAT."]
         #[serde(rename = "networkInterfaces", default)]
-        pub network_interfaces: Option<Vec<crate::schemas::NetworkInterface>>,
+        pub network_interfaces: ::std::option::Option<Vec<crate::schemas::NetworkInterface>>,
         #[serde(rename = "onHostMaintenance", default)]
-        pub on_host_maintenance: Option<String>,
+        pub on_host_maintenance: ::std::option::Option<String>,
         #[doc = "A list of Service Accounts to enable for this instance."]
         #[serde(rename = "serviceAccounts", default)]
-        pub service_accounts: Option<Vec<crate::schemas::ServiceAccount>>,
+        pub service_accounts: ::std::option::Option<Vec<crate::schemas::ServiceAccount>>,
         #[doc = "A list of tags to apply to the Google Compute Engine instance to identify resources."]
         #[serde(rename = "tags", default)]
-        pub tags: Option<crate::schemas::Tag>,
+        pub tags: ::std::option::Option<crate::schemas::Tag>,
     }
     impl ::field_selector::FieldSelector for VmParams {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -802,7 +780,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -847,6 +824,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -3115,6 +3101,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3190,5 +3177,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

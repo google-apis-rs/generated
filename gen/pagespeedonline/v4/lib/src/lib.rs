@@ -13,13 +13,13 @@ pub mod schemas {
     )]
     pub struct PagespeedApiFormatStringV4ArgsItemsRectsItems {
         #[serde(rename = "height", default)]
-        pub height: Option<i32>,
+        pub height: ::std::option::Option<i32>,
         #[serde(rename = "left", default)]
-        pub left: Option<i32>,
+        pub left: ::std::option::Option<i32>,
         #[serde(rename = "top", default)]
-        pub top: Option<i32>,
+        pub top: ::std::option::Option<i32>,
         #[serde(rename = "width", default)]
-        pub width: Option<i32>,
+        pub width: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for PagespeedApiFormatStringV4ArgsItemsRectsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -28,7 +28,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -45,13 +44,13 @@ pub mod schemas {
     )]
     pub struct PagespeedApiFormatStringV4ArgsItemsSecondaryRectsItems {
         #[serde(rename = "height", default)]
-        pub height: Option<i32>,
+        pub height: ::std::option::Option<i32>,
         #[serde(rename = "left", default)]
-        pub left: Option<i32>,
+        pub left: ::std::option::Option<i32>,
         #[serde(rename = "top", default)]
-        pub top: Option<i32>,
+        pub top: ::std::option::Option<i32>,
         #[serde(rename = "width", default)]
-        pub width: Option<i32>,
+        pub width: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for PagespeedApiFormatStringV4ArgsItemsSecondaryRectsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -60,7 +59,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -78,20 +76,23 @@ pub mod schemas {
     pub struct PagespeedApiFormatStringV4ArgsItems {
         #[doc = "The placeholder key for this arg, as a string."]
         #[serde(rename = "key", default)]
-        pub key: Option<String>,
+        pub key: ::std::option::Option<String>,
         #[doc = "Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, DURATION, VERBATIM_STRING, PERCENTAGE, HYPERLINK, or SNAPSHOT_RECT."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "The screen rectangles being referred to, with dimensions measured in CSS pixels. This is only ever used for SNAPSHOT_RECT arguments. If this is absent for a SNAPSHOT_RECT argument, it means that that argument refers to the entire snapshot."]
         #[serde(rename = "rects", default)]
-        pub rects: Option<Vec<crate::schemas::PagespeedApiFormatStringV4ArgsItemsRectsItems>>,
+        pub rects: ::std::option::Option<
+            Vec<crate::schemas::PagespeedApiFormatStringV4ArgsItemsRectsItems>,
+        >,
         #[doc = "Secondary screen rectangles being referred to, with dimensions measured in CSS pixels. This is only ever used for SNAPSHOT_RECT arguments."]
         #[serde(rename = "secondary_rects", default)]
-        pub secondary_rects:
-            Option<Vec<crate::schemas::PagespeedApiFormatStringV4ArgsItemsSecondaryRectsItems>>,
+        pub secondary_rects: ::std::option::Option<
+            Vec<crate::schemas::PagespeedApiFormatStringV4ArgsItemsSecondaryRectsItems>,
+        >,
         #[doc = "Argument value, as a localized string."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PagespeedApiFormatStringV4ArgsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -100,7 +101,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -118,10 +118,10 @@ pub mod schemas {
     pub struct PagespeedApiFormatStringV4 {
         #[doc = "List of arguments for the format string."]
         #[serde(rename = "args", default)]
-        pub args: Option<Vec<crate::schemas::PagespeedApiFormatStringV4ArgsItems>>,
+        pub args: ::std::option::Option<Vec<crate::schemas::PagespeedApiFormatStringV4ArgsItems>>,
         #[doc = "A localized format string with {{FOO}} placeholders, where 'FOO' is the key of the argument whose value should be substituted. For HYPERLINK arguments, the format string will instead contain {{BEGIN_FOO}} and {{END_FOO}} for the argument with key 'FOO'."]
         #[serde(rename = "format", default)]
-        pub format: Option<String>,
+        pub format: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PagespeedApiFormatStringV4 {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -130,7 +130,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -147,13 +146,13 @@ pub mod schemas {
     )]
     pub struct PagespeedApiImageV4PageRect {
         #[serde(rename = "height", default)]
-        pub height: Option<i32>,
+        pub height: ::std::option::Option<i32>,
         #[serde(rename = "left", default)]
-        pub left: Option<i32>,
+        pub left: ::std::option::Option<i32>,
         #[serde(rename = "top", default)]
-        pub top: Option<i32>,
+        pub top: ::std::option::Option<i32>,
         #[serde(rename = "width", default)]
-        pub width: Option<i32>,
+        pub width: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for PagespeedApiImageV4PageRect {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -162,7 +161,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -180,21 +178,21 @@ pub mod schemas {
     pub struct PagespeedApiImageV4 {
         #[doc = "Image data base64 encoded."]
         #[serde(rename = "data", default)]
-        pub data: Option<Vec<u8>>,
+        pub data: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Height of screenshot in pixels."]
         #[serde(rename = "height", default)]
-        pub height: Option<i32>,
+        pub height: ::std::option::Option<i32>,
         #[doc = "Unique string key, if any, identifying this image."]
         #[serde(rename = "key", default)]
-        pub key: Option<String>,
+        pub key: ::std::option::Option<String>,
         #[doc = "Mime type of image data (e.g. \"image/jpeg\")."]
         #[serde(rename = "mime_type", default)]
-        pub mime_type: Option<String>,
+        pub mime_type: ::std::option::Option<String>,
         #[serde(rename = "page_rect", default)]
-        pub page_rect: Option<crate::schemas::PagespeedApiImageV4PageRect>,
+        pub page_rect: ::std::option::Option<crate::schemas::PagespeedApiImageV4PageRect>,
         #[doc = "Width of screenshot in pixels."]
         #[serde(rename = "width", default)]
-        pub width: Option<i32>,
+        pub width: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for PagespeedApiImageV4 {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -203,7 +201,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -222,12 +219,12 @@ pub mod schemas {
     {
         #[doc = "List of entries that provide additional details about a single URL. Optional."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<crate::schemas::PagespeedApiFormatStringV4>>,
+        pub details: ::std::option::Option<Vec<crate::schemas::PagespeedApiFormatStringV4>>,
         #[doc = "A format string that gives information about the URL, and a list of arguments for that format string."]
         #[serde(rename = "result", default)]
-        pub result: Option<crate::schemas::PagespeedApiFormatStringV4>,
+        pub result: ::std::option::Option<crate::schemas::PagespeedApiFormatStringV4>,
     }
-    impl :: field_selector :: FieldSelector for PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems { fn field_selector_with_ident ( ident : & str , selector : & mut String ) { match selector . chars ( ) . rev ( ) . nth ( 0 ) { Some ( ',' ) | None => { } , _ => selector . push_str ( "," ) , } selector . push_str ( ident ) ; selector . push_str ( "*" ) ; } }
+    impl :: field_selector :: FieldSelector for PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems { fn field_selector_with_ident ( ident : & str , selector : & mut String ) { match selector . chars ( ) . rev ( ) . nth ( 0 ) { Some ( ',' ) | None => { } , _ => selector . push_str ( "," ) , } selector . push_str ( ident ) ; } }
     #[derive(
         Debug,
         Clone,
@@ -240,12 +237,12 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems { # [ doc = "Heading to be displayed with the list of URLs." ] # [ serde ( rename = "header" , default ) ] pub header : Option < crate :: schemas :: PagespeedApiFormatStringV4 > , # [ doc = "List of entries that provide information about URLs in the url block. Optional." ] # [ serde ( rename = "urls" , default ) ] pub urls : Option < Vec < crate :: schemas :: PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems > > , }
-    impl :: field_selector :: FieldSelector for PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems { fn field_selector_with_ident ( ident : & str , selector : & mut String ) { match selector . chars ( ) . rev ( ) . nth ( 0 ) { Some ( ',' ) | None => { } , _ => selector . push_str ( "," ) , } selector . push_str ( ident ) ; selector . push_str ( "*" ) ; } }
+    pub struct PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems { # [ doc = "Heading to be displayed with the list of URLs." ] # [ serde ( rename = "header" , default ) ] pub header : :: std :: option :: Option < crate :: schemas :: PagespeedApiFormatStringV4 > , # [ doc = "List of entries that provide information about URLs in the url block. Optional." ] # [ serde ( rename = "urls" , default ) ] pub urls : :: std :: option :: Option < Vec < crate :: schemas :: PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems > > , }
+    impl :: field_selector :: FieldSelector for PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems { fn field_selector_with_ident ( ident : & str , selector : & mut String ) { match selector . chars ( ) . rev ( ) . nth ( 0 ) { Some ( ',' ) | None => { } , _ => selector . push_str ( "," ) , } selector . push_str ( ident ) ; } }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalProperties { # [ doc = "Whether this rule is in 'beta'. Rules in beta are new rules that are being tested, which do not impact the overall score." ] # [ serde ( rename = "beta" , default ) ] pub beta : Option < bool > , # [ doc = "List of rule groups that this rule belongs to. Each entry in the list is one of \"SPEED\", \"USABILITY\", or \"SECURITY\"." ] # [ serde ( rename = "groups" , default ) ] pub groups : Option < Vec < String > > , # [ doc = "Localized name of the rule, intended for presentation to a user." ] # [ serde ( rename = "localizedRuleName" , default ) ] pub localized_rule_name : Option < String > , # [ doc = "The impact (unbounded floating point value) that implementing the suggestions for this rule would have on making the page faster. Impact is comparable between rules to determine which rule's suggestions would have a higher or lower impact on making a page faster. For instance, if enabling compression would save 1MB, while optimizing images would save 500kB, the enable compression rule would have 2x the impact of the image optimization rule, all other things being equal." ] # [ serde ( rename = "ruleImpact" , default ) ] pub rule_impact : Option < f64 > , # [ doc = "A brief summary description for the rule, indicating at a high level what should be done to follow the rule and what benefit can be gained by doing so." ] # [ serde ( rename = "summary" , default ) ] pub summary : Option < crate :: schemas :: PagespeedApiFormatStringV4 > , # [ doc = "List of blocks of URLs. Each block may contain a heading and a list of URLs. Each URL may optionally include additional details." ] # [ serde ( rename = "urlBlocks" , default ) ] pub url_blocks : Option < Vec < crate :: schemas :: PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems > > , }
+    pub struct PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalProperties { # [ doc = "Whether this rule is in 'beta'. Rules in beta are new rules that are being tested, which do not impact the overall score." ] # [ serde ( rename = "beta" , default ) ] pub beta : :: std :: option :: Option < bool > , # [ doc = "List of rule groups that this rule belongs to. Each entry in the list is one of \"SPEED\", \"USABILITY\", or \"SECURITY\"." ] # [ serde ( rename = "groups" , default ) ] pub groups : :: std :: option :: Option < Vec < String > > , # [ doc = "Localized name of the rule, intended for presentation to a user." ] # [ serde ( rename = "localizedRuleName" , default ) ] pub localized_rule_name : :: std :: option :: Option < String > , # [ doc = "The impact (unbounded floating point value) that implementing the suggestions for this rule would have on making the page faster. Impact is comparable between rules to determine which rule's suggestions would have a higher or lower impact on making a page faster. For instance, if enabling compression would save 1MB, while optimizing images would save 500kB, the enable compression rule would have 2x the impact of the image optimization rule, all other things being equal." ] # [ serde ( rename = "ruleImpact" , default ) ] pub rule_impact : :: std :: option :: Option < f64 > , # [ doc = "A brief summary description for the rule, indicating at a high level what should be done to follow the rule and what benefit can be gained by doing so." ] # [ serde ( rename = "summary" , default ) ] pub summary : :: std :: option :: Option < crate :: schemas :: PagespeedApiFormatStringV4 > , # [ doc = "List of blocks of URLs. Each block may contain a heading and a list of URLs. Each URL may optionally include additional details." ] # [ serde ( rename = "urlBlocks" , default ) ] pub url_blocks : :: std :: option :: Option < Vec < crate :: schemas :: PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems > > , }
     impl ::field_selector::FieldSelector
         for PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalProperties
     {
@@ -255,13 +252,12 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct PagespeedApiPagespeedResponseV4FormattedResults { # [ doc = "The locale of the formattedResults, e.g. \"en_US\"." ] # [ serde ( rename = "locale" , default ) ] pub locale : Option < String > , # [ doc = "Dictionary of formatted rule results, with one entry for each PageSpeed rule instantiated and run by the server." ] # [ serde ( rename = "ruleResults" , default ) ] pub rule_results : Option < :: std :: collections :: BTreeMap < String , crate :: schemas :: PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalProperties > > , }
+    pub struct PagespeedApiPagespeedResponseV4FormattedResults { # [ doc = "The locale of the formattedResults, e.g. \"en_US\"." ] # [ serde ( rename = "locale" , default ) ] pub locale : :: std :: option :: Option < String > , # [ doc = "Dictionary of formatted rule results, with one entry for each PageSpeed rule instantiated and run by the server." ] # [ serde ( rename = "ruleResults" , default ) ] pub rule_results : :: std :: option :: Option < :: std :: collections :: BTreeMap < String , crate :: schemas :: PagespeedApiPagespeedResponseV4FormattedResultsRuleResultsAdditionalProperties > > , }
     impl ::field_selector::FieldSelector for PagespeedApiPagespeedResponseV4FormattedResults {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
@@ -269,7 +265,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -278,17 +273,17 @@ pub mod schemas {
     pub struct PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalPropertiesDistributionsItems
     {
         #[serde(rename = "max", default)]
-        pub max: Option<i32>,
+        pub max: ::std::option::Option<i32>,
         #[serde(rename = "min", default)]
-        pub min: Option<i32>,
+        pub min: ::std::option::Option<i32>,
         #[serde(rename = "proportion", default)]
-        pub proportion: Option<f64>,
+        pub proportion: ::std::option::Option<f64>,
     }
-    impl :: field_selector :: FieldSelector for PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalPropertiesDistributionsItems { fn field_selector_with_ident ( ident : & str , selector : & mut String ) { match selector . chars ( ) . rev ( ) . nth ( 0 ) { Some ( ',' ) | None => { } , _ => selector . push_str ( "," ) , } selector . push_str ( ident ) ; selector . push_str ( "*" ) ; } }
+    impl :: field_selector :: FieldSelector for PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalPropertiesDistributionsItems { fn field_selector_with_ident ( ident : & str , selector : & mut String ) { match selector . chars ( ) . rev ( ) . nth ( 0 ) { Some ( ',' ) | None => { } , _ => selector . push_str ( "," ) , } selector . push_str ( ident ) ; } }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalProperties { # [ serde ( rename = "category" , default ) ] pub category : Option < String > , # [ serde ( rename = "distributions" , default ) ] pub distributions : Option < Vec < crate :: schemas :: PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalPropertiesDistributionsItems > > , # [ serde ( rename = "median" , default ) ] pub median : Option < i32 > , }
+    pub struct PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalProperties { # [ serde ( rename = "category" , default ) ] pub category : :: std :: option :: Option < String > , # [ serde ( rename = "distributions" , default ) ] pub distributions : :: std :: option :: Option < Vec < crate :: schemas :: PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalPropertiesDistributionsItems > > , # [ serde ( rename = "median" , default ) ] pub median : :: std :: option :: Option < i32 > , }
     impl ::field_selector::FieldSelector
         for PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalProperties
     {
@@ -298,13 +293,12 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct PagespeedApiPagespeedResponseV4LoadingExperience { # [ doc = "The url, pattern or origin which the metrics are on." ] # [ serde ( rename = "id" , default ) ] pub id : Option < String > , # [ serde ( rename = "initial_url" , default ) ] pub initial_url : Option < String > , # [ serde ( rename = "metrics" , default ) ] pub metrics : Option < :: std :: collections :: BTreeMap < String , crate :: schemas :: PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalProperties > > , # [ serde ( rename = "overall_category" , default ) ] pub overall_category : Option < String > , }
+    pub struct PagespeedApiPagespeedResponseV4LoadingExperience { # [ doc = "The url, pattern or origin which the metrics are on." ] # [ serde ( rename = "id" , default ) ] pub id : :: std :: option :: Option < String > , # [ serde ( rename = "initial_url" , default ) ] pub initial_url : :: std :: option :: Option < String > , # [ serde ( rename = "metrics" , default ) ] pub metrics : :: std :: option :: Option < :: std :: collections :: BTreeMap < String , crate :: schemas :: PagespeedApiPagespeedResponseV4LoadingExperienceMetricsAdditionalProperties > > , # [ serde ( rename = "overall_category" , default ) ] pub overall_category : :: std :: option :: Option < String > , }
     impl ::field_selector::FieldSelector for PagespeedApiPagespeedResponseV4LoadingExperience {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
             match selector.chars().rev().nth(0) {
@@ -312,7 +306,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -330,76 +323,76 @@ pub mod schemas {
     pub struct PagespeedApiPagespeedResponseV4PageStats {
         #[doc = "Content management system (CMS) used for the page."]
         #[serde(rename = "cms", default)]
-        pub cms: Option<String>,
+        pub cms: ::std::option::Option<String>,
         #[doc = "Number of uncompressed response bytes for CSS resources on the page."]
         #[serde(rename = "cssResponseBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub css_response_bytes: Option<i64>,
+        pub css_response_bytes: ::std::option::Option<i64>,
         #[doc = "Number of response bytes for flash resources on the page."]
         #[serde(rename = "flashResponseBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub flash_response_bytes: Option<i64>,
+        pub flash_response_bytes: ::std::option::Option<i64>,
         #[doc = "Number of uncompressed response bytes for the main HTML document and all iframes on the page."]
         #[serde(rename = "htmlResponseBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub html_response_bytes: Option<i64>,
+        pub html_response_bytes: ::std::option::Option<i64>,
         #[doc = "Number of response bytes for image resources on the page."]
         #[serde(rename = "imageResponseBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub image_response_bytes: Option<i64>,
+        pub image_response_bytes: ::std::option::Option<i64>,
         #[doc = "Number of uncompressed response bytes for JS resources on the page."]
         #[serde(rename = "javascriptResponseBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub javascript_response_bytes: Option<i64>,
+        pub javascript_response_bytes: ::std::option::Option<i64>,
         #[doc = "The needed round trips to load render blocking resources"]
         #[serde(rename = "numRenderBlockingRoundTrips", default)]
-        pub num_render_blocking_round_trips: Option<i32>,
+        pub num_render_blocking_round_trips: ::std::option::Option<i32>,
         #[doc = "The needed round trips to load the full page"]
         #[serde(rename = "numTotalRoundTrips", default)]
-        pub num_total_round_trips: Option<i32>,
+        pub num_total_round_trips: ::std::option::Option<i32>,
         #[doc = "Number of CSS resources referenced by the page."]
         #[serde(rename = "numberCssResources", default)]
-        pub number_css_resources: Option<i32>,
+        pub number_css_resources: ::std::option::Option<i32>,
         #[doc = "Number of unique hosts referenced by the page."]
         #[serde(rename = "numberHosts", default)]
-        pub number_hosts: Option<i32>,
+        pub number_hosts: ::std::option::Option<i32>,
         #[doc = "Number of JavaScript resources referenced by the page."]
         #[serde(rename = "numberJsResources", default)]
-        pub number_js_resources: Option<i32>,
+        pub number_js_resources: ::std::option::Option<i32>,
         #[doc = "Number of HTTP resources loaded by the page."]
         #[serde(rename = "numberResources", default)]
-        pub number_resources: Option<i32>,
+        pub number_resources: ::std::option::Option<i32>,
         #[doc = "Number of roboted resources."]
         #[serde(rename = "numberRobotedResources", default)]
-        pub number_roboted_resources: Option<i32>,
+        pub number_roboted_resources: ::std::option::Option<i32>,
         #[doc = "Number of static (i.e. cacheable) resources on the page."]
         #[serde(rename = "numberStaticResources", default)]
-        pub number_static_resources: Option<i32>,
+        pub number_static_resources: ::std::option::Option<i32>,
         #[doc = "Number of transient-failed resources."]
         #[serde(rename = "numberTransientFetchFailureResources", default)]
-        pub number_transient_fetch_failure_resources: Option<i32>,
+        pub number_transient_fetch_failure_resources: ::std::option::Option<i32>,
         #[doc = "Number of response bytes for other resources on the page."]
         #[serde(rename = "otherResponseBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub other_response_bytes: Option<i64>,
+        pub other_response_bytes: ::std::option::Option<i64>,
         #[doc = "Number of over-the-wire bytes, uses the default gzip compression strategy as an estimation."]
         #[serde(rename = "overTheWireResponseBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub over_the_wire_response_bytes: Option<i64>,
+        pub over_the_wire_response_bytes: ::std::option::Option<i64>,
         #[doc = "List of roboted urls."]
         #[serde(rename = "robotedUrls", default)]
-        pub roboted_urls: Option<Vec<String>>,
+        pub roboted_urls: ::std::option::Option<Vec<String>>,
         #[doc = "Number of uncompressed response bytes for text resources not covered by other statistics (i.e non-HTML, non-script, non-CSS resources) on the page."]
         #[serde(rename = "textResponseBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub text_response_bytes: Option<i64>,
+        pub text_response_bytes: ::std::option::Option<i64>,
         #[doc = "Total size of all request bytes sent by the page."]
         #[serde(rename = "totalRequestBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub total_request_bytes: Option<i64>,
+        pub total_request_bytes: ::std::option::Option<i64>,
         #[doc = "List of transient fetch failure urls."]
         #[serde(rename = "transientFetchFailureUrls", default)]
-        pub transient_fetch_failure_urls: Option<Vec<String>>,
+        pub transient_fetch_failure_urls: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for PagespeedApiPagespeedResponseV4PageStats {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -408,7 +401,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -425,10 +417,10 @@ pub mod schemas {
     )]
     pub struct PagespeedApiPagespeedResponseV4RuleGroupsAdditionalProperties {
         #[serde(rename = "pass", default)]
-        pub pass: Option<bool>,
+        pub pass: ::std::option::Option<bool>,
         #[doc = "The score (0-100) for this rule group, which indicates how much better a page could be in that category (e.g. how much faster, or how much more usable, or how much more secure). A high score indicates little room for improvement, while a lower score indicates more room for improvement."]
         #[serde(rename = "score", default)]
-        pub score: Option<i32>,
+        pub score: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector
         for PagespeedApiPagespeedResponseV4RuleGroupsAdditionalProperties
@@ -439,7 +431,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -457,10 +448,10 @@ pub mod schemas {
     pub struct PagespeedApiPagespeedResponseV4Version {
         #[doc = "The major version number of PageSpeed used to generate these results."]
         #[serde(rename = "major", default)]
-        pub major: Option<i32>,
+        pub major: ::std::option::Option<i32>,
         #[doc = "The minor version number of PageSpeed used to generate these results."]
         #[serde(rename = "minor", default)]
-        pub minor: Option<i32>,
+        pub minor: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for PagespeedApiPagespeedResponseV4Version {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -469,7 +460,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -478,33 +468,34 @@ pub mod schemas {
     pub struct PagespeedApiPagespeedResponseV4 {
         #[doc = "The captcha verify result"]
         #[serde(rename = "captchaResult", default)]
-        pub captcha_result: Option<String>,
+        pub captcha_result: ::std::option::Option<String>,
         #[doc = "Localized PageSpeed results. Contains a ruleResults entry for each PageSpeed rule instantiated and run by the server."]
         #[serde(rename = "formattedResults", default)]
         pub formatted_results:
-            Option<crate::schemas::PagespeedApiPagespeedResponseV4FormattedResults>,
+            ::std::option::Option<crate::schemas::PagespeedApiPagespeedResponseV4FormattedResults>,
         #[doc = "Canonicalized and final URL for the document, after following page redirects (if any)."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "List of rules that were specified in the request, but which the server did not know how to instantiate."]
         #[serde(rename = "invalidRules", default)]
-        pub invalid_rules: Option<Vec<String>>,
+        pub invalid_rules: ::std::option::Option<Vec<String>>,
         #[doc = "Kind of result."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Metrics of end users' page loading experience."]
         #[serde(rename = "loadingExperience", default)]
         pub loading_experience:
-            Option<crate::schemas::PagespeedApiPagespeedResponseV4LoadingExperience>,
+            ::std::option::Option<crate::schemas::PagespeedApiPagespeedResponseV4LoadingExperience>,
         #[doc = "Summary statistics for the page, such as number of JavaScript bytes, number of HTML bytes, etc."]
         #[serde(rename = "pageStats", default)]
-        pub page_stats: Option<crate::schemas::PagespeedApiPagespeedResponseV4PageStats>,
+        pub page_stats:
+            ::std::option::Option<crate::schemas::PagespeedApiPagespeedResponseV4PageStats>,
         #[doc = "Response code for the document. 200 indicates a normal page load. 4xx/5xx indicates an error."]
         #[serde(rename = "responseCode", default)]
-        pub response_code: Option<i32>,
+        pub response_code: ::std::option::Option<i32>,
         #[doc = "A map with one entry for each rule group in these results."]
         #[serde(rename = "ruleGroups", default)]
-        pub rule_groups: Option<
+        pub rule_groups: ::std::option::Option<
             ::std::collections::BTreeMap<
                 String,
                 crate::schemas::PagespeedApiPagespeedResponseV4RuleGroupsAdditionalProperties,
@@ -512,16 +503,16 @@ pub mod schemas {
         >,
         #[doc = "Base64-encoded screenshot of the page that was analyzed."]
         #[serde(rename = "screenshot", default)]
-        pub screenshot: Option<crate::schemas::PagespeedApiImageV4>,
+        pub screenshot: ::std::option::Option<crate::schemas::PagespeedApiImageV4>,
         #[doc = "Additional base64-encoded screenshots of the page, in various partial render states."]
         #[serde(rename = "snapshots", default)]
-        pub snapshots: Option<Vec<crate::schemas::PagespeedApiImageV4>>,
+        pub snapshots: ::std::option::Option<Vec<crate::schemas::PagespeedApiImageV4>>,
         #[doc = "Title of the page, as displayed in the browser's title bar."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "The version of PageSpeed used to generate these results."]
         #[serde(rename = "version", default)]
-        pub version: Option<crate::schemas::PagespeedApiPagespeedResponseV4Version>,
+        pub version: ::std::option::Option<crate::schemas::PagespeedApiPagespeedResponseV4Version>,
     }
     impl ::field_selector::FieldSelector for PagespeedApiPagespeedResponseV4 {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -530,7 +521,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -575,6 +565,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -644,6 +643,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for RunpagespeedStrategy {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -1124,6 +1132,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1199,5 +1208,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

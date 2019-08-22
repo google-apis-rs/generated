@@ -14,10 +14,10 @@ pub mod schemas {
     pub struct Apk {
         #[doc = "Information about the binary payload of this APK."]
         #[serde(rename = "binary", default)]
-        pub binary: Option<crate::schemas::ApkBinary>,
+        pub binary: ::std::option::Option<crate::schemas::ApkBinary>,
         #[doc = "The version code of the APK, as specified in the APK's manifest file."]
         #[serde(rename = "versionCode", default)]
-        pub version_code: Option<i32>,
+        pub version_code: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Apk {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -26,7 +26,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -44,10 +43,10 @@ pub mod schemas {
     pub struct ApkBinary {
         #[doc = "A sha1 hash of the APK payload, encoded as a hex string and matching the output of the sha1sum command."]
         #[serde(rename = "sha1", default)]
-        pub sha_1: Option<String>,
+        pub sha_1: ::std::option::Option<String>,
         #[doc = "A sha256 hash of the APK payload, encoded as a hex string and matching the output of the sha256sum command."]
         #[serde(rename = "sha256", default)]
-        pub sha_256: Option<String>,
+        pub sha_256: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ApkBinary {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -56,7 +55,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -74,7 +72,7 @@ pub mod schemas {
     pub struct ApksAddExternallyHostedRequest {
         #[doc = "The definition of the externally-hosted APK and where it is located."]
         #[serde(rename = "externallyHostedApk", default)]
-        pub externally_hosted_apk: Option<crate::schemas::ExternallyHostedApk>,
+        pub externally_hosted_apk: ::std::option::Option<crate::schemas::ExternallyHostedApk>,
     }
     impl ::field_selector::FieldSelector for ApksAddExternallyHostedRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -83,7 +81,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -101,7 +98,7 @@ pub mod schemas {
     pub struct ApksAddExternallyHostedResponse {
         #[doc = "The definition of the externally-hosted APK and where it is located."]
         #[serde(rename = "externallyHostedApk", default)]
-        pub externally_hosted_apk: Option<crate::schemas::ExternallyHostedApk>,
+        pub externally_hosted_apk: ::std::option::Option<crate::schemas::ExternallyHostedApk>,
     }
     impl ::field_selector::FieldSelector for ApksAddExternallyHostedResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -110,7 +107,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -127,10 +123,10 @@ pub mod schemas {
     )]
     pub struct ApksListResponse {
         #[serde(rename = "apks", default)]
-        pub apks: Option<Vec<crate::schemas::Apk>>,
+        pub apks: ::std::option::Option<Vec<crate::schemas::Apk>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"androidpublisher#apksListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ApksListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -139,7 +135,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -157,16 +152,16 @@ pub mod schemas {
     pub struct AppDetails {
         #[doc = "The user-visible support email for this app."]
         #[serde(rename = "contactEmail", default)]
-        pub contact_email: Option<String>,
+        pub contact_email: ::std::option::Option<String>,
         #[doc = "The user-visible support telephone number for this app."]
         #[serde(rename = "contactPhone", default)]
-        pub contact_phone: Option<String>,
+        pub contact_phone: ::std::option::Option<String>,
         #[doc = "The user-visible website for this app."]
         #[serde(rename = "contactWebsite", default)]
-        pub contact_website: Option<String>,
+        pub contact_website: ::std::option::Option<String>,
         #[doc = "Default language code, in BCP 47 format (eg \"en-US\")."]
         #[serde(rename = "defaultLanguage", default)]
-        pub default_language: Option<String>,
+        pub default_language: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AppDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -175,7 +170,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -193,10 +187,10 @@ pub mod schemas {
     pub struct AppEdit {
         #[doc = "The time at which the edit will expire and will be no longer valid for use in any subsequent API calls (encoded as seconds since the Epoch)."]
         #[serde(rename = "expiryTimeSeconds", default)]
-        pub expiry_time_seconds: Option<String>,
+        pub expiry_time_seconds: ::std::option::Option<String>,
         #[doc = "The ID of the edit that can be used in subsequent API calls."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AppEdit {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -205,7 +199,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -223,13 +216,13 @@ pub mod schemas {
     pub struct Bundle {
         #[doc = "A sha1 hash of the upload payload, encoded as a hex string and matching the output of the sha1sum command."]
         #[serde(rename = "sha1", default)]
-        pub sha_1: Option<String>,
+        pub sha_1: ::std::option::Option<String>,
         #[doc = "A sha256 hash of the upload payload, encoded as a hex string and matching the output of the sha256sum command."]
         #[serde(rename = "sha256", default)]
-        pub sha_256: Option<String>,
+        pub sha_256: ::std::option::Option<String>,
         #[doc = "The version code of the Android App Bundle. As specified in the Android App Bundle's base module APK manifest file."]
         #[serde(rename = "versionCode", default)]
-        pub version_code: Option<i32>,
+        pub version_code: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Bundle {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -238,7 +231,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -255,10 +247,10 @@ pub mod schemas {
     )]
     pub struct BundlesListResponse {
         #[serde(rename = "bundles", default)]
-        pub bundles: Option<Vec<crate::schemas::Bundle>>,
+        pub bundles: ::std::option::Option<Vec<crate::schemas::Bundle>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"androidpublisher#bundlesListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BundlesListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -267,7 +259,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -285,10 +276,10 @@ pub mod schemas {
     pub struct Comment {
         #[doc = "A comment from a developer."]
         #[serde(rename = "developerComment", default)]
-        pub developer_comment: Option<crate::schemas::DeveloperComment>,
+        pub developer_comment: ::std::option::Option<crate::schemas::DeveloperComment>,
         #[doc = "A comment from a user."]
         #[serde(rename = "userComment", default)]
-        pub user_comment: Option<crate::schemas::UserComment>,
+        pub user_comment: ::std::option::Option<crate::schemas::UserComment>,
     }
     impl ::field_selector::FieldSelector for Comment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -297,7 +288,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -314,9 +304,9 @@ pub mod schemas {
     )]
     pub struct CountryTargeting {
         #[serde(rename = "countries", default)]
-        pub countries: Option<Vec<String>>,
+        pub countries: ::std::option::Option<Vec<String>>,
         #[serde(rename = "includeRestOfWorld", default)]
-        pub include_rest_of_world: Option<bool>,
+        pub include_rest_of_world: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for CountryTargeting {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -325,7 +315,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -343,7 +332,7 @@ pub mod schemas {
     pub struct DeobfuscationFile {
         #[doc = "The type of the deobfuscation file."]
         #[serde(rename = "symbolType", default)]
-        pub symbol_type: Option<String>,
+        pub symbol_type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DeobfuscationFile {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -352,7 +341,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -369,7 +357,7 @@ pub mod schemas {
     )]
     pub struct DeobfuscationFilesUploadResponse {
         #[serde(rename = "deobfuscationFile", default)]
-        pub deobfuscation_file: Option<crate::schemas::DeobfuscationFile>,
+        pub deobfuscation_file: ::std::option::Option<crate::schemas::DeobfuscationFile>,
     }
     impl ::field_selector::FieldSelector for DeobfuscationFilesUploadResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -378,7 +366,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -396,10 +383,10 @@ pub mod schemas {
     pub struct DeveloperComment {
         #[doc = "The last time at which this comment was updated."]
         #[serde(rename = "lastModified", default)]
-        pub last_modified: Option<crate::schemas::Timestamp>,
+        pub last_modified: ::std::option::Option<crate::schemas::Timestamp>,
         #[doc = "The content of the comment, i.e. reply body."]
         #[serde(rename = "text", default)]
-        pub text: Option<String>,
+        pub text: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DeveloperComment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -408,7 +395,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -426,37 +412,37 @@ pub mod schemas {
     pub struct DeviceMetadata {
         #[doc = "Device CPU make e.g. \"Qualcomm\""]
         #[serde(rename = "cpuMake", default)]
-        pub cpu_make: Option<String>,
+        pub cpu_make: ::std::option::Option<String>,
         #[doc = "Device CPU model e.g. \"MSM8974\""]
         #[serde(rename = "cpuModel", default)]
-        pub cpu_model: Option<String>,
+        pub cpu_model: ::std::option::Option<String>,
         #[doc = "Device class (e.g. tablet)"]
         #[serde(rename = "deviceClass", default)]
-        pub device_class: Option<String>,
+        pub device_class: ::std::option::Option<String>,
         #[doc = "OpenGL version"]
         #[serde(rename = "glEsVersion", default)]
-        pub gl_es_version: Option<i32>,
+        pub gl_es_version: ::std::option::Option<i32>,
         #[doc = "Device manufacturer (e.g. Motorola)"]
         #[serde(rename = "manufacturer", default)]
-        pub manufacturer: Option<String>,
+        pub manufacturer: ::std::option::Option<String>,
         #[doc = "Comma separated list of native platforms (e.g. \"arm\", \"arm7\")"]
         #[serde(rename = "nativePlatform", default)]
-        pub native_platform: Option<String>,
+        pub native_platform: ::std::option::Option<String>,
         #[doc = "Device model name (e.g. Droid)"]
         #[serde(rename = "productName", default)]
-        pub product_name: Option<String>,
+        pub product_name: ::std::option::Option<String>,
         #[doc = "Device RAM in Megabytes e.g. \"2048\""]
         #[serde(rename = "ramMb", default)]
-        pub ram_mb: Option<i32>,
+        pub ram_mb: ::std::option::Option<i32>,
         #[doc = "Screen density in DPI"]
         #[serde(rename = "screenDensityDpi", default)]
-        pub screen_density_dpi: Option<i32>,
+        pub screen_density_dpi: ::std::option::Option<i32>,
         #[doc = "Screen height in pixels"]
         #[serde(rename = "screenHeightPx", default)]
-        pub screen_height_px: Option<i32>,
+        pub screen_height_px: ::std::option::Option<i32>,
         #[doc = "Screen width in pixels"]
         #[serde(rename = "screenWidthPx", default)]
-        pub screen_width_px: Option<i32>,
+        pub screen_width_px: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for DeviceMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -465,7 +451,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -484,10 +469,10 @@ pub mod schemas {
         #[doc = "If set this field indicates that this APK has an Expansion File uploaded to it: this APK does not reference another APK's Expansion File. The field's value is the size of the uploaded Expansion File in bytes."]
         #[serde(rename = "fileSize", default)]
         #[serde(with = "crate::parsed_string")]
-        pub file_size: Option<i64>,
+        pub file_size: ::std::option::Option<i64>,
         #[doc = "If set this APK's Expansion File references another APK's Expansion File. The file_size field will not be set."]
         #[serde(rename = "referencesVersion", default)]
-        pub references_version: Option<i32>,
+        pub references_version: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ExpansionFile {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -496,7 +481,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -513,7 +497,7 @@ pub mod schemas {
     )]
     pub struct ExpansionFilesUploadResponse {
         #[serde(rename = "expansionFile", default)]
-        pub expansion_file: Option<crate::schemas::ExpansionFile>,
+        pub expansion_file: ::std::option::Option<crate::schemas::ExpansionFile>,
     }
     impl ::field_selector::FieldSelector for ExpansionFilesUploadResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -522,7 +506,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -540,50 +523,51 @@ pub mod schemas {
     pub struct ExternallyHostedApk {
         #[doc = "The application label."]
         #[serde(rename = "applicationLabel", default)]
-        pub application_label: Option<String>,
+        pub application_label: ::std::option::Option<String>,
         #[doc = "A certificate (or array of certificates if a certificate-chain is used) used to signed this APK, represented as a base64 encoded byte array."]
         #[serde(rename = "certificateBase64s", default)]
-        pub certificate_base_6_4s: Option<Vec<String>>,
+        pub certificate_base_6_4s: ::std::option::Option<Vec<String>>,
         #[doc = "The URL at which the APK is hosted. This must be an https URL."]
         #[serde(rename = "externallyHostedUrl", default)]
-        pub externally_hosted_url: Option<String>,
+        pub externally_hosted_url: ::std::option::Option<String>,
         #[doc = "The SHA1 checksum of this APK, represented as a base64 encoded byte array."]
         #[serde(rename = "fileSha1Base64", default)]
-        pub file_sha_1_base_64: Option<String>,
+        pub file_sha_1_base_64: ::std::option::Option<String>,
         #[doc = "The SHA256 checksum of this APK, represented as a base64 encoded byte array."]
         #[serde(rename = "fileSha256Base64", default)]
-        pub file_sha_256_base_64: Option<String>,
+        pub file_sha_256_base_64: ::std::option::Option<String>,
         #[doc = "The file size in bytes of this APK."]
         #[serde(rename = "fileSize", default)]
         #[serde(with = "crate::parsed_string")]
-        pub file_size: Option<i64>,
+        pub file_size: ::std::option::Option<i64>,
         #[doc = "The icon image from the APK, as a base64 encoded byte array."]
         #[serde(rename = "iconBase64", default)]
-        pub icon_base_64: Option<String>,
+        pub icon_base_64: ::std::option::Option<String>,
         #[doc = "The maximum SDK supported by this APK (optional)."]
         #[serde(rename = "maximumSdk", default)]
-        pub maximum_sdk: Option<i32>,
+        pub maximum_sdk: ::std::option::Option<i32>,
         #[doc = "The minimum SDK targeted by this APK."]
         #[serde(rename = "minimumSdk", default)]
-        pub minimum_sdk: Option<i32>,
+        pub minimum_sdk: ::std::option::Option<i32>,
         #[doc = "The native code environments supported by this APK (optional)."]
         #[serde(rename = "nativeCodes", default)]
-        pub native_codes: Option<Vec<String>>,
+        pub native_codes: ::std::option::Option<Vec<String>>,
         #[doc = "The package name."]
         #[serde(rename = "packageName", default)]
-        pub package_name: Option<String>,
+        pub package_name: ::std::option::Option<String>,
         #[doc = "The features required by this APK (optional)."]
         #[serde(rename = "usesFeatures", default)]
-        pub uses_features: Option<Vec<String>>,
+        pub uses_features: ::std::option::Option<Vec<String>>,
         #[doc = "The permissions requested by this APK."]
         #[serde(rename = "usesPermissions", default)]
-        pub uses_permissions: Option<Vec<crate::schemas::ExternallyHostedApkUsesPermission>>,
+        pub uses_permissions:
+            ::std::option::Option<Vec<crate::schemas::ExternallyHostedApkUsesPermission>>,
         #[doc = "The version code of this APK."]
         #[serde(rename = "versionCode", default)]
-        pub version_code: Option<i32>,
+        pub version_code: ::std::option::Option<i32>,
         #[doc = "The version name of this APK."]
         #[serde(rename = "versionName", default)]
-        pub version_name: Option<String>,
+        pub version_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ExternallyHostedApk {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -592,7 +576,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -610,10 +593,10 @@ pub mod schemas {
     pub struct ExternallyHostedApkUsesPermission {
         #[doc = "Optionally, the maximum SDK version for which the permission is required."]
         #[serde(rename = "maxSdkVersion", default)]
-        pub max_sdk_version: Option<i32>,
+        pub max_sdk_version: ::std::option::Option<i32>,
         #[doc = "The name of the permission requested."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ExternallyHostedApkUsesPermission {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -622,7 +605,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -640,16 +622,16 @@ pub mod schemas {
     pub struct Image {
         #[doc = "A unique id representing this image."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "A sha1 hash of the image that was uploaded."]
         #[serde(rename = "sha1", default)]
-        pub sha_1: Option<String>,
+        pub sha_1: ::std::option::Option<String>,
         #[doc = "A sha256 hash of the image that was uploaded."]
         #[serde(rename = "sha256", default)]
-        pub sha_256: Option<String>,
+        pub sha_256: ::std::option::Option<String>,
         #[doc = "A URL that will serve a preview of the image."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Image {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -658,7 +640,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -675,7 +656,7 @@ pub mod schemas {
     )]
     pub struct ImagesDeleteAllResponse {
         #[serde(rename = "deleted", default)]
-        pub deleted: Option<Vec<crate::schemas::Image>>,
+        pub deleted: ::std::option::Option<Vec<crate::schemas::Image>>,
     }
     impl ::field_selector::FieldSelector for ImagesDeleteAllResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -684,7 +665,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -701,7 +681,7 @@ pub mod schemas {
     )]
     pub struct ImagesListResponse {
         #[serde(rename = "images", default)]
-        pub images: Option<Vec<crate::schemas::Image>>,
+        pub images: ::std::option::Option<Vec<crate::schemas::Image>>,
     }
     impl ::field_selector::FieldSelector for ImagesListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -710,7 +690,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -727,7 +706,7 @@ pub mod schemas {
     )]
     pub struct ImagesUploadResponse {
         #[serde(rename = "image", default)]
-        pub image: Option<crate::schemas::Image>,
+        pub image: ::std::option::Option<crate::schemas::Image>,
     }
     impl ::field_selector::FieldSelector for ImagesUploadResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -736,7 +715,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -754,40 +732,42 @@ pub mod schemas {
     pub struct InAppProduct {
         #[doc = "The default language of the localized data, as defined by BCP 47. e.g. \"en-US\", \"en-GB\"."]
         #[serde(rename = "defaultLanguage", default)]
-        pub default_language: Option<String>,
+        pub default_language: ::std::option::Option<String>,
         #[doc = "Default price cannot be zero. In-app products can never be free. Default price is always in the developer's Checkout merchant currency."]
         #[serde(rename = "defaultPrice", default)]
-        pub default_price: Option<crate::schemas::Price>,
+        pub default_price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Grace period of the subscription, specified in ISO 8601 format. It will allow developers to give their subscribers a grace period when the payment for the new recurrence period is declined. Acceptable values = \"P3D\" (three days) and \"P7D\" (seven days)"]
         #[serde(rename = "gracePeriod", default)]
-        pub grace_period: Option<String>,
+        pub grace_period: ::std::option::Option<String>,
         #[doc = "List of localized title and description data."]
         #[serde(rename = "listings", default)]
-        pub listings:
-            Option<::std::collections::BTreeMap<String, crate::schemas::InAppProductListing>>,
+        pub listings: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::InAppProductListing>,
+        >,
         #[doc = "The package name of the parent app."]
         #[serde(rename = "packageName", default)]
-        pub package_name: Option<String>,
+        pub package_name: ::std::option::Option<String>,
         #[doc = "Prices per buyer region. None of these prices should be zero. In-app products can never be free."]
         #[serde(rename = "prices", default)]
-        pub prices: Option<::std::collections::BTreeMap<String, crate::schemas::Price>>,
+        pub prices:
+            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Price>>,
         #[doc = "Purchase type enum value. Unmodifiable after creation."]
         #[serde(rename = "purchaseType", default)]
-        pub purchase_type: Option<String>,
+        pub purchase_type: ::std::option::Option<String>,
         #[doc = "Definition of a season for a seasonal subscription. Can be defined only for yearly subscriptions."]
         #[serde(rename = "season", default)]
-        pub season: Option<crate::schemas::Season>,
+        pub season: ::std::option::Option<crate::schemas::Season>,
         #[doc = "The stock-keeping-unit (SKU) of the product, unique within an app."]
         #[serde(rename = "sku", default)]
-        pub sku: Option<String>,
+        pub sku: ::std::option::Option<String>,
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
         #[doc = "Subscription period, specified in ISO 8601 format. Acceptable values are \"P1W\" (one week), \"P1M\" (one month), \"P3M\" (three months), \"P6M\" (six months), and \"P1Y\" (one year)."]
         #[serde(rename = "subscriptionPeriod", default)]
-        pub subscription_period: Option<String>,
+        pub subscription_period: ::std::option::Option<String>,
         #[doc = "Trial period, specified in ISO 8601 format. Acceptable values are anything between \"P7D\" (seven days) and \"P999D\" (999 days). Seasonal subscriptions cannot have a trial period."]
         #[serde(rename = "trialPeriod", default)]
-        pub trial_period: Option<String>,
+        pub trial_period: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for InAppProduct {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -796,7 +776,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -813,9 +792,9 @@ pub mod schemas {
     )]
     pub struct InAppProductListing {
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for InAppProductListing {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -824,7 +803,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -841,14 +819,14 @@ pub mod schemas {
     )]
     pub struct InappproductsListResponse {
         #[serde(rename = "inappproduct", default)]
-        pub inappproduct: Option<Vec<crate::schemas::InAppProduct>>,
+        pub inappproduct: ::std::option::Option<Vec<crate::schemas::InAppProduct>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"androidpublisher#inappproductsListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
     }
     impl ::field_selector::FieldSelector for InappproductsListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -857,7 +835,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -875,13 +852,13 @@ pub mod schemas {
     pub struct InternalAppSharingArtifact {
         #[doc = "The SHA256 fingerprint of the certificate used to signed the generated artifact."]
         #[serde(rename = "certificateFingerprint", default)]
-        pub certificate_fingerprint: Option<String>,
+        pub certificate_fingerprint: ::std::option::Option<String>,
         #[doc = "The download URL generated for the uploaded artifact. Users that are authorized to download can follow the link to the Play Store app to install it."]
         #[serde(rename = "downloadUrl", default)]
-        pub download_url: Option<String>,
+        pub download_url: ::std::option::Option<String>,
         #[doc = "The SHA-256 hash of the artifact represented as a lowercase hexadecimal number, matching the output of the sha256sum command."]
         #[serde(rename = "sha256", default)]
-        pub sha_256: Option<String>,
+        pub sha_256: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for InternalAppSharingArtifact {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -890,7 +867,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -909,16 +885,16 @@ pub mod schemas {
         #[doc = "Introductory price of the subscription, not including tax. The currency is the same as price_currency_code. Price is expressed in micro-units, where 1,000,000 micro-units represents one unit of the currency. For example, if the subscription price is \u{20ac}1.99, price_amount_micros is 1990000."]
         #[serde(rename = "introductoryPriceAmountMicros", default)]
         #[serde(with = "crate::parsed_string")]
-        pub introductory_price_amount_micros: Option<i64>,
+        pub introductory_price_amount_micros: ::std::option::Option<i64>,
         #[doc = "ISO 4217 currency code for the introductory subscription price. For example, if the price is specified in British pounds sterling, price_currency_code is \"GBP\"."]
         #[serde(rename = "introductoryPriceCurrencyCode", default)]
-        pub introductory_price_currency_code: Option<String>,
+        pub introductory_price_currency_code: ::std::option::Option<String>,
         #[doc = "The number of billing period to offer introductory pricing."]
         #[serde(rename = "introductoryPriceCycles", default)]
-        pub introductory_price_cycles: Option<i32>,
+        pub introductory_price_cycles: ::std::option::Option<i32>,
         #[doc = "Introductory price period, specified in ISO 8601 format. Common values are (but not limited to) \"P1W\" (one week), \"P1M\" (one month), \"P3M\" (three months), \"P6M\" (six months), and \"P1Y\" (one year)."]
         #[serde(rename = "introductoryPricePeriod", default)]
-        pub introductory_price_period: Option<String>,
+        pub introductory_price_period: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for IntroductoryPriceInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -927,7 +903,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -945,19 +920,19 @@ pub mod schemas {
     pub struct Listing {
         #[doc = "Full description of the app; this may be up to 4000 characters in length."]
         #[serde(rename = "fullDescription", default)]
-        pub full_description: Option<String>,
+        pub full_description: ::std::option::Option<String>,
         #[doc = "Language localization code (for example, \"de-AT\" for Austrian German)."]
         #[serde(rename = "language", default)]
-        pub language: Option<String>,
+        pub language: ::std::option::Option<String>,
         #[doc = "Short description of the app (previously known as promo text); this may be up to 80 characters in length."]
         #[serde(rename = "shortDescription", default)]
-        pub short_description: Option<String>,
+        pub short_description: ::std::option::Option<String>,
         #[doc = "App's localized title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "URL of a promotional YouTube video for the app."]
         #[serde(rename = "video", default)]
-        pub video: Option<String>,
+        pub video: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Listing {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -966,7 +941,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -984,9 +958,9 @@ pub mod schemas {
     pub struct ListingsListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"androidpublisher#listingsListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "listings", default)]
-        pub listings: Option<Vec<crate::schemas::Listing>>,
+        pub listings: ::std::option::Option<Vec<crate::schemas::Listing>>,
     }
     impl ::field_selector::FieldSelector for ListingsListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -995,7 +969,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1013,10 +986,10 @@ pub mod schemas {
     pub struct LocalizedText {
         #[doc = "The language code, in BCP 47 format (eg \"en-US\")."]
         #[serde(rename = "language", default)]
-        pub language: Option<String>,
+        pub language: ::std::option::Option<String>,
         #[doc = "The text in the given `language`."]
         #[serde(rename = "text", default)]
-        pub text: Option<String>,
+        pub text: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LocalizedText {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1025,7 +998,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1043,10 +1015,10 @@ pub mod schemas {
     pub struct MonthDay {
         #[doc = "Day of a month, value in [1, 31] range. Valid range depends on the specified month."]
         #[serde(rename = "day", default)]
-        pub day: Option<u32>,
+        pub day: ::std::option::Option<u32>,
         #[doc = "Month of a year. e.g. 1 = JAN, 2 = FEB etc."]
         #[serde(rename = "month", default)]
-        pub month: Option<u32>,
+        pub month: ::std::option::Option<u32>,
     }
     impl ::field_selector::FieldSelector for MonthDay {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1055,7 +1027,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1072,11 +1043,11 @@ pub mod schemas {
     )]
     pub struct PageInfo {
         #[serde(rename = "resultPerPage", default)]
-        pub result_per_page: Option<i32>,
+        pub result_per_page: ::std::option::Option<i32>,
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for PageInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1085,7 +1056,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1103,10 +1073,10 @@ pub mod schemas {
     pub struct Price {
         #[doc = "3 letter Currency code, as defined by ISO 4217."]
         #[serde(rename = "currency", default)]
-        pub currency: Option<String>,
+        pub currency: ::std::option::Option<String>,
         #[doc = "The price in millionths of the currency base unit represented as a string."]
         #[serde(rename = "priceMicros", default)]
-        pub price_micros: Option<String>,
+        pub price_micros: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Price {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1115,7 +1085,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1133,29 +1102,29 @@ pub mod schemas {
     pub struct ProductPurchase {
         #[doc = "The acknowledgement state of the inapp product. Possible values are:\n\n* Yet to be acknowledged \n* Acknowledged"]
         #[serde(rename = "acknowledgementState", default)]
-        pub acknowledgement_state: Option<i32>,
+        pub acknowledgement_state: ::std::option::Option<i32>,
         #[doc = "The consumption state of the inapp product. Possible values are:\n\n* Yet to be consumed \n* Consumed"]
         #[serde(rename = "consumptionState", default)]
-        pub consumption_state: Option<i32>,
+        pub consumption_state: ::std::option::Option<i32>,
         #[doc = "A developer-specified string that contains supplemental information about an order."]
         #[serde(rename = "developerPayload", default)]
-        pub developer_payload: Option<String>,
+        pub developer_payload: ::std::option::Option<String>,
         #[doc = "This kind represents an inappPurchase object in the androidpublisher service."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The order id associated with the purchase of the inapp product."]
         #[serde(rename = "orderId", default)]
-        pub order_id: Option<String>,
+        pub order_id: ::std::option::Option<String>,
         #[doc = "The purchase state of the order. Possible values are:\n\n* Purchased \n* Canceled \n* Pending"]
         #[serde(rename = "purchaseState", default)]
-        pub purchase_state: Option<i32>,
+        pub purchase_state: ::std::option::Option<i32>,
         #[doc = "The time the product was purchased, in milliseconds since the epoch (Jan 1, 1970)."]
         #[serde(rename = "purchaseTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub purchase_time_millis: Option<i64>,
+        pub purchase_time_millis: ::std::option::Option<i64>,
         #[doc = "The type of purchase of the inapp product. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are:\n\n* Test (i.e. purchased from a license testing account) \n* Promo (i.e. purchased using a promo code) \n* Rewarded (i.e. from watching a video ad instead of paying)"]
         #[serde(rename = "purchaseType", default)]
-        pub purchase_type: Option<i32>,
+        pub purchase_type: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ProductPurchase {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1164,7 +1133,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1182,7 +1150,7 @@ pub mod schemas {
     pub struct ProductPurchasesAcknowledgeRequest {
         #[doc = "Payload to attach to the purchase."]
         #[serde(rename = "developerPayload", default)]
-        pub developer_payload: Option<String>,
+        pub developer_payload: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ProductPurchasesAcknowledgeRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1191,7 +1159,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1209,10 +1176,10 @@ pub mod schemas {
     pub struct Prorate {
         #[doc = "Default price cannot be zero and must be less than the full subscription price. Default price is always in the developer's Checkout merchant currency. Targeted countries have their prices set automatically based on the default_price."]
         #[serde(rename = "defaultPrice", default)]
-        pub default_price: Option<crate::schemas::Price>,
+        pub default_price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Defines the first day on which the price takes effect."]
         #[serde(rename = "start", default)]
-        pub start: Option<crate::schemas::MonthDay>,
+        pub start: ::std::option::Option<crate::schemas::MonthDay>,
     }
     impl ::field_selector::FieldSelector for Prorate {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1221,7 +1188,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1239,13 +1205,13 @@ pub mod schemas {
     pub struct Review {
         #[doc = "The name of the user who wrote the review."]
         #[serde(rename = "authorName", default)]
-        pub author_name: Option<String>,
+        pub author_name: ::std::option::Option<String>,
         #[doc = "A repeated field containing comments for the review."]
         #[serde(rename = "comments", default)]
-        pub comments: Option<Vec<crate::schemas::Comment>>,
+        pub comments: ::std::option::Option<Vec<crate::schemas::Comment>>,
         #[doc = "Unique identifier for this review."]
         #[serde(rename = "reviewId", default)]
-        pub review_id: Option<String>,
+        pub review_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Review {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1254,7 +1220,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1272,10 +1237,10 @@ pub mod schemas {
     pub struct ReviewReplyResult {
         #[doc = "The time at which the reply took effect."]
         #[serde(rename = "lastEdited", default)]
-        pub last_edited: Option<crate::schemas::Timestamp>,
+        pub last_edited: ::std::option::Option<crate::schemas::Timestamp>,
         #[doc = "The reply text that was applied."]
         #[serde(rename = "replyText", default)]
-        pub reply_text: Option<String>,
+        pub reply_text: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ReviewReplyResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1284,7 +1249,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1301,11 +1265,11 @@ pub mod schemas {
     )]
     pub struct ReviewsListResponse {
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[serde(rename = "reviews", default)]
-        pub reviews: Option<Vec<crate::schemas::Review>>,
+        pub reviews: ::std::option::Option<Vec<crate::schemas::Review>>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
     }
     impl ::field_selector::FieldSelector for ReviewsListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1314,7 +1278,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1332,7 +1295,7 @@ pub mod schemas {
     pub struct ReviewsReplyRequest {
         #[doc = "The text to set as the reply. Replies of more than approximately 350 characters will be rejected. HTML tags will be stripped."]
         #[serde(rename = "replyText", default)]
-        pub reply_text: Option<String>,
+        pub reply_text: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ReviewsReplyRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1341,7 +1304,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1358,7 +1320,7 @@ pub mod schemas {
     )]
     pub struct ReviewsReplyResponse {
         #[serde(rename = "result", default)]
-        pub result: Option<crate::schemas::ReviewReplyResult>,
+        pub result: ::std::option::Option<crate::schemas::ReviewReplyResult>,
     }
     impl ::field_selector::FieldSelector for ReviewsReplyResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1367,7 +1329,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1385,13 +1346,13 @@ pub mod schemas {
     pub struct Season {
         #[doc = "Inclusive end date of the recurrence period."]
         #[serde(rename = "end", default)]
-        pub end: Option<crate::schemas::MonthDay>,
+        pub end: ::std::option::Option<crate::schemas::MonthDay>,
         #[doc = "Optionally present list of prorations for the season. Each proration is a one-off discounted entry into a subscription. Each proration contains the first date on which the discount is available and the new pricing information."]
         #[serde(rename = "prorations", default)]
-        pub prorations: Option<Vec<crate::schemas::Prorate>>,
+        pub prorations: ::std::option::Option<Vec<crate::schemas::Prorate>>,
         #[doc = "Inclusive start date of the recurrence period."]
         #[serde(rename = "start", default)]
-        pub start: Option<crate::schemas::MonthDay>,
+        pub start: ::std::option::Option<crate::schemas::MonthDay>,
     }
     impl ::field_selector::FieldSelector for Season {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1400,7 +1361,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1418,10 +1378,10 @@ pub mod schemas {
     pub struct SubscriptionCancelSurveyResult {
         #[doc = "The cancellation reason the user chose in the survey. Possible values are:\n\n* Other \n* I don't use this service enough \n* Technical issues \n* Cost-related reasons \n* I found a better app"]
         #[serde(rename = "cancelSurveyReason", default)]
-        pub cancel_survey_reason: Option<i32>,
+        pub cancel_survey_reason: ::std::option::Option<i32>,
         #[doc = "The customized input cancel reason from the user. Only present when cancelReason is 0."]
         #[serde(rename = "userInputCancelReason", default)]
-        pub user_input_cancel_reason: Option<String>,
+        pub user_input_cancel_reason: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SubscriptionCancelSurveyResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1430,7 +1390,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1449,11 +1408,11 @@ pub mod schemas {
         #[doc = "The desired next expiry time to assign to the subscription, in milliseconds since the Epoch. The given time must be later/greater than the current expiry time for the subscription."]
         #[serde(rename = "desiredExpiryTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub desired_expiry_time_millis: Option<i64>,
+        pub desired_expiry_time_millis: ::std::option::Option<i64>,
         #[doc = "The expected expiry time for the subscription. If the current expiry time for the subscription is not the value specified here, the deferral will not occur."]
         #[serde(rename = "expectedExpiryTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub expected_expiry_time_millis: Option<i64>,
+        pub expected_expiry_time_millis: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for SubscriptionDeferralInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1462,7 +1421,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1480,10 +1438,10 @@ pub mod schemas {
     pub struct SubscriptionPriceChange {
         #[doc = "The new price the subscription will renew with if the price change is accepted by the user."]
         #[serde(rename = "newPrice", default)]
-        pub new_price: Option<crate::schemas::Price>,
+        pub new_price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The current state of the price change. Possible values are:\n\n* Outstanding: State for a pending price change waiting for the user to agree. In this state, you can optionally seek confirmation from the user using the In-App API. \n* Accepted: State for an accepted price change that the subscription will renew with unless it's canceled. The price change takes effect on a future date when the subscription renews. Note that the change might not occur when the subscription is renewed next."]
         #[serde(rename = "state", default)]
-        pub state: Option<i32>,
+        pub state: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for SubscriptionPriceChange {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1492,7 +1450,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1510,81 +1467,82 @@ pub mod schemas {
     pub struct SubscriptionPurchase {
         #[doc = "The acknowledgement state of the subscription product. Possible values are:\n\n* Yet to be acknowledged \n* Acknowledged"]
         #[serde(rename = "acknowledgementState", default)]
-        pub acknowledgement_state: Option<i32>,
+        pub acknowledgement_state: ::std::option::Option<i32>,
         #[doc = "Whether the subscription will automatically be renewed when it reaches its current expiry time."]
         #[serde(rename = "autoRenewing", default)]
-        pub auto_renewing: Option<bool>,
+        pub auto_renewing: ::std::option::Option<bool>,
         #[doc = "Time at which the subscription will be automatically resumed, in milliseconds since the Epoch. Only present if the user has requested to pause the subscription."]
         #[serde(rename = "autoResumeTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub auto_resume_time_millis: Option<i64>,
+        pub auto_resume_time_millis: ::std::option::Option<i64>,
         #[doc = "The reason why a subscription was canceled or is not auto-renewing. Possible values are:\n\n* User canceled the subscription \n* Subscription was canceled by the system, for example because of a billing problem \n* Subscription was replaced with a new subscription \n* Subscription was canceled by the developer"]
         #[serde(rename = "cancelReason", default)]
-        pub cancel_reason: Option<i32>,
+        pub cancel_reason: ::std::option::Option<i32>,
         #[doc = "Information provided by the user when they complete the subscription cancellation flow (cancellation reason survey)."]
         #[serde(rename = "cancelSurveyResult", default)]
-        pub cancel_survey_result: Option<crate::schemas::SubscriptionCancelSurveyResult>,
+        pub cancel_survey_result:
+            ::std::option::Option<crate::schemas::SubscriptionCancelSurveyResult>,
         #[doc = "ISO 3166-1 alpha-2 billing country/region code of the user at the time the subscription was granted."]
         #[serde(rename = "countryCode", default)]
-        pub country_code: Option<String>,
+        pub country_code: ::std::option::Option<String>,
         #[doc = "A developer-specified string that contains supplemental information about an order."]
         #[serde(rename = "developerPayload", default)]
-        pub developer_payload: Option<String>,
+        pub developer_payload: ::std::option::Option<String>,
         #[doc = "The email address of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'."]
         #[serde(rename = "emailAddress", default)]
-        pub email_address: Option<String>,
+        pub email_address: ::std::option::Option<String>,
         #[doc = "Time at which the subscription will expire, in milliseconds since the Epoch."]
         #[serde(rename = "expiryTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub expiry_time_millis: Option<i64>,
+        pub expiry_time_millis: ::std::option::Option<i64>,
         #[doc = "The family name of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'."]
         #[serde(rename = "familyName", default)]
-        pub family_name: Option<String>,
+        pub family_name: ::std::option::Option<String>,
         #[doc = "The given name of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'."]
         #[serde(rename = "givenName", default)]
-        pub given_name: Option<String>,
+        pub given_name: ::std::option::Option<String>,
         #[doc = "Introductory price information of the subscription. This is only present when the subscription was purchased with an introductory price.\n\nThis field does not indicate the subscription is currently in introductory price period."]
         #[serde(rename = "introductoryPriceInfo", default)]
-        pub introductory_price_info: Option<crate::schemas::IntroductoryPriceInfo>,
+        pub introductory_price_info: ::std::option::Option<crate::schemas::IntroductoryPriceInfo>,
         #[doc = "This kind represents a subscriptionPurchase object in the androidpublisher service."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The purchase token of the originating purchase if this subscription is one of the following:\n\n* Re-signup of a canceled but non-lapsed subscription \n* Upgrade/downgrade from a previous subscription  For example, suppose a user originally signs up and you receive purchase token X, then the user cancels and goes through the resignup flow (before their subscription lapses) and you receive purchase token Y, and finally the user upgrades their subscription and you receive purchase token Z. If you call this API with purchase token Z, this field will be set to Y. If you call this API with purchase token Y, this field will be set to X. If you call this API with purchase token X, this field will not be set."]
         #[serde(rename = "linkedPurchaseToken", default)]
-        pub linked_purchase_token: Option<String>,
+        pub linked_purchase_token: ::std::option::Option<String>,
         #[doc = "The order id of the latest recurring order associated with the purchase of the subscription."]
         #[serde(rename = "orderId", default)]
-        pub order_id: Option<String>,
+        pub order_id: ::std::option::Option<String>,
         #[doc = "The payment state of the subscription. Possible values are:\n\n* Payment pending \n* Payment received \n* Free trial \n* Pending deferred upgrade/downgrade"]
         #[serde(rename = "paymentState", default)]
-        pub payment_state: Option<i32>,
+        pub payment_state: ::std::option::Option<i32>,
         #[doc = "Price of the subscription, not including tax. Price is expressed in micro-units, where 1,000,000 micro-units represents one unit of the currency. For example, if the subscription price is \u{20ac}1.99, price_amount_micros is 1990000."]
         #[serde(rename = "priceAmountMicros", default)]
         #[serde(with = "crate::parsed_string")]
-        pub price_amount_micros: Option<i64>,
+        pub price_amount_micros: ::std::option::Option<i64>,
         #[doc = "The latest price change information available. This is present only when there is an upcoming price change for the subscription yet to be applied.\n\nOnce the subscription renews with the new price or the subscription is canceled, no price change information will be returned."]
         #[serde(rename = "priceChange", default)]
-        pub price_change: Option<crate::schemas::SubscriptionPriceChange>,
+        pub price_change: ::std::option::Option<crate::schemas::SubscriptionPriceChange>,
         #[doc = "ISO 4217 currency code for the subscription price. For example, if the price is specified in British pounds sterling, price_currency_code is \"GBP\"."]
         #[serde(rename = "priceCurrencyCode", default)]
-        pub price_currency_code: Option<String>,
+        pub price_currency_code: ::std::option::Option<String>,
         #[doc = "The Google profile id of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'."]
         #[serde(rename = "profileId", default)]
-        pub profile_id: Option<String>,
+        pub profile_id: ::std::option::Option<String>,
         #[doc = "The profile name of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'."]
         #[serde(rename = "profileName", default)]
-        pub profile_name: Option<String>,
+        pub profile_name: ::std::option::Option<String>,
         #[doc = "The type of purchase of the subscription. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are:\n\n* Test (i.e. purchased from a license testing account)"]
         #[serde(rename = "purchaseType", default)]
-        pub purchase_type: Option<i32>,
+        pub purchase_type: ::std::option::Option<i32>,
         #[doc = "Time at which the subscription was granted, in milliseconds since the Epoch."]
         #[serde(rename = "startTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub start_time_millis: Option<i64>,
+        pub start_time_millis: ::std::option::Option<i64>,
         #[doc = "The time at which the subscription was canceled by the user, in milliseconds since the epoch. Only present if cancelReason is 0."]
         #[serde(rename = "userCancellationTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub user_cancellation_time_millis: Option<i64>,
+        pub user_cancellation_time_millis: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for SubscriptionPurchase {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1593,7 +1551,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1611,7 +1568,7 @@ pub mod schemas {
     pub struct SubscriptionPurchasesAcknowledgeRequest {
         #[doc = "Payload to attach to the purchase."]
         #[serde(rename = "developerPayload", default)]
-        pub developer_payload: Option<String>,
+        pub developer_payload: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SubscriptionPurchasesAcknowledgeRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1620,7 +1577,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1638,7 +1594,7 @@ pub mod schemas {
     pub struct SubscriptionPurchasesDeferRequest {
         #[doc = "The information about the new desired expiry time for the subscription."]
         #[serde(rename = "deferralInfo", default)]
-        pub deferral_info: Option<crate::schemas::SubscriptionDeferralInfo>,
+        pub deferral_info: ::std::option::Option<crate::schemas::SubscriptionDeferralInfo>,
     }
     impl ::field_selector::FieldSelector for SubscriptionPurchasesDeferRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1647,7 +1603,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1666,7 +1621,7 @@ pub mod schemas {
         #[doc = "The new expiry time for the subscription in milliseconds since the Epoch."]
         #[serde(rename = "newExpiryTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub new_expiry_time_millis: Option<i64>,
+        pub new_expiry_time_millis: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for SubscriptionPurchasesDeferResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1675,7 +1630,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1693,10 +1647,10 @@ pub mod schemas {
     pub struct Testers {
         #[doc = "A list of all Google Groups, as email addresses, that define testers for this track."]
         #[serde(rename = "googleGroups", default)]
-        pub google_groups: Option<Vec<String>>,
+        pub google_groups: ::std::option::Option<Vec<String>>,
         #[doc = "A list of all Google+ Communities, as URLs, that define testers for this track."]
         #[serde(rename = "googlePlusCommunities", default)]
-        pub google_plus_communities: Option<Vec<String>>,
+        pub google_plus_communities: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for Testers {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1705,7 +1659,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1722,10 +1675,10 @@ pub mod schemas {
     )]
     pub struct Timestamp {
         #[serde(rename = "nanos", default)]
-        pub nanos: Option<i32>,
+        pub nanos: ::std::option::Option<i32>,
         #[serde(rename = "seconds", default)]
         #[serde(with = "crate::parsed_string")]
-        pub seconds: Option<i64>,
+        pub seconds: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for Timestamp {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1734,7 +1687,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1751,9 +1703,9 @@ pub mod schemas {
     )]
     pub struct TokenPagination {
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "previousPageToken", default)]
-        pub previous_page_token: Option<String>,
+        pub previous_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TokenPagination {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1762,7 +1714,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1771,10 +1722,10 @@ pub mod schemas {
     pub struct Track {
         #[doc = "A list of all active releases in this track during a read request. On an update request, it represents desired changes."]
         #[serde(rename = "releases", default)]
-        pub releases: Option<Vec<crate::schemas::TrackRelease>>,
+        pub releases: ::std::option::Option<Vec<crate::schemas::TrackRelease>>,
         #[doc = "Identifier for this track."]
         #[serde(rename = "track", default)]
-        pub track: Option<String>,
+        pub track: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Track {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1783,7 +1734,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1791,22 +1741,22 @@ pub mod schemas {
     )]
     pub struct TrackRelease {
         #[serde(rename = "countryTargeting", default)]
-        pub country_targeting: Option<crate::schemas::CountryTargeting>,
+        pub country_targeting: ::std::option::Option<crate::schemas::CountryTargeting>,
         #[doc = "The release name, used to identify this release in the Play Console UI. Not required to be unique. This is optional, if not set it will be generated from the version_name in the APKs."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The description of what is new in the app in this release."]
         #[serde(rename = "releaseNotes", default)]
-        pub release_notes: Option<Vec<crate::schemas::LocalizedText>>,
+        pub release_notes: ::std::option::Option<Vec<crate::schemas::LocalizedText>>,
         #[doc = "The desired status of this release."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
         #[doc = "Fraction of users who are eligible to receive the release. 0 < fraction < 1. To be set, release status must be \"inProgress\" or \"halted\"."]
         #[serde(rename = "userFraction", default)]
-        pub user_fraction: Option<f64>,
+        pub user_fraction: ::std::option::Option<f64>,
         #[doc = "A list of all version codes of APKs that will be exposed to the users of this track when this release is rolled out. Note that this list should contain all versions you wish to be active, including those you wish to retain from previous releases."]
         #[serde(rename = "versionCodes", default)]
-        pub version_codes: Option<Vec<i64>>,
+        pub version_codes: ::std::option::Option<Vec<i64>>,
     }
     impl ::field_selector::FieldSelector for TrackRelease {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1815,7 +1765,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1824,9 +1773,9 @@ pub mod schemas {
     pub struct TracksListResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"androidpublisher#tracksListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "tracks", default)]
-        pub tracks: Option<Vec<crate::schemas::Track>>,
+        pub tracks: ::std::option::Option<Vec<crate::schemas::Track>>,
     }
     impl ::field_selector::FieldSelector for TracksListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1835,7 +1784,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1853,40 +1801,40 @@ pub mod schemas {
     pub struct UserComment {
         #[doc = "Integer Android SDK version of the user's device at the time the review was written, e.g. 23 is Marshmallow. May be absent."]
         #[serde(rename = "androidOsVersion", default)]
-        pub android_os_version: Option<i32>,
+        pub android_os_version: ::std::option::Option<i32>,
         #[doc = "Integer version code of the app as installed at the time the review was written. May be absent."]
         #[serde(rename = "appVersionCode", default)]
-        pub app_version_code: Option<i32>,
+        pub app_version_code: ::std::option::Option<i32>,
         #[doc = "String version name of the app as installed at the time the review was written. May be absent."]
         #[serde(rename = "appVersionName", default)]
-        pub app_version_name: Option<String>,
+        pub app_version_name: ::std::option::Option<String>,
         #[doc = "Codename for the reviewer's device, e.g. klte, flounder. May be absent."]
         #[serde(rename = "device", default)]
-        pub device: Option<String>,
+        pub device: ::std::option::Option<String>,
         #[doc = "Some information about the characteristics of the user's device"]
         #[serde(rename = "deviceMetadata", default)]
-        pub device_metadata: Option<crate::schemas::DeviceMetadata>,
+        pub device_metadata: ::std::option::Option<crate::schemas::DeviceMetadata>,
         #[doc = "The last time at which this comment was updated."]
         #[serde(rename = "lastModified", default)]
-        pub last_modified: Option<crate::schemas::Timestamp>,
+        pub last_modified: ::std::option::Option<crate::schemas::Timestamp>,
         #[doc = "Untranslated text of the review, in the case where the review has been translated. If the review has not been translated this is left blank."]
         #[serde(rename = "originalText", default)]
-        pub original_text: Option<String>,
+        pub original_text: ::std::option::Option<String>,
         #[doc = "Language code for the reviewer. This is taken from the device settings so is not guaranteed to match the language the review is written in. May be absent."]
         #[serde(rename = "reviewerLanguage", default)]
-        pub reviewer_language: Option<String>,
+        pub reviewer_language: ::std::option::Option<String>,
         #[doc = "The star rating associated with the review, from 1 to 5."]
         #[serde(rename = "starRating", default)]
-        pub star_rating: Option<i32>,
+        pub star_rating: ::std::option::Option<i32>,
         #[doc = "The content of the comment, i.e. review body. In some cases users have been able to write a review with separate title and body; in those cases the title and body are concatenated and separated by a tab character."]
         #[serde(rename = "text", default)]
-        pub text: Option<String>,
+        pub text: ::std::option::Option<String>,
         #[doc = "Number of users who have given this review a thumbs down"]
         #[serde(rename = "thumbsDownCount", default)]
-        pub thumbs_down_count: Option<i32>,
+        pub thumbs_down_count: ::std::option::Option<i32>,
         #[doc = "Number of users who have given this review a thumbs up"]
         #[serde(rename = "thumbsUpCount", default)]
-        pub thumbs_up_count: Option<i32>,
+        pub thumbs_up_count: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for UserComment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1895,7 +1843,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1913,27 +1860,27 @@ pub mod schemas {
     pub struct VoidedPurchase {
         #[doc = "This kind represents a voided purchase object in the androidpublisher service."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The order id which uniquely identifies a one-time purchase, subscription purchase, or subscription renewal."]
         #[serde(rename = "orderId", default)]
-        pub order_id: Option<String>,
+        pub order_id: ::std::option::Option<String>,
         #[doc = "The time at which the purchase was made, in milliseconds since the epoch (Jan 1, 1970)."]
         #[serde(rename = "purchaseTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub purchase_time_millis: Option<i64>,
+        pub purchase_time_millis: ::std::option::Option<i64>,
         #[doc = "The token which uniquely identifies a one-time purchase or subscription. To uniquely identify subscription renewals use order_id (available starting from version 3 of the API)."]
         #[serde(rename = "purchaseToken", default)]
-        pub purchase_token: Option<String>,
+        pub purchase_token: ::std::option::Option<String>,
         #[doc = "The reason why the purchase was voided, possible values are:\n\n* Other \n* Remorse \n* Not_received \n* Defective \n* Accidental_purchase \n* Fraud \n* Friendly_fraud \n* Chargeback"]
         #[serde(rename = "voidedReason", default)]
-        pub voided_reason: Option<i32>,
+        pub voided_reason: ::std::option::Option<i32>,
         #[doc = "The initiator of voided purchase, possible values are:\n\n* User \n* Developer \n* Google"]
         #[serde(rename = "voidedSource", default)]
-        pub voided_source: Option<i32>,
+        pub voided_source: ::std::option::Option<i32>,
         #[doc = "The time at which the purchase was canceled/refunded/charged-back, in milliseconds since the epoch (Jan 1, 1970)."]
         #[serde(rename = "voidedTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub voided_time_millis: Option<i64>,
+        pub voided_time_millis: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for VoidedPurchase {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1942,7 +1889,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1959,11 +1905,11 @@ pub mod schemas {
     )]
     pub struct VoidedPurchasesListResponse {
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[serde(rename = "voidedPurchases", default)]
-        pub voided_purchases: Option<Vec<crate::schemas::VoidedPurchase>>,
+        pub voided_purchases: ::std::option::Option<Vec<crate::schemas::VoidedPurchase>>,
     }
     impl ::field_selector::FieldSelector for VoidedPurchasesListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1972,7 +1918,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -2021,6 +1966,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -4038,6 +3992,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for UploadDeobfuscationFileType {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
             }
             pub struct DeobfuscationfilesActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
@@ -4926,6 +4889,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for GetExpansionFileType {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum PatchExpansionFileType {
                     Main,
@@ -4968,6 +4940,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for PatchExpansionFileType {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5014,6 +4995,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for UpdateExpansionFileType {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum UploadExpansionFileType {
                     Main,
@@ -5056,6 +5046,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for UploadExpansionFileType {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
             }
@@ -6045,6 +6044,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for DeleteImageType {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum DeleteallImageType {
                     FeatureGraphic,
@@ -6108,6 +6116,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for DeleteallImageType {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -6175,6 +6192,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for ListImageType {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum UploadImageType {
                     FeatureGraphic,
@@ -6238,6 +6264,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for UploadImageType {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
             }
@@ -13164,6 +13199,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -13239,5 +13275,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

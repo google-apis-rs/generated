@@ -14,10 +14,10 @@ pub mod schemas {
     pub struct Activity {
         #[doc = "The fields common to all of the singleEvents that make up the Activity."]
         #[serde(rename = "combinedEvent", default)]
-        pub combined_event: Option<crate::schemas::Event>,
+        pub combined_event: ::std::option::Option<crate::schemas::Event>,
         #[doc = "A list of all the Events that make up the Activity."]
         #[serde(rename = "singleEvents", default)]
-        pub single_events: Option<Vec<crate::schemas::Event>>,
+        pub single_events: ::std::option::Option<Vec<crate::schemas::Event>>,
     }
     impl ::field_selector::FieldSelector for Activity {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -26,7 +26,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -100,6 +99,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for EventAdditionalEventTypesItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EventPrimaryEventType {
         Comment,
@@ -171,6 +179,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for EventPrimaryEventType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -186,32 +203,33 @@ pub mod schemas {
     pub struct Event {
         #[doc = "Additional event types. Some events may have multiple types when multiple actions are part of a single event. For example, creating a document, renaming it, and sharing it may be part of a single file-creation event."]
         #[serde(rename = "additionalEventTypes", default)]
-        pub additional_event_types: Option<Vec<crate::schemas::EventAdditionalEventTypesItems>>,
+        pub additional_event_types:
+            ::std::option::Option<Vec<crate::schemas::EventAdditionalEventTypesItems>>,
         #[doc = "The time at which the event occurred formatted as Unix time in milliseconds."]
         #[serde(rename = "eventTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub event_time_millis: Option<u64>,
+        pub event_time_millis: ::std::option::Option<u64>,
         #[doc = "Whether this event is caused by a user being deleted."]
         #[serde(rename = "fromUserDeletion", default)]
-        pub from_user_deletion: Option<bool>,
+        pub from_user_deletion: ::std::option::Option<bool>,
         #[doc = "Extra information for permissionChange type events, such as the user or group the new permission applies to."]
         #[serde(rename = "permissionChanges", default)]
-        pub permission_changes: Option<Vec<crate::schemas::PermissionChange>>,
+        pub permission_changes: ::std::option::Option<Vec<crate::schemas::PermissionChange>>,
         #[doc = "The main type of event that occurred."]
         #[serde(rename = "primaryEventType", default)]
-        pub primary_event_type: Option<crate::schemas::EventPrimaryEventType>,
+        pub primary_event_type: ::std::option::Option<crate::schemas::EventPrimaryEventType>,
         #[doc = "Extra information for move type events, such as changes in an object's parents."]
         #[serde(rename = "move", default)]
-        pub r#move: Option<crate::schemas::Move>,
+        pub r#move: ::std::option::Option<crate::schemas::Move>,
         #[doc = "Extra information for rename type events, such as the old and new names."]
         #[serde(rename = "rename", default)]
-        pub rename: Option<crate::schemas::Rename>,
+        pub rename: ::std::option::Option<crate::schemas::Rename>,
         #[doc = "Information specific to the Target object modified by the event."]
         #[serde(rename = "target", default)]
-        pub target: Option<crate::schemas::Target>,
+        pub target: ::std::option::Option<crate::schemas::Target>,
         #[doc = "Represents the user responsible for the event."]
         #[serde(rename = "user", default)]
-        pub user: Option<crate::schemas::User>,
+        pub user: ::std::option::Option<crate::schemas::User>,
     }
     impl ::field_selector::FieldSelector for Event {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -220,7 +238,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -238,10 +255,10 @@ pub mod schemas {
     pub struct ListActivitiesResponse {
         #[doc = "List of activities."]
         #[serde(rename = "activities", default)]
-        pub activities: Option<Vec<crate::schemas::Activity>>,
+        pub activities: ::std::option::Option<Vec<crate::schemas::Activity>>,
         #[doc = "Token for the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListActivitiesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -250,7 +267,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -268,10 +284,10 @@ pub mod schemas {
     pub struct Move {
         #[doc = "The added parent(s)."]
         #[serde(rename = "addedParents", default)]
-        pub added_parents: Option<Vec<crate::schemas::Parent>>,
+        pub added_parents: ::std::option::Option<Vec<crate::schemas::Parent>>,
         #[doc = "The removed parent(s)."]
         #[serde(rename = "removedParents", default)]
-        pub removed_parents: Option<Vec<crate::schemas::Parent>>,
+        pub removed_parents: ::std::option::Option<Vec<crate::schemas::Parent>>,
     }
     impl ::field_selector::FieldSelector for Move {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -280,7 +296,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -298,13 +313,13 @@ pub mod schemas {
     pub struct Parent {
         #[doc = "The parent's ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Whether this is the root folder."]
         #[serde(rename = "isRoot", default)]
-        pub is_root: Option<bool>,
+        pub is_root: ::std::option::Option<bool>,
         #[doc = "The parent's title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Parent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -313,7 +328,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -364,6 +378,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for PermissionType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -419,6 +442,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PermissionRole {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -434,22 +466,22 @@ pub mod schemas {
     pub struct Permission {
         #[doc = "The name of the user or group the permission applies to."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The ID for this permission. Corresponds to the Drive API's permission ID returned as part of the Drive Permissions resource."]
         #[serde(rename = "permissionId", default)]
-        pub permission_id: Option<String>,
+        pub permission_id: ::std::option::Option<String>,
         #[doc = "Indicates how widely permissions are granted."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::PermissionType>,
+        pub r#type: ::std::option::Option<crate::schemas::PermissionType>,
         #[doc = "Indicates the Google Drive permissions role. The role determines a user's ability to read, write, or comment on the file."]
         #[serde(rename = "role", default)]
-        pub role: Option<crate::schemas::PermissionRole>,
+        pub role: ::std::option::Option<crate::schemas::PermissionRole>,
         #[doc = "The user's information if the type is USER."]
         #[serde(rename = "user", default)]
-        pub user: Option<crate::schemas::User>,
+        pub user: ::std::option::Option<crate::schemas::User>,
         #[doc = "Whether the permission requires a link to the file."]
         #[serde(rename = "withLink", default)]
-        pub with_link: Option<bool>,
+        pub with_link: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for Permission {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -458,7 +490,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -476,10 +507,10 @@ pub mod schemas {
     pub struct PermissionChange {
         #[doc = "Lists all Permission objects added."]
         #[serde(rename = "addedPermissions", default)]
-        pub added_permissions: Option<Vec<crate::schemas::Permission>>,
+        pub added_permissions: ::std::option::Option<Vec<crate::schemas::Permission>>,
         #[doc = "Lists all Permission objects removed."]
         #[serde(rename = "removedPermissions", default)]
-        pub removed_permissions: Option<Vec<crate::schemas::Permission>>,
+        pub removed_permissions: ::std::option::Option<Vec<crate::schemas::Permission>>,
     }
     impl ::field_selector::FieldSelector for PermissionChange {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -488,7 +519,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -506,7 +536,7 @@ pub mod schemas {
     pub struct Photo {
         #[doc = "The URL of the photo."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Photo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -515,7 +545,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -533,10 +562,10 @@ pub mod schemas {
     pub struct Rename {
         #[doc = "The new title."]
         #[serde(rename = "newTitle", default)]
-        pub new_title: Option<String>,
+        pub new_title: ::std::option::Option<String>,
         #[doc = "The old title."]
         #[serde(rename = "oldTitle", default)]
-        pub old_title: Option<String>,
+        pub old_title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Rename {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -545,7 +574,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -563,13 +591,13 @@ pub mod schemas {
     pub struct Target {
         #[doc = "The ID of the target. For example, in Google Drive, this is the file or folder ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The MIME type of the target."]
         #[serde(rename = "mimeType", default)]
-        pub mime_type: Option<String>,
+        pub mime_type: ::std::option::Option<String>,
         #[doc = "The name of the target. For example, in Google Drive, this is the title of the file."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Target {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -578,7 +606,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -596,19 +623,19 @@ pub mod schemas {
     pub struct User {
         #[doc = "A boolean which indicates whether the specified User was deleted. If true, name, photo and permission_id will be omitted."]
         #[serde(rename = "isDeleted", default)]
-        pub is_deleted: Option<bool>,
+        pub is_deleted: ::std::option::Option<bool>,
         #[doc = "Whether the user is the authenticated user."]
         #[serde(rename = "isMe", default)]
-        pub is_me: Option<bool>,
+        pub is_me: ::std::option::Option<bool>,
         #[doc = "The displayable name of the user."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The permission ID associated with this user. Equivalent to the Drive API's permission ID for this user, returned as part of the Drive Permissions resource."]
         #[serde(rename = "permissionId", default)]
-        pub permission_id: Option<String>,
+        pub permission_id: ::std::option::Option<String>,
         #[doc = "The profile photo of the user. Not present if the user has no profile photo."]
         #[serde(rename = "photo", default)]
-        pub photo: Option<crate::schemas::Photo>,
+        pub photo: ::std::option::Option<crate::schemas::Photo>,
     }
     impl ::field_selector::FieldSelector for User {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -617,7 +644,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -662,6 +688,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -729,6 +764,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListGroupingStrategy {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -1308,6 +1352,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1383,5 +1428,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

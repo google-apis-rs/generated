@@ -14,22 +14,22 @@ pub mod schemas {
     pub struct AccessLevel {
         #[doc = "A `BasicLevel` composed of `Conditions`."]
         #[serde(rename = "basic", default)]
-        pub basic: Option<crate::schemas::BasicLevel>,
+        pub basic: ::std::option::Option<crate::schemas::BasicLevel>,
         #[doc = "Output only. Time the `AccessLevel` was created in UTC."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Description of the `AccessLevel` and its use. Does not affect behavior."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Required. Resource name for the Access Level. The `short_name` component\nmust begin with a letter and only include alphanumeric and '_'. Format:\n`accessPolicies/{policy_id}/accessLevels/{short_name}`"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Human readable title. Must be unique within the Policy."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "Output only. Time the `AccessLevel` was updated in UTC."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AccessLevel {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -38,7 +38,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -56,19 +55,19 @@ pub mod schemas {
     pub struct AccessPolicy {
         #[doc = "Output only. Time the `AccessPolicy` was created in UTC."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. Resource name of the `AccessPolicy`. Format:\n`accessPolicies/{policy_id}`"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Required. The parent of this `AccessPolicy` in the Cloud Resource\nHierarchy. Currently immutable once created. Format:\n`organizations/{organization_id}`"]
         #[serde(rename = "parent", default)]
-        pub parent: Option<String>,
+        pub parent: ::std::option::Option<String>,
         #[doc = "Required. Human readable title. Does not affect behavior."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "Output only. Time the `AccessPolicy` was updated in UTC."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AccessPolicy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -77,7 +76,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -126,6 +124,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for BasicLevelCombiningFunction {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -141,10 +148,10 @@ pub mod schemas {
     pub struct BasicLevel {
         #[doc = "How the `conditions` list should be combined to determine if a request is\ngranted this `AccessLevel`. If AND is used, each `Condition` in\n`conditions` must be satisfied for the `AccessLevel` to be applied. If OR\nis used, at least one `Condition` in `conditions` must be satisfied for the\n`AccessLevel` to be applied. Default behavior is AND."]
         #[serde(rename = "combiningFunction", default)]
-        pub combining_function: Option<crate::schemas::BasicLevelCombiningFunction>,
+        pub combining_function: ::std::option::Option<crate::schemas::BasicLevelCombiningFunction>,
         #[doc = "Required. A list of requirements for the `AccessLevel` to be granted."]
         #[serde(rename = "conditions", default)]
-        pub conditions: Option<Vec<crate::schemas::Condition>>,
+        pub conditions: ::std::option::Option<Vec<crate::schemas::Condition>>,
     }
     impl ::field_selector::FieldSelector for BasicLevel {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -153,7 +160,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -171,7 +177,7 @@ pub mod schemas {
     )]
     pub struct CancelOperationRequest;
     impl ::field_selector::FieldSelector for CancelOperationRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -188,22 +194,22 @@ pub mod schemas {
     pub struct Condition {
         #[doc = "Device specific restrictions, all restrictions must hold for the\nCondition to be true. If not specified, all devices are allowed."]
         #[serde(rename = "devicePolicy", default)]
-        pub device_policy: Option<crate::schemas::DevicePolicy>,
+        pub device_policy: ::std::option::Option<crate::schemas::DevicePolicy>,
         #[doc = "CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for\na CIDR IP address block, the specified IP address portion must be properly\ntruncated (i.e. all the host bits must be zero) or the input is considered\nmalformed. For example, \"192.0.2.0/24\" is accepted but \"192.0.2.1/24\" is\nnot. Similarly, for IPv6, \"2001:db8::/32\" is accepted whereas\n\"2001:db8::1/32\" is not. The originating IP of a request must be in one of\nthe listed subnets in order for this Condition to be true. If empty, all IP\naddresses are allowed."]
         #[serde(rename = "ipSubnetworks", default)]
-        pub ip_subnetworks: Option<Vec<String>>,
+        pub ip_subnetworks: ::std::option::Option<Vec<String>>,
         #[doc = "The request must be made by one of the provided user or service\naccounts. Groups are not supported.\nSyntax:\n`user:{emailid}`\n`serviceAccount:{emailid}`\nIf not specified, a request may come from any user."]
         #[serde(rename = "members", default)]
-        pub members: Option<Vec<String>>,
+        pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Whether to negate the Condition. If true, the Condition becomes a NAND over\nits non-empty fields, each field must be false for the Condition overall to\nbe satisfied. Defaults to false."]
         #[serde(rename = "negate", default)]
-        pub negate: Option<bool>,
+        pub negate: ::std::option::Option<bool>,
         #[doc = "The request must originate from one of the provided countries/regions.\nMust be valid ISO 3166-1 alpha-2 codes."]
         #[serde(rename = "regions", default)]
-        pub regions: Option<Vec<String>>,
+        pub regions: ::std::option::Option<Vec<String>>,
         #[doc = "A list of other access levels defined in the same `Policy`, referenced by\nresource name. Referencing an `AccessLevel` which does not exist is an\nerror. All access levels listed must be granted for the Condition\nto be true. Example:\n\"`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME\"`"]
         #[serde(rename = "requiredAccessLevels", default)]
-        pub required_access_levels: Option<Vec<String>>,
+        pub required_access_levels: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for Condition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -212,7 +218,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -267,6 +272,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for DevicePolicyAllowedDeviceManagementLevelsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -327,6 +341,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DevicePolicyAllowedEncryptionStatusesItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -342,24 +365,25 @@ pub mod schemas {
     pub struct DevicePolicy {
         #[doc = "Allowed device management levels, an empty list allows all management\nlevels."]
         #[serde(rename = "allowedDeviceManagementLevels", default)]
-        pub allowed_device_management_levels:
-            Option<Vec<crate::schemas::DevicePolicyAllowedDeviceManagementLevelsItems>>,
+        pub allowed_device_management_levels: ::std::option::Option<
+            Vec<crate::schemas::DevicePolicyAllowedDeviceManagementLevelsItems>,
+        >,
         #[doc = "Allowed encryptions statuses, an empty list allows all statuses."]
         #[serde(rename = "allowedEncryptionStatuses", default)]
         pub allowed_encryption_statuses:
-            Option<Vec<crate::schemas::DevicePolicyAllowedEncryptionStatusesItems>>,
+            ::std::option::Option<Vec<crate::schemas::DevicePolicyAllowedEncryptionStatusesItems>>,
         #[doc = "Allowed OS versions, an empty list allows all types and all versions."]
         #[serde(rename = "osConstraints", default)]
-        pub os_constraints: Option<Vec<crate::schemas::OsConstraint>>,
+        pub os_constraints: ::std::option::Option<Vec<crate::schemas::OsConstraint>>,
         #[doc = "Whether the device needs to be approved by the customer admin."]
         #[serde(rename = "requireAdminApproval", default)]
-        pub require_admin_approval: Option<bool>,
+        pub require_admin_approval: ::std::option::Option<bool>,
         #[doc = "Whether the device needs to be corp owned."]
         #[serde(rename = "requireCorpOwned", default)]
-        pub require_corp_owned: Option<bool>,
+        pub require_corp_owned: ::std::option::Option<bool>,
         #[doc = "Whether or not screenlock is required for the DevicePolicy to be true.\nDefaults to `false`."]
         #[serde(rename = "requireScreenlock", default)]
-        pub require_screenlock: Option<bool>,
+        pub require_screenlock: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for DevicePolicy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -368,7 +392,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -386,7 +409,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -403,10 +426,10 @@ pub mod schemas {
     pub struct ListAccessLevelsResponse {
         #[doc = "List of the Access Level instances."]
         #[serde(rename = "accessLevels", default)]
-        pub access_levels: Option<Vec<crate::schemas::AccessLevel>>,
+        pub access_levels: ::std::option::Option<Vec<crate::schemas::AccessLevel>>,
         #[doc = "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListAccessLevelsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -415,7 +438,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -433,10 +455,10 @@ pub mod schemas {
     pub struct ListAccessPoliciesResponse {
         #[doc = "List of the AccessPolicy instances."]
         #[serde(rename = "accessPolicies", default)]
-        pub access_policies: Option<Vec<crate::schemas::AccessPolicy>>,
+        pub access_policies: ::std::option::Option<Vec<crate::schemas::AccessPolicy>>,
         #[doc = "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListAccessPoliciesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -445,17 +467,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
         #[serde(rename = "operations", default)]
-        pub operations: Option<Vec<crate::schemas::Operation>>,
+        pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::field_selector::FieldSelector for ListOperationsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -464,7 +485,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -482,10 +502,10 @@ pub mod schemas {
     pub struct ListServicePerimetersResponse {
         #[doc = "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of the Service Perimeter instances."]
         #[serde(rename = "servicePerimeters", default)]
-        pub service_perimeters: Option<Vec<crate::schemas::ServicePerimeter>>,
+        pub service_perimeters: ::std::option::Option<Vec<crate::schemas::ServicePerimeter>>,
     }
     impl ::field_selector::FieldSelector for ListServicePerimetersResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -494,26 +514,27 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
         #[serde(rename = "done", default)]
-        pub done: Option<bool>,
+        pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
         #[serde(rename = "error", default)]
-        pub error: Option<crate::schemas::Status>,
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
         #[serde(rename = "response", default)]
-        pub response: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub response:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
     impl ::field_selector::FieldSelector for Operation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -522,7 +543,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -583,6 +603,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for OsConstraintOsType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -598,13 +627,13 @@ pub mod schemas {
     pub struct OsConstraint {
         #[doc = "The minimum allowed OS version. If not set, any version of this OS\nsatisfies the constraint. Format: `\"major.minor.patch\"`.\nExamples: `\"10.5.301\"`, `\"9.2.1\"`."]
         #[serde(rename = "minimumVersion", default)]
-        pub minimum_version: Option<String>,
+        pub minimum_version: ::std::option::Option<String>,
         #[doc = "Required. The allowed OS type."]
         #[serde(rename = "osType", default)]
-        pub os_type: Option<crate::schemas::OsConstraintOsType>,
+        pub os_type: ::std::option::Option<crate::schemas::OsConstraintOsType>,
         #[doc = "Only allows requests from devices with a verified Chrome OS.\nVerifications includes requirements that the device is enterprise-managed,\nconformant to Dasher domain policies, and the caller has permission to call\nthe API targeted by the request."]
         #[serde(rename = "requireVerifiedChromeOs", default)]
-        pub require_verified_chrome_os: Option<bool>,
+        pub require_verified_chrome_os: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for OsConstraint {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -613,7 +642,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -662,6 +690,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ServicePerimeterPerimeterType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -677,25 +714,25 @@ pub mod schemas {
     pub struct ServicePerimeter {
         #[doc = "Output only. Time the `ServicePerimeter` was created in UTC."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Description of the `ServicePerimeter` and its use. Does not affect\nbehavior."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Required. Resource name for the ServicePerimeter.  The `short_name`\ncomponent must begin with a letter and only include alphanumeric and '_'.\nFormat: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Perimeter type indicator. A single project is\nallowed to be a member of single regular perimeter, but multiple service\nperimeter bridges. A project cannot be a included in a perimeter bridge\nwithout being included in regular perimeter. For perimeter bridges,\nthe restricted service list as well as access level lists must be\nempty."]
         #[serde(rename = "perimeterType", default)]
-        pub perimeter_type: Option<crate::schemas::ServicePerimeterPerimeterType>,
+        pub perimeter_type: ::std::option::Option<crate::schemas::ServicePerimeterPerimeterType>,
         #[doc = "Current ServicePerimeter configuration. Specifies sets of resources,\nrestricted services and access levels that determine perimeter\ncontent and boundaries."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::ServicePerimeterConfig>,
+        pub status: ::std::option::Option<crate::schemas::ServicePerimeterConfig>,
         #[doc = "Human readable title. Must be unique within the Policy."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "Output only. Time the `ServicePerimeter` was updated in UTC."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ServicePerimeter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -704,7 +741,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -722,13 +758,13 @@ pub mod schemas {
     pub struct ServicePerimeterConfig {
         #[doc = "A list of `AccessLevel` resource names that allow resources within the\n`ServicePerimeter` to be accessed from the internet. `AccessLevels` listed\nmust be in the same policy as this `ServicePerimeter`. Referencing a\nnonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are\nlisted, resources within the perimeter can only be accessed via GCP calls\nwith request origins within the perimeter. Example:\n`\"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL\"`.\nFor Service Perimeter Bridge, must be empty."]
         #[serde(rename = "accessLevels", default)]
-        pub access_levels: Option<Vec<String>>,
+        pub access_levels: ::std::option::Option<Vec<String>>,
         #[doc = "A list of GCP resources that are inside of the service perimeter.\nCurrently only projects are allowed. Format: `projects/{project_number}`"]
         #[serde(rename = "resources", default)]
-        pub resources: Option<Vec<String>>,
+        pub resources: ::std::option::Option<Vec<String>>,
         #[doc = "GCP services that are subject to the Service Perimeter restrictions. For\nexample, if `storage.googleapis.com` is specified, access to the storage\nbuckets inside the perimeter must meet the perimeter's access restrictions."]
         #[serde(rename = "restrictedServices", default)]
-        pub restricted_services: Option<Vec<String>>,
+        pub restricted_services: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ServicePerimeterConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -737,20 +773,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
-        pub code: Option<i32>,
+        pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub details:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Status {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -759,7 +795,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -814,6 +849,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -858,6 +902,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -2023,6 +2076,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for GetAccessLevelFormat {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListAccessLevelFormat {
                     LevelFormatUnspecified,
@@ -2072,6 +2134,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for ListAccessLevelFormat {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
             }
@@ -5425,6 +5496,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -5500,5 +5572,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

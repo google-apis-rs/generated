@@ -14,9 +14,9 @@ pub mod schemas {
     pub struct Addressable {
         #[doc = "Deprecated - use url instead."]
         #[serde(rename = "hostname", default)]
-        pub hostname: Option<String>,
+        pub hostname: ::std::option::Option<String>,
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Addressable {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -25,7 +25,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -43,10 +42,10 @@ pub mod schemas {
     pub struct AuditConfig {
         #[doc = "The configuration for logging of each type of permission."]
         #[serde(rename = "auditLogConfigs", default)]
-        pub audit_log_configs: Option<Vec<crate::schemas::AuditLogConfig>>,
+        pub audit_log_configs: ::std::option::Option<Vec<crate::schemas::AuditLogConfig>>,
         #[doc = "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."]
         #[serde(rename = "service", default)]
-        pub service: Option<String>,
+        pub service: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AuditConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -55,7 +54,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -112,6 +110,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AuditLogConfigLogType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -127,10 +134,10 @@ pub mod schemas {
     pub struct AuditLogConfig {
         #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
         #[serde(rename = "exemptedMembers", default)]
-        pub exempted_members: Option<Vec<String>>,
+        pub exempted_members: ::std::option::Option<Vec<String>>,
         #[doc = "The log type that this config enables."]
         #[serde(rename = "logType", default)]
-        pub log_type: Option<crate::schemas::AuditLogConfigLogType>,
+        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
     }
     impl ::field_selector::FieldSelector for AuditLogConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -139,7 +146,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -157,10 +163,10 @@ pub mod schemas {
     pub struct AuthorizedDomain {
         #[doc = "Relative name of the domain authorized for use. Example: `example.com`."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Read only. Full path to the `AuthorizedDomain` resource in the API.\nExample: `apps/myapp/authorizedDomains/example.com`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AuthorizedDomain {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -169,7 +175,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -187,13 +192,13 @@ pub mod schemas {
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
         #[serde(rename = "condition", default)]
-        pub condition: Option<crate::schemas::Expr>,
+        pub condition: ::std::option::Option<crate::schemas::Expr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
         #[serde(rename = "members", default)]
-        pub members: Option<Vec<String>>,
+        pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
         #[serde(rename = "role", default)]
-        pub role: Option<String>,
+        pub role: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Binding {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -202,7 +207,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -220,10 +224,10 @@ pub mod schemas {
     pub struct Capabilities {
         #[doc = "Added capabilities\n+optional"]
         #[serde(rename = "add", default)]
-        pub add: Option<Vec<String>>,
+        pub add: ::std::option::Option<Vec<String>>,
         #[doc = "Removed capabilities\n+optional"]
         #[serde(rename = "drop", default)]
-        pub drop: Option<Vec<String>>,
+        pub drop: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for Capabilities {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -232,7 +236,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -250,10 +253,10 @@ pub mod schemas {
     pub struct ConfigMapEnvSource {
         #[doc = "The ConfigMap to select from."]
         #[serde(rename = "localObjectReference", default)]
-        pub local_object_reference: Option<crate::schemas::LocalObjectReference>,
+        pub local_object_reference: ::std::option::Option<crate::schemas::LocalObjectReference>,
         #[doc = "Specify whether the ConfigMap must be defined\n+optional"]
         #[serde(rename = "optional", default)]
-        pub optional: Option<bool>,
+        pub optional: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for ConfigMapEnvSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -262,7 +265,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -280,13 +282,13 @@ pub mod schemas {
     pub struct ConfigMapKeySelector {
         #[doc = "Cloud Run fully managed: not supported\n\nCloud Run on GKE: supported\n\nThe key to select."]
         #[serde(rename = "key", default)]
-        pub key: Option<String>,
+        pub key: ::std::option::Option<String>,
         #[doc = "Cloud Run fully managed: not supported\n\nCloud Run on GKE: supported\n\nThe ConfigMap to select from."]
         #[serde(rename = "localObjectReference", default)]
-        pub local_object_reference: Option<crate::schemas::LocalObjectReference>,
+        pub local_object_reference: ::std::option::Option<crate::schemas::LocalObjectReference>,
         #[doc = "Cloud Run fully managed: not supported\n\nCloud Run on GKE: supported\n\nSpecify whether the ConfigMap or its key must be defined\n+optional"]
         #[serde(rename = "optional", default)]
-        pub optional: Option<bool>,
+        pub optional: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for ConfigMapKeySelector {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -295,7 +297,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -313,16 +314,16 @@ pub mod schemas {
     pub struct ConfigMapVolumeSource {
         #[doc = "Mode bits to use on created files by default. Must be a value between 0 and\n0777. Defaults to 0644. Directories within the path are not affected by\nthis setting. This might be in conflict with other options that affect the\nfile mode, like fsGroup, and the result can be other mode bits set."]
         #[serde(rename = "defaultMode", default)]
-        pub default_mode: Option<i32>,
+        pub default_mode: ::std::option::Option<i32>,
         #[doc = "If unspecified, each key-value pair in the Data field of the referenced\nSecret will be projected into the volume as a file whose name is the\nkey and content is the value. If specified, the listed keys will be\nprojected into the specified paths, and unlisted keys will not be\npresent. If a key is specified which is not present in the Secret,\nthe volume setup will error unless it is marked optional."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::KeyToPath>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::KeyToPath>>,
         #[doc = "Name of the config."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Specify whether the Secret or its keys must be defined."]
         #[serde(rename = "optional", default)]
-        pub optional: Option<bool>,
+        pub optional: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for ConfigMapVolumeSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -331,7 +332,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -349,19 +349,19 @@ pub mod schemas {
     pub struct Configuration {
         #[doc = "The API version for this call such as \"serving.knative.dev/v1alpha1\"."]
         #[serde(rename = "apiVersion", default)]
-        pub api_version: Option<String>,
+        pub api_version: ::std::option::Option<String>,
         #[doc = "The kind of resource, in this case always \"Configuration\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Metadata associated with this Configuration, including name, namespace,\nlabels, and annotations."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::ObjectMeta>,
+        pub metadata: ::std::option::Option<crate::schemas::ObjectMeta>,
         #[doc = "Spec holds the desired state of the Configuration (from the client)."]
         #[serde(rename = "spec", default)]
-        pub spec: Option<crate::schemas::ConfigurationSpec>,
+        pub spec: ::std::option::Option<crate::schemas::ConfigurationSpec>,
         #[doc = "Status communicates the observed state of the Configuration (from the\ncontroller)."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::ConfigurationStatus>,
+        pub status: ::std::option::Option<crate::schemas::ConfigurationStatus>,
     }
     impl ::field_selector::FieldSelector for Configuration {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -370,7 +370,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -388,22 +387,22 @@ pub mod schemas {
     pub struct ConfigurationCondition {
         #[doc = "Last time the condition transitioned from one status to another.\n+optional"]
         #[serde(rename = "lastTransitionTime", default)]
-        pub last_transition_time: Option<String>,
+        pub last_transition_time: ::std::option::Option<String>,
         #[doc = "Human-readable message indicating details about last transition.\n+optional"]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
         #[doc = "ConfigurationConditionType is used to communicate the status of the\nreconciliation process. See also:\nhttps://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting\nTypes include:\"Ready\""]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "One-word CamelCase reason for the condition's last transition.\n+optional"]
         #[serde(rename = "reason", default)]
-        pub reason: Option<String>,
+        pub reason: ::std::option::Option<String>,
         #[doc = "How to interpret failures of this condition, one of Error, Warning, Info\n+optional"]
         #[serde(rename = "severity", default)]
-        pub severity: Option<String>,
+        pub severity: ::std::option::Option<String>,
         #[doc = "Status of the condition, one of True, False, Unknown."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ConfigurationCondition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -412,7 +411,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -430,13 +428,13 @@ pub mod schemas {
     pub struct ConfigurationSpec {
         #[doc = "Deprecated and not currently populated by Cloud Run. See\nmetadata.generation instead, which is the sequence number containing the\nlatest generation of the desired state.\n\nRead-only."]
         #[serde(rename = "generation", default)]
-        pub generation: Option<i32>,
+        pub generation: ::std::option::Option<i32>,
         #[doc = "RevisionTemplate holds the latest specification for the Revision to\nbe stamped out. The template references the container image, and may also\ninclude labels and annotations that should be attached to the Revision.\nTo correlate a Revision, and/or to force a Revision to be created when the\nspec doesn't otherwise change, a nonce label may be provided in the\ntemplate metadata. For more details, see:\nhttps://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions\n\nCloud Run does not currently support referencing a build that is\nresponsible for materializing the container image from source."]
         #[serde(rename = "revisionTemplate", default)]
-        pub revision_template: Option<crate::schemas::RevisionTemplate>,
+        pub revision_template: ::std::option::Option<crate::schemas::RevisionTemplate>,
         #[doc = "Template holds the latest specification for the Revision to be stamped out."]
         #[serde(rename = "template", default)]
-        pub template: Option<crate::schemas::RevisionTemplate>,
+        pub template: ::std::option::Option<crate::schemas::RevisionTemplate>,
     }
     impl ::field_selector::FieldSelector for ConfigurationSpec {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -445,7 +443,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -463,16 +460,16 @@ pub mod schemas {
     pub struct ConfigurationStatus {
         #[doc = "Conditions communicates information about ongoing/complete\nreconciliation processes that bring the \"spec\" inline with the observed\nstate of the world."]
         #[serde(rename = "conditions", default)]
-        pub conditions: Option<Vec<crate::schemas::ConfigurationCondition>>,
+        pub conditions: ::std::option::Option<Vec<crate::schemas::ConfigurationCondition>>,
         #[doc = "LatestCreatedRevisionName is the last revision that was created from this\nConfiguration. It might not be ready yet, for that use\nLatestReadyRevisionName."]
         #[serde(rename = "latestCreatedRevisionName", default)]
-        pub latest_created_revision_name: Option<String>,
+        pub latest_created_revision_name: ::std::option::Option<String>,
         #[doc = "LatestReadyRevisionName holds the name of the latest Revision stamped out\nfrom this Configuration that has had its \"Ready\" condition become \"True\"."]
         #[serde(rename = "latestReadyRevisionName", default)]
-        pub latest_ready_revision_name: Option<String>,
+        pub latest_ready_revision_name: ::std::option::Option<String>,
         #[doc = "ObservedGeneration is the 'Generation' of the Configuration that\nwas last processed by the controller. The observed generation is updated\neven if the controller failed to process the spec and create the Revision.\n\nClients polling for completed reconciliation should poll until\nobservedGeneration = metadata.generation, and the Ready condition's status\nis True or False."]
         #[serde(rename = "observedGeneration", default)]
-        pub observed_generation: Option<i32>,
+        pub observed_generation: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ConfigurationStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -481,7 +478,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -499,67 +495,67 @@ pub mod schemas {
     pub struct Container {
         #[doc = "Arguments to the entrypoint.\nThe docker image's CMD is used if this is not provided.\nVariable references $(VAR_NAME) are expanded using the container's\nenvironment. If a variable cannot be resolved, the reference in the input\nstring will be unchanged. The $(VAR_NAME) syntax can be escaped with a\ndouble $$, ie: $$(VAR_NAME). Escaped references will never be expanded,\nregardless of whether the variable exists or not.\nCannot be updated.\nMore info:\nhttps://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell\n+optional"]
         #[serde(rename = "args", default)]
-        pub args: Option<Vec<String>>,
+        pub args: ::std::option::Option<Vec<String>>,
         #[doc = "Entrypoint array. Not executed within a shell.\nThe docker image's ENTRYPOINT is used if this is not provided.\nVariable references $(VAR_NAME) are expanded using the container's\nenvironment. If a variable cannot be resolved, the reference in the input\nstring will be unchanged. The $(VAR_NAME) syntax can be escaped with a\ndouble $$, ie: $$(VAR_NAME). Escaped references will never be expanded,\nregardless of whether the variable exists or not.\nCannot be updated.\nMore info:\nhttps://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell\n+optional"]
         #[serde(rename = "command", default)]
-        pub command: Option<Vec<String>>,
+        pub command: ::std::option::Option<Vec<String>>,
         #[doc = "List of environment variables to set in the container.\nCannot be updated.\n+optional"]
         #[serde(rename = "env", default)]
-        pub env: Option<Vec<crate::schemas::EnvVar>>,
+        pub env: ::std::option::Option<Vec<crate::schemas::EnvVar>>,
         #[doc = "List of sources to populate environment variables in the container.\nThe keys defined within a source must be a C_IDENTIFIER. All invalid keys\nwill be reported as an event when the container is starting. When a key\nexists in multiple sources, the value associated with the last source will\ntake precedence. Values defined by an Env with a duplicate key will take\nprecedence. Cannot be updated. +optional"]
         #[serde(rename = "envFrom", default)]
-        pub env_from: Option<Vec<crate::schemas::EnvFromSource>>,
+        pub env_from: ::std::option::Option<Vec<crate::schemas::EnvFromSource>>,
         #[doc = "Docker image name.\nMore info: https://kubernetes.io/docs/concepts/containers/images"]
         #[serde(rename = "image", default)]
-        pub image: Option<String>,
+        pub image: ::std::option::Option<String>,
         #[doc = "Image pull policy.\nOne of Always, Never, IfNotPresent.\nDefaults to Always if :latest tag is specified, or IfNotPresent otherwise.\nCannot be updated.\nMore info:\nhttps://kubernetes.io/docs/concepts/containers/images#updating-images\n+optional"]
         #[serde(rename = "imagePullPolicy", default)]
-        pub image_pull_policy: Option<String>,
+        pub image_pull_policy: ::std::option::Option<String>,
         #[doc = "Actions that the management system should take in response to container\nlifecycle events. Cannot be updated. +optional"]
         #[serde(rename = "lifecycle", default)]
-        pub lifecycle: Option<crate::schemas::Lifecycle>,
+        pub lifecycle: ::std::option::Option<crate::schemas::Lifecycle>,
         #[doc = "Periodic probe of container liveness.\nContainer will be restarted if the probe fails.\nCannot be updated.\nMore info:\nhttps://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes\n+optional"]
         #[serde(rename = "livenessProbe", default)]
-        pub liveness_probe: Option<crate::schemas::Probe>,
+        pub liveness_probe: ::std::option::Option<crate::schemas::Probe>,
         #[doc = "Name of the container specified as a DNS_LABEL.\nEach container must have a unique name (DNS_LABEL).\nCannot be updated."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "List of ports to expose from the container. Exposing a port here gives\nthe system additional information about the network connections a\ncontainer uses, but is primarily informational. Not specifying a port here\nDOES NOT prevent that port from being exposed. Any port which is\nlistening on the default \"0.0.0.0\" address inside a container will be\naccessible from the network.\nCannot be updated.\n+optional"]
         #[serde(rename = "ports", default)]
-        pub ports: Option<Vec<crate::schemas::ContainerPort>>,
+        pub ports: ::std::option::Option<Vec<crate::schemas::ContainerPort>>,
         #[doc = "Periodic probe of container service readiness.\nContainer will be removed from service endpoints if the probe fails.\nCannot be updated.\nMore info:\nhttps://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes\n+optional"]
         #[serde(rename = "readinessProbe", default)]
-        pub readiness_probe: Option<crate::schemas::Probe>,
+        pub readiness_probe: ::std::option::Option<crate::schemas::Probe>,
         #[doc = "Compute Resources required by this container.\nCannot be updated.\nMore info:\nhttps://kubernetes.io/docs/concepts/storage/persistent-volumes#resources\n+optional"]
         #[serde(rename = "resources", default)]
-        pub resources: Option<crate::schemas::ResourceRequirements>,
+        pub resources: ::std::option::Option<crate::schemas::ResourceRequirements>,
         #[doc = "Security options the pod should run with.\nMore info: https://kubernetes.io/docs/concepts/policy/security-context/\nMore info:\nhttps://kubernetes.io/docs/tasks/configure-pod-container/security-context/\n+optional"]
         #[serde(rename = "securityContext", default)]
-        pub security_context: Option<crate::schemas::SecurityContext>,
+        pub security_context: ::std::option::Option<crate::schemas::SecurityContext>,
         #[doc = "Whether this container should allocate a buffer for stdin in the container\nruntime. If this is not set, reads from stdin in the container will always\nresult in EOF. Default is false. +optional"]
         #[serde(rename = "stdin", default)]
-        pub stdin: Option<bool>,
+        pub stdin: ::std::option::Option<bool>,
         #[doc = "Whether the container runtime should close the stdin channel after it has\nbeen opened by a single attach. When stdin is true the stdin stream will\nremain open across multiple attach sessions. If stdinOnce is set to true,\nstdin is opened on container start, is empty until the first client\nattaches to stdin, and then remains open and accepts data until the client\ndisconnects, at which time stdin is closed and remains closed until the\ncontainer is restarted. If this flag is false, a container processes that\nreads from stdin will never receive an EOF. Default is false +optional"]
         #[serde(rename = "stdinOnce", default)]
-        pub stdin_once: Option<bool>,
+        pub stdin_once: ::std::option::Option<bool>,
         #[doc = "Optional: Path at which the file to which the container's termination\nmessage will be written is mounted into the container's filesystem. Message\nwritten is intended to be brief final status, such as an assertion failure\nmessage. Will be truncated by the node if greater than 4096 bytes. The\ntotal message length across all containers will be limited to 12kb.\nDefaults to /dev/termination-log.\nCannot be updated.\n+optional"]
         #[serde(rename = "terminationMessagePath", default)]
-        pub termination_message_path: Option<String>,
+        pub termination_message_path: ::std::option::Option<String>,
         #[doc = "Indicate how the termination message should be populated. File will use the\ncontents of terminationMessagePath to populate the container status message\non both success and failure. FallbackToLogsOnError will use the last chunk\nof container log output if the termination message file is empty and the\ncontainer exited with an error. The log output is limited to 2048 bytes or\n80 lines, whichever is smaller. Defaults to File. Cannot be updated.\n+optional"]
         #[serde(rename = "terminationMessagePolicy", default)]
-        pub termination_message_policy: Option<String>,
+        pub termination_message_policy: ::std::option::Option<String>,
         #[doc = "Whether this container should allocate a TTY for itself, also requires\n'stdin' to be true. Default is false. +optional"]
         #[serde(rename = "tty", default)]
-        pub tty: Option<bool>,
+        pub tty: ::std::option::Option<bool>,
         #[doc = "volumeDevices is the list of block devices to be used by the container.\nThis is an alpha feature and may change in the future.\n+optional"]
         #[serde(rename = "volumeDevices", default)]
-        pub volume_devices: Option<Vec<crate::schemas::VolumeDevice>>,
+        pub volume_devices: ::std::option::Option<Vec<crate::schemas::VolumeDevice>>,
         #[doc = "Pod volumes to mount into the container's filesystem.\nCannot be updated.\n+optional"]
         #[serde(rename = "volumeMounts", default)]
-        pub volume_mounts: Option<Vec<crate::schemas::VolumeMount>>,
+        pub volume_mounts: ::std::option::Option<Vec<crate::schemas::VolumeMount>>,
         #[doc = "Container's working directory.\nIf not specified, the container runtime's default will be used, which\nmight be configured in the container image.\nCannot be updated.\n+optional"]
         #[serde(rename = "workingDir", default)]
-        pub working_dir: Option<String>,
+        pub working_dir: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Container {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -568,7 +564,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -586,19 +581,19 @@ pub mod schemas {
     pub struct ContainerPort {
         #[doc = "Number of port to expose on the pod's IP address.\nThis must be a valid port number, 0 < x < 65536."]
         #[serde(rename = "containerPort", default)]
-        pub container_port: Option<i32>,
+        pub container_port: ::std::option::Option<i32>,
         #[doc = "What host IP to bind the external port to.\n+optional"]
         #[serde(rename = "hostIP", default)]
-        pub host_ip: Option<String>,
+        pub host_ip: ::std::option::Option<String>,
         #[doc = "Number of port to expose on the host.\nIf specified, this must be a valid port number, 0 < x < 65536.\nIf HostNetwork is specified, this must match ContainerPort.\nMost containers do not need this.\n+optional"]
         #[serde(rename = "hostPort", default)]
-        pub host_port: Option<i32>,
+        pub host_port: ::std::option::Option<i32>,
         #[doc = "If specified, this must be an IANA_SVC_NAME and unique within the pod. Each\nnamed port in a pod must have a unique name. Name for the port that can be\nreferred to by services.\n+optional"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Protocol for port. Must be UDP or TCP.\nDefaults to \"TCP\".\n+optional"]
         #[serde(rename = "protocol", default)]
-        pub protocol: Option<String>,
+        pub protocol: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ContainerPort {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -607,7 +602,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -625,19 +619,19 @@ pub mod schemas {
     pub struct DomainMapping {
         #[doc = "The API version for this call such as \"domains.cloudrun.com/v1alpha1\"."]
         #[serde(rename = "apiVersion", default)]
-        pub api_version: Option<String>,
+        pub api_version: ::std::option::Option<String>,
         #[doc = "The kind of resource, in this case \"DomainMapping\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Metadata associated with this BuildTemplate."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::ObjectMeta>,
+        pub metadata: ::std::option::Option<crate::schemas::ObjectMeta>,
         #[doc = "The spec for this DomainMapping."]
         #[serde(rename = "spec", default)]
-        pub spec: Option<crate::schemas::DomainMappingSpec>,
+        pub spec: ::std::option::Option<crate::schemas::DomainMappingSpec>,
         #[doc = "The current status of the DomainMapping."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::DomainMappingStatus>,
+        pub status: ::std::option::Option<crate::schemas::DomainMappingStatus>,
     }
     impl ::field_selector::FieldSelector for DomainMapping {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -646,7 +640,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -664,22 +657,22 @@ pub mod schemas {
     pub struct DomainMappingCondition {
         #[doc = "Last time the condition transitioned from one status to another.\n+optional"]
         #[serde(rename = "lastTransitionTime", default)]
-        pub last_transition_time: Option<String>,
+        pub last_transition_time: ::std::option::Option<String>,
         #[doc = "Human readable message indicating details about the current status.\n+optional"]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
         #[doc = "Type of domain mapping condition."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "One-word CamelCase reason for the condition's current status.\n+optional"]
         #[serde(rename = "reason", default)]
-        pub reason: Option<String>,
+        pub reason: ::std::option::Option<String>,
         #[doc = "How to interpret failures of this condition, one of Error, Warning, Info\n+optional"]
         #[serde(rename = "severity", default)]
-        pub severity: Option<String>,
+        pub severity: ::std::option::Option<String>,
         #[doc = "Status of the condition, one of True, False, Unknown."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DomainMappingCondition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -688,7 +681,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -744,6 +736,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DomainMappingSpecCertificateMode {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -759,13 +760,14 @@ pub mod schemas {
     pub struct DomainMappingSpec {
         #[doc = "The mode of the certificate."]
         #[serde(rename = "certificateMode", default)]
-        pub certificate_mode: Option<crate::schemas::DomainMappingSpecCertificateMode>,
+        pub certificate_mode:
+            ::std::option::Option<crate::schemas::DomainMappingSpecCertificateMode>,
         #[doc = "If set, the mapping will override any mapping set before this spec was set.\nIt is recommended that the user leaves this empty to receive an error\nwarning about a potential conflict and only set it once the respective UI\nhas given such a warning."]
         #[serde(rename = "forceOverride", default)]
-        pub force_override: Option<bool>,
+        pub force_override: ::std::option::Option<bool>,
         #[doc = "The name of the Knative Route that this DomainMapping applies to.\nThe route must exist."]
         #[serde(rename = "routeName", default)]
-        pub route_name: Option<String>,
+        pub route_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DomainMappingSpec {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -774,7 +776,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -792,16 +793,16 @@ pub mod schemas {
     pub struct DomainMappingStatus {
         #[doc = "Array of observed DomainMappingConditions, indicating the current state\nof the DomainMapping."]
         #[serde(rename = "conditions", default)]
-        pub conditions: Option<Vec<crate::schemas::DomainMappingCondition>>,
+        pub conditions: ::std::option::Option<Vec<crate::schemas::DomainMappingCondition>>,
         #[doc = "The name of the route that the mapping currently points to."]
         #[serde(rename = "mappedRouteName", default)]
-        pub mapped_route_name: Option<String>,
+        pub mapped_route_name: ::std::option::Option<String>,
         #[doc = "ObservedGeneration is the 'Generation' of the DomainMapping that\nwas last processed by the controller.\n\nClients polling for completed reconciliation should poll until\nobservedGeneration = metadata.generation and the Ready condition's status\nis True or False."]
         #[serde(rename = "observedGeneration", default)]
-        pub observed_generation: Option<i32>,
+        pub observed_generation: ::std::option::Option<i32>,
         #[doc = "The resource records required to configure this domain mapping. These\nrecords must be added to the domain's DNS configuration in order to\nserve the application via this domain mapping."]
         #[serde(rename = "resourceRecords", default)]
-        pub resource_records: Option<Vec<crate::schemas::ResourceRecord>>,
+        pub resource_records: ::std::option::Option<Vec<crate::schemas::ResourceRecord>>,
     }
     impl ::field_selector::FieldSelector for DomainMappingStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -810,7 +811,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -828,7 +828,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -845,13 +845,13 @@ pub mod schemas {
     pub struct EnvFromSource {
         #[doc = "The ConfigMap to select from\n+optional"]
         #[serde(rename = "configMapRef", default)]
-        pub config_map_ref: Option<crate::schemas::ConfigMapEnvSource>,
+        pub config_map_ref: ::std::option::Option<crate::schemas::ConfigMapEnvSource>,
         #[doc = "An optional identifier to prepend to each key in the ConfigMap. Must be a\nC_IDENTIFIER. +optional"]
         #[serde(rename = "prefix", default)]
-        pub prefix: Option<String>,
+        pub prefix: ::std::option::Option<String>,
         #[doc = "The Secret to select from\n+optional"]
         #[serde(rename = "secretRef", default)]
-        pub secret_ref: Option<crate::schemas::SecretEnvSource>,
+        pub secret_ref: ::std::option::Option<crate::schemas::SecretEnvSource>,
     }
     impl ::field_selector::FieldSelector for EnvFromSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -860,7 +860,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -878,13 +877,13 @@ pub mod schemas {
     pub struct EnvVar {
         #[doc = "Name of the environment variable. Must be a C_IDENTIFIER."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Variable references $(VAR_NAME) are expanded\nusing the previous defined environment variables in the container and\nany route environment variables. If a variable cannot be resolved,\nthe reference in the input string will be unchanged. The $(VAR_NAME)\nsyntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped\nreferences will never be expanded, regardless of whether the variable\nexists or not.\nDefaults to \"\".\n+optional"]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
         #[doc = "Cloud Run fully managed: not supported\n\nCloud Run on GKE: supported\n\nSource for the environment variable's value. Cannot be used if value is not\nempty. +optional"]
         #[serde(rename = "valueFrom", default)]
-        pub value_from: Option<crate::schemas::EnvVarSource>,
+        pub value_from: ::std::option::Option<crate::schemas::EnvVarSource>,
     }
     impl ::field_selector::FieldSelector for EnvVar {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -893,7 +892,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -911,10 +909,10 @@ pub mod schemas {
     pub struct EnvVarSource {
         #[doc = "Cloud Run fully managed: not supported\n\nCloud Run on GKE: supported\n\nSelects a key of a ConfigMap.\n+optional"]
         #[serde(rename = "configMapKeyRef", default)]
-        pub config_map_key_ref: Option<crate::schemas::ConfigMapKeySelector>,
+        pub config_map_key_ref: ::std::option::Option<crate::schemas::ConfigMapKeySelector>,
         #[doc = "Cloud Run fully managed: not supported\n\nCloud Run on GKE: supported\n\nSelects a key of a secret in the pod's namespace\n+optional"]
         #[serde(rename = "secretKeyRef", default)]
-        pub secret_key_ref: Option<crate::schemas::SecretKeySelector>,
+        pub secret_key_ref: ::std::option::Option<crate::schemas::SecretKeySelector>,
     }
     impl ::field_selector::FieldSelector for EnvVarSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -923,7 +921,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -941,16 +938,16 @@ pub mod schemas {
     pub struct EventType {
         #[doc = "The API version for this call such as \"eventing.knative.dev/v1alpha1\"."]
         #[serde(rename = "apiVersion", default)]
-        pub api_version: Option<String>,
+        pub api_version: ::std::option::Option<String>,
         #[doc = "The kind of resource, in this case \"EventType\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Metadata associated with this EventType."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::ObjectMeta>,
+        pub metadata: ::std::option::Option<crate::schemas::ObjectMeta>,
         #[doc = "Spec defines the desired state of the EventType."]
         #[serde(rename = "spec", default)]
-        pub spec: Option<crate::schemas::EventTypeSpec>,
+        pub spec: ::std::option::Option<crate::schemas::EventTypeSpec>,
     }
     impl ::field_selector::FieldSelector for EventType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -959,7 +956,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -977,13 +973,13 @@ pub mod schemas {
     pub struct EventTypeImporter {
         #[doc = "The API version of the importer CRD."]
         #[serde(rename = "apiVersion", default)]
-        pub api_version: Option<String>,
+        pub api_version: ::std::option::Option<String>,
         #[doc = "The kind of the importer CRD."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Parameters required to create an importer for the EventType."]
         #[serde(rename = "parameters", default)]
-        pub parameters: Option<Vec<crate::schemas::EventTypeParameter>>,
+        pub parameters: ::std::option::Option<Vec<crate::schemas::EventTypeParameter>>,
     }
     impl ::field_selector::FieldSelector for EventTypeImporter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -992,7 +988,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1010,10 +1005,10 @@ pub mod schemas {
     pub struct EventTypeParameter {
         #[doc = "Description of the parameter. E.g. \"Google Cloud Project Id.\""]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Name of the parameter. E.g. googleCloudProject."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EventTypeParameter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1022,7 +1017,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1040,22 +1034,22 @@ pub mod schemas {
     pub struct EventTypeSpec {
         #[doc = "Refers to the Broker that can provide the EventType."]
         #[serde(rename = "broker", default)]
-        pub broker: Option<String>,
+        pub broker: ::std::option::Option<String>,
         #[doc = "Description is a string describing what the EventType is about.\n+optional"]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The importer that provides this EventType to the eventing mesh."]
         #[serde(rename = "importer", default)]
-        pub importer: Option<crate::schemas::EventTypeImporter>,
+        pub importer: ::std::option::Option<crate::schemas::EventTypeImporter>,
         #[doc = "Type is authoritative. This refers to the CloudEvent type as it enters\ninto the eventing mesh."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Schema is a URI with the EventType schema. It may be a JSON schema, a\nprotobuf schema, etc.\n+optional"]
         #[serde(rename = "schema", default)]
-        pub schema: Option<String>,
+        pub schema: ::std::option::Option<String>,
         #[doc = "Source is a valid URI. Refers to the CloudEvent source as it enters into\nthe eventing mesh."]
         #[serde(rename = "source", default)]
-        pub source: Option<String>,
+        pub source: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EventTypeSpec {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1064,7 +1058,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1082,7 +1075,7 @@ pub mod schemas {
     pub struct ExecAction {
         #[doc = "Command is the command line to execute inside the container, the working\ndirectory for the command  is root ('/') in the container's filesystem. The\ncommand is simply exec'd, it is not run inside a shell, so traditional\nshell instructions ('|', etc) won't work. To use a shell, you need to\nexplicitly call out to that shell. Exit status of 0 is treated as\nlive/healthy and non-zero is unhealthy. +optional"]
         #[serde(rename = "command", default)]
-        pub command: Option<String>,
+        pub command: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ExecAction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1091,7 +1084,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1109,16 +1101,16 @@ pub mod schemas {
     pub struct Expr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
         #[serde(rename = "expression", default)]
-        pub expression: Option<String>,
+        pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Expr {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1127,7 +1119,28 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GoogleRpcStatus {
+        #[doc = "The status code, which should be an enum value of google.rpc.Code."]
+        #[serde(rename = "code", default)]
+        pub code: ::std::option::Option<i32>,
+        #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
+        #[serde(rename = "details", default)]
+        pub details:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
+        #[serde(rename = "message", default)]
+        pub message: ::std::option::Option<String>,
+    }
+    impl ::field_selector::FieldSelector for GoogleRpcStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(
@@ -1145,13 +1158,13 @@ pub mod schemas {
     pub struct Handler {
         #[doc = "One and only one of the following should be specified.\nExec specifies the action to take.\n+optional"]
         #[serde(rename = "exec", default)]
-        pub exec: Option<crate::schemas::ExecAction>,
+        pub exec: ::std::option::Option<crate::schemas::ExecAction>,
         #[doc = "HTTPGet specifies the http request to perform.\n+optional"]
         #[serde(rename = "httpGet", default)]
-        pub http_get: Option<crate::schemas::HttpgetAction>,
+        pub http_get: ::std::option::Option<crate::schemas::HttpgetAction>,
         #[doc = "TCPSocket specifies an action involving a TCP port.\nTCP hooks not yet supported"]
         #[serde(rename = "tcpSocket", default)]
-        pub tcp_socket: Option<crate::schemas::TcpsocketAction>,
+        pub tcp_socket: ::std::option::Option<crate::schemas::TcpsocketAction>,
     }
     impl ::field_selector::FieldSelector for Handler {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1160,7 +1173,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1178,19 +1190,19 @@ pub mod schemas {
     pub struct HttpgetAction {
         #[doc = "Host name to connect to, defaults to the pod IP. You probably want to set\n\"Host\" in httpHeaders instead.\n+optional"]
         #[serde(rename = "host", default)]
-        pub host: Option<String>,
+        pub host: ::std::option::Option<String>,
         #[doc = "Custom headers to set in the request. HTTP allows repeated headers.\n+optional"]
         #[serde(rename = "httpHeaders", default)]
-        pub http_headers: Option<Vec<crate::schemas::Httpheader>>,
+        pub http_headers: ::std::option::Option<Vec<crate::schemas::Httpheader>>,
         #[doc = "Path to access on the HTTP server.\n+optional"]
         #[serde(rename = "path", default)]
-        pub path: Option<String>,
+        pub path: ::std::option::Option<String>,
         #[doc = "Name or number of the port to access on the container.\nNumber must be in the range 1 to 65535.\nName must be an IANA_SVC_NAME."]
         #[serde(rename = "port", default)]
-        pub port: Option<crate::schemas::IntOrString>,
+        pub port: ::std::option::Option<crate::schemas::IntOrString>,
         #[doc = "Scheme to use for connecting to the host.\nDefaults to HTTP.\n+optional"]
         #[serde(rename = "scheme", default)]
-        pub scheme: Option<String>,
+        pub scheme: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for HttpgetAction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1199,7 +1211,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1217,10 +1228,10 @@ pub mod schemas {
     pub struct Httpheader {
         #[doc = "The header field name"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The header field value"]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Httpheader {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1229,7 +1240,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1247,7 +1257,7 @@ pub mod schemas {
     pub struct Initializer {
         #[doc = "name of the process that is responsible for initializing this object."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Initializer {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1256,7 +1266,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1274,7 +1283,7 @@ pub mod schemas {
     pub struct Initializers {
         #[doc = "Pending is a list of initializers that must execute in order before this\nobject is visible. When the last pending initializer is removed, and no\nfailing result is set, the initializers struct will be set to nil and the\nobject is considered as initialized and visible to all clients.\n+patchMergeKey=name\n+patchStrategy=merge"]
         #[serde(rename = "pending", default)]
-        pub pending: Option<Vec<crate::schemas::Initializer>>,
+        pub pending: ::std::option::Option<Vec<crate::schemas::Initializer>>,
     }
     impl ::field_selector::FieldSelector for Initializers {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1283,7 +1292,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1301,13 +1309,13 @@ pub mod schemas {
     pub struct IntOrString {
         #[doc = "The int value."]
         #[serde(rename = "intVal", default)]
-        pub int_val: Option<i32>,
+        pub int_val: ::std::option::Option<i32>,
         #[doc = "The type of the value."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<i32>,
+        pub r#type: ::std::option::Option<i32>,
         #[doc = "The string value."]
         #[serde(rename = "strVal", default)]
-        pub str_val: Option<String>,
+        pub str_val: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for IntOrString {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1316,7 +1324,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1334,13 +1341,13 @@ pub mod schemas {
     pub struct KeyToPath {
         #[doc = "The key to project."]
         #[serde(rename = "key", default)]
-        pub key: Option<String>,
+        pub key: ::std::option::Option<String>,
         #[doc = "Mode bits to use on this file, must be a value between 0 and 0777. If not\nspecified, the volume defaultMode will be used. This might be in conflict\nwith other options that affect the file mode, like fsGroup, and the result\ncan be other mode bits set. +optional"]
         #[serde(rename = "mode", default)]
-        pub mode: Option<i32>,
+        pub mode: ::std::option::Option<i32>,
         #[doc = "The relative path of the file to map the key to.\nMay not be an absolute path.\nMay not contain the path element '..'.\nMay not start with the string '..'."]
         #[serde(rename = "path", default)]
-        pub path: Option<String>,
+        pub path: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for KeyToPath {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1349,7 +1356,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1367,10 +1373,10 @@ pub mod schemas {
     pub struct Lifecycle {
         #[doc = "PostStart is called immediately after a container is created. If the\nhandler fails, the container is terminated and restarted according to its\nrestart policy. Other management of the container blocks until the hook\ncompletes. More info:\nhttps://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks\n+optional"]
         #[serde(rename = "postStart", default)]
-        pub post_start: Option<crate::schemas::Handler>,
+        pub post_start: ::std::option::Option<crate::schemas::Handler>,
         #[doc = "PreStop is called immediately before a container is terminated.\nThe container is terminated after the handler completes.\nThe reason for termination is passed to the handler.\nRegardless of the outcome of the handler, the container is eventually\nterminated. Other management of the container blocks until the hook\ncompletes. More info:\nhttps://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks\n+optional"]
         #[serde(rename = "preStop", default)]
-        pub pre_stop: Option<crate::schemas::Handler>,
+        pub pre_stop: ::std::option::Option<crate::schemas::Handler>,
     }
     impl ::field_selector::FieldSelector for Lifecycle {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1379,7 +1385,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1397,10 +1402,10 @@ pub mod schemas {
     pub struct ListAuthorizedDomainsResponse {
         #[doc = "The authorized domains belonging to the user."]
         #[serde(rename = "domains", default)]
-        pub domains: Option<Vec<crate::schemas::AuthorizedDomain>>,
+        pub domains: ::std::option::Option<Vec<crate::schemas::AuthorizedDomain>>,
         #[doc = "Continuation token for fetching the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListAuthorizedDomainsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1409,37 +1414,30 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListConfigurationsResponse {
         #[doc = "The API version for this call such as \"serving.knative.dev/v1alpha1\"."]
         #[serde(rename = "apiVersion", default)]
-        pub api_version: Option<String>,
+        pub api_version: ::std::option::Option<String>,
         #[doc = "List of Configurations."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Configuration>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Configuration>>,
         #[doc = "The kind of this resource, in this case \"ConfigurationList\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Metadata associated with this Configuration list."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::ListMeta>,
+        pub metadata: ::std::option::Option<crate::schemas::ListMeta>,
+        #[doc = "Details for the regions used during a global call including any failures.\nThis is not populated when targeting a specific region."]
+        #[serde(rename = "regionDetails", default)]
+        pub region_details: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::RegionDetails>,
+        >,
         #[doc = "Locations that could not be reached."]
         #[serde(rename = "unreachable", default)]
-        pub unreachable: Option<Vec<String>>,
+        pub unreachable: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ListConfigurationsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1448,34 +1446,27 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListDomainMappingsResponse {
         #[doc = "The API version for this call such as \"domains.cloudrun.com/v1alpha1\"."]
         #[serde(rename = "apiVersion", default)]
-        pub api_version: Option<String>,
+        pub api_version: ::std::option::Option<String>,
         #[doc = "List of DomainMappings."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::DomainMapping>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::DomainMapping>>,
         #[doc = "The kind of this resource, in this case \"DomainMappingList\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Metadata associated with this DomainMapping list."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::ListMeta>,
+        pub metadata: ::std::option::Option<crate::schemas::ListMeta>,
+        #[doc = "Details for the regions used during a global call including any failures.\nThis is not populated when targeting a specific region."]
+        #[serde(rename = "regionDetails", default)]
+        pub region_details: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::RegionDetails>,
+        >,
     }
     impl ::field_selector::FieldSelector for ListDomainMappingsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1484,37 +1475,30 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListEventTypesResponse {
         #[doc = "The API version for this call such as \"eventing.knative.dev/v1alpha1\"."]
         #[serde(rename = "apiVersion", default)]
-        pub api_version: Option<String>,
+        pub api_version: ::std::option::Option<String>,
         #[doc = "List of EventTypes."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::EventType>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::EventType>>,
         #[doc = "The kind of this resource, in this case \"EventTypeList\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Metadata associated with this EventType list."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::ListMeta>,
+        pub metadata: ::std::option::Option<crate::schemas::ListMeta>,
+        #[doc = "Details for the regions used during a global call including any failures.\nThis is not populated when targeting a specific region."]
+        #[serde(rename = "regionDetails", default)]
+        pub region_details: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::RegionDetails>,
+        >,
         #[doc = "Locations that could not be reached."]
         #[serde(rename = "unreachable", default)]
-        pub unreachable: Option<Vec<String>>,
+        pub unreachable: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ListEventTypesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1523,17 +1507,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListLocationsResponse {
         #[doc = "A list of locations that matches the specified filter in the request."]
         #[serde(rename = "locations", default)]
-        pub locations: Option<Vec<crate::schemas::Location>>,
+        pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "The standard List next-page token."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListLocationsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1542,7 +1525,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1560,13 +1542,13 @@ pub mod schemas {
     pub struct ListMeta {
         #[doc = "continue may be set if the user set a limit on the number of items\nreturned, and indicates that the server has more data available. The value\nis opaque and may be used to issue another request to the endpoint that\nserved this list to retrieve the next set of available objects. Continuing\na list may not be possible if the server configuration has changed or more\nthan a few minutes have passed. The resourceVersion field returned when\nusing this continue value will be identical to the value in the first\nresponse."]
         #[serde(rename = "continue", default)]
-        pub r#continue: Option<String>,
+        pub r#continue: ::std::option::Option<String>,
         #[doc = "String that identifies the server's internal version of this object that\ncan be used by clients to determine when objects have changed. Value must\nbe treated as opaque by clients and passed unmodified back to the server.\nPopulated by the system.\nRead-only.\nMore info:\nhttps://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency\n+optional"]
         #[serde(rename = "resourceVersion", default)]
-        pub resource_version: Option<String>,
+        pub resource_version: ::std::option::Option<String>,
         #[doc = "SelfLink is a URL representing this object.\nPopulated by the system.\nRead-only.\n+optional"]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListMeta {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1575,37 +1557,30 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListRevisionsResponse {
         #[doc = "The API version for this call such as \"serving.knative.dev/v1alpha1\"."]
         #[serde(rename = "apiVersion", default)]
-        pub api_version: Option<String>,
+        pub api_version: ::std::option::Option<String>,
         #[doc = "List of Revisions."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Revision>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Revision>>,
         #[doc = "The kind of this resource, in this case \"RevisionList\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Metadata associated with this revision list."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::ListMeta>,
+        pub metadata: ::std::option::Option<crate::schemas::ListMeta>,
+        #[doc = "Details for the regions used during a global call including any failures.\nThis is not populated when targeting a specific region."]
+        #[serde(rename = "regionDetails", default)]
+        pub region_details: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::RegionDetails>,
+        >,
         #[doc = "Locations that could not be reached."]
         #[serde(rename = "unreachable", default)]
-        pub unreachable: Option<Vec<String>>,
+        pub unreachable: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ListRevisionsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1614,37 +1589,30 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListRoutesResponse {
         #[doc = "The API version for this call such as \"serving.knative.dev/v1alpha1\"."]
         #[serde(rename = "apiVersion", default)]
-        pub api_version: Option<String>,
+        pub api_version: ::std::option::Option<String>,
         #[doc = "List of Routes."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Route>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Route>>,
         #[doc = "The kind of this resource, in this case always \"RouteList\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Metadata associated with this Route list."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::ListMeta>,
+        pub metadata: ::std::option::Option<crate::schemas::ListMeta>,
+        #[doc = "Details for the regions used during a global call including any failures.\nThis is not populated when targeting a specific region."]
+        #[serde(rename = "regionDetails", default)]
+        pub region_details: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::RegionDetails>,
+        >,
         #[doc = "Locations that could not be reached."]
         #[serde(rename = "unreachable", default)]
-        pub unreachable: Option<Vec<String>>,
+        pub unreachable: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ListRoutesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1653,37 +1621,30 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListServicesResponse {
         #[doc = "The API version for this call such as \"serving.knative.dev/v1alpha1\"."]
         #[serde(rename = "apiVersion", default)]
-        pub api_version: Option<String>,
+        pub api_version: ::std::option::Option<String>,
         #[doc = "List of Services."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Service>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Service>>,
         #[doc = "The kind of this resource, in this case \"ServiceList\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Metadata associated with this Service list."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::ListMeta>,
+        pub metadata: ::std::option::Option<crate::schemas::ListMeta>,
+        #[doc = "Details for the regions used during a global call including any failures.\nThis is not populated when targeting a specific region."]
+        #[serde(rename = "regionDetails", default)]
+        pub region_details: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::RegionDetails>,
+        >,
         #[doc = "Locations that could not be reached."]
         #[serde(rename = "unreachable", default)]
-        pub unreachable: Option<Vec<String>>,
+        pub unreachable: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ListServicesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1692,37 +1653,30 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListTriggersResponse {
         #[doc = "The API version for this call such as \"eventing.knative.dev/v1alpha1\"."]
         #[serde(rename = "apiVersion", default)]
-        pub api_version: Option<String>,
+        pub api_version: ::std::option::Option<String>,
         #[doc = "List of Triggers."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Trigger>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Trigger>>,
         #[doc = "The kind of this resource, in this case \"TriggerList\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Metadata associated with this Trigger list."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::ListMeta>,
+        pub metadata: ::std::option::Option<crate::schemas::ListMeta>,
+        #[doc = "Details for the regions used during a global call including any failures.\nThis is not populated when targeting a specific region."]
+        #[serde(rename = "regionDetails", default)]
+        pub region_details: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::RegionDetails>,
+        >,
         #[doc = "Locations that could not be reached."]
         #[serde(rename = "unreachable", default)]
-        pub unreachable: Option<Vec<String>>,
+        pub unreachable: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ListTriggersResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1731,7 +1685,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1749,7 +1702,7 @@ pub mod schemas {
     pub struct LocalObjectReference {
         #[doc = "Name of the referent.\nMore info:\nhttps://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LocalObjectReference {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1758,26 +1711,26 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Location {
         #[doc = "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "Cross-service attributes for the location. For example\n\n````text\n{\"cloud.googleapis.com/region\": \"us-east1\"}````"]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The canonical id for this location. For example: `\"us-east1\"`."]
         #[serde(rename = "locationId", default)]
-        pub location_id: Option<String>,
+        pub location_id: ::std::option::Option<String>,
         #[doc = "Service-specific metadata. For example the available capacity at the given\nlocation."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Location {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1786,7 +1739,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1804,52 +1756,52 @@ pub mod schemas {
     pub struct ObjectMeta {
         #[doc = "Annotations is an unstructured key value map stored with a resource that\nmay be set by external tools to store and retrieve arbitrary metadata. They\nare not queryable and should be preserved when modifying objects. More\ninfo: http://kubernetes.io/docs/user-guide/annotations +optional"]
         #[serde(rename = "annotations", default)]
-        pub annotations: Option<::std::collections::BTreeMap<String, String>>,
+        pub annotations: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Not currently supported by Cloud Run.\n\nThe name of the cluster which the object belongs to.\nThis is used to distinguish resources with same name and namespace in\ndifferent clusters. This field is not set anywhere right now and apiserver\nis going to ignore it if set in create or update request. +optional"]
         #[serde(rename = "clusterName", default)]
-        pub cluster_name: Option<String>,
+        pub cluster_name: ::std::option::Option<String>,
         #[doc = "CreationTimestamp is a timestamp representing the server time when this\nobject was created. It is not guaranteed to be set in happens-before order\nacross separate operations. Clients may not set this value. It is\nrepresented in RFC3339 form and is in UTC.\n\nPopulated by the system.\nRead-only.\nNull for lists.\nMore info:\nhttps://git.k8s.io/community/contributors/devel/api-conventions.md#metadata\n+optional"]
         #[serde(rename = "creationTimestamp", default)]
-        pub creation_timestamp: Option<String>,
+        pub creation_timestamp: ::std::option::Option<String>,
         #[doc = "Not currently supported by Cloud Run.\n\nNumber of seconds allowed for this object to gracefully terminate before\nit will be removed from the system. Only set when deletionTimestamp is also\nset. May only be shortened. Read-only. +optional"]
         #[serde(rename = "deletionGracePeriodSeconds", default)]
-        pub deletion_grace_period_seconds: Option<i32>,
+        pub deletion_grace_period_seconds: ::std::option::Option<i32>,
         #[doc = "DeletionTimestamp is RFC 3339 date and time at which this resource will be\ndeleted. This field is set by the server when a graceful deletion is\nrequested by the user, and is not directly settable by a client. The\nresource is expected to be deleted (no longer visible from resource lists,\nand not reachable by name) after the time in this field, once the\nfinalizers list is empty. As long as the finalizers list contains items,\ndeletion is blocked. Once the deletionTimestamp is set, this value may not\nbe unset or be set further into the future, although it may be shortened or\nthe resource may be deleted prior to this time. For example, a user may\nrequest that a pod is deleted in 30 seconds. The Kubelet will react by\nsending a graceful termination signal to the containers in the pod. After\nthat 30 seconds, the Kubelet will send a hard termination signal (SIGKILL)\nto the container and after cleanup, remove the pod from the API. In the\npresence of network partitions, this object may still exist after this\ntimestamp, until an administrator or automated process can determine the\nresource is fully terminated.\nIf not set, graceful deletion of the object has not been requested.\n\nPopulated by the system when a graceful deletion is requested.\nRead-only.\nMore info:\nhttps://git.k8s.io/community/contributors/devel/api-conventions.md#metadata\n+optional"]
         #[serde(rename = "deletionTimestamp", default)]
-        pub deletion_timestamp: Option<String>,
+        pub deletion_timestamp: ::std::option::Option<String>,
         #[doc = "Not currently supported by Cloud Run.\n\nMust be empty before the object is deleted from the registry. Each entry\nis an identifier for the responsible component that will remove the entry\nfrom the list. If the deletionTimestamp of the object is non-nil, entries\nin this list can only be removed.\n+optional\n+patchStrategy=merge"]
         #[serde(rename = "finalizers", default)]
-        pub finalizers: Option<Vec<String>>,
+        pub finalizers: ::std::option::Option<Vec<String>>,
         #[doc = "Not currently supported by Cloud Run.\n\nGenerateName is an optional prefix, used by the server, to generate a\nunique name ONLY IF the Name field has not been provided. If this field is\nused, the name returned to the client will be different than the name\npassed. This value will also be combined with a unique suffix. The provided\nvalue has the same validation rules as the Name field, and may be truncated\nby the length of the suffix required to make the value unique on the\nserver.\n\nIf this field is specified and the generated name exists, the server will\nNOT return a 409 - instead, it will either return 201 Created or 500 with\nReason ServerTimeout indicating a unique name could not be found in the\ntime allotted, and the client should retry (optionally after the time\nindicated in the Retry-After header).\n\nApplied only if Name is not specified.\nMore info:\nhttps://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency\n+optional\nstring generateName = 2;"]
         #[serde(rename = "generateName", default)]
-        pub generate_name: Option<String>,
+        pub generate_name: ::std::option::Option<String>,
         #[doc = "A sequence number representing a specific generation of the desired state.\nPopulated by the system. Read-only.\n+optional"]
         #[serde(rename = "generation", default)]
-        pub generation: Option<i32>,
+        pub generation: ::std::option::Option<i32>,
         #[doc = "Not currently supported by Cloud Run.\n\nAn initializer is a controller which enforces some system invariant at\nobject creation time. This field is a list of initializers that have not\nyet acted on this object. If nil or empty, this object has been completely\ninitialized. Otherwise, the object is considered uninitialized and is\nhidden (in list/watch and get calls) from clients that haven't explicitly\nasked to observe uninitialized objects.\n\nWhen an object is created, the system will populate this list with the\ncurrent set of initializers. Only privileged users may set or modify this\nlist. Once it is empty, it may not be modified further by any user."]
         #[serde(rename = "initializers", default)]
-        pub initializers: Option<crate::schemas::Initializers>,
+        pub initializers: ::std::option::Option<crate::schemas::Initializers>,
         #[doc = "Map of string keys and values that can be used to organize and categorize\n(scope and select) objects. May match selectors of replication controllers\nand routes.\nMore info: http://kubernetes.io/docs/user-guide/labels\n+optional"]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Name must be unique within a namespace, within a Cloud Run region.\nIs required when creating\nresources, although some resources may allow a client to request the\ngeneration of an appropriate name automatically. Name is primarily intended\nfor creation idempotence and configuration definition. Cannot be updated.\nMore info: http://kubernetes.io/docs/user-guide/identifiers#names\n+optional"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Namespace defines the space within each name must be unique, within a\nCloud Run region. In Cloud Run the namespace must be equal to either the\nproject ID or project number."]
         #[serde(rename = "namespace", default)]
-        pub namespace: Option<String>,
+        pub namespace: ::std::option::Option<String>,
         #[doc = "List of objects that own this object. If ALL objects in the list have\nbeen deleted, this object will be garbage collected.\n+optional"]
         #[serde(rename = "ownerReferences", default)]
-        pub owner_references: Option<Vec<crate::schemas::OwnerReference>>,
+        pub owner_references: ::std::option::Option<Vec<crate::schemas::OwnerReference>>,
         #[doc = "An opaque value that represents the internal version of this object that\ncan be used by clients to determine when objects have changed. May be used\nfor optimistic concurrency, change detection, and the watch operation on a\nresource or set of resources. Clients must treat these values as opaque and\npassed unmodified back to the server. They may only be valid for a\nparticular resource or set of resources.\n\nPopulated by the system.\nRead-only.\nValue must be treated as opaque by clients and .\nMore info:\nhttps://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency\n+optional"]
         #[serde(rename = "resourceVersion", default)]
-        pub resource_version: Option<String>,
+        pub resource_version: ::std::option::Option<String>,
         #[doc = "SelfLink is a URL representing this object.\nPopulated by the system.\nRead-only.\n+optional\nstring selfLink = 4;"]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "UID is the unique in time and space value for this object. It is typically\ngenerated by the server on successful creation of a resource and is not\nallowed to change on PUT operations.\n\nPopulated by the system.\nRead-only.\nMore info: http://kubernetes.io/docs/user-guide/identifiers#uids\n+optional"]
         #[serde(rename = "uid", default)]
-        pub uid: Option<String>,
+        pub uid: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ObjectMeta {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1858,7 +1810,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1876,25 +1827,25 @@ pub mod schemas {
     pub struct ObjectReference {
         #[doc = "API version of the referent.\n+optional"]
         #[serde(rename = "apiVersion", default)]
-        pub api_version: Option<String>,
+        pub api_version: ::std::option::Option<String>,
         #[doc = "If referring to a piece of an object instead of an entire object, this\nstring should contain a valid JSON/Go field access statement, such as\ndesiredState.manifest.containers[2]. For example, if the object reference\nis to a container within a pod, this would take on a value like:\n\"spec.containers{name}\" (where \"name\" refers to the name of the container\nthat triggered the event) or if no container name is specified\n\"spec.containers[2]\" (container with index 2 in this pod). This syntax is\nchosen only to have some well-defined way of referencing a part of an\nobject."]
         #[serde(rename = "fieldPath", default)]
-        pub field_path: Option<String>,
+        pub field_path: ::std::option::Option<String>,
         #[doc = "Kind of the referent.\nMore info:\nhttps://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds\n+optional"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Name of the referent.\nMore info:\nhttps://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\n+optional"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Namespace of the referent.\nMore info:\nhttps://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/\n+optional"]
         #[serde(rename = "namespace", default)]
-        pub namespace: Option<String>,
+        pub namespace: ::std::option::Option<String>,
         #[doc = "Specific resourceVersion to which this reference is made, if any.\nMore info:\nhttps://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency\n+optional"]
         #[serde(rename = "resourceVersion", default)]
-        pub resource_version: Option<String>,
+        pub resource_version: ::std::option::Option<String>,
         #[doc = "UID of the referent.\nMore info:\nhttps://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids\n+optional"]
         #[serde(rename = "uid", default)]
-        pub uid: Option<String>,
+        pub uid: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ObjectReference {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1903,7 +1854,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1921,22 +1871,22 @@ pub mod schemas {
     pub struct OwnerReference {
         #[doc = "API version of the referent."]
         #[serde(rename = "apiVersion", default)]
-        pub api_version: Option<String>,
+        pub api_version: ::std::option::Option<String>,
         #[doc = "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then\nthe owner cannot be deleted from the key-value store until this\nreference is removed.\nDefaults to false.\nTo set this field, a user needs \"delete\" permission of the owner,\notherwise 422 (Unprocessable Entity) will be returned.\n+optional"]
         #[serde(rename = "blockOwnerDeletion", default)]
-        pub block_owner_deletion: Option<bool>,
+        pub block_owner_deletion: ::std::option::Option<bool>,
         #[doc = "If true, this reference points to the managing controller.\n+optional"]
         #[serde(rename = "controller", default)]
-        pub controller: Option<bool>,
+        pub controller: ::std::option::Option<bool>,
         #[doc = "Kind of the referent.\nMore info:\nhttps://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Name of the referent.\nMore info: http://kubernetes.io/docs/user-guide/identifiers#names"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "UID of the referent.\nMore info: http://kubernetes.io/docs/user-guide/identifiers#uids"]
         #[serde(rename = "uid", default)]
-        pub uid: Option<String>,
+        pub uid: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for OwnerReference {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1945,7 +1895,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1963,16 +1912,16 @@ pub mod schemas {
     pub struct Policy {
         #[doc = "Specifies cloud audit logging configuration for this policy."]
         #[serde(rename = "auditConfigs", default)]
-        pub audit_configs: Option<Vec<crate::schemas::AuditConfig>>,
+        pub audit_configs: ::std::option::Option<Vec<crate::schemas::AuditConfig>>,
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
         #[serde(rename = "bindings", default)]
-        pub bindings: Option<Vec<crate::schemas::Binding>>,
+        pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<Vec<u8>>,
+        pub etag: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Deprecated."]
         #[serde(rename = "version", default)]
-        pub version: Option<i32>,
+        pub version: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Policy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1981,7 +1930,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1999,22 +1947,22 @@ pub mod schemas {
     pub struct Probe {
         #[doc = "Minimum consecutive failures for the probe to be considered failed after\nhaving succeeded. Defaults to 3. Minimum value is 1. +optional"]
         #[serde(rename = "failureThreshold", default)]
-        pub failure_threshold: Option<i32>,
+        pub failure_threshold: ::std::option::Option<i32>,
         #[doc = "The action taken to determine the health of a container"]
         #[serde(rename = "handler", default)]
-        pub handler: Option<crate::schemas::Handler>,
+        pub handler: ::std::option::Option<crate::schemas::Handler>,
         #[doc = "Number of seconds after the container has started before liveness probes\nare initiated. More info:\nhttps://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes\n+optional"]
         #[serde(rename = "initialDelaySeconds", default)]
-        pub initial_delay_seconds: Option<i32>,
+        pub initial_delay_seconds: ::std::option::Option<i32>,
         #[doc = "How often (in seconds) to perform the probe.\nDefault to 10 seconds. Minimum value is 1.\n+optional"]
         #[serde(rename = "periodSeconds", default)]
-        pub period_seconds: Option<i32>,
+        pub period_seconds: ::std::option::Option<i32>,
         #[doc = "Minimum consecutive successes for the probe to be considered successful\nafter having failed. Defaults to 1. Must be 1 for liveness. Minimum value\nis 1. +optional"]
         #[serde(rename = "successThreshold", default)]
-        pub success_threshold: Option<i32>,
+        pub success_threshold: ::std::option::Option<i32>,
         #[doc = "Number of seconds after which the probe times out.\nDefaults to 1 second. Minimum value is 1.\nMore info:\nhttps://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes\n+optional"]
         #[serde(rename = "timeoutSeconds", default)]
-        pub timeout_seconds: Option<i32>,
+        pub timeout_seconds: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Probe {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2023,7 +1971,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2041,7 +1988,7 @@ pub mod schemas {
     pub struct Quantity {
         #[doc = "Stringified version of the quantity, e.g., \"800 MiB\"."]
         #[serde(rename = "string", default)]
-        pub string: Option<String>,
+        pub string: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Quantity {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2050,7 +1997,21 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct RegionDetails {
+        #[doc = "The status indicating why the regional call failed"]
+        #[serde(rename = "error", default)]
+        pub error: ::std::option::Option<crate::schemas::GoogleRpcStatus>,
+    }
+    impl ::field_selector::FieldSelector for RegionDetails {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2107,6 +2068,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ResourceRecordType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2122,13 +2092,13 @@ pub mod schemas {
     pub struct ResourceRecord {
         #[doc = "Relative name of the object affected by this record. Only applicable for\n`CNAME` records. Example: 'www'."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Resource record type. Example: `AAAA`."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::ResourceRecordType>,
+        pub r#type: ::std::option::Option<crate::schemas::ResourceRecordType>,
         #[doc = "Data for this record. Values vary by record type, as defined in RFC 1035\n(section 5) and RFC 1034 (section 3.6.1)."]
         #[serde(rename = "rrdata", default)]
-        pub rrdata: Option<String>,
+        pub rrdata: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ResourceRecord {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2137,7 +2107,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2155,16 +2124,18 @@ pub mod schemas {
     pub struct ResourceRequirements {
         #[doc = "Limits describes the maximum amount of compute resources allowed.\nThe values of the map is string form of the 'quantity' k8s type:\nhttps://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go"]
         #[serde(rename = "limits", default)]
-        pub limits: Option<::std::collections::BTreeMap<String, String>>,
+        pub limits: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Limits describes the maximum amount of compute resources allowed.\nThis is a temporary field created to migrate away from the\nmap<string, Quantity> limits field. This is done to become compliant\nwith k8s style API.\nThis field is deprecated in favor of limits field."]
         #[serde(rename = "limitsInMap", default)]
-        pub limits_in_map: Option<::std::collections::BTreeMap<String, crate::schemas::Quantity>>,
+        pub limits_in_map:
+            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Quantity>>,
         #[doc = "Requests describes the minimum amount of compute resources required.\nIf Requests is omitted for a container, it defaults to Limits if that is\nexplicitly specified, otherwise to an implementation-defined value.\nThe values of the map is string form of the 'quantity' k8s type:\nhttps://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go"]
         #[serde(rename = "requests", default)]
-        pub requests: Option<::std::collections::BTreeMap<String, String>>,
+        pub requests: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Requests describes the minimum amount of compute resources required.\nIf Requests is omitted for a container, it defaults to Limits if that is\nexplicitly specified, otherwise to an implementation-defined value.\nThis is a temporary field created to migrate away from the\nmap<string, Quantity> requests field. This is done to become compliant\nwith k8s style API.\nThis field is deprecated in favor of requests field."]
         #[serde(rename = "requestsInMap", default)]
-        pub requests_in_map: Option<::std::collections::BTreeMap<String, crate::schemas::Quantity>>,
+        pub requests_in_map:
+            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Quantity>>,
     }
     impl ::field_selector::FieldSelector for ResourceRequirements {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2173,7 +2144,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2191,19 +2161,19 @@ pub mod schemas {
     pub struct Revision {
         #[doc = "The API version for this call such as \"serving.knative.dev/v1alpha1\"."]
         #[serde(rename = "apiVersion", default)]
-        pub api_version: Option<String>,
+        pub api_version: ::std::option::Option<String>,
         #[doc = "The kind of this resource, in this case \"Revision\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Metadata associated with this Revision, including name, namespace, labels,\nand annotations."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::ObjectMeta>,
+        pub metadata: ::std::option::Option<crate::schemas::ObjectMeta>,
         #[doc = "Spec holds the desired state of the Revision (from the client)."]
         #[serde(rename = "spec", default)]
-        pub spec: Option<crate::schemas::RevisionSpec>,
+        pub spec: ::std::option::Option<crate::schemas::RevisionSpec>,
         #[doc = "Status communicates the observed state of the Revision (from the\ncontroller)."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::RevisionStatus>,
+        pub status: ::std::option::Option<crate::schemas::RevisionStatus>,
     }
     impl ::field_selector::FieldSelector for Revision {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2212,7 +2182,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2230,22 +2199,22 @@ pub mod schemas {
     pub struct RevisionCondition {
         #[doc = "Last time the condition transitioned from one status to another.\n+optional"]
         #[serde(rename = "lastTransitionTime", default)]
-        pub last_transition_time: Option<String>,
+        pub last_transition_time: ::std::option::Option<String>,
         #[doc = "Human readable message indicating details about the current status.\n+optional"]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
         #[doc = "RevisionConditionType is used to communicate the status of the\nreconciliation process. See also:\nhttps://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting\nTypes include:\n\n* \"Ready\": True when the Revision is ready.\n* \"ResourcesAvailable\": True when underlying resources have been\n  provisioned.\n* \"ContainerHealthy\": True when the Revision readiness check completes.\n* \"Active\": True when the Revision may receive traffic."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "One-word CamelCase reason for the condition's last transition.\n+optional"]
         #[serde(rename = "reason", default)]
-        pub reason: Option<String>,
+        pub reason: ::std::option::Option<String>,
         #[doc = "How to interpret failures of this condition, one of Error, Warning, Info\n+optional"]
         #[serde(rename = "severity", default)]
-        pub severity: Option<String>,
+        pub severity: ::std::option::Option<String>,
         #[doc = "Status of the condition, one of True, False, Unknown."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RevisionCondition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2254,7 +2223,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2315,6 +2283,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for RevisionSpecServingState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2330,30 +2307,30 @@ pub mod schemas {
     pub struct RevisionSpec {
         #[doc = "ConcurrencyModel specifies the desired concurrency model\n(Single or Multi) for the Revision. Defaults to Multi.\nDeprecated in favor of ContainerConcurrency.\n+optional"]
         #[serde(rename = "concurrencyModel", default)]
-        pub concurrency_model: Option<String>,
+        pub concurrency_model: ::std::option::Option<String>,
         #[doc = "Container defines the unit of execution for this Revision.\nIn the context of a Revision, we disallow a number of the fields of\nthis Container, including: name, ports, and volumeMounts.\nThe runtime contract is documented here:\nhttps://github.com/knative/serving/blob/master/docs/runtime-contract.md"]
         #[serde(rename = "container", default)]
-        pub container: Option<crate::schemas::Container>,
+        pub container: ::std::option::Option<crate::schemas::Container>,
         #[doc = "ContainerConcurrency specifies the maximum allowed in-flight (concurrent)\nrequests per container of the Revision. Values are:\n\n* `0` thread-safe, the system should manage the max concurrency. This is\n  the default value.\n* `1` not-thread-safe. Single concurrency\n* `2-N` thread-safe, max concurrency of N"]
         #[serde(rename = "containerConcurrency", default)]
-        pub container_concurrency: Option<i32>,
+        pub container_concurrency: ::std::option::Option<i32>,
         #[doc = "Containers holds the single container that defines the unit of execution\nfor this Revision. In the context of a Revision, we disallow a number of\nfields on this Container, including: name and lifecycle.\nIn Cloud Run, only a single container may be provided."]
         #[serde(rename = "containers", default)]
-        pub containers: Option<Vec<crate::schemas::Container>>,
+        pub containers: ::std::option::Option<Vec<crate::schemas::Container>>,
         #[doc = "Deprecated and not currently populated by Cloud Run. See\nmetadata.generation instead, which is the sequence number containing the\nlatest generation of the desired state.\n\nRead-only."]
         #[serde(rename = "generation", default)]
-        pub generation: Option<i32>,
+        pub generation: ::std::option::Option<i32>,
         #[doc = "Email address of the IAM service account associated with the revision\nof the service. The service account represents the identity of the\nrunning revision, and determines what permissions the revision has. If\nnot provided, the revision will use the project's default service account."]
         #[serde(rename = "serviceAccountName", default)]
-        pub service_account_name: Option<String>,
+        pub service_account_name: ::std::option::Option<String>,
         #[doc = "ServingState holds a value describing the state the resources\nare in for this Revision.\nUsers must not specify this when creating a revision. It is expected\nthat the system will manipulate this based on routability and load.\n\nPopulated by the system.\nRead-only."]
         #[serde(rename = "servingState", default)]
-        pub serving_state: Option<crate::schemas::RevisionSpecServingState>,
+        pub serving_state: ::std::option::Option<crate::schemas::RevisionSpecServingState>,
         #[doc = "TimeoutSeconds holds the max duration the instance is allowed for\nresponding to a request.\nNot currently used by Cloud Run."]
         #[serde(rename = "timeoutSeconds", default)]
-        pub timeout_seconds: Option<i32>,
+        pub timeout_seconds: ::std::option::Option<i32>,
         #[serde(rename = "volumes", default)]
-        pub volumes: Option<Vec<crate::schemas::Volume>>,
+        pub volumes: ::std::option::Option<Vec<crate::schemas::Volume>>,
     }
     impl ::field_selector::FieldSelector for RevisionSpec {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2362,7 +2339,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2380,19 +2356,19 @@ pub mod schemas {
     pub struct RevisionStatus {
         #[doc = "Conditions communicates information about ongoing/complete\nreconciliation processes that bring the \"spec\" inline with the observed\nstate of the world.\n\nAs a Revision is being prepared, it will incrementally\nupdate conditions \"ResourcesAvailable\", \"ContainerHealthy\", and \"Active\",\nwhich contribute to the overall \"Ready\" condition."]
         #[serde(rename = "conditions", default)]
-        pub conditions: Option<Vec<crate::schemas::RevisionCondition>>,
+        pub conditions: ::std::option::Option<Vec<crate::schemas::RevisionCondition>>,
         #[doc = "ImageDigest holds the resolved digest for the image specified\nwithin .Spec.Container.Image. The digest is resolved during the creation\nof Revision. This field holds the digest value regardless of whether\na tag or digest was originally specified in the Container object."]
         #[serde(rename = "imageDigest", default)]
-        pub image_digest: Option<String>,
+        pub image_digest: ::std::option::Option<String>,
         #[doc = "Specifies the generated logging url for this particular revision\nbased on the revision url template specified in the controller's config.\n+optional"]
         #[serde(rename = "logUrl", default)]
-        pub log_url: Option<String>,
+        pub log_url: ::std::option::Option<String>,
         #[doc = "ObservedGeneration is the 'Generation' of the Revision that\nwas last processed by the controller.\n\nClients polling for completed reconciliation should poll until\nobservedGeneration = metadata.generation, and the Ready condition's status\nis True or False."]
         #[serde(rename = "observedGeneration", default)]
-        pub observed_generation: Option<i32>,
+        pub observed_generation: ::std::option::Option<i32>,
         #[doc = "Not currently used by Cloud Run."]
         #[serde(rename = "serviceName", default)]
-        pub service_name: Option<String>,
+        pub service_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RevisionStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2401,7 +2377,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2419,10 +2394,10 @@ pub mod schemas {
     pub struct RevisionTemplate {
         #[doc = "Optional metadata for this Revision, including labels and annotations. Name\nwill be generated by the Configuration.\nTo set minimum instances for this revision, use the\n\"autoscaling.knative.dev/minScale\" annotation key. (Cloud Run on GKE only).\nTo set maximum instances for this revision, use the\n\"autoscaling.knative.dev/maxScale\" annotation key.\nTo set Cloud SQL connections for the revision, use the\n\"run.googleapis.com/cloudsql-instances\" annotation key. Values should be\ncomma separated."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::ObjectMeta>,
+        pub metadata: ::std::option::Option<crate::schemas::ObjectMeta>,
         #[doc = "RevisionSpec holds the desired state of the Revision (from the client)."]
         #[serde(rename = "spec", default)]
-        pub spec: Option<crate::schemas::RevisionSpec>,
+        pub spec: ::std::option::Option<crate::schemas::RevisionSpec>,
     }
     impl ::field_selector::FieldSelector for RevisionTemplate {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2431,7 +2406,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2449,19 +2423,19 @@ pub mod schemas {
     pub struct Route {
         #[doc = "The API version for this call such as \"serving.knative.dev/v1alpha1\"."]
         #[serde(rename = "apiVersion", default)]
-        pub api_version: Option<String>,
+        pub api_version: ::std::option::Option<String>,
         #[doc = "The kind of this resource, in this case always \"Route\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Metadata associated with this Route, including name, namespace, labels,\nand annotations."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::ObjectMeta>,
+        pub metadata: ::std::option::Option<crate::schemas::ObjectMeta>,
         #[doc = "Spec holds the desired state of the Route (from the client)."]
         #[serde(rename = "spec", default)]
-        pub spec: Option<crate::schemas::RouteSpec>,
+        pub spec: ::std::option::Option<crate::schemas::RouteSpec>,
         #[doc = "Status communicates the observed state of the Route (from the controller)."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::RouteStatus>,
+        pub status: ::std::option::Option<crate::schemas::RouteStatus>,
     }
     impl ::field_selector::FieldSelector for Route {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2470,7 +2444,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2488,22 +2461,22 @@ pub mod schemas {
     pub struct RouteCondition {
         #[doc = "Last time the condition transitioned from one status to another.\n+optional"]
         #[serde(rename = "lastTransitionTime", default)]
-        pub last_transition_time: Option<String>,
+        pub last_transition_time: ::std::option::Option<String>,
         #[doc = "Human-readable message indicating details about last transition.\n+optional"]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
         #[doc = "RouteConditionType is used to communicate the status of the reconciliation\nprocess. See also:\nhttps://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting\nTypes include: \"Ready\"."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "One-word CamelCase reason for the condition's last transition.\n+optional"]
         #[serde(rename = "reason", default)]
-        pub reason: Option<String>,
+        pub reason: ::std::option::Option<String>,
         #[doc = "How to interpret failures of this condition, one of Error, Warning, Info\n+optional"]
         #[serde(rename = "severity", default)]
-        pub severity: Option<String>,
+        pub severity: ::std::option::Option<String>,
         #[doc = "Status of the condition, one of \"True\", \"False\", \"Unknown\"."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RouteCondition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2512,7 +2485,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2530,10 +2502,10 @@ pub mod schemas {
     pub struct RouteSpec {
         #[doc = "Deprecated and not currently populated by Cloud Run. See\nmetadata.generation instead, which is the sequence number containing the\nlatest generation of the desired state.\n\nRead-only."]
         #[serde(rename = "generation", default)]
-        pub generation: Option<i32>,
+        pub generation: ::std::option::Option<i32>,
         #[doc = "Traffic specifies how to distribute traffic over a collection of Knative\nRevisions and Configurations.\nCloud Run currently supports a single configurationName."]
         #[serde(rename = "traffic", default)]
-        pub traffic: Option<Vec<crate::schemas::TrafficTarget>>,
+        pub traffic: ::std::option::Option<Vec<crate::schemas::TrafficTarget>>,
     }
     impl ::field_selector::FieldSelector for RouteSpec {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2542,7 +2514,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2560,25 +2531,25 @@ pub mod schemas {
     pub struct RouteStatus {
         #[doc = "Similar to url, information on where the service is available on HTTP."]
         #[serde(rename = "address", default)]
-        pub address: Option<crate::schemas::Addressable>,
+        pub address: ::std::option::Option<crate::schemas::Addressable>,
         #[doc = "Conditions communicates information about ongoing/complete\nreconciliation processes that bring the \"spec\" inline with the observed\nstate of the world."]
         #[serde(rename = "conditions", default)]
-        pub conditions: Option<Vec<crate::schemas::RouteCondition>>,
+        pub conditions: ::std::option::Option<Vec<crate::schemas::RouteCondition>>,
         #[doc = "Deprecated - use url instead.\nDomain holds the top-level domain that will distribute traffic over the\nprovided targets."]
         #[serde(rename = "domain", default)]
-        pub domain: Option<String>,
+        pub domain: ::std::option::Option<String>,
         #[doc = "Deprecated - use address instead.\nFor Cloud Run, identifical to domain."]
         #[serde(rename = "domainInternal", default)]
-        pub domain_internal: Option<String>,
+        pub domain_internal: ::std::option::Option<String>,
         #[doc = "ObservedGeneration is the 'Generation' of the Route that\nwas last processed by the controller.\n\nClients polling for completed reconciliation should poll until\nobservedGeneration = metadata.generation and the Ready condition's status\nis True or False.\n\nNote that providing a trafficTarget that only has a configurationName will\nresult in a Route that does not increment either its metadata.generation or\nits observedGeneration, as new \"latest ready\" revisions from the\nConfiguration are processed without an update to the Route's spec."]
         #[serde(rename = "observedGeneration", default)]
-        pub observed_generation: Option<i32>,
+        pub observed_generation: ::std::option::Option<i32>,
         #[doc = "Traffic holds the configured traffic distribution.\nThese entries will always contain RevisionName references.\nWhen ConfigurationName appears in the spec, this will hold the\nLatestReadyRevisionName that we last observed."]
         #[serde(rename = "traffic", default)]
-        pub traffic: Option<Vec<crate::schemas::TrafficTarget>>,
+        pub traffic: ::std::option::Option<Vec<crate::schemas::TrafficTarget>>,
         #[doc = "URL holds the url that will distribute traffic over the provided traffic\ntargets. It generally has the form\nhttps://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app"]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RouteStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2587,7 +2558,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2605,10 +2575,10 @@ pub mod schemas {
     pub struct SecretEnvSource {
         #[doc = "The Secret to select from."]
         #[serde(rename = "localObjectReference", default)]
-        pub local_object_reference: Option<crate::schemas::LocalObjectReference>,
+        pub local_object_reference: ::std::option::Option<crate::schemas::LocalObjectReference>,
         #[doc = "Specify whether the Secret must be defined\n+optional"]
         #[serde(rename = "optional", default)]
-        pub optional: Option<bool>,
+        pub optional: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for SecretEnvSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2617,7 +2587,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2635,13 +2604,13 @@ pub mod schemas {
     pub struct SecretKeySelector {
         #[doc = "Cloud Run fully managed: not supported\n\nCloud Run on GKE: supported\n\nThe key of the secret to select from.  Must be a valid secret key."]
         #[serde(rename = "key", default)]
-        pub key: Option<String>,
+        pub key: ::std::option::Option<String>,
         #[doc = "Cloud Run fully managed: not supported\n\nCloud Run on GKE: supported\n\nThe name of the secret in the pod's namespace to select from."]
         #[serde(rename = "localObjectReference", default)]
-        pub local_object_reference: Option<crate::schemas::LocalObjectReference>,
+        pub local_object_reference: ::std::option::Option<crate::schemas::LocalObjectReference>,
         #[doc = "Cloud Run fully managed: not supported\n\nCloud Run on GKE: supported\n\nSpecify whether the Secret or its key must be defined\n+optional"]
         #[serde(rename = "optional", default)]
-        pub optional: Option<bool>,
+        pub optional: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for SecretKeySelector {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2650,7 +2619,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2668,16 +2636,16 @@ pub mod schemas {
     pub struct SecretVolumeSource {
         #[doc = "Mode bits to use on created files by default. Must be a value between 0 and\n0777. Defaults to 0644. Directories within the path are not affected by\nthis setting. This might be in conflict with other options that affect the\nfile mode, like fsGroup, and the result can be other mode bits set."]
         #[serde(rename = "defaultMode", default)]
-        pub default_mode: Option<i32>,
+        pub default_mode: ::std::option::Option<i32>,
         #[doc = "If unspecified, each key-value pair in the Data field of the referenced\nSecret will be projected into the volume as a file whose name is the\nkey and content is the value. If specified, the listed keys will be\nprojected into the specified paths, and unlisted keys will not be\npresent. If a key is specified which is not present in the Secret,\nthe volume setup will error unless it is marked optional."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::KeyToPath>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::KeyToPath>>,
         #[doc = "Specify whether the Secret or its keys must be defined."]
         #[serde(rename = "optional", default)]
-        pub optional: Option<bool>,
+        pub optional: ::std::option::Option<bool>,
         #[doc = "Name of the secret in the container's namespace to use."]
         #[serde(rename = "secretName", default)]
-        pub secret_name: Option<String>,
+        pub secret_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SecretVolumeSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2686,7 +2654,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2704,28 +2671,28 @@ pub mod schemas {
     pub struct SecurityContext {
         #[doc = "AllowPrivilegeEscalation controls whether a process can gain more\nprivileges than its parent process. This bool directly controls if\nthe no_new_privs flag will be set on the container process.\nAllowPrivilegeEscalation is true always when the container is:\n\n1. run as Privileged\n1. has CAP_SYS_ADMIN\n   +optional"]
         #[serde(rename = "allowPrivilegeEscalation", default)]
-        pub allow_privilege_escalation: Option<bool>,
+        pub allow_privilege_escalation: ::std::option::Option<bool>,
         #[doc = "The capabilities to add/drop when running containers.\nDefaults to the default set of capabilities granted by the container\nruntime. +optional"]
         #[serde(rename = "capabilities", default)]
-        pub capabilities: Option<crate::schemas::Capabilities>,
+        pub capabilities: ::std::option::Option<crate::schemas::Capabilities>,
         #[doc = "Run container in privileged mode.\nProcesses in privileged containers are essentially equivalent to root on\nthe host. Defaults to false. +optional"]
         #[serde(rename = "privileged", default)]
-        pub privileged: Option<bool>,
+        pub privileged: ::std::option::Option<bool>,
         #[doc = "Whether this container has a read-only root filesystem.\nDefault is false.\n+optional"]
         #[serde(rename = "readOnlyRootFilesystem", default)]
-        pub read_only_root_filesystem: Option<bool>,
+        pub read_only_root_filesystem: ::std::option::Option<bool>,
         #[doc = "The GID to run the entrypoint of the container process.\nUses runtime default if unset.\nMay also be set in PodSecurityContext.  If set in both SecurityContext and\nPodSecurityContext, the value specified in SecurityContext takes\nprecedence. +optional"]
         #[serde(rename = "runAsGroup", default)]
-        pub run_as_group: Option<i32>,
+        pub run_as_group: ::std::option::Option<i32>,
         #[doc = "Indicates that the container must run as a non-root user.\nIf true, the Kubelet will validate the image at runtime to ensure that it\ndoes not run as UID 0 (root) and fail to start the container if it does.\nIf unset or false, no such validation will be performed.\nMay also be set in PodSecurityContext.  If set in both SecurityContext and\nPodSecurityContext, the value specified in SecurityContext takes\nprecedence. +optional"]
         #[serde(rename = "runAsNonRoot", default)]
-        pub run_as_non_root: Option<bool>,
+        pub run_as_non_root: ::std::option::Option<bool>,
         #[doc = "The UID to run the entrypoint of the container process.\nDefaults to user specified in image metadata if unspecified.\nMay also be set in PodSecurityContext.  If set in both SecurityContext and\nPodSecurityContext, the value specified in SecurityContext takes\nprecedence. +optional"]
         #[serde(rename = "runAsUser", default)]
-        pub run_as_user: Option<i32>,
+        pub run_as_user: ::std::option::Option<i32>,
         #[doc = "The SELinux context to be applied to the container.\nIf unspecified, the container runtime will allocate a random SELinux\ncontext for each container.  May also be set in PodSecurityContext.  If set\nin both SecurityContext and PodSecurityContext, the value specified in\nSecurityContext takes precedence. +optional"]
         #[serde(rename = "seLinuxOptions", default)]
-        pub se_linux_options: Option<crate::schemas::SelinuxOptions>,
+        pub se_linux_options: ::std::option::Option<crate::schemas::SelinuxOptions>,
     }
     impl ::field_selector::FieldSelector for SecurityContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2734,7 +2701,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2752,16 +2718,16 @@ pub mod schemas {
     pub struct SelinuxOptions {
         #[doc = "Level is SELinux level label that applies to the container.\n+optional"]
         #[serde(rename = "level", default)]
-        pub level: Option<String>,
+        pub level: ::std::option::Option<String>,
         #[doc = "Type is a SELinux type label that applies to the container.\n+optional"]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Role is a SELinux role label that applies to the container.\n+optional"]
         #[serde(rename = "role", default)]
-        pub role: Option<String>,
+        pub role: ::std::option::Option<String>,
         #[doc = "User is a SELinux user label that applies to the container.\n+optional"]
         #[serde(rename = "user", default)]
-        pub user: Option<String>,
+        pub user: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SelinuxOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2770,7 +2736,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2788,19 +2753,19 @@ pub mod schemas {
     pub struct Service {
         #[doc = "The API version for this call such as \"serving.knative.dev/v1alpha1\"."]
         #[serde(rename = "apiVersion", default)]
-        pub api_version: Option<String>,
+        pub api_version: ::std::option::Option<String>,
         #[doc = "The kind of resource, in this case \"Service\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Metadata associated with this Service, including name, namespace, labels,\nand annotations."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::ObjectMeta>,
+        pub metadata: ::std::option::Option<crate::schemas::ObjectMeta>,
         #[doc = "Spec holds the desired state of the Service (from the client)."]
         #[serde(rename = "spec", default)]
-        pub spec: Option<crate::schemas::ServiceSpec>,
+        pub spec: ::std::option::Option<crate::schemas::ServiceSpec>,
         #[doc = "Status communicates the observed state of the Service (from the\ncontroller)."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::ServiceStatus>,
+        pub status: ::std::option::Option<crate::schemas::ServiceStatus>,
     }
     impl ::field_selector::FieldSelector for Service {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2809,7 +2774,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2827,22 +2791,22 @@ pub mod schemas {
     pub struct ServiceCondition {
         #[doc = "Last time the condition transitioned from one status to another.\n+optional"]
         #[serde(rename = "lastTransitionTime", default)]
-        pub last_transition_time: Option<String>,
+        pub last_transition_time: ::std::option::Option<String>,
         #[doc = "Human-readable message indicating details about last transition.\n+optional"]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
         #[doc = "ServiceConditionType is used to communicate the status of the\nreconciliation process. See also:\nhttps://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting\n\nTypes include: \"Ready\", \"ConfigurationsReady\", and \"RoutesReady\". \"Ready\"\nwill be true when the underlying Route and Configuration are ready."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "One-word CamelCase reason for the condition's last transition.\n+optional"]
         #[serde(rename = "reason", default)]
-        pub reason: Option<String>,
+        pub reason: ::std::option::Option<String>,
         #[doc = "How to interpret failures of this condition, one of Error, Warning, Info\n+optional"]
         #[serde(rename = "severity", default)]
-        pub severity: Option<String>,
+        pub severity: ::std::option::Option<String>,
         #[doc = "Status of the condition, one of True, False, Unknown."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ServiceCondition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2851,7 +2815,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2869,25 +2832,25 @@ pub mod schemas {
     pub struct ServiceSpec {
         #[doc = "Deprecated and not currently populated by Cloud Run. See\nmetadata.generation instead, which is the sequence number containing the\nlatest generation of the desired state.\n\nRead-only."]
         #[serde(rename = "generation", default)]
-        pub generation: Option<i32>,
+        pub generation: ::std::option::Option<i32>,
         #[doc = "Manual contains the options for configuring a manual service. See\nServiceSpec for more details.\n\nNot currently supported by Cloud Run."]
         #[serde(rename = "manual", default)]
-        pub manual: Option<crate::schemas::ServiceSpecManualType>,
+        pub manual: ::std::option::Option<crate::schemas::ServiceSpecManualType>,
         #[doc = "Pins this service to a specific revision name. The revision must\nbe owned by the configuration provided.\n\nDeprecated and not supported by Cloud Run.\n+optional"]
         #[serde(rename = "pinned", default)]
-        pub pinned: Option<crate::schemas::ServiceSpecPinnedType>,
+        pub pinned: ::std::option::Option<crate::schemas::ServiceSpecPinnedType>,
         #[doc = "Release enables gradual promotion of new revisions by allowing traffic\nto be split between two revisions. This type replaces the deprecated\nPinned type.\n\nNot currently supported by Cloud Run."]
         #[serde(rename = "release", default)]
-        pub release: Option<crate::schemas::ServiceSpecReleaseType>,
+        pub release: ::std::option::Option<crate::schemas::ServiceSpecReleaseType>,
         #[doc = "RunLatest defines a simple Service. It will automatically\nconfigure a route that keeps the latest ready revision\nfrom the supplied configuration running.\n+optional"]
         #[serde(rename = "runLatest", default)]
-        pub run_latest: Option<crate::schemas::ServiceSpecRunLatest>,
+        pub run_latest: ::std::option::Option<crate::schemas::ServiceSpecRunLatest>,
         #[doc = "Template holds the latest specification for the Revision to\nbe stamped out."]
         #[serde(rename = "template", default)]
-        pub template: Option<crate::schemas::RevisionTemplate>,
+        pub template: ::std::option::Option<crate::schemas::RevisionTemplate>,
         #[doc = "Traffic specifies how to distribute traffic over a collection of Knative\nRevisions and Configurations."]
         #[serde(rename = "traffic", default)]
-        pub traffic: Option<Vec<crate::schemas::TrafficTarget>>,
+        pub traffic: ::std::option::Option<Vec<crate::schemas::TrafficTarget>>,
     }
     impl ::field_selector::FieldSelector for ServiceSpec {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2896,7 +2859,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2914,7 +2876,7 @@ pub mod schemas {
     )]
     pub struct ServiceSpecManualType;
     impl ::field_selector::FieldSelector for ServiceSpecManualType {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -2931,10 +2893,10 @@ pub mod schemas {
     pub struct ServiceSpecPinnedType {
         #[doc = "The configuration for this service."]
         #[serde(rename = "configuration", default)]
-        pub configuration: Option<crate::schemas::ConfigurationSpec>,
+        pub configuration: ::std::option::Option<crate::schemas::ConfigurationSpec>,
         #[doc = "The revision name to pin this service to until changed\nto a different service type."]
         #[serde(rename = "revisionName", default)]
-        pub revision_name: Option<String>,
+        pub revision_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ServiceSpecPinnedType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2943,7 +2905,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2961,13 +2922,13 @@ pub mod schemas {
     pub struct ServiceSpecReleaseType {
         #[doc = "The configuration for this service. All revisions from this service must\ncome from a single configuration."]
         #[serde(rename = "configuration", default)]
-        pub configuration: Option<crate::schemas::ConfigurationSpec>,
+        pub configuration: ::std::option::Option<crate::schemas::ConfigurationSpec>,
         #[doc = "Revisions is an ordered list of 1 or 2 revisions. The first is the current\nrevision, and the second is the candidate revision. If a single revision\nis provided, traffic will be pinned at that revision.\n\n\"@latest\" is a shortcut for usage that refers to the latest created\nrevision by the configuration."]
         #[serde(rename = "revisions", default)]
-        pub revisions: Option<Vec<String>>,
+        pub revisions: ::std::option::Option<Vec<String>>,
         #[doc = "RolloutPercent is the percent of traffic that should be sent to the\ncandidate revision, i.e. the 2nd revision in the revisions list.\nValid values are between 0 and 99 inclusive."]
         #[serde(rename = "rolloutPercent", default)]
-        pub rollout_percent: Option<i32>,
+        pub rollout_percent: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ServiceSpecReleaseType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2976,7 +2937,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2994,7 +2954,7 @@ pub mod schemas {
     pub struct ServiceSpecRunLatest {
         #[doc = "The configuration for this service."]
         #[serde(rename = "configuration", default)]
-        pub configuration: Option<crate::schemas::ConfigurationSpec>,
+        pub configuration: ::std::option::Option<crate::schemas::ConfigurationSpec>,
     }
     impl ::field_selector::FieldSelector for ServiceSpecRunLatest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3003,7 +2963,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3021,28 +2980,28 @@ pub mod schemas {
     pub struct ServiceStatus {
         #[doc = "From RouteStatus.\nSimilar to url, information on where the service is available on HTTP."]
         #[serde(rename = "address", default)]
-        pub address: Option<crate::schemas::Addressable>,
+        pub address: ::std::option::Option<crate::schemas::Addressable>,
         #[doc = "Conditions communicates information about ongoing/complete\nreconciliation processes that bring the \"spec\" inline with the observed\nstate of the world."]
         #[serde(rename = "conditions", default)]
-        pub conditions: Option<Vec<crate::schemas::ServiceCondition>>,
+        pub conditions: ::std::option::Option<Vec<crate::schemas::ServiceCondition>>,
         #[doc = "From RouteStatus.\nDomain holds the top-level domain that will distribute traffic over the\nprovided targets. It generally has the form\nhttps://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app"]
         #[serde(rename = "domain", default)]
-        pub domain: Option<String>,
+        pub domain: ::std::option::Option<String>,
         #[doc = "From ConfigurationStatus.\nLatestCreatedRevisionName is the last revision that was created from this\nService's Configuration. It might not be ready yet, for that use\nLatestReadyRevisionName."]
         #[serde(rename = "latestCreatedRevisionName", default)]
-        pub latest_created_revision_name: Option<String>,
+        pub latest_created_revision_name: ::std::option::Option<String>,
         #[doc = "From ConfigurationStatus.\nLatestReadyRevisionName holds the name of the latest Revision stamped out\nfrom this Service's Configuration that has had its \"Ready\" condition become\n\"True\"."]
         #[serde(rename = "latestReadyRevisionName", default)]
-        pub latest_ready_revision_name: Option<String>,
+        pub latest_ready_revision_name: ::std::option::Option<String>,
         #[doc = "ObservedGeneration is the 'Generation' of the Route that\nwas last processed by the controller.\n\nClients polling for completed reconciliation should poll until\nobservedGeneration = metadata.generation and the Ready condition's status\nis True or False."]
         #[serde(rename = "observedGeneration", default)]
-        pub observed_generation: Option<i32>,
+        pub observed_generation: ::std::option::Option<i32>,
         #[doc = "From RouteStatus.\nTraffic holds the configured traffic distribution.\nThese entries will always contain RevisionName references.\nWhen ConfigurationName appears in the spec, this will hold the\nLatestReadyRevisionName that we last observed."]
         #[serde(rename = "traffic", default)]
-        pub traffic: Option<Vec<crate::schemas::TrafficTarget>>,
+        pub traffic: ::std::option::Option<Vec<crate::schemas::TrafficTarget>>,
         #[doc = "From RouteStatus.\nURL holds the url that will distribute traffic over the provided traffic\ntargets. It generally has the form\nhttps://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app"]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ServiceStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3051,7 +3010,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3069,10 +3027,10 @@ pub mod schemas {
     pub struct SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
         #[serde(rename = "policy", default)]
-        pub policy: Option<crate::schemas::Policy>,
+        pub policy: ::std::option::Option<crate::schemas::Policy>,
         #[doc = "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\npaths: \"bindings, etag\"\nThis field is only used by Cloud IAM."]
         #[serde(rename = "updateMask", default)]
-        pub update_mask: Option<String>,
+        pub update_mask: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SetIamPolicyRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3081,7 +3039,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3099,10 +3056,10 @@ pub mod schemas {
     pub struct SubscriberSpec {
         #[doc = "Reference to an object that will be used to find the target\nendpoint, which should implement the Addressable duck type.\nFor example, this could be a reference to a Route resource\nor a Knative Service resource."]
         #[serde(rename = "ref", default)]
-        pub r#ref: Option<crate::schemas::ObjectReference>,
+        pub r#ref: ::std::option::Option<crate::schemas::ObjectReference>,
         #[doc = "Reference to a 'known' endpoint where no resolving is done.\nhttp://k8s-service for example\nhttp://myexternalhandler.example.com/foo/bar"]
         #[serde(rename = "uri", default)]
-        pub uri: Option<String>,
+        pub uri: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SubscriberSpec {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3111,7 +3068,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3129,10 +3085,10 @@ pub mod schemas {
     pub struct TcpsocketAction {
         #[doc = "Optional: Host name to connect to, defaults to the pod IP.\n+optional"]
         #[serde(rename = "host", default)]
-        pub host: Option<String>,
+        pub host: ::std::option::Option<String>,
         #[doc = "Number or name of the port to access on the container.\nNumber must be in the range 1 to 65535.\nName must be an IANA_SVC_NAME."]
         #[serde(rename = "port", default)]
-        pub port: Option<crate::schemas::IntOrString>,
+        pub port: ::std::option::Option<crate::schemas::IntOrString>,
     }
     impl ::field_selector::FieldSelector for TcpsocketAction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3141,7 +3097,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3159,7 +3114,7 @@ pub mod schemas {
     pub struct TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
         #[serde(rename = "permissions", default)]
-        pub permissions: Option<Vec<String>>,
+        pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for TestIamPermissionsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3168,7 +3123,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3186,7 +3140,7 @@ pub mod schemas {
     pub struct TestIamPermissionsResponse {
         #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
         #[serde(rename = "permissions", default)]
-        pub permissions: Option<Vec<String>>,
+        pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for TestIamPermissionsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3195,7 +3149,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3213,25 +3166,25 @@ pub mod schemas {
     pub struct TrafficTarget {
         #[doc = "ConfigurationName of a configuration to whose latest revision we will\nsend this portion of traffic. When the \"status.latestReadyRevisionName\"\nof the referenced configuration changes, we will automatically migrate\ntraffic from the prior \"latest ready\" revision to the new one. This field\nis never set in Route's status, only its spec. This is mutually exclusive\nwith RevisionName.\n\nCloud Run currently supports a single ConfigurationName."]
         #[serde(rename = "configurationName", default)]
-        pub configuration_name: Option<String>,
+        pub configuration_name: ::std::option::Option<String>,
         #[doc = "LatestRevision may be optionally provided to indicate that the latest\nready Revision of the Configuration should be used for this traffic\ntarget. When provided LatestRevision must be true if RevisionName is\nempty; it must be false when RevisionName is non-empty.\n+optional"]
         #[serde(rename = "latestRevision", default)]
-        pub latest_revision: Option<bool>,
+        pub latest_revision: ::std::option::Option<bool>,
         #[doc = "Name is optionally used to expose a dedicated hostname for referencing this\ntarget exclusively.\n\nNot currently supported by Cloud Run.\n+optional"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Percent specifies percent of the traffic to this Revision or Configuration.\nThis defaults to zero if unspecified.\n\nCloud Run currently requires 100 percent for a single ConfigurationName\nTrafficTarget entry."]
         #[serde(rename = "percent", default)]
-        pub percent: Option<i32>,
+        pub percent: ::std::option::Option<i32>,
         #[doc = "RevisionName of a specific revision to which to send this portion of\ntraffic. This is mutually exclusive with ConfigurationName.\n\nProviding RevisionName in spec is not currently supported by Cloud Run."]
         #[serde(rename = "revisionName", default)]
-        pub revision_name: Option<String>,
+        pub revision_name: ::std::option::Option<String>,
         #[doc = "Tag is optionally used to expose a dedicated url for referencing\nthis target exclusively.\n\nNot currently supported in Cloud Run.\n+optional"]
         #[serde(rename = "tag", default)]
-        pub tag: Option<String>,
+        pub tag: ::std::option::Option<String>,
         #[doc = "Output only. URL displays the URL for accessing named traffic targets. URL\nis displayed in status, and is disallowed on spec. URL must contain a\nscheme (e.g. http://) and a hostname, but may not contain anything else\n(e.g. basic auth, url path, etc.\n\nNot currently supported in Cloud Run."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TrafficTarget {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3240,7 +3193,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3258,19 +3210,19 @@ pub mod schemas {
     pub struct Trigger {
         #[doc = "The API version for this call such as \"eventing.knative.dev/v1alpha1\"."]
         #[serde(rename = "apiVersion", default)]
-        pub api_version: Option<String>,
+        pub api_version: ::std::option::Option<String>,
         #[doc = "The kind of resource, in this case \"Trigger\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Metadata associated with this Trigger."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::ObjectMeta>,
+        pub metadata: ::std::option::Option<crate::schemas::ObjectMeta>,
         #[doc = "Spec defines the desired state of the Trigger."]
         #[serde(rename = "spec", default)]
-        pub spec: Option<crate::schemas::TriggerSpec>,
+        pub spec: ::std::option::Option<crate::schemas::TriggerSpec>,
         #[doc = "Status represents the current state of the Trigger. This data may be out of\ndate.\n+optional"]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::TriggerStatus>,
+        pub status: ::std::option::Option<crate::schemas::TriggerStatus>,
     }
     impl ::field_selector::FieldSelector for Trigger {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3279,7 +3231,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3297,22 +3248,22 @@ pub mod schemas {
     pub struct TriggerCondition {
         #[doc = "Last time the condition transitioned from one status to another.\n+optional"]
         #[serde(rename = "lastTransitionTime", default)]
-        pub last_transition_time: Option<String>,
+        pub last_transition_time: ::std::option::Option<String>,
         #[doc = "Human readable message indicating details about the current status.\n+optional"]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
         #[doc = "Type of Trigger condition."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "One-word CamelCase reason for the condition's current status.\n+optional"]
         #[serde(rename = "reason", default)]
-        pub reason: Option<String>,
+        pub reason: ::std::option::Option<String>,
         #[doc = "How to interpret failures of this condition, one of Error, Warning, Info\n+optional"]
         #[serde(rename = "severity", default)]
-        pub severity: Option<String>,
+        pub severity: ::std::option::Option<String>,
         #[doc = "Status of the condition, one of True, False, Unknown."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TriggerCondition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3321,7 +3272,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3338,7 +3288,7 @@ pub mod schemas {
     )]
     pub struct TriggerFilter {
         #[serde(rename = "sourceAndType", default)]
-        pub source_and_type: Option<crate::schemas::TriggerFilterSourceAndType>,
+        pub source_and_type: ::std::option::Option<crate::schemas::TriggerFilterSourceAndType>,
     }
     impl ::field_selector::FieldSelector for TriggerFilter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3347,7 +3297,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3364,9 +3313,9 @@ pub mod schemas {
     )]
     pub struct TriggerFilterSourceAndType {
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[serde(rename = "source", default)]
-        pub source: Option<String>,
+        pub source: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TriggerFilterSourceAndType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3375,7 +3324,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3393,10 +3341,10 @@ pub mod schemas {
     pub struct TriggerImporterSpec {
         #[doc = "Arguments to use for the importer. These must match the parameters in the\nEventType's importer."]
         #[serde(rename = "arguments", default)]
-        pub arguments: Option<::std::collections::BTreeMap<String, String>>,
+        pub arguments: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Name of the EventType that this importer provides."]
         #[serde(rename = "eventTypeName", default)]
-        pub event_type_name: Option<String>,
+        pub event_type_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TriggerImporterSpec {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3405,7 +3353,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3423,16 +3370,16 @@ pub mod schemas {
     pub struct TriggerSpec {
         #[doc = "Broker is the broker that this trigger receives events from. If not\nspecified, will default to 'default'.\n\nNot currently supported by Cloud Run."]
         #[serde(rename = "broker", default)]
-        pub broker: Option<String>,
+        pub broker: ::std::option::Option<String>,
         #[doc = "Filter is the filter to apply against all events from the Broker. Only\nevents that pass this filter will be sent to the Subscriber."]
         #[serde(rename = "filter", default)]
-        pub filter: Option<crate::schemas::TriggerFilter>,
+        pub filter: ::std::option::Option<crate::schemas::TriggerFilter>,
         #[doc = "Specification of the importers that will provide events to the trigger.\nNote, for Cloud Run, the importers will only be used if a filter is not\nspecified."]
         #[serde(rename = "importers", default)]
-        pub importers: Option<Vec<crate::schemas::TriggerImporterSpec>>,
+        pub importers: ::std::option::Option<Vec<crate::schemas::TriggerImporterSpec>>,
         #[doc = "Subscriber is the addressable that receives events from the Broker that\npass the Filter. It is required.\n\nE.g. https://us-central1-myproject.cloudfunctions.net/myfunction or\n/namespaces/my-project/services/my-service."]
         #[serde(rename = "subscriber", default)]
-        pub subscriber: Option<crate::schemas::SubscriberSpec>,
+        pub subscriber: ::std::option::Option<crate::schemas::SubscriberSpec>,
     }
     impl ::field_selector::FieldSelector for TriggerSpec {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3441,7 +3388,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3459,13 +3405,13 @@ pub mod schemas {
     pub struct TriggerStatus {
         #[doc = "Array of observed TriggerConditions, indicating the current state\nof the Trigger."]
         #[serde(rename = "conditions", default)]
-        pub conditions: Option<Vec<crate::schemas::TriggerCondition>>,
+        pub conditions: ::std::option::Option<Vec<crate::schemas::TriggerCondition>>,
         #[doc = "ObservedGeneration is the 'Generation' of the Trigger that\nwas last processed by the controller."]
         #[serde(rename = "observedGeneration", default)]
-        pub observed_generation: Option<i32>,
+        pub observed_generation: ::std::option::Option<i32>,
         #[doc = "SubscriberURI is the resolved URI of the receiver for this Trigger."]
         #[serde(rename = "subscriberUri", default)]
-        pub subscriber_uri: Option<String>,
+        pub subscriber_uri: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TriggerStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3474,7 +3420,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3491,12 +3436,12 @@ pub mod schemas {
     )]
     pub struct Volume {
         #[serde(rename = "configMap", default)]
-        pub config_map: Option<crate::schemas::ConfigMapVolumeSource>,
+        pub config_map: ::std::option::Option<crate::schemas::ConfigMapVolumeSource>,
         #[doc = "Volume's name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[serde(rename = "secret", default)]
-        pub secret: Option<crate::schemas::SecretVolumeSource>,
+        pub secret: ::std::option::Option<crate::schemas::SecretVolumeSource>,
     }
     impl ::field_selector::FieldSelector for Volume {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3505,7 +3450,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3523,10 +3467,10 @@ pub mod schemas {
     pub struct VolumeDevice {
         #[doc = "devicePath is the path inside of the container that the device will be\nmapped to."]
         #[serde(rename = "devicePath", default)]
-        pub device_path: Option<String>,
+        pub device_path: ::std::option::Option<String>,
         #[doc = "name must match the name of a persistentVolumeClaim in the pod"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeDevice {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3535,7 +3479,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3553,19 +3496,19 @@ pub mod schemas {
     pub struct VolumeMount {
         #[doc = "Path within the container at which the volume should be mounted.  Must\nnot contain ':'."]
         #[serde(rename = "mountPath", default)]
-        pub mount_path: Option<String>,
+        pub mount_path: ::std::option::Option<String>,
         #[doc = "mountPropagation determines how mounts are propagated from the host\nto container and the other way around.\nWhen not set, MountPropagationHostToContainer is used.\nThis field is beta in 1.10.\n+optional"]
         #[serde(rename = "mountPropagation", default)]
-        pub mount_propagation: Option<String>,
+        pub mount_propagation: ::std::option::Option<String>,
         #[doc = "This must match the Name of a Volume."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Mounted read-only if true, read-write otherwise (false or unspecified).\nDefaults to false.\n+optional"]
         #[serde(rename = "readOnly", default)]
-        pub read_only: Option<bool>,
+        pub read_only: ::std::option::Option<bool>,
         #[doc = "Path within the volume from which the container's volume should be mounted.\nDefaults to \"\" (volume's root).\n+optional"]
         #[serde(rename = "subPath", default)]
-        pub sub_path: Option<String>,
+        pub sub_path: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeMount {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3574,7 +3517,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -3629,6 +3571,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -3673,6 +3624,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -15514,6 +15474,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -15589,5 +15550,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

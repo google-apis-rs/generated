@@ -14,28 +14,28 @@ pub mod schemas {
     pub struct LicenseAssignment {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etags", default)]
-        pub etags: Option<String>,
+        pub etags: ::std::option::Option<String>,
         #[doc = "Identifies the resource as a LicenseAssignment."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Id of the product."]
         #[serde(rename = "productId", default)]
-        pub product_id: Option<String>,
+        pub product_id: ::std::option::Option<String>,
         #[doc = "Display Name of the product."]
         #[serde(rename = "productName", default)]
-        pub product_name: Option<String>,
+        pub product_name: ::std::option::Option<String>,
         #[doc = "Link to this page."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Id of the sku of the product."]
         #[serde(rename = "skuId", default)]
-        pub sku_id: Option<String>,
+        pub sku_id: ::std::option::Option<String>,
         #[doc = "Display Name of the sku of the product."]
         #[serde(rename = "skuName", default)]
-        pub sku_name: Option<String>,
+        pub sku_name: ::std::option::Option<String>,
         #[doc = "Email id of the user."]
         #[serde(rename = "userId", default)]
-        pub user_id: Option<String>,
+        pub user_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LicenseAssignment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -44,7 +44,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -62,7 +61,7 @@ pub mod schemas {
     pub struct LicenseAssignmentInsert {
         #[doc = "Email id of the user"]
         #[serde(rename = "userId", default)]
-        pub user_id: Option<String>,
+        pub user_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LicenseAssignmentInsert {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -71,7 +70,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -89,16 +87,16 @@ pub mod schemas {
     pub struct LicenseAssignmentList {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The LicenseAssignments in this page of results."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::LicenseAssignment>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::LicenseAssignment>>,
         #[doc = "Identifies the resource as a collection of LicenseAssignments."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LicenseAssignmentList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -107,7 +105,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -152,6 +149,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1864,6 +1870,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1939,5 +1946,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

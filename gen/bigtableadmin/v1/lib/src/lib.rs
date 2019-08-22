@@ -49,6 +49,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ClusterDefaultStorageType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ClusterState {
         #[doc = "The state of the cluster could not be determined."]
@@ -107,6 +116,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ClusterState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -122,19 +140,19 @@ pub mod schemas {
     pub struct Cluster {
         #[doc = "(`CreationOnly`)\nThe type of storage used by this cluster to serve its\nparent instance's tables, unless explicitly overridden."]
         #[serde(rename = "defaultStorageType", default)]
-        pub default_storage_type: Option<crate::schemas::ClusterDefaultStorageType>,
+        pub default_storage_type: ::std::option::Option<crate::schemas::ClusterDefaultStorageType>,
         #[doc = "(`CreationOnly`)\nThe location where this cluster's nodes and storage reside. For best\nperformance, clients should be located as close as possible to this\ncluster. Currently only zones are supported, so values should be of the\nform `projects/<project>/locations/<zone>`."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "(`OutputOnly`)\nThe unique name of the cluster. Values are of the form\n`projects/<project>/instances/<instance>/clusters/a-z*`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The number of nodes allocated to this cluster. More nodes enable higher\nthroughput and more consistent performance."]
         #[serde(rename = "serveNodes", default)]
-        pub serve_nodes: Option<i32>,
+        pub serve_nodes: ::std::option::Option<i32>,
         #[doc = "(`OutputOnly`)\nThe current state of the cluster."]
         #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::ClusterState>,
+        pub state: ::std::option::Option<crate::schemas::ClusterState>,
     }
     impl ::field_selector::FieldSelector for Cluster {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -143,7 +161,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -161,16 +178,18 @@ pub mod schemas {
     pub struct CreateClusterMetadata {
         #[doc = "The time at which the operation failed or was completed successfully."]
         #[serde(rename = "finishTime", default)]
-        pub finish_time: Option<String>,
+        pub finish_time: ::std::option::Option<String>,
         #[doc = "The request that prompted the initiation of this CreateCluster operation."]
         #[serde(rename = "originalRequest", default)]
-        pub original_request: Option<crate::schemas::CreateClusterRequest>,
+        pub original_request: ::std::option::Option<crate::schemas::CreateClusterRequest>,
         #[doc = "The time at which the original request was received."]
         #[serde(rename = "requestTime", default)]
-        pub request_time: Option<String>,
+        pub request_time: ::std::option::Option<String>,
         #[doc = "Keys: the full `name` of each table that existed in the instance when\nCreateCluster was first called, i.e.\n`projects/<project>/instances/<instance>/tables/<table>`. Any table added\nto the instance by a later API call will be created in the new cluster by\nthat API call, not this one.\n\nValues: information on how much of a table's data has been copied to the\nnewly-created cluster so far."]
         #[serde(rename = "tables", default)]
-        pub tables: Option<::std::collections::BTreeMap<String, crate::schemas::TableProgress>>,
+        pub tables: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::TableProgress>,
+        >,
     }
     impl ::field_selector::FieldSelector for CreateClusterMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -179,7 +198,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -197,13 +215,13 @@ pub mod schemas {
     pub struct CreateClusterRequest {
         #[doc = "The cluster to be created.\nFields marked `OutputOnly` must be left blank."]
         #[serde(rename = "cluster", default)]
-        pub cluster: Option<crate::schemas::Cluster>,
+        pub cluster: ::std::option::Option<crate::schemas::Cluster>,
         #[doc = "The ID to be used when referring to the new cluster within its instance,\ne.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`."]
         #[serde(rename = "clusterId", default)]
-        pub cluster_id: Option<String>,
+        pub cluster_id: ::std::option::Option<String>,
         #[doc = "The unique name of the instance in which to create the new cluster.\nValues are of the form\n`projects/<project>/instances/<instance>`."]
         #[serde(rename = "parent", default)]
-        pub parent: Option<String>,
+        pub parent: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CreateClusterRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -212,7 +230,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -230,13 +247,13 @@ pub mod schemas {
     pub struct CreateInstanceMetadata {
         #[doc = "The time at which the operation failed or was completed successfully."]
         #[serde(rename = "finishTime", default)]
-        pub finish_time: Option<String>,
+        pub finish_time: ::std::option::Option<String>,
         #[doc = "The request that prompted the initiation of this CreateInstance operation."]
         #[serde(rename = "originalRequest", default)]
-        pub original_request: Option<crate::schemas::CreateInstanceRequest>,
+        pub original_request: ::std::option::Option<crate::schemas::CreateInstanceRequest>,
         #[doc = "The time at which the original request was received."]
         #[serde(rename = "requestTime", default)]
-        pub request_time: Option<String>,
+        pub request_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CreateInstanceMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -245,7 +262,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -263,16 +279,17 @@ pub mod schemas {
     pub struct CreateInstanceRequest {
         #[doc = "The clusters to be created within the instance, mapped by desired\ncluster ID, e.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`.\nFields marked `OutputOnly` must be left blank.\nCurrently, at most two clusters can be specified."]
         #[serde(rename = "clusters", default)]
-        pub clusters: Option<::std::collections::BTreeMap<String, crate::schemas::Cluster>>,
+        pub clusters:
+            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Cluster>>,
         #[doc = "The instance to create.\nFields marked `OutputOnly` must be left blank."]
         #[serde(rename = "instance", default)]
-        pub instance: Option<crate::schemas::Instance>,
+        pub instance: ::std::option::Option<crate::schemas::Instance>,
         #[doc = "The ID to be used when referring to the new instance within its project,\ne.g., just `myinstance` rather than\n`projects/myproject/instances/myinstance`."]
         #[serde(rename = "instanceId", default)]
-        pub instance_id: Option<String>,
+        pub instance_id: ::std::option::Option<String>,
         #[doc = "The unique name of the project in which to create the new instance.\nValues are of the form `projects/<project>`."]
         #[serde(rename = "parent", default)]
-        pub parent: Option<String>,
+        pub parent: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CreateInstanceRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -281,7 +298,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -334,6 +350,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for InstanceType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum InstanceState {
         #[doc = "The state of the instance could not be determined."]
@@ -384,6 +409,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for InstanceState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -399,19 +433,19 @@ pub mod schemas {
     pub struct Instance {
         #[doc = "The descriptive name for this instance as it appears in UIs.\nCan be changed at any time, but should be kept globally unique\nto avoid confusion."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "Labels are a flexible and lightweight mechanism for organizing cloud\nresources into groups that reflect a customer's organizational needs and\ndeployment strategies. They can be used to filter resources and aggregate\nmetrics.\n\n* Label keys must be between 1 and 63 characters long and must conform to\n  the regular expression: `\\p{Ll}\\p{Lo}{0,62}`.\n* Label values must be between 0 and 63 characters long and must conform to\n  the regular expression: `[\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}`.\n* No more than 64 labels can be associated with a given resource.\n* Keys and values must both be under 128 bytes."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "(`OutputOnly`)\nThe unique name of the instance. Values are of the form\n`projects/<project>/instances/a-z+[a-z0-9]`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The type of the instance. Defaults to `PRODUCTION`."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::InstanceType>,
+        pub r#type: ::std::option::Option<crate::schemas::InstanceType>,
         #[doc = "(`OutputOnly`)\nThe current state of the instance."]
         #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::InstanceState>,
+        pub state: ::std::option::Option<crate::schemas::InstanceState>,
     }
     impl ::field_selector::FieldSelector for Instance {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -420,7 +454,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -438,10 +471,10 @@ pub mod schemas {
     pub struct PartialUpdateInstanceRequest {
         #[doc = "The Instance which will (partially) replace the current value."]
         #[serde(rename = "instance", default)]
-        pub instance: Option<crate::schemas::Instance>,
+        pub instance: ::std::option::Option<crate::schemas::Instance>,
         #[doc = "The subset of Instance fields which should be replaced.\nMust be explicitly set."]
         #[serde(rename = "updateMask", default)]
-        pub update_mask: Option<String>,
+        pub update_mask: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PartialUpdateInstanceRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -450,7 +483,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -510,6 +542,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for TableProgressState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -526,13 +567,13 @@ pub mod schemas {
         #[doc = "Estimate of the number of bytes copied so far for this table.\nThis will eventually reach 'estimated_size_bytes' unless the table copy\nis CANCELLED."]
         #[serde(rename = "estimatedCopiedBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub estimated_copied_bytes: Option<i64>,
+        pub estimated_copied_bytes: ::std::option::Option<i64>,
         #[doc = "Estimate of the size of the table to be copied."]
         #[serde(rename = "estimatedSizeBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub estimated_size_bytes: Option<i64>,
+        pub estimated_size_bytes: ::std::option::Option<i64>,
         #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::TableProgressState>,
+        pub state: ::std::option::Option<crate::schemas::TableProgressState>,
     }
     impl ::field_selector::FieldSelector for TableProgress {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -541,7 +582,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -559,7 +599,7 @@ pub mod schemas {
     )]
     pub struct UpdateAppProfileMetadata;
     impl ::field_selector::FieldSelector for UpdateAppProfileMetadata {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -576,13 +616,13 @@ pub mod schemas {
     pub struct UpdateClusterMetadata {
         #[doc = "The time at which the operation failed or was completed successfully."]
         #[serde(rename = "finishTime", default)]
-        pub finish_time: Option<String>,
+        pub finish_time: ::std::option::Option<String>,
         #[doc = "The request that prompted the initiation of this UpdateCluster operation."]
         #[serde(rename = "originalRequest", default)]
-        pub original_request: Option<crate::schemas::Cluster>,
+        pub original_request: ::std::option::Option<crate::schemas::Cluster>,
         #[doc = "The time at which the original request was received."]
         #[serde(rename = "requestTime", default)]
-        pub request_time: Option<String>,
+        pub request_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UpdateClusterMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -591,7 +631,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -609,13 +648,13 @@ pub mod schemas {
     pub struct UpdateInstanceMetadata {
         #[doc = "The time at which the operation failed or was completed successfully."]
         #[serde(rename = "finishTime", default)]
-        pub finish_time: Option<String>,
+        pub finish_time: ::std::option::Option<String>,
         #[doc = "The request that prompted the initiation of this UpdateInstance operation."]
         #[serde(rename = "originalRequest", default)]
-        pub original_request: Option<crate::schemas::PartialUpdateInstanceRequest>,
+        pub original_request: ::std::option::Option<crate::schemas::PartialUpdateInstanceRequest>,
         #[doc = "The time at which the original request was received."]
         #[serde(rename = "requestTime", default)]
-        pub request_time: Option<String>,
+        pub request_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UpdateInstanceMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -624,7 +663,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -679,6 +717,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -723,6 +770,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -995,6 +1051,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1070,5 +1127,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

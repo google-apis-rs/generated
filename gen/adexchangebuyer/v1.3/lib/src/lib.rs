@@ -14,13 +14,13 @@ pub mod schemas {
     pub struct AccountBidderLocationItems {
         #[doc = "The maximum queries per second the Ad Exchange will send."]
         #[serde(rename = "maximumQps", default)]
-        pub maximum_qps: Option<i32>,
+        pub maximum_qps: ::std::option::Option<i32>,
         #[doc = "The geographical region the Ad Exchange should send requests from. Only used by some quota systems, but always setting the value is recommended. Allowed values:\n\n* ASIA \n* EUROPE \n* US_EAST \n* US_WEST"]
         #[serde(rename = "region", default)]
-        pub region: Option<String>,
+        pub region: ::std::option::Option<String>,
         #[doc = "The URL to which the Ad Exchange will send bid requests."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AccountBidderLocationItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -29,7 +29,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -47,28 +46,28 @@ pub mod schemas {
     pub struct Account {
         #[doc = "Your bidder locations that have distinct URLs."]
         #[serde(rename = "bidderLocation", default)]
-        pub bidder_location: Option<Vec<crate::schemas::AccountBidderLocationItems>>,
+        pub bidder_location: ::std::option::Option<Vec<crate::schemas::AccountBidderLocationItems>>,
         #[doc = "The nid parameter value used in cookie match requests. Please contact your technical account manager if you need to change this."]
         #[serde(rename = "cookieMatchingNid", default)]
-        pub cookie_matching_nid: Option<String>,
+        pub cookie_matching_nid: ::std::option::Option<String>,
         #[doc = "The base URL used in cookie match requests."]
         #[serde(rename = "cookieMatchingUrl", default)]
-        pub cookie_matching_url: Option<String>,
+        pub cookie_matching_url: ::std::option::Option<String>,
         #[doc = "Account id."]
         #[serde(rename = "id", default)]
-        pub id: Option<i32>,
+        pub id: ::std::option::Option<i32>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The maximum number of active creatives that an account can have, where a creative is active if it was inserted or bid with in the last 30 days. Please contact your technical account manager if you need to change this."]
         #[serde(rename = "maximumActiveCreatives", default)]
-        pub maximum_active_creatives: Option<i32>,
+        pub maximum_active_creatives: ::std::option::Option<i32>,
         #[doc = "The sum of all bidderLocation.maximumQps values cannot exceed this. Please contact your technical account manager if you need to change this."]
         #[serde(rename = "maximumTotalQps", default)]
-        pub maximum_total_qps: Option<i32>,
+        pub maximum_total_qps: ::std::option::Option<i32>,
         #[doc = "The number of creatives that this account inserted or bid with in the last 30 days."]
         #[serde(rename = "numberActiveCreatives", default)]
-        pub number_active_creatives: Option<i32>,
+        pub number_active_creatives: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Account {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -77,7 +76,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -95,10 +93,10 @@ pub mod schemas {
     pub struct AccountsList {
         #[doc = "A list of accounts."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Account>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Account>>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AccountsList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -107,7 +105,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -125,16 +122,16 @@ pub mod schemas {
     pub struct BillingInfo {
         #[doc = "Account id."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<i32>,
+        pub account_id: ::std::option::Option<i32>,
         #[doc = "Account name."]
         #[serde(rename = "accountName", default)]
-        pub account_name: Option<String>,
+        pub account_name: ::std::option::Option<String>,
         #[doc = "A list of adgroup IDs associated with this particular account. These IDs may show up as part of a realtime bidding BidRequest, which indicates a bid request for this account."]
         #[serde(rename = "billingId", default)]
-        pub billing_id: Option<Vec<String>>,
+        pub billing_id: ::std::option::Option<Vec<String>>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BillingInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -143,7 +140,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -161,10 +157,10 @@ pub mod schemas {
     pub struct BillingInfoList {
         #[doc = "A list of billing info relevant for your account."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::BillingInfo>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::BillingInfo>>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BillingInfoList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -173,7 +169,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -192,24 +187,24 @@ pub mod schemas {
         #[doc = "The id of the account. This is required for get and update requests."]
         #[serde(rename = "accountId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub account_id: Option<i64>,
+        pub account_id: ::std::option::Option<i64>,
         #[doc = "The billing id to determine which adgroup to provide budget information for. This is required for get and update requests."]
         #[serde(rename = "billingId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub billing_id: Option<i64>,
+        pub billing_id: ::std::option::Option<i64>,
         #[doc = "The daily budget amount in unit amount of the account currency to apply for the billingId provided. This is required for update requests."]
         #[serde(rename = "budgetAmount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub budget_amount: Option<i64>,
+        pub budget_amount: ::std::option::Option<i64>,
         #[doc = "The currency code for the buyer. This cannot be altered here."]
         #[serde(rename = "currencyCode", default)]
-        pub currency_code: Option<String>,
+        pub currency_code: ::std::option::Option<String>,
         #[doc = "The unique id that describes this item."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The kind of the resource, i.e. \"adexchangebuyer#budget\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Budget {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -218,7 +213,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -235,9 +229,9 @@ pub mod schemas {
     )]
     pub struct CreativeAdTechnologyProviders {
         #[serde(rename = "detectedProviderIds", default)]
-        pub detected_provider_ids: Option<Vec<i64>>,
+        pub detected_provider_ids: ::std::option::Option<Vec<i64>>,
         #[serde(rename = "hasUnidentifiedProvider", default)]
-        pub has_unidentified_provider: Option<bool>,
+        pub has_unidentified_provider: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for CreativeAdTechnologyProviders {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -246,7 +240,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -264,10 +257,10 @@ pub mod schemas {
     pub struct CreativeCorrectionsItems {
         #[doc = "Additional details about the correction."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<String>>,
+        pub details: ::std::option::Option<Vec<String>>,
         #[doc = "The type of correction that was applied to the creative."]
         #[serde(rename = "reason", default)]
-        pub reason: Option<String>,
+        pub reason: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CreativeCorrectionsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -276,7 +269,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -294,10 +286,10 @@ pub mod schemas {
     pub struct CreativeDisapprovalReasonsItems {
         #[doc = "Additional details about the reason for disapproval."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<String>>,
+        pub details: ::std::option::Option<Vec<String>>,
         #[doc = "The categorized reason for disapproval."]
         #[serde(rename = "reason", default)]
-        pub reason: Option<String>,
+        pub reason: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CreativeDisapprovalReasonsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -306,7 +298,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -325,10 +316,10 @@ pub mod schemas {
         #[doc = "The number of times the creative was filtered for the status. The count is aggregated across all publishers on the exchange."]
         #[serde(rename = "filteringCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub filtering_count: Option<i64>,
+        pub filtering_count: ::std::option::Option<i64>,
         #[doc = "The filtering status code. Please refer to the creative-status-codes.txt file for different statuses."]
         #[serde(rename = "filteringStatus", default)]
-        pub filtering_status: Option<i32>,
+        pub filtering_status: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for CreativeFilteringReasonsReasonsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -337,7 +328,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -355,10 +345,11 @@ pub mod schemas {
     pub struct CreativeFilteringReasons {
         #[doc = "The date in ISO 8601 format for the data. The data is collected from 00:00:00 to 23:59:59 in PST."]
         #[serde(rename = "date", default)]
-        pub date: Option<String>,
+        pub date: ::std::option::Option<String>,
         #[doc = "The filtering reasons."]
         #[serde(rename = "reasons", default)]
-        pub reasons: Option<Vec<crate::schemas::CreativeFilteringReasonsReasonsItems>>,
+        pub reasons:
+            ::std::option::Option<Vec<crate::schemas::CreativeFilteringReasonsReasonsItems>>,
     }
     impl ::field_selector::FieldSelector for CreativeFilteringReasons {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -367,7 +358,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -384,11 +374,11 @@ pub mod schemas {
     )]
     pub struct CreativeNativeAdAppIcon {
         #[serde(rename = "height", default)]
-        pub height: Option<i32>,
+        pub height: ::std::option::Option<i32>,
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
         #[serde(rename = "width", default)]
-        pub width: Option<i32>,
+        pub width: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for CreativeNativeAdAppIcon {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -397,7 +387,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -414,11 +403,11 @@ pub mod schemas {
     )]
     pub struct CreativeNativeAdImage {
         #[serde(rename = "height", default)]
-        pub height: Option<i32>,
+        pub height: ::std::option::Option<i32>,
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
         #[serde(rename = "width", default)]
-        pub width: Option<i32>,
+        pub width: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for CreativeNativeAdImage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -427,7 +416,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -444,11 +432,11 @@ pub mod schemas {
     )]
     pub struct CreativeNativeAdLogo {
         #[serde(rename = "height", default)]
-        pub height: Option<i32>,
+        pub height: ::std::option::Option<i32>,
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
         #[serde(rename = "width", default)]
-        pub width: Option<i32>,
+        pub width: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for CreativeNativeAdLogo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -457,7 +445,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -465,37 +452,37 @@ pub mod schemas {
     )]
     pub struct CreativeNativeAd {
         #[serde(rename = "advertiser", default)]
-        pub advertiser: Option<String>,
+        pub advertiser: ::std::option::Option<String>,
         #[doc = "The app icon, for app download ads."]
         #[serde(rename = "appIcon", default)]
-        pub app_icon: Option<crate::schemas::CreativeNativeAdAppIcon>,
+        pub app_icon: ::std::option::Option<crate::schemas::CreativeNativeAdAppIcon>,
         #[doc = "A long description of the ad."]
         #[serde(rename = "body", default)]
-        pub body: Option<String>,
+        pub body: ::std::option::Option<String>,
         #[doc = "A label for the button that the user is supposed to click."]
         #[serde(rename = "callToAction", default)]
-        pub call_to_action: Option<String>,
+        pub call_to_action: ::std::option::Option<String>,
         #[doc = "The URL to use for click tracking."]
         #[serde(rename = "clickTrackingUrl", default)]
-        pub click_tracking_url: Option<String>,
+        pub click_tracking_url: ::std::option::Option<String>,
         #[doc = "A short title for the ad."]
         #[serde(rename = "headline", default)]
-        pub headline: Option<String>,
+        pub headline: ::std::option::Option<String>,
         #[doc = "A large image."]
         #[serde(rename = "image", default)]
-        pub image: Option<crate::schemas::CreativeNativeAdImage>,
+        pub image: ::std::option::Option<crate::schemas::CreativeNativeAdImage>,
         #[doc = "The URLs are called when the impression is rendered."]
         #[serde(rename = "impressionTrackingUrl", default)]
-        pub impression_tracking_url: Option<Vec<String>>,
+        pub impression_tracking_url: ::std::option::Option<Vec<String>>,
         #[doc = "A smaller image, for the advertiser logo."]
         #[serde(rename = "logo", default)]
-        pub logo: Option<crate::schemas::CreativeNativeAdLogo>,
+        pub logo: ::std::option::Option<crate::schemas::CreativeNativeAdLogo>,
         #[doc = "The price of the promoted app including the currency info."]
         #[serde(rename = "price", default)]
-        pub price: Option<String>,
+        pub price: ::std::option::Option<String>,
         #[doc = "The app rating in the app store. Must be in the range [0-5]."]
         #[serde(rename = "starRating", default)]
-        pub star_rating: Option<f64>,
+        pub star_rating: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for CreativeNativeAd {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -504,7 +491,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -513,79 +499,81 @@ pub mod schemas {
     pub struct Creative {
         #[doc = "Account id."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<i32>,
+        pub account_id: ::std::option::Option<i32>,
         #[serde(rename = "adTechnologyProviders", default)]
-        pub ad_technology_providers: Option<crate::schemas::CreativeAdTechnologyProviders>,
+        pub ad_technology_providers:
+            ::std::option::Option<crate::schemas::CreativeAdTechnologyProviders>,
         #[doc = "Detected advertiser id, if any. Read-only. This field should not be set in requests."]
         #[serde(rename = "advertiserId", default)]
-        pub advertiser_id: Option<Vec<i64>>,
+        pub advertiser_id: ::std::option::Option<Vec<i64>>,
         #[doc = "The name of the company being advertised in the creative."]
         #[serde(rename = "advertiserName", default)]
-        pub advertiser_name: Option<String>,
+        pub advertiser_name: ::std::option::Option<String>,
         #[doc = "The agency id for this creative."]
         #[serde(rename = "agencyId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub agency_id: Option<i64>,
+        pub agency_id: ::std::option::Option<i64>,
         #[doc = "The last upload timestamp of this creative if it was uploaded via API. Read-only. The value of this field is generated, and will be ignored for uploads. (formatted RFC 3339 timestamp)."]
         #[serde(rename = "apiUploadTimestamp", default)]
-        pub api_upload_timestamp: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub api_upload_timestamp: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "All attributes for the ads that may be shown from this snippet."]
         #[serde(rename = "attribute", default)]
-        pub attribute: Option<Vec<i32>>,
+        pub attribute: ::std::option::Option<Vec<i32>>,
         #[doc = "A buyer-specific id identifying the creative in this ad."]
         #[serde(rename = "buyerCreativeId", default)]
-        pub buyer_creative_id: Option<String>,
+        pub buyer_creative_id: ::std::option::Option<String>,
         #[doc = "The set of destination urls for the snippet."]
         #[serde(rename = "clickThroughUrl", default)]
-        pub click_through_url: Option<Vec<String>>,
+        pub click_through_url: ::std::option::Option<Vec<String>>,
         #[doc = "Shows any corrections that were applied to this creative. Read-only. This field should not be set in requests."]
         #[serde(rename = "corrections", default)]
-        pub corrections: Option<Vec<crate::schemas::CreativeCorrectionsItems>>,
+        pub corrections: ::std::option::Option<Vec<crate::schemas::CreativeCorrectionsItems>>,
         #[doc = "The reasons for disapproval, if any. Note that not all disapproval reasons may be categorized, so it is possible for the creative to have a status of DISAPPROVED with an empty list for disapproval_reasons. In this case, please reach out to your TAM to help debug the issue. Read-only. This field should not be set in requests."]
         #[serde(rename = "disapprovalReasons", default)]
-        pub disapproval_reasons: Option<Vec<crate::schemas::CreativeDisapprovalReasonsItems>>,
+        pub disapproval_reasons:
+            ::std::option::Option<Vec<crate::schemas::CreativeDisapprovalReasonsItems>>,
         #[doc = "The filtering reasons for the creative. Read-only. This field should not be set in requests."]
         #[serde(rename = "filteringReasons", default)]
-        pub filtering_reasons: Option<crate::schemas::CreativeFilteringReasons>,
+        pub filtering_reasons: ::std::option::Option<crate::schemas::CreativeFilteringReasons>,
         #[doc = "Ad height."]
         #[serde(rename = "height", default)]
-        pub height: Option<i32>,
+        pub height: ::std::option::Option<i32>,
         #[doc = "The HTML snippet that displays the ad when inserted in the web page. If set, videoURL should not be set."]
         #[serde(rename = "HTMLSnippet", default)]
-        pub html_snippet: Option<String>,
+        pub html_snippet: ::std::option::Option<String>,
         #[doc = "The set of urls to be called to record an impression."]
         #[serde(rename = "impressionTrackingUrl", default)]
-        pub impression_tracking_url: Option<Vec<String>>,
+        pub impression_tracking_url: ::std::option::Option<Vec<String>>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "If nativeAd is set, HTMLSnippet and videoURL should not be set."]
         #[serde(rename = "nativeAd", default)]
-        pub native_ad: Option<crate::schemas::CreativeNativeAd>,
+        pub native_ad: ::std::option::Option<crate::schemas::CreativeNativeAd>,
         #[doc = "Detected product categories, if any. Read-only. This field should not be set in requests."]
         #[serde(rename = "productCategories", default)]
-        pub product_categories: Option<Vec<i32>>,
+        pub product_categories: ::std::option::Option<Vec<i32>>,
         #[doc = "All restricted categories for the ads that may be shown from this snippet."]
         #[serde(rename = "restrictedCategories", default)]
-        pub restricted_categories: Option<Vec<i32>>,
+        pub restricted_categories: ::std::option::Option<Vec<i32>>,
         #[doc = "Detected sensitive categories, if any. Read-only. This field should not be set in requests."]
         #[serde(rename = "sensitiveCategories", default)]
-        pub sensitive_categories: Option<Vec<i32>>,
+        pub sensitive_categories: ::std::option::Option<Vec<i32>>,
         #[doc = "Creative serving status. Read-only. This field should not be set in requests."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
         #[doc = "All vendor types for the ads that may be shown from this snippet."]
         #[serde(rename = "vendorType", default)]
-        pub vendor_type: Option<Vec<i32>>,
+        pub vendor_type: ::std::option::Option<Vec<i32>>,
         #[doc = "The version for this creative. Read-only. This field should not be set in requests."]
         #[serde(rename = "version", default)]
-        pub version: Option<i32>,
+        pub version: ::std::option::Option<i32>,
         #[doc = "The URL to fetch a video ad. If set, HTMLSnippet and the nativeAd should not be set."]
         #[serde(rename = "videoURL", default)]
-        pub video_url: Option<String>,
+        pub video_url: ::std::option::Option<String>,
         #[doc = "Ad width."]
         #[serde(rename = "width", default)]
-        pub width: Option<i32>,
+        pub width: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Creative {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -594,7 +582,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -603,13 +590,13 @@ pub mod schemas {
     pub struct CreativesList {
         #[doc = "A list of creatives."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Creative>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Creative>>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through creatives. To retrieve the next page of results, set the next request's \"pageToken\" value to this."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CreativesList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -618,7 +605,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -636,55 +622,55 @@ pub mod schemas {
     pub struct DirectDeal {
         #[doc = "The account id of the buyer this deal is for."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<i32>,
+        pub account_id: ::std::option::Option<i32>,
         #[doc = "The name of the advertiser this deal is for."]
         #[serde(rename = "advertiser", default)]
-        pub advertiser: Option<String>,
+        pub advertiser: ::std::option::Option<String>,
         #[doc = "Whether the publisher for this deal is eligible for alcohol ads."]
         #[serde(rename = "allowsAlcohol", default)]
-        pub allows_alcohol: Option<bool>,
+        pub allows_alcohol: ::std::option::Option<bool>,
         #[doc = "The account id that this deal was negotiated for. It is either the buyer or the client that this deal was negotiated on behalf of."]
         #[serde(rename = "buyerAccountId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub buyer_account_id: Option<i64>,
+        pub buyer_account_id: ::std::option::Option<i64>,
         #[doc = "The currency code that applies to the fixed_cpm value. If not set then assumed to be USD."]
         #[serde(rename = "currencyCode", default)]
-        pub currency_code: Option<String>,
+        pub currency_code: ::std::option::Option<String>,
         #[doc = "The deal type such as programmatic reservation or fixed price and so on."]
         #[serde(rename = "dealTier", default)]
-        pub deal_tier: Option<String>,
+        pub deal_tier: ::std::option::Option<String>,
         #[doc = "End time for when this deal stops being active. If not set then this deal is valid until manually disabled by the publisher. In seconds since the epoch."]
         #[serde(rename = "endTime", default)]
         #[serde(with = "crate::parsed_string")]
-        pub end_time: Option<i64>,
+        pub end_time: ::std::option::Option<i64>,
         #[doc = "The fixed price for this direct deal. In cpm micros of currency according to currency_code. If set, then this deal is eligible for the fixed price tier of buying (highest priority, pay exactly the configured fixed price)."]
         #[serde(rename = "fixedCpm", default)]
         #[serde(with = "crate::parsed_string")]
-        pub fixed_cpm: Option<i64>,
+        pub fixed_cpm: ::std::option::Option<i64>,
         #[doc = "Deal id."]
         #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
+        pub id: ::std::option::Option<i64>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Deal name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The minimum price for this direct deal. In cpm micros of currency according to currency_code. If set, then this deal is eligible for the private exchange tier of buying (below fixed price priority, run as a second price auction)."]
         #[serde(rename = "privateExchangeMinCpm", default)]
         #[serde(with = "crate::parsed_string")]
-        pub private_exchange_min_cpm: Option<i64>,
+        pub private_exchange_min_cpm: ::std::option::Option<i64>,
         #[doc = "If true, the publisher has opted to have their blocks ignored when a creative is bid with for this deal."]
         #[serde(rename = "publisherBlocksOverriden", default)]
-        pub publisher_blocks_overriden: Option<bool>,
+        pub publisher_blocks_overriden: ::std::option::Option<bool>,
         #[doc = "The name of the publisher offering this direct deal."]
         #[serde(rename = "sellerNetwork", default)]
-        pub seller_network: Option<String>,
+        pub seller_network: ::std::option::Option<String>,
         #[doc = "Start time for when this deal becomes active. If not set then this deal is active immediately upon creation. In seconds since the epoch."]
         #[serde(rename = "startTime", default)]
         #[serde(with = "crate::parsed_string")]
-        pub start_time: Option<i64>,
+        pub start_time: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for DirectDeal {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -693,7 +679,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -711,10 +696,10 @@ pub mod schemas {
     pub struct DirectDealsList {
         #[doc = "A list of direct deals relevant for your account."]
         #[serde(rename = "directDeals", default)]
-        pub direct_deals: Option<Vec<crate::schemas::DirectDeal>>,
+        pub direct_deals: ::std::option::Option<Vec<crate::schemas::DirectDeal>>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DirectDealsList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -723,78 +708,77 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct PerformanceReport {
         #[doc = "The number of bid responses with an ad."]
         #[serde(rename = "bidRate", default)]
-        pub bid_rate: Option<f64>,
+        pub bid_rate: ::std::option::Option<f64>,
         #[doc = "The number of bid requests sent to your bidder."]
         #[serde(rename = "bidRequestRate", default)]
-        pub bid_request_rate: Option<f64>,
+        pub bid_request_rate: ::std::option::Option<f64>,
         #[doc = "Rate of various prefiltering statuses per match. Please refer to the callout-status-codes.txt file for different statuses."]
         #[serde(rename = "calloutStatusRate", default)]
-        pub callout_status_rate: Option<Vec<::serde_json::Value>>,
+        pub callout_status_rate: ::std::option::Option<Vec<::serde_json::Value>>,
         #[doc = "Average QPS for cookie matcher operations."]
         #[serde(rename = "cookieMatcherStatusRate", default)]
-        pub cookie_matcher_status_rate: Option<Vec<::serde_json::Value>>,
+        pub cookie_matcher_status_rate: ::std::option::Option<Vec<::serde_json::Value>>,
         #[doc = "Rate of ads with a given status. Please refer to the creative-status-codes.txt file for different statuses."]
         #[serde(rename = "creativeStatusRate", default)]
-        pub creative_status_rate: Option<Vec<::serde_json::Value>>,
+        pub creative_status_rate: ::std::option::Option<Vec<::serde_json::Value>>,
         #[doc = "The number of bid responses that were filtered due to a policy violation or other errors."]
         #[serde(rename = "filteredBidRate", default)]
-        pub filtered_bid_rate: Option<f64>,
+        pub filtered_bid_rate: ::std::option::Option<f64>,
         #[doc = "Average QPS for hosted match operations."]
         #[serde(rename = "hostedMatchStatusRate", default)]
-        pub hosted_match_status_rate: Option<Vec<::serde_json::Value>>,
+        pub hosted_match_status_rate: ::std::option::Option<Vec<::serde_json::Value>>,
         #[doc = "The number of potential queries based on your pretargeting settings."]
         #[serde(rename = "inventoryMatchRate", default)]
-        pub inventory_match_rate: Option<f64>,
+        pub inventory_match_rate: ::std::option::Option<f64>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The 50th percentile round trip latency(ms) as perceived from Google servers for the duration period covered by the report."]
         #[serde(rename = "latency50thPercentile", default)]
-        pub latency_5_0th_percentile: Option<f64>,
+        pub latency_5_0th_percentile: ::std::option::Option<f64>,
         #[doc = "The 85th percentile round trip latency(ms) as perceived from Google servers for the duration period covered by the report."]
         #[serde(rename = "latency85thPercentile", default)]
-        pub latency_8_5th_percentile: Option<f64>,
+        pub latency_8_5th_percentile: ::std::option::Option<f64>,
         #[doc = "The 95th percentile round trip latency(ms) as perceived from Google servers for the duration period covered by the report."]
         #[serde(rename = "latency95thPercentile", default)]
-        pub latency_9_5th_percentile: Option<f64>,
+        pub latency_9_5th_percentile: ::std::option::Option<f64>,
         #[doc = "Rate of various quota account statuses per quota check."]
         #[serde(rename = "noQuotaInRegion", default)]
-        pub no_quota_in_region: Option<f64>,
+        pub no_quota_in_region: ::std::option::Option<f64>,
         #[doc = "Rate of various quota account statuses per quota check."]
         #[serde(rename = "outOfQuota", default)]
-        pub out_of_quota: Option<f64>,
+        pub out_of_quota: ::std::option::Option<f64>,
         #[doc = "Average QPS for pixel match requests from clients."]
         #[serde(rename = "pixelMatchRequests", default)]
-        pub pixel_match_requests: Option<f64>,
+        pub pixel_match_requests: ::std::option::Option<f64>,
         #[doc = "Average QPS for pixel match responses from clients."]
         #[serde(rename = "pixelMatchResponses", default)]
-        pub pixel_match_responses: Option<f64>,
+        pub pixel_match_responses: ::std::option::Option<f64>,
         #[doc = "The configured quota limits for this account."]
         #[serde(rename = "quotaConfiguredLimit", default)]
-        pub quota_configured_limit: Option<f64>,
+        pub quota_configured_limit: ::std::option::Option<f64>,
         #[doc = "The throttled quota limits for this account."]
         #[serde(rename = "quotaThrottledLimit", default)]
-        pub quota_throttled_limit: Option<f64>,
+        pub quota_throttled_limit: ::std::option::Option<f64>,
         #[doc = "The trading location of this data."]
         #[serde(rename = "region", default)]
-        pub region: Option<String>,
+        pub region: ::std::option::Option<String>,
         #[doc = "The number of properly formed bid responses received by our servers within the deadline."]
         #[serde(rename = "successfulRequestRate", default)]
-        pub successful_request_rate: Option<f64>,
+        pub successful_request_rate: ::std::option::Option<f64>,
         #[doc = "The unix timestamp of the starting time of this performance data."]
         #[serde(rename = "timestamp", default)]
         #[serde(with = "crate::parsed_string")]
-        pub timestamp: Option<i64>,
+        pub timestamp: ::std::option::Option<i64>,
         #[doc = "The number of bid responses that were unsuccessful due to timeouts, incorrect formatting, etc."]
         #[serde(rename = "unsuccessfulRequestRate", default)]
-        pub unsuccessful_request_rate: Option<f64>,
+        pub unsuccessful_request_rate: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for PerformanceReport {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -803,17 +787,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct PerformanceReportList {
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "A list of performance reports relevant for the account."]
         #[serde(rename = "performanceReport", default)]
-        pub performance_report: Option<Vec<crate::schemas::PerformanceReport>>,
+        pub performance_report: ::std::option::Option<Vec<crate::schemas::PerformanceReport>>,
     }
     impl ::field_selector::FieldSelector for PerformanceReportList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -822,7 +805,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -841,11 +823,11 @@ pub mod schemas {
         #[doc = "Height in pixels."]
         #[serde(rename = "height", default)]
         #[serde(with = "crate::parsed_string")]
-        pub height: Option<i64>,
+        pub height: ::std::option::Option<i64>,
         #[doc = "Width in pixels."]
         #[serde(rename = "width", default)]
         #[serde(with = "crate::parsed_string")]
-        pub width: Option<i64>,
+        pub width: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for PretargetingConfigDimensionsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -854,7 +836,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -872,10 +853,10 @@ pub mod schemas {
     pub struct PretargetingConfigExcludedPlacementsItems {
         #[doc = "The type of the placement."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "The value of the placement. Interpretation depends on the placement type, e.g. URL for a site placement, channel name for a channel placement, app id for a mobile app placement."]
         #[serde(rename = "token", default)]
-        pub token: Option<String>,
+        pub token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PretargetingConfigExcludedPlacementsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -884,7 +865,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -902,10 +882,10 @@ pub mod schemas {
     pub struct PretargetingConfigPlacementsItems {
         #[doc = "The type of the placement."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "The value of the placement. Interpretation depends on the placement type, e.g. URL for a site placement, channel name for a channel placement, app id for a mobile app placement."]
         #[serde(rename = "token", default)]
-        pub token: Option<String>,
+        pub token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PretargetingConfigPlacementsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -914,7 +894,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -933,75 +912,77 @@ pub mod schemas {
         #[doc = "The id for billing purposes, provided for reference. Leave this field blank for insert requests; the id will be generated automatically."]
         #[serde(rename = "billingId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub billing_id: Option<i64>,
+        pub billing_id: ::std::option::Option<i64>,
         #[doc = "The config id; generated automatically. Leave this field blank for insert requests."]
         #[serde(rename = "configId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub config_id: Option<i64>,
+        pub config_id: ::std::option::Option<i64>,
         #[doc = "The name of the config. Must be unique. Required for all requests."]
         #[serde(rename = "configName", default)]
-        pub config_name: Option<String>,
+        pub config_name: ::std::option::Option<String>,
         #[doc = "List must contain exactly one of PRETARGETING_CREATIVE_TYPE_HTML or PRETARGETING_CREATIVE_TYPE_VIDEO."]
         #[serde(rename = "creativeType", default)]
-        pub creative_type: Option<Vec<String>>,
+        pub creative_type: ::std::option::Option<Vec<String>>,
         #[doc = "Requests which allow one of these (width, height) pairs will match. All pairs must be supported ad dimensions."]
         #[serde(rename = "dimensions", default)]
-        pub dimensions: Option<Vec<crate::schemas::PretargetingConfigDimensionsItems>>,
+        pub dimensions:
+            ::std::option::Option<Vec<crate::schemas::PretargetingConfigDimensionsItems>>,
         #[doc = "Requests with any of these content labels will not match. Values are from content-labels.txt in the downloadable files section."]
         #[serde(rename = "excludedContentLabels", default)]
-        pub excluded_content_labels: Option<Vec<i64>>,
+        pub excluded_content_labels: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests containing any of these geo criteria ids will not match."]
         #[serde(rename = "excludedGeoCriteriaIds", default)]
-        pub excluded_geo_criteria_ids: Option<Vec<i64>>,
+        pub excluded_geo_criteria_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests containing any of these placements will not match."]
         #[serde(rename = "excludedPlacements", default)]
         pub excluded_placements:
-            Option<Vec<crate::schemas::PretargetingConfigExcludedPlacementsItems>>,
+            ::std::option::Option<Vec<crate::schemas::PretargetingConfigExcludedPlacementsItems>>,
         #[doc = "Requests containing any of these users list ids will not match."]
         #[serde(rename = "excludedUserLists", default)]
-        pub excluded_user_lists: Option<Vec<i64>>,
+        pub excluded_user_lists: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests containing any of these vertical ids will not match. Values are from the publisher-verticals.txt file in the downloadable files section."]
         #[serde(rename = "excludedVerticals", default)]
-        pub excluded_verticals: Option<Vec<i64>>,
+        pub excluded_verticals: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests containing any of these geo criteria ids will match."]
         #[serde(rename = "geoCriteriaIds", default)]
-        pub geo_criteria_ids: Option<Vec<i64>>,
+        pub geo_criteria_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Whether this config is active. Required for all requests."]
         #[serde(rename = "isActive", default)]
-        pub is_active: Option<bool>,
+        pub is_active: ::std::option::Option<bool>,
         #[doc = "The kind of the resource, i.e. \"adexchangebuyer#pretargetingConfig\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Request containing any of these language codes will match."]
         #[serde(rename = "languages", default)]
-        pub languages: Option<Vec<String>>,
+        pub languages: ::std::option::Option<Vec<String>>,
         #[doc = "Requests containing any of these mobile carrier ids will match. Values are from mobile-carriers.csv in the downloadable files section."]
         #[serde(rename = "mobileCarriers", default)]
-        pub mobile_carriers: Option<Vec<i64>>,
+        pub mobile_carriers: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests containing any of these mobile device ids will match. Values are from mobile-devices.csv in the downloadable files section."]
         #[serde(rename = "mobileDevices", default)]
-        pub mobile_devices: Option<Vec<i64>>,
+        pub mobile_devices: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests containing any of these mobile operating system version ids will match. Values are from mobile-os.csv in the downloadable files section."]
         #[serde(rename = "mobileOperatingSystemVersions", default)]
-        pub mobile_operating_system_versions: Option<Vec<i64>>,
+        pub mobile_operating_system_versions: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests containing any of these placements will match."]
         #[serde(rename = "placements", default)]
-        pub placements: Option<Vec<crate::schemas::PretargetingConfigPlacementsItems>>,
+        pub placements:
+            ::std::option::Option<Vec<crate::schemas::PretargetingConfigPlacementsItems>>,
         #[doc = "Requests matching any of these platforms will match. Possible values are PRETARGETING_PLATFORM_MOBILE, PRETARGETING_PLATFORM_DESKTOP, and PRETARGETING_PLATFORM_TABLET."]
         #[serde(rename = "platforms", default)]
-        pub platforms: Option<Vec<String>>,
+        pub platforms: ::std::option::Option<Vec<String>>,
         #[doc = "Creative attributes should be declared here if all creatives corresponding to this pretargeting configuration have that creative attribute. Values are from pretargetable-creative-attributes.txt in the downloadable files section."]
         #[serde(rename = "supportedCreativeAttributes", default)]
-        pub supported_creative_attributes: Option<Vec<i64>>,
+        pub supported_creative_attributes: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests containing any of these user list ids will match."]
         #[serde(rename = "userLists", default)]
-        pub user_lists: Option<Vec<i64>>,
+        pub user_lists: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests that allow any of these vendor ids will match. Values are from vendors.txt in the downloadable files section."]
         #[serde(rename = "vendorTypes", default)]
-        pub vendor_types: Option<Vec<i64>>,
+        pub vendor_types: ::std::option::Option<Vec<i64>>,
         #[doc = "Requests containing any of these vertical ids will match."]
         #[serde(rename = "verticals", default)]
-        pub verticals: Option<Vec<i64>>,
+        pub verticals: ::std::option::Option<Vec<i64>>,
     }
     impl ::field_selector::FieldSelector for PretargetingConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1010,7 +991,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1028,10 +1008,10 @@ pub mod schemas {
     pub struct PretargetingConfigList {
         #[doc = "A list of pretargeting configs"]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::PretargetingConfig>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::PretargetingConfig>>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PretargetingConfigList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1040,7 +1020,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -1085,6 +1064,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -2651,6 +2639,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListStatusFilter {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -4960,6 +4957,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -5035,5 +5033,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

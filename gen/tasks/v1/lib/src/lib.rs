@@ -14,13 +14,13 @@ pub mod schemas {
     pub struct TaskLinksItems {
         #[doc = "The description. In HTML speak: Everything between <a> and </a>."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The URL."]
         #[serde(rename = "link", default)]
-        pub link: Option<String>,
+        pub link: ::std::option::Option<String>,
         #[doc = "Type of the link, e.g. \"email\"."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TaskLinksItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -29,7 +29,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -47,49 +46,49 @@ pub mod schemas {
     pub struct Task {
         #[doc = "Completion date of the task (as a RFC 3339 timestamp). This field is omitted if the task has not been completed."]
         #[serde(rename = "completed", default)]
-        pub completed: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub completed: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Flag indicating whether the task has been deleted. The default if False."]
         #[serde(rename = "deleted", default)]
-        pub deleted: Option<bool>,
+        pub deleted: ::std::option::Option<bool>,
         #[doc = "Due date of the task (as a RFC 3339 timestamp). Optional. The due date only records date information; the time portion of the timestamp is discarded when setting the due date. It isn't possible to read or write the time that a task is due via the API."]
         #[serde(rename = "due", default)]
-        pub due: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub due: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Flag indicating whether the task is hidden. This is the case if the task had been marked completed when the task list was last cleared. The default is False. This field is read-only."]
         #[serde(rename = "hidden", default)]
-        pub hidden: Option<bool>,
+        pub hidden: ::std::option::Option<bool>,
         #[doc = "Task identifier."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Type of the resource. This is always \"tasks#task\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Collection of links. This collection is read-only."]
         #[serde(rename = "links", default)]
-        pub links: Option<Vec<crate::schemas::TaskLinksItems>>,
+        pub links: ::std::option::Option<Vec<crate::schemas::TaskLinksItems>>,
         #[doc = "Notes describing the task. Optional."]
         #[serde(rename = "notes", default)]
-        pub notes: Option<String>,
+        pub notes: ::std::option::Option<String>,
         #[doc = "Parent task identifier. This field is omitted if it is a top-level task. This field is read-only. Use the \"move\" method to move the task under a different parent or to the top level."]
         #[serde(rename = "parent", default)]
-        pub parent: Option<String>,
+        pub parent: ::std::option::Option<String>,
         #[doc = "String indicating the position of the task among its sibling tasks under the same parent task or at the top level. If this string is greater than another task's corresponding position string according to lexicographical ordering, the task is positioned after the other task under the same parent task (or at the top level). This field is read-only. Use the \"move\" method to move the task to another position."]
         #[serde(rename = "position", default)]
-        pub position: Option<String>,
+        pub position: ::std::option::Option<String>,
         #[doc = "URL pointing to this task. Used to retrieve, update, or delete this task."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Status of the task. This is either \"needsAction\" or \"completed\"."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
         #[doc = "Title of the task."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "Last modification time of the task (as a RFC 3339 timestamp)."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for Task {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -98,7 +97,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -116,22 +114,22 @@ pub mod schemas {
     pub struct TaskList {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Task list identifier."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Type of the resource. This is always \"tasks#taskList\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "URL pointing to this task list. Used to retrieve, update, or delete this task list."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Title of the task list."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "Last modification time of the task list (as a RFC 3339 timestamp)."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for TaskList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -140,7 +138,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -158,16 +155,16 @@ pub mod schemas {
     pub struct TaskLists {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Collection of task lists."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::TaskList>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::TaskList>>,
         #[doc = "Type of the resource. This is always \"tasks#taskLists\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Token that can be used to request the next page of this result."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TaskLists {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -176,7 +173,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -194,16 +190,16 @@ pub mod schemas {
     pub struct Tasks {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Collection of tasks."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Task>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Task>>,
         #[doc = "Type of the resource. This is always \"tasks#tasks\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Tasks {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -212,7 +208,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -257,6 +252,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -2952,6 +2956,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3027,5 +3032,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

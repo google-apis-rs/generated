@@ -1,3 +1,0 @@
-2019-08-21 10:35:21,309 [36mINFO [0m [google_rest_api_generator] building api desc
-thread 'main' panicked at 'failed to make ident from: macro', google_rest_api_generator/src/lib.rs:563:42
-note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace.

@@ -14,7 +14,7 @@ pub mod schemas {
     pub struct AsymmetricDecryptRequest {
         #[doc = "Required. The data encrypted with the named CryptoKeyVersion's public\nkey using OAEP."]
         #[serde(rename = "ciphertext", default)]
-        pub ciphertext: Option<Vec<u8>>,
+        pub ciphertext: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for AsymmetricDecryptRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -23,7 +23,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -41,7 +40,7 @@ pub mod schemas {
     pub struct AsymmetricDecryptResponse {
         #[doc = "The decrypted data originally encrypted with the matching public key."]
         #[serde(rename = "plaintext", default)]
-        pub plaintext: Option<Vec<u8>>,
+        pub plaintext: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for AsymmetricDecryptResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -50,7 +49,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -68,7 +66,7 @@ pub mod schemas {
     pub struct AsymmetricSignRequest {
         #[doc = "Required. The digest of the data to sign. The digest must be produced with\nthe same digest algorithm as specified by the key version's\nalgorithm."]
         #[serde(rename = "digest", default)]
-        pub digest: Option<crate::schemas::Digest>,
+        pub digest: ::std::option::Option<crate::schemas::Digest>,
     }
     impl ::field_selector::FieldSelector for AsymmetricSignRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -77,7 +75,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -95,10 +92,10 @@ pub mod schemas {
     pub struct AsymmetricSignResponse {
         #[doc = "The resource name of the CryptoKeyVersion used for signing. Check\nthis field to verify that the intended resource was used for signing."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The created signature."]
         #[serde(rename = "signature", default)]
-        pub signature: Option<Vec<u8>>,
+        pub signature: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for AsymmetricSignResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -107,7 +104,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -125,10 +121,10 @@ pub mod schemas {
     pub struct AuditConfig {
         #[doc = "The configuration for logging of each type of permission."]
         #[serde(rename = "auditLogConfigs", default)]
-        pub audit_log_configs: Option<Vec<crate::schemas::AuditLogConfig>>,
+        pub audit_log_configs: ::std::option::Option<Vec<crate::schemas::AuditLogConfig>>,
         #[doc = "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."]
         #[serde(rename = "service", default)]
-        pub service: Option<String>,
+        pub service: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AuditConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -137,7 +133,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -194,6 +189,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AuditLogConfigLogType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -209,10 +213,10 @@ pub mod schemas {
     pub struct AuditLogConfig {
         #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
         #[serde(rename = "exemptedMembers", default)]
-        pub exempted_members: Option<Vec<String>>,
+        pub exempted_members: ::std::option::Option<Vec<String>>,
         #[doc = "The log type that this config enables."]
         #[serde(rename = "logType", default)]
-        pub log_type: Option<crate::schemas::AuditLogConfigLogType>,
+        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
     }
     impl ::field_selector::FieldSelector for AuditLogConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -221,7 +225,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -239,13 +242,13 @@ pub mod schemas {
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
         #[serde(rename = "condition", default)]
-        pub condition: Option<crate::schemas::Expr>,
+        pub condition: ::std::option::Option<crate::schemas::Expr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
         #[serde(rename = "members", default)]
-        pub members: Option<Vec<String>>,
+        pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
         #[serde(rename = "role", default)]
-        pub role: Option<String>,
+        pub role: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Binding {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -254,7 +257,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -311,6 +313,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CryptoKeyPurpose {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -326,28 +337,28 @@ pub mod schemas {
     pub struct CryptoKey {
         #[doc = "Output only. The time at which this CryptoKey was created."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Labels with user-defined metadata. For more information, see\n[Labeling Keys](/kms/docs/labeling-keys)."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Output only. The resource name for this CryptoKey in the format\n`projects/*/locations/*/keyRings/*/cryptoKeys/*`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "At next_rotation_time, the Key Management Service will automatically:\n\n1. Create a new version of this CryptoKey.\n1. Mark the new version as primary.\n\nKey rotations performed manually via\nCreateCryptoKeyVersion and\nUpdateCryptoKeyPrimaryVersion\ndo not affect next_rotation_time.\n\nKeys with purpose\nENCRYPT_DECRYPT support\nautomatic rotation. For other keys, this field must be omitted."]
         #[serde(rename = "nextRotationTime", default)]
-        pub next_rotation_time: Option<String>,
+        pub next_rotation_time: ::std::option::Option<String>,
         #[doc = "Output only. A copy of the \"primary\" CryptoKeyVersion that will be used\nby Encrypt when this CryptoKey is given\nin EncryptRequest.name.\n\nThe CryptoKey's primary version can be updated via\nUpdateCryptoKeyPrimaryVersion.\n\nAll keys with purpose\nENCRYPT_DECRYPT have a\nprimary. For other keys, this field will be omitted."]
         #[serde(rename = "primary", default)]
-        pub primary: Option<crate::schemas::CryptoKeyVersion>,
+        pub primary: ::std::option::Option<crate::schemas::CryptoKeyVersion>,
         #[doc = "The immutable purpose of this CryptoKey."]
         #[serde(rename = "purpose", default)]
-        pub purpose: Option<crate::schemas::CryptoKeyPurpose>,
+        pub purpose: ::std::option::Option<crate::schemas::CryptoKeyPurpose>,
         #[doc = "next_rotation_time will be advanced by this period when the service\nautomatically rotates a key. Must be at least 24 hours and at most\n876,000 hours.\n\nIf rotation_period is set, next_rotation_time must also be set.\n\nKeys with purpose\nENCRYPT_DECRYPT support\nautomatic rotation. For other keys, this field must be omitted."]
         #[serde(rename = "rotationPeriod", default)]
-        pub rotation_period: Option<String>,
+        pub rotation_period: ::std::option::Option<String>,
         #[doc = "A template describing settings for new CryptoKeyVersion instances.\nThe properties of new CryptoKeyVersion instances created by either\nCreateCryptoKeyVersion or\nauto-rotation are controlled by this template."]
         #[serde(rename = "versionTemplate", default)]
-        pub version_template: Option<crate::schemas::CryptoKeyVersionTemplate>,
+        pub version_template: ::std::option::Option<crate::schemas::CryptoKeyVersionTemplate>,
     }
     impl ::field_selector::FieldSelector for CryptoKey {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -356,7 +367,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -485,6 +495,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CryptoKeyVersionAlgorithm {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CryptoKeyVersionProtectionLevel {
         #[doc = "Not specified."]
@@ -537,6 +556,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for CryptoKeyVersionProtectionLevel {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -613,6 +641,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CryptoKeyVersionState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -628,40 +665,41 @@ pub mod schemas {
     pub struct CryptoKeyVersion {
         #[doc = "Output only. The CryptoKeyVersionAlgorithm that this\nCryptoKeyVersion supports."]
         #[serde(rename = "algorithm", default)]
-        pub algorithm: Option<crate::schemas::CryptoKeyVersionAlgorithm>,
+        pub algorithm: ::std::option::Option<crate::schemas::CryptoKeyVersionAlgorithm>,
         #[doc = "Output only. Statement that was generated and signed by the HSM at key\ncreation time. Use this statement to verify attributes of the key as stored\non the HSM, independently of Google. Only provided for key versions with\nprotection_level HSM."]
         #[serde(rename = "attestation", default)]
-        pub attestation: Option<crate::schemas::KeyOperationAttestation>,
+        pub attestation: ::std::option::Option<crate::schemas::KeyOperationAttestation>,
         #[doc = "Output only. The time at which this CryptoKeyVersion was created."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. The time this CryptoKeyVersion's key material was\ndestroyed. Only present if state is\nDESTROYED."]
         #[serde(rename = "destroyEventTime", default)]
-        pub destroy_event_time: Option<String>,
+        pub destroy_event_time: ::std::option::Option<String>,
         #[doc = "Output only. The time this CryptoKeyVersion's key material is scheduled\nfor destruction. Only present if state is\nDESTROY_SCHEDULED."]
         #[serde(rename = "destroyTime", default)]
-        pub destroy_time: Option<String>,
+        pub destroy_time: ::std::option::Option<String>,
         #[doc = "Output only. The time this CryptoKeyVersion's key material was\ngenerated."]
         #[serde(rename = "generateTime", default)]
-        pub generate_time: Option<String>,
+        pub generate_time: ::std::option::Option<String>,
         #[doc = "Output only. The root cause of an import failure. Only present if\nstate is\nIMPORT_FAILED."]
         #[serde(rename = "importFailureReason", default)]
-        pub import_failure_reason: Option<String>,
+        pub import_failure_reason: ::std::option::Option<String>,
         #[doc = "Output only. The name of the ImportJob used to import this\nCryptoKeyVersion. Only present if the underlying key material was\nimported."]
         #[serde(rename = "importJob", default)]
-        pub import_job: Option<String>,
+        pub import_job: ::std::option::Option<String>,
         #[doc = "Output only. The time at which this CryptoKeyVersion's key material\nwas imported."]
         #[serde(rename = "importTime", default)]
-        pub import_time: Option<String>,
+        pub import_time: ::std::option::Option<String>,
         #[doc = "Output only. The resource name for this CryptoKeyVersion in the format\n`projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Output only. The ProtectionLevel describing how crypto operations are\nperformed with this CryptoKeyVersion."]
         #[serde(rename = "protectionLevel", default)]
-        pub protection_level: Option<crate::schemas::CryptoKeyVersionProtectionLevel>,
+        pub protection_level:
+            ::std::option::Option<crate::schemas::CryptoKeyVersionProtectionLevel>,
         #[doc = "The current state of the CryptoKeyVersion."]
         #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::CryptoKeyVersionState>,
+        pub state: ::std::option::Option<crate::schemas::CryptoKeyVersionState>,
     }
     impl ::field_selector::FieldSelector for CryptoKeyVersion {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -670,7 +708,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -831,6 +868,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CryptoKeyVersionTemplateAlgorithm {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CryptoKeyVersionTemplateProtectionLevel {
         #[doc = "Not specified."]
@@ -885,6 +931,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CryptoKeyVersionTemplateProtectionLevel {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -900,10 +955,11 @@ pub mod schemas {
     pub struct CryptoKeyVersionTemplate {
         #[doc = "Required. Algorithm to use\nwhen creating a CryptoKeyVersion based on this template.\n\nFor backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both\nthis field is omitted and CryptoKey.purpose is\nENCRYPT_DECRYPT."]
         #[serde(rename = "algorithm", default)]
-        pub algorithm: Option<crate::schemas::CryptoKeyVersionTemplateAlgorithm>,
+        pub algorithm: ::std::option::Option<crate::schemas::CryptoKeyVersionTemplateAlgorithm>,
         #[doc = "ProtectionLevel to use when creating a CryptoKeyVersion based on\nthis template. Immutable. Defaults to SOFTWARE."]
         #[serde(rename = "protectionLevel", default)]
-        pub protection_level: Option<crate::schemas::CryptoKeyVersionTemplateProtectionLevel>,
+        pub protection_level:
+            ::std::option::Option<crate::schemas::CryptoKeyVersionTemplateProtectionLevel>,
     }
     impl ::field_selector::FieldSelector for CryptoKeyVersionTemplate {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -912,7 +968,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -930,10 +985,10 @@ pub mod schemas {
     pub struct DecryptRequest {
         #[doc = "Optional data that must match the data originally supplied in\nEncryptRequest.additional_authenticated_data."]
         #[serde(rename = "additionalAuthenticatedData", default)]
-        pub additional_authenticated_data: Option<Vec<u8>>,
+        pub additional_authenticated_data: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Required. The encrypted data originally returned in\nEncryptResponse.ciphertext."]
         #[serde(rename = "ciphertext", default)]
-        pub ciphertext: Option<Vec<u8>>,
+        pub ciphertext: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for DecryptRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -942,7 +997,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -960,7 +1014,7 @@ pub mod schemas {
     pub struct DecryptResponse {
         #[doc = "The decrypted data originally supplied in EncryptRequest.plaintext."]
         #[serde(rename = "plaintext", default)]
-        pub plaintext: Option<Vec<u8>>,
+        pub plaintext: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for DecryptResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -969,7 +1023,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -987,7 +1040,7 @@ pub mod schemas {
     )]
     pub struct DestroyCryptoKeyVersionRequest;
     impl ::field_selector::FieldSelector for DestroyCryptoKeyVersionRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -1004,13 +1057,13 @@ pub mod schemas {
     pub struct Digest {
         #[doc = "A message digest produced with the SHA-256 algorithm."]
         #[serde(rename = "sha256", default)]
-        pub sha_256: Option<Vec<u8>>,
+        pub sha_256: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "A message digest produced with the SHA-384 algorithm."]
         #[serde(rename = "sha384", default)]
-        pub sha_384: Option<Vec<u8>>,
+        pub sha_384: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "A message digest produced with the SHA-512 algorithm."]
         #[serde(rename = "sha512", default)]
-        pub sha_512: Option<Vec<u8>>,
+        pub sha_512: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for Digest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1019,7 +1072,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1037,10 +1089,10 @@ pub mod schemas {
     pub struct EncryptRequest {
         #[doc = "Optional data that, if specified, must also be provided during decryption\nthrough DecryptRequest.additional_authenticated_data.\n\nThe maximum size depends on the key version's\nprotection_level. For\nSOFTWARE keys, the AAD must be no larger than\n64KiB. For HSM keys, the combined length of the\nplaintext and additional_authenticated_data fields must be no larger than\n8KiB."]
         #[serde(rename = "additionalAuthenticatedData", default)]
-        pub additional_authenticated_data: Option<Vec<u8>>,
+        pub additional_authenticated_data: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Required. The data to encrypt. Must be no larger than 64KiB.\n\nThe maximum size depends on the key version's\nprotection_level. For\nSOFTWARE keys, the plaintext must be no larger\nthan 64KiB. For HSM keys, the combined length of the\nplaintext and additional_authenticated_data fields must be no larger than\n8KiB."]
         #[serde(rename = "plaintext", default)]
-        pub plaintext: Option<Vec<u8>>,
+        pub plaintext: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for EncryptRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1049,7 +1101,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1067,10 +1118,10 @@ pub mod schemas {
     pub struct EncryptResponse {
         #[doc = "The encrypted data."]
         #[serde(rename = "ciphertext", default)]
-        pub ciphertext: Option<Vec<u8>>,
+        pub ciphertext: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "The resource name of the CryptoKeyVersion used in encryption. Check\nthis field to verify that the intended resource was used for encryption."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EncryptResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1079,7 +1130,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1097,16 +1147,16 @@ pub mod schemas {
     pub struct Expr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
         #[serde(rename = "expression", default)]
-        pub expression: Option<String>,
+        pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Expr {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1115,7 +1165,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1276,6 +1325,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ImportCryptoKeyVersionRequestAlgorithm {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1291,13 +1349,14 @@ pub mod schemas {
     pub struct ImportCryptoKeyVersionRequest {
         #[doc = "Required. The algorithm of\nthe key being imported. This does not need to match the\nversion_template of the CryptoKey this\nversion imports into."]
         #[serde(rename = "algorithm", default)]
-        pub algorithm: Option<crate::schemas::ImportCryptoKeyVersionRequestAlgorithm>,
+        pub algorithm:
+            ::std::option::Option<crate::schemas::ImportCryptoKeyVersionRequestAlgorithm>,
         #[doc = "Required. The name of the ImportJob that was used to\nwrap this key material."]
         #[serde(rename = "importJob", default)]
-        pub import_job: Option<String>,
+        pub import_job: ::std::option::Option<String>,
         #[doc = "Wrapped key material produced with\nRSA_OAEP_3072_SHA1_AES_256\nor\nRSA_OAEP_4096_SHA1_AES_256.\n\nThis field contains the concatenation of two wrapped keys:\n\n<ol>\n  <li>An ephemeral AES-256 wrapping key wrapped with the\n      public_key using RSAES-OAEP with SHA-1,\n      MGF1 with SHA-1, and an empty label.\n  </li>\n  <li>The key to be imported, wrapped with the ephemeral AES-256 key\n      using AES-KWP (RFC 5649).\n  </li>\n</ol>\n\nThis format is the same as the format produced by PKCS#11 mechanism\nCKM_RSA_AES_KEY_WRAP."]
         #[serde(rename = "rsaAesWrappedKey", default)]
-        pub rsa_aes_wrapped_key: Option<Vec<u8>>,
+        pub rsa_aes_wrapped_key: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for ImportCryptoKeyVersionRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1306,7 +1365,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1357,6 +1415,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ImportJobImportMethod {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1413,6 +1480,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ImportJobProtectionLevel {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ImportJobState {
         #[doc = "Not specified."]
@@ -1467,6 +1543,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ImportJobState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1482,34 +1567,34 @@ pub mod schemas {
     pub struct ImportJob {
         #[doc = "Output only. Statement that was generated and signed by the key creator\n(for example, an HSM) at key creation time. Use this statement to verify\nattributes of the key as stored on the HSM, independently of Google.\nOnly present if the chosen ImportMethod is one with a protection\nlevel of HSM."]
         #[serde(rename = "attestation", default)]
-        pub attestation: Option<crate::schemas::KeyOperationAttestation>,
+        pub attestation: ::std::option::Option<crate::schemas::KeyOperationAttestation>,
         #[doc = "Output only. The time at which this ImportJob was created."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. The time this ImportJob expired. Only present if\nstate is EXPIRED."]
         #[serde(rename = "expireEventTime", default)]
-        pub expire_event_time: Option<String>,
+        pub expire_event_time: ::std::option::Option<String>,
         #[doc = "Output only. The time at which this ImportJob is scheduled for\nexpiration and can no longer be used to import key material."]
         #[serde(rename = "expireTime", default)]
-        pub expire_time: Option<String>,
+        pub expire_time: ::std::option::Option<String>,
         #[doc = "Output only. The time this ImportJob's key material was generated."]
         #[serde(rename = "generateTime", default)]
-        pub generate_time: Option<String>,
+        pub generate_time: ::std::option::Option<String>,
         #[doc = "Required and immutable. The wrapping method to be used for incoming\nkey material."]
         #[serde(rename = "importMethod", default)]
-        pub import_method: Option<crate::schemas::ImportJobImportMethod>,
+        pub import_method: ::std::option::Option<crate::schemas::ImportJobImportMethod>,
         #[doc = "Output only. The resource name for this ImportJob in the format\n`projects/*/locations/*/keyRings/*/importJobs/*`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Required and immutable. The protection level of the ImportJob. This\nmust match the\nprotection_level of the\nversion_template on the CryptoKey you\nattempt to import into."]
         #[serde(rename = "protectionLevel", default)]
-        pub protection_level: Option<crate::schemas::ImportJobProtectionLevel>,
+        pub protection_level: ::std::option::Option<crate::schemas::ImportJobProtectionLevel>,
         #[doc = "Output only. The public key with which to wrap key material prior to\nimport. Only returned if state is\nACTIVE."]
         #[serde(rename = "publicKey", default)]
-        pub public_key: Option<crate::schemas::WrappingPublicKey>,
+        pub public_key: ::std::option::Option<crate::schemas::WrappingPublicKey>,
         #[doc = "Output only. The current state of the ImportJob, indicating if it can\nbe used."]
         #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::ImportJobState>,
+        pub state: ::std::option::Option<crate::schemas::ImportJobState>,
     }
     impl ::field_selector::FieldSelector for ImportJob {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1518,7 +1603,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1575,6 +1659,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for KeyOperationAttestationFormat {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1590,10 +1683,10 @@ pub mod schemas {
     pub struct KeyOperationAttestation {
         #[doc = "Output only. The attestation data provided by the HSM when the key\noperation was performed."]
         #[serde(rename = "content", default)]
-        pub content: Option<Vec<u8>>,
+        pub content: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Output only. The format of the attestation data."]
         #[serde(rename = "format", default)]
-        pub format: Option<crate::schemas::KeyOperationAttestationFormat>,
+        pub format: ::std::option::Option<crate::schemas::KeyOperationAttestationFormat>,
     }
     impl ::field_selector::FieldSelector for KeyOperationAttestation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1602,7 +1695,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1620,10 +1712,10 @@ pub mod schemas {
     pub struct KeyRing {
         #[doc = "Output only. The time at which this KeyRing was created."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. The resource name for the KeyRing in the format\n`projects/*/locations/*/keyRings/*`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for KeyRing {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1632,7 +1724,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1650,13 +1741,13 @@ pub mod schemas {
     pub struct ListCryptoKeyVersionsResponse {
         #[doc = "The list of CryptoKeyVersions."]
         #[serde(rename = "cryptoKeyVersions", default)]
-        pub crypto_key_versions: Option<Vec<crate::schemas::CryptoKeyVersion>>,
+        pub crypto_key_versions: ::std::option::Option<Vec<crate::schemas::CryptoKeyVersion>>,
         #[doc = "A token to retrieve next page of results. Pass this value in\nListCryptoKeyVersionsRequest.page_token to retrieve the next page of\nresults."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total number of CryptoKeyVersions that matched the\nquery."]
         #[serde(rename = "totalSize", default)]
-        pub total_size: Option<i32>,
+        pub total_size: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ListCryptoKeyVersionsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1665,7 +1756,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1683,13 +1773,13 @@ pub mod schemas {
     pub struct ListCryptoKeysResponse {
         #[doc = "The list of CryptoKeys."]
         #[serde(rename = "cryptoKeys", default)]
-        pub crypto_keys: Option<Vec<crate::schemas::CryptoKey>>,
+        pub crypto_keys: ::std::option::Option<Vec<crate::schemas::CryptoKey>>,
         #[doc = "A token to retrieve next page of results. Pass this value in\nListCryptoKeysRequest.page_token to retrieve the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total number of CryptoKeys that matched the query."]
         #[serde(rename = "totalSize", default)]
-        pub total_size: Option<i32>,
+        pub total_size: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ListCryptoKeysResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1698,7 +1788,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1716,13 +1805,13 @@ pub mod schemas {
     pub struct ListImportJobsResponse {
         #[doc = "The list of ImportJobs."]
         #[serde(rename = "importJobs", default)]
-        pub import_jobs: Option<Vec<crate::schemas::ImportJob>>,
+        pub import_jobs: ::std::option::Option<Vec<crate::schemas::ImportJob>>,
         #[doc = "A token to retrieve next page of results. Pass this value in\nListImportJobsRequest.page_token to retrieve the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total number of ImportJobs that matched the query."]
         #[serde(rename = "totalSize", default)]
-        pub total_size: Option<i32>,
+        pub total_size: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ListImportJobsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1731,7 +1820,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1749,13 +1837,13 @@ pub mod schemas {
     pub struct ListKeyRingsResponse {
         #[doc = "The list of KeyRings."]
         #[serde(rename = "keyRings", default)]
-        pub key_rings: Option<Vec<crate::schemas::KeyRing>>,
+        pub key_rings: ::std::option::Option<Vec<crate::schemas::KeyRing>>,
         #[doc = "A token to retrieve next page of results. Pass this value in\nListKeyRingsRequest.page_token to retrieve the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total number of KeyRings that matched the query."]
         #[serde(rename = "totalSize", default)]
-        pub total_size: Option<i32>,
+        pub total_size: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ListKeyRingsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1764,17 +1852,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListLocationsResponse {
         #[doc = "A list of locations that matches the specified filter in the request."]
         #[serde(rename = "locations", default)]
-        pub locations: Option<Vec<crate::schemas::Location>>,
+        pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "The standard List next-page token."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListLocationsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1783,26 +1870,26 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Location {
         #[doc = "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "Cross-service attributes for the location. For example\n\n````text\n{\"cloud.googleapis.com/region\": \"us-east1\"}````"]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The canonical id for this location. For example: `\"us-east1\"`."]
         #[serde(rename = "locationId", default)]
-        pub location_id: Option<String>,
+        pub location_id: ::std::option::Option<String>,
         #[doc = "Service-specific metadata. For example the available capacity at the given\nlocation."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Location {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1811,7 +1898,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1829,7 +1915,7 @@ pub mod schemas {
     pub struct LocationMetadata {
         #[doc = "Indicates whether CryptoKeys with\nprotection_level\nHSM can be created in this location."]
         #[serde(rename = "hsmAvailable", default)]
-        pub hsm_available: Option<bool>,
+        pub hsm_available: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for LocationMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1838,7 +1924,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1856,16 +1941,16 @@ pub mod schemas {
     pub struct Policy {
         #[doc = "Specifies cloud audit logging configuration for this policy."]
         #[serde(rename = "auditConfigs", default)]
-        pub audit_configs: Option<Vec<crate::schemas::AuditConfig>>,
+        pub audit_configs: ::std::option::Option<Vec<crate::schemas::AuditConfig>>,
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
         #[serde(rename = "bindings", default)]
-        pub bindings: Option<Vec<crate::schemas::Binding>>,
+        pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<Vec<u8>>,
+        pub etag: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Deprecated."]
         #[serde(rename = "version", default)]
-        pub version: Option<i32>,
+        pub version: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Policy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1874,7 +1959,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1983,6 +2067,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PublicKeyAlgorithm {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1998,13 +2091,13 @@ pub mod schemas {
     pub struct PublicKey {
         #[doc = "The Algorithm associated\nwith this key."]
         #[serde(rename = "algorithm", default)]
-        pub algorithm: Option<crate::schemas::PublicKeyAlgorithm>,
+        pub algorithm: ::std::option::Option<crate::schemas::PublicKeyAlgorithm>,
         #[doc = "The name of the CryptoKeyVersion public key.\nProvided here for verification."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The public key, encoded in PEM format. For more information, see the\n[RFC 7468](https://tools.ietf.org/html/rfc7468) sections for\n[General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and\n[Textual Encoding of Subject Public Key Info]\n(https://tools.ietf.org/html/rfc7468#section-13)."]
         #[serde(rename = "pem", default)]
-        pub pem: Option<String>,
+        pub pem: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PublicKey {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2013,7 +2106,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2031,7 +2123,7 @@ pub mod schemas {
     )]
     pub struct RestoreCryptoKeyVersionRequest;
     impl ::field_selector::FieldSelector for RestoreCryptoKeyVersionRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -2048,10 +2140,10 @@ pub mod schemas {
     pub struct SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
         #[serde(rename = "policy", default)]
-        pub policy: Option<crate::schemas::Policy>,
+        pub policy: ::std::option::Option<crate::schemas::Policy>,
         #[doc = "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\npaths: \"bindings, etag\"\nThis field is only used by Cloud IAM."]
         #[serde(rename = "updateMask", default)]
-        pub update_mask: Option<String>,
+        pub update_mask: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SetIamPolicyRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2060,7 +2152,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2078,7 +2169,7 @@ pub mod schemas {
     pub struct TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
         #[serde(rename = "permissions", default)]
-        pub permissions: Option<Vec<String>>,
+        pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for TestIamPermissionsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2087,7 +2178,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2105,7 +2195,7 @@ pub mod schemas {
     pub struct TestIamPermissionsResponse {
         #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
         #[serde(rename = "permissions", default)]
-        pub permissions: Option<Vec<String>>,
+        pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for TestIamPermissionsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2114,7 +2204,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2132,7 +2221,7 @@ pub mod schemas {
     pub struct UpdateCryptoKeyPrimaryVersionRequest {
         #[doc = "The id of the child CryptoKeyVersion to use as primary."]
         #[serde(rename = "cryptoKeyVersionId", default)]
-        pub crypto_key_version_id: Option<String>,
+        pub crypto_key_version_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UpdateCryptoKeyPrimaryVersionRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2141,7 +2230,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2159,7 +2247,7 @@ pub mod schemas {
     pub struct WrappingPublicKey {
         #[doc = "The public key, encoded in PEM format. For more information, see the [RFC\n7468](https://tools.ietf.org/html/rfc7468) sections for [General\nConsiderations](https://tools.ietf.org/html/rfc7468#section-2) and\n[Textual Encoding of Subject Public Key Info]\n(https://tools.ietf.org/html/rfc7468#section-13)."]
         #[serde(rename = "pem", default)]
-        pub pem: Option<String>,
+        pub pem: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for WrappingPublicKey {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2168,7 +2256,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -2223,6 +2310,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -2267,6 +2363,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -4204,6 +4309,15 @@ mod resources {
                                         )))
                                     }
                                 })
+                            }
+                        }
+                        impl ::field_selector::FieldSelector for ListVersionView {
+                            fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                                match selector.chars().rev().nth(0) {
+                                    Some(',') | None => {}
+                                    _ => selector.push_str(","),
+                                }
+                                selector.push_str(ident);
                             }
                         }
                     }
@@ -6374,6 +6488,15 @@ mod resources {
                                             )))
                                         }
                                     })
+                                }
+                            }
+                            impl ::field_selector::FieldSelector for ListView {
+                                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                                    match selector.chars().rev().nth(0) {
+                                        Some(',') | None => {}
+                                        _ => selector.push_str(","),
+                                    }
+                                    selector.push_str(ident);
                                 }
                             }
                         }
@@ -10093,6 +10216,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -10168,5 +10292,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

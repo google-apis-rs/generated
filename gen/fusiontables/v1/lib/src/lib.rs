@@ -5,22 +5,22 @@ pub mod schemas {
     pub struct Bucket {
         #[doc = "Color of line or the interior of a polygon in #RRGGBB format."]
         #[serde(rename = "color", default)]
-        pub color: Option<String>,
+        pub color: ::std::option::Option<String>,
         #[doc = "Icon name used for a point."]
         #[serde(rename = "icon", default)]
-        pub icon: Option<String>,
+        pub icon: ::std::option::Option<String>,
         #[doc = "Maximum value in the selected column for a row to be styled according to the bucket color, opacity, icon, or weight."]
         #[serde(rename = "max", default)]
-        pub max: Option<f64>,
+        pub max: ::std::option::Option<f64>,
         #[doc = "Minimum value in the selected column for a row to be styled according to the bucket color, opacity, icon, or weight."]
         #[serde(rename = "min", default)]
-        pub min: Option<f64>,
+        pub min: ::std::option::Option<f64>,
         #[doc = "Opacity of the color: 0.0 (transparent) to 1.0 (opaque)."]
         #[serde(rename = "opacity", default)]
-        pub opacity: Option<f64>,
+        pub opacity: ::std::option::Option<f64>,
         #[doc = "Width of a line (in pixels)."]
         #[serde(rename = "weight", default)]
-        pub weight: Option<i32>,
+        pub weight: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Bucket {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -29,7 +29,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -47,10 +46,10 @@ pub mod schemas {
     pub struct ColumnBaseColumn {
         #[doc = "The id of the column in the base table from which this column is derived."]
         #[serde(rename = "columnId", default)]
-        pub column_id: Option<i32>,
+        pub column_id: ::std::option::Option<i32>,
         #[doc = "Offset to the entry in the list of base tables in the table definition."]
         #[serde(rename = "tableIndex", default)]
-        pub table_index: Option<i32>,
+        pub table_index: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ColumnBaseColumn {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -59,7 +58,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -77,25 +75,25 @@ pub mod schemas {
     pub struct Column {
         #[doc = "Optional identifier of the base column. If present, this column is derived from the specified base column."]
         #[serde(rename = "baseColumn", default)]
-        pub base_column: Option<crate::schemas::ColumnBaseColumn>,
+        pub base_column: ::std::option::Option<crate::schemas::ColumnBaseColumn>,
         #[doc = "Identifier for the column."]
         #[serde(rename = "columnId", default)]
-        pub column_id: Option<i32>,
+        pub column_id: ::std::option::Option<i32>,
         #[doc = "Optional column description."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Optional column predicate. Used to map table to graph data model (subject,predicate,object) See http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/#data-model"]
         #[serde(rename = "graph_predicate", default)]
-        pub graph_predicate: Option<String>,
+        pub graph_predicate: ::std::option::Option<String>,
         #[doc = "Type name: a template for an individual column."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Required name of the column."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Required type of the column."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Column {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -104,7 +102,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -122,16 +119,16 @@ pub mod schemas {
     pub struct ColumnList {
         #[doc = "List of all requested columns."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Column>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Column>>,
         #[doc = "Type name: a list of all columns."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result. No token is displayed if there are no more pages left."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Total number of columns for the table."]
         #[serde(rename = "totalItems", default)]
-        pub total_items: Option<i32>,
+        pub total_items: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ColumnList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -140,19 +137,18 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Geometry {
         #[doc = "The list of geometries in this geometry collection."]
         #[serde(rename = "geometries", default)]
-        pub geometries: Option<Vec<::serde_json::Value>>,
+        pub geometries: ::std::option::Option<Vec<::serde_json::Value>>,
         #[serde(rename = "geometry", default)]
-        pub geometry: Option<::serde_json::Value>,
+        pub geometry: ::std::option::Option<::serde_json::Value>,
         #[doc = "Type: A collection of geometries."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Geometry {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -161,7 +157,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -179,11 +174,11 @@ pub mod schemas {
     pub struct Import {
         #[doc = "Type name: a template for an import request."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The number of rows received from the import request."]
         #[serde(rename = "numRowsReceived", default)]
         #[serde(with = "crate::parsed_string")]
-        pub num_rows_received: Option<i64>,
+        pub num_rows_received: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for Import {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -192,7 +187,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -201,10 +195,10 @@ pub mod schemas {
     pub struct Line {
         #[doc = "The coordinates that define the line."]
         #[serde(rename = "coordinates", default)]
-        pub coordinates: Option<Vec<Vec<f64>>>,
+        pub coordinates: ::std::option::Option<Vec<Vec<f64>>>,
         #[doc = "Type: A line geometry."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Line {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -213,7 +207,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -222,19 +215,19 @@ pub mod schemas {
     pub struct LineStyle {
         #[doc = "Color of the line in #RRGGBB format."]
         #[serde(rename = "strokeColor", default)]
-        pub stroke_color: Option<String>,
+        pub stroke_color: ::std::option::Option<String>,
         #[doc = "Column-value, gradient or buckets styler that is used to determine the line color and opacity."]
         #[serde(rename = "strokeColorStyler", default)]
-        pub stroke_color_styler: Option<crate::schemas::StyleFunction>,
+        pub stroke_color_styler: ::std::option::Option<crate::schemas::StyleFunction>,
         #[doc = "Opacity of the line : 0.0 (transparent) to 1.0 (opaque)."]
         #[serde(rename = "strokeOpacity", default)]
-        pub stroke_opacity: Option<f64>,
+        pub stroke_opacity: ::std::option::Option<f64>,
         #[doc = "Width of the line in pixels."]
         #[serde(rename = "strokeWeight", default)]
-        pub stroke_weight: Option<i32>,
+        pub stroke_weight: ::std::option::Option<i32>,
         #[doc = "Column-value or bucket styler that is used to determine the width of the line."]
         #[serde(rename = "strokeWeightStyler", default)]
-        pub stroke_weight_styler: Option<crate::schemas::StyleFunction>,
+        pub stroke_weight_styler: ::std::option::Option<crate::schemas::StyleFunction>,
     }
     impl ::field_selector::FieldSelector for LineStyle {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -243,7 +236,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -252,10 +244,10 @@ pub mod schemas {
     pub struct Point {
         #[doc = "The coordinates that define the point."]
         #[serde(rename = "coordinates", default)]
-        pub coordinates: Option<Vec<f64>>,
+        pub coordinates: ::std::option::Option<Vec<f64>>,
         #[doc = "Point: A point geometry."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Point {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -264,7 +256,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -273,10 +264,10 @@ pub mod schemas {
     pub struct PointStyle {
         #[doc = "Name of the icon. Use values defined in http://www.google.com/fusiontables/DataSource?dsrcid=308519"]
         #[serde(rename = "iconName", default)]
-        pub icon_name: Option<String>,
+        pub icon_name: ::std::option::Option<String>,
         #[doc = "Column or a bucket value from which the icon name is to be determined."]
         #[serde(rename = "iconStyler", default)]
-        pub icon_styler: Option<crate::schemas::StyleFunction>,
+        pub icon_styler: ::std::option::Option<crate::schemas::StyleFunction>,
     }
     impl ::field_selector::FieldSelector for PointStyle {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -285,7 +276,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -294,10 +284,10 @@ pub mod schemas {
     pub struct Polygon {
         #[doc = "The coordinates that define the polygon."]
         #[serde(rename = "coordinates", default)]
-        pub coordinates: Option<Vec<Vec<Vec<f64>>>>,
+        pub coordinates: ::std::option::Option<Vec<Vec<Vec<f64>>>>,
         #[doc = "Type: A polygon geometry."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Polygon {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -306,7 +296,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -315,28 +304,28 @@ pub mod schemas {
     pub struct PolygonStyle {
         #[doc = "Color of the interior of the polygon in #RRGGBB format."]
         #[serde(rename = "fillColor", default)]
-        pub fill_color: Option<String>,
+        pub fill_color: ::std::option::Option<String>,
         #[doc = "Column-value, gradient, or bucket styler that is used to determine the interior color and opacity of the polygon."]
         #[serde(rename = "fillColorStyler", default)]
-        pub fill_color_styler: Option<crate::schemas::StyleFunction>,
+        pub fill_color_styler: ::std::option::Option<crate::schemas::StyleFunction>,
         #[doc = "Opacity of the interior of the polygon: 0.0 (transparent) to 1.0 (opaque)."]
         #[serde(rename = "fillOpacity", default)]
-        pub fill_opacity: Option<f64>,
+        pub fill_opacity: ::std::option::Option<f64>,
         #[doc = "Color of the polygon border in #RRGGBB format."]
         #[serde(rename = "strokeColor", default)]
-        pub stroke_color: Option<String>,
+        pub stroke_color: ::std::option::Option<String>,
         #[doc = "Column-value, gradient or buckets styler that is used to determine the border color and opacity."]
         #[serde(rename = "strokeColorStyler", default)]
-        pub stroke_color_styler: Option<crate::schemas::StyleFunction>,
+        pub stroke_color_styler: ::std::option::Option<crate::schemas::StyleFunction>,
         #[doc = "Opacity of the polygon border: 0.0 (transparent) to 1.0 (opaque)."]
         #[serde(rename = "strokeOpacity", default)]
-        pub stroke_opacity: Option<f64>,
+        pub stroke_opacity: ::std::option::Option<f64>,
         #[doc = "Width of the polyon border in pixels."]
         #[serde(rename = "strokeWeight", default)]
-        pub stroke_weight: Option<i32>,
+        pub stroke_weight: ::std::option::Option<i32>,
         #[doc = "Column-value or bucket styler that is used to determine the width of the polygon border."]
         #[serde(rename = "strokeWeightStyler", default)]
-        pub stroke_weight_styler: Option<crate::schemas::StyleFunction>,
+        pub stroke_weight_styler: ::std::option::Option<crate::schemas::StyleFunction>,
     }
     impl ::field_selector::FieldSelector for PolygonStyle {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -345,20 +334,19 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Sqlresponse {
         #[doc = "Columns in the table."]
         #[serde(rename = "columns", default)]
-        pub columns: Option<Vec<String>>,
+        pub columns: ::std::option::Option<Vec<String>>,
         #[doc = "Type name: a template for an individual table."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The rows in the table. For each cell we print out whatever cell value (e.g., numeric, string) exists. Thus it is important that each cell contains only one value."]
         #[serde(rename = "rows", default)]
-        pub rows: Option<Vec<Vec<::serde_json::Value>>>,
+        pub rows: ::std::option::Option<Vec<Vec<::serde_json::Value>>>,
     }
     impl ::field_selector::FieldSelector for Sqlresponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -367,7 +355,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -376,10 +363,10 @@ pub mod schemas {
     pub struct StyleFunctionGradientColorsItems {
         #[doc = "Color in #RRGGBB format."]
         #[serde(rename = "color", default)]
-        pub color: Option<String>,
+        pub color: ::std::option::Option<String>,
         #[doc = "Opacity of the color: 0.0 (transparent) to 1.0 (opaque)."]
         #[serde(rename = "opacity", default)]
-        pub opacity: Option<f64>,
+        pub opacity: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for StyleFunctionGradientColorsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -388,7 +375,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -397,13 +383,13 @@ pub mod schemas {
     pub struct StyleFunctionGradient {
         #[doc = "Array with two or more colors."]
         #[serde(rename = "colors", default)]
-        pub colors: Option<Vec<crate::schemas::StyleFunctionGradientColorsItems>>,
+        pub colors: ::std::option::Option<Vec<crate::schemas::StyleFunctionGradientColorsItems>>,
         #[doc = "Higher-end of the interpolation range: rows with this value will be assigned to colors[n-1]."]
         #[serde(rename = "max", default)]
-        pub max: Option<f64>,
+        pub max: ::std::option::Option<f64>,
         #[doc = "Lower-end of the interpolation range: rows with this value will be assigned to colors[0]."]
         #[serde(rename = "min", default)]
-        pub min: Option<f64>,
+        pub min: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for StyleFunctionGradient {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -412,7 +398,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -421,16 +406,16 @@ pub mod schemas {
     pub struct StyleFunction {
         #[doc = "Bucket function that assigns a style based on the range a column value falls into."]
         #[serde(rename = "buckets", default)]
-        pub buckets: Option<Vec<crate::schemas::Bucket>>,
+        pub buckets: ::std::option::Option<Vec<crate::schemas::Bucket>>,
         #[doc = "Name of the column whose value is used in the style."]
         #[serde(rename = "columnName", default)]
-        pub column_name: Option<String>,
+        pub column_name: ::std::option::Option<String>,
         #[doc = "Gradient function that interpolates a range of colors based on column value."]
         #[serde(rename = "gradient", default)]
-        pub gradient: Option<crate::schemas::StyleFunctionGradient>,
+        pub gradient: ::std::option::Option<crate::schemas::StyleFunctionGradient>,
         #[doc = "Stylers can be one of three kinds: \"fusiontables#fromColumn\" if the column value is to be used as is, i.e., the column values can have colors in #RRGGBBAA format or integer line widths or icon names; \"fusiontables#gradient\" if the styling of the row is to be based on applying the gradient function on the column value; or \"fusiontables#buckets\" if the styling is to based on the bucket into which the the column value falls."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for StyleFunction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -439,7 +424,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -448,25 +432,25 @@ pub mod schemas {
     pub struct StyleSetting {
         #[doc = "Type name: an individual style setting. A StyleSetting contains the style defintions for points, lines, and polygons in a table. Since a table can have any one or all of them, a style definition can have point, line and polygon style definitions."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Style definition for points in the table."]
         #[serde(rename = "markerOptions", default)]
-        pub marker_options: Option<crate::schemas::PointStyle>,
+        pub marker_options: ::std::option::Option<crate::schemas::PointStyle>,
         #[doc = "Optional name for the style setting."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Style definition for polygons in the table."]
         #[serde(rename = "polygonOptions", default)]
-        pub polygon_options: Option<crate::schemas::PolygonStyle>,
+        pub polygon_options: ::std::option::Option<crate::schemas::PolygonStyle>,
         #[doc = "Style definition for lines in the table."]
         #[serde(rename = "polylineOptions", default)]
-        pub polyline_options: Option<crate::schemas::LineStyle>,
+        pub polyline_options: ::std::option::Option<crate::schemas::LineStyle>,
         #[doc = "Identifier for the style setting (unique only within tables)."]
         #[serde(rename = "styleId", default)]
-        pub style_id: Option<i32>,
+        pub style_id: ::std::option::Option<i32>,
         #[doc = "Identifier for the table."]
         #[serde(rename = "tableId", default)]
-        pub table_id: Option<String>,
+        pub table_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for StyleSetting {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -475,7 +459,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -484,16 +467,16 @@ pub mod schemas {
     pub struct StyleSettingList {
         #[doc = "All requested style settings."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::StyleSetting>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::StyleSetting>>,
         #[doc = "Type name: in this case, a list of style settings."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result. No token is displayed if there are no more pages left."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Total number of styles for the table."]
         #[serde(rename = "totalItems", default)]
-        pub total_items: Option<i32>,
+        pub total_items: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for StyleSettingList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -502,7 +485,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -520,34 +502,34 @@ pub mod schemas {
     pub struct Table {
         #[doc = "Optional attribution assigned to the table."]
         #[serde(rename = "attribution", default)]
-        pub attribution: Option<String>,
+        pub attribution: ::std::option::Option<String>,
         #[doc = "Optional link for attribution."]
         #[serde(rename = "attributionLink", default)]
-        pub attribution_link: Option<String>,
+        pub attribution_link: ::std::option::Option<String>,
         #[doc = "Optional base table identifier if this table is a view or merged table."]
         #[serde(rename = "baseTableIds", default)]
-        pub base_table_ids: Option<Vec<String>>,
+        pub base_table_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Columns in the table."]
         #[serde(rename = "columns", default)]
-        pub columns: Option<Vec<crate::schemas::Column>>,
+        pub columns: ::std::option::Option<Vec<crate::schemas::Column>>,
         #[doc = "Optional description assigned to the table."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Variable for whether table is exportable."]
         #[serde(rename = "isExportable", default)]
-        pub is_exportable: Option<bool>,
+        pub is_exportable: ::std::option::Option<bool>,
         #[doc = "Type name: a template for an individual table."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Name assigned to a table."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Optional sql that encodes the table definition for derived tables."]
         #[serde(rename = "sql", default)]
-        pub sql: Option<String>,
+        pub sql: ::std::option::Option<String>,
         #[doc = "Encrypted unique alphanumeric identifier for the table."]
         #[serde(rename = "tableId", default)]
-        pub table_id: Option<String>,
+        pub table_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Table {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -556,7 +538,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -574,13 +555,13 @@ pub mod schemas {
     pub struct TableList {
         #[doc = "List of all requested tables."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Table>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Table>>,
         #[doc = "Type name: a list of all tables."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result. No token is displayed if there are no more pages left."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TableList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -589,7 +570,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -607,20 +587,20 @@ pub mod schemas {
     pub struct Task {
         #[doc = "Type of the resource. This is always \"fusiontables#task\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "An indication of task progress."]
         #[serde(rename = "progress", default)]
-        pub progress: Option<String>,
+        pub progress: ::std::option::Option<String>,
         #[doc = "Type of background task. One of  DELETE_ROWS Deletes one or more rows from the table. ADD_ROWS \"Adds one or more rows to a table. Includes importing data into a new table and importing more rows into an existing table. ADD_COLUMN Adds a new column to the table. CHANGE_TYPE Changes the type of a column."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "false while the table is busy with some other task. true if this background task is currently running."]
         #[serde(rename = "started", default)]
-        pub started: Option<bool>,
+        pub started: ::std::option::Option<bool>,
         #[doc = "Identifier for the task."]
         #[serde(rename = "taskId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub task_id: Option<i64>,
+        pub task_id: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for Task {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -629,7 +609,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -647,16 +626,16 @@ pub mod schemas {
     pub struct TaskList {
         #[doc = "List of all requested tasks."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Task>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Task>>,
         #[doc = "Type of the resource. This is always \"fusiontables#taskList\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result. No token is displayed if there are no more pages left."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Total number of tasks for the table."]
         #[serde(rename = "totalItems", default)]
-        pub total_items: Option<i32>,
+        pub total_items: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for TaskList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -665,7 +644,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -683,22 +661,22 @@ pub mod schemas {
     pub struct Template {
         #[doc = "List of columns from which the template is to be automatically constructed. Only one of body or automaticColumns can be specified."]
         #[serde(rename = "automaticColumnNames", default)]
-        pub automatic_column_names: Option<Vec<String>>,
+        pub automatic_column_names: ::std::option::Option<Vec<String>>,
         #[doc = "Body of the template. It contains HTML with {column_name} to insert values from a particular column. The body is sanitized to remove certain tags, e.g., script. Only one of body or automaticColumns can be specified."]
         #[serde(rename = "body", default)]
-        pub body: Option<String>,
+        pub body: ::std::option::Option<String>,
         #[doc = "Type name: a template for the info window contents. The template can either include an HTML body or a list of columns from which the template is computed automatically."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Optional name assigned to a template."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Identifier for the table for which the template is defined."]
         #[serde(rename = "tableId", default)]
-        pub table_id: Option<String>,
+        pub table_id: ::std::option::Option<String>,
         #[doc = "Identifier for the template, unique within the context of a particular table."]
         #[serde(rename = "templateId", default)]
-        pub template_id: Option<i32>,
+        pub template_id: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Template {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -707,7 +685,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -725,16 +702,16 @@ pub mod schemas {
     pub struct TemplateList {
         #[doc = "List of all requested templates."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Template>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Template>>,
         #[doc = "Type name: a list of all templates."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result. No token is displayed if there are no more pages left."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Total number of templates for the table."]
         #[serde(rename = "totalItems", default)]
-        pub total_items: Option<i32>,
+        pub total_items: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for TemplateList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -743,7 +720,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -796,6 +772,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -6920,6 +6905,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -6995,5 +6981,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

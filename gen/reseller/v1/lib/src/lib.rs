@@ -14,34 +14,34 @@ pub mod schemas {
     pub struct Address {
         #[doc = "A customer's physical address. An address can be composed of one to three lines. The addressline2 and addressLine3 are optional."]
         #[serde(rename = "addressLine1", default)]
-        pub address_line_1: Option<String>,
+        pub address_line_1: ::std::option::Option<String>,
         #[doc = "Line 2 of the address."]
         #[serde(rename = "addressLine2", default)]
-        pub address_line_2: Option<String>,
+        pub address_line_2: ::std::option::Option<String>,
         #[doc = "Line 3 of the address."]
         #[serde(rename = "addressLine3", default)]
-        pub address_line_3: Option<String>,
+        pub address_line_3: ::std::option::Option<String>,
         #[doc = "The customer contact's name. This is required."]
         #[serde(rename = "contactName", default)]
-        pub contact_name: Option<String>,
+        pub contact_name: ::std::option::Option<String>,
         #[doc = "For countryCode information, see the ISO 3166 country code elements. Verify that country is approved for resale of Google products. This property is required when creating a new customer."]
         #[serde(rename = "countryCode", default)]
-        pub country_code: Option<String>,
+        pub country_code: ::std::option::Option<String>,
         #[doc = "Identifies the resource as a customer address. Value: customers#address"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "An example of a locality value is the city of San Francisco."]
         #[serde(rename = "locality", default)]
-        pub locality: Option<String>,
+        pub locality: ::std::option::Option<String>,
         #[doc = "The company or company division name. This is required."]
         #[serde(rename = "organizationName", default)]
-        pub organization_name: Option<String>,
+        pub organization_name: ::std::option::Option<String>,
         #[doc = "A postalCode example is a postal zip code such as 94043. This property is required when creating a new customer."]
         #[serde(rename = "postalCode", default)]
-        pub postal_code: Option<String>,
+        pub postal_code: ::std::option::Option<String>,
         #[doc = "An example of a region value is CA for the state of California."]
         #[serde(rename = "region", default)]
-        pub region: Option<String>,
+        pub region: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Address {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -50,7 +50,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -68,19 +67,19 @@ pub mod schemas {
     pub struct ChangePlanRequest {
         #[doc = "Google-issued code (100 char max) for discounted pricing on subscription plans. Deal code must be included in changePlan request in order to receive discounted rate. This property is optional. If a deal code has already been added to a subscription, this property may be left empty and the existing discounted rate will still apply (if not empty, only provide the deal code that is already present on the subscription). If a deal code has never been added to a subscription and this property is left blank, regular pricing will apply."]
         #[serde(rename = "dealCode", default)]
-        pub deal_code: Option<String>,
+        pub deal_code: ::std::option::Option<String>,
         #[doc = "Identifies the resource as a subscription change plan request. Value: subscriptions#changePlanRequest"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The planName property is required. This is the name of the subscription's payment plan. For more information about the Google payment plans, see API concepts.\n\nPossible values are:\n\n* ANNUAL_MONTHLY_PAY - The annual commitment plan with monthly payments  Caution: ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses.\n* ANNUAL_YEARLY_PAY - The annual commitment plan with yearly payments\n* FLEXIBLE - The flexible plan\n* TRIAL - The 30-day free trial plan"]
         #[serde(rename = "planName", default)]
-        pub plan_name: Option<String>,
+        pub plan_name: ::std::option::Option<String>,
         #[doc = "This is an optional property. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters."]
         #[serde(rename = "purchaseOrderId", default)]
-        pub purchase_order_id: Option<String>,
+        pub purchase_order_id: ::std::option::Option<String>,
         #[doc = "This is a required property. The seats property is the number of user seat licenses."]
         #[serde(rename = "seats", default)]
-        pub seats: Option<crate::schemas::Seats>,
+        pub seats: ::std::option::Option<crate::schemas::Seats>,
     }
     impl ::field_selector::FieldSelector for ChangePlanRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -89,7 +88,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -107,28 +105,28 @@ pub mod schemas {
     pub struct Customer {
         #[doc = "Like the \"Customer email\" in the reseller tools, this email is the secondary contact used if something happens to the customer's service such as service outage or a security issue. This property is required when creating a new customer and should not use the same domain as customerDomain."]
         #[serde(rename = "alternateEmail", default)]
-        pub alternate_email: Option<String>,
+        pub alternate_email: ::std::option::Option<String>,
         #[doc = "The customer's primary domain name string. customerDomain is required when creating a new customer. Do not include the www prefix in the domain when adding a customer."]
         #[serde(rename = "customerDomain", default)]
-        pub customer_domain: Option<String>,
+        pub customer_domain: ::std::option::Option<String>,
         #[doc = "Whether the customer's primary domain has been verified."]
         #[serde(rename = "customerDomainVerified", default)]
-        pub customer_domain_verified: Option<bool>,
+        pub customer_domain_verified: ::std::option::Option<bool>,
         #[doc = "This property will always be returned in a response as the unique identifier generated by Google. In a request, this property can be either the primary domain or the unique identifier generated by Google."]
         #[serde(rename = "customerId", default)]
-        pub customer_id: Option<String>,
+        pub customer_id: ::std::option::Option<String>,
         #[doc = "Identifies the resource as a customer. Value: reseller#customer"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Customer contact phone number. Must start with \"+\" followed by the country code. The rest of the number can be contiguous numbers or respect the phone local format conventions, but it must be a real phone number and not, for example, \"123\". This field is silently ignored if invalid."]
         #[serde(rename = "phoneNumber", default)]
-        pub phone_number: Option<String>,
+        pub phone_number: ::std::option::Option<String>,
         #[doc = "A customer's address information. Each field has a limit of 255 charcters."]
         #[serde(rename = "postalAddress", default)]
-        pub postal_address: Option<crate::schemas::Address>,
+        pub postal_address: ::std::option::Option<crate::schemas::Address>,
         #[doc = "URL to customer's Admin console dashboard. The read-only URL is generated by the API service. This is used if your client application requires the customer to complete a task in the Admin console."]
         #[serde(rename = "resourceUiUrl", default)]
-        pub resource_ui_url: Option<String>,
+        pub resource_ui_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Customer {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -137,7 +135,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -155,10 +152,10 @@ pub mod schemas {
     pub struct RenewalSettings {
         #[doc = "Identifies the resource as a subscription renewal setting. Value: subscriptions#renewalSettings"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Renewal settings for the annual commitment plan. For more detailed information, see renewal options in the administrator help center. When renewing a subscription, the renewalType is a required property."]
         #[serde(rename = "renewalType", default)]
-        pub renewal_type: Option<String>,
+        pub renewal_type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RenewalSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -167,7 +164,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -185,10 +181,10 @@ pub mod schemas {
     pub struct ResellernotifyGetwatchdetailsResponse {
         #[doc = "List of registered service accounts."]
         #[serde(rename = "serviceAccountEmailAddresses", default)]
-        pub service_account_email_addresses: Option<Vec<String>>,
+        pub service_account_email_addresses: ::std::option::Option<Vec<String>>,
         #[doc = "Topic name of the PubSub"]
         #[serde(rename = "topicName", default)]
-        pub topic_name: Option<String>,
+        pub topic_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ResellernotifyGetwatchdetailsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -197,7 +193,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -215,7 +210,7 @@ pub mod schemas {
     pub struct ResellernotifyResource {
         #[doc = "Topic name of the PubSub"]
         #[serde(rename = "topicName", default)]
-        pub topic_name: Option<String>,
+        pub topic_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ResellernotifyResource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -224,7 +219,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -242,16 +236,16 @@ pub mod schemas {
     pub struct Seats {
         #[doc = "Identifies the resource as a subscription seat setting. Value: subscriptions#seats"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Read-only field containing the current number of users that are assigned a license for the product defined in skuId. This field's value is equivalent to the numerical count of users returned by the Enterprise License Manager API method: listForProductAndSku"]
         #[serde(rename = "licensedNumberOfSeats", default)]
-        pub licensed_number_of_seats: Option<i32>,
+        pub licensed_number_of_seats: ::std::option::Option<i32>,
         #[doc = "This is a required property and is exclusive to subscriptions with FLEXIBLE or TRIAL plans. This property sets the maximum number of licensed users allowed on a subscription. This quantity can be increased up to the maximum limit defined in the reseller's contract. The minimum quantity is the current number of users in the customer account. Note: G Suite subscriptions automatically assign a license to every user."]
         #[serde(rename = "maximumNumberOfSeats", default)]
-        pub maximum_number_of_seats: Option<i32>,
+        pub maximum_number_of_seats: ::std::option::Option<i32>,
         #[doc = "This is a required property and is exclusive to subscriptions with ANNUAL_MONTHLY_PAY and ANNUAL_YEARLY_PAY plans. This property sets the maximum number of licenses assignable to users on a subscription. The reseller can add more licenses, but once set, the numberOfSeats cannot be reduced until renewal. The reseller is invoiced based on the numberOfSeats value regardless of how many of these user licenses are assigned. Note: G Suite subscriptions automatically assign a license to every user."]
         #[serde(rename = "numberOfSeats", default)]
-        pub number_of_seats: Option<i32>,
+        pub number_of_seats: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Seats {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -260,7 +254,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -279,11 +272,11 @@ pub mod schemas {
         #[doc = "An annual commitment plan's interval's endTime in milliseconds using the UNIX Epoch format. See an example Epoch converter."]
         #[serde(rename = "endTime", default)]
         #[serde(with = "crate::parsed_string")]
-        pub end_time: Option<i64>,
+        pub end_time: ::std::option::Option<i64>,
         #[doc = "An annual commitment plan's interval's startTime in milliseconds using UNIX Epoch format. See an example Epoch converter."]
         #[serde(rename = "startTime", default)]
         #[serde(with = "crate::parsed_string")]
-        pub start_time: Option<i64>,
+        pub start_time: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for SubscriptionPlanCommitmentInterval {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -292,7 +285,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -310,13 +302,14 @@ pub mod schemas {
     pub struct SubscriptionPlan {
         #[doc = "In this version of the API, annual commitment plan's interval is one year.  Note: When billingMethod value is OFFLINE, the subscription property object plan.commitmentInterval is omitted in all API responses."]
         #[serde(rename = "commitmentInterval", default)]
-        pub commitment_interval: Option<crate::schemas::SubscriptionPlanCommitmentInterval>,
+        pub commitment_interval:
+            ::std::option::Option<crate::schemas::SubscriptionPlanCommitmentInterval>,
         #[doc = "The isCommitmentPlan property's boolean value identifies the plan as an annual commitment plan:\n\n* true \u{2014} The subscription's plan is an annual commitment plan.\n* false \u{2014} The plan is not an annual commitment plan."]
         #[serde(rename = "isCommitmentPlan", default)]
-        pub is_commitment_plan: Option<bool>,
+        pub is_commitment_plan: ::std::option::Option<bool>,
         #[doc = "The planName property is required. This is the name of the subscription's plan. For more information about the Google payment plans, see the API concepts.\n\nPossible values are:\n\n* ANNUAL_MONTHLY_PAY \u{2014} The annual commitment plan with monthly payments.  Caution: ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses.\n* ANNUAL_YEARLY_PAY \u{2014} The annual commitment plan with yearly payments\n* FLEXIBLE \u{2014} The flexible plan\n* TRIAL \u{2014} The 30-day free trial plan. A subscription in trial will be suspended after the 30th free day if no payment plan is assigned. Calling changePlan will assign a payment plan to a trial but will not activate the plan. A trial will automatically begin its assigned payment plan after its 30th free day or immediately after calling startPaidService.\n* FREE \u{2014} The free plan is exclusive to the Cloud Identity SKU and does not incur any billing."]
         #[serde(rename = "planName", default)]
-        pub plan_name: Option<String>,
+        pub plan_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SubscriptionPlan {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -325,7 +318,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -343,11 +335,11 @@ pub mod schemas {
     pub struct SubscriptionTransferInfo {
         #[doc = "When inserting a subscription, this is the minimum number of seats listed in the transfer order for this product. For example, if the customer has 20 users, the reseller cannot place a transfer order of 15 seats. The minimum is 20 seats."]
         #[serde(rename = "minimumTransferableSeats", default)]
-        pub minimum_transferable_seats: Option<i32>,
+        pub minimum_transferable_seats: ::std::option::Option<i32>,
         #[doc = "The time when transfer token or intent to transfer will expire. The time is in milliseconds using UNIX Epoch format."]
         #[serde(rename = "transferabilityExpirationTime", default)]
         #[serde(with = "crate::parsed_string")]
-        pub transferability_expiration_time: Option<i64>,
+        pub transferability_expiration_time: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for SubscriptionTransferInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -356,7 +348,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -374,11 +365,11 @@ pub mod schemas {
     pub struct SubscriptionTrialSettings {
         #[doc = "Determines if a subscription's plan is in a 30-day free trial or not:\n\n* true \u{2014} The plan is in trial.\n* false \u{2014} The plan is not in trial."]
         #[serde(rename = "isInTrial", default)]
-        pub is_in_trial: Option<bool>,
+        pub is_in_trial: ::std::option::Option<bool>,
         #[doc = "Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example Epoch converter."]
         #[serde(rename = "trialEndTime", default)]
         #[serde(with = "crate::parsed_string")]
-        pub trial_end_time: Option<i64>,
+        pub trial_end_time: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for SubscriptionTrialSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -387,7 +378,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -405,59 +395,59 @@ pub mod schemas {
     pub struct Subscription {
         #[doc = "Read-only field that returns the current billing method for a subscription."]
         #[serde(rename = "billingMethod", default)]
-        pub billing_method: Option<String>,
+        pub billing_method: ::std::option::Option<String>,
         #[doc = "The creationTime property is the date when subscription was created. It is in milliseconds using the Epoch format. See an example Epoch converter."]
         #[serde(rename = "creationTime", default)]
         #[serde(with = "crate::parsed_string")]
-        pub creation_time: Option<i64>,
+        pub creation_time: ::std::option::Option<i64>,
         #[doc = "Primary domain name of the customer"]
         #[serde(rename = "customerDomain", default)]
-        pub customer_domain: Option<String>,
+        pub customer_domain: ::std::option::Option<String>,
         #[doc = "This property will always be returned in a response as the unique identifier generated by Google. In a request, this property can be either the primary domain or the unique identifier generated by Google."]
         #[serde(rename = "customerId", default)]
-        pub customer_id: Option<String>,
+        pub customer_id: ::std::option::Option<String>,
         #[doc = "Google-issued code (100 char max) for discounted pricing on subscription plans. Deal code must be included in insert requests in order to receive discounted rate. This property is optional, regular pricing applies if left empty."]
         #[serde(rename = "dealCode", default)]
-        pub deal_code: Option<String>,
+        pub deal_code: ::std::option::Option<String>,
         #[doc = "Identifies the resource as a Subscription. Value: reseller#subscription"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The plan property is required. In this version of the API, the G Suite plans are the flexible plan, annual commitment plan, and the 30-day free trial plan. For more information about the API\"s payment plans, see the API concepts."]
         #[serde(rename = "plan", default)]
-        pub plan: Option<crate::schemas::SubscriptionPlan>,
+        pub plan: ::std::option::Option<crate::schemas::SubscriptionPlan>,
         #[doc = "This is an optional property. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters."]
         #[serde(rename = "purchaseOrderId", default)]
-        pub purchase_order_id: Option<String>,
+        pub purchase_order_id: ::std::option::Option<String>,
         #[doc = "Renewal settings for the annual commitment plan. For more detailed information, see renewal options in the administrator help center."]
         #[serde(rename = "renewalSettings", default)]
-        pub renewal_settings: Option<crate::schemas::RenewalSettings>,
+        pub renewal_settings: ::std::option::Option<crate::schemas::RenewalSettings>,
         #[doc = "URL to customer's Subscriptions page in the Admin console. The read-only URL is generated by the API service. This is used if your client application requires the customer to complete a task using the Subscriptions page in the Admin console."]
         #[serde(rename = "resourceUiUrl", default)]
-        pub resource_ui_url: Option<String>,
+        pub resource_ui_url: ::std::option::Option<String>,
         #[doc = "This is a required property. The number and limit of user seat licenses in the plan."]
         #[serde(rename = "seats", default)]
-        pub seats: Option<crate::schemas::Seats>,
+        pub seats: ::std::option::Option<crate::schemas::Seats>,
         #[doc = "A required property. The skuId is a unique system identifier for a product's SKU assigned to a customer in the subscription. For products and SKUs available in this version of the API, see  Product and SKU IDs."]
         #[serde(rename = "skuId", default)]
-        pub sku_id: Option<String>,
+        pub sku_id: ::std::option::Option<String>,
         #[doc = "Read-only external display name for a product's SKU assigned to a customer in the subscription. SKU names are subject to change at Google's discretion. For products and SKUs available in this version of the API, see  Product and SKU IDs."]
         #[serde(rename = "skuName", default)]
-        pub sku_name: Option<String>,
+        pub sku_name: ::std::option::Option<String>,
         #[doc = "This is an optional property."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
         #[doc = "The subscriptionId is the subscription identifier and is unique for each customer. This is a required property. Since a subscriptionId changes when a subscription is updated, we recommend not using this ID as a key for persistent data. Use the subscriptionId as described in retrieve all reseller subscriptions."]
         #[serde(rename = "subscriptionId", default)]
-        pub subscription_id: Option<String>,
+        pub subscription_id: ::std::option::Option<String>,
         #[doc = "Read-only field containing an enumerable of all the current suspension reasons for a subscription. It is possible for a subscription to have many concurrent, overlapping suspension reasons. A subscription's STATUS is SUSPENDED until all pending suspensions are removed.\n\nPossible options include:\n\n* PENDING_TOS_ACCEPTANCE - The customer has not logged in and accepted the G Suite Resold Terms of Services.\n* RENEWAL_WITH_TYPE_CANCEL - The customer's commitment ended and their service was cancelled at the end of their term.\n* RESELLER_INITIATED - A manual suspension invoked by a Reseller.\n* TRIAL_ENDED - The customer's trial expired without a plan selected.\n* OTHER - The customer is suspended for an internal Google reason (e.g. abuse or otherwise)."]
         #[serde(rename = "suspensionReasons", default)]
-        pub suspension_reasons: Option<Vec<String>>,
+        pub suspension_reasons: ::std::option::Option<Vec<String>>,
         #[doc = "Read-only transfer related information for the subscription. For more information, see retrieve transferable subscriptions for a customer."]
         #[serde(rename = "transferInfo", default)]
-        pub transfer_info: Option<crate::schemas::SubscriptionTransferInfo>,
+        pub transfer_info: ::std::option::Option<crate::schemas::SubscriptionTransferInfo>,
         #[doc = "The G Suite annual commitment and flexible payment plans can be in a 30-day free trial. For more information, see the API concepts."]
         #[serde(rename = "trialSettings", default)]
-        pub trial_settings: Option<crate::schemas::SubscriptionTrialSettings>,
+        pub trial_settings: ::std::option::Option<crate::schemas::SubscriptionTrialSettings>,
     }
     impl ::field_selector::FieldSelector for Subscription {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -466,7 +456,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -484,13 +473,13 @@ pub mod schemas {
     pub struct Subscriptions {
         #[doc = "Identifies the resource as a collection of subscriptions. Value: reseller#subscriptions"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The subscriptions in this page of results."]
         #[serde(rename = "subscriptions", default)]
-        pub subscriptions: Option<Vec<crate::schemas::Subscription>>,
+        pub subscriptions: ::std::option::Option<Vec<crate::schemas::Subscription>>,
     }
     impl ::field_selector::FieldSelector for Subscriptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -499,7 +488,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -544,6 +532,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1730,6 +1727,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for DeleteDeletionType {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -3752,6 +3758,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3827,5 +3834,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

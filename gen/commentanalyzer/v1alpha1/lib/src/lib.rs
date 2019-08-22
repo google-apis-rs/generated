@@ -5,32 +5,33 @@ pub mod schemas {
     pub struct AnalyzeCommentRequest {
         #[doc = "Opaque token that is echoed from the request to the response."]
         #[serde(rename = "clientToken", default)]
-        pub client_token: Option<String>,
+        pub client_token: ::std::option::Option<String>,
         #[doc = "The comment to analyze."]
         #[serde(rename = "comment", default)]
-        pub comment: Option<crate::schemas::TextEntry>,
+        pub comment: ::std::option::Option<crate::schemas::TextEntry>,
         #[doc = "Optional identifier associating this AnalyzeCommentRequest with a\nparticular client's community. Different communities may have different\nnorms and rules. Specifying this value enables us to explore building\ncommunity-specific models for clients."]
         #[serde(rename = "communityId", default)]
-        pub community_id: Option<String>,
+        pub community_id: ::std::option::Option<String>,
         #[doc = "The context of the comment."]
         #[serde(rename = "context", default)]
-        pub context: Option<crate::schemas::Context>,
+        pub context: ::std::option::Option<crate::schemas::Context>,
         #[doc = "Do not store the comment or context sent in this request. By default, the\nservice may store comments/context for debugging purposes."]
         #[serde(rename = "doNotStore", default)]
-        pub do_not_store: Option<bool>,
+        pub do_not_store: ::std::option::Option<bool>,
         #[doc = "The language(s) of the comment and context (if none are specified, the\nlanguage is automatically detected). If multiple languages are specified,\nthe text is checked in all of them that are supported. Both ISO and BCP-47\nlanguage codes are accepted.\nCurrent Language Restrictions:\n\n* Only English text (\"en\") is supported.\n  If none of the languages specified by the caller are supported, an\n  `UNIMPLEMENTED` error is returned."]
         #[serde(rename = "languages", default)]
-        pub languages: Option<Vec<String>>,
+        pub languages: ::std::option::Option<Vec<String>>,
         #[doc = "Specification of requested attributes. The AttributeParameters serve as\nconfiguration for each associated attribute. The map keys are attribute\nnames. The following attributes are available:\n\"ATTACK_ON_AUTHOR\" - Attack on author of original article or post.\n\"ATTACK_ON_COMMENTER\" - Attack on fellow commenter.\n\"ATTACK_ON_PUBLISHER\" - Attack on publisher of article/post.\n\"INCOHERENT\" - Difficult to understand, nonsensical.\n\"INFLAMMATORY\" - Intending to provoke or inflame.\n\"OBSCENE\" - Obscene, such as cursing.\n\"OFF_TOPIC\" - Not related to the original topic.\n\"SPAM\" - Commercial/advertising spam content.\n\"UNSUBSTANTIAL\" - Trivial."]
         #[serde(rename = "requestedAttributes", default)]
-        pub requested_attributes:
-            Option<::std::collections::BTreeMap<String, crate::schemas::AttributeParameters>>,
+        pub requested_attributes: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::AttributeParameters>,
+        >,
         #[doc = "Session ID. Used to join related RPCs into a single session. For example,\nan interactive tool that calls both the AnalyzeComment and\nSuggestCommentScore RPCs should set all invocations of both RPCs to the\nsame Session ID, typically a random 64-bit integer."]
         #[serde(rename = "sessionId", default)]
-        pub session_id: Option<String>,
+        pub session_id: ::std::option::Option<String>,
         #[doc = "An advisory parameter that will return span annotations if the model\nis capable of providing scores with sub-comment resolution. This will\nlikely increase the size of the returned message."]
         #[serde(rename = "spanAnnotations", default)]
-        pub span_annotations: Option<bool>,
+        pub span_annotations: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for AnalyzeCommentRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -39,7 +40,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -48,17 +48,18 @@ pub mod schemas {
     pub struct AnalyzeCommentResponse {
         #[doc = "Scores for the requested attributes. The map keys are attribute names (same\nas the requested_attribute field in AnalyzeCommentRequest, for example\n\"ATTACK_ON_AUTHOR\", \"INFLAMMATORY\", etc)."]
         #[serde(rename = "attributeScores", default)]
-        pub attribute_scores:
-            Option<::std::collections::BTreeMap<String, crate::schemas::AttributeScores>>,
+        pub attribute_scores: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::AttributeScores>,
+        >,
         #[doc = "Same token from the original AnalyzeCommentRequest."]
         #[serde(rename = "clientToken", default)]
-        pub client_token: Option<String>,
+        pub client_token: ::std::option::Option<String>,
         #[doc = "Contains the languages detected from the text content, sorted in order of\nlikelihood."]
         #[serde(rename = "detectedLanguages", default)]
-        pub detected_languages: Option<Vec<String>>,
+        pub detected_languages: ::std::option::Option<Vec<String>>,
         #[doc = "The language(s) used by CommentAnalyzer service to choose which Model to\nuse when analyzing the comment. Might better be called\n\"effective_languages\". The logic used to make the choice is as follows:\nif Request.languages.empty()\neffective_languages = detected_languages\nelse\neffective_languages = Request.languages"]
         #[serde(rename = "languages", default)]
-        pub languages: Option<Vec<String>>,
+        pub languages: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for AnalyzeCommentResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -67,7 +68,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -85,10 +85,10 @@ pub mod schemas {
     pub struct ArticleAndParentComment {
         #[doc = "The source content about which the comment was made (article text, article\nsummary, video transcript, etc)."]
         #[serde(rename = "article", default)]
-        pub article: Option<crate::schemas::TextEntry>,
+        pub article: ::std::option::Option<crate::schemas::TextEntry>,
         #[doc = "Refers to text that is a direct parent of the source comment, such as in a\none-deep threaded message board. This field will only be present for\ncomments that are replies to other comments and will not be populated for\ndirect comments on the article_text."]
         #[serde(rename = "parentComment", default)]
-        pub parent_comment: Option<crate::schemas::TextEntry>,
+        pub parent_comment: ::std::option::Option<crate::schemas::TextEntry>,
     }
     impl ::field_selector::FieldSelector for ArticleAndParentComment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -97,7 +97,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -158,16 +157,25 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AttributeParametersScoreType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AttributeParameters {
         #[doc = "Don't return scores for this attribute that are below this threshold. If\nunset, a default threshold will be applied. A FloatValue wrapper is used to\ndistinguish between 0 vs. default/unset."]
         #[serde(rename = "scoreThreshold", default)]
-        pub score_threshold: Option<f32>,
+        pub score_threshold: ::std::option::Option<f32>,
         #[doc = "What type of scores to return. If unset, defaults to probability scores."]
         #[serde(rename = "scoreType", default)]
-        pub score_type: Option<crate::schemas::AttributeParametersScoreType>,
+        pub score_type: ::std::option::Option<crate::schemas::AttributeParametersScoreType>,
     }
     impl ::field_selector::FieldSelector for AttributeParameters {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -176,7 +184,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -185,10 +192,10 @@ pub mod schemas {
     pub struct AttributeScores {
         #[doc = "Per-span scores."]
         #[serde(rename = "spanScores", default)]
-        pub span_scores: Option<Vec<crate::schemas::SpanScore>>,
+        pub span_scores: ::std::option::Option<Vec<crate::schemas::SpanScore>>,
         #[doc = "Overall score for comment as a whole."]
         #[serde(rename = "summaryScore", default)]
-        pub summary_score: Option<crate::schemas::Score>,
+        pub summary_score: ::std::option::Option<crate::schemas::Score>,
     }
     impl ::field_selector::FieldSelector for AttributeScores {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -197,7 +204,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -215,10 +221,11 @@ pub mod schemas {
     pub struct Context {
         #[doc = "Information about the source for which the original comment was made, and\nany parent comment info."]
         #[serde(rename = "articleAndParentComment", default)]
-        pub article_and_parent_comment: Option<crate::schemas::ArticleAndParentComment>,
+        pub article_and_parent_comment:
+            ::std::option::Option<crate::schemas::ArticleAndParentComment>,
         #[doc = "A list of messages. For example, a linear comments section or forum thread."]
         #[serde(rename = "entries", default)]
-        pub entries: Option<Vec<crate::schemas::TextEntry>>,
+        pub entries: ::std::option::Option<Vec<crate::schemas::TextEntry>>,
     }
     impl ::field_selector::FieldSelector for Context {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -227,7 +234,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -288,16 +294,25 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ScoreType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Score {
         #[doc = "The type of the above value."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::ScoreType>,
+        pub r#type: ::std::option::Option<crate::schemas::ScoreType>,
         #[doc = "Score value. Semantics described by type below."]
         #[serde(rename = "value", default)]
-        pub value: Option<f32>,
+        pub value: ::std::option::Option<f32>,
     }
     impl ::field_selector::FieldSelector for Score {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -306,7 +321,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -315,12 +329,12 @@ pub mod schemas {
     pub struct SpanScore {
         #[doc = "\"begin\" and \"end\" describe the span of the original text that the attribute\nscore applies to. The values are the UTF-16 codepoint range. \"end\" is\nexclusive. For example, with the text \"Hi there\", the begin/end pair (0,2)\ndescribes the text \"Hi\".\n\nIf \"begin\" and \"end\" are unset, the score applies to the full text."]
         #[serde(rename = "begin", default)]
-        pub begin: Option<i32>,
+        pub begin: ::std::option::Option<i32>,
         #[serde(rename = "end", default)]
-        pub end: Option<i32>,
+        pub end: ::std::option::Option<i32>,
         #[doc = "The score value."]
         #[serde(rename = "score", default)]
-        pub score: Option<crate::schemas::Score>,
+        pub score: ::std::option::Option<crate::schemas::Score>,
     }
     impl ::field_selector::FieldSelector for SpanScore {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -329,7 +343,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -338,26 +351,27 @@ pub mod schemas {
     pub struct SuggestCommentScoreRequest {
         #[doc = "Attribute scores for the comment. The map keys are attribute names, same as\nthe requested_attribute field in AnalyzeCommentRequest (for example\n\"ATTACK_ON_AUTHOR\", \"INFLAMMATORY\", etc.). This field has the same type as\nthe `attribute_scores` field in AnalyzeCommentResponse.\n\nTo specify an overall attribute score for the entire comment as a whole,\nuse the `summary_score` field of the mapped AttributeScores object. To\nspecify scores on specific subparts of the comment, use the `span_scores`\nfield. All SpanScore objects must have begin and end fields set.\n\nAll Score objects must be explicitly set (for binary classification, use\nthe score values 0 and 1). If Score objects don't include a ScoreType,\n`PROBABILITY` is assumed.\n\n`attribute_scores` must not be empty. The mapped AttributeScores objects\nalso must not be empty. An `INVALID_ARGUMENT` error is returned for all\nmalformed requests."]
         #[serde(rename = "attributeScores", default)]
-        pub attribute_scores:
-            Option<::std::collections::BTreeMap<String, crate::schemas::AttributeScores>>,
+        pub attribute_scores: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::AttributeScores>,
+        >,
         #[doc = "Opaque token that is echoed from the request to the response."]
         #[serde(rename = "clientToken", default)]
-        pub client_token: Option<String>,
+        pub client_token: ::std::option::Option<String>,
         #[doc = "The comment being scored."]
         #[serde(rename = "comment", default)]
-        pub comment: Option<crate::schemas::TextEntry>,
+        pub comment: ::std::option::Option<crate::schemas::TextEntry>,
         #[doc = "Optional identifier associating this comment score suggestion with a\nparticular sub-community. Different communities may have different norms\nand rules. Specifying this value enables training community-specific\nmodels."]
         #[serde(rename = "communityId", default)]
-        pub community_id: Option<String>,
+        pub community_id: ::std::option::Option<String>,
         #[doc = "The context of the comment."]
         #[serde(rename = "context", default)]
-        pub context: Option<crate::schemas::Context>,
+        pub context: ::std::option::Option<crate::schemas::Context>,
         #[doc = "The language(s) of the comment and context (if none are specified, the\nlanguage is automatically detected). If multiple languages are specified,\nthe text is checked in all of them that are supported. Both ISO and BCP-47\nlanguage codes are accepted.\nCurrent Language Restrictions:\n\n* Only English text (\"en\") is supported.\n  If none of the languages specified by the caller are supported, an\n  `UNIMPLEMENTED` error is returned."]
         #[serde(rename = "languages", default)]
-        pub languages: Option<Vec<String>>,
+        pub languages: ::std::option::Option<Vec<String>>,
         #[doc = "Session ID. Used to join related RPCs into a single session. For example,\nan interactive tool that calls both the AnalyzeComment and\nSuggestCommentScore RPCs should set all invocations of both RPCs to the\nsame Session ID, typically a random 64-bit integer."]
         #[serde(rename = "sessionId", default)]
-        pub session_id: Option<String>,
+        pub session_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SuggestCommentScoreRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -366,7 +380,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -384,13 +397,13 @@ pub mod schemas {
     pub struct SuggestCommentScoreResponse {
         #[doc = "Same token from the original SuggestCommentScoreRequest."]
         #[serde(rename = "clientToken", default)]
-        pub client_token: Option<String>,
+        pub client_token: ::std::option::Option<String>,
         #[doc = "The list of languages detected from the comment text."]
         #[serde(rename = "detectedLanguages", default)]
-        pub detected_languages: Option<Vec<String>>,
+        pub detected_languages: ::std::option::Option<Vec<String>>,
         #[doc = "The list of languages provided in the request."]
         #[serde(rename = "requestedLanguages", default)]
-        pub requested_languages: Option<Vec<String>>,
+        pub requested_languages: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for SuggestCommentScoreResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -399,7 +412,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -452,6 +464,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for TextEntryType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -467,10 +488,10 @@ pub mod schemas {
     pub struct TextEntry {
         #[doc = "Type of the text field."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::TextEntryType>,
+        pub r#type: ::std::option::Option<crate::schemas::TextEntryType>,
         #[doc = "UTF-8 encoded text."]
         #[serde(rename = "text", default)]
-        pub text: Option<String>,
+        pub text: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TextEntry {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -479,7 +500,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -534,6 +554,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -578,6 +607,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1233,6 +1271,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1308,5 +1347,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

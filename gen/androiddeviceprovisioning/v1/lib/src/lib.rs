@@ -49,6 +49,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ClaimDeviceRequestSectionType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -65,16 +74,16 @@ pub mod schemas {
         #[doc = "Required. The ID of the customer for whom the device is being claimed."]
         #[serde(rename = "customerId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub customer_id: Option<i64>,
+        pub customer_id: ::std::option::Option<i64>,
         #[doc = "Required. The device identifier of the device to claim."]
         #[serde(rename = "deviceIdentifier", default)]
-        pub device_identifier: Option<crate::schemas::DeviceIdentifier>,
+        pub device_identifier: ::std::option::Option<crate::schemas::DeviceIdentifier>,
         #[doc = "Optional. The metadata to attach to the device."]
         #[serde(rename = "deviceMetadata", default)]
-        pub device_metadata: Option<crate::schemas::DeviceMetadata>,
+        pub device_metadata: ::std::option::Option<crate::schemas::DeviceMetadata>,
         #[doc = "Required. The section type of the device's provisioning record."]
         #[serde(rename = "sectionType", default)]
-        pub section_type: Option<crate::schemas::ClaimDeviceRequestSectionType>,
+        pub section_type: ::std::option::Option<crate::schemas::ClaimDeviceRequestSectionType>,
     }
     impl ::field_selector::FieldSelector for ClaimDeviceRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -83,7 +92,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -102,10 +110,10 @@ pub mod schemas {
         #[doc = "The device ID of the claimed device."]
         #[serde(rename = "deviceId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub device_id: Option<i64>,
+        pub device_id: ::std::option::Option<i64>,
         #[doc = "The resource name of the device in the format\n`partners/[PARTNER_ID]/devices/[DEVICE_ID]`."]
         #[serde(rename = "deviceName", default)]
-        pub device_name: Option<String>,
+        pub device_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ClaimDeviceResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -114,7 +122,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -132,7 +139,7 @@ pub mod schemas {
     pub struct ClaimDevicesRequest {
         #[doc = "Required. A list of device claims."]
         #[serde(rename = "claims", default)]
-        pub claims: Option<Vec<crate::schemas::PartnerClaim>>,
+        pub claims: ::std::option::Option<Vec<crate::schemas::PartnerClaim>>,
     }
     impl ::field_selector::FieldSelector for ClaimDevicesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -141,7 +148,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -198,6 +204,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CompanyTermsStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -213,23 +228,23 @@ pub mod schemas {
     pub struct Company {
         #[doc = "Optional. Input only. Email address of customer's users in the admin role.\nEach email address must be associated with a Google Account."]
         #[serde(rename = "adminEmails", default)]
-        pub admin_emails: Option<Vec<String>>,
+        pub admin_emails: ::std::option::Option<Vec<String>>,
         #[doc = "Output only. The ID of the company. Assigned by the server."]
         #[serde(rename = "companyId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub company_id: Option<i64>,
+        pub company_id: ::std::option::Option<i64>,
         #[doc = "Required. The name of the company. For example *XYZ Corp*. Displayed to the\ncompany's employees in the zero-touch enrollment portal."]
         #[serde(rename = "companyName", default)]
-        pub company_name: Option<String>,
+        pub company_name: ::std::option::Option<String>,
         #[doc = "Output only. The API resource name of the company. The resource name is one\nof the following formats:\n\n* `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]`\n* `partners/[PARTNER_ID]/vendors/[VENDOR_ID]`\n* `partners/[PARTNER_ID]/vendors/[VENDOR_ID]/customers/[CUSTOMER_ID]`\n\nAssigned by the server."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Input only. Email address of customer's users in the owner role. At least\none `owner_email` is required. Each email address must be associated with a\nGoogle Account. Owners share the same access as admins but can also add,\ndelete, and edit your organization's portal users."]
         #[serde(rename = "ownerEmails", default)]
-        pub owner_emails: Option<Vec<String>>,
+        pub owner_emails: ::std::option::Option<Vec<String>>,
         #[doc = "Output only. Whether any user from the company has accepted the latest\nTerms of Service (ToS). See\nTermsStatus."]
         #[serde(rename = "termsStatus", default)]
-        pub terms_status: Option<crate::schemas::CompanyTermsStatus>,
+        pub terms_status: ::std::option::Option<crate::schemas::CompanyTermsStatus>,
     }
     impl ::field_selector::FieldSelector for Company {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -238,7 +253,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -256,35 +270,35 @@ pub mod schemas {
     pub struct Configuration {
         #[doc = "Required. The name of the organization. Zero-touch enrollment shows this\norganization name to device users during device provisioning."]
         #[serde(rename = "companyName", default)]
-        pub company_name: Option<String>,
+        pub company_name: ::std::option::Option<String>,
         #[doc = "Output only. The ID of the configuration. Assigned by the server."]
         #[serde(rename = "configurationId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub configuration_id: Option<i64>,
+        pub configuration_id: ::std::option::Option<i64>,
         #[doc = "Required. A short name that describes the configuration's purpose. For\nexample, *Sales team* or *Temporary employees*. The zero-touch enrollment\nportal displays this name to IT admins."]
         #[serde(rename = "configurationName", default)]
-        pub configuration_name: Option<String>,
+        pub configuration_name: ::std::option::Option<String>,
         #[doc = "Required. The email address that device users can contact to get help.\nZero-touch enrollment shows this email address to device users before\ndevice provisioning. The value is validated on input."]
         #[serde(rename = "contactEmail", default)]
-        pub contact_email: Option<String>,
+        pub contact_email: ::std::option::Option<String>,
         #[doc = "Required. The telephone number that device users can call, using another\ndevice, to get help. Zero-touch enrollment shows this number to device\nusers before device provisioning. Accepts numerals, spaces, the plus sign,\nhyphens, and parentheses."]
         #[serde(rename = "contactPhone", default)]
-        pub contact_phone: Option<String>,
+        pub contact_phone: ::std::option::Option<String>,
         #[doc = "A message, containing one or two sentences, to help device users get help\nor give them more details about what\u{2019}s happening to their device.\nZero-touch enrollment shows this message before the device is provisioned."]
         #[serde(rename = "customMessage", default)]
-        pub custom_message: Option<String>,
+        pub custom_message: ::std::option::Option<String>,
         #[doc = "The JSON-formatted EMM provisioning extras that are passed to the DPC."]
         #[serde(rename = "dpcExtras", default)]
-        pub dpc_extras: Option<String>,
+        pub dpc_extras: ::std::option::Option<String>,
         #[doc = "Required. The resource name of the selected DPC (device policy controller)\nin the format `customers/[CUSTOMER_ID]/dpcs/*`. To list the supported DPCs,\ncall\n`customers.dpcs.list`."]
         #[serde(rename = "dpcResourcePath", default)]
-        pub dpc_resource_path: Option<String>,
+        pub dpc_resource_path: ::std::option::Option<String>,
         #[doc = "Required. Whether this is the default configuration that zero-touch\nenrollment applies to any new devices the organization purchases in the\nfuture. Only one customer configuration can be the default. Setting this\nvalue to `true`, changes the previous default configuration's `isDefault`\nvalue to `false`."]
         #[serde(rename = "isDefault", default)]
-        pub is_default: Option<bool>,
+        pub is_default: ::std::option::Option<bool>,
         #[doc = "Output only. The API resource name in the format\n`customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. Assigned by\nthe server."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Configuration {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -293,7 +307,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -311,7 +324,7 @@ pub mod schemas {
     pub struct CreateCustomerRequest {
         #[doc = "Required. The company data to populate the new customer. Must contain a\nvalue for `companyName` and at least one `owner_email` that's associated\nwith a Google Account. The values for `companyId` and `name` must be empty."]
         #[serde(rename = "customer", default)]
-        pub customer: Option<crate::schemas::Company>,
+        pub customer: ::std::option::Option<crate::schemas::Company>,
     }
     impl ::field_selector::FieldSelector for CreateCustomerRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -320,7 +333,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -338,10 +350,10 @@ pub mod schemas {
     pub struct CustomerApplyConfigurationRequest {
         #[doc = "Required. The configuration applied to the device in the format\n`customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`."]
         #[serde(rename = "configuration", default)]
-        pub configuration: Option<String>,
+        pub configuration: ::std::option::Option<String>,
         #[doc = "Required. The device the configuration is applied to."]
         #[serde(rename = "device", default)]
-        pub device: Option<crate::schemas::DeviceReference>,
+        pub device: ::std::option::Option<crate::schemas::DeviceReference>,
     }
     impl ::field_selector::FieldSelector for CustomerApplyConfigurationRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -350,7 +362,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -368,7 +379,7 @@ pub mod schemas {
     pub struct CustomerListConfigurationsResponse {
         #[doc = "The configurations."]
         #[serde(rename = "configurations", default)]
-        pub configurations: Option<Vec<crate::schemas::Configuration>>,
+        pub configurations: ::std::option::Option<Vec<crate::schemas::Configuration>>,
     }
     impl ::field_selector::FieldSelector for CustomerListConfigurationsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -377,7 +388,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -395,10 +405,10 @@ pub mod schemas {
     pub struct CustomerListCustomersResponse {
         #[doc = "The customer accounts the calling user is a member of."]
         #[serde(rename = "customers", default)]
-        pub customers: Option<Vec<crate::schemas::Company>>,
+        pub customers: ::std::option::Option<Vec<crate::schemas::Company>>,
         #[doc = "A token used to access the next page of results. Omitted if no further\nresults are available."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CustomerListCustomersResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -407,7 +417,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -425,10 +434,10 @@ pub mod schemas {
     pub struct CustomerListDevicesResponse {
         #[doc = "The customer's devices."]
         #[serde(rename = "devices", default)]
-        pub devices: Option<Vec<crate::schemas::Device>>,
+        pub devices: ::std::option::Option<Vec<crate::schemas::Device>>,
         #[doc = "A token used to access the next page of results. Omitted if no further\nresults are available."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CustomerListDevicesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -437,7 +446,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -455,7 +463,7 @@ pub mod schemas {
     pub struct CustomerListDpcsResponse {
         #[doc = "The list of DPCs available to the customer that support zero-touch\nenrollment."]
         #[serde(rename = "dpcs", default)]
-        pub dpcs: Option<Vec<crate::schemas::Dpc>>,
+        pub dpcs: ::std::option::Option<Vec<crate::schemas::Dpc>>,
     }
     impl ::field_selector::FieldSelector for CustomerListDpcsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -464,7 +472,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -482,7 +489,7 @@ pub mod schemas {
     pub struct CustomerRemoveConfigurationRequest {
         #[doc = "Required. The device to remove the configuration from."]
         #[serde(rename = "device", default)]
-        pub device: Option<crate::schemas::DeviceReference>,
+        pub device: ::std::option::Option<crate::schemas::DeviceReference>,
     }
     impl ::field_selector::FieldSelector for CustomerRemoveConfigurationRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -491,7 +498,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -509,7 +515,7 @@ pub mod schemas {
     pub struct CustomerUnclaimDeviceRequest {
         #[doc = "Required. The device to unclaim."]
         #[serde(rename = "device", default)]
-        pub device: Option<crate::schemas::DeviceReference>,
+        pub device: ::std::option::Option<crate::schemas::DeviceReference>,
     }
     impl ::field_selector::FieldSelector for CustomerUnclaimDeviceRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -518,7 +524,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -536,23 +541,23 @@ pub mod schemas {
     pub struct Device {
         #[doc = "Output only. The provisioning claims for a device. Devices claimed for\nzero-touch enrollment have a claim with the type `SECTION_TYPE_ZERO_TOUCH`.\nCall\n`partners.devices.unclaim`\nor\n`partners.devices.unclaimAsync`\nto remove the device from zero-touch enrollment."]
         #[serde(rename = "claims", default)]
-        pub claims: Option<Vec<crate::schemas::DeviceClaim>>,
+        pub claims: ::std::option::Option<Vec<crate::schemas::DeviceClaim>>,
         #[doc = "Not available to resellers."]
         #[serde(rename = "configuration", default)]
-        pub configuration: Option<String>,
+        pub configuration: ::std::option::Option<String>,
         #[doc = "Output only. The ID of the device. Assigned by the server."]
         #[serde(rename = "deviceId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub device_id: Option<i64>,
+        pub device_id: ::std::option::Option<i64>,
         #[doc = "The hardware IDs that identify a manufactured device. To learn more, read\n[Identifiers](/zero-touch/guides/identifiers)."]
         #[serde(rename = "deviceIdentifier", default)]
-        pub device_identifier: Option<crate::schemas::DeviceIdentifier>,
+        pub device_identifier: ::std::option::Option<crate::schemas::DeviceIdentifier>,
         #[doc = "The metadata attached to the device. Structured as key-value pairs. To\nlearn more, read [Device metadata](/zero-touch/guides/metadata)."]
         #[serde(rename = "deviceMetadata", default)]
-        pub device_metadata: Option<crate::schemas::DeviceMetadata>,
+        pub device_metadata: ::std::option::Option<crate::schemas::DeviceMetadata>,
         #[doc = "Output only. The API resource name in the format\n`partners/[PARTNER_ID]/devices/[DEVICE_ID]`. Assigned by the server."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Device {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -561,7 +566,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -614,6 +618,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DeviceClaimSectionType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -630,20 +643,20 @@ pub mod schemas {
         #[doc = "The ID of the Customer that purchased the device."]
         #[serde(rename = "ownerCompanyId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub owner_company_id: Option<i64>,
+        pub owner_company_id: ::std::option::Option<i64>,
         #[doc = "The ID of the reseller that claimed the device."]
         #[serde(rename = "resellerId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub reseller_id: Option<i64>,
+        pub reseller_id: ::std::option::Option<i64>,
         #[doc = "Output only. The type of claim made on the device."]
         #[serde(rename = "sectionType", default)]
-        pub section_type: Option<crate::schemas::DeviceClaimSectionType>,
+        pub section_type: ::std::option::Option<crate::schemas::DeviceClaimSectionType>,
         #[doc = "The timestamp when the device will exit \u{2018}vacation mode\u{2019}. This value is\npresent iff the device is in 'vacation mode'."]
         #[serde(rename = "vacationModeExpireTime", default)]
-        pub vacation_mode_expire_time: Option<String>,
+        pub vacation_mode_expire_time: ::std::option::Option<String>,
         #[doc = "The timestamp when the device was put into \u{2018}vacation mode\u{2019}. This value is\npresent iff the device is in 'vacation mode'."]
         #[serde(rename = "vacationModeStartTime", default)]
-        pub vacation_mode_start_time: Option<String>,
+        pub vacation_mode_start_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DeviceClaim {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -652,7 +665,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -670,19 +682,19 @@ pub mod schemas {
     pub struct DeviceIdentifier {
         #[doc = "The device\u{2019}s IMEI number. Validated on input."]
         #[serde(rename = "imei", default)]
-        pub imei: Option<String>,
+        pub imei: ::std::option::Option<String>,
         #[doc = "The device manufacturer\u{2019}s name. Matches the device's built-in\nvalue returned from `android.os.Build.MANUFACTURER`. Allowed values are\nlisted in\n[manufacturers](/zero-touch/resources/manufacturer-names#manufacturers-names)."]
         #[serde(rename = "manufacturer", default)]
-        pub manufacturer: Option<String>,
+        pub manufacturer: ::std::option::Option<String>,
         #[doc = "The device\u{2019}s MEID number."]
         #[serde(rename = "meid", default)]
-        pub meid: Option<String>,
+        pub meid: ::std::option::Option<String>,
         #[doc = "The device model's name. Matches the device's built-in value returned from\n`android.os.Build.MODEL`. Allowed values are listed in\n[models](/zero-touch/resources/manufacturer-names#model-names)."]
         #[serde(rename = "model", default)]
-        pub model: Option<String>,
+        pub model: ::std::option::Option<String>,
         #[doc = "The manufacturer's serial number for the device. This value might not be\nunique across different device models."]
         #[serde(rename = "serialNumber", default)]
-        pub serial_number: Option<String>,
+        pub serial_number: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DeviceIdentifier {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -691,7 +703,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -709,7 +720,7 @@ pub mod schemas {
     pub struct DeviceMetadata {
         #[doc = "Metadata entries recorded as key-value pairs."]
         #[serde(rename = "entries", default)]
-        pub entries: Option<::std::collections::BTreeMap<String, String>>,
+        pub entries: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::field_selector::FieldSelector for DeviceMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -718,7 +729,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -737,10 +747,10 @@ pub mod schemas {
         #[doc = "The ID of the device."]
         #[serde(rename = "deviceId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub device_id: Option<i64>,
+        pub device_id: ::std::option::Option<i64>,
         #[doc = "The hardware IDs of the device."]
         #[serde(rename = "deviceIdentifier", default)]
-        pub device_identifier: Option<crate::schemas::DeviceIdentifier>,
+        pub device_identifier: ::std::option::Option<crate::schemas::DeviceIdentifier>,
     }
     impl ::field_selector::FieldSelector for DeviceReference {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -749,7 +759,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -790,6 +799,15 @@ pub mod schemas {
             Ok ( match value { "BATCH_PROCESS_STATUS_UNSPECIFIED" => DevicesLongRunningOperationMetadataProcessingStatus :: BatchProcessStatusUnspecified , "BATCH_PROCESS_PENDING" => DevicesLongRunningOperationMetadataProcessingStatus :: BatchProcessPending , "BATCH_PROCESS_IN_PROGRESS" => DevicesLongRunningOperationMetadataProcessingStatus :: BatchProcessInProgress , "BATCH_PROCESS_PROCESSED" => DevicesLongRunningOperationMetadataProcessingStatus :: BatchProcessProcessed , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
+    impl ::field_selector::FieldSelector for DevicesLongRunningOperationMetadataProcessingStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -805,14 +823,15 @@ pub mod schemas {
     pub struct DevicesLongRunningOperationMetadata {
         #[doc = "The number of metadata updates in the operation. This might be different\nfrom the number of updates in the request if the API can't parse some of\nthe updates."]
         #[serde(rename = "devicesCount", default)]
-        pub devices_count: Option<i32>,
+        pub devices_count: ::std::option::Option<i32>,
         #[doc = "The processing status of the operation."]
         #[serde(rename = "processingStatus", default)]
-        pub processing_status:
-            Option<crate::schemas::DevicesLongRunningOperationMetadataProcessingStatus>,
+        pub processing_status: ::std::option::Option<
+            crate::schemas::DevicesLongRunningOperationMetadataProcessingStatus,
+        >,
         #[doc = "The processing progress of the operation. Measured as a number from 0 to\n100. A value of 10O doesnt always mean the operation completed\u{2014}check for\nthe inclusion of a `done` field."]
         #[serde(rename = "progress", default)]
-        pub progress: Option<i32>,
+        pub progress: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for DevicesLongRunningOperationMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -821,7 +840,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -839,10 +857,10 @@ pub mod schemas {
     pub struct DevicesLongRunningOperationResponse {
         #[doc = "The processing status for each device in the operation.\nOne `PerDeviceStatus` per device. The list order matches the items in the\noriginal request."]
         #[serde(rename = "perDeviceStatus", default)]
-        pub per_device_status: Option<Vec<crate::schemas::OperationPerDevice>>,
+        pub per_device_status: ::std::option::Option<Vec<crate::schemas::OperationPerDevice>>,
         #[doc = "A summary of how many items in the operation the server processed\nsuccessfully. Updated as the operation progresses."]
         #[serde(rename = "successCount", default)]
-        pub success_count: Option<i32>,
+        pub success_count: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for DevicesLongRunningOperationResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -851,7 +869,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -869,13 +886,13 @@ pub mod schemas {
     pub struct Dpc {
         #[doc = "Output only. The title of the DPC app in Google Play. For example, *Google\nApps Device Policy*. Useful in an application's user interface."]
         #[serde(rename = "dpcName", default)]
-        pub dpc_name: Option<String>,
+        pub dpc_name: ::std::option::Option<String>,
         #[doc = "Output only. The API resource name in the format\n`customers/[CUSTOMER_ID]/dpcs/[DPC_ID]`. Assigned by\nthe server. To maintain a reference to a DPC across customer accounts,\npersist and match the last path component (`DPC_ID`)."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Output only. The DPC's Android application ID that looks like a Java\npackage name. Zero-touch enrollment installs the DPC app onto a device\nusing this identifier."]
         #[serde(rename = "packageName", default)]
-        pub package_name: Option<String>,
+        pub package_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Dpc {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -884,7 +901,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -902,7 +918,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -919,14 +935,14 @@ pub mod schemas {
     pub struct FindDevicesByDeviceIdentifierRequest {
         #[doc = "Required. The device identifier to search for."]
         #[serde(rename = "deviceIdentifier", default)]
-        pub device_identifier: Option<crate::schemas::DeviceIdentifier>,
+        pub device_identifier: ::std::option::Option<crate::schemas::DeviceIdentifier>,
         #[doc = "Required. The maximum number of devices to show in a page of results. Must\nbe between 1 and 100 inclusive."]
         #[serde(rename = "limit", default)]
         #[serde(with = "crate::parsed_string")]
-        pub limit: Option<i64>,
+        pub limit: ::std::option::Option<i64>,
         #[doc = "A token specifying which result page to return."]
         #[serde(rename = "pageToken", default)]
-        pub page_token: Option<String>,
+        pub page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FindDevicesByDeviceIdentifierRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -935,7 +951,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -953,13 +968,13 @@ pub mod schemas {
     pub struct FindDevicesByDeviceIdentifierResponse {
         #[doc = "Found devices."]
         #[serde(rename = "devices", default)]
-        pub devices: Option<Vec<crate::schemas::Device>>,
+        pub devices: ::std::option::Option<Vec<crate::schemas::Device>>,
         #[doc = "A token used to access the next page of results. Omitted if no further\nresults are available."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total count of items in the list irrespective of pagination."]
         #[serde(rename = "totalSize", default)]
-        pub total_size: Option<i32>,
+        pub total_size: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for FindDevicesByDeviceIdentifierResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -968,7 +983,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1029,6 +1043,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for FindDevicesByOwnerRequestSectionType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1044,17 +1067,18 @@ pub mod schemas {
     pub struct FindDevicesByOwnerRequest {
         #[doc = "Required. The list of customer IDs to search for."]
         #[serde(rename = "customerId", default)]
-        pub customer_id: Option<Vec<i64>>,
+        pub customer_id: ::std::option::Option<Vec<i64>>,
         #[doc = "Required. The maximum number of devices to show in a page of results. Must\nbe between 1 and 100 inclusive."]
         #[serde(rename = "limit", default)]
         #[serde(with = "crate::parsed_string")]
-        pub limit: Option<i64>,
+        pub limit: ::std::option::Option<i64>,
         #[doc = "A token specifying which result page to return."]
         #[serde(rename = "pageToken", default)]
-        pub page_token: Option<String>,
+        pub page_token: ::std::option::Option<String>,
         #[doc = "Required. The section type of the device's provisioning record."]
         #[serde(rename = "sectionType", default)]
-        pub section_type: Option<crate::schemas::FindDevicesByOwnerRequestSectionType>,
+        pub section_type:
+            ::std::option::Option<crate::schemas::FindDevicesByOwnerRequestSectionType>,
     }
     impl ::field_selector::FieldSelector for FindDevicesByOwnerRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1063,7 +1087,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1081,13 +1104,13 @@ pub mod schemas {
     pub struct FindDevicesByOwnerResponse {
         #[doc = "The customer's devices."]
         #[serde(rename = "devices", default)]
-        pub devices: Option<Vec<crate::schemas::Device>>,
+        pub devices: ::std::option::Option<Vec<crate::schemas::Device>>,
         #[doc = "A token used to access the next page of results.\nOmitted if no further results are available."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total count of items in the list irrespective of pagination."]
         #[serde(rename = "totalSize", default)]
-        pub total_size: Option<i32>,
+        pub total_size: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for FindDevicesByOwnerResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1096,7 +1119,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1114,13 +1136,13 @@ pub mod schemas {
     pub struct ListCustomersResponse {
         #[doc = "List of customers related to this reseller partner."]
         #[serde(rename = "customers", default)]
-        pub customers: Option<Vec<crate::schemas::Company>>,
+        pub customers: ::std::option::Option<Vec<crate::schemas::Company>>,
         #[doc = "A token to retrieve the next page of results. Omitted if no further results\nare available."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total count of items in the list irrespective of pagination."]
         #[serde(rename = "totalSize", default)]
-        pub total_size: Option<i32>,
+        pub total_size: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ListCustomersResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1129,7 +1151,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1147,13 +1168,13 @@ pub mod schemas {
     pub struct ListVendorCustomersResponse {
         #[doc = "List of customers of the vendor."]
         #[serde(rename = "customers", default)]
-        pub customers: Option<Vec<crate::schemas::Company>>,
+        pub customers: ::std::option::Option<Vec<crate::schemas::Company>>,
         #[doc = "A token to retrieve the next page of results. Omitted if no further results\nare available."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total count of items in the list irrespective of pagination."]
         #[serde(rename = "totalSize", default)]
-        pub total_size: Option<i32>,
+        pub total_size: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ListVendorCustomersResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1162,7 +1183,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1180,13 +1200,13 @@ pub mod schemas {
     pub struct ListVendorsResponse {
         #[doc = "A token to retrieve the next page of results. Omitted if no further results\nare available."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total count of items in the list irrespective of pagination."]
         #[serde(rename = "totalSize", default)]
-        pub total_size: Option<i32>,
+        pub total_size: ::std::option::Option<i32>,
         #[doc = "List of vendors of the reseller partner. Fields `name`, `companyId` and\n`companyName` are populated to the Company object."]
         #[serde(rename = "vendors", default)]
-        pub vendors: Option<Vec<crate::schemas::Company>>,
+        pub vendors: ::std::option::Option<Vec<crate::schemas::Company>>,
     }
     impl ::field_selector::FieldSelector for ListVendorsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1195,26 +1215,27 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
         #[serde(rename = "done", default)]
-        pub done: Option<bool>,
+        pub done: ::std::option::Option<bool>,
         #[doc = "This field will always be not set if the operation is created by `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`. In this case, error information for each device is set in `response.perDeviceStatus.result.status`."]
         #[serde(rename = "error", default)]
-        pub error: Option<crate::schemas::Status>,
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "This field will contain a `DevicesLongRunningOperationMetadata` object if the operation is created by `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "This field will contain a `DevicesLongRunningOperationResponse` object if the operation is created by `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`."]
         #[serde(rename = "response", default)]
-        pub response: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub response:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
     impl ::field_selector::FieldSelector for Operation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1223,7 +1244,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1241,16 +1261,16 @@ pub mod schemas {
     pub struct OperationPerDevice {
         #[doc = "A copy of the original device-claim request received by the server."]
         #[serde(rename = "claim", default)]
-        pub claim: Option<crate::schemas::PartnerClaim>,
+        pub claim: ::std::option::Option<crate::schemas::PartnerClaim>,
         #[doc = "The processing result for each device."]
         #[serde(rename = "result", default)]
-        pub result: Option<crate::schemas::PerDeviceStatusInBatch>,
+        pub result: ::std::option::Option<crate::schemas::PerDeviceStatusInBatch>,
         #[doc = "A copy of the original device-unclaim request received by the server."]
         #[serde(rename = "unclaim", default)]
-        pub unclaim: Option<crate::schemas::PartnerUnclaim>,
+        pub unclaim: ::std::option::Option<crate::schemas::PartnerUnclaim>,
         #[doc = "A copy of the original metadata-update request received by the server."]
         #[serde(rename = "updateMetadata", default)]
-        pub update_metadata: Option<crate::schemas::UpdateMetadataArguments>,
+        pub update_metadata: ::std::option::Option<crate::schemas::UpdateMetadataArguments>,
     }
     impl ::field_selector::FieldSelector for OperationPerDevice {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1259,7 +1279,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1312,6 +1331,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PartnerClaimSectionType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1328,16 +1356,16 @@ pub mod schemas {
         #[doc = "Required. The ID of the customer for whom the device is being claimed."]
         #[serde(rename = "customerId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub customer_id: Option<i64>,
+        pub customer_id: ::std::option::Option<i64>,
         #[doc = "Required. Device identifier of the device."]
         #[serde(rename = "deviceIdentifier", default)]
-        pub device_identifier: Option<crate::schemas::DeviceIdentifier>,
+        pub device_identifier: ::std::option::Option<crate::schemas::DeviceIdentifier>,
         #[doc = "Required. The metadata to attach to the device at claim."]
         #[serde(rename = "deviceMetadata", default)]
-        pub device_metadata: Option<crate::schemas::DeviceMetadata>,
+        pub device_metadata: ::std::option::Option<crate::schemas::DeviceMetadata>,
         #[doc = "Required. The section type of the device's provisioning record."]
         #[serde(rename = "sectionType", default)]
-        pub section_type: Option<crate::schemas::PartnerClaimSectionType>,
+        pub section_type: ::std::option::Option<crate::schemas::PartnerClaimSectionType>,
     }
     impl ::field_selector::FieldSelector for PartnerClaim {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1346,7 +1374,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1399,6 +1426,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PartnerUnclaimSectionType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1415,19 +1451,19 @@ pub mod schemas {
         #[doc = "Device ID of the device."]
         #[serde(rename = "deviceId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub device_id: Option<i64>,
+        pub device_id: ::std::option::Option<i64>,
         #[doc = "Device identifier of the device."]
         #[serde(rename = "deviceIdentifier", default)]
-        pub device_identifier: Option<crate::schemas::DeviceIdentifier>,
+        pub device_identifier: ::std::option::Option<crate::schemas::DeviceIdentifier>,
         #[doc = "Required. The section type of the device's provisioning record."]
         #[serde(rename = "sectionType", default)]
-        pub section_type: Option<crate::schemas::PartnerUnclaimSectionType>,
+        pub section_type: ::std::option::Option<crate::schemas::PartnerUnclaimSectionType>,
         #[doc = "The duration of the vacation unlock starting from when the request is\nprocessed. (1 day is treated as 24 hours)"]
         #[serde(rename = "vacationModeDays", default)]
-        pub vacation_mode_days: Option<i32>,
+        pub vacation_mode_days: ::std::option::Option<i32>,
         #[doc = "The expiration time of the vacation unlock."]
         #[serde(rename = "vacationModeExpireTime", default)]
-        pub vacation_mode_expire_time: Option<String>,
+        pub vacation_mode_expire_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PartnerUnclaim {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1436,7 +1472,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1541,6 +1576,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PerDeviceStatusInBatchStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1557,16 +1601,16 @@ pub mod schemas {
         #[doc = "If processing succeeds, the device ID of the device."]
         #[serde(rename = "deviceId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub device_id: Option<i64>,
+        pub device_id: ::std::option::Option<i64>,
         #[doc = "If processing fails, the error type."]
         #[serde(rename = "errorIdentifier", default)]
-        pub error_identifier: Option<String>,
+        pub error_identifier: ::std::option::Option<String>,
         #[doc = "If processing fails, a developer message explaining what went wrong."]
         #[serde(rename = "errorMessage", default)]
-        pub error_message: Option<String>,
+        pub error_message: ::std::option::Option<String>,
         #[doc = "The result status of the device after processing."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::PerDeviceStatusInBatchStatus>,
+        pub status: ::std::option::Option<crate::schemas::PerDeviceStatusInBatchStatus>,
     }
     impl ::field_selector::FieldSelector for PerDeviceStatusInBatch {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1575,20 +1619,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
-        pub code: Option<i32>,
+        pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub details:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Status {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1597,7 +1641,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1654,6 +1697,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for UnclaimDeviceRequestSectionType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1670,19 +1722,19 @@ pub mod schemas {
         #[doc = "The device ID returned by `ClaimDevice`."]
         #[serde(rename = "deviceId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub device_id: Option<i64>,
+        pub device_id: ::std::option::Option<i64>,
         #[doc = "The device identifier you used when you claimed this device."]
         #[serde(rename = "deviceIdentifier", default)]
-        pub device_identifier: Option<crate::schemas::DeviceIdentifier>,
+        pub device_identifier: ::std::option::Option<crate::schemas::DeviceIdentifier>,
         #[doc = "Required. The section type of the device's provisioning record."]
         #[serde(rename = "sectionType", default)]
-        pub section_type: Option<crate::schemas::UnclaimDeviceRequestSectionType>,
+        pub section_type: ::std::option::Option<crate::schemas::UnclaimDeviceRequestSectionType>,
         #[doc = "The duration of the vacation unlock starting from when the request is\nprocessed. (1 day is treated as 24 hours)"]
         #[serde(rename = "vacationModeDays", default)]
-        pub vacation_mode_days: Option<i32>,
+        pub vacation_mode_days: ::std::option::Option<i32>,
         #[doc = "The expiration time of the vacation unlock."]
         #[serde(rename = "vacationModeExpireTime", default)]
-        pub vacation_mode_expire_time: Option<String>,
+        pub vacation_mode_expire_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UnclaimDeviceRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1691,7 +1743,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1709,7 +1760,7 @@ pub mod schemas {
     pub struct UnclaimDevicesRequest {
         #[doc = "Required. The list of devices to unclaim."]
         #[serde(rename = "unclaims", default)]
-        pub unclaims: Option<Vec<crate::schemas::PartnerUnclaim>>,
+        pub unclaims: ::std::option::Option<Vec<crate::schemas::PartnerUnclaim>>,
     }
     impl ::field_selector::FieldSelector for UnclaimDevicesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1718,7 +1769,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1736,7 +1786,7 @@ pub mod schemas {
     pub struct UpdateDeviceMetadataInBatchRequest {
         #[doc = "Required. The list of metadata updates."]
         #[serde(rename = "updates", default)]
-        pub updates: Option<Vec<crate::schemas::UpdateMetadataArguments>>,
+        pub updates: ::std::option::Option<Vec<crate::schemas::UpdateMetadataArguments>>,
     }
     impl ::field_selector::FieldSelector for UpdateDeviceMetadataInBatchRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1745,7 +1795,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1763,7 +1812,7 @@ pub mod schemas {
     pub struct UpdateDeviceMetadataRequest {
         #[doc = "Required. The metdata to attach to the device."]
         #[serde(rename = "deviceMetadata", default)]
-        pub device_metadata: Option<crate::schemas::DeviceMetadata>,
+        pub device_metadata: ::std::option::Option<crate::schemas::DeviceMetadata>,
     }
     impl ::field_selector::FieldSelector for UpdateDeviceMetadataRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1772,7 +1821,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1791,13 +1839,13 @@ pub mod schemas {
         #[doc = "Device ID of the device."]
         #[serde(rename = "deviceId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub device_id: Option<i64>,
+        pub device_id: ::std::option::Option<i64>,
         #[doc = "Device identifier."]
         #[serde(rename = "deviceIdentifier", default)]
-        pub device_identifier: Option<crate::schemas::DeviceIdentifier>,
+        pub device_identifier: ::std::option::Option<crate::schemas::DeviceIdentifier>,
         #[doc = "Required. The metadata to update."]
         #[serde(rename = "deviceMetadata", default)]
-        pub device_metadata: Option<crate::schemas::DeviceMetadata>,
+        pub device_metadata: ::std::option::Option<crate::schemas::DeviceMetadata>,
     }
     impl ::field_selector::FieldSelector for UpdateMetadataArguments {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1806,7 +1854,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -1861,6 +1908,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -1905,6 +1961,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -7802,6 +7867,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -7877,5 +7943,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

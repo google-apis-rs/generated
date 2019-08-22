@@ -14,31 +14,31 @@ pub mod schemas {
     pub struct CreateAuthUriResponse {
         #[doc = "all providers the user has once used to do federated login"]
         #[serde(rename = "allProviders", default)]
-        pub all_providers: Option<Vec<String>>,
+        pub all_providers: ::std::option::Option<Vec<String>>,
         #[doc = "The URI used by the IDP to authenticate the user."]
         #[serde(rename = "authUri", default)]
-        pub auth_uri: Option<String>,
+        pub auth_uri: ::std::option::Option<String>,
         #[doc = "True if captcha is required."]
         #[serde(rename = "captchaRequired", default)]
-        pub captcha_required: Option<bool>,
+        pub captcha_required: ::std::option::Option<bool>,
         #[doc = "True if the authUri is for user's existing provider."]
         #[serde(rename = "forExistingProvider", default)]
-        pub for_existing_provider: Option<bool>,
+        pub for_existing_provider: ::std::option::Option<bool>,
         #[doc = "The fixed string identitytoolkit#CreateAuthUriResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The provider ID of the auth URI."]
         #[serde(rename = "providerId", default)]
-        pub provider_id: Option<String>,
+        pub provider_id: ::std::option::Option<String>,
         #[doc = "Whether the user is registered if the identifier is an email."]
         #[serde(rename = "registered", default)]
-        pub registered: Option<bool>,
+        pub registered: ::std::option::Option<bool>,
         #[doc = "Session ID which should be passed in the following verifyAssertion request."]
         #[serde(rename = "sessionId", default)]
-        pub session_id: Option<String>,
+        pub session_id: ::std::option::Option<String>,
         #[doc = "All sign-in methods this user has used."]
         #[serde(rename = "signinMethods", default)]
-        pub signin_methods: Option<Vec<String>>,
+        pub signin_methods: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for CreateAuthUriResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -47,7 +47,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -65,7 +64,7 @@ pub mod schemas {
     pub struct DeleteAccountResponse {
         #[doc = "The fixed string \"identitytoolkit#DeleteAccountResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DeleteAccountResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -74,7 +73,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -83,13 +81,13 @@ pub mod schemas {
     pub struct DownloadAccountResponse {
         #[doc = "The fixed string \"identitytoolkit#DownloadAccountResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The next page token. To be used in a subsequent request to return the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The user accounts data."]
         #[serde(rename = "users", default)]
-        pub users: Option<Vec<crate::schemas::UserInfo>>,
+        pub users: ::std::option::Option<Vec<crate::schemas::UserInfo>>,
     }
     impl ::field_selector::FieldSelector for DownloadAccountResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -98,7 +96,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -116,26 +113,26 @@ pub mod schemas {
     pub struct EmailLinkSigninResponse {
         #[doc = "The user's email."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "Expiration time of STS id token in seconds."]
         #[serde(rename = "expiresIn", default)]
         #[serde(with = "crate::parsed_string")]
-        pub expires_in: Option<i64>,
+        pub expires_in: ::std::option::Option<i64>,
         #[doc = "The STS id token to login the newly signed in user."]
         #[serde(rename = "idToken", default)]
-        pub id_token: Option<String>,
+        pub id_token: ::std::option::Option<String>,
         #[doc = "Whether the user is new."]
         #[serde(rename = "isNewUser", default)]
-        pub is_new_user: Option<bool>,
+        pub is_new_user: ::std::option::Option<bool>,
         #[doc = "The fixed string \"identitytoolkit#EmailLinkSigninResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The RP local ID of the user."]
         #[serde(rename = "localId", default)]
-        pub local_id: Option<String>,
+        pub local_id: ::std::option::Option<String>,
         #[doc = "The refresh token for the signed in user."]
         #[serde(rename = "refreshToken", default)]
-        pub refresh_token: Option<String>,
+        pub refresh_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EmailLinkSigninResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -144,7 +141,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -162,22 +158,22 @@ pub mod schemas {
     pub struct EmailTemplate {
         #[doc = "Email body."]
         #[serde(rename = "body", default)]
-        pub body: Option<String>,
+        pub body: ::std::option::Option<String>,
         #[doc = "Email body format."]
         #[serde(rename = "format", default)]
-        pub format: Option<String>,
+        pub format: ::std::option::Option<String>,
         #[doc = "From address of the email."]
         #[serde(rename = "from", default)]
-        pub from: Option<String>,
+        pub from: ::std::option::Option<String>,
         #[doc = "From display name."]
         #[serde(rename = "fromDisplayName", default)]
-        pub from_display_name: Option<String>,
+        pub from_display_name: ::std::option::Option<String>,
         #[doc = "Reply-to address."]
         #[serde(rename = "replyTo", default)]
-        pub reply_to: Option<String>,
+        pub reply_to: ::std::option::Option<String>,
         #[doc = "Subject of the email."]
         #[serde(rename = "subject", default)]
-        pub subject: Option<String>,
+        pub subject: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EmailTemplate {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -186,7 +182,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -195,10 +190,10 @@ pub mod schemas {
     pub struct GetAccountInfoResponse {
         #[doc = "The fixed string \"identitytoolkit#GetAccountInfoResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The info of the users."]
         #[serde(rename = "users", default)]
-        pub users: Option<Vec<crate::schemas::UserInfo>>,
+        pub users: ::std::option::Option<Vec<crate::schemas::UserInfo>>,
     }
     impl ::field_selector::FieldSelector for GetAccountInfoResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -207,7 +202,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -225,13 +219,13 @@ pub mod schemas {
     pub struct GetOobConfirmationCodeResponse {
         #[doc = "The email address that the email is sent to."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The fixed string \"identitytoolkit#GetOobConfirmationCodeResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The code to be send to the user."]
         #[serde(rename = "oobCode", default)]
-        pub oob_code: Option<String>,
+        pub oob_code: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GetOobConfirmationCodeResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -240,7 +234,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -258,13 +251,13 @@ pub mod schemas {
     pub struct GetRecaptchaParamResponse {
         #[doc = "The fixed string \"identitytoolkit#GetRecaptchaParamResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Site key registered at recaptcha."]
         #[serde(rename = "recaptchaSiteKey", default)]
-        pub recaptcha_site_key: Option<String>,
+        pub recaptcha_site_key: ::std::option::Option<String>,
         #[doc = "The stoken field for the recaptcha widget, used to request captcha challenge."]
         #[serde(rename = "recaptchaStoken", default)]
-        pub recaptcha_stoken: Option<String>,
+        pub recaptcha_stoken: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GetRecaptchaParamResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -273,7 +266,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -291,53 +283,53 @@ pub mod schemas {
     pub struct IdentitytoolkitRelyingpartyCreateAuthUriRequest {
         #[doc = "The app ID of the mobile app, base64(CERT_SHA1):PACKAGE_NAME for Android, BUNDLE_ID for iOS."]
         #[serde(rename = "appId", default)]
-        pub app_id: Option<String>,
+        pub app_id: ::std::option::Option<String>,
         #[doc = "Explicitly specify the auth flow type. Currently only support \"CODE_FLOW\" type. The field is only used for Google provider."]
         #[serde(rename = "authFlowType", default)]
-        pub auth_flow_type: Option<String>,
+        pub auth_flow_type: ::std::option::Option<String>,
         #[doc = "The relying party OAuth client ID."]
         #[serde(rename = "clientId", default)]
-        pub client_id: Option<String>,
+        pub client_id: ::std::option::Option<String>,
         #[doc = "The opaque value used by the client to maintain context info between the authentication request and the IDP callback."]
         #[serde(rename = "context", default)]
-        pub context: Option<String>,
+        pub context: ::std::option::Option<String>,
         #[doc = "The URI to which the IDP redirects the user after the federated login flow."]
         #[serde(rename = "continueUri", default)]
-        pub continue_uri: Option<String>,
+        pub continue_uri: ::std::option::Option<String>,
         #[doc = "The query parameter that client can customize by themselves in auth url. The following parameters are reserved for server so that they cannot be customized by clients: client_id, response_type, scope, redirect_uri, state, oauth_token."]
         #[serde(rename = "customParameter", default)]
-        pub custom_parameter: Option<::std::collections::BTreeMap<String, String>>,
+        pub custom_parameter: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The hosted domain to restrict sign-in to accounts at that domain for Google Apps hosted accounts."]
         #[serde(rename = "hostedDomain", default)]
-        pub hosted_domain: Option<String>,
+        pub hosted_domain: ::std::option::Option<String>,
         #[doc = "The email or federated ID of the user."]
         #[serde(rename = "identifier", default)]
-        pub identifier: Option<String>,
+        pub identifier: ::std::option::Option<String>,
         #[doc = "The developer's consumer key for OpenId OAuth Extension"]
         #[serde(rename = "oauthConsumerKey", default)]
-        pub oauth_consumer_key: Option<String>,
+        pub oauth_consumer_key: ::std::option::Option<String>,
         #[doc = "Additional oauth scopes, beyond the basid user profile, that the user would be prompted to grant"]
         #[serde(rename = "oauthScope", default)]
-        pub oauth_scope: Option<String>,
+        pub oauth_scope: ::std::option::Option<String>,
         #[doc = "Optional realm for OpenID protocol. The sub string \"scheme://domain:port\" of the param \"continueUri\" is used if this is not set."]
         #[serde(rename = "openidRealm", default)]
-        pub openid_realm: Option<String>,
+        pub openid_realm: ::std::option::Option<String>,
         #[doc = "The native app package for OTA installation."]
         #[serde(rename = "otaApp", default)]
-        pub ota_app: Option<String>,
+        pub ota_app: ::std::option::Option<String>,
         #[doc = "The IdP ID. For white listed IdPs it's a short domain name e.g. google.com, aol.com, live.net and yahoo.com. For other OpenID IdPs it's the OP identifier."]
         #[serde(rename = "providerId", default)]
-        pub provider_id: Option<String>,
+        pub provider_id: ::std::option::Option<String>,
         #[doc = "The session_id passed by client."]
         #[serde(rename = "sessionId", default)]
-        pub session_id: Option<String>,
+        pub session_id: ::std::option::Option<String>,
         #[doc = "For multi-tenant use cases, in order to construct sign-in URL with the correct IDP parameters, Firebear needs to know which Tenant to retrieve IDP configs from."]
         #[serde(rename = "tenantId", default)]
-        pub tenant_id: Option<String>,
+        pub tenant_id: ::std::option::Option<String>,
         #[doc = "Tenant project number to be used for idp discovery."]
         #[serde(rename = "tenantProjectNumber", default)]
         #[serde(with = "crate::parsed_string")]
-        pub tenant_project_number: Option<u64>,
+        pub tenant_project_number: ::std::option::Option<u64>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartyCreateAuthUriRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -346,7 +338,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -365,13 +356,13 @@ pub mod schemas {
         #[doc = "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration."]
         #[serde(rename = "delegatedProjectNumber", default)]
         #[serde(with = "crate::parsed_string")]
-        pub delegated_project_number: Option<i64>,
+        pub delegated_project_number: ::std::option::Option<i64>,
         #[doc = "The GITKit token or STS id token of the authenticated user."]
         #[serde(rename = "idToken", default)]
-        pub id_token: Option<String>,
+        pub id_token: ::std::option::Option<String>,
         #[doc = "The local ID of the user."]
         #[serde(rename = "localId", default)]
-        pub local_id: Option<String>,
+        pub local_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartyDeleteAccountRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -380,7 +371,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -399,16 +389,16 @@ pub mod schemas {
         #[doc = "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration."]
         #[serde(rename = "delegatedProjectNumber", default)]
         #[serde(with = "crate::parsed_string")]
-        pub delegated_project_number: Option<i64>,
+        pub delegated_project_number: ::std::option::Option<i64>,
         #[doc = "The max number of results to return in the response."]
         #[serde(rename = "maxResults", default)]
-        pub max_results: Option<u32>,
+        pub max_results: ::std::option::Option<u32>,
         #[doc = "The token for the next page. This should be taken from the previous response."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Specify which project (field value is actually project id) to operate. Only used when provided credential."]
         #[serde(rename = "targetProjectId", default)]
-        pub target_project_id: Option<String>,
+        pub target_project_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartyDownloadAccountRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -417,7 +407,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -435,13 +424,13 @@ pub mod schemas {
     pub struct IdentitytoolkitRelyingpartyEmailLinkSigninRequest {
         #[doc = "The email address of the user."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "Token for linking flow."]
         #[serde(rename = "idToken", default)]
-        pub id_token: Option<String>,
+        pub id_token: ::std::option::Option<String>,
         #[doc = "The confirmation code."]
         #[serde(rename = "oobCode", default)]
-        pub oob_code: Option<String>,
+        pub oob_code: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartyEmailLinkSigninRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -450,7 +439,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -469,19 +457,19 @@ pub mod schemas {
         #[doc = "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration."]
         #[serde(rename = "delegatedProjectNumber", default)]
         #[serde(with = "crate::parsed_string")]
-        pub delegated_project_number: Option<i64>,
+        pub delegated_project_number: ::std::option::Option<i64>,
         #[doc = "The list of emails of the users to inquiry."]
         #[serde(rename = "email", default)]
-        pub email: Option<Vec<String>>,
+        pub email: ::std::option::Option<Vec<String>>,
         #[doc = "The GITKit token of the authenticated user."]
         #[serde(rename = "idToken", default)]
-        pub id_token: Option<String>,
+        pub id_token: ::std::option::Option<String>,
         #[doc = "The list of local ID's of the users to inquiry."]
         #[serde(rename = "localId", default)]
-        pub local_id: Option<Vec<String>>,
+        pub local_id: ::std::option::Option<Vec<String>>,
         #[doc = "Privileged caller can query users by specified phone number."]
         #[serde(rename = "phoneNumber", default)]
-        pub phone_number: Option<Vec<String>>,
+        pub phone_number: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartyGetAccountInfoRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -490,7 +478,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -508,39 +495,39 @@ pub mod schemas {
     pub struct IdentitytoolkitRelyingpartyGetProjectConfigResponse {
         #[doc = "Whether to allow password user sign in or sign up."]
         #[serde(rename = "allowPasswordUser", default)]
-        pub allow_password_user: Option<bool>,
+        pub allow_password_user: ::std::option::Option<bool>,
         #[doc = "Browser API key, needed when making http request to Apiary."]
         #[serde(rename = "apiKey", default)]
-        pub api_key: Option<String>,
+        pub api_key: ::std::option::Option<String>,
         #[doc = "Authorized domains."]
         #[serde(rename = "authorizedDomains", default)]
-        pub authorized_domains: Option<Vec<String>>,
+        pub authorized_domains: ::std::option::Option<Vec<String>>,
         #[doc = "Change email template."]
         #[serde(rename = "changeEmailTemplate", default)]
-        pub change_email_template: Option<crate::schemas::EmailTemplate>,
+        pub change_email_template: ::std::option::Option<crate::schemas::EmailTemplate>,
         #[serde(rename = "dynamicLinksDomain", default)]
-        pub dynamic_links_domain: Option<String>,
+        pub dynamic_links_domain: ::std::option::Option<String>,
         #[doc = "Whether anonymous user is enabled."]
         #[serde(rename = "enableAnonymousUser", default)]
-        pub enable_anonymous_user: Option<bool>,
+        pub enable_anonymous_user: ::std::option::Option<bool>,
         #[doc = "OAuth2 provider configuration."]
         #[serde(rename = "idpConfig", default)]
-        pub idp_config: Option<Vec<crate::schemas::IdpConfig>>,
+        pub idp_config: ::std::option::Option<Vec<crate::schemas::IdpConfig>>,
         #[doc = "Legacy reset password email template."]
         #[serde(rename = "legacyResetPasswordTemplate", default)]
-        pub legacy_reset_password_template: Option<crate::schemas::EmailTemplate>,
+        pub legacy_reset_password_template: ::std::option::Option<crate::schemas::EmailTemplate>,
         #[doc = "Project ID of the relying party."]
         #[serde(rename = "projectId", default)]
-        pub project_id: Option<String>,
+        pub project_id: ::std::option::Option<String>,
         #[doc = "Reset password email template."]
         #[serde(rename = "resetPasswordTemplate", default)]
-        pub reset_password_template: Option<crate::schemas::EmailTemplate>,
+        pub reset_password_template: ::std::option::Option<crate::schemas::EmailTemplate>,
         #[doc = "Whether to use email sending provided by Firebear."]
         #[serde(rename = "useEmailSending", default)]
-        pub use_email_sending: Option<bool>,
+        pub use_email_sending: ::std::option::Option<bool>,
         #[doc = "Verify email template."]
         #[serde(rename = "verifyEmailTemplate", default)]
-        pub verify_email_template: Option<crate::schemas::EmailTemplate>,
+        pub verify_email_template: ::std::option::Option<crate::schemas::EmailTemplate>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartyGetProjectConfigResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -549,7 +536,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     type IdentitytoolkitRelyingpartyGetPublicKeysResponse =
@@ -569,16 +555,16 @@ pub mod schemas {
     pub struct IdentitytoolkitRelyingpartyResetPasswordRequest {
         #[doc = "The email address of the user."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The new password inputted by the user."]
         #[serde(rename = "newPassword", default)]
-        pub new_password: Option<String>,
+        pub new_password: ::std::option::Option<String>,
         #[doc = "The old password inputted by the user."]
         #[serde(rename = "oldPassword", default)]
-        pub old_password: Option<String>,
+        pub old_password: ::std::option::Option<String>,
         #[doc = "The confirmation code."]
         #[serde(rename = "oobCode", default)]
-        pub oob_code: Option<String>,
+        pub oob_code: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartyResetPasswordRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -587,7 +573,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -605,16 +590,16 @@ pub mod schemas {
     pub struct IdentitytoolkitRelyingpartySendVerificationCodeRequest {
         #[doc = "Receipt of successful app token validation with APNS."]
         #[serde(rename = "iosReceipt", default)]
-        pub ios_receipt: Option<String>,
+        pub ios_receipt: ::std::option::Option<String>,
         #[doc = "Secret delivered to iOS app via APNS."]
         #[serde(rename = "iosSecret", default)]
-        pub ios_secret: Option<String>,
+        pub ios_secret: ::std::option::Option<String>,
         #[doc = "The phone number to send the verification code to in E.164 format."]
         #[serde(rename = "phoneNumber", default)]
-        pub phone_number: Option<String>,
+        pub phone_number: ::std::option::Option<String>,
         #[doc = "Recaptcha solution."]
         #[serde(rename = "recaptchaToken", default)]
-        pub recaptcha_token: Option<String>,
+        pub recaptcha_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartySendVerificationCodeRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -623,7 +608,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -641,7 +625,7 @@ pub mod schemas {
     pub struct IdentitytoolkitRelyingpartySendVerificationCodeResponse {
         #[doc = "Encrypted session information"]
         #[serde(rename = "sessionInfo", default)]
-        pub session_info: Option<String>,
+        pub session_info: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartySendVerificationCodeResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -650,7 +634,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -668,77 +651,77 @@ pub mod schemas {
     pub struct IdentitytoolkitRelyingpartySetAccountInfoRequest {
         #[doc = "The captcha challenge."]
         #[serde(rename = "captchaChallenge", default)]
-        pub captcha_challenge: Option<String>,
+        pub captcha_challenge: ::std::option::Option<String>,
         #[doc = "Response to the captcha."]
         #[serde(rename = "captchaResponse", default)]
-        pub captcha_response: Option<String>,
+        pub captcha_response: ::std::option::Option<String>,
         #[doc = "The timestamp when the account is created."]
         #[serde(rename = "createdAt", default)]
         #[serde(with = "crate::parsed_string")]
-        pub created_at: Option<i64>,
+        pub created_at: ::std::option::Option<i64>,
         #[doc = "The custom attributes to be set in the user's id token."]
         #[serde(rename = "customAttributes", default)]
-        pub custom_attributes: Option<String>,
+        pub custom_attributes: ::std::option::Option<String>,
         #[doc = "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration."]
         #[serde(rename = "delegatedProjectNumber", default)]
         #[serde(with = "crate::parsed_string")]
-        pub delegated_project_number: Option<i64>,
+        pub delegated_project_number: ::std::option::Option<i64>,
         #[doc = "The attributes users request to delete."]
         #[serde(rename = "deleteAttribute", default)]
-        pub delete_attribute: Option<Vec<String>>,
+        pub delete_attribute: ::std::option::Option<Vec<String>>,
         #[doc = "The IDPs the user request to delete."]
         #[serde(rename = "deleteProvider", default)]
-        pub delete_provider: Option<Vec<String>>,
+        pub delete_provider: ::std::option::Option<Vec<String>>,
         #[doc = "Whether to disable the user."]
         #[serde(rename = "disableUser", default)]
-        pub disable_user: Option<bool>,
+        pub disable_user: ::std::option::Option<bool>,
         #[doc = "The name of the user."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The email of the user."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "Mark the email as verified or not."]
         #[serde(rename = "emailVerified", default)]
-        pub email_verified: Option<bool>,
+        pub email_verified: ::std::option::Option<bool>,
         #[doc = "The GITKit token of the authenticated user."]
         #[serde(rename = "idToken", default)]
-        pub id_token: Option<String>,
+        pub id_token: ::std::option::Option<String>,
         #[doc = "Instance id token of the app."]
         #[serde(rename = "instanceId", default)]
-        pub instance_id: Option<String>,
+        pub instance_id: ::std::option::Option<String>,
         #[doc = "Last login timestamp."]
         #[serde(rename = "lastLoginAt", default)]
         #[serde(with = "crate::parsed_string")]
-        pub last_login_at: Option<i64>,
+        pub last_login_at: ::std::option::Option<i64>,
         #[doc = "The local ID of the user."]
         #[serde(rename = "localId", default)]
-        pub local_id: Option<String>,
+        pub local_id: ::std::option::Option<String>,
         #[doc = "The out-of-band code of the change email request."]
         #[serde(rename = "oobCode", default)]
-        pub oob_code: Option<String>,
+        pub oob_code: ::std::option::Option<String>,
         #[doc = "The new password of the user."]
         #[serde(rename = "password", default)]
-        pub password: Option<String>,
+        pub password: ::std::option::Option<String>,
         #[doc = "Privileged caller can update user with specified phone number."]
         #[serde(rename = "phoneNumber", default)]
-        pub phone_number: Option<String>,
+        pub phone_number: ::std::option::Option<String>,
         #[doc = "The photo url of the user."]
         #[serde(rename = "photoUrl", default)]
-        pub photo_url: Option<String>,
+        pub photo_url: ::std::option::Option<String>,
         #[doc = "The associated IDPs of the user."]
         #[serde(rename = "provider", default)]
-        pub provider: Option<Vec<String>>,
+        pub provider: ::std::option::Option<Vec<String>>,
         #[doc = "Whether return sts id token and refresh token instead of gitkit token."]
         #[serde(rename = "returnSecureToken", default)]
-        pub return_secure_token: Option<bool>,
+        pub return_secure_token: ::std::option::Option<bool>,
         #[doc = "Mark the user to upgrade to federated login."]
         #[serde(rename = "upgradeToFederatedLogin", default)]
-        pub upgrade_to_federated_login: Option<bool>,
+        pub upgrade_to_federated_login: ::std::option::Option<bool>,
         #[doc = "Timestamp in seconds for valid login token."]
         #[serde(rename = "validSince", default)]
         #[serde(with = "crate::parsed_string")]
-        pub valid_since: Option<i64>,
+        pub valid_since: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartySetAccountInfoRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -747,7 +730,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -765,38 +747,38 @@ pub mod schemas {
     pub struct IdentitytoolkitRelyingpartySetProjectConfigRequest {
         #[doc = "Whether to allow password user sign in or sign up."]
         #[serde(rename = "allowPasswordUser", default)]
-        pub allow_password_user: Option<bool>,
+        pub allow_password_user: ::std::option::Option<bool>,
         #[doc = "Browser API key, needed when making http request to Apiary."]
         #[serde(rename = "apiKey", default)]
-        pub api_key: Option<String>,
+        pub api_key: ::std::option::Option<String>,
         #[doc = "Authorized domains for widget redirect."]
         #[serde(rename = "authorizedDomains", default)]
-        pub authorized_domains: Option<Vec<String>>,
+        pub authorized_domains: ::std::option::Option<Vec<String>>,
         #[doc = "Change email template."]
         #[serde(rename = "changeEmailTemplate", default)]
-        pub change_email_template: Option<crate::schemas::EmailTemplate>,
+        pub change_email_template: ::std::option::Option<crate::schemas::EmailTemplate>,
         #[doc = "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration."]
         #[serde(rename = "delegatedProjectNumber", default)]
         #[serde(with = "crate::parsed_string")]
-        pub delegated_project_number: Option<i64>,
+        pub delegated_project_number: ::std::option::Option<i64>,
         #[doc = "Whether to enable anonymous user."]
         #[serde(rename = "enableAnonymousUser", default)]
-        pub enable_anonymous_user: Option<bool>,
+        pub enable_anonymous_user: ::std::option::Option<bool>,
         #[doc = "Oauth2 provider configuration."]
         #[serde(rename = "idpConfig", default)]
-        pub idp_config: Option<Vec<crate::schemas::IdpConfig>>,
+        pub idp_config: ::std::option::Option<Vec<crate::schemas::IdpConfig>>,
         #[doc = "Legacy reset password email template."]
         #[serde(rename = "legacyResetPasswordTemplate", default)]
-        pub legacy_reset_password_template: Option<crate::schemas::EmailTemplate>,
+        pub legacy_reset_password_template: ::std::option::Option<crate::schemas::EmailTemplate>,
         #[doc = "Reset password email template."]
         #[serde(rename = "resetPasswordTemplate", default)]
-        pub reset_password_template: Option<crate::schemas::EmailTemplate>,
+        pub reset_password_template: ::std::option::Option<crate::schemas::EmailTemplate>,
         #[doc = "Whether to use email sending provided by Firebear."]
         #[serde(rename = "useEmailSending", default)]
-        pub use_email_sending: Option<bool>,
+        pub use_email_sending: ::std::option::Option<bool>,
         #[doc = "Verify email template."]
         #[serde(rename = "verifyEmailTemplate", default)]
-        pub verify_email_template: Option<crate::schemas::EmailTemplate>,
+        pub verify_email_template: ::std::option::Option<crate::schemas::EmailTemplate>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartySetProjectConfigRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -805,7 +787,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -823,7 +804,7 @@ pub mod schemas {
     pub struct IdentitytoolkitRelyingpartySetProjectConfigResponse {
         #[doc = "Project ID of the relying party."]
         #[serde(rename = "projectId", default)]
-        pub project_id: Option<String>,
+        pub project_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartySetProjectConfigResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -832,7 +813,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -850,10 +830,10 @@ pub mod schemas {
     pub struct IdentitytoolkitRelyingpartySignOutUserRequest {
         #[doc = "Instance id token of the app."]
         #[serde(rename = "instanceId", default)]
-        pub instance_id: Option<String>,
+        pub instance_id: ::std::option::Option<String>,
         #[doc = "The local ID of the user."]
         #[serde(rename = "localId", default)]
-        pub local_id: Option<String>,
+        pub local_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartySignOutUserRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -862,7 +842,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -880,7 +859,7 @@ pub mod schemas {
     pub struct IdentitytoolkitRelyingpartySignOutUserResponse {
         #[doc = "The local ID of the user."]
         #[serde(rename = "localId", default)]
-        pub local_id: Option<String>,
+        pub local_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartySignOutUserResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -889,7 +868,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -907,47 +885,47 @@ pub mod schemas {
     pub struct IdentitytoolkitRelyingpartySignupNewUserRequest {
         #[doc = "The captcha challenge."]
         #[serde(rename = "captchaChallenge", default)]
-        pub captcha_challenge: Option<String>,
+        pub captcha_challenge: ::std::option::Option<String>,
         #[doc = "Response to the captcha."]
         #[serde(rename = "captchaResponse", default)]
-        pub captcha_response: Option<String>,
+        pub captcha_response: ::std::option::Option<String>,
         #[doc = "Whether to disable the user. Only can be used by service account."]
         #[serde(rename = "disabled", default)]
-        pub disabled: Option<bool>,
+        pub disabled: ::std::option::Option<bool>,
         #[doc = "The name of the user."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The email of the user."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "Mark the email as verified or not. Only can be used by service account."]
         #[serde(rename = "emailVerified", default)]
-        pub email_verified: Option<bool>,
+        pub email_verified: ::std::option::Option<bool>,
         #[doc = "The GITKit token of the authenticated user."]
         #[serde(rename = "idToken", default)]
-        pub id_token: Option<String>,
+        pub id_token: ::std::option::Option<String>,
         #[doc = "Instance id token of the app."]
         #[serde(rename = "instanceId", default)]
-        pub instance_id: Option<String>,
+        pub instance_id: ::std::option::Option<String>,
         #[doc = "Privileged caller can create user with specified user id."]
         #[serde(rename = "localId", default)]
-        pub local_id: Option<String>,
+        pub local_id: ::std::option::Option<String>,
         #[doc = "The new password of the user."]
         #[serde(rename = "password", default)]
-        pub password: Option<String>,
+        pub password: ::std::option::Option<String>,
         #[doc = "Privileged caller can create user with specified phone number."]
         #[serde(rename = "phoneNumber", default)]
-        pub phone_number: Option<String>,
+        pub phone_number: ::std::option::Option<String>,
         #[doc = "The photo url of the user."]
         #[serde(rename = "photoUrl", default)]
-        pub photo_url: Option<String>,
+        pub photo_url: ::std::option::Option<String>,
         #[doc = "For multi-tenant use cases, in order to construct sign-in URL with the correct IDP parameters, Firebear needs to know which Tenant to retrieve IDP configs from."]
         #[serde(rename = "tenantId", default)]
-        pub tenant_id: Option<String>,
+        pub tenant_id: ::std::option::Option<String>,
         #[doc = "Tenant project number to be used for idp discovery."]
         #[serde(rename = "tenantProjectNumber", default)]
         #[serde(with = "crate::parsed_string")]
-        pub tenant_project_number: Option<u64>,
+        pub tenant_project_number: ::std::option::Option<u64>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartySignupNewUserRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -956,7 +934,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -965,44 +942,44 @@ pub mod schemas {
     pub struct IdentitytoolkitRelyingpartyUploadAccountRequest {
         #[doc = "Whether allow overwrite existing account when user local_id exists."]
         #[serde(rename = "allowOverwrite", default)]
-        pub allow_overwrite: Option<bool>,
+        pub allow_overwrite: ::std::option::Option<bool>,
         #[serde(rename = "blockSize", default)]
-        pub block_size: Option<i32>,
+        pub block_size: ::std::option::Option<i32>,
         #[doc = "The following 4 fields are for standard scrypt algorithm."]
         #[serde(rename = "cpuMemCost", default)]
-        pub cpu_mem_cost: Option<i32>,
+        pub cpu_mem_cost: ::std::option::Option<i32>,
         #[doc = "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration."]
         #[serde(rename = "delegatedProjectNumber", default)]
         #[serde(with = "crate::parsed_string")]
-        pub delegated_project_number: Option<i64>,
+        pub delegated_project_number: ::std::option::Option<i64>,
         #[serde(rename = "dkLen", default)]
-        pub dk_len: Option<i32>,
+        pub dk_len: ::std::option::Option<i32>,
         #[doc = "The password hash algorithm."]
         #[serde(rename = "hashAlgorithm", default)]
-        pub hash_algorithm: Option<String>,
+        pub hash_algorithm: ::std::option::Option<String>,
         #[doc = "Memory cost for hash calculation. Used by scrypt similar algorithms."]
         #[serde(rename = "memoryCost", default)]
-        pub memory_cost: Option<i32>,
+        pub memory_cost: ::std::option::Option<i32>,
         #[serde(rename = "parallelization", default)]
-        pub parallelization: Option<i32>,
+        pub parallelization: ::std::option::Option<i32>,
         #[doc = "Rounds for hash calculation. Used by scrypt and similar algorithms."]
         #[serde(rename = "rounds", default)]
-        pub rounds: Option<i32>,
+        pub rounds: ::std::option::Option<i32>,
         #[doc = "The salt separator."]
         #[serde(rename = "saltSeparator", default)]
-        pub salt_separator: Option<Vec<u8>>,
+        pub salt_separator: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "If true, backend will do sanity check(including duplicate email and federated id) when uploading account."]
         #[serde(rename = "sanityCheck", default)]
-        pub sanity_check: Option<bool>,
+        pub sanity_check: ::std::option::Option<bool>,
         #[doc = "The key for to hash the password."]
         #[serde(rename = "signerKey", default)]
-        pub signer_key: Option<Vec<u8>>,
+        pub signer_key: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Specify which project (field value is actually project id) to operate. Only used when provided credential."]
         #[serde(rename = "targetProjectId", default)]
-        pub target_project_id: Option<String>,
+        pub target_project_id: ::std::option::Option<String>,
         #[doc = "The account info to be stored."]
         #[serde(rename = "users", default)]
-        pub users: Option<Vec<crate::schemas::UserInfo>>,
+        pub users: ::std::option::Option<Vec<crate::schemas::UserInfo>>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartyUploadAccountRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1011,7 +988,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1029,45 +1005,45 @@ pub mod schemas {
     pub struct IdentitytoolkitRelyingpartyVerifyAssertionRequest {
         #[doc = "When it's true, automatically creates a new account if the user doesn't exist. When it's false, allows existing user to sign in normally and throws exception if the user doesn't exist."]
         #[serde(rename = "autoCreate", default)]
-        pub auto_create: Option<bool>,
+        pub auto_create: ::std::option::Option<bool>,
         #[doc = "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration."]
         #[serde(rename = "delegatedProjectNumber", default)]
         #[serde(with = "crate::parsed_string")]
-        pub delegated_project_number: Option<i64>,
+        pub delegated_project_number: ::std::option::Option<i64>,
         #[doc = "The GITKit token of the authenticated user."]
         #[serde(rename = "idToken", default)]
-        pub id_token: Option<String>,
+        pub id_token: ::std::option::Option<String>,
         #[doc = "Instance id token of the app."]
         #[serde(rename = "instanceId", default)]
-        pub instance_id: Option<String>,
+        pub instance_id: ::std::option::Option<String>,
         #[doc = "The GITKit token for the non-trusted IDP pending to be confirmed by the user."]
         #[serde(rename = "pendingIdToken", default)]
-        pub pending_id_token: Option<String>,
+        pub pending_id_token: ::std::option::Option<String>,
         #[doc = "The post body if the request is a HTTP POST."]
         #[serde(rename = "postBody", default)]
-        pub post_body: Option<String>,
+        pub post_body: ::std::option::Option<String>,
         #[doc = "The URI to which the IDP redirects the user back. It may contain federated login result params added by the IDP."]
         #[serde(rename = "requestUri", default)]
-        pub request_uri: Option<String>,
+        pub request_uri: ::std::option::Option<String>,
         #[doc = "Whether return 200 and IDP credential rather than throw exception when federated id is already linked."]
         #[serde(rename = "returnIdpCredential", default)]
-        pub return_idp_credential: Option<bool>,
+        pub return_idp_credential: ::std::option::Option<bool>,
         #[doc = "Whether to return refresh tokens."]
         #[serde(rename = "returnRefreshToken", default)]
-        pub return_refresh_token: Option<bool>,
+        pub return_refresh_token: ::std::option::Option<bool>,
         #[doc = "Whether return sts id token and refresh token instead of gitkit token."]
         #[serde(rename = "returnSecureToken", default)]
-        pub return_secure_token: Option<bool>,
+        pub return_secure_token: ::std::option::Option<bool>,
         #[doc = "Session ID, which should match the one in previous createAuthUri request."]
         #[serde(rename = "sessionId", default)]
-        pub session_id: Option<String>,
+        pub session_id: ::std::option::Option<String>,
         #[doc = "For multi-tenant use cases, in order to construct sign-in URL with the correct IDP parameters, Firebear needs to know which Tenant to retrieve IDP configs from."]
         #[serde(rename = "tenantId", default)]
-        pub tenant_id: Option<String>,
+        pub tenant_id: ::std::option::Option<String>,
         #[doc = "Tenant project number to be used for idp discovery."]
         #[serde(rename = "tenantProjectNumber", default)]
         #[serde(with = "crate::parsed_string")]
-        pub tenant_project_number: Option<u64>,
+        pub tenant_project_number: ::std::option::Option<u64>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartyVerifyAssertionRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1076,7 +1052,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1095,16 +1070,16 @@ pub mod schemas {
         #[doc = "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration."]
         #[serde(rename = "delegatedProjectNumber", default)]
         #[serde(with = "crate::parsed_string")]
-        pub delegated_project_number: Option<i64>,
+        pub delegated_project_number: ::std::option::Option<i64>,
         #[doc = "Instance id token of the app."]
         #[serde(rename = "instanceId", default)]
-        pub instance_id: Option<String>,
+        pub instance_id: ::std::option::Option<String>,
         #[doc = "Whether return sts id token and refresh token instead of gitkit token."]
         #[serde(rename = "returnSecureToken", default)]
-        pub return_secure_token: Option<bool>,
+        pub return_secure_token: ::std::option::Option<bool>,
         #[doc = "The custom token to verify"]
         #[serde(rename = "token", default)]
-        pub token: Option<String>,
+        pub token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1113,7 +1088,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1131,39 +1105,39 @@ pub mod schemas {
     pub struct IdentitytoolkitRelyingpartyVerifyPasswordRequest {
         #[doc = "The captcha challenge."]
         #[serde(rename = "captchaChallenge", default)]
-        pub captcha_challenge: Option<String>,
+        pub captcha_challenge: ::std::option::Option<String>,
         #[doc = "Response to the captcha."]
         #[serde(rename = "captchaResponse", default)]
-        pub captcha_response: Option<String>,
+        pub captcha_response: ::std::option::Option<String>,
         #[doc = "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration."]
         #[serde(rename = "delegatedProjectNumber", default)]
         #[serde(with = "crate::parsed_string")]
-        pub delegated_project_number: Option<i64>,
+        pub delegated_project_number: ::std::option::Option<i64>,
         #[doc = "The email of the user."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The GITKit token of the authenticated user."]
         #[serde(rename = "idToken", default)]
-        pub id_token: Option<String>,
+        pub id_token: ::std::option::Option<String>,
         #[doc = "Instance id token of the app."]
         #[serde(rename = "instanceId", default)]
-        pub instance_id: Option<String>,
+        pub instance_id: ::std::option::Option<String>,
         #[doc = "The password inputed by the user."]
         #[serde(rename = "password", default)]
-        pub password: Option<String>,
+        pub password: ::std::option::Option<String>,
         #[doc = "The GITKit token for the non-trusted IDP, which is to be confirmed by the user."]
         #[serde(rename = "pendingIdToken", default)]
-        pub pending_id_token: Option<String>,
+        pub pending_id_token: ::std::option::Option<String>,
         #[doc = "Whether return sts id token and refresh token instead of gitkit token."]
         #[serde(rename = "returnSecureToken", default)]
-        pub return_secure_token: Option<bool>,
+        pub return_secure_token: ::std::option::Option<bool>,
         #[doc = "For multi-tenant use cases, in order to construct sign-in URL with the correct IDP parameters, Firebear needs to know which Tenant to retrieve IDP configs from."]
         #[serde(rename = "tenantId", default)]
-        pub tenant_id: Option<String>,
+        pub tenant_id: ::std::option::Option<String>,
         #[doc = "Tenant project number to be used for idp discovery."]
         #[serde(rename = "tenantProjectNumber", default)]
         #[serde(with = "crate::parsed_string")]
-        pub tenant_project_number: Option<u64>,
+        pub tenant_project_number: ::std::option::Option<u64>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartyVerifyPasswordRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1172,7 +1146,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1189,20 +1162,20 @@ pub mod schemas {
     )]
     pub struct IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest {
         #[serde(rename = "code", default)]
-        pub code: Option<String>,
+        pub code: ::std::option::Option<String>,
         #[serde(rename = "idToken", default)]
-        pub id_token: Option<String>,
+        pub id_token: ::std::option::Option<String>,
         #[serde(rename = "operation", default)]
-        pub operation: Option<String>,
+        pub operation: ::std::option::Option<String>,
         #[serde(rename = "phoneNumber", default)]
-        pub phone_number: Option<String>,
+        pub phone_number: ::std::option::Option<String>,
         #[doc = "The session info previously returned by IdentityToolkit-SendVerificationCode."]
         #[serde(rename = "sessionInfo", default)]
-        pub session_info: Option<String>,
+        pub session_info: ::std::option::Option<String>,
         #[serde(rename = "temporaryProof", default)]
-        pub temporary_proof: Option<String>,
+        pub temporary_proof: ::std::option::Option<String>,
         #[serde(rename = "verificationProof", default)]
-        pub verification_proof: Option<String>,
+        pub verification_proof: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1211,7 +1184,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1229,27 +1201,27 @@ pub mod schemas {
     pub struct IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse {
         #[serde(rename = "expiresIn", default)]
         #[serde(with = "crate::parsed_string")]
-        pub expires_in: Option<i64>,
+        pub expires_in: ::std::option::Option<i64>,
         #[serde(rename = "idToken", default)]
-        pub id_token: Option<String>,
+        pub id_token: ::std::option::Option<String>,
         #[serde(rename = "isNewUser", default)]
-        pub is_new_user: Option<bool>,
+        pub is_new_user: ::std::option::Option<bool>,
         #[serde(rename = "localId", default)]
-        pub local_id: Option<String>,
+        pub local_id: ::std::option::Option<String>,
         #[serde(rename = "phoneNumber", default)]
-        pub phone_number: Option<String>,
+        pub phone_number: ::std::option::Option<String>,
         #[serde(rename = "refreshToken", default)]
-        pub refresh_token: Option<String>,
+        pub refresh_token: ::std::option::Option<String>,
         #[serde(rename = "temporaryProof", default)]
-        pub temporary_proof: Option<String>,
+        pub temporary_proof: ::std::option::Option<String>,
         #[serde(rename = "temporaryProofExpiresIn", default)]
         #[serde(with = "crate::parsed_string")]
-        pub temporary_proof_expires_in: Option<i64>,
+        pub temporary_proof_expires_in: ::std::option::Option<i64>,
         #[serde(rename = "verificationProof", default)]
-        pub verification_proof: Option<String>,
+        pub verification_proof: ::std::option::Option<String>,
         #[serde(rename = "verificationProofExpiresIn", default)]
         #[serde(with = "crate::parsed_string")]
-        pub verification_proof_expires_in: Option<i64>,
+        pub verification_proof_expires_in: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1258,7 +1230,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1276,22 +1247,22 @@ pub mod schemas {
     pub struct IdpConfig {
         #[doc = "OAuth2 client ID."]
         #[serde(rename = "clientId", default)]
-        pub client_id: Option<String>,
+        pub client_id: ::std::option::Option<String>,
         #[doc = "Whether this IDP is enabled."]
         #[serde(rename = "enabled", default)]
-        pub enabled: Option<bool>,
+        pub enabled: ::std::option::Option<bool>,
         #[doc = "Percent of users who will be prompted/redirected federated login for this IDP."]
         #[serde(rename = "experimentPercent", default)]
-        pub experiment_percent: Option<i32>,
+        pub experiment_percent: ::std::option::Option<i32>,
         #[doc = "OAuth2 provider."]
         #[serde(rename = "provider", default)]
-        pub provider: Option<String>,
+        pub provider: ::std::option::Option<String>,
         #[doc = "OAuth2 client secret."]
         #[serde(rename = "secret", default)]
-        pub secret: Option<String>,
+        pub secret: ::std::option::Option<String>,
         #[doc = "Whitelisted client IDs for audience check."]
         #[serde(rename = "whitelistedAudiences", default)]
-        pub whitelisted_audiences: Option<Vec<String>>,
+        pub whitelisted_audiences: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for IdpConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1300,7 +1271,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1318,49 +1288,49 @@ pub mod schemas {
     pub struct Relyingparty {
         #[doc = "whether or not to install the android app on the device where the link is opened"]
         #[serde(rename = "androidInstallApp", default)]
-        pub android_install_app: Option<bool>,
+        pub android_install_app: ::std::option::Option<bool>,
         #[doc = "minimum version of the app. if the version on the device is lower than this version then the user is taken to the play store to upgrade the app"]
         #[serde(rename = "androidMinimumVersion", default)]
-        pub android_minimum_version: Option<String>,
+        pub android_minimum_version: ::std::option::Option<String>,
         #[doc = "android package name of the android app to handle the action code"]
         #[serde(rename = "androidPackageName", default)]
-        pub android_package_name: Option<String>,
+        pub android_package_name: ::std::option::Option<String>,
         #[doc = "whether or not the app can handle the oob code without first going to web"]
         #[serde(rename = "canHandleCodeInApp", default)]
-        pub can_handle_code_in_app: Option<bool>,
+        pub can_handle_code_in_app: ::std::option::Option<bool>,
         #[doc = "The recaptcha response from the user."]
         #[serde(rename = "captchaResp", default)]
-        pub captcha_resp: Option<String>,
+        pub captcha_resp: ::std::option::Option<String>,
         #[doc = "The recaptcha challenge presented to the user."]
         #[serde(rename = "challenge", default)]
-        pub challenge: Option<String>,
+        pub challenge: ::std::option::Option<String>,
         #[doc = "The url to continue to the Gitkit app"]
         #[serde(rename = "continueUrl", default)]
-        pub continue_url: Option<String>,
+        pub continue_url: ::std::option::Option<String>,
         #[doc = "The email of the user."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "iOS app store id to download the app if it's not already installed"]
         #[serde(rename = "iOSAppStoreId", default)]
-        pub i_os_app_store_id: Option<String>,
+        pub i_os_app_store_id: ::std::option::Option<String>,
         #[doc = "the iOS bundle id of iOS app to handle the action code"]
         #[serde(rename = "iOSBundleId", default)]
-        pub i_os_bundle_id: Option<String>,
+        pub i_os_bundle_id: ::std::option::Option<String>,
         #[doc = "The user's Gitkit login token for email change."]
         #[serde(rename = "idToken", default)]
-        pub id_token: Option<String>,
+        pub id_token: ::std::option::Option<String>,
         #[doc = "The fixed string \"identitytoolkit#relyingparty\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The new email if the code is for email change."]
         #[serde(rename = "newEmail", default)]
-        pub new_email: Option<String>,
+        pub new_email: ::std::option::Option<String>,
         #[doc = "The request type."]
         #[serde(rename = "requestType", default)]
-        pub request_type: Option<String>,
+        pub request_type: ::std::option::Option<String>,
         #[doc = "The IP address of the user."]
         #[serde(rename = "userIp", default)]
-        pub user_ip: Option<String>,
+        pub user_ip: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Relyingparty {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1369,7 +1339,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1387,16 +1356,16 @@ pub mod schemas {
     pub struct ResetPasswordResponse {
         #[doc = "The user's email. If the out-of-band code is for email recovery, the user's original email."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The fixed string \"identitytoolkit#ResetPasswordResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "If the out-of-band code is for email recovery, the user's new email."]
         #[serde(rename = "newEmail", default)]
-        pub new_email: Option<String>,
+        pub new_email: ::std::option::Option<String>,
         #[doc = "The request type."]
         #[serde(rename = "requestType", default)]
-        pub request_type: Option<String>,
+        pub request_type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ResetPasswordResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1405,7 +1374,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1423,16 +1391,16 @@ pub mod schemas {
     pub struct SetAccountInfoResponseProviderUserInfoItems {
         #[doc = "The user's display name at the IDP."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "User's identifier at IDP."]
         #[serde(rename = "federatedId", default)]
-        pub federated_id: Option<String>,
+        pub federated_id: ::std::option::Option<String>,
         #[doc = "The user's photo url at the IDP."]
         #[serde(rename = "photoUrl", default)]
-        pub photo_url: Option<String>,
+        pub photo_url: ::std::option::Option<String>,
         #[doc = "The IdP ID. For whitelisted IdPs it's a short domain name, e.g., google.com, aol.com, live.net and yahoo.com. For other OpenID IdPs it's the OP identifier."]
         #[serde(rename = "providerId", default)]
-        pub provider_id: Option<String>,
+        pub provider_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SetAccountInfoResponseProviderUserInfoItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1441,7 +1409,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1459,42 +1426,42 @@ pub mod schemas {
     pub struct SetAccountInfoResponse {
         #[doc = "The name of the user."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The email of the user."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "If email has been verified."]
         #[serde(rename = "emailVerified", default)]
-        pub email_verified: Option<bool>,
+        pub email_verified: ::std::option::Option<bool>,
         #[doc = "If idToken is STS id token, then this field will be expiration time of STS id token in seconds."]
         #[serde(rename = "expiresIn", default)]
         #[serde(with = "crate::parsed_string")]
-        pub expires_in: Option<i64>,
+        pub expires_in: ::std::option::Option<i64>,
         #[doc = "The Gitkit id token to login the newly sign up user."]
         #[serde(rename = "idToken", default)]
-        pub id_token: Option<String>,
+        pub id_token: ::std::option::Option<String>,
         #[doc = "The fixed string \"identitytoolkit#SetAccountInfoResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The local ID of the user."]
         #[serde(rename = "localId", default)]
-        pub local_id: Option<String>,
+        pub local_id: ::std::option::Option<String>,
         #[doc = "The new email the user attempts to change to."]
         #[serde(rename = "newEmail", default)]
-        pub new_email: Option<String>,
+        pub new_email: ::std::option::Option<String>,
         #[doc = "The user's hashed password."]
         #[serde(rename = "passwordHash", default)]
-        pub password_hash: Option<Vec<u8>>,
+        pub password_hash: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "The photo url of the user."]
         #[serde(rename = "photoUrl", default)]
-        pub photo_url: Option<String>,
+        pub photo_url: ::std::option::Option<String>,
         #[doc = "The user's profiles at the associated IdPs."]
         #[serde(rename = "providerUserInfo", default)]
         pub provider_user_info:
-            Option<Vec<crate::schemas::SetAccountInfoResponseProviderUserInfoItems>>,
+            ::std::option::Option<Vec<crate::schemas::SetAccountInfoResponseProviderUserInfoItems>>,
         #[doc = "If idToken is STS id token, then this field will be refresh token."]
         #[serde(rename = "refreshToken", default)]
-        pub refresh_token: Option<String>,
+        pub refresh_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SetAccountInfoResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1503,7 +1470,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1521,26 +1487,26 @@ pub mod schemas {
     pub struct SignupNewUserResponse {
         #[doc = "The name of the user."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The email of the user."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "If idToken is STS id token, then this field will be expiration time of STS id token in seconds."]
         #[serde(rename = "expiresIn", default)]
         #[serde(with = "crate::parsed_string")]
-        pub expires_in: Option<i64>,
+        pub expires_in: ::std::option::Option<i64>,
         #[doc = "The Gitkit id token to login the newly sign up user."]
         #[serde(rename = "idToken", default)]
-        pub id_token: Option<String>,
+        pub id_token: ::std::option::Option<String>,
         #[doc = "The fixed string \"identitytoolkit#SignupNewUserResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The RP local ID of the user."]
         #[serde(rename = "localId", default)]
-        pub local_id: Option<String>,
+        pub local_id: ::std::option::Option<String>,
         #[doc = "If idToken is STS id token, then this field will be refresh token."]
         #[serde(rename = "refreshToken", default)]
-        pub refresh_token: Option<String>,
+        pub refresh_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SignupNewUserResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1549,7 +1515,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1567,10 +1532,10 @@ pub mod schemas {
     pub struct UploadAccountResponseErrorItems {
         #[doc = "The index of the malformed account, starting from 0."]
         #[serde(rename = "index", default)]
-        pub index: Option<i32>,
+        pub index: ::std::option::Option<i32>,
         #[doc = "Detailed error message for the account info."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UploadAccountResponseErrorItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1579,7 +1544,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1597,10 +1561,10 @@ pub mod schemas {
     pub struct UploadAccountResponse {
         #[doc = "The error encountered while processing the account info."]
         #[serde(rename = "error", default)]
-        pub error: Option<Vec<crate::schemas::UploadAccountResponseErrorItems>>,
+        pub error: ::std::option::Option<Vec<crate::schemas::UploadAccountResponseErrorItems>>,
         #[doc = "The fixed string \"identitytoolkit#UploadAccountResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UploadAccountResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1609,7 +1573,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1627,28 +1590,28 @@ pub mod schemas {
     pub struct UserInfoProviderUserInfoItems {
         #[doc = "The user's display name at the IDP."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "User's email at IDP."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "User's identifier at IDP."]
         #[serde(rename = "federatedId", default)]
-        pub federated_id: Option<String>,
+        pub federated_id: ::std::option::Option<String>,
         #[doc = "User's phone number."]
         #[serde(rename = "phoneNumber", default)]
-        pub phone_number: Option<String>,
+        pub phone_number: ::std::option::Option<String>,
         #[doc = "The user's photo url at the IDP."]
         #[serde(rename = "photoUrl", default)]
-        pub photo_url: Option<String>,
+        pub photo_url: ::std::option::Option<String>,
         #[doc = "The IdP ID. For white listed IdPs it's a short domain name, e.g., google.com, aol.com, live.net and yahoo.com. For other OpenID IdPs it's the OP identifier."]
         #[serde(rename = "providerId", default)]
-        pub provider_id: Option<String>,
+        pub provider_id: ::std::option::Option<String>,
         #[doc = "User's raw identifier directly returned from IDP."]
         #[serde(rename = "rawId", default)]
-        pub raw_id: Option<String>,
+        pub raw_id: ::std::option::Option<String>,
         #[doc = "User's screen name at Twitter or login name at Github."]
         #[serde(rename = "screenName", default)]
-        pub screen_name: Option<String>,
+        pub screen_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserInfoProviderUserInfoItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1657,7 +1620,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1667,63 +1629,64 @@ pub mod schemas {
         #[doc = "User creation timestamp."]
         #[serde(rename = "createdAt", default)]
         #[serde(with = "crate::parsed_string")]
-        pub created_at: Option<i64>,
+        pub created_at: ::std::option::Option<i64>,
         #[doc = "The custom attributes to be set in the user's id token."]
         #[serde(rename = "customAttributes", default)]
-        pub custom_attributes: Option<String>,
+        pub custom_attributes: ::std::option::Option<String>,
         #[doc = "Whether the user is authenticated by the developer."]
         #[serde(rename = "customAuth", default)]
-        pub custom_auth: Option<bool>,
+        pub custom_auth: ::std::option::Option<bool>,
         #[doc = "Whether the user is disabled."]
         #[serde(rename = "disabled", default)]
-        pub disabled: Option<bool>,
+        pub disabled: ::std::option::Option<bool>,
         #[doc = "The name of the user."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The email of the user."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "Whether the email has been verified."]
         #[serde(rename = "emailVerified", default)]
-        pub email_verified: Option<bool>,
+        pub email_verified: ::std::option::Option<bool>,
         #[doc = "last login timestamp."]
         #[serde(rename = "lastLoginAt", default)]
         #[serde(with = "crate::parsed_string")]
-        pub last_login_at: Option<i64>,
+        pub last_login_at: ::std::option::Option<i64>,
         #[doc = "The local ID of the user."]
         #[serde(rename = "localId", default)]
-        pub local_id: Option<String>,
+        pub local_id: ::std::option::Option<String>,
         #[doc = "The user's hashed password."]
         #[serde(rename = "passwordHash", default)]
-        pub password_hash: Option<Vec<u8>>,
+        pub password_hash: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "The timestamp when the password was last updated."]
         #[serde(rename = "passwordUpdatedAt", default)]
-        pub password_updated_at: Option<f64>,
+        pub password_updated_at: ::std::option::Option<f64>,
         #[doc = "User's phone number."]
         #[serde(rename = "phoneNumber", default)]
-        pub phone_number: Option<String>,
+        pub phone_number: ::std::option::Option<String>,
         #[doc = "The URL of the user profile photo."]
         #[serde(rename = "photoUrl", default)]
-        pub photo_url: Option<String>,
+        pub photo_url: ::std::option::Option<String>,
         #[doc = "The IDP of the user."]
         #[serde(rename = "providerUserInfo", default)]
-        pub provider_user_info: Option<Vec<crate::schemas::UserInfoProviderUserInfoItems>>,
+        pub provider_user_info:
+            ::std::option::Option<Vec<crate::schemas::UserInfoProviderUserInfoItems>>,
         #[doc = "The user's plain text password."]
         #[serde(rename = "rawPassword", default)]
-        pub raw_password: Option<String>,
+        pub raw_password: ::std::option::Option<String>,
         #[doc = "The user's password salt."]
         #[serde(rename = "salt", default)]
-        pub salt: Option<Vec<u8>>,
+        pub salt: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "User's screen name at Twitter or login name at Github."]
         #[serde(rename = "screenName", default)]
-        pub screen_name: Option<String>,
+        pub screen_name: ::std::option::Option<String>,
         #[doc = "Timestamp in seconds for valid login token."]
         #[serde(rename = "validSince", default)]
         #[serde(with = "crate::parsed_string")]
-        pub valid_since: Option<i64>,
+        pub valid_since: ::std::option::Option<i64>,
         #[doc = "Version of the user's password."]
         #[serde(rename = "version", default)]
-        pub version: Option<i32>,
+        pub version: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for UserInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1732,7 +1695,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1750,122 +1712,122 @@ pub mod schemas {
     pub struct VerifyAssertionResponse {
         #[doc = "The action code."]
         #[serde(rename = "action", default)]
-        pub action: Option<String>,
+        pub action: ::std::option::Option<String>,
         #[doc = "URL for OTA app installation."]
         #[serde(rename = "appInstallationUrl", default)]
-        pub app_installation_url: Option<String>,
+        pub app_installation_url: ::std::option::Option<String>,
         #[doc = "The custom scheme used by mobile app."]
         #[serde(rename = "appScheme", default)]
-        pub app_scheme: Option<String>,
+        pub app_scheme: ::std::option::Option<String>,
         #[doc = "The opaque value used by the client to maintain context info between the authentication request and the IDP callback."]
         #[serde(rename = "context", default)]
-        pub context: Option<String>,
+        pub context: ::std::option::Option<String>,
         #[doc = "The birth date of the IdP account."]
         #[serde(rename = "dateOfBirth", default)]
-        pub date_of_birth: Option<String>,
+        pub date_of_birth: ::std::option::Option<String>,
         #[doc = "The display name of the user."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The email returned by the IdP. NOTE: The federated login user may not own the email."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "It's true if the email is recycled."]
         #[serde(rename = "emailRecycled", default)]
-        pub email_recycled: Option<bool>,
+        pub email_recycled: ::std::option::Option<bool>,
         #[doc = "The value is true if the IDP is also the email provider. It means the user owns the email."]
         #[serde(rename = "emailVerified", default)]
-        pub email_verified: Option<bool>,
+        pub email_verified: ::std::option::Option<bool>,
         #[doc = "Client error code."]
         #[serde(rename = "errorMessage", default)]
-        pub error_message: Option<String>,
+        pub error_message: ::std::option::Option<String>,
         #[doc = "If idToken is STS id token, then this field will be expiration time of STS id token in seconds."]
         #[serde(rename = "expiresIn", default)]
         #[serde(with = "crate::parsed_string")]
-        pub expires_in: Option<i64>,
+        pub expires_in: ::std::option::Option<i64>,
         #[doc = "The unique ID identifies the IdP account."]
         #[serde(rename = "federatedId", default)]
-        pub federated_id: Option<String>,
+        pub federated_id: ::std::option::Option<String>,
         #[doc = "The first name of the user."]
         #[serde(rename = "firstName", default)]
-        pub first_name: Option<String>,
+        pub first_name: ::std::option::Option<String>,
         #[doc = "The full name of the user."]
         #[serde(rename = "fullName", default)]
-        pub full_name: Option<String>,
+        pub full_name: ::std::option::Option<String>,
         #[doc = "The ID token."]
         #[serde(rename = "idToken", default)]
-        pub id_token: Option<String>,
+        pub id_token: ::std::option::Option<String>,
         #[doc = "It's the identifier param in the createAuthUri request if the identifier is an email. It can be used to check whether the user input email is different from the asserted email."]
         #[serde(rename = "inputEmail", default)]
-        pub input_email: Option<String>,
+        pub input_email: ::std::option::Option<String>,
         #[doc = "True if it's a new user sign-in, false if it's a returning user."]
         #[serde(rename = "isNewUser", default)]
-        pub is_new_user: Option<bool>,
+        pub is_new_user: ::std::option::Option<bool>,
         #[doc = "The fixed string \"identitytoolkit#VerifyAssertionResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The language preference of the user."]
         #[serde(rename = "language", default)]
-        pub language: Option<String>,
+        pub language: ::std::option::Option<String>,
         #[doc = "The last name of the user."]
         #[serde(rename = "lastName", default)]
-        pub last_name: Option<String>,
+        pub last_name: ::std::option::Option<String>,
         #[doc = "The RP local ID if it's already been mapped to the IdP account identified by the federated ID."]
         #[serde(rename = "localId", default)]
-        pub local_id: Option<String>,
+        pub local_id: ::std::option::Option<String>,
         #[doc = "Whether the assertion is from a non-trusted IDP and need account linking confirmation."]
         #[serde(rename = "needConfirmation", default)]
-        pub need_confirmation: Option<bool>,
+        pub need_confirmation: ::std::option::Option<bool>,
         #[doc = "Whether need client to supply email to complete the federated login flow."]
         #[serde(rename = "needEmail", default)]
-        pub need_email: Option<bool>,
+        pub need_email: ::std::option::Option<bool>,
         #[doc = "The nick name of the user."]
         #[serde(rename = "nickName", default)]
-        pub nick_name: Option<String>,
+        pub nick_name: ::std::option::Option<String>,
         #[doc = "The OAuth2 access token."]
         #[serde(rename = "oauthAccessToken", default)]
-        pub oauth_access_token: Option<String>,
+        pub oauth_access_token: ::std::option::Option<String>,
         #[doc = "The OAuth2 authorization code."]
         #[serde(rename = "oauthAuthorizationCode", default)]
-        pub oauth_authorization_code: Option<String>,
+        pub oauth_authorization_code: ::std::option::Option<String>,
         #[doc = "The lifetime in seconds of the OAuth2 access token."]
         #[serde(rename = "oauthExpireIn", default)]
-        pub oauth_expire_in: Option<i32>,
+        pub oauth_expire_in: ::std::option::Option<i32>,
         #[doc = "The OIDC id token."]
         #[serde(rename = "oauthIdToken", default)]
-        pub oauth_id_token: Option<String>,
+        pub oauth_id_token: ::std::option::Option<String>,
         #[doc = "The user approved request token for the OpenID OAuth extension."]
         #[serde(rename = "oauthRequestToken", default)]
-        pub oauth_request_token: Option<String>,
+        pub oauth_request_token: ::std::option::Option<String>,
         #[doc = "The scope for the OpenID OAuth extension."]
         #[serde(rename = "oauthScope", default)]
-        pub oauth_scope: Option<String>,
+        pub oauth_scope: ::std::option::Option<String>,
         #[doc = "The OAuth1 access token secret."]
         #[serde(rename = "oauthTokenSecret", default)]
-        pub oauth_token_secret: Option<String>,
+        pub oauth_token_secret: ::std::option::Option<String>,
         #[doc = "The original email stored in the mapping storage. It's returned when the federated ID is associated to a different email."]
         #[serde(rename = "originalEmail", default)]
-        pub original_email: Option<String>,
+        pub original_email: ::std::option::Option<String>,
         #[doc = "The URI of the public accessible profiel picture."]
         #[serde(rename = "photoUrl", default)]
-        pub photo_url: Option<String>,
+        pub photo_url: ::std::option::Option<String>,
         #[doc = "The IdP ID. For white listed IdPs it's a short domain name e.g. google.com, aol.com, live.net and yahoo.com. If the \"providerId\" param is set to OpenID OP identifer other than the whilte listed IdPs the OP identifier is returned. If the \"identifier\" param is federated ID in the createAuthUri request. The domain part of the federated ID is returned."]
         #[serde(rename = "providerId", default)]
-        pub provider_id: Option<String>,
+        pub provider_id: ::std::option::Option<String>,
         #[doc = "Raw IDP-returned user info."]
         #[serde(rename = "rawUserInfo", default)]
-        pub raw_user_info: Option<String>,
+        pub raw_user_info: ::std::option::Option<String>,
         #[doc = "If idToken is STS id token, then this field will be refresh token."]
         #[serde(rename = "refreshToken", default)]
-        pub refresh_token: Option<String>,
+        pub refresh_token: ::std::option::Option<String>,
         #[doc = "The screen_name of a Twitter user or the login name at Github."]
         #[serde(rename = "screenName", default)]
-        pub screen_name: Option<String>,
+        pub screen_name: ::std::option::Option<String>,
         #[doc = "The timezone of the user."]
         #[serde(rename = "timeZone", default)]
-        pub time_zone: Option<String>,
+        pub time_zone: ::std::option::Option<String>,
         #[doc = "When action is 'map', contains the idps which can be used for confirmation."]
         #[serde(rename = "verifiedProvider", default)]
-        pub verified_provider: Option<Vec<String>>,
+        pub verified_provider: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for VerifyAssertionResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1874,7 +1836,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1893,19 +1854,19 @@ pub mod schemas {
         #[doc = "If idToken is STS id token, then this field will be expiration time of STS id token in seconds."]
         #[serde(rename = "expiresIn", default)]
         #[serde(with = "crate::parsed_string")]
-        pub expires_in: Option<i64>,
+        pub expires_in: ::std::option::Option<i64>,
         #[doc = "The GITKit token for authenticated user."]
         #[serde(rename = "idToken", default)]
-        pub id_token: Option<String>,
+        pub id_token: ::std::option::Option<String>,
         #[doc = "True if it's a new user sign-in, false if it's a returning user."]
         #[serde(rename = "isNewUser", default)]
-        pub is_new_user: Option<bool>,
+        pub is_new_user: ::std::option::Option<bool>,
         #[doc = "The fixed string \"identitytoolkit#VerifyCustomTokenResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "If idToken is STS id token, then this field will be refresh token."]
         #[serde(rename = "refreshToken", default)]
-        pub refresh_token: Option<String>,
+        pub refresh_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VerifyCustomTokenResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1914,7 +1875,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1932,41 +1892,41 @@ pub mod schemas {
     pub struct VerifyPasswordResponse {
         #[doc = "The name of the user."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The email returned by the IdP. NOTE: The federated login user may not own the email."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "If idToken is STS id token, then this field will be expiration time of STS id token in seconds."]
         #[serde(rename = "expiresIn", default)]
         #[serde(with = "crate::parsed_string")]
-        pub expires_in: Option<i64>,
+        pub expires_in: ::std::option::Option<i64>,
         #[doc = "The GITKit token for authenticated user."]
         #[serde(rename = "idToken", default)]
-        pub id_token: Option<String>,
+        pub id_token: ::std::option::Option<String>,
         #[doc = "The fixed string \"identitytoolkit#VerifyPasswordResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The RP local ID if it's already been mapped to the IdP account identified by the federated ID."]
         #[serde(rename = "localId", default)]
-        pub local_id: Option<String>,
+        pub local_id: ::std::option::Option<String>,
         #[doc = "The OAuth2 access token."]
         #[serde(rename = "oauthAccessToken", default)]
-        pub oauth_access_token: Option<String>,
+        pub oauth_access_token: ::std::option::Option<String>,
         #[doc = "The OAuth2 authorization code."]
         #[serde(rename = "oauthAuthorizationCode", default)]
-        pub oauth_authorization_code: Option<String>,
+        pub oauth_authorization_code: ::std::option::Option<String>,
         #[doc = "The lifetime in seconds of the OAuth2 access token."]
         #[serde(rename = "oauthExpireIn", default)]
-        pub oauth_expire_in: Option<i32>,
+        pub oauth_expire_in: ::std::option::Option<i32>,
         #[doc = "The URI of the user's photo at IdP"]
         #[serde(rename = "photoUrl", default)]
-        pub photo_url: Option<String>,
+        pub photo_url: ::std::option::Option<String>,
         #[doc = "If idToken is STS id token, then this field will be refresh token."]
         #[serde(rename = "refreshToken", default)]
-        pub refresh_token: Option<String>,
+        pub refresh_token: ::std::option::Option<String>,
         #[doc = "Whether the email is registered."]
         #[serde(rename = "registered", default)]
-        pub registered: Option<bool>,
+        pub registered: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for VerifyPasswordResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1975,7 +1935,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -2020,6 +1979,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -5371,6 +5339,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -5446,5 +5415,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

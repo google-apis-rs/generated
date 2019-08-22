@@ -14,7 +14,7 @@ pub mod schemas {
     pub struct BlockedResource {
         #[doc = "URL of the blocked resource."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BlockedResource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -23,7 +23,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -41,10 +40,10 @@ pub mod schemas {
     pub struct Image {
         #[doc = "Image data in format determined by the mime type. Currently, the format\nwill always be \"image/png\", but this might change in the future."]
         #[serde(rename = "data", default)]
-        pub data: Option<Vec<u8>>,
+        pub data: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "The mime-type of the image data."]
         #[serde(rename = "mimeType", default)]
-        pub mime_type: Option<String>,
+        pub mime_type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Image {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -53,7 +52,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -126,6 +124,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for MobileFriendlyIssueRule {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -141,7 +148,7 @@ pub mod schemas {
     pub struct MobileFriendlyIssue {
         #[doc = "Rule violated."]
         #[serde(rename = "rule", default)]
-        pub rule: Option<crate::schemas::MobileFriendlyIssueRule>,
+        pub rule: ::std::option::Option<crate::schemas::MobileFriendlyIssueRule>,
     }
     impl ::field_selector::FieldSelector for MobileFriendlyIssue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -150,7 +157,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -168,7 +174,7 @@ pub mod schemas {
     pub struct ResourceIssue {
         #[doc = "Describes a blocked resource issue."]
         #[serde(rename = "blockedResource", default)]
-        pub blocked_resource: Option<crate::schemas::BlockedResource>,
+        pub blocked_resource: ::std::option::Option<crate::schemas::BlockedResource>,
     }
     impl ::field_selector::FieldSelector for ResourceIssue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -177,7 +183,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -195,10 +200,10 @@ pub mod schemas {
     pub struct RunMobileFriendlyTestRequest {
         #[doc = "Whether or not screenshot is requested. Default is false."]
         #[serde(rename = "requestScreenshot", default)]
-        pub request_screenshot: Option<bool>,
+        pub request_screenshot: ::std::option::Option<bool>,
         #[doc = "URL for inspection."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RunMobileFriendlyTestRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -207,7 +212,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -246,6 +250,15 @@ pub mod schemas {
             Ok ( match value { "MOBILE_FRIENDLY_TEST_RESULT_UNSPECIFIED" => RunMobileFriendlyTestResponseMobileFriendliness :: MobileFriendlyTestResultUnspecified , "MOBILE_FRIENDLY" => RunMobileFriendlyTestResponseMobileFriendliness :: MobileFriendly , "NOT_MOBILE_FRIENDLY" => RunMobileFriendlyTestResponseMobileFriendliness :: NotMobileFriendly , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
+    impl ::field_selector::FieldSelector for RunMobileFriendlyTestResponseMobileFriendliness {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -262,19 +275,19 @@ pub mod schemas {
         #[doc = "Test verdict, whether the page is mobile friendly or not."]
         #[serde(rename = "mobileFriendliness", default)]
         pub mobile_friendliness:
-            Option<crate::schemas::RunMobileFriendlyTestResponseMobileFriendliness>,
+            ::std::option::Option<crate::schemas::RunMobileFriendlyTestResponseMobileFriendliness>,
         #[doc = "List of mobile-usability issues."]
         #[serde(rename = "mobileFriendlyIssues", default)]
-        pub mobile_friendly_issues: Option<Vec<crate::schemas::MobileFriendlyIssue>>,
+        pub mobile_friendly_issues: ::std::option::Option<Vec<crate::schemas::MobileFriendlyIssue>>,
         #[doc = "Information about embedded resources issues."]
         #[serde(rename = "resourceIssues", default)]
-        pub resource_issues: Option<Vec<crate::schemas::ResourceIssue>>,
+        pub resource_issues: ::std::option::Option<Vec<crate::schemas::ResourceIssue>>,
         #[doc = "Screenshot of the requested URL."]
         #[serde(rename = "screenshot", default)]
-        pub screenshot: Option<crate::schemas::Image>,
+        pub screenshot: ::std::option::Option<crate::schemas::Image>,
         #[doc = "Final state of the test, can be either complete or an error."]
         #[serde(rename = "testStatus", default)]
-        pub test_status: Option<crate::schemas::TestStatus>,
+        pub test_status: ::std::option::Option<crate::schemas::TestStatus>,
     }
     impl ::field_selector::FieldSelector for RunMobileFriendlyTestResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -283,7 +296,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -340,6 +352,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for TestStatusStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -355,10 +376,10 @@ pub mod schemas {
     pub struct TestStatus {
         #[doc = "Error details if applicable."]
         #[serde(rename = "details", default)]
-        pub details: Option<String>,
+        pub details: ::std::option::Option<String>,
         #[doc = "Status of the test."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::TestStatusStatus>,
+        pub status: ::std::option::Option<crate::schemas::TestStatusStatus>,
     }
     impl ::field_selector::FieldSelector for TestStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -367,7 +388,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -422,6 +442,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -466,6 +495,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -951,6 +989,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1026,5 +1065,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

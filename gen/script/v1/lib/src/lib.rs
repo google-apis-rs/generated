@@ -14,10 +14,10 @@ pub mod schemas {
     pub struct Content {
         #[doc = "The list of script project files.\nOne of the files is a script manifest; it must be named \"appsscript\",\nmust have type of JSON, and include the manifest configurations for the\nproject."]
         #[serde(rename = "files", default)]
-        pub files: Option<Vec<crate::schemas::File>>,
+        pub files: ::std::option::Option<Vec<crate::schemas::File>>,
         #[doc = "The script project's Drive ID."]
         #[serde(rename = "scriptId", default)]
-        pub script_id: Option<String>,
+        pub script_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Content {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -26,7 +26,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -44,10 +43,10 @@ pub mod schemas {
     pub struct CreateProjectRequest {
         #[doc = "The Drive ID of a parent file that the created script project is bound to.\nThis is usually the ID of a Google Doc, Google Sheet, Google Form, or\nGoogle Slides file. If not set, a standalone script project is created."]
         #[serde(rename = "parentId", default)]
-        pub parent_id: Option<String>,
+        pub parent_id: ::std::option::Option<String>,
         #[doc = "The title for the project."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CreateProjectRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -56,7 +55,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -74,16 +72,16 @@ pub mod schemas {
     pub struct Deployment {
         #[doc = "The deployment configuration."]
         #[serde(rename = "deploymentConfig", default)]
-        pub deployment_config: Option<crate::schemas::DeploymentConfig>,
+        pub deployment_config: ::std::option::Option<crate::schemas::DeploymentConfig>,
         #[doc = "The deployment ID for this deployment."]
         #[serde(rename = "deploymentId", default)]
-        pub deployment_id: Option<String>,
+        pub deployment_id: ::std::option::Option<String>,
         #[doc = "The deployment's entry points."]
         #[serde(rename = "entryPoints", default)]
-        pub entry_points: Option<Vec<crate::schemas::EntryPoint>>,
+        pub entry_points: ::std::option::Option<Vec<crate::schemas::EntryPoint>>,
         #[doc = "Last modified date time stamp."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Deployment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -92,7 +90,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -110,16 +107,16 @@ pub mod schemas {
     pub struct DeploymentConfig {
         #[doc = "The description for this deployment."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The manifest file name for this deployment."]
         #[serde(rename = "manifestFileName", default)]
-        pub manifest_file_name: Option<String>,
+        pub manifest_file_name: ::std::option::Option<String>,
         #[doc = "The script project's Drive ID."]
         #[serde(rename = "scriptId", default)]
-        pub script_id: Option<String>,
+        pub script_id: ::std::option::Option<String>,
         #[doc = "The version number on which this deployment is based."]
         #[serde(rename = "versionNumber", default)]
-        pub version_number: Option<i32>,
+        pub version_number: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for DeploymentConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -128,7 +125,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -146,7 +142,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EntryPointEntryPointType {
@@ -206,6 +202,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for EntryPointEntryPointType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -221,16 +226,17 @@ pub mod schemas {
     pub struct EntryPoint {
         #[doc = "Add-on properties."]
         #[serde(rename = "addOn", default)]
-        pub add_on: Option<crate::schemas::GoogleAppsScriptTypeAddOnEntryPoint>,
+        pub add_on: ::std::option::Option<crate::schemas::GoogleAppsScriptTypeAddOnEntryPoint>,
         #[doc = "The type of the entry point."]
         #[serde(rename = "entryPointType", default)]
-        pub entry_point_type: Option<crate::schemas::EntryPointEntryPointType>,
+        pub entry_point_type: ::std::option::Option<crate::schemas::EntryPointEntryPointType>,
         #[doc = "An entry point specification for Apps Script API execution calls."]
         #[serde(rename = "executionApi", default)]
-        pub execution_api: Option<crate::schemas::GoogleAppsScriptTypeExecutionApiEntryPoint>,
+        pub execution_api:
+            ::std::option::Option<crate::schemas::GoogleAppsScriptTypeExecutionApiEntryPoint>,
         #[doc = "An entry point specification for web apps."]
         #[serde(rename = "webApp", default)]
-        pub web_app: Option<crate::schemas::GoogleAppsScriptTypeWebAppEntryPoint>,
+        pub web_app: ::std::option::Option<crate::schemas::GoogleAppsScriptTypeWebAppEntryPoint>,
     }
     impl ::field_selector::FieldSelector for EntryPoint {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -239,14 +245,13 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ExecuteStreamResponse {
         #[doc = "The result of the execution.\nTODO (johnlattin): Add debugging and logging."]
         #[serde(rename = "result", default)]
-        pub result: Option<crate::schemas::ScriptExecutionResult>,
+        pub result: ::std::option::Option<crate::schemas::ScriptExecutionResult>,
     }
     impl ::field_selector::FieldSelector for ExecuteStreamResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -255,7 +260,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -273,13 +277,14 @@ pub mod schemas {
     pub struct ExecutionError {
         #[doc = "The error message thrown by Apps Script, usually localized into the user's\nlanguage."]
         #[serde(rename = "errorMessage", default)]
-        pub error_message: Option<String>,
+        pub error_message: ::std::option::Option<String>,
         #[doc = "The error type, for example `TypeError` or `ReferenceError`. If the error\ntype is unavailable, this field is not included."]
         #[serde(rename = "errorType", default)]
-        pub error_type: Option<String>,
+        pub error_type: ::std::option::Option<String>,
         #[doc = "An array of objects that provide a stack trace through the script to show\nwhere the execution failed, with the deepest call first."]
         #[serde(rename = "scriptStackTraceElements", default)]
-        pub script_stack_trace_elements: Option<Vec<crate::schemas::ScriptStackTraceElement>>,
+        pub script_stack_trace_elements:
+            ::std::option::Option<Vec<crate::schemas::ScriptStackTraceElement>>,
     }
     impl ::field_selector::FieldSelector for ExecutionError {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -288,23 +293,22 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ExecutionRequest {
         #[doc = "If `true` and the user is an owner of the script, the script runs at the\nmost recently saved version rather than the version deployed for use with\nthe Apps Script API. Optional; default is `false`."]
         #[serde(rename = "devMode", default)]
-        pub dev_mode: Option<bool>,
+        pub dev_mode: ::std::option::Option<bool>,
         #[doc = "The name of the function to execute in the given script. The name does not\ninclude parentheses or parameters. It can reference a function in an\nincluded library such as `Library.libFunction1`."]
         #[serde(rename = "function", default)]
-        pub function: Option<String>,
+        pub function: ::std::option::Option<String>,
         #[doc = "The parameters to be passed to the function being executed. The object type\nfor each parameter should match the expected type in Apps Script.\nParameters cannot be Apps Script-specific object types (such as a\n`Document` or a `Calendar`); they can only be primitive types such as\n`string`, `number`, `array`, `object`, or `boolean`. Optional."]
         #[serde(rename = "parameters", default)]
-        pub parameters: Option<Vec<::serde_json::Value>>,
+        pub parameters: ::std::option::Option<Vec<::serde_json::Value>>,
         #[doc = "<b>Deprecated</b>. For use with Android add-ons only. An ID that represents\nthe user's current session in the Android app for Google Docs or Sheets,\nincluded as extra data in the\n[Intent](https://developer.android.com/guide/components/intents-filters.html)\nthat launches the add-on. When an Android add-on is run with a session\nstate, it gains the privileges of a\n[bound](https://developers.google.com/apps-script/guides/bound)\nscript\u{2014}that is, it can access information like the user's current\ncursor position (in Docs) or selected cell (in Sheets). To retrieve the\nstate, call\n`Intent.getStringExtra(\"com.google.android.apps.docs.addons.SessionState\")`.\nOptional."]
         #[serde(rename = "sessionState", default)]
-        pub session_state: Option<String>,
+        pub session_state: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ExecutionRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -313,14 +317,13 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ExecutionResponse {
         #[doc = "The return value of the script function. The type matches the object type\nreturned in Apps Script. Functions called using the Apps Script API cannot\nreturn Apps Script-specific objects (such as a `Document` or a `Calendar`);\nthey can only return primitive types such as a `string`, `number`, `array`,\n`object`, or `boolean`."]
         #[serde(rename = "result", default)]
-        pub result: Option<::serde_json::Value>,
+        pub result: ::std::option::Option<::serde_json::Value>,
     }
     impl ::field_selector::FieldSelector for ExecutionResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -329,7 +332,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -386,6 +388,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for FileType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -401,25 +412,25 @@ pub mod schemas {
     pub struct File {
         #[doc = "Creation date timestamp.\nThis read-only field is only visible to users who have WRITER\npermission for the script project."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "The defined set of functions in the script file, if any."]
         #[serde(rename = "functionSet", default)]
-        pub function_set: Option<crate::schemas::GoogleAppsScriptTypeFunctionSet>,
+        pub function_set: ::std::option::Option<crate::schemas::GoogleAppsScriptTypeFunctionSet>,
         #[doc = "The user who modified the file most recently.\nThis read-only field is only visible to users who have WRITER\npermission for the script project."]
         #[serde(rename = "lastModifyUser", default)]
-        pub last_modify_user: Option<crate::schemas::GoogleAppsScriptTypeUser>,
+        pub last_modify_user: ::std::option::Option<crate::schemas::GoogleAppsScriptTypeUser>,
         #[doc = "The name of the file. The file extension is not part of the file\nname, which can be identified from the type field."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The type of the file."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::FileType>,
+        pub r#type: ::std::option::Option<crate::schemas::FileType>,
         #[doc = "The file content."]
         #[serde(rename = "source", default)]
-        pub source: Option<String>,
+        pub source: ::std::option::Option<String>,
         #[doc = "Last modified date timestamp.\nThis read-only field is only visible to users who have WRITER\npermission for the script project."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for File {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -428,7 +439,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -485,6 +495,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GoogleAppsScriptTypeAddOnEntryPointAddOnType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -500,22 +519,23 @@ pub mod schemas {
     pub struct GoogleAppsScriptTypeAddOnEntryPoint {
         #[doc = "The add-on's required list of supported container types."]
         #[serde(rename = "addOnType", default)]
-        pub add_on_type: Option<crate::schemas::GoogleAppsScriptTypeAddOnEntryPointAddOnType>,
+        pub add_on_type:
+            ::std::option::Option<crate::schemas::GoogleAppsScriptTypeAddOnEntryPointAddOnType>,
         #[doc = "The add-on's optional description."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The add-on's optional help URL."]
         #[serde(rename = "helpUrl", default)]
-        pub help_url: Option<String>,
+        pub help_url: ::std::option::Option<String>,
         #[doc = "The add-on's required post install tip URL."]
         #[serde(rename = "postInstallTipUrl", default)]
-        pub post_install_tip_url: Option<String>,
+        pub post_install_tip_url: ::std::option::Option<String>,
         #[doc = "The add-on's optional report issue URL."]
         #[serde(rename = "reportIssueUrl", default)]
-        pub report_issue_url: Option<String>,
+        pub report_issue_url: ::std::option::Option<String>,
         #[doc = "The add-on's required title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleAppsScriptTypeAddOnEntryPoint {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -524,7 +544,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -585,6 +604,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GoogleAppsScriptTypeExecutionApiConfigAccess {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -600,7 +628,8 @@ pub mod schemas {
     pub struct GoogleAppsScriptTypeExecutionApiConfig {
         #[doc = "Who has permission to run the API executable."]
         #[serde(rename = "access", default)]
-        pub access: Option<crate::schemas::GoogleAppsScriptTypeExecutionApiConfigAccess>,
+        pub access:
+            ::std::option::Option<crate::schemas::GoogleAppsScriptTypeExecutionApiConfigAccess>,
     }
     impl ::field_selector::FieldSelector for GoogleAppsScriptTypeExecutionApiConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -609,7 +638,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -627,7 +655,8 @@ pub mod schemas {
     pub struct GoogleAppsScriptTypeExecutionApiEntryPoint {
         #[doc = "The entry point's configuration."]
         #[serde(rename = "entryPointConfig", default)]
-        pub entry_point_config: Option<crate::schemas::GoogleAppsScriptTypeExecutionApiConfig>,
+        pub entry_point_config:
+            ::std::option::Option<crate::schemas::GoogleAppsScriptTypeExecutionApiConfig>,
     }
     impl ::field_selector::FieldSelector for GoogleAppsScriptTypeExecutionApiEntryPoint {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -636,7 +665,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -654,7 +682,7 @@ pub mod schemas {
     pub struct GoogleAppsScriptTypeFunction {
         #[doc = "The function name in the script project."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleAppsScriptTypeFunction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -663,7 +691,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -681,7 +708,7 @@ pub mod schemas {
     pub struct GoogleAppsScriptTypeFunctionSet {
         #[doc = "A list of functions composing the set."]
         #[serde(rename = "values", default)]
-        pub values: Option<Vec<crate::schemas::GoogleAppsScriptTypeFunction>>,
+        pub values: ::std::option::Option<Vec<crate::schemas::GoogleAppsScriptTypeFunction>>,
     }
     impl ::field_selector::FieldSelector for GoogleAppsScriptTypeFunctionSet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -690,7 +717,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -769,6 +795,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for GoogleAppsScriptTypeProcessProcessStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -853,6 +888,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GoogleAppsScriptTypeProcessProcessType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleAppsScriptTypeProcessUserAccessLevel {
         #[doc = "User access level unspecified"]
@@ -915,6 +959,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GoogleAppsScriptTypeProcessUserAccessLevel {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -930,25 +983,28 @@ pub mod schemas {
     pub struct GoogleAppsScriptTypeProcess {
         #[doc = "Duration the execution spent executing."]
         #[serde(rename = "duration", default)]
-        pub duration: Option<String>,
+        pub duration: ::std::option::Option<String>,
         #[doc = "Name of the function the started the execution."]
         #[serde(rename = "functionName", default)]
-        pub function_name: Option<String>,
+        pub function_name: ::std::option::Option<String>,
         #[doc = "The executions status."]
         #[serde(rename = "processStatus", default)]
-        pub process_status: Option<crate::schemas::GoogleAppsScriptTypeProcessProcessStatus>,
+        pub process_status:
+            ::std::option::Option<crate::schemas::GoogleAppsScriptTypeProcessProcessStatus>,
         #[doc = "The executions type."]
         #[serde(rename = "processType", default)]
-        pub process_type: Option<crate::schemas::GoogleAppsScriptTypeProcessProcessType>,
+        pub process_type:
+            ::std::option::Option<crate::schemas::GoogleAppsScriptTypeProcessProcessType>,
         #[doc = "Name of the script being executed."]
         #[serde(rename = "projectName", default)]
-        pub project_name: Option<String>,
+        pub project_name: ::std::option::Option<String>,
         #[doc = "Time the execution started."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
         #[doc = "The executing users access level to the script."]
         #[serde(rename = "userAccessLevel", default)]
-        pub user_access_level: Option<crate::schemas::GoogleAppsScriptTypeProcessUserAccessLevel>,
+        pub user_access_level:
+            ::std::option::Option<crate::schemas::GoogleAppsScriptTypeProcessUserAccessLevel>,
     }
     impl ::field_selector::FieldSelector for GoogleAppsScriptTypeProcess {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -957,7 +1013,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -975,16 +1030,16 @@ pub mod schemas {
     pub struct GoogleAppsScriptTypeUser {
         #[doc = "The user's domain."]
         #[serde(rename = "domain", default)]
-        pub domain: Option<String>,
+        pub domain: ::std::option::Option<String>,
         #[doc = "The user's identifying email address."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The user's display name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The user's photo."]
         #[serde(rename = "photoUrl", default)]
-        pub photo_url: Option<String>,
+        pub photo_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleAppsScriptTypeUser {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -993,7 +1048,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1054,6 +1108,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GoogleAppsScriptTypeWebAppConfigAccess {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleAppsScriptTypeWebAppConfigExecuteAs {
         #[doc = "Default value, should not be used."]
@@ -1104,6 +1167,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GoogleAppsScriptTypeWebAppConfigExecuteAs {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1119,10 +1191,11 @@ pub mod schemas {
     pub struct GoogleAppsScriptTypeWebAppConfig {
         #[doc = "Who has permission to run the web app."]
         #[serde(rename = "access", default)]
-        pub access: Option<crate::schemas::GoogleAppsScriptTypeWebAppConfigAccess>,
+        pub access: ::std::option::Option<crate::schemas::GoogleAppsScriptTypeWebAppConfigAccess>,
         #[doc = "Who to execute the web app as."]
         #[serde(rename = "executeAs", default)]
-        pub execute_as: Option<crate::schemas::GoogleAppsScriptTypeWebAppConfigExecuteAs>,
+        pub execute_as:
+            ::std::option::Option<crate::schemas::GoogleAppsScriptTypeWebAppConfigExecuteAs>,
     }
     impl ::field_selector::FieldSelector for GoogleAppsScriptTypeWebAppConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1131,7 +1204,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1149,10 +1221,11 @@ pub mod schemas {
     pub struct GoogleAppsScriptTypeWebAppEntryPoint {
         #[doc = "The entry point's configuration."]
         #[serde(rename = "entryPointConfig", default)]
-        pub entry_point_config: Option<crate::schemas::GoogleAppsScriptTypeWebAppConfig>,
+        pub entry_point_config:
+            ::std::option::Option<crate::schemas::GoogleAppsScriptTypeWebAppConfig>,
         #[doc = "The URL for the web application."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleAppsScriptTypeWebAppEntryPoint {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1161,7 +1234,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1179,10 +1251,10 @@ pub mod schemas {
     pub struct ListDeploymentsResponse {
         #[doc = "The list of deployments."]
         #[serde(rename = "deployments", default)]
-        pub deployments: Option<Vec<crate::schemas::Deployment>>,
+        pub deployments: ::std::option::Option<Vec<crate::schemas::Deployment>>,
         #[doc = "The token that can be used in the next call to get the next page of\nresults."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListDeploymentsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1191,7 +1263,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1209,10 +1280,10 @@ pub mod schemas {
     pub struct ListScriptProcessesResponse {
         #[doc = "Token for the next page of results. If empty, there are no more pages\nremaining."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of processes matching request parameters."]
         #[serde(rename = "processes", default)]
-        pub processes: Option<Vec<crate::schemas::GoogleAppsScriptTypeProcess>>,
+        pub processes: ::std::option::Option<Vec<crate::schemas::GoogleAppsScriptTypeProcess>>,
     }
     impl ::field_selector::FieldSelector for ListScriptProcessesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1221,7 +1292,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1239,10 +1309,10 @@ pub mod schemas {
     pub struct ListUserProcessesResponse {
         #[doc = "Token for the next page of results. If empty, there are no more pages\nremaining."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of processes matching request parameters."]
         #[serde(rename = "processes", default)]
-        pub processes: Option<Vec<crate::schemas::GoogleAppsScriptTypeProcess>>,
+        pub processes: ::std::option::Option<Vec<crate::schemas::GoogleAppsScriptTypeProcess>>,
     }
     impl ::field_selector::FieldSelector for ListUserProcessesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1251,14 +1321,13 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListValue {
         #[doc = "Repeated field of dynamically typed values."]
         #[serde(rename = "values", default)]
-        pub values: Option<Vec<crate::schemas::Value>>,
+        pub values: ::std::option::Option<Vec<crate::schemas::Value>>,
     }
     impl ::field_selector::FieldSelector for ListValue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1267,7 +1336,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1285,10 +1353,10 @@ pub mod schemas {
     pub struct ListVersionsResponse {
         #[doc = "The token use to fetch the next page of records. if not exist in the\nresponse, that means no more versions to list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of versions."]
         #[serde(rename = "versions", default)]
-        pub versions: Option<Vec<crate::schemas::Version>>,
+        pub versions: ::std::option::Option<Vec<crate::schemas::Version>>,
     }
     impl ::field_selector::FieldSelector for ListVersionsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1297,7 +1365,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1315,13 +1382,13 @@ pub mod schemas {
     pub struct Metrics {
         #[doc = "Number of active users."]
         #[serde(rename = "activeUsers", default)]
-        pub active_users: Option<Vec<crate::schemas::MetricsValue>>,
+        pub active_users: ::std::option::Option<Vec<crate::schemas::MetricsValue>>,
         #[doc = "Number of failed executions."]
         #[serde(rename = "failedExecutions", default)]
-        pub failed_executions: Option<Vec<crate::schemas::MetricsValue>>,
+        pub failed_executions: ::std::option::Option<Vec<crate::schemas::MetricsValue>>,
         #[doc = "Number of total executions."]
         #[serde(rename = "totalExecutions", default)]
-        pub total_executions: Option<Vec<crate::schemas::MetricsValue>>,
+        pub total_executions: ::std::option::Option<Vec<crate::schemas::MetricsValue>>,
     }
     impl ::field_selector::FieldSelector for Metrics {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1330,7 +1397,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1348,14 +1414,14 @@ pub mod schemas {
     pub struct MetricsValue {
         #[doc = "Required field indicating the end time of the interval."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
         #[doc = "Required field indicating the start time of the interval."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
         #[doc = "Indicates the number of executions counted."]
         #[serde(rename = "value", default)]
         #[serde(with = "crate::parsed_string")]
-        pub value: Option<u64>,
+        pub value: ::std::option::Option<u64>,
     }
     impl ::field_selector::FieldSelector for MetricsValue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1364,20 +1430,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "This field indicates whether the script execution has completed. A completed execution has a populated `response` field containing the ExecutionResponse from function that was executed."]
         #[serde(rename = "done", default)]
-        pub done: Option<bool>,
+        pub done: ::std::option::Option<bool>,
         #[doc = "If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, this field contains a Status object. The `Status` object's `details` field contains an array with a single ExecutionError object that provides information about the nature of the error."]
         #[serde(rename = "error", default)]
-        pub error: Option<crate::schemas::Status>,
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "If the script function returns successfully, this field contains an ExecutionResponse object with the function's return value."]
         #[serde(rename = "response", default)]
-        pub response: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub response:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
     impl ::field_selector::FieldSelector for Operation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1386,7 +1452,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1404,25 +1469,25 @@ pub mod schemas {
     pub struct Project {
         #[doc = "When the script was created."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "User who originally created the script."]
         #[serde(rename = "creator", default)]
-        pub creator: Option<crate::schemas::GoogleAppsScriptTypeUser>,
+        pub creator: ::std::option::Option<crate::schemas::GoogleAppsScriptTypeUser>,
         #[doc = "User who last modified the script."]
         #[serde(rename = "lastModifyUser", default)]
-        pub last_modify_user: Option<crate::schemas::GoogleAppsScriptTypeUser>,
+        pub last_modify_user: ::std::option::Option<crate::schemas::GoogleAppsScriptTypeUser>,
         #[doc = "The parent's Drive ID that the script will be attached to. This is usually\nthe ID of a Google Document or Google Sheet. This filed is optional, and\nif not set, a stand-alone script will be created."]
         #[serde(rename = "parentId", default)]
-        pub parent_id: Option<String>,
+        pub parent_id: ::std::option::Option<String>,
         #[doc = "The script project's Drive ID."]
         #[serde(rename = "scriptId", default)]
-        pub script_id: Option<String>,
+        pub script_id: ::std::option::Option<String>,
         #[doc = "The title for the project."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "When the script was last updated."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Project {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1431,14 +1496,13 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ScriptExecutionResult {
         #[doc = "The returned value of the execution.\nTODO (johnlattin): Add HtmlResponse\nTODO (johnlattin): Add ExceptionResponse\nTODO (johlnattin): Add TextResponse"]
         #[serde(rename = "returnValue", default)]
-        pub return_value: Option<crate::schemas::Value>,
+        pub return_value: ::std::option::Option<crate::schemas::Value>,
     }
     impl ::field_selector::FieldSelector for ScriptExecutionResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1447,7 +1511,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1465,10 +1528,10 @@ pub mod schemas {
     pub struct ScriptStackTraceElement {
         #[doc = "The name of the function that failed."]
         #[serde(rename = "function", default)]
-        pub function: Option<String>,
+        pub function: ::std::option::Option<String>,
         #[doc = "The line number where the script failed."]
         #[serde(rename = "lineNumber", default)]
-        pub line_number: Option<i32>,
+        pub line_number: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ScriptStackTraceElement {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1477,20 +1540,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code. For this API, this value either: <ul> <li> 10, indicating a `SCRIPT_TIMEOUT` error,</li> <li> 3, indicating an `INVALID_ARGUMENT` error, or</li> <li> 1, indicating a `CANCELLED` execution.</li> </ul>"]
         #[serde(rename = "code", default)]
-        pub code: Option<i32>,
+        pub code: ::std::option::Option<i32>,
         #[doc = "An array that contains a single ExecutionError object that provides information about the nature of the error."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub details:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which is in English. Any user-facing error message is localized and sent in the details field, or localized by the client."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Status {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1499,14 +1562,14 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Struct {
         #[doc = "Unordered map of dynamically typed values."]
         #[serde(rename = "fields", default)]
-        pub fields: Option<::std::collections::BTreeMap<String, crate::schemas::Value>>,
+        pub fields:
+            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Value>>,
     }
     impl ::field_selector::FieldSelector for Struct {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1515,7 +1578,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1533,7 +1595,7 @@ pub mod schemas {
     pub struct UpdateDeploymentRequest {
         #[doc = "The deployment configuration."]
         #[serde(rename = "deploymentConfig", default)]
-        pub deployment_config: Option<crate::schemas::DeploymentConfig>,
+        pub deployment_config: ::std::option::Option<crate::schemas::DeploymentConfig>,
     }
     impl ::field_selector::FieldSelector for UpdateDeploymentRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1542,7 +1604,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1587,36 +1648,46 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ValueNullValue {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Value {
         #[doc = "Represents a boolean value."]
         #[serde(rename = "boolValue", default)]
-        pub bool_value: Option<bool>,
+        pub bool_value: ::std::option::Option<bool>,
         #[doc = "Represents raw byte values."]
         #[serde(rename = "bytesValue", default)]
-        pub bytes_value: Option<Vec<u8>>,
+        pub bytes_value: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Represents a date in ms since the epoch."]
         #[serde(rename = "dateValue", default)]
         #[serde(with = "crate::parsed_string")]
-        pub date_value: Option<i64>,
+        pub date_value: ::std::option::Option<i64>,
         #[doc = "Represents a repeated `Value`."]
         #[serde(rename = "listValue", default)]
-        pub list_value: Option<crate::schemas::ListValue>,
+        pub list_value: ::std::option::Option<crate::schemas::ListValue>,
         #[doc = "Represents a null value."]
         #[serde(rename = "nullValue", default)]
-        pub null_value: Option<crate::schemas::ValueNullValue>,
+        pub null_value: ::std::option::Option<crate::schemas::ValueNullValue>,
         #[doc = "Represents a double value."]
         #[serde(rename = "numberValue", default)]
-        pub number_value: Option<f64>,
+        pub number_value: ::std::option::Option<f64>,
         #[doc = "Represents a structured proto value."]
         #[serde(rename = "protoValue", default)]
-        pub proto_value: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub proto_value:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Represents a string value."]
         #[serde(rename = "stringValue", default)]
-        pub string_value: Option<String>,
+        pub string_value: ::std::option::Option<String>,
         #[doc = "Represents a structured value."]
         #[serde(rename = "structValue", default)]
-        pub struct_value: Option<crate::schemas::Struct>,
+        pub struct_value: ::std::option::Option<crate::schemas::Struct>,
     }
     impl ::field_selector::FieldSelector for Value {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1625,7 +1696,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1643,16 +1713,16 @@ pub mod schemas {
     pub struct Version {
         #[doc = "When the version was created."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "The description for this version."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The script project's Drive ID."]
         #[serde(rename = "scriptId", default)]
-        pub script_id: Option<String>,
+        pub script_id: ::std::option::Option<String>,
         #[doc = "The incremental ID that is created by Apps Script when a version is\ncreated. This is system assigned number and is immutable once created."]
         #[serde(rename = "versionNumber", default)]
-        pub version_number: Option<i32>,
+        pub version_number: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Version {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1661,7 +1731,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -1716,6 +1785,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -1760,6 +1838,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -2650,6 +2737,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for GetMetricsMetricsGranularity {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -5934,6 +6030,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -6009,5 +6106,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

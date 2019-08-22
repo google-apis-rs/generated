@@ -1,22 +1,22 @@
     Checking google-dialogflow2 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/dialogflow/v2/lib)
 error[E0201]: duplicate definitions with name `agent`:
-    --> dialogflow/v2/lib/src/lib.rs:5697:13
+    --> dialogflow/v2/lib/src/lib.rs:6002:13
      |
-5634 | /             pub fn agent(
-5635 | |                 &self,
-5636 | |                 request: crate::schemas::GoogleCloudDialogflowV2Agent,
-5637 | |                 parent: impl Into<String>,
+5939 | /             pub fn agent(
+5940 | |                 &self,
+5941 | |                 request: crate::schemas::GoogleCloudDialogflowV2Agent,
+5942 | |                 parent: impl Into<String>,
 ...    |
-5656 | |                 }
-5657 | |             }
+5961 | |                 }
+5962 | |             }
      | |_____________- previous definition of `agent` here
 ...
-5697 | /             pub fn agent(&self) -> crate::resources::projects::agent::AgentActions<A> {
-5698 | |                 crate::resources::projects::agent::AgentActions {
-5699 | |                     reqwest: &self.reqwest,
-5700 | |                     auth: &self.auth,
-5701 | |                 }
-5702 | |             }
+6002 | /             pub fn agent(&self) -> crate::resources::projects::agent::AgentActions<A> {
+6003 | |                 crate::resources::projects::agent::AgentActions {
+6004 | |                     reqwest: &self.reqwest,
+6005 | |                     auth: &self.auth,
+6006 | |                 }
+6007 | |             }
      | |_____________^ duplicate definition
 
 error: aborting due to previous error

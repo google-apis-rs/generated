@@ -1,8 +1,8 @@
     Checking google-oauth2 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/oauth/v2/lib)
 error[E0412]: cannot find type `GetCertForOpenIdConnectRequestBuilder` in this scope
-   --> oauth/v2/lib/src/lib.rs:236:51
+   --> oauth/v2/lib/src/lib.rs:241:51
     |
-236 |     pub fn get_cert_for_open_id_connect(&self) -> GetCertForOpenIdConnectRequestBuilder<A> {
+241 |     pub fn get_cert_for_open_id_connect(&self) -> GetCertForOpenIdConnectRequestBuilder<A> {
     |                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
 help: possible candidate is found in another module, you can import it into scope
     |
@@ -10,9 +10,9 @@ help: possible candidate is found in another module, you can import it into scop
     |
 
 error[E0422]: cannot find struct, variant or union type `GetCertForOpenIdConnectRequestBuilder` in this scope
-   --> oauth/v2/lib/src/lib.rs:237:9
+   --> oauth/v2/lib/src/lib.rs:242:9
     |
-237 |         GetCertForOpenIdConnectRequestBuilder {
+242 |         GetCertForOpenIdConnectRequestBuilder {
     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
 help: possible candidate is found in another module, you can import it into scope
     |
@@ -20,9 +20,9 @@ help: possible candidate is found in another module, you can import it into scop
     |
 
 error[E0412]: cannot find type `TokeninfoRequestBuilder` in this scope
-   --> oauth/v2/lib/src/lib.rs:250:32
+   --> oauth/v2/lib/src/lib.rs:255:32
     |
-250 |     pub fn tokeninfo(&self) -> TokeninfoRequestBuilder<A> {
+255 |     pub fn tokeninfo(&self) -> TokeninfoRequestBuilder<A> {
     |                                ^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
 help: possible candidate is found in another module, you can import it into scope
     |
@@ -30,9 +30,9 @@ help: possible candidate is found in another module, you can import it into scop
     |
 
 error[E0422]: cannot find struct, variant or union type `TokeninfoRequestBuilder` in this scope
-   --> oauth/v2/lib/src/lib.rs:251:9
+   --> oauth/v2/lib/src/lib.rs:256:9
     |
-251 |         TokeninfoRequestBuilder {
+256 |         TokeninfoRequestBuilder {
     |         ^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
 help: possible candidate is found in another module, you can import it into scope
     |

@@ -53,6 +53,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AliasContextKind {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -68,10 +77,10 @@ pub mod schemas {
     pub struct AliasContext {
         #[doc = "The alias kind."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<crate::schemas::AliasContextKind>,
+        pub kind: ::std::option::Option<crate::schemas::AliasContextKind>,
         #[doc = "The alias name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AliasContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -80,7 +89,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -127,6 +135,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for BreakpointAction {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -179,6 +196,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for BreakpointLogLevel {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -194,52 +220,52 @@ pub mod schemas {
     pub struct Breakpoint {
         #[doc = "Action that the agent should perform when the code at the\nbreakpoint location is hit."]
         #[serde(rename = "action", default)]
-        pub action: Option<crate::schemas::BreakpointAction>,
+        pub action: ::std::option::Option<crate::schemas::BreakpointAction>,
         #[doc = "Condition that triggers the breakpoint.\nThe condition is a compound boolean expression composed using expressions\nin a programming language at the source location."]
         #[serde(rename = "condition", default)]
-        pub condition: Option<String>,
+        pub condition: ::std::option::Option<String>,
         #[doc = "Time this breakpoint was created by the server in seconds resolution."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Values of evaluated expressions at breakpoint time.\nThe evaluated expressions appear in exactly the same order they\nare listed in the `expressions` field.\nThe `name` field holds the original expression text, the `value` or\n`members` field holds the result of the evaluated expression.\nIf the expression cannot be evaluated, the `status` inside the `Variable`\nwill indicate an error and contain the error text."]
         #[serde(rename = "evaluatedExpressions", default)]
-        pub evaluated_expressions: Option<Vec<crate::schemas::Variable>>,
+        pub evaluated_expressions: ::std::option::Option<Vec<crate::schemas::Variable>>,
         #[doc = "List of read-only expressions to evaluate at the breakpoint location.\nThe expressions are composed using expressions in the programming language\nat the source location. If the breakpoint action is `LOG`, the evaluated\nexpressions are included in log statements."]
         #[serde(rename = "expressions", default)]
-        pub expressions: Option<Vec<String>>,
+        pub expressions: ::std::option::Option<Vec<String>>,
         #[doc = "Time this breakpoint was finalized as seen by the server in seconds\nresolution."]
         #[serde(rename = "finalTime", default)]
-        pub final_time: Option<String>,
+        pub final_time: ::std::option::Option<String>,
         #[doc = "Breakpoint identifier, unique in the scope of the debuggee."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "When true, indicates that this is a final result and the\nbreakpoint state will not change from here on."]
         #[serde(rename = "isFinalState", default)]
-        pub is_final_state: Option<bool>,
+        pub is_final_state: ::std::option::Option<bool>,
         #[doc = "A set of custom breakpoint properties, populated by the agent, to be\ndisplayed to the user."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Breakpoint source location."]
         #[serde(rename = "location", default)]
-        pub location: Option<crate::schemas::SourceLocation>,
+        pub location: ::std::option::Option<crate::schemas::SourceLocation>,
         #[doc = "Indicates the severity of the log. Only relevant when action is `LOG`."]
         #[serde(rename = "logLevel", default)]
-        pub log_level: Option<crate::schemas::BreakpointLogLevel>,
+        pub log_level: ::std::option::Option<crate::schemas::BreakpointLogLevel>,
         #[doc = "Only relevant when action is `LOG`. Defines the message to log when\nthe breakpoint hits. The message may include parameter placeholders `$0`,\n`$1`, etc. These placeholders are replaced with the evaluated value\nof the appropriate expression. Expressions not referenced in\n`log_message_format` are not logged.\n\nExample: `Message received, id = $0, count = $1` with\n`expressions` = `[ message.id, message.count ]`."]
         #[serde(rename = "logMessageFormat", default)]
-        pub log_message_format: Option<String>,
+        pub log_message_format: ::std::option::Option<String>,
         #[doc = "The stack at breakpoint time, where stack_frames[0] represents the most\nrecently entered function."]
         #[serde(rename = "stackFrames", default)]
-        pub stack_frames: Option<Vec<crate::schemas::StackFrame>>,
+        pub stack_frames: ::std::option::Option<Vec<crate::schemas::StackFrame>>,
         #[doc = "Breakpoint status.\n\nThe status includes an error flag and a human readable message.\nThis field is usually unset. The message can be either\ninformational or an error message. Regardless, clients should always\ndisplay the text message back to the user.\n\nError status indicates complete failure of the breakpoint.\n\nExample (non-final state): `Still loading symbols...`\n\nExamples (final state):\n\n* `Invalid line number` referring to location\n* `Field f not found in class C` referring to condition"]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::StatusMessage>,
+        pub status: ::std::option::Option<crate::schemas::StatusMessage>,
         #[doc = "E-mail address of the user that created this breakpoint"]
         #[serde(rename = "userEmail", default)]
-        pub user_email: Option<String>,
+        pub user_email: ::std::option::Option<String>,
         #[doc = "The `variable_table` exists to aid with computation, memory and network\ntraffic optimization.  It enables storing a variable once and reference\nit from multiple variables, including variables stored in the\n`variable_table` itself.\nFor example, the same `this` object, which may appear at many levels of\nthe stack, can have all of its data stored once in this table.  The\nstack frame variables then would hold only a reference to it.\n\nThe variable `var_table_index` field is an index into this repeated field.\nThe stored objects are nameless and get their name from the referencing\nvariable. The effective variable is a merge of the referencing variable\nand the referenced variable."]
         #[serde(rename = "variableTable", default)]
-        pub variable_table: Option<Vec<crate::schemas::Variable>>,
+        pub variable_table: ::std::option::Option<Vec<crate::schemas::Variable>>,
     }
     impl ::field_selector::FieldSelector for Breakpoint {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -248,7 +274,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -266,16 +291,16 @@ pub mod schemas {
     pub struct CloudRepoSourceContext {
         #[doc = "An alias, which may be a branch or tag."]
         #[serde(rename = "aliasContext", default)]
-        pub alias_context: Option<crate::schemas::AliasContext>,
+        pub alias_context: ::std::option::Option<crate::schemas::AliasContext>,
         #[doc = "The name of an alias (branch, tag, etc.)."]
         #[serde(rename = "aliasName", default)]
-        pub alias_name: Option<String>,
+        pub alias_name: ::std::option::Option<String>,
         #[doc = "The ID of the repo."]
         #[serde(rename = "repoId", default)]
-        pub repo_id: Option<crate::schemas::RepoId>,
+        pub repo_id: ::std::option::Option<crate::schemas::RepoId>,
         #[doc = "A revision ID."]
         #[serde(rename = "revisionId", default)]
-        pub revision_id: Option<String>,
+        pub revision_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CloudRepoSourceContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -284,7 +309,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -302,10 +326,10 @@ pub mod schemas {
     pub struct CloudWorkspaceId {
         #[doc = "The unique name of the workspace within the repo.  This is the name\nchosen by the client in the Source API's CreateWorkspace method."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The ID of the repo containing the workspace."]
         #[serde(rename = "repoId", default)]
-        pub repo_id: Option<crate::schemas::RepoId>,
+        pub repo_id: ::std::option::Option<crate::schemas::RepoId>,
     }
     impl ::field_selector::FieldSelector for CloudWorkspaceId {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -314,7 +338,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -332,10 +355,10 @@ pub mod schemas {
     pub struct CloudWorkspaceSourceContext {
         #[doc = "The ID of the snapshot.\nAn empty snapshot_id refers to the most recent snapshot."]
         #[serde(rename = "snapshotId", default)]
-        pub snapshot_id: Option<String>,
+        pub snapshot_id: ::std::option::Option<String>,
         #[doc = "The ID of the workspace."]
         #[serde(rename = "workspaceId", default)]
-        pub workspace_id: Option<crate::schemas::CloudWorkspaceId>,
+        pub workspace_id: ::std::option::Option<crate::schemas::CloudWorkspaceId>,
     }
     impl ::field_selector::FieldSelector for CloudWorkspaceSourceContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -344,7 +367,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -362,37 +384,37 @@ pub mod schemas {
     pub struct Debuggee {
         #[doc = "Version ID of the agent.\nSchema: `domain/language-platform/vmajor.minor` (for example\n`google.com/java-gcp/v1.1`)."]
         #[serde(rename = "agentVersion", default)]
-        pub agent_version: Option<String>,
+        pub agent_version: ::std::option::Option<String>,
         #[doc = "Human readable description of the debuggee.\nIncluding a human-readable project name, environment name and version\ninformation is recommended."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "References to the locations and revisions of the source code used in the\ndeployed application."]
         #[serde(rename = "extSourceContexts", default)]
-        pub ext_source_contexts: Option<Vec<crate::schemas::ExtendedSourceContext>>,
+        pub ext_source_contexts: ::std::option::Option<Vec<crate::schemas::ExtendedSourceContext>>,
         #[doc = "Unique identifier for the debuggee generated by the controller service."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "If set to `true`, indicates that the agent should disable itself and\ndetach from the debuggee."]
         #[serde(rename = "isDisabled", default)]
-        pub is_disabled: Option<bool>,
+        pub is_disabled: ::std::option::Option<bool>,
         #[doc = "If set to `true`, indicates that Controller service does not detect any\nactivity from the debuggee agents and the application is possibly stopped."]
         #[serde(rename = "isInactive", default)]
-        pub is_inactive: Option<bool>,
+        pub is_inactive: ::std::option::Option<bool>,
         #[doc = "A set of custom debuggee properties, populated by the agent, to be\ndisplayed to the user."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Project the debuggee is associated with.\nUse project number or id when registering a Google Cloud Platform project."]
         #[serde(rename = "project", default)]
-        pub project: Option<String>,
+        pub project: ::std::option::Option<String>,
         #[doc = "References to the locations and revisions of the source code used in the\ndeployed application."]
         #[serde(rename = "sourceContexts", default)]
-        pub source_contexts: Option<Vec<crate::schemas::SourceContext>>,
+        pub source_contexts: ::std::option::Option<Vec<crate::schemas::SourceContext>>,
         #[doc = "Human readable message to be displayed to the user about this debuggee.\nAbsence of this field indicates no status. The message can be either\ninformational or an error status."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::StatusMessage>,
+        pub status: ::std::option::Option<crate::schemas::StatusMessage>,
         #[doc = "Uniquifier to further distinguish the application.\nIt is possible that different applications might have identical values in\nthe debuggee message, thus, incorrectly identified as a single application\nby the Controller service. This field adds salt to further distinguish the\napplication. Agents should consider seeding this field with value that\nidentifies the code, binary, configuration and environment."]
         #[serde(rename = "uniquifier", default)]
-        pub uniquifier: Option<String>,
+        pub uniquifier: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Debuggee {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -401,7 +423,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -419,7 +440,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -436,10 +457,10 @@ pub mod schemas {
     pub struct ExtendedSourceContext {
         #[doc = "Any source context."]
         #[serde(rename = "context", default)]
-        pub context: Option<crate::schemas::SourceContext>,
+        pub context: ::std::option::Option<crate::schemas::SourceContext>,
         #[doc = "Labels with user defined metadata."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::field_selector::FieldSelector for ExtendedSourceContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -448,7 +469,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -466,10 +486,10 @@ pub mod schemas {
     pub struct FormatMessage {
         #[doc = "Format template for the message. The `format` uses placeholders `$0`,\n`$1`, etc. to reference parameters. `$$` can be used to denote the `$`\ncharacter.\n\nExamples:\n\n* `Failed to load '$0' which helps debug $1 the first time it is loaded.  Again, $0 is very important.`\n* `Please pay $$10 to use $0 instead of $1.`"]
         #[serde(rename = "format", default)]
-        pub format: Option<String>,
+        pub format: ::std::option::Option<String>,
         #[doc = "Optional parameters to be embedded into the message."]
         #[serde(rename = "parameters", default)]
-        pub parameters: Option<Vec<String>>,
+        pub parameters: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for FormatMessage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -478,7 +498,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -496,19 +515,19 @@ pub mod schemas {
     pub struct GerritSourceContext {
         #[doc = "An alias, which may be a branch or tag."]
         #[serde(rename = "aliasContext", default)]
-        pub alias_context: Option<crate::schemas::AliasContext>,
+        pub alias_context: ::std::option::Option<crate::schemas::AliasContext>,
         #[doc = "The name of an alias (branch, tag, etc.)."]
         #[serde(rename = "aliasName", default)]
-        pub alias_name: Option<String>,
+        pub alias_name: ::std::option::Option<String>,
         #[doc = "The full project name within the host. Projects may be nested, so\n\"project/subproject\" is a valid project name.\nThe \"repo name\" is hostURI/project."]
         #[serde(rename = "gerritProject", default)]
-        pub gerrit_project: Option<String>,
+        pub gerrit_project: ::std::option::Option<String>,
         #[doc = "The URI of a running Gerrit instance."]
         #[serde(rename = "hostUri", default)]
-        pub host_uri: Option<String>,
+        pub host_uri: ::std::option::Option<String>,
         #[doc = "A revision (commit) ID."]
         #[serde(rename = "revisionId", default)]
-        pub revision_id: Option<String>,
+        pub revision_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GerritSourceContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -517,7 +536,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -535,7 +553,7 @@ pub mod schemas {
     pub struct GetBreakpointResponse {
         #[doc = "Complete breakpoint state.\nThe fields `id` and `location` are guaranteed to be set."]
         #[serde(rename = "breakpoint", default)]
-        pub breakpoint: Option<crate::schemas::Breakpoint>,
+        pub breakpoint: ::std::option::Option<crate::schemas::Breakpoint>,
     }
     impl ::field_selector::FieldSelector for GetBreakpointResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -544,7 +562,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -562,10 +579,10 @@ pub mod schemas {
     pub struct GitSourceContext {
         #[doc = "Git commit hash.\nrequired."]
         #[serde(rename = "revisionId", default)]
-        pub revision_id: Option<String>,
+        pub revision_id: ::std::option::Option<String>,
         #[doc = "Git repository URL."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GitSourceContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -574,7 +591,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -592,13 +608,13 @@ pub mod schemas {
     pub struct ListActiveBreakpointsResponse {
         #[doc = "List of all active breakpoints.\nThe fields `id` and `location` are guaranteed to be set on each breakpoint."]
         #[serde(rename = "breakpoints", default)]
-        pub breakpoints: Option<Vec<crate::schemas::Breakpoint>>,
+        pub breakpoints: ::std::option::Option<Vec<crate::schemas::Breakpoint>>,
         #[doc = "A token that can be used in the next method call to block until\nthe list of breakpoints changes."]
         #[serde(rename = "nextWaitToken", default)]
-        pub next_wait_token: Option<String>,
+        pub next_wait_token: ::std::option::Option<String>,
         #[doc = "If set to `true`, indicates that there is no change to the\nlist of active breakpoints and the server-selected timeout has expired.\nThe `breakpoints` field would be empty and should be ignored."]
         #[serde(rename = "waitExpired", default)]
-        pub wait_expired: Option<bool>,
+        pub wait_expired: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for ListActiveBreakpointsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -607,7 +623,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -625,10 +640,10 @@ pub mod schemas {
     pub struct ListBreakpointsResponse {
         #[doc = "List of breakpoints matching the request.\nThe fields `id` and `location` are guaranteed to be set on each breakpoint.\nThe fields: `stack_frames`, `evaluated_expressions` and `variable_table`\nare cleared on each breakpoint regardless of its status."]
         #[serde(rename = "breakpoints", default)]
-        pub breakpoints: Option<Vec<crate::schemas::Breakpoint>>,
+        pub breakpoints: ::std::option::Option<Vec<crate::schemas::Breakpoint>>,
         #[doc = "A wait token that can be used in the next call to `list` (REST) or\n`ListBreakpoints` (RPC) to block until the list of breakpoints has changes."]
         #[serde(rename = "nextWaitToken", default)]
-        pub next_wait_token: Option<String>,
+        pub next_wait_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListBreakpointsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -637,7 +652,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -655,7 +669,7 @@ pub mod schemas {
     pub struct ListDebuggeesResponse {
         #[doc = "List of debuggees accessible to the calling user.\nThe fields `debuggee.id` and `description` are guaranteed to be set.\nThe `description` field is a human readable field provided by agents and\ncan be displayed to users."]
         #[serde(rename = "debuggees", default)]
-        pub debuggees: Option<Vec<crate::schemas::Debuggee>>,
+        pub debuggees: ::std::option::Option<Vec<crate::schemas::Debuggee>>,
     }
     impl ::field_selector::FieldSelector for ListDebuggeesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -664,7 +678,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -682,10 +695,10 @@ pub mod schemas {
     pub struct ProjectRepoId {
         #[doc = "The ID of the project."]
         #[serde(rename = "projectId", default)]
-        pub project_id: Option<String>,
+        pub project_id: ::std::option::Option<String>,
         #[doc = "The name of the repo. Leave empty for the default repo."]
         #[serde(rename = "repoName", default)]
-        pub repo_name: Option<String>,
+        pub repo_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ProjectRepoId {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -694,7 +707,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -712,7 +724,7 @@ pub mod schemas {
     pub struct RegisterDebuggeeRequest {
         #[doc = "Debuggee information to register.\nThe fields `project`, `uniquifier`, `description` and `agent_version`\nof the debuggee must be set."]
         #[serde(rename = "debuggee", default)]
-        pub debuggee: Option<crate::schemas::Debuggee>,
+        pub debuggee: ::std::option::Option<crate::schemas::Debuggee>,
     }
     impl ::field_selector::FieldSelector for RegisterDebuggeeRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -721,7 +733,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -739,7 +750,7 @@ pub mod schemas {
     pub struct RegisterDebuggeeResponse {
         #[doc = "Debuggee resource.\nThe field `id` is guaranteed to be set (in addition to the echoed fields).\nIf the field `is_disabled` is set to `true`, the agent should disable\nitself by removing all breakpoints and detaching from the application.\nIt should however continue to poll `RegisterDebuggee` until reenabled."]
         #[serde(rename = "debuggee", default)]
-        pub debuggee: Option<crate::schemas::Debuggee>,
+        pub debuggee: ::std::option::Option<crate::schemas::Debuggee>,
     }
     impl ::field_selector::FieldSelector for RegisterDebuggeeResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -748,7 +759,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -766,10 +776,10 @@ pub mod schemas {
     pub struct RepoId {
         #[doc = "A combination of a project ID and a repo name."]
         #[serde(rename = "projectRepoId", default)]
-        pub project_repo_id: Option<crate::schemas::ProjectRepoId>,
+        pub project_repo_id: ::std::option::Option<crate::schemas::ProjectRepoId>,
         #[doc = "A server-assigned, globally unique identifier."]
         #[serde(rename = "uid", default)]
-        pub uid: Option<String>,
+        pub uid: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RepoId {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -778,7 +788,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -796,7 +805,7 @@ pub mod schemas {
     pub struct SetBreakpointResponse {
         #[doc = "Breakpoint resource.\nThe field `id` is guaranteed to be set (in addition to the echoed fileds)."]
         #[serde(rename = "breakpoint", default)]
-        pub breakpoint: Option<crate::schemas::Breakpoint>,
+        pub breakpoint: ::std::option::Option<crate::schemas::Breakpoint>,
     }
     impl ::field_selector::FieldSelector for SetBreakpointResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -805,7 +814,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -823,16 +831,16 @@ pub mod schemas {
     pub struct SourceContext {
         #[doc = "A SourceContext referring to a revision in a cloud repo."]
         #[serde(rename = "cloudRepo", default)]
-        pub cloud_repo: Option<crate::schemas::CloudRepoSourceContext>,
+        pub cloud_repo: ::std::option::Option<crate::schemas::CloudRepoSourceContext>,
         #[doc = "A SourceContext referring to a snapshot in a cloud workspace."]
         #[serde(rename = "cloudWorkspace", default)]
-        pub cloud_workspace: Option<crate::schemas::CloudWorkspaceSourceContext>,
+        pub cloud_workspace: ::std::option::Option<crate::schemas::CloudWorkspaceSourceContext>,
         #[doc = "A SourceContext referring to a Gerrit project."]
         #[serde(rename = "gerrit", default)]
-        pub gerrit: Option<crate::schemas::GerritSourceContext>,
+        pub gerrit: ::std::option::Option<crate::schemas::GerritSourceContext>,
         #[doc = "A SourceContext referring to any third party Git repo (e.g. GitHub)."]
         #[serde(rename = "git", default)]
-        pub git: Option<crate::schemas::GitSourceContext>,
+        pub git: ::std::option::Option<crate::schemas::GitSourceContext>,
     }
     impl ::field_selector::FieldSelector for SourceContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -841,7 +849,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -859,13 +866,13 @@ pub mod schemas {
     pub struct SourceLocation {
         #[doc = "Column within a line. The first column in a line as the value `1`.\nAgents that do not support setting breakpoints on specific columns ignore\nthis field."]
         #[serde(rename = "column", default)]
-        pub column: Option<i32>,
+        pub column: ::std::option::Option<i32>,
         #[doc = "Line inside the file. The first line in the file has the value `1`."]
         #[serde(rename = "line", default)]
-        pub line: Option<i32>,
+        pub line: ::std::option::Option<i32>,
         #[doc = "Path to the source file within the source context of the target binary."]
         #[serde(rename = "path", default)]
-        pub path: Option<String>,
+        pub path: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SourceLocation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -874,7 +881,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -892,16 +898,16 @@ pub mod schemas {
     pub struct StackFrame {
         #[doc = "Set of arguments passed to this function.\nNote that this might not be populated for all stack frames."]
         #[serde(rename = "arguments", default)]
-        pub arguments: Option<Vec<crate::schemas::Variable>>,
+        pub arguments: ::std::option::Option<Vec<crate::schemas::Variable>>,
         #[doc = "Demangled function name at the call site."]
         #[serde(rename = "function", default)]
-        pub function: Option<String>,
+        pub function: ::std::option::Option<String>,
         #[doc = "Set of local variables at the stack frame location.\nNote that this might not be populated for all stack frames."]
         #[serde(rename = "locals", default)]
-        pub locals: Option<Vec<crate::schemas::Variable>>,
+        pub locals: ::std::option::Option<Vec<crate::schemas::Variable>>,
         #[doc = "Source location of the call site."]
         #[serde(rename = "location", default)]
-        pub location: Option<crate::schemas::SourceLocation>,
+        pub location: ::std::option::Option<crate::schemas::SourceLocation>,
     }
     impl ::field_selector::FieldSelector for StackFrame {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -910,7 +916,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -979,6 +984,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for StatusMessageRefersTo {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -994,13 +1008,13 @@ pub mod schemas {
     pub struct StatusMessage {
         #[doc = "Status message text."]
         #[serde(rename = "description", default)]
-        pub description: Option<crate::schemas::FormatMessage>,
+        pub description: ::std::option::Option<crate::schemas::FormatMessage>,
         #[doc = "Distinguishes errors from informational messages."]
         #[serde(rename = "isError", default)]
-        pub is_error: Option<bool>,
+        pub is_error: ::std::option::Option<bool>,
         #[doc = "Reference to which the message applies."]
         #[serde(rename = "refersTo", default)]
-        pub refers_to: Option<crate::schemas::StatusMessageRefersTo>,
+        pub refers_to: ::std::option::Option<crate::schemas::StatusMessageRefersTo>,
     }
     impl ::field_selector::FieldSelector for StatusMessage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1009,7 +1023,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1027,7 +1040,7 @@ pub mod schemas {
     pub struct UpdateActiveBreakpointRequest {
         #[doc = "Updated breakpoint information.\nThe field `id` must be set.\nThe agent must echo all Breakpoint specification fields in the update."]
         #[serde(rename = "breakpoint", default)]
-        pub breakpoint: Option<crate::schemas::Breakpoint>,
+        pub breakpoint: ::std::option::Option<crate::schemas::Breakpoint>,
     }
     impl ::field_selector::FieldSelector for UpdateActiveBreakpointRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1036,7 +1049,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1054,7 +1066,7 @@ pub mod schemas {
     )]
     pub struct UpdateActiveBreakpointResponse;
     impl ::field_selector::FieldSelector for UpdateActiveBreakpointResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -1071,22 +1083,22 @@ pub mod schemas {
     pub struct Variable {
         #[doc = "Members contained or pointed to by the variable."]
         #[serde(rename = "members", default)]
-        pub members: Option<Vec<crate::schemas::Variable>>,
+        pub members: ::std::option::Option<Vec<crate::schemas::Variable>>,
         #[doc = "Name of the variable, if any."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Variable type (e.g. `MyClass`). If the variable is split with\n`var_table_index`, `type` goes next to `value`. The interpretation of\na type is agent specific. It is recommended to include the dynamic type\nrather than a static type of an object."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Status associated with the variable. This field will usually stay\nunset. A status of a single variable only applies to that variable or\nexpression. The rest of breakpoint data still remains valid. Variables\nmight be reported in error state even when breakpoint is not in final\nstate.\n\nThe message may refer to variable name with `refers_to` set to\n`VARIABLE_NAME`. Alternatively `refers_to` will be set to `VARIABLE_VALUE`.\nIn either case variable value and members will be unset.\n\nExample of error message applied to name: `Invalid expression syntax`.\n\nExample of information message applied to value: `Not captured`.\n\nExamples of error message applied to value:\n\n* `Malformed string`,\n* `Field f not found in class C`\n* `Null pointer dereference`"]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::StatusMessage>,
+        pub status: ::std::option::Option<crate::schemas::StatusMessage>,
         #[doc = "Simple value of the variable."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
         #[doc = "Reference to a variable in the shared variable table. More than\none variable can reference the same variable in the table. The\n`var_table_index` field is an index into `variable_table` in Breakpoint."]
         #[serde(rename = "varTableIndex", default)]
-        pub var_table_index: Option<i32>,
+        pub var_table_index: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Variable {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1095,7 +1107,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -1150,6 +1161,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -1194,6 +1214,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -2148,6 +2177,15 @@ mod resources {
                                     )))
                                 }
                             })
+                        }
+                    }
+                    impl ::field_selector::FieldSelector for ListActionValue {
+                        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                            match selector.chars().rev().nth(0) {
+                                Some(',') | None => {}
+                                _ => selector.push_str(","),
+                            }
+                            selector.push_str(ident);
                         }
                     }
                 }
@@ -3279,6 +3317,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3354,5 +3393,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

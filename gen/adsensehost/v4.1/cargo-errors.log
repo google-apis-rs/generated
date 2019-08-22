@@ -1,14 +1,14 @@
     Checking google-adsensehost4d1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/adsensehost/v4.1/lib)
 error[E0412]: cannot find type `StartProductCodeItems` in module `crate::resources::associationsessions::params`
-    --> adsensehost/v4.1/lib/src/lib.rs:3658:72
+    --> adsensehost/v4.1/lib/src/lib.rs:3649:72
      |
-3658 |                     Vec<crate::resources::associationsessions::params::StartProductCodeItems>,
+3649 |                     Vec<crate::resources::associationsessions::params::StartProductCodeItems>,
      |                                                                        ^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::associationsessions::params`
 
 error[E0412]: cannot find type `StartProductCodeItems` in module `crate::resources::associationsessions::params`
-    --> adsensehost/v4.1/lib/src/lib.rs:3698:78
+    --> adsensehost/v4.1/lib/src/lib.rs:3689:78
      |
-3698 |             product_code: Vec<crate::resources::associationsessions::params::StartProductCodeItems>,
+3689 |             product_code: Vec<crate::resources::associationsessions::params::StartProductCodeItems>,
      |                                                                              ^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::associationsessions::params`
 
 error: aborting due to 2 previous errors

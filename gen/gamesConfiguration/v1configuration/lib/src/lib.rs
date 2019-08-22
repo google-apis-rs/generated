@@ -14,28 +14,28 @@ pub mod schemas {
     pub struct AchievementConfiguration {
         #[doc = "The type of the achievement.\nPossible values are:\n\n* \"STANDARD\" - Achievement is either locked or unlocked. \n* \"INCREMENTAL\" - Achievement is incremental."]
         #[serde(rename = "achievementType", default)]
-        pub achievement_type: Option<String>,
+        pub achievement_type: ::std::option::Option<String>,
         #[doc = "The draft data of the achievement."]
         #[serde(rename = "draft", default)]
-        pub draft: Option<crate::schemas::AchievementConfigurationDetail>,
+        pub draft: ::std::option::Option<crate::schemas::AchievementConfigurationDetail>,
         #[doc = "The ID of the achievement."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The initial state of the achievement.\nPossible values are:\n\n* \"HIDDEN\" - Achievement is hidden. \n* \"REVEALED\" - Achievement is revealed. \n* \"UNLOCKED\" - Achievement is unlocked."]
         #[serde(rename = "initialState", default)]
-        pub initial_state: Option<String>,
+        pub initial_state: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#achievementConfiguration."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The read-only published data of the achievement."]
         #[serde(rename = "published", default)]
-        pub published: Option<crate::schemas::AchievementConfigurationDetail>,
+        pub published: ::std::option::Option<crate::schemas::AchievementConfigurationDetail>,
         #[doc = "Steps to unlock. Only applicable to incremental achievements."]
         #[serde(rename = "stepsToUnlock", default)]
-        pub steps_to_unlock: Option<i32>,
+        pub steps_to_unlock: ::std::option::Option<i32>,
         #[doc = "The token for this resource."]
         #[serde(rename = "token", default)]
-        pub token: Option<String>,
+        pub token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AchievementConfiguration {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -44,7 +44,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -62,22 +61,22 @@ pub mod schemas {
     pub struct AchievementConfigurationDetail {
         #[doc = "Localized strings for the achievement description."]
         #[serde(rename = "description", default)]
-        pub description: Option<crate::schemas::LocalizedStringBundle>,
+        pub description: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
         #[doc = "The icon url of this achievement. Writes to this field are ignored."]
         #[serde(rename = "iconUrl", default)]
-        pub icon_url: Option<String>,
+        pub icon_url: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#achievementConfigurationDetail."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Localized strings for the achievement name."]
         #[serde(rename = "name", default)]
-        pub name: Option<crate::schemas::LocalizedStringBundle>,
+        pub name: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
         #[doc = "Point value for the achievement."]
         #[serde(rename = "pointValue", default)]
-        pub point_value: Option<i32>,
+        pub point_value: ::std::option::Option<i32>,
         #[doc = "The sort rank of this achievement. Writes to this field are ignored."]
         #[serde(rename = "sortRank", default)]
-        pub sort_rank: Option<i32>,
+        pub sort_rank: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for AchievementConfigurationDetail {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -86,7 +85,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -104,13 +102,13 @@ pub mod schemas {
     pub struct AchievementConfigurationListResponse {
         #[doc = "The achievement configurations."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::AchievementConfiguration>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::AchievementConfiguration>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#achievementConfigurationListResponse."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The pagination token for the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AchievementConfigurationListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -119,7 +117,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -137,22 +134,22 @@ pub mod schemas {
     pub struct GamesNumberAffixConfiguration {
         #[doc = "When the language requires special treatment of \"small\" numbers (as with 2, 3, and 4 in Czech; or numbers ending 2, 3, or 4 but not 12, 13, or 14 in Polish)."]
         #[serde(rename = "few", default)]
-        pub few: Option<crate::schemas::LocalizedStringBundle>,
+        pub few: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
         #[doc = "When the language requires special treatment of \"large\" numbers (as with numbers ending 11-99 in Maltese)."]
         #[serde(rename = "many", default)]
-        pub many: Option<crate::schemas::LocalizedStringBundle>,
+        pub many: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
         #[doc = "When the language requires special treatment of numbers like one (as with the number 1 in English and most other languages; in Russian, any number ending in 1 but not ending in 11 is in this class)."]
         #[serde(rename = "one", default)]
-        pub one: Option<crate::schemas::LocalizedStringBundle>,
+        pub one: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
         #[doc = "When the language does not require special treatment of the given quantity (as with all numbers in Chinese, or 42 in English)."]
         #[serde(rename = "other", default)]
-        pub other: Option<crate::schemas::LocalizedStringBundle>,
+        pub other: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
         #[doc = "When the language requires special treatment of numbers like two (as with 2 in Welsh, or 102 in Slovenian)."]
         #[serde(rename = "two", default)]
-        pub two: Option<crate::schemas::LocalizedStringBundle>,
+        pub two: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
         #[doc = "When the language requires special treatment of the number 0 (as in Arabic)."]
         #[serde(rename = "zero", default)]
-        pub zero: Option<crate::schemas::LocalizedStringBundle>,
+        pub zero: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
     }
     impl ::field_selector::FieldSelector for GamesNumberAffixConfiguration {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -161,7 +158,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -179,16 +175,16 @@ pub mod schemas {
     pub struct GamesNumberFormatConfiguration {
         #[doc = "The curreny code string. Only used for CURRENCY format type."]
         #[serde(rename = "currencyCode", default)]
-        pub currency_code: Option<String>,
+        pub currency_code: ::std::option::Option<String>,
         #[doc = "The number of decimal places for number. Only used for NUMERIC format type."]
         #[serde(rename = "numDecimalPlaces", default)]
-        pub num_decimal_places: Option<i32>,
+        pub num_decimal_places: ::std::option::Option<i32>,
         #[doc = "The formatting for the number.\nPossible values are:\n\n* \"NUMERIC\" - Numbers are formatted to have no digits or a fixed number of digits after the decimal point according to locale. An optional custom unit can be added.\n* \"TIME_DURATION\" - Numbers are formatted to hours, minutes and seconds.\n* \"CURRENCY\" - Numbers are formatted to currency according to locale."]
         #[serde(rename = "numberFormatType", default)]
-        pub number_format_type: Option<String>,
+        pub number_format_type: ::std::option::Option<String>,
         #[doc = "An optional suffix for the NUMERIC format type. These strings follow the same  plural rules as all Android string resources."]
         #[serde(rename = "suffix", default)]
-        pub suffix: Option<crate::schemas::GamesNumberAffixConfiguration>,
+        pub suffix: ::std::option::Option<crate::schemas::GamesNumberAffixConfiguration>,
     }
     impl ::field_selector::FieldSelector for GamesNumberFormatConfiguration {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -197,7 +193,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -215,16 +210,16 @@ pub mod schemas {
     pub struct ImageConfiguration {
         #[doc = "The image type for the image."]
         #[serde(rename = "imageType", default)]
-        pub image_type: Option<String>,
+        pub image_type: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#imageConfiguration."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The resource ID of resource which the image belongs to."]
         #[serde(rename = "resourceId", default)]
-        pub resource_id: Option<String>,
+        pub resource_id: ::std::option::Option<String>,
         #[doc = "The url for this image."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ImageConfiguration {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -233,7 +228,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -251,30 +245,30 @@ pub mod schemas {
     pub struct LeaderboardConfiguration {
         #[doc = "The draft data of the leaderboard."]
         #[serde(rename = "draft", default)]
-        pub draft: Option<crate::schemas::LeaderboardConfigurationDetail>,
+        pub draft: ::std::option::Option<crate::schemas::LeaderboardConfigurationDetail>,
         #[doc = "The ID of the leaderboard."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#leaderboardConfiguration."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The read-only published data of the leaderboard."]
         #[serde(rename = "published", default)]
-        pub published: Option<crate::schemas::LeaderboardConfigurationDetail>,
+        pub published: ::std::option::Option<crate::schemas::LeaderboardConfigurationDetail>,
         #[doc = "Maximum score that can be posted to this leaderboard."]
         #[serde(rename = "scoreMax", default)]
         #[serde(with = "crate::parsed_string")]
-        pub score_max: Option<i64>,
+        pub score_max: ::std::option::Option<i64>,
         #[doc = "Minimum score that can be posted to this leaderboard."]
         #[serde(rename = "scoreMin", default)]
         #[serde(with = "crate::parsed_string")]
-        pub score_min: Option<i64>,
+        pub score_min: ::std::option::Option<i64>,
         #[doc = "The type of the leaderboard.\nPossible values are:\n\n* \"LARGER_IS_BETTER\" - Larger scores posted are ranked higher. \n* \"SMALLER_IS_BETTER\" - Smaller scores posted are ranked higher."]
         #[serde(rename = "scoreOrder", default)]
-        pub score_order: Option<String>,
+        pub score_order: ::std::option::Option<String>,
         #[doc = "The token for this resource."]
         #[serde(rename = "token", default)]
-        pub token: Option<String>,
+        pub token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LeaderboardConfiguration {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -283,7 +277,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -301,19 +294,19 @@ pub mod schemas {
     pub struct LeaderboardConfigurationDetail {
         #[doc = "The icon url of this leaderboard. Writes to this field are ignored."]
         #[serde(rename = "iconUrl", default)]
-        pub icon_url: Option<String>,
+        pub icon_url: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#leaderboardConfigurationDetail."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Localized strings for the leaderboard name."]
         #[serde(rename = "name", default)]
-        pub name: Option<crate::schemas::LocalizedStringBundle>,
+        pub name: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
         #[doc = "The score formatting for the leaderboard."]
         #[serde(rename = "scoreFormat", default)]
-        pub score_format: Option<crate::schemas::GamesNumberFormatConfiguration>,
+        pub score_format: ::std::option::Option<crate::schemas::GamesNumberFormatConfiguration>,
         #[doc = "The sort rank of this leaderboard. Writes to this field are ignored."]
         #[serde(rename = "sortRank", default)]
-        pub sort_rank: Option<i32>,
+        pub sort_rank: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for LeaderboardConfigurationDetail {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -322,7 +315,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -340,13 +332,13 @@ pub mod schemas {
     pub struct LeaderboardConfigurationListResponse {
         #[doc = "The leaderboard configurations."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::LeaderboardConfiguration>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::LeaderboardConfiguration>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#leaderboardConfigurationListResponse."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The pagination token for the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LeaderboardConfigurationListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -355,7 +347,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -373,13 +364,13 @@ pub mod schemas {
     pub struct LocalizedString {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#localizedString."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The locale string."]
         #[serde(rename = "locale", default)]
-        pub locale: Option<String>,
+        pub locale: ::std::option::Option<String>,
         #[doc = "The string value."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LocalizedString {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -388,7 +379,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -406,10 +396,10 @@ pub mod schemas {
     pub struct LocalizedStringBundle {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#localizedStringBundle."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The locale strings."]
         #[serde(rename = "translations", default)]
-        pub translations: Option<Vec<crate::schemas::LocalizedString>>,
+        pub translations: ::std::option::Option<Vec<crate::schemas::LocalizedString>>,
     }
     impl ::field_selector::FieldSelector for LocalizedStringBundle {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -418,7 +408,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -467,6 +456,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1584,6 +1582,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for UploadImageType {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -3142,6 +3149,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3217,5 +3225,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

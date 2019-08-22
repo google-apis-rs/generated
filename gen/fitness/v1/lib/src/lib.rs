@@ -52,30 +52,39 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AggregateBucketType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AggregateBucket {
         #[doc = "Available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT"]
         #[serde(rename = "activity", default)]
-        pub activity: Option<i32>,
+        pub activity: ::std::option::Option<i32>,
         #[doc = "There will be one dataset per AggregateBy in the request."]
         #[serde(rename = "dataset", default)]
-        pub dataset: Option<Vec<crate::schemas::Dataset>>,
+        pub dataset: ::std::option::Option<Vec<crate::schemas::Dataset>>,
         #[doc = "The end time for the aggregated data, in milliseconds since epoch, inclusive."]
         #[serde(rename = "endTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub end_time_millis: Option<i64>,
+        pub end_time_millis: ::std::option::Option<i64>,
         #[doc = "The type of a bucket signifies how the data aggregation is performed in the bucket."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::AggregateBucketType>,
+        pub r#type: ::std::option::Option<crate::schemas::AggregateBucketType>,
         #[doc = "Available for Bucket.Type.SESSION"]
         #[serde(rename = "session", default)]
-        pub session: Option<crate::schemas::Session>,
+        pub session: ::std::option::Option<crate::schemas::Session>,
         #[doc = "The start time for the aggregated data, in milliseconds since epoch, inclusive."]
         #[serde(rename = "startTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub start_time_millis: Option<i64>,
+        pub start_time_millis: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for AggregateBucket {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -84,7 +93,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -102,10 +110,10 @@ pub mod schemas {
     pub struct AggregateBy {
         #[doc = "A data source ID to aggregate. Mutually exclusive of dataTypeName. Only data from the specified data source ID will be included in the aggregation. The dataset in the response will have the same data source ID."]
         #[serde(rename = "dataSourceId", default)]
-        pub data_source_id: Option<String>,
+        pub data_source_id: ::std::option::Option<String>,
         #[doc = "The data type to aggregate. All data sources providing this data type will contribute data to the aggregation. The response will contain a single dataset for this data type name. The dataset will have a data source ID of derived:com.google.:com.google.android.gms:aggregated"]
         #[serde(rename = "dataTypeName", default)]
-        pub data_type_name: Option<String>,
+        pub data_type_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AggregateBy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -114,7 +122,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -157,6 +164,15 @@ pub mod schemas {
             Ok ( match value { "dataQualityBloodGlucoseIso151972003" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodGlucoseIso151972003 , "dataQualityBloodGlucoseIso151972013" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodGlucoseIso151972013 , "dataQualityBloodPressureAami" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureAami , "dataQualityBloodPressureBhsAA" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsAA , "dataQualityBloodPressureBhsAB" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsAB , "dataQualityBloodPressureBhsBA" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsBA , "dataQualityBloodPressureBhsBB" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureBhsBB , "dataQualityBloodPressureEsh2002" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureEsh2002 , "dataQualityBloodPressureEsh2010" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityBloodPressureEsh2010 , "dataQualityUnknown" => AggregateRequestFilteredDataQualityStandardItems :: DataQualityUnknown , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
+    impl ::field_selector::FieldSelector for AggregateRequestFilteredDataQualityStandardItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -172,31 +188,32 @@ pub mod schemas {
     pub struct AggregateRequest {
         #[doc = "The specification of data to be aggregated. At least one aggregateBy spec must be provided. All data that is specified will be aggregated using the same bucketing criteria. There will be one dataset in the response for every aggregateBy spec."]
         #[serde(rename = "aggregateBy", default)]
-        pub aggregate_by: Option<Vec<crate::schemas::AggregateBy>>,
+        pub aggregate_by: ::std::option::Option<Vec<crate::schemas::AggregateBy>>,
         #[doc = "Specifies that data be aggregated each activity segment recored for a user. Similar to bucketByActivitySegment, but bucketing is done for each activity segment rather than all segments of the same type. Mutually exclusive of other bucketing specifications."]
         #[serde(rename = "bucketByActivitySegment", default)]
-        pub bucket_by_activity_segment: Option<crate::schemas::BucketByActivity>,
+        pub bucket_by_activity_segment: ::std::option::Option<crate::schemas::BucketByActivity>,
         #[doc = "Specifies that data be aggregated by the type of activity being performed when the data was recorded. All data that was recorded during a certain activity type (for the given time range) will be aggregated into the same bucket. Data that was recorded while the user was not active will not be included in the response. Mutually exclusive of other bucketing specifications."]
         #[serde(rename = "bucketByActivityType", default)]
-        pub bucket_by_activity_type: Option<crate::schemas::BucketByActivity>,
+        pub bucket_by_activity_type: ::std::option::Option<crate::schemas::BucketByActivity>,
         #[doc = "Specifies that data be aggregated by user sessions. Data that does not fall within the time range of a session will not be included in the response. Mutually exclusive of other bucketing specifications."]
         #[serde(rename = "bucketBySession", default)]
-        pub bucket_by_session: Option<crate::schemas::BucketBySession>,
+        pub bucket_by_session: ::std::option::Option<crate::schemas::BucketBySession>,
         #[doc = "Specifies that data be aggregated by a single time interval. Mutually exclusive of other bucketing specifications."]
         #[serde(rename = "bucketByTime", default)]
-        pub bucket_by_time: Option<crate::schemas::BucketByTime>,
+        pub bucket_by_time: ::std::option::Option<crate::schemas::BucketByTime>,
         #[doc = "The end of a window of time. Data that intersects with this time window will be aggregated. The time is in milliseconds since epoch, inclusive."]
         #[serde(rename = "endTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub end_time_millis: Option<i64>,
+        pub end_time_millis: ::std::option::Option<i64>,
         #[doc = "DO NOT POPULATE THIS FIELD. It is ignored."]
         #[serde(rename = "filteredDataQualityStandard", default)]
-        pub filtered_data_quality_standard:
-            Option<Vec<crate::schemas::AggregateRequestFilteredDataQualityStandardItems>>,
+        pub filtered_data_quality_standard: ::std::option::Option<
+            Vec<crate::schemas::AggregateRequestFilteredDataQualityStandardItems>,
+        >,
         #[doc = "The start of a window of time. Data that intersects with this time window will be aggregated. The time is in milliseconds since epoch, inclusive."]
         #[serde(rename = "startTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub start_time_millis: Option<i64>,
+        pub start_time_millis: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for AggregateRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -205,7 +222,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -214,7 +230,7 @@ pub mod schemas {
     pub struct AggregateResponse {
         #[doc = "A list of buckets containing the aggregated data."]
         #[serde(rename = "bucket", default)]
-        pub bucket: Option<Vec<crate::schemas::AggregateBucket>>,
+        pub bucket: ::std::option::Option<Vec<crate::schemas::AggregateBucket>>,
     }
     impl ::field_selector::FieldSelector for AggregateResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -223,7 +239,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -241,16 +256,16 @@ pub mod schemas {
     pub struct Application {
         #[doc = "An optional URI that can be used to link back to the application."]
         #[serde(rename = "detailsUrl", default)]
-        pub details_url: Option<String>,
+        pub details_url: ::std::option::Option<String>,
         #[doc = "The name of this application. This is required for REST clients, but we do not enforce uniqueness of this name. It is provided as a matter of convenience for other developers who would like to identify which REST created an Application or Data Source."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Package name for this application. This is used as a unique identifier when created by Android applications, but cannot be specified by REST clients. REST clients will have their developer project number reflected into the Data Source data stream IDs, instead of the packageName."]
         #[serde(rename = "packageName", default)]
-        pub package_name: Option<String>,
+        pub package_name: ::std::option::Option<String>,
         #[doc = "Version of the application. You should update this field whenever the application changes in a way that affects the computation of the data."]
         #[serde(rename = "version", default)]
-        pub version: Option<String>,
+        pub version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Application {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -259,7 +274,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -277,11 +291,11 @@ pub mod schemas {
     pub struct BucketByActivity {
         #[doc = "The default activity stream will be used if a specific activityDataSourceId is not specified."]
         #[serde(rename = "activityDataSourceId", default)]
-        pub activity_data_source_id: Option<String>,
+        pub activity_data_source_id: ::std::option::Option<String>,
         #[doc = "Specifies that only activity segments of duration longer than minDurationMillis are considered and used as a container for aggregated data."]
         #[serde(rename = "minDurationMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub min_duration_millis: Option<i64>,
+        pub min_duration_millis: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for BucketByActivity {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -290,7 +304,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -309,7 +322,7 @@ pub mod schemas {
         #[doc = "Specifies that only sessions of duration longer than minDurationMillis are considered and used as a container for aggregated data."]
         #[serde(rename = "minDurationMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub min_duration_millis: Option<i64>,
+        pub min_duration_millis: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for BucketBySession {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -318,7 +331,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -337,9 +349,9 @@ pub mod schemas {
         #[doc = "Specifies that result buckets aggregate data by exactly durationMillis time frames. Time frames that contain no data will be included in the response with an empty dataset."]
         #[serde(rename = "durationMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub duration_millis: Option<i64>,
+        pub duration_millis: ::std::option::Option<i64>,
         #[serde(rename = "period", default)]
-        pub period: Option<crate::schemas::BucketByTimePeriod>,
+        pub period: ::std::option::Option<crate::schemas::BucketByTimePeriod>,
     }
     impl ::field_selector::FieldSelector for BucketByTime {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -348,7 +360,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -398,6 +409,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for BucketByTimePeriodType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -412,12 +432,12 @@ pub mod schemas {
     )]
     pub struct BucketByTimePeriod {
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::BucketByTimePeriodType>,
+        pub r#type: ::std::option::Option<crate::schemas::BucketByTimePeriodType>,
         #[doc = "org.joda.timezone.DateTimeZone"]
         #[serde(rename = "timeZoneId", default)]
-        pub time_zone_id: Option<String>,
+        pub time_zone_id: ::std::option::Option<String>,
         #[serde(rename = "value", default)]
-        pub value: Option<i32>,
+        pub value: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for BucketByTimePeriod {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -426,7 +446,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -436,32 +455,32 @@ pub mod schemas {
         #[doc = "DO NOT USE THIS FIELD. It is ignored, and not stored."]
         #[serde(rename = "computationTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub computation_time_millis: Option<i64>,
+        pub computation_time_millis: ::std::option::Option<i64>,
         #[doc = "The data type defining the format of the values in this data point."]
         #[serde(rename = "dataTypeName", default)]
-        pub data_type_name: Option<String>,
+        pub data_type_name: ::std::option::Option<String>,
         #[doc = "The end time of the interval represented by this data point, in nanoseconds since epoch."]
         #[serde(rename = "endTimeNanos", default)]
         #[serde(with = "crate::parsed_string")]
-        pub end_time_nanos: Option<i64>,
+        pub end_time_nanos: ::std::option::Option<i64>,
         #[doc = "Indicates the last time this data point was modified. Useful only in contexts where we are listing the data changes, rather than representing the current state of the data."]
         #[serde(rename = "modifiedTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub modified_time_millis: Option<i64>,
+        pub modified_time_millis: ::std::option::Option<i64>,
         #[doc = "If the data point is contained in a dataset for a derived data source, this field will be populated with the data source stream ID that created the data point originally.\n\nWARNING: do not rely on this field for anything other than debugging. The value of this field, if it is set at all, is an implementation detail and is not guaranteed to remain consistent."]
         #[serde(rename = "originDataSourceId", default)]
-        pub origin_data_source_id: Option<String>,
+        pub origin_data_source_id: ::std::option::Option<String>,
         #[doc = "The raw timestamp from the original SensorEvent."]
         #[serde(rename = "rawTimestampNanos", default)]
         #[serde(with = "crate::parsed_string")]
-        pub raw_timestamp_nanos: Option<i64>,
+        pub raw_timestamp_nanos: ::std::option::Option<i64>,
         #[doc = "The start time of the interval represented by this data point, in nanoseconds since epoch."]
         #[serde(rename = "startTimeNanos", default)]
         #[serde(with = "crate::parsed_string")]
-        pub start_time_nanos: Option<i64>,
+        pub start_time_nanos: ::std::option::Option<i64>,
         #[doc = "Values of each data type field for the data point. It is expected that each value corresponding to a data type field will occur in the same order that the field is listed with in the data type specified in a data source.\n\nOnly one of integer and floating point fields will be populated, depending on the format enum value within data source's type field."]
         #[serde(rename = "value", default)]
-        pub value: Option<Vec<crate::schemas::Value>>,
+        pub value: ::std::option::Option<Vec<crate::schemas::Value>>,
     }
     impl ::field_selector::FieldSelector for DataPoint {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -470,7 +489,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -577,6 +595,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DataSourceDataQualityStandardItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DataSourceType {
         Derived,
@@ -621,6 +648,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DataSourceType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -636,28 +672,29 @@ pub mod schemas {
     pub struct DataSource {
         #[doc = "Information about an application which feeds sensor data into the platform."]
         #[serde(rename = "application", default)]
-        pub application: Option<crate::schemas::Application>,
+        pub application: ::std::option::Option<crate::schemas::Application>,
         #[doc = "DO NOT POPULATE THIS FIELD. It is never populated in responses from the platform, and is ignored in queries. It will be removed in a future version entirely."]
         #[serde(rename = "dataQualityStandard", default)]
-        pub data_quality_standard: Option<Vec<crate::schemas::DataSourceDataQualityStandardItems>>,
+        pub data_quality_standard:
+            ::std::option::Option<Vec<crate::schemas::DataSourceDataQualityStandardItems>>,
         #[doc = "A unique identifier for the data stream produced by this data source. The identifier includes:\n\n* The physical device's manufacturer, model, and serial number (UID). \n* The application's package name or name. Package name is used when the data source was created by an Android application. The developer project number is used when the data source was created by a REST client. \n* The data source's type. \n* The data source's stream name.  Note that not all attributes of the data source are used as part of the stream identifier. In particular, the version of the hardware/the application isn't used. This allows us to preserve the same stream through version updates. This also means that two DataSource objects may represent the same data stream even if they're not equal.\n\nThe exact format of the data stream ID created by an Android application is: type:dataType.name:application.packageName:device.manufacturer:device.model:device.uid:dataStreamName \n\nThe exact format of the data stream ID created by a REST client is: type:dataType.name:developer project number:device.manufacturer:device.model:device.uid:dataStreamName \n\nWhen any of the optional fields that make up the data stream ID are absent, they will be omitted from the data stream ID. The minimum viable data stream ID would be: type:dataType.name:developer project number\n\nFinally, the developer project number is obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the developer project number in clear and normal form."]
         #[serde(rename = "dataStreamId", default)]
-        pub data_stream_id: Option<String>,
+        pub data_stream_id: ::std::option::Option<String>,
         #[doc = "The stream name uniquely identifies this particular data source among other data sources of the same type from the same underlying producer. Setting the stream name is optional, but should be done whenever an application exposes two streams for the same data type, or when a device has two equivalent sensors."]
         #[serde(rename = "dataStreamName", default)]
-        pub data_stream_name: Option<String>,
+        pub data_stream_name: ::std::option::Option<String>,
         #[doc = "The data type defines the schema for a stream of data being collected by, inserted into, or queried from the Fitness API."]
         #[serde(rename = "dataType", default)]
-        pub data_type: Option<crate::schemas::DataType>,
+        pub data_type: ::std::option::Option<crate::schemas::DataType>,
         #[doc = "Representation of an integrated device (such as a phone or a wearable) that can hold sensors."]
         #[serde(rename = "device", default)]
-        pub device: Option<crate::schemas::Device>,
+        pub device: ::std::option::Option<crate::schemas::Device>,
         #[doc = "An end-user visible name for this data source."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "A constant describing the type of this data source. Indicates whether this data source produces raw or derived data."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DataSourceType>,
+        pub r#type: ::std::option::Option<crate::schemas::DataSourceType>,
     }
     impl ::field_selector::FieldSelector for DataSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -666,7 +703,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -684,10 +720,10 @@ pub mod schemas {
     pub struct DataType {
         #[doc = "A field represents one dimension of a data type."]
         #[serde(rename = "field", default)]
-        pub field: Option<Vec<crate::schemas::DataTypeField>>,
+        pub field: ::std::option::Option<Vec<crate::schemas::DataTypeField>>,
         #[doc = "Each data type has a unique, namespaced, name. All data types in the com.google namespace are shared as part of the platform."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DataType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -696,7 +732,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -758,6 +793,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DataTypeFieldFormat {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -773,12 +817,12 @@ pub mod schemas {
     pub struct DataTypeField {
         #[doc = "The different supported formats for each field in a data type."]
         #[serde(rename = "format", default)]
-        pub format: Option<crate::schemas::DataTypeFieldFormat>,
+        pub format: ::std::option::Option<crate::schemas::DataTypeFieldFormat>,
         #[doc = "Defines the name and format of data. Unlike data type names, field names are not namespaced, and only need to be unique within the data type."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[serde(rename = "optional", default)]
-        pub optional: Option<bool>,
+        pub optional: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for DataTypeField {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -787,7 +831,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -796,21 +839,21 @@ pub mod schemas {
     pub struct Dataset {
         #[doc = "The data stream ID of the data source that created the points in this dataset."]
         #[serde(rename = "dataSourceId", default)]
-        pub data_source_id: Option<String>,
+        pub data_source_id: ::std::option::Option<String>,
         #[doc = "The largest end time of all data points in this possibly partial representation of the dataset. Time is in nanoseconds from epoch. This should also match the second part of the dataset identifier."]
         #[serde(rename = "maxEndTimeNs", default)]
         #[serde(with = "crate::parsed_string")]
-        pub max_end_time_ns: Option<i64>,
+        pub max_end_time_ns: ::std::option::Option<i64>,
         #[doc = "The smallest start time of all data points in this possibly partial representation of the dataset. Time is in nanoseconds from epoch. This should also match the first part of the dataset identifier."]
         #[serde(rename = "minStartTimeNs", default)]
         #[serde(with = "crate::parsed_string")]
-        pub min_start_time_ns: Option<i64>,
+        pub min_start_time_ns: ::std::option::Option<i64>,
         #[doc = "This token will be set when a dataset is received in response to a GET request and the dataset is too large to be included in a single response. Provide this value in a subsequent GET request to return the next page of data points within this dataset."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "A partial list of data points contained in the dataset, ordered by largest endTimeNanos first. This list is considered complete when retrieving a small dataset and partial when patching a dataset or retrieving a dataset that is too large to include in a single response."]
         #[serde(rename = "point", default)]
-        pub point: Option<Vec<crate::schemas::DataPoint>>,
+        pub point: ::std::option::Option<Vec<crate::schemas::DataPoint>>,
     }
     impl ::field_selector::FieldSelector for Dataset {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -819,7 +862,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -881,6 +923,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DeviceType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -896,19 +947,19 @@ pub mod schemas {
     pub struct Device {
         #[doc = "Manufacturer of the product/hardware."]
         #[serde(rename = "manufacturer", default)]
-        pub manufacturer: Option<String>,
+        pub manufacturer: ::std::option::Option<String>,
         #[doc = "End-user visible model name for the device."]
         #[serde(rename = "model", default)]
-        pub model: Option<String>,
+        pub model: ::std::option::Option<String>,
         #[doc = "A constant representing the type of the device."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DeviceType>,
+        pub r#type: ::std::option::Option<crate::schemas::DeviceType>,
         #[doc = "The serial number or other unique ID for the hardware. This field is obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the uid field in clear and normal form."]
         #[serde(rename = "uid", default)]
-        pub uid: Option<String>,
+        pub uid: ::std::option::Option<String>,
         #[doc = "Version string for the device hardware/software."]
         #[serde(rename = "version", default)]
-        pub version: Option<String>,
+        pub version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Device {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -917,7 +968,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -926,16 +976,16 @@ pub mod schemas {
     pub struct ListDataPointChangesResponse {
         #[doc = "The data stream ID of the data source with data point changes."]
         #[serde(rename = "dataSourceId", default)]
-        pub data_source_id: Option<String>,
+        pub data_source_id: ::std::option::Option<String>,
         #[doc = "Deleted data points for the user. Note, for modifications this should be parsed before handling insertions."]
         #[serde(rename = "deletedDataPoint", default)]
-        pub deleted_data_point: Option<Vec<crate::schemas::DataPoint>>,
+        pub deleted_data_point: ::std::option::Option<Vec<crate::schemas::DataPoint>>,
         #[doc = "Inserted data points for the user."]
         #[serde(rename = "insertedDataPoint", default)]
-        pub inserted_data_point: Option<Vec<crate::schemas::DataPoint>>,
+        pub inserted_data_point: ::std::option::Option<Vec<crate::schemas::DataPoint>>,
         #[doc = "The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListDataPointChangesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -944,7 +994,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -962,7 +1011,7 @@ pub mod schemas {
     pub struct ListDataSourcesResponse {
         #[doc = "A previously created data source."]
         #[serde(rename = "dataSource", default)]
-        pub data_source: Option<Vec<crate::schemas::DataSource>>,
+        pub data_source: ::std::option::Option<Vec<crate::schemas::DataSource>>,
     }
     impl ::field_selector::FieldSelector for ListDataSourcesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -971,7 +1020,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -989,16 +1037,16 @@ pub mod schemas {
     pub struct ListSessionsResponse {
         #[doc = "If includeDeleted is set to true in the request, this list will contain sessions deleted with original end times that are within the startTime and endTime frame."]
         #[serde(rename = "deletedSession", default)]
-        pub deleted_session: Option<Vec<crate::schemas::Session>>,
+        pub deleted_session: ::std::option::Option<Vec<crate::schemas::Session>>,
         #[doc = "Flag to indicate server has more data to transfer"]
         #[serde(rename = "hasMoreData", default)]
-        pub has_more_data: Option<bool>,
+        pub has_more_data: ::std::option::Option<bool>,
         #[doc = "The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Sessions with an end time that is between startTime and endTime of the request."]
         #[serde(rename = "session", default)]
-        pub session: Option<Vec<crate::schemas::Session>>,
+        pub session: ::std::option::Option<Vec<crate::schemas::Session>>,
     }
     impl ::field_selector::FieldSelector for ListSessionsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1007,7 +1055,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1016,7 +1063,7 @@ pub mod schemas {
     pub struct MapValue {
         #[doc = "Floating point value."]
         #[serde(rename = "fpVal", default)]
-        pub fp_val: Option<f64>,
+        pub fp_val: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for MapValue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1025,7 +1072,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1044,34 +1090,34 @@ pub mod schemas {
         #[doc = "Session active time. While start_time_millis and end_time_millis define the full session time, the active time can be shorter and specified by active_time_millis. If the inactive time during the session is known, it should also be inserted via a com.google.activity.segment data point with a STILL activity value"]
         #[serde(rename = "activeTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub active_time_millis: Option<i64>,
+        pub active_time_millis: ::std::option::Option<i64>,
         #[doc = "The type of activity this session represents."]
         #[serde(rename = "activityType", default)]
-        pub activity_type: Option<i32>,
+        pub activity_type: ::std::option::Option<i32>,
         #[doc = "The application that created the session."]
         #[serde(rename = "application", default)]
-        pub application: Option<crate::schemas::Application>,
+        pub application: ::std::option::Option<crate::schemas::Application>,
         #[doc = "A description for this session."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "An end time, in milliseconds since epoch, inclusive."]
         #[serde(rename = "endTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub end_time_millis: Option<i64>,
+        pub end_time_millis: ::std::option::Option<i64>,
         #[doc = "A client-generated identifier that is unique across all sessions owned by this particular user."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "A timestamp that indicates when the session was last modified."]
         #[serde(rename = "modifiedTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub modified_time_millis: Option<i64>,
+        pub modified_time_millis: ::std::option::Option<i64>,
         #[doc = "A human readable name of the session."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "A start time, in milliseconds since epoch, inclusive."]
         #[serde(rename = "startTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub start_time_millis: Option<i64>,
+        pub start_time_millis: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for Session {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1080,7 +1126,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1089,16 +1134,16 @@ pub mod schemas {
     pub struct Value {
         #[doc = "Floating point value. When this is set, other values must not be set."]
         #[serde(rename = "fpVal", default)]
-        pub fp_val: Option<f64>,
+        pub fp_val: ::std::option::Option<f64>,
         #[doc = "Integer value. When this is set, other values must not be set."]
         #[serde(rename = "intVal", default)]
-        pub int_val: Option<i32>,
+        pub int_val: ::std::option::Option<i32>,
         #[doc = "Map value. The valid key space and units for the corresponding value of each entry should be documented as part of the data type definition. Keys should be kept small whenever possible. Data streams with large keys and high data frequency may be down sampled."]
         #[serde(rename = "mapVal", default)]
-        pub map_val: Option<Vec<crate::schemas::ValueMapValEntry>>,
+        pub map_val: ::std::option::Option<Vec<crate::schemas::ValueMapValEntry>>,
         #[doc = "String value. When this is set, other values must not be set. Strings should be kept small whenever possible. Data streams with large string values and high data frequency may be down sampled."]
         #[serde(rename = "stringVal", default)]
-        pub string_val: Option<String>,
+        pub string_val: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Value {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1107,7 +1152,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1115,9 +1159,9 @@ pub mod schemas {
     )]
     pub struct ValueMapValEntry {
         #[serde(rename = "key", default)]
-        pub key: Option<String>,
+        pub key: ::std::option::Option<String>,
         #[serde(rename = "value", default)]
-        pub value: Option<crate::schemas::MapValue>,
+        pub value: ::std::option::Option<crate::schemas::MapValue>,
     }
     impl ::field_selector::FieldSelector for ValueMapValEntry {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1126,7 +1170,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -1171,6 +1214,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -4249,6 +4301,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4324,5 +4377,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

@@ -14,10 +14,10 @@ pub mod schemas {
     pub struct AbsoluteDateRange {
         #[doc = "The end date of the range (inclusive).\nMust be within the 30 days leading up to current date, and must be equal to\nor after start_date."]
         #[serde(rename = "endDate", default)]
-        pub end_date: Option<crate::schemas::Date>,
+        pub end_date: ::std::option::Option<crate::schemas::Date>,
         #[doc = "The start date of the range (inclusive).\nMust be within the 30 days leading up to current date, and must be equal to\nor before end_date."]
         #[serde(rename = "startDate", default)]
-        pub start_date: Option<crate::schemas::Date>,
+        pub start_date: ::std::option::Option<crate::schemas::Date>,
     }
     impl ::field_selector::FieldSelector for AbsoluteDateRange {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -26,7 +26,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -45,7 +44,7 @@ pub mod schemas {
         #[doc = "The last known client revision number of the proposal."]
         #[serde(rename = "proposalRevision", default)]
         #[serde(with = "crate::parsed_string")]
-        pub proposal_revision: Option<i64>,
+        pub proposal_revision: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for AcceptProposalRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -54,7 +53,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -115,6 +113,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AdSizeSizeType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -131,14 +138,14 @@ pub mod schemas {
         #[doc = "The height of the ad slot in pixels.\nThis field will be present only when size type is `PIXEL`."]
         #[serde(rename = "height", default)]
         #[serde(with = "crate::parsed_string")]
-        pub height: Option<i64>,
+        pub height: ::std::option::Option<i64>,
         #[doc = "The size type of the ad slot."]
         #[serde(rename = "sizeType", default)]
-        pub size_type: Option<crate::schemas::AdSizeSizeType>,
+        pub size_type: ::std::option::Option<crate::schemas::AdSizeSizeType>,
         #[doc = "The width of the ad slot in pixels.\nThis field will be present only when size type is `PIXEL`."]
         #[serde(rename = "width", default)]
         #[serde(with = "crate::parsed_string")]
-        pub width: Option<i64>,
+        pub width: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for AdSize {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -147,7 +154,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -165,10 +171,10 @@ pub mod schemas {
     pub struct AdTechnologyProviders {
         #[doc = "The detected ad technology provider IDs for this creative.\nSee https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv for\nmapping of provider ID to provided name, a privacy policy URL, and a list\nof domains which can be attributed to the provider.\n\nIf the creative contains provider IDs that are outside of those listed in\nthe `BidRequest.adslot.consented_providers_settings.consented_providers`\nfield on the (Google bid\nprotocol)[https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto]\nand the\n`BidRequest.user.ext.consented_providers_settings.consented_providers`\nfield on the (OpenRTB\nprotocol)[https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto],\nand a bid is submitted with that creative for an impression that will\nserve to an EEA user, the bid will be filtered before the auction."]
         #[serde(rename = "detectedProviderIds", default)]
-        pub detected_provider_ids: Option<Vec<i64>>,
+        pub detected_provider_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Whether the creative contains an unidentified ad technology provider.\n\nIf true for a given creative, any bid submitted with that creative for an\nimpression that will serve to an EEA user will be filtered before the\nauction."]
         #[serde(rename = "hasUnidentifiedProvider", default)]
-        pub has_unidentified_provider: Option<bool>,
+        pub has_unidentified_provider: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for AdTechnologyProviders {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -177,7 +183,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -195,7 +200,7 @@ pub mod schemas {
     pub struct AddDealAssociationRequest {
         #[doc = "The association between a creative and a deal that should be added."]
         #[serde(rename = "association", default)]
-        pub association: Option<crate::schemas::CreativeDealAssociation>,
+        pub association: ::std::option::Option<crate::schemas::CreativeDealAssociation>,
     }
     impl ::field_selector::FieldSelector for AddDealAssociationRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -204,7 +209,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -222,7 +226,7 @@ pub mod schemas {
     pub struct AddNoteRequest {
         #[doc = "Details of the note to add."]
         #[serde(rename = "note", default)]
-        pub note: Option<crate::schemas::Note>,
+        pub note: ::std::option::Option<crate::schemas::Note>,
     }
     impl ::field_selector::FieldSelector for AddNoteRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -231,7 +235,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -278,6 +281,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AppContextAppTypesItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -293,7 +305,7 @@ pub mod schemas {
     pub struct AppContext {
         #[doc = "The app types this restriction applies to."]
         #[serde(rename = "appTypes", default)]
-        pub app_types: Option<Vec<crate::schemas::AppContextAppTypesItems>>,
+        pub app_types: ::std::option::Option<Vec<crate::schemas::AppContextAppTypesItems>>,
     }
     impl ::field_selector::FieldSelector for AppContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -302,7 +314,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -349,6 +360,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AuctionContextAuctionTypesItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -364,7 +384,8 @@ pub mod schemas {
     pub struct AuctionContext {
         #[doc = "The auction types this restriction applies to."]
         #[serde(rename = "auctionTypes", default)]
-        pub auction_types: Option<Vec<crate::schemas::AuctionContextAuctionTypesItems>>,
+        pub auction_types:
+            ::std::option::Option<Vec<crate::schemas::AuctionContextAuctionTypesItems>>,
     }
     impl ::field_selector::FieldSelector for AuctionContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -373,7 +394,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -391,25 +411,25 @@ pub mod schemas {
     pub struct BidMetricsRow {
         #[doc = "The number of bids that Ad Exchange received from the buyer."]
         #[serde(rename = "bids", default)]
-        pub bids: Option<crate::schemas::MetricValue>,
+        pub bids: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The number of bids that were permitted to compete in the auction."]
         #[serde(rename = "bidsInAuction", default)]
-        pub bids_in_auction: Option<crate::schemas::MetricValue>,
+        pub bids_in_auction: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The number of bids for which the buyer was billed."]
         #[serde(rename = "billedImpressions", default)]
-        pub billed_impressions: Option<crate::schemas::MetricValue>,
+        pub billed_impressions: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The number of bids that won an impression."]
         #[serde(rename = "impressionsWon", default)]
-        pub impressions_won: Option<crate::schemas::MetricValue>,
+        pub impressions_won: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The number of bids for which the corresponding impression was measurable\nfor viewability (as defined by Active View)."]
         #[serde(rename = "measurableImpressions", default)]
-        pub measurable_impressions: Option<crate::schemas::MetricValue>,
+        pub measurable_impressions: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The values of all dimensions associated with metric values in this row."]
         #[serde(rename = "rowDimensions", default)]
-        pub row_dimensions: Option<crate::schemas::RowDimensions>,
+        pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
         #[doc = "The number of bids for which the corresponding impression was viewable (as\ndefined by Active View)."]
         #[serde(rename = "viewableImpressions", default)]
-        pub viewable_impressions: Option<crate::schemas::MetricValue>,
+        pub viewable_impressions: ::std::option::Option<crate::schemas::MetricValue>,
     }
     impl ::field_selector::FieldSelector for BidMetricsRow {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -418,7 +438,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -487,6 +506,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for BidResponseWithoutBidsStatusRowStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -502,13 +530,13 @@ pub mod schemas {
     pub struct BidResponseWithoutBidsStatusRow {
         #[doc = "The number of impressions for which there was a bid response with the\nspecified status."]
         #[serde(rename = "impressionCount", default)]
-        pub impression_count: Option<crate::schemas::MetricValue>,
+        pub impression_count: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The values of all dimensions associated with metric values in this row."]
         #[serde(rename = "rowDimensions", default)]
-        pub row_dimensions: Option<crate::schemas::RowDimensions>,
+        pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
         #[doc = "The status specifying why the bid responses were considered to have no\napplicable bids."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::BidResponseWithoutBidsStatusRowStatus>,
+        pub status: ::std::option::Option<crate::schemas::BidResponseWithoutBidsStatusRowStatus>,
     }
     impl ::field_selector::FieldSelector for BidResponseWithoutBidsStatusRow {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -517,7 +545,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -535,7 +562,7 @@ pub mod schemas {
     pub struct Buyer {
         #[doc = "Authorized Buyers account ID of the buyer."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Buyer {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -544,7 +571,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -562,13 +588,13 @@ pub mod schemas {
     pub struct CalloutStatusRow {
         #[doc = "The ID of the callout status.\nSee\n[callout-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/callout-status-codes)."]
         #[serde(rename = "calloutStatusId", default)]
-        pub callout_status_id: Option<i32>,
+        pub callout_status_id: ::std::option::Option<i32>,
         #[doc = "The number of impressions for which there was a bid request or bid response\nwith the specified callout status."]
         #[serde(rename = "impressionCount", default)]
-        pub impression_count: Option<crate::schemas::MetricValue>,
+        pub impression_count: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The values of all dimensions associated with metric values in this row."]
         #[serde(rename = "rowDimensions", default)]
-        pub row_dimensions: Option<crate::schemas::RowDimensions>,
+        pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
     }
     impl ::field_selector::FieldSelector for CalloutStatusRow {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -577,7 +603,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -595,7 +620,7 @@ pub mod schemas {
     )]
     pub struct CancelNegotiationRequest;
     impl ::field_selector::FieldSelector for CancelNegotiationRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ClientEntityType {
@@ -655,6 +680,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ClientEntityType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ClientRole {
         #[doc = "A placeholder for an undefined client role."]
@@ -709,6 +743,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ClientRole {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ClientStatus {
         #[doc = "A placeholder for an undefined client status."]
@@ -759,6 +802,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ClientStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -775,32 +827,32 @@ pub mod schemas {
         #[doc = "The globally-unique numerical ID of the client.\nThe value of this field is ignored in create and update operations."]
         #[serde(rename = "clientAccountId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub client_account_id: Option<i64>,
+        pub client_account_id: ::std::option::Option<i64>,
         #[doc = "Name used to represent this client to publishers.\nYou may have multiple clients that map to the same entity,\nbut for each client the combination of `clientName` and entity\nmust be unique.\nYou can specify this field as empty."]
         #[serde(rename = "clientName", default)]
-        pub client_name: Option<String>,
+        pub client_name: ::std::option::Option<String>,
         #[doc = "Numerical identifier of the client entity.\nThe entity can be an advertiser, a brand, or an agency.\nThis identifier is unique among all the entities with the same type.\n\nA list of all known advertisers with their identifiers is available in the\n[advertisers.txt](https://storage.googleapis.com/adx-rtb-dictionaries/advertisers.txt)\nfile.\n\nA list of all known brands with their identifiers is available in the\n[brands.txt](https://storage.googleapis.com/adx-rtb-dictionaries/brands.txt)\nfile.\n\nA list of all known agencies with their identifiers is available in the\n[agencies.txt](https://storage.googleapis.com/adx-rtb-dictionaries/agencies.txt)\nfile."]
         #[serde(rename = "entityId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub entity_id: Option<i64>,
+        pub entity_id: ::std::option::Option<i64>,
         #[doc = "The name of the entity. This field is automatically fetched based on\nthe type and ID.\nThe value of this field is ignored in create and update operations."]
         #[serde(rename = "entityName", default)]
-        pub entity_name: Option<String>,
+        pub entity_name: ::std::option::Option<String>,
         #[doc = "The type of the client entity: `ADVERTISER`, `BRAND`, or `AGENCY`."]
         #[serde(rename = "entityType", default)]
-        pub entity_type: Option<crate::schemas::ClientEntityType>,
+        pub entity_type: ::std::option::Option<crate::schemas::ClientEntityType>,
         #[doc = "Optional arbitrary unique identifier of this client buyer from the\nstandpoint of its Ad Exchange sponsor buyer.\n\nThis field can be used to associate a client buyer with the identifier\nin the namespace of its sponsor buyer, lookup client buyers by that\nidentifier and verify whether an Ad Exchange counterpart of a given client\nbuyer already exists.\n\nIf present, must be unique among all the client buyers for its\nAd Exchange sponsor buyer."]
         #[serde(rename = "partnerClientId", default)]
-        pub partner_client_id: Option<String>,
+        pub partner_client_id: ::std::option::Option<String>,
         #[doc = "The role which is assigned to the client buyer. Each role implies a set of\npermissions granted to the client. Must be one of `CLIENT_DEAL_VIEWER`,\n`CLIENT_DEAL_NEGOTIATOR` or `CLIENT_DEAL_APPROVER`."]
         #[serde(rename = "role", default)]
-        pub role: Option<crate::schemas::ClientRole>,
+        pub role: ::std::option::Option<crate::schemas::ClientRole>,
         #[doc = "The status of the client buyer."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::ClientStatus>,
+        pub status: ::std::option::Option<crate::schemas::ClientStatus>,
         #[doc = "Whether the client buyer will be visible to sellers."]
         #[serde(rename = "visibleToSeller", default)]
-        pub visible_to_seller: Option<bool>,
+        pub visible_to_seller: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for Client {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -809,7 +861,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -866,6 +917,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ClientUserStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -882,17 +942,17 @@ pub mod schemas {
         #[doc = "Numerical account ID of the client buyer\nwith which the user is associated; the\nbuyer must be a client of the current sponsor buyer.\nThe value of this field is ignored in an update operation."]
         #[serde(rename = "clientAccountId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub client_account_id: Option<i64>,
+        pub client_account_id: ::std::option::Option<i64>,
         #[doc = "User's email address. The value of this field\nis ignored in an update operation."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The status of the client user."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::ClientUserStatus>,
+        pub status: ::std::option::Option<crate::schemas::ClientUserStatus>,
         #[doc = "The unique numerical ID of the client user\nthat has accepted an invitation.\nThe value of this field is ignored in an update operation."]
         #[serde(rename = "userId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub user_id: Option<i64>,
+        pub user_id: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for ClientUser {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -901,7 +961,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -920,14 +979,14 @@ pub mod schemas {
         #[doc = "Numerical account ID of the client buyer\nthat the invited user is associated with.\nThe value of this field is ignored in create operations."]
         #[serde(rename = "clientAccountId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub client_account_id: Option<i64>,
+        pub client_account_id: ::std::option::Option<i64>,
         #[doc = "The email address to which the invitation is sent. Email\naddresses should be unique among all client users under each sponsor\nbuyer."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The unique numerical ID of the invitation that is sent to the user.\nThe value of this field is ignored in create operations."]
         #[serde(rename = "invitationId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub invitation_id: Option<i64>,
+        pub invitation_id: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for ClientUserInvitation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -936,7 +995,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -954,7 +1012,7 @@ pub mod schemas {
     )]
     pub struct CompleteSetupRequest;
     impl ::field_selector::FieldSelector for CompleteSetupRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -971,10 +1029,10 @@ pub mod schemas {
     pub struct ContactInformation {
         #[doc = "Email address for the contact."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The name of the contact."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ContactInformation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -983,7 +1041,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1072,6 +1129,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CorrectionType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1087,13 +1153,13 @@ pub mod schemas {
     pub struct Correction {
         #[doc = "The contexts for the correction."]
         #[serde(rename = "contexts", default)]
-        pub contexts: Option<Vec<crate::schemas::ServingContext>>,
+        pub contexts: ::std::option::Option<Vec<crate::schemas::ServingContext>>,
         #[doc = "Additional details about what was corrected."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<String>>,
+        pub details: ::std::option::Option<Vec<String>>,
         #[doc = "The type of correction that was applied to the creative."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::CorrectionType>,
+        pub r#type: ::std::option::Option<crate::schemas::CorrectionType>,
     }
     impl ::field_selector::FieldSelector for Correction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1102,7 +1168,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1321,6 +1386,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CreativeAttributesItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeDealsStatus {
         #[doc = "The status is unknown."]
@@ -1385,6 +1459,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for CreativeDealsStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1453,6 +1536,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CreativeOpenAuctionStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeRestrictedCategoriesItems {
         NoRestrictedCategories,
@@ -1501,89 +1593,99 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CreativeRestrictedCategoriesItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Creative {
         #[doc = "The account that this creative belongs to.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "The link to AdChoices destination page."]
         #[serde(rename = "adChoicesDestinationUrl", default)]
-        pub ad_choices_destination_url: Option<String>,
+        pub ad_choices_destination_url: ::std::option::Option<String>,
         #[doc = "Output only. The detected ad technology providers."]
         #[serde(rename = "adTechnologyProviders", default)]
-        pub ad_technology_providers: Option<crate::schemas::AdTechnologyProviders>,
+        pub ad_technology_providers: ::std::option::Option<crate::schemas::AdTechnologyProviders>,
         #[doc = "The name of the company being advertised in the creative."]
         #[serde(rename = "advertiserName", default)]
-        pub advertiser_name: Option<String>,
+        pub advertiser_name: ::std::option::Option<String>,
         #[doc = "The agency ID for this creative."]
         #[serde(rename = "agencyId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub agency_id: Option<i64>,
+        pub agency_id: ::std::option::Option<i64>,
         #[doc = "Output only. The last update timestamp of the creative via API."]
         #[serde(rename = "apiUpdateTime", default)]
-        pub api_update_time: Option<String>,
+        pub api_update_time: ::std::option::Option<String>,
         #[doc = "All attributes for the ads that may be shown from this creative.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
         #[serde(rename = "attributes", default)]
-        pub attributes: Option<Vec<crate::schemas::CreativeAttributesItems>>,
+        pub attributes: ::std::option::Option<Vec<crate::schemas::CreativeAttributesItems>>,
         #[doc = "The set of destination URLs for the creative."]
         #[serde(rename = "clickThroughUrls", default)]
-        pub click_through_urls: Option<Vec<String>>,
+        pub click_through_urls: ::std::option::Option<Vec<String>>,
         #[doc = "Output only. Shows any corrections that were applied to this creative."]
         #[serde(rename = "corrections", default)]
-        pub corrections: Option<Vec<crate::schemas::Correction>>,
+        pub corrections: ::std::option::Option<Vec<crate::schemas::Correction>>,
         #[doc = "The buyer-defined creative ID of this creative.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
         #[serde(rename = "creativeId", default)]
-        pub creative_id: Option<String>,
+        pub creative_id: ::std::option::Option<String>,
         #[doc = "Output only. The top-level deals status of this creative.\nIf disapproved, an entry for 'auctionType=DIRECT_DEALS' (or 'ALL') in\nserving_restrictions will also exist. Note\nthat this may be nuanced with other contextual restrictions, in which case,\nit may be preferable to read from serving_restrictions directly.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
         #[serde(rename = "dealsStatus", default)]
-        pub deals_status: Option<crate::schemas::CreativeDealsStatus>,
+        pub deals_status: ::std::option::Option<crate::schemas::CreativeDealsStatus>,
         #[doc = "The set of declared destination URLs for the creative."]
         #[serde(rename = "declaredClickThroughUrls", default)]
-        pub declared_click_through_urls: Option<Vec<String>>,
+        pub declared_click_through_urls: ::std::option::Option<Vec<String>>,
         #[doc = "Output only. Detected advertiser IDs, if any."]
         #[serde(rename = "detectedAdvertiserIds", default)]
-        pub detected_advertiser_ids: Option<Vec<i64>>,
+        pub detected_advertiser_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Output only. The detected domains for this creative."]
         #[serde(rename = "detectedDomains", default)]
-        pub detected_domains: Option<Vec<String>>,
+        pub detected_domains: ::std::option::Option<Vec<String>>,
         #[doc = "Output only. The detected languages for this creative. The order is\narbitrary. The codes are 2 or 5 characters and are documented at\nhttps://developers.google.com/adwords/api/docs/appendix/languagecodes."]
         #[serde(rename = "detectedLanguages", default)]
-        pub detected_languages: Option<Vec<String>>,
+        pub detected_languages: ::std::option::Option<Vec<String>>,
         #[doc = "Output only. Detected product categories, if any.\nSee the ad-product-categories.txt file in the technical documentation\nfor a list of IDs."]
         #[serde(rename = "detectedProductCategories", default)]
-        pub detected_product_categories: Option<Vec<i32>>,
+        pub detected_product_categories: ::std::option::Option<Vec<i32>>,
         #[doc = "Output only. Detected sensitive categories, if any.\nSee the ad-sensitive-categories.txt file in the technical documentation for\na list of IDs. You should use these IDs along with the\nexcluded-sensitive-category field in the bid request to filter your bids."]
         #[serde(rename = "detectedSensitiveCategories", default)]
-        pub detected_sensitive_categories: Option<Vec<i32>>,
+        pub detected_sensitive_categories: ::std::option::Option<Vec<i32>>,
         #[doc = "An HTML creative."]
         #[serde(rename = "html", default)]
-        pub html: Option<crate::schemas::HtmlContent>,
+        pub html: ::std::option::Option<crate::schemas::HtmlContent>,
         #[doc = "The set of URLs to be called to record an impression."]
         #[serde(rename = "impressionTrackingUrls", default)]
-        pub impression_tracking_urls: Option<Vec<String>>,
+        pub impression_tracking_urls: ::std::option::Option<Vec<String>>,
         #[doc = "A native creative."]
         #[serde(rename = "native", default)]
-        pub native: Option<crate::schemas::NativeContent>,
+        pub native: ::std::option::Option<crate::schemas::NativeContent>,
         #[doc = "Output only. The top-level open auction status of this creative.\nIf disapproved, an entry for 'auctionType = OPEN_AUCTION' (or 'ALL') in\nserving_restrictions will also exist. Note\nthat this may be nuanced with other contextual restrictions, in which case,\nit may be preferable to read from serving_restrictions directly.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
         #[serde(rename = "openAuctionStatus", default)]
-        pub open_auction_status: Option<crate::schemas::CreativeOpenAuctionStatus>,
+        pub open_auction_status: ::std::option::Option<crate::schemas::CreativeOpenAuctionStatus>,
         #[doc = "All restricted categories for the ads that may be shown from this creative."]
         #[serde(rename = "restrictedCategories", default)]
-        pub restricted_categories: Option<Vec<crate::schemas::CreativeRestrictedCategoriesItems>>,
+        pub restricted_categories:
+            ::std::option::Option<Vec<crate::schemas::CreativeRestrictedCategoriesItems>>,
         #[doc = "Output only. The granular status of this ad in specific contexts.\nA context here relates to where something ultimately serves (for example,\na physical location, a platform, an HTTPS vs HTTP request, or the type\nof auction)."]
         #[serde(rename = "servingRestrictions", default)]
-        pub serving_restrictions: Option<Vec<crate::schemas::ServingRestriction>>,
+        pub serving_restrictions: ::std::option::Option<Vec<crate::schemas::ServingRestriction>>,
         #[doc = "All vendor IDs for the ads that may be shown from this creative.\nSee https://storage.googleapis.com/adx-rtb-dictionaries/vendors.txt\nfor possible values."]
         #[serde(rename = "vendorIds", default)]
-        pub vendor_ids: Option<Vec<i32>>,
+        pub vendor_ids: ::std::option::Option<Vec<i32>>,
         #[doc = "Output only. The version of this creative."]
         #[serde(rename = "version", default)]
-        pub version: Option<i32>,
+        pub version: ::std::option::Option<i32>,
         #[doc = "A video creative."]
         #[serde(rename = "video", default)]
-        pub video: Option<crate::schemas::VideoContent>,
+        pub video: ::std::option::Option<crate::schemas::VideoContent>,
     }
     impl ::field_selector::FieldSelector for Creative {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1592,7 +1694,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1610,13 +1711,13 @@ pub mod schemas {
     pub struct CreativeDealAssociation {
         #[doc = "The account the creative belongs to."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "The ID of the creative associated with the deal."]
         #[serde(rename = "creativeId", default)]
-        pub creative_id: Option<String>,
+        pub creative_id: ::std::option::Option<String>,
         #[doc = "The externalDealId for the deal associated with the creative."]
         #[serde(rename = "dealsId", default)]
-        pub deals_id: Option<String>,
+        pub deals_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CreativeDealAssociation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1625,7 +1726,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1680,6 +1780,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for CreativeRestrictionsCreativeFormat {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1740,6 +1849,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CreativeRestrictionsSkippableAdType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1755,12 +1873,15 @@ pub mod schemas {
     pub struct CreativeRestrictions {
         #[doc = "The format of the environment that the creatives will be displayed in."]
         #[serde(rename = "creativeFormat", default)]
-        pub creative_format: Option<crate::schemas::CreativeRestrictionsCreativeFormat>,
+        pub creative_format:
+            ::std::option::Option<crate::schemas::CreativeRestrictionsCreativeFormat>,
         #[serde(rename = "creativeSpecifications", default)]
-        pub creative_specifications: Option<Vec<crate::schemas::CreativeSpecification>>,
+        pub creative_specifications:
+            ::std::option::Option<Vec<crate::schemas::CreativeSpecification>>,
         #[doc = "Skippable video ads allow viewers to skip ads after 5 seconds."]
         #[serde(rename = "skippableAdType", default)]
-        pub skippable_ad_type: Option<crate::schemas::CreativeRestrictionsSkippableAdType>,
+        pub skippable_ad_type:
+            ::std::option::Option<crate::schemas::CreativeRestrictionsSkippableAdType>,
     }
     impl ::field_selector::FieldSelector for CreativeRestrictions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1769,7 +1890,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1814,6 +1934,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for CreativeSizeAllowedFormatsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1878,6 +2007,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CreativeSizeCreativeSizeType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeSizeNativeTemplate {
         #[doc = "A placeholder for an undefined native template."]
@@ -1940,6 +2078,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CreativeSizeNativeTemplate {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeSizeSkippableAdType {
         #[doc = "A placeholder for an undefined skippable ad type."]
@@ -1998,6 +2145,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CreativeSizeSkippableAdType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2013,22 +2169,23 @@ pub mod schemas {
     pub struct CreativeSize {
         #[doc = "What formats are allowed by the publisher.\nIf this repeated field is empty then all formats are allowed.\nFor example, if this field contains AllowedFormatType.AUDIO then the\npublisher only allows an audio ad (without any video)."]
         #[serde(rename = "allowedFormats", default)]
-        pub allowed_formats: Option<Vec<crate::schemas::CreativeSizeAllowedFormatsItems>>,
+        pub allowed_formats:
+            ::std::option::Option<Vec<crate::schemas::CreativeSizeAllowedFormatsItems>>,
         #[doc = "For video creatives specifies the sizes of companion ads (if present).\nCompanion sizes may be filled in only when creative_size_type = VIDEO"]
         #[serde(rename = "companionSizes", default)]
-        pub companion_sizes: Option<Vec<crate::schemas::Size>>,
+        pub companion_sizes: ::std::option::Option<Vec<crate::schemas::Size>>,
         #[doc = "The creative size type."]
         #[serde(rename = "creativeSizeType", default)]
-        pub creative_size_type: Option<crate::schemas::CreativeSizeCreativeSizeType>,
+        pub creative_size_type: ::std::option::Option<crate::schemas::CreativeSizeCreativeSizeType>,
         #[doc = "Output only. The native template for this creative. It will have a value\nonly if creative_size_type = CreativeSizeType.NATIVE."]
         #[serde(rename = "nativeTemplate", default)]
-        pub native_template: Option<crate::schemas::CreativeSizeNativeTemplate>,
+        pub native_template: ::std::option::Option<crate::schemas::CreativeSizeNativeTemplate>,
         #[doc = "For regular or video creative size type, specifies the size\nof the creative"]
         #[serde(rename = "size", default)]
-        pub size: Option<crate::schemas::Size>,
+        pub size: ::std::option::Option<crate::schemas::Size>,
         #[doc = "The type of skippable ad for this creative. It will have a value only if\ncreative_size_type = CreativeSizeType.VIDEO."]
         #[serde(rename = "skippableAdType", default)]
-        pub skippable_ad_type: Option<crate::schemas::CreativeSizeSkippableAdType>,
+        pub skippable_ad_type: ::std::option::Option<crate::schemas::CreativeSizeSkippableAdType>,
     }
     impl ::field_selector::FieldSelector for CreativeSize {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2037,7 +2194,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2055,10 +2211,10 @@ pub mod schemas {
     pub struct CreativeSpecification {
         #[doc = "Companion sizes may be filled in only when this is a video creative."]
         #[serde(rename = "creativeCompanionSizes", default)]
-        pub creative_companion_sizes: Option<Vec<crate::schemas::AdSize>>,
+        pub creative_companion_sizes: ::std::option::Option<Vec<crate::schemas::AdSize>>,
         #[doc = "The size of the creative."]
         #[serde(rename = "creativeSize", default)]
-        pub creative_size: Option<crate::schemas::AdSize>,
+        pub creative_size: ::std::option::Option<crate::schemas::AdSize>,
     }
     impl ::field_selector::FieldSelector for CreativeSpecification {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2067,7 +2223,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2085,13 +2240,13 @@ pub mod schemas {
     pub struct CreativeStatusRow {
         #[doc = "The number of bids with the specified status."]
         #[serde(rename = "bidCount", default)]
-        pub bid_count: Option<crate::schemas::MetricValue>,
+        pub bid_count: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The ID of the creative status.\nSee\n[creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes)."]
         #[serde(rename = "creativeStatusId", default)]
-        pub creative_status_id: Option<i32>,
+        pub creative_status_id: ::std::option::Option<i32>,
         #[doc = "The values of all dimensions associated with metric values in this row."]
         #[serde(rename = "rowDimensions", default)]
-        pub row_dimensions: Option<crate::schemas::RowDimensions>,
+        pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
     }
     impl ::field_selector::FieldSelector for CreativeStatusRow {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2100,7 +2255,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2118,10 +2272,10 @@ pub mod schemas {
     pub struct CriteriaTargeting {
         #[doc = "A list of numeric IDs to be excluded."]
         #[serde(rename = "excludedCriteriaIds", default)]
-        pub excluded_criteria_ids: Option<Vec<i64>>,
+        pub excluded_criteria_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "A list of numeric IDs to be included."]
         #[serde(rename = "targetedCriteriaIds", default)]
-        pub targeted_criteria_ids: Option<Vec<i64>>,
+        pub targeted_criteria_ids: ::std::option::Option<Vec<i64>>,
     }
     impl ::field_selector::FieldSelector for CriteriaTargeting {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2130,7 +2284,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2148,13 +2301,13 @@ pub mod schemas {
     pub struct Date {
         #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year by itself or a year and month where the day is not\nsignificant."]
         #[serde(rename = "day", default)]
-        pub day: Option<i32>,
+        pub day: ::std::option::Option<i32>,
         #[doc = "Month of year. Must be from 1 to 12, or 0 if specifying a year without a\nmonth and day."]
         #[serde(rename = "month", default)]
-        pub month: Option<i32>,
+        pub month: ::std::option::Option<i32>,
         #[doc = "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year."]
         #[serde(rename = "year", default)]
-        pub year: Option<i32>,
+        pub year: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Date {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2163,7 +2316,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2236,6 +2388,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DayPartDayOfWeek {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2251,13 +2412,13 @@ pub mod schemas {
     pub struct DayPart {
         #[doc = "The day of the week to target. If unspecified, applicable to all days."]
         #[serde(rename = "dayOfWeek", default)]
-        pub day_of_week: Option<crate::schemas::DayPartDayOfWeek>,
+        pub day_of_week: ::std::option::Option<crate::schemas::DayPartDayOfWeek>,
         #[doc = "The ending time of the day for the ad to show (minute level\ngranularity). The end time is exclusive. This field is not available\nfor filtering in PQL queries."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<crate::schemas::TimeOfDay>,
+        pub end_time: ::std::option::Option<crate::schemas::TimeOfDay>,
         #[doc = "The starting time of day for the ad to show (minute level granularity).\nThe start time is inclusive.\nThis field is not available for filtering in PQL queries."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<crate::schemas::TimeOfDay>,
+        pub start_time: ::std::option::Option<crate::schemas::TimeOfDay>,
     }
     impl ::field_selector::FieldSelector for DayPart {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2266,7 +2427,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2323,6 +2483,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DayPartTargetingTimeZoneType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2338,10 +2507,10 @@ pub mod schemas {
     pub struct DayPartTargeting {
         #[doc = "A list of day part targeting criterion."]
         #[serde(rename = "dayParts", default)]
-        pub day_parts: Option<Vec<crate::schemas::DayPart>>,
+        pub day_parts: ::std::option::Option<Vec<crate::schemas::DayPart>>,
         #[doc = "The timezone to use for interpreting the day part targeting."]
         #[serde(rename = "timeZoneType", default)]
-        pub time_zone_type: Option<crate::schemas::DayPartTargetingTimeZoneType>,
+        pub time_zone_type: ::std::option::Option<crate::schemas::DayPartTargetingTimeZoneType>,
     }
     impl ::field_selector::FieldSelector for DayPartTargeting {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2350,7 +2519,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2415,6 +2583,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DealCreativePreApprovalPolicy {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DealCreativeSafeFrameCompatibility {
         #[doc = "A placeholder for an undefined creative safe-frame compatibility."]
@@ -2469,6 +2646,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DealCreativeSafeFrameCompatibility {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DealProgrammaticCreativeSource {
         #[doc = "A placeholder for an undefined programmatic creative source."]
@@ -2521,6 +2707,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for DealProgrammaticCreativeSource {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2585,6 +2780,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DealSyndicationProduct {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2600,81 +2804,83 @@ pub mod schemas {
     pub struct Deal {
         #[doc = "Proposed flight end time of the deal.\nThis will generally be stored in a granularity of a second.\nA value is not required for Private Auction deals or Preferred Deals."]
         #[serde(rename = "availableEndTime", default)]
-        pub available_end_time: Option<String>,
+        pub available_end_time: ::std::option::Option<String>,
         #[doc = "Optional proposed flight start time of the deal.\nThis will generally be stored in the granularity of one second since deal\nserving starts at seconds boundary. Any time specified with more\ngranularity (e.g., in milliseconds) will be truncated towards the start of\ntime in seconds."]
         #[serde(rename = "availableStartTime", default)]
-        pub available_start_time: Option<String>,
+        pub available_start_time: ::std::option::Option<String>,
         #[doc = "Buyer private data (hidden from seller)."]
         #[serde(rename = "buyerPrivateData", default)]
-        pub buyer_private_data: Option<crate::schemas::PrivateData>,
+        pub buyer_private_data: ::std::option::Option<crate::schemas::PrivateData>,
         #[doc = "The product ID from which this deal was created.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
         #[serde(rename = "createProductId", default)]
-        pub create_product_id: Option<String>,
+        pub create_product_id: ::std::option::Option<String>,
         #[doc = "Optional revision number of the product that the deal was created from.\nIf present on create, and the server `product_revision` has advanced sinced\nthe passed-in `create_product_revision`, an `ABORTED` error will be\nreturned.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
         #[serde(rename = "createProductRevision", default)]
         #[serde(with = "crate::parsed_string")]
-        pub create_product_revision: Option<i64>,
+        pub create_product_revision: ::std::option::Option<i64>,
         #[doc = "Output only. The time of the deal creation."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. Specifies the creative pre-approval policy."]
         #[serde(rename = "creativePreApprovalPolicy", default)]
-        pub creative_pre_approval_policy: Option<crate::schemas::DealCreativePreApprovalPolicy>,
+        pub creative_pre_approval_policy:
+            ::std::option::Option<crate::schemas::DealCreativePreApprovalPolicy>,
         #[doc = "Output only. Restricitions about the creatives associated with the deal\n(i.e., size) This is available for Programmatic Guaranteed/Preferred Deals\nin Ad Manager."]
         #[serde(rename = "creativeRestrictions", default)]
-        pub creative_restrictions: Option<crate::schemas::CreativeRestrictions>,
+        pub creative_restrictions: ::std::option::Option<crate::schemas::CreativeRestrictions>,
         #[doc = "Output only. Specifies whether the creative is safeFrame compatible."]
         #[serde(rename = "creativeSafeFrameCompatibility", default)]
         pub creative_safe_frame_compatibility:
-            Option<crate::schemas::DealCreativeSafeFrameCompatibility>,
+            ::std::option::Option<crate::schemas::DealCreativeSafeFrameCompatibility>,
         #[doc = "Output only. A unique deal ID for the deal (server-assigned)."]
         #[serde(rename = "dealId", default)]
-        pub deal_id: Option<String>,
+        pub deal_id: ::std::option::Option<String>,
         #[doc = "Output only. Metadata about the serving status of this deal."]
         #[serde(rename = "dealServingMetadata", default)]
-        pub deal_serving_metadata: Option<crate::schemas::DealServingMetadata>,
+        pub deal_serving_metadata: ::std::option::Option<crate::schemas::DealServingMetadata>,
         #[doc = "The negotiable terms of the deal."]
         #[serde(rename = "dealTerms", default)]
-        pub deal_terms: Option<crate::schemas::DealTerms>,
+        pub deal_terms: ::std::option::Option<crate::schemas::DealTerms>,
         #[doc = "The set of fields around delivery control that are interesting for a buyer\nto see but are non-negotiable. These are set by the publisher."]
         #[serde(rename = "deliveryControl", default)]
-        pub delivery_control: Option<crate::schemas::DeliveryControl>,
+        pub delivery_control: ::std::option::Option<crate::schemas::DeliveryControl>,
         #[doc = "Description for the deal terms."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The name of the deal."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "Output only. The external deal ID assigned to this deal once the deal is\nfinalized. This is the deal ID that shows up in serving/reporting etc."]
         #[serde(rename = "externalDealId", default)]
-        pub external_deal_id: Option<String>,
+        pub external_deal_id: ::std::option::Option<String>,
         #[doc = "Output only. True, if the buyside inventory setup is complete for this\ndeal."]
         #[serde(rename = "isSetupComplete", default)]
-        pub is_setup_complete: Option<bool>,
+        pub is_setup_complete: ::std::option::Option<bool>,
         #[doc = "Output only. Specifies the creative source for programmatic deals.\nPUBLISHER means creative is provided by seller and ADVERTISER means\ncreative is provided by buyer."]
         #[serde(rename = "programmaticCreativeSource", default)]
-        pub programmatic_creative_source: Option<crate::schemas::DealProgrammaticCreativeSource>,
+        pub programmatic_creative_source:
+            ::std::option::Option<crate::schemas::DealProgrammaticCreativeSource>,
         #[doc = "Output only. ID of the proposal that this deal is part of."]
         #[serde(rename = "proposalId", default)]
-        pub proposal_id: Option<String>,
+        pub proposal_id: ::std::option::Option<String>,
         #[doc = "Output only. Seller contact information for the deal."]
         #[serde(rename = "sellerContacts", default)]
-        pub seller_contacts: Option<Vec<crate::schemas::ContactInformation>>,
+        pub seller_contacts: ::std::option::Option<Vec<crate::schemas::ContactInformation>>,
         #[doc = "The syndication product associated with the deal.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
         #[serde(rename = "syndicationProduct", default)]
-        pub syndication_product: Option<crate::schemas::DealSyndicationProduct>,
+        pub syndication_product: ::std::option::Option<crate::schemas::DealSyndicationProduct>,
         #[doc = "Output only. Specifies the subset of inventory targeted by the deal."]
         #[serde(rename = "targeting", default)]
-        pub targeting: Option<crate::schemas::MarketplaceTargeting>,
+        pub targeting: ::std::option::Option<crate::schemas::MarketplaceTargeting>,
         #[doc = "The shared targeting visible to buyers and sellers. Each shared\ntargeting entity is AND'd together."]
         #[serde(rename = "targetingCriterion", default)]
-        pub targeting_criterion: Option<Vec<crate::schemas::TargetingCriteria>>,
+        pub targeting_criterion: ::std::option::Option<Vec<crate::schemas::TargetingCriteria>>,
         #[doc = "Output only. The time when the deal was last updated."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
         #[doc = "The web property code for the seller copied over from the product."]
         #[serde(rename = "webPropertyCode", default)]
-        pub web_property_code: Option<String>,
+        pub web_property_code: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Deal {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2683,7 +2889,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2740,6 +2945,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DealPauseStatusFirstPausedBy {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2755,19 +2969,19 @@ pub mod schemas {
     pub struct DealPauseStatus {
         #[doc = "The buyer's reason for pausing, if the buyer paused the deal."]
         #[serde(rename = "buyerPauseReason", default)]
-        pub buyer_pause_reason: Option<String>,
+        pub buyer_pause_reason: ::std::option::Option<String>,
         #[doc = "The role of the person who first paused this deal."]
         #[serde(rename = "firstPausedBy", default)]
-        pub first_paused_by: Option<crate::schemas::DealPauseStatusFirstPausedBy>,
+        pub first_paused_by: ::std::option::Option<crate::schemas::DealPauseStatusFirstPausedBy>,
         #[doc = "True, if the buyer has paused the deal unilaterally."]
         #[serde(rename = "hasBuyerPaused", default)]
-        pub has_buyer_paused: Option<bool>,
+        pub has_buyer_paused: ::std::option::Option<bool>,
         #[doc = "True, if the seller has paused the deal unilaterally."]
         #[serde(rename = "hasSellerPaused", default)]
-        pub has_seller_paused: Option<bool>,
+        pub has_seller_paused: ::std::option::Option<bool>,
         #[doc = "The seller's reason for pausing, if the seller paused the deal."]
         #[serde(rename = "sellerPauseReason", default)]
-        pub seller_pause_reason: Option<String>,
+        pub seller_pause_reason: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DealPauseStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2776,7 +2990,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2794,7 +3007,7 @@ pub mod schemas {
     pub struct DealServingMetadata {
         #[doc = "Output only. Tracks which parties (if any) have paused a deal."]
         #[serde(rename = "dealPauseStatus", default)]
-        pub deal_pause_status: Option<crate::schemas::DealPauseStatus>,
+        pub deal_pause_status: ::std::option::Option<crate::schemas::DealPauseStatus>,
     }
     impl ::field_selector::FieldSelector for DealServingMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2803,7 +3016,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2856,6 +3068,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DealTermsBrandingType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2871,29 +3092,32 @@ pub mod schemas {
     pub struct DealTerms {
         #[doc = "Visibility of the URL in bid requests. (default: BRANDED)"]
         #[serde(rename = "brandingType", default)]
-        pub branding_type: Option<crate::schemas::DealTermsBrandingType>,
+        pub branding_type: ::std::option::Option<crate::schemas::DealTermsBrandingType>,
         #[doc = "Publisher provided description for the terms."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Non-binding estimate of the estimated gross spend for this deal.\nCan be set by buyer or seller."]
         #[serde(rename = "estimatedGrossSpend", default)]
-        pub estimated_gross_spend: Option<crate::schemas::Price>,
+        pub estimated_gross_spend: ::std::option::Option<crate::schemas::Price>,
         #[doc = "Non-binding estimate of the impressions served per day.\nCan be set by buyer or seller."]
         #[serde(rename = "estimatedImpressionsPerDay", default)]
         #[serde(with = "crate::parsed_string")]
-        pub estimated_impressions_per_day: Option<i64>,
+        pub estimated_impressions_per_day: ::std::option::Option<i64>,
         #[doc = "The terms for guaranteed fixed price deals."]
         #[serde(rename = "guaranteedFixedPriceTerms", default)]
-        pub guaranteed_fixed_price_terms: Option<crate::schemas::GuaranteedFixedPriceTerms>,
+        pub guaranteed_fixed_price_terms:
+            ::std::option::Option<crate::schemas::GuaranteedFixedPriceTerms>,
         #[doc = "The terms for non-guaranteed auction deals."]
         #[serde(rename = "nonGuaranteedAuctionTerms", default)]
-        pub non_guaranteed_auction_terms: Option<crate::schemas::NonGuaranteedAuctionTerms>,
+        pub non_guaranteed_auction_terms:
+            ::std::option::Option<crate::schemas::NonGuaranteedAuctionTerms>,
         #[doc = "The terms for non-guaranteed fixed price deals."]
         #[serde(rename = "nonGuaranteedFixedPriceTerms", default)]
-        pub non_guaranteed_fixed_price_terms: Option<crate::schemas::NonGuaranteedFixedPriceTerms>,
+        pub non_guaranteed_fixed_price_terms:
+            ::std::option::Option<crate::schemas::NonGuaranteedFixedPriceTerms>,
         #[doc = "The time zone name. For deals with Cost Per Day billing, defines the\ntime zone used to mark the boundaries of a day. It should be an\nIANA TZ name, such as \"America/Los_Angeles\". For more information,\nsee https://en.wikipedia.org/wiki/List_of_tz_database_time_zones."]
         #[serde(rename = "sellerTimeZone", default)]
-        pub seller_time_zone: Option<String>,
+        pub seller_time_zone: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DealTerms {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2902,7 +3126,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2967,6 +3190,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DeliveryControlCreativeBlockingLevel {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DeliveryControlDeliveryRateType {
         #[doc = "A placeholder for an undefined delivery rate type."]
@@ -3025,6 +3257,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DeliveryControlDeliveryRateType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -3040,13 +3281,15 @@ pub mod schemas {
     pub struct DeliveryControl {
         #[doc = "Output only. Specified the creative blocking levels to be applied."]
         #[serde(rename = "creativeBlockingLevel", default)]
-        pub creative_blocking_level: Option<crate::schemas::DeliveryControlCreativeBlockingLevel>,
+        pub creative_blocking_level:
+            ::std::option::Option<crate::schemas::DeliveryControlCreativeBlockingLevel>,
         #[doc = "Output only. Specifies how the impression delivery will be paced."]
         #[serde(rename = "deliveryRateType", default)]
-        pub delivery_rate_type: Option<crate::schemas::DeliveryControlDeliveryRateType>,
+        pub delivery_rate_type:
+            ::std::option::Option<crate::schemas::DeliveryControlDeliveryRateType>,
         #[doc = "Output only. Specifies any frequency caps."]
         #[serde(rename = "frequencyCaps", default)]
-        pub frequency_caps: Option<Vec<crate::schemas::FrequencyCap>>,
+        pub frequency_caps: ::std::option::Option<Vec<crate::schemas::FrequencyCap>>,
     }
     impl ::field_selector::FieldSelector for DeliveryControl {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3055,7 +3298,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3552,6 +3794,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DisapprovalReason {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -3567,10 +3818,10 @@ pub mod schemas {
     pub struct Disapproval {
         #[doc = "Additional details about the reason for disapproval."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<String>>,
+        pub details: ::std::option::Option<Vec<String>>,
         #[doc = "The categorized reason for disapproval."]
         #[serde(rename = "reason", default)]
-        pub reason: Option<crate::schemas::DisapprovalReason>,
+        pub reason: ::std::option::Option<crate::schemas::DisapprovalReason>,
     }
     impl ::field_selector::FieldSelector for Disapproval {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3579,7 +3830,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3597,7 +3847,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FilterSetBreakdownDimensionsItems {
@@ -3645,6 +3895,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for FilterSetBreakdownDimensionsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3695,6 +3954,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for FilterSetEnvironment {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3750,6 +4018,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for FilterSetFormatsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FilterSetPlatformsItems {
         PlatformUnspecified,
@@ -3798,6 +4075,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for FilterSetPlatformsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3854,6 +4140,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for FilterSetTimeSeriesGranularity {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -3869,44 +4164,46 @@ pub mod schemas {
     pub struct FilterSet {
         #[doc = "An absolute date range, defined by a start date and an end date.\nInterpreted relative to Pacific time zone."]
         #[serde(rename = "absoluteDateRange", default)]
-        pub absolute_date_range: Option<crate::schemas::AbsoluteDateRange>,
+        pub absolute_date_range: ::std::option::Option<crate::schemas::AbsoluteDateRange>,
         #[doc = "The set of dimensions along which to break down the response; may be empty.\nIf multiple dimensions are requested, the breakdown is along the Cartesian\nproduct of the requested dimensions."]
         #[serde(rename = "breakdownDimensions", default)]
-        pub breakdown_dimensions: Option<Vec<crate::schemas::FilterSetBreakdownDimensionsItems>>,
+        pub breakdown_dimensions:
+            ::std::option::Option<Vec<crate::schemas::FilterSetBreakdownDimensionsItems>>,
         #[doc = "The ID of the creative on which to filter; optional. This field may be set\nonly for a filter set that accesses account-level troubleshooting data,\ni.e., one whose name matches the `bidders/*/accounts/*/filterSets/*`\npattern."]
         #[serde(rename = "creativeId", default)]
-        pub creative_id: Option<String>,
+        pub creative_id: ::std::option::Option<String>,
         #[doc = "The ID of the deal on which to filter; optional. This field may be set\nonly for a filter set that accesses account-level troubleshooting data,\ni.e., one whose name matches the `bidders/*/accounts/*/filterSets/*`\npattern."]
         #[serde(rename = "dealId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub deal_id: Option<i64>,
+        pub deal_id: ::std::option::Option<i64>,
         #[doc = "The environment on which to filter; optional."]
         #[serde(rename = "environment", default)]
-        pub environment: Option<crate::schemas::FilterSetEnvironment>,
+        pub environment: ::std::option::Option<crate::schemas::FilterSetEnvironment>,
         #[doc = "The list of formats on which to filter; may be empty. The filters\nrepresented by multiple formats are ORed together (i.e., if non-empty,\nresults must match any one of the formats)."]
         #[serde(rename = "formats", default)]
-        pub formats: Option<Vec<crate::schemas::FilterSetFormatsItems>>,
+        pub formats: ::std::option::Option<Vec<crate::schemas::FilterSetFormatsItems>>,
         #[doc = "A user-defined name of the filter set. Filter set names must be unique\nglobally and match one of the patterns:\n\n* `bidders/*/filterSets/*` (for accessing bidder-level troubleshooting\n  data)\n* `bidders/*/accounts/*/filterSets/*` (for accessing account-level\n  troubleshooting data)\n\nThis field is required in create operations."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The list of platforms on which to filter; may be empty. The filters\nrepresented by multiple platforms are ORed together (i.e., if non-empty,\nresults must match any one of the platforms)."]
         #[serde(rename = "platforms", default)]
-        pub platforms: Option<Vec<crate::schemas::FilterSetPlatformsItems>>,
+        pub platforms: ::std::option::Option<Vec<crate::schemas::FilterSetPlatformsItems>>,
         #[doc = "For Open Bidding partners only.\nThe list of publisher identifiers on which to filter; may be empty.\nThe filters represented by multiple publisher identifiers are ORed\ntogether."]
         #[serde(rename = "publisherIdentifiers", default)]
-        pub publisher_identifiers: Option<Vec<String>>,
+        pub publisher_identifiers: ::std::option::Option<Vec<String>>,
         #[doc = "An open-ended realtime time range, defined by the aggregation start\ntimestamp."]
         #[serde(rename = "realtimeTimeRange", default)]
-        pub realtime_time_range: Option<crate::schemas::RealtimeTimeRange>,
+        pub realtime_time_range: ::std::option::Option<crate::schemas::RealtimeTimeRange>,
         #[doc = "A relative date range, defined by an offset from today and a duration.\nInterpreted relative to Pacific time zone."]
         #[serde(rename = "relativeDateRange", default)]
-        pub relative_date_range: Option<crate::schemas::RelativeDateRange>,
+        pub relative_date_range: ::std::option::Option<crate::schemas::RelativeDateRange>,
         #[doc = "For Authorized Buyers only.\nThe list of IDs of the seller (publisher) networks on which to filter;\nmay be empty. The filters represented by multiple seller network IDs are\nORed together (i.e., if non-empty, results must match any one of the\npublisher networks). See\n[seller-network-ids](https://developers.google.com/authorized-buyers/rtb/downloads/seller-network-ids)\nfile for the set of existing seller network IDs."]
         #[serde(rename = "sellerNetworkIds", default)]
-        pub seller_network_ids: Option<Vec<i32>>,
+        pub seller_network_ids: ::std::option::Option<Vec<i32>>,
         #[doc = "The granularity of time intervals if a time series breakdown is desired;\noptional."]
         #[serde(rename = "timeSeriesGranularity", default)]
-        pub time_series_granularity: Option<crate::schemas::FilterSetTimeSeriesGranularity>,
+        pub time_series_granularity:
+            ::std::option::Option<crate::schemas::FilterSetTimeSeriesGranularity>,
     }
     impl ::field_selector::FieldSelector for FilterSet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3915,7 +4212,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3933,13 +4229,13 @@ pub mod schemas {
     pub struct FilteredBidCreativeRow {
         #[doc = "The number of bids with the specified creative."]
         #[serde(rename = "bidCount", default)]
-        pub bid_count: Option<crate::schemas::MetricValue>,
+        pub bid_count: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The ID of the creative."]
         #[serde(rename = "creativeId", default)]
-        pub creative_id: Option<String>,
+        pub creative_id: ::std::option::Option<String>,
         #[doc = "The values of all dimensions associated with metric values in this row."]
         #[serde(rename = "rowDimensions", default)]
-        pub row_dimensions: Option<crate::schemas::RowDimensions>,
+        pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
     }
     impl ::field_selector::FieldSelector for FilteredBidCreativeRow {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3948,7 +4244,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3966,13 +4261,13 @@ pub mod schemas {
     pub struct FilteredBidDetailRow {
         #[doc = "The number of bids with the specified detail."]
         #[serde(rename = "bidCount", default)]
-        pub bid_count: Option<crate::schemas::MetricValue>,
+        pub bid_count: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The ID of the detail. The associated value can be looked up in the\ndictionary file corresponding to the DetailType in the response message."]
         #[serde(rename = "detailId", default)]
-        pub detail_id: Option<i32>,
+        pub detail_id: ::std::option::Option<i32>,
         #[doc = "The values of all dimensions associated with metric values in this row."]
         #[serde(rename = "rowDimensions", default)]
-        pub row_dimensions: Option<crate::schemas::RowDimensions>,
+        pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
     }
     impl ::field_selector::FieldSelector for FilteredBidDetailRow {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3981,7 +4276,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3999,10 +4293,10 @@ pub mod schemas {
     pub struct FirstPartyMobileApplicationTargeting {
         #[doc = "A list of application IDs to be excluded."]
         #[serde(rename = "excludedAppIds", default)]
-        pub excluded_app_ids: Option<Vec<String>>,
+        pub excluded_app_ids: ::std::option::Option<Vec<String>>,
         #[doc = "A list of application IDs to be included."]
         #[serde(rename = "targetedAppIds", default)]
-        pub targeted_app_ids: Option<Vec<String>>,
+        pub targeted_app_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for FirstPartyMobileApplicationTargeting {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4011,7 +4305,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4080,6 +4373,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for FrequencyCapTimeUnitType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -4095,13 +4397,13 @@ pub mod schemas {
     pub struct FrequencyCap {
         #[doc = "The maximum number of impressions that can be served to a user within the\nspecified time period."]
         #[serde(rename = "maxImpressions", default)]
-        pub max_impressions: Option<i32>,
+        pub max_impressions: ::std::option::Option<i32>,
         #[doc = "The amount of time, in the units specified by time_unit_type. Defines the\namount of time over which impressions per user are counted and capped."]
         #[serde(rename = "numTimeUnits", default)]
-        pub num_time_units: Option<i32>,
+        pub num_time_units: ::std::option::Option<i32>,
         #[doc = "The time unit. Along with num_time_units defines the amount of time over\nwhich impressions per user are counted and capped."]
         #[serde(rename = "timeUnitType", default)]
-        pub time_unit_type: Option<crate::schemas::FrequencyCapTimeUnitType>,
+        pub time_unit_type: ::std::option::Option<crate::schemas::FrequencyCapTimeUnitType>,
     }
     impl ::field_selector::FieldSelector for FrequencyCap {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4110,7 +4412,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4128,19 +4429,19 @@ pub mod schemas {
     pub struct GuaranteedFixedPriceTerms {
         #[doc = "Fixed price for the specified buyer."]
         #[serde(rename = "fixedPrices", default)]
-        pub fixed_prices: Option<Vec<crate::schemas::PricePerBuyer>>,
+        pub fixed_prices: ::std::option::Option<Vec<crate::schemas::PricePerBuyer>>,
         #[doc = "Guaranteed impressions as a percentage. This is the percentage\nof guaranteed looks that the buyer is guaranteeing to buy."]
         #[serde(rename = "guaranteedImpressions", default)]
         #[serde(with = "crate::parsed_string")]
-        pub guaranteed_impressions: Option<i64>,
+        pub guaranteed_impressions: ::std::option::Option<i64>,
         #[doc = "Count of guaranteed looks. Required for deal, optional for product."]
         #[serde(rename = "guaranteedLooks", default)]
         #[serde(with = "crate::parsed_string")]
-        pub guaranteed_looks: Option<i64>,
+        pub guaranteed_looks: ::std::option::Option<i64>,
         #[doc = "Daily minimum looks for CPD deal types."]
         #[serde(rename = "minimumDailyLooks", default)]
         #[serde(with = "crate::parsed_string")]
-        pub minimum_daily_looks: Option<i64>,
+        pub minimum_daily_looks: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for GuaranteedFixedPriceTerms {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4149,7 +4450,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4167,13 +4467,13 @@ pub mod schemas {
     pub struct HtmlContent {
         #[doc = "The height of the HTML snippet in pixels."]
         #[serde(rename = "height", default)]
-        pub height: Option<i32>,
+        pub height: ::std::option::Option<i32>,
         #[doc = "The HTML snippet that displays the ad when inserted in the web page."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<String>,
+        pub snippet: ::std::option::Option<String>,
         #[doc = "The width of the HTML snippet in pixels."]
         #[serde(rename = "width", default)]
-        pub width: Option<i32>,
+        pub width: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for HtmlContent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4182,7 +4482,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4200,13 +4499,13 @@ pub mod schemas {
     pub struct Image {
         #[doc = "Image height in pixels."]
         #[serde(rename = "height", default)]
-        pub height: Option<i32>,
+        pub height: ::std::option::Option<i32>,
         #[doc = "The URL of the image."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
         #[doc = "Image width in pixels."]
         #[serde(rename = "width", default)]
-        pub width: Option<i32>,
+        pub width: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Image {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4215,7 +4514,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4233,22 +4531,22 @@ pub mod schemas {
     pub struct ImpressionMetricsRow {
         #[doc = "The number of impressions available to the buyer on Ad Exchange.\nIn some cases this value may be unavailable."]
         #[serde(rename = "availableImpressions", default)]
-        pub available_impressions: Option<crate::schemas::MetricValue>,
+        pub available_impressions: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The number of impressions for which Ad Exchange sent the buyer a bid\nrequest."]
         #[serde(rename = "bidRequests", default)]
-        pub bid_requests: Option<crate::schemas::MetricValue>,
+        pub bid_requests: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The number of impressions that match the buyer's inventory pretargeting."]
         #[serde(rename = "inventoryMatches", default)]
-        pub inventory_matches: Option<crate::schemas::MetricValue>,
+        pub inventory_matches: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The number of impressions for which Ad Exchange received a response from\nthe buyer that contained at least one applicable bid."]
         #[serde(rename = "responsesWithBids", default)]
-        pub responses_with_bids: Option<crate::schemas::MetricValue>,
+        pub responses_with_bids: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The values of all dimensions associated with metric values in this row."]
         #[serde(rename = "rowDimensions", default)]
-        pub row_dimensions: Option<crate::schemas::RowDimensions>,
+        pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
         #[doc = "The number of impressions for which the buyer successfully sent a response\nto Ad Exchange."]
         #[serde(rename = "successfulResponses", default)]
-        pub successful_responses: Option<crate::schemas::MetricValue>,
+        pub successful_responses: ::std::option::Option<crate::schemas::MetricValue>,
     }
     impl ::field_selector::FieldSelector for ImpressionMetricsRow {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4257,7 +4555,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4275,10 +4572,10 @@ pub mod schemas {
     pub struct InventorySizeTargeting {
         #[doc = "A list of inventory sizes to be excluded."]
         #[serde(rename = "excludedInventorySizes", default)]
-        pub excluded_inventory_sizes: Option<Vec<crate::schemas::AdSize>>,
+        pub excluded_inventory_sizes: ::std::option::Option<Vec<crate::schemas::AdSize>>,
         #[doc = "A list of inventory sizes to be included."]
         #[serde(rename = "targetedInventorySizes", default)]
-        pub targeted_inventory_sizes: Option<Vec<crate::schemas::AdSize>>,
+        pub targeted_inventory_sizes: ::std::option::Option<Vec<crate::schemas::AdSize>>,
     }
     impl ::field_selector::FieldSelector for InventorySizeTargeting {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4287,7 +4584,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4305,10 +4601,10 @@ pub mod schemas {
     pub struct ListBidMetricsResponse {
         #[doc = "List of rows, each containing a set of bid metrics."]
         #[serde(rename = "bidMetricsRows", default)]
-        pub bid_metrics_rows: Option<Vec<crate::schemas::BidMetricsRow>>,
+        pub bid_metrics_rows: ::std::option::Option<Vec<crate::schemas::BidMetricsRow>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListBidMetricsRequest.pageToken\nfield in the subsequent call to the bidMetrics.list\nmethod to retrieve the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListBidMetricsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4317,7 +4613,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4335,10 +4630,10 @@ pub mod schemas {
     pub struct ListBidResponseErrorsResponse {
         #[doc = "List of rows, with counts of bid responses aggregated by callout status."]
         #[serde(rename = "calloutStatusRows", default)]
-        pub callout_status_rows: Option<Vec<crate::schemas::CalloutStatusRow>>,
+        pub callout_status_rows: ::std::option::Option<Vec<crate::schemas::CalloutStatusRow>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListBidResponseErrorsRequest.pageToken\nfield in the subsequent call to the bidResponseErrors.list\nmethod to retrieve the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListBidResponseErrorsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4347,7 +4642,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4366,10 +4660,10 @@ pub mod schemas {
         #[doc = "List of rows, with counts of bid responses without bids aggregated by\nstatus."]
         #[serde(rename = "bidResponseWithoutBidsStatusRows", default)]
         pub bid_response_without_bids_status_rows:
-            Option<Vec<crate::schemas::BidResponseWithoutBidsStatusRow>>,
+            ::std::option::Option<Vec<crate::schemas::BidResponseWithoutBidsStatusRow>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListBidResponsesWithoutBidsRequest.pageToken\nfield in the subsequent call to the bidResponsesWithoutBids.list\nmethod to retrieve the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListBidResponsesWithoutBidsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4378,7 +4672,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4396,10 +4689,10 @@ pub mod schemas {
     pub struct ListClientUserInvitationsResponse {
         #[doc = "The returned list of client users."]
         #[serde(rename = "invitations", default)]
-        pub invitations: Option<Vec<crate::schemas::ClientUserInvitation>>,
+        pub invitations: ::std::option::Option<Vec<crate::schemas::ClientUserInvitation>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListClientUserInvitationsRequest.pageToken\nfield in the subsequent call to the\nclients.invitations.list\nmethod to retrieve the next\npage of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListClientUserInvitationsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4408,7 +4701,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4426,10 +4718,10 @@ pub mod schemas {
     pub struct ListClientUsersResponse {
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListClientUsersRequest.pageToken\nfield in the subsequent call to the\nclients.invitations.list\nmethod to retrieve the next\npage of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The returned list of client users."]
         #[serde(rename = "users", default)]
-        pub users: Option<Vec<crate::schemas::ClientUser>>,
+        pub users: ::std::option::Option<Vec<crate::schemas::ClientUser>>,
     }
     impl ::field_selector::FieldSelector for ListClientUsersResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4438,7 +4730,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4456,10 +4747,10 @@ pub mod schemas {
     pub struct ListClientsResponse {
         #[doc = "The returned list of clients."]
         #[serde(rename = "clients", default)]
-        pub clients: Option<Vec<crate::schemas::Client>>,
+        pub clients: ::std::option::Option<Vec<crate::schemas::Client>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListClientsRequest.pageToken\nfield in the subsequent call to the\naccounts.clients.list\nmethod to retrieve the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListClientsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4468,7 +4759,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4486,10 +4776,11 @@ pub mod schemas {
     pub struct ListCreativeStatusBreakdownByCreativeResponse {
         #[doc = "List of rows, with counts of bids with a given creative status aggregated\nby creative."]
         #[serde(rename = "filteredBidCreativeRows", default)]
-        pub filtered_bid_creative_rows: Option<Vec<crate::schemas::FilteredBidCreativeRow>>,
+        pub filtered_bid_creative_rows:
+            ::std::option::Option<Vec<crate::schemas::FilteredBidCreativeRow>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListCreativeStatusBreakdownByCreativeRequest.pageToken\nfield in the subsequent call to the filteredBids.creatives.list\nmethod to retrieve the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListCreativeStatusBreakdownByCreativeResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4498,7 +4789,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4583,6 +4873,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ListCreativeStatusBreakdownByDetailResponseDetailType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -4598,14 +4897,16 @@ pub mod schemas {
     pub struct ListCreativeStatusBreakdownByDetailResponse {
         #[doc = "The type of detail that the detail IDs represent."]
         #[serde(rename = "detailType", default)]
-        pub detail_type:
-            Option<crate::schemas::ListCreativeStatusBreakdownByDetailResponseDetailType>,
+        pub detail_type: ::std::option::Option<
+            crate::schemas::ListCreativeStatusBreakdownByDetailResponseDetailType,
+        >,
         #[doc = "List of rows, with counts of bids with a given creative status aggregated\nby detail."]
         #[serde(rename = "filteredBidDetailRows", default)]
-        pub filtered_bid_detail_rows: Option<Vec<crate::schemas::FilteredBidDetailRow>>,
+        pub filtered_bid_detail_rows:
+            ::std::option::Option<Vec<crate::schemas::FilteredBidDetailRow>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListCreativeStatusBreakdownByDetailRequest.pageToken\nfield in the subsequent call to the filteredBids.details.list\nmethod to retrieve the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListCreativeStatusBreakdownByDetailResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4614,7 +4915,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4623,10 +4923,10 @@ pub mod schemas {
     pub struct ListCreativesResponse {
         #[doc = "The list of creatives."]
         #[serde(rename = "creatives", default)]
-        pub creatives: Option<Vec<crate::schemas::Creative>>,
+        pub creatives: ::std::option::Option<Vec<crate::schemas::Creative>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListCreativesRequest.page_token\nfield in the subsequent call to `ListCreatives` method to retrieve the next\npage of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListCreativesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4635,7 +4935,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4653,10 +4952,10 @@ pub mod schemas {
     pub struct ListDealAssociationsResponse {
         #[doc = "The list of associations."]
         #[serde(rename = "associations", default)]
-        pub associations: Option<Vec<crate::schemas::CreativeDealAssociation>>,
+        pub associations: ::std::option::Option<Vec<crate::schemas::CreativeDealAssociation>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListDealAssociationsRequest.page_token\nfield in the subsequent call to 'ListDealAssociation' method to retrieve\nthe next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListDealAssociationsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4665,7 +4964,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4683,10 +4981,10 @@ pub mod schemas {
     pub struct ListFilterSetsResponse {
         #[doc = "The filter sets belonging to the buyer."]
         #[serde(rename = "filterSets", default)]
-        pub filter_sets: Option<Vec<crate::schemas::FilterSet>>,
+        pub filter_sets: ::std::option::Option<Vec<crate::schemas::FilterSet>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListFilterSetsRequest.pageToken\nfield in the subsequent call to the\naccounts.filterSets.list\nmethod to retrieve the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListFilterSetsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4695,7 +4993,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4713,10 +5010,10 @@ pub mod schemas {
     pub struct ListFilteredBidRequestsResponse {
         #[doc = "List of rows, with counts of filtered bid requests aggregated by callout\nstatus."]
         #[serde(rename = "calloutStatusRows", default)]
-        pub callout_status_rows: Option<Vec<crate::schemas::CalloutStatusRow>>,
+        pub callout_status_rows: ::std::option::Option<Vec<crate::schemas::CalloutStatusRow>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListFilteredBidRequestsRequest.pageToken\nfield in the subsequent call to the filteredBidRequests.list\nmethod to retrieve the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListFilteredBidRequestsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4725,7 +5022,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4743,10 +5039,10 @@ pub mod schemas {
     pub struct ListFilteredBidsResponse {
         #[doc = "List of rows, with counts of filtered bids aggregated by filtering reason\n(i.e. creative status)."]
         #[serde(rename = "creativeStatusRows", default)]
-        pub creative_status_rows: Option<Vec<crate::schemas::CreativeStatusRow>>,
+        pub creative_status_rows: ::std::option::Option<Vec<crate::schemas::CreativeStatusRow>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListFilteredBidsRequest.pageToken\nfield in the subsequent call to the filteredBids.list\nmethod to retrieve the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListFilteredBidsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4755,7 +5051,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4773,10 +5068,11 @@ pub mod schemas {
     pub struct ListImpressionMetricsResponse {
         #[doc = "List of rows, each containing a set of impression metrics."]
         #[serde(rename = "impressionMetricsRows", default)]
-        pub impression_metrics_rows: Option<Vec<crate::schemas::ImpressionMetricsRow>>,
+        pub impression_metrics_rows:
+            ::std::option::Option<Vec<crate::schemas::ImpressionMetricsRow>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListImpressionMetricsRequest.pageToken\nfield in the subsequent call to the impressionMetrics.list\nmethod to retrieve the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListImpressionMetricsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4785,7 +5081,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4803,10 +5098,10 @@ pub mod schemas {
     pub struct ListLosingBidsResponse {
         #[doc = "List of rows, with counts of losing bids aggregated by loss reason (i.e.\ncreative status)."]
         #[serde(rename = "creativeStatusRows", default)]
-        pub creative_status_rows: Option<Vec<crate::schemas::CreativeStatusRow>>,
+        pub creative_status_rows: ::std::option::Option<Vec<crate::schemas::CreativeStatusRow>>,
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListLosingBidsRequest.pageToken\nfield in the subsequent call to the losingBids.list\nmethod to retrieve the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListLosingBidsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4815,7 +5110,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4833,11 +5127,11 @@ pub mod schemas {
     pub struct ListNonBillableWinningBidsResponse {
         #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListNonBillableWinningBidsRequest.pageToken\nfield in the subsequent call to the nonBillableWinningBids.list\nmethod to retrieve the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of rows, with counts of bids not billed aggregated by reason."]
         #[serde(rename = "nonBillableWinningBidStatusRows", default)]
         pub non_billable_winning_bid_status_rows:
-            Option<Vec<crate::schemas::NonBillableWinningBidStatusRow>>,
+            ::std::option::Option<Vec<crate::schemas::NonBillableWinningBidStatusRow>>,
     }
     impl ::field_selector::FieldSelector for ListNonBillableWinningBidsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4846,7 +5140,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4864,10 +5157,10 @@ pub mod schemas {
     pub struct ListProductsResponse {
         #[doc = "List pagination support."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of matching products at their head revision number."]
         #[serde(rename = "products", default)]
-        pub products: Option<Vec<crate::schemas::Product>>,
+        pub products: ::std::option::Option<Vec<crate::schemas::Product>>,
     }
     impl ::field_selector::FieldSelector for ListProductsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4876,7 +5169,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4894,10 +5186,10 @@ pub mod schemas {
     pub struct ListProposalsResponse {
         #[doc = "Continuation token for fetching the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of proposals."]
         #[serde(rename = "proposals", default)]
-        pub proposals: Option<Vec<crate::schemas::Proposal>>,
+        pub proposals: ::std::option::Option<Vec<crate::schemas::Proposal>>,
     }
     impl ::field_selector::FieldSelector for ListProposalsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4906,7 +5198,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4924,10 +5215,10 @@ pub mod schemas {
     pub struct ListPublisherProfilesResponse {
         #[doc = "List pagination support"]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of matching publisher profiles."]
         #[serde(rename = "publisherProfiles", default)]
-        pub publisher_profiles: Option<Vec<crate::schemas::PublisherProfile>>,
+        pub publisher_profiles: ::std::option::Option<Vec<crate::schemas::PublisherProfile>>,
     }
     impl ::field_selector::FieldSelector for ListPublisherProfilesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4936,7 +5227,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4954,7 +5244,7 @@ pub mod schemas {
     pub struct LocationContext {
         #[doc = "IDs representing the geo location for this context.\nPlease refer to the\n[geo-table.csv](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv)\nfile for different geo criteria IDs."]
         #[serde(rename = "geoCriteriaIds", default)]
-        pub geo_criteria_ids: Option<Vec<i32>>,
+        pub geo_criteria_ids: ::std::option::Option<Vec<i32>>,
     }
     impl ::field_selector::FieldSelector for LocationContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4963,7 +5253,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4981,19 +5270,19 @@ pub mod schemas {
     pub struct MarketplaceTargeting {
         #[doc = "Geo criteria IDs to be included/excluded."]
         #[serde(rename = "geoTargeting", default)]
-        pub geo_targeting: Option<crate::schemas::CriteriaTargeting>,
+        pub geo_targeting: ::std::option::Option<crate::schemas::CriteriaTargeting>,
         #[doc = "Inventory sizes to be included/excluded."]
         #[serde(rename = "inventorySizeTargeting", default)]
-        pub inventory_size_targeting: Option<crate::schemas::InventorySizeTargeting>,
+        pub inventory_size_targeting: ::std::option::Option<crate::schemas::InventorySizeTargeting>,
         #[doc = "Placement targeting information, e.g., URL, mobile applications."]
         #[serde(rename = "placementTargeting", default)]
-        pub placement_targeting: Option<crate::schemas::PlacementTargeting>,
+        pub placement_targeting: ::std::option::Option<crate::schemas::PlacementTargeting>,
         #[doc = "Technology targeting information, e.g., operating system, device category."]
         #[serde(rename = "technologyTargeting", default)]
-        pub technology_targeting: Option<crate::schemas::TechnologyTargeting>,
+        pub technology_targeting: ::std::option::Option<crate::schemas::TechnologyTargeting>,
         #[doc = "Video targeting information."]
         #[serde(rename = "videoTargeting", default)]
-        pub video_targeting: Option<crate::schemas::VideoTargeting>,
+        pub video_targeting: ::std::option::Option<crate::schemas::VideoTargeting>,
     }
     impl ::field_selector::FieldSelector for MarketplaceTargeting {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5002,7 +5291,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5021,11 +5309,11 @@ pub mod schemas {
         #[doc = "The expected value of the metric."]
         #[serde(rename = "value", default)]
         #[serde(with = "crate::parsed_string")]
-        pub value: Option<i64>,
+        pub value: ::std::option::Option<i64>,
         #[doc = "The variance (i.e. square of the standard deviation) of the metric value.\nIf value is exact, variance is 0.\nCan be used to calculate margin of error as a percentage of value, using\nthe following formula, where Z is the standard constant that depends on the\ndesired size of the confidence interval (e.g. for 90% confidence interval,\nuse Z = 1.645):\n\nmarginOfError = 100 * Z * sqrt(variance) / value"]
         #[serde(rename = "variance", default)]
         #[serde(with = "crate::parsed_string")]
-        pub variance: Option<i64>,
+        pub variance: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for MetricValue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5034,7 +5322,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5052,7 +5339,8 @@ pub mod schemas {
     pub struct MobileApplicationTargeting {
         #[doc = "Publisher owned apps to be targeted or excluded by the publisher to\ndisplay the ads in."]
         #[serde(rename = "firstPartyTargeting", default)]
-        pub first_party_targeting: Option<crate::schemas::FirstPartyMobileApplicationTargeting>,
+        pub first_party_targeting:
+            ::std::option::Option<crate::schemas::FirstPartyMobileApplicationTargeting>,
     }
     impl ::field_selector::FieldSelector for MobileApplicationTargeting {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5061,7 +5349,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5079,14 +5366,14 @@ pub mod schemas {
     pub struct Money {
         #[doc = "The 3-letter currency code defined in ISO 4217."]
         #[serde(rename = "currencyCode", default)]
-        pub currency_code: Option<String>,
+        pub currency_code: ::std::option::Option<String>,
         #[doc = "Number of nano (10^-9) units of the amount.\nThe value must be between -999,999,999 and +999,999,999 inclusive.\nIf `units` is positive, `nanos` must be positive or zero.\nIf `units` is zero, `nanos` can be positive, zero, or negative.\nIf `units` is negative, `nanos` must be negative or zero.\nFor example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000."]
         #[serde(rename = "nanos", default)]
-        pub nanos: Option<i32>,
+        pub nanos: ::std::option::Option<i32>,
         #[doc = "The whole units of the amount.\nFor example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar."]
         #[serde(rename = "units", default)]
         #[serde(with = "crate::parsed_string")]
-        pub units: Option<i64>,
+        pub units: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for Money {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5095,7 +5382,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5104,43 +5390,43 @@ pub mod schemas {
     pub struct NativeContent {
         #[doc = "The name of the advertiser or sponsor, to be displayed in the ad creative."]
         #[serde(rename = "advertiserName", default)]
-        pub advertiser_name: Option<String>,
+        pub advertiser_name: ::std::option::Option<String>,
         #[doc = "The app icon, for app download ads."]
         #[serde(rename = "appIcon", default)]
-        pub app_icon: Option<crate::schemas::Image>,
+        pub app_icon: ::std::option::Option<crate::schemas::Image>,
         #[doc = "A long description of the ad."]
         #[serde(rename = "body", default)]
-        pub body: Option<String>,
+        pub body: ::std::option::Option<String>,
         #[doc = "A label for the button that the user is supposed to click."]
         #[serde(rename = "callToAction", default)]
-        pub call_to_action: Option<String>,
+        pub call_to_action: ::std::option::Option<String>,
         #[doc = "The URL that the browser/SDK will load when the user clicks the ad."]
         #[serde(rename = "clickLinkUrl", default)]
-        pub click_link_url: Option<String>,
+        pub click_link_url: ::std::option::Option<String>,
         #[doc = "The URL to use for click tracking."]
         #[serde(rename = "clickTrackingUrl", default)]
-        pub click_tracking_url: Option<String>,
+        pub click_tracking_url: ::std::option::Option<String>,
         #[doc = "A short title for the ad."]
         #[serde(rename = "headline", default)]
-        pub headline: Option<String>,
+        pub headline: ::std::option::Option<String>,
         #[doc = "A large image."]
         #[serde(rename = "image", default)]
-        pub image: Option<crate::schemas::Image>,
+        pub image: ::std::option::Option<crate::schemas::Image>,
         #[doc = "A smaller image, for the advertiser's logo."]
         #[serde(rename = "logo", default)]
-        pub logo: Option<crate::schemas::Image>,
+        pub logo: ::std::option::Option<crate::schemas::Image>,
         #[doc = "The price of the promoted app including currency info."]
         #[serde(rename = "priceDisplayText", default)]
-        pub price_display_text: Option<String>,
+        pub price_display_text: ::std::option::Option<String>,
         #[doc = "The app rating in the app store. Must be in the range [0-5]."]
         #[serde(rename = "starRating", default)]
-        pub star_rating: Option<f64>,
+        pub star_rating: ::std::option::Option<f64>,
         #[doc = "The URL to the app store to purchase/download the promoted app."]
         #[serde(rename = "storeUrl", default)]
-        pub store_url: Option<String>,
+        pub store_url: ::std::option::Option<String>,
         #[doc = "The URL to fetch a native video ad."]
         #[serde(rename = "videoUrl", default)]
-        pub video_url: Option<String>,
+        pub video_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for NativeContent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5149,7 +5435,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5202,6 +5487,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for NonBillableWinningBidStatusRowStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -5217,13 +5511,13 @@ pub mod schemas {
     pub struct NonBillableWinningBidStatusRow {
         #[doc = "The number of bids with the specified status."]
         #[serde(rename = "bidCount", default)]
-        pub bid_count: Option<crate::schemas::MetricValue>,
+        pub bid_count: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The values of all dimensions associated with metric values in this row."]
         #[serde(rename = "rowDimensions", default)]
-        pub row_dimensions: Option<crate::schemas::RowDimensions>,
+        pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
         #[doc = "The status specifying why the winning bids were not billed."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::NonBillableWinningBidStatusRowStatus>,
+        pub status: ::std::option::Option<crate::schemas::NonBillableWinningBidStatusRowStatus>,
     }
     impl ::field_selector::FieldSelector for NonBillableWinningBidStatusRow {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5232,7 +5526,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5250,10 +5543,10 @@ pub mod schemas {
     pub struct NonGuaranteedAuctionTerms {
         #[doc = "True if open auction buyers are allowed to compete with invited buyers\nin this private auction."]
         #[serde(rename = "autoOptimizePrivateAuction", default)]
-        pub auto_optimize_private_auction: Option<bool>,
+        pub auto_optimize_private_auction: ::std::option::Option<bool>,
         #[doc = "Reserve price for the specified buyer."]
         #[serde(rename = "reservePricesPerBuyer", default)]
-        pub reserve_prices_per_buyer: Option<Vec<crate::schemas::PricePerBuyer>>,
+        pub reserve_prices_per_buyer: ::std::option::Option<Vec<crate::schemas::PricePerBuyer>>,
     }
     impl ::field_selector::FieldSelector for NonGuaranteedAuctionTerms {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5262,7 +5555,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5280,7 +5572,7 @@ pub mod schemas {
     pub struct NonGuaranteedFixedPriceTerms {
         #[doc = "Fixed price for the specified buyer."]
         #[serde(rename = "fixedPrices", default)]
-        pub fixed_prices: Option<Vec<crate::schemas::PricePerBuyer>>,
+        pub fixed_prices: ::std::option::Option<Vec<crate::schemas::PricePerBuyer>>,
     }
     impl ::field_selector::FieldSelector for NonGuaranteedFixedPriceTerms {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5289,7 +5581,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5342,6 +5633,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for NoteCreatorRole {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -5357,20 +5657,20 @@ pub mod schemas {
     pub struct Note {
         #[doc = "Output only. The timestamp for when this note was created."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. The role of the person (buyer/seller) creating the note."]
         #[serde(rename = "creatorRole", default)]
-        pub creator_role: Option<crate::schemas::NoteCreatorRole>,
+        pub creator_role: ::std::option::Option<crate::schemas::NoteCreatorRole>,
         #[doc = "The actual note to attach.\n(max-length: 1024 unicode code units)\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
         #[serde(rename = "note", default)]
-        pub note: Option<String>,
+        pub note: ::std::option::Option<String>,
         #[doc = "Output only. The unique ID for the note."]
         #[serde(rename = "noteId", default)]
-        pub note_id: Option<String>,
+        pub note_id: ::std::option::Option<String>,
         #[doc = "Output only. The revision number of the proposal when the note is created."]
         #[serde(rename = "proposalRevision", default)]
         #[serde(with = "crate::parsed_string")]
-        pub proposal_revision: Option<i64>,
+        pub proposal_revision: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for Note {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5379,7 +5679,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5397,10 +5696,11 @@ pub mod schemas {
     pub struct OperatingSystemTargeting {
         #[doc = "IDs of operating systems to be included/excluded."]
         #[serde(rename = "operatingSystemCriteria", default)]
-        pub operating_system_criteria: Option<crate::schemas::CriteriaTargeting>,
+        pub operating_system_criteria: ::std::option::Option<crate::schemas::CriteriaTargeting>,
         #[doc = "IDs of operating system versions to be included/excluded."]
         #[serde(rename = "operatingSystemVersionCriteria", default)]
-        pub operating_system_version_criteria: Option<crate::schemas::CriteriaTargeting>,
+        pub operating_system_version_criteria:
+            ::std::option::Option<crate::schemas::CriteriaTargeting>,
     }
     impl ::field_selector::FieldSelector for OperatingSystemTargeting {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5409,7 +5709,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5427,7 +5726,7 @@ pub mod schemas {
     pub struct PauseProposalRequest {
         #[doc = "The reason why the proposal is being paused.\nThis human readable message will be displayed in the seller's UI.\n(Max length: 1000 unicode code units.)"]
         #[serde(rename = "reason", default)]
-        pub reason: Option<String>,
+        pub reason: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PauseProposalRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5436,7 +5735,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5454,10 +5752,11 @@ pub mod schemas {
     pub struct PlacementTargeting {
         #[doc = "Mobile application targeting information in a deal.\nThis doesn't apply to Auction Packages."]
         #[serde(rename = "mobileApplicationTargeting", default)]
-        pub mobile_application_targeting: Option<crate::schemas::MobileApplicationTargeting>,
+        pub mobile_application_targeting:
+            ::std::option::Option<crate::schemas::MobileApplicationTargeting>,
         #[doc = "URLs to be included/excluded."]
         #[serde(rename = "urlTargeting", default)]
-        pub url_targeting: Option<crate::schemas::UrlTargeting>,
+        pub url_targeting: ::std::option::Option<crate::schemas::UrlTargeting>,
     }
     impl ::field_selector::FieldSelector for PlacementTargeting {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5466,7 +5765,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5516,6 +5814,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PlatformContextPlatformsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -5531,7 +5838,7 @@ pub mod schemas {
     pub struct PlatformContext {
         #[doc = "The platforms this restriction applies to."]
         #[serde(rename = "platforms", default)]
-        pub platforms: Option<Vec<crate::schemas::PlatformContextPlatformsItems>>,
+        pub platforms: ::std::option::Option<Vec<crate::schemas::PlatformContextPlatformsItems>>,
     }
     impl ::field_selector::FieldSelector for PlatformContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5540,7 +5847,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5593,6 +5899,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PricePricingType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -5608,10 +5923,10 @@ pub mod schemas {
     pub struct Price {
         #[doc = "The actual price with currency specified."]
         #[serde(rename = "amount", default)]
-        pub amount: Option<crate::schemas::Money>,
+        pub amount: ::std::option::Option<crate::schemas::Money>,
         #[doc = "The pricing type for the deal/product. (default: CPM)"]
         #[serde(rename = "pricingType", default)]
-        pub pricing_type: Option<crate::schemas::PricePricingType>,
+        pub pricing_type: ::std::option::Option<crate::schemas::PricePricingType>,
     }
     impl ::field_selector::FieldSelector for Price {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5620,7 +5935,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5638,13 +5952,13 @@ pub mod schemas {
     pub struct PricePerBuyer {
         #[doc = "The list of advertisers for this price when associated with this buyer.\nIf empty, all advertisers with this buyer pay this price."]
         #[serde(rename = "advertiserIds", default)]
-        pub advertiser_ids: Option<Vec<String>>,
+        pub advertiser_ids: ::std::option::Option<Vec<String>>,
         #[doc = "The buyer who will pay this price. If unset, all buyers can pay this price\n(if the\nadvertisers match, and there's no more specific rule matching the buyer)."]
         #[serde(rename = "buyer", default)]
-        pub buyer: Option<crate::schemas::Buyer>,
+        pub buyer: ::std::option::Option<crate::schemas::Buyer>,
         #[doc = "The specified price."]
         #[serde(rename = "price", default)]
-        pub price: Option<crate::schemas::Price>,
+        pub price: ::std::option::Option<crate::schemas::Price>,
     }
     impl ::field_selector::FieldSelector for PricePerBuyer {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5653,7 +5967,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5671,7 +5984,7 @@ pub mod schemas {
     pub struct PrivateData {
         #[doc = "A buyer or seller specified reference ID. This can be queried in the list\noperations (max-length: 1024 unicode code units)."]
         #[serde(rename = "referenceId", default)]
-        pub reference_id: Option<String>,
+        pub reference_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PrivateData {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5680,7 +5993,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5745,6 +6057,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ProductSyndicationProduct {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -5760,50 +6081,50 @@ pub mod schemas {
     pub struct Product {
         #[doc = "The proposed end time for the deal. The field will be truncated to the\norder of seconds during serving."]
         #[serde(rename = "availableEndTime", default)]
-        pub available_end_time: Option<String>,
+        pub available_end_time: ::std::option::Option<String>,
         #[doc = "Inventory availability dates. The start time will be truncated to seconds\nduring serving. Thus, a field specified as 3:23:34.456 (HH:mm:ss.SSS) will\nbe truncated to 3:23:34 when serving."]
         #[serde(rename = "availableStartTime", default)]
-        pub available_start_time: Option<String>,
+        pub available_start_time: ::std::option::Option<String>,
         #[doc = "Creation time."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Optional contact information for the creator of this product."]
         #[serde(rename = "creatorContacts", default)]
-        pub creator_contacts: Option<Vec<crate::schemas::ContactInformation>>,
+        pub creator_contacts: ::std::option::Option<Vec<crate::schemas::ContactInformation>>,
         #[doc = "The display name for this product as set by the seller."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "If the creator has already signed off on the product, then the buyer can\nfinalize the deal by accepting the product as is. When copying to a\nproposal, if any of the terms are changed, then auto_finalize is\nautomatically set to false."]
         #[serde(rename = "hasCreatorSignedOff", default)]
-        pub has_creator_signed_off: Option<bool>,
+        pub has_creator_signed_off: ::std::option::Option<bool>,
         #[doc = "The unique ID for the product."]
         #[serde(rename = "productId", default)]
-        pub product_id: Option<String>,
+        pub product_id: ::std::option::Option<String>,
         #[doc = "The revision number of the product (auto-assigned by Marketplace)."]
         #[serde(rename = "productRevision", default)]
         #[serde(with = "crate::parsed_string")]
-        pub product_revision: Option<i64>,
+        pub product_revision: ::std::option::Option<i64>,
         #[doc = "An ID which can be used by the Publisher Profile API to get more\ninformation about the seller that created this product."]
         #[serde(rename = "publisherProfileId", default)]
-        pub publisher_profile_id: Option<String>,
+        pub publisher_profile_id: ::std::option::Option<String>,
         #[doc = "Information about the seller that created this product."]
         #[serde(rename = "seller", default)]
-        pub seller: Option<crate::schemas::Seller>,
+        pub seller: ::std::option::Option<crate::schemas::Seller>,
         #[doc = "The syndication product associated with the deal."]
         #[serde(rename = "syndicationProduct", default)]
-        pub syndication_product: Option<crate::schemas::ProductSyndicationProduct>,
+        pub syndication_product: ::std::option::Option<crate::schemas::ProductSyndicationProduct>,
         #[doc = "Targeting that is shared between the buyer and the seller. Each targeting\ncriterion has a specified key and for each key there is a list of inclusion\nvalue or exclusion values."]
         #[serde(rename = "targetingCriterion", default)]
-        pub targeting_criterion: Option<Vec<crate::schemas::TargetingCriteria>>,
+        pub targeting_criterion: ::std::option::Option<Vec<crate::schemas::TargetingCriteria>>,
         #[doc = "The negotiable terms of the deal."]
         #[serde(rename = "terms", default)]
-        pub terms: Option<crate::schemas::DealTerms>,
+        pub terms: ::std::option::Option<crate::schemas::DealTerms>,
         #[doc = "Time of last update."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
         #[doc = "The web-property code for the seller. This needs to be copied as is when\nadding a new deal to a proposal."]
         #[serde(rename = "webPropertyCode", default)]
-        pub web_property_code: Option<String>,
+        pub web_property_code: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Product {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5812,7 +6133,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5869,6 +6189,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ProposalLastUpdaterOrCommentorRole {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ProposalOriginatorRole {
         #[doc = "A placeholder for an undefined buyer/seller role."]
@@ -5921,6 +6250,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ProposalOriginatorRole {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5985,6 +6323,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ProposalProposalState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -6000,60 +6347,60 @@ pub mod schemas {
     pub struct Proposal {
         #[doc = "Output only. Reference to the buyer that will get billed for this proposal."]
         #[serde(rename = "billedBuyer", default)]
-        pub billed_buyer: Option<crate::schemas::Buyer>,
+        pub billed_buyer: ::std::option::Option<crate::schemas::Buyer>,
         #[doc = "Reference to the buyer on the proposal.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
         #[serde(rename = "buyer", default)]
-        pub buyer: Option<crate::schemas::Buyer>,
+        pub buyer: ::std::option::Option<crate::schemas::Buyer>,
         #[doc = "Contact information for the buyer."]
         #[serde(rename = "buyerContacts", default)]
-        pub buyer_contacts: Option<Vec<crate::schemas::ContactInformation>>,
+        pub buyer_contacts: ::std::option::Option<Vec<crate::schemas::ContactInformation>>,
         #[doc = "Private data for buyer. (hidden from seller)."]
         #[serde(rename = "buyerPrivateData", default)]
-        pub buyer_private_data: Option<crate::schemas::PrivateData>,
+        pub buyer_private_data: ::std::option::Option<crate::schemas::PrivateData>,
         #[doc = "The deals associated with this proposal. For Private Auction proposals\n(whose deals have NonGuaranteedAuctionTerms), there will only be one deal."]
         #[serde(rename = "deals", default)]
-        pub deals: Option<Vec<crate::schemas::Deal>>,
+        pub deals: ::std::option::Option<Vec<crate::schemas::Deal>>,
         #[doc = "The name for the proposal."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "Output only. True if the proposal is being renegotiated."]
         #[serde(rename = "isRenegotiating", default)]
-        pub is_renegotiating: Option<bool>,
+        pub is_renegotiating: ::std::option::Option<bool>,
         #[doc = "Output only. True, if the buyside inventory setup is complete for this\nproposal."]
         #[serde(rename = "isSetupComplete", default)]
-        pub is_setup_complete: Option<bool>,
+        pub is_setup_complete: ::std::option::Option<bool>,
         #[doc = "Output only. The role of the last user that either updated the proposal or\nleft a comment."]
         #[serde(rename = "lastUpdaterOrCommentorRole", default)]
         pub last_updater_or_commentor_role:
-            Option<crate::schemas::ProposalLastUpdaterOrCommentorRole>,
+            ::std::option::Option<crate::schemas::ProposalLastUpdaterOrCommentorRole>,
         #[doc = "Output only. The notes associated with this proposal."]
         #[serde(rename = "notes", default)]
-        pub notes: Option<Vec<crate::schemas::Note>>,
+        pub notes: ::std::option::Option<Vec<crate::schemas::Note>>,
         #[doc = "Output only. Indicates whether the buyer/seller created the proposal."]
         #[serde(rename = "originatorRole", default)]
-        pub originator_role: Option<crate::schemas::ProposalOriginatorRole>,
+        pub originator_role: ::std::option::Option<crate::schemas::ProposalOriginatorRole>,
         #[doc = "Output only. Private auction ID if this proposal is a private auction\nproposal."]
         #[serde(rename = "privateAuctionId", default)]
-        pub private_auction_id: Option<String>,
+        pub private_auction_id: ::std::option::Option<String>,
         #[doc = "Output only. The unique ID of the proposal."]
         #[serde(rename = "proposalId", default)]
-        pub proposal_id: Option<String>,
+        pub proposal_id: ::std::option::Option<String>,
         #[doc = "Output only. The revision number for the proposal.\nEach update to the proposal or the deal causes the proposal revision number\nto auto-increment. The buyer keeps track of the last revision number they\nknow of and pass it in when making an update. If the head revision number\non the server has since incremented, then an ABORTED error is returned\nduring the update operation to let the buyer know that a subsequent update\nwas made."]
         #[serde(rename = "proposalRevision", default)]
         #[serde(with = "crate::parsed_string")]
-        pub proposal_revision: Option<i64>,
+        pub proposal_revision: ::std::option::Option<i64>,
         #[doc = "Output only. The current state of the proposal."]
         #[serde(rename = "proposalState", default)]
-        pub proposal_state: Option<crate::schemas::ProposalProposalState>,
+        pub proposal_state: ::std::option::Option<crate::schemas::ProposalProposalState>,
         #[doc = "Reference to the seller on the proposal.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
         #[serde(rename = "seller", default)]
-        pub seller: Option<crate::schemas::Seller>,
+        pub seller: ::std::option::Option<crate::schemas::Seller>,
         #[doc = "Output only. Contact information for the seller."]
         #[serde(rename = "sellerContacts", default)]
-        pub seller_contacts: Option<Vec<crate::schemas::ContactInformation>>,
+        pub seller_contacts: ::std::option::Option<Vec<crate::schemas::ContactInformation>>,
         #[doc = "Output only. The time when the proposal was last revised."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Proposal {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6062,7 +6409,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -6080,49 +6426,49 @@ pub mod schemas {
     pub struct PublisherProfile {
         #[doc = "Description on the publisher's audience."]
         #[serde(rename = "audienceDescription", default)]
-        pub audience_description: Option<String>,
+        pub audience_description: ::std::option::Option<String>,
         #[doc = "Statement explaining what's unique about publisher's business, and why\nbuyers should partner with the publisher."]
         #[serde(rename = "buyerPitchStatement", default)]
-        pub buyer_pitch_statement: Option<String>,
+        pub buyer_pitch_statement: ::std::option::Option<String>,
         #[doc = "Contact information for direct reservation deals. This is free text entered\nby the publisher and may include information like names, phone numbers and\nemail addresses."]
         #[serde(rename = "directDealsContact", default)]
-        pub direct_deals_contact: Option<String>,
+        pub direct_deals_contact: ::std::option::Option<String>,
         #[doc = "Name of the publisher profile."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The list of domains represented in this publisher profile. Empty if this is\na parent profile. These are top private domains, meaning that these will\nnot contain a string like \"photos.google.co.uk/123\", but will instead\ncontain \"google.co.uk\"."]
         #[serde(rename = "domains", default)]
-        pub domains: Option<Vec<String>>,
+        pub domains: ::std::option::Option<Vec<String>>,
         #[doc = "URL to publisher's Google+ page."]
         #[serde(rename = "googlePlusUrl", default)]
-        pub google_plus_url: Option<String>,
+        pub google_plus_url: ::std::option::Option<String>,
         #[doc = "A Google public URL to the logo for this publisher profile. The logo is\nstored as a PNG, JPG, or GIF image."]
         #[serde(rename = "logoUrl", default)]
-        pub logo_url: Option<String>,
+        pub logo_url: ::std::option::Option<String>,
         #[doc = "URL to additional marketing and sales materials."]
         #[serde(rename = "mediaKitUrl", default)]
-        pub media_kit_url: Option<String>,
+        pub media_kit_url: ::std::option::Option<String>,
         #[doc = "Overview of the publisher."]
         #[serde(rename = "overview", default)]
-        pub overview: Option<String>,
+        pub overview: ::std::option::Option<String>,
         #[doc = "Contact information for programmatic deals. This is free text entered by\nthe publisher and may include information like names, phone numbers and\nemail addresses."]
         #[serde(rename = "programmaticDealsContact", default)]
-        pub programmatic_deals_contact: Option<String>,
+        pub programmatic_deals_contact: ::std::option::Option<String>,
         #[doc = "Unique ID for publisher profile."]
         #[serde(rename = "publisherProfileId", default)]
-        pub publisher_profile_id: Option<String>,
+        pub publisher_profile_id: ::std::option::Option<String>,
         #[doc = "URL to a publisher rate card."]
         #[serde(rename = "rateCardInfoUrl", default)]
-        pub rate_card_info_url: Option<String>,
+        pub rate_card_info_url: ::std::option::Option<String>,
         #[doc = "URL to a sample content page."]
         #[serde(rename = "samplePageUrl", default)]
-        pub sample_page_url: Option<String>,
+        pub sample_page_url: ::std::option::Option<String>,
         #[doc = "Seller of the publisher profile."]
         #[serde(rename = "seller", default)]
-        pub seller: Option<crate::schemas::Seller>,
+        pub seller: ::std::option::Option<crate::schemas::Seller>,
         #[doc = "Up to three key metrics and rankings. Max 100 characters each.\nFor example \"#1 Mobile News Site for 20 Straight Months\"."]
         #[serde(rename = "topHeadlines", default)]
-        pub top_headlines: Option<Vec<String>>,
+        pub top_headlines: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for PublisherProfile {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6131,7 +6477,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -6149,7 +6494,7 @@ pub mod schemas {
     pub struct RealtimeTimeRange {
         #[doc = "The start timestamp of the real-time RTB metrics aggregation."]
         #[serde(rename = "startTimestamp", default)]
-        pub start_timestamp: Option<String>,
+        pub start_timestamp: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RealtimeTimeRange {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6158,7 +6503,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -6176,10 +6520,10 @@ pub mod schemas {
     pub struct RelativeDateRange {
         #[doc = "The number of days in the requested date range, e.g., for a range spanning\ntoday: 1. For a range spanning the last 7 days: 7."]
         #[serde(rename = "durationDays", default)]
-        pub duration_days: Option<i32>,
+        pub duration_days: ::std::option::Option<i32>,
         #[doc = "The end date of the filter set, specified as the number of days before\ntoday, e.g., for a range where the last date is today: 0."]
         #[serde(rename = "offsetDays", default)]
-        pub offset_days: Option<i32>,
+        pub offset_days: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for RelativeDateRange {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6188,7 +6532,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -6206,7 +6549,7 @@ pub mod schemas {
     pub struct RemoveDealAssociationRequest {
         #[doc = "The association between a creative and a deal that should be removed."]
         #[serde(rename = "association", default)]
-        pub association: Option<crate::schemas::CreativeDealAssociation>,
+        pub association: ::std::option::Option<crate::schemas::CreativeDealAssociation>,
     }
     impl ::field_selector::FieldSelector for RemoveDealAssociationRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6215,7 +6558,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -6233,7 +6575,7 @@ pub mod schemas {
     )]
     pub struct ResumeProposalRequest;
     impl ::field_selector::FieldSelector for ResumeProposalRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -6250,10 +6592,10 @@ pub mod schemas {
     pub struct RowDimensions {
         #[doc = "The publisher identifier for this row, if a breakdown by\n[BreakdownDimension.PUBLISHER_IDENTIFIER](https://developers.google.com/authorized-buyers/apis/reference/rest/v2beta1/bidders.accounts.filterSets#FilterSet.BreakdownDimension)\nwas requested."]
         #[serde(rename = "publisherIdentifier", default)]
-        pub publisher_identifier: Option<String>,
+        pub publisher_identifier: ::std::option::Option<String>,
         #[doc = "The time interval that this row represents."]
         #[serde(rename = "timeInterval", default)]
-        pub time_interval: Option<crate::schemas::TimeInterval>,
+        pub time_interval: ::std::option::Option<crate::schemas::TimeInterval>,
     }
     impl ::field_selector::FieldSelector for RowDimensions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6262,7 +6604,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -6309,6 +6650,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for SecurityContextSecuritiesItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -6324,7 +6674,7 @@ pub mod schemas {
     pub struct SecurityContext {
         #[doc = "The security types in this context."]
         #[serde(rename = "securities", default)]
-        pub securities: Option<Vec<crate::schemas::SecurityContextSecuritiesItems>>,
+        pub securities: ::std::option::Option<Vec<crate::schemas::SecurityContextSecuritiesItems>>,
     }
     impl ::field_selector::FieldSelector for SecurityContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6333,7 +6683,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -6351,10 +6700,10 @@ pub mod schemas {
     pub struct Seller {
         #[doc = "The unique ID for the seller. The seller fills in this field.\nThe seller account ID is then available to buyer in the product."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "Optional sub-account ID for the seller."]
         #[serde(rename = "subAccountId", default)]
-        pub sub_account_id: Option<String>,
+        pub sub_account_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Seller {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6363,7 +6712,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -6408,6 +6756,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ServingContextAll {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -6423,22 +6780,22 @@ pub mod schemas {
     pub struct ServingContext {
         #[doc = "Matches all contexts."]
         #[serde(rename = "all", default)]
-        pub all: Option<crate::schemas::ServingContextAll>,
+        pub all: ::std::option::Option<crate::schemas::ServingContextAll>,
         #[doc = "Matches impressions for a particular app type."]
         #[serde(rename = "appType", default)]
-        pub app_type: Option<crate::schemas::AppContext>,
+        pub app_type: ::std::option::Option<crate::schemas::AppContext>,
         #[doc = "Matches impressions for a particular auction type."]
         #[serde(rename = "auctionType", default)]
-        pub auction_type: Option<crate::schemas::AuctionContext>,
+        pub auction_type: ::std::option::Option<crate::schemas::AuctionContext>,
         #[doc = "Matches impressions coming from users *or* publishers in a specific\nlocation."]
         #[serde(rename = "location", default)]
-        pub location: Option<crate::schemas::LocationContext>,
+        pub location: ::std::option::Option<crate::schemas::LocationContext>,
         #[doc = "Matches impressions coming from a particular platform."]
         #[serde(rename = "platform", default)]
-        pub platform: Option<crate::schemas::PlatformContext>,
+        pub platform: ::std::option::Option<crate::schemas::PlatformContext>,
         #[doc = "Matches impressions for a particular security type."]
         #[serde(rename = "securityType", default)]
-        pub security_type: Option<crate::schemas::SecurityContext>,
+        pub security_type: ::std::option::Option<crate::schemas::SecurityContext>,
     }
     impl ::field_selector::FieldSelector for ServingContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6447,7 +6804,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -6500,6 +6856,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ServingRestrictionStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -6515,16 +6880,16 @@ pub mod schemas {
     pub struct ServingRestriction {
         #[doc = "The contexts for the restriction."]
         #[serde(rename = "contexts", default)]
-        pub contexts: Option<Vec<crate::schemas::ServingContext>>,
+        pub contexts: ::std::option::Option<Vec<crate::schemas::ServingContext>>,
         #[doc = "Disapproval bound to this restriction.\nOnly present if status=DISAPPROVED.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
         #[serde(rename = "disapproval", default)]
-        pub disapproval: Option<crate::schemas::Disapproval>,
+        pub disapproval: ::std::option::Option<crate::schemas::Disapproval>,
         #[doc = "Any disapprovals bound to this restriction.\nOnly present if status=DISAPPROVED.\nCan be used to filter the response of the\ncreatives.list\nmethod.\nDeprecated; please use\ndisapproval\nfield instead."]
         #[serde(rename = "disapprovalReasons", default)]
-        pub disapproval_reasons: Option<Vec<crate::schemas::Disapproval>>,
+        pub disapproval_reasons: ::std::option::Option<Vec<crate::schemas::Disapproval>>,
         #[doc = "The status of the creative in this context (for example, it has been\nexplicitly disapproved or is pending review)."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::ServingRestrictionStatus>,
+        pub status: ::std::option::Option<crate::schemas::ServingRestrictionStatus>,
     }
     impl ::field_selector::FieldSelector for ServingRestriction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6533,7 +6898,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -6551,10 +6915,10 @@ pub mod schemas {
     pub struct Size {
         #[doc = "The height of the creative."]
         #[serde(rename = "height", default)]
-        pub height: Option<i32>,
+        pub height: ::std::option::Option<i32>,
         #[doc = "The width of the creative"]
         #[serde(rename = "width", default)]
-        pub width: Option<i32>,
+        pub width: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Size {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6563,7 +6927,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -6581,7 +6944,7 @@ pub mod schemas {
     )]
     pub struct StopWatchingCreativeRequest;
     impl ::field_selector::FieldSelector for StopWatchingCreativeRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -6598,13 +6961,13 @@ pub mod schemas {
     pub struct TargetingCriteria {
         #[doc = "The list of values to exclude from targeting. Each value is AND'd\ntogether."]
         #[serde(rename = "exclusions", default)]
-        pub exclusions: Option<Vec<crate::schemas::TargetingValue>>,
+        pub exclusions: ::std::option::Option<Vec<crate::schemas::TargetingValue>>,
         #[doc = "The list of value to include as part of the targeting. Each value is OR'd\ntogether."]
         #[serde(rename = "inclusions", default)]
-        pub inclusions: Option<Vec<crate::schemas::TargetingValue>>,
+        pub inclusions: ::std::option::Option<Vec<crate::schemas::TargetingValue>>,
         #[doc = "The key representing the shared targeting criterion.\nTargeting criteria defined by Google ad servers will begin with GOOG_.\nThird parties may define their own keys.\nA list of permissible keys along with the acceptable values will be\nprovided as part of the external documentation."]
         #[serde(rename = "key", default)]
-        pub key: Option<String>,
+        pub key: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TargetingCriteria {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6613,7 +6976,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -6631,17 +6993,17 @@ pub mod schemas {
     pub struct TargetingValue {
         #[doc = "The creative size value to include/exclude.\nFilled in when key = GOOG_CREATIVE_SIZE"]
         #[serde(rename = "creativeSizeValue", default)]
-        pub creative_size_value: Option<crate::schemas::CreativeSize>,
+        pub creative_size_value: ::std::option::Option<crate::schemas::CreativeSize>,
         #[doc = "The daypart targeting to include / exclude.\nFilled in when the key is GOOG_DAYPART_TARGETING.\nThe definition of this targeting is derived from the structure\nused by Ad Manager."]
         #[serde(rename = "dayPartTargetingValue", default)]
-        pub day_part_targeting_value: Option<crate::schemas::DayPartTargeting>,
+        pub day_part_targeting_value: ::std::option::Option<crate::schemas::DayPartTargeting>,
         #[doc = "The long value to include/exclude."]
         #[serde(rename = "longValue", default)]
         #[serde(with = "crate::parsed_string")]
-        pub long_value: Option<i64>,
+        pub long_value: ::std::option::Option<i64>,
         #[doc = "The string value to include/exclude."]
         #[serde(rename = "stringValue", default)]
-        pub string_value: Option<String>,
+        pub string_value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TargetingValue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6650,7 +7012,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -6668,13 +7029,14 @@ pub mod schemas {
     pub struct TechnologyTargeting {
         #[doc = "IDs of device capabilities to be included/excluded."]
         #[serde(rename = "deviceCapabilityTargeting", default)]
-        pub device_capability_targeting: Option<crate::schemas::CriteriaTargeting>,
+        pub device_capability_targeting: ::std::option::Option<crate::schemas::CriteriaTargeting>,
         #[doc = "IDs of device categories to be included/excluded."]
         #[serde(rename = "deviceCategoryTargeting", default)]
-        pub device_category_targeting: Option<crate::schemas::CriteriaTargeting>,
+        pub device_category_targeting: ::std::option::Option<crate::schemas::CriteriaTargeting>,
         #[doc = "Operating system related targeting information."]
         #[serde(rename = "operatingSystemTargeting", default)]
-        pub operating_system_targeting: Option<crate::schemas::OperatingSystemTargeting>,
+        pub operating_system_targeting:
+            ::std::option::Option<crate::schemas::OperatingSystemTargeting>,
     }
     impl ::field_selector::FieldSelector for TechnologyTargeting {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6683,7 +7045,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -6701,10 +7062,10 @@ pub mod schemas {
     pub struct TimeInterval {
         #[doc = "The timestamp marking the end of the range (exclusive) for which data is\nincluded."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
         #[doc = "The timestamp marking the start of the range (inclusive) for which data is\nincluded."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TimeInterval {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6713,7 +7074,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -6731,16 +7091,16 @@ pub mod schemas {
     pub struct TimeOfDay {
         #[doc = "Hours of day in 24 hour format. Should be from 0 to 23. An API may choose\nto allow the value \"24:00:00\" for scenarios like business closing time."]
         #[serde(rename = "hours", default)]
-        pub hours: Option<i32>,
+        pub hours: ::std::option::Option<i32>,
         #[doc = "Minutes of hour of day. Must be from 0 to 59."]
         #[serde(rename = "minutes", default)]
-        pub minutes: Option<i32>,
+        pub minutes: ::std::option::Option<i32>,
         #[doc = "Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999."]
         #[serde(rename = "nanos", default)]
-        pub nanos: Option<i32>,
+        pub nanos: ::std::option::Option<i32>,
         #[doc = "Seconds of minutes of the time. Must normally be from 0 to 59. An API may\nallow the value 60 if it allows leap-seconds."]
         #[serde(rename = "seconds", default)]
-        pub seconds: Option<i32>,
+        pub seconds: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for TimeOfDay {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6749,7 +7109,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -6767,10 +7126,10 @@ pub mod schemas {
     pub struct UrlTargeting {
         #[doc = "A list of URLs to be excluded."]
         #[serde(rename = "excludedUrls", default)]
-        pub excluded_urls: Option<Vec<String>>,
+        pub excluded_urls: ::std::option::Option<Vec<String>>,
         #[doc = "A list of URLs to be included."]
         #[serde(rename = "targetedUrls", default)]
-        pub targeted_urls: Option<Vec<String>>,
+        pub targeted_urls: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for UrlTargeting {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6779,7 +7138,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -6797,10 +7155,10 @@ pub mod schemas {
     pub struct VideoContent {
         #[doc = "The URL to fetch a video ad."]
         #[serde(rename = "videoUrl", default)]
-        pub video_url: Option<String>,
+        pub video_url: ::std::option::Option<String>,
         #[doc = "The contents of a VAST document for a video ad.\nThis document should conform to the VAST 2.0 or 3.0 standard."]
         #[serde(rename = "videoVastXml", default)]
-        pub video_vast_xml: Option<String>,
+        pub video_vast_xml: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VideoContent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6809,7 +7167,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -6866,6 +7223,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VideoTargetingExcludedPositionTypesItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoTargetingTargetedPositionTypesItems {
         PositionTypeUnspecified,
@@ -6920,6 +7286,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VideoTargetingTargetedPositionTypesItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -6936,11 +7311,11 @@ pub mod schemas {
         #[doc = "A list of video positions to be excluded.\nPosition types can either be included or excluded (XOR)."]
         #[serde(rename = "excludedPositionTypes", default)]
         pub excluded_position_types:
-            Option<Vec<crate::schemas::VideoTargetingExcludedPositionTypesItems>>,
+            ::std::option::Option<Vec<crate::schemas::VideoTargetingExcludedPositionTypesItems>>,
         #[doc = "A list of video positions to be included.\nWhen the included list is present, the excluded list must be empty.\nWhen the excluded list is present, the included list must be empty."]
         #[serde(rename = "targetedPositionTypes", default)]
         pub targeted_position_types:
-            Option<Vec<crate::schemas::VideoTargetingTargetedPositionTypesItems>>,
+            ::std::option::Option<Vec<crate::schemas::VideoTargetingTargetedPositionTypesItems>>,
     }
     impl ::field_selector::FieldSelector for VideoTargeting {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6949,7 +7324,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -6967,7 +7341,7 @@ pub mod schemas {
     pub struct WatchCreativeRequest {
         #[doc = "The Pub/Sub topic to publish notifications to.\nThis topic must already exist and must give permission to\nad-exchange-buyside-reports@google.com to write to the topic.\nThis should be the full resource name in\n\"projects/{project_id}/topics/{topic_id}\" format."]
         #[serde(rename = "topic", default)]
-        pub topic: Option<String>,
+        pub topic: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for WatchCreativeRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -6976,7 +7350,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -7031,6 +7404,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -7075,6 +7457,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -9686,6 +10077,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for CreateDuplicateIdMode {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
             }
             pub struct CreativesActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
@@ -11847,6 +12247,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for ListFilterSyntax {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
             }
             pub struct FinalizedProposalsActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
@@ -12764,6 +13173,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for ListFilterSyntax {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
             }
@@ -24448,6 +24866,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -24523,5 +24942,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

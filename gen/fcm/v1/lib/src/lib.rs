@@ -45,31 +45,40 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AndroidConfigPriority {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AndroidConfig {
         #[doc = "An identifier of a group of messages that can be collapsed, so that only\nthe last message gets sent when delivery can be resumed. A maximum of 4\ndifferent collapse keys is allowed at any given time."]
         #[serde(rename = "collapseKey", default)]
-        pub collapse_key: Option<String>,
+        pub collapse_key: ::std::option::Option<String>,
         #[doc = "Arbitrary key/value payload. If present, it will override\ngoogle.firebase.fcm.v1.Message.data."]
         #[serde(rename = "data", default)]
-        pub data: Option<::std::collections::BTreeMap<String, String>>,
+        pub data: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Options for features provided by the FCM SDK for Android."]
         #[serde(rename = "fcmOptions", default)]
-        pub fcm_options: Option<crate::schemas::AndroidFcmOptions>,
+        pub fcm_options: ::std::option::Option<crate::schemas::AndroidFcmOptions>,
         #[doc = "Notification to send to android devices."]
         #[serde(rename = "notification", default)]
-        pub notification: Option<crate::schemas::AndroidNotification>,
+        pub notification: ::std::option::Option<crate::schemas::AndroidNotification>,
         #[doc = "Message priority. Can take \"normal\" and \"high\" values.\nFor more information, see [Setting the priority of a\nmessage](https://goo.gl/GjONJv)."]
         #[serde(rename = "priority", default)]
-        pub priority: Option<crate::schemas::AndroidConfigPriority>,
+        pub priority: ::std::option::Option<crate::schemas::AndroidConfigPriority>,
         #[doc = "Package name of the application where the registration token must match in\norder to receive the message."]
         #[serde(rename = "restrictedPackageName", default)]
-        pub restricted_package_name: Option<String>,
+        pub restricted_package_name: ::std::option::Option<String>,
         #[doc = "How long (in seconds) the message should be kept in FCM storage if the\ndevice is offline. The maximum time to live supported is 4 weeks, and the\ndefault value is 4 weeks if not set. Set it to 0 if want to send the\nmessage immediately.\nIn JSON format, the Duration type is encoded as a string rather than an\nobject, where the string ends in the suffix \"s\" (indicating seconds) and\nis preceded by the number of seconds, with nanoseconds expressed as\nfractional seconds. For example, 3 seconds with 0 nanoseconds should be\nencoded in JSON format as \"3s\", while 3 seconds and 1 nanosecond should\nbe expressed in JSON format as \"3.000000001s\". The ttl will be rounded down\nto the nearest second."]
         #[serde(rename = "ttl", default)]
-        pub ttl: Option<String>,
+        pub ttl: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AndroidConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -78,7 +87,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -96,7 +104,7 @@ pub mod schemas {
     pub struct AndroidFcmOptions {
         #[doc = "Label associated with the message's analytics data."]
         #[serde(rename = "analyticsLabel", default)]
-        pub analytics_label: Option<String>,
+        pub analytics_label: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AndroidFcmOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -105,7 +113,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -174,6 +181,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AndroidNotificationNotificationPriority {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AndroidNotificationVisibility {
         #[doc = "If unspecified, default to `Visibility.PRIVATE`."]
@@ -228,85 +244,95 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AndroidNotificationVisibility {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AndroidNotification {
         #[doc = "The notification's body text. If present, it will override\ngoogle.firebase.fcm.v1.Notification.body."]
         #[serde(rename = "body", default)]
-        pub body: Option<String>,
+        pub body: ::std::option::Option<String>,
         #[doc = "Variable string values to be used in place of the format specifiers in\nbody_loc_key to use to localize the body text to the user's current\nlocalization.\nSee [Formatting and Styling](https://goo.gl/MalYE3) for more information."]
         #[serde(rename = "bodyLocArgs", default)]
-        pub body_loc_args: Option<Vec<String>>,
+        pub body_loc_args: ::std::option::Option<Vec<String>>,
         #[doc = "The key to the body string in the app's string resources to use to localize\nthe body text to the user's current localization.\nSee [String Resources](https://goo.gl/NdFZGI) for more information."]
         #[serde(rename = "bodyLocKey", default)]
-        pub body_loc_key: Option<String>,
+        pub body_loc_key: ::std::option::Option<String>,
         #[doc = "The [notification's channel\nid](https://developer.android.com/guide/topics/ui/notifiers/notifications#ManageChannels)\n(new in Android O). The app must create a channel with this channel ID\nbefore any notification with this channel ID is received. If you don't send\nthis channel ID in the request, or if the channel ID provided has not yet\nbeen created by the app, FCM uses the channel ID specified in the app\nmanifest."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "The action associated with a user click on the notification.\nIf specified, an activity with a matching intent filter is launched when\na user clicks on the notification."]
         #[serde(rename = "clickAction", default)]
-        pub click_action: Option<String>,
+        pub click_action: ::std::option::Option<String>,
         #[doc = "The notification's icon color, expressed in #rrggbb format."]
         #[serde(rename = "color", default)]
-        pub color: Option<String>,
+        pub color: ::std::option::Option<String>,
         #[doc = "If set to true, use the Android framework's default LED light settings for\nthe notification. Default values are specified in\n[config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).\nIf `default_light_settings` is set to true and `light_settings` is also\nset, the user-specified `light_settings` is used instead of the\ndefault value."]
         #[serde(rename = "defaultLightSettings", default)]
-        pub default_light_settings: Option<bool>,
+        pub default_light_settings: ::std::option::Option<bool>,
         #[doc = "If set to true, use the Android framework's default sound for the\nnotification. Default values are specified in\n[config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml)."]
         #[serde(rename = "defaultSound", default)]
-        pub default_sound: Option<bool>,
+        pub default_sound: ::std::option::Option<bool>,
         #[doc = "If set to true, use the Android framework's default vibrate pattern for the\nnotification. Default values are specified in\n[config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).\nIf `default_vibrate_timings` is set to true and `vibrate_timings` is also\nset, the default value is used instead of the user-specified\n`vibrate_timings`."]
         #[serde(rename = "defaultVibrateTimings", default)]
-        pub default_vibrate_timings: Option<bool>,
+        pub default_vibrate_timings: ::std::option::Option<bool>,
         #[doc = "Set the time that the event in the notification occurred. Notifications in\nthe panel are sorted by this time. A point in time is represented using\n[protobuf.Timestamp](https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/Timestamp)."]
         #[serde(rename = "eventTime", default)]
-        pub event_time: Option<String>,
+        pub event_time: ::std::option::Option<String>,
         #[doc = "The notification's icon.\nSets the notification icon to myicon for drawable resource myicon.\nIf you don't send this key in the request, FCM displays the launcher icon\nspecified in your app manifest."]
         #[serde(rename = "icon", default)]
-        pub icon: Option<String>,
+        pub icon: ::std::option::Option<String>,
         #[doc = "Contains the URL of an image that is going to be displayed in a\nnotification. If present, it will override\ngoogle.firebase.fcm.v1.Notification.image."]
         #[serde(rename = "image", default)]
-        pub image: Option<String>,
+        pub image: ::std::option::Option<String>,
         #[doc = "Settings to control the notification's LED blinking rate and color if LED\nis available on the device. The total blinking time is controlled by the\nOS."]
         #[serde(rename = "lightSettings", default)]
-        pub light_settings: Option<crate::schemas::LightSettings>,
+        pub light_settings: ::std::option::Option<crate::schemas::LightSettings>,
         #[doc = "Set whether or not this notification is relevant only to the current\ndevice. Some notifications can be bridged to other devices for remote\ndisplay, such as a Wear OS watch. This hint can be set to recommend this\nnotification not be bridged. See [Wear OS\nguides](https://developer.android.com/training/wearables/notifications/bridger#existing-method-of-preventing-bridging)"]
         #[serde(rename = "localOnly", default)]
-        pub local_only: Option<bool>,
+        pub local_only: ::std::option::Option<bool>,
         #[doc = "Sets the number of items this notification represents. May be displayed as\na badge count for launchers that support badging.See [Notification\nBadge](https://developer.android.com/training/notify-user/badges).\nFor example, this might be useful if you're using just one notification to\nrepresent multiple new messages but you want the count here to represent\nthe number of total new messages.\nIf zero or unspecified, systems that support badging use the default, which\nis to increment a number displayed on the long-press menu each time a new\nnotification arrives."]
         #[serde(rename = "notificationCount", default)]
-        pub notification_count: Option<i32>,
+        pub notification_count: ::std::option::Option<i32>,
         #[doc = "Set the relative priority for this notification. Priority is an indication\nof how much of the user's attention should be consumed by this\nnotification. Low-priority notifications may be hidden from the user in\ncertain situations, while the user might be interrupted for a\nhigher-priority notification. The effect of setting the same priorities may\ndiffer slightly on different platforms. Note this priority differs from\n`AndroidMessagePriority`. This priority is processed by the client after\nthe message has been delivered, whereas\n[AndroidMessagePriority](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidmessagepriority)\nis an FCM concept that controls when the message is delivered."]
         #[serde(rename = "notificationPriority", default)]
-        pub notification_priority: Option<crate::schemas::AndroidNotificationNotificationPriority>,
+        pub notification_priority:
+            ::std::option::Option<crate::schemas::AndroidNotificationNotificationPriority>,
         #[doc = "The sound to play when the device receives the notification.\nSupports \"default\" or the filename of a sound resource bundled in the app.\nSound files must reside in /res/raw/."]
         #[serde(rename = "sound", default)]
-        pub sound: Option<String>,
+        pub sound: ::std::option::Option<String>,
         #[doc = "When set to false or unset, the notification is automatically\ndismissed when the user clicks it in the panel. When set to true, the\nnotification persists even when the user clicks it."]
         #[serde(rename = "sticky", default)]
-        pub sticky: Option<bool>,
+        pub sticky: ::std::option::Option<bool>,
         #[doc = "Identifier used to replace existing notifications in the notification\ndrawer.\nIf not specified, each request creates a new notification.\nIf specified and a notification with the same tag is already being shown,\nthe new notification replaces the existing one in the notification drawer."]
         #[serde(rename = "tag", default)]
-        pub tag: Option<String>,
+        pub tag: ::std::option::Option<String>,
         #[doc = "Sets the \"ticker\" text, which is sent to accessibility services.\nPrior to API level 21 (`Lollipop`), sets the text that is displayed in the\nstatus bar when the notification first arrives."]
         #[serde(rename = "ticker", default)]
-        pub ticker: Option<String>,
+        pub ticker: ::std::option::Option<String>,
         #[doc = "The notification's title. If present, it will override\ngoogle.firebase.fcm.v1.Notification.title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "Variable string values to be used in place of the format specifiers in\ntitle_loc_key to use to localize the title text to the user's current\nlocalization.\nSee [Formatting and Styling](https://goo.gl/MalYE3) for more information."]
         #[serde(rename = "titleLocArgs", default)]
-        pub title_loc_args: Option<Vec<String>>,
+        pub title_loc_args: ::std::option::Option<Vec<String>>,
         #[doc = "The key to the title string in the app's string resources to use to\nlocalize the title text to the user's current localization.\nSee [String Resources](https://goo.gl/NdFZGI) for more information."]
         #[serde(rename = "titleLocKey", default)]
-        pub title_loc_key: Option<String>,
+        pub title_loc_key: ::std::option::Option<String>,
         #[doc = "Set the vibration pattern to use. Pass in an array of\n[protobuf.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)\nto turn on or off the vibrator. The first value indicates the `Duration` to\nwait before turning the vibrator on. The next value indicates the\n`Duration` to keep the vibrator on. Subsequent values alternate between\n`Duration` to turn the vibrator off and to turn the vibrator on.\nIf `vibrate_timings` is set and `default_vibrate_timings` is set to `true`,\nthe default value is used instead of the user-specified `vibrate_timings`."]
         #[serde(rename = "vibrateTimings", default)]
-        pub vibrate_timings: Option<Vec<String>>,
+        pub vibrate_timings: ::std::option::Option<Vec<String>>,
         #[doc = "Set the\n[Notification.visibility](https://developer.android.com/reference/android/app/Notification.html#visibility)\nof the notification."]
         #[serde(rename = "visibility", default)]
-        pub visibility: Option<crate::schemas::AndroidNotificationVisibility>,
+        pub visibility: ::std::option::Option<crate::schemas::AndroidNotificationVisibility>,
     }
     impl ::field_selector::FieldSelector for AndroidNotification {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -315,20 +341,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ApnsConfig {
         #[doc = "Options for features provided by the FCM SDK for iOS."]
         #[serde(rename = "fcmOptions", default)]
-        pub fcm_options: Option<crate::schemas::ApnsFcmOptions>,
+        pub fcm_options: ::std::option::Option<crate::schemas::ApnsFcmOptions>,
         #[doc = "HTTP request headers defined in Apple Push Notification Service. Refer to\n[APNs request headers](https://goo.gl/C6Yhia) for\nsupported headers, e.g. \"apns-priority\": \"10\"."]
         #[serde(rename = "headers", default)]
-        pub headers: Option<::std::collections::BTreeMap<String, String>>,
+        pub headers: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "APNs payload as a JSON object, including both `aps` dictionary and custom\npayload. See [Payload Key Reference](https://goo.gl/32Pl5W).\nIf present, it overrides google.firebase.fcm.v1.Notification.title\nand google.firebase.fcm.v1.Notification.body."]
         #[serde(rename = "payload", default)]
-        pub payload: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub payload:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
     impl ::field_selector::FieldSelector for ApnsConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -337,7 +363,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -355,10 +380,10 @@ pub mod schemas {
     pub struct ApnsFcmOptions {
         #[doc = "Label associated with the message's analytics data."]
         #[serde(rename = "analyticsLabel", default)]
-        pub analytics_label: Option<String>,
+        pub analytics_label: ::std::option::Option<String>,
         #[doc = "Contains the URL of an image that is going to be displayed in a\nnotification. If present, it will override\ngoogle.firebase.fcm.v1.Notification.image."]
         #[serde(rename = "image", default)]
-        pub image: Option<String>,
+        pub image: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ApnsFcmOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -367,7 +392,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -376,16 +400,16 @@ pub mod schemas {
     pub struct Color {
         #[doc = "The fraction of this color that should be applied to the pixel. That is,\nthe final pixel color is defined by the equation:\n\npixel color = alpha * (this color) + (1.0 - alpha) * (background color)\n\nThis means that a value of 1.0 corresponds to a solid color, whereas\na value of 0.0 corresponds to a completely transparent color. This\nuses a wrapper message rather than a simple float scalar so that it is\npossible to distinguish between a default value and the value being unset.\nIf omitted, this color object is to be rendered as a solid color\n(as if the alpha value had been explicitly given with a value of 1.0)."]
         #[serde(rename = "alpha", default)]
-        pub alpha: Option<f32>,
+        pub alpha: ::std::option::Option<f32>,
         #[doc = "The amount of blue in the color as a value in the interval [0, 1]."]
         #[serde(rename = "blue", default)]
-        pub blue: Option<f32>,
+        pub blue: ::std::option::Option<f32>,
         #[doc = "The amount of green in the color as a value in the interval [0, 1]."]
         #[serde(rename = "green", default)]
-        pub green: Option<f32>,
+        pub green: ::std::option::Option<f32>,
         #[doc = "The amount of red in the color as a value in the interval [0, 1]."]
         #[serde(rename = "red", default)]
-        pub red: Option<f32>,
+        pub red: ::std::option::Option<f32>,
     }
     impl ::field_selector::FieldSelector for Color {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -394,7 +418,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -412,7 +435,7 @@ pub mod schemas {
     pub struct FcmOptions {
         #[doc = "Label associated with the message's analytics data."]
         #[serde(rename = "analyticsLabel", default)]
-        pub analytics_label: Option<String>,
+        pub analytics_label: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FcmOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -421,7 +444,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -430,13 +452,13 @@ pub mod schemas {
     pub struct LightSettings {
         #[doc = "Required. Set `color` of the LED with\n[google.type.Color](https://github.com/googleapis/googleapis/blob/master/google/type/color.proto)."]
         #[serde(rename = "color", default)]
-        pub color: Option<crate::schemas::Color>,
+        pub color: ::std::option::Option<crate::schemas::Color>,
         #[doc = "Required. Along with `light_on_duration `, define the blink rate of LED\nflashes. Resolution defined by\n[proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)"]
         #[serde(rename = "lightOffDuration", default)]
-        pub light_off_duration: Option<String>,
+        pub light_off_duration: ::std::option::Option<String>,
         #[doc = "Required. Along with `light_off_duration`, define the blink rate of LED\nflashes. Resolution defined by\n[proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)"]
         #[serde(rename = "lightOnDuration", default)]
-        pub light_on_duration: Option<String>,
+        pub light_on_duration: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LightSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -445,41 +467,40 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Message {
         #[doc = "Input only. Android specific options for messages sent through\n[FCM connection server](https://goo.gl/4GLdUl)."]
         #[serde(rename = "android", default)]
-        pub android: Option<crate::schemas::AndroidConfig>,
+        pub android: ::std::option::Option<crate::schemas::AndroidConfig>,
         #[doc = "Input only. [Apple Push Notification Service](https://goo.gl/MXRTPa)\nspecific options."]
         #[serde(rename = "apns", default)]
-        pub apns: Option<crate::schemas::ApnsConfig>,
+        pub apns: ::std::option::Option<crate::schemas::ApnsConfig>,
         #[doc = "Condition to send a message to,\ne.g. \"'foo' in topics && 'bar' in topics\"."]
         #[serde(rename = "condition", default)]
-        pub condition: Option<String>,
+        pub condition: ::std::option::Option<String>,
         #[doc = "Input only. Arbitrary key/value payload."]
         #[serde(rename = "data", default)]
-        pub data: Option<::std::collections::BTreeMap<String, String>>,
+        pub data: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Input only. Template for FCM SDK feature options to use across all\nplatforms."]
         #[serde(rename = "fcmOptions", default)]
-        pub fcm_options: Option<crate::schemas::FcmOptions>,
+        pub fcm_options: ::std::option::Option<crate::schemas::FcmOptions>,
         #[doc = "Output Only. The identifier of the message sent, in the format of\n`projects/*/messages/{message_id}`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Input only. Basic notification template to use across all platforms."]
         #[serde(rename = "notification", default)]
-        pub notification: Option<crate::schemas::Notification>,
+        pub notification: ::std::option::Option<crate::schemas::Notification>,
         #[doc = "Registration token to send a message to."]
         #[serde(rename = "token", default)]
-        pub token: Option<String>,
+        pub token: ::std::option::Option<String>,
         #[doc = "Topic name to send a message to, e.g. \"weather\".\nNote: \"/topics/\" prefix should not be provided."]
         #[serde(rename = "topic", default)]
-        pub topic: Option<String>,
+        pub topic: ::std::option::Option<String>,
         #[doc = "Input only. [Webpush protocol](https://tools.ietf.org/html/rfc8030)\noptions."]
         #[serde(rename = "webpush", default)]
-        pub webpush: Option<crate::schemas::WebpushConfig>,
+        pub webpush: ::std::option::Option<crate::schemas::WebpushConfig>,
     }
     impl ::field_selector::FieldSelector for Message {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -488,7 +509,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -506,13 +526,13 @@ pub mod schemas {
     pub struct Notification {
         #[doc = "The notification's body text."]
         #[serde(rename = "body", default)]
-        pub body: Option<String>,
+        pub body: ::std::option::Option<String>,
         #[doc = "Contains the URL of an image that is going to be downloaded on the device\nand displayed in a notification.\nJPEG, PNG, BMP have full support across platforms. Animated GIF and video\nonly work on iOS. WebP and HEIF have varying levels of support across\nplatforms and platform versions.\nAndroid has 1MB image size limit.\nQuota usage and implications/costs for hosting image on Firebase Storage:\nhttps://firebase.google.com/pricing"]
         #[serde(rename = "image", default)]
-        pub image: Option<String>,
+        pub image: ::std::option::Option<String>,
         #[doc = "The notification's title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Notification {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -521,17 +541,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct SendMessageRequest {
         #[doc = "Required. Message to send."]
         #[serde(rename = "message", default)]
-        pub message: Option<crate::schemas::Message>,
+        pub message: ::std::option::Option<crate::schemas::Message>,
         #[doc = "Flag for testing the request without actually delivering the message."]
         #[serde(rename = "validateOnly", default)]
-        pub validate_only: Option<bool>,
+        pub validate_only: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for SendMessageRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -540,23 +559,23 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct WebpushConfig {
         #[doc = "Arbitrary key/value payload. If present, it will override\ngoogle.firebase.fcm.v1.Message.data."]
         #[serde(rename = "data", default)]
-        pub data: Option<::std::collections::BTreeMap<String, String>>,
+        pub data: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Options for features provided by the FCM SDK for Web."]
         #[serde(rename = "fcmOptions", default)]
-        pub fcm_options: Option<crate::schemas::WebpushFcmOptions>,
+        pub fcm_options: ::std::option::Option<crate::schemas::WebpushFcmOptions>,
         #[doc = "HTTP headers defined in webpush protocol. Refer to\n[Webpush protocol](https://tools.ietf.org/html/rfc8030#section-5) for\nsupported headers, e.g. \"TTL\": \"15\"."]
         #[serde(rename = "headers", default)]
-        pub headers: Option<::std::collections::BTreeMap<String, String>>,
+        pub headers: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Web Notification options as a JSON object. Supports Notification instance\nproperties as defined in [Web Notification\nAPI](https://developer.mozilla.org/en-US/docs/Web/API/Notification). If\npresent, \"title\" and \"body\" fields override\n[google.firebase.fcm.v1.Notification.title] and\n[google.firebase.fcm.v1.Notification.body]."]
         #[serde(rename = "notification", default)]
-        pub notification: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub notification:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
     impl ::field_selector::FieldSelector for WebpushConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -565,7 +584,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -583,7 +601,7 @@ pub mod schemas {
     pub struct WebpushFcmOptions {
         #[doc = "The link to open when the user clicks on the notification.\nFor all URL values, HTTPS is required."]
         #[serde(rename = "link", default)]
-        pub link: Option<String>,
+        pub link: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for WebpushFcmOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -592,7 +610,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -647,6 +664,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -691,6 +717,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1188,6 +1223,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1263,5 +1299,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

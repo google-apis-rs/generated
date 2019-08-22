@@ -14,19 +14,19 @@ pub mod schemas {
     pub struct Action {
         #[doc = "The actor responsible for this action (or empty if all actors are\nresponsible)."]
         #[serde(rename = "actor", default)]
-        pub actor: Option<crate::schemas::Actor>,
+        pub actor: ::std::option::Option<crate::schemas::Actor>,
         #[doc = "The type and detailed information about the action."]
         #[serde(rename = "detail", default)]
-        pub detail: Option<crate::schemas::ActionDetail>,
+        pub detail: ::std::option::Option<crate::schemas::ActionDetail>,
         #[doc = "The target this action affects (or empty if affecting all targets). This\nrepresents the state of the target immediately after this action occurred."]
         #[serde(rename = "target", default)]
-        pub target: Option<crate::schemas::Target>,
+        pub target: ::std::option::Option<crate::schemas::Target>,
         #[doc = "The action occurred over this time range."]
         #[serde(rename = "timeRange", default)]
-        pub time_range: Option<crate::schemas::TimeRange>,
+        pub time_range: ::std::option::Option<crate::schemas::TimeRange>,
         #[doc = "The action occurred at this specific time."]
         #[serde(rename = "timestamp", default)]
-        pub timestamp: Option<String>,
+        pub timestamp: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Action {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -35,7 +35,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -53,37 +52,37 @@ pub mod schemas {
     pub struct ActionDetail {
         #[doc = "A change about comments was made."]
         #[serde(rename = "comment", default)]
-        pub comment: Option<crate::schemas::Comment>,
+        pub comment: ::std::option::Option<crate::schemas::Comment>,
         #[doc = "An object was created."]
         #[serde(rename = "create", default)]
-        pub create: Option<crate::schemas::Create>,
+        pub create: ::std::option::Option<crate::schemas::Create>,
         #[doc = "An object was deleted."]
         #[serde(rename = "delete", default)]
-        pub delete: Option<crate::schemas::Delete>,
+        pub delete: ::std::option::Option<crate::schemas::Delete>,
         #[doc = "A change happened in data leak prevention status."]
         #[serde(rename = "dlpChange", default)]
-        pub dlp_change: Option<crate::schemas::DataLeakPreventionChange>,
+        pub dlp_change: ::std::option::Option<crate::schemas::DataLeakPreventionChange>,
         #[doc = "An object was edited."]
         #[serde(rename = "edit", default)]
-        pub edit: Option<crate::schemas::Edit>,
+        pub edit: ::std::option::Option<crate::schemas::Edit>,
         #[doc = "The permission on an object was changed."]
         #[serde(rename = "permissionChange", default)]
-        pub permission_change: Option<crate::schemas::PermissionChange>,
+        pub permission_change: ::std::option::Option<crate::schemas::PermissionChange>,
         #[doc = "An object was moved."]
         #[serde(rename = "move", default)]
-        pub r#move: Option<crate::schemas::Move>,
+        pub r#move: ::std::option::Option<crate::schemas::Move>,
         #[doc = "An object was referenced in an application outside of Drive/Docs."]
         #[serde(rename = "reference", default)]
-        pub reference: Option<crate::schemas::ApplicationReference>,
+        pub reference: ::std::option::Option<crate::schemas::ApplicationReference>,
         #[doc = "An object was renamed."]
         #[serde(rename = "rename", default)]
-        pub rename: Option<crate::schemas::Rename>,
+        pub rename: ::std::option::Option<crate::schemas::Rename>,
         #[doc = "A deleted object was restored."]
         #[serde(rename = "restore", default)]
-        pub restore: Option<crate::schemas::Restore>,
+        pub restore: ::std::option::Option<crate::schemas::Restore>,
         #[doc = "Settings were changed."]
         #[serde(rename = "settingsChange", default)]
-        pub settings_change: Option<crate::schemas::SettingsChange>,
+        pub settings_change: ::std::option::Option<crate::schemas::SettingsChange>,
     }
     impl ::field_selector::FieldSelector for ActionDetail {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -92,7 +91,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -110,19 +108,19 @@ pub mod schemas {
     pub struct Actor {
         #[doc = "An administrator."]
         #[serde(rename = "administrator", default)]
-        pub administrator: Option<crate::schemas::Administrator>,
+        pub administrator: ::std::option::Option<crate::schemas::Administrator>,
         #[doc = "An anonymous user."]
         #[serde(rename = "anonymous", default)]
-        pub anonymous: Option<crate::schemas::AnonymousUser>,
+        pub anonymous: ::std::option::Option<crate::schemas::AnonymousUser>,
         #[doc = "An account acting on behalf of another."]
         #[serde(rename = "impersonation", default)]
-        pub impersonation: Option<crate::schemas::Impersonation>,
+        pub impersonation: ::std::option::Option<crate::schemas::Impersonation>,
         #[doc = "A non-user actor (i.e. system triggered)."]
         #[serde(rename = "system", default)]
-        pub system: Option<crate::schemas::SystemEvent>,
+        pub system: ::std::option::Option<crate::schemas::SystemEvent>,
         #[doc = "An end user."]
         #[serde(rename = "user", default)]
-        pub user: Option<crate::schemas::User>,
+        pub user: ::std::option::Option<crate::schemas::User>,
     }
     impl ::field_selector::FieldSelector for Actor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -131,7 +129,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -149,7 +146,7 @@ pub mod schemas {
     )]
     pub struct Administrator;
     impl ::field_selector::FieldSelector for Administrator {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -166,7 +163,7 @@ pub mod schemas {
     )]
     pub struct AnonymousUser;
     impl ::field_selector::FieldSelector for AnonymousUser {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -183,7 +180,7 @@ pub mod schemas {
     )]
     pub struct Anyone;
     impl ::field_selector::FieldSelector for Anyone {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ApplicationReferenceType {
@@ -235,6 +232,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ApplicationReferenceType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -250,7 +256,7 @@ pub mod schemas {
     pub struct ApplicationReference {
         #[doc = "The reference type corresponding to this event."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::ApplicationReferenceType>,
+        pub r#type: ::std::option::Option<crate::schemas::ApplicationReferenceType>,
     }
     impl ::field_selector::FieldSelector for ApplicationReference {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -259,7 +265,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -332,6 +337,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AssignmentSubtype {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -347,7 +361,7 @@ pub mod schemas {
     pub struct Assignment {
         #[doc = "The sub-type of this event."]
         #[serde(rename = "subtype", default)]
-        pub subtype: Option<crate::schemas::AssignmentSubtype>,
+        pub subtype: ::std::option::Option<crate::schemas::AssignmentSubtype>,
     }
     impl ::field_selector::FieldSelector for Assignment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -356,7 +370,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -374,16 +387,16 @@ pub mod schemas {
     pub struct Comment {
         #[doc = "A change on an assignment."]
         #[serde(rename = "assignment", default)]
-        pub assignment: Option<crate::schemas::Assignment>,
+        pub assignment: ::std::option::Option<crate::schemas::Assignment>,
         #[doc = "Users who are mentioned in this comment."]
         #[serde(rename = "mentionedUsers", default)]
-        pub mentioned_users: Option<Vec<crate::schemas::User>>,
+        pub mentioned_users: ::std::option::Option<Vec<crate::schemas::User>>,
         #[doc = "A change on a regular posted comment."]
         #[serde(rename = "post", default)]
-        pub post: Option<crate::schemas::Post>,
+        pub post: ::std::option::Option<crate::schemas::Post>,
         #[doc = "A change on a suggestion."]
         #[serde(rename = "suggestion", default)]
-        pub suggestion: Option<crate::schemas::Suggestion>,
+        pub suggestion: ::std::option::Option<crate::schemas::Suggestion>,
     }
     impl ::field_selector::FieldSelector for Comment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -392,7 +405,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -410,10 +422,10 @@ pub mod schemas {
     pub struct ConsolidationStrategy {
         #[doc = "The individual activities are consolidated using the legacy strategy."]
         #[serde(rename = "legacy", default)]
-        pub legacy: Option<crate::schemas::Legacy>,
+        pub legacy: ::std::option::Option<crate::schemas::Legacy>,
         #[doc = "The individual activities are not consolidated."]
         #[serde(rename = "none", default)]
-        pub none: Option<crate::schemas::NoConsolidation>,
+        pub none: ::std::option::Option<crate::schemas::NoConsolidation>,
     }
     impl ::field_selector::FieldSelector for ConsolidationStrategy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -422,7 +434,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -440,7 +451,7 @@ pub mod schemas {
     pub struct Copy {
         #[doc = "The the original object."]
         #[serde(rename = "originalObject", default)]
-        pub original_object: Option<crate::schemas::TargetReference>,
+        pub original_object: ::std::option::Option<crate::schemas::TargetReference>,
     }
     impl ::field_selector::FieldSelector for Copy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -449,7 +460,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -467,13 +477,13 @@ pub mod schemas {
     pub struct Create {
         #[doc = "If present, indicates the object was created by copying an existing Drive\nobject."]
         #[serde(rename = "copy", default)]
-        pub copy: Option<crate::schemas::Copy>,
+        pub copy: ::std::option::Option<crate::schemas::Copy>,
         #[doc = "If present, indicates the object was newly created (e.g. as a blank\ndocument), not derived from a Drive object or external object."]
         #[serde(rename = "new", default)]
-        pub new: Option<crate::schemas::New>,
+        pub new: ::std::option::Option<crate::schemas::New>,
         #[doc = "If present, indicates the object originated externally and was uploaded\nto Drive."]
         #[serde(rename = "upload", default)]
-        pub upload: Option<crate::schemas::Upload>,
+        pub upload: ::std::option::Option<crate::schemas::Upload>,
     }
     impl ::field_selector::FieldSelector for Create {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -482,7 +492,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -535,6 +544,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DataLeakPreventionChangeType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -550,7 +568,7 @@ pub mod schemas {
     pub struct DataLeakPreventionChange {
         #[doc = "The type of Data Leak Prevention (DLP) change."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DataLeakPreventionChangeType>,
+        pub r#type: ::std::option::Option<crate::schemas::DataLeakPreventionChangeType>,
     }
     impl ::field_selector::FieldSelector for DataLeakPreventionChange {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -559,7 +577,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -612,6 +629,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DeleteType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -627,7 +653,7 @@ pub mod schemas {
     pub struct Delete {
         #[doc = "The type of delete action taken."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DeleteType>,
+        pub r#type: ::std::option::Option<crate::schemas::DeleteType>,
     }
     impl ::field_selector::FieldSelector for Delete {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -636,7 +662,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -654,7 +679,7 @@ pub mod schemas {
     )]
     pub struct DeletedUser;
     impl ::field_selector::FieldSelector for DeletedUser {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -671,10 +696,10 @@ pub mod schemas {
     pub struct Domain {
         #[doc = "An opaque string used to identify this domain."]
         #[serde(rename = "legacyId", default)]
-        pub legacy_id: Option<String>,
+        pub legacy_id: ::std::option::Option<String>,
         #[doc = "The name of the domain, e.g. \"google.com\"."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Domain {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -683,7 +708,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -701,13 +725,13 @@ pub mod schemas {
     pub struct Drive {
         #[doc = "The resource name of the shared drive. The format is\n\"COLLECTION_ID/DRIVE_ID\". Clients should not assume a specific collection\nID for this resource name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The root of this shared drive."]
         #[serde(rename = "root", default)]
-        pub root: Option<crate::schemas::DriveItem>,
+        pub root: ::std::option::Option<crate::schemas::DriveItem>,
         #[doc = "The title of the shared drive."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Drive {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -716,7 +740,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -734,22 +757,22 @@ pub mod schemas {
     pub struct DriveActivity {
         #[doc = "Details on all actions in this activity."]
         #[serde(rename = "actions", default)]
-        pub actions: Option<Vec<crate::schemas::Action>>,
+        pub actions: ::std::option::Option<Vec<crate::schemas::Action>>,
         #[doc = "All actor(s) responsible for the activity."]
         #[serde(rename = "actors", default)]
-        pub actors: Option<Vec<crate::schemas::Actor>>,
+        pub actors: ::std::option::Option<Vec<crate::schemas::Actor>>,
         #[doc = "Key information about the primary action for this activity. This is either\nrepresentative, or the most important, of all actions in the activity,\naccording to the ConsolidationStrategy in the request."]
         #[serde(rename = "primaryActionDetail", default)]
-        pub primary_action_detail: Option<crate::schemas::ActionDetail>,
+        pub primary_action_detail: ::std::option::Option<crate::schemas::ActionDetail>,
         #[doc = "All Google Drive objects this activity is about (e.g. file, folder, drive).\nThis represents the state of the target immediately after the actions\noccurred."]
         #[serde(rename = "targets", default)]
-        pub targets: Option<Vec<crate::schemas::Target>>,
+        pub targets: ::std::option::Option<Vec<crate::schemas::Target>>,
         #[doc = "The activity occurred over this time range."]
         #[serde(rename = "timeRange", default)]
-        pub time_range: Option<crate::schemas::TimeRange>,
+        pub time_range: ::std::option::Option<crate::schemas::TimeRange>,
         #[doc = "The activity occurred at this specific time."]
         #[serde(rename = "timestamp", default)]
-        pub timestamp: Option<String>,
+        pub timestamp: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DriveActivity {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -758,7 +781,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -776,7 +798,7 @@ pub mod schemas {
     )]
     pub struct DriveFile;
     impl ::field_selector::FieldSelector for DriveFile {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DriveFolderType {
@@ -832,6 +854,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DriveFolderType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -847,7 +878,7 @@ pub mod schemas {
     pub struct DriveFolder {
         #[doc = "The type of Drive folder."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DriveFolderType>,
+        pub r#type: ::std::option::Option<crate::schemas::DriveFolderType>,
     }
     impl ::field_selector::FieldSelector for DriveFolder {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -856,7 +887,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -874,28 +904,28 @@ pub mod schemas {
     pub struct DriveItem {
         #[doc = "The Drive item is a file."]
         #[serde(rename = "driveFile", default)]
-        pub drive_file: Option<crate::schemas::DriveFile>,
+        pub drive_file: ::std::option::Option<crate::schemas::DriveFile>,
         #[doc = "The Drive item is a folder."]
         #[serde(rename = "driveFolder", default)]
-        pub drive_folder: Option<crate::schemas::DriveFolder>,
+        pub drive_folder: ::std::option::Option<crate::schemas::DriveFolder>,
         #[doc = "This field is deprecated; please use the `driveFile` field instead."]
         #[serde(rename = "file", default)]
-        pub file: Option<crate::schemas::File>,
+        pub file: ::std::option::Option<crate::schemas::File>,
         #[doc = "This field is deprecated; please use the `driveFolder` field instead."]
         #[serde(rename = "folder", default)]
-        pub folder: Option<crate::schemas::Folder>,
+        pub folder: ::std::option::Option<crate::schemas::Folder>,
         #[doc = "The MIME type of the Drive item.  See\nhttps://developers.google.com/drive/v3/web/mime-types."]
         #[serde(rename = "mimeType", default)]
-        pub mime_type: Option<String>,
+        pub mime_type: ::std::option::Option<String>,
         #[doc = "The target Drive item. The format is \"items/ITEM_ID\"."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Information about the owner of this Drive item."]
         #[serde(rename = "owner", default)]
-        pub owner: Option<crate::schemas::Owner>,
+        pub owner: ::std::option::Option<crate::schemas::Owner>,
         #[doc = "The title of the Drive item."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DriveItem {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -904,7 +934,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -922,22 +951,22 @@ pub mod schemas {
     pub struct DriveItemReference {
         #[doc = "The Drive item is a file."]
         #[serde(rename = "driveFile", default)]
-        pub drive_file: Option<crate::schemas::DriveFile>,
+        pub drive_file: ::std::option::Option<crate::schemas::DriveFile>,
         #[doc = "The Drive item is a folder."]
         #[serde(rename = "driveFolder", default)]
-        pub drive_folder: Option<crate::schemas::DriveFolder>,
+        pub drive_folder: ::std::option::Option<crate::schemas::DriveFolder>,
         #[doc = "This field is deprecated; please use the `driveFile` field instead."]
         #[serde(rename = "file", default)]
-        pub file: Option<crate::schemas::File>,
+        pub file: ::std::option::Option<crate::schemas::File>,
         #[doc = "This field is deprecated; please use the `driveFolder` field instead."]
         #[serde(rename = "folder", default)]
-        pub folder: Option<crate::schemas::Folder>,
+        pub folder: ::std::option::Option<crate::schemas::Folder>,
         #[doc = "The target Drive item. The format is \"items/ITEM_ID\"."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The title of the Drive item."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DriveItemReference {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -946,7 +975,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -964,10 +992,10 @@ pub mod schemas {
     pub struct DriveReference {
         #[doc = "The resource name of the shared drive. The format is\n\"COLLECTION_ID/DRIVE_ID\". Clients should not assume a specific collection\nID for this resource name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The title of the shared drive."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DriveReference {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -976,7 +1004,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -994,7 +1021,7 @@ pub mod schemas {
     )]
     pub struct Edit;
     impl ::field_selector::FieldSelector for Edit {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -1011,7 +1038,7 @@ pub mod schemas {
     )]
     pub struct File;
     impl ::field_selector::FieldSelector for File {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -1028,16 +1055,16 @@ pub mod schemas {
     pub struct FileComment {
         #[doc = "The comment in the discussion thread. This identifier is an opaque string\ncompatible with the Drive API; see\nhttps://developers.google.com/drive/v3/reference/comments/get"]
         #[serde(rename = "legacyCommentId", default)]
-        pub legacy_comment_id: Option<String>,
+        pub legacy_comment_id: ::std::option::Option<String>,
         #[doc = "The discussion thread to which the comment was added. This identifier is an\nopaque string compatible with the Drive API and references the first\ncomment in a discussion; see\nhttps://developers.google.com/drive/v3/reference/comments/get"]
         #[serde(rename = "legacyDiscussionId", default)]
-        pub legacy_discussion_id: Option<String>,
+        pub legacy_discussion_id: ::std::option::Option<String>,
         #[doc = "The link to the discussion thread containing this comment, for example,\n\"https://docs.google.com/DOCUMENT_ID/edit?disco=THREAD_ID\"."]
         #[serde(rename = "linkToDiscussion", default)]
-        pub link_to_discussion: Option<String>,
+        pub link_to_discussion: ::std::option::Option<String>,
         #[doc = "The Drive item containing this comment."]
         #[serde(rename = "parent", default)]
-        pub parent: Option<crate::schemas::DriveItem>,
+        pub parent: ::std::option::Option<crate::schemas::DriveItem>,
     }
     impl ::field_selector::FieldSelector for FileComment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1046,7 +1073,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1103,6 +1129,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for FolderType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1118,7 +1153,7 @@ pub mod schemas {
     pub struct Folder {
         #[doc = "This field is deprecated; please see `DriveFolder.type` instead."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::FolderType>,
+        pub r#type: ::std::option::Option<crate::schemas::FolderType>,
     }
     impl ::field_selector::FieldSelector for Folder {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1127,7 +1162,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1145,10 +1179,10 @@ pub mod schemas {
     pub struct Group {
         #[doc = "The email address of the group."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The title of the group."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Group {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1157,7 +1191,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1175,7 +1208,7 @@ pub mod schemas {
     pub struct Impersonation {
         #[doc = "The impersonated user."]
         #[serde(rename = "impersonatedUser", default)]
-        pub impersonated_user: Option<crate::schemas::User>,
+        pub impersonated_user: ::std::option::Option<crate::schemas::User>,
     }
     impl ::field_selector::FieldSelector for Impersonation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1184,7 +1217,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1202,10 +1234,10 @@ pub mod schemas {
     pub struct KnownUser {
         #[doc = "True if this is the user making the request."]
         #[serde(rename = "isCurrentUser", default)]
-        pub is_current_user: Option<bool>,
+        pub is_current_user: ::std::option::Option<bool>,
         #[doc = "The identifier for this user that can be used with the People API to get\nmore information. The format is \"people/ACCOUNT_ID\". See\nhttps://developers.google.com/people/."]
         #[serde(rename = "personName", default)]
-        pub person_name: Option<String>,
+        pub person_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for KnownUser {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1214,7 +1246,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1232,7 +1263,7 @@ pub mod schemas {
     )]
     pub struct Legacy;
     impl ::field_selector::FieldSelector for Legacy {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -1249,10 +1280,10 @@ pub mod schemas {
     pub struct Move {
         #[doc = "The added parent object(s)."]
         #[serde(rename = "addedParents", default)]
-        pub added_parents: Option<Vec<crate::schemas::TargetReference>>,
+        pub added_parents: ::std::option::Option<Vec<crate::schemas::TargetReference>>,
         #[doc = "The removed parent object(s)."]
         #[serde(rename = "removedParents", default)]
-        pub removed_parents: Option<Vec<crate::schemas::TargetReference>>,
+        pub removed_parents: ::std::option::Option<Vec<crate::schemas::TargetReference>>,
     }
     impl ::field_selector::FieldSelector for Move {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1261,7 +1292,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1279,7 +1309,7 @@ pub mod schemas {
     )]
     pub struct New;
     impl ::field_selector::FieldSelector for New {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -1296,7 +1326,7 @@ pub mod schemas {
     )]
     pub struct NoConsolidation;
     impl ::field_selector::FieldSelector for NoConsolidation {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -1313,16 +1343,16 @@ pub mod schemas {
     pub struct Owner {
         #[doc = "The domain of the Drive item owner."]
         #[serde(rename = "domain", default)]
-        pub domain: Option<crate::schemas::Domain>,
+        pub domain: ::std::option::Option<crate::schemas::Domain>,
         #[doc = "The drive that owns the item."]
         #[serde(rename = "drive", default)]
-        pub drive: Option<crate::schemas::DriveReference>,
+        pub drive: ::std::option::Option<crate::schemas::DriveReference>,
         #[doc = "This field is deprecated; please use the `drive` field instead."]
         #[serde(rename = "teamDrive", default)]
-        pub team_drive: Option<crate::schemas::TeamDriveReference>,
+        pub team_drive: ::std::option::Option<crate::schemas::TeamDriveReference>,
         #[doc = "The user that owns the Drive item."]
         #[serde(rename = "user", default)]
-        pub user: Option<crate::schemas::User>,
+        pub user: ::std::option::Option<crate::schemas::User>,
     }
     impl ::field_selector::FieldSelector for Owner {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1331,7 +1361,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1404,6 +1433,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PermissionRole {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1419,22 +1457,22 @@ pub mod schemas {
     pub struct Permission {
         #[doc = "If true, the item can be discovered (e.g. in the user's \"Shared with me\"\ncollection) without needing a link to the item."]
         #[serde(rename = "allowDiscovery", default)]
-        pub allow_discovery: Option<bool>,
+        pub allow_discovery: ::std::option::Option<bool>,
         #[doc = "If set, this permission applies to anyone, even logged out users."]
         #[serde(rename = "anyone", default)]
-        pub anyone: Option<crate::schemas::Anyone>,
+        pub anyone: ::std::option::Option<crate::schemas::Anyone>,
         #[doc = "The domain to whom this permission applies."]
         #[serde(rename = "domain", default)]
-        pub domain: Option<crate::schemas::Domain>,
+        pub domain: ::std::option::Option<crate::schemas::Domain>,
         #[doc = "The group to whom this permission applies."]
         #[serde(rename = "group", default)]
-        pub group: Option<crate::schemas::Group>,
+        pub group: ::std::option::Option<crate::schemas::Group>,
         #[doc = "Indicates the\n<a href=\"/drive/web/manage-sharing#roles\">Google Drive permissions\nrole</a>. The role determines a user's ability to read, write, and\ncomment on items."]
         #[serde(rename = "role", default)]
-        pub role: Option<crate::schemas::PermissionRole>,
+        pub role: ::std::option::Option<crate::schemas::PermissionRole>,
         #[doc = "The user to whom this permission applies."]
         #[serde(rename = "user", default)]
-        pub user: Option<crate::schemas::User>,
+        pub user: ::std::option::Option<crate::schemas::User>,
     }
     impl ::field_selector::FieldSelector for Permission {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1443,7 +1481,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1461,10 +1498,10 @@ pub mod schemas {
     pub struct PermissionChange {
         #[doc = "The set of permissions added by this change."]
         #[serde(rename = "addedPermissions", default)]
-        pub added_permissions: Option<Vec<crate::schemas::Permission>>,
+        pub added_permissions: ::std::option::Option<Vec<crate::schemas::Permission>>,
         #[doc = "The set of permissions removed by this change."]
         #[serde(rename = "removedPermissions", default)]
-        pub removed_permissions: Option<Vec<crate::schemas::Permission>>,
+        pub removed_permissions: ::std::option::Option<Vec<crate::schemas::Permission>>,
     }
     impl ::field_selector::FieldSelector for PermissionChange {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1473,7 +1510,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1542,6 +1578,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PostSubtype {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1557,7 +1602,7 @@ pub mod schemas {
     pub struct Post {
         #[doc = "The sub-type of this event."]
         #[serde(rename = "subtype", default)]
-        pub subtype: Option<crate::schemas::PostSubtype>,
+        pub subtype: ::std::option::Option<crate::schemas::PostSubtype>,
     }
     impl ::field_selector::FieldSelector for Post {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1566,7 +1611,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1584,22 +1628,22 @@ pub mod schemas {
     pub struct QueryDriveActivityRequest {
         #[doc = "Return activities for this Drive folder and all children and descendants.\nThe format is \"items/ITEM_ID\"."]
         #[serde(rename = "ancestorName", default)]
-        pub ancestor_name: Option<String>,
+        pub ancestor_name: ::std::option::Option<String>,
         #[doc = "Details on how to consolidate related actions that make up the activity. If\nnot set, then related actions will not be consolidated."]
         #[serde(rename = "consolidationStrategy", default)]
-        pub consolidation_strategy: Option<crate::schemas::ConsolidationStrategy>,
+        pub consolidation_strategy: ::std::option::Option<crate::schemas::ConsolidationStrategy>,
         #[doc = "The filtering for items returned from this query request. The format of the\nfilter string is a sequence of expressions, joined by an optional \"AND\",\nwhere each expression is of the form \"field operator value\".\n\nSupported fields:\n\n* <tt>time</tt>: Uses numerical operators on date values either in\n  terms of milliseconds since Jan 1, 1970 or in RFC 3339 format.\n  Examples:\n  \n  * <tt>time > 1452409200000 AND time <= 1492812924310</tt>\n  * <tt>time >= \"2016-01-10T01:02:03-05:00\"</tt>\n* <tt>detail.action_detail_case</tt>: Uses the \"has\" operator (:) and\n  either a singular value or a list of allowed action types enclosed in\n  parentheses.\n  Examples:\n  \n  * <tt>detail.action_detail_case: RENAME</tt>\n  * <tt>detail.action_detail_case:(CREATE UPLOAD)</tt>\n  * <tt>-detail.action_detail_case:MOVE</tt>"]
         #[serde(rename = "filter", default)]
-        pub filter: Option<String>,
+        pub filter: ::std::option::Option<String>,
         #[doc = "Return activities for this Drive item. The format is\n\"items/ITEM_ID\"."]
         #[serde(rename = "itemName", default)]
-        pub item_name: Option<String>,
+        pub item_name: ::std::option::Option<String>,
         #[doc = "The requested number of activity to return. If not set, a default value\nwill be used."]
         #[serde(rename = "pageSize", default)]
-        pub page_size: Option<i32>,
+        pub page_size: ::std::option::Option<i32>,
         #[doc = "The next_page_token value returned from a previous QueryDriveActivity\nrequest, if any."]
         #[serde(rename = "pageToken", default)]
-        pub page_token: Option<String>,
+        pub page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for QueryDriveActivityRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1608,7 +1652,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1626,10 +1669,10 @@ pub mod schemas {
     pub struct QueryDriveActivityResponse {
         #[doc = "List of activity requested."]
         #[serde(rename = "activities", default)]
-        pub activities: Option<Vec<crate::schemas::DriveActivity>>,
+        pub activities: ::std::option::Option<Vec<crate::schemas::DriveActivity>>,
         #[doc = "Token to retrieve the next page of results, or\nempty if there are no more results in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for QueryDriveActivityResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1638,7 +1681,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1656,10 +1698,10 @@ pub mod schemas {
     pub struct Rename {
         #[doc = "The new title of the drive object."]
         #[serde(rename = "newTitle", default)]
-        pub new_title: Option<String>,
+        pub new_title: ::std::option::Option<String>,
         #[doc = "The previous title of the drive object."]
         #[serde(rename = "oldTitle", default)]
-        pub old_title: Option<String>,
+        pub old_title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Rename {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1668,7 +1710,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1717,6 +1758,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for RestoreType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1732,7 +1782,7 @@ pub mod schemas {
     pub struct Restore {
         #[doc = "The type of restore action taken."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::RestoreType>,
+        pub r#type: ::std::option::Option<crate::schemas::RestoreType>,
     }
     impl ::field_selector::FieldSelector for Restore {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1741,7 +1791,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1802,6 +1851,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for RestrictionChangeFeature {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RestrictionChangeNewRestriction {
         #[doc = "The type of restriction is not available."]
@@ -1856,6 +1914,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for RestrictionChangeNewRestriction {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1871,10 +1938,10 @@ pub mod schemas {
     pub struct RestrictionChange {
         #[doc = "The feature which had a change in restriction policy."]
         #[serde(rename = "feature", default)]
-        pub feature: Option<crate::schemas::RestrictionChangeFeature>,
+        pub feature: ::std::option::Option<crate::schemas::RestrictionChangeFeature>,
         #[doc = "The restriction in place after the change."]
         #[serde(rename = "newRestriction", default)]
-        pub new_restriction: Option<crate::schemas::RestrictionChangeNewRestriction>,
+        pub new_restriction: ::std::option::Option<crate::schemas::RestrictionChangeNewRestriction>,
     }
     impl ::field_selector::FieldSelector for RestrictionChange {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1883,7 +1950,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1901,7 +1967,7 @@ pub mod schemas {
     pub struct SettingsChange {
         #[doc = "The set of changes made to restrictions."]
         #[serde(rename = "restrictionChanges", default)]
-        pub restriction_changes: Option<Vec<crate::schemas::RestrictionChange>>,
+        pub restriction_changes: ::std::option::Option<Vec<crate::schemas::RestrictionChange>>,
     }
     impl ::field_selector::FieldSelector for SettingsChange {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1910,7 +1976,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1987,6 +2052,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for SuggestionSubtype {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2002,7 +2076,7 @@ pub mod schemas {
     pub struct Suggestion {
         #[doc = "The sub-type of this event."]
         #[serde(rename = "subtype", default)]
-        pub subtype: Option<crate::schemas::SuggestionSubtype>,
+        pub subtype: ::std::option::Option<crate::schemas::SuggestionSubtype>,
     }
     impl ::field_selector::FieldSelector for Suggestion {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2011,7 +2085,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2064,6 +2137,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for SystemEventType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2079,7 +2161,7 @@ pub mod schemas {
     pub struct SystemEvent {
         #[doc = "The type of the system event that may triggered activity."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::SystemEventType>,
+        pub r#type: ::std::option::Option<crate::schemas::SystemEventType>,
     }
     impl ::field_selector::FieldSelector for SystemEvent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2088,7 +2170,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2106,16 +2187,16 @@ pub mod schemas {
     pub struct Target {
         #[doc = "The target is a shared drive."]
         #[serde(rename = "drive", default)]
-        pub drive: Option<crate::schemas::Drive>,
+        pub drive: ::std::option::Option<crate::schemas::Drive>,
         #[doc = "The target is a Drive item."]
         #[serde(rename = "driveItem", default)]
-        pub drive_item: Option<crate::schemas::DriveItem>,
+        pub drive_item: ::std::option::Option<crate::schemas::DriveItem>,
         #[doc = "The target is a comment on a Drive file."]
         #[serde(rename = "fileComment", default)]
-        pub file_comment: Option<crate::schemas::FileComment>,
+        pub file_comment: ::std::option::Option<crate::schemas::FileComment>,
         #[doc = "This field is deprecated; please use the `drive` field instead."]
         #[serde(rename = "teamDrive", default)]
-        pub team_drive: Option<crate::schemas::TeamDrive>,
+        pub team_drive: ::std::option::Option<crate::schemas::TeamDrive>,
     }
     impl ::field_selector::FieldSelector for Target {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2124,7 +2205,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2142,13 +2222,13 @@ pub mod schemas {
     pub struct TargetReference {
         #[doc = "The target is a shared drive."]
         #[serde(rename = "drive", default)]
-        pub drive: Option<crate::schemas::DriveReference>,
+        pub drive: ::std::option::Option<crate::schemas::DriveReference>,
         #[doc = "The target is a Drive item."]
         #[serde(rename = "driveItem", default)]
-        pub drive_item: Option<crate::schemas::DriveItemReference>,
+        pub drive_item: ::std::option::Option<crate::schemas::DriveItemReference>,
         #[doc = "This field is deprecated; please use the `drive` field instead."]
         #[serde(rename = "teamDrive", default)]
-        pub team_drive: Option<crate::schemas::TeamDriveReference>,
+        pub team_drive: ::std::option::Option<crate::schemas::TeamDriveReference>,
     }
     impl ::field_selector::FieldSelector for TargetReference {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2157,7 +2237,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2175,13 +2254,13 @@ pub mod schemas {
     pub struct TeamDrive {
         #[doc = "This field is deprecated; please see `Drive.name` instead."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "This field is deprecated; please see `Drive.root` instead."]
         #[serde(rename = "root", default)]
-        pub root: Option<crate::schemas::DriveItem>,
+        pub root: ::std::option::Option<crate::schemas::DriveItem>,
         #[doc = "This field is deprecated; please see `Drive.title` instead."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TeamDrive {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2190,7 +2269,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2208,10 +2286,10 @@ pub mod schemas {
     pub struct TeamDriveReference {
         #[doc = "This field is deprecated; please see `DriveReference.name` instead."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "This field is deprecated; please see `DriveReference.title` instead."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TeamDriveReference {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2220,7 +2298,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2238,10 +2315,10 @@ pub mod schemas {
     pub struct TimeRange {
         #[doc = "The end of the time range."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
         #[doc = "The start of the time range."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TimeRange {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2250,7 +2327,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2268,7 +2344,7 @@ pub mod schemas {
     )]
     pub struct UnknownUser;
     impl ::field_selector::FieldSelector for UnknownUser {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -2285,7 +2361,7 @@ pub mod schemas {
     )]
     pub struct Upload;
     impl ::field_selector::FieldSelector for Upload {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -2302,13 +2378,13 @@ pub mod schemas {
     pub struct User {
         #[doc = "A user whose account has since been deleted."]
         #[serde(rename = "deletedUser", default)]
-        pub deleted_user: Option<crate::schemas::DeletedUser>,
+        pub deleted_user: ::std::option::Option<crate::schemas::DeletedUser>,
         #[doc = "A known user."]
         #[serde(rename = "knownUser", default)]
-        pub known_user: Option<crate::schemas::KnownUser>,
+        pub known_user: ::std::option::Option<crate::schemas::KnownUser>,
         #[doc = "A user about whom nothing is currently known."]
         #[serde(rename = "unknownUser", default)]
-        pub unknown_user: Option<crate::schemas::UnknownUser>,
+        pub unknown_user: ::std::option::Option<crate::schemas::UnknownUser>,
     }
     impl ::field_selector::FieldSelector for User {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2317,7 +2393,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -2372,6 +2447,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -2416,6 +2500,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -2888,6 +2981,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2963,5 +3057,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

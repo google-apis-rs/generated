@@ -14,10 +14,10 @@ pub mod schemas {
     pub struct BucketOwner {
         #[doc = "The entity, in the form group-groupId."]
         #[serde(rename = "entity", default)]
-        pub entity: Option<String>,
+        pub entity: ::std::option::Option<String>,
         #[doc = "The ID for the entity."]
         #[serde(rename = "entityId", default)]
-        pub entity_id: Option<String>,
+        pub entity_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BucketOwner {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -26,7 +26,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -44,10 +43,10 @@ pub mod schemas {
     pub struct BucketWebsite {
         #[doc = "Behaves as the bucket's directory index where missing objects are treated as potential directories."]
         #[serde(rename = "mainPageSuffix", default)]
-        pub main_page_suffix: Option<String>,
+        pub main_page_suffix: ::std::option::Option<String>,
         #[doc = "The custom object to return when a requested resource is not found."]
         #[serde(rename = "notFoundPage", default)]
-        pub not_found_page: Option<String>,
+        pub not_found_page: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BucketWebsite {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -56,7 +55,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -74,35 +72,35 @@ pub mod schemas {
     pub struct Bucket {
         #[doc = "Access controls on the bucket."]
         #[serde(rename = "acl", default)]
-        pub acl: Option<Vec<crate::schemas::BucketAccessControl>>,
+        pub acl: ::std::option::Option<Vec<crate::schemas::BucketAccessControl>>,
         #[doc = "Default access controls to apply to new objects when no ACL is provided."]
         #[serde(rename = "defaultObjectAcl", default)]
-        pub default_object_acl: Option<Vec<crate::schemas::ObjectAccessControl>>,
+        pub default_object_acl: ::std::option::Option<Vec<crate::schemas::ObjectAccessControl>>,
         #[doc = "The name of the bucket."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The kind of item this is. For buckets, this is always storage#bucket."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The location of the bucket. Object data for objects in the bucket resides in physical storage in this location. Can be US or EU. Defaults to US."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "The owner of the bucket. This will always be the project team's owner group."]
         #[serde(rename = "owner", default)]
-        pub owner: Option<crate::schemas::BucketOwner>,
+        pub owner: ::std::option::Option<crate::schemas::BucketOwner>,
         #[doc = "The project the bucket belongs to."]
         #[serde(rename = "projectId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub project_id: Option<u64>,
+        pub project_id: ::std::option::Option<u64>,
         #[doc = "The URI of this bucket."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Creation time of the bucket in RFC 3339 format."]
         #[serde(rename = "timeCreated", default)]
-        pub time_created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub time_created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The bucket's website configuration."]
         #[serde(rename = "website", default)]
-        pub website: Option<crate::schemas::BucketWebsite>,
+        pub website: ::std::option::Option<crate::schemas::BucketWebsite>,
     }
     impl ::field_selector::FieldSelector for Bucket {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -111,7 +109,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -129,31 +126,31 @@ pub mod schemas {
     pub struct BucketAccessControl {
         #[doc = "The name of the bucket."]
         #[serde(rename = "bucket", default)]
-        pub bucket: Option<String>,
+        pub bucket: ::std::option::Option<String>,
         #[doc = "The domain associated with the entity, if any."]
         #[serde(rename = "domain", default)]
-        pub domain: Option<String>,
+        pub domain: ::std::option::Option<String>,
         #[doc = "The email address associated with the entity, if any."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The entity holding the permission, in one of the following forms: \n\n* user-userId \n* user-email \n* group-groupId \n* group-email \n* domain-domain \n* allUsers \n* allAuthenticatedUsers Examples: \n* The user liz@example.com would be user-liz@example.com. \n* The group example@googlegroups.com would be group-example@googlegroups.com. \n* To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com."]
         #[serde(rename = "entity", default)]
-        pub entity: Option<String>,
+        pub entity: ::std::option::Option<String>,
         #[doc = "The ID for the entity, if any."]
         #[serde(rename = "entityId", default)]
-        pub entity_id: Option<String>,
+        pub entity_id: ::std::option::Option<String>,
         #[doc = "The ID of the access-control entry."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The access permission for the entity. Can be READER, WRITER, or OWNER."]
         #[serde(rename = "role", default)]
-        pub role: Option<String>,
+        pub role: ::std::option::Option<String>,
         #[doc = "The link to this access-control entry."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BucketAccessControl {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -162,7 +159,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -180,10 +176,10 @@ pub mod schemas {
     pub struct BucketAccessControls {
         #[doc = "The list of items."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::BucketAccessControl>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::BucketAccessControl>>,
         #[doc = "The kind of item this is. For lists of bucket access control entries, this is always storage#bucketAccessControls."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BucketAccessControls {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -192,7 +188,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -210,13 +205,13 @@ pub mod schemas {
     pub struct Buckets {
         #[doc = "The list of items."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Bucket>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Bucket>>,
         #[doc = "The kind of item this is. For lists of buckets, this is always storage#buckets."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Buckets {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -225,7 +220,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -243,26 +237,26 @@ pub mod schemas {
     pub struct ObjectMedia {
         #[doc = "Hash algorithm used. Currently only MD5 is supported. Required if a hash is provided."]
         #[serde(rename = "algorithm", default)]
-        pub algorithm: Option<String>,
+        pub algorithm: ::std::option::Option<String>,
         #[doc = "Content-Type of the object data."]
         #[serde(rename = "contentType", default)]
-        pub content_type: Option<String>,
+        pub content_type: ::std::option::Option<String>,
         #[doc = "URL-safe Base64-encoded data. This property can be used to insert objects under 64KB in size, and will only be returned in response to the get method for objects so created. When this resource is returned in response to the list method, this property is omitted."]
         #[serde(rename = "data", default)]
-        pub data: Option<Vec<u8>>,
+        pub data: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Hash of the data. Required if a hash algorithm is provided."]
         #[serde(rename = "hash", default)]
-        pub hash: Option<String>,
+        pub hash: ::std::option::Option<String>,
         #[doc = "Content-Length of the data in bytes."]
         #[serde(rename = "length", default)]
         #[serde(with = "crate::parsed_string")]
-        pub length: Option<u64>,
+        pub length: ::std::option::Option<u64>,
         #[doc = "Media download link."]
         #[serde(rename = "link", default)]
-        pub link: Option<String>,
+        pub link: ::std::option::Option<String>,
         #[doc = "Creation time of the data in RFC 3339 format."]
         #[serde(rename = "timeCreated", default)]
-        pub time_created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub time_created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for ObjectMedia {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -271,7 +265,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -289,10 +282,10 @@ pub mod schemas {
     pub struct ObjectOwner {
         #[doc = "The entity, in the form user-userId."]
         #[serde(rename = "entity", default)]
-        pub entity: Option<String>,
+        pub entity: ::std::option::Option<String>,
         #[doc = "The ID for the entity."]
         #[serde(rename = "entityId", default)]
-        pub entity_id: Option<String>,
+        pub entity_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ObjectOwner {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -301,7 +294,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -319,43 +311,43 @@ pub mod schemas {
     pub struct Object {
         #[doc = "Access controls on the object."]
         #[serde(rename = "acl", default)]
-        pub acl: Option<Vec<crate::schemas::ObjectAccessControl>>,
+        pub acl: ::std::option::Option<Vec<crate::schemas::ObjectAccessControl>>,
         #[doc = "The bucket containing this object."]
         #[serde(rename = "bucket", default)]
-        pub bucket: Option<String>,
+        pub bucket: ::std::option::Option<String>,
         #[doc = "Cache-Control directive for the object data."]
         #[serde(rename = "cacheControl", default)]
-        pub cache_control: Option<String>,
+        pub cache_control: ::std::option::Option<String>,
         #[doc = "Content-Disposition of the object data."]
         #[serde(rename = "contentDisposition", default)]
-        pub content_disposition: Option<String>,
+        pub content_disposition: ::std::option::Option<String>,
         #[doc = "Content-Encoding of the object data."]
         #[serde(rename = "contentEncoding", default)]
-        pub content_encoding: Option<String>,
+        pub content_encoding: ::std::option::Option<String>,
         #[doc = "Content-Language of the object data."]
         #[serde(rename = "contentLanguage", default)]
-        pub content_language: Option<String>,
+        pub content_language: ::std::option::Option<String>,
         #[doc = "The ID of the object."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The kind of item this is. For objects, this is always storage#object."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Object media data. Provided on your behalf when uploading raw media or multipart/related with an auxiliary media part."]
         #[serde(rename = "media", default)]
-        pub media: Option<crate::schemas::ObjectMedia>,
+        pub media: ::std::option::Option<crate::schemas::ObjectMedia>,
         #[doc = "User-provided metadata, in key/value pairs."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, String>>,
+        pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The name of this object. Required if not specified by URL parameter."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The owner of the object. This will always be the uploader of the object."]
         #[serde(rename = "owner", default)]
-        pub owner: Option<crate::schemas::ObjectOwner>,
+        pub owner: ::std::option::Option<crate::schemas::ObjectOwner>,
         #[doc = "The link to this object."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Object {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -364,7 +356,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -382,34 +373,34 @@ pub mod schemas {
     pub struct ObjectAccessControl {
         #[doc = "The name of the bucket."]
         #[serde(rename = "bucket", default)]
-        pub bucket: Option<String>,
+        pub bucket: ::std::option::Option<String>,
         #[doc = "The domain associated with the entity, if any."]
         #[serde(rename = "domain", default)]
-        pub domain: Option<String>,
+        pub domain: ::std::option::Option<String>,
         #[doc = "The email address associated with the entity, if any."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The entity holding the permission, in one of the following forms: \n\n* user-userId \n* user-email \n* group-groupId \n* group-email \n* domain-domain \n* allUsers \n* allAuthenticatedUsers Examples: \n* The user liz@example.com would be user-liz@example.com. \n* The group example@googlegroups.com would be group-example@googlegroups.com. \n* To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com."]
         #[serde(rename = "entity", default)]
-        pub entity: Option<String>,
+        pub entity: ::std::option::Option<String>,
         #[doc = "The ID for the entity, if any."]
         #[serde(rename = "entityId", default)]
-        pub entity_id: Option<String>,
+        pub entity_id: ::std::option::Option<String>,
         #[doc = "The ID of the access-control entry."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The kind of item this is. For object access control entries, this is always storage#objectAccessControl."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The name of the object."]
         #[serde(rename = "object", default)]
-        pub object: Option<String>,
+        pub object: ::std::option::Option<String>,
         #[doc = "The access permission for the entity. Can be READER or OWNER."]
         #[serde(rename = "role", default)]
-        pub role: Option<String>,
+        pub role: ::std::option::Option<String>,
         #[doc = "The link to this access-control entry."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ObjectAccessControl {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -418,7 +409,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -436,10 +426,10 @@ pub mod schemas {
     pub struct ObjectAccessControls {
         #[doc = "The list of items."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::ObjectAccessControl>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::ObjectAccessControl>>,
         #[doc = "The kind of item this is. For lists of object access control entries, this is always storage#objectAccessControls."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ObjectAccessControls {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -448,7 +438,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -466,16 +455,16 @@ pub mod schemas {
     pub struct Objects {
         #[doc = "The list of items."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Object>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Object>>,
         #[doc = "The kind of item this is. For lists of objects, this is always storage#objects."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of prefixes of objects matching-but-not-listed up to and including the requested delimiter."]
         #[serde(rename = "prefixes", default)]
-        pub prefixes: Option<Vec<String>>,
+        pub prefixes: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for Objects {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -484,7 +473,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -533,6 +521,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1591,6 +1588,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for GetProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum InsertProjection {
                 #[doc = "Include all properties."]
@@ -1635,6 +1641,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for InsertProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1683,6 +1698,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum PatchProjection {
                 #[doc = "Include all properties."]
@@ -1729,6 +1753,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for PatchProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum UpdateProjection {
                 #[doc = "Include all properties."]
@@ -1773,6 +1806,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for UpdateProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -3909,6 +3951,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for GetProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum InsertProjection {
                 #[doc = "Include all properties."]
@@ -3953,6 +4004,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for InsertProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4001,6 +4061,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum PatchProjection {
                 #[doc = "Include all properties."]
@@ -4047,6 +4116,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for PatchProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum UpdateProjection {
                 #[doc = "Include all properties."]
@@ -4091,6 +4169,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for UpdateProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -5754,6 +5841,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -5829,5 +5917,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

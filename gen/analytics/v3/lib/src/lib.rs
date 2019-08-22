@@ -14,10 +14,10 @@ pub mod schemas {
     pub struct AccountChildLink {
         #[doc = "Link to the list of web properties for this account."]
         #[serde(rename = "href", default)]
-        pub href: Option<String>,
+        pub href: ::std::option::Option<String>,
         #[doc = "Type of the child link. Its value is \"analytics#webproperties\"."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AccountChildLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -26,7 +26,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -44,7 +43,7 @@ pub mod schemas {
     pub struct AccountPermissions {
         #[doc = "All the permissions that the user has for this account. These include any implied permissions (e.g., EDIT implies VIEW)."]
         #[serde(rename = "effective", default)]
-        pub effective: Option<Vec<String>>,
+        pub effective: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for AccountPermissions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -53,7 +52,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -71,31 +69,31 @@ pub mod schemas {
     pub struct Account {
         #[doc = "Child link for an account entry. Points to the list of web properties for this account."]
         #[serde(rename = "childLink", default)]
-        pub child_link: Option<crate::schemas::AccountChildLink>,
+        pub child_link: ::std::option::Option<crate::schemas::AccountChildLink>,
         #[doc = "Time the account was created."]
         #[serde(rename = "created", default)]
-        pub created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Account ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics account."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Account name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Permissions the user has for this account."]
         #[serde(rename = "permissions", default)]
-        pub permissions: Option<crate::schemas::AccountPermissions>,
+        pub permissions: ::std::option::Option<crate::schemas::AccountPermissions>,
         #[doc = "Link for this account."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Indicates whether this account is starred or not."]
         #[serde(rename = "starred", default)]
-        pub starred: Option<bool>,
+        pub starred: ::std::option::Option<bool>,
         #[doc = "Time the account was last modified."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for Account {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -104,7 +102,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -122,16 +119,16 @@ pub mod schemas {
     pub struct AccountRef {
         #[doc = "Link for this account."]
         #[serde(rename = "href", default)]
-        pub href: Option<String>,
+        pub href: ::std::option::Option<String>,
         #[doc = "Account ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Analytics account reference."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Account name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AccountRef {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -140,7 +137,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -158,28 +154,28 @@ pub mod schemas {
     pub struct AccountSummaries {
         #[doc = "A list of AccountSummaries."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::AccountSummary>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::AccountSummary>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this AccountSummary collection."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this AccountSummary collection."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AccountSummaries {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -188,7 +184,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -206,19 +201,19 @@ pub mod schemas {
     pub struct AccountSummary {
         #[doc = "Account ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics AccountSummary."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Account name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Indicates whether this account is starred or not."]
         #[serde(rename = "starred", default)]
-        pub starred: Option<bool>,
+        pub starred: ::std::option::Option<bool>,
         #[doc = "List of web properties under this account."]
         #[serde(rename = "webProperties", default)]
-        pub web_properties: Option<Vec<crate::schemas::WebPropertySummary>>,
+        pub web_properties: ::std::option::Option<Vec<crate::schemas::WebPropertySummary>>,
     }
     impl ::field_selector::FieldSelector for AccountSummary {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -227,7 +222,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -245,22 +239,22 @@ pub mod schemas {
     pub struct AccountTicket {
         #[doc = "Account for this ticket."]
         #[serde(rename = "account", default)]
-        pub account: Option<crate::schemas::Account>,
+        pub account: ::std::option::Option<crate::schemas::Account>,
         #[doc = "Account ticket ID used to access the account ticket."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Resource type for account ticket."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "View (Profile) for the account."]
         #[serde(rename = "profile", default)]
-        pub profile: Option<crate::schemas::Profile>,
+        pub profile: ::std::option::Option<crate::schemas::Profile>,
         #[doc = "Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in APIs console as a callback URL."]
         #[serde(rename = "redirectUri", default)]
-        pub redirect_uri: Option<String>,
+        pub redirect_uri: ::std::option::Option<String>,
         #[doc = "Web property for the account."]
         #[serde(rename = "webproperty", default)]
-        pub webproperty: Option<crate::schemas::Webproperty>,
+        pub webproperty: ::std::option::Option<crate::schemas::Webproperty>,
     }
     impl ::field_selector::FieldSelector for AccountTicket {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -269,7 +263,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -286,18 +279,18 @@ pub mod schemas {
     )]
     pub struct AccountTreeRequest {
         #[serde(rename = "accountName", default)]
-        pub account_name: Option<String>,
+        pub account_name: ::std::option::Option<String>,
         #[doc = "Resource type for account ticket."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "profileName", default)]
-        pub profile_name: Option<String>,
+        pub profile_name: ::std::option::Option<String>,
         #[serde(rename = "timezone", default)]
-        pub timezone: Option<String>,
+        pub timezone: ::std::option::Option<String>,
         #[serde(rename = "webpropertyName", default)]
-        pub webproperty_name: Option<String>,
+        pub webproperty_name: ::std::option::Option<String>,
         #[serde(rename = "websiteUrl", default)]
-        pub website_url: Option<String>,
+        pub website_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AccountTreeRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -306,7 +299,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -324,16 +316,16 @@ pub mod schemas {
     pub struct AccountTreeResponse {
         #[doc = "The account created."]
         #[serde(rename = "account", default)]
-        pub account: Option<crate::schemas::Account>,
+        pub account: ::std::option::Option<crate::schemas::Account>,
         #[doc = "Resource type for account ticket."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "View (Profile) for the account."]
         #[serde(rename = "profile", default)]
-        pub profile: Option<crate::schemas::Profile>,
+        pub profile: ::std::option::Option<crate::schemas::Profile>,
         #[doc = "Web property for the account."]
         #[serde(rename = "webproperty", default)]
-        pub webproperty: Option<crate::schemas::Webproperty>,
+        pub webproperty: ::std::option::Option<crate::schemas::Webproperty>,
     }
     impl ::field_selector::FieldSelector for AccountTreeResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -342,7 +334,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -360,28 +351,28 @@ pub mod schemas {
     pub struct Accounts {
         #[doc = "A list of accounts."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Account>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Account>>,
         #[doc = "The maximum number of entries the response can contain, regardless of the actual number of entries returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Next link for this account collection."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Previous link for this account collection."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the entries, which is 1 by default or otherwise specified by the start-index query parameter."]
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Accounts {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -390,7 +381,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -408,13 +398,13 @@ pub mod schemas {
     pub struct AdWordsAccount {
         #[doc = "True if auto-tagging is enabled on the Google Ads account. Read-only after the insert operation."]
         #[serde(rename = "autoTaggingEnabled", default)]
-        pub auto_tagging_enabled: Option<bool>,
+        pub auto_tagging_enabled: ::std::option::Option<bool>,
         #[doc = "Customer ID. This field is required when creating a Google Ads link."]
         #[serde(rename = "customerId", default)]
-        pub customer_id: Option<String>,
+        pub customer_id: ::std::option::Option<String>,
         #[doc = "Resource type for Google Ads account."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AdWordsAccount {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -423,7 +413,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -441,7 +430,7 @@ pub mod schemas {
     pub struct AnalyticsDataimportDeleteUploadDataRequest {
         #[doc = "A list of upload UIDs."]
         #[serde(rename = "customDataImportUids", default)]
-        pub custom_data_import_uids: Option<Vec<String>>,
+        pub custom_data_import_uids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for AnalyticsDataimportDeleteUploadDataRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -450,7 +439,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -468,13 +456,13 @@ pub mod schemas {
     pub struct Column {
         #[doc = "Map of attribute name and value for this column."]
         #[serde(rename = "attributes", default)]
-        pub attributes: Option<::std::collections::BTreeMap<String, String>>,
+        pub attributes: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Column id."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics column."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Column {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -483,7 +471,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -501,19 +488,19 @@ pub mod schemas {
     pub struct Columns {
         #[doc = "List of attributes names returned by columns."]
         #[serde(rename = "attributeNames", default)]
-        pub attribute_names: Option<Vec<String>>,
+        pub attribute_names: ::std::option::Option<Vec<String>>,
         #[doc = "Etag of collection. This etag can be compared with the last response etag to check if response has changed."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "List of columns for a report type."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Column>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Column>>,
         #[doc = "Collection type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Total number of columns returned in the response."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Columns {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -522,7 +509,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -540,10 +526,10 @@ pub mod schemas {
     pub struct CustomDataSourceChildLink {
         #[doc = "Link to the list of daily uploads for this custom data source. Link to the list of uploads for this custom data source."]
         #[serde(rename = "href", default)]
-        pub href: Option<String>,
+        pub href: ::std::option::Option<String>,
         #[doc = "Value is \"analytics#dailyUploads\". Value is \"analytics#uploads\"."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CustomDataSourceChildLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -552,7 +538,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -570,10 +555,10 @@ pub mod schemas {
     pub struct CustomDataSourceParentLink {
         #[doc = "Link to the web property to which this custom data source belongs."]
         #[serde(rename = "href", default)]
-        pub href: Option<String>,
+        pub href: ::std::option::Option<String>,
         #[doc = "Value is \"analytics#webproperty\"."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CustomDataSourceParentLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -582,7 +567,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -600,50 +584,50 @@ pub mod schemas {
     pub struct CustomDataSource {
         #[doc = "Account ID to which this custom data source belongs."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[serde(rename = "childLink", default)]
-        pub child_link: Option<crate::schemas::CustomDataSourceChildLink>,
+        pub child_link: ::std::option::Option<crate::schemas::CustomDataSourceChildLink>,
         #[doc = "Time this custom data source was created."]
         #[serde(rename = "created", default)]
-        pub created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Description of custom data source."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Custom data source ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[serde(rename = "importBehavior", default)]
-        pub import_behavior: Option<String>,
+        pub import_behavior: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics custom data source."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Name of this custom data source."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Parent link for this custom data source. Points to the web property to which this custom data source belongs."]
         #[serde(rename = "parentLink", default)]
-        pub parent_link: Option<crate::schemas::CustomDataSourceParentLink>,
+        pub parent_link: ::std::option::Option<crate::schemas::CustomDataSourceParentLink>,
         #[doc = "IDs of views (profiles) linked to the custom data source."]
         #[serde(rename = "profilesLinked", default)]
-        pub profiles_linked: Option<Vec<String>>,
+        pub profiles_linked: ::std::option::Option<Vec<String>>,
         #[doc = "Type of the custom data source."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Collection of schema headers of the custom data source."]
         #[serde(rename = "schema", default)]
-        pub schema: Option<Vec<String>>,
+        pub schema: ::std::option::Option<Vec<String>>,
         #[doc = "Link for this Analytics custom data source."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Time this custom data source was last modified."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Upload type of the custom data source."]
         #[serde(rename = "uploadType", default)]
-        pub upload_type: Option<String>,
+        pub upload_type: ::std::option::Option<String>,
         #[doc = "Web property ID of the form UA-XXXXX-YY to which this custom data source belongs."]
         #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+        pub web_property_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CustomDataSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -652,7 +636,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -670,28 +653,28 @@ pub mod schemas {
     pub struct CustomDataSources {
         #[doc = "Collection of custom data sources."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::CustomDataSource>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::CustomDataSource>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this custom data source collection."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this custom data source collection."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CustomDataSources {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -700,7 +683,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -718,10 +700,10 @@ pub mod schemas {
     pub struct CustomDimensionParentLink {
         #[doc = "Link to the property to which the custom dimension belongs."]
         #[serde(rename = "href", default)]
-        pub href: Option<String>,
+        pub href: ::std::option::Option<String>,
         #[doc = "Type of the parent link. Set to \"analytics#webproperty\"."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CustomDimensionParentLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -730,7 +712,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -748,40 +729,40 @@ pub mod schemas {
     pub struct CustomDimension {
         #[doc = "Account ID."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "Boolean indicating whether the custom dimension is active."]
         #[serde(rename = "active", default)]
-        pub active: Option<bool>,
+        pub active: ::std::option::Option<bool>,
         #[doc = "Time the custom dimension was created."]
         #[serde(rename = "created", default)]
-        pub created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Custom dimension ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Index of the custom dimension."]
         #[serde(rename = "index", default)]
-        pub index: Option<i32>,
+        pub index: ::std::option::Option<i32>,
         #[doc = "Kind value for a custom dimension. Set to \"analytics#customDimension\". It is a read-only field."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Name of the custom dimension."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Parent link for the custom dimension. Points to the property to which the custom dimension belongs."]
         #[serde(rename = "parentLink", default)]
-        pub parent_link: Option<crate::schemas::CustomDimensionParentLink>,
+        pub parent_link: ::std::option::Option<crate::schemas::CustomDimensionParentLink>,
         #[doc = "Scope of the custom dimension: HIT, SESSION, USER or PRODUCT."]
         #[serde(rename = "scope", default)]
-        pub scope: Option<String>,
+        pub scope: ::std::option::Option<String>,
         #[doc = "Link for the custom dimension"]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Time the custom dimension was last modified."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Property ID."]
         #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+        pub web_property_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CustomDimension {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -790,7 +771,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -808,28 +788,28 @@ pub mod schemas {
     pub struct CustomDimensions {
         #[doc = "Collection of custom dimensions."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::CustomDimension>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::CustomDimension>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this custom dimension collection."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this custom dimension collection."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CustomDimensions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -838,7 +818,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -856,10 +835,10 @@ pub mod schemas {
     pub struct CustomMetricParentLink {
         #[doc = "Link to the property to which the custom metric belongs."]
         #[serde(rename = "href", default)]
-        pub href: Option<String>,
+        pub href: ::std::option::Option<String>,
         #[doc = "Type of the parent link. Set to \"analytics#webproperty\"."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CustomMetricParentLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -868,7 +847,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -886,49 +864,49 @@ pub mod schemas {
     pub struct CustomMetric {
         #[doc = "Account ID."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "Boolean indicating whether the custom metric is active."]
         #[serde(rename = "active", default)]
-        pub active: Option<bool>,
+        pub active: ::std::option::Option<bool>,
         #[doc = "Time the custom metric was created."]
         #[serde(rename = "created", default)]
-        pub created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Custom metric ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Index of the custom metric."]
         #[serde(rename = "index", default)]
-        pub index: Option<i32>,
+        pub index: ::std::option::Option<i32>,
         #[doc = "Kind value for a custom metric. Set to \"analytics#customMetric\". It is a read-only field."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Max value of custom metric."]
         #[serde(rename = "max_value", default)]
-        pub max_value: Option<String>,
+        pub max_value: ::std::option::Option<String>,
         #[doc = "Min value of custom metric."]
         #[serde(rename = "min_value", default)]
-        pub min_value: Option<String>,
+        pub min_value: ::std::option::Option<String>,
         #[doc = "Name of the custom metric."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Parent link for the custom metric. Points to the property to which the custom metric belongs."]
         #[serde(rename = "parentLink", default)]
-        pub parent_link: Option<crate::schemas::CustomMetricParentLink>,
+        pub parent_link: ::std::option::Option<crate::schemas::CustomMetricParentLink>,
         #[doc = "Data type of custom metric."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Scope of the custom metric: HIT or PRODUCT."]
         #[serde(rename = "scope", default)]
-        pub scope: Option<String>,
+        pub scope: ::std::option::Option<String>,
         #[doc = "Link for the custom metric"]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Time the custom metric was last modified."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Property ID."]
         #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+        pub web_property_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CustomMetric {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -937,7 +915,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -955,28 +932,28 @@ pub mod schemas {
     pub struct CustomMetrics {
         #[doc = "Collection of custom metrics."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::CustomMetric>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::CustomMetric>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this custom metric collection."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this custom metric collection."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CustomMetrics {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -985,7 +962,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1002,7 +978,7 @@ pub mod schemas {
     )]
     pub struct EntityAdWordsLinkEntity {
         #[serde(rename = "webPropertyRef", default)]
-        pub web_property_ref: Option<crate::schemas::WebPropertyRef>,
+        pub web_property_ref: ::std::option::Option<crate::schemas::WebPropertyRef>,
     }
     impl ::field_selector::FieldSelector for EntityAdWordsLinkEntity {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1011,7 +987,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1029,25 +1004,25 @@ pub mod schemas {
     pub struct EntityAdWordsLink {
         #[doc = "A list of Google Ads client accounts. These cannot be MCC accounts. This field is required when creating a Google Ads link. It cannot be empty."]
         #[serde(rename = "adWordsAccounts", default)]
-        pub ad_words_accounts: Option<Vec<crate::schemas::AdWordsAccount>>,
+        pub ad_words_accounts: ::std::option::Option<Vec<crate::schemas::AdWordsAccount>>,
         #[doc = "Web property being linked."]
         #[serde(rename = "entity", default)]
-        pub entity: Option<crate::schemas::EntityAdWordsLinkEntity>,
+        pub entity: ::std::option::Option<crate::schemas::EntityAdWordsLinkEntity>,
         #[doc = "Entity Google Ads link ID"]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Resource type for entity Google Ads link."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Name of the link. This field is required when creating a Google Ads link."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "IDs of linked Views (Profiles) represented as strings."]
         #[serde(rename = "profileIds", default)]
-        pub profile_ids: Option<Vec<String>>,
+        pub profile_ids: ::std::option::Option<Vec<String>>,
         #[doc = "URL link for this Google Analytics - Google Ads link."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EntityAdWordsLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1056,7 +1031,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1074,25 +1048,25 @@ pub mod schemas {
     pub struct EntityAdWordsLinks {
         #[doc = "A list of entity Google Ads links."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::EntityAdWordsLink>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::EntityAdWordsLink>>,
         #[doc = "The maximum number of entries the response can contain, regardless of the actual number of entries returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Next link for this Google Ads link collection."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Previous link for this Google Ads link collection."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the entries, which is 1 by default or otherwise specified by the start-index query parameter."]
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for EntityAdWordsLinks {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1101,7 +1075,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1119,13 +1092,13 @@ pub mod schemas {
     pub struct EntityUserLinkEntity {
         #[doc = "Account for this link."]
         #[serde(rename = "accountRef", default)]
-        pub account_ref: Option<crate::schemas::AccountRef>,
+        pub account_ref: ::std::option::Option<crate::schemas::AccountRef>,
         #[doc = "View (Profile) for this link."]
         #[serde(rename = "profileRef", default)]
-        pub profile_ref: Option<crate::schemas::ProfileRef>,
+        pub profile_ref: ::std::option::Option<crate::schemas::ProfileRef>,
         #[doc = "Web property for this link."]
         #[serde(rename = "webPropertyRef", default)]
-        pub web_property_ref: Option<crate::schemas::WebPropertyRef>,
+        pub web_property_ref: ::std::option::Option<crate::schemas::WebPropertyRef>,
     }
     impl ::field_selector::FieldSelector for EntityUserLinkEntity {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1134,7 +1107,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1152,10 +1124,10 @@ pub mod schemas {
     pub struct EntityUserLinkPermissions {
         #[doc = "Effective permissions represent all the permissions that a user has for this entity. These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent entity. Effective permissions are read-only."]
         #[serde(rename = "effective", default)]
-        pub effective: Option<Vec<String>>,
+        pub effective: ::std::option::Option<Vec<String>>,
         #[doc = "Permissions that a user has been assigned at this very level. Does not include any implied or inherited permissions. Local permissions are modifiable."]
         #[serde(rename = "local", default)]
-        pub local: Option<Vec<String>>,
+        pub local: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for EntityUserLinkPermissions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1164,7 +1136,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1182,22 +1153,22 @@ pub mod schemas {
     pub struct EntityUserLink {
         #[doc = "Entity for this link. It can be an account, a web property, or a view (profile)."]
         #[serde(rename = "entity", default)]
-        pub entity: Option<crate::schemas::EntityUserLinkEntity>,
+        pub entity: ::std::option::Option<crate::schemas::EntityUserLinkEntity>,
         #[doc = "Entity user link ID"]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Resource type for entity user link."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Permissions the user has for this entity."]
         #[serde(rename = "permissions", default)]
-        pub permissions: Option<crate::schemas::EntityUserLinkPermissions>,
+        pub permissions: ::std::option::Option<crate::schemas::EntityUserLinkPermissions>,
         #[doc = "Self link for this resource."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "User reference."]
         #[serde(rename = "userRef", default)]
-        pub user_ref: Option<crate::schemas::UserRef>,
+        pub user_ref: ::std::option::Option<crate::schemas::UserRef>,
     }
     impl ::field_selector::FieldSelector for EntityUserLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1206,7 +1177,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1224,25 +1194,25 @@ pub mod schemas {
     pub struct EntityUserLinks {
         #[doc = "A list of entity user links."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::EntityUserLink>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::EntityUserLink>>,
         #[doc = "The maximum number of entries the response can contain, regardless of the actual number of entries returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Next link for this account collection."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Previous link for this account collection."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the entries, which is 1 by default or otherwise specified by the start-index query parameter."]
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for EntityUserLinks {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1251,7 +1221,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1269,10 +1238,10 @@ pub mod schemas {
     pub struct ExperimentParentLink {
         #[doc = "Link to the view (profile) to which this experiment belongs. This field is read-only."]
         #[serde(rename = "href", default)]
-        pub href: Option<String>,
+        pub href: ::std::option::Option<String>,
         #[doc = "Value is \"analytics#profile\". This field is read-only."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ExperimentParentLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1281,7 +1250,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1290,19 +1258,19 @@ pub mod schemas {
     pub struct ExperimentVariationsItems {
         #[doc = "The name of the variation. This field is required when creating an experiment. This field may not be changed for an experiment whose status is ENDED."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Status of the variation. Possible values: \"ACTIVE\", \"INACTIVE\". INACTIVE variations are not served. This field may not be changed for an experiment whose status is ENDED."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
         #[doc = "The URL of the variation. This field may not be changed for an experiment whose status is RUNNING or ENDED."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
         #[doc = "Weight that this variation should receive. Only present if the experiment is running. This field is read-only."]
         #[serde(rename = "weight", default)]
-        pub weight: Option<f64>,
+        pub weight: ::std::option::Option<f64>,
         #[doc = "True if the experiment has ended and this variation performed (statistically) significantly better than the original. This field is read-only."]
         #[serde(rename = "won", default)]
-        pub won: Option<bool>,
+        pub won: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for ExperimentVariationsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1311,7 +1279,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1320,88 +1287,88 @@ pub mod schemas {
     pub struct Experiment {
         #[doc = "Account ID to which this experiment belongs. This field is read-only."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "Time the experiment was created. This field is read-only."]
         #[serde(rename = "created", default)]
-        pub created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Notes about this experiment."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "If true, the end user will be able to edit the experiment via the Google Analytics user interface."]
         #[serde(rename = "editableInGaUi", default)]
-        pub editable_in_ga_ui: Option<bool>,
+        pub editable_in_ga_ui: ::std::option::Option<bool>,
         #[doc = "The ending time of the experiment (the time the status changed from RUNNING to ENDED). This field is present only if the experiment has ended. This field is read-only."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Boolean specifying whether to distribute traffic evenly across all variations. If the value is False, content experiments follows the default behavior of adjusting traffic dynamically based on variation performance. Optional -- defaults to False. This field may not be changed for an experiment whose status is ENDED."]
         #[serde(rename = "equalWeighting", default)]
-        pub equal_weighting: Option<bool>,
+        pub equal_weighting: ::std::option::Option<bool>,
         #[doc = "Experiment ID. Required for patch and update. Disallowed for create."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Internal ID for the web property to which this experiment belongs. This field is read-only."]
         #[serde(rename = "internalWebPropertyId", default)]
-        pub internal_web_property_id: Option<String>,
+        pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "Resource type for an Analytics experiment. This field is read-only."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "An integer number in [3, 90]. Specifies the minimum length of the experiment. Can be changed for a running experiment. This field may not be changed for an experiments whose status is ENDED."]
         #[serde(rename = "minimumExperimentLengthInDays", default)]
-        pub minimum_experiment_length_in_days: Option<i32>,
+        pub minimum_experiment_length_in_days: ::std::option::Option<i32>,
         #[doc = "Experiment name. This field may not be changed for an experiment whose status is ENDED. This field is required when creating an experiment."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The metric that the experiment is optimizing. Valid values: \"ga:goal(n)Completions\", \"ga:adsenseAdsClicks\", \"ga:adsenseAdsViewed\", \"ga:adsenseRevenue\", \"ga:bounces\", \"ga:pageviews\", \"ga:sessionDuration\", \"ga:transactions\", \"ga:transactionRevenue\". This field is required if status is \"RUNNING\" and servingFramework is one of \"REDIRECT\" or \"API\"."]
         #[serde(rename = "objectiveMetric", default)]
-        pub objective_metric: Option<String>,
+        pub objective_metric: ::std::option::Option<String>,
         #[doc = "Whether the objectiveMetric should be minimized or maximized. Possible values: \"MAXIMUM\", \"MINIMUM\". Optional--defaults to \"MAXIMUM\". Cannot be specified without objectiveMetric. Cannot be modified when status is \"RUNNING\" or \"ENDED\"."]
         #[serde(rename = "optimizationType", default)]
-        pub optimization_type: Option<String>,
+        pub optimization_type: ::std::option::Option<String>,
         #[doc = "Parent link for an experiment. Points to the view (profile) to which this experiment belongs."]
         #[serde(rename = "parentLink", default)]
-        pub parent_link: Option<crate::schemas::ExperimentParentLink>,
+        pub parent_link: ::std::option::Option<crate::schemas::ExperimentParentLink>,
         #[doc = "View (Profile) ID to which this experiment belongs. This field is read-only."]
         #[serde(rename = "profileId", default)]
-        pub profile_id: Option<String>,
+        pub profile_id: ::std::option::Option<String>,
         #[doc = "Why the experiment ended. Possible values: \"STOPPED_BY_USER\", \"WINNER_FOUND\", \"EXPERIMENT_EXPIRED\", \"ENDED_WITH_NO_WINNER\", \"GOAL_OBJECTIVE_CHANGED\". \"ENDED_WITH_NO_WINNER\" means that the experiment didn't expire but no winner was projected to be found. If the experiment status is changed via the API to ENDED this field is set to STOPPED_BY_USER. This field is read-only."]
         #[serde(rename = "reasonExperimentEnded", default)]
-        pub reason_experiment_ended: Option<String>,
+        pub reason_experiment_ended: ::std::option::Option<String>,
         #[doc = "Boolean specifying whether variations URLS are rewritten to match those of the original. This field may not be changed for an experiments whose status is ENDED."]
         #[serde(rename = "rewriteVariationUrlsAsOriginal", default)]
-        pub rewrite_variation_urls_as_original: Option<bool>,
+        pub rewrite_variation_urls_as_original: ::std::option::Option<bool>,
         #[doc = "Link for this experiment. This field is read-only."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "The framework used to serve the experiment variations and evaluate the results. One of:\n\n* REDIRECT: Google Analytics redirects traffic to different variation pages, reports the chosen variation and evaluates the results.\n* API: Google Analytics chooses and reports the variation to serve and evaluates the results; the caller is responsible for serving the selected variation.\n* EXTERNAL: The variations will be served externally and the chosen variation reported to Google Analytics. The caller is responsible for serving the selected variation and evaluating the results."]
         #[serde(rename = "servingFramework", default)]
-        pub serving_framework: Option<String>,
+        pub serving_framework: ::std::option::Option<String>,
         #[doc = "The snippet of code to include on the control page(s). This field is read-only."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<String>,
+        pub snippet: ::std::option::Option<String>,
         #[doc = "The starting time of the experiment (the time the status changed from READY_TO_RUN to RUNNING). This field is present only if the experiment has started. This field is read-only."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Experiment status. Possible values: \"DRAFT\", \"READY_TO_RUN\", \"RUNNING\", \"ENDED\". Experiments can be created in the \"DRAFT\", \"READY_TO_RUN\" or \"RUNNING\" state. This field is required when creating an experiment."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
         #[doc = "A floating-point number in (0, 1]. Specifies the fraction of the traffic that participates in the experiment. Can be changed for a running experiment. This field may not be changed for an experiments whose status is ENDED."]
         #[serde(rename = "trafficCoverage", default)]
-        pub traffic_coverage: Option<f64>,
+        pub traffic_coverage: ::std::option::Option<f64>,
         #[doc = "Time the experiment was last modified. This field is read-only."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Array of variations. The first variation in the array is the original. The number of variations may not change once an experiment is in the RUNNING state. At least two variations are required before status can be set to RUNNING."]
         #[serde(rename = "variations", default)]
-        pub variations: Option<Vec<crate::schemas::ExperimentVariationsItems>>,
+        pub variations: ::std::option::Option<Vec<crate::schemas::ExperimentVariationsItems>>,
         #[doc = "Web property ID to which this experiment belongs. The web property ID is of the form UA-XXXXX-YY. This field is read-only."]
         #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+        pub web_property_id: ::std::option::Option<String>,
         #[doc = "A floating-point number in (0, 1). Specifies the necessary confidence level to choose a winner. This field may not be changed for an experiments whose status is ENDED."]
         #[serde(rename = "winnerConfidenceLevel", default)]
-        pub winner_confidence_level: Option<f64>,
+        pub winner_confidence_level: ::std::option::Option<f64>,
         #[doc = "Boolean specifying whether a winner has been found for this experiment. This field is read-only."]
         #[serde(rename = "winnerFound", default)]
-        pub winner_found: Option<bool>,
+        pub winner_found: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for Experiment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1410,7 +1377,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1419,28 +1385,28 @@ pub mod schemas {
     pub struct Experiments {
         #[doc = "A list of experiments."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Experiment>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Experiment>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this experiment collection."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this experiment collection."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of resources in the result."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Experiments {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1449,7 +1415,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1467,43 +1432,43 @@ pub mod schemas {
     pub struct FilterAdvancedDetails {
         #[doc = "Indicates if the filter expressions are case sensitive."]
         #[serde(rename = "caseSensitive", default)]
-        pub case_sensitive: Option<bool>,
+        pub case_sensitive: ::std::option::Option<bool>,
         #[doc = "Expression to extract from field A."]
         #[serde(rename = "extractA", default)]
-        pub extract_a: Option<String>,
+        pub extract_a: ::std::option::Option<String>,
         #[doc = "Expression to extract from field B."]
         #[serde(rename = "extractB", default)]
-        pub extract_b: Option<String>,
+        pub extract_b: ::std::option::Option<String>,
         #[doc = "Field A."]
         #[serde(rename = "fieldA", default)]
-        pub field_a: Option<String>,
+        pub field_a: ::std::option::Option<String>,
         #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
         #[serde(rename = "fieldAIndex", default)]
-        pub field_a_index: Option<i32>,
+        pub field_a_index: ::std::option::Option<i32>,
         #[doc = "Indicates if field A is required to match."]
         #[serde(rename = "fieldARequired", default)]
-        pub field_a_required: Option<bool>,
+        pub field_a_required: ::std::option::Option<bool>,
         #[doc = "Field B."]
         #[serde(rename = "fieldB", default)]
-        pub field_b: Option<String>,
+        pub field_b: ::std::option::Option<String>,
         #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
         #[serde(rename = "fieldBIndex", default)]
-        pub field_b_index: Option<i32>,
+        pub field_b_index: ::std::option::Option<i32>,
         #[doc = "Indicates if field B is required to match."]
         #[serde(rename = "fieldBRequired", default)]
-        pub field_b_required: Option<bool>,
+        pub field_b_required: ::std::option::Option<bool>,
         #[doc = "Expression used to construct the output value."]
         #[serde(rename = "outputConstructor", default)]
-        pub output_constructor: Option<String>,
+        pub output_constructor: ::std::option::Option<String>,
         #[doc = "Output field."]
         #[serde(rename = "outputToField", default)]
-        pub output_to_field: Option<String>,
+        pub output_to_field: ::std::option::Option<String>,
         #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
         #[serde(rename = "outputToFieldIndex", default)]
-        pub output_to_field_index: Option<i32>,
+        pub output_to_field_index: ::std::option::Option<i32>,
         #[doc = "Indicates if the existing value of the output field, if any, should be overridden by the output expression."]
         #[serde(rename = "overrideOutputField", default)]
-        pub override_output_field: Option<bool>,
+        pub override_output_field: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for FilterAdvancedDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1512,7 +1477,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1530,10 +1494,10 @@ pub mod schemas {
     pub struct FilterLowercaseDetails {
         #[doc = "Field to use in the filter."]
         #[serde(rename = "field", default)]
-        pub field: Option<String>,
+        pub field: ::std::option::Option<String>,
         #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
         #[serde(rename = "fieldIndex", default)]
-        pub field_index: Option<i32>,
+        pub field_index: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for FilterLowercaseDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1542,7 +1506,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1560,10 +1523,10 @@ pub mod schemas {
     pub struct FilterParentLink {
         #[doc = "Link to the account to which this filter belongs."]
         #[serde(rename = "href", default)]
-        pub href: Option<String>,
+        pub href: ::std::option::Option<String>,
         #[doc = "Value is \"analytics#account\"."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FilterParentLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1572,7 +1535,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1590,19 +1552,19 @@ pub mod schemas {
     pub struct FilterSearchAndReplaceDetails {
         #[doc = "Determines if the filter is case sensitive."]
         #[serde(rename = "caseSensitive", default)]
-        pub case_sensitive: Option<bool>,
+        pub case_sensitive: ::std::option::Option<bool>,
         #[doc = "Field to use in the filter."]
         #[serde(rename = "field", default)]
-        pub field: Option<String>,
+        pub field: ::std::option::Option<String>,
         #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
         #[serde(rename = "fieldIndex", default)]
-        pub field_index: Option<i32>,
+        pub field_index: ::std::option::Option<i32>,
         #[doc = "Term to replace the search term with."]
         #[serde(rename = "replaceString", default)]
-        pub replace_string: Option<String>,
+        pub replace_string: ::std::option::Option<String>,
         #[doc = "Term to search."]
         #[serde(rename = "searchString", default)]
-        pub search_string: Option<String>,
+        pub search_string: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FilterSearchAndReplaceDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1611,7 +1573,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1629,10 +1590,10 @@ pub mod schemas {
     pub struct FilterUppercaseDetails {
         #[doc = "Field to use in the filter."]
         #[serde(rename = "field", default)]
-        pub field: Option<String>,
+        pub field: ::std::option::Option<String>,
         #[doc = "The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION."]
         #[serde(rename = "fieldIndex", default)]
-        pub field_index: Option<i32>,
+        pub field_index: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for FilterUppercaseDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1641,7 +1602,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1659,49 +1619,50 @@ pub mod schemas {
     pub struct Filter {
         #[doc = "Account ID to which this filter belongs."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "Details for the filter of the type ADVANCED."]
         #[serde(rename = "advancedDetails", default)]
-        pub advanced_details: Option<crate::schemas::FilterAdvancedDetails>,
+        pub advanced_details: ::std::option::Option<crate::schemas::FilterAdvancedDetails>,
         #[doc = "Time this filter was created."]
         #[serde(rename = "created", default)]
-        pub created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Details for the filter of the type EXCLUDE."]
         #[serde(rename = "excludeDetails", default)]
-        pub exclude_details: Option<crate::schemas::FilterExpression>,
+        pub exclude_details: ::std::option::Option<crate::schemas::FilterExpression>,
         #[doc = "Filter ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Details for the filter of the type INCLUDE."]
         #[serde(rename = "includeDetails", default)]
-        pub include_details: Option<crate::schemas::FilterExpression>,
+        pub include_details: ::std::option::Option<crate::schemas::FilterExpression>,
         #[doc = "Resource type for Analytics filter."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Details for the filter of the type LOWER."]
         #[serde(rename = "lowercaseDetails", default)]
-        pub lowercase_details: Option<crate::schemas::FilterLowercaseDetails>,
+        pub lowercase_details: ::std::option::Option<crate::schemas::FilterLowercaseDetails>,
         #[doc = "Name of this filter."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Parent link for this filter. Points to the account to which this filter belongs."]
         #[serde(rename = "parentLink", default)]
-        pub parent_link: Option<crate::schemas::FilterParentLink>,
+        pub parent_link: ::std::option::Option<crate::schemas::FilterParentLink>,
         #[doc = "Type of this filter. Possible values are INCLUDE, EXCLUDE, LOWERCASE, UPPERCASE, SEARCH_AND_REPLACE and ADVANCED."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Details for the filter of the type SEARCH_AND_REPLACE."]
         #[serde(rename = "searchAndReplaceDetails", default)]
-        pub search_and_replace_details: Option<crate::schemas::FilterSearchAndReplaceDetails>,
+        pub search_and_replace_details:
+            ::std::option::Option<crate::schemas::FilterSearchAndReplaceDetails>,
         #[doc = "Link for this filter."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Time this filter was last modified."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Details for the filter of the type UPPER."]
         #[serde(rename = "uppercaseDetails", default)]
-        pub uppercase_details: Option<crate::schemas::FilterUppercaseDetails>,
+        pub uppercase_details: ::std::option::Option<crate::schemas::FilterUppercaseDetails>,
     }
     impl ::field_selector::FieldSelector for Filter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1710,7 +1671,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1728,22 +1688,22 @@ pub mod schemas {
     pub struct FilterExpression {
         #[doc = "Determines if the filter is case sensitive."]
         #[serde(rename = "caseSensitive", default)]
-        pub case_sensitive: Option<bool>,
+        pub case_sensitive: ::std::option::Option<bool>,
         #[doc = "Filter expression value"]
         #[serde(rename = "expressionValue", default)]
-        pub expression_value: Option<String>,
+        pub expression_value: ::std::option::Option<String>,
         #[doc = "Field to filter. Possible values:\n\n* Content and Traffic\n* PAGE_REQUEST_URI, \n* PAGE_HOSTNAME, \n* PAGE_TITLE, \n* REFERRAL, \n* COST_DATA_URI (Campaign target URL), \n* HIT_TYPE, \n* INTERNAL_SEARCH_TERM, \n* INTERNAL_SEARCH_TYPE, \n* SOURCE_PROPERTY_TRACKING_ID,\n* Campaign or AdGroup\n* CAMPAIGN_SOURCE, \n* CAMPAIGN_MEDIUM, \n* CAMPAIGN_NAME, \n* CAMPAIGN_AD_GROUP, \n* CAMPAIGN_TERM, \n* CAMPAIGN_CONTENT, \n* CAMPAIGN_CODE, \n* CAMPAIGN_REFERRAL_PATH,\n* E-Commerce\n* TRANSACTION_COUNTRY, \n* TRANSACTION_REGION, \n* TRANSACTION_CITY, \n* TRANSACTION_AFFILIATION (Store or order location), \n* ITEM_NAME, \n* ITEM_CODE, \n* ITEM_VARIATION, \n* TRANSACTION_ID, \n* TRANSACTION_CURRENCY_CODE, \n* PRODUCT_ACTION_TYPE,\n* Audience/Users\n* BROWSER, \n* BROWSER_VERSION, \n* BROWSER_SIZE, \n* PLATFORM, \n* PLATFORM_VERSION, \n* LANGUAGE, \n* SCREEN_RESOLUTION, \n* SCREEN_COLORS, \n* JAVA_ENABLED (Boolean Field), \n* FLASH_VERSION, \n* GEO_SPEED (Connection speed), \n* VISITOR_TYPE, \n* GEO_ORGANIZATION (ISP organization), \n* GEO_DOMAIN, \n* GEO_IP_ADDRESS, \n* GEO_IP_VERSION,\n* Location\n* GEO_COUNTRY, \n* GEO_REGION, \n* GEO_CITY,\n* Event\n* EVENT_CATEGORY, \n* EVENT_ACTION, \n* EVENT_LABEL,\n* Other\n* CUSTOM_FIELD_1, \n* CUSTOM_FIELD_2, \n* USER_DEFINED_VALUE,\n* Application\n* APP_ID, \n* APP_INSTALLER_ID, \n* APP_NAME, \n* APP_VERSION, \n* SCREEN, \n* IS_APP (Boolean Field), \n* IS_FATAL_EXCEPTION (Boolean Field), \n* EXCEPTION_DESCRIPTION,\n* Mobile device\n* IS_MOBILE (Boolean Field, Deprecated. Use DEVICE_CATEGORY=mobile), \n* IS_TABLET (Boolean Field, Deprecated. Use DEVICE_CATEGORY=tablet), \n* DEVICE_CATEGORY, \n* MOBILE_HAS_QWERTY_KEYBOARD (Boolean Field), \n* MOBILE_HAS_NFC_SUPPORT (Boolean Field), \n* MOBILE_HAS_CELLULAR_RADIO (Boolean Field), \n* MOBILE_HAS_WIFI_SUPPORT (Boolean Field), \n* MOBILE_BRAND_NAME, \n* MOBILE_MODEL_NAME, \n* MOBILE_MARKETING_NAME, \n* MOBILE_POINTING_METHOD,\n* Social\n* SOCIAL_NETWORK, \n* SOCIAL_ACTION, \n* SOCIAL_ACTION_TARGET,\n* Custom dimension\n* CUSTOM_DIMENSION (See accompanying field index),"]
         #[serde(rename = "field", default)]
-        pub field: Option<String>,
+        pub field: ::std::option::Option<String>,
         #[doc = "The Index of the custom dimension. Set only if the field is a is CUSTOM_DIMENSION."]
         #[serde(rename = "fieldIndex", default)]
-        pub field_index: Option<i32>,
+        pub field_index: ::std::option::Option<i32>,
         #[doc = "Kind value for filter expression"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Match type for this filter. Possible values are BEGINS_WITH, EQUAL, ENDS_WITH, CONTAINS, or MATCHES. GEO_DOMAIN, GEO_IP_ADDRESS, PAGE_REQUEST_URI, or PAGE_HOSTNAME filters can use any match type; all other filters must use MATCHES."]
         #[serde(rename = "matchType", default)]
-        pub match_type: Option<String>,
+        pub match_type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FilterExpression {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1752,7 +1712,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1770,19 +1729,19 @@ pub mod schemas {
     pub struct FilterRef {
         #[doc = "Account ID to which this filter belongs."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "Link for this filter."]
         #[serde(rename = "href", default)]
-        pub href: Option<String>,
+        pub href: ::std::option::Option<String>,
         #[doc = "Filter ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Kind value for filter reference."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Name of this filter."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FilterRef {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1791,7 +1750,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1809,28 +1767,28 @@ pub mod schemas {
     pub struct Filters {
         #[doc = "A list of filters."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Filter>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Filter>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1,000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this filter collection."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this filter collection."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Filters {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1839,7 +1797,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1857,13 +1814,13 @@ pub mod schemas {
     pub struct GaDataColumnHeadersItems {
         #[doc = "Column Type. Either DIMENSION or METRIC."]
         #[serde(rename = "columnType", default)]
-        pub column_type: Option<String>,
+        pub column_type: ::std::option::Option<String>,
         #[doc = "Data type. Dimension column headers have only STRING as the data type. Metric column headers have data types for metric values such as INTEGER, DOUBLE, CURRENCY etc."]
         #[serde(rename = "dataType", default)]
-        pub data_type: Option<String>,
+        pub data_type: ::std::option::Option<String>,
         #[doc = "Column name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GaDataColumnHeadersItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1872,7 +1829,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1889,11 +1845,11 @@ pub mod schemas {
     )]
     pub struct GaDataDataTableColsItems {
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[serde(rename = "label", default)]
-        pub label: Option<String>,
+        pub label: ::std::option::Option<String>,
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GaDataDataTableColsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1902,7 +1858,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1919,7 +1874,7 @@ pub mod schemas {
     )]
     pub struct GaDataDataTableRowsItemsCItems {
         #[serde(rename = "v", default)]
-        pub v: Option<String>,
+        pub v: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GaDataDataTableRowsItemsCItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1928,7 +1883,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1945,7 +1899,7 @@ pub mod schemas {
     )]
     pub struct GaDataDataTableRowsItems {
         #[serde(rename = "c", default)]
-        pub c: Option<Vec<crate::schemas::GaDataDataTableRowsItemsCItems>>,
+        pub c: ::std::option::Option<Vec<crate::schemas::GaDataDataTableRowsItemsCItems>>,
     }
     impl ::field_selector::FieldSelector for GaDataDataTableRowsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1954,7 +1908,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1971,9 +1924,9 @@ pub mod schemas {
     )]
     pub struct GaDataDataTable {
         #[serde(rename = "cols", default)]
-        pub cols: Option<Vec<crate::schemas::GaDataDataTableColsItems>>,
+        pub cols: ::std::option::Option<Vec<crate::schemas::GaDataDataTableColsItems>>,
         #[serde(rename = "rows", default)]
-        pub rows: Option<Vec<crate::schemas::GaDataDataTableRowsItems>>,
+        pub rows: ::std::option::Option<Vec<crate::schemas::GaDataDataTableRowsItems>>,
     }
     impl ::field_selector::FieldSelector for GaDataDataTable {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1982,7 +1935,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2000,22 +1952,22 @@ pub mod schemas {
     pub struct GaDataProfileInfo {
         #[doc = "Account ID to which this view (profile) belongs."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "Internal ID for the web property to which this view (profile) belongs."]
         #[serde(rename = "internalWebPropertyId", default)]
-        pub internal_web_property_id: Option<String>,
+        pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "View (Profile) ID."]
         #[serde(rename = "profileId", default)]
-        pub profile_id: Option<String>,
+        pub profile_id: ::std::option::Option<String>,
         #[doc = "View (Profile) name."]
         #[serde(rename = "profileName", default)]
-        pub profile_name: Option<String>,
+        pub profile_name: ::std::option::Option<String>,
         #[doc = "Table ID for view (profile)."]
         #[serde(rename = "tableId", default)]
-        pub table_id: Option<String>,
+        pub table_id: ::std::option::Option<String>,
         #[doc = "Web Property ID to which this view (profile) belongs."]
         #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+        pub web_property_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GaDataProfileInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2024,7 +1976,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2042,37 +1993,37 @@ pub mod schemas {
     pub struct GaDataQuery {
         #[doc = "List of analytics dimensions."]
         #[serde(rename = "dimensions", default)]
-        pub dimensions: Option<String>,
+        pub dimensions: ::std::option::Option<String>,
         #[doc = "End date."]
         #[serde(rename = "end-date", default)]
-        pub end_date: Option<String>,
+        pub end_date: ::std::option::Option<String>,
         #[doc = "Comma-separated list of dimension or metric filters."]
         #[serde(rename = "filters", default)]
-        pub filters: Option<String>,
+        pub filters: ::std::option::Option<String>,
         #[doc = "Unique table ID."]
         #[serde(rename = "ids", default)]
-        pub ids: Option<String>,
+        pub ids: ::std::option::Option<String>,
         #[doc = "Maximum results per page."]
         #[serde(rename = "max-results", default)]
-        pub max_results: Option<i32>,
+        pub max_results: ::std::option::Option<i32>,
         #[doc = "List of analytics metrics."]
         #[serde(rename = "metrics", default)]
-        pub metrics: Option<Vec<String>>,
+        pub metrics: ::std::option::Option<Vec<String>>,
         #[doc = "Desired sampling level"]
         #[serde(rename = "samplingLevel", default)]
-        pub sampling_level: Option<String>,
+        pub sampling_level: ::std::option::Option<String>,
         #[doc = "Analytics advanced segment."]
         #[serde(rename = "segment", default)]
-        pub segment: Option<String>,
+        pub segment: ::std::option::Option<String>,
         #[doc = "List of dimensions or metrics based on which Analytics data is sorted."]
         #[serde(rename = "sort", default)]
-        pub sort: Option<Vec<String>>,
+        pub sort: ::std::option::Option<Vec<String>>,
         #[doc = "Start date."]
         #[serde(rename = "start-date", default)]
-        pub start_date: Option<String>,
+        pub start_date: ::std::option::Option<String>,
         #[doc = "Start index."]
         #[serde(rename = "start-index", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for GaDataQuery {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2081,7 +2032,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2099,57 +2049,58 @@ pub mod schemas {
     pub struct GaData {
         #[doc = "Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request."]
         #[serde(rename = "columnHeaders", default)]
-        pub column_headers: Option<Vec<crate::schemas::GaDataColumnHeadersItems>>,
+        pub column_headers: ::std::option::Option<Vec<crate::schemas::GaDataColumnHeadersItems>>,
         #[doc = "Determines if Analytics data contains samples."]
         #[serde(rename = "containsSampledData", default)]
-        pub contains_sampled_data: Option<bool>,
+        pub contains_sampled_data: ::std::option::Option<bool>,
         #[doc = "The last refreshed time in seconds for Analytics data."]
         #[serde(rename = "dataLastRefreshed", default)]
         #[serde(with = "crate::parsed_string")]
-        pub data_last_refreshed: Option<i64>,
+        pub data_last_refreshed: ::std::option::Option<i64>,
         #[serde(rename = "dataTable", default)]
-        pub data_table: Option<crate::schemas::GaDataDataTable>,
+        pub data_table: ::std::option::Option<crate::schemas::GaDataDataTable>,
         #[doc = "Unique ID for this data response."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The maximum number of rows the response can contain, regardless of the actual number of rows returned. Its value ranges from 1 to 10,000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this Analytics data query."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this Analytics data query."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "Information for the view (profile), for which the Analytics data was requested."]
         #[serde(rename = "profileInfo", default)]
-        pub profile_info: Option<crate::schemas::GaDataProfileInfo>,
+        pub profile_info: ::std::option::Option<crate::schemas::GaDataProfileInfo>,
         #[doc = "Analytics data request query parameters."]
         #[serde(rename = "query", default)]
-        pub query: Option<crate::schemas::GaDataQuery>,
+        pub query: ::std::option::Option<crate::schemas::GaDataQuery>,
         #[doc = "Analytics data rows, where each row contains a list of dimension values followed by the metric values. The order of dimensions and metrics is same as specified in the request."]
         #[serde(rename = "rows", default)]
-        pub rows: Option<Vec<Vec<String>>>,
+        pub rows: ::std::option::Option<Vec<Vec<String>>>,
         #[doc = "The number of samples used to calculate the result."]
         #[serde(rename = "sampleSize", default)]
         #[serde(with = "crate::parsed_string")]
-        pub sample_size: Option<i64>,
+        pub sample_size: ::std::option::Option<i64>,
         #[doc = "Total size of the sample space from which the samples were selected."]
         #[serde(rename = "sampleSpace", default)]
         #[serde(with = "crate::parsed_string")]
-        pub sample_space: Option<i64>,
+        pub sample_space: ::std::option::Option<i64>,
         #[doc = "Link to this page."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "The total number of rows for the query, regardless of the number of rows in the response."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
         #[doc = "Total values for the requested metrics over all the results, not just the results returned in this response. The order of the metric totals is same as the metric order specified in the request."]
         #[serde(rename = "totalsForAllResults", default)]
-        pub totals_for_all_results: Option<::std::collections::BTreeMap<String, String>>,
+        pub totals_for_all_results:
+            ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::field_selector::FieldSelector for GaData {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2158,7 +2109,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2176,20 +2126,20 @@ pub mod schemas {
     pub struct GoalEventDetailsEventConditionsItems {
         #[doc = "Type of comparison. Possible values are LESS_THAN, GREATER_THAN or EQUAL."]
         #[serde(rename = "comparisonType", default)]
-        pub comparison_type: Option<String>,
+        pub comparison_type: ::std::option::Option<String>,
         #[doc = "Value used for this comparison."]
         #[serde(rename = "comparisonValue", default)]
         #[serde(with = "crate::parsed_string")]
-        pub comparison_value: Option<i64>,
+        pub comparison_value: ::std::option::Option<i64>,
         #[doc = "Expression used for this match."]
         #[serde(rename = "expression", default)]
-        pub expression: Option<String>,
+        pub expression: ::std::option::Option<String>,
         #[doc = "Type of the match to be performed. Possible values are REGEXP, BEGINS_WITH, or EXACT."]
         #[serde(rename = "matchType", default)]
-        pub match_type: Option<String>,
+        pub match_type: ::std::option::Option<String>,
         #[doc = "Type of this event condition. Possible values are CATEGORY, ACTION, LABEL, or VALUE."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoalEventDetailsEventConditionsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2198,7 +2148,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2216,10 +2165,11 @@ pub mod schemas {
     pub struct GoalEventDetails {
         #[doc = "List of event conditions."]
         #[serde(rename = "eventConditions", default)]
-        pub event_conditions: Option<Vec<crate::schemas::GoalEventDetailsEventConditionsItems>>,
+        pub event_conditions:
+            ::std::option::Option<Vec<crate::schemas::GoalEventDetailsEventConditionsItems>>,
         #[doc = "Determines if the event value should be used as the value for this goal."]
         #[serde(rename = "useEventValue", default)]
-        pub use_event_value: Option<bool>,
+        pub use_event_value: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for GoalEventDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2228,7 +2178,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2246,10 +2195,10 @@ pub mod schemas {
     pub struct GoalParentLink {
         #[doc = "Link to the view (profile) to which this goal belongs."]
         #[serde(rename = "href", default)]
-        pub href: Option<String>,
+        pub href: ::std::option::Option<String>,
         #[doc = "Value is \"analytics#profile\"."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoalParentLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2258,7 +2207,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2276,13 +2224,13 @@ pub mod schemas {
     pub struct GoalUrlDestinationDetailsStepsItems {
         #[doc = "Step name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Step number."]
         #[serde(rename = "number", default)]
-        pub number: Option<i32>,
+        pub number: ::std::option::Option<i32>,
         #[doc = "URL for this step."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoalUrlDestinationDetailsStepsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2291,7 +2239,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2309,19 +2256,19 @@ pub mod schemas {
     pub struct GoalUrlDestinationDetails {
         #[doc = "Determines if the goal URL must exactly match the capitalization of visited URLs."]
         #[serde(rename = "caseSensitive", default)]
-        pub case_sensitive: Option<bool>,
+        pub case_sensitive: ::std::option::Option<bool>,
         #[doc = "Determines if the first step in this goal is required."]
         #[serde(rename = "firstStepRequired", default)]
-        pub first_step_required: Option<bool>,
+        pub first_step_required: ::std::option::Option<bool>,
         #[doc = "Match type for the goal URL. Possible values are HEAD, EXACT, or REGEX."]
         #[serde(rename = "matchType", default)]
-        pub match_type: Option<String>,
+        pub match_type: ::std::option::Option<String>,
         #[doc = "List of steps configured for this goal funnel."]
         #[serde(rename = "steps", default)]
-        pub steps: Option<Vec<crate::schemas::GoalUrlDestinationDetailsStepsItems>>,
+        pub steps: ::std::option::Option<Vec<crate::schemas::GoalUrlDestinationDetailsStepsItems>>,
         #[doc = "URL for this goal."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoalUrlDestinationDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2330,7 +2277,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2348,11 +2294,11 @@ pub mod schemas {
     pub struct GoalVisitNumPagesDetails {
         #[doc = "Type of comparison. Possible values are LESS_THAN, GREATER_THAN, or EQUAL."]
         #[serde(rename = "comparisonType", default)]
-        pub comparison_type: Option<String>,
+        pub comparison_type: ::std::option::Option<String>,
         #[doc = "Value used for this comparison."]
         #[serde(rename = "comparisonValue", default)]
         #[serde(with = "crate::parsed_string")]
-        pub comparison_value: Option<i64>,
+        pub comparison_value: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for GoalVisitNumPagesDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2361,7 +2307,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2379,11 +2324,11 @@ pub mod schemas {
     pub struct GoalVisitTimeOnSiteDetails {
         #[doc = "Type of comparison. Possible values are LESS_THAN or GREATER_THAN."]
         #[serde(rename = "comparisonType", default)]
-        pub comparison_type: Option<String>,
+        pub comparison_type: ::std::option::Option<String>,
         #[doc = "Value used for this comparison."]
         #[serde(rename = "comparisonValue", default)]
         #[serde(with = "crate::parsed_string")]
-        pub comparison_value: Option<i64>,
+        pub comparison_value: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for GoalVisitTimeOnSiteDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2392,7 +2337,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2401,58 +2345,61 @@ pub mod schemas {
     pub struct Goal {
         #[doc = "Account ID to which this goal belongs."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "Determines whether this goal is active."]
         #[serde(rename = "active", default)]
-        pub active: Option<bool>,
+        pub active: ::std::option::Option<bool>,
         #[doc = "Time this goal was created."]
         #[serde(rename = "created", default)]
-        pub created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Details for the goal of the type EVENT."]
         #[serde(rename = "eventDetails", default)]
-        pub event_details: Option<crate::schemas::GoalEventDetails>,
+        pub event_details: ::std::option::Option<crate::schemas::GoalEventDetails>,
         #[doc = "Goal ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Internal ID for the web property to which this goal belongs."]
         #[serde(rename = "internalWebPropertyId", default)]
-        pub internal_web_property_id: Option<String>,
+        pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "Resource type for an Analytics goal."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Goal name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Parent link for a goal. Points to the view (profile) to which this goal belongs."]
         #[serde(rename = "parentLink", default)]
-        pub parent_link: Option<crate::schemas::GoalParentLink>,
+        pub parent_link: ::std::option::Option<crate::schemas::GoalParentLink>,
         #[doc = "View (Profile) ID to which this goal belongs."]
         #[serde(rename = "profileId", default)]
-        pub profile_id: Option<String>,
+        pub profile_id: ::std::option::Option<String>,
         #[doc = "Goal type. Possible values are URL_DESTINATION, VISIT_TIME_ON_SITE, VISIT_NUM_PAGES, AND EVENT."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Link for this goal."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Time this goal was last modified."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Details for the goal of the type URL_DESTINATION."]
         #[serde(rename = "urlDestinationDetails", default)]
-        pub url_destination_details: Option<crate::schemas::GoalUrlDestinationDetails>,
+        pub url_destination_details:
+            ::std::option::Option<crate::schemas::GoalUrlDestinationDetails>,
         #[doc = "Goal value."]
         #[serde(rename = "value", default)]
-        pub value: Option<f32>,
+        pub value: ::std::option::Option<f32>,
         #[doc = "Details for the goal of the type VISIT_NUM_PAGES."]
         #[serde(rename = "visitNumPagesDetails", default)]
-        pub visit_num_pages_details: Option<crate::schemas::GoalVisitNumPagesDetails>,
+        pub visit_num_pages_details:
+            ::std::option::Option<crate::schemas::GoalVisitNumPagesDetails>,
         #[doc = "Details for the goal of the type VISIT_TIME_ON_SITE."]
         #[serde(rename = "visitTimeOnSiteDetails", default)]
-        pub visit_time_on_site_details: Option<crate::schemas::GoalVisitTimeOnSiteDetails>,
+        pub visit_time_on_site_details:
+            ::std::option::Option<crate::schemas::GoalVisitTimeOnSiteDetails>,
         #[doc = "Web property ID to which this goal belongs. The web property ID is of the form UA-XXXXX-YY."]
         #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+        pub web_property_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Goal {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2461,7 +2408,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2470,28 +2416,28 @@ pub mod schemas {
     pub struct Goals {
         #[doc = "A list of goals."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Goal>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Goal>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this goal collection."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this goal collection."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of resources in the result."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Goals {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2500,7 +2446,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2517,11 +2462,11 @@ pub mod schemas {
     )]
     pub struct HashClientIdRequest {
         #[serde(rename = "clientId", default)]
-        pub client_id: Option<String>,
+        pub client_id: ::std::option::Option<String>,
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+        pub web_property_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for HashClientIdRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2530,7 +2475,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2547,13 +2491,13 @@ pub mod schemas {
     )]
     pub struct HashClientIdResponse {
         #[serde(rename = "clientId", default)]
-        pub client_id: Option<String>,
+        pub client_id: ::std::option::Option<String>,
         #[serde(rename = "hashedClientId", default)]
-        pub hashed_client_id: Option<String>,
+        pub hashed_client_id: ::std::option::Option<String>,
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+        pub web_property_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for HashClientIdResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2562,7 +2506,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2580,19 +2523,19 @@ pub mod schemas {
     pub struct IncludeConditions {
         #[doc = "The look-back window lets you specify a time frame for evaluating the behavior that qualifies users for your audience. For example, if your filters include users from Central Asia, and Transactions Greater than 2, and you set the look-back window to 14 days, then any user from Central Asia whose cumulative transactions exceed 2 during the last 14 days is added to the audience."]
         #[serde(rename = "daysToLookBack", default)]
-        pub days_to_look_back: Option<i32>,
+        pub days_to_look_back: ::std::option::Option<i32>,
         #[doc = "Boolean indicating whether this segment is a smart list. https://support.google.com/analytics/answer/4628577"]
         #[serde(rename = "isSmartList", default)]
-        pub is_smart_list: Option<bool>,
+        pub is_smart_list: ::std::option::Option<bool>,
         #[doc = "Resource type for include conditions."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Number of days (in the range 1 to 540) a user remains in the audience."]
         #[serde(rename = "membershipDurationDays", default)]
-        pub membership_duration_days: Option<i32>,
+        pub membership_duration_days: ::std::option::Option<i32>,
         #[doc = "The segment condition that will cause a user to be added to an audience."]
         #[serde(rename = "segment", default)]
-        pub segment: Option<String>,
+        pub segment: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for IncludeConditions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2601,7 +2544,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2619,34 +2561,34 @@ pub mod schemas {
     pub struct LinkedForeignAccount {
         #[doc = "Account ID to which this linked foreign account belongs."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "Boolean indicating whether this is eligible for search."]
         #[serde(rename = "eligibleForSearch", default)]
-        pub eligible_for_search: Option<bool>,
+        pub eligible_for_search: ::std::option::Option<bool>,
         #[doc = "Entity ad account link ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Internal ID for the web property to which this linked foreign account belongs."]
         #[serde(rename = "internalWebPropertyId", default)]
-        pub internal_web_property_id: Option<String>,
+        pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "Resource type for linked foreign account."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The foreign account ID. For example the an Google Ads `linkedAccountId` has the following format XXX-XXX-XXXX."]
         #[serde(rename = "linkedAccountId", default)]
-        pub linked_account_id: Option<String>,
+        pub linked_account_id: ::std::option::Option<String>,
         #[doc = "The type of the foreign account. For example, `ADWORDS_LINKS`, `DBM_LINKS`, `MCC_LINKS` or `OPTIMIZE`."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Remarketing audience ID to which this linked foreign account belongs."]
         #[serde(rename = "remarketingAudienceId", default)]
-        pub remarketing_audience_id: Option<String>,
+        pub remarketing_audience_id: ::std::option::Option<String>,
         #[doc = "The status of this foreign account link."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
         #[doc = "Web property ID of the form UA-XXXXX-YY to which this linked foreign account belongs."]
         #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+        pub web_property_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LinkedForeignAccount {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2655,7 +2597,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2673,13 +2614,13 @@ pub mod schemas {
     pub struct McfDataColumnHeadersItems {
         #[doc = "Column Type. Either DIMENSION or METRIC."]
         #[serde(rename = "columnType", default)]
-        pub column_type: Option<String>,
+        pub column_type: ::std::option::Option<String>,
         #[doc = "Data type. Dimension and metric values data types such as INTEGER, DOUBLE, CURRENCY, MCF_SEQUENCE etc."]
         #[serde(rename = "dataType", default)]
-        pub data_type: Option<String>,
+        pub data_type: ::std::option::Option<String>,
         #[doc = "Column name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for McfDataColumnHeadersItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2688,7 +2629,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2706,22 +2646,22 @@ pub mod schemas {
     pub struct McfDataProfileInfo {
         #[doc = "Account ID to which this view (profile) belongs."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "Internal ID for the web property to which this view (profile) belongs."]
         #[serde(rename = "internalWebPropertyId", default)]
-        pub internal_web_property_id: Option<String>,
+        pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "View (Profile) ID."]
         #[serde(rename = "profileId", default)]
-        pub profile_id: Option<String>,
+        pub profile_id: ::std::option::Option<String>,
         #[doc = "View (Profile) name."]
         #[serde(rename = "profileName", default)]
-        pub profile_name: Option<String>,
+        pub profile_name: ::std::option::Option<String>,
         #[doc = "Table ID for view (profile)."]
         #[serde(rename = "tableId", default)]
-        pub table_id: Option<String>,
+        pub table_id: ::std::option::Option<String>,
         #[doc = "Web Property ID to which this view (profile) belongs."]
         #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+        pub web_property_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for McfDataProfileInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2730,7 +2670,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2748,37 +2687,37 @@ pub mod schemas {
     pub struct McfDataQuery {
         #[doc = "List of analytics dimensions."]
         #[serde(rename = "dimensions", default)]
-        pub dimensions: Option<String>,
+        pub dimensions: ::std::option::Option<String>,
         #[doc = "End date."]
         #[serde(rename = "end-date", default)]
-        pub end_date: Option<String>,
+        pub end_date: ::std::option::Option<String>,
         #[doc = "Comma-separated list of dimension or metric filters."]
         #[serde(rename = "filters", default)]
-        pub filters: Option<String>,
+        pub filters: ::std::option::Option<String>,
         #[doc = "Unique table ID."]
         #[serde(rename = "ids", default)]
-        pub ids: Option<String>,
+        pub ids: ::std::option::Option<String>,
         #[doc = "Maximum results per page."]
         #[serde(rename = "max-results", default)]
-        pub max_results: Option<i32>,
+        pub max_results: ::std::option::Option<i32>,
         #[doc = "List of analytics metrics."]
         #[serde(rename = "metrics", default)]
-        pub metrics: Option<Vec<String>>,
+        pub metrics: ::std::option::Option<Vec<String>>,
         #[doc = "Desired sampling level"]
         #[serde(rename = "samplingLevel", default)]
-        pub sampling_level: Option<String>,
+        pub sampling_level: ::std::option::Option<String>,
         #[doc = "Analytics advanced segment."]
         #[serde(rename = "segment", default)]
-        pub segment: Option<String>,
+        pub segment: ::std::option::Option<String>,
         #[doc = "List of dimensions or metrics based on which Analytics data is sorted."]
         #[serde(rename = "sort", default)]
-        pub sort: Option<Vec<String>>,
+        pub sort: ::std::option::Option<Vec<String>>,
         #[doc = "Start date."]
         #[serde(rename = "start-date", default)]
-        pub start_date: Option<String>,
+        pub start_date: ::std::option::Option<String>,
         #[doc = "Start index."]
         #[serde(rename = "start-index", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for McfDataQuery {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2787,7 +2726,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2805,10 +2743,10 @@ pub mod schemas {
     pub struct McfDataRowsItemsItemsConversionPathValueItems {
         #[doc = "Type of an interaction on conversion path. Such as CLICK, IMPRESSION etc."]
         #[serde(rename = "interactionType", default)]
-        pub interaction_type: Option<String>,
+        pub interaction_type: ::std::option::Option<String>,
         #[doc = "Node value of an interaction on conversion path. Such as source, medium etc."]
         #[serde(rename = "nodeValue", default)]
-        pub node_value: Option<String>,
+        pub node_value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for McfDataRowsItemsItemsConversionPathValueItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2817,7 +2755,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2835,11 +2772,12 @@ pub mod schemas {
     pub struct McfDataRowsItemsItems {
         #[doc = "A conversion path dimension value, containing a list of interactions with their attributes."]
         #[serde(rename = "conversionPathValue", default)]
-        pub conversion_path_value:
-            Option<Vec<crate::schemas::McfDataRowsItemsItemsConversionPathValueItems>>,
+        pub conversion_path_value: ::std::option::Option<
+            Vec<crate::schemas::McfDataRowsItemsItemsConversionPathValueItems>,
+        >,
         #[doc = "A primitive dimension value. A primitive metric value."]
         #[serde(rename = "primitiveValue", default)]
-        pub primitive_value: Option<String>,
+        pub primitive_value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for McfDataRowsItemsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2848,7 +2786,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2866,51 +2803,52 @@ pub mod schemas {
     pub struct McfData {
         #[doc = "Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request."]
         #[serde(rename = "columnHeaders", default)]
-        pub column_headers: Option<Vec<crate::schemas::McfDataColumnHeadersItems>>,
+        pub column_headers: ::std::option::Option<Vec<crate::schemas::McfDataColumnHeadersItems>>,
         #[doc = "Determines if the Analytics data contains sampled data."]
         #[serde(rename = "containsSampledData", default)]
-        pub contains_sampled_data: Option<bool>,
+        pub contains_sampled_data: ::std::option::Option<bool>,
         #[doc = "Unique ID for this data response."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The maximum number of rows the response can contain, regardless of the actual number of rows returned. Its value ranges from 1 to 10,000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this Analytics data query."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this Analytics data query."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "Information for the view (profile), for which the Analytics data was requested."]
         #[serde(rename = "profileInfo", default)]
-        pub profile_info: Option<crate::schemas::McfDataProfileInfo>,
+        pub profile_info: ::std::option::Option<crate::schemas::McfDataProfileInfo>,
         #[doc = "Analytics data request query parameters."]
         #[serde(rename = "query", default)]
-        pub query: Option<crate::schemas::McfDataQuery>,
+        pub query: ::std::option::Option<crate::schemas::McfDataQuery>,
         #[doc = "Analytics data rows, where each row contains a list of dimension values followed by the metric values. The order of dimensions and metrics is same as specified in the request."]
         #[serde(rename = "rows", default)]
-        pub rows: Option<Vec<Vec<crate::schemas::McfDataRowsItemsItems>>>,
+        pub rows: ::std::option::Option<Vec<Vec<crate::schemas::McfDataRowsItemsItems>>>,
         #[doc = "The number of samples used to calculate the result."]
         #[serde(rename = "sampleSize", default)]
         #[serde(with = "crate::parsed_string")]
-        pub sample_size: Option<i64>,
+        pub sample_size: ::std::option::Option<i64>,
         #[doc = "Total size of the sample space from which the samples were selected."]
         #[serde(rename = "sampleSpace", default)]
         #[serde(with = "crate::parsed_string")]
-        pub sample_space: Option<i64>,
+        pub sample_space: ::std::option::Option<i64>,
         #[doc = "Link to this page."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "The total number of rows for the query, regardless of the number of rows in the response."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
         #[doc = "Total values for the requested metrics over all the results, not just the results returned in this response. The order of the metric totals is same as the metric order specified in the request."]
         #[serde(rename = "totalsForAllResults", default)]
-        pub totals_for_all_results: Option<::std::collections::BTreeMap<String, String>>,
+        pub totals_for_all_results:
+            ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::field_selector::FieldSelector for McfData {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2919,7 +2857,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2937,10 +2874,10 @@ pub mod schemas {
     pub struct ProfileChildLink {
         #[doc = "Link to the list of goals for this view (profile)."]
         #[serde(rename = "href", default)]
-        pub href: Option<String>,
+        pub href: ::std::option::Option<String>,
         #[doc = "Value is \"analytics#goals\"."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ProfileChildLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2949,7 +2886,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2967,10 +2903,10 @@ pub mod schemas {
     pub struct ProfileParentLink {
         #[doc = "Link to the web property to which this view (profile) belongs."]
         #[serde(rename = "href", default)]
-        pub href: Option<String>,
+        pub href: ::std::option::Option<String>,
         #[doc = "Value is \"analytics#webproperty\"."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ProfileParentLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2979,7 +2915,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2997,7 +2932,7 @@ pub mod schemas {
     pub struct ProfilePermissions {
         #[doc = "All the permissions that the user has for this view (profile). These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent web property."]
         #[serde(rename = "effective", default)]
-        pub effective: Option<Vec<String>>,
+        pub effective: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ProfilePermissions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3006,7 +2941,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3024,82 +2958,82 @@ pub mod schemas {
     pub struct Profile {
         #[doc = "Account ID to which this view (profile) belongs."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "Indicates whether bot filtering is enabled for this view (profile)."]
         #[serde(rename = "botFilteringEnabled", default)]
-        pub bot_filtering_enabled: Option<bool>,
+        pub bot_filtering_enabled: ::std::option::Option<bool>,
         #[doc = "Child link for this view (profile). Points to the list of goals for this view (profile)."]
         #[serde(rename = "childLink", default)]
-        pub child_link: Option<crate::schemas::ProfileChildLink>,
+        pub child_link: ::std::option::Option<crate::schemas::ProfileChildLink>,
         #[doc = "Time this view (profile) was created."]
         #[serde(rename = "created", default)]
-        pub created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The currency type associated with this view (profile), defaults to USD. The supported values are:\nUSD, JPY, EUR, GBP, AUD, KRW, BRL, CNY, DKK, RUB, SEK, NOK, PLN, TRY, TWD, HKD, THB, IDR, ARS, MXN, VND, PHP, INR, CHF, CAD, CZK, NZD, HUF, BGN, LTL, ZAR, UAH, AED, BOB, CLP, COP, EGP, HRK, ILS, MAD, MYR, PEN, PKR, RON, RSD, SAR, SGD, VEF, LVL"]
         #[serde(rename = "currency", default)]
-        pub currency: Option<String>,
+        pub currency: ::std::option::Option<String>,
         #[doc = "Default page for this view (profile)."]
         #[serde(rename = "defaultPage", default)]
-        pub default_page: Option<String>,
+        pub default_page: ::std::option::Option<String>,
         #[doc = "Indicates whether ecommerce tracking is enabled for this view (profile)."]
         #[serde(rename = "eCommerceTracking", default)]
-        pub e_commerce_tracking: Option<bool>,
+        pub e_commerce_tracking: ::std::option::Option<bool>,
         #[doc = "Indicates whether enhanced ecommerce tracking is enabled for this view (profile). This property can only be enabled if ecommerce tracking is enabled."]
         #[serde(rename = "enhancedECommerceTracking", default)]
-        pub enhanced_e_commerce_tracking: Option<bool>,
+        pub enhanced_e_commerce_tracking: ::std::option::Option<bool>,
         #[doc = "The query parameters that are excluded from this view (profile)."]
         #[serde(rename = "excludeQueryParameters", default)]
-        pub exclude_query_parameters: Option<String>,
+        pub exclude_query_parameters: ::std::option::Option<String>,
         #[doc = "View (Profile) ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Internal ID for the web property to which this view (profile) belongs."]
         #[serde(rename = "internalWebPropertyId", default)]
-        pub internal_web_property_id: Option<String>,
+        pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics view (profile)."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Name of this view (profile)."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Parent link for this view (profile). Points to the web property to which this view (profile) belongs."]
         #[serde(rename = "parentLink", default)]
-        pub parent_link: Option<crate::schemas::ProfileParentLink>,
+        pub parent_link: ::std::option::Option<crate::schemas::ProfileParentLink>,
         #[doc = "Permissions the user has for this view (profile)."]
         #[serde(rename = "permissions", default)]
-        pub permissions: Option<crate::schemas::ProfilePermissions>,
+        pub permissions: ::std::option::Option<crate::schemas::ProfilePermissions>,
         #[doc = "View (Profile) type. Supported types: WEB or APP."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Link for this view (profile)."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Site search category parameters for this view (profile)."]
         #[serde(rename = "siteSearchCategoryParameters", default)]
-        pub site_search_category_parameters: Option<String>,
+        pub site_search_category_parameters: ::std::option::Option<String>,
         #[doc = "The site search query parameters for this view (profile)."]
         #[serde(rename = "siteSearchQueryParameters", default)]
-        pub site_search_query_parameters: Option<String>,
+        pub site_search_query_parameters: ::std::option::Option<String>,
         #[doc = "Indicates whether this view (profile) is starred or not."]
         #[serde(rename = "starred", default)]
-        pub starred: Option<bool>,
+        pub starred: ::std::option::Option<bool>,
         #[doc = "Whether or not Analytics will strip search category parameters from the URLs in your reports."]
         #[serde(rename = "stripSiteSearchCategoryParameters", default)]
-        pub strip_site_search_category_parameters: Option<bool>,
+        pub strip_site_search_category_parameters: ::std::option::Option<bool>,
         #[doc = "Whether or not Analytics will strip search query parameters from the URLs in your reports."]
         #[serde(rename = "stripSiteSearchQueryParameters", default)]
-        pub strip_site_search_query_parameters: Option<bool>,
+        pub strip_site_search_query_parameters: ::std::option::Option<bool>,
         #[doc = "Time zone for which this view (profile) has been configured. Time zones are identified by strings from the TZ database."]
         #[serde(rename = "timezone", default)]
-        pub timezone: Option<String>,
+        pub timezone: ::std::option::Option<String>,
         #[doc = "Time this view (profile) was last modified."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Web property ID of the form UA-XXXXX-YY to which this view (profile) belongs."]
         #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+        pub web_property_id: ::std::option::Option<String>,
         #[doc = "Website URL for this view (profile)."]
         #[serde(rename = "websiteUrl", default)]
-        pub website_url: Option<String>,
+        pub website_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Profile {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3108,7 +3042,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3126,22 +3059,22 @@ pub mod schemas {
     pub struct ProfileFilterLink {
         #[doc = "Filter for this link."]
         #[serde(rename = "filterRef", default)]
-        pub filter_ref: Option<crate::schemas::FilterRef>,
+        pub filter_ref: ::std::option::Option<crate::schemas::FilterRef>,
         #[doc = "Profile filter link ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics filter."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "View (Profile) for this link."]
         #[serde(rename = "profileRef", default)]
-        pub profile_ref: Option<crate::schemas::ProfileRef>,
+        pub profile_ref: ::std::option::Option<crate::schemas::ProfileRef>,
         #[doc = "The rank of this profile filter link relative to the other filters linked to the same profile.\nFor readonly (i.e., list and get) operations, the rank always starts at 1.\nFor write (i.e., create, update, or delete) operations, you may specify a value between 0 and 255 inclusively, [0, 255]. In order to insert a link at the end of the list, either don't specify a rank or set a rank to a number greater than the largest rank in the list. In order to insert a link to the beginning of the list specify a rank that is less than or equal to 1. The new link will move all existing filters with the same or lower rank down the list. After the link is inserted/updated/deleted all profile filter links will be renumbered starting at 1."]
         #[serde(rename = "rank", default)]
-        pub rank: Option<i32>,
+        pub rank: ::std::option::Option<i32>,
         #[doc = "Link for this profile filter link."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ProfileFilterLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3150,7 +3083,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3168,28 +3100,28 @@ pub mod schemas {
     pub struct ProfileFilterLinks {
         #[doc = "A list of profile filter links."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::ProfileFilterLink>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::ProfileFilterLink>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1,000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this profile filter link collection."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this profile filter link collection."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ProfileFilterLinks {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3198,7 +3130,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3216,25 +3147,25 @@ pub mod schemas {
     pub struct ProfileRef {
         #[doc = "Account ID to which this view (profile) belongs."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "Link for this view (profile)."]
         #[serde(rename = "href", default)]
-        pub href: Option<String>,
+        pub href: ::std::option::Option<String>,
         #[doc = "View (Profile) ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Internal ID for the web property to which this view (profile) belongs."]
         #[serde(rename = "internalWebPropertyId", default)]
-        pub internal_web_property_id: Option<String>,
+        pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "Analytics view (profile) reference."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Name of this view (profile)."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Web property ID of the form UA-XXXXX-YY to which this view (profile) belongs."]
         #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+        pub web_property_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ProfileRef {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3243,7 +3174,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3261,19 +3191,19 @@ pub mod schemas {
     pub struct ProfileSummary {
         #[doc = "View (profile) ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics ProfileSummary."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "View (profile) name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "View (Profile) type. Supported types: WEB or APP."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Indicates whether this view (profile) is starred or not."]
         #[serde(rename = "starred", default)]
-        pub starred: Option<bool>,
+        pub starred: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for ProfileSummary {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3282,7 +3212,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3300,28 +3229,28 @@ pub mod schemas {
     pub struct Profiles {
         #[doc = "A list of views (profiles)."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Profile>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Profile>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this view (profile) collection."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this view (profile) collection."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Profiles {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3330,7 +3259,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3348,13 +3276,13 @@ pub mod schemas {
     pub struct RealtimeDataColumnHeadersItems {
         #[doc = "Column Type. Either DIMENSION or METRIC."]
         #[serde(rename = "columnType", default)]
-        pub column_type: Option<String>,
+        pub column_type: ::std::option::Option<String>,
         #[doc = "Data type. Dimension column headers have only STRING as the data type. Metric column headers have data types for metric values such as INTEGER, DOUBLE, CURRENCY etc."]
         #[serde(rename = "dataType", default)]
-        pub data_type: Option<String>,
+        pub data_type: ::std::option::Option<String>,
         #[doc = "Column name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RealtimeDataColumnHeadersItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3363,7 +3291,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3381,22 +3308,22 @@ pub mod schemas {
     pub struct RealtimeDataProfileInfo {
         #[doc = "Account ID to which this view (profile) belongs."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "Internal ID for the web property to which this view (profile) belongs."]
         #[serde(rename = "internalWebPropertyId", default)]
-        pub internal_web_property_id: Option<String>,
+        pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "View (Profile) ID."]
         #[serde(rename = "profileId", default)]
-        pub profile_id: Option<String>,
+        pub profile_id: ::std::option::Option<String>,
         #[doc = "View (Profile) name."]
         #[serde(rename = "profileName", default)]
-        pub profile_name: Option<String>,
+        pub profile_name: ::std::option::Option<String>,
         #[doc = "Table ID for view (profile)."]
         #[serde(rename = "tableId", default)]
-        pub table_id: Option<String>,
+        pub table_id: ::std::option::Option<String>,
         #[doc = "Web Property ID to which this view (profile) belongs."]
         #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+        pub web_property_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RealtimeDataProfileInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3405,7 +3332,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3423,22 +3349,22 @@ pub mod schemas {
     pub struct RealtimeDataQuery {
         #[doc = "List of real time dimensions."]
         #[serde(rename = "dimensions", default)]
-        pub dimensions: Option<String>,
+        pub dimensions: ::std::option::Option<String>,
         #[doc = "Comma-separated list of dimension or metric filters."]
         #[serde(rename = "filters", default)]
-        pub filters: Option<String>,
+        pub filters: ::std::option::Option<String>,
         #[doc = "Unique table ID."]
         #[serde(rename = "ids", default)]
-        pub ids: Option<String>,
+        pub ids: ::std::option::Option<String>,
         #[doc = "Maximum results per page."]
         #[serde(rename = "max-results", default)]
-        pub max_results: Option<i32>,
+        pub max_results: ::std::option::Option<i32>,
         #[doc = "List of real time metrics."]
         #[serde(rename = "metrics", default)]
-        pub metrics: Option<Vec<String>>,
+        pub metrics: ::std::option::Option<Vec<String>>,
         #[doc = "List of dimensions or metrics based on which real time data is sorted."]
         #[serde(rename = "sort", default)]
-        pub sort: Option<Vec<String>>,
+        pub sort: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for RealtimeDataQuery {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3447,7 +3373,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3465,31 +3390,33 @@ pub mod schemas {
     pub struct RealtimeData {
         #[doc = "Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request."]
         #[serde(rename = "columnHeaders", default)]
-        pub column_headers: Option<Vec<crate::schemas::RealtimeDataColumnHeadersItems>>,
+        pub column_headers:
+            ::std::option::Option<Vec<crate::schemas::RealtimeDataColumnHeadersItems>>,
         #[doc = "Unique ID for this data response."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Information for the view (profile), for which the real time data was requested."]
         #[serde(rename = "profileInfo", default)]
-        pub profile_info: Option<crate::schemas::RealtimeDataProfileInfo>,
+        pub profile_info: ::std::option::Option<crate::schemas::RealtimeDataProfileInfo>,
         #[doc = "Real time data request query parameters."]
         #[serde(rename = "query", default)]
-        pub query: Option<crate::schemas::RealtimeDataQuery>,
+        pub query: ::std::option::Option<crate::schemas::RealtimeDataQuery>,
         #[doc = "Real time data rows, where each row contains a list of dimension values followed by the metric values. The order of dimensions and metrics is same as specified in the request."]
         #[serde(rename = "rows", default)]
-        pub rows: Option<Vec<Vec<String>>>,
+        pub rows: ::std::option::Option<Vec<Vec<String>>>,
         #[doc = "Link to this page."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "The total number of rows for the query, regardless of the number of rows in the response."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
         #[doc = "Total values for the requested metrics over all the results, not just the results returned in this response. The order of the metric totals is same as the metric order specified in the request."]
         #[serde(rename = "totalsForAllResults", default)]
-        pub totals_for_all_results: Option<::std::collections::BTreeMap<String, String>>,
+        pub totals_for_all_results:
+            ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::field_selector::FieldSelector for RealtimeData {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3498,7 +3425,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3516,7 +3442,7 @@ pub mod schemas {
     pub struct RemarketingAudienceAudienceDefinition {
         #[doc = "Defines the conditions to include users to the audience."]
         #[serde(rename = "includeConditions", default)]
-        pub include_conditions: Option<crate::schemas::IncludeConditions>,
+        pub include_conditions: ::std::option::Option<crate::schemas::IncludeConditions>,
     }
     impl ::field_selector::FieldSelector for RemarketingAudienceAudienceDefinition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3525,7 +3451,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3543,10 +3468,10 @@ pub mod schemas {
     pub struct RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions {
         #[doc = "Whether to make the exclusion TEMPORARY or PERMANENT."]
         #[serde(rename = "exclusionDuration", default)]
-        pub exclusion_duration: Option<String>,
+        pub exclusion_duration: ::std::option::Option<String>,
         #[doc = "The segment condition that will cause a user to be removed from an audience."]
         #[serde(rename = "segment", default)]
-        pub segment: Option<String>,
+        pub segment: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector
         for RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions
@@ -3557,7 +3482,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3575,12 +3499,12 @@ pub mod schemas {
     pub struct RemarketingAudienceStateBasedAudienceDefinition {
         #[doc = "Defines the conditions to exclude users from the audience."]
         #[serde(rename = "excludeConditions", default)]
-        pub exclude_conditions: Option<
+        pub exclude_conditions: ::std::option::Option<
             crate::schemas::RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions,
         >,
         #[doc = "Defines the conditions to include users to the audience."]
         #[serde(rename = "includeConditions", default)]
-        pub include_conditions: Option<crate::schemas::IncludeConditions>,
+        pub include_conditions: ::std::option::Option<crate::schemas::IncludeConditions>,
     }
     impl ::field_selector::FieldSelector for RemarketingAudienceStateBasedAudienceDefinition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3589,7 +3513,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3607,47 +3530,48 @@ pub mod schemas {
     pub struct RemarketingAudience {
         #[doc = "Account ID to which this remarketing audience belongs."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "The simple audience definition that will cause a user to be added to an audience."]
         #[serde(rename = "audienceDefinition", default)]
-        pub audience_definition: Option<crate::schemas::RemarketingAudienceAudienceDefinition>,
+        pub audience_definition:
+            ::std::option::Option<crate::schemas::RemarketingAudienceAudienceDefinition>,
         #[doc = "The type of audience, either SIMPLE or STATE_BASED."]
         #[serde(rename = "audienceType", default)]
-        pub audience_type: Option<String>,
+        pub audience_type: ::std::option::Option<String>,
         #[doc = "Time this remarketing audience was created."]
         #[serde(rename = "created", default)]
-        pub created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The description of this remarketing audience."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Remarketing Audience ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Internal ID for the web property to which this remarketing audience belongs."]
         #[serde(rename = "internalWebPropertyId", default)]
-        pub internal_web_property_id: Option<String>,
+        pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "Collection type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The linked ad accounts associated with this remarketing audience. A remarketing audience can have only one linkedAdAccount currently."]
         #[serde(rename = "linkedAdAccounts", default)]
-        pub linked_ad_accounts: Option<Vec<crate::schemas::LinkedForeignAccount>>,
+        pub linked_ad_accounts: ::std::option::Option<Vec<crate::schemas::LinkedForeignAccount>>,
         #[doc = "The views (profiles) that this remarketing audience is linked to."]
         #[serde(rename = "linkedViews", default)]
-        pub linked_views: Option<Vec<String>>,
+        pub linked_views: ::std::option::Option<Vec<String>>,
         #[doc = "The name of this remarketing audience."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "A state based audience definition that will cause a user to be added or removed from an audience."]
         #[serde(rename = "stateBasedAudienceDefinition", default)]
         pub state_based_audience_definition:
-            Option<crate::schemas::RemarketingAudienceStateBasedAudienceDefinition>,
+            ::std::option::Option<crate::schemas::RemarketingAudienceStateBasedAudienceDefinition>,
         #[doc = "Time this remarketing audience was last modified."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Web property ID of the form UA-XXXXX-YY to which this remarketing audience belongs."]
         #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+        pub web_property_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RemarketingAudience {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3656,7 +3580,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3674,28 +3597,28 @@ pub mod schemas {
     pub struct RemarketingAudiences {
         #[doc = "A list of remarketing audiences."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::RemarketingAudience>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::RemarketingAudience>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this remarketing audience collection."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this view (profile) collection."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RemarketingAudiences {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3704,7 +3627,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3722,31 +3644,31 @@ pub mod schemas {
     pub struct Segment {
         #[doc = "Time the segment was created."]
         #[serde(rename = "created", default)]
-        pub created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Segment definition."]
         #[serde(rename = "definition", default)]
-        pub definition: Option<String>,
+        pub definition: ::std::option::Option<String>,
         #[doc = "Segment ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics segment."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Segment name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Type for a segment. Possible values are \"BUILT_IN\" or \"CUSTOM\"."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Segment ID. Can be used with the 'segment' parameter in Core Reporting API."]
         #[serde(rename = "segmentId", default)]
-        pub segment_id: Option<String>,
+        pub segment_id: ::std::option::Option<String>,
         #[doc = "Link for this segment."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Time the segment was last modified."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for Segment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3755,7 +3677,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3773,28 +3694,28 @@ pub mod schemas {
     pub struct Segments {
         #[doc = "A list of segments."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Segment>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Segment>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type for segments."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this segment collection."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this segment collection."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Segments {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3803,7 +3724,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3821,10 +3741,10 @@ pub mod schemas {
     pub struct UnsampledReportCloudStorageDownloadDetails {
         #[doc = "Id of the bucket the file object is stored in."]
         #[serde(rename = "bucketId", default)]
-        pub bucket_id: Option<String>,
+        pub bucket_id: ::std::option::Option<String>,
         #[doc = "Id of the file object containing the report data."]
         #[serde(rename = "objectId", default)]
-        pub object_id: Option<String>,
+        pub object_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UnsampledReportCloudStorageDownloadDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3833,7 +3753,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3851,7 +3770,7 @@ pub mod schemas {
     pub struct UnsampledReportDriveDownloadDetails {
         #[doc = "Id of the document/file containing the report data."]
         #[serde(rename = "documentId", default)]
-        pub document_id: Option<String>,
+        pub document_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UnsampledReportDriveDownloadDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3860,7 +3779,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3878,62 +3796,63 @@ pub mod schemas {
     pub struct UnsampledReport {
         #[doc = "Account ID to which this unsampled report belongs."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "Download details for a file stored in Google Cloud Storage."]
         #[serde(rename = "cloudStorageDownloadDetails", default)]
         pub cloud_storage_download_details:
-            Option<crate::schemas::UnsampledReportCloudStorageDownloadDetails>,
+            ::std::option::Option<crate::schemas::UnsampledReportCloudStorageDownloadDetails>,
         #[doc = "Time this unsampled report was created."]
         #[serde(rename = "created", default)]
-        pub created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The dimensions for the unsampled report."]
         #[serde(rename = "dimensions", default)]
-        pub dimensions: Option<String>,
+        pub dimensions: ::std::option::Option<String>,
         #[doc = "The type of download you need to use for the report data file. Possible values include `GOOGLE_DRIVE` and `GOOGLE_CLOUD_STORAGE`. If the value is `GOOGLE_DRIVE`, see the `driveDownloadDetails` field. If the value is `GOOGLE_CLOUD_STORAGE`, see the `cloudStorageDownloadDetails` field."]
         #[serde(rename = "downloadType", default)]
-        pub download_type: Option<String>,
+        pub download_type: ::std::option::Option<String>,
         #[doc = "Download details for a file stored in Google Drive."]
         #[serde(rename = "driveDownloadDetails", default)]
-        pub drive_download_details: Option<crate::schemas::UnsampledReportDriveDownloadDetails>,
+        pub drive_download_details:
+            ::std::option::Option<crate::schemas::UnsampledReportDriveDownloadDetails>,
         #[doc = "The end date for the unsampled report."]
         #[serde(rename = "end-date", default)]
-        pub end_date: Option<String>,
+        pub end_date: ::std::option::Option<String>,
         #[doc = "The filters for the unsampled report."]
         #[serde(rename = "filters", default)]
-        pub filters: Option<String>,
+        pub filters: ::std::option::Option<String>,
         #[doc = "Unsampled report ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Resource type for an Analytics unsampled report."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The metrics for the unsampled report."]
         #[serde(rename = "metrics", default)]
-        pub metrics: Option<String>,
+        pub metrics: ::std::option::Option<String>,
         #[doc = "View (Profile) ID to which this unsampled report belongs."]
         #[serde(rename = "profileId", default)]
-        pub profile_id: Option<String>,
+        pub profile_id: ::std::option::Option<String>,
         #[doc = "The segment for the unsampled report."]
         #[serde(rename = "segment", default)]
-        pub segment: Option<String>,
+        pub segment: ::std::option::Option<String>,
         #[doc = "Link for this unsampled report."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "The start date for the unsampled report."]
         #[serde(rename = "start-date", default)]
-        pub start_date: Option<String>,
+        pub start_date: ::std::option::Option<String>,
         #[doc = "Status of this unsampled report. Possible values are PENDING, COMPLETED, or FAILED."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
         #[doc = "Title of the unsampled report."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "Time this unsampled report was last modified."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Web property ID to which this unsampled report belongs. The web property ID is of the form UA-XXXXX-YY."]
         #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+        pub web_property_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UnsampledReport {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3942,7 +3861,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3960,28 +3878,28 @@ pub mod schemas {
     pub struct UnsampledReports {
         #[doc = "A list of unsampled reports."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::UnsampledReport>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::UnsampledReport>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this unsampled report collection."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this unsampled report collection."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of resources in the result."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UnsampledReports {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3990,7 +3908,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4009,25 +3926,25 @@ pub mod schemas {
         #[doc = "Account Id to which this upload belongs."]
         #[serde(rename = "accountId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub account_id: Option<i64>,
+        pub account_id: ::std::option::Option<i64>,
         #[doc = "Custom data source Id to which this data import belongs."]
         #[serde(rename = "customDataSourceId", default)]
-        pub custom_data_source_id: Option<String>,
+        pub custom_data_source_id: ::std::option::Option<String>,
         #[doc = "Data import errors collection."]
         #[serde(rename = "errors", default)]
-        pub errors: Option<Vec<String>>,
+        pub errors: ::std::option::Option<Vec<String>>,
         #[doc = "A unique ID for this upload."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics upload."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Upload status. Possible values: PENDING, COMPLETED, FAILED, DELETING, DELETED."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
         #[doc = "Time this file is uploaded."]
         #[serde(rename = "uploadTime", default)]
-        pub upload_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub upload_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for Upload {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4036,7 +3953,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4054,25 +3970,25 @@ pub mod schemas {
     pub struct Uploads {
         #[doc = "A list of uploads."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Upload>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Upload>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this upload collection."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this upload collection."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of resources in the result."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Uploads {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4081,7 +3997,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4099,10 +4014,10 @@ pub mod schemas {
     pub struct UserDeletionRequestId {
         #[doc = "Type of user"]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "The User's id"]
         #[serde(rename = "userId", default)]
-        pub user_id: Option<String>,
+        pub user_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserDeletionRequestId {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4111,7 +4026,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4129,22 +4043,22 @@ pub mod schemas {
     pub struct UserDeletionRequest {
         #[doc = "This marks the point in time for which all user data before should be deleted"]
         #[serde(rename = "deletionRequestTime", default)]
-        pub deletion_request_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub deletion_request_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Firebase Project Id"]
         #[serde(rename = "firebaseProjectId", default)]
-        pub firebase_project_id: Option<String>,
+        pub firebase_project_id: ::std::option::Option<String>,
         #[doc = "User ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<crate::schemas::UserDeletionRequestId>,
+        pub id: ::std::option::Option<crate::schemas::UserDeletionRequestId>,
         #[doc = "Value is \"analytics#userDeletionRequest\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Property ID"]
         #[serde(rename = "propertyId", default)]
-        pub property_id: Option<String>,
+        pub property_id: ::std::option::Option<String>,
         #[doc = "Web property ID of the form UA-XXXXX-YY."]
         #[serde(rename = "webPropertyId", default)]
-        pub web_property_id: Option<String>,
+        pub web_property_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserDeletionRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4153,7 +4067,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4171,12 +4084,12 @@ pub mod schemas {
     pub struct UserRef {
         #[doc = "Email ID of this user."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "User ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserRef {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4185,7 +4098,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4203,22 +4115,22 @@ pub mod schemas {
     pub struct WebPropertyRef {
         #[doc = "Account ID to which this web property belongs."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "Link for this web property."]
         #[serde(rename = "href", default)]
-        pub href: Option<String>,
+        pub href: ::std::option::Option<String>,
         #[doc = "Web property ID of the form UA-XXXXX-YY."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Internal ID for this web property."]
         #[serde(rename = "internalWebPropertyId", default)]
-        pub internal_web_property_id: Option<String>,
+        pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "Analytics web property reference."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Name of this web property."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for WebPropertyRef {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4227,7 +4139,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4245,28 +4156,28 @@ pub mod schemas {
     pub struct WebPropertySummary {
         #[doc = "Web property ID of the form UA-XXXXX-YY."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Internal ID for this web property."]
         #[serde(rename = "internalWebPropertyId", default)]
-        pub internal_web_property_id: Option<String>,
+        pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics WebPropertySummary."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Level for this web property. Possible values are STANDARD or PREMIUM."]
         #[serde(rename = "level", default)]
-        pub level: Option<String>,
+        pub level: ::std::option::Option<String>,
         #[doc = "Web property name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "List of profiles under this web property."]
         #[serde(rename = "profiles", default)]
-        pub profiles: Option<Vec<crate::schemas::ProfileSummary>>,
+        pub profiles: ::std::option::Option<Vec<crate::schemas::ProfileSummary>>,
         #[doc = "Indicates whether this web property is starred or not."]
         #[serde(rename = "starred", default)]
-        pub starred: Option<bool>,
+        pub starred: ::std::option::Option<bool>,
         #[doc = "Website url for this web property."]
         #[serde(rename = "websiteUrl", default)]
-        pub website_url: Option<String>,
+        pub website_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for WebPropertySummary {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4275,7 +4186,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4293,28 +4203,28 @@ pub mod schemas {
     pub struct Webproperties {
         #[doc = "A list of web properties."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Webproperty>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Webproperty>>,
         #[doc = "The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "Collection type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Link to next page for this web property collection."]
         #[serde(rename = "nextLink", default)]
-        pub next_link: Option<String>,
+        pub next_link: ::std::option::Option<String>,
         #[doc = "Link to previous page for this web property collection."]
         #[serde(rename = "previousLink", default)]
-        pub previous_link: Option<String>,
+        pub previous_link: ::std::option::Option<String>,
         #[doc = "The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter."]
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[doc = "The total number of results for the query, regardless of the number of results in the response."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
         #[doc = "Email ID of the authenticated user"]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Webproperties {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4323,7 +4233,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4341,10 +4250,10 @@ pub mod schemas {
     pub struct WebpropertyChildLink {
         #[doc = "Link to the list of views (profiles) for this web property."]
         #[serde(rename = "href", default)]
-        pub href: Option<String>,
+        pub href: ::std::option::Option<String>,
         #[doc = "Type of the parent link. Its value is \"analytics#profiles\"."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for WebpropertyChildLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4353,7 +4262,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4371,10 +4279,10 @@ pub mod schemas {
     pub struct WebpropertyParentLink {
         #[doc = "Link to the account for this web property."]
         #[serde(rename = "href", default)]
-        pub href: Option<String>,
+        pub href: ::std::option::Option<String>,
         #[doc = "Type of the parent link. Its value is \"analytics#account\"."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for WebpropertyParentLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4383,7 +4291,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4401,7 +4308,7 @@ pub mod schemas {
     pub struct WebpropertyPermissions {
         #[doc = "All the permissions that the user has for this web property. These include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent account."]
         #[serde(rename = "effective", default)]
-        pub effective: Option<Vec<String>>,
+        pub effective: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for WebpropertyPermissions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4410,7 +4317,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4428,62 +4334,62 @@ pub mod schemas {
     pub struct Webproperty {
         #[doc = "Account ID to which this web property belongs."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "Child link for this web property. Points to the list of views (profiles) for this web property."]
         #[serde(rename = "childLink", default)]
-        pub child_link: Option<crate::schemas::WebpropertyChildLink>,
+        pub child_link: ::std::option::Option<crate::schemas::WebpropertyChildLink>,
         #[doc = "Time this web property was created."]
         #[serde(rename = "created", default)]
-        pub created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Set to true to reset the retention period of the user identifier with each new event from that user (thus setting the expiration date to current time plus retention period).\nSet to false to delete data associated with the user identifier automatically after the rentention period.\nThis property cannot be set on insert."]
         #[serde(rename = "dataRetentionResetOnNewActivity", default)]
-        pub data_retention_reset_on_new_activity: Option<bool>,
+        pub data_retention_reset_on_new_activity: ::std::option::Option<bool>,
         #[doc = "The length of time for which user and event data is retained.\nThis property cannot be set on insert."]
         #[serde(rename = "dataRetentionTtl", default)]
-        pub data_retention_ttl: Option<String>,
+        pub data_retention_ttl: ::std::option::Option<String>,
         #[doc = "Default view (profile) ID."]
         #[serde(rename = "defaultProfileId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub default_profile_id: Option<i64>,
+        pub default_profile_id: ::std::option::Option<i64>,
         #[doc = "Web property ID of the form UA-XXXXX-YY."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The industry vertical/category selected for this web property."]
         #[serde(rename = "industryVertical", default)]
-        pub industry_vertical: Option<String>,
+        pub industry_vertical: ::std::option::Option<String>,
         #[doc = "Internal ID for this web property."]
         #[serde(rename = "internalWebPropertyId", default)]
-        pub internal_web_property_id: Option<String>,
+        pub internal_web_property_id: ::std::option::Option<String>,
         #[doc = "Resource type for Analytics WebProperty."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Level for this web property. Possible values are STANDARD or PREMIUM."]
         #[serde(rename = "level", default)]
-        pub level: Option<String>,
+        pub level: ::std::option::Option<String>,
         #[doc = "Name of this web property."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Parent link for this web property. Points to the account to which this web property belongs."]
         #[serde(rename = "parentLink", default)]
-        pub parent_link: Option<crate::schemas::WebpropertyParentLink>,
+        pub parent_link: ::std::option::Option<crate::schemas::WebpropertyParentLink>,
         #[doc = "Permissions the user has for this web property."]
         #[serde(rename = "permissions", default)]
-        pub permissions: Option<crate::schemas::WebpropertyPermissions>,
+        pub permissions: ::std::option::Option<crate::schemas::WebpropertyPermissions>,
         #[doc = "View (Profile) count for this web property."]
         #[serde(rename = "profileCount", default)]
-        pub profile_count: Option<i32>,
+        pub profile_count: ::std::option::Option<i32>,
         #[doc = "Link for this web property."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Indicates whether this web property is starred or not."]
         #[serde(rename = "starred", default)]
-        pub starred: Option<bool>,
+        pub starred: ::std::option::Option<bool>,
         #[doc = "Time this web property was last modified."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Website url for this web property."]
         #[serde(rename = "websiteUrl", default)]
-        pub website_url: Option<String>,
+        pub website_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Webproperty {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4492,7 +4398,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -4537,6 +4442,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -4665,6 +4579,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for GetOutput {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum GetSamplingLevel {
                     #[doc = "Returns response with a sample size that balances speed and accuracy."]
@@ -4713,6 +4636,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for GetSamplingLevel {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
             }
@@ -5013,6 +4945,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for GetSamplingLevel {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
             }
@@ -20986,6 +20927,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -21061,5 +21003,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

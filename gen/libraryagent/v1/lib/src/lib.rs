@@ -14,16 +14,16 @@ pub mod schemas {
     pub struct GoogleExampleLibraryagentV1Book {
         #[doc = "The name of the book author."]
         #[serde(rename = "author", default)]
-        pub author: Option<String>,
+        pub author: ::std::option::Option<String>,
         #[doc = "The resource name of the book.\nBook names have the form `shelves/{shelf_id}/books/{book_id}`.\nThe name is ignored when creating a book."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Value indicating whether the book has been read."]
         #[serde(rename = "read", default)]
-        pub read: Option<bool>,
+        pub read: ::std::option::Option<bool>,
         #[doc = "The title of the book."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleExampleLibraryagentV1Book {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -32,7 +32,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -50,10 +49,10 @@ pub mod schemas {
     pub struct GoogleExampleLibraryagentV1ListBooksResponse {
         #[doc = "The list of books."]
         #[serde(rename = "books", default)]
-        pub books: Option<Vec<crate::schemas::GoogleExampleLibraryagentV1Book>>,
+        pub books: ::std::option::Option<Vec<crate::schemas::GoogleExampleLibraryagentV1Book>>,
         #[doc = "A token to retrieve next page of results.\nPass this value in the\nListBooksRequest.page_token\nfield in the subsequent call to `ListBooks` method to retrieve the next\npage of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleExampleLibraryagentV1ListBooksResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -62,7 +61,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -80,10 +78,10 @@ pub mod schemas {
     pub struct GoogleExampleLibraryagentV1ListShelvesResponse {
         #[doc = "A token to retrieve next page of results.\nPass this value in the\nListShelvesRequest.page_token\nfield in the subsequent call to `ListShelves` method to retrieve the next\npage of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of shelves."]
         #[serde(rename = "shelves", default)]
-        pub shelves: Option<Vec<crate::schemas::GoogleExampleLibraryagentV1Shelf>>,
+        pub shelves: ::std::option::Option<Vec<crate::schemas::GoogleExampleLibraryagentV1Shelf>>,
     }
     impl ::field_selector::FieldSelector for GoogleExampleLibraryagentV1ListShelvesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -92,7 +90,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -110,10 +107,10 @@ pub mod schemas {
     pub struct GoogleExampleLibraryagentV1Shelf {
         #[doc = "Output only. The resource name of the shelf.\nShelf names have the form `shelves/{shelf_id}`.\nThe name is ignored when creating a shelf."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The theme of the shelf"]
         #[serde(rename = "theme", default)]
-        pub theme: Option<String>,
+        pub theme: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleExampleLibraryagentV1Shelf {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -122,7 +119,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -177,6 +173,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -221,6 +226,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1912,6 +1926,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1987,5 +2002,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

@@ -14,13 +14,13 @@ pub mod schemas {
     pub struct AuthorizeEnvironmentRequest {
         #[doc = "The OAuth access token that should be sent to the environment."]
         #[serde(rename = "accessToken", default)]
-        pub access_token: Option<String>,
+        pub access_token: ::std::option::Option<String>,
         #[doc = "The time when the credentials expire. If not set, defaults to one hour from\nwhen the server received the request."]
         #[serde(rename = "expireTime", default)]
-        pub expire_time: Option<String>,
+        pub expire_time: ::std::option::Option<String>,
         #[doc = "The OAuth ID token that should be sent to the environment."]
         #[serde(rename = "idToken", default)]
-        pub id_token: Option<String>,
+        pub id_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AuthorizeEnvironmentRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -29,7 +29,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -47,7 +46,7 @@ pub mod schemas {
     pub struct CreatePublicKeyRequest {
         #[doc = "Key that should be added to the environment."]
         #[serde(rename = "key", default)]
-        pub key: Option<crate::schemas::PublicKey>,
+        pub key: ::std::option::Option<crate::schemas::PublicKey>,
     }
     impl ::field_selector::FieldSelector for CreatePublicKeyRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -56,7 +55,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -74,7 +72,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EnvironmentState {
@@ -130,6 +128,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for EnvironmentState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -145,31 +152,31 @@ pub mod schemas {
     pub struct Environment {
         #[doc = "Required. Full path to the Docker image used to run this environment, e.g.\n\"gcr.io/dev-con/cloud-devshell:latest\"."]
         #[serde(rename = "dockerImage", default)]
-        pub docker_image: Option<String>,
+        pub docker_image: ::std::option::Option<String>,
         #[doc = "Output only. The environment's identifier, which is always \"default\"."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Output only. Full name of this resource, in the format\n`users/{owner_email}/environments/{environment_id}`. `{owner_email}` is the\nemail address of the user to whom this environment belongs, and\n`{environment_id}` is the identifier of this environment. For example,\n`users/someone@example.com/environments/default`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Output only. Public keys associated with the environment. Clients can\nconnect to this environment via SSH only if they possess a private key\ncorresponding to at least one of these public keys. Keys can be added to or\nremoved from the environment using the CreatePublicKey and DeletePublicKey\nmethods."]
         #[serde(rename = "publicKeys", default)]
-        pub public_keys: Option<Vec<crate::schemas::PublicKey>>,
+        pub public_keys: ::std::option::Option<Vec<crate::schemas::PublicKey>>,
         #[doc = "Output only. Host to which clients can connect to initiate SSH sessions\nwith the environment."]
         #[serde(rename = "sshHost", default)]
-        pub ssh_host: Option<String>,
+        pub ssh_host: ::std::option::Option<String>,
         #[doc = "Output only. Port to which clients can connect to initiate SSH sessions\nwith the environment."]
         #[serde(rename = "sshPort", default)]
-        pub ssh_port: Option<i32>,
+        pub ssh_port: ::std::option::Option<i32>,
         #[doc = "Output only. Username that clients should use when initiating SSH sessions\nwith the environment."]
         #[serde(rename = "sshUsername", default)]
-        pub ssh_username: Option<String>,
+        pub ssh_username: ::std::option::Option<String>,
         #[doc = "Output only. Current execution state of this environment."]
         #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::EnvironmentState>,
+        pub state: ::std::option::Option<crate::schemas::EnvironmentState>,
         #[doc = "Output only. Host to which clients can connect to initiate HTTPS or WSS\nconnections with the environment."]
         #[serde(rename = "webHost", default)]
-        pub web_host: Option<String>,
+        pub web_host: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Environment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -178,26 +185,27 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
         #[serde(rename = "done", default)]
-        pub done: Option<bool>,
+        pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
         #[serde(rename = "error", default)]
-        pub error: Option<crate::schemas::Status>,
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
         #[serde(rename = "response", default)]
-        pub response: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub response:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
     impl ::field_selector::FieldSelector for Operation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -206,7 +214,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -271,6 +278,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PublicKeyFormat {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -286,13 +302,13 @@ pub mod schemas {
     pub struct PublicKey {
         #[doc = "Required. Format of this key's content."]
         #[serde(rename = "format", default)]
-        pub format: Option<crate::schemas::PublicKeyFormat>,
+        pub format: ::std::option::Option<crate::schemas::PublicKeyFormat>,
         #[doc = "Required. Content of this key."]
         #[serde(rename = "key", default)]
-        pub key: Option<Vec<u8>>,
+        pub key: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Output only. Full name of this resource, in the format\n`users/{owner_email}/environments/{environment_id}/publicKeys/{key_id}`.\n`{owner_email}` is the email address of the user to whom the key belongs.\n`{environment_id}` is the identifier of the environment to which the key\ngrants access. `{key_id}` is the unique identifier of the key. For example,\n`users/someone@example.com/environments/default/publicKeys/myKey`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PublicKey {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -301,7 +317,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -358,6 +373,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for StartEnvironmentMetadataState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -373,7 +397,7 @@ pub mod schemas {
     pub struct StartEnvironmentMetadata {
         #[doc = "Current state of the environment being started."]
         #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::StartEnvironmentMetadataState>,
+        pub state: ::std::option::Option<crate::schemas::StartEnvironmentMetadataState>,
     }
     impl ::field_selector::FieldSelector for StartEnvironmentMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -382,7 +406,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -400,7 +423,7 @@ pub mod schemas {
     pub struct StartEnvironmentRequest {
         #[doc = "The initial access token passed to the environment. If this is present and\nvalid, the environment will be pre-authenticated with gcloud so that the\nuser can run gcloud commands in Cloud Shell without having to log in. This\ncode can be updated later by calling AuthorizeEnvironment."]
         #[serde(rename = "accessToken", default)]
-        pub access_token: Option<String>,
+        pub access_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for StartEnvironmentRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -409,7 +432,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -427,7 +449,7 @@ pub mod schemas {
     pub struct StartEnvironmentResponse {
         #[doc = "Environment that was started."]
         #[serde(rename = "environment", default)]
-        pub environment: Option<crate::schemas::Environment>,
+        pub environment: ::std::option::Option<crate::schemas::Environment>,
     }
     impl ::field_selector::FieldSelector for StartEnvironmentResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -436,20 +458,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
-        pub code: Option<i32>,
+        pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub details:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Status {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -458,7 +480,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -513,6 +534,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -557,6 +587,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -2038,6 +2077,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2113,5 +2153,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

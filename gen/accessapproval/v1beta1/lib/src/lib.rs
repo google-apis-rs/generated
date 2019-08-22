@@ -14,13 +14,13 @@ pub mod schemas {
     pub struct AccessApprovalSettings {
         #[doc = "A list of Google Cloud Services for which the given resource has Access\nApproval enrolled. Access requests for the resource given by name against\nany of these services contained here will be required to have explicit\napproval. If name refers to an organization, enrollment can be done for\nindividual services. If name refers to a folder or project, enrollment can\nonly be done on an all or nothing basis.\n\nIf a cloud_product is repeated in this list, the first entry will be\nhonored and all following entries will be discarded."]
         #[serde(rename = "enrolledServices", default)]
-        pub enrolled_services: Option<Vec<crate::schemas::EnrolledService>>,
+        pub enrolled_services: ::std::option::Option<Vec<crate::schemas::EnrolledService>>,
         #[doc = "The resource name of the settings. Format is one of:\n\n<ol>\n  <li>\"projects/{project_id}/accessApprovalSettings\"</li>\n  <li>\"folders/{folder_id}/accessApprovalSettings\"</li>\n  <li>\"organizations/{organization_id}/accessApprovalSettings\"</li>\n<ol>"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "A list of email addresses to which notifications relating to approval\nrequests should be sent. Notifications relating to a resource will be sent\nto all emails in the settings of ancestor resources of that resource."]
         #[serde(rename = "notificationEmails", default)]
-        pub notification_emails: Option<Vec<String>>,
+        pub notification_emails: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for AccessApprovalSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -29,7 +29,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -47,10 +46,10 @@ pub mod schemas {
     pub struct AccessLocations {
         #[doc = "The \"home office\" location of the principal. A two-letter country code\n(ISO 3166-1 alpha-2), such as \"US\", \"DE\" or \"GB\" or a region code. In some\nlimited situations Google systems may refer refer to a region code instead\nof a country code.\nPossible Region Codes:\n\n<ol>\n  <li>ASI: Asia</li>\n  <li>EUR: Europe</li>\n  <li>OCE: Oceania</li>\n  <li>AFR: Africa</li>\n  <li>NAM: North America</li>\n  <li>SAM: South America</li>\n  <li>ANT: Antarctica</li>\n  <li>ANY: Any location</li>\n</ol>"]
         #[serde(rename = "principalOfficeCountry", default)]
-        pub principal_office_country: Option<String>,
+        pub principal_office_country: ::std::option::Option<String>,
         #[doc = "Physical location of the principal at the time of the access. A\ntwo-letter country code (ISO 3166-1 alpha-2), such as \"US\", \"DE\" or \"GB\" or\na region code. In some limited situations Google systems may refer refer to\na region code instead of a country code.\nPossible Region Codes:\n\n<ol>\n  <li>ASI: Asia</li>\n  <li>EUR: Europe</li>\n  <li>OCE: Oceania</li>\n  <li>AFR: Africa</li>\n  <li>NAM: North America</li>\n  <li>SAM: South America</li>\n  <li>ANT: Antarctica</li>\n  <li>ANY: Any location</li>\n</ol>"]
         #[serde(rename = "principalPhysicalLocationCountry", default)]
-        pub principal_physical_location_country: Option<String>,
+        pub principal_physical_location_country: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AccessLocations {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -59,7 +58,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -116,6 +114,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AccessReasonType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -131,10 +138,10 @@ pub mod schemas {
     pub struct AccessReason {
         #[doc = "More detail about certain reason types. See comments for each type above."]
         #[serde(rename = "detail", default)]
-        pub detail: Option<String>,
+        pub detail: ::std::option::Option<String>,
         #[doc = "Type of access justification."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::AccessReasonType>,
+        pub r#type: ::std::option::Option<crate::schemas::AccessReasonType>,
     }
     impl ::field_selector::FieldSelector for AccessReason {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -143,7 +150,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -161,31 +167,32 @@ pub mod schemas {
     pub struct ApprovalRequest {
         #[doc = "Access was approved."]
         #[serde(rename = "approve", default)]
-        pub approve: Option<crate::schemas::ApproveDecision>,
+        pub approve: ::std::option::Option<crate::schemas::ApproveDecision>,
         #[doc = "The request was dismissed."]
         #[serde(rename = "dismiss", default)]
-        pub dismiss: Option<crate::schemas::DismissDecision>,
+        pub dismiss: ::std::option::Option<crate::schemas::DismissDecision>,
         #[doc = "The resource name of the request. Format is\n\"{projects|folders|organizations}/{id}/approvalRequests/{approval_request_id}\"."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The time at which approval was requested."]
         #[serde(rename = "requestTime", default)]
-        pub request_time: Option<String>,
+        pub request_time: ::std::option::Option<String>,
         #[doc = "The requested expiration for the approval. If the request is approved,\naccess will be granted from the time of approval until the expiration time."]
         #[serde(rename = "requestedExpiration", default)]
-        pub requested_expiration: Option<String>,
+        pub requested_expiration: ::std::option::Option<String>,
         #[doc = "The locations for which approval is being requested."]
         #[serde(rename = "requestedLocations", default)]
-        pub requested_locations: Option<crate::schemas::AccessLocations>,
+        pub requested_locations: ::std::option::Option<crate::schemas::AccessLocations>,
         #[doc = "The justification for which approval is being requested."]
         #[serde(rename = "requestedReason", default)]
-        pub requested_reason: Option<crate::schemas::AccessReason>,
+        pub requested_reason: ::std::option::Option<crate::schemas::AccessReason>,
         #[doc = "The resource for which approval is being requested. The format of the\nresource name is defined at\nhttps://cloud.google.com/apis/design/resource_names. The resource name here\nmay either be a \"full\" resource name (e.g.\n\"//library.googleapis.com/shelves/shelf1/books/book2\") or a \"relative\"\nresource name (e.g. \"shelves/shelf1/books/book2\") as described in the\nresource name specification."]
         #[serde(rename = "requestedResourceName", default)]
-        pub requested_resource_name: Option<String>,
+        pub requested_resource_name: ::std::option::Option<String>,
         #[doc = "Properties related to the resource represented by requested_resource_name."]
         #[serde(rename = "requestedResourceProperties", default)]
-        pub requested_resource_properties: Option<crate::schemas::ResourceProperties>,
+        pub requested_resource_properties:
+            ::std::option::Option<crate::schemas::ResourceProperties>,
     }
     impl ::field_selector::FieldSelector for ApprovalRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -194,7 +201,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -212,7 +218,7 @@ pub mod schemas {
     pub struct ApproveApprovalRequestMessage {
         #[doc = "The expiration time of this approval."]
         #[serde(rename = "expireTime", default)]
-        pub expire_time: Option<String>,
+        pub expire_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ApproveApprovalRequestMessage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -221,7 +227,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -239,10 +244,10 @@ pub mod schemas {
     pub struct ApproveDecision {
         #[doc = "The time at which approval was granted."]
         #[serde(rename = "approveTime", default)]
-        pub approve_time: Option<String>,
+        pub approve_time: ::std::option::Option<String>,
         #[doc = "The time at which the approval expires."]
         #[serde(rename = "expireTime", default)]
-        pub expire_time: Option<String>,
+        pub expire_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ApproveDecision {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -251,7 +256,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -269,7 +273,7 @@ pub mod schemas {
     )]
     pub struct DismissApprovalRequestMessage;
     impl ::field_selector::FieldSelector for DismissApprovalRequestMessage {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -286,7 +290,7 @@ pub mod schemas {
     pub struct DismissDecision {
         #[doc = "The time at which the approval request was dismissed."]
         #[serde(rename = "dismissTime", default)]
-        pub dismiss_time: Option<String>,
+        pub dismiss_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DismissDecision {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -295,7 +299,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -348,6 +351,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for EnrolledServiceEnrollmentLevel {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -363,10 +375,10 @@ pub mod schemas {
     pub struct EnrolledService {
         #[doc = "The product for which Access Approval will be enrolled. Allowed values are\nlisted below (case-sensitive):\n\n<ol>\n  <li>all</li>\n  <li>appengine.googleapis.com</li>\n  <li>bigquery.googleapis.com</li>\n  <li>bigtable.googleapis.com</li>\n  <li>cloudkms.googleapis.com</li>\n  <li>compute.googleapis.com</li>\n  <li>dataflow.googleapis.com</li>\n  <li>iam.googleapis.com</li>\n  <li>pubsub.googleapis.com</li>\n  <li>storage.googleapis.com</li>\n<ol>"]
         #[serde(rename = "cloudProduct", default)]
-        pub cloud_product: Option<String>,
+        pub cloud_product: ::std::option::Option<String>,
         #[doc = "The enrollment level of the service."]
         #[serde(rename = "enrollmentLevel", default)]
-        pub enrollment_level: Option<crate::schemas::EnrolledServiceEnrollmentLevel>,
+        pub enrollment_level: ::std::option::Option<crate::schemas::EnrolledServiceEnrollmentLevel>,
     }
     impl ::field_selector::FieldSelector for EnrolledService {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -375,7 +387,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -393,10 +404,10 @@ pub mod schemas {
     pub struct ListApprovalRequestsResponse {
         #[doc = "Approval request details."]
         #[serde(rename = "approvalRequests", default)]
-        pub approval_requests: Option<Vec<crate::schemas::ApprovalRequest>>,
+        pub approval_requests: ::std::option::Option<Vec<crate::schemas::ApprovalRequest>>,
         #[doc = "Token to retrieve the next page of results, or empty if there are no more."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListApprovalRequestsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -405,7 +416,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -423,7 +433,7 @@ pub mod schemas {
     pub struct ResourceProperties {
         #[doc = "Whether an approval will exclude the descendants of the resource being\nrequested."]
         #[serde(rename = "excludesDescendants", default)]
-        pub excludes_descendants: Option<bool>,
+        pub excludes_descendants: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for ResourceProperties {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -432,7 +442,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -487,6 +496,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -531,6 +549,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -4779,6 +4806,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4854,5 +4882,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

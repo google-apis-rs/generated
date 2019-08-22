@@ -14,10 +14,10 @@ pub mod schemas {
     pub struct DirectoryListItemsItemsIcons {
         #[doc = "The URL of the 16x16 icon."]
         #[serde(rename = "x16", default)]
-        pub x_16: Option<String>,
+        pub x_16: ::std::option::Option<String>,
         #[doc = "The URL of the 32x32 icon."]
         #[serde(rename = "x32", default)]
-        pub x_32: Option<String>,
+        pub x_32: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DirectoryListItemsItemsIcons {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -26,7 +26,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -44,40 +43,40 @@ pub mod schemas {
     pub struct DirectoryListItemsItems {
         #[doc = "The description of this API."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "A link to the discovery document."]
         #[serde(rename = "discoveryLink", default)]
-        pub discovery_link: Option<String>,
+        pub discovery_link: ::std::option::Option<String>,
         #[doc = "The URL for the discovery REST document."]
         #[serde(rename = "discoveryRestUrl", default)]
-        pub discovery_rest_url: Option<String>,
+        pub discovery_rest_url: ::std::option::Option<String>,
         #[doc = "A link to human readable documentation for the API."]
         #[serde(rename = "documentationLink", default)]
-        pub documentation_link: Option<String>,
+        pub documentation_link: ::std::option::Option<String>,
         #[doc = "Links to 16x16 and 32x32 icons representing the API."]
         #[serde(rename = "icons", default)]
-        pub icons: Option<crate::schemas::DirectoryListItemsItemsIcons>,
+        pub icons: ::std::option::Option<crate::schemas::DirectoryListItemsItemsIcons>,
         #[doc = "The id of this API."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The kind for this response."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Labels for the status of this API, such as labs or deprecated."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<Vec<String>>,
+        pub labels: ::std::option::Option<Vec<String>>,
         #[doc = "The name of the API."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "True if this version is the preferred version to use."]
         #[serde(rename = "preferred", default)]
-        pub preferred: Option<bool>,
+        pub preferred: ::std::option::Option<bool>,
         #[doc = "The title of this API."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "The version of the API."]
         #[serde(rename = "version", default)]
-        pub version: Option<String>,
+        pub version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DirectoryListItemsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -86,7 +85,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -104,13 +102,13 @@ pub mod schemas {
     pub struct DirectoryList {
         #[doc = "Indicate the version of the Discovery API used to generate this doc."]
         #[serde(rename = "discoveryVersion", default)]
-        pub discovery_version: Option<String>,
+        pub discovery_version: ::std::option::Option<String>,
         #[doc = "The individual directory entries. One entry per api/version pair."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::DirectoryListItemsItems>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::DirectoryListItemsItems>>,
         #[doc = "The kind for this response."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DirectoryList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -119,7 +117,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -137,7 +134,7 @@ pub mod schemas {
     pub struct JsonSchemaAnnotations {
         #[doc = "A list of methods for which this property is required on requests."]
         #[serde(rename = "required", default)]
-        pub required: Option<Vec<String>>,
+        pub required: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for JsonSchemaAnnotations {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -146,7 +143,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -163,9 +159,9 @@ pub mod schemas {
     )]
     pub struct JsonSchemaVariantMapItems {
         #[serde(rename = "$ref", default)]
-        pub r#ref: Option<String>,
+        pub r#ref: ::std::option::Option<String>,
         #[serde(rename = "type_value", default)]
-        pub type_value: Option<String>,
+        pub type_value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for JsonSchemaVariantMapItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -174,7 +170,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -192,10 +187,10 @@ pub mod schemas {
     pub struct JsonSchemaVariant {
         #[doc = "The name of the type discriminant property."]
         #[serde(rename = "discriminant", default)]
-        pub discriminant: Option<String>,
+        pub discriminant: ::std::option::Option<String>,
         #[doc = "The map of discriminant value to schema to use for parsing.."]
         #[serde(rename = "map", default)]
-        pub map: Option<Vec<crate::schemas::JsonSchemaVariantMapItems>>,
+        pub map: ::std::option::Option<Vec<crate::schemas::JsonSchemaVariantMapItems>>,
     }
     impl ::field_selector::FieldSelector for JsonSchemaVariant {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -204,7 +199,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -222,64 +216,65 @@ pub mod schemas {
     pub struct JsonSchema {
         #[doc = "If this is a schema for an object, this property is the schema for any additional properties with dynamic keys on this object."]
         #[serde(rename = "additionalProperties", default)]
-        pub additional_properties: Option<crate::schemas::JsonSchema>,
+        pub additional_properties: ::std::option::Option<crate::schemas::JsonSchema>,
         #[doc = "Additional information about this property."]
         #[serde(rename = "annotations", default)]
-        pub annotations: Option<crate::schemas::JsonSchemaAnnotations>,
+        pub annotations: ::std::option::Option<crate::schemas::JsonSchemaAnnotations>,
         #[doc = "The default value of this property (if one exists)."]
         #[serde(rename = "default", default)]
-        pub default: Option<String>,
+        pub default: ::std::option::Option<String>,
         #[doc = "A description of this object."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The descriptions for the enums. Each position maps to the corresponding value in the \"enum\" array."]
         #[serde(rename = "enumDescriptions", default)]
-        pub enum_descriptions: Option<Vec<String>>,
+        pub enum_descriptions: ::std::option::Option<Vec<String>>,
         #[doc = "An additional regular expression or key that helps constrain the value. For more details see: http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.23"]
         #[serde(rename = "format", default)]
-        pub format: Option<String>,
+        pub format: ::std::option::Option<String>,
         #[doc = "Unique identifier for this schema."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "If this is a schema for an array, this property is the schema for each element in the array."]
         #[serde(rename = "items", default)]
-        pub items: Option<crate::schemas::JsonSchema>,
+        pub items: ::std::option::Option<crate::schemas::JsonSchema>,
         #[doc = "Whether this parameter goes in the query or the path for REST requests."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "The maximum value of this parameter."]
         #[serde(rename = "maximum", default)]
-        pub maximum: Option<String>,
+        pub maximum: ::std::option::Option<String>,
         #[doc = "The minimum value of this parameter."]
         #[serde(rename = "minimum", default)]
-        pub minimum: Option<String>,
+        pub minimum: ::std::option::Option<String>,
         #[doc = "The regular expression this parameter must conform to. Uses Java 6 regex format: http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html"]
         #[serde(rename = "pattern", default)]
-        pub pattern: Option<String>,
+        pub pattern: ::std::option::Option<String>,
         #[doc = "If this is a schema for an object, list the schema for each property of this object."]
         #[serde(rename = "properties", default)]
-        pub properties: Option<::std::collections::BTreeMap<String, crate::schemas::JsonSchema>>,
+        pub properties:
+            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::JsonSchema>>,
         #[doc = "Values this parameter may take (if it is an enum)."]
         #[serde(rename = "enum", default)]
-        pub r#enum: Option<Vec<String>>,
+        pub r#enum: ::std::option::Option<Vec<String>>,
         #[doc = "A reference to another schema. The value of this property is the \"id\" of another schema."]
         #[serde(rename = "$ref", default)]
-        pub r#ref: Option<String>,
+        pub r#ref: ::std::option::Option<String>,
         #[doc = "The value type for this schema. A list of values can be found here: http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.1"]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "The value is read-only, generated by the service. The value cannot be modified by the client. If the value is included in a POST, PUT, or PATCH request, it is ignored by the service."]
         #[serde(rename = "readOnly", default)]
-        pub read_only: Option<bool>,
+        pub read_only: ::std::option::Option<bool>,
         #[doc = "Whether this parameter may appear multiple times."]
         #[serde(rename = "repeated", default)]
-        pub repeated: Option<bool>,
+        pub repeated: ::std::option::Option<bool>,
         #[doc = "Whether the parameter is required."]
         #[serde(rename = "required", default)]
-        pub required: Option<bool>,
+        pub required: ::std::option::Option<bool>,
         #[doc = "In a variant data type, the value of one property is used to determine how to interpret the entire entity. Its value must exist in a map of descriminant values to schema names."]
         #[serde(rename = "variant", default)]
-        pub variant: Option<crate::schemas::JsonSchemaVariant>,
+        pub variant: ::std::option::Option<crate::schemas::JsonSchemaVariant>,
     }
     impl ::field_selector::FieldSelector for JsonSchema {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -288,7 +283,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -306,7 +300,7 @@ pub mod schemas {
     pub struct RestDescriptionAuthOauth2ScopesAdditionalProperties {
         #[doc = "Description of scope."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RestDescriptionAuthOauth2ScopesAdditionalProperties {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -315,7 +309,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -333,7 +326,7 @@ pub mod schemas {
     pub struct RestDescriptionAuthOauth2 {
         #[doc = "Available OAuth 2.0 scopes."]
         #[serde(rename = "scopes", default)]
-        pub scopes: Option<
+        pub scopes: ::std::option::Option<
             ::std::collections::BTreeMap<
                 String,
                 crate::schemas::RestDescriptionAuthOauth2ScopesAdditionalProperties,
@@ -347,7 +340,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -365,7 +357,7 @@ pub mod schemas {
     pub struct RestDescriptionAuth {
         #[doc = "OAuth 2.0 authentication information."]
         #[serde(rename = "oauth2", default)]
-        pub oauth_2: Option<crate::schemas::RestDescriptionAuthOauth2>,
+        pub oauth_2: ::std::option::Option<crate::schemas::RestDescriptionAuthOauth2>,
     }
     impl ::field_selector::FieldSelector for RestDescriptionAuth {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -374,7 +366,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -392,10 +383,10 @@ pub mod schemas {
     pub struct RestDescriptionIcons {
         #[doc = "The URL of the 16x16 icon."]
         #[serde(rename = "x16", default)]
-        pub x_16: Option<String>,
+        pub x_16: ::std::option::Option<String>,
         #[doc = "The URL of the 32x32 icon."]
         #[serde(rename = "x32", default)]
-        pub x_32: Option<String>,
+        pub x_32: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RestDescriptionIcons {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -404,7 +395,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -422,93 +412,98 @@ pub mod schemas {
     pub struct RestDescription {
         #[doc = "Authentication information."]
         #[serde(rename = "auth", default)]
-        pub auth: Option<crate::schemas::RestDescriptionAuth>,
+        pub auth: ::std::option::Option<crate::schemas::RestDescriptionAuth>,
         #[doc = "[DEPRECATED] The base path for REST requests."]
         #[serde(rename = "basePath", default)]
-        pub base_path: Option<String>,
+        pub base_path: ::std::option::Option<String>,
         #[doc = "[DEPRECATED] The base URL for REST requests."]
         #[serde(rename = "baseUrl", default)]
-        pub base_url: Option<String>,
+        pub base_url: ::std::option::Option<String>,
         #[doc = "The path for REST batch requests."]
         #[serde(rename = "batchPath", default)]
-        pub batch_path: Option<String>,
+        pub batch_path: ::std::option::Option<String>,
         #[doc = "Indicates how the API name should be capitalized and split into various parts. Useful for generating pretty class names."]
         #[serde(rename = "canonicalName", default)]
-        pub canonical_name: Option<String>,
+        pub canonical_name: ::std::option::Option<String>,
         #[doc = "The description of this API."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Indicate the version of the Discovery API used to generate this doc."]
         #[serde(rename = "discoveryVersion", default)]
-        pub discovery_version: Option<String>,
+        pub discovery_version: ::std::option::Option<String>,
         #[doc = "A link to human readable documentation for the API."]
         #[serde(rename = "documentationLink", default)]
-        pub documentation_link: Option<String>,
+        pub documentation_link: ::std::option::Option<String>,
         #[doc = "The ETag for this response."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Enable exponential backoff for suitable methods in the generated clients."]
         #[serde(rename = "exponentialBackoffDefault", default)]
-        pub exponential_backoff_default: Option<bool>,
+        pub exponential_backoff_default: ::std::option::Option<bool>,
         #[doc = "A list of supported features for this API."]
         #[serde(rename = "features", default)]
-        pub features: Option<Vec<String>>,
+        pub features: ::std::option::Option<Vec<String>>,
         #[doc = "Links to 16x16 and 32x32 icons representing the API."]
         #[serde(rename = "icons", default)]
-        pub icons: Option<crate::schemas::RestDescriptionIcons>,
+        pub icons: ::std::option::Option<crate::schemas::RestDescriptionIcons>,
         #[doc = "The ID of this API."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The kind for this response."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Labels for the status of this API, such as labs or deprecated."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<Vec<String>>,
+        pub labels: ::std::option::Option<Vec<String>>,
         #[doc = "API-level methods for this API."]
         #[serde(rename = "methods", default)]
-        pub methods: Option<::std::collections::BTreeMap<String, crate::schemas::RestMethod>>,
+        pub methods:
+            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::RestMethod>>,
         #[doc = "The name of this API."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The domain of the owner of this API. Together with the ownerName and a packagePath values, this can be used to generate a library for this API which would have a unique fully qualified name."]
         #[serde(rename = "ownerDomain", default)]
-        pub owner_domain: Option<String>,
+        pub owner_domain: ::std::option::Option<String>,
         #[doc = "The name of the owner of this API. See ownerDomain."]
         #[serde(rename = "ownerName", default)]
-        pub owner_name: Option<String>,
+        pub owner_name: ::std::option::Option<String>,
         #[doc = "The package of the owner of this API. See ownerDomain."]
         #[serde(rename = "packagePath", default)]
-        pub package_path: Option<String>,
+        pub package_path: ::std::option::Option<String>,
         #[doc = "Common parameters that apply across all apis."]
         #[serde(rename = "parameters", default)]
-        pub parameters: Option<::std::collections::BTreeMap<String, crate::schemas::JsonSchema>>,
+        pub parameters:
+            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::JsonSchema>>,
         #[doc = "The protocol described by this document."]
         #[serde(rename = "protocol", default)]
-        pub protocol: Option<String>,
+        pub protocol: ::std::option::Option<String>,
         #[doc = "The resources in this API."]
         #[serde(rename = "resources", default)]
-        pub resources: Option<::std::collections::BTreeMap<String, crate::schemas::RestResource>>,
+        pub resources: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::RestResource>,
+        >,
         #[doc = "The version of this API."]
         #[serde(rename = "revision", default)]
-        pub revision: Option<String>,
+        pub revision: ::std::option::Option<String>,
         #[doc = "The root URL under which all API services live."]
         #[serde(rename = "rootUrl", default)]
-        pub root_url: Option<String>,
+        pub root_url: ::std::option::Option<String>,
         #[doc = "The schemas for this API."]
         #[serde(rename = "schemas", default)]
-        pub schemas: Option<::std::collections::BTreeMap<String, crate::schemas::JsonSchema>>,
+        pub schemas:
+            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::JsonSchema>>,
         #[doc = "The base path for all REST requests."]
         #[serde(rename = "servicePath", default)]
-        pub service_path: Option<String>,
+        pub service_path: ::std::option::Option<String>,
         #[doc = "The title of this API."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "The version of this API."]
         #[serde(rename = "version", default)]
-        pub version: Option<String>,
+        pub version: ::std::option::Option<String>,
         #[serde(rename = "version_module", default)]
-        pub version_module: Option<bool>,
+        pub version_module: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for RestDescription {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -517,7 +512,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -535,10 +529,10 @@ pub mod schemas {
     pub struct RestMethodMediaUploadProtocolsResumable {
         #[doc = "True if this endpoint supports uploading multipart media."]
         #[serde(rename = "multipart", default)]
-        pub multipart: Option<bool>,
+        pub multipart: ::std::option::Option<bool>,
         #[doc = "The URI path to be used for upload. Should be used in conjunction with the basePath property at the api-level."]
         #[serde(rename = "path", default)]
-        pub path: Option<String>,
+        pub path: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RestMethodMediaUploadProtocolsResumable {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -547,7 +541,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -565,10 +558,10 @@ pub mod schemas {
     pub struct RestMethodMediaUploadProtocolsSimple {
         #[doc = "True if this endpoint supports upload multipart media."]
         #[serde(rename = "multipart", default)]
-        pub multipart: Option<bool>,
+        pub multipart: ::std::option::Option<bool>,
         #[doc = "The URI path to be used for upload. Should be used in conjunction with the basePath property at the api-level."]
         #[serde(rename = "path", default)]
-        pub path: Option<String>,
+        pub path: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RestMethodMediaUploadProtocolsSimple {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -577,7 +570,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -595,10 +587,11 @@ pub mod schemas {
     pub struct RestMethodMediaUploadProtocols {
         #[doc = "Supports the Resumable Media Upload protocol."]
         #[serde(rename = "resumable", default)]
-        pub resumable: Option<crate::schemas::RestMethodMediaUploadProtocolsResumable>,
+        pub resumable:
+            ::std::option::Option<crate::schemas::RestMethodMediaUploadProtocolsResumable>,
         #[doc = "Supports uploading as a single HTTP request."]
         #[serde(rename = "simple", default)]
-        pub simple: Option<crate::schemas::RestMethodMediaUploadProtocolsSimple>,
+        pub simple: ::std::option::Option<crate::schemas::RestMethodMediaUploadProtocolsSimple>,
     }
     impl ::field_selector::FieldSelector for RestMethodMediaUploadProtocols {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -607,7 +600,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -625,13 +617,13 @@ pub mod schemas {
     pub struct RestMethodMediaUpload {
         #[doc = "MIME Media Ranges for acceptable media uploads to this method."]
         #[serde(rename = "accept", default)]
-        pub accept: Option<Vec<String>>,
+        pub accept: ::std::option::Option<Vec<String>>,
         #[doc = "Maximum size of a media upload, such as \"1MB\", \"2GB\" or \"3TB\"."]
         #[serde(rename = "maxSize", default)]
-        pub max_size: Option<String>,
+        pub max_size: ::std::option::Option<String>,
         #[doc = "Supported upload protocols."]
         #[serde(rename = "protocols", default)]
-        pub protocols: Option<crate::schemas::RestMethodMediaUploadProtocols>,
+        pub protocols: ::std::option::Option<crate::schemas::RestMethodMediaUploadProtocols>,
     }
     impl ::field_selector::FieldSelector for RestMethodMediaUpload {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -640,7 +632,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -658,10 +649,10 @@ pub mod schemas {
     pub struct RestMethodRequest {
         #[doc = "parameter name."]
         #[serde(rename = "parameterName", default)]
-        pub parameter_name: Option<String>,
+        pub parameter_name: ::std::option::Option<String>,
         #[doc = "Schema ID for the request schema."]
         #[serde(rename = "$ref", default)]
-        pub r#ref: Option<String>,
+        pub r#ref: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RestMethodRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -670,7 +661,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -688,7 +678,7 @@ pub mod schemas {
     pub struct RestMethodResponse {
         #[doc = "Schema ID for the response schema."]
         #[serde(rename = "$ref", default)]
-        pub r#ref: Option<String>,
+        pub r#ref: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RestMethodResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -697,7 +687,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -715,49 +704,50 @@ pub mod schemas {
     pub struct RestMethod {
         #[doc = "Description of this method."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Whether this method requires an ETag to be specified. The ETag is sent as an HTTP If-Match or If-None-Match header."]
         #[serde(rename = "etagRequired", default)]
-        pub etag_required: Option<bool>,
+        pub etag_required: ::std::option::Option<bool>,
         #[doc = "HTTP method used by this method."]
         #[serde(rename = "httpMethod", default)]
-        pub http_method: Option<String>,
+        pub http_method: ::std::option::Option<String>,
         #[doc = "A unique ID for this method. This property can be used to match methods between different versions of Discovery."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Media upload parameters."]
         #[serde(rename = "mediaUpload", default)]
-        pub media_upload: Option<crate::schemas::RestMethodMediaUpload>,
+        pub media_upload: ::std::option::Option<crate::schemas::RestMethodMediaUpload>,
         #[doc = "Ordered list of required parameters, serves as a hint to clients on how to structure their method signatures. The array is ordered such that the \"most-significant\" parameter appears first."]
         #[serde(rename = "parameterOrder", default)]
-        pub parameter_order: Option<Vec<String>>,
+        pub parameter_order: ::std::option::Option<Vec<String>>,
         #[doc = "Details for all parameters in this method."]
         #[serde(rename = "parameters", default)]
-        pub parameters: Option<::std::collections::BTreeMap<String, crate::schemas::JsonSchema>>,
+        pub parameters:
+            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::JsonSchema>>,
         #[doc = "The URI path of this REST method. Should be used in conjunction with the basePath property at the api-level."]
         #[serde(rename = "path", default)]
-        pub path: Option<String>,
+        pub path: ::std::option::Option<String>,
         #[doc = "The schema for the request."]
         #[serde(rename = "request", default)]
-        pub request: Option<crate::schemas::RestMethodRequest>,
+        pub request: ::std::option::Option<crate::schemas::RestMethodRequest>,
         #[doc = "The schema for the response."]
         #[serde(rename = "response", default)]
-        pub response: Option<crate::schemas::RestMethodResponse>,
+        pub response: ::std::option::Option<crate::schemas::RestMethodResponse>,
         #[doc = "OAuth 2.0 scopes applicable to this method."]
         #[serde(rename = "scopes", default)]
-        pub scopes: Option<Vec<String>>,
+        pub scopes: ::std::option::Option<Vec<String>>,
         #[doc = "Whether this method supports media downloads."]
         #[serde(rename = "supportsMediaDownload", default)]
-        pub supports_media_download: Option<bool>,
+        pub supports_media_download: ::std::option::Option<bool>,
         #[doc = "Whether this method supports media uploads."]
         #[serde(rename = "supportsMediaUpload", default)]
-        pub supports_media_upload: Option<bool>,
+        pub supports_media_upload: ::std::option::Option<bool>,
         #[doc = "Whether this method supports subscriptions."]
         #[serde(rename = "supportsSubscription", default)]
-        pub supports_subscription: Option<bool>,
+        pub supports_subscription: ::std::option::Option<bool>,
         #[doc = "Indicates that downloads from this method should use the download service URL (i.e. \"/download\"). Only applies if the method supports media download."]
         #[serde(rename = "useMediaDownloadService", default)]
-        pub use_media_download_service: Option<bool>,
+        pub use_media_download_service: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for RestMethod {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -766,7 +756,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -784,10 +773,13 @@ pub mod schemas {
     pub struct RestResource {
         #[doc = "Methods on this resource."]
         #[serde(rename = "methods", default)]
-        pub methods: Option<::std::collections::BTreeMap<String, crate::schemas::RestMethod>>,
+        pub methods:
+            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::RestMethod>>,
         #[doc = "Sub-resources on this resource."]
         #[serde(rename = "resources", default)]
-        pub resources: Option<::std::collections::BTreeMap<String, crate::schemas::RestResource>>,
+        pub resources: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::RestResource>,
+        >,
     }
     impl ::field_selector::FieldSelector for RestResource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -796,7 +788,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -841,6 +832,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1446,6 +1446,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1521,5 +1522,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

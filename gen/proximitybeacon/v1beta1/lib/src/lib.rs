@@ -57,6 +57,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AdvertisedIdType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -72,10 +81,10 @@ pub mod schemas {
     pub struct AdvertisedId {
         #[doc = "The actual beacon identifier, as broadcast by the beacon hardware. Must be\n[base64](http://tools.ietf.org/html/rfc4648#section-4) encoded in HTTP\nrequests, and will be so encoded (with padding) in responses. The base64\nencoding should be of the binary byte-stream and not any textual (such as\nhex) representation thereof.\nRequired."]
         #[serde(rename = "id", default)]
-        pub id: Option<Vec<u8>>,
+        pub id: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Specifies the identifier type.\nRequired."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::AdvertisedIdType>,
+        pub r#type: ::std::option::Option<crate::schemas::AdvertisedIdType>,
     }
     impl ::field_selector::FieldSelector for AdvertisedId {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -84,7 +93,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -93,13 +101,13 @@ pub mod schemas {
     pub struct AttachmentInfo {
         #[doc = "An opaque data container for client-provided data."]
         #[serde(rename = "data", default)]
-        pub data: Option<Vec<u8>>,
+        pub data: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "The distance away from the beacon at which this attachment should be\ndelivered to a mobile app.\n\nSetting this to a value greater than zero indicates that the app should\nbehave as if the beacon is \"seen\" when the mobile device is less than this\ndistance away from the beacon.\n\nDifferent attachments on the same beacon can have different max distances.\n\nNote that even though this value is expressed with fractional meter\nprecision, real-world behavior is likley to be much less precise than one\nmeter, due to the nature of current Bluetooth radio technology.\n\nOptional. When not set or zero, the attachment should be delivered at the\nbeacon's outer limit of detection."]
         #[serde(rename = "maxDistanceMeters", default)]
-        pub max_distance_meters: Option<f64>,
+        pub max_distance_meters: ::std::option::Option<f64>,
         #[doc = "Specifies what kind of attachment this is. Tells a client how to\ninterpret the `data` field. Format is <var>namespace/type</var>, for\nexample <code>scrupulous-wombat-12345/welcome-message</code>"]
         #[serde(rename = "namespacedType", default)]
-        pub namespaced_type: Option<String>,
+        pub namespaced_type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AttachmentInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -108,7 +116,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -169,6 +176,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for BeaconExpectedStability {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BeaconStatus {
         #[doc = "Do not use this value."]
@@ -223,43 +239,53 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for BeaconStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Beacon {
         #[doc = "The identifier of a beacon as advertised by it. This field must be\npopulated when registering. It may be empty when updating a beacon\nrecord because it is ignored in updates.\n\nWhen registering a beacon that broadcasts Eddystone-EID, this field\nshould contain a \"stable\" Eddystone-UID that identifies the beacon and\nlinks it to its attachments. The stable Eddystone-UID is only used for\nadministering the beacon."]
         #[serde(rename = "advertisedId", default)]
-        pub advertised_id: Option<crate::schemas::AdvertisedId>,
+        pub advertised_id: ::std::option::Option<crate::schemas::AdvertisedId>,
         #[doc = "Resource name of this beacon. A beacon name has the format\n\"beacons/N!beaconId\" where the beaconId is the base16 ID broadcast by\nthe beacon and N is a code for the beacon's type. Possible values are\n`3` for Eddystone, `1` for iBeacon, or `5` for AltBeacon.\n\nThis field must be left empty when registering. After reading a beacon,\nclients can use the name for future operations."]
         #[serde(rename = "beaconName", default)]
-        pub beacon_name: Option<String>,
+        pub beacon_name: ::std::option::Option<String>,
         #[doc = "Free text used to identify and describe the beacon. Maximum length 140\ncharacters.\nOptional."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Write-only registration parameters for beacons using Eddystone-EID\n(remotely resolved ephemeral ID) format. This information will not be\npopulated in API responses. When submitting this data, the `advertised_id`\nfield must contain an ID of type Eddystone-UID. Any other ID type will\nresult in an error."]
         #[serde(rename = "ephemeralIdRegistration", default)]
-        pub ephemeral_id_registration: Option<crate::schemas::EphemeralIdRegistration>,
+        pub ephemeral_id_registration:
+            ::std::option::Option<crate::schemas::EphemeralIdRegistration>,
         #[doc = "Expected location stability. This is set when the beacon is registered or\nupdated, not automatically detected in any way.\nOptional."]
         #[serde(rename = "expectedStability", default)]
-        pub expected_stability: Option<crate::schemas::BeaconExpectedStability>,
+        pub expected_stability: ::std::option::Option<crate::schemas::BeaconExpectedStability>,
         #[doc = "The indoor level information for this beacon, if known. As returned by the\nGoogle Maps API.\nOptional."]
         #[serde(rename = "indoorLevel", default)]
-        pub indoor_level: Option<crate::schemas::IndoorLevel>,
+        pub indoor_level: ::std::option::Option<crate::schemas::IndoorLevel>,
         #[doc = "The location of the beacon, expressed as a latitude and longitude pair.\nThis location is given when the beacon is registered or updated. It does\nnot necessarily indicate the actual current location of the beacon.\nOptional."]
         #[serde(rename = "latLng", default)]
-        pub lat_lng: Option<crate::schemas::LatLng>,
+        pub lat_lng: ::std::option::Option<crate::schemas::LatLng>,
         #[doc = "The [Google Places API](/places/place-id) Place ID of the place where\nthe beacon is deployed. This is given when the beacon is registered or\nupdated, not automatically detected in any way.\nOptional."]
         #[serde(rename = "placeId", default)]
-        pub place_id: Option<String>,
+        pub place_id: ::std::option::Option<String>,
         #[doc = "Properties of the beacon device, for example battery type or firmware\nversion.\nOptional."]
         #[serde(rename = "properties", default)]
-        pub properties: Option<::std::collections::BTreeMap<String, String>>,
+        pub properties: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Some beacons may require a user to provide an authorization key before\nchanging any of its configuration (e.g. broadcast frames, transmit power).\nThis field provides a place to store and control access to that key.\nThis field is populated in responses to `GET /v1beta1/beacons/3!beaconId`\nfrom users with write access to the given beacon. That is to say: If the\nuser is authorized to write the beacon's confidential data in the service,\nthe service considers them authorized to configure the beacon. Note\nthat this key grants nothing on the service, only on the beacon itself."]
         #[serde(rename = "provisioningKey", default)]
-        pub provisioning_key: Option<Vec<u8>>,
+        pub provisioning_key: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Current status of the beacon.\nRequired."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::BeaconStatus>,
+        pub status: ::std::option::Option<crate::schemas::BeaconStatus>,
     }
     impl ::field_selector::FieldSelector for Beacon {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -268,7 +294,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -277,19 +302,19 @@ pub mod schemas {
     pub struct BeaconAttachment {
         #[doc = "Resource name of this attachment. Attachment names have the format:\n<code>beacons/<var>beacon_id</var>/attachments/<var>attachment_id</var></code>.\nLeave this empty on creation."]
         #[serde(rename = "attachmentName", default)]
-        pub attachment_name: Option<String>,
+        pub attachment_name: ::std::option::Option<String>,
         #[doc = "The UTC time when this attachment was created, in milliseconds since the\nUNIX epoch."]
         #[serde(rename = "creationTimeMs", default)]
-        pub creation_time_ms: Option<String>,
+        pub creation_time_ms: ::std::option::Option<String>,
         #[doc = "An opaque data container for client-provided data. Must be\n[base64](http://tools.ietf.org/html/rfc4648#section-4) encoded in HTTP\nrequests, and will be so encoded (with padding) in responses.\nRequired."]
         #[serde(rename = "data", default)]
-        pub data: Option<Vec<u8>>,
+        pub data: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "The distance away from the beacon at which this attachment should be\ndelivered to a mobile app.\n\nSetting this to a value greater than zero indicates that the app should\nbehave as if the beacon is \"seen\" when the mobile device is less than this\ndistance away from the beacon.\n\nDifferent attachments on the same beacon can have different max distances.\n\nNote that even though this value is expressed with fractional meter\nprecision, real-world behavior is likley to be much less precise than one\nmeter, due to the nature of current Bluetooth radio technology.\n\nOptional. When not set or zero, the attachment should be delivered at the\nbeacon's outer limit of detection.\n\nNegative values are invalid and return an error."]
         #[serde(rename = "maxDistanceMeters", default)]
-        pub max_distance_meters: Option<f64>,
+        pub max_distance_meters: ::std::option::Option<f64>,
         #[doc = "Specifies what kind of attachment this is. Tells a client how to\ninterpret the `data` field. Format is <var>namespace/type</var>. Namespace\nprovides type separation between clients. Type describes the type of\n`data`, for use by the client when parsing the `data` field.\nRequired."]
         #[serde(rename = "namespacedType", default)]
-        pub namespaced_type: Option<String>,
+        pub namespaced_type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BeaconAttachment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -298,7 +323,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -307,13 +331,13 @@ pub mod schemas {
     pub struct BeaconInfo {
         #[doc = "The ID advertised by the beacon."]
         #[serde(rename = "advertisedId", default)]
-        pub advertised_id: Option<crate::schemas::AdvertisedId>,
+        pub advertised_id: ::std::option::Option<crate::schemas::AdvertisedId>,
         #[doc = "Attachments matching the type(s) requested.\nMay be empty if no attachment types were requested."]
         #[serde(rename = "attachments", default)]
-        pub attachments: Option<Vec<crate::schemas::AttachmentInfo>>,
+        pub attachments: ::std::option::Option<Vec<crate::schemas::AttachmentInfo>>,
         #[doc = "The name under which the beacon is registered."]
         #[serde(rename = "beaconName", default)]
-        pub beacon_name: Option<String>,
+        pub beacon_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BeaconInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -322,7 +346,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -340,13 +363,13 @@ pub mod schemas {
     pub struct Date {
         #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year by itself or a year and month where the day is not\nsignificant."]
         #[serde(rename = "day", default)]
-        pub day: Option<i32>,
+        pub day: ::std::option::Option<i32>,
         #[doc = "Month of year. Must be from 1 to 12, or 0 if specifying a year without a\nmonth and day."]
         #[serde(rename = "month", default)]
-        pub month: Option<i32>,
+        pub month: ::std::option::Option<i32>,
         #[doc = "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year."]
         #[serde(rename = "year", default)]
-        pub year: Option<i32>,
+        pub year: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Date {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -355,7 +378,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -373,7 +395,7 @@ pub mod schemas {
     pub struct DeleteAttachmentsResponse {
         #[doc = "The number of attachments that were deleted."]
         #[serde(rename = "numDeleted", default)]
-        pub num_deleted: Option<i32>,
+        pub num_deleted: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for DeleteAttachmentsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -382,7 +404,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -435,6 +456,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DiagnosticsAlertsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -450,13 +480,13 @@ pub mod schemas {
     pub struct Diagnostics {
         #[doc = "An unordered list of Alerts that the beacon has."]
         #[serde(rename = "alerts", default)]
-        pub alerts: Option<Vec<crate::schemas::DiagnosticsAlertsItems>>,
+        pub alerts: ::std::option::Option<Vec<crate::schemas::DiagnosticsAlertsItems>>,
         #[doc = "Resource name of the beacon. For Eddystone-EID beacons, this may\nbe the beacon's current EID, or the beacon's \"stable\" Eddystone-UID."]
         #[serde(rename = "beaconName", default)]
-        pub beacon_name: Option<String>,
+        pub beacon_name: ::std::option::Option<String>,
         #[doc = "The date when the battery is expected to be low. If the value is missing\nthen there is no estimate for when the battery will be low.\nThis value is only an estimate, not an exact date."]
         #[serde(rename = "estimatedLowBatteryDate", default)]
-        pub estimated_low_battery_date: Option<crate::schemas::Date>,
+        pub estimated_low_battery_date: ::std::option::Option<crate::schemas::Date>,
     }
     impl ::field_selector::FieldSelector for Diagnostics {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -465,7 +495,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -483,7 +512,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -500,23 +529,23 @@ pub mod schemas {
     pub struct EphemeralIdRegistration {
         #[doc = "The beacon's public key used for the Elliptic curve Diffie-Hellman\nkey exchange. When this field is populated, `service_ecdh_public_key`\nmust also be populated, and `beacon_identity_key` must not be."]
         #[serde(rename = "beaconEcdhPublicKey", default)]
-        pub beacon_ecdh_public_key: Option<Vec<u8>>,
+        pub beacon_ecdh_public_key: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "The private key of the beacon. If this field is populated,\n`beacon_ecdh_public_key` and `service_ecdh_public_key` must not be\npopulated."]
         #[serde(rename = "beaconIdentityKey", default)]
-        pub beacon_identity_key: Option<Vec<u8>>,
+        pub beacon_identity_key: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "The initial clock value of the beacon. The beacon's clock must have\nbegun counting at this value immediately prior to transmitting this\nvalue to the resolving service. Significant delay in transmitting this\nvalue to the service risks registration or resolution failures. If a\nvalue is not provided, the default is zero."]
         #[serde(rename = "initialClockValue", default)]
         #[serde(with = "crate::parsed_string")]
-        pub initial_clock_value: Option<u64>,
+        pub initial_clock_value: ::std::option::Option<u64>,
         #[doc = "An initial ephemeral ID calculated using the clock value submitted as\n`initial_clock_value`, and the secret key generated by the\nDiffie-Hellman key exchange using `service_ecdh_public_key` and\n`service_ecdh_public_key`. This initial EID value will be used by the\nservice to confirm that the key exchange process was successful."]
         #[serde(rename = "initialEid", default)]
-        pub initial_eid: Option<Vec<u8>>,
+        pub initial_eid: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Indicates the nominal period between each rotation of the beacon's\nephemeral ID. \"Nominal\" because the beacon should randomize the\nactual interval. See [the spec at\ngithub](https://github.com/google/eddystone/tree/master/eddystone-eid)\nfor details. This value corresponds to a power-of-two scaler on the\nbeacon's clock: when the scaler value is K, the beacon will begin\nbroadcasting a new ephemeral ID on average every 2^K seconds."]
         #[serde(rename = "rotationPeriodExponent", default)]
-        pub rotation_period_exponent: Option<u32>,
+        pub rotation_period_exponent: ::std::option::Option<u32>,
         #[doc = "The service's public key used for the Elliptic curve Diffie-Hellman\nkey exchange. When this field is populated, `beacon_ecdh_public_key`\nmust also be populated, and `beacon_identity_key` must not be."]
         #[serde(rename = "serviceEcdhPublicKey", default)]
-        pub service_ecdh_public_key: Option<Vec<u8>>,
+        pub service_ecdh_public_key: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for EphemeralIdRegistration {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -525,7 +554,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -543,13 +571,13 @@ pub mod schemas {
     pub struct EphemeralIdRegistrationParams {
         #[doc = "Indicates the maximum rotation period supported by the service.\nSee EddystoneEidRegistration.rotation_period_exponent"]
         #[serde(rename = "maxRotationPeriodExponent", default)]
-        pub max_rotation_period_exponent: Option<u32>,
+        pub max_rotation_period_exponent: ::std::option::Option<u32>,
         #[doc = "Indicates the minimum rotation period supported by the service.\nSee EddystoneEidRegistration.rotation_period_exponent"]
         #[serde(rename = "minRotationPeriodExponent", default)]
-        pub min_rotation_period_exponent: Option<u32>,
+        pub min_rotation_period_exponent: ::std::option::Option<u32>,
         #[doc = "The beacon service's public key for use by a beacon to derive its\nIdentity Key using Elliptic Curve Diffie-Hellman key exchange."]
         #[serde(rename = "serviceEcdhPublicKey", default)]
-        pub service_ecdh_public_key: Option<Vec<u8>>,
+        pub service_ecdh_public_key: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for EphemeralIdRegistrationParams {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -558,7 +586,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -576,10 +603,10 @@ pub mod schemas {
     pub struct GetInfoForObservedBeaconsRequest {
         #[doc = "Specifies what kind of attachments to include in the response.\nWhen given, the response will include only attachments of the given types.\nWhen empty, no attachments will be returned. Must be in the format\n<var>namespace/type</var>. Accepts `*` to specify all types in\nall namespaces owned by the client.\nOptional."]
         #[serde(rename = "namespacedTypes", default)]
-        pub namespaced_types: Option<Vec<String>>,
+        pub namespaced_types: ::std::option::Option<Vec<String>>,
         #[doc = "The beacons that the client has encountered.\nAt least one must be given."]
         #[serde(rename = "observations", default)]
-        pub observations: Option<Vec<crate::schemas::Observation>>,
+        pub observations: ::std::option::Option<Vec<crate::schemas::Observation>>,
     }
     impl ::field_selector::FieldSelector for GetInfoForObservedBeaconsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -588,7 +615,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -597,7 +623,7 @@ pub mod schemas {
     pub struct GetInfoForObservedBeaconsResponse {
         #[doc = "Public information about beacons.\nMay be empty if the request matched no beacons."]
         #[serde(rename = "beacons", default)]
-        pub beacons: Option<Vec<crate::schemas::BeaconInfo>>,
+        pub beacons: ::std::option::Option<Vec<crate::schemas::BeaconInfo>>,
     }
     impl ::field_selector::FieldSelector for GetInfoForObservedBeaconsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -606,7 +632,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -624,7 +649,7 @@ pub mod schemas {
     pub struct IndoorLevel {
         #[doc = "The name of this level."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for IndoorLevel {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -633,7 +658,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -642,10 +666,10 @@ pub mod schemas {
     pub struct LatLng {
         #[doc = "The latitude in degrees. It must be in the range [-90.0, +90.0]."]
         #[serde(rename = "latitude", default)]
-        pub latitude: Option<f64>,
+        pub latitude: ::std::option::Option<f64>,
         #[doc = "The longitude in degrees. It must be in the range [-180.0, +180.0]."]
         #[serde(rename = "longitude", default)]
-        pub longitude: Option<f64>,
+        pub longitude: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for LatLng {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -654,7 +678,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -663,7 +686,7 @@ pub mod schemas {
     pub struct ListBeaconAttachmentsResponse {
         #[doc = "The attachments that corresponded to the request params."]
         #[serde(rename = "attachments", default)]
-        pub attachments: Option<Vec<crate::schemas::BeaconAttachment>>,
+        pub attachments: ::std::option::Option<Vec<crate::schemas::BeaconAttachment>>,
     }
     impl ::field_selector::FieldSelector for ListBeaconAttachmentsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -672,7 +695,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -681,14 +703,14 @@ pub mod schemas {
     pub struct ListBeaconsResponse {
         #[doc = "The beacons that matched the search criteria."]
         #[serde(rename = "beacons", default)]
-        pub beacons: Option<Vec<crate::schemas::Beacon>>,
+        pub beacons: ::std::option::Option<Vec<crate::schemas::Beacon>>,
         #[doc = "An opaque pagination token that the client may provide in their next\nrequest to retrieve the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Estimate of the total number of beacons matched by the query. Higher\nvalues may be less accurate."]
         #[serde(rename = "totalCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub total_count: Option<i64>,
+        pub total_count: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for ListBeaconsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -697,7 +719,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -715,10 +736,10 @@ pub mod schemas {
     pub struct ListDiagnosticsResponse {
         #[doc = "The diagnostics matching the given request."]
         #[serde(rename = "diagnostics", default)]
-        pub diagnostics: Option<Vec<crate::schemas::Diagnostics>>,
+        pub diagnostics: ::std::option::Option<Vec<crate::schemas::Diagnostics>>,
         #[doc = "Token that can be used for pagination. Returned only if the\nrequest matches more beacons than can be returned in this response."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListDiagnosticsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -727,7 +748,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -745,7 +765,7 @@ pub mod schemas {
     pub struct ListNamespacesResponse {
         #[doc = "The attachments that corresponded to the request params."]
         #[serde(rename = "namespaces", default)]
-        pub namespaces: Option<Vec<crate::schemas::Namespace>>,
+        pub namespaces: ::std::option::Option<Vec<crate::schemas::Namespace>>,
     }
     impl ::field_selector::FieldSelector for ListNamespacesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -754,7 +774,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -807,6 +826,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for NamespaceServingVisibility {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -822,10 +850,10 @@ pub mod schemas {
     pub struct Namespace {
         #[doc = "Resource name of this namespace. Namespaces names have the format:\n<code>namespaces/<var>namespace</var></code>."]
         #[serde(rename = "namespaceName", default)]
-        pub namespace_name: Option<String>,
+        pub namespace_name: ::std::option::Option<String>,
         #[doc = "Specifies what clients may receive attachments under this namespace\nvia `beaconinfo.getforobserved`."]
         #[serde(rename = "servingVisibility", default)]
-        pub serving_visibility: Option<crate::schemas::NamespaceServingVisibility>,
+        pub serving_visibility: ::std::option::Option<crate::schemas::NamespaceServingVisibility>,
     }
     impl ::field_selector::FieldSelector for Namespace {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -834,7 +862,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -852,13 +879,13 @@ pub mod schemas {
     pub struct Observation {
         #[doc = "The ID advertised by the beacon the client has encountered.\n\nIf the submitted `advertised_id` type is Eddystone-EID, then the client\nmust be authorized to resolve the given beacon. Otherwise no data will be\nreturned for that beacon.\nRequired."]
         #[serde(rename = "advertisedId", default)]
-        pub advertised_id: Option<crate::schemas::AdvertisedId>,
+        pub advertised_id: ::std::option::Option<crate::schemas::AdvertisedId>,
         #[doc = "The array of telemetry bytes received from the beacon. The server is\nresponsible for parsing it. This field may frequently be empty, as\nwith a beacon that transmits telemetry only occasionally."]
         #[serde(rename = "telemetry", default)]
-        pub telemetry: Option<Vec<u8>>,
+        pub telemetry: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Time when the beacon was observed."]
         #[serde(rename = "timestampMs", default)]
-        pub timestamp_ms: Option<String>,
+        pub timestamp_ms: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Observation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -867,7 +894,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -922,6 +948,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -966,6 +1001,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -3791,6 +3835,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for ListAlertFilter {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
             }
             pub struct DiagnosticsActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
@@ -4975,6 +5028,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -5050,5 +5104,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

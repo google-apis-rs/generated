@@ -14,7 +14,7 @@ pub mod schemas {
     pub struct AcknowledgeRequest {
         #[doc = "The acknowledgment ID for the messages being acknowledged that was returned\nby the Pub/Sub system in the `Pull` response. Must not be empty."]
         #[serde(rename = "ackIds", default)]
-        pub ack_ids: Option<Vec<String>>,
+        pub ack_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for AcknowledgeRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -23,7 +23,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -41,13 +40,13 @@ pub mod schemas {
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
         #[serde(rename = "condition", default)]
-        pub condition: Option<crate::schemas::Expr>,
+        pub condition: ::std::option::Option<crate::schemas::Expr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
         #[serde(rename = "members", default)]
-        pub members: Option<Vec<String>>,
+        pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
         #[serde(rename = "role", default)]
-        pub role: Option<String>,
+        pub role: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Binding {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -56,7 +55,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -74,10 +72,10 @@ pub mod schemas {
     pub struct CreateSnapshotRequest {
         #[doc = "See <a href=\"https://cloud.google.com/pubsub/docs/labels\"> Creating and\nmanaging labels</a>."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The subscription whose backlog the snapshot retains.\nSpecifically, the created snapshot is guaranteed to retain:\n(a) The existing backlog on the subscription. More precisely, this is\ndefined as the messages in the subscription's backlog that are\nunacknowledged upon the successful completion of the\n`CreateSnapshot` request; as well as:\n(b) Any messages published to the subscription's topic following the\nsuccessful completion of the CreateSnapshot request.\nFormat is `projects/{project}/subscriptions/{sub}`."]
         #[serde(rename = "subscription", default)]
-        pub subscription: Option<String>,
+        pub subscription: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CreateSnapshotRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -86,7 +84,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -104,7 +101,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -121,7 +118,7 @@ pub mod schemas {
     pub struct ExpirationPolicy {
         #[doc = "Specifies the \"time-to-live\" duration for an associated resource. The\nresource expires if it is not active for a period of `ttl`. The definition\nof \"activity\" depends on the type of the associated resource. The minimum\nand maximum allowed values for `ttl` depend on the type of the associated\nresource, as well. If `ttl` is not set, the associated resource never\nexpires."]
         #[serde(rename = "ttl", default)]
-        pub ttl: Option<String>,
+        pub ttl: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ExpirationPolicy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -130,7 +127,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -148,16 +144,16 @@ pub mod schemas {
     pub struct Expr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
         #[serde(rename = "expression", default)]
-        pub expression: Option<String>,
+        pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Expr {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -166,7 +162,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -184,10 +179,10 @@ pub mod schemas {
     pub struct ListSnapshotsResponse {
         #[doc = "If not empty, indicates that there may be more snapshot that match the\nrequest; this value should be passed in a new `ListSnapshotsRequest`."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The resulting snapshots."]
         #[serde(rename = "snapshots", default)]
-        pub snapshots: Option<Vec<crate::schemas::Snapshot>>,
+        pub snapshots: ::std::option::Option<Vec<crate::schemas::Snapshot>>,
     }
     impl ::field_selector::FieldSelector for ListSnapshotsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -196,7 +191,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -214,10 +208,10 @@ pub mod schemas {
     pub struct ListSubscriptionsResponse {
         #[doc = "If not empty, indicates that there may be more subscriptions that match\nthe request; this value should be passed in a new\n`ListSubscriptionsRequest` to get more subscriptions."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The subscriptions that match the request."]
         #[serde(rename = "subscriptions", default)]
-        pub subscriptions: Option<Vec<crate::schemas::Subscription>>,
+        pub subscriptions: ::std::option::Option<Vec<crate::schemas::Subscription>>,
     }
     impl ::field_selector::FieldSelector for ListSubscriptionsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -226,7 +220,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -244,10 +237,10 @@ pub mod schemas {
     pub struct ListTopicSnapshotsResponse {
         #[doc = "If not empty, indicates that there may be more snapshots that match\nthe request; this value should be passed in a new\n`ListTopicSnapshotsRequest` to get more snapshots."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The names of the snapshots that match the request."]
         #[serde(rename = "snapshots", default)]
-        pub snapshots: Option<Vec<String>>,
+        pub snapshots: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ListTopicSnapshotsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -256,7 +249,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -274,10 +266,10 @@ pub mod schemas {
     pub struct ListTopicSubscriptionsResponse {
         #[doc = "If not empty, indicates that there may be more subscriptions that match\nthe request; this value should be passed in a new\n`ListTopicSubscriptionsRequest` to get more subscriptions."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The names of the subscriptions that match the request."]
         #[serde(rename = "subscriptions", default)]
-        pub subscriptions: Option<Vec<String>>,
+        pub subscriptions: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ListTopicSubscriptionsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -286,7 +278,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -304,10 +295,10 @@ pub mod schemas {
     pub struct ListTopicsResponse {
         #[doc = "If not empty, indicates that there may be more topics that match the\nrequest; this value should be passed in a new `ListTopicsRequest`."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The resulting topics."]
         #[serde(rename = "topics", default)]
-        pub topics: Option<Vec<crate::schemas::Topic>>,
+        pub topics: ::std::option::Option<Vec<crate::schemas::Topic>>,
     }
     impl ::field_selector::FieldSelector for ListTopicsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -316,7 +307,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -334,7 +324,7 @@ pub mod schemas {
     pub struct MessageStoragePolicy {
         #[doc = "A list of IDs of GCP regions where messages that are published to the topic\nmay be persisted in storage. Messages published by publishers running in\nnon-allowed GCP regions (or running outside of GCP altogether) will be\nrouted for storage in one of the allowed regions. An empty list means that\nno regions are allowed, and is not a valid configuration."]
         #[serde(rename = "allowedPersistenceRegions", default)]
-        pub allowed_persistence_regions: Option<Vec<String>>,
+        pub allowed_persistence_regions: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for MessageStoragePolicy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -343,7 +333,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -361,10 +350,10 @@ pub mod schemas {
     pub struct ModifyAckDeadlineRequest {
         #[doc = "The new ack deadline with respect to the time this request was sent to\nthe Pub/Sub system. For example, if the value is 10, the new\nack deadline will expire 10 seconds after the `ModifyAckDeadline` call\nwas made. Specifying zero might immediately make the message available for\ndelivery to another subscriber client. This typically results in an\nincrease in the rate of message redeliveries (that is, duplicates).\nThe minimum deadline you can specify is 0 seconds.\nThe maximum deadline you can specify is 600 seconds (10 minutes)."]
         #[serde(rename = "ackDeadlineSeconds", default)]
-        pub ack_deadline_seconds: Option<i32>,
+        pub ack_deadline_seconds: ::std::option::Option<i32>,
         #[doc = "List of acknowledgment IDs."]
         #[serde(rename = "ackIds", default)]
-        pub ack_ids: Option<Vec<String>>,
+        pub ack_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ModifyAckDeadlineRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -373,7 +362,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -391,7 +379,7 @@ pub mod schemas {
     pub struct ModifyPushConfigRequest {
         #[doc = "The push configuration for future deliveries.\n\nAn empty `pushConfig` indicates that the Pub/Sub system should\nstop pushing messages from the given subscription and allow\nmessages to be pulled and acknowledged - effectively pausing\nthe subscription if `Pull` or `StreamingPull` is not called."]
         #[serde(rename = "pushConfig", default)]
-        pub push_config: Option<crate::schemas::PushConfig>,
+        pub push_config: ::std::option::Option<crate::schemas::PushConfig>,
     }
     impl ::field_selector::FieldSelector for ModifyPushConfigRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -400,7 +388,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -418,10 +405,10 @@ pub mod schemas {
     pub struct OidcToken {
         #[doc = "Audience to be used when generating OIDC token. The audience claim\nidentifies the recipients that the JWT is intended for. The audience\nvalue is a single case-sensitive string. Having multiple values (array)\nfor the audience field is not supported. More info about the OIDC JWT\ntoken audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3\nNote: if not specified, the Push endpoint URL will be used."]
         #[serde(rename = "audience", default)]
-        pub audience: Option<String>,
+        pub audience: ::std::option::Option<String>,
         #[doc = "[Service account\nemail](https://cloud.google.com/iam/docs/service-accounts)\nto be used for generating the OIDC token. The caller (for\nCreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must\nhave the iam.serviceAccounts.actAs permission for the service account."]
         #[serde(rename = "serviceAccountEmail", default)]
-        pub service_account_email: Option<String>,
+        pub service_account_email: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for OidcToken {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -430,7 +417,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -448,13 +434,13 @@ pub mod schemas {
     pub struct Policy {
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
         #[serde(rename = "bindings", default)]
-        pub bindings: Option<Vec<crate::schemas::Binding>>,
+        pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<Vec<u8>>,
+        pub etag: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Deprecated."]
         #[serde(rename = "version", default)]
-        pub version: Option<i32>,
+        pub version: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Policy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -463,7 +449,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -481,7 +466,7 @@ pub mod schemas {
     pub struct PublishRequest {
         #[doc = "The messages to publish."]
         #[serde(rename = "messages", default)]
-        pub messages: Option<Vec<crate::schemas::PubsubMessage>>,
+        pub messages: ::std::option::Option<Vec<crate::schemas::PubsubMessage>>,
     }
     impl ::field_selector::FieldSelector for PublishRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -490,7 +475,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -508,7 +492,7 @@ pub mod schemas {
     pub struct PublishResponse {
         #[doc = "The server-assigned ID of each published message, in the same order as\nthe messages in the request. IDs are guaranteed to be unique within\nthe topic."]
         #[serde(rename = "messageIds", default)]
-        pub message_ids: Option<Vec<String>>,
+        pub message_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for PublishResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -517,7 +501,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -535,16 +518,16 @@ pub mod schemas {
     pub struct PubsubMessage {
         #[doc = "Optional attributes for this message."]
         #[serde(rename = "attributes", default)]
-        pub attributes: Option<::std::collections::BTreeMap<String, String>>,
+        pub attributes: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The message data field. If this field is empty, the message must contain\nat least one attribute."]
         #[serde(rename = "data", default)]
-        pub data: Option<Vec<u8>>,
+        pub data: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "ID of this message, assigned by the server when the message is published.\nGuaranteed to be unique within the topic. This value may be read by a\nsubscriber that receives a `PubsubMessage` via a `Pull` call or a push\ndelivery. It must not be populated by the publisher in a `Publish` call."]
         #[serde(rename = "messageId", default)]
-        pub message_id: Option<String>,
+        pub message_id: ::std::option::Option<String>,
         #[doc = "The time at which the message was published, populated by the server when\nit receives the `Publish` call. It must not be populated by the\npublisher in a `Publish` call."]
         #[serde(rename = "publishTime", default)]
-        pub publish_time: Option<String>,
+        pub publish_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PubsubMessage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -553,7 +536,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -571,10 +553,10 @@ pub mod schemas {
     pub struct PullRequest {
         #[doc = "The maximum number of messages to return for this request. Must be a\npositive integer. The Pub/Sub system may return fewer than the number\nspecified."]
         #[serde(rename = "maxMessages", default)]
-        pub max_messages: Option<i32>,
+        pub max_messages: ::std::option::Option<i32>,
         #[doc = "If this field set to true, the system will respond immediately even if\nit there are no messages available to return in the `Pull` response.\nOtherwise, the system may wait (for a bounded amount of time) until at\nleast one message is available, rather than returning no messages."]
         #[serde(rename = "returnImmediately", default)]
-        pub return_immediately: Option<bool>,
+        pub return_immediately: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for PullRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -583,7 +565,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -601,7 +582,7 @@ pub mod schemas {
     pub struct PullResponse {
         #[doc = "Received Pub/Sub messages. The list will be empty if there are no more\nmessages available in the backlog. For JSON, the response can be entirely\nempty. The Pub/Sub system may return fewer than the `maxMessages` requested\neven if there are more messages available in the backlog."]
         #[serde(rename = "receivedMessages", default)]
-        pub received_messages: Option<Vec<crate::schemas::ReceivedMessage>>,
+        pub received_messages: ::std::option::Option<Vec<crate::schemas::ReceivedMessage>>,
     }
     impl ::field_selector::FieldSelector for PullResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -610,7 +591,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -628,13 +608,13 @@ pub mod schemas {
     pub struct PushConfig {
         #[doc = "Endpoint configuration attributes that can be used to control different\naspects of the message delivery.\n\nThe only currently supported attribute is `x-goog-version`, which you can\nuse to change the format of the pushed message. This attribute\nindicates the version of the data expected by the endpoint. This\ncontrols the shape of the pushed message (i.e., its fields and metadata).\n\nIf not present during the `CreateSubscription` call, it will default to\nthe version of the Pub/Sub API used to make such call. If not present in a\n`ModifyPushConfig` call, its value will not be changed. `GetSubscription`\ncalls will always return a valid version, even if the subscription was\ncreated without this attribute.\n\nThe only supported values for the `x-goog-version` attribute are:\n\n* `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.\n* `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.\n\nFor example:\n\n<pre><code>attributes { \"x-goog-version\": \"v1\" } </code></pre>"]
         #[serde(rename = "attributes", default)]
-        pub attributes: Option<::std::collections::BTreeMap<String, String>>,
+        pub attributes: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "If specified, Pub/Sub will generate and attach an OIDC JWT token as an\n`Authorization` header in the HTTP request for every pushed message."]
         #[serde(rename = "oidcToken", default)]
-        pub oidc_token: Option<crate::schemas::OidcToken>,
+        pub oidc_token: ::std::option::Option<crate::schemas::OidcToken>,
         #[doc = "A URL locating the endpoint to which messages should be pushed.\nFor example, a Webhook endpoint might use \"https://example.com/push\"."]
         #[serde(rename = "pushEndpoint", default)]
-        pub push_endpoint: Option<String>,
+        pub push_endpoint: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PushConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -643,7 +623,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -661,10 +640,10 @@ pub mod schemas {
     pub struct ReceivedMessage {
         #[doc = "This ID can be used to acknowledge the received message."]
         #[serde(rename = "ackId", default)]
-        pub ack_id: Option<String>,
+        pub ack_id: ::std::option::Option<String>,
         #[doc = "The message."]
         #[serde(rename = "message", default)]
-        pub message: Option<crate::schemas::PubsubMessage>,
+        pub message: ::std::option::Option<crate::schemas::PubsubMessage>,
     }
     impl ::field_selector::FieldSelector for ReceivedMessage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -673,7 +652,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -691,10 +669,10 @@ pub mod schemas {
     pub struct SeekRequest {
         #[doc = "The snapshot to seek to. The snapshot's topic must be the same as that of\nthe provided subscription.\nFormat is `projects/{project}/snapshots/{snap}`."]
         #[serde(rename = "snapshot", default)]
-        pub snapshot: Option<String>,
+        pub snapshot: ::std::option::Option<String>,
         #[doc = "The time to seek to.\nMessages retained in the subscription that were published before this\ntime are marked as acknowledged, and messages retained in the\nsubscription that were published after this time are marked as\nunacknowledged. Note that this operation affects only those messages\nretained in the subscription (configured by the combination of\n`message_retention_duration` and `retain_acked_messages`). For example,\nif `time` corresponds to a point before the message retention\nwindow (or to a point before the system's notion of the subscription\ncreation time), only retained messages will be marked as unacknowledged,\nand already-expunged messages will not be restored."]
         #[serde(rename = "time", default)]
-        pub time: Option<String>,
+        pub time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SeekRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -703,7 +681,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -721,7 +698,7 @@ pub mod schemas {
     )]
     pub struct SeekResponse;
     impl ::field_selector::FieldSelector for SeekResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -738,7 +715,7 @@ pub mod schemas {
     pub struct SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
         #[serde(rename = "policy", default)]
-        pub policy: Option<crate::schemas::Policy>,
+        pub policy: ::std::option::Option<crate::schemas::Policy>,
     }
     impl ::field_selector::FieldSelector for SetIamPolicyRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -747,7 +724,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -765,16 +741,16 @@ pub mod schemas {
     pub struct Snapshot {
         #[doc = "The snapshot is guaranteed to exist up until this time.\nA newly-created snapshot expires no later than 7 days from the time of its\ncreation. Its exact lifetime is determined at creation by the existing\nbacklog in the source subscription. Specifically, the lifetime of the\nsnapshot is `7 days - (age of oldest unacked message in the subscription)`.\nFor example, consider a subscription whose oldest unacked message is 3 days\nold. If a snapshot is created from this subscription, the snapshot -- which\nwill always capture this 3-day-old backlog as long as the snapshot\nexists -- will expire in 4 days. The service will refuse to create a\nsnapshot that would expire in less than 1 hour after creation."]
         #[serde(rename = "expireTime", default)]
-        pub expire_time: Option<String>,
+        pub expire_time: ::std::option::Option<String>,
         #[doc = "See <a href=\"https://cloud.google.com/pubsub/docs/labels\"> Creating and\nmanaging labels</a>."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The name of the snapshot."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The name of the topic from which this snapshot is retaining messages."]
         #[serde(rename = "topic", default)]
-        pub topic: Option<String>,
+        pub topic: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Snapshot {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -783,7 +759,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -801,28 +776,28 @@ pub mod schemas {
     pub struct Subscription {
         #[doc = "The approximate amount of time (on a best-effort basis) Pub/Sub waits for\nthe subscriber to acknowledge receipt before resending the message. In the\ninterval after the message is delivered and before it is acknowledged, it\nis considered to be <i>outstanding</i>. During that time period, the\nmessage will not be redelivered (on a best-effort basis).\n\nFor pull subscriptions, this value is used as the initial value for the ack\ndeadline. To override this value for a given message, call\n`ModifyAckDeadline` with the corresponding `ack_id` if using\nnon-streaming pull or send the `ack_id` in a\n`StreamingModifyAckDeadlineRequest` if using streaming pull.\nThe minimum custom deadline you can specify is 10 seconds.\nThe maximum custom deadline you can specify is 600 seconds (10 minutes).\nIf this parameter is 0, a default value of 10 seconds is used.\n\nFor push delivery, this value is also used to set the request timeout for\nthe call to the push endpoint.\n\nIf the subscriber never acknowledges the message, the Pub/Sub\nsystem will eventually redeliver the message."]
         #[serde(rename = "ackDeadlineSeconds", default)]
-        pub ack_deadline_seconds: Option<i32>,
+        pub ack_deadline_seconds: ::std::option::Option<i32>,
         #[doc = "A policy that specifies the conditions for this subscription's expiration.\nA subscription is considered active as long as any connected subscriber is\nsuccessfully consuming messages from the subscription or is issuing\noperations on the subscription. If `expiration_policy` is not set, a\n*default policy* with `ttl` of 31 days will be used. The minimum allowed\nvalue for `expiration_policy.ttl` is 1 day."]
         #[serde(rename = "expirationPolicy", default)]
-        pub expiration_policy: Option<crate::schemas::ExpirationPolicy>,
+        pub expiration_policy: ::std::option::Option<crate::schemas::ExpirationPolicy>,
         #[doc = "See <a href=\"https://cloud.google.com/pubsub/docs/labels\"> Creating and\nmanaging labels</a>."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "How long to retain unacknowledged messages in the subscription's backlog,\nfrom the moment a message is published.\nIf `retain_acked_messages` is true, then this also configures the retention\nof acknowledged messages, and thus configures how far back in time a `Seek`\ncan be done. Defaults to 7 days. Cannot be more than 7 days or less than 10\nminutes."]
         #[serde(rename = "messageRetentionDuration", default)]
-        pub message_retention_duration: Option<String>,
+        pub message_retention_duration: ::std::option::Option<String>,
         #[doc = "The name of the subscription. It must have the format\n`\"projects/{project}/subscriptions/{subscription}\"`. `{subscription}` must\nstart with a letter, and contain only letters (`[A-Za-z]`), numbers\n(`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),\nplus (`+`) or percent signs (`%`). It must be between 3 and 255 characters\nin length, and it must not start with `\"goog\"`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "If push delivery is used with this subscription, this field is\nused to configure it. An empty `pushConfig` signifies that the subscriber\nwill pull and ack messages using API methods."]
         #[serde(rename = "pushConfig", default)]
-        pub push_config: Option<crate::schemas::PushConfig>,
+        pub push_config: ::std::option::Option<crate::schemas::PushConfig>,
         #[doc = "Indicates whether to retain acknowledged messages. If true, then\nmessages are not expunged from the subscription's backlog, even if they are\nacknowledged, until they fall out of the `message_retention_duration`\nwindow. This must be true if you would like to\n<a\nhref=\"https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time\">\nSeek to a timestamp</a>."]
         #[serde(rename = "retainAckedMessages", default)]
-        pub retain_acked_messages: Option<bool>,
+        pub retain_acked_messages: ::std::option::Option<bool>,
         #[doc = "The name of the topic from which this subscription is receiving messages.\nFormat is `projects/{project}/topics/{topic}`.\nThe value of this field will be `_deleted-topic_` if the topic has been\ndeleted."]
         #[serde(rename = "topic", default)]
-        pub topic: Option<String>,
+        pub topic: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Subscription {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -831,7 +806,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -849,7 +823,7 @@ pub mod schemas {
     pub struct TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
         #[serde(rename = "permissions", default)]
-        pub permissions: Option<Vec<String>>,
+        pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for TestIamPermissionsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -858,7 +832,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -876,7 +849,7 @@ pub mod schemas {
     pub struct TestIamPermissionsResponse {
         #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
         #[serde(rename = "permissions", default)]
-        pub permissions: Option<Vec<String>>,
+        pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for TestIamPermissionsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -885,7 +858,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -903,16 +875,16 @@ pub mod schemas {
     pub struct Topic {
         #[doc = "The resource name of the Cloud KMS CryptoKey to be used to protect access\nto messages published on this topic.\n\nThe expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`."]
         #[serde(rename = "kmsKeyName", default)]
-        pub kms_key_name: Option<String>,
+        pub kms_key_name: ::std::option::Option<String>,
         #[doc = "See <a href=\"https://cloud.google.com/pubsub/docs/labels\"> Creating and\nmanaging labels</a>."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Policy constraining the set of Google Cloud Platform regions where messages\npublished to the topic may be stored. If not present, then no constraints\nare in effect."]
         #[serde(rename = "messageStoragePolicy", default)]
-        pub message_storage_policy: Option<crate::schemas::MessageStoragePolicy>,
+        pub message_storage_policy: ::std::option::Option<crate::schemas::MessageStoragePolicy>,
         #[doc = "The name of the topic. It must have the format\n`\"projects/{project}/topics/{topic}\"`. `{topic}` must start with a letter,\nand contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),\nunderscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent\nsigns (`%`). It must be between 3 and 255 characters in length, and it\nmust not start with `\"goog\"`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Topic {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -921,7 +893,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -939,10 +910,10 @@ pub mod schemas {
     pub struct UpdateSnapshotRequest {
         #[doc = "The updated snapshot object."]
         #[serde(rename = "snapshot", default)]
-        pub snapshot: Option<crate::schemas::Snapshot>,
+        pub snapshot: ::std::option::Option<crate::schemas::Snapshot>,
         #[doc = "Indicates which fields in the provided snapshot to update.\nMust be specified and non-empty."]
         #[serde(rename = "updateMask", default)]
-        pub update_mask: Option<String>,
+        pub update_mask: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UpdateSnapshotRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -951,7 +922,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -969,10 +939,10 @@ pub mod schemas {
     pub struct UpdateSubscriptionRequest {
         #[doc = "The updated subscription object."]
         #[serde(rename = "subscription", default)]
-        pub subscription: Option<crate::schemas::Subscription>,
+        pub subscription: ::std::option::Option<crate::schemas::Subscription>,
         #[doc = "Indicates which fields in the provided subscription to update.\nMust be specified and non-empty."]
         #[serde(rename = "updateMask", default)]
-        pub update_mask: Option<String>,
+        pub update_mask: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UpdateSubscriptionRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -981,7 +951,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -999,10 +968,10 @@ pub mod schemas {
     pub struct UpdateTopicRequest {
         #[doc = "The updated topic object."]
         #[serde(rename = "topic", default)]
-        pub topic: Option<crate::schemas::Topic>,
+        pub topic: ::std::option::Option<crate::schemas::Topic>,
         #[doc = "Indicates which fields in the provided topic to update. Must be specified\nand non-empty. Note that if `update_mask` contains\n\"message_storage_policy\" then the new value will be determined based on the\npolicy configured at the project or organization level. The\n`message_storage_policy` must not be set in the `topic` provided above."]
         #[serde(rename = "updateMask", default)]
-        pub update_mask: Option<String>,
+        pub update_mask: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UpdateTopicRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1011,7 +980,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -1066,6 +1034,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -1110,6 +1087,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -8224,6 +8210,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -8299,5 +8286,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

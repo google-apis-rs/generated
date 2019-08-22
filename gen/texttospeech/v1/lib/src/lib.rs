@@ -53,28 +53,37 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AudioConfigAudioEncoding {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AudioConfig {
         #[doc = "Required. The format of the audio byte stream."]
         #[serde(rename = "audioEncoding", default)]
-        pub audio_encoding: Option<crate::schemas::AudioConfigAudioEncoding>,
+        pub audio_encoding: ::std::option::Option<crate::schemas::AudioConfigAudioEncoding>,
         #[doc = "Optional. Input only. An identifier which selects 'audio effects' profiles\nthat are applied on (post synthesized) text to speech. Effects are applied\non top of each other in the order they are given. See\n[audio\nprofiles](https://cloud.google.com/text-to-speech/docs/audio-profiles) for\ncurrent supported profile ids."]
         #[serde(rename = "effectsProfileId", default)]
-        pub effects_profile_id: Option<Vec<String>>,
+        pub effects_profile_id: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. Input only. Speaking pitch, in the range [-20.0, 20.0]. 20 means\nincrease 20 semitones from the original pitch. -20 means decrease 20\nsemitones from the original pitch."]
         #[serde(rename = "pitch", default)]
-        pub pitch: Option<f64>,
+        pub pitch: ::std::option::Option<f64>,
         #[doc = "The synthesis sample rate (in hertz) for this audio. Optional. When this is\nspecified in SynthesizeSpeechRequest, if this is different from the voice's\nnatural sample rate, then the synthesizer will honor this request by\nconverting to the desired sample rate (which might result in worse audio\nquality), unless the specified sample rate is not supported for the\nencoding chosen, in which case it will fail the request and return\ngoogle.rpc.Code.INVALID_ARGUMENT."]
         #[serde(rename = "sampleRateHertz", default)]
-        pub sample_rate_hertz: Option<i32>,
+        pub sample_rate_hertz: ::std::option::Option<i32>,
         #[doc = "Optional. Input only. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is\nthe normal native speed supported by the specific voice. 2.0 is twice as\nfast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0\nspeed. Any other values < 0.25 or > 4.0 will return an error."]
         #[serde(rename = "speakingRate", default)]
-        pub speaking_rate: Option<f64>,
+        pub speaking_rate: ::std::option::Option<f64>,
         #[doc = "Optional. Input only. Volume gain (in dB) of the normal native volume\nsupported by the specific voice, in the range [-96.0, 16.0]. If unset, or\nset to a value of 0.0 (dB), will play at normal native signal amplitude. A\nvalue of -6.0 (dB) will play at approximately half the amplitude of the\nnormal native signal amplitude. A value of +6.0 (dB) will play at\napproximately twice the amplitude of the normal native signal amplitude.\nStrongly recommend not to exceed +10 (dB) as there's usually no effective\nincrease in loudness for any value greater than that."]
         #[serde(rename = "volumeGainDb", default)]
-        pub volume_gain_db: Option<f64>,
+        pub volume_gain_db: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for AudioConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -83,7 +92,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -101,7 +109,7 @@ pub mod schemas {
     pub struct ListVoicesResponse {
         #[doc = "The list of voices."]
         #[serde(rename = "voices", default)]
-        pub voices: Option<Vec<crate::schemas::Voice>>,
+        pub voices: ::std::option::Option<Vec<crate::schemas::Voice>>,
     }
     impl ::field_selector::FieldSelector for ListVoicesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -110,7 +118,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -128,10 +135,10 @@ pub mod schemas {
     pub struct SynthesisInput {
         #[doc = "The SSML document to be synthesized. The SSML document must be valid\nand well-formed. Otherwise the RPC will fail and return\ngoogle.rpc.Code.INVALID_ARGUMENT. For more information, see\n[SSML](/speech/text-to-speech/docs/ssml)."]
         #[serde(rename = "ssml", default)]
-        pub ssml: Option<String>,
+        pub ssml: ::std::option::Option<String>,
         #[doc = "The raw text to be synthesized."]
         #[serde(rename = "text", default)]
-        pub text: Option<String>,
+        pub text: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SynthesisInput {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -140,7 +147,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -149,13 +155,13 @@ pub mod schemas {
     pub struct SynthesizeSpeechRequest {
         #[doc = "Required. The configuration of the synthesized audio."]
         #[serde(rename = "audioConfig", default)]
-        pub audio_config: Option<crate::schemas::AudioConfig>,
+        pub audio_config: ::std::option::Option<crate::schemas::AudioConfig>,
         #[doc = "Required. The Synthesizer requires either plain text or SSML as input."]
         #[serde(rename = "input", default)]
-        pub input: Option<crate::schemas::SynthesisInput>,
+        pub input: ::std::option::Option<crate::schemas::SynthesisInput>,
         #[doc = "Required. The desired voice of the synthesized audio."]
         #[serde(rename = "voice", default)]
-        pub voice: Option<crate::schemas::VoiceSelectionParams>,
+        pub voice: ::std::option::Option<crate::schemas::VoiceSelectionParams>,
     }
     impl ::field_selector::FieldSelector for SynthesizeSpeechRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -164,7 +170,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -182,7 +187,7 @@ pub mod schemas {
     pub struct SynthesizeSpeechResponse {
         #[doc = "The audio data bytes encoded as specified in the request, including the\nheader for encodings that are wrapped in containers (e.g. MP3, OGG_OPUS).\nFor LINEAR16 audio, we include the WAV header. Note: as\nwith all bytes fields, protobuffers use a pure binary representation,\nwhereas JSON representations use base64."]
         #[serde(rename = "audioContent", default)]
-        pub audio_content: Option<Vec<u8>>,
+        pub audio_content: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for SynthesizeSpeechResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -191,7 +196,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -248,6 +252,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VoiceSsmlGender {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -263,16 +276,16 @@ pub mod schemas {
     pub struct Voice {
         #[doc = "The languages that this voice supports, expressed as\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags (e.g.\n\"en-US\", \"es-419\", \"cmn-tw\")."]
         #[serde(rename = "languageCodes", default)]
-        pub language_codes: Option<Vec<String>>,
+        pub language_codes: ::std::option::Option<Vec<String>>,
         #[doc = "The name of this voice.  Each distinct voice has a unique name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The natural sample rate (in hertz) for this voice."]
         #[serde(rename = "naturalSampleRateHertz", default)]
-        pub natural_sample_rate_hertz: Option<i32>,
+        pub natural_sample_rate_hertz: ::std::option::Option<i32>,
         #[doc = "The gender of this voice."]
         #[serde(rename = "ssmlGender", default)]
-        pub ssml_gender: Option<crate::schemas::VoiceSsmlGender>,
+        pub ssml_gender: ::std::option::Option<crate::schemas::VoiceSsmlGender>,
     }
     impl ::field_selector::FieldSelector for Voice {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -281,7 +294,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -342,6 +354,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VoiceSelectionParamsSsmlGender {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -357,13 +378,13 @@ pub mod schemas {
     pub struct VoiceSelectionParams {
         #[doc = "The language (and optionally also the region) of the voice expressed as a\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g.\n\"en-US\". Required. This should not include a script tag (e.g. use\n\"cmn-cn\" rather than \"cmn-Hant-cn\"), because the script will be inferred\nfrom the input provided in the SynthesisInput.  The TTS service\nwill use this parameter to help choose an appropriate voice.  Note that\nthe TTS service may choose a voice with a slightly different language code\nthan the one selected; it may substitute a different region\n(e.g. using en-US rather than en-CA if there isn't a Canadian voice\navailable), or even a different language, e.g. using \"nb\" (Norwegian\nBokmal) instead of \"no\" (Norwegian)\"."]
         #[serde(rename = "languageCode", default)]
-        pub language_code: Option<String>,
+        pub language_code: ::std::option::Option<String>,
         #[doc = "The name of the voice. Optional; if not set, the service will choose a\nvoice based on the other parameters such as language_code and gender."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The preferred gender of the voice. Optional; if not set, the service will\nchoose a voice based on the other parameters such as language_code and\nname. Note that this is only a preference, not requirement; if a\nvoice of the appropriate gender is not available, the synthesizer should\nsubstitute a voice with a different gender rather than failing the request."]
         #[serde(rename = "ssmlGender", default)]
-        pub ssml_gender: Option<crate::schemas::VoiceSelectionParamsSsmlGender>,
+        pub ssml_gender: ::std::option::Option<crate::schemas::VoiceSelectionParamsSsmlGender>,
     }
     impl ::field_selector::FieldSelector for VoiceSelectionParams {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -372,7 +393,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -427,6 +447,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -471,6 +500,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1144,6 +1182,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1219,5 +1258,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

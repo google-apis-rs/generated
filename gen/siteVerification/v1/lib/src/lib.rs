@@ -14,10 +14,10 @@ pub mod schemas {
     pub struct SiteVerificationWebResourceGettokenRequestSite {
         #[doc = "The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to INET_DOMAIN, the site identifier is a domain name."]
         #[serde(rename = "identifier", default)]
-        pub identifier: Option<String>,
+        pub identifier: ::std::option::Option<String>,
         #[doc = "The type of resource to be verified. Can be SITE or INET_DOMAIN (domain name)."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SiteVerificationWebResourceGettokenRequestSite {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -26,7 +26,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -44,10 +43,11 @@ pub mod schemas {
     pub struct SiteVerificationWebResourceGettokenRequest {
         #[doc = "The site for which a verification token will be generated."]
         #[serde(rename = "site", default)]
-        pub site: Option<crate::schemas::SiteVerificationWebResourceGettokenRequestSite>,
+        pub site:
+            ::std::option::Option<crate::schemas::SiteVerificationWebResourceGettokenRequestSite>,
         #[doc = "The verification method that will be used to verify this site. For sites, 'FILE' or 'META' methods may be used. For domains, only 'DNS' may be used."]
         #[serde(rename = "verificationMethod", default)]
-        pub verification_method: Option<String>,
+        pub verification_method: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SiteVerificationWebResourceGettokenRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -56,7 +56,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -74,10 +73,10 @@ pub mod schemas {
     pub struct SiteVerificationWebResourceGettokenResponse {
         #[doc = "The verification method to use in conjunction with this token. For FILE, the token should be placed in the top-level directory of the site, stored inside a file of the same name. For META, the token should be placed in the HEAD tag of the default page that is loaded for the site. For DNS, the token should be placed in a TXT record of the domain."]
         #[serde(rename = "method", default)]
-        pub method: Option<String>,
+        pub method: ::std::option::Option<String>,
         #[doc = "The verification token. The token must be placed appropriately in order for verification to succeed."]
         #[serde(rename = "token", default)]
-        pub token: Option<String>,
+        pub token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SiteVerificationWebResourceGettokenResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -86,7 +85,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -104,7 +102,7 @@ pub mod schemas {
     pub struct SiteVerificationWebResourceListResponse {
         #[doc = "The list of sites that are owned by the authenticated user."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::SiteVerificationWebResourceResource>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::SiteVerificationWebResourceResource>>,
     }
     impl ::field_selector::FieldSelector for SiteVerificationWebResourceListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -113,7 +111,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -131,10 +128,10 @@ pub mod schemas {
     pub struct SiteVerificationWebResourceResourceSite {
         #[doc = "The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to INET_DOMAIN, the site identifier is a domain name."]
         #[serde(rename = "identifier", default)]
-        pub identifier: Option<String>,
+        pub identifier: ::std::option::Option<String>,
         #[doc = "The site type. Can be SITE or INET_DOMAIN (domain name)."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SiteVerificationWebResourceResourceSite {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -143,7 +140,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -161,13 +157,13 @@ pub mod schemas {
     pub struct SiteVerificationWebResourceResource {
         #[doc = "The string used to identify this site. This value should be used in the \"id\" portion of the REST URL for the Get, Update, and Delete operations."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The email addresses of all verified owners."]
         #[serde(rename = "owners", default)]
-        pub owners: Option<Vec<String>>,
+        pub owners: ::std::option::Option<Vec<String>>,
         #[doc = "The address and type of a site that is verified or will be verified."]
         #[serde(rename = "site", default)]
-        pub site: Option<crate::schemas::SiteVerificationWebResourceResourceSite>,
+        pub site: ::std::option::Option<crate::schemas::SiteVerificationWebResourceResourceSite>,
     }
     impl ::field_selector::FieldSelector for SiteVerificationWebResourceResource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -176,7 +172,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -221,6 +216,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1559,6 +1563,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1634,5 +1639,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

@@ -1,14 +1,14 @@
     Checking google-youtube3 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/youtube/v3/lib)
 error[E0609]: no field `request` on type `resources::thumbnails::SetRequestBuilder<'a, A>`
-     --> youtube/v3/lib/src/lib.rs:28240:63
+     --> youtube/v3/lib/src/lib.rs:29507:63
       |
-28240 |                 let request_json = ::serde_json::to_vec(&self.request)?;
+29507 |                 let request_json = ::serde_json::to_vec(&self.request)?;
       |                                                               ^^^^^^^ help: a field with a similar name exists: `reqwest`
 
 error[E0308]: mismatched types
-     --> youtube/v3/lib/src/lib.rs:30217:20
+     --> youtube/v3/lib/src/lib.rs:31511:20
       |
-30217 |                 Ok(req.send()?.error_for_status()?)
+31511 |                 Ok(req.send()?.error_for_status()?)
       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected (), found struct `reqwest::response::Response`
       |
       = note: expected type `()`

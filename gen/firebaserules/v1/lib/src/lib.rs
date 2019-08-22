@@ -3,10 +3,10 @@ pub mod schemas {
     pub struct Arg {
         #[doc = "Argument matches any value provided."]
         #[serde(rename = "anyValue", default)]
-        pub any_value: Option<crate::schemas::Empty>,
+        pub any_value: ::std::option::Option<crate::schemas::Empty>,
         #[doc = "Argument exactly matches value provided."]
         #[serde(rename = "exactValue", default)]
-        pub exact_value: Option<::serde_json::Value>,
+        pub exact_value: ::std::option::Option<::serde_json::Value>,
     }
     impl ::field_selector::FieldSelector for Arg {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -15,7 +15,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -33,7 +32,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -50,13 +49,13 @@ pub mod schemas {
     pub struct File {
         #[doc = "Textual Content."]
         #[serde(rename = "content", default)]
-        pub content: Option<String>,
+        pub content: ::std::option::Option<String>,
         #[doc = "Fingerprint (e.g. github sha) associated with the `File`."]
         #[serde(rename = "fingerprint", default)]
-        pub fingerprint: Option<Vec<u8>>,
+        pub fingerprint: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "File name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for File {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -65,17 +64,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct FunctionCall {
         #[doc = "The arguments that were provided to the function."]
         #[serde(rename = "args", default)]
-        pub args: Option<Vec<::serde_json::Value>>,
+        pub args: ::std::option::Option<Vec<::serde_json::Value>>,
         #[doc = "Name of the function invoked."]
         #[serde(rename = "function", default)]
-        pub function: Option<String>,
+        pub function: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FunctionCall {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -84,20 +82,19 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct FunctionMock {
         #[doc = "The list of `Arg` values to match. The order in which the arguments are\nprovided is the order in which they must appear in the function\ninvocation."]
         #[serde(rename = "args", default)]
-        pub args: Option<Vec<crate::schemas::Arg>>,
+        pub args: ::std::option::Option<Vec<crate::schemas::Arg>>,
         #[doc = "The name of the function.\n\nThe function name must match one provided by a service declaration."]
         #[serde(rename = "function", default)]
-        pub function: Option<String>,
+        pub function: ::std::option::Option<String>,
         #[doc = "The mock result of the function call."]
         #[serde(rename = "result", default)]
-        pub result: Option<crate::schemas::Result>,
+        pub result: ::std::option::Option<crate::schemas::Result>,
     }
     impl ::field_selector::FieldSelector for FunctionMock {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -106,7 +103,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -143,6 +139,15 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok ( match value { "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED" => GetReleaseExecutableResponseExecutableVersion :: ReleaseExecutableVersionUnspecified , "FIREBASE_RULES_EXECUTABLE_V1" => GetReleaseExecutableResponseExecutableVersion :: FirebaseRulesExecutableV1 , "FIREBASE_RULES_EXECUTABLE_V2" => GetReleaseExecutableResponseExecutableVersion :: FirebaseRulesExecutableV2 , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::field_selector::FieldSelector for GetReleaseExecutableResponseExecutableVersion {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -195,6 +200,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GetReleaseExecutableResponseLanguage {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -210,23 +224,23 @@ pub mod schemas {
     pub struct GetReleaseExecutableResponse {
         #[doc = "Executable view of the `Ruleset` referenced by the `Release`."]
         #[serde(rename = "executable", default)]
-        pub executable: Option<Vec<u8>>,
+        pub executable: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "The Rules runtime version of the executable."]
         #[serde(rename = "executableVersion", default)]
         pub executable_version:
-            Option<crate::schemas::GetReleaseExecutableResponseExecutableVersion>,
+            ::std::option::Option<crate::schemas::GetReleaseExecutableResponseExecutableVersion>,
         #[doc = "`Language` used to generate the executable bytes."]
         #[serde(rename = "language", default)]
-        pub language: Option<crate::schemas::GetReleaseExecutableResponseLanguage>,
+        pub language: ::std::option::Option<crate::schemas::GetReleaseExecutableResponseLanguage>,
         #[doc = "`Ruleset` name associated with the `Release` executable."]
         #[serde(rename = "rulesetName", default)]
-        pub ruleset_name: Option<String>,
+        pub ruleset_name: ::std::option::Option<String>,
         #[doc = "Optional, indicates the freshness of the result. The response is\nguaranteed to be the latest within an interval up to the\nsync_time (inclusive)."]
         #[serde(rename = "syncTime", default)]
-        pub sync_time: Option<String>,
+        pub sync_time: ::std::option::Option<String>,
         #[doc = "Timestamp for the most recent `Release.update_time`."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GetReleaseExecutableResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -235,7 +249,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -292,6 +305,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for IssueSeverity {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -307,13 +329,13 @@ pub mod schemas {
     pub struct Issue {
         #[doc = "Short error description."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The severity of the issue."]
         #[serde(rename = "severity", default)]
-        pub severity: Option<crate::schemas::IssueSeverity>,
+        pub severity: ::std::option::Option<crate::schemas::IssueSeverity>,
         #[doc = "Position of the issue in the `Source`."]
         #[serde(rename = "sourcePosition", default)]
-        pub source_position: Option<crate::schemas::SourcePosition>,
+        pub source_position: ::std::option::Option<crate::schemas::SourcePosition>,
     }
     impl ::field_selector::FieldSelector for Issue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -322,7 +344,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -340,10 +361,10 @@ pub mod schemas {
     pub struct ListReleasesResponse {
         #[doc = "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of `Release` instances."]
         #[serde(rename = "releases", default)]
-        pub releases: Option<Vec<crate::schemas::Release>>,
+        pub releases: ::std::option::Option<Vec<crate::schemas::Release>>,
     }
     impl ::field_selector::FieldSelector for ListReleasesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -352,7 +373,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -370,10 +390,10 @@ pub mod schemas {
     pub struct ListRulesetsResponse {
         #[doc = "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of `Ruleset` instances."]
         #[serde(rename = "rulesets", default)]
-        pub rulesets: Option<Vec<crate::schemas::Ruleset>>,
+        pub rulesets: ::std::option::Option<Vec<crate::schemas::Ruleset>>,
     }
     impl ::field_selector::FieldSelector for ListRulesetsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -382,7 +402,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -400,16 +419,16 @@ pub mod schemas {
     pub struct Release {
         #[doc = "Time the release was created.\nOutput only."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Resource name for the `Release`.\n\n`Release` names may be structured `app1/prod/v2` or flat `app1_prod_v2`\nwhich affords developers a great deal of flexibility in mapping the name\nto the style that best fits their existing development practices. For\nexample, a name could refer to an environment, an app, a version, or some\ncombination of three.\n\nIn the table below, for the project name `projects/foo`, the following\nrelative release paths show how flat and structured names might be chosen\nto match a desired development / deployment strategy.\n\n|Use Case|Flat Name|Structured Name|\n|--------|---------|---------------|\n|Environments|releases/qa|releases/qa|\n|Apps|releases/app1_qa|releases/app1/qa|\n|Versions|releases/app1_v2_qa|releases/app1/v2/qa|\n\nThe delimiter between the release name path elements can be almost anything\nand it should work equally well with the release name list filter, but in\nmany ways the structured paths provide a clearer picture of the\nrelationship between `Release` instances.\n\nFormat: `projects/{project_id}/releases/{release_id}`"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must\nexist the `Release` to be created."]
         #[serde(rename = "rulesetName", default)]
-        pub ruleset_name: Option<String>,
+        pub ruleset_name: ::std::option::Option<String>,
         #[doc = "Time the release was updated.\nOutput only."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Release {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -418,17 +437,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Result {
         #[doc = "The result is undefined, meaning the result could not be computed."]
         #[serde(rename = "undefined", default)]
-        pub undefined: Option<crate::schemas::Empty>,
+        pub undefined: ::std::option::Option<crate::schemas::Empty>,
         #[doc = "The result is an actual value. The type of the value must match that\nof the type declared by the service."]
         #[serde(rename = "value", default)]
-        pub value: Option<::serde_json::Value>,
+        pub value: ::std::option::Option<::serde_json::Value>,
     }
     impl ::field_selector::FieldSelector for Result {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -437,7 +455,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -455,13 +472,13 @@ pub mod schemas {
     pub struct Ruleset {
         #[doc = "Time the `Ruleset` was created.\nOutput only."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Name of the `Ruleset`. The ruleset_id is auto generated by the service.\nFormat: `projects/{project_id}/rulesets/{ruleset_id}`\nOutput only."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "`Source` for the `Ruleset`."]
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::Source>,
+        pub source: ::std::option::Option<crate::schemas::Source>,
     }
     impl ::field_selector::FieldSelector for Ruleset {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -470,7 +487,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -488,7 +504,7 @@ pub mod schemas {
     pub struct Source {
         #[doc = "`File` set constituting the `Source` bundle."]
         #[serde(rename = "files", default)]
-        pub files: Option<Vec<crate::schemas::File>>,
+        pub files: ::std::option::Option<Vec<crate::schemas::File>>,
     }
     impl ::field_selector::FieldSelector for Source {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -497,7 +513,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -515,13 +530,13 @@ pub mod schemas {
     pub struct SourcePosition {
         #[doc = "First column on the source line associated with the source fragment."]
         #[serde(rename = "column", default)]
-        pub column: Option<i32>,
+        pub column: ::std::option::Option<i32>,
         #[doc = "Name of the `File`."]
         #[serde(rename = "fileName", default)]
-        pub file_name: Option<String>,
+        pub file_name: ::std::option::Option<String>,
         #[doc = "Line number of the source fragment. 1-based."]
         #[serde(rename = "line", default)]
-        pub line: Option<i32>,
+        pub line: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for SourcePosition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -530,7 +545,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -583,6 +597,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for TestCaseExpectation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TestCasePathEncoding {
         #[doc = "No encoding has been specified. Defaults to \"URL_ENCODED\" behavior."]
@@ -633,23 +656,32 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for TestCasePathEncoding {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TestCase {
         #[doc = "Test expectation."]
         #[serde(rename = "expectation", default)]
-        pub expectation: Option<crate::schemas::TestCaseExpectation>,
+        pub expectation: ::std::option::Option<crate::schemas::TestCaseExpectation>,
         #[doc = "Optional function mocks for service-defined functions. If not set, any\nservice defined function is expected to return an error, which may or may\nnot influence the test outcome."]
         #[serde(rename = "functionMocks", default)]
-        pub function_mocks: Option<Vec<crate::schemas::FunctionMock>>,
+        pub function_mocks: ::std::option::Option<Vec<crate::schemas::FunctionMock>>,
         #[doc = "Specifies whether paths (such as request.path) are encoded and how."]
         #[serde(rename = "pathEncoding", default)]
-        pub path_encoding: Option<crate::schemas::TestCasePathEncoding>,
+        pub path_encoding: ::std::option::Option<crate::schemas::TestCasePathEncoding>,
         #[doc = "Request context.\n\nThe exact format of the request context is service-dependent. See the\nappropriate service documentation for information about the supported\nfields and types on the request. Minimally, all services support the\nfollowing fields and types:\n\n|Request field|Type|\n|-------------|----|\n|auth.uid|`string`|\n|auth.token|`map<string, string>`|\n|headers|`map<string, string>`|\n|method|`string`|\n|params|`map<string, string>`|\n|path|`string`|\n|time|`google.protobuf.Timestamp`|\n\nIf the request value is not well-formed for the service, the request will\nbe rejected as an invalid argument."]
         #[serde(rename = "request", default)]
-        pub request: Option<::serde_json::Value>,
+        pub request: ::std::option::Option<::serde_json::Value>,
         #[doc = "Optional resource value as it appears in persistent storage before the\nrequest is fulfilled.\n\nThe resource type depends on the `request.path` value."]
         #[serde(rename = "resource", default)]
-        pub resource: Option<::serde_json::Value>,
+        pub resource: ::std::option::Option<::serde_json::Value>,
     }
     impl ::field_selector::FieldSelector for TestCase {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -658,7 +690,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -711,23 +742,32 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for TestResultState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TestResult {
         #[doc = "Debug messages related to test execution issues encountered during\nevaluation.\n\nDebug messages may be related to too many or too few invocations of\nfunction mocks or to runtime errors that occur during evaluation.\n\nFor example: `Unable to read variable [name: \"resource\"]`"]
         #[serde(rename = "debugMessages", default)]
-        pub debug_messages: Option<Vec<String>>,
+        pub debug_messages: ::std::option::Option<Vec<String>>,
         #[doc = "Position in the `Source` or `Ruleset` where the principle runtime error\noccurs.\n\nEvaluation of an expression may result in an error. Rules are deny by\ndefault, so a `DENY` expectation when an error is generated is valid.\nWhen there is a `DENY` with an error, the `SourcePosition` is returned.\n\nE.g. `error_position { line: 19 column: 37 }`"]
         #[serde(rename = "errorPosition", default)]
-        pub error_position: Option<crate::schemas::SourcePosition>,
+        pub error_position: ::std::option::Option<crate::schemas::SourcePosition>,
         #[doc = "The set of function calls made to service-defined methods.\n\nFunction calls are included in the order in which they are encountered\nduring evaluation, are provided for both mocked and unmocked functions,\nand included on the response regardless of the test `state`."]
         #[serde(rename = "functionCalls", default)]
-        pub function_calls: Option<Vec<crate::schemas::FunctionCall>>,
+        pub function_calls: ::std::option::Option<Vec<crate::schemas::FunctionCall>>,
         #[doc = "State of the test."]
         #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::TestResultState>,
+        pub state: ::std::option::Option<crate::schemas::TestResultState>,
         #[doc = "The set of visited permission expressions for a given test. This returns\nthe positions and evaluation results of all visited permission\nexpressions which were relevant to the test case, e.g.\n\n````text\nmatch /path {\n  allow read if: <expr>\n}\n````\n\nFor a detailed report of the intermediate evaluation states, see the\n`expression_reports` field"]
         #[serde(rename = "visitedExpressions", default)]
-        pub visited_expressions: Option<Vec<crate::schemas::VisitedExpression>>,
+        pub visited_expressions: ::std::option::Option<Vec<crate::schemas::VisitedExpression>>,
     }
     impl ::field_selector::FieldSelector for TestResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -736,17 +776,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TestRulesetRequest {
         #[doc = "Optional `Source` to be checked for correctness.\n\nThis field must not be set when the resource name refers to a `Ruleset`."]
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::Source>,
+        pub source: ::std::option::Option<crate::schemas::Source>,
         #[doc = "Inline `TestSuite` to run."]
         #[serde(rename = "testSuite", default)]
-        pub test_suite: Option<crate::schemas::TestSuite>,
+        pub test_suite: ::std::option::Option<crate::schemas::TestSuite>,
     }
     impl ::field_selector::FieldSelector for TestRulesetRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -755,17 +794,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TestRulesetResponse {
         #[doc = "Syntactic and semantic `Source` issues of varying severity. Issues of\n`ERROR` severity will prevent tests from executing."]
         #[serde(rename = "issues", default)]
-        pub issues: Option<Vec<crate::schemas::Issue>>,
+        pub issues: ::std::option::Option<Vec<crate::schemas::Issue>>,
         #[doc = "The set of test results given the test cases in the `TestSuite`.\nThe results will appear in the same order as the test cases appear in the\n`TestSuite`."]
         #[serde(rename = "testResults", default)]
-        pub test_results: Option<Vec<crate::schemas::TestResult>>,
+        pub test_results: ::std::option::Option<Vec<crate::schemas::TestResult>>,
     }
     impl ::field_selector::FieldSelector for TestRulesetResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -774,14 +812,13 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TestSuite {
         #[doc = "Collection of test cases associated with the `TestSuite`."]
         #[serde(rename = "testCases", default)]
-        pub test_cases: Option<Vec<crate::schemas::TestCase>>,
+        pub test_cases: ::std::option::Option<Vec<crate::schemas::TestCase>>,
     }
     impl ::field_selector::FieldSelector for TestSuite {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -790,7 +827,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -808,10 +844,10 @@ pub mod schemas {
     pub struct UpdateReleaseRequest {
         #[doc = "`Release` to update."]
         #[serde(rename = "release", default)]
-        pub release: Option<crate::schemas::Release>,
+        pub release: ::std::option::Option<crate::schemas::Release>,
         #[doc = "Specifies which fields to update."]
         #[serde(rename = "updateMask", default)]
-        pub update_mask: Option<String>,
+        pub update_mask: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UpdateReleaseRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -820,17 +856,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct VisitedExpression {
         #[doc = "Position in the `Source` or `Ruleset` where an expression was visited."]
         #[serde(rename = "sourcePosition", default)]
-        pub source_position: Option<crate::schemas::SourcePosition>,
+        pub source_position: ::std::option::Option<crate::schemas::SourcePosition>,
         #[doc = "The evaluated value for the visited expression, e.g. true/false"]
         #[serde(rename = "value", default)]
-        pub value: Option<::serde_json::Value>,
+        pub value: ::std::option::Option<::serde_json::Value>,
     }
     impl ::field_selector::FieldSelector for VisitedExpression {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -839,7 +874,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -894,6 +928,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -938,6 +981,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1236,6 +1288,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for GetExecutableExecutableVersion {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
             }
@@ -3669,6 +3730,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3744,5 +3806,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

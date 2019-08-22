@@ -14,13 +14,13 @@ pub mod schemas {
     pub struct BlogLocale {
         #[doc = "The country this blog's locale is set to."]
         #[serde(rename = "country", default)]
-        pub country: Option<String>,
+        pub country: ::std::option::Option<String>,
         #[doc = "The language this blog is authored in."]
         #[serde(rename = "language", default)]
-        pub language: Option<String>,
+        pub language: ::std::option::Option<String>,
         #[doc = "The language variant this blog is authored in."]
         #[serde(rename = "variant", default)]
-        pub variant: Option<String>,
+        pub variant: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BlogLocale {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -29,7 +29,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -47,10 +46,10 @@ pub mod schemas {
     pub struct BlogPages {
         #[doc = "The URL of the container for pages in this blog."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "The count of pages in this blog."]
         #[serde(rename = "totalItems", default)]
-        pub total_items: Option<i32>,
+        pub total_items: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for BlogPages {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -59,7 +58,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -77,10 +75,10 @@ pub mod schemas {
     pub struct BlogPosts {
         #[doc = "The URL of the container for posts in this blog."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "The count of posts in this blog."]
         #[serde(rename = "totalItems", default)]
-        pub total_items: Option<i32>,
+        pub total_items: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for BlogPosts {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -89,7 +87,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -107,38 +104,38 @@ pub mod schemas {
     pub struct Blog {
         #[doc = "The description of this blog. This is displayed underneath the title."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The identifier for this resource."]
         #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
+        pub id: ::std::option::Option<i64>,
         #[doc = "The kind of this entry. Always blogger#blog"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The locale this Blog is set to."]
         #[serde(rename = "locale", default)]
-        pub locale: Option<crate::schemas::BlogLocale>,
+        pub locale: ::std::option::Option<crate::schemas::BlogLocale>,
         #[doc = "The name of this blog. This is displayed as the title."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The container of pages in this blog."]
         #[serde(rename = "pages", default)]
-        pub pages: Option<crate::schemas::BlogPages>,
+        pub pages: ::std::option::Option<crate::schemas::BlogPages>,
         #[doc = "The container of posts in this blog."]
         #[serde(rename = "posts", default)]
-        pub posts: Option<crate::schemas::BlogPosts>,
+        pub posts: ::std::option::Option<crate::schemas::BlogPosts>,
         #[doc = "RFC 3339 date-time when this blog was published."]
         #[serde(rename = "published", default)]
-        pub published: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The API REST URL to fetch this resource from."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "RFC 3339 date-time when this blog was last updated."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The URL where this blog is published."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Blog {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -147,7 +144,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -165,10 +161,10 @@ pub mod schemas {
     pub struct BlogList {
         #[doc = "The list of Blogs this user has Authorship or Admin rights over."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Blog>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Blog>>,
         #[doc = "The kind of this entity. Always blogger#blogList"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BlogList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -177,7 +173,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -195,7 +190,7 @@ pub mod schemas {
     pub struct CommentAuthorImage {
         #[doc = "The comment creator's avatar URL."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CommentAuthorImage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -204,7 +199,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -222,16 +216,16 @@ pub mod schemas {
     pub struct CommentAuthor {
         #[doc = "The display name."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The identifier of the Comment creator."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The comment creator's avatar."]
         #[serde(rename = "image", default)]
-        pub image: Option<crate::schemas::CommentAuthorImage>,
+        pub image: ::std::option::Option<crate::schemas::CommentAuthorImage>,
         #[doc = "The URL of the Comment creator's Profile page."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CommentAuthor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -240,7 +234,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -259,7 +252,7 @@ pub mod schemas {
         #[doc = "The identifier of the blog containing this comment."]
         #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
+        pub id: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for CommentBlog {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -268,7 +261,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -287,7 +279,7 @@ pub mod schemas {
         #[doc = "The identified of the parent of this comment."]
         #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
+        pub id: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for CommentInReplyTo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -296,7 +288,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -315,7 +306,7 @@ pub mod schemas {
         #[doc = "The identifier of the post containing this comment."]
         #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
+        pub id: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for CommentPost {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -324,7 +315,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -342,35 +332,35 @@ pub mod schemas {
     pub struct Comment {
         #[doc = "The author of this Comment."]
         #[serde(rename = "author", default)]
-        pub author: Option<crate::schemas::CommentAuthor>,
+        pub author: ::std::option::Option<crate::schemas::CommentAuthor>,
         #[doc = "Data about the blog containing this comment."]
         #[serde(rename = "blog", default)]
-        pub blog: Option<crate::schemas::CommentBlog>,
+        pub blog: ::std::option::Option<crate::schemas::CommentBlog>,
         #[doc = "The actual content of the comment. May include HTML markup."]
         #[serde(rename = "content", default)]
-        pub content: Option<String>,
+        pub content: ::std::option::Option<String>,
         #[doc = "The identifier for this resource."]
         #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
+        pub id: ::std::option::Option<i64>,
         #[doc = "Data about the comment this is in reply to."]
         #[serde(rename = "inReplyTo", default)]
-        pub in_reply_to: Option<crate::schemas::CommentInReplyTo>,
+        pub in_reply_to: ::std::option::Option<crate::schemas::CommentInReplyTo>,
         #[doc = "The kind of this entry. Always blogger#comment"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Data about the post containing this comment."]
         #[serde(rename = "post", default)]
-        pub post: Option<crate::schemas::CommentPost>,
+        pub post: ::std::option::Option<crate::schemas::CommentPost>,
         #[doc = "RFC 3339 date-time when this comment was published."]
         #[serde(rename = "published", default)]
-        pub published: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The API REST URL to fetch this resource from."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "RFC 3339 date-time when this comment was last updated."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for Comment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -379,7 +369,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -397,16 +386,16 @@ pub mod schemas {
     pub struct CommentList {
         #[doc = "The List of Comments for a Post."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Comment>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Comment>>,
         #[doc = "The kind of this entry. Always blogger#commentList"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to fetch the next page, if one exists."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Pagination token to fetch the previous page, if one exists."]
         #[serde(rename = "prevPageToken", default)]
-        pub prev_page_token: Option<String>,
+        pub prev_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CommentList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -415,7 +404,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -433,7 +421,7 @@ pub mod schemas {
     pub struct PageAuthorImage {
         #[doc = "The page author's avatar URL."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PageAuthorImage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -442,7 +430,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -460,16 +447,16 @@ pub mod schemas {
     pub struct PageAuthor {
         #[doc = "The display name."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The identifier of the Page creator."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The page author's avatar."]
         #[serde(rename = "image", default)]
-        pub image: Option<crate::schemas::PageAuthorImage>,
+        pub image: ::std::option::Option<crate::schemas::PageAuthorImage>,
         #[doc = "The URL of the Page creator's Profile page."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PageAuthor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -478,7 +465,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -497,7 +483,7 @@ pub mod schemas {
         #[doc = "The identifier of the blog containing this page."]
         #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
+        pub id: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for PageBlog {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -506,7 +492,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -524,35 +509,35 @@ pub mod schemas {
     pub struct Page {
         #[doc = "The author of this Page."]
         #[serde(rename = "author", default)]
-        pub author: Option<crate::schemas::PageAuthor>,
+        pub author: ::std::option::Option<crate::schemas::PageAuthor>,
         #[doc = "Data about the blog containing this Page."]
         #[serde(rename = "blog", default)]
-        pub blog: Option<crate::schemas::PageBlog>,
+        pub blog: ::std::option::Option<crate::schemas::PageBlog>,
         #[doc = "The body content of this Page, in HTML."]
         #[serde(rename = "content", default)]
-        pub content: Option<String>,
+        pub content: ::std::option::Option<String>,
         #[doc = "The identifier for this resource."]
         #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
+        pub id: ::std::option::Option<i64>,
         #[doc = "The kind of this entity. Always blogger#page"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "RFC 3339 date-time when this Page was published."]
         #[serde(rename = "published", default)]
-        pub published: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The API REST URL to fetch this resource from."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "The title of this entity. This is the name displayed in the Admin user interface."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "RFC 3339 date-time when this Page was last updated."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The URL that this Page is displayed at."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Page {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -561,7 +546,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -579,10 +563,10 @@ pub mod schemas {
     pub struct PageList {
         #[doc = "The list of Pages for a Blog."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Page>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Page>>,
         #[doc = "The kind of this entity. Always blogger#pageList"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PageList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -591,7 +575,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -609,7 +592,7 @@ pub mod schemas {
     pub struct PostAuthorImage {
         #[doc = "The Post author's avatar URL."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PostAuthorImage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -618,7 +601,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -636,16 +618,16 @@ pub mod schemas {
     pub struct PostAuthor {
         #[doc = "The display name."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The identifier of the Post creator."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The Post author's avatar."]
         #[serde(rename = "image", default)]
-        pub image: Option<crate::schemas::PostAuthorImage>,
+        pub image: ::std::option::Option<crate::schemas::PostAuthorImage>,
         #[doc = "The URL of the Post creator's Profile page."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PostAuthor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -654,7 +636,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -673,7 +654,7 @@ pub mod schemas {
         #[doc = "The identifier of the Blog that contains this Post."]
         #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
+        pub id: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for PostBlog {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -682,7 +663,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -700,11 +680,11 @@ pub mod schemas {
     pub struct PostReplies {
         #[doc = "The URL of the comments on this post."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "The count of comments on this post."]
         #[serde(rename = "totalItems", default)]
         #[serde(with = "crate::parsed_string")]
-        pub total_items: Option<i64>,
+        pub total_items: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for PostReplies {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -713,7 +693,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -731,41 +710,41 @@ pub mod schemas {
     pub struct Post {
         #[doc = "The author of this Post."]
         #[serde(rename = "author", default)]
-        pub author: Option<crate::schemas::PostAuthor>,
+        pub author: ::std::option::Option<crate::schemas::PostAuthor>,
         #[doc = "Data about the blog containing this Post."]
         #[serde(rename = "blog", default)]
-        pub blog: Option<crate::schemas::PostBlog>,
+        pub blog: ::std::option::Option<crate::schemas::PostBlog>,
         #[doc = "The content of the Post. May contain HTML markup."]
         #[serde(rename = "content", default)]
-        pub content: Option<String>,
+        pub content: ::std::option::Option<String>,
         #[doc = "The identifier of this Post."]
         #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
+        pub id: ::std::option::Option<i64>,
         #[doc = "The kind of this entity. Always blogger#post"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The list of labels this Post was tagged with."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<Vec<String>>,
+        pub labels: ::std::option::Option<Vec<String>>,
         #[doc = "RFC 3339 date-time when this Post was published."]
         #[serde(rename = "published", default)]
-        pub published: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The container of comments on this Post."]
         #[serde(rename = "replies", default)]
-        pub replies: Option<crate::schemas::PostReplies>,
+        pub replies: ::std::option::Option<crate::schemas::PostReplies>,
         #[doc = "The API REST URL to fetch this resource from."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "The title of the Post."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "RFC 3339 date-time when this Post was last updated."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The URL where this Post is displayed."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Post {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -774,7 +753,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -792,16 +770,16 @@ pub mod schemas {
     pub struct PostList {
         #[doc = "The list of Posts for this Blog."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Post>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Post>>,
         #[doc = "The kind of this entity. Always blogger#postList"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Pagination token to fetch the next page, if one exists."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Pagination token to fetch the previous page, if one exists."]
         #[serde(rename = "prevPageToken", default)]
-        pub prev_page_token: Option<String>,
+        pub prev_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PostList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -810,7 +788,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -828,7 +805,7 @@ pub mod schemas {
     pub struct UserBlogs {
         #[doc = "The URL of the Blogs for this user."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserBlogs {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -837,7 +814,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -855,13 +831,13 @@ pub mod schemas {
     pub struct UserLocale {
         #[doc = "The user's country setting."]
         #[serde(rename = "country", default)]
-        pub country: Option<String>,
+        pub country: ::std::option::Option<String>,
         #[doc = "The user's language setting."]
         #[serde(rename = "language", default)]
-        pub language: Option<String>,
+        pub language: ::std::option::Option<String>,
         #[doc = "The user's language variant setting."]
         #[serde(rename = "variant", default)]
-        pub variant: Option<String>,
+        pub variant: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserLocale {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -870,7 +846,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -888,31 +863,31 @@ pub mod schemas {
     pub struct User {
         #[doc = "Profile summary information."]
         #[serde(rename = "about", default)]
-        pub about: Option<String>,
+        pub about: ::std::option::Option<String>,
         #[doc = "The container of blogs for this user."]
         #[serde(rename = "blogs", default)]
-        pub blogs: Option<crate::schemas::UserBlogs>,
+        pub blogs: ::std::option::Option<crate::schemas::UserBlogs>,
         #[doc = "The timestamp of when this profile was created, in seconds since epoch."]
         #[serde(rename = "created", default)]
-        pub created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The display name."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The identifier for this User."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The kind of this entity. Always blogger#user"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "This user's locale"]
         #[serde(rename = "locale", default)]
-        pub locale: Option<crate::schemas::UserLocale>,
+        pub locale: ::std::option::Option<crate::schemas::UserLocale>,
         #[doc = "The API REST URL to fetch this resource from."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "The user's profile page."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for User {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -921,7 +896,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -966,6 +940,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -3056,6 +3039,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3131,5 +3115,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

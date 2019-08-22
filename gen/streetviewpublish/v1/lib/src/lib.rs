@@ -14,7 +14,7 @@ pub mod schemas {
     pub struct BatchDeletePhotosRequest {
         #[doc = "Required. IDs of the Photos. HTTP\nGET requests require the following syntax for the URL query parameter:\n`photoIds=<id1>&photoIds=<id2>&...`."]
         #[serde(rename = "photoIds", default)]
-        pub photo_ids: Option<Vec<String>>,
+        pub photo_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for BatchDeletePhotosRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -23,14 +23,13 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchDeletePhotosResponse {
         #[doc = "The status for the operation to delete a single\nPhoto in the batch request."]
         #[serde(rename = "status", default)]
-        pub status: Option<Vec<crate::schemas::Status>>,
+        pub status: ::std::option::Option<Vec<crate::schemas::Status>>,
     }
     impl ::field_selector::FieldSelector for BatchDeletePhotosResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -39,14 +38,13 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchGetPhotosResponse {
         #[doc = "List of results for each individual\nPhoto requested, in the same order as\nthe requests in\nBatchGetPhotos."]
         #[serde(rename = "results", default)]
-        pub results: Option<Vec<crate::schemas::PhotoResponse>>,
+        pub results: ::std::option::Option<Vec<crate::schemas::PhotoResponse>>,
     }
     impl ::field_selector::FieldSelector for BatchGetPhotosResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -55,7 +53,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -64,7 +61,7 @@ pub mod schemas {
     pub struct BatchUpdatePhotosRequest {
         #[doc = "Required. List of\nUpdatePhotoRequests."]
         #[serde(rename = "updatePhotoRequests", default)]
-        pub update_photo_requests: Option<Vec<crate::schemas::UpdatePhotoRequest>>,
+        pub update_photo_requests: ::std::option::Option<Vec<crate::schemas::UpdatePhotoRequest>>,
     }
     impl ::field_selector::FieldSelector for BatchUpdatePhotosRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -73,14 +70,13 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchUpdatePhotosResponse {
         #[doc = "List of results for each individual\nPhoto updated, in the same order as\nthe request."]
         #[serde(rename = "results", default)]
-        pub results: Option<Vec<crate::schemas::PhotoResponse>>,
+        pub results: ::std::option::Option<Vec<crate::schemas::PhotoResponse>>,
     }
     impl ::field_selector::FieldSelector for BatchUpdatePhotosResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -89,7 +85,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -107,7 +102,7 @@ pub mod schemas {
     pub struct Connection {
         #[doc = "Required. The destination of the connection from the containing photo to\nanother photo."]
         #[serde(rename = "target", default)]
-        pub target: Option<crate::schemas::PhotoId>,
+        pub target: ::std::option::Option<crate::schemas::PhotoId>,
     }
     impl ::field_selector::FieldSelector for Connection {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -116,7 +111,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -134,7 +128,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
@@ -142,10 +136,10 @@ pub mod schemas {
     pub struct LatLng {
         #[doc = "The latitude in degrees. It must be in the range [-90.0, +90.0]."]
         #[serde(rename = "latitude", default)]
-        pub latitude: Option<f64>,
+        pub latitude: ::std::option::Option<f64>,
         #[doc = "The longitude in degrees. It must be in the range [-180.0, +180.0]."]
         #[serde(rename = "longitude", default)]
-        pub longitude: Option<f64>,
+        pub longitude: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for LatLng {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -154,7 +148,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -163,10 +156,10 @@ pub mod schemas {
     pub struct Level {
         #[doc = "Required. A name assigned to this Level, restricted to 3 characters.\nConsider how the elevator buttons would be labeled for this level if there\nwas an elevator."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Floor number, used for ordering. 0 indicates the ground level, 1 indicates\nthe first level above ground level, -1 indicates the first level under\nground level. Non-integer values are OK."]
         #[serde(rename = "number", default)]
-        pub number: Option<f64>,
+        pub number: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for Level {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -175,7 +168,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -184,10 +176,10 @@ pub mod schemas {
     pub struct ListPhotosResponse {
         #[doc = "Token to retrieve the next page of results, or empty if there are no more\nresults in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of photos. The\npageSize field\nin the request determines the number of items returned."]
         #[serde(rename = "photos", default)]
-        pub photos: Option<Vec<crate::schemas::Photo>>,
+        pub photos: ::std::option::Option<Vec<crate::schemas::Photo>>,
     }
     impl ::field_selector::FieldSelector for ListPhotosResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -196,26 +188,27 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
         #[serde(rename = "done", default)]
-        pub done: Option<bool>,
+        pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
         #[serde(rename = "error", default)]
-        pub error: Option<crate::schemas::Status>,
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
         #[serde(rename = "response", default)]
-        pub response: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub response:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
     impl ::field_selector::FieldSelector for Operation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -224,7 +217,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -279,6 +271,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for PhotoMapsPublishStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -351,47 +352,56 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PhotoTransferStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Photo {
         #[doc = "Absolute time when the photo was captured.\nWhen the photo has no exif timestamp, this is used to set a timestamp in\nthe photo metadata."]
         #[serde(rename = "captureTime", default)]
-        pub capture_time: Option<String>,
+        pub capture_time: ::std::option::Option<String>,
         #[doc = "Connections to other photos. A connection represents the link from this\nphoto to another photo."]
         #[serde(rename = "connections", default)]
-        pub connections: Option<Vec<crate::schemas::Connection>>,
+        pub connections: ::std::option::Option<Vec<crate::schemas::Connection>>,
         #[doc = "Output only. The download URL for the photo bytes. This field is set only\nwhen\nGetPhotoRequest.view\nis set to\nPhotoView.INCLUDE_DOWNLOAD_URL."]
         #[serde(rename = "downloadUrl", default)]
-        pub download_url: Option<String>,
+        pub download_url: ::std::option::Option<String>,
         #[doc = "Output only. Status in Google Maps, whether this photo was published or\nrejected."]
         #[serde(rename = "mapsPublishStatus", default)]
-        pub maps_publish_status: Option<crate::schemas::PhotoMapsPublishStatus>,
+        pub maps_publish_status: ::std::option::Option<crate::schemas::PhotoMapsPublishStatus>,
         #[doc = "Required when updating a photo. Output only when creating a photo.\nIdentifier for the photo, which is unique among all photos in\nGoogle."]
         #[serde(rename = "photoId", default)]
-        pub photo_id: Option<crate::schemas::PhotoId>,
+        pub photo_id: ::std::option::Option<crate::schemas::PhotoId>,
         #[doc = "Places where this photo belongs."]
         #[serde(rename = "places", default)]
-        pub places: Option<Vec<crate::schemas::Place>>,
+        pub places: ::std::option::Option<Vec<crate::schemas::Place>>,
         #[doc = "Pose of the photo."]
         #[serde(rename = "pose", default)]
-        pub pose: Option<crate::schemas::Pose>,
+        pub pose: ::std::option::Option<crate::schemas::Pose>,
         #[doc = "Output only. The share link for the photo."]
         #[serde(rename = "shareLink", default)]
-        pub share_link: Option<String>,
+        pub share_link: ::std::option::Option<String>,
         #[doc = "Output only. The thumbnail URL for showing a preview of the given photo."]
         #[serde(rename = "thumbnailUrl", default)]
-        pub thumbnail_url: Option<String>,
+        pub thumbnail_url: ::std::option::Option<String>,
         #[doc = "Output only. Status of rights transfer on this photo."]
         #[serde(rename = "transferStatus", default)]
-        pub transfer_status: Option<crate::schemas::PhotoTransferStatus>,
+        pub transfer_status: ::std::option::Option<crate::schemas::PhotoTransferStatus>,
         #[doc = "Required when creating a photo. Input only. The resource URL where the\nphoto bytes are uploaded to."]
         #[serde(rename = "uploadReference", default)]
-        pub upload_reference: Option<crate::schemas::UploadRef>,
+        pub upload_reference: ::std::option::Option<crate::schemas::UploadRef>,
         #[doc = "Output only. View count of the photo."]
         #[serde(rename = "viewCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub view_count: Option<i64>,
+        pub view_count: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for Photo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -400,7 +410,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -418,7 +427,7 @@ pub mod schemas {
     pub struct PhotoId {
         #[doc = "Required. A unique identifier for a photo."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PhotoId {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -427,17 +436,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct PhotoResponse {
         #[doc = "The Photo resource, if the request\nwas successful."]
         #[serde(rename = "photo", default)]
-        pub photo: Option<crate::schemas::Photo>,
+        pub photo: ::std::option::Option<crate::schemas::Photo>,
         #[doc = "The status for the operation to get or update a single photo in the batch\nrequest."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::Status>,
+        pub status: ::std::option::Option<crate::schemas::Status>,
     }
     impl ::field_selector::FieldSelector for PhotoResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -446,7 +454,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -464,13 +471,13 @@ pub mod schemas {
     pub struct Place {
         #[doc = "Output-only. The language_code that the name is localized with. This should\nbe the language_code specified in the request, but may be a fallback."]
         #[serde(rename = "languageCode", default)]
-        pub language_code: Option<String>,
+        pub language_code: ::std::option::Option<String>,
         #[doc = "Output-only. The name of the place, localized to the language_code."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Place identifier, as described in\nhttps://developers.google.com/places/place-id."]
         #[serde(rename = "placeId", default)]
-        pub place_id: Option<String>,
+        pub place_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Place {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -479,7 +486,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -488,25 +494,25 @@ pub mod schemas {
     pub struct Pose {
         #[doc = "The estimated horizontal accuracy of this pose in meters with 68%\nconfidence (one standard deviation). For example, on Android, this value is\navailable from this method:\nhttps://developer.android.com/reference/android/location/Location#getAccuracy().\nOther platforms have different methods of obtaining similar accuracy\nestimations."]
         #[serde(rename = "accuracyMeters", default)]
-        pub accuracy_meters: Option<f32>,
+        pub accuracy_meters: ::std::option::Option<f32>,
         #[doc = "Altitude of the pose in meters above WGS84 ellipsoid.\nNaN indicates an unmeasured quantity."]
         #[serde(rename = "altitude", default)]
-        pub altitude: Option<f64>,
+        pub altitude: ::std::option::Option<f64>,
         #[doc = "Compass heading, measured at the center of the photo in degrees clockwise\nfrom North. Value must be >=0 and <360.\nNaN indicates an unmeasured quantity."]
         #[serde(rename = "heading", default)]
-        pub heading: Option<f64>,
+        pub heading: ::std::option::Option<f64>,
         #[doc = "Latitude and longitude pair of the pose, as explained here:\nhttps://cloud.google.com/datastore/docs/reference/rest/Shared.Types/LatLng\nWhen creating a Photo, if the\nlatitude and longitude pair are not provided, the geolocation from the\nexif header is used. A latitude and longitude pair not provided in the\nphoto or exif header causes the photo process to fail."]
         #[serde(rename = "latLngPair", default)]
-        pub lat_lng_pair: Option<crate::schemas::LatLng>,
+        pub lat_lng_pair: ::std::option::Option<crate::schemas::LatLng>,
         #[doc = "Level (the floor in a building) used to configure vertical navigation."]
         #[serde(rename = "level", default)]
-        pub level: Option<crate::schemas::Level>,
+        pub level: ::std::option::Option<crate::schemas::Level>,
         #[doc = "Pitch, measured at the center of the photo in degrees. Value must be >=-90\nand <= 90. A value of -90 means looking directly down, and a value of 90\nmeans looking directly up.\nNaN indicates an unmeasured quantity."]
         #[serde(rename = "pitch", default)]
-        pub pitch: Option<f64>,
+        pub pitch: ::std::option::Option<f64>,
         #[doc = "Roll, measured in degrees. Value must be >= 0 and <360. A value of 0\nmeans level with the horizon.\nNaN indicates an unmeasured quantity."]
         #[serde(rename = "roll", default)]
-        pub roll: Option<f64>,
+        pub roll: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for Pose {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -515,20 +521,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
-        pub code: Option<i32>,
+        pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub details:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Status {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -537,7 +543,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -546,10 +551,10 @@ pub mod schemas {
     pub struct UpdatePhotoRequest {
         #[doc = "Required. Photo object containing the\nnew metadata."]
         #[serde(rename = "photo", default)]
-        pub photo: Option<crate::schemas::Photo>,
+        pub photo: ::std::option::Option<crate::schemas::Photo>,
         #[doc = "Mask that identifies fields on the photo metadata to update.\nIf not present, the old Photo\nmetadata is entirely replaced with the\nnew Photo metadata in this request.\nThe update fails if invalid fields are specified. Multiple fields can be\nspecified in a comma-delimited list.\n\nThe following fields are valid:\n\n* `pose.heading`\n* `pose.latLngPair`\n* `pose.pitch`\n* `pose.roll`\n* `pose.level`\n* `pose.altitude`\n* `connections`\n* `places`\n\n<aside class=\"note\"><b>Note:</b> When\nupdateMask\ncontains repeated fields, the entire set of repeated values get replaced\nwith the new contents. For example, if\nupdateMask\ncontains `connections` and `UpdatePhotoRequest.photo.connections` is empty,\nall connections are removed.</aside>"]
         #[serde(rename = "updateMask", default)]
-        pub update_mask: Option<String>,
+        pub update_mask: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UpdatePhotoRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -558,7 +563,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -576,7 +580,7 @@ pub mod schemas {
     pub struct UploadRef {
         #[doc = "Required. An upload reference should be unique for each user. It follows\nthe form:\n\"https://streetviewpublish.googleapis.com/media/user/{account_id}/photo/{upload_reference}\""]
         #[serde(rename = "uploadUrl", default)]
-        pub upload_url: Option<String>,
+        pub upload_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UploadRef {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -585,7 +589,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -640,6 +643,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -684,6 +696,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -758,6 +779,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for GetView {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -1756,6 +1786,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for BatchGetView {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListView {
                 Basic,
@@ -1798,6 +1837,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListView {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -2953,6 +3001,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3028,5 +3077,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

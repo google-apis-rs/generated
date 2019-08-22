@@ -14,10 +14,10 @@ pub mod schemas {
     pub struct AnalyticsInfo {
         #[doc = "Google Play Campaign Measurements."]
         #[serde(rename = "googlePlayAnalytics", default)]
-        pub google_play_analytics: Option<crate::schemas::GooglePlayAnalytics>,
+        pub google_play_analytics: ::std::option::Option<crate::schemas::GooglePlayAnalytics>,
         #[doc = "iTunes Connect App Analytics."]
         #[serde(rename = "itunesConnectAnalytics", default)]
-        pub itunes_connect_analytics: Option<crate::schemas::ItunesConnectAnalytics>,
+        pub itunes_connect_analytics: ::std::option::Option<crate::schemas::ItunesConnectAnalytics>,
     }
     impl ::field_selector::FieldSelector for AnalyticsInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -26,7 +26,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -44,16 +43,16 @@ pub mod schemas {
     pub struct AndroidInfo {
         #[doc = "Link to open on Android if the app is not installed."]
         #[serde(rename = "androidFallbackLink", default)]
-        pub android_fallback_link: Option<String>,
+        pub android_fallback_link: ::std::option::Option<String>,
         #[doc = "If specified, this overrides the \u{2018}link\u{2019} parameter on Android."]
         #[serde(rename = "androidLink", default)]
-        pub android_link: Option<String>,
+        pub android_link: ::std::option::Option<String>,
         #[doc = "Minimum version code for the Android app. If the installed app\u{2019}s version\ncode is lower, then the user is taken to the Play Store."]
         #[serde(rename = "androidMinPackageVersionCode", default)]
-        pub android_min_package_version_code: Option<String>,
+        pub android_min_package_version_code: ::std::option::Option<String>,
         #[doc = "Android package name of the app."]
         #[serde(rename = "androidPackageName", default)]
-        pub android_package_name: Option<String>,
+        pub android_package_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AndroidInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -62,7 +61,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -80,19 +78,19 @@ pub mod schemas {
     pub struct CreateManagedShortLinkRequest {
         #[doc = "Information about the Dynamic Link to be shortened.\n[Learn\nmore](https://firebase.google.com/docs/reference/dynamic-links/link-shortener)."]
         #[serde(rename = "dynamicLinkInfo", default)]
-        pub dynamic_link_info: Option<crate::schemas::DynamicLinkInfo>,
+        pub dynamic_link_info: ::std::option::Option<crate::schemas::DynamicLinkInfo>,
         #[doc = "Full long Dynamic Link URL with desired query parameters specified.\nFor example,\n\"https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample\",\n[Learn\nmore](https://firebase.google.com/docs/reference/dynamic-links/link-shortener)."]
         #[serde(rename = "longDynamicLink", default)]
-        pub long_dynamic_link: Option<String>,
+        pub long_dynamic_link: ::std::option::Option<String>,
         #[doc = "Link name to associate with the link. It's used for marketer to identify\nmanually-created links in the Firebase console\n(https://console.firebase.google.com/).\nLinks must be named to be tracked."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Google SDK version. Version takes the form \"$major.$minor.$patch\""]
         #[serde(rename = "sdkVersion", default)]
-        pub sdk_version: Option<String>,
+        pub sdk_version: ::std::option::Option<String>,
         #[doc = "Short Dynamic Link suffix. Optional."]
         #[serde(rename = "suffix", default)]
-        pub suffix: Option<crate::schemas::Suffix>,
+        pub suffix: ::std::option::Option<crate::schemas::Suffix>,
     }
     impl ::field_selector::FieldSelector for CreateManagedShortLinkRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -101,7 +99,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -119,13 +116,13 @@ pub mod schemas {
     pub struct CreateManagedShortLinkResponse {
         #[doc = "Short Dynamic Link value. e.g. https://abcd.app.goo.gl/wxyz"]
         #[serde(rename = "managedShortLink", default)]
-        pub managed_short_link: Option<crate::schemas::ManagedShortLink>,
+        pub managed_short_link: ::std::option::Option<crate::schemas::ManagedShortLink>,
         #[doc = "Preview link to show the link flow chart. (debug info.)"]
         #[serde(rename = "previewLink", default)]
-        pub preview_link: Option<String>,
+        pub preview_link: ::std::option::Option<String>,
         #[doc = "Information about potential warnings on link creation."]
         #[serde(rename = "warning", default)]
-        pub warning: Option<Vec<crate::schemas::DynamicLinkWarning>>,
+        pub warning: ::std::option::Option<Vec<crate::schemas::DynamicLinkWarning>>,
     }
     impl ::field_selector::FieldSelector for CreateManagedShortLinkResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -134,7 +131,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -152,16 +148,16 @@ pub mod schemas {
     pub struct CreateShortDynamicLinkRequest {
         #[doc = "Information about the Dynamic Link to be shortened.\n[Learn\nmore](https://firebase.google.com/docs/reference/dynamic-links/link-shortener)."]
         #[serde(rename = "dynamicLinkInfo", default)]
-        pub dynamic_link_info: Option<crate::schemas::DynamicLinkInfo>,
+        pub dynamic_link_info: ::std::option::Option<crate::schemas::DynamicLinkInfo>,
         #[doc = "Full long Dynamic Link URL with desired query parameters specified.\nFor example,\n\"https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample\",\n[Learn\nmore](https://firebase.google.com/docs/reference/dynamic-links/link-shortener)."]
         #[serde(rename = "longDynamicLink", default)]
-        pub long_dynamic_link: Option<String>,
+        pub long_dynamic_link: ::std::option::Option<String>,
         #[doc = "Google SDK version. Version takes the form \"$major.$minor.$patch\""]
         #[serde(rename = "sdkVersion", default)]
-        pub sdk_version: Option<String>,
+        pub sdk_version: ::std::option::Option<String>,
         #[doc = "Short Dynamic Link suffix. Optional."]
         #[serde(rename = "suffix", default)]
-        pub suffix: Option<crate::schemas::Suffix>,
+        pub suffix: ::std::option::Option<crate::schemas::Suffix>,
     }
     impl ::field_selector::FieldSelector for CreateShortDynamicLinkRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -170,7 +166,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -188,13 +183,13 @@ pub mod schemas {
     pub struct CreateShortDynamicLinkResponse {
         #[doc = "Preview link to show the link flow chart. (debug info.)"]
         #[serde(rename = "previewLink", default)]
-        pub preview_link: Option<String>,
+        pub preview_link: ::std::option::Option<String>,
         #[doc = "Short Dynamic Link value. e.g. https://abcd.app.goo.gl/wxyz"]
         #[serde(rename = "shortLink", default)]
-        pub short_link: Option<String>,
+        pub short_link: ::std::option::Option<String>,
         #[doc = "Information about potential warnings on link creation."]
         #[serde(rename = "warning", default)]
-        pub warning: Option<Vec<crate::schemas::DynamicLinkWarning>>,
+        pub warning: ::std::option::Option<Vec<crate::schemas::DynamicLinkWarning>>,
     }
     impl ::field_selector::FieldSelector for CreateShortDynamicLinkResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -203,7 +198,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -221,7 +215,7 @@ pub mod schemas {
     pub struct DesktopInfo {
         #[doc = "Link to open on desktop."]
         #[serde(rename = "desktopFallbackLink", default)]
-        pub desktop_fallback_link: Option<String>,
+        pub desktop_fallback_link: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DesktopInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -230,7 +224,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -248,27 +241,27 @@ pub mod schemas {
     pub struct DeviceInfo {
         #[doc = "Device model name."]
         #[serde(rename = "deviceModelName", default)]
-        pub device_model_name: Option<String>,
+        pub device_model_name: ::std::option::Option<String>,
         #[doc = "Device language code setting."]
         #[serde(rename = "languageCode", default)]
-        pub language_code: Option<String>,
+        pub language_code: ::std::option::Option<String>,
         #[doc = "Device language code setting obtained by executing JavaScript code in\nWebView."]
         #[serde(rename = "languageCodeFromWebview", default)]
-        pub language_code_from_webview: Option<String>,
+        pub language_code_from_webview: ::std::option::Option<String>,
         #[doc = "Device language code raw setting.\niOS does returns language code in different format than iOS WebView.\nFor example WebView returns en_US, but iOS returns en-US.\nField below will return raw value returned by iOS."]
         #[serde(rename = "languageCodeRaw", default)]
-        pub language_code_raw: Option<String>,
+        pub language_code_raw: ::std::option::Option<String>,
         #[doc = "Device display resolution height."]
         #[serde(rename = "screenResolutionHeight", default)]
         #[serde(with = "crate::parsed_string")]
-        pub screen_resolution_height: Option<i64>,
+        pub screen_resolution_height: ::std::option::Option<i64>,
         #[doc = "Device display resolution width."]
         #[serde(rename = "screenResolutionWidth", default)]
         #[serde(with = "crate::parsed_string")]
-        pub screen_resolution_width: Option<i64>,
+        pub screen_resolution_width: ::std::option::Option<i64>,
         #[doc = "Device timezone setting."]
         #[serde(rename = "timezone", default)]
-        pub timezone: Option<String>,
+        pub timezone: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DeviceInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -277,7 +270,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -346,6 +338,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DynamicLinkEventStatEvent {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DynamicLinkEventStatPlatform {
         #[doc = "Unspecified platform."]
@@ -408,6 +409,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DynamicLinkEventStatPlatform {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -424,13 +434,13 @@ pub mod schemas {
         #[doc = "The number of times this event occurred."]
         #[serde(rename = "count", default)]
         #[serde(with = "crate::parsed_string")]
-        pub count: Option<i64>,
+        pub count: ::std::option::Option<i64>,
         #[doc = "Link event."]
         #[serde(rename = "event", default)]
-        pub event: Option<crate::schemas::DynamicLinkEventStatEvent>,
+        pub event: ::std::option::Option<crate::schemas::DynamicLinkEventStatEvent>,
         #[doc = "Requested platform."]
         #[serde(rename = "platform", default)]
-        pub platform: Option<crate::schemas::DynamicLinkEventStatPlatform>,
+        pub platform: ::std::option::Option<crate::schemas::DynamicLinkEventStatPlatform>,
     }
     impl ::field_selector::FieldSelector for DynamicLinkEventStat {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -439,7 +449,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -457,31 +466,31 @@ pub mod schemas {
     pub struct DynamicLinkInfo {
         #[doc = "Parameters used for tracking. See all tracking parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually)."]
         #[serde(rename = "analyticsInfo", default)]
-        pub analytics_info: Option<crate::schemas::AnalyticsInfo>,
+        pub analytics_info: ::std::option::Option<crate::schemas::AnalyticsInfo>,
         #[doc = "Android related information. See Android related parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually)."]
         #[serde(rename = "androidInfo", default)]
-        pub android_info: Option<crate::schemas::AndroidInfo>,
+        pub android_info: ::std::option::Option<crate::schemas::AndroidInfo>,
         #[doc = "Desktop related information. See desktop related parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually)."]
         #[serde(rename = "desktopInfo", default)]
-        pub desktop_info: Option<crate::schemas::DesktopInfo>,
+        pub desktop_info: ::std::option::Option<crate::schemas::DesktopInfo>,
         #[doc = "E.g. https://maps.app.goo.gl, https://maps.page.link, https://g.co/maps\nMore examples can be found in description of getNormalizedUriPrefix in\nj/c/g/firebase/dynamiclinks/uri/DdlDomain.java\n\nWill fallback to dynamic_link_domain is this field is missing"]
         #[serde(rename = "domainUriPrefix", default)]
-        pub domain_uri_prefix: Option<String>,
+        pub domain_uri_prefix: ::std::option::Option<String>,
         #[doc = "Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl\n[Learn\nmore](https://firebase.google.com/docs/dynamic-links/android/receive) on\nhow to set up Dynamic Link domain associated with your Firebase project.\n\nRequired if missing domain_uri_prefix."]
         #[serde(rename = "dynamicLinkDomain", default)]
-        pub dynamic_link_domain: Option<String>,
+        pub dynamic_link_domain: ::std::option::Option<String>,
         #[doc = "iOS related information. See iOS related parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually)."]
         #[serde(rename = "iosInfo", default)]
-        pub ios_info: Option<crate::schemas::IosInfo>,
+        pub ios_info: ::std::option::Option<crate::schemas::IosInfo>,
         #[doc = "The link your app will open, You can specify any URL your app can handle.\nThis link must be a well-formatted URL, be properly URL-encoded, and use\nthe HTTP or HTTPS scheme. See 'link' parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually).\n\nRequired."]
         #[serde(rename = "link", default)]
-        pub link: Option<String>,
+        pub link: ::std::option::Option<String>,
         #[doc = "Information of navigation behavior of a Firebase Dynamic Links."]
         #[serde(rename = "navigationInfo", default)]
-        pub navigation_info: Option<crate::schemas::NavigationInfo>,
+        pub navigation_info: ::std::option::Option<crate::schemas::NavigationInfo>,
         #[doc = "Parameters for social meta tag params.\nUsed to set meta tag data for link previews on social sites."]
         #[serde(rename = "socialMetaTagInfo", default)]
-        pub social_meta_tag_info: Option<crate::schemas::SocialMetaTagInfo>,
+        pub social_meta_tag_info: ::std::option::Option<crate::schemas::SocialMetaTagInfo>,
     }
     impl ::field_selector::FieldSelector for DynamicLinkInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -490,7 +499,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -508,7 +516,7 @@ pub mod schemas {
     pub struct DynamicLinkStats {
         #[doc = "Dynamic Link event stats."]
         #[serde(rename = "linkEventStats", default)]
-        pub link_event_stats: Option<Vec<crate::schemas::DynamicLinkEventStat>>,
+        pub link_event_stats: ::std::option::Option<Vec<crate::schemas::DynamicLinkEventStat>>,
     }
     impl ::field_selector::FieldSelector for DynamicLinkStats {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -517,7 +525,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -732,6 +739,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DynamicLinkWarningWarningCode {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -747,13 +763,13 @@ pub mod schemas {
     pub struct DynamicLinkWarning {
         #[doc = "The warning code."]
         #[serde(rename = "warningCode", default)]
-        pub warning_code: Option<crate::schemas::DynamicLinkWarningWarningCode>,
+        pub warning_code: ::std::option::Option<crate::schemas::DynamicLinkWarningWarningCode>,
         #[doc = "The document describing the warning, and helps resolve."]
         #[serde(rename = "warningDocumentLink", default)]
-        pub warning_document_link: Option<String>,
+        pub warning_document_link: ::std::option::Option<String>,
         #[doc = "The warning message to help developers improve their requests."]
         #[serde(rename = "warningMessage", default)]
-        pub warning_message: Option<String>,
+        pub warning_message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DynamicLinkWarning {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -762,7 +778,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -801,6 +816,15 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok ( match value { "UNKNOWN_PAYLOAD_RETRIEVAL_METHOD" => GetIosPostInstallAttributionRequestRetrievalMethod :: UnknownPayloadRetrievalMethod , "IMPLICIT_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ImplicitWeakMatch , "EXPLICIT_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitWeakMatch , "EXPLICIT_STRONG_AFTER_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitStrongAfterWeakMatch , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::field_selector::FieldSelector for GetIosPostInstallAttributionRequestRetrievalMethod {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -857,6 +881,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GetIosPostInstallAttributionRequestVisualStyle {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -873,29 +906,31 @@ pub mod schemas {
         #[doc = "App installation epoch time (https://en.wikipedia.org/wiki/Unix_time).\nThis is a client signal for a more accurate weak match."]
         #[serde(rename = "appInstallationTime", default)]
         #[serde(with = "crate::parsed_string")]
-        pub app_installation_time: Option<i64>,
+        pub app_installation_time: ::std::option::Option<i64>,
         #[doc = "APP bundle ID."]
         #[serde(rename = "bundleId", default)]
-        pub bundle_id: Option<String>,
+        pub bundle_id: ::std::option::Option<String>,
         #[doc = "Device information."]
         #[serde(rename = "device", default)]
-        pub device: Option<crate::schemas::DeviceInfo>,
+        pub device: ::std::option::Option<crate::schemas::DeviceInfo>,
         #[doc = "iOS version, ie: 9.3.5.\nConsider adding \"build\"."]
         #[serde(rename = "iosVersion", default)]
-        pub ios_version: Option<String>,
+        pub ios_version: ::std::option::Option<String>,
         #[doc = "App post install attribution retrieval information. Disambiguates\nmechanism (iSDK or developer invoked) to retrieve payload from\nclicked link."]
         #[serde(rename = "retrievalMethod", default)]
-        pub retrieval_method:
-            Option<crate::schemas::GetIosPostInstallAttributionRequestRetrievalMethod>,
+        pub retrieval_method: ::std::option::Option<
+            crate::schemas::GetIosPostInstallAttributionRequestRetrievalMethod,
+        >,
         #[doc = "Google SDK version. Version takes the form \"$major.$minor.$patch\""]
         #[serde(rename = "sdkVersion", default)]
-        pub sdk_version: Option<String>,
+        pub sdk_version: ::std::option::Option<String>,
         #[doc = "Possible unique matched link that server need to check before performing\nfingerprint match. If passed link is short server need to expand the link.\nIf link is long server need to vslidate the link."]
         #[serde(rename = "uniqueMatchLinkToCheck", default)]
-        pub unique_match_link_to_check: Option<String>,
+        pub unique_match_link_to_check: ::std::option::Option<String>,
         #[doc = "Strong match page information. Disambiguates between default UI and\ncustom page to present when strong match succeeds/fails to find cookie."]
         #[serde(rename = "visualStyle", default)]
-        pub visual_style: Option<crate::schemas::GetIosPostInstallAttributionRequestVisualStyle>,
+        pub visual_style:
+            ::std::option::Option<crate::schemas::GetIosPostInstallAttributionRequestVisualStyle>,
     }
     impl ::field_selector::FieldSelector for GetIosPostInstallAttributionRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -904,7 +939,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -943,6 +977,15 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok ( match value { "UNKNOWN_ATTRIBUTION_CONFIDENCE" => GetIosPostInstallAttributionResponseAttributionConfidence :: UnknownAttributionConfidence , "WEAK" => GetIosPostInstallAttributionResponseAttributionConfidence :: Weak , "DEFAULT" => GetIosPostInstallAttributionResponseAttributionConfidence :: Default , "UNIQUE" => GetIosPostInstallAttributionResponseAttributionConfidence :: Unique , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::field_selector::FieldSelector for GetIosPostInstallAttributionResponseAttributionConfidence {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -999,6 +1042,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GetIosPostInstallAttributionResponseRequestIpVersion {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1014,54 +1066,56 @@ pub mod schemas {
     pub struct GetIosPostInstallAttributionResponse {
         #[doc = "The minimum version for app, specified by dev through ?imv= parameter.\nReturn to iSDK to allow app to evaluate if current version meets this."]
         #[serde(rename = "appMinimumVersion", default)]
-        pub app_minimum_version: Option<String>,
+        pub app_minimum_version: ::std::option::Option<String>,
         #[doc = "The confidence of the returned attribution."]
         #[serde(rename = "attributionConfidence", default)]
-        pub attribution_confidence:
-            Option<crate::schemas::GetIosPostInstallAttributionResponseAttributionConfidence>,
+        pub attribution_confidence: ::std::option::Option<
+            crate::schemas::GetIosPostInstallAttributionResponseAttributionConfidence,
+        >,
         #[doc = "The deep-link attributed post-install via one of several techniques\n(fingerprint, copy unique)."]
         #[serde(rename = "deepLink", default)]
-        pub deep_link: Option<String>,
+        pub deep_link: ::std::option::Option<String>,
         #[doc = "User-agent specific custom-scheme URIs for iSDK to open. This will be set\naccording to the user-agent tha the click was originally made in. There is\nno Safari-equivalent custom-scheme open URLs.\nie: googlechrome://www.example.com\nie: firefox://open-url?url=http://www.example.com\nie: opera-http://example.com"]
         #[serde(rename = "externalBrowserDestinationLink", default)]
-        pub external_browser_destination_link: Option<String>,
+        pub external_browser_destination_link: ::std::option::Option<String>,
         #[doc = "The link to navigate to update the app if min version is not met.\nThis is either (in order): 1) fallback link (from ?ifl= parameter, if\nspecified by developer) or 2) AppStore URL (from ?isi= parameter, if\nspecified), or 3) the payload link (from required link= parameter)."]
         #[serde(rename = "fallbackLink", default)]
-        pub fallback_link: Option<String>,
+        pub fallback_link: ::std::option::Option<String>,
         #[doc = "Invitation ID attributed post-install via one of several techniques\n(fingerprint, copy unique)."]
         #[serde(rename = "invitationId", default)]
-        pub invitation_id: Option<String>,
+        pub invitation_id: ::std::option::Option<String>,
         #[doc = "Instruction for iSDK to attemmpt to perform strong match. For instance,\nif browser does not support/allow cookie or outside of support browsers,\nthis will be false."]
         #[serde(rename = "isStrongMatchExecutable", default)]
-        pub is_strong_match_executable: Option<bool>,
+        pub is_strong_match_executable: ::std::option::Option<bool>,
         #[doc = "Describes why match failed, ie: \"discarded due to low confidence\".\nThis message will be publicly visible."]
         #[serde(rename = "matchMessage", default)]
-        pub match_message: Option<String>,
+        pub match_message: ::std::option::Option<String>,
         #[doc = "Which IP version the request was made from."]
         #[serde(rename = "requestIpVersion", default)]
-        pub request_ip_version:
-            Option<crate::schemas::GetIosPostInstallAttributionResponseRequestIpVersion>,
+        pub request_ip_version: ::std::option::Option<
+            crate::schemas::GetIosPostInstallAttributionResponseRequestIpVersion,
+        >,
         #[doc = "Entire FDL (short or long) attributed post-install via one of several\ntechniques (fingerprint, copy unique)."]
         #[serde(rename = "requestedLink", default)]
-        pub requested_link: Option<String>,
+        pub requested_link: ::std::option::Option<String>,
         #[doc = "The entire FDL, expanded from a short link. It is the same as the\nrequested_link, if it is long. Parameters from this should not be\nused directly (ie: server can default utm_[campaign|medium|source]\nto a value when requested_link lack them, server determine the best\nfallback_link when requested_link specifies >1 fallback links)."]
         #[serde(rename = "resolvedLink", default)]
-        pub resolved_link: Option<String>,
+        pub resolved_link: ::std::option::Option<String>,
         #[doc = "Scion campaign value to be propagated by iSDK to Scion at post-install."]
         #[serde(rename = "utmCampaign", default)]
-        pub utm_campaign: Option<String>,
+        pub utm_campaign: ::std::option::Option<String>,
         #[doc = "Scion content value to be propagated by iSDK to Scion at app-reopen."]
         #[serde(rename = "utmContent", default)]
-        pub utm_content: Option<String>,
+        pub utm_content: ::std::option::Option<String>,
         #[doc = "Scion medium value to be propagated by iSDK to Scion at post-install."]
         #[serde(rename = "utmMedium", default)]
-        pub utm_medium: Option<String>,
+        pub utm_medium: ::std::option::Option<String>,
         #[doc = "Scion source value to be propagated by iSDK to Scion at post-install."]
         #[serde(rename = "utmSource", default)]
-        pub utm_source: Option<String>,
+        pub utm_source: ::std::option::Option<String>,
         #[doc = "Scion term value to be propagated by iSDK to Scion at app-reopen."]
         #[serde(rename = "utmTerm", default)]
-        pub utm_term: Option<String>,
+        pub utm_term: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GetIosPostInstallAttributionResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1070,7 +1124,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1088,13 +1141,13 @@ pub mod schemas {
     pub struct GetIosReopenAttributionRequest {
         #[doc = "APP bundle ID."]
         #[serde(rename = "bundleId", default)]
-        pub bundle_id: Option<String>,
+        pub bundle_id: ::std::option::Option<String>,
         #[doc = "FDL link to be verified from an app universal link open.\nThe FDL link can be one of:\n\n1. short FDL.\n   e.g. <app_code>.page.link/<ddl_id>, or\n1. long FDL.\n   e.g. <app_code>.page.link/?{query params}, or\n1. Invite FDL.\n   e.g. <app_code>.page.link/i/<invite_id_or_alias>"]
         #[serde(rename = "requestedLink", default)]
-        pub requested_link: Option<String>,
+        pub requested_link: ::std::option::Option<String>,
         #[doc = "Google SDK version. Version takes the form \"$major.$minor.$patch\""]
         #[serde(rename = "sdkVersion", default)]
-        pub sdk_version: Option<String>,
+        pub sdk_version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GetIosReopenAttributionRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1103,7 +1156,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1121,31 +1173,31 @@ pub mod schemas {
     pub struct GetIosReopenAttributionResponse {
         #[doc = "The deep-link attributed the app universal link open. For both regular\nFDL links and invite FDL links."]
         #[serde(rename = "deepLink", default)]
-        pub deep_link: Option<String>,
+        pub deep_link: ::std::option::Option<String>,
         #[doc = "Optional invitation ID, for only invite typed requested FDL links."]
         #[serde(rename = "invitationId", default)]
-        pub invitation_id: Option<String>,
+        pub invitation_id: ::std::option::Option<String>,
         #[doc = "FDL input value of the \"&imv=\" parameter, minimum app version to be\nreturned to Google Firebase SDK running on iOS-9."]
         #[serde(rename = "iosMinAppVersion", default)]
-        pub ios_min_app_version: Option<String>,
+        pub ios_min_app_version: ::std::option::Option<String>,
         #[doc = "The entire FDL, expanded from a short link. It is the same as the\nrequested_link, if it is long."]
         #[serde(rename = "resolvedLink", default)]
-        pub resolved_link: Option<String>,
+        pub resolved_link: ::std::option::Option<String>,
         #[doc = "Scion campaign value to be propagated by iSDK to Scion at app-reopen."]
         #[serde(rename = "utmCampaign", default)]
-        pub utm_campaign: Option<String>,
+        pub utm_campaign: ::std::option::Option<String>,
         #[doc = "Scion content value to be propagated by iSDK to Scion at app-reopen."]
         #[serde(rename = "utmContent", default)]
-        pub utm_content: Option<String>,
+        pub utm_content: ::std::option::Option<String>,
         #[doc = "Scion medium value to be propagated by iSDK to Scion at app-reopen."]
         #[serde(rename = "utmMedium", default)]
-        pub utm_medium: Option<String>,
+        pub utm_medium: ::std::option::Option<String>,
         #[doc = "Scion source value to be propagated by iSDK to Scion at app-reopen."]
         #[serde(rename = "utmSource", default)]
-        pub utm_source: Option<String>,
+        pub utm_source: ::std::option::Option<String>,
         #[doc = "Scion term value to be propagated by iSDK to Scion at app-reopen."]
         #[serde(rename = "utmTerm", default)]
-        pub utm_term: Option<String>,
+        pub utm_term: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GetIosReopenAttributionResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1154,7 +1206,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1172,22 +1223,22 @@ pub mod schemas {
     pub struct GooglePlayAnalytics {
         #[doc = "[AdWords autotagging\nparameter](https://support.google.com/analytics/answer/1033981?hl=en); used\nto measure Google AdWords ads. This value is generated dynamically and\nshould never be modified."]
         #[serde(rename = "gclid", default)]
-        pub gclid: Option<String>,
+        pub gclid: ::std::option::Option<String>,
         #[doc = "Campaign name; used for keyword analysis to identify a specific product\npromotion or strategic campaign."]
         #[serde(rename = "utmCampaign", default)]
-        pub utm_campaign: Option<String>,
+        pub utm_campaign: ::std::option::Option<String>,
         #[doc = "Campaign content; used for A/B testing and content-targeted ads to\ndifferentiate ads or links that point to the same URL."]
         #[serde(rename = "utmContent", default)]
-        pub utm_content: Option<String>,
+        pub utm_content: ::std::option::Option<String>,
         #[doc = "Campaign medium; used to identify a medium such as email or cost-per-click."]
         #[serde(rename = "utmMedium", default)]
-        pub utm_medium: Option<String>,
+        pub utm_medium: ::std::option::Option<String>,
         #[doc = "Campaign source; used to identify a search engine, newsletter, or other\nsource."]
         #[serde(rename = "utmSource", default)]
-        pub utm_source: Option<String>,
+        pub utm_source: ::std::option::Option<String>,
         #[doc = "Campaign term; used with paid search to supply the keywords for ads."]
         #[serde(rename = "utmTerm", default)]
-        pub utm_term: Option<String>,
+        pub utm_term: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GooglePlayAnalytics {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1196,7 +1247,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1214,25 +1264,25 @@ pub mod schemas {
     pub struct IosInfo {
         #[doc = "iOS App Store ID."]
         #[serde(rename = "iosAppStoreId", default)]
-        pub ios_app_store_id: Option<String>,
+        pub ios_app_store_id: ::std::option::Option<String>,
         #[doc = "iOS bundle ID of the app."]
         #[serde(rename = "iosBundleId", default)]
-        pub ios_bundle_id: Option<String>,
+        pub ios_bundle_id: ::std::option::Option<String>,
         #[doc = "Custom (destination) scheme to use for iOS. By default, we\u{2019}ll use the\nbundle ID as the custom scheme. Developer can override this behavior using\nthis param."]
         #[serde(rename = "iosCustomScheme", default)]
-        pub ios_custom_scheme: Option<String>,
+        pub ios_custom_scheme: ::std::option::Option<String>,
         #[doc = "Link to open on iOS if the app is not installed."]
         #[serde(rename = "iosFallbackLink", default)]
-        pub ios_fallback_link: Option<String>,
+        pub ios_fallback_link: ::std::option::Option<String>,
         #[doc = "iPad bundle ID of the app."]
         #[serde(rename = "iosIpadBundleId", default)]
-        pub ios_ipad_bundle_id: Option<String>,
+        pub ios_ipad_bundle_id: ::std::option::Option<String>,
         #[doc = "If specified, this overrides the ios_fallback_link value on iPads."]
         #[serde(rename = "iosIpadFallbackLink", default)]
-        pub ios_ipad_fallback_link: Option<String>,
+        pub ios_ipad_fallback_link: ::std::option::Option<String>,
         #[doc = "iOS minimum version."]
         #[serde(rename = "iosMinimumVersion", default)]
-        pub ios_minimum_version: Option<String>,
+        pub ios_minimum_version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for IosInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1241,7 +1291,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1259,16 +1308,16 @@ pub mod schemas {
     pub struct ItunesConnectAnalytics {
         #[doc = "Affiliate token used to create affiliate-coded links."]
         #[serde(rename = "at", default)]
-        pub at: Option<String>,
+        pub at: ::std::option::Option<String>,
         #[doc = "Campaign text that developers can optionally add to any link in order to\ntrack sales from a specific marketing campaign."]
         #[serde(rename = "ct", default)]
-        pub ct: Option<String>,
+        pub ct: ::std::option::Option<String>,
         #[doc = "iTune media types, including music, podcasts, audiobooks and so on."]
         #[serde(rename = "mt", default)]
-        pub mt: Option<String>,
+        pub mt: ::std::option::Option<String>,
         #[doc = "Provider token that enables analytics for Dynamic Links from within iTunes\nConnect."]
         #[serde(rename = "pt", default)]
-        pub pt: Option<String>,
+        pub pt: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ItunesConnectAnalytics {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1277,7 +1326,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1326,6 +1374,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ManagedShortLinkFlaggedAttributeItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1382,6 +1439,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ManagedShortLinkVisibility {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1397,22 +1463,23 @@ pub mod schemas {
     pub struct ManagedShortLink {
         #[doc = "Creation timestamp of the short link."]
         #[serde(rename = "creationTime", default)]
-        pub creation_time: Option<String>,
+        pub creation_time: ::std::option::Option<String>,
         #[doc = "Attributes that have been flagged about this short url."]
         #[serde(rename = "flaggedAttribute", default)]
-        pub flagged_attribute: Option<Vec<crate::schemas::ManagedShortLinkFlaggedAttributeItems>>,
+        pub flagged_attribute:
+            ::std::option::Option<Vec<crate::schemas::ManagedShortLinkFlaggedAttributeItems>>,
         #[doc = "Full Dyamic Link info"]
         #[serde(rename = "info", default)]
-        pub info: Option<crate::schemas::DynamicLinkInfo>,
+        pub info: ::std::option::Option<crate::schemas::DynamicLinkInfo>,
         #[doc = "Short durable link url, for example, \"https://sample.app.goo.gl/xyz123\".\n\nRequired."]
         #[serde(rename = "link", default)]
-        pub link: Option<String>,
+        pub link: ::std::option::Option<String>,
         #[doc = "Link name defined by the creator.\n\nRequired."]
         #[serde(rename = "linkName", default)]
-        pub link_name: Option<String>,
+        pub link_name: ::std::option::Option<String>,
         #[doc = "Visibility status of link."]
         #[serde(rename = "visibility", default)]
-        pub visibility: Option<crate::schemas::ManagedShortLinkVisibility>,
+        pub visibility: ::std::option::Option<crate::schemas::ManagedShortLinkVisibility>,
     }
     impl ::field_selector::FieldSelector for ManagedShortLink {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1421,7 +1488,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1439,7 +1505,7 @@ pub mod schemas {
     pub struct NavigationInfo {
         #[doc = "If this option is on, FDL click will be forced to redirect rather than\nshow an interstitial page."]
         #[serde(rename = "enableForcedRedirect", default)]
-        pub enable_forced_redirect: Option<bool>,
+        pub enable_forced_redirect: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for NavigationInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1448,7 +1514,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1466,13 +1531,13 @@ pub mod schemas {
     pub struct SocialMetaTagInfo {
         #[doc = "A short description of the link. Optional."]
         #[serde(rename = "socialDescription", default)]
-        pub social_description: Option<String>,
+        pub social_description: ::std::option::Option<String>,
         #[doc = "An image url string. Optional."]
         #[serde(rename = "socialImageLink", default)]
-        pub social_image_link: Option<String>,
+        pub social_image_link: ::std::option::Option<String>,
         #[doc = "Title to be displayed. Optional."]
         #[serde(rename = "socialTitle", default)]
-        pub social_title: Option<String>,
+        pub social_title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SocialMetaTagInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1481,7 +1546,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1538,6 +1602,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for SuffixOption {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1553,10 +1626,10 @@ pub mod schemas {
     pub struct Suffix {
         #[doc = "Only applies to Option.CUSTOM."]
         #[serde(rename = "customSuffix", default)]
-        pub custom_suffix: Option<String>,
+        pub custom_suffix: ::std::option::Option<String>,
         #[doc = "Suffix option."]
         #[serde(rename = "option", default)]
-        pub option: Option<crate::schemas::SuffixOption>,
+        pub option: ::std::option::Option<crate::schemas::SuffixOption>,
     }
     impl ::field_selector::FieldSelector for Suffix {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1565,7 +1638,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -1620,6 +1692,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -1664,6 +1745,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -2929,6 +3019,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3004,5 +3095,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

@@ -43,6 +43,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ChangeStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -58,25 +67,25 @@ pub mod schemas {
     pub struct Change {
         #[doc = "Which ResourceRecordSets to add?"]
         #[serde(rename = "additions", default)]
-        pub additions: Option<Vec<crate::schemas::ResourceRecordSet>>,
+        pub additions: ::std::option::Option<Vec<crate::schemas::ResourceRecordSet>>,
         #[doc = "Which ResourceRecordSets to remove? Must match existing data exactly."]
         #[serde(rename = "deletions", default)]
-        pub deletions: Option<Vec<crate::schemas::ResourceRecordSet>>,
+        pub deletions: ::std::option::Option<Vec<crate::schemas::ResourceRecordSet>>,
         #[doc = "Unique identifier for the resource; defined by the server (output only)."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "If the DNS queries for the zone will be served."]
         #[serde(rename = "isServing", default)]
-        pub is_serving: Option<bool>,
+        pub is_serving: ::std::option::Option<bool>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#change\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The time that this operation was started by the server (output only). This is in RFC3339 text format."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
         #[doc = "Status of the operation (output only). A status of \"done\" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::ChangeStatus>,
+        pub status: ::std::option::Option<crate::schemas::ChangeStatus>,
     }
     impl ::field_selector::FieldSelector for Change {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -85,7 +94,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -103,15 +111,15 @@ pub mod schemas {
     pub struct ChangesListResponse {
         #[doc = "The requested changes."]
         #[serde(rename = "changes", default)]
-        pub changes: Option<Vec<crate::schemas::Change>>,
+        pub changes: ::std::option::Option<Vec<crate::schemas::Change>>,
         #[serde(rename = "header", default)]
-        pub header: Option<crate::schemas::ResponseHeader>,
+        pub header: ::std::option::Option<crate::schemas::ResponseHeader>,
         #[doc = "Type of resource."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The presence of this field indicates that there exist more results following your last page of results in pagination order. To fetch them, make another list request using this value as your pagination token.\n\nIn this way you can retrieve the complete contents of even very large collections one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a \"snapshot\" of collections larger than the maximum page size."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChangesListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -120,7 +128,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -176,6 +183,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DnsKeyAlgorithm {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DnsKeyType {
         KeySigning,
@@ -220,6 +236,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DnsKeyType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -235,37 +260,37 @@ pub mod schemas {
     pub struct DnsKey {
         #[doc = "String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time."]
         #[serde(rename = "algorithm", default)]
-        pub algorithm: Option<crate::schemas::DnsKeyAlgorithm>,
+        pub algorithm: ::std::option::Option<crate::schemas::DnsKeyAlgorithm>,
         #[doc = "The time that this resource was created in the control plane. This is in RFC3339 text format. Output only."]
         #[serde(rename = "creationTime", default)]
-        pub creation_time: Option<String>,
+        pub creation_time: ::std::option::Option<String>,
         #[doc = "A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the resource's function."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Output only."]
         #[serde(rename = "digests", default)]
-        pub digests: Option<Vec<crate::schemas::DnsKeyDigest>>,
+        pub digests: ::std::option::Option<Vec<crate::schemas::DnsKeyDigest>>,
         #[doc = "Unique identifier for the resource; defined by the server (output only)."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures."]
         #[serde(rename = "isActive", default)]
-        pub is_active: Option<bool>,
+        pub is_active: ::std::option::Option<bool>,
         #[doc = "Length of the key in bits. Specified at creation time then immutable."]
         #[serde(rename = "keyLength", default)]
-        pub key_length: Option<u32>,
+        pub key_length: ::std::option::Option<u32>,
         #[doc = "The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B. Output only."]
         #[serde(rename = "keyTag", default)]
-        pub key_tag: Option<i32>,
+        pub key_tag: ::std::option::Option<i32>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#dnsKey\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Base64 encoded public half of this key. Output only."]
         #[serde(rename = "publicKey", default)]
-        pub public_key: Option<String>,
+        pub public_key: ::std::option::Option<String>,
         #[doc = "One of \"KEY_SIGNING\" or \"ZONE_SIGNING\". Keys of type KEY_SIGNING have the Secure Entry Point flag set and, when active, will be used to sign only resource record sets of type DNSKEY. Otherwise, the Secure Entry Point flag will be cleared and this key will be used to sign only resource record sets of other types. Immutable after creation time."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DnsKeyType>,
+        pub r#type: ::std::option::Option<crate::schemas::DnsKeyType>,
     }
     impl ::field_selector::FieldSelector for DnsKey {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -274,7 +299,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -324,6 +348,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DnsKeyDigestType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -339,10 +372,10 @@ pub mod schemas {
     pub struct DnsKeyDigest {
         #[doc = "The base-16 encoded bytes of this digest. Suitable for use in a DS resource record."]
         #[serde(rename = "digest", default)]
-        pub digest: Option<String>,
+        pub digest: ::std::option::Option<String>,
         #[doc = "Specifies the algorithm used to calculate this digest."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DnsKeyDigestType>,
+        pub r#type: ::std::option::Option<crate::schemas::DnsKeyDigestType>,
     }
     impl ::field_selector::FieldSelector for DnsKeyDigest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -351,7 +384,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -407,6 +439,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DnsKeySpecAlgorithm {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DnsKeySpecKeyType {
         KeySigning,
@@ -451,6 +492,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DnsKeySpecKeyType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -466,16 +516,16 @@ pub mod schemas {
     pub struct DnsKeySpec {
         #[doc = "String mnemonic specifying the DNSSEC algorithm of this key."]
         #[serde(rename = "algorithm", default)]
-        pub algorithm: Option<crate::schemas::DnsKeySpecAlgorithm>,
+        pub algorithm: ::std::option::Option<crate::schemas::DnsKeySpecAlgorithm>,
         #[doc = "Length of the keys in bits."]
         #[serde(rename = "keyLength", default)]
-        pub key_length: Option<u32>,
+        pub key_length: ::std::option::Option<u32>,
         #[doc = "Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, will only be used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all other types of resource record sets."]
         #[serde(rename = "keyType", default)]
-        pub key_type: Option<crate::schemas::DnsKeySpecKeyType>,
+        pub key_type: ::std::option::Option<crate::schemas::DnsKeySpecKeyType>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#dnsKeySpec\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DnsKeySpec {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -484,7 +534,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -502,15 +551,15 @@ pub mod schemas {
     pub struct DnsKeysListResponse {
         #[doc = "The requested resources."]
         #[serde(rename = "dnsKeys", default)]
-        pub dns_keys: Option<Vec<crate::schemas::DnsKey>>,
+        pub dns_keys: ::std::option::Option<Vec<crate::schemas::DnsKey>>,
         #[serde(rename = "header", default)]
-        pub header: Option<crate::schemas::ResponseHeader>,
+        pub header: ::std::option::Option<crate::schemas::ResponseHeader>,
         #[doc = "Type of resource."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The presence of this field indicates that there exist more results following your last page of results in pagination order. To fetch them, make another list request using this value as your pagination token.\n\nIn this way you can retrieve the complete contents of even very large collections one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a \"snapshot\" of collections larger than the maximum page size."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DnsKeysListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -519,7 +568,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -566,6 +614,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ManagedZoneVisibility {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -581,47 +638,48 @@ pub mod schemas {
     pub struct ManagedZone {
         #[doc = "The time that this resource was created on the server. This is in RFC3339 text format. Output only."]
         #[serde(rename = "creationTime", default)]
-        pub creation_time: Option<String>,
+        pub creation_time: ::std::option::Option<String>,
         #[doc = "A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The DNS name of this managed zone, for instance \"example.com.\"."]
         #[serde(rename = "dnsName", default)]
-        pub dns_name: Option<String>,
+        pub dns_name: ::std::option::Option<String>,
         #[doc = "DNSSEC configuration."]
         #[serde(rename = "dnssecConfig", default)]
-        pub dnssec_config: Option<crate::schemas::ManagedZoneDnsSecConfig>,
+        pub dnssec_config: ::std::option::Option<crate::schemas::ManagedZoneDnsSecConfig>,
         #[doc = "The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to."]
         #[serde(rename = "forwardingConfig", default)]
-        pub forwarding_config: Option<crate::schemas::ManagedZoneForwardingConfig>,
+        pub forwarding_config: ::std::option::Option<crate::schemas::ManagedZoneForwardingConfig>,
         #[doc = "Unique identifier for the resource; defined by the server (output only)"]
         #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<u64>,
+        pub id: ::std::option::Option<u64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZone\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "User labels."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users will leave this field unset."]
         #[serde(rename = "nameServerSet", default)]
-        pub name_server_set: Option<String>,
+        pub name_server_set: ::std::option::Option<String>,
         #[doc = "Delegate your managed_zone to these virtual name servers; defined by the server (output only)"]
         #[serde(rename = "nameServers", default)]
-        pub name_servers: Option<Vec<String>>,
+        pub name_servers: ::std::option::Option<Vec<String>>,
         #[doc = "The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with."]
         #[serde(rename = "peeringConfig", default)]
-        pub peering_config: Option<crate::schemas::ManagedZonePeeringConfig>,
+        pub peering_config: ::std::option::Option<crate::schemas::ManagedZonePeeringConfig>,
         #[doc = "For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from."]
         #[serde(rename = "privateVisibilityConfig", default)]
-        pub private_visibility_config: Option<crate::schemas::ManagedZonePrivateVisibilityConfig>,
+        pub private_visibility_config:
+            ::std::option::Option<crate::schemas::ManagedZonePrivateVisibilityConfig>,
         #[doc = "The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources."]
         #[serde(rename = "visibility", default)]
-        pub visibility: Option<crate::schemas::ManagedZoneVisibility>,
+        pub visibility: ::std::option::Option<crate::schemas::ManagedZoneVisibility>,
     }
     impl ::field_selector::FieldSelector for ManagedZone {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -630,7 +688,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -675,6 +732,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ManagedZoneDnsSecConfigNonExistence {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -724,6 +790,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ManagedZoneDnsSecConfigState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -739,16 +814,17 @@ pub mod schemas {
     pub struct ManagedZoneDnsSecConfig {
         #[doc = "Specifies parameters that will be used for generating initial DnsKeys for this ManagedZone. Can only be changed while state is OFF."]
         #[serde(rename = "defaultKeySpecs", default)]
-        pub default_key_specs: Option<Vec<crate::schemas::DnsKeySpec>>,
+        pub default_key_specs: ::std::option::Option<Vec<crate::schemas::DnsKeySpec>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZoneDnsSecConfig\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Specifies the mechanism used to provide authenticated denial-of-existence responses. Can only be changed while state is OFF."]
         #[serde(rename = "nonExistence", default)]
-        pub non_existence: Option<crate::schemas::ManagedZoneDnsSecConfigNonExistence>,
+        pub non_existence:
+            ::std::option::Option<crate::schemas::ManagedZoneDnsSecConfigNonExistence>,
         #[doc = "Specifies whether DNSSEC is enabled, and what mode it is in."]
         #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::ManagedZoneDnsSecConfigState>,
+        pub state: ::std::option::Option<crate::schemas::ManagedZoneDnsSecConfigState>,
     }
     impl ::field_selector::FieldSelector for ManagedZoneDnsSecConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -757,7 +833,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -775,11 +850,11 @@ pub mod schemas {
     pub struct ManagedZoneForwardingConfig {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZoneForwardingConfig\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "List of target name servers to forward to. Cloud DNS will select the best available name server if more than one target is given."]
         #[serde(rename = "targetNameServers", default)]
         pub target_name_servers:
-            Option<Vec<crate::schemas::ManagedZoneForwardingConfigNameServerTarget>>,
+            ::std::option::Option<Vec<crate::schemas::ManagedZoneForwardingConfigNameServerTarget>>,
     }
     impl ::field_selector::FieldSelector for ManagedZoneForwardingConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -788,7 +863,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -806,10 +880,10 @@ pub mod schemas {
     pub struct ManagedZoneForwardingConfigNameServerTarget {
         #[doc = "IPv4 address of a target name server."]
         #[serde(rename = "ipv4Address", default)]
-        pub ipv_4_address: Option<String>,
+        pub ipv_4_address: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZoneForwardingConfigNameServerTarget\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ManagedZoneForwardingConfigNameServerTarget {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -818,7 +892,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -835,16 +908,16 @@ pub mod schemas {
     )]
     pub struct ManagedZoneOperationsListResponse {
         #[serde(rename = "header", default)]
-        pub header: Option<crate::schemas::ResponseHeader>,
+        pub header: ::std::option::Option<crate::schemas::ResponseHeader>,
         #[doc = "Type of resource."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The presence of this field indicates that there exist more results following your last page of results in pagination order. To fetch them, make another list request using this value as your page token.\n\nIn this way you can retrieve the complete contents of even very large collections one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a consistent snapshot of a collection larger than the maximum page size."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The operation resources."]
         #[serde(rename = "operations", default)]
-        pub operations: Option<Vec<crate::schemas::Operation>>,
+        pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::field_selector::FieldSelector for ManagedZoneOperationsListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -853,7 +926,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -871,10 +943,11 @@ pub mod schemas {
     pub struct ManagedZonePeeringConfig {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZonePeeringConfig\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The network with which to peer."]
         #[serde(rename = "targetNetwork", default)]
-        pub target_network: Option<crate::schemas::ManagedZonePeeringConfigTargetNetwork>,
+        pub target_network:
+            ::std::option::Option<crate::schemas::ManagedZonePeeringConfigTargetNetwork>,
     }
     impl ::field_selector::FieldSelector for ManagedZonePeeringConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -883,7 +956,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -901,13 +973,13 @@ pub mod schemas {
     pub struct ManagedZonePeeringConfigTargetNetwork {
         #[doc = "If this zone has been deactivated (possibly because the producer network it targeted was deleted), the time at which it was deactivated. If the peering connection is still active, this will be the empty string. This is in RFC3339 text format. Output only."]
         #[serde(rename = "deactivateTime", default)]
-        pub deactivate_time: Option<String>,
+        pub deactivate_time: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZonePeeringConfigTargetNetwork\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The fully qualified URL of the VPC network to forward queries to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}"]
         #[serde(rename = "networkUrl", default)]
-        pub network_url: Option<String>,
+        pub network_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ManagedZonePeeringConfigTargetNetwork {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -916,7 +988,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -934,10 +1005,11 @@ pub mod schemas {
     pub struct ManagedZonePrivateVisibilityConfig {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZonePrivateVisibilityConfig\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The list of VPC networks that can see this zone."]
         #[serde(rename = "networks", default)]
-        pub networks: Option<Vec<crate::schemas::ManagedZonePrivateVisibilityConfigNetwork>>,
+        pub networks:
+            ::std::option::Option<Vec<crate::schemas::ManagedZonePrivateVisibilityConfigNetwork>>,
     }
     impl ::field_selector::FieldSelector for ManagedZonePrivateVisibilityConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -946,7 +1018,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -964,10 +1035,10 @@ pub mod schemas {
     pub struct ManagedZonePrivateVisibilityConfigNetwork {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZonePrivateVisibilityConfigNetwork\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}"]
         #[serde(rename = "networkUrl", default)]
-        pub network_url: Option<String>,
+        pub network_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ManagedZonePrivateVisibilityConfigNetwork {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -976,7 +1047,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -993,16 +1063,16 @@ pub mod schemas {
     )]
     pub struct ManagedZonesListResponse {
         #[serde(rename = "header", default)]
-        pub header: Option<crate::schemas::ResponseHeader>,
+        pub header: ::std::option::Option<crate::schemas::ResponseHeader>,
         #[doc = "Type of resource."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The managed zone resources."]
         #[serde(rename = "managedZones", default)]
-        pub managed_zones: Option<Vec<crate::schemas::ManagedZone>>,
+        pub managed_zones: ::std::option::Option<Vec<crate::schemas::ManagedZone>>,
         #[doc = "The presence of this field indicates that there exist more results following your last page of results in pagination order. To fetch them, make another list request using this value as your page token.\n\nIn this way you can retrieve the complete contents of even very large collections one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a consistent snapshot of a collection larger than the maximum page size."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ManagedZonesListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1011,7 +1081,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1058,6 +1127,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for OperationStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1073,28 +1151,28 @@ pub mod schemas {
     pub struct Operation {
         #[doc = "Only populated if the operation targeted a DnsKey (output only)."]
         #[serde(rename = "dnsKeyContext", default)]
-        pub dns_key_context: Option<crate::schemas::OperationDnsKeyContext>,
+        pub dns_key_context: ::std::option::Option<crate::schemas::OperationDnsKeyContext>,
         #[doc = "Unique identifier for the resource. This is the client_operation_id if the client specified it when the mutation was initiated, otherwise, it is generated by the server. The name must be 1-63 characters long and match the regular expression [-a-z0-9]? (output only)"]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#operation\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Type of the operation. Operations include insert, update, and delete (output only)."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "The time that this operation was started by the server. This is in RFC3339 text format (output only)."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
         #[doc = "Status of the operation. Can be one of the following: \"PENDING\" or \"DONE\" (output only). A status of \"DONE\" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::OperationStatus>,
+        pub status: ::std::option::Option<crate::schemas::OperationStatus>,
         #[doc = "User who requested the operation, for example: user@example.com. cloud-dns-system for operations automatically done by the system. (output only)"]
         #[serde(rename = "user", default)]
-        pub user: Option<String>,
+        pub user: ::std::option::Option<String>,
         #[doc = "Only populated if the operation targeted a ManagedZone (output only)."]
         #[serde(rename = "zoneContext", default)]
-        pub zone_context: Option<crate::schemas::OperationManagedZoneContext>,
+        pub zone_context: ::std::option::Option<crate::schemas::OperationManagedZoneContext>,
     }
     impl ::field_selector::FieldSelector for Operation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1103,7 +1181,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1121,10 +1198,10 @@ pub mod schemas {
     pub struct OperationDnsKeyContext {
         #[doc = "The post-operation DnsKey resource."]
         #[serde(rename = "newValue", default)]
-        pub new_value: Option<crate::schemas::DnsKey>,
+        pub new_value: ::std::option::Option<crate::schemas::DnsKey>,
         #[doc = "The pre-operation DnsKey resource."]
         #[serde(rename = "oldValue", default)]
-        pub old_value: Option<crate::schemas::DnsKey>,
+        pub old_value: ::std::option::Option<crate::schemas::DnsKey>,
     }
     impl ::field_selector::FieldSelector for OperationDnsKeyContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1133,7 +1210,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1151,10 +1227,10 @@ pub mod schemas {
     pub struct OperationManagedZoneContext {
         #[doc = "The post-operation ManagedZone resource."]
         #[serde(rename = "newValue", default)]
-        pub new_value: Option<crate::schemas::ManagedZone>,
+        pub new_value: ::std::option::Option<crate::schemas::ManagedZone>,
         #[doc = "The pre-operation ManagedZone resource."]
         #[serde(rename = "oldValue", default)]
-        pub old_value: Option<crate::schemas::ManagedZone>,
+        pub old_value: ::std::option::Option<crate::schemas::ManagedZone>,
     }
     impl ::field_selector::FieldSelector for OperationManagedZoneContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1163,7 +1239,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1180,16 +1255,16 @@ pub mod schemas {
     )]
     pub struct PoliciesListResponse {
         #[serde(rename = "header", default)]
-        pub header: Option<crate::schemas::ResponseHeader>,
+        pub header: ::std::option::Option<crate::schemas::ResponseHeader>,
         #[doc = "Type of resource."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The presence of this field indicates that there exist more results following your last page of results in pagination order. To fetch them, make another list request using this value as your page token.\n\nIn this way you can retrieve the complete contents of even very large collections one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a consistent snapshot of a collection larger than the maximum page size."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The policy resources."]
         #[serde(rename = "policies", default)]
-        pub policies: Option<Vec<crate::schemas::Policy>>,
+        pub policies: ::std::option::Option<Vec<crate::schemas::Policy>>,
     }
     impl ::field_selector::FieldSelector for PoliciesListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1198,7 +1273,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1215,9 +1289,9 @@ pub mod schemas {
     )]
     pub struct PoliciesPatchResponse {
         #[serde(rename = "header", default)]
-        pub header: Option<crate::schemas::ResponseHeader>,
+        pub header: ::std::option::Option<crate::schemas::ResponseHeader>,
         #[serde(rename = "policy", default)]
-        pub policy: Option<crate::schemas::Policy>,
+        pub policy: ::std::option::Option<crate::schemas::Policy>,
     }
     impl ::field_selector::FieldSelector for PoliciesPatchResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1226,7 +1300,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1243,9 +1316,9 @@ pub mod schemas {
     )]
     pub struct PoliciesUpdateResponse {
         #[serde(rename = "header", default)]
-        pub header: Option<crate::schemas::ResponseHeader>,
+        pub header: ::std::option::Option<crate::schemas::ResponseHeader>,
         #[serde(rename = "policy", default)]
-        pub policy: Option<crate::schemas::Policy>,
+        pub policy: ::std::option::Option<crate::schemas::Policy>,
     }
     impl ::field_selector::FieldSelector for PoliciesUpdateResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1254,7 +1327,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1273,29 +1345,29 @@ pub mod schemas {
         #[doc = "Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified."]
         #[serde(rename = "alternativeNameServerConfig", default)]
         pub alternative_name_server_config:
-            Option<crate::schemas::PolicyAlternativeNameServerConfig>,
+            ::std::option::Option<crate::schemas::PolicyAlternativeNameServerConfig>,
         #[doc = "A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy."]
         #[serde(rename = "enableInboundForwarding", default)]
-        pub enable_inbound_forwarding: Option<bool>,
+        pub enable_inbound_forwarding: ::std::option::Option<bool>,
         #[doc = "Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set."]
         #[serde(rename = "enableLogging", default)]
-        pub enable_logging: Option<bool>,
+        pub enable_logging: ::std::option::Option<bool>,
         #[doc = "Unique identifier for the resource; defined by the server (output only)."]
         #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<u64>,
+        pub id: ::std::option::Option<u64>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#policy\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "User assigned name for this policy."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "List of network names specifying networks to which this policy is applied."]
         #[serde(rename = "networks", default)]
-        pub networks: Option<Vec<crate::schemas::PolicyNetwork>>,
+        pub networks: ::std::option::Option<Vec<crate::schemas::PolicyNetwork>>,
     }
     impl ::field_selector::FieldSelector for Policy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1304,7 +1376,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1322,11 +1393,12 @@ pub mod schemas {
     pub struct PolicyAlternativeNameServerConfig {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#policyAlternativeNameServerConfig\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified."]
         #[serde(rename = "targetNameServers", default)]
-        pub target_name_servers:
-            Option<Vec<crate::schemas::PolicyAlternativeNameServerConfigTargetNameServer>>,
+        pub target_name_servers: ::std::option::Option<
+            Vec<crate::schemas::PolicyAlternativeNameServerConfigTargetNameServer>,
+        >,
     }
     impl ::field_selector::FieldSelector for PolicyAlternativeNameServerConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1335,7 +1407,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1353,10 +1424,10 @@ pub mod schemas {
     pub struct PolicyAlternativeNameServerConfigTargetNameServer {
         #[doc = "IPv4 address to forward to."]
         #[serde(rename = "ipv4Address", default)]
-        pub ipv_4_address: Option<String>,
+        pub ipv_4_address: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#policyAlternativeNameServerConfigTargetNameServer\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PolicyAlternativeNameServerConfigTargetNameServer {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1365,7 +1436,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1383,10 +1453,10 @@ pub mod schemas {
     pub struct PolicyNetwork {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#policyNetwork\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}"]
         #[serde(rename = "networkUrl", default)]
-        pub network_url: Option<String>,
+        pub network_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PolicyNetwork {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1395,7 +1465,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1413,17 +1482,17 @@ pub mod schemas {
     pub struct Project {
         #[doc = "User assigned unique identifier for the resource (output only)."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#project\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Unique numeric identifier for the resource; defined by the server (output only)."]
         #[serde(rename = "number", default)]
         #[serde(with = "crate::parsed_string")]
-        pub number: Option<u64>,
+        pub number: ::std::option::Option<u64>,
         #[doc = "Quotas assigned to this project (output only)."]
         #[serde(rename = "quota", default)]
-        pub quota: Option<crate::schemas::Quota>,
+        pub quota: ::std::option::Option<crate::schemas::Quota>,
     }
     impl ::field_selector::FieldSelector for Project {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1432,7 +1501,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1450,49 +1518,49 @@ pub mod schemas {
     pub struct Quota {
         #[doc = "Maximum allowed number of DnsKeys per ManagedZone."]
         #[serde(rename = "dnsKeysPerManagedZone", default)]
-        pub dns_keys_per_managed_zone: Option<i32>,
+        pub dns_keys_per_managed_zone: ::std::option::Option<i32>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#quota\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Maximum allowed number of managed zones in the project."]
         #[serde(rename = "managedZones", default)]
-        pub managed_zones: Option<i32>,
+        pub managed_zones: ::std::option::Option<i32>,
         #[doc = "Maximum allowed number of managed zones which can be attached to a network."]
         #[serde(rename = "managedZonesPerNetwork", default)]
-        pub managed_zones_per_network: Option<i32>,
+        pub managed_zones_per_network: ::std::option::Option<i32>,
         #[doc = "Maximum allowed number of networks to which a privately scoped zone can be attached."]
         #[serde(rename = "networksPerManagedZone", default)]
-        pub networks_per_managed_zone: Option<i32>,
+        pub networks_per_managed_zone: ::std::option::Option<i32>,
         #[doc = "Maximum allowed number of networks per policy."]
         #[serde(rename = "networksPerPolicy", default)]
-        pub networks_per_policy: Option<i32>,
+        pub networks_per_policy: ::std::option::Option<i32>,
         #[doc = "Maximum allowed number of policies per project."]
         #[serde(rename = "policies", default)]
-        pub policies: Option<i32>,
+        pub policies: ::std::option::Option<i32>,
         #[doc = "Maximum allowed number of ResourceRecords per ResourceRecordSet."]
         #[serde(rename = "resourceRecordsPerRrset", default)]
-        pub resource_records_per_rrset: Option<i32>,
+        pub resource_records_per_rrset: ::std::option::Option<i32>,
         #[doc = "Maximum allowed number of ResourceRecordSets to add per ChangesCreateRequest."]
         #[serde(rename = "rrsetAdditionsPerChange", default)]
-        pub rrset_additions_per_change: Option<i32>,
+        pub rrset_additions_per_change: ::std::option::Option<i32>,
         #[doc = "Maximum allowed number of ResourceRecordSets to delete per ChangesCreateRequest."]
         #[serde(rename = "rrsetDeletionsPerChange", default)]
-        pub rrset_deletions_per_change: Option<i32>,
+        pub rrset_deletions_per_change: ::std::option::Option<i32>,
         #[doc = "Maximum allowed number of ResourceRecordSets per zone in the project."]
         #[serde(rename = "rrsetsPerManagedZone", default)]
-        pub rrsets_per_managed_zone: Option<i32>,
+        pub rrsets_per_managed_zone: ::std::option::Option<i32>,
         #[doc = "Maximum allowed number of target name servers per managed forwarding zone."]
         #[serde(rename = "targetNameServersPerManagedZone", default)]
-        pub target_name_servers_per_managed_zone: Option<i32>,
+        pub target_name_servers_per_managed_zone: ::std::option::Option<i32>,
         #[doc = "Maximum allowed number of alternative target name servers per policy."]
         #[serde(rename = "targetNameServersPerPolicy", default)]
-        pub target_name_servers_per_policy: Option<i32>,
+        pub target_name_servers_per_policy: ::std::option::Option<i32>,
         #[doc = "Maximum allowed size for total rrdata in one ChangesCreateRequest in bytes."]
         #[serde(rename = "totalRrdataSizePerChange", default)]
-        pub total_rrdata_size_per_change: Option<i32>,
+        pub total_rrdata_size_per_change: ::std::option::Option<i32>,
         #[doc = "DNSSEC algorithm and key length types that can be used for DnsKeys."]
         #[serde(rename = "whitelistedKeySpecs", default)]
-        pub whitelisted_key_specs: Option<Vec<crate::schemas::DnsKeySpec>>,
+        pub whitelisted_key_specs: ::std::option::Option<Vec<crate::schemas::DnsKeySpec>>,
     }
     impl ::field_selector::FieldSelector for Quota {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1501,7 +1569,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1519,22 +1586,22 @@ pub mod schemas {
     pub struct ResourceRecordSet {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#resourceRecordSet\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "For example, www.example.com."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The identifier of a supported record type. See the list of Supported DNS record types."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples."]
         #[serde(rename = "rrdatas", default)]
-        pub rrdatas: Option<Vec<String>>,
+        pub rrdatas: ::std::option::Option<Vec<String>>,
         #[doc = "As defined in RFC 4034 (section 3.2)."]
         #[serde(rename = "signatureRrdatas", default)]
-        pub signature_rrdatas: Option<Vec<String>>,
+        pub signature_rrdatas: ::std::option::Option<Vec<String>>,
         #[doc = "Number of seconds that this ResourceRecordSet can be cached by resolvers."]
         #[serde(rename = "ttl", default)]
-        pub ttl: Option<i32>,
+        pub ttl: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ResourceRecordSet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1543,7 +1610,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1560,16 +1626,16 @@ pub mod schemas {
     )]
     pub struct ResourceRecordSetsListResponse {
         #[serde(rename = "header", default)]
-        pub header: Option<crate::schemas::ResponseHeader>,
+        pub header: ::std::option::Option<crate::schemas::ResponseHeader>,
         #[doc = "Type of resource."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The presence of this field indicates that there exist more results following your last page of results in pagination order. To fetch them, make another list request using this value as your pagination token.\n\nIn this way you can retrieve the complete contents of even very large collections one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a consistent snapshot of a collection larger than the maximum page size."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The resource record set resources."]
         #[serde(rename = "rrsets", default)]
-        pub rrsets: Option<Vec<crate::schemas::ResourceRecordSet>>,
+        pub rrsets: ::std::option::Option<Vec<crate::schemas::ResourceRecordSet>>,
     }
     impl ::field_selector::FieldSelector for ResourceRecordSetsListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1578,7 +1644,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1596,7 +1661,7 @@ pub mod schemas {
     pub struct ResponseHeader {
         #[doc = "For mutating operation requests that completed successfully. This is the client_operation_id if the client specified it, otherwise it is generated by the server (output only)."]
         #[serde(rename = "operationId", default)]
-        pub operation_id: Option<String>,
+        pub operation_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ResponseHeader {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1605,7 +1670,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -1650,6 +1714,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1760,6 +1833,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListSortBy {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -2989,6 +3071,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListSortBy {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -6460,6 +6551,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -6535,5 +6627,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

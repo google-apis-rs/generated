@@ -14,10 +14,10 @@ pub mod schemas {
     pub struct AcceleratorType {
         #[doc = "The resource name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "the accelerator type."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AcceleratorType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -26,7 +26,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -44,7 +43,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -61,10 +60,10 @@ pub mod schemas {
     pub struct ListAcceleratorTypesResponse {
         #[doc = "The listed nodes."]
         #[serde(rename = "acceleratorTypes", default)]
-        pub accelerator_types: Option<Vec<crate::schemas::AcceleratorType>>,
+        pub accelerator_types: ::std::option::Option<Vec<crate::schemas::AcceleratorType>>,
         #[doc = "The next page token or empty if none."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListAcceleratorTypesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -73,17 +72,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListLocationsResponse {
         #[doc = "A list of locations that matches the specified filter in the request."]
         #[serde(rename = "locations", default)]
-        pub locations: Option<Vec<crate::schemas::Location>>,
+        pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "The standard List next-page token."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListLocationsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -92,7 +90,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -110,13 +107,13 @@ pub mod schemas {
     pub struct ListNodesResponse {
         #[doc = "The next page token or empty if none."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The listed nodes."]
         #[serde(rename = "nodes", default)]
-        pub nodes: Option<Vec<crate::schemas::Node>>,
+        pub nodes: ::std::option::Option<Vec<crate::schemas::Node>>,
         #[doc = "Locations that could not be reached."]
         #[serde(rename = "unreachable", default)]
-        pub unreachable: Option<Vec<String>>,
+        pub unreachable: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ListNodesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -125,17 +122,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
         #[serde(rename = "operations", default)]
-        pub operations: Option<Vec<crate::schemas::Operation>>,
+        pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::field_selector::FieldSelector for ListOperationsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -144,7 +140,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -162,10 +157,10 @@ pub mod schemas {
     pub struct ListTensorFlowVersionsResponse {
         #[doc = "The next page token or empty if none."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The listed nodes."]
         #[serde(rename = "tensorflowVersions", default)]
-        pub tensorflow_versions: Option<Vec<crate::schemas::TensorFlowVersion>>,
+        pub tensorflow_versions: ::std::option::Option<Vec<crate::schemas::TensorFlowVersion>>,
     }
     impl ::field_selector::FieldSelector for ListTensorFlowVersionsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -174,26 +169,26 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Location {
         #[doc = "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "Cross-service attributes for the location. For example\n\n````text\n{\"cloud.googleapis.com/region\": \"us-east1\"}````"]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The canonical id for this location. For example: `\"us-east1\"`."]
         #[serde(rename = "locationId", default)]
-        pub location_id: Option<String>,
+        pub location_id: ::std::option::Option<String>,
         #[doc = "Service-specific metadata. For example the available capacity at the given\nlocation."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Location {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -202,7 +197,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -220,10 +214,10 @@ pub mod schemas {
     pub struct NetworkEndpoint {
         #[doc = "The IP address of this network endpoint."]
         #[serde(rename = "ipAddress", default)]
-        pub ip_address: Option<String>,
+        pub ip_address: ::std::option::Option<String>,
         #[doc = "The port of this network endpoint."]
         #[serde(rename = "port", default)]
-        pub port: Option<i32>,
+        pub port: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for NetworkEndpoint {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -232,7 +226,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -295,6 +288,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for NodeHealth {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -395,6 +397,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for NodeState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -410,51 +421,51 @@ pub mod schemas {
     pub struct Node {
         #[doc = "The type of hardware accelerators associated with this node.\nRequired."]
         #[serde(rename = "acceleratorType", default)]
-        pub accelerator_type: Option<String>,
+        pub accelerator_type: ::std::option::Option<String>,
         #[doc = "The CIDR block that the TPU node will use when selecting an IP address.\nThis CIDR block must be a /29 block; the Compute Engine networks API\nforbids a smaller block, and using a larger block would be wasteful (a\nnode can only consume one IP address). Errors will occur if the CIDR block\nhas already been used for a currently existing TPU node, the CIDR block\nconflicts with any subnetworks in the user's provided network, or the\nprovided network is peered with another network that is using that CIDR\nblock.\nRequired."]
         #[serde(rename = "cidrBlock", default)]
-        pub cidr_block: Option<String>,
+        pub cidr_block: ::std::option::Option<String>,
         #[doc = "Output only. The time when the node was created."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "The user-supplied description of the TPU. Maximum of 512 characters."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The health status of the TPU node."]
         #[serde(rename = "health", default)]
-        pub health: Option<crate::schemas::NodeHealth>,
+        pub health: ::std::option::Option<crate::schemas::NodeHealth>,
         #[doc = "Output only. If this field is populated, it contains a description of why the TPU Node\nis unhealthy."]
         #[serde(rename = "healthDescription", default)]
-        pub health_description: Option<String>,
+        pub health_description: ::std::option::Option<String>,
         #[doc = "Output only. DEPRECATED! Use network_endpoints instead.\nThe network address for the TPU Node as visible to Compute Engine\ninstances."]
         #[serde(rename = "ipAddress", default)]
-        pub ip_address: Option<String>,
+        pub ip_address: ::std::option::Option<String>,
         #[doc = "Resource labels to represent user-provided metadata."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Output only. The immutable name of the TPU"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The name of a network they wish to peer the TPU node to. It must be a\npreexisting Compute Engine network inside of the project on which this API\nhas been activated. If none is provided, \"default\" will be used."]
         #[serde(rename = "network", default)]
-        pub network: Option<String>,
+        pub network: ::std::option::Option<String>,
         #[doc = "Output only. The network endpoints where TPU workers can be accessed and\nsent work. It is recommended that Tensorflow clients of the node reach out\nto the 0th entry in this map first."]
         #[serde(rename = "networkEndpoints", default)]
-        pub network_endpoints: Option<Vec<crate::schemas::NetworkEndpoint>>,
+        pub network_endpoints: ::std::option::Option<Vec<crate::schemas::NetworkEndpoint>>,
         #[doc = "Output only. DEPRECATED! Use network_endpoints instead.\nThe network port for the TPU Node as visible to Compute Engine instances."]
         #[serde(rename = "port", default)]
-        pub port: Option<String>,
+        pub port: ::std::option::Option<String>,
         #[serde(rename = "schedulingConfig", default)]
-        pub scheduling_config: Option<crate::schemas::SchedulingConfig>,
+        pub scheduling_config: ::std::option::Option<crate::schemas::SchedulingConfig>,
         #[doc = "Output only. The service account used to run the tensor flow services within the node.\nTo share resources, including Google Cloud Storage data, with the\nTensorflow job running in the Node, this account must have permissions to\nthat data."]
         #[serde(rename = "serviceAccount", default)]
-        pub service_account: Option<String>,
+        pub service_account: ::std::option::Option<String>,
         #[doc = "Output only. The current state for the TPU Node."]
         #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::NodeState>,
+        pub state: ::std::option::Option<crate::schemas::NodeState>,
         #[doc = "The version of Tensorflow running in the Node.\nRequired."]
         #[serde(rename = "tensorflowVersion", default)]
-        pub tensorflow_version: Option<String>,
+        pub tensorflow_version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Node {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -463,26 +474,27 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
         #[serde(rename = "done", default)]
-        pub done: Option<bool>,
+        pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
         #[serde(rename = "error", default)]
-        pub error: Option<crate::schemas::Status>,
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
         #[serde(rename = "response", default)]
-        pub response: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub response:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
     impl ::field_selector::FieldSelector for Operation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -491,7 +503,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -509,25 +520,25 @@ pub mod schemas {
     pub struct OperationMetadata {
         #[doc = "[Output only] API version used to start the operation."]
         #[serde(rename = "apiVersion", default)]
-        pub api_version: Option<String>,
+        pub api_version: ::std::option::Option<String>,
         #[doc = "[Output only] Identifies whether the user has requested cancellation\nof the operation. Operations that have successfully been cancelled\nhave Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`."]
         #[serde(rename = "cancelRequested", default)]
-        pub cancel_requested: Option<bool>,
+        pub cancel_requested: ::std::option::Option<bool>,
         #[doc = "[Output only] The time the operation was created."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "[Output only] The time the operation finished running."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
         #[doc = "[Output only] Human-readable status of the operation, if any."]
         #[serde(rename = "statusDetail", default)]
-        pub status_detail: Option<String>,
+        pub status_detail: ::std::option::Option<String>,
         #[doc = "[Output only] Server-defined resource path for the target of the operation."]
         #[serde(rename = "target", default)]
-        pub target: Option<String>,
+        pub target: ::std::option::Option<String>,
         #[doc = "[Output only] Name of the verb executed by the operation."]
         #[serde(rename = "verb", default)]
-        pub verb: Option<String>,
+        pub verb: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for OperationMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -536,7 +547,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -554,7 +564,7 @@ pub mod schemas {
     pub struct ReimageNodeRequest {
         #[doc = "The version for reimage to create."]
         #[serde(rename = "tensorflowVersion", default)]
-        pub tensorflow_version: Option<String>,
+        pub tensorflow_version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ReimageNodeRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -563,7 +573,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -580,10 +589,10 @@ pub mod schemas {
     )]
     pub struct SchedulingConfig {
         #[serde(rename = "preemptible", default)]
-        pub preemptible: Option<bool>,
+        pub preemptible: ::std::option::Option<bool>,
         #[doc = "Whether the node is created under a reservation."]
         #[serde(rename = "reserved", default)]
-        pub reserved: Option<bool>,
+        pub reserved: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for SchedulingConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -592,7 +601,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -610,19 +618,20 @@ pub mod schemas {
     )]
     pub struct StartNodeRequest;
     impl ::field_selector::FieldSelector for StartNodeRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
-        pub code: Option<i32>,
+        pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub details:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Status {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -631,7 +640,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -649,7 +657,7 @@ pub mod schemas {
     )]
     pub struct StopNodeRequest;
     impl ::field_selector::FieldSelector for StopNodeRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -666,10 +674,10 @@ pub mod schemas {
     pub struct TensorFlowVersion {
         #[doc = "The resource name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "the tensorflow version."]
         #[serde(rename = "version", default)]
-        pub version: Option<String>,
+        pub version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TensorFlowVersion {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -678,7 +686,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -733,6 +740,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -777,6 +793,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -5134,6 +5159,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -5209,5 +5235,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

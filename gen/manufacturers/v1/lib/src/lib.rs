@@ -14,109 +14,109 @@ pub mod schemas {
     pub struct Attributes {
         #[doc = "The additional images of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#addlimage."]
         #[serde(rename = "additionalImageLink", default)]
-        pub additional_image_link: Option<Vec<crate::schemas::Image>>,
+        pub additional_image_link: ::std::option::Option<Vec<crate::schemas::Image>>,
         #[doc = "The target age group of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#agegroup."]
         #[serde(rename = "ageGroup", default)]
-        pub age_group: Option<String>,
+        pub age_group: ::std::option::Option<String>,
         #[doc = "The brand name of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#brand."]
         #[serde(rename = "brand", default)]
-        pub brand: Option<String>,
+        pub brand: ::std::option::Option<String>,
         #[doc = "The capacity of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#capacity."]
         #[serde(rename = "capacity", default)]
-        pub capacity: Option<crate::schemas::Capacity>,
+        pub capacity: ::std::option::Option<crate::schemas::Capacity>,
         #[doc = "The color of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#color."]
         #[serde(rename = "color", default)]
-        pub color: Option<String>,
+        pub color: ::std::option::Option<String>,
         #[doc = "The count of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#count."]
         #[serde(rename = "count", default)]
-        pub count: Option<crate::schemas::Count>,
+        pub count: ::std::option::Option<crate::schemas::Count>,
         #[doc = "The description of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#description."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The disclosure date of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#disclosure."]
         #[serde(rename = "disclosureDate", default)]
-        pub disclosure_date: Option<String>,
+        pub disclosure_date: ::std::option::Option<String>,
         #[doc = "A list of excluded destinations."]
         #[serde(rename = "excludedDestination", default)]
-        pub excluded_destination: Option<Vec<String>>,
+        pub excluded_destination: ::std::option::Option<Vec<String>>,
         #[doc = "The rich format description of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#featuredesc."]
         #[serde(rename = "featureDescription", default)]
-        pub feature_description: Option<Vec<crate::schemas::FeatureDescription>>,
+        pub feature_description: ::std::option::Option<Vec<crate::schemas::FeatureDescription>>,
         #[doc = "The flavor of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#flavor."]
         #[serde(rename = "flavor", default)]
-        pub flavor: Option<String>,
+        pub flavor: ::std::option::Option<String>,
         #[doc = "The format of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#format."]
         #[serde(rename = "format", default)]
-        pub format: Option<String>,
+        pub format: ::std::option::Option<String>,
         #[doc = "The target gender of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#gender."]
         #[serde(rename = "gender", default)]
-        pub gender: Option<String>,
+        pub gender: ::std::option::Option<String>,
         #[doc = "The Global Trade Item Number (GTIN) of the product. For more information,\nsee https://support.google.com/manufacturers/answer/6124116#gtin."]
         #[serde(rename = "gtin", default)]
-        pub gtin: Option<Vec<String>>,
+        pub gtin: ::std::option::Option<Vec<String>>,
         #[doc = "The image of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#image."]
         #[serde(rename = "imageLink", default)]
-        pub image_link: Option<crate::schemas::Image>,
+        pub image_link: ::std::option::Option<crate::schemas::Image>,
         #[doc = "A list of included destinations."]
         #[serde(rename = "includedDestination", default)]
-        pub included_destination: Option<Vec<String>>,
+        pub included_destination: ::std::option::Option<Vec<String>>,
         #[doc = "The item group id of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#itemgroupid."]
         #[serde(rename = "itemGroupId", default)]
-        pub item_group_id: Option<String>,
+        pub item_group_id: ::std::option::Option<String>,
         #[doc = "The material of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#material."]
         #[serde(rename = "material", default)]
-        pub material: Option<String>,
+        pub material: ::std::option::Option<String>,
         #[doc = "The Manufacturer Part Number (MPN) of the product. For more information,\nsee https://support.google.com/manufacturers/answer/6124116#mpn."]
         #[serde(rename = "mpn", default)]
-        pub mpn: Option<String>,
+        pub mpn: ::std::option::Option<String>,
         #[doc = "The pattern of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#pattern."]
         #[serde(rename = "pattern", default)]
-        pub pattern: Option<String>,
+        pub pattern: ::std::option::Option<String>,
         #[doc = "The details of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#productdetail."]
         #[serde(rename = "productDetail", default)]
-        pub product_detail: Option<Vec<crate::schemas::ProductDetail>>,
+        pub product_detail: ::std::option::Option<Vec<crate::schemas::ProductDetail>>,
         #[doc = "The name of the group of products related to the product. For more\ninformation, see\nhttps://support.google.com/manufacturers/answer/6124116#productline."]
         #[serde(rename = "productLine", default)]
-        pub product_line: Option<String>,
+        pub product_line: ::std::option::Option<String>,
         #[doc = "The canonical name of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#productname."]
         #[serde(rename = "productName", default)]
-        pub product_name: Option<String>,
+        pub product_name: ::std::option::Option<String>,
         #[doc = "The URL of the detail page of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#productpage."]
         #[serde(rename = "productPageUrl", default)]
-        pub product_page_url: Option<String>,
+        pub product_page_url: ::std::option::Option<String>,
         #[doc = "The type or category of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#producttype."]
         #[serde(rename = "productType", default)]
-        pub product_type: Option<Vec<String>>,
+        pub product_type: ::std::option::Option<Vec<String>>,
         #[doc = "The release date of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#release."]
         #[serde(rename = "releaseDate", default)]
-        pub release_date: Option<String>,
+        pub release_date: ::std::option::Option<String>,
         #[doc = "The scent of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#scent."]
         #[serde(rename = "scent", default)]
-        pub scent: Option<String>,
+        pub scent: ::std::option::Option<String>,
         #[doc = "The size of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#size."]
         #[serde(rename = "size", default)]
-        pub size: Option<String>,
+        pub size: ::std::option::Option<String>,
         #[doc = "The size system of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#sizesystem."]
         #[serde(rename = "sizeSystem", default)]
-        pub size_system: Option<String>,
+        pub size_system: ::std::option::Option<String>,
         #[doc = "The size type of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#sizetype."]
         #[serde(rename = "sizeType", default)]
-        pub size_type: Option<String>,
+        pub size_type: ::std::option::Option<String>,
         #[doc = "The suggested retail price (MSRP) of the product. For more information,\nsee https://support.google.com/manufacturers/answer/6124116#price."]
         #[serde(rename = "suggestedRetailPrice", default)]
-        pub suggested_retail_price: Option<crate::schemas::Price>,
+        pub suggested_retail_price: ::std::option::Option<crate::schemas::Price>,
         #[doc = "The target client id. Should only be used in the accounts of the data\npartners."]
         #[serde(rename = "targetClientId", default)]
-        pub target_client_id: Option<String>,
+        pub target_client_id: ::std::option::Option<String>,
         #[doc = "The theme of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#theme."]
         #[serde(rename = "theme", default)]
-        pub theme: Option<String>,
+        pub theme: ::std::option::Option<String>,
         #[doc = "The title of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "The videos of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#video."]
         #[serde(rename = "videoLink", default)]
-        pub video_link: Option<Vec<String>>,
+        pub video_link: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for Attributes {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -125,7 +125,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -143,11 +142,11 @@ pub mod schemas {
     pub struct Capacity {
         #[doc = "The unit of the capacity, i.e., MB, GB, or TB."]
         #[serde(rename = "unit", default)]
-        pub unit: Option<String>,
+        pub unit: ::std::option::Option<String>,
         #[doc = "The numeric value of the capacity."]
         #[serde(rename = "value", default)]
         #[serde(with = "crate::parsed_string")]
-        pub value: Option<i64>,
+        pub value: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for Capacity {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -156,7 +155,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -174,11 +172,11 @@ pub mod schemas {
     pub struct Count {
         #[doc = "The unit in which these products are counted."]
         #[serde(rename = "unit", default)]
-        pub unit: Option<String>,
+        pub unit: ::std::option::Option<String>,
         #[doc = "The numeric value of the number of products in a package."]
         #[serde(rename = "value", default)]
         #[serde(with = "crate::parsed_string")]
-        pub value: Option<i64>,
+        pub value: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for Count {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -187,7 +185,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -244,6 +241,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DestinationStatusStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -259,10 +265,10 @@ pub mod schemas {
     pub struct DestinationStatus {
         #[doc = "The name of the destination."]
         #[serde(rename = "destination", default)]
-        pub destination: Option<String>,
+        pub destination: ::std::option::Option<String>,
         #[doc = "The status of the destination."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::DestinationStatusStatus>,
+        pub status: ::std::option::Option<crate::schemas::DestinationStatusStatus>,
     }
     impl ::field_selector::FieldSelector for DestinationStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -271,7 +277,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -289,7 +294,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -306,13 +311,13 @@ pub mod schemas {
     pub struct FeatureDescription {
         #[doc = "A short description of the feature."]
         #[serde(rename = "headline", default)]
-        pub headline: Option<String>,
+        pub headline: ::std::option::Option<String>,
         #[doc = "An optional image describing the feature."]
         #[serde(rename = "image", default)]
-        pub image: Option<crate::schemas::Image>,
+        pub image: ::std::option::Option<crate::schemas::Image>,
         #[doc = "A detailed description of the feature."]
         #[serde(rename = "text", default)]
-        pub text: Option<String>,
+        pub text: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FeatureDescription {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -321,7 +326,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -372,6 +376,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ImageType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -464,6 +477,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ImageStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -479,13 +501,13 @@ pub mod schemas {
     pub struct Image {
         #[doc = "The URL of the image. For crawled images, this is the provided URL. For\nuploaded images, this is a serving URL from Google if the image has been\nprocessed successfully."]
         #[serde(rename = "imageUrl", default)]
-        pub image_url: Option<String>,
+        pub image_url: ::std::option::Option<String>,
         #[doc = "The type of the image, i.e., crawled or uploaded.\n@OutputOnly"]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::ImageType>,
+        pub r#type: ::std::option::Option<crate::schemas::ImageType>,
         #[doc = "The status of the image.\n@OutputOnly"]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::ImageStatus>,
+        pub status: ::std::option::Option<crate::schemas::ImageStatus>,
     }
     impl ::field_selector::FieldSelector for Image {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -494,7 +516,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -545,6 +566,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for IssueResolution {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -601,6 +631,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for IssueSeverity {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -616,28 +655,28 @@ pub mod schemas {
     pub struct Issue {
         #[doc = "If present, the attribute that triggered the issue. For more information\nabout attributes, see\nhttps://support.google.com/manufacturers/answer/6124116."]
         #[serde(rename = "attribute", default)]
-        pub attribute: Option<String>,
+        pub attribute: ::std::option::Option<String>,
         #[doc = "Longer description of the issue focused on how to resolve it."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The destination this issue applies to."]
         #[serde(rename = "destination", default)]
-        pub destination: Option<String>,
+        pub destination: ::std::option::Option<String>,
         #[doc = "The server-generated type of the issue, for example,\n\u{201c}INCORRECT_TEXT_FORMATTING\u{201d}, \u{201c}IMAGE_NOT_SERVEABLE\u{201d}, etc."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "What needs to happen to resolve the issue."]
         #[serde(rename = "resolution", default)]
-        pub resolution: Option<crate::schemas::IssueResolution>,
+        pub resolution: ::std::option::Option<crate::schemas::IssueResolution>,
         #[doc = "The severity of the issue."]
         #[serde(rename = "severity", default)]
-        pub severity: Option<crate::schemas::IssueSeverity>,
+        pub severity: ::std::option::Option<crate::schemas::IssueSeverity>,
         #[doc = "The timestamp when this issue appeared."]
         #[serde(rename = "timestamp", default)]
-        pub timestamp: Option<String>,
+        pub timestamp: ::std::option::Option<String>,
         #[doc = "Short title describing the nature of the issue."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Issue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -646,7 +685,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -664,10 +702,10 @@ pub mod schemas {
     pub struct ListProductsResponse {
         #[doc = "The token for the retrieval of the next page of product statuses."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of the products."]
         #[serde(rename = "products", default)]
-        pub products: Option<Vec<crate::schemas::Product>>,
+        pub products: ::std::option::Option<Vec<crate::schemas::Product>>,
     }
     impl ::field_selector::FieldSelector for ListProductsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -676,7 +714,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -694,10 +731,10 @@ pub mod schemas {
     pub struct Price {
         #[doc = "The numeric value of the price."]
         #[serde(rename = "amount", default)]
-        pub amount: Option<String>,
+        pub amount: ::std::option::Option<String>,
         #[doc = "The currency in which the price is denoted."]
         #[serde(rename = "currency", default)]
-        pub currency: Option<String>,
+        pub currency: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Price {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -706,7 +743,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -724,28 +760,28 @@ pub mod schemas {
     pub struct Product {
         #[doc = "Attributes of the product uploaded to the Manufacturer Center. Manually\nedited attributes are taken into account."]
         #[serde(rename = "attributes", default)]
-        pub attributes: Option<crate::schemas::Attributes>,
+        pub attributes: ::std::option::Option<crate::schemas::Attributes>,
         #[doc = "The content language of the product as a two-letter ISO 639-1 language code\n(for example, en)."]
         #[serde(rename = "contentLanguage", default)]
-        pub content_language: Option<String>,
+        pub content_language: ::std::option::Option<String>,
         #[doc = "The status of the destinations."]
         #[serde(rename = "destinationStatuses", default)]
-        pub destination_statuses: Option<Vec<crate::schemas::DestinationStatus>>,
+        pub destination_statuses: ::std::option::Option<Vec<crate::schemas::DestinationStatus>>,
         #[doc = "A server-generated list of issues associated with the product."]
         #[serde(rename = "issues", default)]
-        pub issues: Option<Vec<crate::schemas::Issue>>,
+        pub issues: ::std::option::Option<Vec<crate::schemas::Issue>>,
         #[doc = "Name in the format `{target_country}:{content_language}:{product_id}`.\n\n`target_country`   - The target country of the product as a CLDR territory\ncode (for example, US).\n\n`content_language` - The content language of the product as a two-letter\nISO 639-1 language code (for example, en).\n\n`product_id`     -   The ID of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#id."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Parent ID in the format `accounts/{account_id}`.\n\n`account_id` - The ID of the Manufacturer Center account."]
         #[serde(rename = "parent", default)]
-        pub parent: Option<String>,
+        pub parent: ::std::option::Option<String>,
         #[doc = "The ID of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#id."]
         #[serde(rename = "productId", default)]
-        pub product_id: Option<String>,
+        pub product_id: ::std::option::Option<String>,
         #[doc = "The target country of the product as a CLDR territory code (for example,\nUS)."]
         #[serde(rename = "targetCountry", default)]
-        pub target_country: Option<String>,
+        pub target_country: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Product {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -754,7 +790,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -772,13 +807,13 @@ pub mod schemas {
     pub struct ProductDetail {
         #[doc = "The name of the attribute."]
         #[serde(rename = "attributeName", default)]
-        pub attribute_name: Option<String>,
+        pub attribute_name: ::std::option::Option<String>,
         #[doc = "The value of the attribute."]
         #[serde(rename = "attributeValue", default)]
-        pub attribute_value: Option<String>,
+        pub attribute_value: ::std::option::Option<String>,
         #[doc = "A short section name that can be reused between multiple product details."]
         #[serde(rename = "sectionName", default)]
-        pub section_name: Option<String>,
+        pub section_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ProductDetail {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -787,7 +822,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -842,6 +876,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -886,6 +929,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -2129,6 +2181,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2204,5 +2257,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

@@ -14,7 +14,7 @@ pub mod schemas {
     pub struct DetectLanguageRequest {
         #[doc = "The input text upon which to perform language detection. Repeat this\nparameter to perform language detection on multiple text inputs."]
         #[serde(rename = "q", default)]
-        pub q: Option<Vec<String>>,
+        pub q: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for DetectLanguageRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -23,7 +23,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -32,7 +31,7 @@ pub mod schemas {
     pub struct DetectionsListResponse {
         #[doc = "A detections contains detection results of several text"]
         #[serde(rename = "detections", default)]
-        pub detections: Option<Vec<crate::schemas::DetectionsResource>>,
+        pub detections: ::std::option::Option<Vec<crate::schemas::DetectionsResource>>,
     }
     impl ::field_selector::FieldSelector for DetectionsListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -41,7 +40,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     type DetectionsResource = Vec<crate::schemas::DetectionsResourceItems>;
@@ -60,7 +58,7 @@ pub mod schemas {
     pub struct GetSupportedLanguagesRequest {
         #[doc = "The language to use to return localized, human readable names of supported\nlanguages."]
         #[serde(rename = "target", default)]
-        pub target: Option<String>,
+        pub target: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GetSupportedLanguagesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -69,7 +67,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -87,7 +84,7 @@ pub mod schemas {
     pub struct LanguagesListResponse {
         #[doc = "List of source/target languages supported by the translation API. If target parameter is unspecified, the list is sorted by the ASCII code point order of the language code. If target parameter is specified, the list is sorted by the collation order of the language name in the target language."]
         #[serde(rename = "languages", default)]
-        pub languages: Option<Vec<crate::schemas::LanguagesResource>>,
+        pub languages: ::std::option::Option<Vec<crate::schemas::LanguagesResource>>,
     }
     impl ::field_selector::FieldSelector for LanguagesListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -96,7 +93,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -114,10 +110,10 @@ pub mod schemas {
     pub struct LanguagesResource {
         #[doc = "Supported language code, generally consisting of its ISO 639-1\nidentifier. (E.g. 'en', 'ja'). In certain cases, BCP-47 codes including\nlanguage + region identifiers are returned (e.g. 'zh-TW' and 'zh-CH')"]
         #[serde(rename = "language", default)]
-        pub language: Option<String>,
+        pub language: ::std::option::Option<String>,
         #[doc = "Human readable name of the language localized to the target language."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LanguagesResource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -126,7 +122,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -144,19 +139,19 @@ pub mod schemas {
     pub struct TranslateTextRequest {
         #[doc = "The format of the source text, in either HTML (default) or plain-text. A\nvalue of \"html\" indicates HTML and a value of \"text\" indicates plain-text."]
         #[serde(rename = "format", default)]
-        pub format: Option<String>,
+        pub format: ::std::option::Option<String>,
         #[doc = "The `model` type requested for this translation. Valid values are\nlisted in public documentation."]
         #[serde(rename = "model", default)]
-        pub model: Option<String>,
+        pub model: ::std::option::Option<String>,
         #[doc = "The input text to translate. Repeat this parameter to perform translation\noperations on multiple text inputs."]
         #[serde(rename = "q", default)]
-        pub q: Option<Vec<String>>,
+        pub q: ::std::option::Option<Vec<String>>,
         #[doc = "The language of the source text, set to one of the language codes listed in\nLanguage Support. If the source language is not specified, the API will\nattempt to identify the source language automatically and return it within\nthe response."]
         #[serde(rename = "source", default)]
-        pub source: Option<String>,
+        pub source: ::std::option::Option<String>,
         #[doc = "The language to use for translation of the input text, set to one of the\nlanguage codes listed in Language Support."]
         #[serde(rename = "target", default)]
-        pub target: Option<String>,
+        pub target: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TranslateTextRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -165,7 +160,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -183,7 +177,7 @@ pub mod schemas {
     pub struct TranslationsListResponse {
         #[doc = "Translations contains list of translation results of given text"]
         #[serde(rename = "translations", default)]
-        pub translations: Option<Vec<crate::schemas::TranslationsResource>>,
+        pub translations: ::std::option::Option<Vec<crate::schemas::TranslationsResource>>,
     }
     impl ::field_selector::FieldSelector for TranslationsListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -192,7 +186,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -210,13 +203,13 @@ pub mod schemas {
     pub struct TranslationsResource {
         #[doc = "The source language of the initial request, detected automatically, if\nno source language was passed within the initial request. If the\nsource language was passed, auto-detection of the language will not\noccur and this field will be empty."]
         #[serde(rename = "detectedSourceLanguage", default)]
-        pub detected_source_language: Option<String>,
+        pub detected_source_language: ::std::option::Option<String>,
         #[doc = "The `model` type used for this translation. Valid values are\nlisted in public documentation. Can be different from requested `model`.\nPresent only if specific model type was explicitly requested."]
         #[serde(rename = "model", default)]
-        pub model: Option<String>,
+        pub model: ::std::option::Option<String>,
         #[doc = "Text translated into the target language."]
         #[serde(rename = "translatedText", default)]
-        pub translated_text: Option<String>,
+        pub translated_text: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TranslationsResource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -225,7 +218,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -280,6 +272,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -324,6 +325,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1034,6 +1044,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListFormat {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
         }
         pub struct TranslationsActions<'a, A> {
             pub(crate) reqwest: &'a reqwest::Client,
@@ -1738,6 +1757,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1813,5 +1833,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

@@ -14,7 +14,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EnvironmentState {
@@ -78,6 +78,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for EnvironmentState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -93,25 +102,25 @@ pub mod schemas {
     pub struct Environment {
         #[doc = "Configuration parameters for this environment."]
         #[serde(rename = "config", default)]
-        pub config: Option<crate::schemas::EnvironmentConfig>,
+        pub config: ::std::option::Option<crate::schemas::EnvironmentConfig>,
         #[doc = "Output only.\nThe time at which this environment was created."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Optional. User-defined labels for this environment.\nThe labels map can contain no more than 64 entries. Entries of the labels\nmap are UTF8 strings that comply with the following restrictions:\n\n* Keys must conform to regexp: \\p{Ll}\\p{Lo}{0,62}\n* Values must conform to regexp:  [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}\n* Both keys and values are additionally constrained to be <= 128 bytes in\n  size."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The resource name of the environment, in the form:\n\"projects/{projectId}/locations/{locationId}/environments/{environmentId}\""]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The current state of the environment."]
         #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::EnvironmentState>,
+        pub state: ::std::option::Option<crate::schemas::EnvironmentState>,
         #[doc = "Output only.\nThe time at which this environment was last modified."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
         #[doc = "Output only.\nThe UUID (Universally Unique IDentifier) associated with this environment.\nThis value is generated when the environment is created."]
         #[serde(rename = "uuid", default)]
-        pub uuid: Option<String>,
+        pub uuid: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Environment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -120,7 +129,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -138,25 +146,26 @@ pub mod schemas {
     pub struct EnvironmentConfig {
         #[doc = "Output only.\nThe URI of the Apache Airflow Web UI hosted within this environment (see\n[Airflow web\ninterface](/composer/docs/how-to/accessing/airflow-web-interface))."]
         #[serde(rename = "airflowUri", default)]
-        pub airflow_uri: Option<String>,
+        pub airflow_uri: ::std::option::Option<String>,
         #[doc = "Output only.\nThe Cloud Storage prefix of the DAGs for this environment. Although Cloud\nStorage objects reside in a flat namespace, a hierarchical file tree\ncan be simulated using \"/\"-delimited object name prefixes. DAG objects for\nthis environment reside in a simulated directory with the given prefix."]
         #[serde(rename = "dagGcsPrefix", default)]
-        pub dag_gcs_prefix: Option<String>,
+        pub dag_gcs_prefix: ::std::option::Option<String>,
         #[doc = "Output only.\nThe Kubernetes Engine cluster used to run this environment."]
         #[serde(rename = "gkeCluster", default)]
-        pub gke_cluster: Option<String>,
+        pub gke_cluster: ::std::option::Option<String>,
         #[doc = "The configuration used for the Kubernetes Engine cluster."]
         #[serde(rename = "nodeConfig", default)]
-        pub node_config: Option<crate::schemas::NodeConfig>,
+        pub node_config: ::std::option::Option<crate::schemas::NodeConfig>,
         #[doc = "The number of nodes in the Kubernetes Engine cluster that will be\nused to run this environment."]
         #[serde(rename = "nodeCount", default)]
-        pub node_count: Option<i32>,
+        pub node_count: ::std::option::Option<i32>,
         #[doc = "The configuration used for the Private IP Cloud Composer environment."]
         #[serde(rename = "privateEnvironmentConfig", default)]
-        pub private_environment_config: Option<crate::schemas::PrivateEnvironmentConfig>,
+        pub private_environment_config:
+            ::std::option::Option<crate::schemas::PrivateEnvironmentConfig>,
         #[doc = "The configuration settings for software inside the environment."]
         #[serde(rename = "softwareConfig", default)]
-        pub software_config: Option<crate::schemas::SoftwareConfig>,
+        pub software_config: ::std::option::Option<crate::schemas::SoftwareConfig>,
     }
     impl ::field_selector::FieldSelector for EnvironmentConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -165,7 +174,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -183,13 +191,13 @@ pub mod schemas {
     pub struct ImageVersion {
         #[doc = "The string identifier of the ImageVersion, in the form:\n\"composer-x.y.z-airflow-a.b(.c)\""]
         #[serde(rename = "imageVersionId", default)]
-        pub image_version_id: Option<String>,
+        pub image_version_id: ::std::option::Option<String>,
         #[doc = "Whether this is the default ImageVersion used by Composer during\nenvironment creation if no input ImageVersion is specified."]
         #[serde(rename = "isDefault", default)]
-        pub is_default: Option<bool>,
+        pub is_default: ::std::option::Option<bool>,
         #[doc = "supported python versions"]
         #[serde(rename = "supportedPythonVersions", default)]
-        pub supported_python_versions: Option<Vec<String>>,
+        pub supported_python_versions: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ImageVersion {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -198,7 +206,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -216,19 +223,19 @@ pub mod schemas {
     pub struct IpallocationPolicy {
         #[doc = "Optional. The IP address range used to allocate IP addresses to pods in\nthe cluster.\n\nThis field is applicable only when `use_ip_aliases` is true.\n\nSet to blank to have GKE choose a range with the default size.\n\nSet to /netmask (e.g. `/14`) to have GKE choose a range with a specific\nnetmask.\n\nSet to a\n[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)\nnotation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.\n`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range\nto use.\nSpecify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block`\nbut not both."]
         #[serde(rename = "clusterIpv4CidrBlock", default)]
-        pub cluster_ipv_4_cidr_block: Option<String>,
+        pub cluster_ipv_4_cidr_block: ::std::option::Option<String>,
         #[doc = "Optional. The name of the cluster's secondary range used to allocate\nIP addresses to pods. Specify either `cluster_secondary_range_name`\nor `cluster_ipv4_cidr_block` but not both.\n\nThis field is applicable only when `use_ip_aliases` is true."]
         #[serde(rename = "clusterSecondaryRangeName", default)]
-        pub cluster_secondary_range_name: Option<String>,
+        pub cluster_secondary_range_name: ::std::option::Option<String>,
         #[doc = "Optional. The IP address range of the services IP addresses in this\ncluster.\n\nThis field is applicable only when `use_ip_aliases` is true.\n\nSet to blank to have GKE choose a range with the default size.\n\nSet to /netmask (e.g. `/14`) to have GKE choose a range with a specific\nnetmask.\n\nSet to a\n[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)\nnotation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.\n`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range\nto use.\nSpecify `services_secondary_range_name` or `services_ipv4_cidr_block`\nbut not both."]
         #[serde(rename = "servicesIpv4CidrBlock", default)]
-        pub services_ipv_4_cidr_block: Option<String>,
+        pub services_ipv_4_cidr_block: ::std::option::Option<String>,
         #[doc = "Optional. The name of the services' secondary range used to allocate\nIP addresses to the cluster. Specify either `services_secondary_range_name`\nor `services_ipv4_cidr_block` but not both.\n\nThis field is applicable only when `use_ip_aliases` is true."]
         #[serde(rename = "servicesSecondaryRangeName", default)]
-        pub services_secondary_range_name: Option<String>,
+        pub services_secondary_range_name: ::std::option::Option<String>,
         #[doc = "Optional. Whether or not to enable Alias IPs in the GKE cluster.\nIf `true`, a VPC-native cluster is created."]
         #[serde(rename = "useIpAliases", default)]
-        pub use_ip_aliases: Option<bool>,
+        pub use_ip_aliases: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for IpallocationPolicy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -237,7 +244,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -255,10 +261,10 @@ pub mod schemas {
     pub struct ListEnvironmentsResponse {
         #[doc = "The list of environments returned by a ListEnvironmentsRequest."]
         #[serde(rename = "environments", default)]
-        pub environments: Option<Vec<crate::schemas::Environment>>,
+        pub environments: ::std::option::Option<Vec<crate::schemas::Environment>>,
         #[doc = "The page token used to query for the next page if one exists."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListEnvironmentsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -267,7 +273,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -285,10 +290,10 @@ pub mod schemas {
     pub struct ListImageVersionsResponse {
         #[doc = "The list of supported ImageVersions in a location."]
         #[serde(rename = "imageVersions", default)]
-        pub image_versions: Option<Vec<crate::schemas::ImageVersion>>,
+        pub image_versions: ::std::option::Option<Vec<crate::schemas::ImageVersion>>,
         #[doc = "The page token used to query for the next page if one exists."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListImageVersionsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -297,17 +302,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
         #[serde(rename = "operations", default)]
-        pub operations: Option<Vec<crate::schemas::Operation>>,
+        pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::field_selector::FieldSelector for ListOperationsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -316,7 +320,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -334,31 +337,31 @@ pub mod schemas {
     pub struct NodeConfig {
         #[doc = "Optional. The disk size in GB used for node VMs. Minimum size is 20GB.\nIf unspecified, defaults to 100GB. Cannot be updated."]
         #[serde(rename = "diskSizeGb", default)]
-        pub disk_size_gb: Option<i32>,
+        pub disk_size_gb: ::std::option::Option<i32>,
         #[doc = "Optional. The IPAllocationPolicy fields for the GKE cluster."]
         #[serde(rename = "ipAllocationPolicy", default)]
-        pub ip_allocation_policy: Option<crate::schemas::IpallocationPolicy>,
+        pub ip_allocation_policy: ::std::option::Option<crate::schemas::IpallocationPolicy>,
         #[doc = "Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which\nto deploy the VMs used to run the Apache Airflow software, specified as a\n[relative resource\nname](/apis/design/resource_names#relative_resource_name). For example:\n\"projects/{projectId}/zones/{zoneId}\".\n\nThis `location` must belong to the enclosing environment's project and\nlocation. If both this field and `nodeConfig.machineType` are specified,\n`nodeConfig.machineType` must belong to this `location`; if both are\nunspecified, the service will pick a zone in the Compute Engine region\ncorresponding to the Cloud Composer location, and propagate that choice to\nboth fields. If only one field (`location` or `nodeConfig.machineType`) is\nspecified, the location information from the specified field will be\npropagated to the unspecified field."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "Optional. The Compute Engine\n[machine type](/compute/docs/machine-types) used for cluster instances,\nspecified as a\n[relative resource\nname](/apis/design/resource_names#relative_resource_name). For example:\n\"projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}\".\n\nThe `machineType` must belong to the enclosing environment's project and\nlocation. If both this field and `nodeConfig.location` are specified,\nthis `machineType` must belong to the `nodeConfig.location`; if both are\nunspecified, the service will pick a zone in the Compute Engine region\ncorresponding to the Cloud Composer location, and propagate that choice to\nboth fields. If exactly one of this field and `nodeConfig.location` is\nspecified, the location information from the specified field will be\npropagated to the unspecified field.\n\nIf this field is unspecified, the `machineTypeId` defaults\nto \"n1-standard-1\"."]
         #[serde(rename = "machineType", default)]
-        pub machine_type: Option<String>,
+        pub machine_type: ::std::option::Option<String>,
         #[doc = "Optional. The Compute Engine network to be used for machine\ncommunications, specified as a\n[relative resource\nname](/apis/design/resource_names#relative_resource_name). For example:\n\"projects/{projectId}/global/networks/{networkId}\".\n\nIf unspecified, the default network in the environment's project is used.\nIf a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets)\nis provided, `nodeConfig.subnetwork` must also be provided. For\n[Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see\n`nodeConfig.subnetwork`."]
         #[serde(rename = "network", default)]
-        pub network: Option<String>,
+        pub network: ::std::option::Option<String>,
         #[doc = "Optional. The set of Google API scopes to be made available on all\nnode VMs. If `oauth_scopes` is empty, defaults to\n[\"https://www.googleapis.com/auth/cloud-platform\"]. Cannot be updated."]
         #[serde(rename = "oauthScopes", default)]
-        pub oauth_scopes: Option<Vec<String>>,
+        pub oauth_scopes: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. The Google Cloud Platform Service Account to be used by the node\nVMs. If a service account is not specified, the \"default\" Compute Engine\nservice account is used. Cannot be updated."]
         #[serde(rename = "serviceAccount", default)]
-        pub service_account: Option<String>,
+        pub service_account: ::std::option::Option<String>,
         #[doc = "Optional. The Compute Engine subnetwork to be used for machine\ncommunications, specified as a\n[relative resource\nname](/apis/design/resource_names#relative_resource_name). For example:\n\"projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}\"\n\nIf a subnetwork is provided, `nodeConfig.network` must also be provided,\nand the subnetwork must belong to the enclosing environment's project and\nlocation."]
         #[serde(rename = "subnetwork", default)]
-        pub subnetwork: Option<String>,
+        pub subnetwork: ::std::option::Option<String>,
         #[doc = "Optional. The list of instance tags applied to all node VMs. Tags are used\nto identify valid sources or targets for network firewalls. Each tag within\nthe list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).\nCannot be updated."]
         #[serde(rename = "tags", default)]
-        pub tags: Option<Vec<String>>,
+        pub tags: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for NodeConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -367,26 +370,27 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
         #[serde(rename = "done", default)]
-        pub done: Option<bool>,
+        pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
         #[serde(rename = "error", default)]
-        pub error: Option<crate::schemas::Status>,
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
         #[serde(rename = "response", default)]
-        pub response: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub response:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
     impl ::field_selector::FieldSelector for Operation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -395,7 +399,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -450,6 +453,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for OperationMetadataOperationType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -510,6 +522,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for OperationMetadataState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -525,22 +546,22 @@ pub mod schemas {
     pub struct OperationMetadata {
         #[doc = "Output only.\nThe time the operation was submitted to the server."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Output only.\nThe time when the operation terminated, regardless of its success.\nThis field is unset if the operation is still ongoing."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
         #[doc = "Output only.\nThe type of operation being performed."]
         #[serde(rename = "operationType", default)]
-        pub operation_type: Option<crate::schemas::OperationMetadataOperationType>,
+        pub operation_type: ::std::option::Option<crate::schemas::OperationMetadataOperationType>,
         #[doc = "Output only.\nThe resource being operated on, as a [relative resource name](/apis/design/resource_names#relative_resource_name)."]
         #[serde(rename = "resource", default)]
-        pub resource: Option<String>,
+        pub resource: ::std::option::Option<String>,
         #[doc = "Output only.\nThe UUID of the resource being operated on."]
         #[serde(rename = "resourceUuid", default)]
-        pub resource_uuid: Option<String>,
+        pub resource_uuid: ::std::option::Option<String>,
         #[doc = "Output only.\nThe current operation state."]
         #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::OperationMetadataState>,
+        pub state: ::std::option::Option<crate::schemas::OperationMetadataState>,
     }
     impl ::field_selector::FieldSelector for OperationMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -549,7 +570,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -567,10 +587,10 @@ pub mod schemas {
     pub struct PrivateClusterConfig {
         #[doc = "Optional. If `true`, access to the public endpoint of the GKE cluster is\ndenied."]
         #[serde(rename = "enablePrivateEndpoint", default)]
-        pub enable_private_endpoint: Option<bool>,
+        pub enable_private_endpoint: ::std::option::Option<bool>,
         #[doc = "The IP range in CIDR notation to use for the hosted master network. This\nrange is used for assigning internal IP addresses to the cluster\nmaster or set of masters and to the internal load balancer virtual IP.\nThis range must not overlap with any other ranges in use\nwithin the cluster's network. If left blank, the default value of\n'172.16.0.0/28' is used."]
         #[serde(rename = "masterIpv4CidrBlock", default)]
-        pub master_ipv_4_cidr_block: Option<String>,
+        pub master_ipv_4_cidr_block: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PrivateClusterConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -579,7 +599,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -597,10 +616,10 @@ pub mod schemas {
     pub struct PrivateEnvironmentConfig {
         #[doc = "Optional. If `true`, a Private IP Cloud Composer environment is created.\nIf this field is true, `use_ip_aliases` must be true."]
         #[serde(rename = "enablePrivateEnvironment", default)]
-        pub enable_private_environment: Option<bool>,
+        pub enable_private_environment: ::std::option::Option<bool>,
         #[doc = "Optional. Configuration for the private GKE cluster for a Private IP\nCloud Composer environment."]
         #[serde(rename = "privateClusterConfig", default)]
-        pub private_cluster_config: Option<crate::schemas::PrivateClusterConfig>,
+        pub private_cluster_config: ::std::option::Option<crate::schemas::PrivateClusterConfig>,
     }
     impl ::field_selector::FieldSelector for PrivateEnvironmentConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -609,7 +628,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -627,19 +645,20 @@ pub mod schemas {
     pub struct SoftwareConfig {
         #[doc = "Optional. Apache Airflow configuration properties to override.\n\nProperty keys contain the section and property names, separated by a\nhyphen, for example \"core-dags_are_paused_at_creation\". Section names must\nnot contain hyphens (\"-\"), opening square brackets (\"[\"),  or closing\nsquare brackets (\"]\"). The property name must not be empty and must not\ncontain an equals sign (\"=\") or semicolon (\";\"). Section and property names\nmust not contain a period (\".\"). Apache Airflow configuration property\nnames must be written in\n[snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can\ncontain any character, and can be written in any lower/upper case format.\n\nCertain Apache Airflow configuration property values are\n[blacklisted](/composer/docs/how-to/managing/setting-airflow-configurations#airflow_configuration_blacklists),\nand cannot be overridden."]
         #[serde(rename = "airflowConfigOverrides", default)]
-        pub airflow_config_overrides: Option<::std::collections::BTreeMap<String, String>>,
+        pub airflow_config_overrides:
+            ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Optional. Additional environment variables to provide to the Apache Airflow\nscheduler, worker, and webserver processes.\n\nEnvironment variable names must match the regular expression\n`a-zA-Z_*`. They cannot specify Apache Airflow\nsoftware configuration overrides (they cannot match the regular expression\n`AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the\nfollowing reserved names:\n\n* `AIRFLOW_HOME`\n* `C_FORCE_ROOT`\n* `CONTAINER_NAME`\n* `DAGS_FOLDER`\n* `GCP_PROJECT`\n* `GCS_BUCKET`\n* `GKE_CLUSTER_NAME`\n* `SQL_DATABASE`\n* `SQL_INSTANCE`\n* `SQL_PASSWORD`\n* `SQL_PROJECT`\n* `SQL_REGION`\n* `SQL_USER`"]
         #[serde(rename = "envVariables", default)]
-        pub env_variables: Option<::std::collections::BTreeMap<String, String>>,
+        pub env_variables: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The version of the software running in the environment.\nThis encapsulates both the version of Cloud Composer functionality and the\nversion of Apache Airflow. It must match the regular expression\n`composer-([0-9]+\\.[0-9]+\\.[0-9]+|latest)-airflow-[0-9]+\\.[0-9]+(\\.[0-9]+.*)?`.\nWhen used as input, the server also checks if the provided version is\nsupported and denies the request for an unsupported version.\n\nThe Cloud Composer portion of the version is a\n[semantic version](https://semver.org) or `latest`. When the patch version\nis omitted, the current Cloud Composer patch version is selected.\nWhen `latest` is provided instead of an explicit version number,\nthe server replaces `latest` with the current Cloud Composer version\nand stores that version number in the same field.\n\nThe portion of the image version that follows <em>airflow-</em> is an\nofficial Apache Airflow repository\n[release name](https://github.com/apache/incubator-airflow/releases).\n\nSee also [Version\nList](/composer/docs/concepts/versioning/composer-versions)."]
         #[serde(rename = "imageVersion", default)]
-        pub image_version: Option<String>,
+        pub image_version: ::std::option::Option<String>,
         #[doc = "Optional. Custom Python Package Index (PyPI) packages to be installed in\nthe environment.\n\nKeys refer to the lowercase package name such as \"numpy\"\nand values are the lowercase extras and version specifier such as\n\"==1.12.0\", \"[devel,gcp_api]\", or \"[devel]>=1.8.2, <1.9.2\". To specify a\npackage without pinning it to a version specifier, use the empty string as\nthe value."]
         #[serde(rename = "pypiPackages", default)]
-        pub pypi_packages: Option<::std::collections::BTreeMap<String, String>>,
+        pub pypi_packages: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Optional. The major version of Python used to run the Apache Airflow\nscheduler, worker, and webserver processes.\n\nCan be set to '2' or '3'. If not specified, the default is '2'. Cannot be\nupdated."]
         #[serde(rename = "pythonVersion", default)]
-        pub python_version: Option<String>,
+        pub python_version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SoftwareConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -648,20 +667,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
-        pub code: Option<i32>,
+        pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub details:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Status {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -670,7 +689,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -725,6 +743,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -769,6 +796,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -3235,6 +3271,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3310,5 +3347,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

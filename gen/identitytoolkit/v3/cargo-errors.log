@@ -1,14 +1,14 @@
     Checking google-identitytoolkit3 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/identitytoolkit/v3/lib)
 error[E0603]: type alias `IdentitytoolkitRelyingpartyGetPublicKeysResponse` is private
-    --> identitytoolkit/v3/lib/src/lib.rs:3433:33
+    --> identitytoolkit/v3/lib/src/lib.rs:3401:33
      |
-3433 |                 crate::schemas::IdentitytoolkitRelyingpartyGetPublicKeysResponse,
+3401 |                 crate::schemas::IdentitytoolkitRelyingpartyGetPublicKeysResponse,
      |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 error[E0603]: type alias `IdentitytoolkitRelyingpartyGetPublicKeysResponse` is private
-    --> identitytoolkit/v3/lib/src/lib.rs:3445:33
+    --> identitytoolkit/v3/lib/src/lib.rs:3413:33
      |
-3445 |                 crate::schemas::IdentitytoolkitRelyingpartyGetPublicKeysResponse,
+3413 |                 crate::schemas::IdentitytoolkitRelyingpartyGetPublicKeysResponse,
      |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 error: aborting due to 2 previous errors

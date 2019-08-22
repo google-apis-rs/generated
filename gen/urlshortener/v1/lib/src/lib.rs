@@ -14,24 +14,24 @@ pub mod schemas {
     pub struct AnalyticsSnapshot {
         #[doc = "Top browsers, e.g. \"Chrome\"; sorted by (descending) click counts. Only present if this data is available."]
         #[serde(rename = "browsers", default)]
-        pub browsers: Option<Vec<crate::schemas::StringCount>>,
+        pub browsers: ::std::option::Option<Vec<crate::schemas::StringCount>>,
         #[doc = "Top countries (expressed as country codes), e.g. \"US\" or \"DE\"; sorted by (descending) click counts. Only present if this data is available."]
         #[serde(rename = "countries", default)]
-        pub countries: Option<Vec<crate::schemas::StringCount>>,
+        pub countries: ::std::option::Option<Vec<crate::schemas::StringCount>>,
         #[doc = "Number of clicks on all goo.gl short URLs pointing to this long URL."]
         #[serde(rename = "longUrlClicks", default)]
         #[serde(with = "crate::parsed_string")]
-        pub long_url_clicks: Option<i64>,
+        pub long_url_clicks: ::std::option::Option<i64>,
         #[doc = "Top platforms or OSes, e.g. \"Windows\"; sorted by (descending) click counts. Only present if this data is available."]
         #[serde(rename = "platforms", default)]
-        pub platforms: Option<Vec<crate::schemas::StringCount>>,
+        pub platforms: ::std::option::Option<Vec<crate::schemas::StringCount>>,
         #[doc = "Top referring hosts, e.g. \"www.google.com\"; sorted by (descending) click counts. Only present if this data is available."]
         #[serde(rename = "referrers", default)]
-        pub referrers: Option<Vec<crate::schemas::StringCount>>,
+        pub referrers: ::std::option::Option<Vec<crate::schemas::StringCount>>,
         #[doc = "Number of clicks on this short URL."]
         #[serde(rename = "shortUrlClicks", default)]
         #[serde(with = "crate::parsed_string")]
-        pub short_url_clicks: Option<i64>,
+        pub short_url_clicks: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for AnalyticsSnapshot {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -40,7 +40,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -58,19 +57,19 @@ pub mod schemas {
     pub struct AnalyticsSummary {
         #[doc = "Click analytics over all time."]
         #[serde(rename = "allTime", default)]
-        pub all_time: Option<crate::schemas::AnalyticsSnapshot>,
+        pub all_time: ::std::option::Option<crate::schemas::AnalyticsSnapshot>,
         #[doc = "Click analytics over the last day."]
         #[serde(rename = "day", default)]
-        pub day: Option<crate::schemas::AnalyticsSnapshot>,
+        pub day: ::std::option::Option<crate::schemas::AnalyticsSnapshot>,
         #[doc = "Click analytics over the last month."]
         #[serde(rename = "month", default)]
-        pub month: Option<crate::schemas::AnalyticsSnapshot>,
+        pub month: ::std::option::Option<crate::schemas::AnalyticsSnapshot>,
         #[doc = "Click analytics over the last two hours."]
         #[serde(rename = "twoHours", default)]
-        pub two_hours: Option<crate::schemas::AnalyticsSnapshot>,
+        pub two_hours: ::std::option::Option<crate::schemas::AnalyticsSnapshot>,
         #[doc = "Click analytics over the last week."]
         #[serde(rename = "week", default)]
-        pub week: Option<crate::schemas::AnalyticsSnapshot>,
+        pub week: ::std::option::Option<crate::schemas::AnalyticsSnapshot>,
     }
     impl ::field_selector::FieldSelector for AnalyticsSummary {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -79,7 +78,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -98,10 +96,10 @@ pub mod schemas {
         #[doc = "Number of clicks for this top entry, e.g. for this particular country or browser."]
         #[serde(rename = "count", default)]
         #[serde(with = "crate::parsed_string")]
-        pub count: Option<i64>,
+        pub count: ::std::option::Option<i64>,
         #[doc = "Label assigned to this top entry, e.g. \"US\" or \"Chrome\"."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for StringCount {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -110,7 +108,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -128,22 +125,22 @@ pub mod schemas {
     pub struct Url {
         #[doc = "A summary of the click analytics for the short and long URL. Might not be present if not requested or currently unavailable."]
         #[serde(rename = "analytics", default)]
-        pub analytics: Option<crate::schemas::AnalyticsSummary>,
+        pub analytics: ::std::option::Option<crate::schemas::AnalyticsSummary>,
         #[doc = "Time the short URL was created; ISO 8601 representation using the yyyy-MM-dd'T'HH:mm:ss.SSSZZ format, e.g. \"2010-10-14T19:01:24.944+00:00\"."]
         #[serde(rename = "created", default)]
-        pub created: Option<String>,
+        pub created: ::std::option::Option<String>,
         #[doc = "Short URL, e.g. \"http://goo.gl/l6MS\"."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The fixed string \"urlshortener#url\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Long URL, e.g. \"http://www.google.com/\". Might not be present if the status is \"REMOVED\"."]
         #[serde(rename = "longUrl", default)]
-        pub long_url: Option<String>,
+        pub long_url: ::std::option::Option<String>,
         #[doc = "Status of the target URL. Possible values: \"OK\", \"MALWARE\", \"PHISHING\", or \"REMOVED\". A URL might be marked \"REMOVED\" if it was flagged as spam, for example."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Url {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -152,7 +149,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -170,19 +166,19 @@ pub mod schemas {
     pub struct UrlHistory {
         #[doc = "A list of URL resources."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Url>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Url>>,
         #[doc = "Number of items returned with each full \"page\" of results. Note that the last page could have fewer items than the \"itemsPerPage\" value."]
         #[serde(rename = "itemsPerPage", default)]
-        pub items_per_page: Option<i32>,
+        pub items_per_page: ::std::option::Option<i32>,
         #[doc = "The fixed string \"urlshortener#urlHistory\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "A token to provide to get the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Total number of short URLs associated with this user (may be approximate)."]
         #[serde(rename = "totalItems", default)]
-        pub total_items: Option<i32>,
+        pub total_items: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for UrlHistory {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -191,7 +187,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -236,6 +231,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -311,6 +315,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for GetProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListProjection {
                 #[doc = "Returns short URL click counts."]
@@ -355,6 +368,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -1087,6 +1109,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1162,5 +1185,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

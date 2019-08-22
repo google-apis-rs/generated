@@ -14,7 +14,7 @@ pub mod schemas {
     pub struct Ancestor {
         #[doc = "Resource id of the ancestor."]
         #[serde(rename = "resourceId", default)]
-        pub resource_id: Option<crate::schemas::ResourceId>,
+        pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::field_selector::FieldSelector for Ancestor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -23,7 +23,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -41,10 +40,10 @@ pub mod schemas {
     pub struct AuditConfig {
         #[doc = "The configuration for logging of each type of permission."]
         #[serde(rename = "auditLogConfigs", default)]
-        pub audit_log_configs: Option<Vec<crate::schemas::AuditLogConfig>>,
+        pub audit_log_configs: ::std::option::Option<Vec<crate::schemas::AuditLogConfig>>,
         #[doc = "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."]
         #[serde(rename = "service", default)]
-        pub service: Option<String>,
+        pub service: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AuditConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -53,7 +52,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -110,6 +108,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AuditLogConfigLogType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -125,10 +132,10 @@ pub mod schemas {
     pub struct AuditLogConfig {
         #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
         #[serde(rename = "exemptedMembers", default)]
-        pub exempted_members: Option<Vec<String>>,
+        pub exempted_members: ::std::option::Option<Vec<String>>,
         #[doc = "The log type that this config enables."]
         #[serde(rename = "logType", default)]
-        pub log_type: Option<crate::schemas::AuditLogConfigLogType>,
+        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
     }
     impl ::field_selector::FieldSelector for AuditLogConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -137,7 +144,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -155,13 +161,13 @@ pub mod schemas {
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
         #[serde(rename = "condition", default)]
-        pub condition: Option<crate::schemas::Expr>,
+        pub condition: ::std::option::Option<crate::schemas::Expr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
         #[serde(rename = "members", default)]
-        pub members: Option<Vec<String>>,
+        pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
         #[serde(rename = "role", default)]
-        pub role: Option<String>,
+        pub role: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Binding {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -170,7 +176,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -188,7 +193,7 @@ pub mod schemas {
     )]
     pub struct BooleanConstraint;
     impl ::field_selector::FieldSelector for BooleanConstraint {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -205,7 +210,7 @@ pub mod schemas {
     pub struct BooleanPolicy {
         #[doc = "If `true`, then the `Policy` is enforced. If `false`, then any\nconfiguration is acceptable.\n\nSuppose you have a `Constraint`\n`constraints/compute.disableSerialPortAccess` with `constraint_default`\nset to `ALLOW`. A `Policy` for that `Constraint` exhibits the following\nbehavior:\n\n* If the `Policy` at this resource has enforced set to `false`, serial\n  port connection attempts will be allowed.\n* If the `Policy` at this resource has enforced set to `true`, serial\n  port connection attempts will be refused.\n* If the `Policy` at this resource is `RestoreDefault`, serial port\n  connection attempts will be allowed.\n* If no `Policy` is set at this resource or anywhere higher in the\n  resource hierarchy, serial port connection attempts will be allowed.\n* If no `Policy` is set at this resource, but one exists higher in the\n  resource hierarchy, the behavior is as if the`Policy` were set at\n  this resource.\n\nThe following examples demonstrate the different possible layerings:\n\nExample 1 (nearest `Constraint` wins):\n`organizations/foo` has a `Policy` with:\n{enforced: false}\n`projects/bar` has no `Policy` set.\nThe constraint at `projects/bar` and `organizations/foo` will not be\nenforced.\n\nExample 2 (enforcement gets replaced):\n`organizations/foo` has a `Policy` with:\n{enforced: false}\n`projects/bar` has a `Policy` with:\n{enforced: true}\nThe constraint at `organizations/foo` is not enforced.\nThe constraint at `projects/bar` is enforced.\n\nExample 3 (RestoreDefault):\n`organizations/foo` has a `Policy` with:\n{enforced: true}\n`projects/bar` has a `Policy` with:\n{RestoreDefault: {}}\nThe constraint at `organizations/foo` is enforced.\nThe constraint at `projects/bar` is not enforced, because\n`constraint_default` for the `Constraint` is `ALLOW`."]
         #[serde(rename = "enforced", default)]
-        pub enforced: Option<bool>,
+        pub enforced: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for BooleanPolicy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -214,7 +219,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -232,10 +236,10 @@ pub mod schemas {
     pub struct ClearOrgPolicyRequest {
         #[doc = "Name of the `Constraint` of the `Policy` to clear."]
         #[serde(rename = "constraint", default)]
-        pub constraint: Option<String>,
+        pub constraint: ::std::option::Option<String>,
         #[doc = "The current version, for concurrency control. Not sending an `etag`\nwill cause the `Policy` to be cleared blindly."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<Vec<u8>>,
+        pub etag: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for ClearOrgPolicyRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -244,7 +248,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -301,6 +304,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ConstraintConstraintDefault {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -316,25 +328,25 @@ pub mod schemas {
     pub struct Constraint {
         #[doc = "Defines this constraint as being a BooleanConstraint."]
         #[serde(rename = "booleanConstraint", default)]
-        pub boolean_constraint: Option<crate::schemas::BooleanConstraint>,
+        pub boolean_constraint: ::std::option::Option<crate::schemas::BooleanConstraint>,
         #[doc = "The evaluation behavior of this constraint in the absense of 'Policy'."]
         #[serde(rename = "constraintDefault", default)]
-        pub constraint_default: Option<crate::schemas::ConstraintConstraintDefault>,
+        pub constraint_default: ::std::option::Option<crate::schemas::ConstraintConstraintDefault>,
         #[doc = "Detailed description of what this `Constraint` controls as well as how and\nwhere it is enforced.\n\nMutable."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The human readable name.\n\nMutable."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "Defines this constraint as being a ListConstraint."]
         #[serde(rename = "listConstraint", default)]
-        pub list_constraint: Option<crate::schemas::ListConstraint>,
+        pub list_constraint: ::std::option::Option<crate::schemas::ListConstraint>,
         #[doc = "Immutable value, required to globally be unique. For example,\n`constraints/serviceuser.services`"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Version of the `Constraint`. Default version is 0;"]
         #[serde(rename = "version", default)]
-        pub version: Option<i32>,
+        pub version: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Constraint {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -343,7 +355,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -361,7 +372,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -378,16 +389,16 @@ pub mod schemas {
     pub struct Expr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
         #[serde(rename = "expression", default)]
-        pub expression: Option<String>,
+        pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Expr {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -396,7 +407,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -453,6 +463,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for FolderOperationOperationType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -468,16 +487,16 @@ pub mod schemas {
     pub struct FolderOperation {
         #[doc = "The resource name of the folder or organization we are either creating\nthe folder under or moving the folder to."]
         #[serde(rename = "destinationParent", default)]
-        pub destination_parent: Option<String>,
+        pub destination_parent: ::std::option::Option<String>,
         #[doc = "The display name of the folder."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The type of this operation."]
         #[serde(rename = "operationType", default)]
-        pub operation_type: Option<crate::schemas::FolderOperationOperationType>,
+        pub operation_type: ::std::option::Option<crate::schemas::FolderOperationOperationType>,
         #[doc = "The resource name of the folder's parent.\nOnly applicable when the operation_type is MOVE."]
         #[serde(rename = "sourceParent", default)]
-        pub source_parent: Option<String>,
+        pub source_parent: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FolderOperation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -486,7 +505,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -607,6 +625,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for FolderOperationErrorErrorMessageId {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -622,7 +649,8 @@ pub mod schemas {
     pub struct FolderOperationError {
         #[doc = "The type of operation error experienced."]
         #[serde(rename = "errorMessageId", default)]
-        pub error_message_id: Option<crate::schemas::FolderOperationErrorErrorMessageId>,
+        pub error_message_id:
+            ::std::option::Option<crate::schemas::FolderOperationErrorErrorMessageId>,
     }
     impl ::field_selector::FieldSelector for FolderOperationError {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -631,7 +659,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -649,7 +676,7 @@ pub mod schemas {
     )]
     pub struct GetAncestryRequest;
     impl ::field_selector::FieldSelector for GetAncestryRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -666,7 +693,7 @@ pub mod schemas {
     pub struct GetAncestryResponse {
         #[doc = "Ancestors are ordered from bottom to top of the resource hierarchy. The\nfirst ancestor is the project itself, followed by the project's parent,\netc.."]
         #[serde(rename = "ancestor", default)]
-        pub ancestor: Option<Vec<crate::schemas::Ancestor>>,
+        pub ancestor: ::std::option::Option<Vec<crate::schemas::Ancestor>>,
     }
     impl ::field_selector::FieldSelector for GetAncestryResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -675,7 +702,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -693,7 +719,7 @@ pub mod schemas {
     pub struct GetEffectiveOrgPolicyRequest {
         #[doc = "The name of the `Constraint` to compute the effective `Policy`."]
         #[serde(rename = "constraint", default)]
-        pub constraint: Option<String>,
+        pub constraint: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GetEffectiveOrgPolicyRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -702,7 +728,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -720,7 +745,7 @@ pub mod schemas {
     pub struct GetIamPolicyRequest {
         #[doc = "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM."]
         #[serde(rename = "options", default)]
-        pub options: Option<crate::schemas::GetPolicyOptions>,
+        pub options: ::std::option::Option<crate::schemas::GetPolicyOptions>,
     }
     impl ::field_selector::FieldSelector for GetIamPolicyRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -729,7 +754,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -747,7 +771,7 @@ pub mod schemas {
     pub struct GetOrgPolicyRequest {
         #[doc = "Name of the `Constraint` to get the `Policy`."]
         #[serde(rename = "constraint", default)]
-        pub constraint: Option<String>,
+        pub constraint: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GetOrgPolicyRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -756,7 +780,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -774,7 +797,7 @@ pub mod schemas {
     pub struct GetPolicyOptions {
         #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
         #[serde(rename = "requestedPolicyVersion", default)]
-        pub requested_policy_version: Option<i32>,
+        pub requested_policy_version: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for GetPolicyOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -783,7 +806,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -801,22 +823,22 @@ pub mod schemas {
     pub struct Lien {
         #[doc = "The creation time of this Lien."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "A system-generated unique identifier for this Lien.\n\nExample: `liens/1234abcd`"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "A stable, user-visible/meaningful string identifying the origin of the\nLien, intended to be inspected programmatically. Maximum length of 200\ncharacters.\n\nExample: 'compute.googleapis.com'"]
         #[serde(rename = "origin", default)]
-        pub origin: Option<String>,
+        pub origin: ::std::option::Option<String>,
         #[doc = "A reference to the resource this Lien is attached to. The server will\nvalidate the parent against those for which Liens are supported.\n\nExample: `projects/1234`"]
         #[serde(rename = "parent", default)]
-        pub parent: Option<String>,
+        pub parent: ::std::option::Option<String>,
         #[doc = "Concise user-visible strings indicating why an action cannot be performed\non a resource. Maximum length of 200 characters.\n\nExample: 'Holds production API key'"]
         #[serde(rename = "reason", default)]
-        pub reason: Option<String>,
+        pub reason: ::std::option::Option<String>,
         #[doc = "The types of operations which should be blocked as a result of this Lien.\nEach value should correspond to an IAM permission. The server will\nvalidate the permissions against those for which Liens are supported.\n\nAn empty list is meaningless and will be rejected.\n\nExample: ['resourcemanager.projects.delete']"]
         #[serde(rename = "restrictions", default)]
-        pub restrictions: Option<Vec<String>>,
+        pub restrictions: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for Lien {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -825,7 +847,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -843,10 +864,10 @@ pub mod schemas {
     pub struct ListAvailableOrgPolicyConstraintsRequest {
         #[doc = "Size of the pages to be returned. This is currently unsupported and will\nbe ignored. The server may at any point start using this field to limit\npage size."]
         #[serde(rename = "pageSize", default)]
-        pub page_size: Option<i32>,
+        pub page_size: ::std::option::Option<i32>,
         #[doc = "Page token used to retrieve the next page. This is currently unsupported\nand will be ignored. The server may at any point start using this field."]
         #[serde(rename = "pageToken", default)]
-        pub page_token: Option<String>,
+        pub page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListAvailableOrgPolicyConstraintsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -855,7 +876,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -873,10 +893,10 @@ pub mod schemas {
     pub struct ListAvailableOrgPolicyConstraintsResponse {
         #[doc = "The collection of constraints that are settable on the request resource."]
         #[serde(rename = "constraints", default)]
-        pub constraints: Option<Vec<crate::schemas::Constraint>>,
+        pub constraints: ::std::option::Option<Vec<crate::schemas::Constraint>>,
         #[doc = "Page token used to retrieve the next page. This is currently not used."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListAvailableOrgPolicyConstraintsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -885,7 +905,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -903,10 +922,10 @@ pub mod schemas {
     pub struct ListConstraint {
         #[doc = "Optional. The Google Cloud Console will try to default to a configuration\nthat matches the value specified in this `Constraint`."]
         #[serde(rename = "suggestedValue", default)]
-        pub suggested_value: Option<String>,
+        pub suggested_value: ::std::option::Option<String>,
         #[doc = "Indicates whether subtrees of Cloud Resource Manager resource hierarchy\ncan be used in `Policy.allowed_values` and `Policy.denied_values`. For\nexample, `\"under:folders/123\"` would match any resource under the\n'folders/123' folder."]
         #[serde(rename = "supportsUnder", default)]
-        pub supports_under: Option<bool>,
+        pub supports_under: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for ListConstraint {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -915,7 +934,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -933,10 +951,10 @@ pub mod schemas {
     pub struct ListLiensResponse {
         #[doc = "A list of Liens."]
         #[serde(rename = "liens", default)]
-        pub liens: Option<Vec<crate::schemas::Lien>>,
+        pub liens: ::std::option::Option<Vec<crate::schemas::Lien>>,
         #[doc = "Token to retrieve the next page of results, or empty if there are no more\nresults in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListLiensResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -945,7 +963,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -963,10 +980,10 @@ pub mod schemas {
     pub struct ListOrgPoliciesRequest {
         #[doc = "Size of the pages to be returned. This is currently unsupported and will\nbe ignored. The server may at any point start using this field to limit\npage size."]
         #[serde(rename = "pageSize", default)]
-        pub page_size: Option<i32>,
+        pub page_size: ::std::option::Option<i32>,
         #[doc = "Page token used to retrieve the next page. This is currently unsupported\nand will be ignored. The server may at any point start using this field."]
         #[serde(rename = "pageToken", default)]
-        pub page_token: Option<String>,
+        pub page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListOrgPoliciesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -975,7 +992,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -993,10 +1009,10 @@ pub mod schemas {
     pub struct ListOrgPoliciesResponse {
         #[doc = "Page token used to retrieve the next page. This is currently not used, but\nthe server may at any point start supplying a valid token."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The `Policies` that are set on the resource. It will be empty if no\n`Policies` are set."]
         #[serde(rename = "policies", default)]
-        pub policies: Option<Vec<crate::schemas::OrgPolicy>>,
+        pub policies: ::std::option::Option<Vec<crate::schemas::OrgPolicy>>,
     }
     impl ::field_selector::FieldSelector for ListOrgPoliciesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1005,7 +1021,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1058,6 +1073,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ListPolicyAllValues {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1073,19 +1097,19 @@ pub mod schemas {
     pub struct ListPolicy {
         #[doc = "The policy all_values state."]
         #[serde(rename = "allValues", default)]
-        pub all_values: Option<crate::schemas::ListPolicyAllValues>,
+        pub all_values: ::std::option::Option<crate::schemas::ListPolicyAllValues>,
         #[doc = "List of values allowed  at this resource. Can only be set if `all_values`\nis set to `ALL_VALUES_UNSPECIFIED`."]
         #[serde(rename = "allowedValues", default)]
-        pub allowed_values: Option<Vec<String>>,
+        pub allowed_values: ::std::option::Option<Vec<String>>,
         #[doc = "List of values denied at this resource. Can only be set if `all_values`\nis set to `ALL_VALUES_UNSPECIFIED`."]
         #[serde(rename = "deniedValues", default)]
-        pub denied_values: Option<Vec<String>>,
+        pub denied_values: ::std::option::Option<Vec<String>>,
         #[doc = "Determines the inheritance behavior for this `Policy`.\n\nBy default, a `ListPolicy` set at a resource supercedes any `Policy` set\nanywhere up the resource hierarchy. However, if `inherit_from_parent` is\nset to `true`, then the values from the effective `Policy` of the parent\nresource are inherited, meaning the values set in this `Policy` are\nadded to the values inherited up the hierarchy.\n\nSetting `Policy` hierarchies that inherit both allowed values and denied\nvalues isn't recommended in most circumstances to keep the configuration\nsimple and understandable. However, it is possible to set a `Policy` with\n`allowed_values` set that inherits a `Policy` with `denied_values` set.\nIn this case, the values that are allowed must be in `allowed_values` and\nnot present in `denied_values`.\n\nFor example, suppose you have a `Constraint`\n`constraints/serviceuser.services`, which has a `constraint_type` of\n`list_constraint`, and with `constraint_default` set to `ALLOW`.\nSuppose that at the Organization level, a `Policy` is applied that\nrestricts the allowed API activations to {`E1`, `E2`}. Then, if a\n`Policy` is applied to a project below the Organization that has\n`inherit_from_parent` set to `false` and field all_values set to DENY,\nthen an attempt to activate any API will be denied.\n\nThe following examples demonstrate different possible layerings for\n`projects/bar` parented by `organizations/foo`:\n\nExample 1 (no inherited values):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \u{201c}E1\u{201d} allowed_values:\u{201d}E2\u{201d}}\n`projects/bar` has `inherit_from_parent` `false` and values:\n{allowed_values: \"E3\" allowed_values: \"E4\"}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe accepted values at `projects/bar` are `E3`, and `E4`.\n\nExample 2 (inherited values):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \u{201c}E1\u{201d} allowed_values:\u{201d}E2\u{201d}}\n`projects/bar` has a `Policy` with values:\n{value: \u{201c}E3\u{201d} value: \u{201d}E4\u{201d} inherit_from_parent: true}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe accepted values at `projects/bar` are `E1`, `E2`, `E3`, and `E4`.\n\nExample 3 (inheriting both allowed and denied values):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values: \"E2\"}\n`projects/bar` has a `Policy` with:\n{denied_values: \"E1\"}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe value accepted at `projects/bar` is `E2`.\n\nExample 4 (RestoreDefault):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \u{201c}E1\u{201d} allowed_values:\u{201d}E2\u{201d}}\n`projects/bar` has a `Policy` with values:\n{RestoreDefault: {}}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe accepted values at `projects/bar` are either all or none depending on\nthe value of `constraint_default` (if `ALLOW`, all; if\n`DENY`, none).\n\nExample 5 (no policy inherits parent policy):\n`organizations/foo` has no `Policy` set.\n`projects/bar` has no `Policy` set.\nThe accepted values at both levels are either all or none depending on\nthe value of `constraint_default` (if `ALLOW`, all; if\n`DENY`, none).\n\nExample 6 (ListConstraint allowing all):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \u{201c}E1\u{201d} allowed_values: \u{201d}E2\u{201d}}\n`projects/bar` has a `Policy` with:\n{all: ALLOW}\nThe accepted values at `organizations/foo` are `E1`, E2`. Any value is accepted at `projects/bar`.\n\nExample 7 (ListConstraint allowing none):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \u{201c}E1\u{201d} allowed_values: \u{201d}E2\u{201d}}\n`projects/bar` has a `Policy` with:\n{all: DENY}\nThe accepted values at `organizations/foo` are `E1`, E2`. No value is accepted at `projects/bar`.\n\nExample 10 (allowed and denied subtrees of Resource Manager hierarchy):\nGiven the following resource hierarchy\nO1->{F1, F2}; F1->{P1}; F2->{P2, P3},\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"under:organizations/O1\"}\n`projects/bar` has a `Policy` with:\n{allowed_values: \"under:projects/P3\"}\n{denied_values: \"under:folders/F2\"}\nThe accepted values at `organizations/foo` are `organizations/O1`,\n`folders/F1`, `folders/F2`, `projects/P1`, `projects/P2`,\n`projects/P3`.\nThe accepted values at `projects/bar` are `organizations/O1`,\n`folders/F1`, `projects/P1`."]
         #[serde(rename = "inheritFromParent", default)]
-        pub inherit_from_parent: Option<bool>,
+        pub inherit_from_parent: ::std::option::Option<bool>,
         #[doc = "Optional. The Google Cloud Console will try to default to a configuration\nthat matches the value specified in this `Policy`. If `suggested_value`\nis not set, it will inherit the value specified higher in the hierarchy,\nunless `inherit_from_parent` is `false`."]
         #[serde(rename = "suggestedValue", default)]
-        pub suggested_value: Option<String>,
+        pub suggested_value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListPolicy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1094,7 +1118,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1112,10 +1135,10 @@ pub mod schemas {
     pub struct ListProjectsResponse {
         #[doc = "Pagination token.\n\nIf the result set is too large to fit in a single response, this token\nis returned. It encodes the position of the current result cursor.\nFeeding this value into a new list request with the `page_token` parameter\ngives the next page of the results.\n\nWhen `next_page_token` is not filled in, there is no next page and\nthe list returned is the last page in the result set.\n\nPagination tokens have a limited lifetime."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of Projects that matched the list filter. This list can\nbe paginated."]
         #[serde(rename = "projects", default)]
-        pub projects: Option<Vec<crate::schemas::Project>>,
+        pub projects: ::std::option::Option<Vec<crate::schemas::Project>>,
     }
     impl ::field_selector::FieldSelector for ListProjectsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1124,26 +1147,27 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
         #[serde(rename = "done", default)]
-        pub done: Option<bool>,
+        pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
         #[serde(rename = "error", default)]
-        pub error: Option<crate::schemas::Status>,
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
         #[serde(rename = "response", default)]
-        pub response: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub response:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
     impl ::field_selector::FieldSelector for Operation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1152,7 +1176,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1170,25 +1193,25 @@ pub mod schemas {
     pub struct OrgPolicy {
         #[doc = "For boolean `Constraints`, whether to enforce the `Constraint` or not."]
         #[serde(rename = "booleanPolicy", default)]
-        pub boolean_policy: Option<crate::schemas::BooleanPolicy>,
+        pub boolean_policy: ::std::option::Option<crate::schemas::BooleanPolicy>,
         #[doc = "The name of the `Constraint` the `Policy` is configuring, for example,\n`constraints/serviceuser.services`.\n\nImmutable after creation."]
         #[serde(rename = "constraint", default)]
-        pub constraint: Option<String>,
+        pub constraint: ::std::option::Option<String>,
         #[doc = "An opaque tag indicating the current version of the `Policy`, used for\nconcurrency control.\n\nWhen the `Policy` is returned from either a `GetPolicy` or a\n`ListOrgPolicy` request, this `etag` indicates the version of the current\n`Policy` to use when executing a read-modify-write loop.\n\nWhen the `Policy` is returned from a `GetEffectivePolicy` request, the\n`etag` will be unset.\n\nWhen the `Policy` is used in a `SetOrgPolicy` method, use the `etag` value\nthat was returned from a `GetOrgPolicy` request as part of a\nread-modify-write loop for concurrency control. Not setting the `etag`in a\n`SetOrgPolicy` request will result in an unconditional write of the\n`Policy`."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<Vec<u8>>,
+        pub etag: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "List of values either allowed or disallowed."]
         #[serde(rename = "listPolicy", default)]
-        pub list_policy: Option<crate::schemas::ListPolicy>,
+        pub list_policy: ::std::option::Option<crate::schemas::ListPolicy>,
         #[doc = "Restores the default behavior of the constraint; independent of\n`Constraint` type."]
         #[serde(rename = "restoreDefault", default)]
-        pub restore_default: Option<crate::schemas::RestoreDefault>,
+        pub restore_default: ::std::option::Option<crate::schemas::RestoreDefault>,
         #[doc = "The time stamp the `Policy` was previously updated. This is set by the\nserver, not specified by the caller, and represents the last time a call to\n`SetOrgPolicy` was made for that `Policy`. Any value set by the client will\nbe ignored."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
         #[doc = "Version of the `Policy`. Default version is 0;"]
         #[serde(rename = "version", default)]
-        pub version: Option<i32>,
+        pub version: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for OrgPolicy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1197,7 +1220,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1254,6 +1276,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for OrganizationLifecycleState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1269,19 +1300,19 @@ pub mod schemas {
     pub struct Organization {
         #[doc = "Timestamp when the Organization was created. Assigned by the server.\n@OutputOnly"]
         #[serde(rename = "creationTime", default)]
-        pub creation_time: Option<String>,
+        pub creation_time: ::std::option::Option<String>,
         #[doc = "A human-readable string that refers to the Organization in the\nGCP Console UI. This string is set by the server and cannot be\nchanged. The string will be set to the primary domain (for example,\n\"google.com\") of the G Suite customer that owns the organization.\n@OutputOnly"]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The organization's current lifecycle state. Assigned by the server.\n@OutputOnly"]
         #[serde(rename = "lifecycleState", default)]
-        pub lifecycle_state: Option<crate::schemas::OrganizationLifecycleState>,
+        pub lifecycle_state: ::std::option::Option<crate::schemas::OrganizationLifecycleState>,
         #[doc = "Output Only. The resource name of the organization. This is the\norganization's relative path in the API. Its format is\n\"organizations/[organization_id]\". For example, \"organizations/1234\"."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The owner of this Organization. The owner should be specified on\ncreation. Once set, it cannot be changed.\nThis field is required."]
         #[serde(rename = "owner", default)]
-        pub owner: Option<crate::schemas::OrganizationOwner>,
+        pub owner: ::std::option::Option<crate::schemas::OrganizationOwner>,
     }
     impl ::field_selector::FieldSelector for Organization {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1290,7 +1321,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1308,7 +1338,7 @@ pub mod schemas {
     pub struct OrganizationOwner {
         #[doc = "The G Suite customer id used in the Directory API."]
         #[serde(rename = "directoryCustomerId", default)]
-        pub directory_customer_id: Option<String>,
+        pub directory_customer_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for OrganizationOwner {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1317,7 +1347,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1335,16 +1364,16 @@ pub mod schemas {
     pub struct Policy {
         #[doc = "Specifies cloud audit logging configuration for this policy."]
         #[serde(rename = "auditConfigs", default)]
-        pub audit_configs: Option<Vec<crate::schemas::AuditConfig>>,
+        pub audit_configs: ::std::option::Option<Vec<crate::schemas::AuditConfig>>,
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
         #[serde(rename = "bindings", default)]
-        pub bindings: Option<Vec<crate::schemas::Binding>>,
+        pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<Vec<u8>>,
+        pub etag: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Deprecated."]
         #[serde(rename = "version", default)]
-        pub version: Option<i32>,
+        pub version: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Policy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1353,7 +1382,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1410,6 +1438,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ProjectLifecycleState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1425,26 +1462,26 @@ pub mod schemas {
     pub struct Project {
         #[doc = "Creation time.\n\nRead-only."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "The labels associated with this Project.\n\nLabel keys must be between 1 and 63 characters long and must conform\nto the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?.\n\nLabel values must be between 0 and 63 characters long and must conform\nto the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. A label\nvalue can be empty.\n\nNo more than 256 labels can be associated with a given resource.\n\nClients should store labels in a representation such as JSON that does not\ndepend on specific characters being disallowed.\n\nExample: <code>\"environment\" : \"dev\"</code>\nRead-write."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The Project lifecycle state.\n\nRead-only."]
         #[serde(rename = "lifecycleState", default)]
-        pub lifecycle_state: Option<crate::schemas::ProjectLifecycleState>,
+        pub lifecycle_state: ::std::option::Option<crate::schemas::ProjectLifecycleState>,
         #[doc = "The optional user-assigned display name of the Project.\nWhen present it must be between 4 to 30 characters.\nAllowed characters are: lowercase and uppercase letters, numbers,\nhyphen, single-quote, double-quote, space, and exclamation point.\n\nExample: <code>My Project</code>\nRead-write."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "An optional reference to a parent Resource.\n\nSupported parent types include \"organization\" and \"folder\". Once set, the\nparent cannot be cleared. The `parent` can be set on creation or using the\n`UpdateProject` method; the end user must have the\n`resourcemanager.projects.create` permission on the parent.\n\nRead-write."]
         #[serde(rename = "parent", default)]
-        pub parent: Option<crate::schemas::ResourceId>,
+        pub parent: ::std::option::Option<crate::schemas::ResourceId>,
         #[doc = "The unique, user-assigned ID of the Project.\nIt must be 6 to 30 lowercase letters, digits, or hyphens.\nIt must start with a letter.\nTrailing hyphens are prohibited.\n\nExample: <code>tokyo-rain-123</code>\nRead-only after creation."]
         #[serde(rename = "projectId", default)]
-        pub project_id: Option<String>,
+        pub project_id: ::std::option::Option<String>,
         #[doc = "The number uniquely identifying the project.\n\nExample: <code>415104041262</code>\nRead-only."]
         #[serde(rename = "projectNumber", default)]
         #[serde(with = "crate::parsed_string")]
-        pub project_number: Option<i64>,
+        pub project_number: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for Project {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1453,7 +1490,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1471,13 +1507,13 @@ pub mod schemas {
     pub struct ProjectCreationStatus {
         #[doc = "Creation time of the project creation workflow."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "True if the project can be retrieved using GetProject. No other operations\non the project are guaranteed to work until the project creation is\ncomplete."]
         #[serde(rename = "gettable", default)]
-        pub gettable: Option<bool>,
+        pub gettable: ::std::option::Option<bool>,
         #[doc = "True if the project creation process is complete."]
         #[serde(rename = "ready", default)]
-        pub ready: Option<bool>,
+        pub ready: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for ProjectCreationStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1486,7 +1522,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1504,10 +1539,10 @@ pub mod schemas {
     pub struct ResourceId {
         #[doc = "Required field for the type-specific id. This should correspond to the id\nused in the type-specific API's."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Required field representing the resource type this id is for.\nAt present, the valid types are: \"organization\" and \"folder\"."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ResourceId {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1516,7 +1551,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1534,7 +1568,7 @@ pub mod schemas {
     )]
     pub struct RestoreDefault;
     impl ::field_selector::FieldSelector for RestoreDefault {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -1551,13 +1585,13 @@ pub mod schemas {
     pub struct SearchOrganizationsRequest {
         #[doc = "An optional query string used to filter the Organizations to return in\nthe response. Filter rules are case-insensitive.\n\nOrganizations may be filtered by `owner.directoryCustomerId` or by\n`domain`, where the domain is a G Suite domain, for example:\n\n* Filter `owner.directorycustomerid:123456789` returns Organization\n  resources with `owner.directory_customer_id` equal to `123456789`.\n* Filter `domain:google.com` returns Organization resources corresponding\n  to the domain `google.com`.\n\nThis field is optional."]
         #[serde(rename = "filter", default)]
-        pub filter: Option<String>,
+        pub filter: ::std::option::Option<String>,
         #[doc = "The maximum number of Organizations to return in the response.\nThis field is optional."]
         #[serde(rename = "pageSize", default)]
-        pub page_size: Option<i32>,
+        pub page_size: ::std::option::Option<i32>,
         #[doc = "A pagination token returned from a previous call to `SearchOrganizations`\nthat indicates from where listing should continue.\nThis field is optional."]
         #[serde(rename = "pageToken", default)]
-        pub page_token: Option<String>,
+        pub page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SearchOrganizationsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1566,7 +1600,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1584,10 +1617,10 @@ pub mod schemas {
     pub struct SearchOrganizationsResponse {
         #[doc = "A pagination token to be used to retrieve the next page of results. If the\nresult is too large to fit within the page size specified in the request,\nthis field will be set with a token that can be used to fetch the next page\nof results. If this field is empty, it indicates that this response\ncontains the last page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of Organizations that matched the search query, possibly\npaginated."]
         #[serde(rename = "organizations", default)]
-        pub organizations: Option<Vec<crate::schemas::Organization>>,
+        pub organizations: ::std::option::Option<Vec<crate::schemas::Organization>>,
     }
     impl ::field_selector::FieldSelector for SearchOrganizationsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1596,7 +1629,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1614,10 +1646,10 @@ pub mod schemas {
     pub struct SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
         #[serde(rename = "policy", default)]
-        pub policy: Option<crate::schemas::Policy>,
+        pub policy: ::std::option::Option<crate::schemas::Policy>,
         #[doc = "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\npaths: \"bindings, etag\"\nThis field is only used by Cloud IAM."]
         #[serde(rename = "updateMask", default)]
-        pub update_mask: Option<String>,
+        pub update_mask: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SetIamPolicyRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1626,7 +1658,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1644,7 +1675,7 @@ pub mod schemas {
     pub struct SetOrgPolicyRequest {
         #[doc = "`Policy` to set on the resource."]
         #[serde(rename = "policy", default)]
-        pub policy: Option<crate::schemas::OrgPolicy>,
+        pub policy: ::std::option::Option<crate::schemas::OrgPolicy>,
     }
     impl ::field_selector::FieldSelector for SetOrgPolicyRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1653,20 +1684,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
-        pub code: Option<i32>,
+        pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub details:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Status {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1675,7 +1706,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1693,7 +1723,7 @@ pub mod schemas {
     pub struct TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
         #[serde(rename = "permissions", default)]
-        pub permissions: Option<Vec<String>>,
+        pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for TestIamPermissionsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1702,7 +1732,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1720,7 +1749,7 @@ pub mod schemas {
     pub struct TestIamPermissionsResponse {
         #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
         #[serde(rename = "permissions", default)]
-        pub permissions: Option<Vec<String>>,
+        pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for TestIamPermissionsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1729,7 +1758,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1747,7 +1775,7 @@ pub mod schemas {
     )]
     pub struct UndeleteProjectRequest;
     impl ::field_selector::FieldSelector for UndeleteProjectRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
 }
 pub mod params {
@@ -1801,6 +1829,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -1845,6 +1882,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -9668,6 +9714,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -9743,5 +9790,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

@@ -14,7 +14,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -31,10 +31,10 @@ pub mod schemas {
     pub struct ListTracesResponse {
         #[doc = "If defined, indicates that there are more traces that match the request\nand that this value should be passed to the next request to continue\nretrieving additional traces."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of trace records as specified by the view parameter."]
         #[serde(rename = "traces", default)]
-        pub traces: Option<Vec<crate::schemas::Trace>>,
+        pub traces: ::std::option::Option<Vec<crate::schemas::Trace>>,
     }
     impl ::field_selector::FieldSelector for ListTracesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -43,7 +43,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -61,13 +60,13 @@ pub mod schemas {
     pub struct Trace {
         #[doc = "Project ID of the Cloud project where the trace data is stored."]
         #[serde(rename = "projectId", default)]
-        pub project_id: Option<String>,
+        pub project_id: ::std::option::Option<String>,
         #[doc = "Collection of spans in the trace."]
         #[serde(rename = "spans", default)]
-        pub spans: Option<Vec<crate::schemas::TraceSpan>>,
+        pub spans: ::std::option::Option<Vec<crate::schemas::TraceSpan>>,
         #[doc = "Globally unique identifier for the trace. This identifier is a 128-bit\nnumeric value formatted as a 32-byte hex string. For example,\n`382d4f4c6b7bb2f4a972559d9085001d`."]
         #[serde(rename = "traceId", default)]
-        pub trace_id: Option<String>,
+        pub trace_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Trace {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -76,7 +75,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -129,6 +127,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for TraceSpanKind {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -144,27 +151,27 @@ pub mod schemas {
     pub struct TraceSpan {
         #[doc = "End time of the span in nanoseconds from the UNIX epoch."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
         #[doc = "Distinguishes between spans generated in a particular context. For example,\ntwo spans with the same name may be distinguished using `RPC_CLIENT`\nand `RPC_SERVER` to identify queueing latency associated with the span."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<crate::schemas::TraceSpanKind>,
+        pub kind: ::std::option::Option<crate::schemas::TraceSpanKind>,
         #[doc = "Collection of labels associated with the span. Label keys must be less than\n128 bytes. Label values must be less than 16 kilobytes (10MB for\n`/stacktrace` values).\n\nSome predefined label keys exist, or you may create your own. When creating\nyour own, we recommend the following formats:\n\n* `/category/product/key` for agents of well-known products (e.g.\n  `/db/mongodb/read_size`).\n* `short_host/path/key` for domain-specific keys (e.g.\n  `foo.com/myproduct/bar`)\n\nPredefined labels include:\n\n* `/agent`\n* `/component`\n* `/error/message`\n* `/error/name`\n* `/http/client_city`\n* `/http/client_country`\n* `/http/client_protocol`\n* `/http/client_region`\n* `/http/host`\n* `/http/method`\n* `/http/path`\n* `/http/redirected_url`\n* `/http/request/size`\n* `/http/response/size`\n* `/http/route`\n* `/http/status_code`\n* `/http/url`\n* `/http/user_agent`\n* `/pid`\n* `/stacktrace`\n* `/tid`"]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Name of the span. Must be less than 128 bytes. The span name is sanitized\nand displayed in the Stackdriver Trace tool in the\nGoogle Cloud Platform Console.\nThe name may be a method name or some other per-call site name.\nFor the same executable and the same call point, a best practice is\nto use a consistent name, which makes it easier to correlate\ncross-trace spans."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "ID of the parent span, if any. Optional."]
         #[serde(rename = "parentSpanId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub parent_span_id: Option<u64>,
+        pub parent_span_id: ::std::option::Option<u64>,
         #[doc = "Identifier for the span. Must be a 64-bit integer other than 0 and\nunique within a trace. For example, `2205310701640571284`."]
         #[serde(rename = "spanId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub span_id: Option<u64>,
+        pub span_id: ::std::option::Option<u64>,
         #[doc = "Start time of the span in nanoseconds from the UNIX epoch."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TraceSpan {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -173,7 +180,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -191,7 +197,7 @@ pub mod schemas {
     pub struct Traces {
         #[doc = "List of traces."]
         #[serde(rename = "traces", default)]
-        pub traces: Option<Vec<crate::schemas::Trace>>,
+        pub traces: ::std::option::Option<Vec<crate::schemas::Trace>>,
     }
     impl ::field_selector::FieldSelector for Traces {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -200,7 +206,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -255,6 +260,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -299,6 +313,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -579,6 +602,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for ListView {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
             }
@@ -1397,6 +1429,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1472,5 +1505,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

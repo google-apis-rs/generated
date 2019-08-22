@@ -14,10 +14,10 @@ pub mod schemas {
     pub struct AuditConfig {
         #[doc = "The configuration for logging of each type of permission."]
         #[serde(rename = "auditLogConfigs", default)]
-        pub audit_log_configs: Option<Vec<crate::schemas::AuditLogConfig>>,
+        pub audit_log_configs: ::std::option::Option<Vec<crate::schemas::AuditLogConfig>>,
         #[doc = "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."]
         #[serde(rename = "service", default)]
-        pub service: Option<String>,
+        pub service: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AuditConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -26,7 +26,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -83,6 +82,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AuditLogConfigLogType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -98,10 +106,10 @@ pub mod schemas {
     pub struct AuditLogConfig {
         #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
         #[serde(rename = "exemptedMembers", default)]
-        pub exempted_members: Option<Vec<String>>,
+        pub exempted_members: ::std::option::Option<Vec<String>>,
         #[doc = "The log type that this config enables."]
         #[serde(rename = "logType", default)]
-        pub log_type: Option<crate::schemas::AuditLogConfigLogType>,
+        pub log_type: ::std::option::Option<crate::schemas::AuditLogConfigLogType>,
     }
     impl ::field_selector::FieldSelector for AuditLogConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -110,7 +118,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -128,13 +135,13 @@ pub mod schemas {
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
         #[serde(rename = "condition", default)]
-        pub condition: Option<crate::schemas::Expr>,
+        pub condition: ::std::option::Option<crate::schemas::Expr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
         #[serde(rename = "members", default)]
-        pub members: Option<Vec<String>>,
+        pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
         #[serde(rename = "role", default)]
-        pub role: Option<String>,
+        pub role: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Binding {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -143,7 +150,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -161,7 +167,7 @@ pub mod schemas {
     pub struct CharacterMaskConfig {
         #[doc = "Character to mask the sensitive values. If not supplied, defaults to \"*\"."]
         #[serde(rename = "maskingCharacter", default)]
-        pub masking_character: Option<String>,
+        pub masking_character: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CharacterMaskConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -170,7 +176,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -188,7 +193,7 @@ pub mod schemas {
     pub struct CreateMessageRequest {
         #[doc = "HL7v2 message."]
         #[serde(rename = "message", default)]
-        pub message: Option<crate::schemas::Message>,
+        pub message: ::std::option::Option<crate::schemas::Message>,
     }
     impl ::field_selector::FieldSelector for CreateMessageRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -197,7 +202,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -215,7 +219,7 @@ pub mod schemas {
     pub struct CryptoHashConfig {
         #[doc = "An AES 128/192/256 bit key. Causes the hash to be computed based on this\nkey. A default key is generated for each Deidentify operation and is used\nwherever crypto_key is not specified."]
         #[serde(rename = "cryptoKey", default)]
-        pub crypto_key: Option<Vec<u8>>,
+        pub crypto_key: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for CryptoHashConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -224,7 +228,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -242,10 +245,10 @@ pub mod schemas {
     pub struct Dataset {
         #[doc = "Output only. Resource name of the dataset, of the form\n`projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The default timezone used by this dataset. Must be a either a valid IANA\ntime zone name such as \"America/New_York\" or empty, which defaults to UTC.\nThis is used for parsing times in resources (e.g., HL7 messages) where no\nexplicit timezone is specified."]
         #[serde(rename = "timeZone", default)]
-        pub time_zone: Option<String>,
+        pub time_zone: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Dataset {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -254,7 +257,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -272,7 +274,7 @@ pub mod schemas {
     pub struct DateShiftConfig {
         #[doc = "An AES 128/192/256 bit key. Causes the shift to be computed based on this\nkey and the patient ID. A default key is generated for each\nDeidentify operation and is used wherever crypto_key is not specified."]
         #[serde(rename = "cryptoKey", default)]
-        pub crypto_key: Option<Vec<u8>>,
+        pub crypto_key: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for DateShiftConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -281,7 +283,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -299,16 +300,16 @@ pub mod schemas {
     pub struct DeidentifyConfig {
         #[doc = "Configures de-id of application/DICOM content."]
         #[serde(rename = "dicom", default)]
-        pub dicom: Option<crate::schemas::DicomConfig>,
+        pub dicom: ::std::option::Option<crate::schemas::DicomConfig>,
         #[doc = "Configures de-id of application/FHIR content."]
         #[serde(rename = "fhir", default)]
-        pub fhir: Option<crate::schemas::FhirConfig>,
+        pub fhir: ::std::option::Option<crate::schemas::FhirConfig>,
         #[doc = "Configures de-identification of image pixels wherever they are found in the\nsource_dataset."]
         #[serde(rename = "image", default)]
-        pub image: Option<crate::schemas::ImageConfig>,
+        pub image: ::std::option::Option<crate::schemas::ImageConfig>,
         #[doc = "Configures de-identification of text wherever it is found in the\nsource_dataset."]
         #[serde(rename = "text", default)]
-        pub text: Option<crate::schemas::TextConfig>,
+        pub text: ::std::option::Option<crate::schemas::TextConfig>,
     }
     impl ::field_selector::FieldSelector for DeidentifyConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -317,7 +318,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -335,10 +335,10 @@ pub mod schemas {
     pub struct DeidentifyDatasetRequest {
         #[doc = "Deidentify configuration."]
         #[serde(rename = "config", default)]
-        pub config: Option<crate::schemas::DeidentifyConfig>,
+        pub config: ::std::option::Option<crate::schemas::DeidentifyConfig>,
         #[doc = "The name of the dataset resource to create and write the redacted data to\n(e.g.,\n\n* The destination dataset must not exist.\n* The destination dataset must be in the same project as the source\n  dataset. De-identifying data across multiple projects is not supported."]
         #[serde(rename = "destinationDataset", default)]
-        pub destination_dataset: Option<String>,
+        pub destination_dataset: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DeidentifyDatasetRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -347,7 +347,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -366,19 +365,19 @@ pub mod schemas {
         #[doc = "Number of resources failed to process."]
         #[serde(rename = "failureResourceCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub failure_resource_count: Option<i64>,
+        pub failure_resource_count: ::std::option::Option<i64>,
         #[doc = "Number of stores failed to process."]
         #[serde(rename = "failureStoreCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub failure_store_count: Option<i64>,
+        pub failure_store_count: ::std::option::Option<i64>,
         #[doc = "Number of resources successfully processed."]
         #[serde(rename = "successResourceCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub success_resource_count: Option<i64>,
+        pub success_resource_count: ::std::option::Option<i64>,
         #[doc = "Number of stores successfully processed."]
         #[serde(rename = "successStoreCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub success_store_count: Option<i64>,
+        pub success_store_count: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for DeidentifyErrorDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -387,7 +386,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -406,11 +404,11 @@ pub mod schemas {
         #[doc = "Number of resources successfully processed."]
         #[serde(rename = "successResourceCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub success_resource_count: Option<i64>,
+        pub success_resource_count: ::std::option::Option<i64>,
         #[doc = "Number of stores successfully processed."]
         #[serde(rename = "successStoreCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub success_store_count: Option<i64>,
+        pub success_store_count: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for DeidentifySummary {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -419,7 +417,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -488,6 +485,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DicomConfigFilterProfile {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -503,16 +509,16 @@ pub mod schemas {
     pub struct DicomConfig {
         #[doc = "Tag filtering profile that determines which tags to keep/remove."]
         #[serde(rename = "filterProfile", default)]
-        pub filter_profile: Option<crate::schemas::DicomConfigFilterProfile>,
+        pub filter_profile: ::std::option::Option<crate::schemas::DicomConfigFilterProfile>,
         #[doc = "List of tags to keep. Remove all other tags."]
         #[serde(rename = "keepList", default)]
-        pub keep_list: Option<crate::schemas::TagFilterList>,
+        pub keep_list: ::std::option::Option<crate::schemas::TagFilterList>,
         #[doc = "List of tags to remove. Keep all other tags."]
         #[serde(rename = "removeList", default)]
-        pub remove_list: Option<crate::schemas::TagFilterList>,
+        pub remove_list: ::std::option::Option<crate::schemas::TagFilterList>,
         #[doc = "If true, skip replacing StudyInstanceUID, SeriesInstanceUID,\nSOPInstanceUID, and MediaStorageSOPInstanceUID and leave them untouched.\nThe Cloud Healthcare API regenerates these UIDs by default based on the\nDICOM Standard's reasoning: \"Whilst these UIDs cannot be mapped directly\nto an individual out of context, given access to the original images, or\nto a database of the original images containing the UIDs, it would be\npossible to recover the individual's identity.\"\nhttp://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html"]
         #[serde(rename = "skipIdRedaction", default)]
-        pub skip_id_redaction: Option<bool>,
+        pub skip_id_redaction: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for DicomConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -521,7 +527,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -539,13 +544,13 @@ pub mod schemas {
     pub struct DicomStore {
         #[doc = "User-supplied key-value pairs used to organize DICOM stores.\n\nLabel keys must be between 1 and 63 characters long, have a UTF-8 encoding\nof maximum 128 bytes, and must conform to the\nfollowing PCRE regular expression:\n\\p{Ll}\\p{Lo}{0,62}\n\nLabel values are optional, must be between 1 and 63 characters long, have\na UTF-8 encoding of maximum 128 bytes, and must conform to the\nfollowing PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}\n\nNo more than 64 labels can be associated with a given store."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Output only. Resource name of the DICOM store, of the form\n`projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Notification destination for new DICOM instances.\nSupplied by the client."]
         #[serde(rename = "notificationConfig", default)]
-        pub notification_config: Option<crate::schemas::NotificationConfig>,
+        pub notification_config: ::std::option::Option<crate::schemas::NotificationConfig>,
     }
     impl ::field_selector::FieldSelector for DicomStore {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -554,7 +559,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -572,16 +576,16 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ErrorDetail {
         #[doc = "The status of the error."]
         #[serde(rename = "error", default)]
-        pub error: Option<crate::schemas::Status>,
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "The identifier of the resource."]
         #[serde(rename = "resource", default)]
-        pub resource: Option<String>,
+        pub resource: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ErrorDetail {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -590,7 +594,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -608,12 +611,13 @@ pub mod schemas {
     pub struct ExportDicomDataRequest {
         #[doc = "The BigQuery output destination.\n\nYou can only export to a BigQuery dataset that's in the same project as\nthe DICOM store you're exporting from.\n\nThe BigQuery location requires two IAM roles:\n`roles/bigquery.dataEditor` and `roles/bigquery.jobUser`."]
         #[serde(rename = "bigqueryDestination", default)]
-        pub bigquery_destination:
-            Option<crate::schemas::GoogleCloudHealthcareV1Beta1DicomBigQueryDestination>,
+        pub bigquery_destination: ::std::option::Option<
+            crate::schemas::GoogleCloudHealthcareV1Beta1DicomBigQueryDestination,
+        >,
         #[doc = "The Cloud Storage output destination.\n\nThe Cloud Storage location requires the `roles/storage.objectAdmin` Cloud\nIAM role."]
         #[serde(rename = "gcsDestination", default)]
         pub gcs_destination:
-            Option<crate::schemas::GoogleCloudHealthcareV1Beta1DicomGcsDestination>,
+            ::std::option::Option<crate::schemas::GoogleCloudHealthcareV1Beta1DicomGcsDestination>,
     }
     impl ::field_selector::FieldSelector for ExportDicomDataRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -622,7 +626,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -640,12 +643,14 @@ pub mod schemas {
     pub struct ExportResourcesRequest {
         #[doc = "The BigQuery output destination.\n\nThe BigQuery location requires two IAM roles:\n`roles/bigquery.dataEditor` and `roles/bigquery.jobUser`.\n\nThe output will be one BigQuery table per resource type."]
         #[serde(rename = "bigqueryDestination", default)]
-        pub bigquery_destination:
-            Option<crate::schemas::GoogleCloudHealthcareV1Beta1FhirBigQueryDestination>,
+        pub bigquery_destination: ::std::option::Option<
+            crate::schemas::GoogleCloudHealthcareV1Beta1FhirBigQueryDestination,
+        >,
         #[doc = "The Cloud Storage output destination.\n\nThe Cloud Storage location requires the `roles/storage.objectAdmin` Cloud\nIAM role.\n\nThe exported outputs are\norganized by FHIR resource types. The server will create one object per\nresource type. Each object contains newline delimited JSON, and each line\nis a FHIR resource."]
         #[serde(rename = "gcsDestination", default)]
-        pub gcs_destination:
-            Option<crate::schemas::GoogleCloudHealthcareV1Beta1FhirRestGcsDestination>,
+        pub gcs_destination: ::std::option::Option<
+            crate::schemas::GoogleCloudHealthcareV1Beta1FhirRestGcsDestination,
+        >,
     }
     impl ::field_selector::FieldSelector for ExportResourcesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -654,7 +659,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -672,16 +676,16 @@ pub mod schemas {
     pub struct Expr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
         #[serde(rename = "expression", default)]
-        pub expression: Option<String>,
+        pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Expr {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -690,7 +694,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -708,7 +711,7 @@ pub mod schemas {
     pub struct FhirConfig {
         #[doc = "Specifies FHIR paths to match and how to transform them. Any field that\nis not matched by a FieldMetadata will be passed through to the output\ndataset unmodified. All extensions are removed in the output."]
         #[serde(rename = "fieldMetadataList", default)]
-        pub field_metadata_list: Option<Vec<crate::schemas::FieldMetadata>>,
+        pub field_metadata_list: ::std::option::Option<Vec<crate::schemas::FieldMetadata>>,
     }
     impl ::field_selector::FieldSelector for FhirConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -717,7 +720,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -735,25 +737,25 @@ pub mod schemas {
     pub struct FhirStore {
         #[doc = "Whether to disable referential integrity in this FHIR store. This field is\nimmutable after FHIR store creation.\nThe default value is false, meaning that the API will enforce referential\nintegrity and fail the requests that will result in inconsistent state in\nthe FHIR store.\nWhen this field is set to true, the API will skip referential integrity\ncheck. Consequently, operations that rely on references, such as\nGetPatientEverything, will not return all the results if broken references\nexist."]
         #[serde(rename = "disableReferentialIntegrity", default)]
-        pub disable_referential_integrity: Option<bool>,
+        pub disable_referential_integrity: ::std::option::Option<bool>,
         #[doc = "Whether to disable resource versioning for this FHIR store. This field can\nnot be changed after the creation of FHIR store.\nIf set to false, which is the default behavior, all write operations will\ncause historical versions to be recorded automatically. The historical\nversions can be fetched through the history APIs, but cannot be updated.\nIf set to true, no historical versions will be kept. The server will send\nback errors for attempts to read the historical versions."]
         #[serde(rename = "disableResourceVersioning", default)]
-        pub disable_resource_versioning: Option<bool>,
+        pub disable_resource_versioning: ::std::option::Option<bool>,
         #[doc = "Whether to allow the bulk import API to accept history bundles and directly\ninsert historical resource versions into the FHIR store. Importing resource\nhistories creates resource interactions that appear to have occurred in the\npast, which clients may not want to allow. If set to false, history bundles\nwithin an import will fail with an error."]
         #[serde(rename = "enableHistoryImport", default)]
-        pub enable_history_import: Option<bool>,
+        pub enable_history_import: ::std::option::Option<bool>,
         #[doc = "Whether this FHIR store has the [updateCreate\ncapability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate).\nThis determines if the client can use an Update operation to create a new\nresource with a client-specified ID. If false, all IDs are server-assigned\nthrough the Create operation and attempts to Update a non-existent resource\nwill return errors. Please treat the audit logs with appropriate levels of\ncare if client-specified resource IDs contain sensitive data such as\npatient identifiers, those IDs will be part of the FHIR resource path\nrecorded in Cloud audit logs and Cloud Pub/Sub notifications."]
         #[serde(rename = "enableUpdateCreate", default)]
-        pub enable_update_create: Option<bool>,
+        pub enable_update_create: ::std::option::Option<bool>,
         #[doc = "User-supplied key-value pairs used to organize FHIR stores.\n\nLabel keys must be between 1 and 63 characters long, have a UTF-8 encoding\nof maximum 128 bytes, and must conform to the\nfollowing PCRE regular expression:\n\\p{Ll}\\p{Lo}{0,62}\n\nLabel values are optional, must be between 1 and 63 characters long, have\na UTF-8 encoding of maximum 128 bytes, and must conform to the\nfollowing PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}\n\nNo more than 64 labels can be associated with a given store."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Output only. Resource name of the FHIR store, of the form\n`projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "If non-empty, publish all resource modifications of this FHIR store to\nthis destination. The Cloud Pub/Sub message attributes will contain a map\nwith a string describing the action that has triggered the notification,\ne.g. \"action\":\"CreateResource\"."]
         #[serde(rename = "notificationConfig", default)]
-        pub notification_config: Option<crate::schemas::NotificationConfig>,
+        pub notification_config: ::std::option::Option<crate::schemas::NotificationConfig>,
     }
     impl ::field_selector::FieldSelector for FhirStore {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -762,7 +764,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -819,6 +820,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for FieldMetadataAction {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -834,10 +844,10 @@ pub mod schemas {
     pub struct FieldMetadata {
         #[doc = "Deidentify action for one field."]
         #[serde(rename = "action", default)]
-        pub action: Option<crate::schemas::FieldMetadataAction>,
+        pub action: ::std::option::Option<crate::schemas::FieldMetadataAction>,
         #[doc = "List of paths to FHIR fields to be redacted. Each path is a\nperiod-separated list where each component is either a field name or\nFHIR type name, for example: Patient, HumanName.\nFor \"choice\" types (those defined in the FHIR spec with the form:\nfield[x]) we use two separate components. e.g. \"deceasedAge.unit\" is\nmatched by \"Deceased.Age.unit\".\nSupported types are: AdministrativeGenderCode, Code, Date, DateTime,\nDecimal, HumanName, Id, LanguageCode, Markdown, MimeTypeCode, Oid,\nString, Uri, Uuid, Xhtml."]
         #[serde(rename = "paths", default)]
-        pub paths: Option<Vec<String>>,
+        pub paths: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for FieldMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -846,7 +856,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -864,10 +873,10 @@ pub mod schemas {
     pub struct GoogleCloudHealthcareV1Beta1DicomBigQueryDestination {
         #[doc = "If the destination table already exists and this flag is `TRUE`, the table\nwill be overwritten by the contents of the DICOM store. If the flag is not\nset and the destination table already exists, the export call returns an\nerror."]
         #[serde(rename = "force", default)]
-        pub force: Option<bool>,
+        pub force: ::std::option::Option<bool>,
         #[doc = "BigQuery URI to a table, up to 2000 characters long, in the format\n`bq://projectId.bqDatasetId.tableId`"]
         #[serde(rename = "tableUri", default)]
-        pub table_uri: Option<String>,
+        pub table_uri: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudHealthcareV1Beta1DicomBigQueryDestination {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -876,7 +885,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -894,10 +902,10 @@ pub mod schemas {
     pub struct GoogleCloudHealthcareV1Beta1DicomGcsDestination {
         #[doc = "MIME types supported by DICOM spec.\nEach file will be written in the following format:\n`.../{study_id}/{series_id}/{instance_id}[/{frame_number}].{extension}`\nThe frame_number component will exist only for multi-frame instances.\n\nRefer to the DICOM conformance statement for permissible MIME types:\nhttps://cloud.google.com/healthcare/docs/dicom#wado-rs\n\nThe following extensions will be used for output files:\napplication/dicom -> .dcm\nimage/jpeg -> .jpg\nimage/png -> .png\n\nIf unspecified, the instances will be exported in their original\nDICOM format."]
         #[serde(rename = "mimeType", default)]
-        pub mime_type: Option<String>,
+        pub mime_type: ::std::option::Option<String>,
         #[doc = "The Cloud Storage destination to export to.\n\nURI for a Cloud Storage directory where result files should be written (in\nthe format `gs://{bucket-id}/{path/to/destination/dir}`). If there is no\ntrailing slash, the service will append one when composing the object path.\nThe user is responsible for creating the Cloud Storage bucket referenced in\n`uri_prefix`."]
         #[serde(rename = "uriPrefix", default)]
-        pub uri_prefix: Option<String>,
+        pub uri_prefix: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudHealthcareV1Beta1DicomGcsDestination {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -906,7 +914,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -924,7 +931,7 @@ pub mod schemas {
     pub struct GoogleCloudHealthcareV1Beta1DicomGcsSource {
         #[doc = "Points to a Cloud Storage URI containing file(s) with\ncontent only. The URI must be in the following format:\n`gs://{bucket_id}/{object_id}`. The URI can include wildcards in\n`object_id` and thus identify multiple files. Supported wildcards:\n'*' to match 0 or more non-separator characters\n'**' to match 0 or more characters (including separators). Must be used at\nthe end of a path and with no other wildcards in the\npath. Can also be used with a file extension (such as .dcm), which\nimports all files with the extension in the specified directory and\nits sub-directories. For example,\n`gs://my-bucket/my-directory/**.dcm` imports all files with .dcm\nextensions in `my-directory/` and its sub-directories.\n'?' to match 1 character\nAll other URI formats are invalid.\nFiles matching the wildcard are expected to contain content only, no\nmetadata."]
         #[serde(rename = "uri", default)]
-        pub uri: Option<String>,
+        pub uri: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudHealthcareV1Beta1DicomGcsSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -933,7 +940,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -951,10 +957,10 @@ pub mod schemas {
     pub struct GoogleCloudHealthcareV1Beta1FhirBigQueryDestination {
         #[doc = "BigQuery URI to a dataset, up to 2000 characters long, in the format\n`bq://projectId.bqDatasetId`"]
         #[serde(rename = "datasetUri", default)]
-        pub dataset_uri: Option<String>,
+        pub dataset_uri: ::std::option::Option<String>,
         #[doc = "The configuration for the exported BigQuery schema."]
         #[serde(rename = "schemaConfig", default)]
-        pub schema_config: Option<crate::schemas::SchemaConfig>,
+        pub schema_config: ::std::option::Option<crate::schemas::SchemaConfig>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudHealthcareV1Beta1FhirBigQueryDestination {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -963,7 +969,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -981,11 +986,11 @@ pub mod schemas {
     pub struct GoogleCloudHealthcareV1Beta1FhirRestExportResourcesResponse {
         #[doc = "The name of the FHIR store where resources have been exported, in the\nformat\n`projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`."]
         #[serde(rename = "fhirStore", default)]
-        pub fhir_store: Option<String>,
+        pub fhir_store: ::std::option::Option<String>,
         #[doc = "The total number of resources exported from the requested FHIR store."]
         #[serde(rename = "resourceCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub resource_count: Option<i64>,
+        pub resource_count: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector
         for GoogleCloudHealthcareV1Beta1FhirRestExportResourcesResponse
@@ -996,7 +1001,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1014,7 +1018,7 @@ pub mod schemas {
     pub struct GoogleCloudHealthcareV1Beta1FhirRestGcsDestination {
         #[doc = "URI for a Cloud Storage directory where result files should be written (in\nthe format `gs://{bucket-id}/{path/to/destination/dir}`). If there is no\ntrailing slash, the service will append one when composing the object path.\nThe user is responsible for creating the Cloud Storage bucket referenced in\n`uri_prefix`."]
         #[serde(rename = "uriPrefix", default)]
-        pub uri_prefix: Option<String>,
+        pub uri_prefix: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudHealthcareV1Beta1FhirRestGcsDestination {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1023,7 +1027,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1041,7 +1044,7 @@ pub mod schemas {
     pub struct GoogleCloudHealthcareV1Beta1FhirRestGcsSource {
         #[doc = "Points to a Cloud Storage URI containing file(s) to import.\n\nThe URI must be in the following format: `gs://{bucket_id}/{object_id}`.\nThe URI can include wildcards in `object_id` and thus identify multiple\nfiles. Supported wildcards:\n\n* `*` to match 0 or more non-separator characters\n* `**` to match 0 or more characters (including separators). Must be used\n  at the end of a path and with no other wildcards in the\n  path. Can also be used with a file extension (such as .ndjson), which\n  imports all files with the extension in the specified directory and\n  its sub-directories. For example, `gs://my-bucket/my-directory/**.ndjson`\n  imports all files with `.ndjson` extensions in `my-directory/` and its\n  sub-directories.\n* `?` to match 1 character\n\nFiles matching the wildcard are expected to contain content only, no\nmetadata."]
         #[serde(rename = "uri", default)]
-        pub uri: Option<String>,
+        pub uri: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudHealthcareV1Beta1FhirRestGcsSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1050,7 +1053,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1069,18 +1071,18 @@ pub mod schemas {
         #[doc = "The number of resources that had errors."]
         #[serde(rename = "errorCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub error_count: Option<i64>,
+        pub error_count: ::std::option::Option<i64>,
         #[doc = "The name of the FHIR store where resources have been imported, in the\nformat\n`projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`."]
         #[serde(rename = "fhirStore", default)]
-        pub fhir_store: Option<String>,
+        pub fhir_store: ::std::option::Option<String>,
         #[doc = "The total number of resources included in the source data. This is the sum\nof the success and error counts."]
         #[serde(rename = "inputSize", default)]
         #[serde(with = "crate::parsed_string")]
-        pub input_size: Option<i64>,
+        pub input_size: ::std::option::Option<i64>,
         #[doc = "The number of resources that have been imported."]
         #[serde(rename = "successCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub success_count: Option<i64>,
+        pub success_count: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector
         for GoogleCloudHealthcareV1Beta1FhirRestImportResourcesErrorDetails
@@ -1091,7 +1093,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1109,11 +1110,11 @@ pub mod schemas {
     pub struct GoogleCloudHealthcareV1Beta1FhirRestImportResourcesResponse {
         #[doc = "The name of the FHIR store where the resources have been imported, in the\nformat\n`projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`."]
         #[serde(rename = "fhirStore", default)]
-        pub fhir_store: Option<String>,
+        pub fhir_store: ::std::option::Option<String>,
         #[doc = "The total number of resources included in the source data."]
         #[serde(rename = "inputSize", default)]
         #[serde(with = "crate::parsed_string")]
-        pub input_size: Option<i64>,
+        pub input_size: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector
         for GoogleCloudHealthcareV1Beta1FhirRestImportResourcesResponse
@@ -1124,7 +1125,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1142,16 +1142,16 @@ pub mod schemas {
     pub struct Hl7V2Store {
         #[doc = "User-supplied key-value pairs used to organize HL7v2 stores.\n\nLabel keys must be between 1 and 63 characters long, have a UTF-8 encoding\nof maximum 128 bytes, and must conform to the\nfollowing PCRE regular expression:\n\\p{Ll}\\p{Lo}{0,62}\n\nLabel values are optional, must be between 1 and 63 characters long, have\na UTF-8 encoding of maximum 128 bytes, and must conform to the\nfollowing PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}\n\nNo more than 64 labels can be associated with a given store."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Output only. Resource name of the HL7v2 store, of the form\n`projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The notification destination all messages (both Ingest & Create) are\npublished on. Only the message name is sent as part of the notification. If\nthis is unset, no notifications will be sent. Supplied by the client."]
         #[serde(rename = "notificationConfig", default)]
-        pub notification_config: Option<crate::schemas::NotificationConfig>,
+        pub notification_config: ::std::option::Option<crate::schemas::NotificationConfig>,
         #[doc = "The configuration for the parser. It determines how the server parses the\nmessages."]
         #[serde(rename = "parserConfig", default)]
-        pub parser_config: Option<crate::schemas::ParserConfig>,
+        pub parser_config: ::std::option::Option<crate::schemas::ParserConfig>,
     }
     impl ::field_selector::FieldSelector for Hl7V2Store {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1160,20 +1160,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct HttpBody {
         #[doc = "The HTTP Content-Type header value specifying the content type of the body."]
         #[serde(rename = "contentType", default)]
-        pub content_type: Option<String>,
+        pub content_type: ::std::option::Option<String>,
         #[doc = "The HTTP request/response body as raw binary."]
         #[serde(rename = "data", default)]
-        pub data: Option<Vec<u8>>,
+        pub data: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Application specific response metadata. Must be set in the first response\nfor streaming APIs."]
         #[serde(rename = "extensions", default)]
-        pub extensions: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub extensions:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
     }
     impl ::field_selector::FieldSelector for HttpBody {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1182,7 +1182,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1243,6 +1242,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ImageConfigTextRedactionMode {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1258,7 +1266,8 @@ pub mod schemas {
     pub struct ImageConfig {
         #[doc = "Determines how to redact text from image."]
         #[serde(rename = "textRedactionMode", default)]
-        pub text_redaction_mode: Option<crate::schemas::ImageConfigTextRedactionMode>,
+        pub text_redaction_mode:
+            ::std::option::Option<crate::schemas::ImageConfigTextRedactionMode>,
     }
     impl ::field_selector::FieldSelector for ImageConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1267,14 +1276,13 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ImportDicomDataErrorDetails {
         #[doc = "Deprecated. Use only for debugging purposes.\n\nContains sample errors encountered in imports of individual resources\n(for example, a Cloud Storage object)."]
         #[serde(rename = "sampleErrors", default)]
-        pub sample_errors: Option<Vec<crate::schemas::ErrorDetail>>,
+        pub sample_errors: ::std::option::Option<Vec<crate::schemas::ErrorDetail>>,
     }
     impl ::field_selector::FieldSelector for ImportDicomDataErrorDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1283,7 +1291,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1301,7 +1308,8 @@ pub mod schemas {
     pub struct ImportDicomDataRequest {
         #[doc = "Cloud Storage source data location and import configuration.\n\nThe Cloud Storage location requires the `roles/storage.objectViewer`\nCloud IAM role."]
         #[serde(rename = "gcsSource", default)]
-        pub gcs_source: Option<crate::schemas::GoogleCloudHealthcareV1Beta1DicomGcsSource>,
+        pub gcs_source:
+            ::std::option::Option<crate::schemas::GoogleCloudHealthcareV1Beta1DicomGcsSource>,
     }
     impl ::field_selector::FieldSelector for ImportDicomDataRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1310,7 +1318,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1367,6 +1374,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ImportResourcesRequestContentStructure {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1382,10 +1398,12 @@ pub mod schemas {
     pub struct ImportResourcesRequest {
         #[doc = "The content structure in the source location. If not specified, the server\ntreats the input source files as BUNDLE."]
         #[serde(rename = "contentStructure", default)]
-        pub content_structure: Option<crate::schemas::ImportResourcesRequestContentStructure>,
+        pub content_structure:
+            ::std::option::Option<crate::schemas::ImportResourcesRequestContentStructure>,
         #[doc = "Cloud Storage source data location and import configuration.\n\nThe Cloud Storage location requires the `roles/storage.objectViewer`\nCloud IAM role.\n\nEach Cloud Storage object should be a text file that contains the format\nspecified in ContentStructure."]
         #[serde(rename = "gcsSource", default)]
-        pub gcs_source: Option<crate::schemas::GoogleCloudHealthcareV1Beta1FhirRestGcsSource>,
+        pub gcs_source:
+            ::std::option::Option<crate::schemas::GoogleCloudHealthcareV1Beta1FhirRestGcsSource>,
     }
     impl ::field_selector::FieldSelector for ImportResourcesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1394,7 +1412,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1412,22 +1429,23 @@ pub mod schemas {
     pub struct InfoTypeTransformation {
         #[doc = "Config for character mask."]
         #[serde(rename = "characterMaskConfig", default)]
-        pub character_mask_config: Option<crate::schemas::CharacterMaskConfig>,
+        pub character_mask_config: ::std::option::Option<crate::schemas::CharacterMaskConfig>,
         #[doc = "Config for crypto hash."]
         #[serde(rename = "cryptoHashConfig", default)]
-        pub crypto_hash_config: Option<crate::schemas::CryptoHashConfig>,
+        pub crypto_hash_config: ::std::option::Option<crate::schemas::CryptoHashConfig>,
         #[doc = "Config for date shift."]
         #[serde(rename = "dateShiftConfig", default)]
-        pub date_shift_config: Option<crate::schemas::DateShiftConfig>,
+        pub date_shift_config: ::std::option::Option<crate::schemas::DateShiftConfig>,
         #[doc = "InfoTypes to apply this transformation to. If this is not specified, the\ntransformation applies to any info_type."]
         #[serde(rename = "infoTypes", default)]
-        pub info_types: Option<Vec<String>>,
+        pub info_types: ::std::option::Option<Vec<String>>,
         #[doc = "Config for text redaction."]
         #[serde(rename = "redactConfig", default)]
-        pub redact_config: Option<crate::schemas::RedactConfig>,
+        pub redact_config: ::std::option::Option<crate::schemas::RedactConfig>,
         #[doc = "Config for replace with InfoType."]
         #[serde(rename = "replaceWithInfoTypeConfig", default)]
-        pub replace_with_info_type_config: Option<crate::schemas::ReplaceWithInfoTypeConfig>,
+        pub replace_with_info_type_config:
+            ::std::option::Option<crate::schemas::ReplaceWithInfoTypeConfig>,
     }
     impl ::field_selector::FieldSelector for InfoTypeTransformation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1436,7 +1454,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1454,7 +1471,7 @@ pub mod schemas {
     pub struct IngestMessageRequest {
         #[doc = "HL7v2 message to ingest."]
         #[serde(rename = "message", default)]
-        pub message: Option<crate::schemas::Message>,
+        pub message: ::std::option::Option<crate::schemas::Message>,
     }
     impl ::field_selector::FieldSelector for IngestMessageRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1463,7 +1480,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1481,10 +1497,10 @@ pub mod schemas {
     pub struct IngestMessageResponse {
         #[doc = "HL7v2 ACK message."]
         #[serde(rename = "hl7Ack", default)]
-        pub hl_7_ack: Option<Vec<u8>>,
+        pub hl_7_ack: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Created message resource."]
         #[serde(rename = "message", default)]
-        pub message: Option<crate::schemas::Message>,
+        pub message: ::std::option::Option<crate::schemas::Message>,
     }
     impl ::field_selector::FieldSelector for IngestMessageResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1493,7 +1509,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1511,10 +1526,10 @@ pub mod schemas {
     pub struct ListDatasetsResponse {
         #[doc = "The first page of datasets."]
         #[serde(rename = "datasets", default)]
-        pub datasets: Option<Vec<crate::schemas::Dataset>>,
+        pub datasets: ::std::option::Option<Vec<crate::schemas::Dataset>>,
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListDatasetsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1523,7 +1538,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1541,10 +1555,10 @@ pub mod schemas {
     pub struct ListDicomStoresResponse {
         #[doc = "The returned DICOM stores. Won't be more DICOM stores than the value of\npage_size in the request."]
         #[serde(rename = "dicomStores", default)]
-        pub dicom_stores: Option<Vec<crate::schemas::DicomStore>>,
+        pub dicom_stores: ::std::option::Option<Vec<crate::schemas::DicomStore>>,
         #[doc = "Token to retrieve the next page of results or empty if there are no more\nresults in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListDicomStoresResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1553,7 +1567,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1571,10 +1584,10 @@ pub mod schemas {
     pub struct ListFhirStoresResponse {
         #[doc = "The returned FHIR stores. Won't be more FHIR stores than the value of\npage_size in the request."]
         #[serde(rename = "fhirStores", default)]
-        pub fhir_stores: Option<Vec<crate::schemas::FhirStore>>,
+        pub fhir_stores: ::std::option::Option<Vec<crate::schemas::FhirStore>>,
         #[doc = "Token to retrieve the next page of results or empty if there are no more\nresults in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListFhirStoresResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1583,7 +1596,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1601,10 +1613,10 @@ pub mod schemas {
     pub struct ListHl7V2StoresResponse {
         #[doc = "The returned HL7v2 stores. Won't be more HL7v2 stores than the value of\npage_size in the request."]
         #[serde(rename = "hl7V2Stores", default)]
-        pub hl_7v2_stores: Option<Vec<crate::schemas::Hl7V2Store>>,
+        pub hl_7v2_stores: ::std::option::Option<Vec<crate::schemas::Hl7V2Store>>,
         #[doc = "Token to retrieve the next page of results or empty if there are no more\nresults in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListHl7V2StoresResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1613,17 +1625,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListLocationsResponse {
         #[doc = "A list of locations that matches the specified filter in the request."]
         #[serde(rename = "locations", default)]
-        pub locations: Option<Vec<crate::schemas::Location>>,
+        pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "The standard List next-page token."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListLocationsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1632,7 +1643,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1650,10 +1660,10 @@ pub mod schemas {
     pub struct ListMessagesResponse {
         #[doc = "The returned message names. Won't be more values than the value of\npage_size in the request."]
         #[serde(rename = "messages", default)]
-        pub messages: Option<Vec<String>>,
+        pub messages: ::std::option::Option<Vec<String>>,
         #[doc = "Token to retrieve the next page of results or empty if there are no more\nresults in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListMessagesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1662,17 +1672,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
         #[serde(rename = "operations", default)]
-        pub operations: Option<Vec<crate::schemas::Operation>>,
+        pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::field_selector::FieldSelector for ListOperationsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1681,26 +1690,26 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Location {
         #[doc = "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "Cross-service attributes for the location. For example\n\n````text\n{\"cloud.googleapis.com/region\": \"us-east1\"}````"]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The canonical id for this location. For example: `\"us-east1\"`."]
         #[serde(rename = "locationId", default)]
-        pub location_id: Option<String>,
+        pub location_id: ::std::option::Option<String>,
         #[doc = "Service-specific metadata. For example the available capacity at the given\nlocation."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Location {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1709,7 +1718,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1727,31 +1735,31 @@ pub mod schemas {
     pub struct Message {
         #[doc = "Output only. The datetime when the message was created. Set by the server."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Raw message bytes."]
         #[serde(rename = "data", default)]
-        pub data: Option<Vec<u8>>,
+        pub data: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "User-supplied key-value pairs used to organize HL7v2 stores.\n\nLabel keys must be between 1 and 63 characters long, have a UTF-8 encoding\nof maximum 128 bytes, and must conform to the\nfollowing PCRE regular expression:\n\\p{Ll}\\p{Lo}{0,62}\n\nLabel values are optional, must be between 1 and 63 characters long, have\na UTF-8 encoding of maximum 128 bytes, and must conform to the\nfollowing PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}\n\nNo more than 64 labels can be associated with a given store."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The message type and trigger event for this message. MSH-9."]
         #[serde(rename = "messageType", default)]
-        pub message_type: Option<String>,
+        pub message_type: ::std::option::Option<String>,
         #[doc = "Resource name of the Message, of the form\n`projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.\nAssigned by the server."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Output only. The parsed version of the raw message data."]
         #[serde(rename = "parsedData", default)]
-        pub parsed_data: Option<crate::schemas::ParsedData>,
+        pub parsed_data: ::std::option::Option<crate::schemas::ParsedData>,
         #[doc = "All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this\nmessage."]
         #[serde(rename = "patientIds", default)]
-        pub patient_ids: Option<Vec<crate::schemas::PatientId>>,
+        pub patient_ids: ::std::option::Option<Vec<crate::schemas::PatientId>>,
         #[doc = "The hospital that this message came from. MSH-4."]
         #[serde(rename = "sendFacility", default)]
-        pub send_facility: Option<String>,
+        pub send_facility: ::std::option::Option<String>,
         #[doc = "The datetime the sending application sent this message. MSH-7."]
         #[serde(rename = "sendTime", default)]
-        pub send_time: Option<String>,
+        pub send_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Message {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1760,7 +1768,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1778,7 +1785,7 @@ pub mod schemas {
     pub struct NotificationConfig {
         #[doc = "The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that\nnotifications of changes are published on. Supplied by the client.\nPubsubMessage.Data will contain the resource name.\nPubsubMessage.MessageId is the ID of this message. It is guaranteed to be\nunique within the topic.\nPubsubMessage.PublishTime is the time at which the message was published.\nNotifications are only sent if the topic is\nnon-empty. [Topic\nnames](https://cloud.google.com/pubsub/docs/overview#names) must be scoped\nto a project. cloud-healthcare@system.gserviceaccount.com must have\npublisher permissions on the given Cloud Pub/Sub topic. Not having adequate\npermissions will cause the calls that send notifications to fail."]
         #[serde(rename = "pubsubTopic", default)]
-        pub pubsub_topic: Option<String>,
+        pub pubsub_topic: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for NotificationConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1787,26 +1794,27 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
         #[serde(rename = "done", default)]
-        pub done: Option<bool>,
+        pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
         #[serde(rename = "error", default)]
-        pub error: Option<crate::schemas::Status>,
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
         #[serde(rename = "response", default)]
-        pub response: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub response:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
     impl ::field_selector::FieldSelector for Operation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1815,7 +1823,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1833,15 +1840,15 @@ pub mod schemas {
     pub struct OperationMetadata {
         #[doc = "The name of the API method that initiated the operation."]
         #[serde(rename = "apiMethodName", default)]
-        pub api_method_name: Option<String>,
+        pub api_method_name: ::std::option::Option<String>,
         #[serde(rename = "counter", default)]
-        pub counter: Option<crate::schemas::ProgressCounter>,
+        pub counter: ::std::option::Option<crate::schemas::ProgressCounter>,
         #[doc = "The time at which the operation was created by the API."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "The time at which execution was completed."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for OperationMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1850,7 +1857,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1867,7 +1873,7 @@ pub mod schemas {
     )]
     pub struct ParsedData {
         #[serde(rename = "segments", default)]
-        pub segments: Option<Vec<crate::schemas::Segment>>,
+        pub segments: ::std::option::Option<Vec<crate::schemas::Segment>>,
     }
     impl ::field_selector::FieldSelector for ParsedData {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1876,7 +1882,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1894,10 +1899,10 @@ pub mod schemas {
     pub struct ParserConfig {
         #[doc = "Determines whether messages with no header are allowed."]
         #[serde(rename = "allowNullHeader", default)]
-        pub allow_null_header: Option<bool>,
+        pub allow_null_header: ::std::option::Option<bool>,
         #[doc = "Byte(s) to be used as the segment terminator. If this is unset, '\\r' will\nbe used as segment terminator."]
         #[serde(rename = "segmentTerminator", default)]
-        pub segment_terminator: Option<Vec<u8>>,
+        pub segment_terminator: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for ParserConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1906,7 +1911,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1924,10 +1928,10 @@ pub mod schemas {
     pub struct PatientId {
         #[doc = "ID type, e.g. MRN or NHS."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "The patient's unique identifier."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PatientId {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1936,7 +1940,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1954,16 +1957,16 @@ pub mod schemas {
     pub struct Policy {
         #[doc = "Specifies cloud audit logging configuration for this policy."]
         #[serde(rename = "auditConfigs", default)]
-        pub audit_configs: Option<Vec<crate::schemas::AuditConfig>>,
+        pub audit_configs: ::std::option::Option<Vec<crate::schemas::AuditConfig>>,
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
         #[serde(rename = "bindings", default)]
-        pub bindings: Option<Vec<crate::schemas::Binding>>,
+        pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<Vec<u8>>,
+        pub etag: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Deprecated."]
         #[serde(rename = "version", default)]
-        pub version: Option<i32>,
+        pub version: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Policy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1972,7 +1975,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1991,15 +1993,15 @@ pub mod schemas {
         #[doc = "The number of units that failed in the operation."]
         #[serde(rename = "failure", default)]
         #[serde(with = "crate::parsed_string")]
-        pub failure: Option<i64>,
+        pub failure: ::std::option::Option<i64>,
         #[doc = "The number of units that are pending in the operation."]
         #[serde(rename = "pending", default)]
         #[serde(with = "crate::parsed_string")]
-        pub pending: Option<i64>,
+        pub pending: ::std::option::Option<i64>,
         #[doc = "The number of units that succeeded in the operation."]
         #[serde(rename = "success", default)]
         #[serde(with = "crate::parsed_string")]
-        pub success: Option<i64>,
+        pub success: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for ProgressCounter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2008,7 +2010,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2026,7 +2027,7 @@ pub mod schemas {
     )]
     pub struct RedactConfig;
     impl ::field_selector::FieldSelector for RedactConfig {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -2043,7 +2044,7 @@ pub mod schemas {
     )]
     pub struct ReplaceWithInfoTypeConfig;
     impl ::field_selector::FieldSelector for ReplaceWithInfoTypeConfig {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SchemaConfigSchemaType {
@@ -2095,6 +2096,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for SchemaConfigSchemaType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2111,10 +2121,10 @@ pub mod schemas {
         #[doc = "The depth for all recursive structures in the output analytics\nschema. For example, `concept` in the CodeSystem resource is a recursive\nstructure; when the depth is 2, the CodeSystem table will have a column\ncalled `concept.concept` but not `concept.concept.concept`. If not\nspecified or set to 0, the server will use the default value 2."]
         #[serde(rename = "recursiveStructureDepth", default)]
         #[serde(with = "crate::parsed_string")]
-        pub recursive_structure_depth: Option<i64>,
+        pub recursive_structure_depth: ::std::option::Option<i64>,
         #[doc = "Specifies the output schema type. If unspecified, the default is\n`LOSSLESS`."]
         #[serde(rename = "schemaType", default)]
-        pub schema_type: Option<crate::schemas::SchemaConfigSchemaType>,
+        pub schema_type: ::std::option::Option<crate::schemas::SchemaConfigSchemaType>,
     }
     impl ::field_selector::FieldSelector for SchemaConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2123,7 +2133,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2141,7 +2150,7 @@ pub mod schemas {
     pub struct SearchResourcesRequest {
         #[doc = "The FHIR resource type to search, such as Patient or Observation. For a\ncomplete list, see the [FHIR Resource\nIndex](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html)."]
         #[serde(rename = "resourceType", default)]
-        pub resource_type: Option<String>,
+        pub resource_type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SearchResourcesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2150,7 +2159,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2168,13 +2176,13 @@ pub mod schemas {
     pub struct Segment {
         #[doc = "A mapping from the positional location to the value.\nThe key string uses zero-based indexes separated by dots to identify\nFields, components and sub-components. A bracket notation is also used to\nidentify different instances of a repeated field.\nRegex for key: (\\d+)([\\d+])?(.\\d+)?(.\\d+)?\n\nExamples of (key, value) pairs:\n\n* (0.1, \"foo\"): Component 1 of Field 0 has the value \"foo\".\n* (1.1.2, \"bar\"): Sub-component 2 of Component 1 of field 1 has the value\n  \"bar\".\n* (1[2].1, \"baz\"): Component 1 of Instance 2 of Field 1, which is repeated,\n  has the value \"baz\"."]
         #[serde(rename = "fields", default)]
-        pub fields: Option<::std::collections::BTreeMap<String, String>>,
+        pub fields: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "A string that indicates the type of segment, e.g., EVN, PID."]
         #[serde(rename = "segmentId", default)]
-        pub segment_id: Option<String>,
+        pub segment_id: ::std::option::Option<String>,
         #[doc = "Set ID for segments that can be in a set. This can be empty if it is\nmissing or it is not applicable."]
         #[serde(rename = "setId", default)]
-        pub set_id: Option<String>,
+        pub set_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Segment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2183,7 +2191,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2201,10 +2208,10 @@ pub mod schemas {
     pub struct SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
         #[serde(rename = "policy", default)]
-        pub policy: Option<crate::schemas::Policy>,
+        pub policy: ::std::option::Option<crate::schemas::Policy>,
         #[doc = "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\npaths: \"bindings, etag\"\nThis field is only used by Cloud IAM."]
         #[serde(rename = "updateMask", default)]
-        pub update_mask: Option<String>,
+        pub update_mask: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SetIamPolicyRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2213,20 +2220,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
-        pub code: Option<i32>,
+        pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub details:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Status {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2235,7 +2242,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2253,7 +2259,7 @@ pub mod schemas {
     pub struct TagFilterList {
         #[doc = "Tags to be filtered. Tags must be DICOM Data Elements, File Meta\nElements, or Directory Structuring Elements, as defined at:\nhttp://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,.\nThey may be provided by \"Keyword\" or \"Tag\". For example \"PatientID\",\n\"00100010\"."]
         #[serde(rename = "tags", default)]
-        pub tags: Option<Vec<String>>,
+        pub tags: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for TagFilterList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2262,7 +2268,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2280,7 +2285,7 @@ pub mod schemas {
     pub struct TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
         #[serde(rename = "permissions", default)]
-        pub permissions: Option<Vec<String>>,
+        pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for TestIamPermissionsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2289,7 +2294,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2307,7 +2311,7 @@ pub mod schemas {
     pub struct TestIamPermissionsResponse {
         #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
         #[serde(rename = "permissions", default)]
-        pub permissions: Option<Vec<String>>,
+        pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for TestIamPermissionsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2316,7 +2320,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2334,7 +2337,7 @@ pub mod schemas {
     pub struct TextConfig {
         #[doc = "The transformations to apply to the detected data."]
         #[serde(rename = "transformations", default)]
-        pub transformations: Option<Vec<crate::schemas::InfoTypeTransformation>>,
+        pub transformations: ::std::option::Option<Vec<crate::schemas::InfoTypeTransformation>>,
     }
     impl ::field_selector::FieldSelector for TextConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2343,7 +2346,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -2398,6 +2400,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -2442,6 +2453,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -18340,6 +18360,15 @@ mod resources {
                                     })
                                 }
                             }
+                            impl ::field_selector::FieldSelector for GetView {
+                                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                                    match selector.chars().rev().nth(0) {
+                                        Some(',') | None => {}
+                                        _ => selector.push_str(","),
+                                    }
+                                    selector.push_str(ident);
+                                }
+                            }
                         }
                         pub struct MessagesActions<'a, A> {
                             pub(crate) reqwest: &'a reqwest::Client,
@@ -20439,6 +20468,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -20514,5 +20544,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

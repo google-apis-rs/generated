@@ -14,19 +14,19 @@ pub mod schemas {
     pub struct Alias {
         #[doc = "A alias email"]
         #[serde(rename = "alias", default)]
-        pub alias: Option<String>,
+        pub alias: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Unique id of the group (Read-only) Unique id of the user (Read-only)"]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Group's primary email (Read-only) User's primary email (Read-only)"]
         #[serde(rename = "primaryEmail", default)]
-        pub primary_email: Option<String>,
+        pub primary_email: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Alias {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -35,20 +35,19 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Aliases {
         #[doc = "List of alias objects."]
         #[serde(rename = "aliases", default)]
-        pub aliases: Option<Vec<::serde_json::Value>>,
+        pub aliases: ::std::option::Option<Vec<::serde_json::Value>>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Aliases {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -57,7 +56,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -75,29 +73,29 @@ pub mod schemas {
     pub struct AppAccessCollections {
         #[doc = "List of blocked api access buckets."]
         #[serde(rename = "blockedApiAccessBuckets", default)]
-        pub blocked_api_access_buckets: Option<Vec<String>>,
+        pub blocked_api_access_buckets: ::std::option::Option<Vec<String>>,
         #[doc = "Boolean to indicate whether to enforce app access settings on Android Drive or not."]
         #[serde(rename = "enforceSettingsForAndroidDrive", default)]
-        pub enforce_settings_for_android_drive: Option<bool>,
+        pub enforce_settings_for_android_drive: ::std::option::Option<bool>,
         #[doc = "Error message provided by the Admin that will be shown to the user when an app is blocked."]
         #[serde(rename = "errorMessage", default)]
-        pub error_message: Option<String>,
+        pub error_message: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Identifies the resource as an app access collection. Value: admin#directory#appaccesscollection"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Unique ID of app access collection. (Readonly)"]
         #[serde(rename = "resourceId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub resource_id: Option<i64>,
+        pub resource_id: ::std::option::Option<i64>,
         #[doc = "Resource name given by the customer while creating/updating. Should be unique under given customer."]
         #[serde(rename = "resourceName", default)]
-        pub resource_name: Option<String>,
+        pub resource_name: ::std::option::Option<String>,
         #[doc = "Boolean that indicates whether to trust domain owned apps."]
         #[serde(rename = "trustDomainOwnedApps", default)]
-        pub trust_domain_owned_apps: Option<bool>,
+        pub trust_domain_owned_apps: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for AppAccessCollections {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -106,7 +104,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -124,27 +121,27 @@ pub mod schemas {
     pub struct Asp {
         #[doc = "The unique ID of the ASP."]
         #[serde(rename = "codeId", default)]
-        pub code_id: Option<i32>,
+        pub code_id: ::std::option::Option<i32>,
         #[doc = "The time when the ASP was created. Expressed in Unix time format."]
         #[serde(rename = "creationTime", default)]
         #[serde(with = "crate::parsed_string")]
-        pub creation_time: Option<i64>,
+        pub creation_time: ::std::option::Option<i64>,
         #[doc = "ETag of the ASP."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The type of the API resource. This is always admin#directory#asp."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The time when the ASP was last used. Expressed in Unix time format."]
         #[serde(rename = "lastTimeUsed", default)]
         #[serde(with = "crate::parsed_string")]
-        pub last_time_used: Option<i64>,
+        pub last_time_used: ::std::option::Option<i64>,
         #[doc = "The name of the application that the user, represented by their userId, entered when the ASP was created."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The unique ID of the user who issued the ASP."]
         #[serde(rename = "userKey", default)]
-        pub user_key: Option<String>,
+        pub user_key: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Asp {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -153,7 +150,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -171,13 +167,13 @@ pub mod schemas {
     pub struct Asps {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "A list of ASP resources."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Asp>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Asp>>,
         #[doc = "The type of the API resource. This is always admin#directory#aspList."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Asps {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -186,7 +182,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -195,28 +190,28 @@ pub mod schemas {
     pub struct Building {
         #[doc = "The postal address of the building. See PostalAddress for details. Note that only a single address line and region code are required."]
         #[serde(rename = "address", default)]
-        pub address: Option<crate::schemas::BuildingAddress>,
+        pub address: ::std::option::Option<crate::schemas::BuildingAddress>,
         #[doc = "Unique identifier for the building. The maximum length is 100 characters."]
         #[serde(rename = "buildingId", default)]
-        pub building_id: Option<String>,
+        pub building_id: ::std::option::Option<String>,
         #[doc = "The building name as seen by users in Calendar. Must be unique for the customer. For example, \"NYC-CHEL\". The maximum length is 100 characters."]
         #[serde(rename = "buildingName", default)]
-        pub building_name: Option<String>,
+        pub building_name: ::std::option::Option<String>,
         #[doc = "The geographic coordinates of the center of the building, expressed as latitude and longitude in decimal degrees."]
         #[serde(rename = "coordinates", default)]
-        pub coordinates: Option<crate::schemas::BuildingCoordinates>,
+        pub coordinates: ::std::option::Option<crate::schemas::BuildingCoordinates>,
         #[doc = "A brief description of the building. For example, \"Chelsea Market\"."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etags", default)]
-        pub etags: Option<String>,
+        pub etags: ::std::option::Option<String>,
         #[doc = "The display names for all floors in this building. The floors are expected to be sorted in ascending order, from lowest floor to highest floor. For example, [\"B2\", \"B1\", \"L\", \"1\", \"2\", \"2M\", \"3\", \"PH\"] Must contain at least one entry."]
         #[serde(rename = "floorNames", default)]
-        pub floor_names: Option<Vec<String>>,
+        pub floor_names: ::std::option::Option<Vec<String>>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Building {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -225,7 +220,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -243,25 +237,25 @@ pub mod schemas {
     pub struct BuildingAddress {
         #[doc = "Unstructured address lines describing the lower levels of an address."]
         #[serde(rename = "addressLines", default)]
-        pub address_lines: Option<Vec<String>>,
+        pub address_lines: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. Highest administrative subdivision which is used for postal addresses of a country or region."]
         #[serde(rename = "administrativeArea", default)]
-        pub administrative_area: Option<String>,
+        pub administrative_area: ::std::option::Option<String>,
         #[doc = "Optional. BCP-47 language code of the contents of this address (if known)."]
         #[serde(rename = "languageCode", default)]
-        pub language_code: Option<String>,
+        pub language_code: ::std::option::Option<String>,
         #[doc = "Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use addressLines."]
         #[serde(rename = "locality", default)]
-        pub locality: Option<String>,
+        pub locality: ::std::option::Option<String>,
         #[doc = "Optional. Postal code of the address."]
         #[serde(rename = "postalCode", default)]
-        pub postal_code: Option<String>,
+        pub postal_code: ::std::option::Option<String>,
         #[doc = "Required. CLDR region code of the country/region of the address."]
         #[serde(rename = "regionCode", default)]
-        pub region_code: Option<String>,
+        pub region_code: ::std::option::Option<String>,
         #[doc = "Optional. Sublocality of the address."]
         #[serde(rename = "sublocality", default)]
-        pub sublocality: Option<String>,
+        pub sublocality: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BuildingAddress {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -270,7 +264,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -279,10 +272,10 @@ pub mod schemas {
     pub struct BuildingCoordinates {
         #[doc = "Latitude in decimal degrees."]
         #[serde(rename = "latitude", default)]
-        pub latitude: Option<f64>,
+        pub latitude: ::std::option::Option<f64>,
         #[doc = "Longitude in decimal degrees."]
         #[serde(rename = "longitude", default)]
-        pub longitude: Option<f64>,
+        pub longitude: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for BuildingCoordinates {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -291,7 +284,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -300,16 +292,16 @@ pub mod schemas {
     pub struct Buildings {
         #[doc = "The Buildings in this page of results."]
         #[serde(rename = "buildings", default)]
-        pub buildings: Option<Vec<crate::schemas::Building>>,
+        pub buildings: ::std::option::Option<Vec<crate::schemas::Building>>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Buildings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -318,55 +310,54 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CalendarResource {
         #[doc = "Unique ID for the building a resource is located in."]
         #[serde(rename = "buildingId", default)]
-        pub building_id: Option<String>,
+        pub building_id: ::std::option::Option<String>,
         #[doc = "Capacity of a resource, number of seats in a room."]
         #[serde(rename = "capacity", default)]
-        pub capacity: Option<i32>,
+        pub capacity: ::std::option::Option<i32>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etags", default)]
-        pub etags: Option<String>,
+        pub etags: ::std::option::Option<String>,
         #[serde(rename = "featureInstances", default)]
-        pub feature_instances: Option<::serde_json::Value>,
+        pub feature_instances: ::std::option::Option<::serde_json::Value>,
         #[doc = "Name of the floor a resource is located on."]
         #[serde(rename = "floorName", default)]
-        pub floor_name: Option<String>,
+        pub floor_name: ::std::option::Option<String>,
         #[doc = "Name of the section within a floor a resource is located in."]
         #[serde(rename = "floorSection", default)]
-        pub floor_section: Option<String>,
+        pub floor_section: ::std::option::Option<String>,
         #[doc = "The read-only auto-generated name of the calendar resource which includes metadata about the resource such as building name, floor, capacity, etc. For example, \"NYC-2-Training Room 1A (16)\"."]
         #[serde(rename = "generatedResourceName", default)]
-        pub generated_resource_name: Option<String>,
+        pub generated_resource_name: ::std::option::Option<String>,
         #[doc = "The type of the resource. For calendar resources, the value is admin#directory#resources#calendars#CalendarResource."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The category of the calendar resource. Either CONFERENCE_ROOM or OTHER. Legacy data is set to CATEGORY_UNKNOWN."]
         #[serde(rename = "resourceCategory", default)]
-        pub resource_category: Option<String>,
+        pub resource_category: ::std::option::Option<String>,
         #[doc = "Description of the resource, visible only to admins."]
         #[serde(rename = "resourceDescription", default)]
-        pub resource_description: Option<String>,
+        pub resource_description: ::std::option::Option<String>,
         #[doc = "The read-only email for the calendar resource. Generated as part of creating a new calendar resource."]
         #[serde(rename = "resourceEmail", default)]
-        pub resource_email: Option<String>,
+        pub resource_email: ::std::option::Option<String>,
         #[doc = "The unique ID for the calendar resource."]
         #[serde(rename = "resourceId", default)]
-        pub resource_id: Option<String>,
+        pub resource_id: ::std::option::Option<String>,
         #[doc = "The name of the calendar resource. For example, \"Training Room 1A\"."]
         #[serde(rename = "resourceName", default)]
-        pub resource_name: Option<String>,
+        pub resource_name: ::std::option::Option<String>,
         #[doc = "The type of the calendar resource, intended for non-room resources."]
         #[serde(rename = "resourceType", default)]
-        pub resource_type: Option<String>,
+        pub resource_type: ::std::option::Option<String>,
         #[doc = "Description of the resource, visible to users and admins."]
         #[serde(rename = "userVisibleDescription", default)]
-        pub user_visible_description: Option<String>,
+        pub user_visible_description: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CalendarResource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -375,23 +366,22 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CalendarResources {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The CalendarResources in this page of results."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::CalendarResource>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::CalendarResource>>,
         #[doc = "Identifies this as a collection of CalendarResources. This is always admin#directory#resources#calendars#calendarResourcesList."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CalendarResources {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -400,7 +390,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -418,35 +407,35 @@ pub mod schemas {
     pub struct Channel {
         #[doc = "The address where notifications are delivered for this channel."]
         #[serde(rename = "address", default)]
-        pub address: Option<String>,
+        pub address: ::std::option::Option<String>,
         #[doc = "Date and time of notification channel expiration, expressed as a Unix timestamp, in milliseconds. Optional."]
         #[serde(rename = "expiration", default)]
         #[serde(with = "crate::parsed_string")]
-        pub expiration: Option<i64>,
+        pub expiration: ::std::option::Option<i64>,
         #[doc = "A UUID or similar unique string that identifies this channel."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies this as a notification channel used to watch for changes to a resource, which is \"api#channel\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Additional parameters controlling delivery channel behavior. Optional."]
         #[serde(rename = "params", default)]
-        pub params: Option<::std::collections::BTreeMap<String, String>>,
+        pub params: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "A Boolean value to indicate whether payload is wanted. Optional."]
         #[serde(rename = "payload", default)]
-        pub payload: Option<bool>,
+        pub payload: ::std::option::Option<bool>,
         #[doc = "The type of delivery mechanism used for this channel."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "An opaque ID that identifies the resource being watched on this channel. Stable across different API versions."]
         #[serde(rename = "resourceId", default)]
-        pub resource_id: Option<String>,
+        pub resource_id: ::std::option::Option<String>,
         #[doc = "A version-specific identifier for the watched resource."]
         #[serde(rename = "resourceUri", default)]
-        pub resource_uri: Option<String>,
+        pub resource_uri: ::std::option::Option<String>,
         #[doc = "An arbitrary string delivered to the target address with each notification delivered over this channel. Optional."]
         #[serde(rename = "token", default)]
-        pub token: Option<String>,
+        pub token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Channel {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -455,7 +444,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -473,10 +461,10 @@ pub mod schemas {
     pub struct ChromeOsDeviceActiveTimeRangesItems {
         #[doc = "Duration in milliseconds"]
         #[serde(rename = "activeTime", default)]
-        pub active_time: Option<i32>,
+        pub active_time: ::std::option::Option<i32>,
         #[doc = "Date of usage"]
         #[serde(rename = "date", default)]
-        pub date: Option<::chrono::NaiveDate>,
+        pub date: ::std::option::Option<::chrono::NaiveDate>,
     }
     impl ::field_selector::FieldSelector for ChromeOsDeviceActiveTimeRangesItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -485,7 +473,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -503,10 +490,10 @@ pub mod schemas {
     pub struct ChromeOsDeviceCpuStatusReportsItemsCpuTemperatureInfoItems {
         #[doc = "CPU label"]
         #[serde(rename = "label", default)]
-        pub label: Option<String>,
+        pub label: ::std::option::Option<String>,
         #[doc = "Temperature in Celsius degrees."]
         #[serde(rename = "temperature", default)]
-        pub temperature: Option<i32>,
+        pub temperature: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector
         for ChromeOsDeviceCpuStatusReportsItemsCpuTemperatureInfoItems
@@ -517,7 +504,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -535,13 +521,14 @@ pub mod schemas {
     pub struct ChromeOsDeviceCpuStatusReportsItems {
         #[doc = "List of CPU temperature samples."]
         #[serde(rename = "cpuTemperatureInfo", default)]
-        pub cpu_temperature_info:
-            Option<Vec<crate::schemas::ChromeOsDeviceCpuStatusReportsItemsCpuTemperatureInfoItems>>,
+        pub cpu_temperature_info: ::std::option::Option<
+            Vec<crate::schemas::ChromeOsDeviceCpuStatusReportsItemsCpuTemperatureInfoItems>,
+        >,
         #[serde(rename = "cpuUtilizationPercentageInfo", default)]
-        pub cpu_utilization_percentage_info: Option<Vec<i32>>,
+        pub cpu_utilization_percentage_info: ::std::option::Option<Vec<i32>>,
         #[doc = "Date and time the report was received."]
         #[serde(rename = "reportTime", default)]
-        pub report_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub report_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for ChromeOsDeviceCpuStatusReportsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -550,7 +537,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -568,16 +554,16 @@ pub mod schemas {
     pub struct ChromeOsDeviceDeviceFilesItems {
         #[doc = "Date and time the file was created"]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub create_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "File download URL"]
         #[serde(rename = "downloadUrl", default)]
-        pub download_url: Option<String>,
+        pub download_url: ::std::option::Option<String>,
         #[doc = "File name"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "File type"]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChromeOsDeviceDeviceFilesItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -586,7 +572,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -605,14 +590,14 @@ pub mod schemas {
         #[doc = "Free disk space [in bytes]"]
         #[serde(rename = "storageFree", default)]
         #[serde(with = "crate::parsed_string")]
-        pub storage_free: Option<i64>,
+        pub storage_free: ::std::option::Option<i64>,
         #[doc = "Total disk space [in bytes]"]
         #[serde(rename = "storageTotal", default)]
         #[serde(with = "crate::parsed_string")]
-        pub storage_total: Option<i64>,
+        pub storage_total: ::std::option::Option<i64>,
         #[doc = "Volume id"]
         #[serde(rename = "volumeId", default)]
-        pub volume_id: Option<String>,
+        pub volume_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChromeOsDeviceDiskVolumeReportsItemsVolumeInfoItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -621,7 +606,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -639,8 +623,9 @@ pub mod schemas {
     pub struct ChromeOsDeviceDiskVolumeReportsItems {
         #[doc = "Disk volumes"]
         #[serde(rename = "volumeInfo", default)]
-        pub volume_info:
-            Option<Vec<crate::schemas::ChromeOsDeviceDiskVolumeReportsItemsVolumeInfoItems>>,
+        pub volume_info: ::std::option::Option<
+            Vec<crate::schemas::ChromeOsDeviceDiskVolumeReportsItemsVolumeInfoItems>,
+        >,
     }
     impl ::field_selector::FieldSelector for ChromeOsDeviceDiskVolumeReportsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -649,7 +634,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -667,10 +651,10 @@ pub mod schemas {
     pub struct ChromeOsDeviceRecentUsersItems {
         #[doc = "Email address of the user. Present only if the user type is managed"]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The type of the user"]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChromeOsDeviceRecentUsersItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -679,7 +663,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -697,9 +680,9 @@ pub mod schemas {
     pub struct ChromeOsDeviceSystemRamFreeReportsItems {
         #[doc = "Date and time the report was received."]
         #[serde(rename = "reportTime", default)]
-        pub report_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub report_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[serde(rename = "systemRamFreeInfo", default)]
-        pub system_ram_free_info: Option<Vec<i64>>,
+        pub system_ram_free_info: ::std::option::Option<Vec<i64>>,
     }
     impl ::field_selector::FieldSelector for ChromeOsDeviceSystemRamFreeReportsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -708,7 +691,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -726,22 +708,22 @@ pub mod schemas {
     pub struct ChromeOsDeviceTpmVersionInfo {
         #[doc = "TPM family."]
         #[serde(rename = "family", default)]
-        pub family: Option<String>,
+        pub family: ::std::option::Option<String>,
         #[doc = "TPM firmware version."]
         #[serde(rename = "firmwareVersion", default)]
-        pub firmware_version: Option<String>,
+        pub firmware_version: ::std::option::Option<String>,
         #[doc = "TPM manufacturer code."]
         #[serde(rename = "manufacturer", default)]
-        pub manufacturer: Option<String>,
+        pub manufacturer: ::std::option::Option<String>,
         #[doc = "TPM specification level."]
         #[serde(rename = "specLevel", default)]
-        pub spec_level: Option<String>,
+        pub spec_level: ::std::option::Option<String>,
         #[doc = "TPM model number."]
         #[serde(rename = "tpmModel", default)]
-        pub tpm_model: Option<String>,
+        pub tpm_model: ::std::option::Option<String>,
         #[doc = "Vendor-specific information such as Vendor ID."]
         #[serde(rename = "vendorSpecific", default)]
-        pub vendor_specific: Option<String>,
+        pub vendor_specific: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChromeOsDeviceTpmVersionInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -750,7 +732,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -768,112 +749,117 @@ pub mod schemas {
     pub struct ChromeOsDevice {
         #[doc = "List of active time ranges (Read-only)"]
         #[serde(rename = "activeTimeRanges", default)]
-        pub active_time_ranges: Option<Vec<crate::schemas::ChromeOsDeviceActiveTimeRangesItems>>,
+        pub active_time_ranges:
+            ::std::option::Option<Vec<crate::schemas::ChromeOsDeviceActiveTimeRangesItems>>,
         #[doc = "AssetId specified during enrollment or through later annotation"]
         #[serde(rename = "annotatedAssetId", default)]
-        pub annotated_asset_id: Option<String>,
+        pub annotated_asset_id: ::std::option::Option<String>,
         #[doc = "Address or location of the device as noted by the administrator"]
         #[serde(rename = "annotatedLocation", default)]
-        pub annotated_location: Option<String>,
+        pub annotated_location: ::std::option::Option<String>,
         #[doc = "User of the device"]
         #[serde(rename = "annotatedUser", default)]
-        pub annotated_user: Option<String>,
+        pub annotated_user: ::std::option::Option<String>,
         #[doc = "(Read-only) The timestamp after which the device will stop receiving Chrome updates or support"]
         #[serde(rename = "autoUpdateExpiration", default)]
         #[serde(with = "crate::parsed_string")]
-        pub auto_update_expiration: Option<i64>,
+        pub auto_update_expiration: ::std::option::Option<i64>,
         #[doc = "Chromebook boot mode (Read-only)"]
         #[serde(rename = "bootMode", default)]
-        pub boot_mode: Option<String>,
+        pub boot_mode: ::std::option::Option<String>,
         #[doc = "Reports of CPU utilization and temperature (Read-only)"]
         #[serde(rename = "cpuStatusReports", default)]
-        pub cpu_status_reports: Option<Vec<crate::schemas::ChromeOsDeviceCpuStatusReportsItems>>,
+        pub cpu_status_reports:
+            ::std::option::Option<Vec<crate::schemas::ChromeOsDeviceCpuStatusReportsItems>>,
         #[doc = "List of device files to download (Read-only)"]
         #[serde(rename = "deviceFiles", default)]
-        pub device_files: Option<Vec<crate::schemas::ChromeOsDeviceDeviceFilesItems>>,
+        pub device_files:
+            ::std::option::Option<Vec<crate::schemas::ChromeOsDeviceDeviceFilesItems>>,
         #[doc = "Unique identifier of Chrome OS Device (Read-only)"]
         #[serde(rename = "deviceId", default)]
-        pub device_id: Option<String>,
+        pub device_id: ::std::option::Option<String>,
         #[doc = "Reports of disk space and other info about mounted/connected volumes."]
         #[serde(rename = "diskVolumeReports", default)]
-        pub disk_volume_reports: Option<Vec<crate::schemas::ChromeOsDeviceDiskVolumeReportsItems>>,
+        pub disk_volume_reports:
+            ::std::option::Option<Vec<crate::schemas::ChromeOsDeviceDiskVolumeReportsItems>>,
         #[doc = "(Read-only) Built-in MAC address for the docking station that the device connected to. Factory sets Media access control address (MAC address) assigned for use by a dock. Currently this is only supported on the Dell Arcada / Sarien devices and the Dell WD19 / WD19TB Docking Station. It is reserved specifically for MAC pass through device policy. The format is twelve (12) hexadecimal digits without any delimiter (uppercase letters). This is only relevant for Dell devices."]
         #[serde(rename = "dockMacAddress", default)]
-        pub dock_mac_address: Option<String>,
+        pub dock_mac_address: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Chromebook Mac Address on ethernet network interface (Read-only)"]
         #[serde(rename = "ethernetMacAddress", default)]
-        pub ethernet_mac_address: Option<String>,
+        pub ethernet_mac_address: ::std::option::Option<String>,
         #[doc = "(Read-only) MAC address used by the Chromebook\u{2019}s internal ethernet port, and for onboard network (ethernet) interface. The format is twelve (12) hexadecimal digits without any delimiter (uppercase letters). This is only relevant for Dell devices."]
         #[serde(rename = "ethernetMacAddress0", default)]
-        pub ethernet_mac_address_0: Option<String>,
+        pub ethernet_mac_address_0: ::std::option::Option<String>,
         #[doc = "Chromebook firmware version (Read-only)"]
         #[serde(rename = "firmwareVersion", default)]
-        pub firmware_version: Option<String>,
+        pub firmware_version: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Date and time the device was last enrolled (Read-only)"]
         #[serde(rename = "lastEnrollmentTime", default)]
-        pub last_enrollment_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub last_enrollment_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Date and time the device was last synchronized with the policy settings in the G Suite administrator control panel (Read-only)"]
         #[serde(rename = "lastSync", default)]
-        pub last_sync: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub last_sync: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Chromebook Mac Address on wifi network interface (Read-only)"]
         #[serde(rename = "macAddress", default)]
-        pub mac_address: Option<String>,
+        pub mac_address: ::std::option::Option<String>,
         #[doc = "(Read-only) The date the device was manufactured in yyyy-mm-dd format."]
         #[serde(rename = "manufactureDate", default)]
-        pub manufacture_date: Option<String>,
+        pub manufacture_date: ::std::option::Option<String>,
         #[doc = "Mobile Equipment identifier for the 3G mobile card in the Chromebook (Read-only)"]
         #[serde(rename = "meid", default)]
-        pub meid: Option<String>,
+        pub meid: ::std::option::Option<String>,
         #[doc = "Chromebook Model (Read-only)"]
         #[serde(rename = "model", default)]
-        pub model: Option<String>,
+        pub model: ::std::option::Option<String>,
         #[doc = "Notes added by the administrator"]
         #[serde(rename = "notes", default)]
-        pub notes: Option<String>,
+        pub notes: ::std::option::Option<String>,
         #[doc = "Chromebook order number (Read-only)"]
         #[serde(rename = "orderNumber", default)]
-        pub order_number: Option<String>,
+        pub order_number: ::std::option::Option<String>,
         #[doc = "OrgUnit of the device"]
         #[serde(rename = "orgUnitPath", default)]
-        pub org_unit_path: Option<String>,
+        pub org_unit_path: ::std::option::Option<String>,
         #[doc = "Chromebook Os Version (Read-only)"]
         #[serde(rename = "osVersion", default)]
-        pub os_version: Option<String>,
+        pub os_version: ::std::option::Option<String>,
         #[doc = "Chromebook platform version (Read-only)"]
         #[serde(rename = "platformVersion", default)]
-        pub platform_version: Option<String>,
+        pub platform_version: ::std::option::Option<String>,
         #[doc = "List of recent device users, in descending order by last login time (Read-only)"]
         #[serde(rename = "recentUsers", default)]
-        pub recent_users: Option<Vec<crate::schemas::ChromeOsDeviceRecentUsersItems>>,
+        pub recent_users:
+            ::std::option::Option<Vec<crate::schemas::ChromeOsDeviceRecentUsersItems>>,
         #[doc = "Chromebook serial number (Read-only)"]
         #[serde(rename = "serialNumber", default)]
-        pub serial_number: Option<String>,
+        pub serial_number: ::std::option::Option<String>,
         #[doc = "status of the device (Read-only)"]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
         #[doc = "Final date the device will be supported (Read-only)"]
         #[serde(rename = "supportEndDate", default)]
-        pub support_end_date: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub support_end_date: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Reports of amounts of available RAM memory (Read-only)"]
         #[serde(rename = "systemRamFreeReports", default)]
         pub system_ram_free_reports:
-            Option<Vec<crate::schemas::ChromeOsDeviceSystemRamFreeReportsItems>>,
+            ::std::option::Option<Vec<crate::schemas::ChromeOsDeviceSystemRamFreeReportsItems>>,
         #[doc = "Total RAM on the device [in bytes] (Read-only)"]
         #[serde(rename = "systemRamTotal", default)]
         #[serde(with = "crate::parsed_string")]
-        pub system_ram_total: Option<i64>,
+        pub system_ram_total: ::std::option::Option<i64>,
         #[doc = "Trusted Platform Module (TPM) (Read-only)"]
         #[serde(rename = "tpmVersionInfo", default)]
-        pub tpm_version_info: Option<crate::schemas::ChromeOsDeviceTpmVersionInfo>,
+        pub tpm_version_info: ::std::option::Option<crate::schemas::ChromeOsDeviceTpmVersionInfo>,
         #[doc = "Will Chromebook auto renew after support end date (Read-only)"]
         #[serde(rename = "willAutoRenew", default)]
-        pub will_auto_renew: Option<bool>,
+        pub will_auto_renew: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for ChromeOsDevice {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -882,7 +868,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -900,9 +885,9 @@ pub mod schemas {
     pub struct ChromeOsDeviceAction {
         #[doc = "Action to be taken on the ChromeOs Device"]
         #[serde(rename = "action", default)]
-        pub action: Option<String>,
+        pub action: ::std::option::Option<String>,
         #[serde(rename = "deprovisionReason", default)]
-        pub deprovision_reason: Option<String>,
+        pub deprovision_reason: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChromeOsDeviceAction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -911,7 +896,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -929,16 +913,16 @@ pub mod schemas {
     pub struct ChromeOsDevices {
         #[doc = "List of Chrome OS Device objects."]
         #[serde(rename = "chromeosdevices", default)]
-        pub chromeosdevices: Option<Vec<crate::schemas::ChromeOsDevice>>,
+        pub chromeosdevices: ::std::option::Option<Vec<crate::schemas::ChromeOsDevice>>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access next page of this result."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChromeOsDevices {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -947,7 +931,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -965,7 +948,7 @@ pub mod schemas {
     pub struct ChromeOsMoveDevicesToOu {
         #[doc = "ChromeOs Devices to be moved to OU"]
         #[serde(rename = "deviceIds", default)]
-        pub device_ids: Option<Vec<String>>,
+        pub device_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ChromeOsMoveDevicesToOu {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -974,7 +957,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -992,31 +974,31 @@ pub mod schemas {
     pub struct Customer {
         #[doc = "The customer's secondary contact email address. This email address cannot be on the same domain as the customerDomain"]
         #[serde(rename = "alternateEmail", default)]
-        pub alternate_email: Option<String>,
+        pub alternate_email: ::std::option::Option<String>,
         #[doc = "The customer's creation time (Readonly)"]
         #[serde(rename = "customerCreationTime", default)]
-        pub customer_creation_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub customer_creation_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The customer's primary domain name string. Do not include the www prefix when creating a new customer."]
         #[serde(rename = "customerDomain", default)]
-        pub customer_domain: Option<String>,
+        pub customer_domain: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The unique ID for the customer's G Suite account. (Readonly)"]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies the resource as a customer. Value: admin#directory#customer"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The customer's ISO 639-2 language code. The default value is en-US"]
         #[serde(rename = "language", default)]
-        pub language: Option<String>,
+        pub language: ::std::option::Option<String>,
         #[doc = "The customer's contact phone number in E.164 format."]
         #[serde(rename = "phoneNumber", default)]
-        pub phone_number: Option<String>,
+        pub phone_number: ::std::option::Option<String>,
         #[doc = "The customer's postal address information."]
         #[serde(rename = "postalAddress", default)]
-        pub postal_address: Option<crate::schemas::CustomerPostalAddress>,
+        pub postal_address: ::std::option::Option<crate::schemas::CustomerPostalAddress>,
     }
     impl ::field_selector::FieldSelector for Customer {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1025,7 +1007,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1043,31 +1024,31 @@ pub mod schemas {
     pub struct CustomerPostalAddress {
         #[doc = "A customer's physical address. The address can be composed of one to three lines."]
         #[serde(rename = "addressLine1", default)]
-        pub address_line_1: Option<String>,
+        pub address_line_1: ::std::option::Option<String>,
         #[doc = "Address line 2 of the address."]
         #[serde(rename = "addressLine2", default)]
-        pub address_line_2: Option<String>,
+        pub address_line_2: ::std::option::Option<String>,
         #[doc = "Address line 3 of the address."]
         #[serde(rename = "addressLine3", default)]
-        pub address_line_3: Option<String>,
+        pub address_line_3: ::std::option::Option<String>,
         #[doc = "The customer contact's name."]
         #[serde(rename = "contactName", default)]
-        pub contact_name: Option<String>,
+        pub contact_name: ::std::option::Option<String>,
         #[doc = "This is a required property. For countryCode information see the ISO 3166 country code elements."]
         #[serde(rename = "countryCode", default)]
-        pub country_code: Option<String>,
+        pub country_code: ::std::option::Option<String>,
         #[doc = "Name of the locality. An example of a locality value is the city of San Francisco."]
         #[serde(rename = "locality", default)]
-        pub locality: Option<String>,
+        pub locality: ::std::option::Option<String>,
         #[doc = "The company or company division name."]
         #[serde(rename = "organizationName", default)]
-        pub organization_name: Option<String>,
+        pub organization_name: ::std::option::Option<String>,
         #[doc = "The postal code. A postalCode example is a postal zip code such as 10009. This is in accordance with - http://portablecontacts.net/draft-spec.html#address_element."]
         #[serde(rename = "postalCode", default)]
-        pub postal_code: Option<String>,
+        pub postal_code: ::std::option::Option<String>,
         #[doc = "Name of the region. An example of a region value is NY for the state of New York."]
         #[serde(rename = "region", default)]
-        pub region: Option<String>,
+        pub region: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CustomerPostalAddress {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1076,7 +1057,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1095,22 +1075,22 @@ pub mod schemas {
         #[doc = "The creation time of the domain alias. (Read-only)."]
         #[serde(rename = "creationTime", default)]
         #[serde(with = "crate::parsed_string")]
-        pub creation_time: Option<i64>,
+        pub creation_time: ::std::option::Option<i64>,
         #[doc = "The domain alias name."]
         #[serde(rename = "domainAliasName", default)]
-        pub domain_alias_name: Option<String>,
+        pub domain_alias_name: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The parent domain name that the domain alias is associated with. This can either be a primary or secondary domain name within a customer."]
         #[serde(rename = "parentDomainName", default)]
-        pub parent_domain_name: Option<String>,
+        pub parent_domain_name: ::std::option::Option<String>,
         #[doc = "Indicates the verification state of a domain alias. (Read-only)"]
         #[serde(rename = "verified", default)]
-        pub verified: Option<bool>,
+        pub verified: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for DomainAlias {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1119,7 +1099,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1137,13 +1116,13 @@ pub mod schemas {
     pub struct DomainAliases {
         #[doc = "List of domain alias objects."]
         #[serde(rename = "domainAliases", default)]
-        pub domain_aliases: Option<Vec<crate::schemas::DomainAlias>>,
+        pub domain_aliases: ::std::option::Option<Vec<crate::schemas::DomainAlias>>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DomainAliases {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1152,7 +1131,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1171,25 +1149,25 @@ pub mod schemas {
         #[doc = "Creation time of the domain. (Read-only)."]
         #[serde(rename = "creationTime", default)]
         #[serde(with = "crate::parsed_string")]
-        pub creation_time: Option<i64>,
+        pub creation_time: ::std::option::Option<i64>,
         #[doc = "List of domain alias objects. (Read-only)"]
         #[serde(rename = "domainAliases", default)]
-        pub domain_aliases: Option<Vec<crate::schemas::DomainAlias>>,
+        pub domain_aliases: ::std::option::Option<Vec<crate::schemas::DomainAlias>>,
         #[doc = "The domain name of the customer."]
         #[serde(rename = "domainName", default)]
-        pub domain_name: Option<String>,
+        pub domain_name: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Indicates if the domain is a primary domain (Read-only)."]
         #[serde(rename = "isPrimary", default)]
-        pub is_primary: Option<bool>,
+        pub is_primary: ::std::option::Option<bool>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Indicates the verification state of a domain. (Read-only)."]
         #[serde(rename = "verified", default)]
-        pub verified: Option<bool>,
+        pub verified: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for Domains {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1198,7 +1176,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1216,13 +1193,13 @@ pub mod schemas {
     pub struct Domains2 {
         #[doc = "List of domain objects."]
         #[serde(rename = "domains", default)]
-        pub domains: Option<Vec<crate::schemas::Domains>>,
+        pub domains: ::std::option::Option<Vec<crate::schemas::Domains>>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Domains2 {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1231,7 +1208,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1249,13 +1225,13 @@ pub mod schemas {
     pub struct Feature {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etags", default)]
-        pub etags: Option<String>,
+        pub etags: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The name of the feature."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Feature {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1264,7 +1240,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1282,7 +1257,7 @@ pub mod schemas {
     pub struct FeatureInstance {
         #[doc = "The feature that this is an instance of. A calendar resource may have multiple instances of a feature."]
         #[serde(rename = "feature", default)]
-        pub feature: Option<crate::schemas::Feature>,
+        pub feature: ::std::option::Option<crate::schemas::Feature>,
     }
     impl ::field_selector::FieldSelector for FeatureInstance {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1291,7 +1266,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1309,7 +1283,7 @@ pub mod schemas {
     pub struct FeatureRename {
         #[doc = "New name of the feature."]
         #[serde(rename = "newName", default)]
-        pub new_name: Option<String>,
+        pub new_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FeatureRename {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1318,7 +1292,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1336,16 +1309,16 @@ pub mod schemas {
     pub struct Features {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The Features in this page of results."]
         #[serde(rename = "features", default)]
-        pub features: Option<Vec<crate::schemas::Feature>>,
+        pub features: ::std::option::Option<Vec<crate::schemas::Feature>>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Features {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1354,7 +1327,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1372,35 +1344,35 @@ pub mod schemas {
     pub struct Group {
         #[doc = "Is the group created by admin (Read-only) *"]
         #[serde(rename = "adminCreated", default)]
-        pub admin_created: Option<bool>,
+        pub admin_created: ::std::option::Option<bool>,
         #[doc = "List of aliases (Read-only)"]
         #[serde(rename = "aliases", default)]
-        pub aliases: Option<Vec<String>>,
+        pub aliases: ::std::option::Option<Vec<String>>,
         #[doc = "Description of the group"]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Group direct members count"]
         #[serde(rename = "directMembersCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub direct_members_count: Option<i64>,
+        pub direct_members_count: ::std::option::Option<i64>,
         #[doc = "Email of Group"]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Unique identifier of Group (Read-only)"]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Group name"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "List of non editable aliases (Read-only)"]
         #[serde(rename = "nonEditableAliases", default)]
-        pub non_editable_aliases: Option<Vec<String>>,
+        pub non_editable_aliases: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for Group {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1409,7 +1381,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1427,16 +1398,16 @@ pub mod schemas {
     pub struct Groups {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "List of group objects."]
         #[serde(rename = "groups", default)]
-        pub groups: Option<Vec<crate::schemas::Group>>,
+        pub groups: ::std::option::Option<Vec<crate::schemas::Group>>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access next page of this result."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Groups {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1445,7 +1416,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1463,28 +1433,28 @@ pub mod schemas {
     pub struct Member {
         #[doc = "Delivery settings of member"]
         #[serde(rename = "delivery_settings", default)]
-        pub delivery_settings: Option<String>,
+        pub delivery_settings: ::std::option::Option<String>,
         #[doc = "Email of member (Read-only)"]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The unique ID of the group member. A member id can be used as a member request URI's memberKey. Unique identifier of group (Read-only) Unique identifier of member (Read-only)"]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Type of member (Immutable)"]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Role of member"]
         #[serde(rename = "role", default)]
-        pub role: Option<String>,
+        pub role: ::std::option::Option<String>,
         #[doc = "Status of member (Immutable)"]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Member {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1493,7 +1463,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1511,16 +1480,16 @@ pub mod schemas {
     pub struct Members {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "List of member objects."]
         #[serde(rename = "members", default)]
-        pub members: Option<Vec<crate::schemas::Member>>,
+        pub members: ::std::option::Option<Vec<crate::schemas::Member>>,
         #[doc = "Token used to access next page of this result."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Members {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1529,7 +1498,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1547,7 +1515,7 @@ pub mod schemas {
     pub struct MembersHasMember {
         #[doc = "Identifies whether the given user is a member of the group. Membership can be direct or nested."]
         #[serde(rename = "isMember", default)]
-        pub is_member: Option<bool>,
+        pub is_member: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for MembersHasMember {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1556,7 +1524,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1574,19 +1541,19 @@ pub mod schemas {
     pub struct MobileDeviceApplicationsItems {
         #[doc = "Display name of application"]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "Package name of application"]
         #[serde(rename = "packageName", default)]
-        pub package_name: Option<String>,
+        pub package_name: ::std::option::Option<String>,
         #[doc = "List of Permissions for application"]
         #[serde(rename = "permission", default)]
-        pub permission: Option<Vec<String>>,
+        pub permission: ::std::option::Option<Vec<String>>,
         #[doc = "Version code of application"]
         #[serde(rename = "versionCode", default)]
-        pub version_code: Option<i32>,
+        pub version_code: ::std::option::Option<i32>,
         #[doc = "Version name of application"]
         #[serde(rename = "versionName", default)]
-        pub version_name: Option<String>,
+        pub version_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for MobileDeviceApplicationsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1595,7 +1562,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1613,125 +1579,125 @@ pub mod schemas {
     pub struct MobileDevice {
         #[doc = "Adb (USB debugging) enabled or disabled on device (Read-only)"]
         #[serde(rename = "adbStatus", default)]
-        pub adb_status: Option<bool>,
+        pub adb_status: ::std::option::Option<bool>,
         #[doc = "List of applications installed on Mobile Device"]
         #[serde(rename = "applications", default)]
-        pub applications: Option<Vec<crate::schemas::MobileDeviceApplicationsItems>>,
+        pub applications: ::std::option::Option<Vec<crate::schemas::MobileDeviceApplicationsItems>>,
         #[doc = "Mobile Device Baseband version (Read-only)"]
         #[serde(rename = "basebandVersion", default)]
-        pub baseband_version: Option<String>,
+        pub baseband_version: ::std::option::Option<String>,
         #[doc = "Mobile Device Bootloader version (Read-only)"]
         #[serde(rename = "bootloaderVersion", default)]
-        pub bootloader_version: Option<String>,
+        pub bootloader_version: ::std::option::Option<String>,
         #[doc = "Mobile Device Brand (Read-only)"]
         #[serde(rename = "brand", default)]
-        pub brand: Option<String>,
+        pub brand: ::std::option::Option<String>,
         #[doc = "Mobile Device Build number (Read-only)"]
         #[serde(rename = "buildNumber", default)]
-        pub build_number: Option<String>,
+        pub build_number: ::std::option::Option<String>,
         #[doc = "The default locale used on the Mobile Device (Read-only)"]
         #[serde(rename = "defaultLanguage", default)]
-        pub default_language: Option<String>,
+        pub default_language: ::std::option::Option<String>,
         #[doc = "Developer options enabled or disabled on device (Read-only)"]
         #[serde(rename = "developerOptionsStatus", default)]
-        pub developer_options_status: Option<bool>,
+        pub developer_options_status: ::std::option::Option<bool>,
         #[doc = "Mobile Device compromised status (Read-only)"]
         #[serde(rename = "deviceCompromisedStatus", default)]
-        pub device_compromised_status: Option<String>,
+        pub device_compromised_status: ::std::option::Option<String>,
         #[doc = "Mobile Device serial number (Read-only)"]
         #[serde(rename = "deviceId", default)]
-        pub device_id: Option<String>,
+        pub device_id: ::std::option::Option<String>,
         #[doc = "DevicePasswordStatus (Read-only)"]
         #[serde(rename = "devicePasswordStatus", default)]
-        pub device_password_status: Option<String>,
+        pub device_password_status: ::std::option::Option<String>,
         #[doc = "List of owner user's email addresses (Read-only)"]
         #[serde(rename = "email", default)]
-        pub email: Option<Vec<String>>,
+        pub email: ::std::option::Option<Vec<String>>,
         #[doc = "Mobile Device Encryption Status (Read-only)"]
         #[serde(rename = "encryptionStatus", default)]
-        pub encryption_status: Option<String>,
+        pub encryption_status: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Date and time the device was first synchronized with the policy settings in the G Suite administrator control panel (Read-only)"]
         #[serde(rename = "firstSync", default)]
-        pub first_sync: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub first_sync: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Mobile Device Hardware (Read-only)"]
         #[serde(rename = "hardware", default)]
-        pub hardware: Option<String>,
+        pub hardware: ::std::option::Option<String>,
         #[doc = "Mobile Device Hardware Id (Read-only)"]
         #[serde(rename = "hardwareId", default)]
-        pub hardware_id: Option<String>,
+        pub hardware_id: ::std::option::Option<String>,
         #[doc = "Mobile Device IMEI number (Read-only)"]
         #[serde(rename = "imei", default)]
-        pub imei: Option<String>,
+        pub imei: ::std::option::Option<String>,
         #[doc = "Mobile Device Kernel version (Read-only)"]
         #[serde(rename = "kernelVersion", default)]
-        pub kernel_version: Option<String>,
+        pub kernel_version: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Date and time the device was last synchronized with the policy settings in the G Suite administrator control panel (Read-only)"]
         #[serde(rename = "lastSync", default)]
-        pub last_sync: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub last_sync: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Boolean indicating if this account is on owner/primary profile or not (Read-only)"]
         #[serde(rename = "managedAccountIsOnOwnerProfile", default)]
-        pub managed_account_is_on_owner_profile: Option<bool>,
+        pub managed_account_is_on_owner_profile: ::std::option::Option<bool>,
         #[doc = "Mobile Device manufacturer (Read-only)"]
         #[serde(rename = "manufacturer", default)]
-        pub manufacturer: Option<String>,
+        pub manufacturer: ::std::option::Option<String>,
         #[doc = "Mobile Device MEID number (Read-only)"]
         #[serde(rename = "meid", default)]
-        pub meid: Option<String>,
+        pub meid: ::std::option::Option<String>,
         #[doc = "Name of the model of the device"]
         #[serde(rename = "model", default)]
-        pub model: Option<String>,
+        pub model: ::std::option::Option<String>,
         #[doc = "List of owner user's names (Read-only)"]
         #[serde(rename = "name", default)]
-        pub name: Option<Vec<String>>,
+        pub name: ::std::option::Option<Vec<String>>,
         #[doc = "Mobile Device mobile or network operator (if available) (Read-only)"]
         #[serde(rename = "networkOperator", default)]
-        pub network_operator: Option<String>,
+        pub network_operator: ::std::option::Option<String>,
         #[doc = "Name of the mobile operating system"]
         #[serde(rename = "os", default)]
-        pub os: Option<String>,
+        pub os: ::std::option::Option<String>,
         #[doc = "List of accounts added on device (Read-only)"]
         #[serde(rename = "otherAccountsInfo", default)]
-        pub other_accounts_info: Option<Vec<String>>,
+        pub other_accounts_info: ::std::option::Option<Vec<String>>,
         #[doc = "DMAgentPermission (Read-only)"]
         #[serde(rename = "privilege", default)]
-        pub privilege: Option<String>,
+        pub privilege: ::std::option::Option<String>,
         #[doc = "The type of device (Read-only)"]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Mobile Device release version version (Read-only)"]
         #[serde(rename = "releaseVersion", default)]
-        pub release_version: Option<String>,
+        pub release_version: ::std::option::Option<String>,
         #[doc = "Unique identifier of Mobile Device (Read-only)"]
         #[serde(rename = "resourceId", default)]
-        pub resource_id: Option<String>,
+        pub resource_id: ::std::option::Option<String>,
         #[doc = "Mobile Device Security patch level (Read-only)"]
         #[serde(rename = "securityPatchLevel", default)]
         #[serde(with = "crate::parsed_string")]
-        pub security_patch_level: Option<i64>,
+        pub security_patch_level: ::std::option::Option<i64>,
         #[doc = "Mobile Device SSN or Serial Number (Read-only)"]
         #[serde(rename = "serialNumber", default)]
-        pub serial_number: Option<String>,
+        pub serial_number: ::std::option::Option<String>,
         #[doc = "Status of the device (Read-only)"]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
         #[doc = "Work profile supported on device (Read-only)"]
         #[serde(rename = "supportsWorkProfile", default)]
-        pub supports_work_profile: Option<bool>,
+        pub supports_work_profile: ::std::option::Option<bool>,
         #[doc = "Unknown sources enabled or disabled on device (Read-only)"]
         #[serde(rename = "unknownSourcesStatus", default)]
-        pub unknown_sources_status: Option<bool>,
+        pub unknown_sources_status: ::std::option::Option<bool>,
         #[doc = "Mobile Device user agent"]
         #[serde(rename = "userAgent", default)]
-        pub user_agent: Option<String>,
+        pub user_agent: ::std::option::Option<String>,
         #[doc = "Mobile Device WiFi MAC address (Read-only)"]
         #[serde(rename = "wifiMacAddress", default)]
-        pub wifi_mac_address: Option<String>,
+        pub wifi_mac_address: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for MobileDevice {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1740,7 +1706,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1758,7 +1723,7 @@ pub mod schemas {
     pub struct MobileDeviceAction {
         #[doc = "Action to be taken on the Mobile Device"]
         #[serde(rename = "action", default)]
-        pub action: Option<String>,
+        pub action: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for MobileDeviceAction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1767,7 +1732,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1785,16 +1749,16 @@ pub mod schemas {
     pub struct MobileDevices {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "List of Mobile Device objects."]
         #[serde(rename = "mobiledevices", default)]
-        pub mobiledevices: Option<Vec<crate::schemas::MobileDevice>>,
+        pub mobiledevices: ::std::option::Option<Vec<crate::schemas::MobileDevice>>,
         #[doc = "Token used to access next page of this result."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for MobileDevices {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1803,7 +1767,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1821,27 +1784,27 @@ pub mod schemas {
     pub struct Notification {
         #[doc = "Body of the notification (Read-only)"]
         #[serde(rename = "body", default)]
-        pub body: Option<String>,
+        pub body: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Address from which the notification is received (Read-only)"]
         #[serde(rename = "fromAddress", default)]
-        pub from_address: Option<String>,
+        pub from_address: ::std::option::Option<String>,
         #[doc = "Boolean indicating whether the notification is unread or not."]
         #[serde(rename = "isUnread", default)]
-        pub is_unread: Option<bool>,
+        pub is_unread: ::std::option::Option<bool>,
         #[doc = "The type of the resource."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "notificationId", default)]
-        pub notification_id: Option<String>,
+        pub notification_id: ::std::option::Option<String>,
         #[doc = "Time at which notification was sent (Read-only)"]
         #[serde(rename = "sendTime", default)]
-        pub send_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub send_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Subject of the notification (Read-only)"]
         #[serde(rename = "subject", default)]
-        pub subject: Option<String>,
+        pub subject: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Notification {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1850,7 +1813,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1868,19 +1830,19 @@ pub mod schemas {
     pub struct Notifications {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "List of notifications in this page."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Notification>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Notification>>,
         #[doc = "The type of the resource."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Token for fetching the next page of notifications."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Number of unread notification for the domain."]
         #[serde(rename = "unreadNotificationsCount", default)]
-        pub unread_notifications_count: Option<i32>,
+        pub unread_notifications_count: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Notifications {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1889,7 +1851,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1907,31 +1868,31 @@ pub mod schemas {
     pub struct OrgUnit {
         #[doc = "Should block inheritance"]
         #[serde(rename = "blockInheritance", default)]
-        pub block_inheritance: Option<bool>,
+        pub block_inheritance: ::std::option::Option<bool>,
         #[doc = "Description of OrgUnit"]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Name of OrgUnit"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Id of OrgUnit"]
         #[serde(rename = "orgUnitId", default)]
-        pub org_unit_id: Option<String>,
+        pub org_unit_id: ::std::option::Option<String>,
         #[doc = "Path of OrgUnit"]
         #[serde(rename = "orgUnitPath", default)]
-        pub org_unit_path: Option<String>,
+        pub org_unit_path: ::std::option::Option<String>,
         #[doc = "Id of parent OrgUnit"]
         #[serde(rename = "parentOrgUnitId", default)]
-        pub parent_org_unit_id: Option<String>,
+        pub parent_org_unit_id: ::std::option::Option<String>,
         #[doc = "Path of parent OrgUnit"]
         #[serde(rename = "parentOrgUnitPath", default)]
-        pub parent_org_unit_path: Option<String>,
+        pub parent_org_unit_path: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for OrgUnit {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1940,7 +1901,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1958,13 +1918,13 @@ pub mod schemas {
     pub struct OrgUnits {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "List of user objects."]
         #[serde(rename = "organizationUnits", default)]
-        pub organization_units: Option<Vec<crate::schemas::OrgUnit>>,
+        pub organization_units: ::std::option::Option<Vec<crate::schemas::OrgUnit>>,
     }
     impl ::field_selector::FieldSelector for OrgUnits {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1973,7 +1933,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1991,25 +1950,25 @@ pub mod schemas {
     pub struct Privilege {
         #[doc = "A list of child privileges. Privileges for a service form a tree. Each privilege can have a list of child privileges; this list is empty for a leaf privilege."]
         #[serde(rename = "childPrivileges", default)]
-        pub child_privileges: Option<Vec<crate::schemas::Privilege>>,
+        pub child_privileges: ::std::option::Option<Vec<crate::schemas::Privilege>>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "If the privilege can be restricted to an organization unit."]
         #[serde(rename = "isOuScopable", default)]
-        pub is_ou_scopable: Option<bool>,
+        pub is_ou_scopable: ::std::option::Option<bool>,
         #[doc = "The type of the API resource. This is always admin#directory#privilege."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The name of the privilege."]
         #[serde(rename = "privilegeName", default)]
-        pub privilege_name: Option<String>,
+        pub privilege_name: ::std::option::Option<String>,
         #[doc = "The obfuscated ID of the service this privilege is for. This value is returned with Privileges.list()."]
         #[serde(rename = "serviceId", default)]
-        pub service_id: Option<String>,
+        pub service_id: ::std::option::Option<String>,
         #[doc = "The name of the service this privilege is for."]
         #[serde(rename = "serviceName", default)]
-        pub service_name: Option<String>,
+        pub service_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Privilege {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2018,7 +1977,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2036,13 +1994,13 @@ pub mod schemas {
     pub struct Privileges {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "A list of Privilege resources."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Privilege>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Privilege>>,
         #[doc = "The type of the API resource. This is always admin#directory#privileges."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Privileges {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2051,7 +2009,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2069,10 +2026,10 @@ pub mod schemas {
     pub struct RoleRolePrivilegesItems {
         #[doc = "The name of the privilege."]
         #[serde(rename = "privilegeName", default)]
-        pub privilege_name: Option<String>,
+        pub privilege_name: ::std::option::Option<String>,
         #[doc = "The obfuscated ID of the service this privilege is for. This value is returned with Privileges.list()."]
         #[serde(rename = "serviceId", default)]
-        pub service_id: Option<String>,
+        pub service_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RoleRolePrivilegesItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2081,7 +2038,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2099,29 +2055,29 @@ pub mod schemas {
     pub struct Role {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Returns true if the role is a super admin role."]
         #[serde(rename = "isSuperAdminRole", default)]
-        pub is_super_admin_role: Option<bool>,
+        pub is_super_admin_role: ::std::option::Option<bool>,
         #[doc = "Returns true if this is a pre-defined system role."]
         #[serde(rename = "isSystemRole", default)]
-        pub is_system_role: Option<bool>,
+        pub is_system_role: ::std::option::Option<bool>,
         #[doc = "The type of the API resource. This is always admin#directory#role."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "A short description of the role."]
         #[serde(rename = "roleDescription", default)]
-        pub role_description: Option<String>,
+        pub role_description: ::std::option::Option<String>,
         #[doc = "ID of the role."]
         #[serde(rename = "roleId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub role_id: Option<i64>,
+        pub role_id: ::std::option::Option<i64>,
         #[doc = "Name of the role."]
         #[serde(rename = "roleName", default)]
-        pub role_name: Option<String>,
+        pub role_name: ::std::option::Option<String>,
         #[doc = "The set of privileges that are granted to this role."]
         #[serde(rename = "rolePrivileges", default)]
-        pub role_privileges: Option<Vec<crate::schemas::RoleRolePrivilegesItems>>,
+        pub role_privileges: ::std::option::Option<Vec<crate::schemas::RoleRolePrivilegesItems>>,
     }
     impl ::field_selector::FieldSelector for Role {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2130,7 +2086,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2148,27 +2103,27 @@ pub mod schemas {
     pub struct RoleAssignment {
         #[doc = "The unique ID of the user this role is assigned to."]
         #[serde(rename = "assignedTo", default)]
-        pub assigned_to: Option<String>,
+        pub assigned_to: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The type of the API resource. This is always admin#directory#roleAssignment."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "If the role is restricted to an organization unit, this contains the ID for the organization unit the exercise of this role is restricted to."]
         #[serde(rename = "orgUnitId", default)]
-        pub org_unit_id: Option<String>,
+        pub org_unit_id: ::std::option::Option<String>,
         #[doc = "ID of this roleAssignment."]
         #[serde(rename = "roleAssignmentId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub role_assignment_id: Option<i64>,
+        pub role_assignment_id: ::std::option::Option<i64>,
         #[doc = "The ID of the role that is assigned."]
         #[serde(rename = "roleId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub role_id: Option<i64>,
+        pub role_id: ::std::option::Option<i64>,
         #[doc = "The scope in which this role is assigned. Possible values are: \n\n* CUSTOMER\n* ORG_UNIT"]
         #[serde(rename = "scopeType", default)]
-        pub scope_type: Option<String>,
+        pub scope_type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RoleAssignment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2177,7 +2132,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2195,15 +2149,15 @@ pub mod schemas {
     pub struct RoleAssignments {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "A list of RoleAssignment resources."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::RoleAssignment>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::RoleAssignment>>,
         #[doc = "The type of the API resource. This is always admin#directory#roleAssignments."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RoleAssignments {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2212,7 +2166,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2230,15 +2183,15 @@ pub mod schemas {
     pub struct Roles {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "A list of Role resources."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Role>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Role>>,
         #[doc = "The type of the API resource. This is always admin#directory#roles."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Roles {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2247,7 +2200,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2256,22 +2208,22 @@ pub mod schemas {
     pub struct Schema {
         #[doc = "Display name for the schema."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Fields of Schema"]
         #[serde(rename = "fields", default)]
-        pub fields: Option<Vec<crate::schemas::SchemaFieldSpec>>,
+        pub fields: ::std::option::Option<Vec<crate::schemas::SchemaFieldSpec>>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Unique identifier of Schema (Read-only)"]
         #[serde(rename = "schemaId", default)]
-        pub schema_id: Option<String>,
+        pub schema_id: ::std::option::Option<String>,
         #[doc = "Schema name"]
         #[serde(rename = "schemaName", default)]
-        pub schema_name: Option<String>,
+        pub schema_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Schema {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2280,7 +2232,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2289,10 +2240,10 @@ pub mod schemas {
     pub struct SchemaFieldSpecNumericIndexingSpec {
         #[doc = "Maximum value of this field. This is meant to be indicative rather than enforced. Values outside this range will still be indexed, but search may not be as performant."]
         #[serde(rename = "maxValue", default)]
-        pub max_value: Option<f64>,
+        pub max_value: ::std::option::Option<f64>,
         #[doc = "Minimum value of this field. This is meant to be indicative rather than enforced. Values outside this range will still be indexed, but search may not be as performant."]
         #[serde(rename = "minValue", default)]
-        pub min_value: Option<f64>,
+        pub min_value: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for SchemaFieldSpecNumericIndexingSpec {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2301,7 +2252,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2310,34 +2260,35 @@ pub mod schemas {
     pub struct SchemaFieldSpec {
         #[doc = "Display Name of the field."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Unique identifier of Field (Read-only)"]
         #[serde(rename = "fieldId", default)]
-        pub field_id: Option<String>,
+        pub field_id: ::std::option::Option<String>,
         #[doc = "Name of the field."]
         #[serde(rename = "fieldName", default)]
-        pub field_name: Option<String>,
+        pub field_name: ::std::option::Option<String>,
         #[doc = "Type of the field."]
         #[serde(rename = "fieldType", default)]
-        pub field_type: Option<String>,
+        pub field_type: ::std::option::Option<String>,
         #[doc = "Boolean specifying whether the field is indexed or not."]
         #[serde(rename = "indexed", default)]
-        pub indexed: Option<bool>,
+        pub indexed: ::std::option::Option<bool>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Boolean specifying whether this is a multi-valued field or not."]
         #[serde(rename = "multiValued", default)]
-        pub multi_valued: Option<bool>,
+        pub multi_valued: ::std::option::Option<bool>,
         #[doc = "Indexing spec for a numeric field. By default, only exact match queries will be supported for numeric fields. Setting the numericIndexingSpec allows range queries to be supported."]
         #[serde(rename = "numericIndexingSpec", default)]
-        pub numeric_indexing_spec: Option<crate::schemas::SchemaFieldSpecNumericIndexingSpec>,
+        pub numeric_indexing_spec:
+            ::std::option::Option<crate::schemas::SchemaFieldSpecNumericIndexingSpec>,
         #[doc = "Read ACLs on the field specifying who can view values of this field. Valid values are \"ALL_DOMAIN_USERS\" and \"ADMINS_AND_SELF\"."]
         #[serde(rename = "readAccessType", default)]
-        pub read_access_type: Option<String>,
+        pub read_access_type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SchemaFieldSpec {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2346,7 +2297,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2355,13 +2305,13 @@ pub mod schemas {
     pub struct Schemas {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "List of UserSchema objects."]
         #[serde(rename = "schemas", default)]
-        pub schemas: Option<Vec<crate::schemas::Schema>>,
+        pub schemas: ::std::option::Option<Vec<crate::schemas::Schema>>,
     }
     impl ::field_selector::FieldSelector for Schemas {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2370,7 +2320,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2388,28 +2337,28 @@ pub mod schemas {
     pub struct Token {
         #[doc = "Whether the application is registered with Google. The value is true if the application has an anonymous Client ID."]
         #[serde(rename = "anonymous", default)]
-        pub anonymous: Option<bool>,
+        pub anonymous: ::std::option::Option<bool>,
         #[doc = "The Client ID of the application the token is issued to."]
         #[serde(rename = "clientId", default)]
-        pub client_id: Option<String>,
+        pub client_id: ::std::option::Option<String>,
         #[doc = "The displayable name of the application the token is issued to."]
         #[serde(rename = "displayText", default)]
-        pub display_text: Option<String>,
+        pub display_text: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The type of the API resource. This is always admin#directory#token."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Whether the token is issued to an installed application. The value is true if the application is installed to a desktop or mobile device."]
         #[serde(rename = "nativeApp", default)]
-        pub native_app: Option<bool>,
+        pub native_app: ::std::option::Option<bool>,
         #[doc = "A list of authorization scopes the application is granted."]
         #[serde(rename = "scopes", default)]
-        pub scopes: Option<Vec<String>>,
+        pub scopes: ::std::option::Option<Vec<String>>,
         #[doc = "The unique ID of the user that issued the token."]
         #[serde(rename = "userKey", default)]
-        pub user_key: Option<String>,
+        pub user_key: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Token {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2418,7 +2367,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2436,13 +2384,13 @@ pub mod schemas {
     pub struct Tokens {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "A list of Token resources."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Token>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Token>>,
         #[doc = "The type of the API resource. This is always admin#directory#tokenList."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Tokens {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2451,7 +2399,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2469,18 +2416,18 @@ pub mod schemas {
     pub struct TrustedAppId {
         #[doc = "Android package name."]
         #[serde(rename = "androidPackageName", default)]
-        pub android_package_name: Option<String>,
+        pub android_package_name: ::std::option::Option<String>,
         #[doc = "SHA1 signature of the app certificate."]
         #[serde(rename = "certificateHashSHA1", default)]
-        pub certificate_hash_sha1: Option<String>,
+        pub certificate_hash_sha1: ::std::option::Option<String>,
         #[doc = "SHA256 signature of the app certificate."]
         #[serde(rename = "certificateHashSHA256", default)]
-        pub certificate_hash_sha256: Option<String>,
+        pub certificate_hash_sha256: ::std::option::Option<String>,
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Identifies the resource as a trusted AppId."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TrustedAppId {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2489,7 +2436,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2507,15 +2453,15 @@ pub mod schemas {
     pub struct TrustedApps {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Identifies the resource as trusted apps response."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Trusted Apps list."]
         #[serde(rename = "trustedApps", default)]
-        pub trusted_apps: Option<Vec<crate::schemas::TrustedAppId>>,
+        pub trusted_apps: ::std::option::Option<Vec<crate::schemas::TrustedAppId>>,
     }
     impl ::field_selector::FieldSelector for TrustedApps {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2524,134 +2470,134 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct User {
         #[serde(rename = "addresses", default)]
-        pub addresses: Option<::serde_json::Value>,
+        pub addresses: ::std::option::Option<::serde_json::Value>,
         #[doc = "Indicates if user has agreed to terms (Read-only)"]
         #[serde(rename = "agreedToTerms", default)]
-        pub agreed_to_terms: Option<bool>,
+        pub agreed_to_terms: ::std::option::Option<bool>,
         #[doc = "List of aliases (Read-only)"]
         #[serde(rename = "aliases", default)]
-        pub aliases: Option<Vec<String>>,
+        pub aliases: ::std::option::Option<Vec<String>>,
         #[doc = "Indicates if user is archived."]
         #[serde(rename = "archived", default)]
-        pub archived: Option<bool>,
+        pub archived: ::std::option::Option<bool>,
         #[doc = "Boolean indicating if the user should change password in next login"]
         #[serde(rename = "changePasswordAtNextLogin", default)]
-        pub change_password_at_next_login: Option<bool>,
+        pub change_password_at_next_login: ::std::option::Option<bool>,
         #[doc = "User's G Suite account creation time. (Read-only)"]
         #[serde(rename = "creationTime", default)]
-        pub creation_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub creation_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Custom fields of the user."]
         #[serde(rename = "customSchemas", default)]
-        pub custom_schemas:
-            Option<::std::collections::BTreeMap<String, crate::schemas::UserCustomProperties>>,
+        pub custom_schemas: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::UserCustomProperties>,
+        >,
         #[doc = "CustomerId of User (Read-only)"]
         #[serde(rename = "customerId", default)]
-        pub customer_id: Option<String>,
+        pub customer_id: ::std::option::Option<String>,
         #[serde(rename = "deletionTime", default)]
-        pub deletion_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub deletion_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[serde(rename = "emails", default)]
-        pub emails: Option<::serde_json::Value>,
+        pub emails: ::std::option::Option<::serde_json::Value>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[serde(rename = "externalIds", default)]
-        pub external_ids: Option<::serde_json::Value>,
+        pub external_ids: ::std::option::Option<::serde_json::Value>,
         #[serde(rename = "gender", default)]
-        pub gender: Option<::serde_json::Value>,
+        pub gender: ::std::option::Option<::serde_json::Value>,
         #[doc = "Hash function name for password. Supported are MD5, SHA-1 and crypt"]
         #[serde(rename = "hashFunction", default)]
-        pub hash_function: Option<String>,
+        pub hash_function: ::std::option::Option<String>,
         #[doc = "Unique identifier of User (Read-only)"]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[serde(rename = "ims", default)]
-        pub ims: Option<::serde_json::Value>,
+        pub ims: ::std::option::Option<::serde_json::Value>,
         #[doc = "Boolean indicating if user is included in Global Address List"]
         #[serde(rename = "includeInGlobalAddressList", default)]
-        pub include_in_global_address_list: Option<bool>,
+        pub include_in_global_address_list: ::std::option::Option<bool>,
         #[doc = "Boolean indicating if ip is whitelisted"]
         #[serde(rename = "ipWhitelisted", default)]
-        pub ip_whitelisted: Option<bool>,
+        pub ip_whitelisted: ::std::option::Option<bool>,
         #[doc = "Boolean indicating if the user is admin (Read-only)"]
         #[serde(rename = "isAdmin", default)]
-        pub is_admin: Option<bool>,
+        pub is_admin: ::std::option::Option<bool>,
         #[doc = "Boolean indicating if the user is delegated admin (Read-only)"]
         #[serde(rename = "isDelegatedAdmin", default)]
-        pub is_delegated_admin: Option<bool>,
+        pub is_delegated_admin: ::std::option::Option<bool>,
         #[doc = "Is 2-step verification enforced (Read-only)"]
         #[serde(rename = "isEnforcedIn2Sv", default)]
-        pub is_enforced_in_2_sv: Option<bool>,
+        pub is_enforced_in_2_sv: ::std::option::Option<bool>,
         #[doc = "Is enrolled in 2-step verification (Read-only)"]
         #[serde(rename = "isEnrolledIn2Sv", default)]
-        pub is_enrolled_in_2_sv: Option<bool>,
+        pub is_enrolled_in_2_sv: ::std::option::Option<bool>,
         #[doc = "Is mailbox setup (Read-only)"]
         #[serde(rename = "isMailboxSetup", default)]
-        pub is_mailbox_setup: Option<bool>,
+        pub is_mailbox_setup: ::std::option::Option<bool>,
         #[serde(rename = "keywords", default)]
-        pub keywords: Option<::serde_json::Value>,
+        pub keywords: ::std::option::Option<::serde_json::Value>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "languages", default)]
-        pub languages: Option<::serde_json::Value>,
+        pub languages: ::std::option::Option<::serde_json::Value>,
         #[doc = "User's last login time. (Read-only)"]
         #[serde(rename = "lastLoginTime", default)]
-        pub last_login_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub last_login_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[serde(rename = "locations", default)]
-        pub locations: Option<::serde_json::Value>,
+        pub locations: ::std::option::Option<::serde_json::Value>,
         #[doc = "User's name"]
         #[serde(rename = "name", default)]
-        pub name: Option<crate::schemas::UserName>,
+        pub name: ::std::option::Option<crate::schemas::UserName>,
         #[doc = "List of non editable aliases (Read-only)"]
         #[serde(rename = "nonEditableAliases", default)]
-        pub non_editable_aliases: Option<Vec<String>>,
+        pub non_editable_aliases: ::std::option::Option<Vec<String>>,
         #[serde(rename = "notes", default)]
-        pub notes: Option<::serde_json::Value>,
+        pub notes: ::std::option::Option<::serde_json::Value>,
         #[doc = "OrgUnit of User"]
         #[serde(rename = "orgUnitPath", default)]
-        pub org_unit_path: Option<String>,
+        pub org_unit_path: ::std::option::Option<String>,
         #[serde(rename = "organizations", default)]
-        pub organizations: Option<::serde_json::Value>,
+        pub organizations: ::std::option::Option<::serde_json::Value>,
         #[doc = "User's password"]
         #[serde(rename = "password", default)]
-        pub password: Option<String>,
+        pub password: ::std::option::Option<String>,
         #[serde(rename = "phones", default)]
-        pub phones: Option<::serde_json::Value>,
+        pub phones: ::std::option::Option<::serde_json::Value>,
         #[serde(rename = "posixAccounts", default)]
-        pub posix_accounts: Option<::serde_json::Value>,
+        pub posix_accounts: ::std::option::Option<::serde_json::Value>,
         #[doc = "username of User"]
         #[serde(rename = "primaryEmail", default)]
-        pub primary_email: Option<String>,
+        pub primary_email: ::std::option::Option<String>,
         #[doc = "Recovery email of the user."]
         #[serde(rename = "recoveryEmail", default)]
-        pub recovery_email: Option<String>,
+        pub recovery_email: ::std::option::Option<String>,
         #[doc = "Recovery phone of the user. The phone number must be in the E.164 format, starting with the plus sign (+). Example: +16506661212."]
         #[serde(rename = "recoveryPhone", default)]
-        pub recovery_phone: Option<String>,
+        pub recovery_phone: ::std::option::Option<String>,
         #[serde(rename = "relations", default)]
-        pub relations: Option<::serde_json::Value>,
+        pub relations: ::std::option::Option<::serde_json::Value>,
         #[serde(rename = "sshPublicKeys", default)]
-        pub ssh_public_keys: Option<::serde_json::Value>,
+        pub ssh_public_keys: ::std::option::Option<::serde_json::Value>,
         #[doc = "Indicates if user is suspended."]
         #[serde(rename = "suspended", default)]
-        pub suspended: Option<bool>,
+        pub suspended: ::std::option::Option<bool>,
         #[doc = "Suspension reason if user is suspended (Read-only)"]
         #[serde(rename = "suspensionReason", default)]
-        pub suspension_reason: Option<String>,
+        pub suspension_reason: ::std::option::Option<String>,
         #[doc = "ETag of the user's photo (Read-only)"]
         #[serde(rename = "thumbnailPhotoEtag", default)]
-        pub thumbnail_photo_etag: Option<String>,
+        pub thumbnail_photo_etag: ::std::option::Option<String>,
         #[doc = "Photo Url of the user (Read-only)"]
         #[serde(rename = "thumbnailPhotoUrl", default)]
-        pub thumbnail_photo_url: Option<String>,
+        pub thumbnail_photo_url: ::std::option::Option<String>,
         #[serde(rename = "websites", default)]
-        pub websites: Option<::serde_json::Value>,
+        pub websites: ::std::option::Option<::serde_json::Value>,
     }
     impl ::field_selector::FieldSelector for User {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2660,7 +2606,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2678,10 +2623,10 @@ pub mod schemas {
     pub struct UserAbout {
         #[doc = "About entry can have a type which indicates the content type. It can either be plain or html. By default, notes contents are assumed to contain plain text."]
         #[serde(rename = "contentType", default)]
-        pub content_type: Option<String>,
+        pub content_type: ::std::option::Option<String>,
         #[doc = "Actual value of notes."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserAbout {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2690,7 +2635,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2708,43 +2652,43 @@ pub mod schemas {
     pub struct UserAddress {
         #[doc = "Country."]
         #[serde(rename = "country", default)]
-        pub country: Option<String>,
+        pub country: ::std::option::Option<String>,
         #[doc = "Country code."]
         #[serde(rename = "countryCode", default)]
-        pub country_code: Option<String>,
+        pub country_code: ::std::option::Option<String>,
         #[doc = "Custom type."]
         #[serde(rename = "customType", default)]
-        pub custom_type: Option<String>,
+        pub custom_type: ::std::option::Option<String>,
         #[doc = "Extended Address."]
         #[serde(rename = "extendedAddress", default)]
-        pub extended_address: Option<String>,
+        pub extended_address: ::std::option::Option<String>,
         #[doc = "Formatted address."]
         #[serde(rename = "formatted", default)]
-        pub formatted: Option<String>,
+        pub formatted: ::std::option::Option<String>,
         #[doc = "Locality."]
         #[serde(rename = "locality", default)]
-        pub locality: Option<String>,
+        pub locality: ::std::option::Option<String>,
         #[doc = "Other parts of address."]
         #[serde(rename = "poBox", default)]
-        pub po_box: Option<String>,
+        pub po_box: ::std::option::Option<String>,
         #[doc = "Postal code."]
         #[serde(rename = "postalCode", default)]
-        pub postal_code: Option<String>,
+        pub postal_code: ::std::option::Option<String>,
         #[doc = "If this is user's primary address. Only one entry could be marked as primary."]
         #[serde(rename = "primary", default)]
-        pub primary: Option<bool>,
+        pub primary: ::std::option::Option<bool>,
         #[doc = "Each entry can have a type which indicates standard values of that entry. For example address could be of home, work etc. In addition to the standard type, an entry can have a custom type and can take any value. Such type should have the CUSTOM value as type and also have a customType value."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Region."]
         #[serde(rename = "region", default)]
-        pub region: Option<String>,
+        pub region: ::std::option::Option<String>,
         #[doc = "User supplied address was structured. Structured addresses are NOT supported at this time. You might be able to write structured addresses, but any values will eventually be clobbered."]
         #[serde(rename = "sourceIsStructured", default)]
-        pub source_is_structured: Option<bool>,
+        pub source_is_structured: ::std::option::Option<bool>,
         #[doc = "Street."]
         #[serde(rename = "streetAddress", default)]
-        pub street_address: Option<String>,
+        pub street_address: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserAddress {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2753,7 +2697,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     type UserCustomProperties = ::std::collections::BTreeMap<String, ::serde_json::Value>;
@@ -2772,16 +2715,16 @@ pub mod schemas {
     pub struct UserEmail {
         #[doc = "Email id of the user."]
         #[serde(rename = "address", default)]
-        pub address: Option<String>,
+        pub address: ::std::option::Option<String>,
         #[doc = "Custom Type."]
         #[serde(rename = "customType", default)]
-        pub custom_type: Option<String>,
+        pub custom_type: ::std::option::Option<String>,
         #[doc = "If this is user's primary email. Only one entry could be marked as primary."]
         #[serde(rename = "primary", default)]
-        pub primary: Option<bool>,
+        pub primary: ::std::option::Option<bool>,
         #[doc = "Each entry can have a type which indicates standard types of that entry. For example email could be of home, work etc. In addition to the standard type, an entry can have a custom type and can take any value Such types should have the CUSTOM value as type and also have a customType value."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserEmail {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2790,7 +2733,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2808,13 +2750,13 @@ pub mod schemas {
     pub struct UserExternalId {
         #[doc = "Custom type."]
         #[serde(rename = "customType", default)]
-        pub custom_type: Option<String>,
+        pub custom_type: ::std::option::Option<String>,
         #[doc = "The type of the Id."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "The value of the id."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserExternalId {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2823,7 +2765,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2841,13 +2782,13 @@ pub mod schemas {
     pub struct UserGender {
         #[doc = "AddressMeAs. A human-readable string containing the proper way to refer to the profile owner by humans, for example \"he/him/his\" or \"they/them/their\"."]
         #[serde(rename = "addressMeAs", default)]
-        pub address_me_as: Option<String>,
+        pub address_me_as: ::std::option::Option<String>,
         #[doc = "Custom gender."]
         #[serde(rename = "customGender", default)]
-        pub custom_gender: Option<String>,
+        pub custom_gender: ::std::option::Option<String>,
         #[doc = "Gender."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserGender {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2856,7 +2797,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2874,22 +2814,22 @@ pub mod schemas {
     pub struct UserIm {
         #[doc = "Custom protocol."]
         #[serde(rename = "customProtocol", default)]
-        pub custom_protocol: Option<String>,
+        pub custom_protocol: ::std::option::Option<String>,
         #[doc = "Custom type."]
         #[serde(rename = "customType", default)]
-        pub custom_type: Option<String>,
+        pub custom_type: ::std::option::Option<String>,
         #[doc = "Instant messenger id."]
         #[serde(rename = "im", default)]
-        pub im: Option<String>,
+        pub im: ::std::option::Option<String>,
         #[doc = "If this is user's primary im. Only one entry could be marked as primary."]
         #[serde(rename = "primary", default)]
-        pub primary: Option<bool>,
+        pub primary: ::std::option::Option<bool>,
         #[doc = "Protocol used in the instant messenger. It should be one of the values from ImProtocolTypes map. Similar to type, it can take a CUSTOM value and specify the custom name in customProtocol field."]
         #[serde(rename = "protocol", default)]
-        pub protocol: Option<String>,
+        pub protocol: ::std::option::Option<String>,
         #[doc = "Each entry can have a type which indicates standard types of that entry. For example instant messengers could be of home, work etc. In addition to the standard type, an entry can have a custom type and can take any value. Such types should have the CUSTOM value as type and also have a customType value."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserIm {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2898,7 +2838,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2916,13 +2855,13 @@ pub mod schemas {
     pub struct UserKeyword {
         #[doc = "Custom Type."]
         #[serde(rename = "customType", default)]
-        pub custom_type: Option<String>,
+        pub custom_type: ::std::option::Option<String>,
         #[doc = "Each entry can have a type which indicates standard type of that entry. For example, keyword could be of type occupation or outlook. In addition to the standard type, an entry can have a custom type and can give it any name. Such types should have the CUSTOM value as type and also have a customType value."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Keyword."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserKeyword {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2931,7 +2870,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2949,10 +2887,10 @@ pub mod schemas {
     pub struct UserLanguage {
         #[doc = "Other language. User can provide own language name if there is no corresponding Google III language code. If this is set LanguageCode can't be set"]
         #[serde(rename = "customLanguage", default)]
-        pub custom_language: Option<String>,
+        pub custom_language: ::std::option::Option<String>,
         #[doc = "Language Code. Should be used for storing Google III LanguageCode string representation for language. Illegal values cause SchemaException."]
         #[serde(rename = "languageCode", default)]
-        pub language_code: Option<String>,
+        pub language_code: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserLanguage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2961,7 +2899,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2979,25 +2916,25 @@ pub mod schemas {
     pub struct UserLocation {
         #[doc = "Textual location. This is most useful for display purposes to concisely describe the location. For example, \"Mountain View, CA\", \"Near Seattle\", \"US-NYC-9TH 9A209A\"."]
         #[serde(rename = "area", default)]
-        pub area: Option<String>,
+        pub area: ::std::option::Option<String>,
         #[doc = "Building Identifier."]
         #[serde(rename = "buildingId", default)]
-        pub building_id: Option<String>,
+        pub building_id: ::std::option::Option<String>,
         #[doc = "Custom Type."]
         #[serde(rename = "customType", default)]
-        pub custom_type: Option<String>,
+        pub custom_type: ::std::option::Option<String>,
         #[doc = "Most specific textual code of individual desk location."]
         #[serde(rename = "deskCode", default)]
-        pub desk_code: Option<String>,
+        pub desk_code: ::std::option::Option<String>,
         #[doc = "Floor name/number."]
         #[serde(rename = "floorName", default)]
-        pub floor_name: Option<String>,
+        pub floor_name: ::std::option::Option<String>,
         #[doc = "Floor section. More specific location within the floor. For example, if a floor is divided into sections \"A\", \"B\", and \"C\", this field would identify one of those values."]
         #[serde(rename = "floorSection", default)]
-        pub floor_section: Option<String>,
+        pub floor_section: ::std::option::Option<String>,
         #[doc = "Each entry can have a type which indicates standard types of that entry. For example location could be of types default and desk. In addition to standard type, an entry can have a custom type and can give it any name. Such types should have \"custom\" as type and also have a customType value."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserLocation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3006,7 +2943,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3024,7 +2960,7 @@ pub mod schemas {
     pub struct UserMakeAdmin {
         #[doc = "Boolean indicating new admin status of the user"]
         #[serde(rename = "status", default)]
-        pub status: Option<bool>,
+        pub status: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for UserMakeAdmin {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3033,7 +2969,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3051,13 +2986,13 @@ pub mod schemas {
     pub struct UserName {
         #[doc = "Last Name"]
         #[serde(rename = "familyName", default)]
-        pub family_name: Option<String>,
+        pub family_name: ::std::option::Option<String>,
         #[doc = "Full Name"]
         #[serde(rename = "fullName", default)]
-        pub full_name: Option<String>,
+        pub full_name: ::std::option::Option<String>,
         #[doc = "First Name"]
         #[serde(rename = "givenName", default)]
-        pub given_name: Option<String>,
+        pub given_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserName {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3066,7 +3001,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3084,40 +3018,40 @@ pub mod schemas {
     pub struct UserOrganization {
         #[doc = "The cost center of the users department."]
         #[serde(rename = "costCenter", default)]
-        pub cost_center: Option<String>,
+        pub cost_center: ::std::option::Option<String>,
         #[doc = "Custom type."]
         #[serde(rename = "customType", default)]
-        pub custom_type: Option<String>,
+        pub custom_type: ::std::option::Option<String>,
         #[doc = "Department within the organization."]
         #[serde(rename = "department", default)]
-        pub department: Option<String>,
+        pub department: ::std::option::Option<String>,
         #[doc = "Description of the organization."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The domain to which the organization belongs to."]
         #[serde(rename = "domain", default)]
-        pub domain: Option<String>,
+        pub domain: ::std::option::Option<String>,
         #[doc = "The full-time equivalent millipercent within the organization (100000 = 100%)."]
         #[serde(rename = "fullTimeEquivalent", default)]
-        pub full_time_equivalent: Option<i32>,
+        pub full_time_equivalent: ::std::option::Option<i32>,
         #[doc = "Location of the organization. This need not be fully qualified address."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "Name of the organization"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "If it user's primary organization."]
         #[serde(rename = "primary", default)]
-        pub primary: Option<bool>,
+        pub primary: ::std::option::Option<bool>,
         #[doc = "Each entry can have a type which indicates standard types of that entry. For example organization could be of school, work etc. In addition to the standard type, an entry can have a custom type and can give it any name. Such types should have the CUSTOM value as type and also have a CustomType value."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Symbol of the organization."]
         #[serde(rename = "symbol", default)]
-        pub symbol: Option<String>,
+        pub symbol: ::std::option::Option<String>,
         #[doc = "Title (designation) of the user in the organization."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserOrganization {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3126,7 +3060,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3144,16 +3077,16 @@ pub mod schemas {
     pub struct UserPhone {
         #[doc = "Custom Type."]
         #[serde(rename = "customType", default)]
-        pub custom_type: Option<String>,
+        pub custom_type: ::std::option::Option<String>,
         #[doc = "If this is user's primary phone or not."]
         #[serde(rename = "primary", default)]
-        pub primary: Option<bool>,
+        pub primary: ::std::option::Option<bool>,
         #[doc = "Each entry can have a type which indicates standard types of that entry. For example phone could be of home_fax, work, mobile etc. In addition to the standard type, an entry can have a custom type and can give it any name. Such types should have the CUSTOM value as type and also have a customType value."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Phone number."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserPhone {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3162,7 +3095,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3180,28 +3112,28 @@ pub mod schemas {
     pub struct UserPhoto {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Height in pixels of the photo"]
         #[serde(rename = "height", default)]
-        pub height: Option<i32>,
+        pub height: ::std::option::Option<i32>,
         #[doc = "Unique identifier of User (Read-only)"]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Mime Type of the photo"]
         #[serde(rename = "mimeType", default)]
-        pub mime_type: Option<String>,
+        pub mime_type: ::std::option::Option<String>,
         #[doc = "Base64 encoded photo data"]
         #[serde(rename = "photoData", default)]
-        pub photo_data: Option<Vec<u8>>,
+        pub photo_data: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Primary email of User (Read-only)"]
         #[serde(rename = "primaryEmail", default)]
-        pub primary_email: Option<String>,
+        pub primary_email: ::std::option::Option<String>,
         #[doc = "Width in pixels of the photo"]
         #[serde(rename = "width", default)]
-        pub width: Option<i32>,
+        pub width: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for UserPhoto {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3210,7 +3142,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3228,36 +3159,36 @@ pub mod schemas {
     pub struct UserPosixAccount {
         #[doc = "A POSIX account field identifier."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "The GECOS (user information) for this account."]
         #[serde(rename = "gecos", default)]
-        pub gecos: Option<String>,
+        pub gecos: ::std::option::Option<String>,
         #[doc = "The default group ID."]
         #[serde(rename = "gid", default)]
         #[serde(with = "crate::parsed_string")]
-        pub gid: Option<u64>,
+        pub gid: ::std::option::Option<u64>,
         #[doc = "The path to the home directory for this account."]
         #[serde(rename = "homeDirectory", default)]
-        pub home_directory: Option<String>,
+        pub home_directory: ::std::option::Option<String>,
         #[doc = "The operating system type for this account."]
         #[serde(rename = "operatingSystemType", default)]
-        pub operating_system_type: Option<String>,
+        pub operating_system_type: ::std::option::Option<String>,
         #[doc = "If this is user's primary account within the SystemId."]
         #[serde(rename = "primary", default)]
-        pub primary: Option<bool>,
+        pub primary: ::std::option::Option<bool>,
         #[doc = "The path to the login shell for this account."]
         #[serde(rename = "shell", default)]
-        pub shell: Option<String>,
+        pub shell: ::std::option::Option<String>,
         #[doc = "System identifier for which account Username or Uid apply to."]
         #[serde(rename = "systemId", default)]
-        pub system_id: Option<String>,
+        pub system_id: ::std::option::Option<String>,
         #[doc = "The POSIX compliant user ID."]
         #[serde(rename = "uid", default)]
         #[serde(with = "crate::parsed_string")]
-        pub uid: Option<u64>,
+        pub uid: ::std::option::Option<u64>,
         #[doc = "The username of the account."]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserPosixAccount {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3266,7 +3197,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3284,13 +3214,13 @@ pub mod schemas {
     pub struct UserRelation {
         #[doc = "Custom Type."]
         #[serde(rename = "customType", default)]
-        pub custom_type: Option<String>,
+        pub custom_type: ::std::option::Option<String>,
         #[doc = "The relation of the user. Some of the possible values are mother, father, sister, brother, manager, assistant, partner."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "The name of the relation."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserRelation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3299,7 +3229,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3318,13 +3247,13 @@ pub mod schemas {
         #[doc = "An expiration time in microseconds since epoch."]
         #[serde(rename = "expirationTimeUsec", default)]
         #[serde(with = "crate::parsed_string")]
-        pub expiration_time_usec: Option<i64>,
+        pub expiration_time_usec: ::std::option::Option<i64>,
         #[doc = "A SHA-256 fingerprint of the SSH public key. (Read-only)"]
         #[serde(rename = "fingerprint", default)]
-        pub fingerprint: Option<String>,
+        pub fingerprint: ::std::option::Option<String>,
         #[doc = "An SSH public key."]
         #[serde(rename = "key", default)]
-        pub key: Option<String>,
+        pub key: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserSshPublicKey {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3333,7 +3262,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3351,7 +3279,7 @@ pub mod schemas {
     pub struct UserUndelete {
         #[doc = "OrgUnit of User"]
         #[serde(rename = "orgUnitPath", default)]
-        pub org_unit_path: Option<String>,
+        pub org_unit_path: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserUndelete {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3360,7 +3288,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3378,16 +3305,16 @@ pub mod schemas {
     pub struct UserWebsite {
         #[doc = "Custom Type."]
         #[serde(rename = "customType", default)]
-        pub custom_type: Option<String>,
+        pub custom_type: ::std::option::Option<String>,
         #[doc = "If this is user's primary website or not."]
         #[serde(rename = "primary", default)]
-        pub primary: Option<bool>,
+        pub primary: ::std::option::Option<bool>,
         #[doc = "Each entry can have a type which indicates standard types of that entry. For example website could be of home, work, blog etc. In addition to the standard type, an entry can have a custom type and can give it any name. Such types should have the CUSTOM value as type and also have a customType value."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Website."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserWebsite {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3396,26 +3323,25 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Users {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Kind of resource this is."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access next page of this result."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Event that triggered this response (only used in case of Push Response)"]
         #[serde(rename = "trigger_event", default)]
-        pub trigger_event: Option<String>,
+        pub trigger_event: ::std::option::Option<String>,
         #[doc = "List of user objects."]
         #[serde(rename = "users", default)]
-        pub users: Option<Vec<crate::schemas::User>>,
+        pub users: ::std::option::Option<Vec<crate::schemas::User>>,
     }
     impl ::field_selector::FieldSelector for Users {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3424,7 +3350,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3442,16 +3367,16 @@ pub mod schemas {
     pub struct VerificationCode {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The type of the resource. This is always admin#directory#verificationCode."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The obfuscated unique ID of the user."]
         #[serde(rename = "userId", default)]
-        pub user_id: Option<String>,
+        pub user_id: ::std::option::Option<String>,
         #[doc = "A current verification code for the user. Invalidated or used verification codes are not returned as part of the result."]
         #[serde(rename = "verificationCode", default)]
-        pub verification_code: Option<String>,
+        pub verification_code: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VerificationCode {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3460,7 +3385,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3478,13 +3402,13 @@ pub mod schemas {
     pub struct VerificationCodes {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "A list of verification code resources."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::VerificationCode>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::VerificationCode>>,
         #[doc = "The type of the resource. This is always admin#directory#verificationCodesList."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VerificationCodes {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3493,7 +3417,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -3538,6 +3461,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -4293,6 +4225,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for GetProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListOrderBy {
                 #[doc = "Chromebook location as annotated by the administrator."]
@@ -4359,6 +4300,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListOrderBy {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListProjection {
                 #[doc = "Includes only the basic metadata fields (e.g., deviceId, serialNumber, status, and user)"]
@@ -4403,6 +4353,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4451,6 +4410,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListSortOrder {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum PatchProjection {
                 #[doc = "Includes only the basic metadata fields (e.g., deviceId, serialNumber, status, and user)"]
@@ -4497,6 +4465,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for PatchProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum UpdateProjection {
                 #[doc = "Includes only the basic metadata fields (e.g., deviceId, serialNumber, status, and user)"]
@@ -4541,6 +4518,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for UpdateProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -7408,6 +7394,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListOrderBy {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListSortOrder {
                 #[doc = "Ascending order."]
@@ -7452,6 +7447,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListSortOrder {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -10261,6 +10265,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for GetProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListOrderBy {
                 #[doc = "Mobile Device serial number."]
@@ -10331,6 +10344,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListOrderBy {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListProjection {
                 #[doc = "Includes only the basic metadata fields (e.g., deviceId, model, status, type, and status)"]
@@ -10377,6 +10399,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListSortOrder {
                 #[doc = "Ascending order."]
@@ -10421,6 +10452,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListSortOrder {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -12133,6 +12173,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListType {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
         }
         pub struct OrgunitsActions<'a, A> {
             pub(crate) reqwest: &'a reqwest::Client,
@@ -13640,6 +13689,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for InsertCoordinatesSource {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum PatchCoordinatesSource {
                     #[doc = "Building.coordinates are set to the coordinates included in the request."]
@@ -13690,6 +13748,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for PatchCoordinatesSource {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum UpdateCoordinatesSource {
                     #[doc = "Building.coordinates are set to the coordinates included in the request."]
@@ -13738,6 +13805,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for UpdateCoordinatesSource {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
             }
@@ -20419,6 +20495,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for GetProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetViewType {
                 #[doc = "Fetches the ADMIN_VIEW of the user."]
@@ -20463,6 +20548,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for GetViewType {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -20523,6 +20617,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListEvent {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListOrderBy {
                 #[doc = "Primary email of the user."]
@@ -20571,6 +20674,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListOrderBy {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -20623,6 +20735,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListSortOrder {
                 #[doc = "Ascending order."]
@@ -20669,6 +20790,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListSortOrder {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListViewType {
                 #[doc = "Fetches the ADMIN_VIEW of the user."]
@@ -20713,6 +20843,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListViewType {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -20773,6 +20912,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for WatchEvent {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum WatchOrderBy {
                 #[doc = "Primary email of the user."]
@@ -20821,6 +20969,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for WatchOrderBy {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -20873,6 +21030,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for WatchProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum WatchSortOrder {
                 #[doc = "Ascending order."]
@@ -20919,6 +21085,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for WatchSortOrder {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum WatchViewType {
                 #[doc = "Fetches the ADMIN_VIEW of the user."]
@@ -20963,6 +21138,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for WatchViewType {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -22600,6 +22784,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for ListEvent {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum WatchEvent {
                     #[doc = "Alias Created Event"]
@@ -22644,6 +22837,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for WatchEvent {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
             }
@@ -24484,6 +24686,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -24559,5 +24762,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

@@ -14,7 +14,7 @@ pub mod schemas {
     )]
     pub struct CheckValidCredsRequest;
     impl ::field_selector::FieldSelector for CheckValidCredsRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -31,7 +31,7 @@ pub mod schemas {
     pub struct CheckValidCredsResponse {
         #[doc = "If set to `true`, the credentials exist and are valid."]
         #[serde(rename = "hasValidCreds", default)]
-        pub has_valid_creds: Option<bool>,
+        pub has_valid_creds: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for CheckValidCredsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -40,7 +40,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -101,6 +100,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DataSourceAuthorizationType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DataSourceDataRefreshType {
         #[doc = "The data source won't support data auto refresh, which is default value."]
@@ -155,6 +163,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DataSourceDataRefreshType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DataSourceTransferType {
         #[doc = "Invalid or Unknown transfer type placeholder."]
@@ -205,64 +222,73 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DataSourceTransferType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct DataSource {
         #[doc = "Indicates the type of authorization."]
         #[serde(rename = "authorizationType", default)]
-        pub authorization_type: Option<crate::schemas::DataSourceAuthorizationType>,
+        pub authorization_type: ::std::option::Option<crate::schemas::DataSourceAuthorizationType>,
         #[doc = "Data source client id which should be used to receive refresh token."]
         #[serde(rename = "clientId", default)]
-        pub client_id: Option<String>,
+        pub client_id: ::std::option::Option<String>,
         #[doc = "Specifies whether the data source supports automatic data refresh for the\npast few days, and how it's supported.\nFor some data sources, data might not be complete until a few days later,\nso it's useful to refresh data automatically."]
         #[serde(rename = "dataRefreshType", default)]
-        pub data_refresh_type: Option<crate::schemas::DataSourceDataRefreshType>,
+        pub data_refresh_type: ::std::option::Option<crate::schemas::DataSourceDataRefreshType>,
         #[doc = "Data source id."]
         #[serde(rename = "dataSourceId", default)]
-        pub data_source_id: Option<String>,
+        pub data_source_id: ::std::option::Option<String>,
         #[doc = "Default data refresh window on days.\nOnly meaningful when `data_refresh_type` = `SLIDING_WINDOW`."]
         #[serde(rename = "defaultDataRefreshWindowDays", default)]
-        pub default_data_refresh_window_days: Option<i32>,
+        pub default_data_refresh_window_days: ::std::option::Option<i32>,
         #[doc = "Default data transfer schedule.\nExamples of valid schedules include:\n`1st,3rd monday of month 15:30`,\n`every wed,fri of jan,jun 13:15`, and\n`first sunday of quarter 00:00`."]
         #[serde(rename = "defaultSchedule", default)]
-        pub default_schedule: Option<String>,
+        pub default_schedule: ::std::option::Option<String>,
         #[doc = "User friendly data source description string."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "User friendly data source name."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "Url for the help document for this data source."]
         #[serde(rename = "helpUrl", default)]
-        pub help_url: Option<String>,
+        pub help_url: ::std::option::Option<String>,
         #[doc = "Disables backfilling and manual run scheduling\nfor the data source."]
         #[serde(rename = "manualRunsDisabled", default)]
-        pub manual_runs_disabled: Option<bool>,
+        pub manual_runs_disabled: ::std::option::Option<bool>,
         #[doc = "The minimum interval for scheduler to schedule runs."]
         #[serde(rename = "minimumScheduleInterval", default)]
-        pub minimum_schedule_interval: Option<String>,
+        pub minimum_schedule_interval: ::std::option::Option<String>,
         #[doc = "Output only. Data source resource name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Data source parameters."]
         #[serde(rename = "parameters", default)]
-        pub parameters: Option<Vec<crate::schemas::DataSourceParameter>>,
+        pub parameters: ::std::option::Option<Vec<crate::schemas::DataSourceParameter>>,
         #[doc = "Api auth scopes for which refresh token needs to be obtained. These are\nscopes needed by a data source to prepare data and ingest them into\nBigQuery, e.g., https://www.googleapis.com/auth/bigquery"]
         #[serde(rename = "scopes", default)]
-        pub scopes: Option<Vec<String>>,
+        pub scopes: ::std::option::Option<Vec<String>>,
         #[doc = "Specifies whether the data source supports a user defined schedule, or\noperates on the default schedule.\nWhen set to `true`, user can override default schedule."]
         #[serde(rename = "supportsCustomSchedule", default)]
-        pub supports_custom_schedule: Option<bool>,
+        pub supports_custom_schedule: ::std::option::Option<bool>,
         #[doc = "Deprecated. This field has no effect."]
         #[serde(rename = "supportsMultipleTransfers", default)]
-        pub supports_multiple_transfers: Option<bool>,
+        pub supports_multiple_transfers: ::std::option::Option<bool>,
         #[doc = "Deprecated. This field has no effect."]
         #[serde(rename = "transferType", default)]
-        pub transfer_type: Option<crate::schemas::DataSourceTransferType>,
+        pub transfer_type: ::std::option::Option<crate::schemas::DataSourceTransferType>,
         #[doc = "The number of seconds to wait for an update from the data source\nbefore the Data Transfer Service marks the transfer as FAILED."]
         #[serde(rename = "updateDeadlineSeconds", default)]
-        pub update_deadline_seconds: Option<i32>,
+        pub update_deadline_seconds: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for DataSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -271,7 +297,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -340,58 +365,67 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DataSourceParameterType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct DataSourceParameter {
         #[doc = "All possible values for the parameter."]
         #[serde(rename = "allowedValues", default)]
-        pub allowed_values: Option<Vec<String>>,
+        pub allowed_values: ::std::option::Option<Vec<String>>,
         #[doc = "If true, it should not be used in new transfers, and it should not be\nvisible to users."]
         #[serde(rename = "deprecated", default)]
-        pub deprecated: Option<bool>,
+        pub deprecated: ::std::option::Option<bool>,
         #[doc = "Parameter description."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Parameter display name in the user interface."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "Deprecated. This field has no effect."]
         #[serde(rename = "fields", default)]
-        pub fields: Option<Vec<crate::schemas::DataSourceParameter>>,
+        pub fields: ::std::option::Option<Vec<crate::schemas::DataSourceParameter>>,
         #[doc = "Cannot be changed after initial creation."]
         #[serde(rename = "immutable", default)]
-        pub immutable: Option<bool>,
+        pub immutable: ::std::option::Option<bool>,
         #[doc = "For integer and double values specifies maxminum allowed value."]
         #[serde(rename = "maxValue", default)]
-        pub max_value: Option<f64>,
+        pub max_value: ::std::option::Option<f64>,
         #[doc = "For integer and double values specifies minimum allowed value."]
         #[serde(rename = "minValue", default)]
-        pub min_value: Option<f64>,
+        pub min_value: ::std::option::Option<f64>,
         #[doc = "Parameter identifier."]
         #[serde(rename = "paramId", default)]
-        pub param_id: Option<String>,
+        pub param_id: ::std::option::Option<String>,
         #[doc = "Parameter type."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DataSourceParameterType>,
+        pub r#type: ::std::option::Option<crate::schemas::DataSourceParameterType>,
         #[doc = "Deprecated. This field has no effect."]
         #[serde(rename = "recurse", default)]
-        pub recurse: Option<bool>,
+        pub recurse: ::std::option::Option<bool>,
         #[doc = "Deprecated. This field has no effect."]
         #[serde(rename = "repeated", default)]
-        pub repeated: Option<bool>,
+        pub repeated: ::std::option::Option<bool>,
         #[doc = "Is parameter required."]
         #[serde(rename = "required", default)]
-        pub required: Option<bool>,
+        pub required: ::std::option::Option<bool>,
         #[doc = "Description of the requirements for this field, in case the user input does\nnot fulfill the regex pattern or min/max values."]
         #[serde(rename = "validationDescription", default)]
-        pub validation_description: Option<String>,
+        pub validation_description: ::std::option::Option<String>,
         #[doc = "URL to a help document to further explain the naming requirements."]
         #[serde(rename = "validationHelpUrl", default)]
-        pub validation_help_url: Option<String>,
+        pub validation_help_url: ::std::option::Option<String>,
         #[doc = "Regular expression which can be used for parameter validation."]
         #[serde(rename = "validationRegex", default)]
-        pub validation_regex: Option<String>,
+        pub validation_regex: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DataSourceParameter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -400,7 +434,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -418,7 +451,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
@@ -426,10 +459,10 @@ pub mod schemas {
     pub struct ListDataSourcesResponse {
         #[doc = "List of supported data sources and their transfer settings."]
         #[serde(rename = "dataSources", default)]
-        pub data_sources: Option<Vec<crate::schemas::DataSource>>,
+        pub data_sources: ::std::option::Option<Vec<crate::schemas::DataSource>>,
         #[doc = "Output only. The next-pagination token. For multiple-page list results,\nthis token can be used as the\n`ListDataSourcesRequest.page_token`\nto request the next page of list results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListDataSourcesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -438,17 +471,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListLocationsResponse {
         #[doc = "A list of locations that matches the specified filter in the request."]
         #[serde(rename = "locations", default)]
-        pub locations: Option<Vec<crate::schemas::Location>>,
+        pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "The standard List next-page token."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListLocationsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -457,17 +489,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListTransferConfigsResponse {
         #[doc = "Output only. The next-pagination token. For multiple-page list results,\nthis token can be used as the\n`ListTransferConfigsRequest.page_token`\nto request the next page of list results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Output only. The stored pipeline transfer configurations."]
         #[serde(rename = "transferConfigs", default)]
-        pub transfer_configs: Option<Vec<crate::schemas::TransferConfig>>,
+        pub transfer_configs: ::std::option::Option<Vec<crate::schemas::TransferConfig>>,
     }
     impl ::field_selector::FieldSelector for ListTransferConfigsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -476,7 +507,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -494,10 +524,10 @@ pub mod schemas {
     pub struct ListTransferLogsResponse {
         #[doc = "Output only. The next-pagination token. For multiple-page list results,\nthis token can be used as the\n`GetTransferRunLogRequest.page_token`\nto request the next page of list results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Output only. The stored pipeline transfer messages."]
         #[serde(rename = "transferMessages", default)]
-        pub transfer_messages: Option<Vec<crate::schemas::TransferMessage>>,
+        pub transfer_messages: ::std::option::Option<Vec<crate::schemas::TransferMessage>>,
     }
     impl ::field_selector::FieldSelector for ListTransferLogsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -506,17 +536,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListTransferRunsResponse {
         #[doc = "Output only. The next-pagination token. For multiple-page list results,\nthis token can be used as the\n`ListTransferRunsRequest.page_token`\nto request the next page of list results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Output only. The stored pipeline transfer runs."]
         #[serde(rename = "transferRuns", default)]
-        pub transfer_runs: Option<Vec<crate::schemas::TransferRun>>,
+        pub transfer_runs: ::std::option::Option<Vec<crate::schemas::TransferRun>>,
     }
     impl ::field_selector::FieldSelector for ListTransferRunsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -525,26 +554,26 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Location {
         #[doc = "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "Cross-service attributes for the location. For example\n\n````text\n{\"cloud.googleapis.com/region\": \"us-east1\"}````"]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The canonical id for this location. For example: `\"us-east1\"`."]
         #[serde(rename = "locationId", default)]
-        pub location_id: Option<String>,
+        pub location_id: ::std::option::Option<String>,
         #[doc = "Service-specific metadata. For example the available capacity at the given\nlocation."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Location {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -553,7 +582,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -571,13 +599,13 @@ pub mod schemas {
     pub struct ScheduleOptions {
         #[doc = "If true, automatic scheduling of data transfer runs for this configuration\nwill be disabled. The runs can be started on ad-hoc basis using\nStartManualTransferRuns API. When automatic scheduling is disabled, the\nTransferConfig.schedule field will be ignored."]
         #[serde(rename = "disableAutoScheduling", default)]
-        pub disable_auto_scheduling: Option<bool>,
+        pub disable_auto_scheduling: ::std::option::Option<bool>,
         #[doc = "Defines time to stop scheduling transfer runs. A transfer run cannot be\nscheduled at or after the end time. The end time can be changed at any\nmoment. The time when a data transfer can be trigerred manually is not\nlimited by this option."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
         #[doc = "Specifies time to start scheduling transfer runs. The first run will be\nscheduled at or after the start time according to a recurrence pattern\ndefined in the schedule string. The start time can be changed at any\nmoment. The time when a data transfer can be trigerred manually is not\nlimited by this option."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ScheduleOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -586,7 +614,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -604,10 +631,10 @@ pub mod schemas {
     pub struct ScheduleTransferRunsRequest {
         #[doc = "End time of the range of transfer runs. For example,\n`\"2017-05-30T00:00:00+00:00\"`."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
         #[doc = "Start time of the range of transfer runs. For example,\n`\"2017-05-25T00:00:00+00:00\"`."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ScheduleTransferRunsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -616,14 +643,13 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ScheduleTransferRunsResponse {
         #[doc = "The transfer runs that were scheduled."]
         #[serde(rename = "runs", default)]
-        pub runs: Option<Vec<crate::schemas::TransferRun>>,
+        pub runs: ::std::option::Option<Vec<crate::schemas::TransferRun>>,
     }
     impl ::field_selector::FieldSelector for ScheduleTransferRunsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -632,7 +658,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -650,10 +675,10 @@ pub mod schemas {
     pub struct StartManualTransferRunsRequest {
         #[doc = "Specific run_time for a transfer run to be started. The\nrequested_run_time must not be in the future."]
         #[serde(rename = "requestedRunTime", default)]
-        pub requested_run_time: Option<String>,
+        pub requested_run_time: ::std::option::Option<String>,
         #[doc = "Time range for the transfer runs that should be started."]
         #[serde(rename = "requestedTimeRange", default)]
-        pub requested_time_range: Option<crate::schemas::TimeRange>,
+        pub requested_time_range: ::std::option::Option<crate::schemas::TimeRange>,
     }
     impl ::field_selector::FieldSelector for StartManualTransferRunsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -662,14 +687,13 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct StartManualTransferRunsResponse {
         #[doc = "The transfer runs that were created."]
         #[serde(rename = "runs", default)]
-        pub runs: Option<Vec<crate::schemas::TransferRun>>,
+        pub runs: ::std::option::Option<Vec<crate::schemas::TransferRun>>,
     }
     impl ::field_selector::FieldSelector for StartManualTransferRunsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -678,20 +702,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
-        pub code: Option<i32>,
+        pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub details:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Status {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -700,7 +724,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -718,10 +741,10 @@ pub mod schemas {
     pub struct TimeRange {
         #[doc = "End time of the range of transfer runs. For example,\n`\"2017-05-30T00:00:00+00:00\"`. The end_time must not be in the future.\nCreates transfer runs where run_time is in the range betwen start_time\n(inclusive) and end_time (exlusive)."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
         #[doc = "Start time of the range of transfer runs. For example,\n`\"2017-05-25T00:00:00+00:00\"`. The start_time must be strictly less than\nthe end_time. Creates transfer runs where run_time is in the range betwen\nstart_time (inclusive) and end_time (exlusive)."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TimeRange {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -730,7 +753,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -795,51 +817,61 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for TransferConfigState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TransferConfig {
         #[doc = "The number of days to look back to automatically refresh the data.\nFor example, if `data_refresh_window_days = 10`, then every day\nBigQuery reingests data for [today-10, today-1], rather than ingesting data\nfor just [today-1].\nOnly valid if the data source supports the feature. Set the value to  0\nto use the default value."]
         #[serde(rename = "dataRefreshWindowDays", default)]
-        pub data_refresh_window_days: Option<i32>,
+        pub data_refresh_window_days: ::std::option::Option<i32>,
         #[doc = "Data source id. Cannot be changed once data transfer is created."]
         #[serde(rename = "dataSourceId", default)]
-        pub data_source_id: Option<String>,
+        pub data_source_id: ::std::option::Option<String>,
         #[doc = "Output only. Region in which BigQuery dataset is located."]
         #[serde(rename = "datasetRegion", default)]
-        pub dataset_region: Option<String>,
+        pub dataset_region: ::std::option::Option<String>,
         #[doc = "The BigQuery target dataset id."]
         #[serde(rename = "destinationDatasetId", default)]
-        pub destination_dataset_id: Option<String>,
+        pub destination_dataset_id: ::std::option::Option<String>,
         #[doc = "Is this config disabled. When set to true, no runs are scheduled\nfor a given transfer."]
         #[serde(rename = "disabled", default)]
-        pub disabled: Option<bool>,
+        pub disabled: ::std::option::Option<bool>,
         #[doc = "User specified display name for the data transfer."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The resource name of the transfer config.\nTransfer config names have the form of\n`projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.\nThe name is automatically generated based on the config_id specified in\nCreateTransferConfigRequest along with project_id and region. If config_id\nis not provided, usually a uuid, even though it is not guaranteed or\nrequired, will be generated for config_id."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Output only. Next time when data transfer will run."]
         #[serde(rename = "nextRunTime", default)]
-        pub next_run_time: Option<String>,
+        pub next_run_time: ::std::option::Option<String>,
         #[doc = "Data transfer specific parameters."]
         #[serde(rename = "params", default)]
-        pub params: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub params:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Data transfer schedule.\nIf the data source does not support a custom schedule, this should be\nempty. If it is empty, the default value for the data source will be\nused.\nThe specified times are in UTC.\nExamples of valid format:\n`1st,3rd monday of month 15:30`,\n`every wed,fri of jan,jun 13:15`, and\n`first sunday of quarter 00:00`.\nSee more explanation about the format here:\nhttps://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format\nNOTE: the granularity should be at least 8 hours, or less frequent."]
         #[serde(rename = "schedule", default)]
-        pub schedule: Option<String>,
+        pub schedule: ::std::option::Option<String>,
         #[doc = "Options customizing the data transfer schedule."]
         #[serde(rename = "scheduleOptions", default)]
-        pub schedule_options: Option<crate::schemas::ScheduleOptions>,
+        pub schedule_options: ::std::option::Option<crate::schemas::ScheduleOptions>,
         #[doc = "Output only. State of the most recently updated transfer run."]
         #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::TransferConfigState>,
+        pub state: ::std::option::Option<crate::schemas::TransferConfigState>,
         #[doc = "Output only. Data transfer modification time. Ignored by server on input."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
         #[doc = "Deprecated. Unique ID of the user on whose behalf transfer is done."]
         #[serde(rename = "userId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub user_id: Option<i64>,
+        pub user_id: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for TransferConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -848,7 +880,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -909,6 +940,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for TransferMessageSeverity {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -924,13 +964,13 @@ pub mod schemas {
     pub struct TransferMessage {
         #[doc = "Message text."]
         #[serde(rename = "messageText", default)]
-        pub message_text: Option<String>,
+        pub message_text: ::std::option::Option<String>,
         #[doc = "Time when message was logged."]
         #[serde(rename = "messageTime", default)]
-        pub message_time: Option<String>,
+        pub message_time: ::std::option::Option<String>,
         #[doc = "Message severity."]
         #[serde(rename = "severity", default)]
-        pub severity: Option<crate::schemas::TransferMessageSeverity>,
+        pub severity: ::std::option::Option<crate::schemas::TransferMessageSeverity>,
     }
     impl ::field_selector::FieldSelector for TransferMessage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -939,7 +979,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1004,48 +1043,58 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for TransferRunState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TransferRun {
         #[doc = "Output only. Data source id."]
         #[serde(rename = "dataSourceId", default)]
-        pub data_source_id: Option<String>,
+        pub data_source_id: ::std::option::Option<String>,
         #[doc = "Output only. The BigQuery target dataset id."]
         #[serde(rename = "destinationDatasetId", default)]
-        pub destination_dataset_id: Option<String>,
+        pub destination_dataset_id: ::std::option::Option<String>,
         #[doc = "Output only. Time when transfer run ended.\nParameter ignored by server for input requests."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
         #[doc = "Status of the transfer run."]
         #[serde(rename = "errorStatus", default)]
-        pub error_status: Option<crate::schemas::Status>,
+        pub error_status: ::std::option::Option<crate::schemas::Status>,
         #[doc = "The resource name of the transfer run.\nTransfer run names have the form\n`projects/{project_id}/locations/{location}/transferConfigs/{config_id}/runs/{run_id}`.\nThe name is ignored when creating a transfer run."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Output only. Data transfer specific parameters."]
         #[serde(rename = "params", default)]
-        pub params: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub params:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "For batch transfer runs, specifies the date and time of the data should be\ningested."]
         #[serde(rename = "runTime", default)]
-        pub run_time: Option<String>,
+        pub run_time: ::std::option::Option<String>,
         #[doc = "Output only. Describes the schedule of this transfer run if it was\ncreated as part of a regular schedule. For batch transfer runs that are\nscheduled manually, this is empty.\nNOTE: the system might choose to delay the schedule depending on the\ncurrent load, so `schedule_time` doesn't always match this."]
         #[serde(rename = "schedule", default)]
-        pub schedule: Option<String>,
+        pub schedule: ::std::option::Option<String>,
         #[doc = "Minimum time after which a transfer run can be started."]
         #[serde(rename = "scheduleTime", default)]
-        pub schedule_time: Option<String>,
+        pub schedule_time: ::std::option::Option<String>,
         #[doc = "Output only. Time when transfer run was started.\nParameter ignored by server for input requests."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
         #[doc = "Data transfer run state. Ignored for input requests."]
         #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::TransferRunState>,
+        pub state: ::std::option::Option<crate::schemas::TransferRunState>,
         #[doc = "Output only. Last time the data transfer run state was updated."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
         #[doc = "Deprecated. Unique ID of the user on whose behalf transfer is done."]
         #[serde(rename = "userId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub user_id: Option<i64>,
+        pub user_id: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for TransferRun {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1054,7 +1103,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -1109,6 +1157,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -1153,6 +1210,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -4734,6 +4800,15 @@ mod resources {
                                 })
                             }
                         }
+                        impl ::field_selector::FieldSelector for ListRunAttempt {
+                            fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                                match selector.chars().rev().nth(0) {
+                                    Some(',') | None => {}
+                                    _ => selector.push_str(","),
+                                }
+                                selector.push_str(ident);
+                            }
+                        }
                     }
                     pub struct RunsActions<'a, A> {
                         pub(crate) reqwest: &'a reqwest::Client,
@@ -7357,6 +7432,15 @@ mod resources {
                             })
                         }
                     }
+                    impl ::field_selector::FieldSelector for ListRunAttempt {
+                        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                            match selector.chars().rev().nth(0) {
+                                Some(',') | None => {}
+                                _ => selector.push_str(","),
+                            }
+                            selector.push_str(ident);
+                        }
+                    }
                 }
                 pub struct RunsActions<'a, A> {
                     pub(crate) reqwest: &'a reqwest::Client,
@@ -8646,6 +8730,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -8721,5 +8806,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

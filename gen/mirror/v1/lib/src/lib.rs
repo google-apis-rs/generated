@@ -13,13 +13,13 @@ pub mod schemas {
     )]
     pub struct Account {
         #[serde(rename = "authTokens", default)]
-        pub auth_tokens: Option<Vec<crate::schemas::AuthToken>>,
+        pub auth_tokens: ::std::option::Option<Vec<crate::schemas::AuthToken>>,
         #[serde(rename = "features", default)]
-        pub features: Option<Vec<String>>,
+        pub features: ::std::option::Option<Vec<String>>,
         #[serde(rename = "password", default)]
-        pub password: Option<String>,
+        pub password: ::std::option::Option<String>,
         #[serde(rename = "userData", default)]
-        pub user_data: Option<Vec<crate::schemas::UserData>>,
+        pub user_data: ::std::option::Option<Vec<crate::schemas::UserData>>,
     }
     impl ::field_selector::FieldSelector for Account {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -28,7 +28,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -46,16 +45,16 @@ pub mod schemas {
     pub struct Attachment {
         #[doc = "The MIME type of the attachment."]
         #[serde(rename = "contentType", default)]
-        pub content_type: Option<String>,
+        pub content_type: ::std::option::Option<String>,
         #[doc = "The URL for the content."]
         #[serde(rename = "contentUrl", default)]
-        pub content_url: Option<String>,
+        pub content_url: ::std::option::Option<String>,
         #[doc = "The ID of the attachment."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Indicates that the contentUrl is not available because the attachment content is still being processed. If the caller wishes to retrieve the content, it should try again later."]
         #[serde(rename = "isProcessingContent", default)]
-        pub is_processing_content: Option<bool>,
+        pub is_processing_content: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for Attachment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -64,7 +63,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -82,10 +80,10 @@ pub mod schemas {
     pub struct AttachmentsListResponse {
         #[doc = "The list of attachments."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Attachment>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Attachment>>,
         #[doc = "The type of resource. This is always mirror#attachmentsList."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AttachmentsListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -94,7 +92,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -111,9 +108,9 @@ pub mod schemas {
     )]
     pub struct AuthToken {
         #[serde(rename = "authToken", default)]
-        pub auth_token: Option<String>,
+        pub auth_token: ::std::option::Option<String>,
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AuthToken {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -122,7 +119,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -140,7 +136,7 @@ pub mod schemas {
     pub struct Command {
         #[doc = "The type of operation this command corresponds to. Allowed values are:\n\n* TAKE_A_NOTE - Shares a timeline item with the transcription of user speech from the \"Take a note\" voice menu command.\n* POST_AN_UPDATE - Shares a timeline item with the transcription of user speech from the \"Post an update\" voice menu command."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Command {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -149,7 +145,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -167,40 +162,40 @@ pub mod schemas {
     pub struct Contact {
         #[doc = "A list of voice menu commands that a contact can handle. Glass shows up to three contacts for each voice menu command. If there are more than that, the three contacts with the highest priority are shown for that particular command."]
         #[serde(rename = "acceptCommands", default)]
-        pub accept_commands: Option<Vec<crate::schemas::Command>>,
+        pub accept_commands: ::std::option::Option<Vec<crate::schemas::Command>>,
         #[doc = "A list of MIME types that a contact supports. The contact will be shown to the user if any of its acceptTypes matches any of the types of the attachments on the item. If no acceptTypes are given, the contact will be shown for all items."]
         #[serde(rename = "acceptTypes", default)]
-        pub accept_types: Option<Vec<String>>,
+        pub accept_types: ::std::option::Option<Vec<String>>,
         #[doc = "The name to display for this contact."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "An ID for this contact. This is generated by the application and is treated as an opaque token."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Set of image URLs to display for a contact. Most contacts will have a single image, but a \"group\" contact may include up to 8 image URLs and they will be resized and cropped into a mosaic on the client."]
         #[serde(rename = "imageUrls", default)]
-        pub image_urls: Option<Vec<String>>,
+        pub image_urls: ::std::option::Option<Vec<String>>,
         #[doc = "The type of resource. This is always mirror#contact."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Primary phone number for the contact. This can be a fully-qualified number, with country calling code and area code, or a local number."]
         #[serde(rename = "phoneNumber", default)]
-        pub phone_number: Option<String>,
+        pub phone_number: ::std::option::Option<String>,
         #[doc = "Priority for the contact to determine ordering in a list of contacts. Contacts with higher priorities will be shown before ones with lower priorities."]
         #[serde(rename = "priority", default)]
-        pub priority: Option<u32>,
+        pub priority: ::std::option::Option<u32>,
         #[doc = "The type for this contact. This is used for sorting in UIs. Allowed values are:\n\n* INDIVIDUAL - Represents a single person. This is the default. \n* GROUP - Represents more than a single person."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "A list of sharing features that a contact can handle. Allowed values are:\n\n* ADD_CAPTION"]
         #[serde(rename = "sharingFeatures", default)]
-        pub sharing_features: Option<Vec<String>>,
+        pub sharing_features: ::std::option::Option<Vec<String>>,
         #[doc = "The ID of the application that created this contact. This is populated by the API"]
         #[serde(rename = "source", default)]
-        pub source: Option<String>,
+        pub source: ::std::option::Option<String>,
         #[doc = "Name of this contact as it should be pronounced. If this contact's name must be spoken as part of a voice disambiguation menu, this name is used as the expected pronunciation. This is useful for contact names with unpronounceable characters or whose display spelling is otherwise not phonetic."]
         #[serde(rename = "speakableName", default)]
-        pub speakable_name: Option<String>,
+        pub speakable_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Contact {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -209,7 +204,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -227,10 +221,10 @@ pub mod schemas {
     pub struct ContactsListResponse {
         #[doc = "Contact list."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Contact>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Contact>>,
         #[doc = "The type of resource. This is always mirror#contacts."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ContactsListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -239,7 +233,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -248,28 +241,28 @@ pub mod schemas {
     pub struct Location {
         #[doc = "The accuracy of the location fix in meters."]
         #[serde(rename = "accuracy", default)]
-        pub accuracy: Option<f64>,
+        pub accuracy: ::std::option::Option<f64>,
         #[doc = "The full address of the location."]
         #[serde(rename = "address", default)]
-        pub address: Option<String>,
+        pub address: ::std::option::Option<String>,
         #[doc = "The name to be displayed. This may be a business name or a user-defined place, such as \"Home\"."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The ID of the location."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The type of resource. This is always mirror#location."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The latitude, in degrees."]
         #[serde(rename = "latitude", default)]
-        pub latitude: Option<f64>,
+        pub latitude: ::std::option::Option<f64>,
         #[doc = "The longitude, in degrees."]
         #[serde(rename = "longitude", default)]
-        pub longitude: Option<f64>,
+        pub longitude: ::std::option::Option<f64>,
         #[doc = "The time at which this location was captured, formatted according to RFC 3339."]
         #[serde(rename = "timestamp", default)]
-        pub timestamp: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub timestamp: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for Location {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -278,7 +271,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -287,10 +279,10 @@ pub mod schemas {
     pub struct LocationsListResponse {
         #[doc = "The list of locations."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Location>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "The type of resource. This is always mirror#locationsList."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LocationsListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -299,7 +291,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -317,22 +308,22 @@ pub mod schemas {
     pub struct MenuItem {
         #[doc = "Controls the behavior when the user picks the menu option. Allowed values are:\n\n* CUSTOM - Custom action set by the service. When the user selects this menuItem, the API triggers a notification to your callbackUrl with the userActions.type set to CUSTOM and the userActions.payload set to the ID of this menu item. This is the default value. \n* Built-in actions:\n* REPLY - Initiate a reply to the timeline item using the voice recording UI. The creator attribute must be set in the timeline item for this menu to be available. \n* REPLY_ALL - Same behavior as REPLY. The original timeline item's recipients will be added to the reply item. \n* DELETE - Delete the timeline item. \n* SHARE - Share the timeline item with the available contacts. \n* READ_ALOUD - Read the timeline item's speakableText aloud; if this field is not set, read the text field; if none of those fields are set, this menu item is ignored. \n* GET_MEDIA_INPUT - Allow users to provide media payloads to Glassware from a menu item (currently, only transcribed text from voice input is supported). Subscribe to notifications when users invoke this menu item to receive the timeline item ID. Retrieve the media from the timeline item in the payload property. \n* VOICE_CALL - Initiate a phone call using the timeline item's creator.phoneNumber attribute as recipient. \n* NAVIGATE - Navigate to the timeline item's location. \n* TOGGLE_PINNED - Toggle the isPinned state of the timeline item. \n* OPEN_URI - Open the payload of the menu item in the browser. \n* PLAY_VIDEO - Open the payload of the menu item in the Glass video player. \n* SEND_MESSAGE - Initiate sending a message to the timeline item's creator:\n* If the creator.phoneNumber is set and Glass is connected to an Android phone, the message is an SMS. \n* Otherwise, if the creator.email is set, the message is an email."]
         #[serde(rename = "action", default)]
-        pub action: Option<String>,
+        pub action: ::std::option::Option<String>,
         #[doc = "The ContextualMenus.Command associated with this MenuItem (e.g. READ_ALOUD). The voice label for this command will be displayed in the voice menu and the touch label will be displayed in the touch menu. Note that the default menu value's display name will be overriden if you specify this property. Values that do not correspond to a ContextualMenus.Command name will be ignored."]
         #[serde(rename = "contextual_command", default)]
-        pub contextual_command: Option<String>,
+        pub contextual_command: ::std::option::Option<String>,
         #[doc = "The ID for this menu item. This is generated by the application and is treated as an opaque token."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "A generic payload whose meaning changes depending on this MenuItem's action.\n\n* When the action is OPEN_URI, the payload is the URL of the website to view. \n* When the action is PLAY_VIDEO, the payload is the streaming URL of the video \n* When the action is GET_MEDIA_INPUT, the payload is the text transcription of a user's speech input"]
         #[serde(rename = "payload", default)]
-        pub payload: Option<String>,
+        pub payload: ::std::option::Option<String>,
         #[doc = "If set to true on a CUSTOM menu item, that item will be removed from the menu after it is selected."]
         #[serde(rename = "removeWhenSelected", default)]
-        pub remove_when_selected: Option<bool>,
+        pub remove_when_selected: ::std::option::Option<bool>,
         #[doc = "For CUSTOM items, a list of values controlling the appearance of the menu item in each of its states. A value for the DEFAULT state must be provided. If the PENDING or CONFIRMED states are missing, they will not be shown."]
         #[serde(rename = "values", default)]
-        pub values: Option<Vec<crate::schemas::MenuValue>>,
+        pub values: ::std::option::Option<Vec<crate::schemas::MenuValue>>,
     }
     impl ::field_selector::FieldSelector for MenuItem {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -341,7 +332,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -359,13 +349,13 @@ pub mod schemas {
     pub struct MenuValue {
         #[doc = "The name to display for the menu item. If you specify this property for a built-in menu item, the default contextual voice command for that menu item is not shown."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "URL of an icon to display with the menu item."]
         #[serde(rename = "iconUrl", default)]
-        pub icon_url: Option<String>,
+        pub icon_url: ::std::option::Option<String>,
         #[doc = "The state that this value applies to. Allowed values are:\n\n* DEFAULT - Default value shown when displayed in the menuItems list. \n* PENDING - Value shown when the menuItem has been selected by the user but can still be cancelled. \n* CONFIRMED - Value shown when the menuItem has been selected by the user and can no longer be cancelled."]
         #[serde(rename = "state", default)]
-        pub state: Option<String>,
+        pub state: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for MenuValue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -374,7 +364,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -392,22 +381,22 @@ pub mod schemas {
     pub struct Notification {
         #[doc = "The collection that generated the notification."]
         #[serde(rename = "collection", default)]
-        pub collection: Option<String>,
+        pub collection: ::std::option::Option<String>,
         #[doc = "The ID of the item that generated the notification."]
         #[serde(rename = "itemId", default)]
-        pub item_id: Option<String>,
+        pub item_id: ::std::option::Option<String>,
         #[doc = "The type of operation that generated the notification."]
         #[serde(rename = "operation", default)]
-        pub operation: Option<String>,
+        pub operation: ::std::option::Option<String>,
         #[doc = "A list of actions taken by the user that triggered the notification."]
         #[serde(rename = "userActions", default)]
-        pub user_actions: Option<Vec<crate::schemas::UserAction>>,
+        pub user_actions: ::std::option::Option<Vec<crate::schemas::UserAction>>,
         #[doc = "The user token provided by the service when it subscribed for notifications."]
         #[serde(rename = "userToken", default)]
-        pub user_token: Option<String>,
+        pub user_token: ::std::option::Option<String>,
         #[doc = "The secret verify token provided by the service when it subscribed for notifications."]
         #[serde(rename = "verifyToken", default)]
-        pub verify_token: Option<String>,
+        pub verify_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Notification {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -416,7 +405,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -434,10 +422,10 @@ pub mod schemas {
     pub struct NotificationConfig {
         #[doc = "The time at which the notification should be delivered."]
         #[serde(rename = "deliveryTime", default)]
-        pub delivery_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub delivery_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Describes how important the notification is. Allowed values are:\n\n* DEFAULT - Notifications of default importance. A chime will be played to alert users."]
         #[serde(rename = "level", default)]
-        pub level: Option<String>,
+        pub level: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for NotificationConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -446,7 +434,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -464,13 +451,13 @@ pub mod schemas {
     pub struct Setting {
         #[doc = "The setting's ID. The following IDs are valid:\n\n* locale - The key to the user\u{2019}s language/locale (BCP 47 identifier) that Glassware should use to render localized content.\n* timezone - The key to the user\u{2019}s current time zone region as defined in the tz database. Example: America/Los_Angeles."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The type of resource. This is always mirror#setting."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The setting value, as a string."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Setting {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -479,7 +466,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -497,31 +483,31 @@ pub mod schemas {
     pub struct Subscription {
         #[doc = "The URL where notifications should be delivered (must start with https://)."]
         #[serde(rename = "callbackUrl", default)]
-        pub callback_url: Option<String>,
+        pub callback_url: ::std::option::Option<String>,
         #[doc = "The collection to subscribe to. Allowed values are:\n\n* timeline - Changes in the timeline including insertion, deletion, and updates. \n* locations - Location updates. \n* settings - Settings updates."]
         #[serde(rename = "collection", default)]
-        pub collection: Option<String>,
+        pub collection: ::std::option::Option<String>,
         #[doc = "The ID of the subscription."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The type of resource. This is always mirror#subscription."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Container object for notifications. This is not populated in the Subscription resource."]
         #[serde(rename = "notification", default)]
-        pub notification: Option<crate::schemas::Notification>,
+        pub notification: ::std::option::Option<crate::schemas::Notification>,
         #[doc = "A list of operations that should be subscribed to. An empty list indicates that all operations on the collection should be subscribed to. Allowed values are:\n\n* UPDATE - The item has been updated. \n* INSERT - A new item has been inserted. \n* DELETE - The item has been deleted. \n* MENU_ACTION - A custom menu item has been triggered by the user."]
         #[serde(rename = "operation", default)]
-        pub operation: Option<Vec<String>>,
+        pub operation: ::std::option::Option<Vec<String>>,
         #[doc = "The time at which this subscription was last modified, formatted according to RFC 3339."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "An opaque token sent to the subscriber in notifications so that it can determine the ID of the user."]
         #[serde(rename = "userToken", default)]
-        pub user_token: Option<String>,
+        pub user_token: ::std::option::Option<String>,
         #[doc = "A secret token sent to the subscriber in notifications so that it can verify that the notification was generated by Google."]
         #[serde(rename = "verifyToken", default)]
-        pub verify_token: Option<String>,
+        pub verify_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Subscription {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -530,7 +516,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -548,10 +533,10 @@ pub mod schemas {
     pub struct SubscriptionsListResponse {
         #[doc = "The list of subscriptions."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Subscription>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Subscription>>,
         #[doc = "The type of resource. This is always mirror#subscriptionsList."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SubscriptionsListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -560,7 +545,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -569,82 +553,82 @@ pub mod schemas {
     pub struct TimelineItem {
         #[doc = "A list of media attachments associated with this item. As a convenience, you can refer to attachments in your HTML payloads with the attachment or cid scheme. For example:\n\n* attachment: <img src=\"attachment:attachment_index\"> where attachment_index is the 0-based index of this array. \n* cid: <img src=\"cid:attachment_id\"> where attachment_id is the ID of the attachment."]
         #[serde(rename = "attachments", default)]
-        pub attachments: Option<Vec<crate::schemas::Attachment>>,
+        pub attachments: ::std::option::Option<Vec<crate::schemas::Attachment>>,
         #[doc = "The bundle ID for this item. Services can specify a bundleId to group many items together. They appear under a single top-level item on the device."]
         #[serde(rename = "bundleId", default)]
-        pub bundle_id: Option<String>,
+        pub bundle_id: ::std::option::Option<String>,
         #[doc = "A canonical URL pointing to the canonical/high quality version of the data represented by the timeline item."]
         #[serde(rename = "canonicalUrl", default)]
-        pub canonical_url: Option<String>,
+        pub canonical_url: ::std::option::Option<String>,
         #[doc = "The time at which this item was created, formatted according to RFC 3339."]
         #[serde(rename = "created", default)]
-        pub created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The user or group that created this item."]
         #[serde(rename = "creator", default)]
-        pub creator: Option<crate::schemas::Contact>,
+        pub creator: ::std::option::Option<crate::schemas::Contact>,
         #[doc = "The time that should be displayed when this item is viewed in the timeline, formatted according to RFC 3339. This user's timeline is sorted chronologically on display time, so this will also determine where the item is displayed in the timeline. If not set by the service, the display time defaults to the updated time."]
         #[serde(rename = "displayTime", default)]
-        pub display_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub display_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "ETag for this item."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "HTML content for this item. If both text and html are provided for an item, the html will be rendered in the timeline.\nAllowed HTML elements - You can use these elements in your timeline cards.\n\n* Headers: h1, h2, h3, h4, h5, h6 \n\n* Images: img \n\n* Lists: li, ol, ul \n\n* HTML5 semantics: article, aside, details, figure, figcaption, footer, header, nav, section, summary, time \n\n* Structural: blockquote, br, div, hr, p, span \n\n* Style: b, big, center, em, i, u, s, small, strike, strong, style, sub, sup \n\n* Tables: table, tbody, td, tfoot, th, thead, tr  \n  Blocked HTML elements: These elements and their contents are removed from HTML payloads.\n\n* Document headers: head, title \n\n* Embeds: audio, embed, object, source, video \n\n* Frames: frame, frameset \n\n* Scripting: applet, script  \n  Other elements: Any elements that aren't listed are removed, but their contents are preserved."]
         #[serde(rename = "html", default)]
-        pub html: Option<String>,
+        pub html: ::std::option::Option<String>,
         #[doc = "The ID of the timeline item. This is unique within a user's timeline."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "If this item was generated as a reply to another item, this field will be set to the ID of the item being replied to. This can be used to attach a reply to the appropriate conversation or post."]
         #[serde(rename = "inReplyTo", default)]
-        pub in_reply_to: Option<String>,
+        pub in_reply_to: ::std::option::Option<String>,
         #[doc = "Whether this item is a bundle cover.\n\nIf an item is marked as a bundle cover, it will be the entry point to the bundle of items that have the same bundleId as that item. It will be shown only on the main timeline \u{2014} not within the opened bundle.\n\nOn the main timeline, items that are shown are:\n\n* Items that have isBundleCover set to true\n* Items that do not have a bundleId  In a bundle sub-timeline, items that are shown are:\n* Items that have the bundleId in question AND isBundleCover set to false"]
         #[serde(rename = "isBundleCover", default)]
-        pub is_bundle_cover: Option<bool>,
+        pub is_bundle_cover: ::std::option::Option<bool>,
         #[doc = "When true, indicates this item is deleted, and only the ID property is set."]
         #[serde(rename = "isDeleted", default)]
-        pub is_deleted: Option<bool>,
+        pub is_deleted: ::std::option::Option<bool>,
         #[doc = "When true, indicates this item is pinned, which means it's grouped alongside \"active\" items like navigation and hangouts, on the opposite side of the home screen from historical (non-pinned) timeline items. You can allow the user to toggle the value of this property with the TOGGLE_PINNED built-in menu item."]
         #[serde(rename = "isPinned", default)]
-        pub is_pinned: Option<bool>,
+        pub is_pinned: ::std::option::Option<bool>,
         #[doc = "The type of resource. This is always mirror#timelineItem."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The geographic location associated with this item."]
         #[serde(rename = "location", default)]
-        pub location: Option<crate::schemas::Location>,
+        pub location: ::std::option::Option<crate::schemas::Location>,
         #[doc = "A list of menu items that will be presented to the user when this item is selected in the timeline."]
         #[serde(rename = "menuItems", default)]
-        pub menu_items: Option<Vec<crate::schemas::MenuItem>>,
+        pub menu_items: ::std::option::Option<Vec<crate::schemas::MenuItem>>,
         #[doc = "Controls how notifications for this item are presented on the device. If this is missing, no notification will be generated."]
         #[serde(rename = "notification", default)]
-        pub notification: Option<crate::schemas::NotificationConfig>,
+        pub notification: ::std::option::Option<crate::schemas::NotificationConfig>,
         #[doc = "For pinned items, this determines the order in which the item is displayed in the timeline, with a higher score appearing closer to the clock. Note: setting this field is currently not supported."]
         #[serde(rename = "pinScore", default)]
-        pub pin_score: Option<i32>,
+        pub pin_score: ::std::option::Option<i32>,
         #[doc = "A list of users or groups that this item has been shared with."]
         #[serde(rename = "recipients", default)]
-        pub recipients: Option<Vec<crate::schemas::Contact>>,
+        pub recipients: ::std::option::Option<Vec<crate::schemas::Contact>>,
         #[doc = "A URL that can be used to retrieve this item."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Opaque string you can use to map a timeline item to data in your own service."]
         #[serde(rename = "sourceItemId", default)]
-        pub source_item_id: Option<String>,
+        pub source_item_id: ::std::option::Option<String>,
         #[doc = "The speakable version of the content of this item. Along with the READ_ALOUD menu item, use this field to provide text that would be clearer when read aloud, or to provide extended information to what is displayed visually on Glass.\n\nGlassware should also specify the speakableType field, which will be spoken before this text in cases where the additional context is useful, for example when the user requests that the item be read aloud following a notification."]
         #[serde(rename = "speakableText", default)]
-        pub speakable_text: Option<String>,
+        pub speakable_text: ::std::option::Option<String>,
         #[doc = "A speakable description of the type of this item. This will be announced to the user prior to reading the content of the item in cases where the additional context is useful, for example when the user requests that the item be read aloud following a notification.\n\nThis should be a short, simple noun phrase such as \"Email\", \"Text message\", or \"Daily Planet News Update\".\n\nGlassware are encouraged to populate this field for every timeline item, even if the item does not contain speakableText or text so that the user can learn the type of the item without looking at the screen."]
         #[serde(rename = "speakableType", default)]
-        pub speakable_type: Option<String>,
+        pub speakable_type: ::std::option::Option<String>,
         #[doc = "Text content of this item."]
         #[serde(rename = "text", default)]
-        pub text: Option<String>,
+        pub text: ::std::option::Option<String>,
         #[doc = "The title of this item."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "The time at which this item was last modified, formatted according to RFC 3339."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for TimelineItem {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -653,7 +637,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -662,13 +645,13 @@ pub mod schemas {
     pub struct TimelineListResponse {
         #[doc = "Items in the timeline."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::TimelineItem>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::TimelineItem>>,
         #[doc = "The type of resource. This is always mirror#timeline."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The next page token. Provide this as the pageToken parameter in the request to retrieve the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TimelineListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -677,7 +660,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -695,10 +677,10 @@ pub mod schemas {
     pub struct UserAction {
         #[doc = "An optional payload for the action.\n\nFor actions of type CUSTOM, this is the ID of the custom menu item that was selected."]
         #[serde(rename = "payload", default)]
-        pub payload: Option<String>,
+        pub payload: ::std::option::Option<String>,
         #[doc = "The type of action. The value of this can be:\n\n* SHARE - the user shared an item. \n* REPLY - the user replied to an item. \n* REPLY_ALL - the user replied to all recipients of an item. \n* CUSTOM - the user selected a custom menu item on the timeline item. \n* DELETE - the user deleted the item. \n* PIN - the user pinned the item. \n* UNPIN - the user unpinned the item. \n* LAUNCH - the user initiated a voice command.  In the future, additional types may be added. UserActions with unrecognized types should be ignored."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserAction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -707,7 +689,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -724,9 +705,9 @@ pub mod schemas {
     )]
     pub struct UserData {
         #[serde(rename = "key", default)]
-        pub key: Option<String>,
+        pub key: ::std::option::Option<String>,
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UserData {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -735,7 +716,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -784,6 +764,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -2967,6 +2956,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListOrderBy {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
         }
         pub struct TimelineActions<'a, A> {
             pub(crate) reqwest: &'a reqwest::Client,
@@ -5118,6 +5116,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -5193,5 +5192,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

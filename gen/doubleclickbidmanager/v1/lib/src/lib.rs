@@ -40,6 +40,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DownloadLineItemsRequestFileSpec {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DownloadLineItemsRequestFilterType {
         AdvertiserId,
@@ -87,6 +96,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DownloadLineItemsRequestFilterType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DownloadLineItemsRequestFormat {
         Csv,
@@ -128,6 +146,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DownloadLineItemsRequestFormat {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -143,16 +170,16 @@ pub mod schemas {
     pub struct DownloadLineItemsRequest {
         #[doc = "File specification (column names, types, order) in which the line items will be returned. Default to EWF."]
         #[serde(rename = "fileSpec", default)]
-        pub file_spec: Option<crate::schemas::DownloadLineItemsRequestFileSpec>,
+        pub file_spec: ::std::option::Option<crate::schemas::DownloadLineItemsRequestFileSpec>,
         #[doc = "Ids of the specified filter type used to filter line items to fetch. If omitted, all the line items will be returned."]
         #[serde(rename = "filterIds", default)]
-        pub filter_ids: Option<Vec<i64>>,
+        pub filter_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Filter type used to filter line items to fetch."]
         #[serde(rename = "filterType", default)]
-        pub filter_type: Option<crate::schemas::DownloadLineItemsRequestFilterType>,
+        pub filter_type: ::std::option::Option<crate::schemas::DownloadLineItemsRequestFilterType>,
         #[doc = "Format in which the line items will be returned. Default to CSV."]
         #[serde(rename = "format", default)]
-        pub format: Option<crate::schemas::DownloadLineItemsRequestFormat>,
+        pub format: ::std::option::Option<crate::schemas::DownloadLineItemsRequestFormat>,
     }
     impl ::field_selector::FieldSelector for DownloadLineItemsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -161,7 +188,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -179,7 +205,7 @@ pub mod schemas {
     pub struct DownloadLineItemsResponse {
         #[doc = "Retrieved line items in CSV format. For more information about file formats, see  Entity Write File Format."]
         #[serde(rename = "lineItems", default)]
-        pub line_items: Option<String>,
+        pub line_items: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DownloadLineItemsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -188,7 +214,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -247,6 +272,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DownloadRequestFileTypesItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DownloadRequestFilterType {
         AdvertiserId,
@@ -303,6 +337,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DownloadRequestFilterType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -318,16 +361,16 @@ pub mod schemas {
     pub struct DownloadRequest {
         #[doc = "File types that will be returned. If INVENTORY_SOURCE is requested, no other file types may be requested.\n\nAcceptable values are:\n\n* \"AD\" \n* \"AD_GROUP\" \n* \"CAMPAIGN\" \n* \"INSERTION_ORDER\" \n* \"INVENTORY_SOURCE\" \n* \"LINE_ITEM\""]
         #[serde(rename = "fileTypes", default)]
-        pub file_types: Option<Vec<crate::schemas::DownloadRequestFileTypesItems>>,
+        pub file_types: ::std::option::Option<Vec<crate::schemas::DownloadRequestFileTypesItems>>,
         #[doc = "The IDs of the specified filter type. This is used to filter entities to fetch. At least one ID must be specified."]
         #[serde(rename = "filterIds", default)]
-        pub filter_ids: Option<Vec<i64>>,
+        pub filter_ids: ::std::option::Option<Vec<i64>>,
         #[doc = "Filter type used to filter entities to fetch. PARTNER_ID and INVENTORY_SOURCE_ID may only be used when downloading inventory sources."]
         #[serde(rename = "filterType", default)]
-        pub filter_type: Option<crate::schemas::DownloadRequestFilterType>,
+        pub filter_type: ::std::option::Option<crate::schemas::DownloadRequestFilterType>,
         #[doc = "SDF Version (column names, types, order) in which the entities will be returned. Default to 3.1."]
         #[serde(rename = "version", default)]
-        pub version: Option<String>,
+        pub version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DownloadRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -336,7 +379,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -354,21 +396,21 @@ pub mod schemas {
     pub struct DownloadResponse {
         #[doc = "Retrieved ad groups in SDF format."]
         #[serde(rename = "adGroups", default)]
-        pub ad_groups: Option<String>,
+        pub ad_groups: ::std::option::Option<String>,
         #[doc = "Retrieved ads in SDF format."]
         #[serde(rename = "ads", default)]
-        pub ads: Option<String>,
+        pub ads: ::std::option::Option<String>,
         #[doc = "Retrieved campaigns in SDF format."]
         #[serde(rename = "campaigns", default)]
-        pub campaigns: Option<String>,
+        pub campaigns: ::std::option::Option<String>,
         #[doc = "Retrieved insertion orders in SDF format."]
         #[serde(rename = "insertionOrders", default)]
-        pub insertion_orders: Option<String>,
+        pub insertion_orders: ::std::option::Option<String>,
         #[serde(rename = "inventorySources", default)]
-        pub inventory_sources: Option<String>,
+        pub inventory_sources: ::std::option::Option<String>,
         #[doc = "Retrieved line items in SDF format."]
         #[serde(rename = "lineItems", default)]
-        pub line_items: Option<String>,
+        pub line_items: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DownloadResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -377,7 +419,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -846,6 +887,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for FilterPairType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -861,10 +911,10 @@ pub mod schemas {
     pub struct FilterPair {
         #[doc = "Filter type."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::FilterPairType>,
+        pub r#type: ::std::option::Option<crate::schemas::FilterPairType>,
         #[doc = "Filter value."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FilterPair {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -873,7 +923,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -891,10 +940,10 @@ pub mod schemas {
     pub struct ListQueriesResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"doubleclickbidmanager#listQueriesResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Retrieved queries."]
         #[serde(rename = "queries", default)]
-        pub queries: Option<Vec<crate::schemas::Query>>,
+        pub queries: ::std::option::Option<Vec<crate::schemas::Query>>,
     }
     impl ::field_selector::FieldSelector for ListQueriesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -903,7 +952,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -921,10 +969,10 @@ pub mod schemas {
     pub struct ListReportsResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"doubleclickbidmanager#listReportsResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Retrieved reports."]
         #[serde(rename = "reports", default)]
-        pub reports: Option<Vec<crate::schemas::Report>>,
+        pub reports: ::std::option::Option<Vec<crate::schemas::Report>>,
     }
     impl ::field_selector::FieldSelector for ListReportsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -933,7 +981,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1484,6 +1531,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ParametersGroupBysItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3052,6 +3108,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ParametersMetricsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ParametersType {
         TypeActiveGrp,
@@ -3206,6 +3271,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ParametersType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -3221,19 +3295,19 @@ pub mod schemas {
     pub struct Parameters {
         #[doc = "Filters used to match traffic data in your report."]
         #[serde(rename = "filters", default)]
-        pub filters: Option<Vec<crate::schemas::FilterPair>>,
+        pub filters: ::std::option::Option<Vec<crate::schemas::FilterPair>>,
         #[doc = "Data is grouped by the filters listed in this field."]
         #[serde(rename = "groupBys", default)]
-        pub group_bys: Option<Vec<crate::schemas::ParametersGroupBysItems>>,
+        pub group_bys: ::std::option::Option<Vec<crate::schemas::ParametersGroupBysItems>>,
         #[doc = "Deprecated. This field is no longer in use."]
         #[serde(rename = "includeInviteData", default)]
-        pub include_invite_data: Option<bool>,
+        pub include_invite_data: ::std::option::Option<bool>,
         #[doc = "Metrics to include as columns in your report."]
         #[serde(rename = "metrics", default)]
-        pub metrics: Option<Vec<crate::schemas::ParametersMetricsItems>>,
+        pub metrics: ::std::option::Option<Vec<crate::schemas::ParametersMetricsItems>>,
         #[doc = "Report type."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::ParametersType>,
+        pub r#type: ::std::option::Option<crate::schemas::ParametersType>,
     }
     impl ::field_selector::FieldSelector for Parameters {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3242,7 +3316,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3260,31 +3333,31 @@ pub mod schemas {
     pub struct Query {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"doubleclickbidmanager#query\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Query metadata."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::QueryMetadata>,
+        pub metadata: ::std::option::Option<crate::schemas::QueryMetadata>,
         #[doc = "Query parameters."]
         #[serde(rename = "params", default)]
-        pub params: Option<crate::schemas::Parameters>,
+        pub params: ::std::option::Option<crate::schemas::Parameters>,
         #[doc = "Query ID."]
         #[serde(rename = "queryId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub query_id: Option<i64>,
+        pub query_id: ::std::option::Option<i64>,
         #[doc = "The ending time for the data that is shown in the report. Note, reportDataEndTimeMs is required if metadata.dataRange is CUSTOM_DATES and ignored otherwise."]
         #[serde(rename = "reportDataEndTimeMs", default)]
         #[serde(with = "crate::parsed_string")]
-        pub report_data_end_time_ms: Option<i64>,
+        pub report_data_end_time_ms: ::std::option::Option<i64>,
         #[doc = "The starting time for the data that is shown in the report. Note, reportDataStartTimeMs is required if metadata.dataRange is CUSTOM_DATES and ignored otherwise."]
         #[serde(rename = "reportDataStartTimeMs", default)]
         #[serde(with = "crate::parsed_string")]
-        pub report_data_start_time_ms: Option<i64>,
+        pub report_data_start_time_ms: ::std::option::Option<i64>,
         #[doc = "Information on how often and when to run a query."]
         #[serde(rename = "schedule", default)]
-        pub schedule: Option<crate::schemas::QuerySchedule>,
+        pub schedule: ::std::option::Option<crate::schemas::QuerySchedule>,
         #[doc = "Canonical timezone code for report data time. Defaults to America/New_York."]
         #[serde(rename = "timezoneCode", default)]
-        pub timezone_code: Option<String>,
+        pub timezone_code: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Query {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3293,7 +3366,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3391,6 +3463,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for QueryMetadataDataRange {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum QueryMetadataFormat {
         Csv,
@@ -3438,6 +3519,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for QueryMetadataFormat {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -3453,38 +3543,38 @@ pub mod schemas {
     pub struct QueryMetadata {
         #[doc = "Range of report data."]
         #[serde(rename = "dataRange", default)]
-        pub data_range: Option<crate::schemas::QueryMetadataDataRange>,
+        pub data_range: ::std::option::Option<crate::schemas::QueryMetadataDataRange>,
         #[doc = "Format of the generated report."]
         #[serde(rename = "format", default)]
-        pub format: Option<crate::schemas::QueryMetadataFormat>,
+        pub format: ::std::option::Option<crate::schemas::QueryMetadataFormat>,
         #[doc = "The path to the location in Google Cloud Storage where the latest report is stored."]
         #[serde(rename = "googleCloudStoragePathForLatestReport", default)]
-        pub google_cloud_storage_path_for_latest_report: Option<String>,
+        pub google_cloud_storage_path_for_latest_report: ::std::option::Option<String>,
         #[doc = "The path in Google Drive for the latest report."]
         #[serde(rename = "googleDrivePathForLatestReport", default)]
-        pub google_drive_path_for_latest_report: Option<String>,
+        pub google_drive_path_for_latest_report: ::std::option::Option<String>,
         #[doc = "The time when the latest report started to run."]
         #[serde(rename = "latestReportRunTimeMs", default)]
         #[serde(with = "crate::parsed_string")]
-        pub latest_report_run_time_ms: Option<i64>,
+        pub latest_report_run_time_ms: ::std::option::Option<i64>,
         #[doc = "Locale of the generated reports. Valid values are cs CZECH de GERMAN en ENGLISH es SPANISH fr FRENCH it ITALIAN ja JAPANESE ko KOREAN pl POLISH pt-BR BRAZILIAN_PORTUGUESE ru RUSSIAN tr TURKISH uk UKRAINIAN zh-CN CHINA_CHINESE zh-TW TAIWAN_CHINESE\n\nAn locale string not in the list above will generate reports in English."]
         #[serde(rename = "locale", default)]
-        pub locale: Option<String>,
+        pub locale: ::std::option::Option<String>,
         #[doc = "Number of reports that have been generated for the query."]
         #[serde(rename = "reportCount", default)]
-        pub report_count: Option<i32>,
+        pub report_count: ::std::option::Option<i32>,
         #[doc = "Whether the latest report is currently running."]
         #[serde(rename = "running", default)]
-        pub running: Option<bool>,
+        pub running: ::std::option::Option<bool>,
         #[doc = "Whether to send an email notification when a report is ready. Default to false."]
         #[serde(rename = "sendNotification", default)]
-        pub send_notification: Option<bool>,
+        pub send_notification: ::std::option::Option<bool>,
         #[doc = "List of email addresses which are sent email notifications when the report is finished. Separate from sendNotification."]
         #[serde(rename = "shareEmailAddress", default)]
-        pub share_email_address: Option<Vec<String>>,
+        pub share_email_address: ::std::option::Option<Vec<String>>,
         #[doc = "Query title. It is used to name the reports generated from this query."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for QueryMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3493,7 +3583,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3552,6 +3641,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for QueryScheduleFrequency {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -3568,16 +3666,16 @@ pub mod schemas {
         #[doc = "Datetime to periodically run the query until."]
         #[serde(rename = "endTimeMs", default)]
         #[serde(with = "crate::parsed_string")]
-        pub end_time_ms: Option<i64>,
+        pub end_time_ms: ::std::option::Option<i64>,
         #[doc = "How often the query is run."]
         #[serde(rename = "frequency", default)]
-        pub frequency: Option<crate::schemas::QueryScheduleFrequency>,
+        pub frequency: ::std::option::Option<crate::schemas::QueryScheduleFrequency>,
         #[doc = "Time of day at which a new report will be generated, represented as minutes past midnight. Range is 0 to 1439. Only applies to scheduled reports."]
         #[serde(rename = "nextRunMinuteOfDay", default)]
-        pub next_run_minute_of_day: Option<i32>,
+        pub next_run_minute_of_day: ::std::option::Option<i32>,
         #[doc = "Canonical timezone code for report generation time. Defaults to America/New_York."]
         #[serde(rename = "nextRunTimezoneCode", default)]
-        pub next_run_timezone_code: Option<String>,
+        pub next_run_timezone_code: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for QuerySchedule {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3586,7 +3684,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3604,13 +3701,13 @@ pub mod schemas {
     pub struct Report {
         #[doc = "Key used to identify a report."]
         #[serde(rename = "key", default)]
-        pub key: Option<crate::schemas::ReportKey>,
+        pub key: ::std::option::Option<crate::schemas::ReportKey>,
         #[doc = "Report metadata."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::ReportMetadata>,
+        pub metadata: ::std::option::Option<crate::schemas::ReportMetadata>,
         #[doc = "Report parameters."]
         #[serde(rename = "params", default)]
-        pub params: Option<crate::schemas::Parameters>,
+        pub params: ::std::option::Option<crate::schemas::Parameters>,
     }
     impl ::field_selector::FieldSelector for Report {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3619,7 +3716,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3750,6 +3846,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ReportFailureErrorCode {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -3765,7 +3870,7 @@ pub mod schemas {
     pub struct ReportFailure {
         #[doc = "Error code that shows why the report was not created."]
         #[serde(rename = "errorCode", default)]
-        pub error_code: Option<crate::schemas::ReportFailureErrorCode>,
+        pub error_code: ::std::option::Option<crate::schemas::ReportFailureErrorCode>,
     }
     impl ::field_selector::FieldSelector for ReportFailure {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3774,7 +3879,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3793,11 +3897,11 @@ pub mod schemas {
         #[doc = "Query ID."]
         #[serde(rename = "queryId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub query_id: Option<i64>,
+        pub query_id: ::std::option::Option<i64>,
         #[doc = "Report ID."]
         #[serde(rename = "reportId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub report_id: Option<i64>,
+        pub report_id: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for ReportKey {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3806,7 +3910,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3824,18 +3927,18 @@ pub mod schemas {
     pub struct ReportMetadata {
         #[doc = "The path to the location in Google Cloud Storage where the report is stored."]
         #[serde(rename = "googleCloudStoragePath", default)]
-        pub google_cloud_storage_path: Option<String>,
+        pub google_cloud_storage_path: ::std::option::Option<String>,
         #[doc = "The ending time for the data that is shown in the report."]
         #[serde(rename = "reportDataEndTimeMs", default)]
         #[serde(with = "crate::parsed_string")]
-        pub report_data_end_time_ms: Option<i64>,
+        pub report_data_end_time_ms: ::std::option::Option<i64>,
         #[doc = "The starting time for the data that is shown in the report."]
         #[serde(rename = "reportDataStartTimeMs", default)]
         #[serde(with = "crate::parsed_string")]
-        pub report_data_start_time_ms: Option<i64>,
+        pub report_data_start_time_ms: ::std::option::Option<i64>,
         #[doc = "Report status."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::ReportStatus>,
+        pub status: ::std::option::Option<crate::schemas::ReportStatus>,
     }
     impl ::field_selector::FieldSelector for ReportMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3844,7 +3947,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3894,6 +3996,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ReportStatusFormat {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReportStatusState {
         Done,
@@ -3941,6 +4052,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ReportStatusState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -3956,17 +4076,17 @@ pub mod schemas {
     pub struct ReportStatus {
         #[doc = "If the report failed, this records the cause."]
         #[serde(rename = "failure", default)]
-        pub failure: Option<crate::schemas::ReportFailure>,
+        pub failure: ::std::option::Option<crate::schemas::ReportFailure>,
         #[doc = "The time when this report either completed successfully or failed."]
         #[serde(rename = "finishTimeMs", default)]
         #[serde(with = "crate::parsed_string")]
-        pub finish_time_ms: Option<i64>,
+        pub finish_time_ms: ::std::option::Option<i64>,
         #[doc = "The file type of the report."]
         #[serde(rename = "format", default)]
-        pub format: Option<crate::schemas::ReportStatusFormat>,
+        pub format: ::std::option::Option<crate::schemas::ReportStatusFormat>,
         #[doc = "The state of the report."]
         #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::ReportStatusState>,
+        pub state: ::std::option::Option<crate::schemas::ReportStatusState>,
     }
     impl ::field_selector::FieldSelector for ReportStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3975,7 +4095,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3993,23 +4112,23 @@ pub mod schemas {
     pub struct RowStatus {
         #[doc = "Whether the stored entity is changed as a result of upload."]
         #[serde(rename = "changed", default)]
-        pub changed: Option<bool>,
+        pub changed: ::std::option::Option<bool>,
         #[doc = "Entity Id."]
         #[serde(rename = "entityId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub entity_id: Option<i64>,
+        pub entity_id: ::std::option::Option<i64>,
         #[doc = "Entity name."]
         #[serde(rename = "entityName", default)]
-        pub entity_name: Option<String>,
+        pub entity_name: ::std::option::Option<String>,
         #[doc = "Reasons why the entity can't be uploaded."]
         #[serde(rename = "errors", default)]
-        pub errors: Option<Vec<String>>,
+        pub errors: ::std::option::Option<Vec<String>>,
         #[doc = "Whether the entity is persisted."]
         #[serde(rename = "persisted", default)]
-        pub persisted: Option<bool>,
+        pub persisted: ::std::option::Option<bool>,
         #[doc = "Row number."]
         #[serde(rename = "rowNumber", default)]
-        pub row_number: Option<i32>,
+        pub row_number: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for RowStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4018,7 +4137,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4116,6 +4234,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for RunQueryRequestDataRange {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -4131,18 +4258,18 @@ pub mod schemas {
     pub struct RunQueryRequest {
         #[doc = "Report data range used to generate the report."]
         #[serde(rename = "dataRange", default)]
-        pub data_range: Option<crate::schemas::RunQueryRequestDataRange>,
+        pub data_range: ::std::option::Option<crate::schemas::RunQueryRequestDataRange>,
         #[doc = "The ending time for the data that is shown in the report. Note, reportDataEndTimeMs is required if dataRange is CUSTOM_DATES and ignored otherwise."]
         #[serde(rename = "reportDataEndTimeMs", default)]
         #[serde(with = "crate::parsed_string")]
-        pub report_data_end_time_ms: Option<i64>,
+        pub report_data_end_time_ms: ::std::option::Option<i64>,
         #[doc = "The starting time for the data that is shown in the report. Note, reportDataStartTimeMs is required if dataRange is CUSTOM_DATES and ignored otherwise."]
         #[serde(rename = "reportDataStartTimeMs", default)]
         #[serde(with = "crate::parsed_string")]
-        pub report_data_start_time_ms: Option<i64>,
+        pub report_data_start_time_ms: ::std::option::Option<i64>,
         #[doc = "Canonical timezone code for report data time. Defaults to America/New_York."]
         #[serde(rename = "timezoneCode", default)]
-        pub timezone_code: Option<String>,
+        pub timezone_code: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RunQueryRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4151,7 +4278,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4195,6 +4321,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for UploadLineItemsRequestFormat {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -4210,13 +4345,13 @@ pub mod schemas {
     pub struct UploadLineItemsRequest {
         #[doc = "Set to true to get upload status without actually persisting the line items."]
         #[serde(rename = "dryRun", default)]
-        pub dry_run: Option<bool>,
+        pub dry_run: ::std::option::Option<bool>,
         #[doc = "Format the line items are in. Default to CSV."]
         #[serde(rename = "format", default)]
-        pub format: Option<crate::schemas::UploadLineItemsRequestFormat>,
+        pub format: ::std::option::Option<crate::schemas::UploadLineItemsRequestFormat>,
         #[doc = "Line items in CSV to upload. Refer to  Entity Write File Format for more information on file format."]
         #[serde(rename = "lineItems", default)]
-        pub line_items: Option<String>,
+        pub line_items: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UploadLineItemsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4225,7 +4360,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4243,7 +4377,7 @@ pub mod schemas {
     pub struct UploadLineItemsResponse {
         #[doc = "Status of upload."]
         #[serde(rename = "uploadStatus", default)]
-        pub upload_status: Option<crate::schemas::UploadStatus>,
+        pub upload_status: ::std::option::Option<crate::schemas::UploadStatus>,
     }
     impl ::field_selector::FieldSelector for UploadLineItemsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4252,7 +4386,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4270,10 +4403,10 @@ pub mod schemas {
     pub struct UploadStatus {
         #[doc = "Reasons why upload can't be completed."]
         #[serde(rename = "errors", default)]
-        pub errors: Option<Vec<String>>,
+        pub errors: ::std::option::Option<Vec<String>>,
         #[doc = "Per-row upload status."]
         #[serde(rename = "rowStatus", default)]
-        pub row_status: Option<Vec<crate::schemas::RowStatus>>,
+        pub row_status: ::std::option::Option<Vec<crate::schemas::RowStatus>>,
     }
     impl ::field_selector::FieldSelector for UploadStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4282,7 +4415,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -4327,6 +4459,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -5943,6 +6084,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -6018,5 +6160,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

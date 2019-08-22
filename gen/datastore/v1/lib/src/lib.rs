@@ -14,7 +14,7 @@ pub mod schemas {
     pub struct AllocateIdsRequest {
         #[doc = "A list of keys with incomplete key paths for which to allocate IDs.\nNo key may be reserved/read-only."]
         #[serde(rename = "keys", default)]
-        pub keys: Option<Vec<crate::schemas::Key>>,
+        pub keys: ::std::option::Option<Vec<crate::schemas::Key>>,
     }
     impl ::field_selector::FieldSelector for AllocateIdsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -23,7 +23,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -41,7 +40,7 @@ pub mod schemas {
     pub struct AllocateIdsResponse {
         #[doc = "The keys specified in the request (in the same order), each with\nits key path completed with a newly allocated ID."]
         #[serde(rename = "keys", default)]
-        pub keys: Option<Vec<crate::schemas::Key>>,
+        pub keys: ::std::option::Option<Vec<crate::schemas::Key>>,
     }
     impl ::field_selector::FieldSelector for AllocateIdsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -50,7 +49,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -59,7 +57,7 @@ pub mod schemas {
     pub struct ArrayValue {
         #[doc = "Values in the array.\nThe order of values in an array is preserved as long as all values have\nidentical settings for 'exclude_from_indexes'."]
         #[serde(rename = "values", default)]
-        pub values: Option<Vec<crate::schemas::Value>>,
+        pub values: ::std::option::Option<Vec<crate::schemas::Value>>,
     }
     impl ::field_selector::FieldSelector for ArrayValue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -68,7 +66,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -86,7 +83,7 @@ pub mod schemas {
     pub struct BeginTransactionRequest {
         #[doc = "Options for a new transaction."]
         #[serde(rename = "transactionOptions", default)]
-        pub transaction_options: Option<crate::schemas::TransactionOptions>,
+        pub transaction_options: ::std::option::Option<crate::schemas::TransactionOptions>,
     }
     impl ::field_selector::FieldSelector for BeginTransactionRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -95,7 +92,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -113,7 +109,7 @@ pub mod schemas {
     pub struct BeginTransactionResponse {
         #[doc = "The transaction identifier (always present)."]
         #[serde(rename = "transaction", default)]
-        pub transaction: Option<Vec<u8>>,
+        pub transaction: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for BeginTransactionResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -122,7 +118,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -175,19 +170,28 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CommitRequestMode {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct CommitRequest {
         #[doc = "The type of commit to perform. Defaults to `TRANSACTIONAL`."]
         #[serde(rename = "mode", default)]
-        pub mode: Option<crate::schemas::CommitRequestMode>,
+        pub mode: ::std::option::Option<crate::schemas::CommitRequestMode>,
         #[doc = "The mutations to perform.\n\nWhen mode is `TRANSACTIONAL`, mutations affecting a single entity are\napplied in order. The following sequences of mutations affecting a single\nentity are not permitted in a single `Commit` request:\n\n* `insert` followed by `insert`\n* `update` followed by `insert`\n* `upsert` followed by `insert`\n* `delete` followed by `update`\n\nWhen mode is `NON_TRANSACTIONAL`, no two mutations may affect a single\nentity."]
         #[serde(rename = "mutations", default)]
-        pub mutations: Option<Vec<crate::schemas::Mutation>>,
+        pub mutations: ::std::option::Option<Vec<crate::schemas::Mutation>>,
         #[doc = "The identifier of the transaction associated with the commit. A\ntransaction identifier is returned by a call to\nDatastore.BeginTransaction."]
         #[serde(rename = "transaction", default)]
-        pub transaction: Option<Vec<u8>>,
+        pub transaction: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for CommitRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -196,7 +200,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -214,10 +217,10 @@ pub mod schemas {
     pub struct CommitResponse {
         #[doc = "The number of index entries updated during the commit, or zero if none were\nupdated."]
         #[serde(rename = "indexUpdates", default)]
-        pub index_updates: Option<i32>,
+        pub index_updates: ::std::option::Option<i32>,
         #[doc = "The result of performing the mutations.\nThe i-th mutation result corresponds to the i-th mutation in the request."]
         #[serde(rename = "mutationResults", default)]
-        pub mutation_results: Option<Vec<crate::schemas::MutationResult>>,
+        pub mutation_results: ::std::option::Option<Vec<crate::schemas::MutationResult>>,
     }
     impl ::field_selector::FieldSelector for CommitResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -226,7 +229,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -275,16 +277,25 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CompositeFilterOp {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct CompositeFilter {
         #[doc = "The list of filters to combine.\nMust contain at least one filter."]
         #[serde(rename = "filters", default)]
-        pub filters: Option<Vec<crate::schemas::Filter>>,
+        pub filters: ::std::option::Option<Vec<crate::schemas::Filter>>,
         #[doc = "The operator for combining multiple filters."]
         #[serde(rename = "op", default)]
-        pub op: Option<crate::schemas::CompositeFilterOp>,
+        pub op: ::std::option::Option<crate::schemas::CompositeFilterOp>,
     }
     impl ::field_selector::FieldSelector for CompositeFilter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -293,7 +304,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -311,7 +321,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
@@ -319,10 +329,11 @@ pub mod schemas {
     pub struct Entity {
         #[doc = "The entity's key.\n\nAn entity must have a key, unless otherwise documented (for example,\nan entity in `Value.entity_value` may have no key).\nAn entity's kind is its key path's last element's kind,\nor null if it has no key."]
         #[serde(rename = "key", default)]
-        pub key: Option<crate::schemas::Key>,
+        pub key: ::std::option::Option<crate::schemas::Key>,
         #[doc = "The entity's properties.\nThe map's keys are property names.\nA property name matching regex `__.*__` is reserved.\nA reserved property name is forbidden in certain documented contexts.\nThe name must not contain more than 500 characters.\nThe name cannot be `\"\"`."]
         #[serde(rename = "properties", default)]
-        pub properties: Option<::std::collections::BTreeMap<String, crate::schemas::Value>>,
+        pub properties:
+            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Value>>,
     }
     impl ::field_selector::FieldSelector for Entity {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -331,7 +342,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -340,14 +350,14 @@ pub mod schemas {
     pub struct EntityResult {
         #[doc = "A cursor that points to the position after the result entity.\nSet only when the `EntityResult` is part of a `QueryResultBatch` message."]
         #[serde(rename = "cursor", default)]
-        pub cursor: Option<Vec<u8>>,
+        pub cursor: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "The resulting entity."]
         #[serde(rename = "entity", default)]
-        pub entity: Option<crate::schemas::Entity>,
+        pub entity: ::std::option::Option<crate::schemas::Entity>,
         #[doc = "The version of the entity, a strictly positive number that monotonically\nincreases with changes to the entity.\n\nThis field is set for `FULL` entity\nresults.\n\nFor missing entities in `LookupResponse`, this\nis the version of the snapshot that was used to look up the entity, and it\nis always set except for eventually consistent reads."]
         #[serde(rename = "version", default)]
         #[serde(with = "crate::parsed_string")]
-        pub version: Option<i64>,
+        pub version: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for EntityResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -356,7 +366,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -365,10 +374,10 @@ pub mod schemas {
     pub struct Filter {
         #[doc = "A composite filter."]
         #[serde(rename = "compositeFilter", default)]
-        pub composite_filter: Option<crate::schemas::CompositeFilter>,
+        pub composite_filter: ::std::option::Option<crate::schemas::CompositeFilter>,
         #[doc = "A filter on a property."]
         #[serde(rename = "propertyFilter", default)]
-        pub property_filter: Option<crate::schemas::PropertyFilter>,
+        pub property_filter: ::std::option::Option<crate::schemas::PropertyFilter>,
     }
     impl ::field_selector::FieldSelector for Filter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -377,7 +386,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -430,6 +438,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1Beta1CommonMetadataOperationType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -506,6 +523,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1Beta1CommonMetadataState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -521,20 +547,22 @@ pub mod schemas {
     pub struct GoogleDatastoreAdminV1Beta1CommonMetadata {
         #[doc = "The time the operation ended, either successfully or otherwise."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
         #[doc = "The client-assigned labels which were provided when the operation was\ncreated. May also include additional labels."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The type of the operation. Can be used as a filter in\nListOperationsRequest."]
         #[serde(rename = "operationType", default)]
-        pub operation_type:
-            Option<crate::schemas::GoogleDatastoreAdminV1Beta1CommonMetadataOperationType>,
+        pub operation_type: ::std::option::Option<
+            crate::schemas::GoogleDatastoreAdminV1Beta1CommonMetadataOperationType,
+        >,
         #[doc = "The time that work began on the operation."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
         #[doc = "The current state of the Operation."]
         #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::GoogleDatastoreAdminV1Beta1CommonMetadataState>,
+        pub state:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Beta1CommonMetadataState>,
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1Beta1CommonMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -543,7 +571,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -561,10 +588,10 @@ pub mod schemas {
     pub struct GoogleDatastoreAdminV1Beta1EntityFilter {
         #[doc = "If empty, then this represents all kinds."]
         #[serde(rename = "kinds", default)]
-        pub kinds: Option<Vec<String>>,
+        pub kinds: ::std::option::Option<Vec<String>>,
         #[doc = "An empty list represents all namespaces. This is the preferred\nusage for projects that don't use namespaces.\n\nAn empty string element represents the default namespace. This should be\nused if the project has data in non-default namespaces, but doesn't want to\ninclude them.\nEach namespace in this list must be unique."]
         #[serde(rename = "namespaceIds", default)]
-        pub namespace_ids: Option<Vec<String>>,
+        pub namespace_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1Beta1EntityFilter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -573,7 +600,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -591,19 +617,23 @@ pub mod schemas {
     pub struct GoogleDatastoreAdminV1Beta1ExportEntitiesMetadata {
         #[doc = "Metadata common to all Datastore Admin operations."]
         #[serde(rename = "common", default)]
-        pub common: Option<crate::schemas::GoogleDatastoreAdminV1Beta1CommonMetadata>,
+        pub common:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Beta1CommonMetadata>,
         #[doc = "Description of which entities are being exported."]
         #[serde(rename = "entityFilter", default)]
-        pub entity_filter: Option<crate::schemas::GoogleDatastoreAdminV1Beta1EntityFilter>,
+        pub entity_filter:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Beta1EntityFilter>,
         #[doc = "Location for the export metadata and data files. This will be the same\nvalue as the\ngoogle.datastore.admin.v1beta1.ExportEntitiesRequest.output_url_prefix\nfield. The final output location is provided in\ngoogle.datastore.admin.v1beta1.ExportEntitiesResponse.output_url."]
         #[serde(rename = "outputUrlPrefix", default)]
-        pub output_url_prefix: Option<String>,
+        pub output_url_prefix: ::std::option::Option<String>,
         #[doc = "An estimate of the number of bytes processed."]
         #[serde(rename = "progressBytes", default)]
-        pub progress_bytes: Option<crate::schemas::GoogleDatastoreAdminV1Beta1Progress>,
+        pub progress_bytes:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Beta1Progress>,
         #[doc = "An estimate of the number of entities processed."]
         #[serde(rename = "progressEntities", default)]
-        pub progress_entities: Option<crate::schemas::GoogleDatastoreAdminV1Beta1Progress>,
+        pub progress_entities:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Beta1Progress>,
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1Beta1ExportEntitiesMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -612,7 +642,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -630,7 +659,7 @@ pub mod schemas {
     pub struct GoogleDatastoreAdminV1Beta1ExportEntitiesResponse {
         #[doc = "Location of the output metadata file. This can be used to begin an import\ninto Cloud Datastore (this project or another project). See\ngoogle.datastore.admin.v1beta1.ImportEntitiesRequest.input_url.\nOnly present if the operation completed successfully."]
         #[serde(rename = "outputUrl", default)]
-        pub output_url: Option<String>,
+        pub output_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1Beta1ExportEntitiesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -639,7 +668,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -657,19 +685,23 @@ pub mod schemas {
     pub struct GoogleDatastoreAdminV1Beta1ImportEntitiesMetadata {
         #[doc = "Metadata common to all Datastore Admin operations."]
         #[serde(rename = "common", default)]
-        pub common: Option<crate::schemas::GoogleDatastoreAdminV1Beta1CommonMetadata>,
+        pub common:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Beta1CommonMetadata>,
         #[doc = "Description of which entities are being imported."]
         #[serde(rename = "entityFilter", default)]
-        pub entity_filter: Option<crate::schemas::GoogleDatastoreAdminV1Beta1EntityFilter>,
+        pub entity_filter:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Beta1EntityFilter>,
         #[doc = "The location of the import metadata file. This will be the same value as\nthe google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url\nfield."]
         #[serde(rename = "inputUrl", default)]
-        pub input_url: Option<String>,
+        pub input_url: ::std::option::Option<String>,
         #[doc = "An estimate of the number of bytes processed."]
         #[serde(rename = "progressBytes", default)]
-        pub progress_bytes: Option<crate::schemas::GoogleDatastoreAdminV1Beta1Progress>,
+        pub progress_bytes:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Beta1Progress>,
         #[doc = "An estimate of the number of entities processed."]
         #[serde(rename = "progressEntities", default)]
-        pub progress_entities: Option<crate::schemas::GoogleDatastoreAdminV1Beta1Progress>,
+        pub progress_entities:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Beta1Progress>,
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1Beta1ImportEntitiesMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -678,7 +710,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -697,11 +728,11 @@ pub mod schemas {
         #[doc = "The amount of work that has been completed. Note that this may be greater\nthan work_estimated."]
         #[serde(rename = "workCompleted", default)]
         #[serde(with = "crate::parsed_string")]
-        pub work_completed: Option<i64>,
+        pub work_completed: ::std::option::Option<i64>,
         #[doc = "An estimate of how much work needs to be performed. May be zero if the\nwork estimate is unavailable."]
         #[serde(rename = "workEstimated", default)]
         #[serde(with = "crate::parsed_string")]
-        pub work_estimated: Option<i64>,
+        pub work_estimated: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1Beta1Progress {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -710,7 +741,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -783,6 +813,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1CommonMetadataOperationType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDatastoreAdminV1CommonMetadataState {
         #[doc = "Unspecified."]
@@ -853,6 +892,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1CommonMetadataState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -868,20 +916,21 @@ pub mod schemas {
     pub struct GoogleDatastoreAdminV1CommonMetadata {
         #[doc = "The time the operation ended, either successfully or otherwise."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
         #[doc = "The client-assigned labels which were provided when the operation was\ncreated. May also include additional labels."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The type of the operation. Can be used as a filter in\nListOperationsRequest."]
         #[serde(rename = "operationType", default)]
-        pub operation_type:
-            Option<crate::schemas::GoogleDatastoreAdminV1CommonMetadataOperationType>,
+        pub operation_type: ::std::option::Option<
+            crate::schemas::GoogleDatastoreAdminV1CommonMetadataOperationType,
+        >,
         #[doc = "The time that work began on the operation."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
         #[doc = "The current state of the Operation."]
         #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::GoogleDatastoreAdminV1CommonMetadataState>,
+        pub state: ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1CommonMetadataState>,
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1CommonMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -890,7 +939,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -908,10 +956,10 @@ pub mod schemas {
     pub struct GoogleDatastoreAdminV1EntityFilter {
         #[doc = "If empty, then this represents all kinds."]
         #[serde(rename = "kinds", default)]
-        pub kinds: Option<Vec<String>>,
+        pub kinds: ::std::option::Option<Vec<String>>,
         #[doc = "An empty list represents all namespaces. This is the preferred\nusage for projects that don't use namespaces.\n\nAn empty string element represents the default namespace. This should be\nused if the project has data in non-default namespaces, but doesn't want to\ninclude them.\nEach namespace in this list must be unique."]
         #[serde(rename = "namespaceIds", default)]
-        pub namespace_ids: Option<Vec<String>>,
+        pub namespace_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1EntityFilter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -920,7 +968,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -938,19 +985,21 @@ pub mod schemas {
     pub struct GoogleDatastoreAdminV1ExportEntitiesMetadata {
         #[doc = "Metadata common to all Datastore Admin operations."]
         #[serde(rename = "common", default)]
-        pub common: Option<crate::schemas::GoogleDatastoreAdminV1CommonMetadata>,
+        pub common: ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1CommonMetadata>,
         #[doc = "Description of which entities are being exported."]
         #[serde(rename = "entityFilter", default)]
-        pub entity_filter: Option<crate::schemas::GoogleDatastoreAdminV1EntityFilter>,
+        pub entity_filter:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1EntityFilter>,
         #[doc = "Location for the export metadata and data files. This will be the same\nvalue as the\ngoogle.datastore.admin.v1.ExportEntitiesRequest.output_url_prefix\nfield. The final output location is provided in\ngoogle.datastore.admin.v1.ExportEntitiesResponse.output_url."]
         #[serde(rename = "outputUrlPrefix", default)]
-        pub output_url_prefix: Option<String>,
+        pub output_url_prefix: ::std::option::Option<String>,
         #[doc = "An estimate of the number of bytes processed."]
         #[serde(rename = "progressBytes", default)]
-        pub progress_bytes: Option<crate::schemas::GoogleDatastoreAdminV1Progress>,
+        pub progress_bytes: ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Progress>,
         #[doc = "An estimate of the number of entities processed."]
         #[serde(rename = "progressEntities", default)]
-        pub progress_entities: Option<crate::schemas::GoogleDatastoreAdminV1Progress>,
+        pub progress_entities:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Progress>,
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1ExportEntitiesMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -959,7 +1008,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -977,13 +1025,14 @@ pub mod schemas {
     pub struct GoogleDatastoreAdminV1ExportEntitiesRequest {
         #[doc = "Description of what data from the project is included in the export."]
         #[serde(rename = "entityFilter", default)]
-        pub entity_filter: Option<crate::schemas::GoogleDatastoreAdminV1EntityFilter>,
+        pub entity_filter:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1EntityFilter>,
         #[doc = "Client-assigned labels."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Location for the export metadata and data files.\n\nThe full resource URL of the external storage location. Currently, only\nGoogle Cloud Storage is supported. So output_url_prefix should be of the\nform: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the\nname of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud\nStorage namespace path (this is not a Cloud Datastore namespace). For more\ninformation about Cloud Storage namespace paths, see\n[Object name\nconsiderations](https://cloud.google.com/storage/docs/naming#object-considerations).\n\nThe resulting files will be nested deeper than the specified URL prefix.\nThe final output URL will be provided in the\ngoogle.datastore.admin.v1.ExportEntitiesResponse.output_url field. That\nvalue should be used for subsequent ImportEntities operations.\n\nBy nesting the data files deeper, the same Cloud Storage bucket can be used\nin multiple ExportEntities operations without conflict."]
         #[serde(rename = "outputUrlPrefix", default)]
-        pub output_url_prefix: Option<String>,
+        pub output_url_prefix: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1ExportEntitiesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -992,7 +1041,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1010,7 +1058,7 @@ pub mod schemas {
     pub struct GoogleDatastoreAdminV1ExportEntitiesResponse {
         #[doc = "Location of the output metadata file. This can be used to begin an import\ninto Cloud Datastore (this project or another project). See\ngoogle.datastore.admin.v1.ImportEntitiesRequest.input_url.\nOnly present if the operation completed successfully."]
         #[serde(rename = "outputUrl", default)]
-        pub output_url: Option<String>,
+        pub output_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1ExportEntitiesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1019,7 +1067,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1037,19 +1084,21 @@ pub mod schemas {
     pub struct GoogleDatastoreAdminV1ImportEntitiesMetadata {
         #[doc = "Metadata common to all Datastore Admin operations."]
         #[serde(rename = "common", default)]
-        pub common: Option<crate::schemas::GoogleDatastoreAdminV1CommonMetadata>,
+        pub common: ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1CommonMetadata>,
         #[doc = "Description of which entities are being imported."]
         #[serde(rename = "entityFilter", default)]
-        pub entity_filter: Option<crate::schemas::GoogleDatastoreAdminV1EntityFilter>,
+        pub entity_filter:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1EntityFilter>,
         #[doc = "The location of the import metadata file. This will be the same value as\nthe google.datastore.admin.v1.ExportEntitiesResponse.output_url field."]
         #[serde(rename = "inputUrl", default)]
-        pub input_url: Option<String>,
+        pub input_url: ::std::option::Option<String>,
         #[doc = "An estimate of the number of bytes processed."]
         #[serde(rename = "progressBytes", default)]
-        pub progress_bytes: Option<crate::schemas::GoogleDatastoreAdminV1Progress>,
+        pub progress_bytes: ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Progress>,
         #[doc = "An estimate of the number of entities processed."]
         #[serde(rename = "progressEntities", default)]
-        pub progress_entities: Option<crate::schemas::GoogleDatastoreAdminV1Progress>,
+        pub progress_entities:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Progress>,
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1ImportEntitiesMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1058,7 +1107,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1076,13 +1124,14 @@ pub mod schemas {
     pub struct GoogleDatastoreAdminV1ImportEntitiesRequest {
         #[doc = "Optionally specify which kinds/namespaces are to be imported. If provided,\nthe list must be a subset of the EntityFilter used in creating the export,\notherwise a FAILED_PRECONDITION error will be returned. If no filter is\nspecified then all entities from the export are imported."]
         #[serde(rename = "entityFilter", default)]
-        pub entity_filter: Option<crate::schemas::GoogleDatastoreAdminV1EntityFilter>,
+        pub entity_filter:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1EntityFilter>,
         #[doc = "The full resource URL of the external storage location. Currently, only\nGoogle Cloud Storage is supported. So input_url should be of the form:\n`gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE`, where\n`BUCKET_NAME` is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is\nan optional Cloud Storage namespace path (this is not a Cloud Datastore\nnamespace), and `OVERALL_EXPORT_METADATA_FILE` is the metadata file written\nby the ExportEntities operation. For more information about Cloud Storage\nnamespace paths, see\n[Object name\nconsiderations](https://cloud.google.com/storage/docs/naming#object-considerations).\n\nFor more information, see\ngoogle.datastore.admin.v1.ExportEntitiesResponse.output_url."]
         #[serde(rename = "inputUrl", default)]
-        pub input_url: Option<String>,
+        pub input_url: ::std::option::Option<String>,
         #[doc = "Client-assigned labels."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1ImportEntitiesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1091,7 +1140,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1146,6 +1194,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1IndexAncestor {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1206,6 +1263,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1IndexState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1221,22 +1287,23 @@ pub mod schemas {
     pub struct GoogleDatastoreAdminV1Index {
         #[doc = "The index's ancestor mode.  Must not be ANCESTOR_MODE_UNSPECIFIED.\nRequired."]
         #[serde(rename = "ancestor", default)]
-        pub ancestor: Option<crate::schemas::GoogleDatastoreAdminV1IndexAncestor>,
+        pub ancestor: ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1IndexAncestor>,
         #[doc = "The resource ID of the index.\nOutput only."]
         #[serde(rename = "indexId", default)]
-        pub index_id: Option<String>,
+        pub index_id: ::std::option::Option<String>,
         #[doc = "The entity kind to which this index applies.\nRequired."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Project ID.\nOutput only."]
         #[serde(rename = "projectId", default)]
-        pub project_id: Option<String>,
+        pub project_id: ::std::option::Option<String>,
         #[doc = "An ordered sequence of property names and their index attributes.\nRequired."]
         #[serde(rename = "properties", default)]
-        pub properties: Option<Vec<crate::schemas::GoogleDatastoreAdminV1IndexedProperty>>,
+        pub properties:
+            ::std::option::Option<Vec<crate::schemas::GoogleDatastoreAdminV1IndexedProperty>>,
         #[doc = "The state of the index.\nOutput only."]
         #[serde(rename = "state", default)]
-        pub state: Option<crate::schemas::GoogleDatastoreAdminV1IndexState>,
+        pub state: ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1IndexState>,
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1Index {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1245,7 +1312,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1263,13 +1329,14 @@ pub mod schemas {
     pub struct GoogleDatastoreAdminV1IndexOperationMetadata {
         #[doc = "Metadata common to all Datastore Admin operations."]
         #[serde(rename = "common", default)]
-        pub common: Option<crate::schemas::GoogleDatastoreAdminV1CommonMetadata>,
+        pub common: ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1CommonMetadata>,
         #[doc = "The index resource ID that this operation is acting on."]
         #[serde(rename = "indexId", default)]
-        pub index_id: Option<String>,
+        pub index_id: ::std::option::Option<String>,
         #[doc = "An estimate of the number of entities processed."]
         #[serde(rename = "progressEntities", default)]
-        pub progress_entities: Option<crate::schemas::GoogleDatastoreAdminV1Progress>,
+        pub progress_entities:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Progress>,
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1IndexOperationMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1278,7 +1345,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1335,6 +1401,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1IndexedPropertyDirection {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1350,10 +1425,11 @@ pub mod schemas {
     pub struct GoogleDatastoreAdminV1IndexedProperty {
         #[doc = "The indexed property's direction.  Must not be DIRECTION_UNSPECIFIED.\nRequired."]
         #[serde(rename = "direction", default)]
-        pub direction: Option<crate::schemas::GoogleDatastoreAdminV1IndexedPropertyDirection>,
+        pub direction:
+            ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1IndexedPropertyDirection>,
         #[doc = "The property name to index.\nRequired."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1IndexedProperty {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1362,7 +1438,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1380,10 +1455,10 @@ pub mod schemas {
     pub struct GoogleDatastoreAdminV1ListIndexesResponse {
         #[doc = "The indexes."]
         #[serde(rename = "indexes", default)]
-        pub indexes: Option<Vec<crate::schemas::GoogleDatastoreAdminV1Index>>,
+        pub indexes: ::std::option::Option<Vec<crate::schemas::GoogleDatastoreAdminV1Index>>,
         #[doc = "The standard List next-page token."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1ListIndexesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1392,7 +1467,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1411,11 +1485,11 @@ pub mod schemas {
         #[doc = "The amount of work that has been completed. Note that this may be greater\nthan work_estimated."]
         #[serde(rename = "workCompleted", default)]
         #[serde(with = "crate::parsed_string")]
-        pub work_completed: Option<i64>,
+        pub work_completed: ::std::option::Option<i64>,
         #[doc = "An estimate of how much work needs to be performed. May be zero if the\nwork estimate is unavailable."]
         #[serde(rename = "workEstimated", default)]
         #[serde(with = "crate::parsed_string")]
-        pub work_estimated: Option<i64>,
+        pub work_estimated: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for GoogleDatastoreAdminV1Progress {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1424,17 +1498,16 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleLongrunningListOperationsResponse {
         #[doc = "The standard List next-page token."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
         #[serde(rename = "operations", default)]
-        pub operations: Option<Vec<crate::schemas::GoogleLongrunningOperation>>,
+        pub operations: ::std::option::Option<Vec<crate::schemas::GoogleLongrunningOperation>>,
     }
     impl ::field_selector::FieldSelector for GoogleLongrunningListOperationsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1443,26 +1516,27 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleLongrunningOperation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
         #[serde(rename = "done", default)]
-        pub done: Option<bool>,
+        pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
         #[serde(rename = "error", default)]
-        pub error: Option<crate::schemas::Status>,
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should have the format of `operations/some/unique/name`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
         #[serde(rename = "response", default)]
-        pub response: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub response:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
     impl ::field_selector::FieldSelector for GoogleLongrunningOperation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1471,7 +1545,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1480,17 +1553,18 @@ pub mod schemas {
     pub struct GqlQuery {
         #[doc = "When false, the query string must not contain any literals and instead must\nbind all values. For example,\n`SELECT * FROM Kind WHERE a = 'string literal'` is not allowed, while\n`SELECT * FROM Kind WHERE a = @value` is."]
         #[serde(rename = "allowLiterals", default)]
-        pub allow_literals: Option<bool>,
+        pub allow_literals: ::std::option::Option<bool>,
         #[doc = "For each non-reserved named binding site in the query string, there must be\na named parameter with that name, but not necessarily the inverse.\n\nKey must match regex `A-Za-z_$*`, must not match regex\n`__.*__`, and must not be `\"\"`."]
         #[serde(rename = "namedBindings", default)]
-        pub named_bindings:
-            Option<::std::collections::BTreeMap<String, crate::schemas::GqlQueryParameter>>,
+        pub named_bindings: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::GqlQueryParameter>,
+        >,
         #[doc = "Numbered binding site @1 references the first numbered parameter,\neffectively using 1-based indexing, rather than the usual 0.\n\nFor each binding site numbered i in `query_string`, there must be an i-th\nnumbered parameter. The inverse must also be true."]
         #[serde(rename = "positionalBindings", default)]
-        pub positional_bindings: Option<Vec<crate::schemas::GqlQueryParameter>>,
+        pub positional_bindings: ::std::option::Option<Vec<crate::schemas::GqlQueryParameter>>,
         #[doc = "A string of the format described\n[here](https://cloud.google.com/datastore/docs/apis/gql/gql_reference)."]
         #[serde(rename = "queryString", default)]
-        pub query_string: Option<String>,
+        pub query_string: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GqlQuery {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1499,7 +1573,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1508,10 +1581,10 @@ pub mod schemas {
     pub struct GqlQueryParameter {
         #[doc = "A query cursor. Query cursors are returned in query\nresult batches."]
         #[serde(rename = "cursor", default)]
-        pub cursor: Option<Vec<u8>>,
+        pub cursor: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "A value parameter."]
         #[serde(rename = "value", default)]
-        pub value: Option<crate::schemas::Value>,
+        pub value: ::std::option::Option<crate::schemas::Value>,
     }
     impl ::field_selector::FieldSelector for GqlQueryParameter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1520,7 +1593,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1538,10 +1610,10 @@ pub mod schemas {
     pub struct Key {
         #[doc = "Entities are partitioned into subsets, currently identified by a project\nID and namespace ID.\nQueries are scoped to a single partition."]
         #[serde(rename = "partitionId", default)]
-        pub partition_id: Option<crate::schemas::PartitionId>,
+        pub partition_id: ::std::option::Option<crate::schemas::PartitionId>,
         #[doc = "The entity path.\nAn entity path consists of one or more elements composed of a kind and a\nstring or numerical identifier, which identify entities. The first\nelement identifies a *root entity*, the second element identifies\na *child* of the root entity, the third element identifies a child of the\nsecond entity, and so forth. The entities identified by all prefixes of\nthe path are called the element's *ancestors*.\n\nAn entity path is always fully complete: *all* of the entity's ancestors\nare required to be in the path along with the entity identifier itself.\nThe only exception is that in some documented cases, the identifier in the\nlast path element (for the entity) itself may be omitted. For example,\nthe last path element of the key of `Mutation.insert` may have no\nidentifier.\n\nA path can never be empty, and a path can have at most 100 elements."]
         #[serde(rename = "path", default)]
-        pub path: Option<Vec<crate::schemas::PathElement>>,
+        pub path: ::std::option::Option<Vec<crate::schemas::PathElement>>,
     }
     impl ::field_selector::FieldSelector for Key {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1550,7 +1622,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1568,7 +1639,7 @@ pub mod schemas {
     pub struct KindExpression {
         #[doc = "The name of the kind."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for KindExpression {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1577,7 +1648,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1586,10 +1656,10 @@ pub mod schemas {
     pub struct LatLng {
         #[doc = "The latitude in degrees. It must be in the range [-90.0, +90.0]."]
         #[serde(rename = "latitude", default)]
-        pub latitude: Option<f64>,
+        pub latitude: ::std::option::Option<f64>,
         #[doc = "The longitude in degrees. It must be in the range [-180.0, +180.0]."]
         #[serde(rename = "longitude", default)]
-        pub longitude: Option<f64>,
+        pub longitude: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for LatLng {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1598,7 +1668,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1616,10 +1685,10 @@ pub mod schemas {
     pub struct LookupRequest {
         #[doc = "Keys of entities to look up."]
         #[serde(rename = "keys", default)]
-        pub keys: Option<Vec<crate::schemas::Key>>,
+        pub keys: ::std::option::Option<Vec<crate::schemas::Key>>,
         #[doc = "The options for this lookup request."]
         #[serde(rename = "readOptions", default)]
-        pub read_options: Option<crate::schemas::ReadOptions>,
+        pub read_options: ::std::option::Option<crate::schemas::ReadOptions>,
     }
     impl ::field_selector::FieldSelector for LookupRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1628,7 +1697,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1637,13 +1705,13 @@ pub mod schemas {
     pub struct LookupResponse {
         #[doc = "A list of keys that were not looked up due to resource constraints. The\norder of results in this field is undefined and has no relation to the\norder of the keys in the input."]
         #[serde(rename = "deferred", default)]
-        pub deferred: Option<Vec<crate::schemas::Key>>,
+        pub deferred: ::std::option::Option<Vec<crate::schemas::Key>>,
         #[doc = "Entities found as `ResultType.FULL` entities. The order of results in this\nfield is undefined and has no relation to the order of the keys in the\ninput."]
         #[serde(rename = "found", default)]
-        pub found: Option<Vec<crate::schemas::EntityResult>>,
+        pub found: ::std::option::Option<Vec<crate::schemas::EntityResult>>,
         #[doc = "Entities not found as `ResultType.KEY_ONLY` entities. The order of results\nin this field is undefined and has no relation to the order of the keys\nin the input."]
         #[serde(rename = "missing", default)]
-        pub missing: Option<Vec<crate::schemas::EntityResult>>,
+        pub missing: ::std::option::Option<Vec<crate::schemas::EntityResult>>,
     }
     impl ::field_selector::FieldSelector for LookupResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1652,7 +1720,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1662,19 +1729,19 @@ pub mod schemas {
         #[doc = "The version of the entity that this mutation is being applied to. If this\ndoes not match the current version on the server, the mutation conflicts."]
         #[serde(rename = "baseVersion", default)]
         #[serde(with = "crate::parsed_string")]
-        pub base_version: Option<i64>,
+        pub base_version: ::std::option::Option<i64>,
         #[doc = "The key of the entity to delete. The entity may or may not already exist.\nMust have a complete key path and must not be reserved/read-only."]
         #[serde(rename = "delete", default)]
-        pub delete: Option<crate::schemas::Key>,
+        pub delete: ::std::option::Option<crate::schemas::Key>,
         #[doc = "The entity to insert. The entity must not already exist.\nThe entity key's final path element may be incomplete."]
         #[serde(rename = "insert", default)]
-        pub insert: Option<crate::schemas::Entity>,
+        pub insert: ::std::option::Option<crate::schemas::Entity>,
         #[doc = "The entity to update. The entity must already exist.\nMust have a complete key path."]
         #[serde(rename = "update", default)]
-        pub update: Option<crate::schemas::Entity>,
+        pub update: ::std::option::Option<crate::schemas::Entity>,
         #[doc = "The entity to upsert. The entity may or may not already exist.\nThe entity key's final path element may be incomplete."]
         #[serde(rename = "upsert", default)]
-        pub upsert: Option<crate::schemas::Entity>,
+        pub upsert: ::std::option::Option<crate::schemas::Entity>,
     }
     impl ::field_selector::FieldSelector for Mutation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1683,7 +1750,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1701,14 +1767,14 @@ pub mod schemas {
     pub struct MutationResult {
         #[doc = "Whether a conflict was detected for this mutation. Always false when a\nconflict detection strategy field is not set in the mutation."]
         #[serde(rename = "conflictDetected", default)]
-        pub conflict_detected: Option<bool>,
+        pub conflict_detected: ::std::option::Option<bool>,
         #[doc = "The automatically allocated key.\nSet only when the mutation allocated a key."]
         #[serde(rename = "key", default)]
-        pub key: Option<crate::schemas::Key>,
+        pub key: ::std::option::Option<crate::schemas::Key>,
         #[doc = "The version of the entity on the server after processing the mutation. If\nthe mutation doesn't change anything on the server, then the version will\nbe the version of the current entity or, if no entity is present, a version\nthat is strictly greater than the version of any previous entity and less\nthan the version of any possible future entity."]
         #[serde(rename = "version", default)]
         #[serde(with = "crate::parsed_string")]
-        pub version: Option<i64>,
+        pub version: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for MutationResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1717,7 +1783,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1735,10 +1800,10 @@ pub mod schemas {
     pub struct PartitionId {
         #[doc = "If not empty, the ID of the namespace to which the entities belong."]
         #[serde(rename = "namespaceId", default)]
-        pub namespace_id: Option<String>,
+        pub namespace_id: ::std::option::Option<String>,
         #[doc = "The ID of the project to which the entities belong."]
         #[serde(rename = "projectId", default)]
-        pub project_id: Option<String>,
+        pub project_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PartitionId {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1747,7 +1812,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1766,13 +1830,13 @@ pub mod schemas {
         #[doc = "The auto-allocated ID of the entity.\nNever equal to zero. Values less than zero are discouraged and may not\nbe supported in the future."]
         #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
+        pub id: ::std::option::Option<i64>,
         #[doc = "The kind of the entity.\nA kind matching regex `__.*__` is reserved/read-only.\nA kind must not contain more than 1500 bytes when UTF-8 encoded.\nCannot be `\"\"`."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The name of the entity.\nA name matching regex `__.*__` is reserved/read-only.\nA name must not be more than 1500 bytes when UTF-8 encoded.\nCannot be `\"\"`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PathElement {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1781,7 +1845,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1799,7 +1862,7 @@ pub mod schemas {
     pub struct Projection {
         #[doc = "The property to project."]
         #[serde(rename = "property", default)]
-        pub property: Option<crate::schemas::PropertyReference>,
+        pub property: ::std::option::Option<crate::schemas::PropertyReference>,
     }
     impl ::field_selector::FieldSelector for Projection {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1808,7 +1871,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1877,19 +1939,28 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PropertyFilterOp {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct PropertyFilter {
         #[doc = "The operator to filter by."]
         #[serde(rename = "op", default)]
-        pub op: Option<crate::schemas::PropertyFilterOp>,
+        pub op: ::std::option::Option<crate::schemas::PropertyFilterOp>,
         #[doc = "The property to filter by."]
         #[serde(rename = "property", default)]
-        pub property: Option<crate::schemas::PropertyReference>,
+        pub property: ::std::option::Option<crate::schemas::PropertyReference>,
         #[doc = "The value to compare the property to."]
         #[serde(rename = "value", default)]
-        pub value: Option<crate::schemas::Value>,
+        pub value: ::std::option::Option<crate::schemas::Value>,
     }
     impl ::field_selector::FieldSelector for PropertyFilter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1898,7 +1969,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1951,6 +2021,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PropertyOrderDirection {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1966,10 +2045,10 @@ pub mod schemas {
     pub struct PropertyOrder {
         #[doc = "The direction to order by. Defaults to `ASCENDING`."]
         #[serde(rename = "direction", default)]
-        pub direction: Option<crate::schemas::PropertyOrderDirection>,
+        pub direction: ::std::option::Option<crate::schemas::PropertyOrderDirection>,
         #[doc = "The property to order by."]
         #[serde(rename = "property", default)]
-        pub property: Option<crate::schemas::PropertyReference>,
+        pub property: ::std::option::Option<crate::schemas::PropertyReference>,
     }
     impl ::field_selector::FieldSelector for PropertyOrder {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1978,7 +2057,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1996,7 +2074,7 @@ pub mod schemas {
     pub struct PropertyReference {
         #[doc = "The name of the property.\nIf name includes \".\"s, it may be interpreted as a property name path."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PropertyReference {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2005,7 +2083,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2014,31 +2091,31 @@ pub mod schemas {
     pub struct Query {
         #[doc = "The properties to make distinct. The query results will contain the first\nresult for each distinct combination of values for the given properties\n(if empty, all results are returned)."]
         #[serde(rename = "distinctOn", default)]
-        pub distinct_on: Option<Vec<crate::schemas::PropertyReference>>,
+        pub distinct_on: ::std::option::Option<Vec<crate::schemas::PropertyReference>>,
         #[doc = "An ending point for the query results. Query cursors are\nreturned in query result batches and\n[can only be used to limit the same\nquery](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets)."]
         #[serde(rename = "endCursor", default)]
-        pub end_cursor: Option<Vec<u8>>,
+        pub end_cursor: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "The filter to apply."]
         #[serde(rename = "filter", default)]
-        pub filter: Option<crate::schemas::Filter>,
+        pub filter: ::std::option::Option<crate::schemas::Filter>,
         #[doc = "The kinds to query (if empty, returns entities of all kinds).\nCurrently at most 1 kind may be specified."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<Vec<crate::schemas::KindExpression>>,
+        pub kind: ::std::option::Option<Vec<crate::schemas::KindExpression>>,
         #[doc = "The maximum number of results to return. Applies after all other\nconstraints. Optional.\nUnspecified is interpreted as no limit.\nMust be >= 0 if specified."]
         #[serde(rename = "limit", default)]
-        pub limit: Option<i32>,
+        pub limit: ::std::option::Option<i32>,
         #[doc = "The number of results to skip. Applies before limit, but after all other\nconstraints. Optional. Must be >= 0 if specified."]
         #[serde(rename = "offset", default)]
-        pub offset: Option<i32>,
+        pub offset: ::std::option::Option<i32>,
         #[doc = "The order to apply to the query results (if empty, order is unspecified)."]
         #[serde(rename = "order", default)]
-        pub order: Option<Vec<crate::schemas::PropertyOrder>>,
+        pub order: ::std::option::Option<Vec<crate::schemas::PropertyOrder>>,
         #[doc = "The projection to return. Defaults to returning all properties."]
         #[serde(rename = "projection", default)]
-        pub projection: Option<Vec<crate::schemas::Projection>>,
+        pub projection: ::std::option::Option<Vec<crate::schemas::Projection>>,
         #[doc = "A starting point for the query results. Query cursors are\nreturned in query result batches and\n[can only be used to continue the same\nquery](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets)."]
         #[serde(rename = "startCursor", default)]
-        pub start_cursor: Option<Vec<u8>>,
+        pub start_cursor: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for Query {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2047,7 +2124,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2106,6 +2182,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for QueryResultBatchEntityResultType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2170,32 +2255,42 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for QueryResultBatchMoreResults {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct QueryResultBatch {
         #[doc = "A cursor that points to the position after the last result in the batch."]
         #[serde(rename = "endCursor", default)]
-        pub end_cursor: Option<Vec<u8>>,
+        pub end_cursor: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "The result type for every entity in `entity_results`."]
         #[serde(rename = "entityResultType", default)]
-        pub entity_result_type: Option<crate::schemas::QueryResultBatchEntityResultType>,
+        pub entity_result_type:
+            ::std::option::Option<crate::schemas::QueryResultBatchEntityResultType>,
         #[doc = "The results for this batch."]
         #[serde(rename = "entityResults", default)]
-        pub entity_results: Option<Vec<crate::schemas::EntityResult>>,
+        pub entity_results: ::std::option::Option<Vec<crate::schemas::EntityResult>>,
         #[doc = "The state of the query after the current batch."]
         #[serde(rename = "moreResults", default)]
-        pub more_results: Option<crate::schemas::QueryResultBatchMoreResults>,
+        pub more_results: ::std::option::Option<crate::schemas::QueryResultBatchMoreResults>,
         #[doc = "A cursor that points to the position after the last skipped result.\nWill be set when `skipped_results` != 0."]
         #[serde(rename = "skippedCursor", default)]
-        pub skipped_cursor: Option<Vec<u8>>,
+        pub skipped_cursor: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "The number of results skipped, typically because of an offset."]
         #[serde(rename = "skippedResults", default)]
-        pub skipped_results: Option<i32>,
+        pub skipped_results: ::std::option::Option<i32>,
         #[doc = "The version number of the snapshot this batch was returned from.\nThis applies to the range of results from the query's `start_cursor` (or\nthe beginning of the query if no cursor was given) to this batch's\n`end_cursor` (not the query's `end_cursor`).\n\nIn a single transaction, subsequent query result batches for the same query\ncan have a greater snapshot version number. Each batch's snapshot version\nis valid for all preceding batches.\nThe value will be zero for eventually consistent queries."]
         #[serde(rename = "snapshotVersion", default)]
         #[serde(with = "crate::parsed_string")]
-        pub snapshot_version: Option<i64>,
+        pub snapshot_version: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for QueryResultBatch {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2204,7 +2299,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2222,7 +2316,7 @@ pub mod schemas {
     )]
     pub struct ReadOnly;
     impl ::field_selector::FieldSelector for ReadOnly {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReadOptionsReadConsistency {
@@ -2278,6 +2372,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ReadOptionsReadConsistency {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2293,10 +2396,10 @@ pub mod schemas {
     pub struct ReadOptions {
         #[doc = "The non-transactional read consistency to use.\nCannot be set to `STRONG` for global queries."]
         #[serde(rename = "readConsistency", default)]
-        pub read_consistency: Option<crate::schemas::ReadOptionsReadConsistency>,
+        pub read_consistency: ::std::option::Option<crate::schemas::ReadOptionsReadConsistency>,
         #[doc = "The identifier of the transaction in which to read. A\ntransaction identifier is returned by a call to\nDatastore.BeginTransaction."]
         #[serde(rename = "transaction", default)]
-        pub transaction: Option<Vec<u8>>,
+        pub transaction: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for ReadOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2305,7 +2408,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2323,7 +2425,7 @@ pub mod schemas {
     pub struct ReadWrite {
         #[doc = "The transaction identifier of the transaction being retried."]
         #[serde(rename = "previousTransaction", default)]
-        pub previous_transaction: Option<Vec<u8>>,
+        pub previous_transaction: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for ReadWrite {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2332,7 +2434,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2350,10 +2451,10 @@ pub mod schemas {
     pub struct ReserveIdsRequest {
         #[doc = "If not empty, the ID of the database against which to make the request."]
         #[serde(rename = "databaseId", default)]
-        pub database_id: Option<String>,
+        pub database_id: ::std::option::Option<String>,
         #[doc = "A list of keys with complete key paths whose numeric IDs should not be\nauto-allocated."]
         #[serde(rename = "keys", default)]
-        pub keys: Option<Vec<crate::schemas::Key>>,
+        pub keys: ::std::option::Option<Vec<crate::schemas::Key>>,
     }
     impl ::field_selector::FieldSelector for ReserveIdsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2362,7 +2463,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2380,7 +2480,7 @@ pub mod schemas {
     )]
     pub struct ReserveIdsResponse;
     impl ::field_selector::FieldSelector for ReserveIdsResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -2397,7 +2497,7 @@ pub mod schemas {
     pub struct RollbackRequest {
         #[doc = "The transaction identifier, returned by a call to\nDatastore.BeginTransaction."]
         #[serde(rename = "transaction", default)]
-        pub transaction: Option<Vec<u8>>,
+        pub transaction: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for RollbackRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2406,7 +2506,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2424,7 +2523,7 @@ pub mod schemas {
     )]
     pub struct RollbackResponse;
     impl ::field_selector::FieldSelector for RollbackResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
@@ -2432,16 +2531,16 @@ pub mod schemas {
     pub struct RunQueryRequest {
         #[doc = "The GQL query to run."]
         #[serde(rename = "gqlQuery", default)]
-        pub gql_query: Option<crate::schemas::GqlQuery>,
+        pub gql_query: ::std::option::Option<crate::schemas::GqlQuery>,
         #[doc = "Entities are partitioned into subsets, identified by a partition ID.\nQueries are scoped to a single partition.\nThis partition ID is normalized with the standard default context\npartition ID."]
         #[serde(rename = "partitionId", default)]
-        pub partition_id: Option<crate::schemas::PartitionId>,
+        pub partition_id: ::std::option::Option<crate::schemas::PartitionId>,
         #[doc = "The query to run."]
         #[serde(rename = "query", default)]
-        pub query: Option<crate::schemas::Query>,
+        pub query: ::std::option::Option<crate::schemas::Query>,
         #[doc = "The options for this query."]
         #[serde(rename = "readOptions", default)]
-        pub read_options: Option<crate::schemas::ReadOptions>,
+        pub read_options: ::std::option::Option<crate::schemas::ReadOptions>,
     }
     impl ::field_selector::FieldSelector for RunQueryRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2450,7 +2549,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2459,10 +2557,10 @@ pub mod schemas {
     pub struct RunQueryResponse {
         #[doc = "A batch of query results (always present)."]
         #[serde(rename = "batch", default)]
-        pub batch: Option<crate::schemas::QueryResultBatch>,
+        pub batch: ::std::option::Option<crate::schemas::QueryResultBatch>,
         #[doc = "The parsed form of the `GqlQuery` from the request, if it was set."]
         #[serde(rename = "query", default)]
-        pub query: Option<crate::schemas::Query>,
+        pub query: ::std::option::Option<crate::schemas::Query>,
     }
     impl ::field_selector::FieldSelector for RunQueryResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2471,20 +2569,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
-        pub code: Option<i32>,
+        pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub details:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Status {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2493,7 +2591,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2511,10 +2608,10 @@ pub mod schemas {
     pub struct TransactionOptions {
         #[doc = "The transaction should only allow reads."]
         #[serde(rename = "readOnly", default)]
-        pub read_only: Option<crate::schemas::ReadOnly>,
+        pub read_only: ::std::option::Option<crate::schemas::ReadOnly>,
         #[doc = "The transaction should allow both reads and writes."]
         #[serde(rename = "readWrite", default)]
-        pub read_write: Option<crate::schemas::ReadWrite>,
+        pub read_write: ::std::option::Option<crate::schemas::ReadWrite>,
     }
     impl ::field_selector::FieldSelector for TransactionOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2523,7 +2620,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2568,50 +2664,59 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ValueNullValue {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Value {
         #[doc = "An array value.\nCannot contain another array value.\nA `Value` instance that sets field `array_value` must not set fields\n`meaning` or `exclude_from_indexes`."]
         #[serde(rename = "arrayValue", default)]
-        pub array_value: Option<crate::schemas::ArrayValue>,
+        pub array_value: ::std::option::Option<crate::schemas::ArrayValue>,
         #[doc = "A blob value.\nMay have at most 1,000,000 bytes.\nWhen `exclude_from_indexes` is false, may have at most 1500 bytes.\nIn JSON requests, must be base64-encoded."]
         #[serde(rename = "blobValue", default)]
-        pub blob_value: Option<Vec<u8>>,
+        pub blob_value: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "A boolean value."]
         #[serde(rename = "booleanValue", default)]
-        pub boolean_value: Option<bool>,
+        pub boolean_value: ::std::option::Option<bool>,
         #[doc = "A double value."]
         #[serde(rename = "doubleValue", default)]
-        pub double_value: Option<f64>,
+        pub double_value: ::std::option::Option<f64>,
         #[doc = "An entity value.\n\n* May have no key.\n* May have a key with an incomplete key path.\n* May have a reserved/read-only key."]
         #[serde(rename = "entityValue", default)]
-        pub entity_value: Option<crate::schemas::Entity>,
+        pub entity_value: ::std::option::Option<crate::schemas::Entity>,
         #[doc = "If the value should be excluded from all indexes including those defined\nexplicitly."]
         #[serde(rename = "excludeFromIndexes", default)]
-        pub exclude_from_indexes: Option<bool>,
+        pub exclude_from_indexes: ::std::option::Option<bool>,
         #[doc = "A geo point value representing a point on the surface of Earth."]
         #[serde(rename = "geoPointValue", default)]
-        pub geo_point_value: Option<crate::schemas::LatLng>,
+        pub geo_point_value: ::std::option::Option<crate::schemas::LatLng>,
         #[doc = "An integer value."]
         #[serde(rename = "integerValue", default)]
         #[serde(with = "crate::parsed_string")]
-        pub integer_value: Option<i64>,
+        pub integer_value: ::std::option::Option<i64>,
         #[doc = "A key value."]
         #[serde(rename = "keyValue", default)]
-        pub key_value: Option<crate::schemas::Key>,
+        pub key_value: ::std::option::Option<crate::schemas::Key>,
         #[doc = "The `meaning` field should only be populated for backwards compatibility."]
         #[serde(rename = "meaning", default)]
-        pub meaning: Option<i32>,
+        pub meaning: ::std::option::Option<i32>,
         #[doc = "A null value."]
         #[serde(rename = "nullValue", default)]
-        pub null_value: Option<crate::schemas::ValueNullValue>,
+        pub null_value: ::std::option::Option<crate::schemas::ValueNullValue>,
         #[doc = "A UTF-8 encoded string value.\nWhen `exclude_from_indexes` is false (it is indexed) , may have at most 1500 bytes.\nOtherwise, may be set to at least 1,000,000 bytes."]
         #[serde(rename = "stringValue", default)]
-        pub string_value: Option<String>,
+        pub string_value: ::std::option::Option<String>,
         #[doc = "A timestamp value.\nWhen stored in the Datastore, precise only to microseconds;\nany additional precision is rounded down."]
         #[serde(rename = "timestampValue", default)]
-        pub timestamp_value: Option<String>,
+        pub timestamp_value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Value {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2620,7 +2725,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -2675,6 +2779,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -2719,6 +2832,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -6189,6 +6311,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -6264,5 +6387,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

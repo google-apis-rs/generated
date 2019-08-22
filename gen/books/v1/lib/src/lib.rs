@@ -14,19 +14,19 @@ pub mod schemas {
     pub struct AnnotationClientVersionRanges {
         #[doc = "Range in CFI format for this annotation sent by client."]
         #[serde(rename = "cfiRange", default)]
-        pub cfi_range: Option<crate::schemas::BooksAnnotationsRange>,
+        pub cfi_range: ::std::option::Option<crate::schemas::BooksAnnotationsRange>,
         #[doc = "Content version the client sent in."]
         #[serde(rename = "contentVersion", default)]
-        pub content_version: Option<String>,
+        pub content_version: ::std::option::Option<String>,
         #[doc = "Range in GB image format for this annotation sent by client."]
         #[serde(rename = "gbImageRange", default)]
-        pub gb_image_range: Option<crate::schemas::BooksAnnotationsRange>,
+        pub gb_image_range: ::std::option::Option<crate::schemas::BooksAnnotationsRange>,
         #[doc = "Range in GB text format for this annotation sent by client."]
         #[serde(rename = "gbTextRange", default)]
-        pub gb_text_range: Option<crate::schemas::BooksAnnotationsRange>,
+        pub gb_text_range: ::std::option::Option<crate::schemas::BooksAnnotationsRange>,
         #[doc = "Range in image CFI format for this annotation sent by client."]
         #[serde(rename = "imageCfiRange", default)]
-        pub image_cfi_range: Option<crate::schemas::BooksAnnotationsRange>,
+        pub image_cfi_range: ::std::option::Option<crate::schemas::BooksAnnotationsRange>,
     }
     impl ::field_selector::FieldSelector for AnnotationClientVersionRanges {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -35,7 +35,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -53,19 +52,19 @@ pub mod schemas {
     pub struct AnnotationCurrentVersionRanges {
         #[doc = "Range in CFI format for this annotation for version above."]
         #[serde(rename = "cfiRange", default)]
-        pub cfi_range: Option<crate::schemas::BooksAnnotationsRange>,
+        pub cfi_range: ::std::option::Option<crate::schemas::BooksAnnotationsRange>,
         #[doc = "Content version applicable to ranges below."]
         #[serde(rename = "contentVersion", default)]
-        pub content_version: Option<String>,
+        pub content_version: ::std::option::Option<String>,
         #[doc = "Range in GB image format for this annotation for version above."]
         #[serde(rename = "gbImageRange", default)]
-        pub gb_image_range: Option<crate::schemas::BooksAnnotationsRange>,
+        pub gb_image_range: ::std::option::Option<crate::schemas::BooksAnnotationsRange>,
         #[doc = "Range in GB text format for this annotation for version above."]
         #[serde(rename = "gbTextRange", default)]
-        pub gb_text_range: Option<crate::schemas::BooksAnnotationsRange>,
+        pub gb_text_range: ::std::option::Option<crate::schemas::BooksAnnotationsRange>,
         #[doc = "Range in image CFI format for this annotation for version above."]
         #[serde(rename = "imageCfiRange", default)]
-        pub image_cfi_range: Option<crate::schemas::BooksAnnotationsRange>,
+        pub image_cfi_range: ::std::option::Option<crate::schemas::BooksAnnotationsRange>,
     }
     impl ::field_selector::FieldSelector for AnnotationCurrentVersionRanges {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -74,7 +73,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -92,13 +90,13 @@ pub mod schemas {
     pub struct AnnotationLayerSummary {
         #[doc = "Maximum allowed characters on this layer, especially for the \"copy\" layer."]
         #[serde(rename = "allowedCharacterCount", default)]
-        pub allowed_character_count: Option<i32>,
+        pub allowed_character_count: ::std::option::Option<i32>,
         #[doc = "Type of limitation on this layer. \"limited\" or \"unlimited\" for the \"copy\" layer."]
         #[serde(rename = "limitType", default)]
-        pub limit_type: Option<String>,
+        pub limit_type: ::std::option::Option<String>,
         #[doc = "Remaining allowed characters on this layer, especially for the \"copy\" layer."]
         #[serde(rename = "remainingCharacterCount", default)]
-        pub remaining_character_count: Option<i32>,
+        pub remaining_character_count: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for AnnotationLayerSummary {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -107,7 +105,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -125,54 +122,56 @@ pub mod schemas {
     pub struct Annotation {
         #[doc = "Anchor text after excerpt. For requests, if the user bookmarked a screen that has no flowing text on it, then this field should be empty."]
         #[serde(rename = "afterSelectedText", default)]
-        pub after_selected_text: Option<String>,
+        pub after_selected_text: ::std::option::Option<String>,
         #[doc = "Anchor text before excerpt. For requests, if the user bookmarked a screen that has no flowing text on it, then this field should be empty."]
         #[serde(rename = "beforeSelectedText", default)]
-        pub before_selected_text: Option<String>,
+        pub before_selected_text: ::std::option::Option<String>,
         #[doc = "Selection ranges sent from the client."]
         #[serde(rename = "clientVersionRanges", default)]
-        pub client_version_ranges: Option<crate::schemas::AnnotationClientVersionRanges>,
+        pub client_version_ranges:
+            ::std::option::Option<crate::schemas::AnnotationClientVersionRanges>,
         #[doc = "Timestamp for the created time of this annotation."]
         #[serde(rename = "created", default)]
-        pub created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Selection ranges for the most recent content version."]
         #[serde(rename = "currentVersionRanges", default)]
-        pub current_version_ranges: Option<crate::schemas::AnnotationCurrentVersionRanges>,
+        pub current_version_ranges:
+            ::std::option::Option<crate::schemas::AnnotationCurrentVersionRanges>,
         #[doc = "User-created data for this annotation."]
         #[serde(rename = "data", default)]
-        pub data: Option<String>,
+        pub data: ::std::option::Option<String>,
         #[doc = "Indicates that this annotation is deleted."]
         #[serde(rename = "deleted", default)]
-        pub deleted: Option<bool>,
+        pub deleted: ::std::option::Option<bool>,
         #[doc = "The highlight style for this annotation."]
         #[serde(rename = "highlightStyle", default)]
-        pub highlight_style: Option<String>,
+        pub highlight_style: ::std::option::Option<String>,
         #[doc = "Id of this annotation, in the form of a GUID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The layer this annotation is for."]
         #[serde(rename = "layerId", default)]
-        pub layer_id: Option<String>,
+        pub layer_id: ::std::option::Option<String>,
         #[serde(rename = "layerSummary", default)]
-        pub layer_summary: Option<crate::schemas::AnnotationLayerSummary>,
+        pub layer_summary: ::std::option::Option<crate::schemas::AnnotationLayerSummary>,
         #[doc = "Pages that this annotation spans."]
         #[serde(rename = "pageIds", default)]
-        pub page_ids: Option<Vec<String>>,
+        pub page_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Excerpt from the volume."]
         #[serde(rename = "selectedText", default)]
-        pub selected_text: Option<String>,
+        pub selected_text: ::std::option::Option<String>,
         #[doc = "URL to this resource."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Timestamp for the last time this annotation was modified."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The volume that this annotation belongs to."]
         #[serde(rename = "volumeId", default)]
-        pub volume_id: Option<String>,
+        pub volume_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Annotation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -181,37 +180,36 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Annotationdata {
         #[doc = "The type of annotation this data is for."]
         #[serde(rename = "annotationType", default)]
-        pub annotation_type: Option<String>,
+        pub annotation_type: ::std::option::Option<String>,
         #[serde(rename = "data", default)]
-        pub data: Option<::serde_json::Value>,
+        pub data: ::std::option::Option<::serde_json::Value>,
         #[doc = "Base64 encoded data for this annotation data."]
         #[serde(rename = "encoded_data", default)]
-        pub encoded_data: Option<Vec<u8>>,
+        pub encoded_data: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Unique id for this annotation data."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Resource Type"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The Layer id for this data. *"]
         #[serde(rename = "layerId", default)]
-        pub layer_id: Option<String>,
+        pub layer_id: ::std::option::Option<String>,
         #[doc = "URL for this resource. *"]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Timestamp for the last time this data was updated. (RFC 3339 UTC date-time format)."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The volume id for this data. *"]
         #[serde(rename = "volumeId", default)]
-        pub volume_id: Option<String>,
+        pub volume_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Annotationdata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -220,7 +218,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -238,16 +235,16 @@ pub mod schemas {
     pub struct Annotations {
         #[doc = "A list of annotations."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Annotation>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Annotation>>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Token to pass in for pagination for the next page. This will not be present if this request does not have more results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Total number of annotations found. This may be greater than the number of notes returned in this response if results have been paginated."]
         #[serde(rename = "totalItems", default)]
-        pub total_items: Option<i32>,
+        pub total_items: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Annotations {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -256,7 +253,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -273,15 +269,15 @@ pub mod schemas {
     )]
     pub struct AnnotationsSummaryLayersItems {
         #[serde(rename = "allowedCharacterCount", default)]
-        pub allowed_character_count: Option<i32>,
+        pub allowed_character_count: ::std::option::Option<i32>,
         #[serde(rename = "layerId", default)]
-        pub layer_id: Option<String>,
+        pub layer_id: ::std::option::Option<String>,
         #[serde(rename = "limitType", default)]
-        pub limit_type: Option<String>,
+        pub limit_type: ::std::option::Option<String>,
         #[serde(rename = "remainingCharacterCount", default)]
-        pub remaining_character_count: Option<i32>,
+        pub remaining_character_count: ::std::option::Option<i32>,
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for AnnotationsSummaryLayersItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -290,7 +286,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -307,9 +302,9 @@ pub mod schemas {
     )]
     pub struct AnnotationsSummary {
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "layers", default)]
-        pub layers: Option<Vec<crate::schemas::AnnotationsSummaryLayersItems>>,
+        pub layers: ::std::option::Option<Vec<crate::schemas::AnnotationsSummaryLayersItems>>,
     }
     impl ::field_selector::FieldSelector for AnnotationsSummary {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -318,23 +313,22 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Annotationsdata {
         #[doc = "A list of Annotation Data."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Annotationdata>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Annotationdata>>,
         #[doc = "Resource type"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Token to pass in for pagination for the next page. This will not be present if this request does not have more results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total number of volume annotations found."]
         #[serde(rename = "totalItems", default)]
-        pub total_items: Option<i32>,
+        pub total_items: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Annotationsdata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -343,7 +337,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -361,16 +354,16 @@ pub mod schemas {
     pub struct BooksAnnotationsRange {
         #[doc = "The offset from the ending position."]
         #[serde(rename = "endOffset", default)]
-        pub end_offset: Option<String>,
+        pub end_offset: ::std::option::Option<String>,
         #[doc = "The ending position for the range."]
         #[serde(rename = "endPosition", default)]
-        pub end_position: Option<String>,
+        pub end_position: ::std::option::Option<String>,
         #[doc = "The offset from the starting position."]
         #[serde(rename = "startOffset", default)]
-        pub start_offset: Option<String>,
+        pub start_offset: ::std::option::Option<String>,
         #[doc = "The starting position for the range."]
         #[serde(rename = "startPosition", default)]
-        pub start_position: Option<String>,
+        pub start_position: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BooksAnnotationsRange {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -379,7 +372,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -396,13 +388,13 @@ pub mod schemas {
     )]
     pub struct BooksCloudloadingResource {
         #[serde(rename = "author", default)]
-        pub author: Option<String>,
+        pub author: ::std::option::Option<String>,
         #[serde(rename = "processingState", default)]
-        pub processing_state: Option<String>,
+        pub processing_state: ::std::option::Option<String>,
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[serde(rename = "volumeId", default)]
-        pub volume_id: Option<String>,
+        pub volume_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BooksCloudloadingResource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -411,7 +403,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -428,7 +419,7 @@ pub mod schemas {
     )]
     pub struct BooksVolumesRecommendedRateResponse {
         #[serde(rename = "consistency_token", default)]
-        pub consistency_token: Option<String>,
+        pub consistency_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BooksVolumesRecommendedRateResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -437,7 +428,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -455,34 +445,34 @@ pub mod schemas {
     pub struct Bookshelf {
         #[doc = "Whether this bookshelf is PUBLIC or PRIVATE."]
         #[serde(rename = "access", default)]
-        pub access: Option<String>,
+        pub access: ::std::option::Option<String>,
         #[doc = "Created time for this bookshelf (formatted UTC timestamp with millisecond resolution)."]
         #[serde(rename = "created", default)]
-        pub created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Description of this bookshelf."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Id of this bookshelf, only unique by user."]
         #[serde(rename = "id", default)]
-        pub id: Option<i32>,
+        pub id: ::std::option::Option<i32>,
         #[doc = "Resource type for bookshelf metadata."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "URL to this resource."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Title of this bookshelf."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "Last modified time of this bookshelf (formatted UTC timestamp with millisecond resolution)."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Number of volumes in this bookshelf."]
         #[serde(rename = "volumeCount", default)]
-        pub volume_count: Option<i32>,
+        pub volume_count: ::std::option::Option<i32>,
         #[doc = "Last time a volume was added or removed from this bookshelf (formatted UTC timestamp with millisecond resolution)."]
         #[serde(rename = "volumesLastUpdated", default)]
-        pub volumes_last_updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub volumes_last_updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for Bookshelf {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -491,7 +481,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -509,10 +498,10 @@ pub mod schemas {
     pub struct Bookshelves {
         #[doc = "A list of bookshelves."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Bookshelf>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Bookshelf>>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Bookshelves {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -521,7 +510,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -538,11 +526,11 @@ pub mod schemas {
     )]
     pub struct CategoryItemsItems {
         #[serde(rename = "badgeUrl", default)]
-        pub badge_url: Option<String>,
+        pub badge_url: ::std::option::Option<String>,
         #[serde(rename = "categoryId", default)]
-        pub category_id: Option<String>,
+        pub category_id: ::std::option::Option<String>,
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CategoryItemsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -551,7 +539,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -569,10 +556,10 @@ pub mod schemas {
     pub struct Category {
         #[doc = "A list of onboarding categories."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::CategoryItemsItems>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::CategoryItemsItems>>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Category {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -581,7 +568,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -599,37 +585,37 @@ pub mod schemas {
     pub struct ConcurrentAccessRestriction {
         #[doc = "Whether access is granted for this (user, device, volume)."]
         #[serde(rename = "deviceAllowed", default)]
-        pub device_allowed: Option<bool>,
+        pub device_allowed: ::std::option::Option<bool>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The maximum number of concurrent access licenses for this volume."]
         #[serde(rename = "maxConcurrentDevices", default)]
-        pub max_concurrent_devices: Option<i32>,
+        pub max_concurrent_devices: ::std::option::Option<i32>,
         #[doc = "Error/warning message."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
         #[doc = "Client nonce for verification. Download access and client-validation only."]
         #[serde(rename = "nonce", default)]
-        pub nonce: Option<String>,
+        pub nonce: ::std::option::Option<String>,
         #[doc = "Error/warning reason code."]
         #[serde(rename = "reasonCode", default)]
-        pub reason_code: Option<String>,
+        pub reason_code: ::std::option::Option<String>,
         #[doc = "Whether this volume has any concurrent access restrictions."]
         #[serde(rename = "restricted", default)]
-        pub restricted: Option<bool>,
+        pub restricted: ::std::option::Option<bool>,
         #[doc = "Response signature."]
         #[serde(rename = "signature", default)]
-        pub signature: Option<String>,
+        pub signature: ::std::option::Option<String>,
         #[doc = "Client app identifier for verification. Download access and client-validation only."]
         #[serde(rename = "source", default)]
-        pub source: Option<String>,
+        pub source: ::std::option::Option<String>,
         #[doc = "Time in seconds for license auto-expiration."]
         #[serde(rename = "timeWindowSeconds", default)]
-        pub time_window_seconds: Option<i32>,
+        pub time_window_seconds: ::std::option::Option<i32>,
         #[doc = "Identifies the volume for which this entry applies."]
         #[serde(rename = "volumeId", default)]
-        pub volume_id: Option<String>,
+        pub volume_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ConcurrentAccessRestriction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -638,7 +624,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -656,7 +641,7 @@ pub mod schemas {
     pub struct DictlayerdataCommon {
         #[doc = "The display title and localized canonical name to use when searching for this entity on Google search."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DictlayerdataCommon {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -665,7 +650,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -682,9 +666,9 @@ pub mod schemas {
     )]
     pub struct DictlayerdataDictSource {
         #[serde(rename = "attribution", default)]
-        pub attribution: Option<String>,
+        pub attribution: ::std::option::Option<String>,
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DictlayerdataDictSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -693,7 +677,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -710,9 +693,9 @@ pub mod schemas {
     )]
     pub struct DictlayerdataDictWordsItemsDerivativesItemsSource {
         #[serde(rename = "attribution", default)]
-        pub attribution: Option<String>,
+        pub attribution: ::std::option::Option<String>,
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsDerivativesItemsSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -721,7 +704,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -738,9 +720,11 @@ pub mod schemas {
     )]
     pub struct DictlayerdataDictWordsItemsDerivativesItems {
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::DictlayerdataDictWordsItemsDerivativesItemsSource>,
+        pub source: ::std::option::Option<
+            crate::schemas::DictlayerdataDictWordsItemsDerivativesItemsSource,
+        >,
         #[serde(rename = "text", default)]
-        pub text: Option<String>,
+        pub text: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsDerivativesItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -749,7 +733,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -766,9 +749,9 @@ pub mod schemas {
     )]
     pub struct DictlayerdataDictWordsItemsExamplesItemsSource {
         #[serde(rename = "attribution", default)]
-        pub attribution: Option<String>,
+        pub attribution: ::std::option::Option<String>,
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsExamplesItemsSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -777,7 +760,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -794,9 +776,10 @@ pub mod schemas {
     )]
     pub struct DictlayerdataDictWordsItemsExamplesItems {
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::DictlayerdataDictWordsItemsExamplesItemsSource>,
+        pub source:
+            ::std::option::Option<crate::schemas::DictlayerdataDictWordsItemsExamplesItemsSource>,
         #[serde(rename = "text", default)]
-        pub text: Option<String>,
+        pub text: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsExamplesItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -805,7 +788,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -822,9 +804,9 @@ pub mod schemas {
     )]
     pub struct DictlayerdataDictWordsItemsSensesItemsConjugationsItems {
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsSensesItemsConjugationsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -833,7 +815,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -850,9 +831,9 @@ pub mod schemas {
     )]
     pub struct DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItemsSource {
         #[serde(rename = "attribution", default)]
-        pub attribution: Option<String>,
+        pub attribution: ::std::option::Option<String>,
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector
         for DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItemsSource
@@ -863,7 +844,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -878,7 +858,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItems { # [ serde ( rename = "source" , default ) ] pub source : Option < crate :: schemas :: DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItemsSource > , # [ serde ( rename = "text" , default ) ] pub text : Option < String > , }
+    pub struct DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItems { # [ serde ( rename = "source" , default ) ] pub source : :: std :: option :: Option < crate :: schemas :: DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItemsSource > , # [ serde ( rename = "text" , default ) ] pub text : :: std :: option :: Option < String > , }
     impl ::field_selector::FieldSelector
         for DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItems
     {
@@ -888,7 +868,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -905,9 +884,9 @@ pub mod schemas {
     )]
     pub struct DictlayerdataDictWordsItemsSensesItemsDefinitionsItems {
         #[serde(rename = "definition", default)]
-        pub definition: Option<String>,
+        pub definition: ::std::option::Option<String>,
         #[serde(rename = "examples", default)]
-        pub examples: Option<
+        pub examples: ::std::option::Option<
             Vec<
                 crate::schemas::DictlayerdataDictWordsItemsSensesItemsDefinitionsItemsExamplesItems,
             >,
@@ -920,7 +899,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -937,9 +915,9 @@ pub mod schemas {
     )]
     pub struct DictlayerdataDictWordsItemsSensesItemsSource {
         #[serde(rename = "attribution", default)]
-        pub attribution: Option<String>,
+        pub attribution: ::std::option::Option<String>,
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsSensesItemsSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -948,7 +926,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -965,9 +942,9 @@ pub mod schemas {
     )]
     pub struct DictlayerdataDictWordsItemsSensesItemsSynonymsItemsSource {
         #[serde(rename = "attribution", default)]
-        pub attribution: Option<String>,
+        pub attribution: ::std::option::Option<String>,
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsSensesItemsSynonymsItemsSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -976,7 +953,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -993,10 +969,11 @@ pub mod schemas {
     )]
     pub struct DictlayerdataDictWordsItemsSensesItemsSynonymsItems {
         #[serde(rename = "source", default)]
-        pub source:
-            Option<crate::schemas::DictlayerdataDictWordsItemsSensesItemsSynonymsItemsSource>,
+        pub source: ::std::option::Option<
+            crate::schemas::DictlayerdataDictWordsItemsSensesItemsSynonymsItemsSource,
+        >,
         #[serde(rename = "text", default)]
-        pub text: Option<String>,
+        pub text: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsSensesItemsSynonymsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1005,7 +982,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1022,24 +998,28 @@ pub mod schemas {
     )]
     pub struct DictlayerdataDictWordsItemsSensesItems {
         #[serde(rename = "conjugations", default)]
-        pub conjugations:
-            Option<Vec<crate::schemas::DictlayerdataDictWordsItemsSensesItemsConjugationsItems>>,
+        pub conjugations: ::std::option::Option<
+            Vec<crate::schemas::DictlayerdataDictWordsItemsSensesItemsConjugationsItems>,
+        >,
         #[serde(rename = "definitions", default)]
-        pub definitions:
-            Option<Vec<crate::schemas::DictlayerdataDictWordsItemsSensesItemsDefinitionsItems>>,
+        pub definitions: ::std::option::Option<
+            Vec<crate::schemas::DictlayerdataDictWordsItemsSensesItemsDefinitionsItems>,
+        >,
         #[serde(rename = "partOfSpeech", default)]
-        pub part_of_speech: Option<String>,
+        pub part_of_speech: ::std::option::Option<String>,
         #[serde(rename = "pronunciation", default)]
-        pub pronunciation: Option<String>,
+        pub pronunciation: ::std::option::Option<String>,
         #[serde(rename = "pronunciationUrl", default)]
-        pub pronunciation_url: Option<String>,
+        pub pronunciation_url: ::std::option::Option<String>,
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::DictlayerdataDictWordsItemsSensesItemsSource>,
+        pub source:
+            ::std::option::Option<crate::schemas::DictlayerdataDictWordsItemsSensesItemsSource>,
         #[serde(rename = "syllabification", default)]
-        pub syllabification: Option<String>,
+        pub syllabification: ::std::option::Option<String>,
         #[serde(rename = "synonyms", default)]
-        pub synonyms:
-            Option<Vec<crate::schemas::DictlayerdataDictWordsItemsSensesItemsSynonymsItems>>,
+        pub synonyms: ::std::option::Option<
+            Vec<crate::schemas::DictlayerdataDictWordsItemsSensesItemsSynonymsItems>,
+        >,
     }
     impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsSensesItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1048,7 +1028,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1065,9 +1044,9 @@ pub mod schemas {
     )]
     pub struct DictlayerdataDictWordsItemsSource {
         #[serde(rename = "attribution", default)]
-        pub attribution: Option<String>,
+        pub attribution: ::std::option::Option<String>,
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DictlayerdataDictWordsItemsSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1076,7 +1055,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1093,14 +1071,17 @@ pub mod schemas {
     )]
     pub struct DictlayerdataDictWordsItems {
         #[serde(rename = "derivatives", default)]
-        pub derivatives: Option<Vec<crate::schemas::DictlayerdataDictWordsItemsDerivativesItems>>,
+        pub derivatives:
+            ::std::option::Option<Vec<crate::schemas::DictlayerdataDictWordsItemsDerivativesItems>>,
         #[serde(rename = "examples", default)]
-        pub examples: Option<Vec<crate::schemas::DictlayerdataDictWordsItemsExamplesItems>>,
+        pub examples:
+            ::std::option::Option<Vec<crate::schemas::DictlayerdataDictWordsItemsExamplesItems>>,
         #[serde(rename = "senses", default)]
-        pub senses: Option<Vec<crate::schemas::DictlayerdataDictWordsItemsSensesItems>>,
+        pub senses:
+            ::std::option::Option<Vec<crate::schemas::DictlayerdataDictWordsItemsSensesItems>>,
         #[doc = "The words with different meanings but not related words, e.g. \"go\" (game) and \"go\" (verb)."]
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::DictlayerdataDictWordsItemsSource>,
+        pub source: ::std::option::Option<crate::schemas::DictlayerdataDictWordsItemsSource>,
     }
     impl ::field_selector::FieldSelector for DictlayerdataDictWordsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1109,7 +1090,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1127,9 +1107,9 @@ pub mod schemas {
     pub struct DictlayerdataDict {
         #[doc = "The source, url and attribution for this dictionary data."]
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::DictlayerdataDictSource>,
+        pub source: ::std::option::Option<crate::schemas::DictlayerdataDictSource>,
         #[serde(rename = "words", default)]
-        pub words: Option<Vec<crate::schemas::DictlayerdataDictWordsItems>>,
+        pub words: ::std::option::Option<Vec<crate::schemas::DictlayerdataDictWordsItems>>,
     }
     impl ::field_selector::FieldSelector for DictlayerdataDict {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1138,7 +1118,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1155,11 +1134,11 @@ pub mod schemas {
     )]
     pub struct Dictlayerdata {
         #[serde(rename = "common", default)]
-        pub common: Option<crate::schemas::DictlayerdataCommon>,
+        pub common: ::std::option::Option<crate::schemas::DictlayerdataCommon>,
         #[serde(rename = "dict", default)]
-        pub dict: Option<crate::schemas::DictlayerdataDict>,
+        pub dict: ::std::option::Option<crate::schemas::DictlayerdataDict>,
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Dictlayerdata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1168,7 +1147,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1185,17 +1163,17 @@ pub mod schemas {
     )]
     pub struct DiscoveryclustersClustersItemsBannerWithContentContainer {
         #[serde(rename = "fillColorArgb", default)]
-        pub fill_color_argb: Option<String>,
+        pub fill_color_argb: ::std::option::Option<String>,
         #[serde(rename = "imageUrl", default)]
-        pub image_url: Option<String>,
+        pub image_url: ::std::option::Option<String>,
         #[serde(rename = "maskColorArgb", default)]
-        pub mask_color_argb: Option<String>,
+        pub mask_color_argb: ::std::option::Option<String>,
         #[serde(rename = "moreButtonText", default)]
-        pub more_button_text: Option<String>,
+        pub more_button_text: ::std::option::Option<String>,
         #[serde(rename = "moreButtonUrl", default)]
-        pub more_button_url: Option<String>,
+        pub more_button_url: ::std::option::Option<String>,
         #[serde(rename = "textColorArgb", default)]
-        pub text_color_argb: Option<String>,
+        pub text_color_argb: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DiscoveryclustersClustersItemsBannerWithContentContainer {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1204,24 +1182,24 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct DiscoveryclustersClustersItems {
         #[serde(rename = "banner_with_content_container", default)]
-        pub banner_with_content_container:
-            Option<crate::schemas::DiscoveryclustersClustersItemsBannerWithContentContainer>,
+        pub banner_with_content_container: ::std::option::Option<
+            crate::schemas::DiscoveryclustersClustersItemsBannerWithContentContainer,
+        >,
         #[serde(rename = "subTitle", default)]
-        pub sub_title: Option<String>,
+        pub sub_title: ::std::option::Option<String>,
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[serde(rename = "totalVolumes", default)]
-        pub total_volumes: Option<i32>,
+        pub total_volumes: ::std::option::Option<i32>,
         #[serde(rename = "uid", default)]
-        pub uid: Option<String>,
+        pub uid: ::std::option::Option<String>,
         #[serde(rename = "volumes", default)]
-        pub volumes: Option<Vec<crate::schemas::Volume>>,
+        pub volumes: ::std::option::Option<Vec<crate::schemas::Volume>>,
     }
     impl ::field_selector::FieldSelector for DiscoveryclustersClustersItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1230,18 +1208,17 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Discoveryclusters {
         #[serde(rename = "clusters", default)]
-        pub clusters: Option<Vec<crate::schemas::DiscoveryclustersClustersItems>>,
+        pub clusters: ::std::option::Option<Vec<crate::schemas::DiscoveryclustersClustersItems>>,
         #[doc = "Resorce type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "totalClusters", default)]
-        pub total_clusters: Option<i32>,
+        pub total_clusters: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Discoveryclusters {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1250,7 +1227,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1268,40 +1244,40 @@ pub mod schemas {
     pub struct DownloadAccessRestriction {
         #[doc = "If restricted, whether access is granted for this (user, device, volume)."]
         #[serde(rename = "deviceAllowed", default)]
-        pub device_allowed: Option<bool>,
+        pub device_allowed: ::std::option::Option<bool>,
         #[doc = "If restricted, the number of content download licenses already acquired (including the requesting client, if licensed)."]
         #[serde(rename = "downloadsAcquired", default)]
-        pub downloads_acquired: Option<i32>,
+        pub downloads_acquired: ::std::option::Option<i32>,
         #[doc = "If deviceAllowed, whether access was just acquired with this request."]
         #[serde(rename = "justAcquired", default)]
-        pub just_acquired: Option<bool>,
+        pub just_acquired: ::std::option::Option<bool>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "If restricted, the maximum number of content download licenses for this volume."]
         #[serde(rename = "maxDownloadDevices", default)]
-        pub max_download_devices: Option<i32>,
+        pub max_download_devices: ::std::option::Option<i32>,
         #[doc = "Error/warning message."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
         #[doc = "Client nonce for verification. Download access and client-validation only."]
         #[serde(rename = "nonce", default)]
-        pub nonce: Option<String>,
+        pub nonce: ::std::option::Option<String>,
         #[doc = "Error/warning reason code. Additional codes may be added in the future. 0 OK 100 ACCESS_DENIED_PUBLISHER_LIMIT 101 ACCESS_DENIED_LIMIT 200 WARNING_USED_LAST_ACCESS"]
         #[serde(rename = "reasonCode", default)]
-        pub reason_code: Option<String>,
+        pub reason_code: ::std::option::Option<String>,
         #[doc = "Whether this volume has any download access restrictions."]
         #[serde(rename = "restricted", default)]
-        pub restricted: Option<bool>,
+        pub restricted: ::std::option::Option<bool>,
         #[doc = "Response signature."]
         #[serde(rename = "signature", default)]
-        pub signature: Option<String>,
+        pub signature: ::std::option::Option<String>,
         #[doc = "Client app identifier for verification. Download access and client-validation only."]
         #[serde(rename = "source", default)]
-        pub source: Option<String>,
+        pub source: ::std::option::Option<String>,
         #[doc = "Identifies the volume for which this entry applies."]
         #[serde(rename = "volumeId", default)]
-        pub volume_id: Option<String>,
+        pub volume_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DownloadAccessRestriction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1310,7 +1286,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1328,10 +1303,11 @@ pub mod schemas {
     pub struct DownloadAccesses {
         #[doc = "A list of download access responses."]
         #[serde(rename = "downloadAccessList", default)]
-        pub download_access_list: Option<Vec<crate::schemas::DownloadAccessRestriction>>,
+        pub download_access_list:
+            ::std::option::Option<Vec<crate::schemas::DownloadAccessRestriction>>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DownloadAccesses {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1340,7 +1316,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1358,18 +1333,18 @@ pub mod schemas {
     pub struct FamilyInfoMembership {
         #[doc = "Restrictions on user buying and acquiring content."]
         #[serde(rename = "acquirePermission", default)]
-        pub acquire_permission: Option<String>,
+        pub acquire_permission: ::std::option::Option<String>,
         #[doc = "The age group of the user."]
         #[serde(rename = "ageGroup", default)]
-        pub age_group: Option<String>,
+        pub age_group: ::std::option::Option<String>,
         #[doc = "The maximum allowed maturity rating for the user."]
         #[serde(rename = "allowedMaturityRating", default)]
-        pub allowed_maturity_rating: Option<String>,
+        pub allowed_maturity_rating: ::std::option::Option<String>,
         #[serde(rename = "isInFamily", default)]
-        pub is_in_family: Option<bool>,
+        pub is_in_family: ::std::option::Option<bool>,
         #[doc = "The role of the user in the family."]
         #[serde(rename = "role", default)]
-        pub role: Option<String>,
+        pub role: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FamilyInfoMembership {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1378,7 +1353,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1396,10 +1370,10 @@ pub mod schemas {
     pub struct FamilyInfo {
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Family membership info of the user that made the request."]
         #[serde(rename = "membership", default)]
-        pub membership: Option<crate::schemas::FamilyInfoMembership>,
+        pub membership: ::std::option::Option<crate::schemas::FamilyInfoMembership>,
     }
     impl ::field_selector::FieldSelector for FamilyInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1408,7 +1382,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1426,19 +1399,19 @@ pub mod schemas {
     pub struct GeolayerdataCommon {
         #[doc = "The language of the information url and description."]
         #[serde(rename = "lang", default)]
-        pub lang: Option<String>,
+        pub lang: ::std::option::Option<String>,
         #[doc = "The URL for the preview image information."]
         #[serde(rename = "previewImageUrl", default)]
-        pub preview_image_url: Option<String>,
+        pub preview_image_url: ::std::option::Option<String>,
         #[doc = "The description for this location."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<String>,
+        pub snippet: ::std::option::Option<String>,
         #[doc = "The URL for information for this location. Ex: wikipedia link."]
         #[serde(rename = "snippetUrl", default)]
-        pub snippet_url: Option<String>,
+        pub snippet_url: ::std::option::Option<String>,
         #[doc = "The display title and localized canonical name to use when searching for this entity on Google search."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GeolayerdataCommon {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1447,7 +1420,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1464,9 +1436,9 @@ pub mod schemas {
     )]
     pub struct GeolayerdataGeoBoundaryItemsItems {
         #[serde(rename = "latitude", default)]
-        pub latitude: Option<u32>,
+        pub latitude: ::std::option::Option<u32>,
         #[serde(rename = "longitude", default)]
-        pub longitude: Option<u32>,
+        pub longitude: ::std::option::Option<u32>,
     }
     impl ::field_selector::FieldSelector for GeolayerdataGeoBoundaryItemsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1475,7 +1447,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1483,9 +1454,9 @@ pub mod schemas {
     )]
     pub struct GeolayerdataGeoViewportHi {
         #[serde(rename = "latitude", default)]
-        pub latitude: Option<f64>,
+        pub latitude: ::std::option::Option<f64>,
         #[serde(rename = "longitude", default)]
-        pub longitude: Option<f64>,
+        pub longitude: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for GeolayerdataGeoViewportHi {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1494,7 +1465,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1502,9 +1472,9 @@ pub mod schemas {
     )]
     pub struct GeolayerdataGeoViewportLo {
         #[serde(rename = "latitude", default)]
-        pub latitude: Option<f64>,
+        pub latitude: ::std::option::Option<f64>,
         #[serde(rename = "longitude", default)]
-        pub longitude: Option<f64>,
+        pub longitude: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for GeolayerdataGeoViewportLo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1513,7 +1483,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1521,9 +1490,9 @@ pub mod schemas {
     )]
     pub struct GeolayerdataGeoViewport {
         #[serde(rename = "hi", default)]
-        pub hi: Option<crate::schemas::GeolayerdataGeoViewportHi>,
+        pub hi: ::std::option::Option<crate::schemas::GeolayerdataGeoViewportHi>,
         #[serde(rename = "lo", default)]
-        pub lo: Option<crate::schemas::GeolayerdataGeoViewportLo>,
+        pub lo: ::std::option::Option<crate::schemas::GeolayerdataGeoViewportLo>,
     }
     impl ::field_selector::FieldSelector for GeolayerdataGeoViewport {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1532,7 +1501,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1541,28 +1509,29 @@ pub mod schemas {
     pub struct GeolayerdataGeo {
         #[doc = "The boundary of the location as a set of loops containing pairs of latitude, longitude coordinates."]
         #[serde(rename = "boundary", default)]
-        pub boundary: Option<Vec<Vec<crate::schemas::GeolayerdataGeoBoundaryItemsItems>>>,
+        pub boundary:
+            ::std::option::Option<Vec<Vec<crate::schemas::GeolayerdataGeoBoundaryItemsItems>>>,
         #[doc = "The cache policy active for this data. EX: UNRESTRICTED, RESTRICTED, NEVER"]
         #[serde(rename = "cachePolicy", default)]
-        pub cache_policy: Option<String>,
+        pub cache_policy: ::std::option::Option<String>,
         #[doc = "The country code of the location."]
         #[serde(rename = "countryCode", default)]
-        pub country_code: Option<String>,
+        pub country_code: ::std::option::Option<String>,
         #[doc = "The latitude of the location."]
         #[serde(rename = "latitude", default)]
-        pub latitude: Option<f64>,
+        pub latitude: ::std::option::Option<f64>,
         #[doc = "The longitude of the location."]
         #[serde(rename = "longitude", default)]
-        pub longitude: Option<f64>,
+        pub longitude: ::std::option::Option<f64>,
         #[doc = "The type of map that should be used for this location. EX: HYBRID, ROADMAP, SATELLITE, TERRAIN"]
         #[serde(rename = "mapType", default)]
-        pub map_type: Option<String>,
+        pub map_type: ::std::option::Option<String>,
         #[doc = "The viewport for showing this location. This is a latitude, longitude rectangle."]
         #[serde(rename = "viewport", default)]
-        pub viewport: Option<crate::schemas::GeolayerdataGeoViewport>,
+        pub viewport: ::std::option::Option<crate::schemas::GeolayerdataGeoViewport>,
         #[doc = "The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom level, in which the entire world can be seen on one map) to 21+ (down to individual buildings). See: https://developers.google.com/maps/documentation/staticmaps/#Zoomlevels"]
         #[serde(rename = "zoom", default)]
-        pub zoom: Option<i32>,
+        pub zoom: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for GeolayerdataGeo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1571,7 +1540,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1579,11 +1547,11 @@ pub mod schemas {
     )]
     pub struct Geolayerdata {
         #[serde(rename = "common", default)]
-        pub common: Option<crate::schemas::GeolayerdataCommon>,
+        pub common: ::std::option::Option<crate::schemas::GeolayerdataCommon>,
         #[serde(rename = "geo", default)]
-        pub geo: Option<crate::schemas::GeolayerdataGeo>,
+        pub geo: ::std::option::Option<crate::schemas::GeolayerdataGeo>,
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Geolayerdata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1592,7 +1560,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1610,13 +1577,13 @@ pub mod schemas {
     pub struct Layersummaries {
         #[doc = "A list of layer summary items."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Layersummary>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Layersummary>>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The total number of layer summaries found."]
         #[serde(rename = "totalItems", default)]
-        pub total_items: Option<i32>,
+        pub total_items: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Layersummaries {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1625,7 +1592,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1643,43 +1609,43 @@ pub mod schemas {
     pub struct Layersummary {
         #[doc = "The number of annotations for this layer."]
         #[serde(rename = "annotationCount", default)]
-        pub annotation_count: Option<i32>,
+        pub annotation_count: ::std::option::Option<i32>,
         #[doc = "The list of annotation types contained for this layer."]
         #[serde(rename = "annotationTypes", default)]
-        pub annotation_types: Option<Vec<String>>,
+        pub annotation_types: ::std::option::Option<Vec<String>>,
         #[doc = "Link to get data for this annotation."]
         #[serde(rename = "annotationsDataLink", default)]
-        pub annotations_data_link: Option<String>,
+        pub annotations_data_link: ::std::option::Option<String>,
         #[doc = "The link to get the annotations for this layer."]
         #[serde(rename = "annotationsLink", default)]
-        pub annotations_link: Option<String>,
+        pub annotations_link: ::std::option::Option<String>,
         #[doc = "The content version this resource is for."]
         #[serde(rename = "contentVersion", default)]
-        pub content_version: Option<String>,
+        pub content_version: ::std::option::Option<String>,
         #[doc = "The number of data items for this layer."]
         #[serde(rename = "dataCount", default)]
-        pub data_count: Option<i32>,
+        pub data_count: ::std::option::Option<i32>,
         #[doc = "Unique id of this layer summary."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Resource Type"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The layer id for this summary."]
         #[serde(rename = "layerId", default)]
-        pub layer_id: Option<String>,
+        pub layer_id: ::std::option::Option<String>,
         #[doc = "URL to this resource."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Timestamp for the last time an item in this layer was updated. (RFC 3339 UTC date-time format)."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The current version of this layer's volume annotations. Note that this version applies only to the data in the books.layers.volumeAnnotations.* responses. The actual annotation data is versioned separately."]
         #[serde(rename = "volumeAnnotationsVersion", default)]
-        pub volume_annotations_version: Option<String>,
+        pub volume_annotations_version: ::std::option::Option<String>,
         #[doc = "The volume id this resource is for."]
         #[serde(rename = "volumeId", default)]
-        pub volume_id: Option<String>,
+        pub volume_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Layersummary {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1688,7 +1654,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1705,17 +1670,17 @@ pub mod schemas {
     )]
     pub struct MetadataItemsItems {
         #[serde(rename = "download_url", default)]
-        pub download_url: Option<String>,
+        pub download_url: ::std::option::Option<String>,
         #[serde(rename = "encrypted_key", default)]
-        pub encrypted_key: Option<String>,
+        pub encrypted_key: ::std::option::Option<String>,
         #[serde(rename = "language", default)]
-        pub language: Option<String>,
+        pub language: ::std::option::Option<String>,
         #[serde(rename = "size", default)]
         #[serde(with = "crate::parsed_string")]
-        pub size: Option<i64>,
+        pub size: ::std::option::Option<i64>,
         #[serde(rename = "version", default)]
         #[serde(with = "crate::parsed_string")]
-        pub version: Option<i64>,
+        pub version: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for MetadataItemsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1724,7 +1689,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1742,10 +1706,10 @@ pub mod schemas {
     pub struct Metadata {
         #[doc = "A list of offline dictionary metadata."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::MetadataItemsItems>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::MetadataItemsItems>>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Metadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1754,7 +1718,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1771,40 +1734,40 @@ pub mod schemas {
     )]
     pub struct Notification {
         #[serde(rename = "body", default)]
-        pub body: Option<String>,
+        pub body: ::std::option::Option<String>,
         #[doc = "The list of crm experiment ids."]
         #[serde(rename = "crmExperimentIds", default)]
-        pub crm_experiment_ids: Option<Vec<i64>>,
+        pub crm_experiment_ids: ::std::option::Option<Vec<i64>>,
         #[serde(rename = "doc_id", default)]
-        pub doc_id: Option<String>,
+        pub doc_id: ::std::option::Option<String>,
         #[serde(rename = "doc_type", default)]
-        pub doc_type: Option<String>,
+        pub doc_type: ::std::option::Option<String>,
         #[serde(rename = "dont_show_notification", default)]
-        pub dont_show_notification: Option<bool>,
+        pub dont_show_notification: ::std::option::Option<bool>,
         #[serde(rename = "iconUrl", default)]
-        pub icon_url: Option<String>,
+        pub icon_url: ::std::option::Option<String>,
         #[serde(rename = "is_document_mature", default)]
-        pub is_document_mature: Option<bool>,
+        pub is_document_mature: ::std::option::Option<bool>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "notificationGroup", default)]
-        pub notification_group: Option<String>,
+        pub notification_group: ::std::option::Option<String>,
         #[serde(rename = "notification_type", default)]
-        pub notification_type: Option<String>,
+        pub notification_type: ::std::option::Option<String>,
         #[serde(rename = "pcampaign_id", default)]
-        pub pcampaign_id: Option<String>,
+        pub pcampaign_id: ::std::option::Option<String>,
         #[serde(rename = "reason", default)]
-        pub reason: Option<String>,
+        pub reason: ::std::option::Option<String>,
         #[serde(rename = "show_notification_settings_action", default)]
-        pub show_notification_settings_action: Option<bool>,
+        pub show_notification_settings_action: ::std::option::Option<bool>,
         #[serde(rename = "targetUrl", default)]
-        pub target_url: Option<String>,
+        pub target_url: ::std::option::Option<String>,
         #[serde(rename = "timeToExpireMs", default)]
         #[serde(with = "crate::parsed_string")]
-        pub time_to_expire_ms: Option<i64>,
+        pub time_to_expire_ms: ::std::option::Option<i64>,
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Notification {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1813,7 +1776,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1830,17 +1792,17 @@ pub mod schemas {
     )]
     pub struct OffersItemsItemsItemsItems {
         #[serde(rename = "author", default)]
-        pub author: Option<String>,
+        pub author: ::std::option::Option<String>,
         #[serde(rename = "canonicalVolumeLink", default)]
-        pub canonical_volume_link: Option<String>,
+        pub canonical_volume_link: ::std::option::Option<String>,
         #[serde(rename = "coverUrl", default)]
-        pub cover_url: Option<String>,
+        pub cover_url: ::std::option::Option<String>,
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[serde(rename = "volumeId", default)]
-        pub volume_id: Option<String>,
+        pub volume_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for OffersItemsItemsItemsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1849,7 +1811,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1866,13 +1827,13 @@ pub mod schemas {
     )]
     pub struct OffersItemsItems {
         #[serde(rename = "artUrl", default)]
-        pub art_url: Option<String>,
+        pub art_url: ::std::option::Option<String>,
         #[serde(rename = "gservicesKey", default)]
-        pub gservices_key: Option<String>,
+        pub gservices_key: ::std::option::Option<String>,
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::OffersItemsItemsItemsItems>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::OffersItemsItemsItemsItems>>,
     }
     impl ::field_selector::FieldSelector for OffersItemsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1881,7 +1842,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1899,10 +1859,10 @@ pub mod schemas {
     pub struct Offers {
         #[doc = "A list of offers."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::OffersItemsItems>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::OffersItemsItems>>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Offers {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1911,7 +1871,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1929,25 +1888,25 @@ pub mod schemas {
     pub struct ReadingPosition {
         #[doc = "Position in an EPUB as a CFI."]
         #[serde(rename = "epubCfiPosition", default)]
-        pub epub_cfi_position: Option<String>,
+        pub epub_cfi_position: ::std::option::Option<String>,
         #[doc = "Position in a volume for image-based content."]
         #[serde(rename = "gbImagePosition", default)]
-        pub gb_image_position: Option<String>,
+        pub gb_image_position: ::std::option::Option<String>,
         #[doc = "Position in a volume for text-based content."]
         #[serde(rename = "gbTextPosition", default)]
-        pub gb_text_position: Option<String>,
+        pub gb_text_position: ::std::option::Option<String>,
         #[doc = "Resource type for a reading position."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Position in a PDF file."]
         #[serde(rename = "pdfPosition", default)]
-        pub pdf_position: Option<String>,
+        pub pdf_position: ::std::option::Option<String>,
         #[doc = "Timestamp when this reading position was last updated (formatted UTC timestamp with millisecond resolution)."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Volume id associated with this reading position."]
         #[serde(rename = "volumeId", default)]
-        pub volume_id: Option<String>,
+        pub volume_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ReadingPosition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1956,7 +1915,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1974,13 +1932,13 @@ pub mod schemas {
     pub struct RequestAccess {
         #[doc = "A concurrent access response."]
         #[serde(rename = "concurrentAccess", default)]
-        pub concurrent_access: Option<crate::schemas::ConcurrentAccessRestriction>,
+        pub concurrent_access: ::std::option::Option<crate::schemas::ConcurrentAccessRestriction>,
         #[doc = "A download access response."]
         #[serde(rename = "downloadAccess", default)]
-        pub download_access: Option<crate::schemas::DownloadAccessRestriction>,
+        pub download_access: ::std::option::Option<crate::schemas::DownloadAccessRestriction>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RequestAccess {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1989,7 +1947,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2007,7 +1964,7 @@ pub mod schemas {
     pub struct ReviewAuthor {
         #[doc = "Name of this person."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ReviewAuthor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2016,7 +1973,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2034,13 +1990,13 @@ pub mod schemas {
     pub struct ReviewSource {
         #[doc = "Name of the source."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Extra text about the source of the review."]
         #[serde(rename = "extraDescription", default)]
-        pub extra_description: Option<String>,
+        pub extra_description: ::std::option::Option<String>,
         #[doc = "URL of the source of the review."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ReviewSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2049,7 +2005,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2067,34 +2022,34 @@ pub mod schemas {
     pub struct Review {
         #[doc = "Author of this review."]
         #[serde(rename = "author", default)]
-        pub author: Option<crate::schemas::ReviewAuthor>,
+        pub author: ::std::option::Option<crate::schemas::ReviewAuthor>,
         #[doc = "Review text."]
         #[serde(rename = "content", default)]
-        pub content: Option<String>,
+        pub content: ::std::option::Option<String>,
         #[doc = "Date of this review."]
         #[serde(rename = "date", default)]
-        pub date: Option<String>,
+        pub date: ::std::option::Option<String>,
         #[doc = "URL for the full review text, for reviews gathered from the web."]
         #[serde(rename = "fullTextUrl", default)]
-        pub full_text_url: Option<String>,
+        pub full_text_url: ::std::option::Option<String>,
         #[doc = "Resource type for a review."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Source type for this review. Possible values are EDITORIAL, WEB_USER or GOOGLE_USER."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Star rating for this review. Possible values are ONE, TWO, THREE, FOUR, FIVE or NOT_RATED."]
         #[serde(rename = "rating", default)]
-        pub rating: Option<String>,
+        pub rating: ::std::option::Option<String>,
         #[doc = "Information regarding the source of this review, when the review is not from a Google Books user."]
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::ReviewSource>,
+        pub source: ::std::option::Option<crate::schemas::ReviewSource>,
         #[doc = "Title for this review."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "Volume that this review is for."]
         #[serde(rename = "volumeId", default)]
-        pub volume_id: Option<String>,
+        pub volume_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Review {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2103,7 +2058,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2120,15 +2074,15 @@ pub mod schemas {
     )]
     pub struct SeriesSeriesItems {
         #[serde(rename = "bannerImageUrl", default)]
-        pub banner_image_url: Option<String>,
+        pub banner_image_url: ::std::option::Option<String>,
         #[serde(rename = "imageUrl", default)]
-        pub image_url: Option<String>,
+        pub image_url: ::std::option::Option<String>,
         #[serde(rename = "seriesId", default)]
-        pub series_id: Option<String>,
+        pub series_id: ::std::option::Option<String>,
         #[serde(rename = "seriesType", default)]
-        pub series_type: Option<String>,
+        pub series_type: ::std::option::Option<String>,
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SeriesSeriesItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2137,7 +2091,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2155,9 +2108,9 @@ pub mod schemas {
     pub struct Series {
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "series", default)]
-        pub series: Option<Vec<crate::schemas::SeriesSeriesItems>>,
+        pub series: ::std::option::Option<Vec<crate::schemas::SeriesSeriesItems>>,
     }
     impl ::field_selector::FieldSelector for Series {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2166,18 +2119,17 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Seriesmembership {
         #[doc = "Resorce type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "member", default)]
-        pub member: Option<Vec<crate::schemas::Volume>>,
+        pub member: ::std::option::Option<Vec<crate::schemas::Volume>>,
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Seriesmembership {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2186,7 +2138,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2203,9 +2154,9 @@ pub mod schemas {
     )]
     pub struct UsersettingsNotesExport {
         #[serde(rename = "folderName", default)]
-        pub folder_name: Option<String>,
+        pub folder_name: ::std::option::Option<String>,
         #[serde(rename = "isEnabled", default)]
-        pub is_enabled: Option<bool>,
+        pub is_enabled: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for UsersettingsNotesExport {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2214,7 +2165,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2231,7 +2181,7 @@ pub mod schemas {
     )]
     pub struct UsersettingsNotificationMatchMyInterests {
         #[serde(rename = "opted_state", default)]
-        pub opted_state: Option<String>,
+        pub opted_state: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UsersettingsNotificationMatchMyInterests {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2240,7 +2190,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2257,7 +2206,7 @@ pub mod schemas {
     )]
     pub struct UsersettingsNotificationMoreFromAuthors {
         #[serde(rename = "opted_state", default)]
-        pub opted_state: Option<String>,
+        pub opted_state: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UsersettingsNotificationMoreFromAuthors {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2266,7 +2215,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2283,7 +2231,7 @@ pub mod schemas {
     )]
     pub struct UsersettingsNotificationMoreFromSeries {
         #[serde(rename = "opted_state", default)]
-        pub opted_state: Option<String>,
+        pub opted_state: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UsersettingsNotificationMoreFromSeries {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2292,7 +2240,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2309,7 +2256,7 @@ pub mod schemas {
     )]
     pub struct UsersettingsNotificationPriceDrop {
         #[serde(rename = "opted_state", default)]
-        pub opted_state: Option<String>,
+        pub opted_state: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UsersettingsNotificationPriceDrop {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2318,7 +2265,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2335,7 +2281,7 @@ pub mod schemas {
     )]
     pub struct UsersettingsNotificationRewardExpirations {
         #[serde(rename = "opted_state", default)]
-        pub opted_state: Option<String>,
+        pub opted_state: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UsersettingsNotificationRewardExpirations {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2344,7 +2290,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2361,15 +2306,19 @@ pub mod schemas {
     )]
     pub struct UsersettingsNotification {
         #[serde(rename = "matchMyInterests", default)]
-        pub match_my_interests: Option<crate::schemas::UsersettingsNotificationMatchMyInterests>,
+        pub match_my_interests:
+            ::std::option::Option<crate::schemas::UsersettingsNotificationMatchMyInterests>,
         #[serde(rename = "moreFromAuthors", default)]
-        pub more_from_authors: Option<crate::schemas::UsersettingsNotificationMoreFromAuthors>,
+        pub more_from_authors:
+            ::std::option::Option<crate::schemas::UsersettingsNotificationMoreFromAuthors>,
         #[serde(rename = "moreFromSeries", default)]
-        pub more_from_series: Option<crate::schemas::UsersettingsNotificationMoreFromSeries>,
+        pub more_from_series:
+            ::std::option::Option<crate::schemas::UsersettingsNotificationMoreFromSeries>,
         #[serde(rename = "priceDrop", default)]
-        pub price_drop: Option<crate::schemas::UsersettingsNotificationPriceDrop>,
+        pub price_drop: ::std::option::Option<crate::schemas::UsersettingsNotificationPriceDrop>,
         #[serde(rename = "rewardExpirations", default)]
-        pub reward_expirations: Option<crate::schemas::UsersettingsNotificationRewardExpirations>,
+        pub reward_expirations:
+            ::std::option::Option<crate::schemas::UsersettingsNotificationRewardExpirations>,
     }
     impl ::field_selector::FieldSelector for UsersettingsNotification {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2378,7 +2327,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2396,12 +2344,12 @@ pub mod schemas {
     pub struct Usersettings {
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "User settings in sub-objects, each for different purposes."]
         #[serde(rename = "notesExport", default)]
-        pub notes_export: Option<crate::schemas::UsersettingsNotesExport>,
+        pub notes_export: ::std::option::Option<crate::schemas::UsersettingsNotesExport>,
         #[serde(rename = "notification", default)]
-        pub notification: Option<crate::schemas::UsersettingsNotification>,
+        pub notification: ::std::option::Option<crate::schemas::UsersettingsNotification>,
     }
     impl ::field_selector::FieldSelector for Usersettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2410,7 +2358,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2428,13 +2375,13 @@ pub mod schemas {
     pub struct VolumeAccessInfoEpub {
         #[doc = "URL to retrieve ACS token for epub download. (In LITE projection.)"]
         #[serde(rename = "acsTokenLink", default)]
-        pub acs_token_link: Option<String>,
+        pub acs_token_link: ::std::option::Option<String>,
         #[doc = "URL to download epub. (In LITE projection.)"]
         #[serde(rename = "downloadLink", default)]
-        pub download_link: Option<String>,
+        pub download_link: ::std::option::Option<String>,
         #[doc = "Is a flowing text epub available either as public domain or for purchase. (In LITE projection.)"]
         #[serde(rename = "isAvailable", default)]
-        pub is_available: Option<bool>,
+        pub is_available: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for VolumeAccessInfoEpub {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2443,7 +2390,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2461,13 +2407,13 @@ pub mod schemas {
     pub struct VolumeAccessInfoPdf {
         #[doc = "URL to retrieve ACS token for pdf download. (In LITE projection.)"]
         #[serde(rename = "acsTokenLink", default)]
-        pub acs_token_link: Option<String>,
+        pub acs_token_link: ::std::option::Option<String>,
         #[doc = "URL to download pdf. (In LITE projection.)"]
         #[serde(rename = "downloadLink", default)]
-        pub download_link: Option<String>,
+        pub download_link: ::std::option::Option<String>,
         #[doc = "Is a scanned image pdf available either as public domain or for purchase. (In LITE projection.)"]
         #[serde(rename = "isAvailable", default)]
-        pub is_available: Option<bool>,
+        pub is_available: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for VolumeAccessInfoPdf {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2476,7 +2422,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2494,46 +2439,46 @@ pub mod schemas {
     pub struct VolumeAccessInfo {
         #[doc = "Combines the access and viewability of this volume into a single status field for this user. Values can be FULL_PURCHASED, FULL_PUBLIC_DOMAIN, SAMPLE or NONE. (In LITE projection.)"]
         #[serde(rename = "accessViewStatus", default)]
-        pub access_view_status: Option<String>,
+        pub access_view_status: ::std::option::Option<String>,
         #[doc = "The two-letter ISO_3166-1 country code for which this access information is valid. (In LITE projection.)"]
         #[serde(rename = "country", default)]
-        pub country: Option<String>,
+        pub country: ::std::option::Option<String>,
         #[doc = "Information about a volume's download license access restrictions."]
         #[serde(rename = "downloadAccess", default)]
-        pub download_access: Option<crate::schemas::DownloadAccessRestriction>,
+        pub download_access: ::std::option::Option<crate::schemas::DownloadAccessRestriction>,
         #[doc = "URL to the Google Drive viewer if this volume is uploaded by the user by selecting the file from Google Drive."]
         #[serde(rename = "driveImportedContentLink", default)]
-        pub drive_imported_content_link: Option<String>,
+        pub drive_imported_content_link: ::std::option::Option<String>,
         #[doc = "Whether this volume can be embedded in a viewport using the Embedded Viewer API."]
         #[serde(rename = "embeddable", default)]
-        pub embeddable: Option<bool>,
+        pub embeddable: ::std::option::Option<bool>,
         #[doc = "Information about epub content. (In LITE projection.)"]
         #[serde(rename = "epub", default)]
-        pub epub: Option<crate::schemas::VolumeAccessInfoEpub>,
+        pub epub: ::std::option::Option<crate::schemas::VolumeAccessInfoEpub>,
         #[doc = "Whether this volume requires that the client explicitly request offline download license rather than have it done automatically when loading the content, if the client supports it."]
         #[serde(rename = "explicitOfflineLicenseManagement", default)]
-        pub explicit_offline_license_management: Option<bool>,
+        pub explicit_offline_license_management: ::std::option::Option<bool>,
         #[doc = "Information about pdf content. (In LITE projection.)"]
         #[serde(rename = "pdf", default)]
-        pub pdf: Option<crate::schemas::VolumeAccessInfoPdf>,
+        pub pdf: ::std::option::Option<crate::schemas::VolumeAccessInfoPdf>,
         #[doc = "Whether or not this book is public domain in the country listed above."]
         #[serde(rename = "publicDomain", default)]
-        pub public_domain: Option<bool>,
+        pub public_domain: ::std::option::Option<bool>,
         #[doc = "Whether quote sharing is allowed for this volume."]
         #[serde(rename = "quoteSharingAllowed", default)]
-        pub quote_sharing_allowed: Option<bool>,
+        pub quote_sharing_allowed: ::std::option::Option<bool>,
         #[doc = "Whether text-to-speech is permitted for this volume. Values can be ALLOWED, ALLOWED_FOR_ACCESSIBILITY, or NOT_ALLOWED."]
         #[serde(rename = "textToSpeechPermission", default)]
-        pub text_to_speech_permission: Option<String>,
+        pub text_to_speech_permission: ::std::option::Option<String>,
         #[doc = "For ordered but not yet processed orders, we give a URL that can be used to go to the appropriate Google Wallet page."]
         #[serde(rename = "viewOrderUrl", default)]
-        pub view_order_url: Option<String>,
+        pub view_order_url: ::std::option::Option<String>,
         #[doc = "The read access of a volume. Possible values are PARTIAL, ALL_PAGES, NO_PAGES or UNKNOWN. This value depends on the country listed above. A value of PARTIAL means that the publisher has allowed some portion of the volume to be viewed publicly, without purchase. This can apply to eBooks as well as non-eBooks. Public domain books will always have a value of ALL_PAGES."]
         #[serde(rename = "viewability", default)]
-        pub viewability: Option<String>,
+        pub viewability: ::std::option::Option<String>,
         #[doc = "URL to read this volume on the Google Books site. Link will not allow users to read non-viewable volumes."]
         #[serde(rename = "webReaderLink", default)]
-        pub web_reader_link: Option<String>,
+        pub web_reader_link: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeAccessInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2542,7 +2487,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2560,10 +2504,10 @@ pub mod schemas {
     pub struct VolumeLayerInfoLayersItems {
         #[doc = "The layer id of this layer (e.g. \"geo\")."]
         #[serde(rename = "layerId", default)]
-        pub layer_id: Option<String>,
+        pub layer_id: ::std::option::Option<String>,
         #[doc = "The current version of this layer's volume annotations. Note that this version applies only to the data in the books.layers.volumeAnnotations.* responses. The actual annotation data is versioned separately."]
         #[serde(rename = "volumeAnnotationsVersion", default)]
-        pub volume_annotations_version: Option<String>,
+        pub volume_annotations_version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeLayerInfoLayersItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2572,7 +2516,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2590,7 +2533,7 @@ pub mod schemas {
     pub struct VolumeLayerInfo {
         #[doc = "A layer should appear here if and only if the layer exists for this book."]
         #[serde(rename = "layers", default)]
-        pub layers: Option<Vec<crate::schemas::VolumeLayerInfoLayersItems>>,
+        pub layers: ::std::option::Option<Vec<crate::schemas::VolumeLayerInfoLayersItems>>,
     }
     impl ::field_selector::FieldSelector for VolumeLayerInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2599,7 +2542,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2617,7 +2559,7 @@ pub mod schemas {
     pub struct VolumeRecommendedInfo {
         #[doc = "A text explaining why this volume is recommended."]
         #[serde(rename = "explanation", default)]
-        pub explanation: Option<String>,
+        pub explanation: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeRecommendedInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2626,7 +2568,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2635,10 +2576,10 @@ pub mod schemas {
     pub struct VolumeSaleInfoListPrice {
         #[doc = "Amount in the currency listed below. (In LITE projection.)"]
         #[serde(rename = "amount", default)]
-        pub amount: Option<f64>,
+        pub amount: ::std::option::Option<f64>,
         #[doc = "An ISO 4217, three-letter currency code. (In LITE projection.)"]
         #[serde(rename = "currencyCode", default)]
-        pub currency_code: Option<String>,
+        pub currency_code: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeSaleInfoListPrice {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2647,7 +2588,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2655,9 +2595,9 @@ pub mod schemas {
     )]
     pub struct VolumeSaleInfoOffersItemsListPrice {
         #[serde(rename = "amountInMicros", default)]
-        pub amount_in_micros: Option<f64>,
+        pub amount_in_micros: ::std::option::Option<f64>,
         #[serde(rename = "currencyCode", default)]
-        pub currency_code: Option<String>,
+        pub currency_code: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeSaleInfoOffersItemsListPrice {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2666,7 +2606,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2674,9 +2613,9 @@ pub mod schemas {
     )]
     pub struct VolumeSaleInfoOffersItemsRentalDuration {
         #[serde(rename = "count", default)]
-        pub count: Option<f64>,
+        pub count: ::std::option::Option<f64>,
         #[serde(rename = "unit", default)]
-        pub unit: Option<String>,
+        pub unit: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeSaleInfoOffersItemsRentalDuration {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2685,7 +2624,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2693,9 +2631,9 @@ pub mod schemas {
     )]
     pub struct VolumeSaleInfoOffersItemsRetailPrice {
         #[serde(rename = "amountInMicros", default)]
-        pub amount_in_micros: Option<f64>,
+        pub amount_in_micros: ::std::option::Option<f64>,
         #[serde(rename = "currencyCode", default)]
-        pub currency_code: Option<String>,
+        pub currency_code: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeSaleInfoOffersItemsRetailPrice {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2704,7 +2642,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2713,19 +2650,21 @@ pub mod schemas {
     pub struct VolumeSaleInfoOffersItems {
         #[doc = "The finsky offer type (e.g., PURCHASE=0 RENTAL=3)"]
         #[serde(rename = "finskyOfferType", default)]
-        pub finsky_offer_type: Option<i32>,
+        pub finsky_offer_type: ::std::option::Option<i32>,
         #[doc = "Indicates whether the offer is giftable."]
         #[serde(rename = "giftable", default)]
-        pub giftable: Option<bool>,
+        pub giftable: ::std::option::Option<bool>,
         #[doc = "Offer list (=undiscounted) price in Micros."]
         #[serde(rename = "listPrice", default)]
-        pub list_price: Option<crate::schemas::VolumeSaleInfoOffersItemsListPrice>,
+        pub list_price: ::std::option::Option<crate::schemas::VolumeSaleInfoOffersItemsListPrice>,
         #[doc = "The rental duration (for rental offers only)."]
         #[serde(rename = "rentalDuration", default)]
-        pub rental_duration: Option<crate::schemas::VolumeSaleInfoOffersItemsRentalDuration>,
+        pub rental_duration:
+            ::std::option::Option<crate::schemas::VolumeSaleInfoOffersItemsRentalDuration>,
         #[doc = "Offer retail (=discounted) price in Micros"]
         #[serde(rename = "retailPrice", default)]
-        pub retail_price: Option<crate::schemas::VolumeSaleInfoOffersItemsRetailPrice>,
+        pub retail_price:
+            ::std::option::Option<crate::schemas::VolumeSaleInfoOffersItemsRetailPrice>,
     }
     impl ::field_selector::FieldSelector for VolumeSaleInfoOffersItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2734,7 +2673,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2743,10 +2681,10 @@ pub mod schemas {
     pub struct VolumeSaleInfoRetailPrice {
         #[doc = "Amount in the currency listed below. (In LITE projection.)"]
         #[serde(rename = "amount", default)]
-        pub amount: Option<f64>,
+        pub amount: ::std::option::Option<f64>,
         #[doc = "An ISO 4217, three-letter currency code. (In LITE projection.)"]
         #[serde(rename = "currencyCode", default)]
-        pub currency_code: Option<String>,
+        pub currency_code: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeSaleInfoRetailPrice {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2755,7 +2693,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2764,28 +2701,28 @@ pub mod schemas {
     pub struct VolumeSaleInfo {
         #[doc = "URL to purchase this volume on the Google Books site. (In LITE projection)"]
         #[serde(rename = "buyLink", default)]
-        pub buy_link: Option<String>,
+        pub buy_link: ::std::option::Option<String>,
         #[doc = "The two-letter ISO_3166-1 country code for which this sale information is valid. (In LITE projection.)"]
         #[serde(rename = "country", default)]
-        pub country: Option<String>,
+        pub country: ::std::option::Option<String>,
         #[doc = "Whether or not this volume is an eBook (can be added to the My eBooks shelf)."]
         #[serde(rename = "isEbook", default)]
-        pub is_ebook: Option<bool>,
+        pub is_ebook: ::std::option::Option<bool>,
         #[doc = "Suggested retail price. (In LITE projection.)"]
         #[serde(rename = "listPrice", default)]
-        pub list_price: Option<crate::schemas::VolumeSaleInfoListPrice>,
+        pub list_price: ::std::option::Option<crate::schemas::VolumeSaleInfoListPrice>,
         #[doc = "Offers available for this volume (sales and rentals)."]
         #[serde(rename = "offers", default)]
-        pub offers: Option<Vec<crate::schemas::VolumeSaleInfoOffersItems>>,
+        pub offers: ::std::option::Option<Vec<crate::schemas::VolumeSaleInfoOffersItems>>,
         #[doc = "The date on which this book is available for sale."]
         #[serde(rename = "onSaleDate", default)]
-        pub on_sale_date: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub on_sale_date: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The actual selling price of the book. This is the same as the suggested retail or list price unless there are offers or discounts on this volume. (In LITE projection.)"]
         #[serde(rename = "retailPrice", default)]
-        pub retail_price: Option<crate::schemas::VolumeSaleInfoRetailPrice>,
+        pub retail_price: ::std::option::Option<crate::schemas::VolumeSaleInfoRetailPrice>,
         #[doc = "Whether or not this book is available for sale or offered for free in the Google eBookstore for the country listed above. Possible values are FOR_SALE, FOR_RENTAL_ONLY, FOR_SALE_AND_RENTAL, FREE, NOT_FOR_SALE, or FOR_PREORDER."]
         #[serde(rename = "saleability", default)]
-        pub saleability: Option<String>,
+        pub saleability: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeSaleInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2794,7 +2731,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2812,7 +2748,7 @@ pub mod schemas {
     pub struct VolumeSearchInfo {
         #[doc = "A text snippet containing the search query."]
         #[serde(rename = "textSnippet", default)]
-        pub text_snippet: Option<String>,
+        pub text_snippet: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeSearchInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2821,7 +2757,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2838,13 +2773,13 @@ pub mod schemas {
     )]
     pub struct VolumeUserInfoCopy {
         #[serde(rename = "allowedCharacterCount", default)]
-        pub allowed_character_count: Option<i32>,
+        pub allowed_character_count: ::std::option::Option<i32>,
         #[serde(rename = "limitType", default)]
-        pub limit_type: Option<String>,
+        pub limit_type: ::std::option::Option<String>,
         #[serde(rename = "remainingCharacterCount", default)]
-        pub remaining_character_count: Option<i32>,
+        pub remaining_character_count: ::std::option::Option<i32>,
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for VolumeUserInfoCopy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2853,7 +2788,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2871,13 +2805,13 @@ pub mod schemas {
     pub struct VolumeUserInfoFamilySharing {
         #[doc = "The role of the user in the family."]
         #[serde(rename = "familyRole", default)]
-        pub family_role: Option<String>,
+        pub family_role: ::std::option::Option<String>,
         #[doc = "Whether or not this volume can be shared with the family by the user. This includes sharing eligibility of both the volume and the user. If the value is true, the user can initiate a family sharing action."]
         #[serde(rename = "isSharingAllowed", default)]
-        pub is_sharing_allowed: Option<bool>,
+        pub is_sharing_allowed: ::std::option::Option<bool>,
         #[doc = "Whether or not sharing this volume is temporarily disabled due to issues with the Family Wallet."]
         #[serde(rename = "isSharingDisabledByFop", default)]
-        pub is_sharing_disabled_by_fop: Option<bool>,
+        pub is_sharing_disabled_by_fop: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for VolumeUserInfoFamilySharing {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2886,7 +2820,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2904,10 +2837,10 @@ pub mod schemas {
     pub struct VolumeUserInfoRentalPeriod {
         #[serde(rename = "endUtcSec", default)]
         #[serde(with = "crate::parsed_string")]
-        pub end_utc_sec: Option<i64>,
+        pub end_utc_sec: ::std::option::Option<i64>,
         #[serde(rename = "startUtcSec", default)]
         #[serde(with = "crate::parsed_string")]
-        pub start_utc_sec: Option<i64>,
+        pub start_utc_sec: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for VolumeUserInfoRentalPeriod {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2916,7 +2849,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2933,7 +2865,7 @@ pub mod schemas {
     )]
     pub struct VolumeUserInfoUserUploadedVolumeInfo {
         #[serde(rename = "processingState", default)]
-        pub processing_state: Option<String>,
+        pub processing_state: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeUserInfoUserUploadedVolumeInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2942,7 +2874,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2960,60 +2891,61 @@ pub mod schemas {
     pub struct VolumeUserInfo {
         #[doc = "Timestamp when this volume was acquired by the user. (RFC 3339 UTC date-time format) Acquiring includes purchase, user upload, receiving family sharing, etc."]
         #[serde(rename = "acquiredTime", default)]
-        pub acquired_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub acquired_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "How this volume was acquired."]
         #[serde(rename = "acquisitionType", default)]
-        pub acquisition_type: Option<i32>,
+        pub acquisition_type: ::std::option::Option<i32>,
         #[doc = "Copy/Paste accounting information."]
         #[serde(rename = "copy", default)]
-        pub copy: Option<crate::schemas::VolumeUserInfoCopy>,
+        pub copy: ::std::option::Option<crate::schemas::VolumeUserInfoCopy>,
         #[doc = "Whether this volume is purchased, sample, pd download etc."]
         #[serde(rename = "entitlementType", default)]
-        pub entitlement_type: Option<i32>,
+        pub entitlement_type: ::std::option::Option<i32>,
         #[doc = "Information on the ability to share with the family."]
         #[serde(rename = "familySharing", default)]
-        pub family_sharing: Option<crate::schemas::VolumeUserInfoFamilySharing>,
+        pub family_sharing: ::std::option::Option<crate::schemas::VolumeUserInfoFamilySharing>,
         #[doc = "Whether or not the user shared this volume with the family."]
         #[serde(rename = "isFamilySharedFromUser", default)]
-        pub is_family_shared_from_user: Option<bool>,
+        pub is_family_shared_from_user: ::std::option::Option<bool>,
         #[doc = "Whether or not the user received this volume through family sharing."]
         #[serde(rename = "isFamilySharedToUser", default)]
-        pub is_family_shared_to_user: Option<bool>,
+        pub is_family_shared_to_user: ::std::option::Option<bool>,
         #[doc = "Deprecated: Replaced by familySharing."]
         #[serde(rename = "isFamilySharingAllowed", default)]
-        pub is_family_sharing_allowed: Option<bool>,
+        pub is_family_sharing_allowed: ::std::option::Option<bool>,
         #[doc = "Deprecated: Replaced by familySharing."]
         #[serde(rename = "isFamilySharingDisabledByFop", default)]
-        pub is_family_sharing_disabled_by_fop: Option<bool>,
+        pub is_family_sharing_disabled_by_fop: ::std::option::Option<bool>,
         #[doc = "Whether or not this volume is currently in \"my books.\""]
         #[serde(rename = "isInMyBooks", default)]
-        pub is_in_my_books: Option<bool>,
+        pub is_in_my_books: ::std::option::Option<bool>,
         #[doc = "Whether or not this volume was pre-ordered by the authenticated user making the request. (In LITE projection.)"]
         #[serde(rename = "isPreordered", default)]
-        pub is_preordered: Option<bool>,
+        pub is_preordered: ::std::option::Option<bool>,
         #[doc = "Whether or not this volume was purchased by the authenticated user making the request. (In LITE projection.)"]
         #[serde(rename = "isPurchased", default)]
-        pub is_purchased: Option<bool>,
+        pub is_purchased: ::std::option::Option<bool>,
         #[doc = "Whether or not this volume was user uploaded."]
         #[serde(rename = "isUploaded", default)]
-        pub is_uploaded: Option<bool>,
+        pub is_uploaded: ::std::option::Option<bool>,
         #[doc = "The user's current reading position in the volume, if one is available. (In LITE projection.)"]
         #[serde(rename = "readingPosition", default)]
-        pub reading_position: Option<crate::schemas::ReadingPosition>,
+        pub reading_position: ::std::option::Option<crate::schemas::ReadingPosition>,
         #[doc = "Period during this book is/was a valid rental."]
         #[serde(rename = "rentalPeriod", default)]
-        pub rental_period: Option<crate::schemas::VolumeUserInfoRentalPeriod>,
+        pub rental_period: ::std::option::Option<crate::schemas::VolumeUserInfoRentalPeriod>,
         #[doc = "Whether this book is an active or an expired rental."]
         #[serde(rename = "rentalState", default)]
-        pub rental_state: Option<String>,
+        pub rental_state: ::std::option::Option<String>,
         #[doc = "This user's review of this volume, if one exists."]
         #[serde(rename = "review", default)]
-        pub review: Option<crate::schemas::Review>,
+        pub review: ::std::option::Option<crate::schemas::Review>,
         #[doc = "Timestamp when this volume was last modified by a user action, such as a reading position update, volume purchase or writing a review. (RFC 3339 UTC date-time format)."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[serde(rename = "userUploadedVolumeInfo", default)]
-        pub user_uploaded_volume_info: Option<crate::schemas::VolumeUserInfoUserUploadedVolumeInfo>,
+        pub user_uploaded_volume_info:
+            ::std::option::Option<crate::schemas::VolumeUserInfoUserUploadedVolumeInfo>,
     }
     impl ::field_selector::FieldSelector for VolumeUserInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3022,7 +2954,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3040,13 +2971,13 @@ pub mod schemas {
     pub struct VolumeVolumeInfoDimensions {
         #[doc = "Height or length of this volume (in cm)."]
         #[serde(rename = "height", default)]
-        pub height: Option<String>,
+        pub height: ::std::option::Option<String>,
         #[doc = "Thickness of this volume (in cm)."]
         #[serde(rename = "thickness", default)]
-        pub thickness: Option<String>,
+        pub thickness: ::std::option::Option<String>,
         #[doc = "Width of this volume (in cm)."]
         #[serde(rename = "width", default)]
-        pub width: Option<String>,
+        pub width: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeVolumeInfoDimensions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3055,7 +2986,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3073,22 +3003,22 @@ pub mod schemas {
     pub struct VolumeVolumeInfoImageLinks {
         #[doc = "Image link for extra large size (width of ~1280 pixels). (In LITE projection)"]
         #[serde(rename = "extraLarge", default)]
-        pub extra_large: Option<String>,
+        pub extra_large: ::std::option::Option<String>,
         #[doc = "Image link for large size (width of ~800 pixels). (In LITE projection)"]
         #[serde(rename = "large", default)]
-        pub large: Option<String>,
+        pub large: ::std::option::Option<String>,
         #[doc = "Image link for medium size (width of ~575 pixels). (In LITE projection)"]
         #[serde(rename = "medium", default)]
-        pub medium: Option<String>,
+        pub medium: ::std::option::Option<String>,
         #[doc = "Image link for small size (width of ~300 pixels). (In LITE projection)"]
         #[serde(rename = "small", default)]
-        pub small: Option<String>,
+        pub small: ::std::option::Option<String>,
         #[doc = "Image link for small thumbnail size (width of ~80 pixels). (In LITE projection)"]
         #[serde(rename = "smallThumbnail", default)]
-        pub small_thumbnail: Option<String>,
+        pub small_thumbnail: ::std::option::Option<String>,
         #[doc = "Image link for thumbnail size (width of ~128 pixels). (In LITE projection)"]
         #[serde(rename = "thumbnail", default)]
-        pub thumbnail: Option<String>,
+        pub thumbnail: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeVolumeInfoImageLinks {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3097,7 +3027,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3115,10 +3044,10 @@ pub mod schemas {
     pub struct VolumeVolumeInfoIndustryIdentifiersItems {
         #[doc = "Industry specific volume identifier."]
         #[serde(rename = "identifier", default)]
-        pub identifier: Option<String>,
+        pub identifier: ::std::option::Option<String>,
         #[doc = "Identifier type. Possible values are ISBN_10, ISBN_13, ISSN and OTHER."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeVolumeInfoIndustryIdentifiersItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3127,7 +3056,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3144,13 +3072,13 @@ pub mod schemas {
     )]
     pub struct VolumeVolumeInfoPanelizationSummary {
         #[serde(rename = "containsEpubBubbles", default)]
-        pub contains_epub_bubbles: Option<bool>,
+        pub contains_epub_bubbles: ::std::option::Option<bool>,
         #[serde(rename = "containsImageBubbles", default)]
-        pub contains_image_bubbles: Option<bool>,
+        pub contains_image_bubbles: ::std::option::Option<bool>,
         #[serde(rename = "epubBubbleVersion", default)]
-        pub epub_bubble_version: Option<String>,
+        pub epub_bubble_version: ::std::option::Option<String>,
         #[serde(rename = "imageBubbleVersion", default)]
-        pub image_bubble_version: Option<String>,
+        pub image_bubble_version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeVolumeInfoPanelizationSummary {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3159,94 +3087,94 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct VolumeVolumeInfo {
         #[doc = "Whether anonymous logging should be allowed."]
         #[serde(rename = "allowAnonLogging", default)]
-        pub allow_anon_logging: Option<bool>,
+        pub allow_anon_logging: ::std::option::Option<bool>,
         #[doc = "The names of the authors and/or editors for this volume. (In LITE projection)"]
         #[serde(rename = "authors", default)]
-        pub authors: Option<Vec<String>>,
+        pub authors: ::std::option::Option<Vec<String>>,
         #[doc = "The mean review rating for this volume. (min = 1.0, max = 5.0)"]
         #[serde(rename = "averageRating", default)]
-        pub average_rating: Option<f64>,
+        pub average_rating: ::std::option::Option<f64>,
         #[doc = "Canonical URL for a volume. (In LITE projection.)"]
         #[serde(rename = "canonicalVolumeLink", default)]
-        pub canonical_volume_link: Option<String>,
+        pub canonical_volume_link: ::std::option::Option<String>,
         #[doc = "A list of subject categories, such as \"Fiction\", \"Suspense\", etc."]
         #[serde(rename = "categories", default)]
-        pub categories: Option<Vec<String>>,
+        pub categories: ::std::option::Option<Vec<String>>,
         #[doc = "Whether the volume has comics content."]
         #[serde(rename = "comicsContent", default)]
-        pub comics_content: Option<bool>,
+        pub comics_content: ::std::option::Option<bool>,
         #[doc = "An identifier for the version of the volume content (text & images). (In LITE projection)"]
         #[serde(rename = "contentVersion", default)]
-        pub content_version: Option<String>,
+        pub content_version: ::std::option::Option<String>,
         #[doc = "A synopsis of the volume. The text of the description is formatted in HTML and includes simple formatting elements, such as b, i, and br tags. (In LITE projection.)"]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Physical dimensions of this volume."]
         #[serde(rename = "dimensions", default)]
-        pub dimensions: Option<crate::schemas::VolumeVolumeInfoDimensions>,
+        pub dimensions: ::std::option::Option<crate::schemas::VolumeVolumeInfoDimensions>,
         #[doc = "A list of image links for all the sizes that are available. (In LITE projection.)"]
         #[serde(rename = "imageLinks", default)]
-        pub image_links: Option<crate::schemas::VolumeVolumeInfoImageLinks>,
+        pub image_links: ::std::option::Option<crate::schemas::VolumeVolumeInfoImageLinks>,
         #[doc = "Industry standard identifiers for this volume."]
         #[serde(rename = "industryIdentifiers", default)]
         pub industry_identifiers:
-            Option<Vec<crate::schemas::VolumeVolumeInfoIndustryIdentifiersItems>>,
+            ::std::option::Option<Vec<crate::schemas::VolumeVolumeInfoIndustryIdentifiersItems>>,
         #[doc = "URL to view information about this volume on the Google Books site. (In LITE projection)"]
         #[serde(rename = "infoLink", default)]
-        pub info_link: Option<String>,
+        pub info_link: ::std::option::Option<String>,
         #[doc = "Best language for this volume (based on content). It is the two-letter ISO 639-1 code such as 'fr', 'en', etc."]
         #[serde(rename = "language", default)]
-        pub language: Option<String>,
+        pub language: ::std::option::Option<String>,
         #[doc = "The main category to which this volume belongs. It will be the category from the categories list returned below that has the highest weight."]
         #[serde(rename = "mainCategory", default)]
-        pub main_category: Option<String>,
+        pub main_category: ::std::option::Option<String>,
         #[serde(rename = "maturityRating", default)]
-        pub maturity_rating: Option<String>,
+        pub maturity_rating: ::std::option::Option<String>,
         #[doc = "Total number of pages as per publisher metadata."]
         #[serde(rename = "pageCount", default)]
-        pub page_count: Option<i32>,
+        pub page_count: ::std::option::Option<i32>,
         #[doc = "A top-level summary of the panelization info in this volume."]
         #[serde(rename = "panelizationSummary", default)]
-        pub panelization_summary: Option<crate::schemas::VolumeVolumeInfoPanelizationSummary>,
+        pub panelization_summary:
+            ::std::option::Option<crate::schemas::VolumeVolumeInfoPanelizationSummary>,
         #[doc = "URL to preview this volume on the Google Books site."]
         #[serde(rename = "previewLink", default)]
-        pub preview_link: Option<String>,
+        pub preview_link: ::std::option::Option<String>,
         #[doc = "Type of publication of this volume. Possible values are BOOK or MAGAZINE."]
         #[serde(rename = "printType", default)]
-        pub print_type: Option<String>,
+        pub print_type: ::std::option::Option<String>,
         #[doc = "Total number of printed pages in generated pdf representation."]
         #[serde(rename = "printedPageCount", default)]
-        pub printed_page_count: Option<i32>,
+        pub printed_page_count: ::std::option::Option<i32>,
         #[doc = "Date of publication. (In LITE projection.)"]
         #[serde(rename = "publishedDate", default)]
-        pub published_date: Option<String>,
+        pub published_date: ::std::option::Option<String>,
         #[doc = "Publisher of this volume. (In LITE projection.)"]
         #[serde(rename = "publisher", default)]
-        pub publisher: Option<String>,
+        pub publisher: ::std::option::Option<String>,
         #[doc = "The number of review ratings for this volume."]
         #[serde(rename = "ratingsCount", default)]
-        pub ratings_count: Option<i32>,
+        pub ratings_count: ::std::option::Option<i32>,
         #[doc = "The reading modes available for this volume."]
         #[serde(rename = "readingModes", default)]
-        pub reading_modes: Option<::serde_json::Value>,
+        pub reading_modes: ::std::option::Option<::serde_json::Value>,
         #[doc = "Total number of sample pages as per publisher metadata."]
         #[serde(rename = "samplePageCount", default)]
-        pub sample_page_count: Option<i32>,
+        pub sample_page_count: ::std::option::Option<i32>,
         #[serde(rename = "seriesInfo", default)]
-        pub series_info: Option<crate::schemas::Volumeseriesinfo>,
+        pub series_info: ::std::option::Option<crate::schemas::Volumeseriesinfo>,
         #[doc = "Volume subtitle. (In LITE projection.)"]
         #[serde(rename = "subtitle", default)]
-        pub subtitle: Option<String>,
+        pub subtitle: ::std::option::Option<String>,
         #[doc = "Volume title. (In LITE projection.)"]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeVolumeInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3255,44 +3183,43 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Volume {
         #[doc = "Any information about a volume related to reading or obtaining that volume text. This information can depend on country (books may be public domain in one country but not in another, e.g.)."]
         #[serde(rename = "accessInfo", default)]
-        pub access_info: Option<crate::schemas::VolumeAccessInfo>,
+        pub access_info: ::std::option::Option<crate::schemas::VolumeAccessInfo>,
         #[doc = "Opaque identifier for a specific version of a volume resource. (In LITE projection)"]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Unique identifier for a volume. (In LITE projection.)"]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Resource type for a volume. (In LITE projection.)"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "What layers exist in this volume and high level information about them."]
         #[serde(rename = "layerInfo", default)]
-        pub layer_info: Option<crate::schemas::VolumeLayerInfo>,
+        pub layer_info: ::std::option::Option<crate::schemas::VolumeLayerInfo>,
         #[doc = "Recommendation related information for this volume."]
         #[serde(rename = "recommendedInfo", default)]
-        pub recommended_info: Option<crate::schemas::VolumeRecommendedInfo>,
+        pub recommended_info: ::std::option::Option<crate::schemas::VolumeRecommendedInfo>,
         #[doc = "Any information about a volume related to the eBookstore and/or purchaseability. This information can depend on the country where the request originates from (i.e. books may not be for sale in certain countries)."]
         #[serde(rename = "saleInfo", default)]
-        pub sale_info: Option<crate::schemas::VolumeSaleInfo>,
+        pub sale_info: ::std::option::Option<crate::schemas::VolumeSaleInfo>,
         #[doc = "Search result information related to this volume."]
         #[serde(rename = "searchInfo", default)]
-        pub search_info: Option<crate::schemas::VolumeSearchInfo>,
+        pub search_info: ::std::option::Option<crate::schemas::VolumeSearchInfo>,
         #[doc = "URL to this resource. (In LITE projection.)"]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "User specific information related to this volume. (e.g. page this user last read or whether they purchased this book)"]
         #[serde(rename = "userInfo", default)]
-        pub user_info: Option<crate::schemas::VolumeUserInfo>,
+        pub user_info: ::std::option::Option<crate::schemas::VolumeUserInfo>,
         #[doc = "General volume information."]
         #[serde(rename = "volumeInfo", default)]
-        pub volume_info: Option<crate::schemas::VolumeVolumeInfo>,
+        pub volume_info: ::std::option::Option<crate::schemas::VolumeVolumeInfo>,
     }
     impl ::field_selector::FieldSelector for Volume {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3301,19 +3228,18 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Volume2 {
         #[doc = "A list of volumes."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Volume>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Volume>>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Volume2 {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3322,7 +3248,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3340,16 +3265,16 @@ pub mod schemas {
     pub struct VolumeannotationContentRanges {
         #[doc = "Range in CFI format for this annotation for version above."]
         #[serde(rename = "cfiRange", default)]
-        pub cfi_range: Option<crate::schemas::BooksAnnotationsRange>,
+        pub cfi_range: ::std::option::Option<crate::schemas::BooksAnnotationsRange>,
         #[doc = "Content version applicable to ranges below."]
         #[serde(rename = "contentVersion", default)]
-        pub content_version: Option<String>,
+        pub content_version: ::std::option::Option<String>,
         #[doc = "Range in GB image format for this annotation for version above."]
         #[serde(rename = "gbImageRange", default)]
-        pub gb_image_range: Option<crate::schemas::BooksAnnotationsRange>,
+        pub gb_image_range: ::std::option::Option<crate::schemas::BooksAnnotationsRange>,
         #[doc = "Range in GB text format for this annotation for version above."]
         #[serde(rename = "gbTextRange", default)]
-        pub gb_text_range: Option<crate::schemas::BooksAnnotationsRange>,
+        pub gb_text_range: ::std::option::Option<crate::schemas::BooksAnnotationsRange>,
     }
     impl ::field_selector::FieldSelector for VolumeannotationContentRanges {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3358,7 +3283,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3376,46 +3300,46 @@ pub mod schemas {
     pub struct Volumeannotation {
         #[doc = "The annotation data id for this volume annotation."]
         #[serde(rename = "annotationDataId", default)]
-        pub annotation_data_id: Option<String>,
+        pub annotation_data_id: ::std::option::Option<String>,
         #[doc = "Link to get data for this annotation."]
         #[serde(rename = "annotationDataLink", default)]
-        pub annotation_data_link: Option<String>,
+        pub annotation_data_link: ::std::option::Option<String>,
         #[doc = "The type of annotation this is."]
         #[serde(rename = "annotationType", default)]
-        pub annotation_type: Option<String>,
+        pub annotation_type: ::std::option::Option<String>,
         #[doc = "The content ranges to identify the selected text."]
         #[serde(rename = "contentRanges", default)]
-        pub content_ranges: Option<crate::schemas::VolumeannotationContentRanges>,
+        pub content_ranges: ::std::option::Option<crate::schemas::VolumeannotationContentRanges>,
         #[doc = "Data for this annotation."]
         #[serde(rename = "data", default)]
-        pub data: Option<String>,
+        pub data: ::std::option::Option<String>,
         #[doc = "Indicates that this annotation is deleted."]
         #[serde(rename = "deleted", default)]
-        pub deleted: Option<bool>,
+        pub deleted: ::std::option::Option<bool>,
         #[doc = "Unique id of this volume annotation."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Resource Type"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The Layer this annotation is for."]
         #[serde(rename = "layerId", default)]
-        pub layer_id: Option<String>,
+        pub layer_id: ::std::option::Option<String>,
         #[doc = "Pages the annotation spans."]
         #[serde(rename = "pageIds", default)]
-        pub page_ids: Option<Vec<String>>,
+        pub page_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Excerpt from the volume."]
         #[serde(rename = "selectedText", default)]
-        pub selected_text: Option<String>,
+        pub selected_text: ::std::option::Option<String>,
         #[doc = "URL to this resource."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Timestamp for the last time this anntoation was updated. (RFC 3339 UTC date-time format)."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The Volume this annotation is for."]
         #[serde(rename = "volumeId", default)]
-        pub volume_id: Option<String>,
+        pub volume_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Volumeannotation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3424,7 +3348,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3442,19 +3365,19 @@ pub mod schemas {
     pub struct Volumeannotations {
         #[doc = "A list of volume annotations."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Volumeannotation>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Volumeannotation>>,
         #[doc = "Resource type"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Token to pass in for pagination for the next page. This will not be present if this request does not have more results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The total number of volume annotations found."]
         #[serde(rename = "totalItems", default)]
-        pub total_items: Option<i32>,
+        pub total_items: ::std::option::Option<i32>,
         #[doc = "The version string for all of the volume annotations in this layer (not just the ones in this response). Note: the version string doesn't apply to the annotation data, just the information in this response (e.g. the location of annotations in the book)."]
         #[serde(rename = "version", default)]
-        pub version: Option<String>,
+        pub version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Volumeannotations {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3463,20 +3386,19 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Volumes {
         #[doc = "A list of volumes."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Volume>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Volume>>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Total number of volumes found. This might be greater than the number of volumes returned in this response if results have been paginated."]
         #[serde(rename = "totalItems", default)]
-        pub total_items: Option<i32>,
+        pub total_items: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Volumes {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3485,7 +3407,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3502,9 +3423,9 @@ pub mod schemas {
     )]
     pub struct VolumeseriesinfoVolumeSeriesItemsIssueItems {
         #[serde(rename = "issueDisplayNumber", default)]
-        pub issue_display_number: Option<String>,
+        pub issue_display_number: ::std::option::Option<String>,
         #[serde(rename = "issueOrderNumber", default)]
-        pub issue_order_number: Option<i32>,
+        pub issue_order_number: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for VolumeseriesinfoVolumeSeriesItemsIssueItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3513,7 +3434,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3531,16 +3451,17 @@ pub mod schemas {
     pub struct VolumeseriesinfoVolumeSeriesItems {
         #[doc = "List of issues. Applicable only for Collection Edition and Omnibus."]
         #[serde(rename = "issue", default)]
-        pub issue: Option<Vec<crate::schemas::VolumeseriesinfoVolumeSeriesItemsIssueItems>>,
+        pub issue:
+            ::std::option::Option<Vec<crate::schemas::VolumeseriesinfoVolumeSeriesItemsIssueItems>>,
         #[doc = "The book order number in the series."]
         #[serde(rename = "orderNumber", default)]
-        pub order_number: Option<i32>,
+        pub order_number: ::std::option::Option<i32>,
         #[doc = "The book type in the context of series. Examples - Single Issue, Collection Edition, etc."]
         #[serde(rename = "seriesBookType", default)]
-        pub series_book_type: Option<String>,
+        pub series_book_type: ::std::option::Option<String>,
         #[doc = "The series id."]
         #[serde(rename = "seriesId", default)]
-        pub series_id: Option<String>,
+        pub series_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VolumeseriesinfoVolumeSeriesItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3549,7 +3470,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3567,15 +3487,16 @@ pub mod schemas {
     pub struct Volumeseriesinfo {
         #[doc = "The display number string. This should be used only for display purposes and the actual sequence should be inferred from the below orderNumber."]
         #[serde(rename = "bookDisplayNumber", default)]
-        pub book_display_number: Option<String>,
+        pub book_display_number: ::std::option::Option<String>,
         #[doc = "Resource type."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Short book title in the context of the series."]
         #[serde(rename = "shortSeriesBookTitle", default)]
-        pub short_series_book_title: Option<String>,
+        pub short_series_book_title: ::std::option::Option<String>,
         #[serde(rename = "volumeSeries", default)]
-        pub volume_series: Option<Vec<crate::schemas::VolumeseriesinfoVolumeSeriesItems>>,
+        pub volume_series:
+            ::std::option::Option<Vec<crate::schemas::VolumeseriesinfoVolumeSeriesItems>>,
     }
     impl ::field_selector::FieldSelector for Volumeseriesinfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3584,7 +3505,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -3629,6 +3549,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -6899,6 +6828,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for RequestAccessLicenseTypes {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
         }
         pub struct MyconfigActions<'a, A> {
             pub(crate) reqwest: &'a reqwest::Client,
@@ -8799,6 +8737,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for AddVolumeReason {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum RemoveVolumeReason {
                     #[doc = "Samples removed from the Onboarding flow."]
@@ -8839,6 +8786,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for RemoveVolumeReason {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
             }
@@ -9700,6 +9656,15 @@ mod resources {
                             })
                         }
                     }
+                    impl ::field_selector::FieldSelector for ListProjection {
+                        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                            match selector.chars().rev().nth(0) {
+                                Some(',') | None => {}
+                                _ => selector.push_str(","),
+                            }
+                            selector.push_str(ident);
+                        }
+                    }
                 }
                 pub struct VolumesActions<'a, A> {
                     pub(crate) reqwest: &'a reqwest::Client,
@@ -9987,6 +9952,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for SetPositionAction {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
             }
@@ -10534,6 +10508,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListCategoryVolumesMaxAllowedMaturityRating {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
         }
         pub struct OnboardingActions<'a, A> {
             pub(crate) reqwest: &'a reqwest::Client,
@@ -11040,6 +11023,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for GetMaxAllowedMaturityRating {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -12107,6 +12099,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for GetProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListDownload {
                 #[doc = "All volumes with epub."]
@@ -12147,6 +12148,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListDownload {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -12207,6 +12217,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListFilter {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListLibraryRestrict {
                 #[doc = "Restrict to the user's library, any shelf."]
@@ -12251,6 +12270,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListLibraryRestrict {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -12299,6 +12327,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListMaxAllowedMaturityRating {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListOrderBy {
                 #[doc = "Most recently published."]
@@ -12343,6 +12380,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListOrderBy {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -12395,6 +12441,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListPrintType {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListProjection {
                 #[doc = "Includes all volume data."]
@@ -12439,6 +12494,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListProjection {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -13012,6 +13076,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for ListAssociation {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListMaxAllowedMaturityRating {
                     #[doc = "Show books which are rated mature or lower."]
@@ -13056,6 +13129,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for ListMaxAllowedMaturityRating {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
             }
@@ -13531,6 +13613,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for ListMaxAllowedMaturityRating {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum RateRating {
                     #[doc = "Rating indicating a dismissal due to ownership."]
@@ -13575,6 +13666,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for RateRating {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
             }
@@ -14398,6 +14498,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -14473,5 +14574,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

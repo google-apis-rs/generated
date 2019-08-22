@@ -14,28 +14,28 @@ pub mod schemas {
     pub struct Webfont {
         #[doc = "The category of the font."]
         #[serde(rename = "category", default)]
-        pub category: Option<String>,
+        pub category: ::std::option::Option<String>,
         #[doc = "The name of the font."]
         #[serde(rename = "family", default)]
-        pub family: Option<String>,
+        pub family: ::std::option::Option<String>,
         #[doc = "The font files (with all supported scripts) for each one of the available variants, as a key : value map."]
         #[serde(rename = "files", default)]
-        pub files: Option<::std::collections::BTreeMap<String, String>>,
+        pub files: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "This kind represents a webfont object in the webfonts service."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The date (format \"yyyy-MM-dd\") the font was modified for the last time."]
         #[serde(rename = "lastModified", default)]
-        pub last_modified: Option<::chrono::NaiveDate>,
+        pub last_modified: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "The scripts supported by the font."]
         #[serde(rename = "subsets", default)]
-        pub subsets: Option<Vec<String>>,
+        pub subsets: ::std::option::Option<Vec<String>>,
         #[doc = "The available variants for the font."]
         #[serde(rename = "variants", default)]
-        pub variants: Option<Vec<String>>,
+        pub variants: ::std::option::Option<Vec<String>>,
         #[doc = "The font version."]
         #[serde(rename = "version", default)]
-        pub version: Option<String>,
+        pub version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Webfont {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -44,7 +44,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -62,10 +61,10 @@ pub mod schemas {
     pub struct WebfontList {
         #[doc = "The list of fonts currently served by the Google Fonts API."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Webfont>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Webfont>>,
         #[doc = "This kind represents a list of webfont objects in the webfonts service."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for WebfontList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -74,7 +73,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -119,6 +117,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -200,6 +207,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListSort {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -613,6 +629,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -688,5 +705,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

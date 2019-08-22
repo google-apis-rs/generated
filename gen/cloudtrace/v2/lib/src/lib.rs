@@ -14,10 +14,10 @@ pub mod schemas {
     pub struct Annotation {
         #[doc = "A set of attributes on the annotation. You can have up to 4 attributes\nper Annotation."]
         #[serde(rename = "attributes", default)]
-        pub attributes: Option<crate::schemas::Attributes>,
+        pub attributes: ::std::option::Option<crate::schemas::Attributes>,
         #[doc = "A user-supplied message describing the event. The maximum length for\nthe description is 256 bytes."]
         #[serde(rename = "description", default)]
-        pub description: Option<crate::schemas::TruncatableString>,
+        pub description: ::std::option::Option<crate::schemas::TruncatableString>,
     }
     impl ::field_selector::FieldSelector for Annotation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -26,7 +26,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -44,14 +43,14 @@ pub mod schemas {
     pub struct AttributeValue {
         #[doc = "A Boolean value represented by `true` or `false`."]
         #[serde(rename = "boolValue", default)]
-        pub bool_value: Option<bool>,
+        pub bool_value: ::std::option::Option<bool>,
         #[doc = "A 64-bit signed integer."]
         #[serde(rename = "intValue", default)]
         #[serde(with = "crate::parsed_string")]
-        pub int_value: Option<i64>,
+        pub int_value: ::std::option::Option<i64>,
         #[doc = "A string up to 256 bytes long."]
         #[serde(rename = "stringValue", default)]
-        pub string_value: Option<crate::schemas::TruncatableString>,
+        pub string_value: ::std::option::Option<crate::schemas::TruncatableString>,
     }
     impl ::field_selector::FieldSelector for AttributeValue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -60,7 +59,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -78,11 +76,12 @@ pub mod schemas {
     pub struct Attributes {
         #[doc = "The set of attributes. Each attribute's key can be up to 128 bytes\nlong. The value can be a string up to 256 bytes, a signed 64-bit integer,\nor the Boolean values `true` and `false`. For example:\n\n````text\n\"/instance_id\": \"my-instance\"\n\"/http/user_agent\": \"\"\n\"/http/request_bytes\": 300\n\"abc.com/myattribute\": true````"]
         #[serde(rename = "attributeMap", default)]
-        pub attribute_map:
-            Option<::std::collections::BTreeMap<String, crate::schemas::AttributeValue>>,
+        pub attribute_map: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::AttributeValue>,
+        >,
         #[doc = "The number of attributes that were discarded. Attributes can be discarded\nbecause their keys are too long or because there are too many attributes.\nIf this value is 0 then all attributes are valid."]
         #[serde(rename = "droppedAttributesCount", default)]
-        pub dropped_attributes_count: Option<i32>,
+        pub dropped_attributes_count: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Attributes {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -91,14 +90,13 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchWriteSpansRequest {
         #[doc = "A list of new spans. The span names must not match existing\nspans, or the results are undefined."]
         #[serde(rename = "spans", default)]
-        pub spans: Option<Vec<crate::schemas::Span>>,
+        pub spans: ::std::option::Option<Vec<crate::schemas::Span>>,
     }
     impl ::field_selector::FieldSelector for BatchWriteSpansRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -107,7 +105,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -125,7 +122,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LinkType {
@@ -177,6 +174,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for LinkType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -192,16 +198,16 @@ pub mod schemas {
     pub struct Link {
         #[doc = "A set of attributes on the link. You have have up to  32 attributes per\nlink."]
         #[serde(rename = "attributes", default)]
-        pub attributes: Option<crate::schemas::Attributes>,
+        pub attributes: ::std::option::Option<crate::schemas::Attributes>,
         #[doc = "The relationship of the current span relative to the linked span."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::LinkType>,
+        pub r#type: ::std::option::Option<crate::schemas::LinkType>,
         #[doc = "The [SPAN_ID] for a span within a trace."]
         #[serde(rename = "spanId", default)]
-        pub span_id: Option<String>,
+        pub span_id: ::std::option::Option<String>,
         #[doc = "The [TRACE_ID] for a trace within a project."]
         #[serde(rename = "traceId", default)]
-        pub trace_id: Option<String>,
+        pub trace_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Link {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -210,7 +216,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -228,10 +233,10 @@ pub mod schemas {
     pub struct Links {
         #[doc = "The number of dropped links after the maximum size was enforced. If\nthis value is 0, then no links were dropped."]
         #[serde(rename = "droppedLinksCount", default)]
-        pub dropped_links_count: Option<i32>,
+        pub dropped_links_count: ::std::option::Option<i32>,
         #[doc = "A collection of links."]
         #[serde(rename = "link", default)]
-        pub link: Option<Vec<crate::schemas::Link>>,
+        pub link: ::std::option::Option<Vec<crate::schemas::Link>>,
     }
     impl ::field_selector::FieldSelector for Links {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -240,7 +245,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -293,6 +297,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for MessageEventType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -309,18 +322,18 @@ pub mod schemas {
         #[doc = "The number of compressed bytes sent or received. If missing assumed to\nbe the same size as uncompressed."]
         #[serde(rename = "compressedSizeBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub compressed_size_bytes: Option<i64>,
+        pub compressed_size_bytes: ::std::option::Option<i64>,
         #[doc = "An identifier for the MessageEvent's message that can be used to match\nSENT and RECEIVED MessageEvents. It is recommended to be unique within\na Span."]
         #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
+        pub id: ::std::option::Option<i64>,
         #[doc = "Type of MessageEvent. Indicates whether the message was sent or\nreceived."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::MessageEventType>,
+        pub r#type: ::std::option::Option<crate::schemas::MessageEventType>,
         #[doc = "The number of uncompressed bytes sent or received."]
         #[serde(rename = "uncompressedSizeBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub uncompressed_size_bytes: Option<i64>,
+        pub uncompressed_size_bytes: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for MessageEvent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -329,7 +342,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -347,10 +359,10 @@ pub mod schemas {
     pub struct Module {
         #[doc = "A unique identifier for the module, usually a hash of its\ncontents (up to 128 bytes)."]
         #[serde(rename = "buildId", default)]
-        pub build_id: Option<crate::schemas::TruncatableString>,
+        pub build_id: ::std::option::Option<crate::schemas::TruncatableString>,
         #[doc = "For example: main binary, kernel modules, and dynamic libraries\nsuch as libc.so, sharedlib.so (up to 256 bytes)."]
         #[serde(rename = "module", default)]
-        pub module: Option<crate::schemas::TruncatableString>,
+        pub module: ::std::option::Option<crate::schemas::TruncatableString>,
     }
     impl ::field_selector::FieldSelector for Module {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -359,50 +371,49 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Span {
         #[doc = "A set of attributes on the span. You can have up to 32 attributes per\nspan."]
         #[serde(rename = "attributes", default)]
-        pub attributes: Option<crate::schemas::Attributes>,
+        pub attributes: ::std::option::Option<crate::schemas::Attributes>,
         #[doc = "An optional number of child spans that were generated while this span\nwas active. If set, allows implementation to detect missing child spans."]
         #[serde(rename = "childSpanCount", default)]
-        pub child_span_count: Option<i32>,
+        pub child_span_count: ::std::option::Option<i32>,
         #[doc = "A description of the span's operation (up to 128 bytes).\nStackdriver Trace displays the description in the\nGoogle Cloud Platform Console.\nFor example, the display name can be a qualified method name or a file name\nand a line number where the operation is called. A best practice is to use\nthe same display name within an application and at the same call point.\nThis makes it easier to correlate spans in different traces."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<crate::schemas::TruncatableString>,
+        pub display_name: ::std::option::Option<crate::schemas::TruncatableString>,
         #[doc = "The end time of the span. On the client side, this is the time kept by\nthe local machine where the span execution ends. On the server side, this\nis the time when the server application handler stops running."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
         #[doc = "Links associated with the span. You can have up to 128 links per Span."]
         #[serde(rename = "links", default)]
-        pub links: Option<crate::schemas::Links>,
+        pub links: ::std::option::Option<crate::schemas::Links>,
         #[doc = "The resource name of the span in the following format:\n\n````text\nprojects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project;\n````\n\nit is a 32-character hexadecimal encoding of a 16-byte array.\n\n[SPAN_ID] is a unique identifier for a span within a trace; it\nis a 16-character hexadecimal encoding of an 8-byte array."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The [SPAN_ID] of this span's parent span. If this is a root span,\nthen this field must be empty."]
         #[serde(rename = "parentSpanId", default)]
-        pub parent_span_id: Option<String>,
+        pub parent_span_id: ::std::option::Option<String>,
         #[doc = "(Optional) Set this parameter to indicate whether this span is in\nthe same process as its parent. If you do not set this parameter,\nStackdriver Trace is unable to take advantage of this helpful\ninformation."]
         #[serde(rename = "sameProcessAsParentSpan", default)]
-        pub same_process_as_parent_span: Option<bool>,
+        pub same_process_as_parent_span: ::std::option::Option<bool>,
         #[doc = "The [SPAN_ID] portion of the span's resource name."]
         #[serde(rename = "spanId", default)]
-        pub span_id: Option<String>,
+        pub span_id: ::std::option::Option<String>,
         #[doc = "Stack trace captured at the start of the span."]
         #[serde(rename = "stackTrace", default)]
-        pub stack_trace: Option<crate::schemas::StackTrace>,
+        pub stack_trace: ::std::option::Option<crate::schemas::StackTrace>,
         #[doc = "The start time of the span. On the client side, this is the time kept by\nthe local machine where the span execution starts. On the server side, this\nis the time when the server's application handler starts running."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
         #[doc = "An optional final status for this span."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::Status>,
+        pub status: ::std::option::Option<crate::schemas::Status>,
         #[doc = "A set of time events. You can have up to 32 annotations and 128 message\nevents per span."]
         #[serde(rename = "timeEvents", default)]
-        pub time_events: Option<crate::schemas::TimeEvents>,
+        pub time_events: ::std::option::Option<crate::schemas::TimeEvents>,
     }
     impl ::field_selector::FieldSelector for Span {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -411,7 +422,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -430,26 +440,26 @@ pub mod schemas {
         #[doc = "The column number where the function call appears, if available.\nThis is important in JavaScript because of its anonymous functions."]
         #[serde(rename = "columnNumber", default)]
         #[serde(with = "crate::parsed_string")]
-        pub column_number: Option<i64>,
+        pub column_number: ::std::option::Option<i64>,
         #[doc = "The name of the source file where the function call appears (up to 256\nbytes)."]
         #[serde(rename = "fileName", default)]
-        pub file_name: Option<crate::schemas::TruncatableString>,
+        pub file_name: ::std::option::Option<crate::schemas::TruncatableString>,
         #[doc = "The fully-qualified name that uniquely identifies the function or\nmethod that is active in this frame (up to 1024 bytes)."]
         #[serde(rename = "functionName", default)]
-        pub function_name: Option<crate::schemas::TruncatableString>,
+        pub function_name: ::std::option::Option<crate::schemas::TruncatableString>,
         #[doc = "The line number in `file_name` where the function call appears."]
         #[serde(rename = "lineNumber", default)]
         #[serde(with = "crate::parsed_string")]
-        pub line_number: Option<i64>,
+        pub line_number: ::std::option::Option<i64>,
         #[doc = "The binary module from where the code was loaded."]
         #[serde(rename = "loadModule", default)]
-        pub load_module: Option<crate::schemas::Module>,
+        pub load_module: ::std::option::Option<crate::schemas::Module>,
         #[doc = "An un-mangled function name, if `function_name` is\n[mangled](http://www.avabodh.com/cxxin/namemangling.html). The name can\nbe fully-qualified (up to 1024 bytes)."]
         #[serde(rename = "originalFunctionName", default)]
-        pub original_function_name: Option<crate::schemas::TruncatableString>,
+        pub original_function_name: ::std::option::Option<crate::schemas::TruncatableString>,
         #[doc = "The version of the deployed source code (up to 128 bytes)."]
         #[serde(rename = "sourceVersion", default)]
-        pub source_version: Option<crate::schemas::TruncatableString>,
+        pub source_version: ::std::option::Option<crate::schemas::TruncatableString>,
     }
     impl ::field_selector::FieldSelector for StackFrame {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -458,7 +468,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -476,10 +485,10 @@ pub mod schemas {
     pub struct StackFrames {
         #[doc = "The number of stack frames that were dropped because there\nwere too many stack frames.\nIf this value is 0, then no stack frames were dropped."]
         #[serde(rename = "droppedFramesCount", default)]
-        pub dropped_frames_count: Option<i32>,
+        pub dropped_frames_count: ::std::option::Option<i32>,
         #[doc = "Stack frames in this call stack."]
         #[serde(rename = "frame", default)]
-        pub frame: Option<Vec<crate::schemas::StackFrame>>,
+        pub frame: ::std::option::Option<Vec<crate::schemas::StackFrame>>,
     }
     impl ::field_selector::FieldSelector for StackFrames {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -488,7 +497,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -506,11 +514,11 @@ pub mod schemas {
     pub struct StackTrace {
         #[doc = "Stack frames in this stack trace. A maximum of 128 frames are allowed."]
         #[serde(rename = "stackFrames", default)]
-        pub stack_frames: Option<crate::schemas::StackFrames>,
+        pub stack_frames: ::std::option::Option<crate::schemas::StackFrames>,
         #[doc = "The hash ID is used to conserve network bandwidth for duplicate\nstack traces within a single trace.\n\nOften multiple spans will have identical stack traces.\nThe first occurrence of a stack trace should contain both the\n`stackFrame` content and a value in `stackTraceHashId`.\n\nSubsequent spans within the same request can refer\nto that stack trace by only setting `stackTraceHashId`."]
         #[serde(rename = "stackTraceHashId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub stack_trace_hash_id: Option<i64>,
+        pub stack_trace_hash_id: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for StackTrace {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -519,20 +527,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
-        pub code: Option<i32>,
+        pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub details:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Status {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -541,7 +549,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -559,13 +566,13 @@ pub mod schemas {
     pub struct TimeEvent {
         #[doc = "Text annotation with a set of attributes."]
         #[serde(rename = "annotation", default)]
-        pub annotation: Option<crate::schemas::Annotation>,
+        pub annotation: ::std::option::Option<crate::schemas::Annotation>,
         #[doc = "An event describing a message sent/received between Spans."]
         #[serde(rename = "messageEvent", default)]
-        pub message_event: Option<crate::schemas::MessageEvent>,
+        pub message_event: ::std::option::Option<crate::schemas::MessageEvent>,
         #[doc = "The timestamp indicating the time the event occurred."]
         #[serde(rename = "time", default)]
-        pub time: Option<String>,
+        pub time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TimeEvent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -574,7 +581,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -592,13 +598,13 @@ pub mod schemas {
     pub struct TimeEvents {
         #[doc = "The number of dropped annotations in all the included time events.\nIf the value is 0, then no annotations were dropped."]
         #[serde(rename = "droppedAnnotationsCount", default)]
-        pub dropped_annotations_count: Option<i32>,
+        pub dropped_annotations_count: ::std::option::Option<i32>,
         #[doc = "The number of dropped message events in all the included time events.\nIf the value is 0, then no message events were dropped."]
         #[serde(rename = "droppedMessageEventsCount", default)]
-        pub dropped_message_events_count: Option<i32>,
+        pub dropped_message_events_count: ::std::option::Option<i32>,
         #[doc = "A collection of `TimeEvent`s."]
         #[serde(rename = "timeEvent", default)]
-        pub time_event: Option<Vec<crate::schemas::TimeEvent>>,
+        pub time_event: ::std::option::Option<Vec<crate::schemas::TimeEvent>>,
     }
     impl ::field_selector::FieldSelector for TimeEvents {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -607,7 +613,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -625,10 +630,10 @@ pub mod schemas {
     pub struct TruncatableString {
         #[doc = "The number of bytes removed from the original string. If this\nvalue is 0, then the string was not shortened."]
         #[serde(rename = "truncatedByteCount", default)]
-        pub truncated_byte_count: Option<i32>,
+        pub truncated_byte_count: ::std::option::Option<i32>,
         #[doc = "The shortened string. For example, if the original string is 500\nbytes long and the limit of the string is 128 bytes, then\n`value` contains the first 128 bytes of the 500-byte string.\n\nTruncation always happens on a UTF8 character boundary. If there\nare multi-byte characters in the string, then the length of the\nshortened string might be less than the size limit."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TruncatableString {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -637,7 +642,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -692,6 +696,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -736,6 +749,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1443,6 +1465,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1518,5 +1541,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

@@ -1,44 +1,44 @@
     Checking google-androidpublisher3 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/androidpublisher/v3/lib)
 error[E0609]: no field `request` on type `resources::edits::apks::UploadRequestBuilder<'a, A>`
-    --> androidpublisher/v3/lib/src/lib.rs:3393:67
+    --> androidpublisher/v3/lib/src/lib.rs:3347:67
      |
-3393 |                     let request_json = ::serde_json::to_vec(&self.request)?;
+3347 |                     let request_json = ::serde_json::to_vec(&self.request)?;
      |                                                                   ^^^^^^^ help: a field with a similar name exists: `reqwest`
 
 error[E0609]: no field `request` on type `resources::edits::bundles::UploadRequestBuilder<'a, A>`
-    --> androidpublisher/v3/lib/src/lib.rs:3839:67
+    --> androidpublisher/v3/lib/src/lib.rs:3793:67
      |
-3839 |                     let request_json = ::serde_json::to_vec(&self.request)?;
+3793 |                     let request_json = ::serde_json::to_vec(&self.request)?;
      |                                                                   ^^^^^^^ help: a field with a similar name exists: `reqwest`
 
 error[E0609]: no field `request` on type `resources::edits::deobfuscationfiles::UploadRequestBuilder<'a, A>`
-    --> androidpublisher/v3/lib/src/lib.rs:4164:67
+    --> androidpublisher/v3/lib/src/lib.rs:4127:67
      |
-4164 |                     let request_json = ::serde_json::to_vec(&self.request)?;
+4127 |                     let request_json = ::serde_json::to_vec(&self.request)?;
      |                                                                   ^^^^^^^ help: a field with a similar name exists: `reqwest`
 
 error[E0609]: no field `request` on type `resources::edits::expansionfiles::UploadRequestBuilder<'a, A>`
-    --> androidpublisher/v3/lib/src/lib.rs:5786:67
+    --> androidpublisher/v3/lib/src/lib.rs:5785:67
      |
-5786 |                     let request_json = ::serde_json::to_vec(&self.request)?;
+5785 |                     let request_json = ::serde_json::to_vec(&self.request)?;
      |                                                                   ^^^^^^^ help: a field with a similar name exists: `reqwest`
 
 error[E0609]: no field `request` on type `resources::edits::images::UploadRequestBuilder<'a, A>`
-    --> androidpublisher/v3/lib/src/lib.rs:6907:67
+    --> androidpublisher/v3/lib/src/lib.rs:6942:67
      |
-6907 |                     let request_json = ::serde_json::to_vec(&self.request)?;
+6942 |                     let request_json = ::serde_json::to_vec(&self.request)?;
      |                                                                   ^^^^^^^ help: a field with a similar name exists: `reqwest`
 
 error[E0609]: no field `request` on type `resources::internalappsharingartifacts::UploadapkRequestBuilder<'a, A>`
-     --> androidpublisher/v3/lib/src/lib.rs:10433:63
+     --> androidpublisher/v3/lib/src/lib.rs:10468:63
       |
-10433 |                 let request_json = ::serde_json::to_vec(&self.request)?;
+10468 |                 let request_json = ::serde_json::to_vec(&self.request)?;
       |                                                               ^^^^^^^ help: a field with a similar name exists: `reqwest`
 
 error[E0609]: no field `request` on type `resources::internalappsharingartifacts::UploadbundleRequestBuilder<'a, A>`
-     --> androidpublisher/v3/lib/src/lib.rs:10654:63
+     --> androidpublisher/v3/lib/src/lib.rs:10689:63
       |
-10654 |                 let request_json = ::serde_json::to_vec(&self.request)?;
+10689 |                 let request_json = ::serde_json::to_vec(&self.request)?;
       |                                                               ^^^^^^^ help: a field with a similar name exists: `reqwest`
 
 error: aborting due to 7 previous errors

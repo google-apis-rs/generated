@@ -14,7 +14,7 @@ pub mod schemas {
     pub struct EmptyResponse {
         #[doc = "Apiary error details"]
         #[serde(rename = "errors", default)]
-        pub errors: Option<crate::schemas::Errors>,
+        pub errors: ::std::option::Option<crate::schemas::Errors>,
     }
     impl ::field_selector::FieldSelector for EmptyResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -23,7 +23,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -76,6 +75,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ErrorProtoLocationType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -91,24 +99,24 @@ pub mod schemas {
     pub struct ErrorProto {
         #[doc = "Error arguments, to be used when building user-friendly error messages\ngiven the error domain and code.  Different error codes require different\narguments."]
         #[serde(rename = "argument", default)]
-        pub argument: Option<Vec<String>>,
+        pub argument: ::std::option::Option<Vec<String>>,
         #[doc = "Error code in the error domain. This should correspond to\na value of the enum type whose name is in domain. See\nthe core error domain in error_domain.proto."]
         #[serde(rename = "code", default)]
-        pub code: Option<String>,
+        pub code: ::std::option::Option<String>,
         #[doc = "Debugging information, which should not be\nshared externally."]
         #[serde(rename = "debugInfo", default)]
-        pub debug_info: Option<String>,
+        pub debug_info: ::std::option::Option<String>,
         #[doc = "Error domain. RoSy services can define their own\ndomain and error codes. This should normally be\nthe name of an enum type, such as: gdata.CoreErrorDomain"]
         #[serde(rename = "domain", default)]
-        pub domain: Option<String>,
+        pub domain: ::std::option::Option<String>,
         #[doc = "A short explanation for the error, which can be shared outside Google.\n\nPlease set domain, code and arguments whenever possible instead of this\nerror message so that external APIs can build safe error messages\nthemselves.\n\nExternal messages built in a RoSy interface will most likely refer to\ninformation and concepts that are not available externally and should not\nbe exposed. It is safer if external APIs can understand the errors and\ndecide what the error message should look like."]
         #[serde(rename = "externalErrorMessage", default)]
-        pub external_error_message: Option<String>,
+        pub external_error_message: ::std::option::Option<String>,
         #[doc = "Location of the error, as specified by the location type.\n\nIf location_type is PATH, this should be a path to a field that's\nrelative to the request, using FieldPath notation\n(net/proto2/util/public/field_path.h).\n\nExamples:\nauthenticated_user.gaia_id\nresource.address[2].country"]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[serde(rename = "locationType", default)]
-        pub location_type: Option<crate::schemas::ErrorProtoLocationType>,
+        pub location_type: ::std::option::Option<crate::schemas::ErrorProtoLocationType>,
     }
     impl ::field_selector::FieldSelector for ErrorProto {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -117,7 +125,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -182,6 +189,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ErrorsCode {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -197,13 +213,13 @@ pub mod schemas {
     pub struct Errors {
         #[doc = "Global error code. Deprecated and ignored.\nSet custom error codes in ErrorProto.domain and ErrorProto.code\ninstead."]
         #[serde(rename = "code", default)]
-        pub code: Option<crate::schemas::ErrorsCode>,
+        pub code: ::std::option::Option<crate::schemas::ErrorsCode>,
         #[doc = "Specific error description and codes"]
         #[serde(rename = "error", default)]
-        pub error: Option<Vec<crate::schemas::ErrorProto>>,
+        pub error: ::std::option::Option<Vec<crate::schemas::ErrorProto>>,
         #[doc = "Request identifier generated by the service, which can be\nused to identify the error in the logs"]
         #[serde(rename = "requestId", default)]
-        pub request_id: Option<String>,
+        pub request_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Errors {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -212,7 +228,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -230,22 +245,22 @@ pub mod schemas {
     pub struct Group {
         #[doc = "The `contentDetails` object contains additional information about the\ngroup, such as the number and type of items that it contains."]
         #[serde(rename = "contentDetails", default)]
-        pub content_details: Option<crate::schemas::GroupContentDetails>,
+        pub content_details: ::std::option::Option<crate::schemas::GroupContentDetails>,
         #[doc = "Apiary error details"]
         #[serde(rename = "errors", default)]
-        pub errors: Option<crate::schemas::Errors>,
+        pub errors: ::std::option::Option<crate::schemas::Errors>,
         #[doc = "The Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the group."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies the API resource's type. The value will be `youtube#group`."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The `snippet` object contains basic information about the group, including\nits creation date and name."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::GroupSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::GroupSnippet>,
     }
     impl ::field_selector::FieldSelector for Group {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -254,7 +269,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -273,10 +287,10 @@ pub mod schemas {
         #[doc = "The number of items in the group."]
         #[serde(rename = "itemCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub item_count: Option<u64>,
+        pub item_count: ::std::option::Option<u64>,
         #[doc = "The type of resources that the group contains.\n\nValid values for this property are:\n\n* `youtube#channel`\n* `youtube#playlist`\n* `youtube#video`\n* `youtubePartner#asset`"]
         #[serde(rename = "itemType", default)]
-        pub item_type: Option<String>,
+        pub item_type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GroupContentDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -285,7 +299,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -303,22 +316,22 @@ pub mod schemas {
     pub struct GroupItem {
         #[doc = "Apiary error details"]
         #[serde(rename = "errors", default)]
-        pub errors: Option<crate::schemas::Errors>,
+        pub errors: ::std::option::Option<crate::schemas::Errors>,
         #[doc = "The Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the group that contains the\nitem."]
         #[serde(rename = "groupId", default)]
-        pub group_id: Option<String>,
+        pub group_id: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the `channel`, `video`,\n`playlist`, or `asset` resource that is included in the group. Note that\nthis ID refers specifically to the inclusion of that resource in a\nparticular group and is different than the channel ID, video ID,\nplaylist ID, or asset ID that uniquely identifies the resource itself.\nThe `resource.id` property's value specifies the unique channel, video,\nplaylist, or asset ID."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies the API resource's type. The value will be `youtube#groupItem`."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The `resource` object contains information that identifies the item being\nadded to the group."]
         #[serde(rename = "resource", default)]
-        pub resource: Option<crate::schemas::GroupItemResource>,
+        pub resource: ::std::option::Option<crate::schemas::GroupItemResource>,
     }
     impl ::field_selector::FieldSelector for GroupItem {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -327,7 +340,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -345,10 +357,10 @@ pub mod schemas {
     pub struct GroupItemResource {
         #[doc = "The channel, video, playlist, or asset ID that YouTube uses to uniquely\nidentify the item that is being added to the group."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies the type of resource being added to the group.\n\nValid values for this property are:\n\n* `youtube#channel`\n* `youtube#playlist`\n* `youtube#video`\n* `youtubePartner#asset`"]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GroupItemResource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -357,7 +369,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -375,10 +386,10 @@ pub mod schemas {
     pub struct GroupSnippet {
         #[doc = "The date and time that the group was created. The value is specified in\nISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "publishedAt", default)]
-        pub published_at: Option<String>,
+        pub published_at: ::std::option::Option<String>,
         #[doc = "The group name. The value must be a non-empty string."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GroupSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -387,7 +398,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -405,16 +415,16 @@ pub mod schemas {
     pub struct ListGroupItemsResponse {
         #[doc = "Apiary error details"]
         #[serde(rename = "errors", default)]
-        pub errors: Option<crate::schemas::Errors>,
+        pub errors: ::std::option::Option<crate::schemas::Errors>,
         #[doc = "The Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "A list of groups that match the API request parameters. Each item in the\nlist represents a `groupItem` resource."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::GroupItem>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::GroupItem>>,
         #[doc = "Identifies the API resource's type. The value will be\n`youtube#groupItemListResponse`."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListGroupItemsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -423,7 +433,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -441,19 +450,19 @@ pub mod schemas {
     pub struct ListGroupsResponse {
         #[doc = "Apiary error details"]
         #[serde(rename = "errors", default)]
-        pub errors: Option<crate::schemas::Errors>,
+        pub errors: ::std::option::Option<crate::schemas::Errors>,
         #[doc = "The Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "A list of groups that match the API request parameters. Each item in the\nlist represents a `group` resource."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Group>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Group>>,
         #[doc = "Identifies the API resource's type. The value will be\n`youtube#groupListResponse`."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the `pageToken` parameter to\nretrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListGroupsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -462,23 +471,22 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct QueryResponse {
         #[doc = "This value specifies information about the data returned in the `rows`\nfields. Each item in the `columnHeaders` list identifies a field returned\nin the `rows` value, which contains a list of comma-delimited data. The\n`columnHeaders` list will begin with the dimensions specified in the API\nrequest, which will be followed by the metrics specified in the API\nrequest. The order of both dimensions and metrics will match the ordering\nin the API request. For example, if the API request contains the parameters\n`dimensions=ageGroup,gender&metrics=viewerPercentage`, the API response\nwill return columns in this order: `ageGroup`, `gender`,\n`viewerPercentage`."]
         #[serde(rename = "columnHeaders", default)]
-        pub column_headers: Option<Vec<crate::schemas::ResultTableColumnHeader>>,
+        pub column_headers: ::std::option::Option<Vec<crate::schemas::ResultTableColumnHeader>>,
         #[doc = "When set, indicates that the operation failed."]
         #[serde(rename = "errors", default)]
-        pub errors: Option<crate::schemas::Errors>,
+        pub errors: ::std::option::Option<crate::schemas::Errors>,
         #[doc = "This value specifies the type of data included in the API response.\nFor the query method, the kind property value will be\n`youtubeAnalytics#resultTable`."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The list contains all rows of the result table. Each item in the list is\nan array that contains comma-delimited data corresponding to a single row\nof data. The order of the comma-delimited data fields will match the\norder of the columns listed in the `columnHeaders` field.\n\nIf no data is available for the given query, the `rows` element will be\nomitted from the response.\n\nThe response for a query with the `day` dimension will not contain rows for\nthe most recent days."]
         #[serde(rename = "rows", default)]
-        pub rows: Option<Vec<Vec<::serde_json::Value>>>,
+        pub rows: ::std::option::Option<Vec<Vec<::serde_json::Value>>>,
     }
     impl ::field_selector::FieldSelector for QueryResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -487,7 +495,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -505,13 +512,13 @@ pub mod schemas {
     pub struct ResultTableColumnHeader {
         #[doc = "The type of the column (`DIMENSION` or `METRIC`)."]
         #[serde(rename = "columnType", default)]
-        pub column_type: Option<String>,
+        pub column_type: ::std::option::Option<String>,
         #[doc = "The type of the data in the column (`STRING`, `INTEGER`, `FLOAT`, etc.)."]
         #[serde(rename = "dataType", default)]
-        pub data_type: Option<String>,
+        pub data_type: ::std::option::Option<String>,
         #[doc = "The name of the dimension or metric."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ResultTableColumnHeader {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -520,7 +527,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -575,6 +581,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -619,6 +634,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -2659,6 +2683,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2734,5 +2759,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

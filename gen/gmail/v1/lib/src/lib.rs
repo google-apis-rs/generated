@@ -52,6 +52,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AutoForwardingDisposition {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -67,13 +76,13 @@ pub mod schemas {
     pub struct AutoForwarding {
         #[doc = "The state that a message should be left in after it has been forwarded."]
         #[serde(rename = "disposition", default)]
-        pub disposition: Option<crate::schemas::AutoForwardingDisposition>,
+        pub disposition: ::std::option::Option<crate::schemas::AutoForwardingDisposition>,
         #[doc = "Email address to which all incoming messages are forwarded. This email address must be a verified member of the forwarding addresses."]
         #[serde(rename = "emailAddress", default)]
-        pub email_address: Option<String>,
+        pub email_address: ::std::option::Option<String>,
         #[doc = "Whether all incoming mail is automatically forwarded to another address."]
         #[serde(rename = "enabled", default)]
-        pub enabled: Option<bool>,
+        pub enabled: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for AutoForwarding {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -82,7 +91,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -100,7 +108,7 @@ pub mod schemas {
     pub struct BatchDeleteMessagesRequest {
         #[doc = "The IDs of the messages to delete."]
         #[serde(rename = "ids", default)]
-        pub ids: Option<Vec<String>>,
+        pub ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for BatchDeleteMessagesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -109,7 +117,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -127,13 +134,13 @@ pub mod schemas {
     pub struct BatchModifyMessagesRequest {
         #[doc = "A list of label IDs to add to messages."]
         #[serde(rename = "addLabelIds", default)]
-        pub add_label_ids: Option<Vec<String>>,
+        pub add_label_ids: ::std::option::Option<Vec<String>>,
         #[doc = "The IDs of the messages to modify. There is a limit of 1000 ids per request."]
         #[serde(rename = "ids", default)]
-        pub ids: Option<Vec<String>>,
+        pub ids: ::std::option::Option<Vec<String>>,
         #[doc = "A list of label IDs to remove from messages."]
         #[serde(rename = "removeLabelIds", default)]
-        pub remove_label_ids: Option<Vec<String>>,
+        pub remove_label_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for BatchModifyMessagesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -142,7 +149,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -202,6 +208,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DelegateVerificationStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -217,10 +232,10 @@ pub mod schemas {
     pub struct Delegate {
         #[doc = "The email address of the delegate."]
         #[serde(rename = "delegateEmail", default)]
-        pub delegate_email: Option<String>,
+        pub delegate_email: ::std::option::Option<String>,
         #[doc = "Indicates whether this address has been verified and can act as a delegate for the account. Read-only."]
         #[serde(rename = "verificationStatus", default)]
-        pub verification_status: Option<crate::schemas::DelegateVerificationStatus>,
+        pub verification_status: ::std::option::Option<crate::schemas::DelegateVerificationStatus>,
     }
     impl ::field_selector::FieldSelector for Delegate {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -229,7 +244,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -247,10 +261,10 @@ pub mod schemas {
     pub struct Draft {
         #[doc = "The immutable ID of the draft."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The message content of the draft."]
         #[serde(rename = "message", default)]
-        pub message: Option<crate::schemas::Message>,
+        pub message: ::std::option::Option<crate::schemas::Message>,
     }
     impl ::field_selector::FieldSelector for Draft {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -259,7 +273,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -277,13 +290,13 @@ pub mod schemas {
     pub struct Filter {
         #[doc = "Action that the filter performs."]
         #[serde(rename = "action", default)]
-        pub action: Option<crate::schemas::FilterAction>,
+        pub action: ::std::option::Option<crate::schemas::FilterAction>,
         #[doc = "Matching criteria for the filter."]
         #[serde(rename = "criteria", default)]
-        pub criteria: Option<crate::schemas::FilterCriteria>,
+        pub criteria: ::std::option::Option<crate::schemas::FilterCriteria>,
         #[doc = "The server assigned ID of the filter."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Filter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -292,7 +305,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -310,13 +322,13 @@ pub mod schemas {
     pub struct FilterAction {
         #[doc = "List of labels to add to the message."]
         #[serde(rename = "addLabelIds", default)]
-        pub add_label_ids: Option<Vec<String>>,
+        pub add_label_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Email address that the message should be forwarded to."]
         #[serde(rename = "forward", default)]
-        pub forward: Option<String>,
+        pub forward: ::std::option::Option<String>,
         #[doc = "List of labels to remove from the message."]
         #[serde(rename = "removeLabelIds", default)]
-        pub remove_label_ids: Option<Vec<String>>,
+        pub remove_label_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for FilterAction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -325,7 +337,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -375,6 +386,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for FilterCriteriaSizeComparison {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -390,31 +410,31 @@ pub mod schemas {
     pub struct FilterCriteria {
         #[doc = "Whether the response should exclude chats."]
         #[serde(rename = "excludeChats", default)]
-        pub exclude_chats: Option<bool>,
+        pub exclude_chats: ::std::option::Option<bool>,
         #[doc = "The sender's display name or email address."]
         #[serde(rename = "from", default)]
-        pub from: Option<String>,
+        pub from: ::std::option::Option<String>,
         #[doc = "Whether the message has any attachment."]
         #[serde(rename = "hasAttachment", default)]
-        pub has_attachment: Option<bool>,
+        pub has_attachment: ::std::option::Option<bool>,
         #[doc = "Only return messages not matching the specified query. Supports the same query format as the Gmail search box. For example, \"from:someuser@example.com rfc822msgid: is:unread\"."]
         #[serde(rename = "negatedQuery", default)]
-        pub negated_query: Option<String>,
+        pub negated_query: ::std::option::Option<String>,
         #[doc = "Only return messages matching the specified query. Supports the same query format as the Gmail search box. For example, \"from:someuser@example.com rfc822msgid: is:unread\"."]
         #[serde(rename = "query", default)]
-        pub query: Option<String>,
+        pub query: ::std::option::Option<String>,
         #[doc = "The size of the entire RFC822 message in bytes, including all headers and attachments."]
         #[serde(rename = "size", default)]
-        pub size: Option<i32>,
+        pub size: ::std::option::Option<i32>,
         #[doc = "How the message size in bytes should be in relation to the size field."]
         #[serde(rename = "sizeComparison", default)]
-        pub size_comparison: Option<crate::schemas::FilterCriteriaSizeComparison>,
+        pub size_comparison: ::std::option::Option<crate::schemas::FilterCriteriaSizeComparison>,
         #[doc = "Case-insensitive phrase found in the message's subject. Trailing and leading whitespace are be trimmed and adjacent spaces are collapsed."]
         #[serde(rename = "subject", default)]
-        pub subject: Option<String>,
+        pub subject: ::std::option::Option<String>,
         #[doc = "The recipient's display name or email address. Includes recipients in the \"to\", \"cc\", and \"bcc\" header fields. You can use simply the local part of the email address. For example, \"example\" and \"example@\" both match \"example@gmail.com\". This field is case-insensitive."]
         #[serde(rename = "to", default)]
-        pub to: Option<String>,
+        pub to: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FilterCriteria {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -423,7 +443,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -477,6 +496,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ForwardingAddressVerificationStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -492,10 +520,11 @@ pub mod schemas {
     pub struct ForwardingAddress {
         #[doc = "An email address to which messages can be forwarded."]
         #[serde(rename = "forwardingEmail", default)]
-        pub forwarding_email: Option<String>,
+        pub forwarding_email: ::std::option::Option<String>,
         #[doc = "Indicates whether this address has been verified and is usable for forwarding. Read-only."]
         #[serde(rename = "verificationStatus", default)]
-        pub verification_status: Option<crate::schemas::ForwardingAddressVerificationStatus>,
+        pub verification_status:
+            ::std::option::Option<crate::schemas::ForwardingAddressVerificationStatus>,
     }
     impl ::field_selector::FieldSelector for ForwardingAddress {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -504,7 +533,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -523,22 +551,22 @@ pub mod schemas {
         #[doc = "The mailbox sequence ID."]
         #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<u64>,
+        pub id: ::std::option::Option<u64>,
         #[doc = "Labels added to messages in this history record."]
         #[serde(rename = "labelsAdded", default)]
-        pub labels_added: Option<Vec<crate::schemas::HistoryLabelAdded>>,
+        pub labels_added: ::std::option::Option<Vec<crate::schemas::HistoryLabelAdded>>,
         #[doc = "Labels removed from messages in this history record."]
         #[serde(rename = "labelsRemoved", default)]
-        pub labels_removed: Option<Vec<crate::schemas::HistoryLabelRemoved>>,
+        pub labels_removed: ::std::option::Option<Vec<crate::schemas::HistoryLabelRemoved>>,
         #[doc = "List of messages changed in this history record. The fields for specific change types, such as messagesAdded may duplicate messages in this field. We recommend using the specific change-type fields instead of this."]
         #[serde(rename = "messages", default)]
-        pub messages: Option<Vec<crate::schemas::Message>>,
+        pub messages: ::std::option::Option<Vec<crate::schemas::Message>>,
         #[doc = "Messages added to the mailbox in this history record."]
         #[serde(rename = "messagesAdded", default)]
-        pub messages_added: Option<Vec<crate::schemas::HistoryMessageAdded>>,
+        pub messages_added: ::std::option::Option<Vec<crate::schemas::HistoryMessageAdded>>,
         #[doc = "Messages deleted (not Trashed) from the mailbox in this history record."]
         #[serde(rename = "messagesDeleted", default)]
-        pub messages_deleted: Option<Vec<crate::schemas::HistoryMessageDeleted>>,
+        pub messages_deleted: ::std::option::Option<Vec<crate::schemas::HistoryMessageDeleted>>,
     }
     impl ::field_selector::FieldSelector for History {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -547,7 +575,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -565,9 +592,9 @@ pub mod schemas {
     pub struct HistoryLabelAdded {
         #[doc = "Label IDs added to the message."]
         #[serde(rename = "labelIds", default)]
-        pub label_ids: Option<Vec<String>>,
+        pub label_ids: ::std::option::Option<Vec<String>>,
         #[serde(rename = "message", default)]
-        pub message: Option<crate::schemas::Message>,
+        pub message: ::std::option::Option<crate::schemas::Message>,
     }
     impl ::field_selector::FieldSelector for HistoryLabelAdded {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -576,7 +603,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -594,9 +620,9 @@ pub mod schemas {
     pub struct HistoryLabelRemoved {
         #[doc = "Label IDs removed from the message."]
         #[serde(rename = "labelIds", default)]
-        pub label_ids: Option<Vec<String>>,
+        pub label_ids: ::std::option::Option<Vec<String>>,
         #[serde(rename = "message", default)]
-        pub message: Option<crate::schemas::Message>,
+        pub message: ::std::option::Option<crate::schemas::Message>,
     }
     impl ::field_selector::FieldSelector for HistoryLabelRemoved {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -605,7 +631,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -622,7 +647,7 @@ pub mod schemas {
     )]
     pub struct HistoryMessageAdded {
         #[serde(rename = "message", default)]
-        pub message: Option<crate::schemas::Message>,
+        pub message: ::std::option::Option<crate::schemas::Message>,
     }
     impl ::field_selector::FieldSelector for HistoryMessageAdded {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -631,7 +656,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -648,7 +672,7 @@ pub mod schemas {
     )]
     pub struct HistoryMessageDeleted {
         #[serde(rename = "message", default)]
-        pub message: Option<crate::schemas::Message>,
+        pub message: ::std::option::Option<crate::schemas::Message>,
     }
     impl ::field_selector::FieldSelector for HistoryMessageDeleted {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -657,7 +681,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -714,6 +737,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ImapSettingsExpungeBehavior {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -729,16 +761,16 @@ pub mod schemas {
     pub struct ImapSettings {
         #[doc = "If this value is true, Gmail will immediately expunge a message when it is marked as deleted in IMAP. Otherwise, Gmail will wait for an update from the client before expunging messages marked as deleted."]
         #[serde(rename = "autoExpunge", default)]
-        pub auto_expunge: Option<bool>,
+        pub auto_expunge: ::std::option::Option<bool>,
         #[doc = "Whether IMAP is enabled for the account."]
         #[serde(rename = "enabled", default)]
-        pub enabled: Option<bool>,
+        pub enabled: ::std::option::Option<bool>,
         #[doc = "The action that will be executed on a message when it is marked as deleted and expunged from the last visible IMAP folder."]
         #[serde(rename = "expungeBehavior", default)]
-        pub expunge_behavior: Option<crate::schemas::ImapSettingsExpungeBehavior>,
+        pub expunge_behavior: ::std::option::Option<crate::schemas::ImapSettingsExpungeBehavior>,
         #[doc = "An optional limit on the number of messages that an IMAP folder may contain. Legal values are 0, 1000, 2000, 5000 or 10000. A value of zero is interpreted to mean that there is no limit."]
         #[serde(rename = "maxFolderSize", default)]
-        pub max_folder_size: Option<i32>,
+        pub max_folder_size: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ImapSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -747,7 +779,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -797,6 +828,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for LabelLabelListVisibility {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LabelMessageListVisibility {
         Hide,
@@ -839,6 +879,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for LabelMessageListVisibility {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -885,6 +934,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for LabelType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -900,34 +958,35 @@ pub mod schemas {
     pub struct Label {
         #[doc = "The color to assign to the label. Color is only available for labels that have their type set to user."]
         #[serde(rename = "color", default)]
-        pub color: Option<crate::schemas::LabelColor>,
+        pub color: ::std::option::Option<crate::schemas::LabelColor>,
         #[doc = "The immutable ID of the label."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The visibility of the label in the label list in the Gmail web interface."]
         #[serde(rename = "labelListVisibility", default)]
-        pub label_list_visibility: Option<crate::schemas::LabelLabelListVisibility>,
+        pub label_list_visibility: ::std::option::Option<crate::schemas::LabelLabelListVisibility>,
         #[doc = "The visibility of the label in the message list in the Gmail web interface."]
         #[serde(rename = "messageListVisibility", default)]
-        pub message_list_visibility: Option<crate::schemas::LabelMessageListVisibility>,
+        pub message_list_visibility:
+            ::std::option::Option<crate::schemas::LabelMessageListVisibility>,
         #[doc = "The total number of messages with the label."]
         #[serde(rename = "messagesTotal", default)]
-        pub messages_total: Option<i32>,
+        pub messages_total: ::std::option::Option<i32>,
         #[doc = "The number of unread messages with the label."]
         #[serde(rename = "messagesUnread", default)]
-        pub messages_unread: Option<i32>,
+        pub messages_unread: ::std::option::Option<i32>,
         #[doc = "The display name of the label."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The owner type for the label. User labels are created by the user and can be modified and deleted by the user and can be applied to any message or thread. System labels are internally created and cannot be added, modified, or deleted. System labels may be able to be applied to or removed from messages and threads under some circumstances but this is not guaranteed. For example, users can apply and remove the INBOX and UNREAD labels from messages and threads, but cannot apply or remove the DRAFTS or SENT labels from messages or threads."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::LabelType>,
+        pub r#type: ::std::option::Option<crate::schemas::LabelType>,
         #[doc = "The total number of threads with the label."]
         #[serde(rename = "threadsTotal", default)]
-        pub threads_total: Option<i32>,
+        pub threads_total: ::std::option::Option<i32>,
         #[doc = "The number of unread threads with the label."]
         #[serde(rename = "threadsUnread", default)]
-        pub threads_unread: Option<i32>,
+        pub threads_unread: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Label {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -936,7 +995,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -954,10 +1012,10 @@ pub mod schemas {
     pub struct LabelColor {
         #[doc = "The background color represented as hex string #RRGGBB (ex #000000). This field is required in order to set the color of a label. Only the following predefined set of color values are allowed:\n#000000, #434343, #666666, #999999, #cccccc, #efefef, #f3f3f3, #ffffff, #fb4c2f, #ffad47, #fad165, #16a766, #43d692, #4a86e8, #a479e2, #f691b3, #f6c5be, #ffe6c7, #fef1d1, #b9e4d0, #c6f3de, #c9daf8, #e4d7f5, #fcdee8, #efa093, #ffd6a2, #fce8b3, #89d3b2, #a0eac9, #a4c2f4, #d0bcf1, #fbc8d9, #e66550, #ffbc6b, #fcda83, #44b984, #68dfa9, #6d9eeb, #b694e8, #f7a7c0, #cc3a21, #eaa041, #f2c960, #149e60, #3dc789, #3c78d8, #8e63ce, #e07798, #ac2b16, #cf8933, #d5ae49, #0b804b, #2a9c68, #285bac, #653e9b, #b65775, #822111, #a46a21, #aa8831, #076239, #1a764d, #1c4587, #41236d, #83334c #464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff, #711a36, #fbd3e0, #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, #594c05, #fbe983, #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, #c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46, #662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765"]
         #[serde(rename = "backgroundColor", default)]
-        pub background_color: Option<String>,
+        pub background_color: ::std::option::Option<String>,
         #[doc = "The text color of the label, represented as hex string. This field is required in order to set the color of a label. Only the following predefined set of color values are allowed:\n#000000, #434343, #666666, #999999, #cccccc, #efefef, #f3f3f3, #ffffff, #fb4c2f, #ffad47, #fad165, #16a766, #43d692, #4a86e8, #a479e2, #f691b3, #f6c5be, #ffe6c7, #fef1d1, #b9e4d0, #c6f3de, #c9daf8, #e4d7f5, #fcdee8, #efa093, #ffd6a2, #fce8b3, #89d3b2, #a0eac9, #a4c2f4, #d0bcf1, #fbc8d9, #e66550, #ffbc6b, #fcda83, #44b984, #68dfa9, #6d9eeb, #b694e8, #f7a7c0, #cc3a21, #eaa041, #f2c960, #149e60, #3dc789, #3c78d8, #8e63ce, #e07798, #ac2b16, #cf8933, #d5ae49, #0b804b, #2a9c68, #285bac, #653e9b, #b65775, #822111, #a46a21, #aa8831, #076239, #1a764d, #1c4587, #41236d, #83334c #464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff, #711a36, #fbd3e0, #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, #594c05, #fbe983, #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, #c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46, #662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765"]
         #[serde(rename = "textColor", default)]
-        pub text_color: Option<String>,
+        pub text_color: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LabelColor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -966,7 +1024,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -984,7 +1041,7 @@ pub mod schemas {
     pub struct LanguageSettings {
         #[doc = "The language to display Gmail in, formatted as an RFC 3066 Language Tag (for example en-GB, fr or ja for British English, French, or Japanese respectively).\n\nThe set of languages supported by Gmail evolves over time, so please refer to the \"Language\" dropdown in the Gmail settings  for all available options, as described in the language settings help article. A table of sample values is also provided in the Managing Language Settings guide \n\nNot all Gmail clients can display the same set of languages. In the case that a user's display language is not available for use on a particular client, said client automatically chooses to display in the closest supported variant (or a reasonable default)."]
         #[serde(rename = "displayLanguage", default)]
-        pub display_language: Option<String>,
+        pub display_language: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LanguageSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -993,7 +1050,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1011,7 +1067,7 @@ pub mod schemas {
     pub struct ListDelegatesResponse {
         #[doc = "List of the user's delegates (with any verification status)."]
         #[serde(rename = "delegates", default)]
-        pub delegates: Option<Vec<crate::schemas::Delegate>>,
+        pub delegates: ::std::option::Option<Vec<crate::schemas::Delegate>>,
     }
     impl ::field_selector::FieldSelector for ListDelegatesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1020,7 +1076,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1038,13 +1093,13 @@ pub mod schemas {
     pub struct ListDraftsResponse {
         #[doc = "List of drafts."]
         #[serde(rename = "drafts", default)]
-        pub drafts: Option<Vec<crate::schemas::Draft>>,
+        pub drafts: ::std::option::Option<Vec<crate::schemas::Draft>>,
         #[doc = "Token to retrieve the next page of results in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Estimated total number of results."]
         #[serde(rename = "resultSizeEstimate", default)]
-        pub result_size_estimate: Option<u32>,
+        pub result_size_estimate: ::std::option::Option<u32>,
     }
     impl ::field_selector::FieldSelector for ListDraftsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1053,7 +1108,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1071,7 +1125,7 @@ pub mod schemas {
     pub struct ListFiltersResponse {
         #[doc = "List of a user's filters."]
         #[serde(rename = "filter", default)]
-        pub filter: Option<Vec<crate::schemas::Filter>>,
+        pub filter: ::std::option::Option<Vec<crate::schemas::Filter>>,
     }
     impl ::field_selector::FieldSelector for ListFiltersResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1080,7 +1134,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1098,7 +1151,7 @@ pub mod schemas {
     pub struct ListForwardingAddressesResponse {
         #[doc = "List of addresses that may be used for forwarding."]
         #[serde(rename = "forwardingAddresses", default)]
-        pub forwarding_addresses: Option<Vec<crate::schemas::ForwardingAddress>>,
+        pub forwarding_addresses: ::std::option::Option<Vec<crate::schemas::ForwardingAddress>>,
     }
     impl ::field_selector::FieldSelector for ListForwardingAddressesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1107,7 +1160,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1125,14 +1177,14 @@ pub mod schemas {
     pub struct ListHistoryResponse {
         #[doc = "List of history records. Any messages contained in the response will typically only have id and threadId fields populated."]
         #[serde(rename = "history", default)]
-        pub history: Option<Vec<crate::schemas::History>>,
+        pub history: ::std::option::Option<Vec<crate::schemas::History>>,
         #[doc = "The ID of the mailbox's current history record."]
         #[serde(rename = "historyId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub history_id: Option<u64>,
+        pub history_id: ::std::option::Option<u64>,
         #[doc = "Page token to retrieve the next page of results in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListHistoryResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1141,7 +1193,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1159,7 +1210,7 @@ pub mod schemas {
     pub struct ListLabelsResponse {
         #[doc = "List of labels."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<Vec<crate::schemas::Label>>,
+        pub labels: ::std::option::Option<Vec<crate::schemas::Label>>,
     }
     impl ::field_selector::FieldSelector for ListLabelsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1168,7 +1219,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1186,13 +1236,13 @@ pub mod schemas {
     pub struct ListMessagesResponse {
         #[doc = "List of messages. Note that each message resource contains only an id and a threadId. Additional message details can be fetched using the messages.get method."]
         #[serde(rename = "messages", default)]
-        pub messages: Option<Vec<crate::schemas::Message>>,
+        pub messages: ::std::option::Option<Vec<crate::schemas::Message>>,
         #[doc = "Token to retrieve the next page of results in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Estimated total number of results."]
         #[serde(rename = "resultSizeEstimate", default)]
-        pub result_size_estimate: Option<u32>,
+        pub result_size_estimate: ::std::option::Option<u32>,
     }
     impl ::field_selector::FieldSelector for ListMessagesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1201,7 +1251,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1219,7 +1268,7 @@ pub mod schemas {
     pub struct ListSendAsResponse {
         #[doc = "List of send-as aliases."]
         #[serde(rename = "sendAs", default)]
-        pub send_as: Option<Vec<crate::schemas::SendAs>>,
+        pub send_as: ::std::option::Option<Vec<crate::schemas::SendAs>>,
     }
     impl ::field_selector::FieldSelector for ListSendAsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1228,7 +1277,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1246,7 +1294,7 @@ pub mod schemas {
     pub struct ListSmimeInfoResponse {
         #[doc = "List of SmimeInfo."]
         #[serde(rename = "smimeInfo", default)]
-        pub smime_info: Option<Vec<crate::schemas::SmimeInfo>>,
+        pub smime_info: ::std::option::Option<Vec<crate::schemas::SmimeInfo>>,
     }
     impl ::field_selector::FieldSelector for ListSmimeInfoResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1255,7 +1303,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1273,13 +1320,13 @@ pub mod schemas {
     pub struct ListThreadsResponse {
         #[doc = "Page token to retrieve the next page of results in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Estimated total number of results."]
         #[serde(rename = "resultSizeEstimate", default)]
-        pub result_size_estimate: Option<u32>,
+        pub result_size_estimate: ::std::option::Option<u32>,
         #[doc = "List of threads. Note that each thread resource does not contain a list of messages. The list of messages for a given thread can be fetched using the threads.get method."]
         #[serde(rename = "threads", default)]
-        pub threads: Option<Vec<crate::schemas::Thread>>,
+        pub threads: ::std::option::Option<Vec<crate::schemas::Thread>>,
     }
     impl ::field_selector::FieldSelector for ListThreadsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1288,7 +1335,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1307,32 +1353,32 @@ pub mod schemas {
         #[doc = "The ID of the last history record that modified this message."]
         #[serde(rename = "historyId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub history_id: Option<u64>,
+        pub history_id: ::std::option::Option<u64>,
         #[doc = "The immutable ID of the message."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The internal message creation timestamp (epoch ms), which determines ordering in the inbox. For normal SMTP-received email, this represents the time the message was originally accepted by Google, which is more reliable than the Date header. However, for API-migrated mail, it can be configured by client to be based on the Date header."]
         #[serde(rename = "internalDate", default)]
         #[serde(with = "crate::parsed_string")]
-        pub internal_date: Option<i64>,
+        pub internal_date: ::std::option::Option<i64>,
         #[doc = "List of IDs of labels applied to this message."]
         #[serde(rename = "labelIds", default)]
-        pub label_ids: Option<Vec<String>>,
+        pub label_ids: ::std::option::Option<Vec<String>>,
         #[doc = "The parsed email structure in the message parts."]
         #[serde(rename = "payload", default)]
-        pub payload: Option<crate::schemas::MessagePart>,
+        pub payload: ::std::option::Option<crate::schemas::MessagePart>,
         #[doc = "The entire email message in an RFC 2822 formatted and base64url encoded string. Returned in messages.get and drafts.get responses when the format=RAW parameter is supplied."]
         #[serde(rename = "raw", default)]
-        pub raw: Option<Vec<u8>>,
+        pub raw: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Estimated size in bytes of the message."]
         #[serde(rename = "sizeEstimate", default)]
-        pub size_estimate: Option<i32>,
+        pub size_estimate: ::std::option::Option<i32>,
         #[doc = "A short part of the message text."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<String>,
+        pub snippet: ::std::option::Option<String>,
         #[doc = "The ID of the thread the message belongs to. To add a message or draft to a thread, the following criteria must be met: \n\n* The requested threadId must be specified on the Message or Draft.Message you supply with your request. \n* The References and In-Reply-To headers must be set in compliance with the RFC 2822 standard. \n* The Subject headers must match."]
         #[serde(rename = "threadId", default)]
-        pub thread_id: Option<String>,
+        pub thread_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Message {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1341,7 +1387,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1359,22 +1404,22 @@ pub mod schemas {
     pub struct MessagePart {
         #[doc = "The message part body for this part, which may be empty for container MIME message parts."]
         #[serde(rename = "body", default)]
-        pub body: Option<crate::schemas::MessagePartBody>,
+        pub body: ::std::option::Option<crate::schemas::MessagePartBody>,
         #[doc = "The filename of the attachment. Only present if this message part represents an attachment."]
         #[serde(rename = "filename", default)]
-        pub filename: Option<String>,
+        pub filename: ::std::option::Option<String>,
         #[doc = "List of headers on this message part. For the top-level message part, representing the entire message payload, it will contain the standard RFC 2822 email headers such as To, From, and Subject."]
         #[serde(rename = "headers", default)]
-        pub headers: Option<Vec<crate::schemas::MessagePartHeader>>,
+        pub headers: ::std::option::Option<Vec<crate::schemas::MessagePartHeader>>,
         #[doc = "The MIME type of the message part."]
         #[serde(rename = "mimeType", default)]
-        pub mime_type: Option<String>,
+        pub mime_type: ::std::option::Option<String>,
         #[doc = "The immutable ID of the message part."]
         #[serde(rename = "partId", default)]
-        pub part_id: Option<String>,
+        pub part_id: ::std::option::Option<String>,
         #[doc = "The child MIME message parts of this part. This only applies to container MIME message parts, for example multipart/*. For non- container MIME message part types, such as text/plain, this field is empty. For more information, see RFC 1521."]
         #[serde(rename = "parts", default)]
-        pub parts: Option<Vec<crate::schemas::MessagePart>>,
+        pub parts: ::std::option::Option<Vec<crate::schemas::MessagePart>>,
     }
     impl ::field_selector::FieldSelector for MessagePart {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1383,7 +1428,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1401,13 +1445,13 @@ pub mod schemas {
     pub struct MessagePartBody {
         #[doc = "When present, contains the ID of an external attachment that can be retrieved in a separate messages.attachments.get request. When not present, the entire content of the message part body is contained in the data field."]
         #[serde(rename = "attachmentId", default)]
-        pub attachment_id: Option<String>,
+        pub attachment_id: ::std::option::Option<String>,
         #[doc = "The body data of a MIME message part as a base64url encoded string. May be empty for MIME container types that have no message body or when the body data is sent as a separate attachment. An attachment ID is present if the body data is contained in a separate attachment."]
         #[serde(rename = "data", default)]
-        pub data: Option<Vec<u8>>,
+        pub data: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Number of bytes for the message part data (encoding notwithstanding)."]
         #[serde(rename = "size", default)]
-        pub size: Option<i32>,
+        pub size: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for MessagePartBody {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1416,7 +1460,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1434,10 +1477,10 @@ pub mod schemas {
     pub struct MessagePartHeader {
         #[doc = "The name of the header before the : separator. For example, To."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The value of the header after the : separator. For example, someuser@example.com."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for MessagePartHeader {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1446,7 +1489,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1464,10 +1506,10 @@ pub mod schemas {
     pub struct ModifyMessageRequest {
         #[doc = "A list of IDs of labels to add to this message."]
         #[serde(rename = "addLabelIds", default)]
-        pub add_label_ids: Option<Vec<String>>,
+        pub add_label_ids: ::std::option::Option<Vec<String>>,
         #[doc = "A list IDs of labels to remove from this message."]
         #[serde(rename = "removeLabelIds", default)]
-        pub remove_label_ids: Option<Vec<String>>,
+        pub remove_label_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ModifyMessageRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1476,7 +1518,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1494,10 +1535,10 @@ pub mod schemas {
     pub struct ModifyThreadRequest {
         #[doc = "A list of IDs of labels to add to this thread."]
         #[serde(rename = "addLabelIds", default)]
-        pub add_label_ids: Option<Vec<String>>,
+        pub add_label_ids: ::std::option::Option<Vec<String>>,
         #[doc = "A list of IDs of labels to remove from this thread."]
         #[serde(rename = "removeLabelIds", default)]
-        pub remove_label_ids: Option<Vec<String>>,
+        pub remove_label_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ModifyThreadRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1506,7 +1547,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1557,6 +1597,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for PopSettingsAccessWindow {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1612,6 +1661,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PopSettingsDisposition {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1627,10 +1685,10 @@ pub mod schemas {
     pub struct PopSettings {
         #[doc = "The range of messages which are accessible via POP."]
         #[serde(rename = "accessWindow", default)]
-        pub access_window: Option<crate::schemas::PopSettingsAccessWindow>,
+        pub access_window: ::std::option::Option<crate::schemas::PopSettingsAccessWindow>,
         #[doc = "The action that will be executed on a message after it has been fetched via POP."]
         #[serde(rename = "disposition", default)]
-        pub disposition: Option<crate::schemas::PopSettingsDisposition>,
+        pub disposition: ::std::option::Option<crate::schemas::PopSettingsDisposition>,
     }
     impl ::field_selector::FieldSelector for PopSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1639,7 +1697,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1657,17 +1714,17 @@ pub mod schemas {
     pub struct Profile {
         #[doc = "The user's email address."]
         #[serde(rename = "emailAddress", default)]
-        pub email_address: Option<String>,
+        pub email_address: ::std::option::Option<String>,
         #[doc = "The ID of the mailbox's current history record."]
         #[serde(rename = "historyId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub history_id: Option<u64>,
+        pub history_id: ::std::option::Option<u64>,
         #[doc = "The total number of messages in the mailbox."]
         #[serde(rename = "messagesTotal", default)]
-        pub messages_total: Option<i32>,
+        pub messages_total: ::std::option::Option<i32>,
         #[doc = "The total number of threads in the mailbox."]
         #[serde(rename = "threadsTotal", default)]
-        pub threads_total: Option<i32>,
+        pub threads_total: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Profile {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1676,7 +1733,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1730,6 +1786,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for SendAsVerificationStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1745,31 +1810,31 @@ pub mod schemas {
     pub struct SendAs {
         #[doc = "A name that appears in the \"From:\" header for mail sent using this alias. For custom \"from\" addresses, when this is empty, Gmail will populate the \"From:\" header with the name that is used for the primary address associated with the account. If the admin has disabled the ability for users to update their name format, requests to update this field for the primary login will silently fail."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "Whether this address is selected as the default \"From:\" address in situations such as composing a new message or sending a vacation auto-reply. Every Gmail account has exactly one default send-as address, so the only legal value that clients may write to this field is true. Changing this from false to true for an address will result in this field becoming false for the other previous default address."]
         #[serde(rename = "isDefault", default)]
-        pub is_default: Option<bool>,
+        pub is_default: ::std::option::Option<bool>,
         #[doc = "Whether this address is the primary address used to login to the account. Every Gmail account has exactly one primary address, and it cannot be deleted from the collection of send-as aliases. This field is read-only."]
         #[serde(rename = "isPrimary", default)]
-        pub is_primary: Option<bool>,
+        pub is_primary: ::std::option::Option<bool>,
         #[doc = "An optional email address that is included in a \"Reply-To:\" header for mail sent using this alias. If this is empty, Gmail will not generate a \"Reply-To:\" header."]
         #[serde(rename = "replyToAddress", default)]
-        pub reply_to_address: Option<String>,
+        pub reply_to_address: ::std::option::Option<String>,
         #[doc = "The email address that appears in the \"From:\" header for mail sent using this alias. This is read-only for all operations except create."]
         #[serde(rename = "sendAsEmail", default)]
-        pub send_as_email: Option<String>,
+        pub send_as_email: ::std::option::Option<String>,
         #[doc = "An optional HTML signature that is included in messages composed with this alias in the Gmail web UI."]
         #[serde(rename = "signature", default)]
-        pub signature: Option<String>,
+        pub signature: ::std::option::Option<String>,
         #[doc = "An optional SMTP service that will be used as an outbound relay for mail sent using this alias. If this is empty, outbound mail will be sent directly from Gmail's servers to the destination SMTP service. This setting only applies to custom \"from\" aliases."]
         #[serde(rename = "smtpMsa", default)]
-        pub smtp_msa: Option<crate::schemas::SmtpMsa>,
+        pub smtp_msa: ::std::option::Option<crate::schemas::SmtpMsa>,
         #[doc = "Whether Gmail should  treat this address as an alias for the user's primary email address. This setting only applies to custom \"from\" aliases."]
         #[serde(rename = "treatAsAlias", default)]
-        pub treat_as_alias: Option<bool>,
+        pub treat_as_alias: ::std::option::Option<bool>,
         #[doc = "Indicates whether this address has been verified for use as a send-as alias. Read-only. This setting only applies to custom \"from\" aliases."]
         #[serde(rename = "verificationStatus", default)]
-        pub verification_status: Option<crate::schemas::SendAsVerificationStatus>,
+        pub verification_status: ::std::option::Option<crate::schemas::SendAsVerificationStatus>,
     }
     impl ::field_selector::FieldSelector for SendAs {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1778,7 +1843,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1796,26 +1860,26 @@ pub mod schemas {
     pub struct SmimeInfo {
         #[doc = "Encrypted key password, when key is encrypted."]
         #[serde(rename = "encryptedKeyPassword", default)]
-        pub encrypted_key_password: Option<String>,
+        pub encrypted_key_password: ::std::option::Option<String>,
         #[doc = "When the certificate expires (in milliseconds since epoch)."]
         #[serde(rename = "expiration", default)]
         #[serde(with = "crate::parsed_string")]
-        pub expiration: Option<i64>,
+        pub expiration: ::std::option::Option<i64>,
         #[doc = "The immutable ID for the SmimeInfo."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Whether this SmimeInfo is the default one for this user's send-as address."]
         #[serde(rename = "isDefault", default)]
-        pub is_default: Option<bool>,
+        pub is_default: ::std::option::Option<bool>,
         #[doc = "The S/MIME certificate issuer's common name."]
         #[serde(rename = "issuerCn", default)]
-        pub issuer_cn: Option<String>,
+        pub issuer_cn: ::std::option::Option<String>,
         #[doc = "PEM formatted X509 concatenated certificate string (standard base64 encoding). Format used for returning key, which includes public key as well as certificate chain (not private key)."]
         #[serde(rename = "pem", default)]
-        pub pem: Option<String>,
+        pub pem: ::std::option::Option<String>,
         #[doc = "PKCS#12 format containing a single private/public key pair and certificate chain. This format is only accepted from client for creating a new SmimeInfo and is never returned, because the private key is not intended to be exported. PKCS#12 may be encrypted, in which case encryptedKeyPassword should be set appropriately."]
         #[serde(rename = "pkcs12", default)]
-        pub pkcs_12: Option<Vec<u8>>,
+        pub pkcs_12: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for SmimeInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1824,7 +1888,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1877,6 +1940,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for SmtpMsaSecurityMode {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1892,19 +1964,19 @@ pub mod schemas {
     pub struct SmtpMsa {
         #[doc = "The hostname of the SMTP service. Required."]
         #[serde(rename = "host", default)]
-        pub host: Option<String>,
+        pub host: ::std::option::Option<String>,
         #[doc = "The password that will be used for authentication with the SMTP service. This is a write-only field that can be specified in requests to create or update SendAs settings; it is never populated in responses."]
         #[serde(rename = "password", default)]
-        pub password: Option<String>,
+        pub password: ::std::option::Option<String>,
         #[doc = "The port of the SMTP service. Required."]
         #[serde(rename = "port", default)]
-        pub port: Option<i32>,
+        pub port: ::std::option::Option<i32>,
         #[doc = "The protocol that will be used to secure communication with the SMTP service. Required."]
         #[serde(rename = "securityMode", default)]
-        pub security_mode: Option<crate::schemas::SmtpMsaSecurityMode>,
+        pub security_mode: ::std::option::Option<crate::schemas::SmtpMsaSecurityMode>,
         #[doc = "The username that will be used for authentication with the SMTP service. This is a write-only field that can be specified in requests to create or update SendAs settings; it is never populated in responses."]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SmtpMsa {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1913,7 +1985,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1932,16 +2003,16 @@ pub mod schemas {
         #[doc = "The ID of the last history record that modified this thread."]
         #[serde(rename = "historyId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub history_id: Option<u64>,
+        pub history_id: ::std::option::Option<u64>,
         #[doc = "The unique ID of the thread."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The list of messages in the thread."]
         #[serde(rename = "messages", default)]
-        pub messages: Option<Vec<crate::schemas::Message>>,
+        pub messages: ::std::option::Option<Vec<crate::schemas::Message>>,
         #[doc = "A short part of the message text."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<String>,
+        pub snippet: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Thread {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1950,7 +2021,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1968,30 +2038,30 @@ pub mod schemas {
     pub struct VacationSettings {
         #[doc = "Flag that controls whether Gmail automatically replies to messages."]
         #[serde(rename = "enableAutoReply", default)]
-        pub enable_auto_reply: Option<bool>,
+        pub enable_auto_reply: ::std::option::Option<bool>,
         #[doc = "An optional end time for sending auto-replies (epoch ms). When this is specified, Gmail will automatically reply only to messages that it receives before the end time. If both startTime and endTime are specified, startTime must precede endTime."]
         #[serde(rename = "endTime", default)]
         #[serde(with = "crate::parsed_string")]
-        pub end_time: Option<i64>,
+        pub end_time: ::std::option::Option<i64>,
         #[doc = "Response body in HTML format. Gmail will sanitize the HTML before storing it."]
         #[serde(rename = "responseBodyHtml", default)]
-        pub response_body_html: Option<String>,
+        pub response_body_html: ::std::option::Option<String>,
         #[doc = "Response body in plain text format."]
         #[serde(rename = "responseBodyPlainText", default)]
-        pub response_body_plain_text: Option<String>,
+        pub response_body_plain_text: ::std::option::Option<String>,
         #[doc = "Optional text to prepend to the subject line in vacation responses. In order to enable auto-replies, either the response subject or the response body must be nonempty."]
         #[serde(rename = "responseSubject", default)]
-        pub response_subject: Option<String>,
+        pub response_subject: ::std::option::Option<String>,
         #[doc = "Flag that determines whether responses are sent to recipients who are not in the user's list of contacts."]
         #[serde(rename = "restrictToContacts", default)]
-        pub restrict_to_contacts: Option<bool>,
+        pub restrict_to_contacts: ::std::option::Option<bool>,
         #[doc = "Flag that determines whether responses are sent to recipients who are outside of the user's domain. This feature is only available for G Suite users."]
         #[serde(rename = "restrictToDomain", default)]
-        pub restrict_to_domain: Option<bool>,
+        pub restrict_to_domain: ::std::option::Option<bool>,
         #[doc = "An optional start time for sending auto-replies (epoch ms). When this is specified, Gmail will automatically reply only to messages that it receives after the start time. If both startTime and endTime are specified, startTime must precede endTime."]
         #[serde(rename = "startTime", default)]
         #[serde(with = "crate::parsed_string")]
-        pub start_time: Option<i64>,
+        pub start_time: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for VacationSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2000,7 +2070,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2047,6 +2116,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for WatchRequestLabelFilterAction {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2062,13 +2140,14 @@ pub mod schemas {
     pub struct WatchRequest {
         #[doc = "Filtering behavior of labelIds list specified."]
         #[serde(rename = "labelFilterAction", default)]
-        pub label_filter_action: Option<crate::schemas::WatchRequestLabelFilterAction>,
+        pub label_filter_action:
+            ::std::option::Option<crate::schemas::WatchRequestLabelFilterAction>,
         #[doc = "List of label_ids to restrict notifications about. By default, if unspecified, all changes are pushed out. If specified then dictates which labels are required for a push notification to be generated."]
         #[serde(rename = "labelIds", default)]
-        pub label_ids: Option<Vec<String>>,
+        pub label_ids: ::std::option::Option<Vec<String>>,
         #[doc = "A fully qualified Google Cloud Pub/Sub API topic name to publish the events to. This topic name **must** already exist in Cloud Pub/Sub and you **must** have already granted gmail \"publish\" permission on it. For example, \"projects/my-project-identifier/topics/my-topic-name\" (using the Cloud Pub/Sub \"v1\" topic naming format).\n\nNote that the \"my-project-identifier\" portion must exactly match your Google developer project id (the one executing this watch request)."]
         #[serde(rename = "topicName", default)]
-        pub topic_name: Option<String>,
+        pub topic_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for WatchRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2077,7 +2156,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2096,11 +2174,11 @@ pub mod schemas {
         #[doc = "When Gmail will stop sending notifications for mailbox updates (epoch millis). Call watch again before this time to renew the watch."]
         #[serde(rename = "expiration", default)]
         #[serde(with = "crate::parsed_string")]
-        pub expiration: Option<i64>,
+        pub expiration: ::std::option::Option<i64>,
         #[doc = "The ID of the mailbox's current history record."]
         #[serde(rename = "historyId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub history_id: Option<u64>,
+        pub history_id: ::std::option::Option<u64>,
     }
     impl ::field_selector::FieldSelector for WatchResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2109,7 +2187,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -2154,6 +2231,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -2686,6 +2772,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for GetFormat {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
             }
@@ -5318,6 +5413,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for GetFormat {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ImportInternalDateSource {
                     DateHeader,
@@ -5362,6 +5466,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for ImportInternalDateSource {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum InsertInternalDateSource {
                     DateHeader,
@@ -5404,6 +5517,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for InsertInternalDateSource {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
             }
@@ -13061,6 +13183,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for GetFormat {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
             }
             pub struct ThreadsActions<'a, A> {
                 pub(crate) reqwest: &'a reqwest::Client,
@@ -14426,6 +14557,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -14501,5 +14633,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

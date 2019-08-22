@@ -3,22 +3,24 @@ pub mod schemas {
     pub struct GoogleCloudServicebrokerV1Alpha1Binding {
         #[doc = "A JSON object that contains data for platform resources associated with\nthe binding to be created."]
         #[serde(rename = "bind_resource", default)]
-        pub bind_resource: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub bind_resource:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The id of the binding. Must be unique within GCP project.\nMaximum length is 64, GUID recommended.\nRequired."]
         #[serde(rename = "binding_id", default)]
-        pub binding_id: Option<String>,
+        pub binding_id: ::std::option::Option<String>,
         #[doc = "Output only. Timestamp for when the binding was created."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Configuration options for the service binding."]
         #[serde(rename = "parameters", default)]
-        pub parameters: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub parameters:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The ID of the plan. See `Service` and `Plan` resources for details.\nMaximum length is 64, GUID recommended.\nRequired."]
         #[serde(rename = "plan_id", default)]
-        pub plan_id: Option<String>,
+        pub plan_id: ::std::option::Option<String>,
         #[doc = "The id of the service. Must be a valid identifier of a service\ncontained in the list from a `ListServices()` call.\nMaximum length is 64, GUID recommended.\nRequired."]
         #[serde(rename = "service_id", default)]
-        pub service_id: Option<String>,
+        pub service_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudServicebrokerV1Alpha1Binding {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -27,29 +29,30 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudServicebrokerV1Alpha1CreateBindingResponse {
         #[doc = "Credentials to use the binding."]
         #[serde(rename = "credentials", default)]
-        pub credentials: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub credentials:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Used to communicate description of the response. Usually for non-standard\nerror codes.\nhttps://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#service-broker-errors"]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "If broker executes operation asynchronously, this is the operation ID that\ncan be polled to check the completion status of said operation.\nThis broker always executes all create/delete operations asynchronously."]
         #[serde(rename = "operation", default)]
-        pub operation: Option<String>,
+        pub operation: ::std::option::Option<String>,
         #[doc = "A URL to which the platform may proxy requests for the address sent with\nbind_resource.route"]
         #[serde(rename = "route_service_url", default)]
-        pub route_service_url: Option<String>,
+        pub route_service_url: ::std::option::Option<String>,
         #[doc = "From where to read system logs."]
         #[serde(rename = "syslog_drain_url", default)]
-        pub syslog_drain_url: Option<String>,
+        pub syslog_drain_url: ::std::option::Option<String>,
         #[doc = "An array of configuration for mounting volumes."]
         #[serde(rename = "volume_mounts", default)]
-        pub volume_mounts: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub volume_mounts:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudServicebrokerV1Alpha1CreateBindingResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -58,7 +61,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -76,10 +78,10 @@ pub mod schemas {
     pub struct GoogleCloudServicebrokerV1Alpha1CreateServiceInstanceResponse {
         #[doc = "Used to communicate description of the response. Usually for non-standard\nerror codes.\nhttps://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#service-broker-errors"]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "If broker executes operation asynchronously, this is the operation ID that\ncan be polled to check the completion status of said operation.\nThis broker always will return a non-empty operation on success."]
         #[serde(rename = "operation", default)]
-        pub operation: Option<String>,
+        pub operation: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector
         for GoogleCloudServicebrokerV1Alpha1CreateServiceInstanceResponse
@@ -90,7 +92,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -108,13 +109,13 @@ pub mod schemas {
     pub struct GoogleCloudServicebrokerV1Alpha1DashboardClient {
         #[doc = "The id of the Oauth client that the dashboard will use."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "A URI for the service dashboard.\nValidated by the OAuth token server when the dashboard requests a token."]
         #[serde(rename = "redirect_uri", default)]
-        pub redirect_uri: Option<String>,
+        pub redirect_uri: ::std::option::Option<String>,
         #[doc = "A secret for the dashboard client."]
         #[serde(rename = "secret", default)]
-        pub secret: Option<String>,
+        pub secret: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudServicebrokerV1Alpha1DashboardClient {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -123,7 +124,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -141,10 +141,10 @@ pub mod schemas {
     pub struct GoogleCloudServicebrokerV1Alpha1DeleteBindingResponse {
         #[doc = "Used to communicate description of the response. Usually for non-standard\nerror codes.\nhttps://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#service-broker-errors"]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "If broker executes operation asynchronously, this is the operation ID that\ncan be polled to check the completion status of said operation."]
         #[serde(rename = "operation", default)]
-        pub operation: Option<String>,
+        pub operation: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudServicebrokerV1Alpha1DeleteBindingResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -153,7 +153,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -171,10 +170,10 @@ pub mod schemas {
     pub struct GoogleCloudServicebrokerV1Alpha1DeleteServiceInstanceResponse {
         #[doc = "Used to communicate description of the response. Usually for non-standard\nerror codes.\nhttps://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#service-broker-errors"]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "If broker executes operation asynchronously, this is the operation ID that\ncan be polled to check the completion status of said operation."]
         #[serde(rename = "operation", default)]
-        pub operation: Option<String>,
+        pub operation: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector
         for GoogleCloudServicebrokerV1Alpha1DeleteServiceInstanceResponse
@@ -185,26 +184,27 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudServicebrokerV1Alpha1GetBindingResponse {
         #[doc = "Credentials to use the binding."]
         #[serde(rename = "credentials", default)]
-        pub credentials: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub credentials:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Used to communicate description of the response. Usually for non-standard\nerror codes.\nhttps://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#service-broker-errors"]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "A URL to which the platform may proxy requests for the address sent with\nbind_resource.route"]
         #[serde(rename = "route_service_url", default)]
-        pub route_service_url: Option<String>,
+        pub route_service_url: ::std::option::Option<String>,
         #[doc = "From where to read system logs."]
         #[serde(rename = "syslog_drain_url", default)]
-        pub syslog_drain_url: Option<String>,
+        pub syslog_drain_url: ::std::option::Option<String>,
         #[doc = "An array of configuration for mounting volumes."]
         #[serde(rename = "volume_mounts", default)]
-        pub volume_mounts: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub volume_mounts:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudServicebrokerV1Alpha1GetBindingResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -213,20 +213,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudServicebrokerV1Alpha1ListBindingsResponse {
         #[doc = "The list of the bindings in the instance."]
         #[serde(rename = "bindings", default)]
-        pub bindings: Option<Vec<crate::schemas::GoogleCloudServicebrokerV1Alpha1Binding>>,
+        pub bindings:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudServicebrokerV1Alpha1Binding>>,
         #[doc = "Used to communicate description of the response. Usually for non-standard\nerror codes.\nhttps://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#service-broker-errors"]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "This token allows you to get the next page of results for list requests.\nIf the number of results is larger than `pageSize`, use the `nextPageToken`\nas a value for the query parameter `pageToken` in the next list request.\nSubsequent list requests will have their own `nextPageToken` to continue\npaging through the results"]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudServicebrokerV1Alpha1ListBindingsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -235,20 +235,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudServicebrokerV1Alpha1ListCatalogResponse {
         #[doc = "Used to communicate description of the response. Usually for non-standard\nerror codes.\nhttps://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#service-broker-errors"]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "This token allows you to get the next page of results for list requests.\nIf the number of results is larger than `pageSize`, use the `nextPageToken`\nas a value for the query parameter `pageToken` in the next list request.\nSubsequent list requests will have their own `nextPageToken` to continue\npaging through the results"]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The services available for the requested GCP project."]
         #[serde(rename = "services", default)]
-        pub services: Option<Vec<crate::schemas::GoogleCloudServicebrokerV1Alpha1Service>>,
+        pub services:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudServicebrokerV1Alpha1Service>>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudServicebrokerV1Alpha1ListCatalogResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -257,20 +257,21 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudServicebrokerV1Alpha1ListServiceInstancesResponse {
         #[doc = "Used to communicate description of the response. Usually for non-standard\nerror codes.\nhttps://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#service-broker-errors"]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The list of the instances in the broker."]
         #[serde(rename = "instances", default)]
-        pub instances: Option<Vec<crate::schemas::GoogleCloudServicebrokerV1Alpha1ServiceInstance>>,
+        pub instances: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudServicebrokerV1Alpha1ServiceInstance>,
+        >,
         #[doc = "This token allows you to get the next page of results for list requests.\nIf the number of results is larger than `pageSize`, use the `nextPageToken`\nas a value for the query parameter `pageToken` in the next list request.\nSubsequent list requests will have their own `nextPageToken` to continue\npaging through the results"]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector
         for GoogleCloudServicebrokerV1Alpha1ListServiceInstancesResponse
@@ -281,7 +282,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -299,10 +299,10 @@ pub mod schemas {
     pub struct GoogleCloudServicebrokerV1Alpha1Operation {
         #[doc = "Optional description of the Operation state."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The state of the operation.\nValid values are: \"in progress\", \"succeeded\", and \"failed\"."]
         #[serde(rename = "state", default)]
-        pub state: Option<String>,
+        pub state: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudServicebrokerV1Alpha1Operation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -311,32 +311,33 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudServicebrokerV1Alpha1Plan {
         #[doc = "Specifies whether instances of the service can be bound to applications.\nIf not specified, `Service.bindable` will be presumed."]
         #[serde(rename = "bindable", default)]
-        pub bindable: Option<bool>,
+        pub bindable: ::std::option::Option<bool>,
         #[doc = "Textual description of the plan. Optional."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Whether the service is free."]
         #[serde(rename = "free", default)]
-        pub free: Option<bool>,
+        pub free: ::std::option::Option<bool>,
         #[doc = "ID is a globally unique identifier used to uniquely identify the plan.\nUser must make no presumption about the format of this field."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "A list of metadata for a service offering.\nMetadata is an arbitrary JSON object."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "User friendly name of the plan.\nThe name must be globally unique within GCP project.\nNote, which is different from (\"This must be globally unique within a\nplatform marketplace\")."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Schema definitions for service instances and bindings for the plan."]
         #[serde(rename = "schemas", default)]
-        pub schemas: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub schemas:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudServicebrokerV1Alpha1Plan {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -345,45 +346,45 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudServicebrokerV1Alpha1Service {
         #[doc = "Specifies whether instances of the service can be bound to applications.\nRequired."]
         #[serde(rename = "bindable", default)]
-        pub bindable: Option<bool>,
+        pub bindable: ::std::option::Option<bool>,
         #[doc = "Whether the service provides an endpoint to get service bindings."]
         #[serde(rename = "binding_retrievable", default)]
-        pub binding_retrievable: Option<bool>,
+        pub binding_retrievable: ::std::option::Option<bool>,
         #[doc = "Information to activate Dashboard SSO feature."]
         #[serde(rename = "dashboard_client", default)]
         pub dashboard_client:
-            Option<crate::schemas::GoogleCloudServicebrokerV1Alpha1DashboardClient>,
+            ::std::option::Option<crate::schemas::GoogleCloudServicebrokerV1Alpha1DashboardClient>,
         #[doc = "Textual description of the service. Required."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "ID is a globally unique identifier used to uniquely identify the service.\nID is an opaque string."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Whether the service provides an endpoint to get service instances."]
         #[serde(rename = "instance_retrievable", default)]
-        pub instance_retrievable: Option<bool>,
+        pub instance_retrievable: ::std::option::Option<bool>,
         #[doc = "A list of metadata for a service offering.\nMetadata is an arbitrary JSON object."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "User friendly service name.\nName must match [a-z0-9]+ regexp.\nThe name must be globally unique within GCP project.\nNote, which is different from (\"This must be globally unique within a\nplatform marketplace\").\nRequired."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Whether the service supports upgrade/downgrade for some plans."]
         #[serde(rename = "plan_updateable", default)]
-        pub plan_updateable: Option<bool>,
+        pub plan_updateable: ::std::option::Option<bool>,
         #[doc = "A list of plans for this service.\nAt least one plan is required."]
         #[serde(rename = "plans", default)]
-        pub plans: Option<Vec<crate::schemas::GoogleCloudServicebrokerV1Alpha1Plan>>,
+        pub plans: ::std::option::Option<Vec<crate::schemas::GoogleCloudServicebrokerV1Alpha1Plan>>,
         #[doc = "Tags provide a flexible mechanism to expose a classification, attribute, or\nbase technology of a service."]
         #[serde(rename = "tags", default)]
-        pub tags: Option<Vec<String>>,
+        pub tags: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudServicebrokerV1Alpha1Service {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -392,44 +393,46 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudServicebrokerV1Alpha1ServiceInstance {
         #[doc = "Platform specific contextual information under which the service instance\nis to be provisioned. This replaces organization_guid and space_guid.\nBut can also contain anything.\nCurrently only used for logging context information."]
         #[serde(rename = "context", default)]
-        pub context: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub context:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Output only. Timestamp for when the instance was created."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. Name of the Deployment Manager deployment used for provisioning of this\nservice instance."]
         #[serde(rename = "deploymentName", default)]
-        pub deployment_name: Option<String>,
+        pub deployment_name: ::std::option::Option<String>,
         #[doc = "The id of the service instance. Must be unique within GCP project.\nMaximum length is 64, GUID recommended.\nRequired."]
         #[serde(rename = "instance_id", default)]
-        pub instance_id: Option<String>,
+        pub instance_id: ::std::option::Option<String>,
         #[doc = "The platform GUID for the organization under which the service is to be\nprovisioned.\nRequired."]
         #[serde(rename = "organization_guid", default)]
-        pub organization_guid: Option<String>,
+        pub organization_guid: ::std::option::Option<String>,
         #[doc = "Configuration options for the service instance.\nParameters is JSON object serialized to string."]
         #[serde(rename = "parameters", default)]
-        pub parameters: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub parameters:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The ID of the plan. See `Service` and `Plan` resources for details.\nMaximum length is 64, GUID recommended.\nRequired."]
         #[serde(rename = "plan_id", default)]
-        pub plan_id: Option<String>,
+        pub plan_id: ::std::option::Option<String>,
         #[doc = "Used only in UpdateServiceInstance request to optionally specify previous\nfields."]
         #[serde(rename = "previous_values", default)]
-        pub previous_values: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub previous_values:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Output only. The resource name of the instance, e.g.\nprojects/project_id/brokers/broker_id/service_instances/instance_id"]
         #[serde(rename = "resourceName", default)]
-        pub resource_name: Option<String>,
+        pub resource_name: ::std::option::Option<String>,
         #[doc = "The id of the service. Must be a valid identifier of a service\ncontained in the list from a `ListServices()` call.\nMaximum length is 64, GUID recommended.\nRequired."]
         #[serde(rename = "service_id", default)]
-        pub service_id: Option<String>,
+        pub service_id: ::std::option::Option<String>,
         #[doc = "The identifier for the project space within the platform organization.\nRequired."]
         #[serde(rename = "space_guid", default)]
-        pub space_guid: Option<String>,
+        pub space_guid: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleCloudServicebrokerV1Alpha1ServiceInstance {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -438,7 +441,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -456,10 +458,10 @@ pub mod schemas {
     pub struct GoogleCloudServicebrokerV1Alpha1UpdateServiceInstanceResponse {
         #[doc = "Used to communicate description of the response. Usually for non-standard\nerror codes.\nhttps://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#service-broker-errors"]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "If broker executes operation asynchronously, this is the operation ID that\ncan be polled to check the completion status of said operation."]
         #[serde(rename = "operation", default)]
-        pub operation: Option<String>,
+        pub operation: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector
         for GoogleCloudServicebrokerV1Alpha1UpdateServiceInstanceResponse
@@ -470,7 +472,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -488,13 +489,13 @@ pub mod schemas {
     pub struct GoogleIamV1Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
         #[serde(rename = "condition", default)]
-        pub condition: Option<crate::schemas::GoogleTypeExpr>,
+        pub condition: ::std::option::Option<crate::schemas::GoogleTypeExpr>,
         #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
         #[serde(rename = "members", default)]
-        pub members: Option<Vec<String>>,
+        pub members: ::std::option::Option<Vec<String>>,
         #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
         #[serde(rename = "role", default)]
-        pub role: Option<String>,
+        pub role: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleIamV1Binding {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -503,7 +504,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -521,13 +521,13 @@ pub mod schemas {
     pub struct GoogleIamV1Policy {
         #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
         #[serde(rename = "bindings", default)]
-        pub bindings: Option<Vec<crate::schemas::GoogleIamV1Binding>>,
+        pub bindings: ::std::option::Option<Vec<crate::schemas::GoogleIamV1Binding>>,
         #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<Vec<u8>>,
+        pub etag: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Deprecated."]
         #[serde(rename = "version", default)]
-        pub version: Option<i32>,
+        pub version: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for GoogleIamV1Policy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -536,7 +536,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -554,7 +553,7 @@ pub mod schemas {
     pub struct GoogleIamV1SetIamPolicyRequest {
         #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
         #[serde(rename = "policy", default)]
-        pub policy: Option<crate::schemas::GoogleIamV1Policy>,
+        pub policy: ::std::option::Option<crate::schemas::GoogleIamV1Policy>,
     }
     impl ::field_selector::FieldSelector for GoogleIamV1SetIamPolicyRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -563,7 +562,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -581,7 +579,7 @@ pub mod schemas {
     pub struct GoogleIamV1TestIamPermissionsRequest {
         #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
         #[serde(rename = "permissions", default)]
-        pub permissions: Option<Vec<String>>,
+        pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for GoogleIamV1TestIamPermissionsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -590,7 +588,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -608,7 +605,7 @@ pub mod schemas {
     pub struct GoogleIamV1TestIamPermissionsResponse {
         #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
         #[serde(rename = "permissions", default)]
-        pub permissions: Option<Vec<String>>,
+        pub permissions: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for GoogleIamV1TestIamPermissionsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -617,7 +614,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -635,16 +631,16 @@ pub mod schemas {
     pub struct GoogleTypeExpr {
         #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
         #[serde(rename = "expression", default)]
-        pub expression: Option<String>,
+        pub expression: ::std::option::Option<String>,
         #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleTypeExpr {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -653,7 +649,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -708,6 +703,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -752,6 +756,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -4889,6 +4902,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4964,5 +4978,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

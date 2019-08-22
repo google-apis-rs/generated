@@ -14,10 +14,10 @@ pub mod schemas {
     pub struct AccessPolicy {
         #[doc = "The value of allowed indicates whether the access to the policy is allowed or denied by default."]
         #[serde(rename = "allowed", default)]
-        pub allowed: Option<bool>,
+        pub allowed: ::std::option::Option<bool>,
         #[doc = "A list of region codes that identify countries where the default policy do not apply."]
         #[serde(rename = "exception", default)]
-        pub exception: Option<Vec<String>>,
+        pub exception: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for AccessPolicy {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -26,7 +26,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -44,19 +43,19 @@ pub mod schemas {
     pub struct Activity {
         #[doc = "The contentDetails object contains information about the content associated with the activity. For example, if the snippet.type value is videoRated, then the contentDetails object's content identifies the rated video."]
         #[serde(rename = "contentDetails", default)]
-        pub content_details: Option<crate::schemas::ActivityContentDetails>,
+        pub content_details: ::std::option::Option<crate::schemas::ActivityContentDetails>,
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the activity."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#activity\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the activity, including the activity's type and group ID."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::ActivitySnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::ActivitySnippet>,
     }
     impl ::field_selector::FieldSelector for Activity {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -65,7 +64,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -83,37 +81,40 @@ pub mod schemas {
     pub struct ActivityContentDetails {
         #[doc = "The bulletin object contains details about a channel bulletin post. This object is only present if the snippet.type is bulletin."]
         #[serde(rename = "bulletin", default)]
-        pub bulletin: Option<crate::schemas::ActivityContentDetailsBulletin>,
+        pub bulletin: ::std::option::Option<crate::schemas::ActivityContentDetailsBulletin>,
         #[doc = "The channelItem object contains details about a resource which was added to a channel. This property is only present if the snippet.type is channelItem."]
         #[serde(rename = "channelItem", default)]
-        pub channel_item: Option<crate::schemas::ActivityContentDetailsChannelItem>,
+        pub channel_item: ::std::option::Option<crate::schemas::ActivityContentDetailsChannelItem>,
         #[doc = "The comment object contains information about a resource that received a comment. This property is only present if the snippet.type is comment."]
         #[serde(rename = "comment", default)]
-        pub comment: Option<crate::schemas::ActivityContentDetailsComment>,
+        pub comment: ::std::option::Option<crate::schemas::ActivityContentDetailsComment>,
         #[doc = "The favorite object contains information about a video that was marked as a favorite video. This property is only present if the snippet.type is favorite."]
         #[serde(rename = "favorite", default)]
-        pub favorite: Option<crate::schemas::ActivityContentDetailsFavorite>,
+        pub favorite: ::std::option::Option<crate::schemas::ActivityContentDetailsFavorite>,
         #[doc = "The like object contains information about a resource that received a positive (like) rating. This property is only present if the snippet.type is like."]
         #[serde(rename = "like", default)]
-        pub like: Option<crate::schemas::ActivityContentDetailsLike>,
+        pub like: ::std::option::Option<crate::schemas::ActivityContentDetailsLike>,
         #[doc = "The playlistItem object contains information about a new playlist item. This property is only present if the snippet.type is playlistItem."]
         #[serde(rename = "playlistItem", default)]
-        pub playlist_item: Option<crate::schemas::ActivityContentDetailsPlaylistItem>,
+        pub playlist_item:
+            ::std::option::Option<crate::schemas::ActivityContentDetailsPlaylistItem>,
         #[doc = "The promotedItem object contains details about a resource which is being promoted. This property is only present if the snippet.type is promotedItem."]
         #[serde(rename = "promotedItem", default)]
-        pub promoted_item: Option<crate::schemas::ActivityContentDetailsPromotedItem>,
+        pub promoted_item:
+            ::std::option::Option<crate::schemas::ActivityContentDetailsPromotedItem>,
         #[doc = "The recommendation object contains information about a recommended resource. This property is only present if the snippet.type is recommendation."]
         #[serde(rename = "recommendation", default)]
-        pub recommendation: Option<crate::schemas::ActivityContentDetailsRecommendation>,
+        pub recommendation:
+            ::std::option::Option<crate::schemas::ActivityContentDetailsRecommendation>,
         #[doc = "The social object contains details about a social network post. This property is only present if the snippet.type is social."]
         #[serde(rename = "social", default)]
-        pub social: Option<crate::schemas::ActivityContentDetailsSocial>,
+        pub social: ::std::option::Option<crate::schemas::ActivityContentDetailsSocial>,
         #[doc = "The subscription object contains information about a channel that a user subscribed to. This property is only present if the snippet.type is subscription."]
         #[serde(rename = "subscription", default)]
-        pub subscription: Option<crate::schemas::ActivityContentDetailsSubscription>,
+        pub subscription: ::std::option::Option<crate::schemas::ActivityContentDetailsSubscription>,
         #[doc = "The upload object contains information about the uploaded video. This property is only present if the snippet.type is upload."]
         #[serde(rename = "upload", default)]
-        pub upload: Option<crate::schemas::ActivityContentDetailsUpload>,
+        pub upload: ::std::option::Option<crate::schemas::ActivityContentDetailsUpload>,
     }
     impl ::field_selector::FieldSelector for ActivityContentDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -122,7 +123,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -140,7 +140,7 @@ pub mod schemas {
     pub struct ActivityContentDetailsBulletin {
         #[doc = "The resourceId object contains information that identifies the resource associated with a bulletin post."]
         #[serde(rename = "resourceId", default)]
-        pub resource_id: Option<crate::schemas::ResourceId>,
+        pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::field_selector::FieldSelector for ActivityContentDetailsBulletin {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -149,7 +149,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -167,7 +166,7 @@ pub mod schemas {
     pub struct ActivityContentDetailsChannelItem {
         #[doc = "The resourceId object contains information that identifies the resource that was added to the channel."]
         #[serde(rename = "resourceId", default)]
-        pub resource_id: Option<crate::schemas::ResourceId>,
+        pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::field_selector::FieldSelector for ActivityContentDetailsChannelItem {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -176,7 +175,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -194,7 +192,7 @@ pub mod schemas {
     pub struct ActivityContentDetailsComment {
         #[doc = "The resourceId object contains information that identifies the resource associated with the comment."]
         #[serde(rename = "resourceId", default)]
-        pub resource_id: Option<crate::schemas::ResourceId>,
+        pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::field_selector::FieldSelector for ActivityContentDetailsComment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -203,7 +201,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -221,7 +218,7 @@ pub mod schemas {
     pub struct ActivityContentDetailsFavorite {
         #[doc = "The resourceId object contains information that identifies the resource that was marked as a favorite."]
         #[serde(rename = "resourceId", default)]
-        pub resource_id: Option<crate::schemas::ResourceId>,
+        pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::field_selector::FieldSelector for ActivityContentDetailsFavorite {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -230,7 +227,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -248,7 +244,7 @@ pub mod schemas {
     pub struct ActivityContentDetailsLike {
         #[doc = "The resourceId object contains information that identifies the rated resource."]
         #[serde(rename = "resourceId", default)]
-        pub resource_id: Option<crate::schemas::ResourceId>,
+        pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::field_selector::FieldSelector for ActivityContentDetailsLike {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -257,7 +253,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -275,13 +270,13 @@ pub mod schemas {
     pub struct ActivityContentDetailsPlaylistItem {
         #[doc = "The value that YouTube uses to uniquely identify the playlist."]
         #[serde(rename = "playlistId", default)]
-        pub playlist_id: Option<String>,
+        pub playlist_id: ::std::option::Option<String>,
         #[doc = "ID of the item within the playlist."]
         #[serde(rename = "playlistItemId", default)]
-        pub playlist_item_id: Option<String>,
+        pub playlist_item_id: ::std::option::Option<String>,
         #[doc = "The resourceId object contains information about the resource that was added to the playlist."]
         #[serde(rename = "resourceId", default)]
-        pub resource_id: Option<crate::schemas::ResourceId>,
+        pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::field_selector::FieldSelector for ActivityContentDetailsPlaylistItem {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -290,7 +285,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -341,6 +335,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ActivityContentDetailsPromotedItemCtaType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -356,34 +359,35 @@ pub mod schemas {
     pub struct ActivityContentDetailsPromotedItem {
         #[doc = "The URL the client should fetch to request a promoted item."]
         #[serde(rename = "adTag", default)]
-        pub ad_tag: Option<String>,
+        pub ad_tag: ::std::option::Option<String>,
         #[doc = "The URL the client should ping to indicate that the user clicked through on this promoted item."]
         #[serde(rename = "clickTrackingUrl", default)]
-        pub click_tracking_url: Option<String>,
+        pub click_tracking_url: ::std::option::Option<String>,
         #[doc = "The URL the client should ping to indicate that the user was shown this promoted item."]
         #[serde(rename = "creativeViewUrl", default)]
-        pub creative_view_url: Option<String>,
+        pub creative_view_url: ::std::option::Option<String>,
         #[doc = "The type of call-to-action, a message to the user indicating action that can be taken."]
         #[serde(rename = "ctaType", default)]
-        pub cta_type: Option<crate::schemas::ActivityContentDetailsPromotedItemCtaType>,
+        pub cta_type:
+            ::std::option::Option<crate::schemas::ActivityContentDetailsPromotedItemCtaType>,
         #[doc = "The custom call-to-action button text. If specified, it will override the default button text for the cta_type."]
         #[serde(rename = "customCtaButtonText", default)]
-        pub custom_cta_button_text: Option<String>,
+        pub custom_cta_button_text: ::std::option::Option<String>,
         #[doc = "The text description to accompany the promoted item."]
         #[serde(rename = "descriptionText", default)]
-        pub description_text: Option<String>,
+        pub description_text: ::std::option::Option<String>,
         #[doc = "The URL the client should direct the user to, if the user chooses to visit the advertiser's website."]
         #[serde(rename = "destinationUrl", default)]
-        pub destination_url: Option<String>,
+        pub destination_url: ::std::option::Option<String>,
         #[doc = "The list of forecasting URLs. The client should ping all of these URLs when a promoted item is not available, to indicate that a promoted item could have been shown."]
         #[serde(rename = "forecastingUrl", default)]
-        pub forecasting_url: Option<Vec<String>>,
+        pub forecasting_url: ::std::option::Option<Vec<String>>,
         #[doc = "The list of impression URLs. The client should ping all of these URLs to indicate that the user was shown this promoted item."]
         #[serde(rename = "impressionUrl", default)]
-        pub impression_url: Option<Vec<String>>,
+        pub impression_url: ::std::option::Option<Vec<String>>,
         #[doc = "The ID that YouTube uses to uniquely identify the promoted video."]
         #[serde(rename = "videoId", default)]
-        pub video_id: Option<String>,
+        pub video_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ActivityContentDetailsPromotedItem {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -392,7 +396,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -445,6 +448,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ActivityContentDetailsRecommendationReason {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -460,13 +472,14 @@ pub mod schemas {
     pub struct ActivityContentDetailsRecommendation {
         #[doc = "The reason that the resource is recommended to the user."]
         #[serde(rename = "reason", default)]
-        pub reason: Option<crate::schemas::ActivityContentDetailsRecommendationReason>,
+        pub reason:
+            ::std::option::Option<crate::schemas::ActivityContentDetailsRecommendationReason>,
         #[doc = "The resourceId object contains information that identifies the recommended resource."]
         #[serde(rename = "resourceId", default)]
-        pub resource_id: Option<crate::schemas::ResourceId>,
+        pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
         #[doc = "The seedResourceId object contains information about the resource that caused the recommendation."]
         #[serde(rename = "seedResourceId", default)]
-        pub seed_resource_id: Option<crate::schemas::ResourceId>,
+        pub seed_resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::field_selector::FieldSelector for ActivityContentDetailsRecommendation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -475,7 +488,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -528,6 +540,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ActivityContentDetailsSocialType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -543,19 +564,19 @@ pub mod schemas {
     pub struct ActivityContentDetailsSocial {
         #[doc = "The author of the social network post."]
         #[serde(rename = "author", default)]
-        pub author: Option<String>,
+        pub author: ::std::option::Option<String>,
         #[doc = "An image of the post's author."]
         #[serde(rename = "imageUrl", default)]
-        pub image_url: Option<String>,
+        pub image_url: ::std::option::Option<String>,
         #[doc = "The name of the social network."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::ActivityContentDetailsSocialType>,
+        pub r#type: ::std::option::Option<crate::schemas::ActivityContentDetailsSocialType>,
         #[doc = "The URL of the social network post."]
         #[serde(rename = "referenceUrl", default)]
-        pub reference_url: Option<String>,
+        pub reference_url: ::std::option::Option<String>,
         #[doc = "The resourceId object encapsulates information that identifies the resource associated with a social network post."]
         #[serde(rename = "resourceId", default)]
-        pub resource_id: Option<crate::schemas::ResourceId>,
+        pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::field_selector::FieldSelector for ActivityContentDetailsSocial {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -564,7 +585,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -582,7 +602,7 @@ pub mod schemas {
     pub struct ActivityContentDetailsSubscription {
         #[doc = "The resourceId object contains information that identifies the resource that the user subscribed to."]
         #[serde(rename = "resourceId", default)]
-        pub resource_id: Option<crate::schemas::ResourceId>,
+        pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
     }
     impl ::field_selector::FieldSelector for ActivityContentDetailsSubscription {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -591,7 +611,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -609,7 +628,7 @@ pub mod schemas {
     pub struct ActivityContentDetailsUpload {
         #[doc = "The ID that YouTube uses to uniquely identify the uploaded video."]
         #[serde(rename = "videoId", default)]
-        pub video_id: Option<String>,
+        pub video_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ActivityContentDetailsUpload {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -618,7 +637,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -636,29 +654,29 @@ pub mod schemas {
     pub struct ActivityListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of activities, or events, that match the request criteria."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Activity>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Activity>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#activityListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(rename = "prevPageToken", default)]
-        pub prev_page_token: Option<String>,
+        pub prev_page_token: ::std::option::Option<String>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ActivityListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -667,7 +685,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -741,6 +758,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ActivitySnippetType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -756,28 +782,28 @@ pub mod schemas {
     pub struct ActivitySnippet {
         #[doc = "The ID that YouTube uses to uniquely identify the channel associated with the activity."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "Channel title for the channel responsible for this activity"]
         #[serde(rename = "channelTitle", default)]
-        pub channel_title: Option<String>,
+        pub channel_title: ::std::option::Option<String>,
         #[doc = "The description of the resource primarily associated with the activity."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The group ID associated with the activity. A group ID identifies user events that are associated with the same user and resource. For example, if a user rates a video and marks the same video as a favorite, the entries for those events would have the same group ID in the user's activity feed. In your user interface, you can avoid repetition by grouping events with the same groupId value."]
         #[serde(rename = "groupId", default)]
-        pub group_id: Option<String>,
+        pub group_id: ::std::option::Option<String>,
         #[doc = "The date and time that the video was uploaded. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "publishedAt", default)]
-        pub published_at: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The type of activity that the resource describes."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::ActivitySnippetType>,
+        pub r#type: ::std::option::Option<crate::schemas::ActivitySnippetType>,
         #[doc = "A map of thumbnail images associated with the resource that is primarily associated with the activity. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
         #[serde(rename = "thumbnails", default)]
-        pub thumbnails: Option<crate::schemas::ThumbnailDetails>,
+        pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
         #[doc = "The title of the resource primarily associated with the activity."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ActivitySnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -786,7 +812,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -804,16 +829,16 @@ pub mod schemas {
     pub struct Caption {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the caption track."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#caption\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the caption."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::CaptionSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::CaptionSnippet>,
     }
     impl ::field_selector::FieldSelector for Caption {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -822,7 +847,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -840,19 +864,19 @@ pub mod schemas {
     pub struct CaptionListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of captions that match the request criteria."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Caption>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Caption>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#captionListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CaptionListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -861,7 +885,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -914,6 +937,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CaptionSnippetAudioTrackType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CaptionSnippetFailureReason {
         ProcessingFailed,
@@ -959,6 +991,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for CaptionSnippetFailureReason {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1008,6 +1049,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CaptionSnippetStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CaptionSnippetTrackKind {
         Asr,
@@ -1055,6 +1105,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CaptionSnippetTrackKind {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1070,43 +1129,43 @@ pub mod schemas {
     pub struct CaptionSnippet {
         #[doc = "The type of audio track associated with the caption track."]
         #[serde(rename = "audioTrackType", default)]
-        pub audio_track_type: Option<crate::schemas::CaptionSnippetAudioTrackType>,
+        pub audio_track_type: ::std::option::Option<crate::schemas::CaptionSnippetAudioTrackType>,
         #[doc = "The reason that YouTube failed to process the caption track. This property is only present if the state property's value is failed."]
         #[serde(rename = "failureReason", default)]
-        pub failure_reason: Option<crate::schemas::CaptionSnippetFailureReason>,
+        pub failure_reason: ::std::option::Option<crate::schemas::CaptionSnippetFailureReason>,
         #[doc = "Indicates whether YouTube synchronized the caption track to the audio track in the video. The value will be true if a sync was explicitly requested when the caption track was uploaded. For example, when calling the captions.insert or captions.update methods, you can set the sync parameter to true to instruct YouTube to sync the uploaded track to the video. If the value is false, YouTube uses the time codes in the uploaded caption track to determine when to display captions."]
         #[serde(rename = "isAutoSynced", default)]
-        pub is_auto_synced: Option<bool>,
+        pub is_auto_synced: ::std::option::Option<bool>,
         #[doc = "Indicates whether the track contains closed captions for the deaf and hard of hearing. The default value is false."]
         #[serde(rename = "isCC", default)]
-        pub is_cc: Option<bool>,
+        pub is_cc: ::std::option::Option<bool>,
         #[doc = "Indicates whether the caption track is a draft. If the value is true, then the track is not publicly visible. The default value is false."]
         #[serde(rename = "isDraft", default)]
-        pub is_draft: Option<bool>,
+        pub is_draft: ::std::option::Option<bool>,
         #[doc = "Indicates whether caption track is formatted for \"easy reader,\" meaning it is at a third-grade level for language learners. The default value is false."]
         #[serde(rename = "isEasyReader", default)]
-        pub is_easy_reader: Option<bool>,
+        pub is_easy_reader: ::std::option::Option<bool>,
         #[doc = "Indicates whether the caption track uses large text for the vision-impaired. The default value is false."]
         #[serde(rename = "isLarge", default)]
-        pub is_large: Option<bool>,
+        pub is_large: ::std::option::Option<bool>,
         #[doc = "The language of the caption track. The property value is a BCP-47 language tag."]
         #[serde(rename = "language", default)]
-        pub language: Option<String>,
+        pub language: ::std::option::Option<String>,
         #[doc = "The date and time when the caption track was last updated. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "lastUpdated", default)]
-        pub last_updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub last_updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The name of the caption track. The name is intended to be visible to the user as an option during playback."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The caption track's status."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::CaptionSnippetStatus>,
+        pub status: ::std::option::Option<crate::schemas::CaptionSnippetStatus>,
         #[doc = "The caption track's type."]
         #[serde(rename = "trackKind", default)]
-        pub track_kind: Option<crate::schemas::CaptionSnippetTrackKind>,
+        pub track_kind: ::std::option::Option<crate::schemas::CaptionSnippetTrackKind>,
         #[doc = "The ID that YouTube uses to uniquely identify the video associated with the caption track."]
         #[serde(rename = "videoId", default)]
-        pub video_id: Option<String>,
+        pub video_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CaptionSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1115,7 +1174,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1163,6 +1221,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for CdnSettingsFrameRate {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1213,6 +1280,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for CdnSettingsIngestionType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1277,6 +1353,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CdnSettingsResolution {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1292,19 +1377,19 @@ pub mod schemas {
     pub struct CdnSettings {
         #[doc = "The format of the video stream that you are sending to Youtube."]
         #[serde(rename = "format", default)]
-        pub format: Option<String>,
+        pub format: ::std::option::Option<String>,
         #[doc = "The frame rate of the inbound video data."]
         #[serde(rename = "frameRate", default)]
-        pub frame_rate: Option<crate::schemas::CdnSettingsFrameRate>,
+        pub frame_rate: ::std::option::Option<crate::schemas::CdnSettingsFrameRate>,
         #[doc = "The ingestionInfo object contains information that YouTube provides that you need to transmit your RTMP or HTTP stream to YouTube."]
         #[serde(rename = "ingestionInfo", default)]
-        pub ingestion_info: Option<crate::schemas::IngestionInfo>,
+        pub ingestion_info: ::std::option::Option<crate::schemas::IngestionInfo>,
         #[doc = "The method or protocol used to transmit the video stream."]
         #[serde(rename = "ingestionType", default)]
-        pub ingestion_type: Option<crate::schemas::CdnSettingsIngestionType>,
+        pub ingestion_type: ::std::option::Option<crate::schemas::CdnSettingsIngestionType>,
         #[doc = "The resolution of the inbound video data."]
         #[serde(rename = "resolution", default)]
-        pub resolution: Option<crate::schemas::CdnSettingsResolution>,
+        pub resolution: ::std::option::Option<crate::schemas::CdnSettingsResolution>,
     }
     impl ::field_selector::FieldSelector for CdnSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1313,7 +1398,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1331,47 +1415,49 @@ pub mod schemas {
     pub struct Channel {
         #[doc = "The auditionDetails object encapsulates channel data that is relevant for YouTube Partners during the audition process."]
         #[serde(rename = "auditDetails", default)]
-        pub audit_details: Option<crate::schemas::ChannelAuditDetails>,
+        pub audit_details: ::std::option::Option<crate::schemas::ChannelAuditDetails>,
         #[doc = "The brandingSettings object encapsulates information about the branding of the channel."]
         #[serde(rename = "brandingSettings", default)]
-        pub branding_settings: Option<crate::schemas::ChannelBrandingSettings>,
+        pub branding_settings: ::std::option::Option<crate::schemas::ChannelBrandingSettings>,
         #[doc = "The contentDetails object encapsulates information about the channel's content."]
         #[serde(rename = "contentDetails", default)]
-        pub content_details: Option<crate::schemas::ChannelContentDetails>,
+        pub content_details: ::std::option::Option<crate::schemas::ChannelContentDetails>,
         #[doc = "The contentOwnerDetails object encapsulates channel data that is relevant for YouTube Partners linked with the channel."]
         #[serde(rename = "contentOwnerDetails", default)]
-        pub content_owner_details: Option<crate::schemas::ChannelContentOwnerDetails>,
+        pub content_owner_details:
+            ::std::option::Option<crate::schemas::ChannelContentOwnerDetails>,
         #[doc = "The conversionPings object encapsulates information about conversion pings that need to be respected by the channel."]
         #[serde(rename = "conversionPings", default)]
-        pub conversion_pings: Option<crate::schemas::ChannelConversionPings>,
+        pub conversion_pings: ::std::option::Option<crate::schemas::ChannelConversionPings>,
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the channel."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The invideoPromotion object encapsulates information about promotion campaign associated with the channel."]
         #[serde(rename = "invideoPromotion", default)]
-        pub invideo_promotion: Option<crate::schemas::InvideoPromotion>,
+        pub invideo_promotion: ::std::option::Option<crate::schemas::InvideoPromotion>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#channel\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Localizations for different languages"]
         #[serde(rename = "localizations", default)]
-        pub localizations:
-            Option<::std::collections::BTreeMap<String, crate::schemas::ChannelLocalization>>,
+        pub localizations: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::ChannelLocalization>,
+        >,
         #[doc = "The snippet object contains basic details about the channel, such as its title, description, and thumbnail images."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::ChannelSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::ChannelSnippet>,
         #[doc = "The statistics object encapsulates statistics for the channel."]
         #[serde(rename = "statistics", default)]
-        pub statistics: Option<crate::schemas::ChannelStatistics>,
+        pub statistics: ::std::option::Option<crate::schemas::ChannelStatistics>,
         #[doc = "The status object encapsulates information about the privacy status of the channel."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::ChannelStatus>,
+        pub status: ::std::option::Option<crate::schemas::ChannelStatus>,
         #[doc = "The topicDetails object encapsulates information about Freebase topics associated with the channel."]
         #[serde(rename = "topicDetails", default)]
-        pub topic_details: Option<crate::schemas::ChannelTopicDetails>,
+        pub topic_details: ::std::option::Option<crate::schemas::ChannelTopicDetails>,
     }
     impl ::field_selector::FieldSelector for Channel {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1380,7 +1466,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1398,13 +1483,13 @@ pub mod schemas {
     pub struct ChannelAuditDetails {
         #[doc = "Whether or not the channel respects the community guidelines."]
         #[serde(rename = "communityGuidelinesGoodStanding", default)]
-        pub community_guidelines_good_standing: Option<bool>,
+        pub community_guidelines_good_standing: ::std::option::Option<bool>,
         #[doc = "Whether or not the channel has any unresolved claims."]
         #[serde(rename = "contentIdClaimsGoodStanding", default)]
-        pub content_id_claims_good_standing: Option<bool>,
+        pub content_id_claims_good_standing: ::std::option::Option<bool>,
         #[doc = "Whether or not the channel has any copyright strikes."]
         #[serde(rename = "copyrightStrikesGoodStanding", default)]
-        pub copyright_strikes_good_standing: Option<bool>,
+        pub copyright_strikes_good_standing: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for ChannelAuditDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1413,7 +1498,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1431,13 +1515,13 @@ pub mod schemas {
     pub struct ChannelBannerResource {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#channelBannerResource\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The URL of this banner image."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChannelBannerResource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1446,7 +1530,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1464,16 +1547,16 @@ pub mod schemas {
     pub struct ChannelBrandingSettings {
         #[doc = "Branding properties for the channel view."]
         #[serde(rename = "channel", default)]
-        pub channel: Option<crate::schemas::ChannelSettings>,
+        pub channel: ::std::option::Option<crate::schemas::ChannelSettings>,
         #[doc = "Additional experimental branding properties."]
         #[serde(rename = "hints", default)]
-        pub hints: Option<Vec<crate::schemas::PropertyValue>>,
+        pub hints: ::std::option::Option<Vec<crate::schemas::PropertyValue>>,
         #[doc = "Branding properties for branding images."]
         #[serde(rename = "image", default)]
-        pub image: Option<crate::schemas::ImageSettings>,
+        pub image: ::std::option::Option<crate::schemas::ImageSettings>,
         #[doc = "Branding properties for the watch page."]
         #[serde(rename = "watch", default)]
-        pub watch: Option<crate::schemas::WatchSettings>,
+        pub watch: ::std::option::Option<crate::schemas::WatchSettings>,
     }
     impl ::field_selector::FieldSelector for ChannelBrandingSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1482,7 +1565,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1500,19 +1582,19 @@ pub mod schemas {
     pub struct ChannelContentDetailsRelatedPlaylists {
         #[doc = "The ID of the playlist that contains the channel\"s favorite videos. Use the  playlistItems.insert and  playlistItems.delete to add or remove items from that list."]
         #[serde(rename = "favorites", default)]
-        pub favorites: Option<String>,
+        pub favorites: ::std::option::Option<String>,
         #[doc = "The ID of the playlist that contains the channel\"s liked videos. Use the   playlistItems.insert and  playlistItems.delete to add or remove items from that list."]
         #[serde(rename = "likes", default)]
-        pub likes: Option<String>,
+        pub likes: ::std::option::Option<String>,
         #[doc = "The ID of the playlist that contains the channel\"s uploaded videos. Use the  videos.insert method to upload new videos and the videos.delete method to delete previously uploaded videos."]
         #[serde(rename = "uploads", default)]
-        pub uploads: Option<String>,
+        pub uploads: ::std::option::Option<String>,
         #[doc = "The ID of the playlist that contains the channel\"s watch history. Use the  playlistItems.insert and  playlistItems.delete to add or remove items from that list."]
         #[serde(rename = "watchHistory", default)]
-        pub watch_history: Option<String>,
+        pub watch_history: ::std::option::Option<String>,
         #[doc = "The ID of the playlist that contains the channel\"s watch later playlist. Use the playlistItems.insert and  playlistItems.delete to add or remove items from that list."]
         #[serde(rename = "watchLater", default)]
-        pub watch_later: Option<String>,
+        pub watch_later: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChannelContentDetailsRelatedPlaylists {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1521,7 +1603,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1538,7 +1619,8 @@ pub mod schemas {
     )]
     pub struct ChannelContentDetails {
         #[serde(rename = "relatedPlaylists", default)]
-        pub related_playlists: Option<crate::schemas::ChannelContentDetailsRelatedPlaylists>,
+        pub related_playlists:
+            ::std::option::Option<crate::schemas::ChannelContentDetailsRelatedPlaylists>,
     }
     impl ::field_selector::FieldSelector for ChannelContentDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1547,7 +1629,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1565,10 +1646,10 @@ pub mod schemas {
     pub struct ChannelContentOwnerDetails {
         #[doc = "The ID of the content owner linked to the channel."]
         #[serde(rename = "contentOwner", default)]
-        pub content_owner: Option<String>,
+        pub content_owner: ::std::option::Option<String>,
         #[doc = "The date and time of when the channel was linked to the content owner. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "timeLinked", default)]
-        pub time_linked: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub time_linked: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for ChannelContentOwnerDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1577,7 +1658,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1627,6 +1707,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ChannelConversionPingContext {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1642,10 +1731,10 @@ pub mod schemas {
     pub struct ChannelConversionPing {
         #[doc = "Defines the context of the ping."]
         #[serde(rename = "context", default)]
-        pub context: Option<crate::schemas::ChannelConversionPingContext>,
+        pub context: ::std::option::Option<crate::schemas::ChannelConversionPingContext>,
         #[doc = "The url (without the schema) that the player shall send the ping to. It's at caller's descretion to decide which schema to use (http vs https) Example of a returned url: //googleads.g.doubleclick.net/pagead/ viewthroughconversion/962985656/?data=path%3DtHe_path%3Btype%3D cview%3Butuid%3DGISQtTNGYqaYl4sKxoVvKA&labe=default The caller must append biscotti authentication (ms param in case of mobile, for example) to this ping."]
         #[serde(rename = "conversionUrl", default)]
-        pub conversion_url: Option<String>,
+        pub conversion_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChannelConversionPing {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1654,7 +1743,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1672,7 +1760,7 @@ pub mod schemas {
     pub struct ChannelConversionPings {
         #[doc = "Pings that the app shall fire (authenticated by biscotti cookie). Each ping has a context, in which the app must fire the ping, and a url identifying the ping."]
         #[serde(rename = "pings", default)]
-        pub pings: Option<Vec<crate::schemas::ChannelConversionPing>>,
+        pub pings: ::std::option::Option<Vec<crate::schemas::ChannelConversionPing>>,
     }
     impl ::field_selector::FieldSelector for ChannelConversionPings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1681,7 +1769,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1699,29 +1786,29 @@ pub mod schemas {
     pub struct ChannelListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of channels that match the request criteria."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Channel>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Channel>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#channelListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(rename = "prevPageToken", default)]
-        pub prev_page_token: Option<String>,
+        pub prev_page_token: ::std::option::Option<String>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChannelListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1730,7 +1817,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1748,10 +1834,10 @@ pub mod schemas {
     pub struct ChannelLocalization {
         #[doc = "The localized strings for channel's description."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The localized strings for channel's title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChannelLocalization {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1760,7 +1846,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1778,16 +1863,16 @@ pub mod schemas {
     pub struct ChannelProfileDetails {
         #[doc = "The YouTube channel ID."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "The channel's URL."]
         #[serde(rename = "channelUrl", default)]
-        pub channel_url: Option<String>,
+        pub channel_url: ::std::option::Option<String>,
         #[doc = "The channel's display name."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The channels's avatar URL."]
         #[serde(rename = "profileImageUrl", default)]
-        pub profile_image_url: Option<String>,
+        pub profile_image_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChannelProfileDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1796,7 +1881,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1814,27 +1898,27 @@ pub mod schemas {
     pub struct ChannelSection {
         #[doc = "The contentDetails object contains details about the channel section content, such as a list of playlists or channels featured in the section."]
         #[serde(rename = "contentDetails", default)]
-        pub content_details: Option<crate::schemas::ChannelSectionContentDetails>,
+        pub content_details: ::std::option::Option<crate::schemas::ChannelSectionContentDetails>,
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the channel section."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#channelSection\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Localizations for different languages"]
         #[serde(rename = "localizations", default)]
-        pub localizations: Option<
+        pub localizations: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::ChannelSectionLocalization>,
         >,
         #[doc = "The snippet object contains basic details about the channel section, such as its type, style and title."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::ChannelSectionSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::ChannelSectionSnippet>,
         #[doc = "The targeting object contains basic targeting settings about the channel section."]
         #[serde(rename = "targeting", default)]
-        pub targeting: Option<crate::schemas::ChannelSectionTargeting>,
+        pub targeting: ::std::option::Option<crate::schemas::ChannelSectionTargeting>,
     }
     impl ::field_selector::FieldSelector for ChannelSection {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1843,7 +1927,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1861,10 +1944,10 @@ pub mod schemas {
     pub struct ChannelSectionContentDetails {
         #[doc = "The channel ids for type multiple_channels."]
         #[serde(rename = "channels", default)]
-        pub channels: Option<Vec<String>>,
+        pub channels: ::std::option::Option<Vec<String>>,
         #[doc = "The playlist ids for type single_playlist and multiple_playlists. For singlePlaylist, only one playlistId is allowed."]
         #[serde(rename = "playlists", default)]
-        pub playlists: Option<Vec<String>>,
+        pub playlists: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ChannelSectionContentDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1873,7 +1956,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1891,19 +1973,19 @@ pub mod schemas {
     pub struct ChannelSectionListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of ChannelSections that match the request criteria."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::ChannelSection>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::ChannelSection>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#channelSectionListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChannelSectionListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1912,7 +1994,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1930,7 +2011,7 @@ pub mod schemas {
     pub struct ChannelSectionLocalization {
         #[doc = "The localized strings for channel section's title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChannelSectionLocalization {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1939,7 +2020,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2035,6 +2115,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ChannelSectionSnippetType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ChannelSectionSnippetStyle {
         ChannelsectionStyleUndefined,
@@ -2086,6 +2175,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ChannelSectionSnippetStyle {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2101,25 +2199,25 @@ pub mod schemas {
     pub struct ChannelSectionSnippet {
         #[doc = "The ID that YouTube uses to uniquely identify the channel that published the channel section."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "The language of the channel section's default title and description."]
         #[serde(rename = "defaultLanguage", default)]
-        pub default_language: Option<String>,
+        pub default_language: ::std::option::Option<String>,
         #[doc = "Localized title, read-only."]
         #[serde(rename = "localized", default)]
-        pub localized: Option<crate::schemas::ChannelSectionLocalization>,
+        pub localized: ::std::option::Option<crate::schemas::ChannelSectionLocalization>,
         #[doc = "The position of the channel section in the channel."]
         #[serde(rename = "position", default)]
-        pub position: Option<u32>,
+        pub position: ::std::option::Option<u32>,
         #[doc = "The type of the channel section."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::ChannelSectionSnippetType>,
+        pub r#type: ::std::option::Option<crate::schemas::ChannelSectionSnippetType>,
         #[doc = "The style of the channel section."]
         #[serde(rename = "style", default)]
-        pub style: Option<crate::schemas::ChannelSectionSnippetStyle>,
+        pub style: ::std::option::Option<crate::schemas::ChannelSectionSnippetStyle>,
         #[doc = "The channel section's title for multiple_playlists and multiple_channels."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChannelSectionSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2128,7 +2226,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2146,13 +2243,13 @@ pub mod schemas {
     pub struct ChannelSectionTargeting {
         #[doc = "The country the channel section is targeting."]
         #[serde(rename = "countries", default)]
-        pub countries: Option<Vec<String>>,
+        pub countries: ::std::option::Option<Vec<String>>,
         #[doc = "The language the channel section is targeting."]
         #[serde(rename = "languages", default)]
-        pub languages: Option<Vec<String>>,
+        pub languages: ::std::option::Option<Vec<String>>,
         #[doc = "The region the channel section is targeting."]
         #[serde(rename = "regions", default)]
-        pub regions: Option<Vec<String>>,
+        pub regions: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ChannelSectionTargeting {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2161,7 +2258,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2179,45 +2275,45 @@ pub mod schemas {
     pub struct ChannelSettings {
         #[doc = "The country of the channel."]
         #[serde(rename = "country", default)]
-        pub country: Option<String>,
+        pub country: ::std::option::Option<String>,
         #[serde(rename = "defaultLanguage", default)]
-        pub default_language: Option<String>,
+        pub default_language: ::std::option::Option<String>,
         #[doc = "Which content tab users should see when viewing the channel."]
         #[serde(rename = "defaultTab", default)]
-        pub default_tab: Option<String>,
+        pub default_tab: ::std::option::Option<String>,
         #[doc = "Specifies the channel description."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Title for the featured channels tab."]
         #[serde(rename = "featuredChannelsTitle", default)]
-        pub featured_channels_title: Option<String>,
+        pub featured_channels_title: ::std::option::Option<String>,
         #[doc = "The list of featured channels."]
         #[serde(rename = "featuredChannelsUrls", default)]
-        pub featured_channels_urls: Option<Vec<String>>,
+        pub featured_channels_urls: ::std::option::Option<Vec<String>>,
         #[doc = "Lists keywords associated with the channel, comma-separated."]
         #[serde(rename = "keywords", default)]
-        pub keywords: Option<String>,
+        pub keywords: ::std::option::Option<String>,
         #[doc = "Whether user-submitted comments left on the channel page need to be approved by the channel owner to be publicly visible."]
         #[serde(rename = "moderateComments", default)]
-        pub moderate_comments: Option<bool>,
+        pub moderate_comments: ::std::option::Option<bool>,
         #[doc = "A prominent color that can be rendered on this channel page."]
         #[serde(rename = "profileColor", default)]
-        pub profile_color: Option<String>,
+        pub profile_color: ::std::option::Option<String>,
         #[doc = "Whether the tab to browse the videos should be displayed."]
         #[serde(rename = "showBrowseView", default)]
-        pub show_browse_view: Option<bool>,
+        pub show_browse_view: ::std::option::Option<bool>,
         #[doc = "Whether related channels should be proposed."]
         #[serde(rename = "showRelatedChannels", default)]
-        pub show_related_channels: Option<bool>,
+        pub show_related_channels: ::std::option::Option<bool>,
         #[doc = "Specifies the channel title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "The ID for a Google Analytics account to track and measure traffic to the channels."]
         #[serde(rename = "trackingAnalyticsAccountId", default)]
-        pub tracking_analytics_account_id: Option<String>,
+        pub tracking_analytics_account_id: ::std::option::Option<String>,
         #[doc = "The trailer of the channel, for users that are not subscribers."]
         #[serde(rename = "unsubscribedTrailer", default)]
-        pub unsubscribed_trailer: Option<String>,
+        pub unsubscribed_trailer: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChannelSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2226,7 +2322,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2244,28 +2339,28 @@ pub mod schemas {
     pub struct ChannelSnippet {
         #[doc = "The country of the channel."]
         #[serde(rename = "country", default)]
-        pub country: Option<String>,
+        pub country: ::std::option::Option<String>,
         #[doc = "The custom url of the channel."]
         #[serde(rename = "customUrl", default)]
-        pub custom_url: Option<String>,
+        pub custom_url: ::std::option::Option<String>,
         #[doc = "The language of the channel's default title and description."]
         #[serde(rename = "defaultLanguage", default)]
-        pub default_language: Option<String>,
+        pub default_language: ::std::option::Option<String>,
         #[doc = "The description of the channel."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Localized title and description, read-only."]
         #[serde(rename = "localized", default)]
-        pub localized: Option<crate::schemas::ChannelLocalization>,
+        pub localized: ::std::option::Option<crate::schemas::ChannelLocalization>,
         #[doc = "The date and time that the channel was created. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "publishedAt", default)]
-        pub published_at: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "A map of thumbnail images associated with the channel. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail.\n\nWhen displaying thumbnails in your application, make sure that your code uses the image URLs exactly as they are returned in API responses. For example, your application should not use the http domain instead of the https domain in a URL returned in an API response.\n\nBeginning in July 2018, channel thumbnail URLs will only be available in the https domain, which is how the URLs appear in API responses. After that time, you might see broken images in your application if it tries to load YouTube images from the http domain."]
         #[serde(rename = "thumbnails", default)]
-        pub thumbnails: Option<crate::schemas::ThumbnailDetails>,
+        pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
         #[doc = "The channel's title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ChannelSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2274,7 +2369,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2293,22 +2387,22 @@ pub mod schemas {
         #[doc = "The number of comments for the channel."]
         #[serde(rename = "commentCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub comment_count: Option<u64>,
+        pub comment_count: ::std::option::Option<u64>,
         #[doc = "Whether or not the number of subscribers is shown for this user."]
         #[serde(rename = "hiddenSubscriberCount", default)]
-        pub hidden_subscriber_count: Option<bool>,
+        pub hidden_subscriber_count: ::std::option::Option<bool>,
         #[doc = "The number of subscribers that the channel has."]
         #[serde(rename = "subscriberCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub subscriber_count: Option<u64>,
+        pub subscriber_count: ::std::option::Option<u64>,
         #[doc = "The number of videos uploaded to the channel."]
         #[serde(rename = "videoCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub video_count: Option<u64>,
+        pub video_count: ::std::option::Option<u64>,
         #[doc = "The number of times the channel has been viewed."]
         #[serde(rename = "viewCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub view_count: Option<u64>,
+        pub view_count: ::std::option::Option<u64>,
     }
     impl ::field_selector::FieldSelector for ChannelStatistics {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2317,7 +2411,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2370,6 +2463,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ChannelStatusLongUploadsStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ChannelStatusPrivacyStatus {
         Private,
@@ -2417,6 +2519,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ChannelStatusPrivacyStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2432,13 +2543,14 @@ pub mod schemas {
     pub struct ChannelStatus {
         #[doc = "If true, then the user is linked to either a YouTube username or G+ account. Otherwise, the user doesn't have a public YouTube identity."]
         #[serde(rename = "isLinked", default)]
-        pub is_linked: Option<bool>,
+        pub is_linked: ::std::option::Option<bool>,
         #[doc = "The long uploads status of this channel. See"]
         #[serde(rename = "longUploadsStatus", default)]
-        pub long_uploads_status: Option<crate::schemas::ChannelStatusLongUploadsStatus>,
+        pub long_uploads_status:
+            ::std::option::Option<crate::schemas::ChannelStatusLongUploadsStatus>,
         #[doc = "Privacy status of the channel."]
         #[serde(rename = "privacyStatus", default)]
-        pub privacy_status: Option<crate::schemas::ChannelStatusPrivacyStatus>,
+        pub privacy_status: ::std::option::Option<crate::schemas::ChannelStatusPrivacyStatus>,
     }
     impl ::field_selector::FieldSelector for ChannelStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2447,7 +2559,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2465,10 +2576,10 @@ pub mod schemas {
     pub struct ChannelTopicDetails {
         #[doc = "A list of Wikipedia URLs that describe the channel's content."]
         #[serde(rename = "topicCategories", default)]
-        pub topic_categories: Option<Vec<String>>,
+        pub topic_categories: ::std::option::Option<Vec<String>>,
         #[doc = "A list of Freebase topic IDs associated with the channel. You can retrieve information about each topic using the Freebase Topic API."]
         #[serde(rename = "topicIds", default)]
-        pub topic_ids: Option<Vec<String>>,
+        pub topic_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ChannelTopicDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2477,23 +2588,22 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Comment {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the comment."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#comment\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the comment."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::CommentSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::CommentSnippet>,
     }
     impl ::field_selector::FieldSelector for Comment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2502,33 +2612,32 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CommentListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of comments that match the request criteria."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Comment>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Comment>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#commentListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CommentListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2537,7 +2646,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2590,6 +2698,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CommentSnippetModerationStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CommentSnippetViewerRating {
         Dislike,
@@ -2640,53 +2757,63 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CommentSnippetViewerRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CommentSnippet {
         #[doc = "The id of the author's YouTube channel, if any."]
         #[serde(rename = "authorChannelId", default)]
-        pub author_channel_id: Option<::serde_json::Value>,
+        pub author_channel_id: ::std::option::Option<::serde_json::Value>,
         #[doc = "Link to the author's YouTube channel, if any."]
         #[serde(rename = "authorChannelUrl", default)]
-        pub author_channel_url: Option<String>,
+        pub author_channel_url: ::std::option::Option<String>,
         #[doc = "The name of the user who posted the comment."]
         #[serde(rename = "authorDisplayName", default)]
-        pub author_display_name: Option<String>,
+        pub author_display_name: ::std::option::Option<String>,
         #[doc = "The URL for the avatar of the user who posted the comment."]
         #[serde(rename = "authorProfileImageUrl", default)]
-        pub author_profile_image_url: Option<String>,
+        pub author_profile_image_url: ::std::option::Option<String>,
         #[doc = "Whether the current viewer can rate this comment."]
         #[serde(rename = "canRate", default)]
-        pub can_rate: Option<bool>,
+        pub can_rate: ::std::option::Option<bool>,
         #[doc = "The id of the corresponding YouTube channel. In case of a channel comment this is the channel the comment refers to. In case of a video comment it's the video's channel."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "The total number of likes this comment has received."]
         #[serde(rename = "likeCount", default)]
-        pub like_count: Option<u32>,
+        pub like_count: ::std::option::Option<u32>,
         #[doc = "The comment's moderation status. Will not be set if the comments were requested through the id filter."]
         #[serde(rename = "moderationStatus", default)]
-        pub moderation_status: Option<crate::schemas::CommentSnippetModerationStatus>,
+        pub moderation_status:
+            ::std::option::Option<crate::schemas::CommentSnippetModerationStatus>,
         #[doc = "The unique id of the parent comment, only set for replies."]
         #[serde(rename = "parentId", default)]
-        pub parent_id: Option<String>,
+        pub parent_id: ::std::option::Option<String>,
         #[doc = "The date and time when the comment was orignally published. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "publishedAt", default)]
-        pub published_at: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The comment's text. The format is either plain text or HTML dependent on what has been requested. Even the plain text representation may differ from the text originally posted in that it may replace video links with video titles etc."]
         #[serde(rename = "textDisplay", default)]
-        pub text_display: Option<String>,
+        pub text_display: ::std::option::Option<String>,
         #[doc = "The comment's original raw text as initially posted or last updated. The original text will only be returned if it is accessible to the viewer, which is only guaranteed if the viewer is the comment's author."]
         #[serde(rename = "textOriginal", default)]
-        pub text_original: Option<String>,
+        pub text_original: ::std::option::Option<String>,
         #[doc = "The date and time when was last updated . The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "updatedAt", default)]
-        pub updated_at: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The ID of the video the comment refers to, if any."]
         #[serde(rename = "videoId", default)]
-        pub video_id: Option<String>,
+        pub video_id: ::std::option::Option<String>,
         #[doc = "The rating the viewer has given to this comment. For the time being this will never return RATE_TYPE_DISLIKE and instead return RATE_TYPE_NONE. This may change in the future."]
         #[serde(rename = "viewerRating", default)]
-        pub viewer_rating: Option<crate::schemas::CommentSnippetViewerRating>,
+        pub viewer_rating: ::std::option::Option<crate::schemas::CommentSnippetViewerRating>,
     }
     impl ::field_selector::FieldSelector for CommentSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2695,26 +2822,25 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CommentThread {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the comment thread."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#commentThread\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The replies object contains a limited number of replies (if any) to the top level comment found in the snippet."]
         #[serde(rename = "replies", default)]
-        pub replies: Option<crate::schemas::CommentThreadReplies>,
+        pub replies: ::std::option::Option<crate::schemas::CommentThreadReplies>,
         #[doc = "The snippet object contains basic details about the comment thread and also the top level comment."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::CommentThreadSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::CommentThreadSnippet>,
     }
     impl ::field_selector::FieldSelector for CommentThread {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2723,33 +2849,32 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CommentThreadListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of comment threads that match the request criteria."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::CommentThread>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::CommentThread>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#commentThreadListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CommentThreadListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2758,14 +2883,13 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CommentThreadReplies {
         #[doc = "A limited number of replies. Unless the number of replies returned equals total_reply_count in the snippet the returned replies are only a subset of the total number of replies."]
         #[serde(rename = "comments", default)]
-        pub comments: Option<Vec<crate::schemas::Comment>>,
+        pub comments: ::std::option::Option<Vec<crate::schemas::Comment>>,
     }
     impl ::field_selector::FieldSelector for CommentThreadReplies {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2774,29 +2898,28 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct CommentThreadSnippet {
         #[doc = "Whether the current viewer of the thread can reply to it. This is viewer specific - other viewers may see a different value for this field."]
         #[serde(rename = "canReply", default)]
-        pub can_reply: Option<bool>,
+        pub can_reply: ::std::option::Option<bool>,
         #[doc = "The YouTube channel the comments in the thread refer to or the channel with the video the comments refer to. If video_id isn't set the comments refer to the channel itself."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "Whether the thread (and therefore all its comments) is visible to all YouTube users."]
         #[serde(rename = "isPublic", default)]
-        pub is_public: Option<bool>,
+        pub is_public: ::std::option::Option<bool>,
         #[doc = "The top level comment of this thread."]
         #[serde(rename = "topLevelComment", default)]
-        pub top_level_comment: Option<crate::schemas::Comment>,
+        pub top_level_comment: ::std::option::Option<crate::schemas::Comment>,
         #[doc = "The total number of replies (not including the top level comment)."]
         #[serde(rename = "totalReplyCount", default)]
-        pub total_reply_count: Option<u32>,
+        pub total_reply_count: ::std::option::Option<u32>,
         #[doc = "The ID of the video the comments refer to, if any. No video_id implies a channel discussion comment."]
         #[serde(rename = "videoId", default)]
-        pub video_id: Option<String>,
+        pub video_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CommentThreadSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2805,7 +2928,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2873,6 +2995,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingAcbRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingAgcomRating {
         AgcomT,
@@ -2921,6 +3052,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingAgcomRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2985,6 +3125,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingAnatelRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingBbfcRating {
         Bbfc12,
@@ -3045,6 +3194,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingBbfcRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3109,6 +3267,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingBfvcRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingBmukkRating {
         Bmukk10,
@@ -3171,6 +3338,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingBmukkRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingCatvRating {
         Catv14Plus,
@@ -3230,6 +3406,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingCatvRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingCatvfrRating {
         Catvfr13Plus,
@@ -3286,6 +3471,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingCatvfrRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingCbfcRating {
         CbfcA,
@@ -3337,6 +3531,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingCbfcRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3398,6 +3601,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingCccRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingCceRating {
         CceM12,
@@ -3457,6 +3669,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingCceRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingChfilmRating {
         Chfilm0,
@@ -3511,6 +3732,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingChfilmRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3572,6 +3802,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingChvrsRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingCicfRating {
         CicfE,
@@ -3620,6 +3859,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingCicfRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3676,6 +3924,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingCnaRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3740,6 +3997,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingCncRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingCsaRating {
         Csa10,
@@ -3797,6 +4063,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingCsaRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3861,6 +4136,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingCscfRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingCzfilmRating {
         Czfilm12,
@@ -3912,6 +4196,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingCzfilmRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4021,6 +4314,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingDjctqRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingDjctqRatingReasonsItems {
         DjctqCriminalActs,
@@ -4107,6 +4409,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingDjctqRatingReasonsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingEcbmctRating {
         Ecbmct13A,
@@ -4170,6 +4481,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingEcbmctRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4237,6 +4557,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingEefilmRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingEgfilmRating {
         Egfilm18,
@@ -4285,6 +4614,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingEgfilmRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4338,6 +4676,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingEirinRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4405,6 +4752,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingFcbmRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingFcoRating {
         FcoI,
@@ -4459,6 +4815,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingFcoRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4518,6 +4883,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingFmocRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4589,6 +4963,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingFpbRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4670,6 +5053,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingFpbRatingReasonsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingFskRating {
         Fsk0,
@@ -4724,6 +5116,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingFskRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4788,6 +5189,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingGrfilmRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingIcaaRating {
         Icaa12,
@@ -4848,6 +5258,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingIcaaRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4915,6 +5334,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingIfcoRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingIlfilmRating {
         Ilfilm12,
@@ -4969,6 +5397,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingIlfilmRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5027,6 +5464,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingIncaaRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingKfcbRating {
         Kfcb16Plus,
@@ -5078,6 +5524,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingKfcbRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5139,6 +5594,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingKijkwijzerRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingKmrbRating {
         Kmrb12Plus,
@@ -5193,6 +5657,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingKmrbRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5260,6 +5733,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingLsfRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingMccaaRating {
         Mccaa12,
@@ -5325,6 +5807,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingMccaaRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingMccypRating {
         Mccyp11,
@@ -5376,6 +5867,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingMccypRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5440,6 +5940,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingMcstRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingMdaRating {
         MdaG,
@@ -5497,6 +6006,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingMdaRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5564,6 +6082,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingMedietilsynetRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingMekuRating {
         Meku12,
@@ -5620,6 +6147,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingMekuRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingMenaMpaaRating {
         MenaMpaaG,
@@ -5671,6 +6207,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingMenaMpaaRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5727,6 +6272,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingMibacRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5794,6 +6348,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingMocRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingMoctwRating {
         MoctwG,
@@ -5851,6 +6414,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingMoctwRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5912,6 +6484,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingMpaaRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingMpaatRating {
         MpaatGb,
@@ -5954,6 +6535,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingMpaatRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -6013,6 +6603,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingMtrcbRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -6077,6 +6676,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingNbcRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingNbcplRating {
         Nbcpl18Plus,
@@ -6133,6 +6741,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingNbcplRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingNfrcRating {
         NfrcA,
@@ -6187,6 +6804,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingNfrcRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -6251,6 +6877,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingNfvcbRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingNkclvRating {
         Nkclv12Plus,
@@ -6305,6 +6940,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingNkclvRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -6378,6 +7022,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingOflcRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingPefilmRating {
         Pefilm14,
@@ -6429,6 +7082,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingPefilmRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -6488,6 +7150,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingRcnofRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -6550,6 +7221,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingResorteviolenciaRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingRtcRating {
         RtcA,
@@ -6609,6 +7289,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingRtcRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingRteRating {
         RteCh,
@@ -6660,6 +7349,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingRteRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -6718,6 +7416,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingRussiaRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingSkfilmRating {
         SkfilmG,
@@ -6769,6 +7476,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingSkfilmRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -6830,6 +7546,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingSmaisRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingSmsaRating {
         Smsa11,
@@ -6881,6 +7606,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ContentRatingSmsaRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -6945,6 +7679,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingTvpgRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingYtRating {
         YtAgeRestricted,
@@ -6986,6 +7729,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ContentRatingYtRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -7001,214 +7753,218 @@ pub mod schemas {
     pub struct ContentRating {
         #[doc = "The video's Australian Classification Board (ACB) or Australian Communications and Media Authority (ACMA) rating. ACMA ratings are used to classify children's television programming."]
         #[serde(rename = "acbRating", default)]
-        pub acb_rating: Option<crate::schemas::ContentRatingAcbRating>,
+        pub acb_rating: ::std::option::Option<crate::schemas::ContentRatingAcbRating>,
         #[doc = "The video's rating from Italy's Autorit\u{e0} per le Garanzie nelle Comunicazioni (AGCOM)."]
         #[serde(rename = "agcomRating", default)]
-        pub agcom_rating: Option<crate::schemas::ContentRatingAgcomRating>,
+        pub agcom_rating: ::std::option::Option<crate::schemas::ContentRatingAgcomRating>,
         #[doc = "The video's Anatel (Asociaci\u{f3}n Nacional de Televisi\u{f3}n) rating for Chilean television."]
         #[serde(rename = "anatelRating", default)]
-        pub anatel_rating: Option<crate::schemas::ContentRatingAnatelRating>,
+        pub anatel_rating: ::std::option::Option<crate::schemas::ContentRatingAnatelRating>,
         #[doc = "The video's British Board of Film Classification (BBFC) rating."]
         #[serde(rename = "bbfcRating", default)]
-        pub bbfc_rating: Option<crate::schemas::ContentRatingBbfcRating>,
+        pub bbfc_rating: ::std::option::Option<crate::schemas::ContentRatingBbfcRating>,
         #[doc = "The video's rating from Thailand's Board of Film and Video Censors."]
         #[serde(rename = "bfvcRating", default)]
-        pub bfvc_rating: Option<crate::schemas::ContentRatingBfvcRating>,
+        pub bfvc_rating: ::std::option::Option<crate::schemas::ContentRatingBfvcRating>,
         #[doc = "The video's rating from the Austrian Board of Media Classification (Bundesministerium f\u{fc}r Unterricht, Kunst und Kultur)."]
         #[serde(rename = "bmukkRating", default)]
-        pub bmukk_rating: Option<crate::schemas::ContentRatingBmukkRating>,
+        pub bmukk_rating: ::std::option::Option<crate::schemas::ContentRatingBmukkRating>,
         #[doc = "Rating system for Canadian TV - Canadian TV Classification System The video's rating from the Canadian Radio-Television and Telecommunications Commission (CRTC) for Canadian English-language broadcasts. For more information, see the Canadian Broadcast Standards Council website."]
         #[serde(rename = "catvRating", default)]
-        pub catv_rating: Option<crate::schemas::ContentRatingCatvRating>,
+        pub catv_rating: ::std::option::Option<crate::schemas::ContentRatingCatvRating>,
         #[doc = "The video's rating from the Canadian Radio-Television and Telecommunications Commission (CRTC) for Canadian French-language broadcasts. For more information, see the Canadian Broadcast Standards Council website."]
         #[serde(rename = "catvfrRating", default)]
-        pub catvfr_rating: Option<crate::schemas::ContentRatingCatvfrRating>,
+        pub catvfr_rating: ::std::option::Option<crate::schemas::ContentRatingCatvfrRating>,
         #[doc = "The video's Central Board of Film Certification (CBFC - India) rating."]
         #[serde(rename = "cbfcRating", default)]
-        pub cbfc_rating: Option<crate::schemas::ContentRatingCbfcRating>,
+        pub cbfc_rating: ::std::option::Option<crate::schemas::ContentRatingCbfcRating>,
         #[doc = "The video's Consejo de Calificaci\u{f3}n Cinematogr\u{e1}fica (Chile) rating."]
         #[serde(rename = "cccRating", default)]
-        pub ccc_rating: Option<crate::schemas::ContentRatingCccRating>,
+        pub ccc_rating: ::std::option::Option<crate::schemas::ContentRatingCccRating>,
         #[doc = "The video's rating from Portugal's Comiss\u{e3}o de Classifica\u{e7}\u{e3}o de Espect\u{b4}culos."]
         #[serde(rename = "cceRating", default)]
-        pub cce_rating: Option<crate::schemas::ContentRatingCceRating>,
+        pub cce_rating: ::std::option::Option<crate::schemas::ContentRatingCceRating>,
         #[doc = "The video's rating in Switzerland."]
         #[serde(rename = "chfilmRating", default)]
-        pub chfilm_rating: Option<crate::schemas::ContentRatingChfilmRating>,
+        pub chfilm_rating: ::std::option::Option<crate::schemas::ContentRatingChfilmRating>,
         #[doc = "The video's Canadian Home Video Rating System (CHVRS) rating."]
         #[serde(rename = "chvrsRating", default)]
-        pub chvrs_rating: Option<crate::schemas::ContentRatingChvrsRating>,
+        pub chvrs_rating: ::std::option::Option<crate::schemas::ContentRatingChvrsRating>,
         #[doc = "The video's rating from the Commission de Contr\u{f4}le des Films (Belgium)."]
         #[serde(rename = "cicfRating", default)]
-        pub cicf_rating: Option<crate::schemas::ContentRatingCicfRating>,
+        pub cicf_rating: ::std::option::Option<crate::schemas::ContentRatingCicfRating>,
         #[doc = "The video's rating from Romania's CONSILIUL NATIONAL AL AUDIOVIZUALULUI (CNA)."]
         #[serde(rename = "cnaRating", default)]
-        pub cna_rating: Option<crate::schemas::ContentRatingCnaRating>,
+        pub cna_rating: ::std::option::Option<crate::schemas::ContentRatingCnaRating>,
         #[doc = "Rating system in France - Commission de classification cinematographique"]
         #[serde(rename = "cncRating", default)]
-        pub cnc_rating: Option<crate::schemas::ContentRatingCncRating>,
+        pub cnc_rating: ::std::option::Option<crate::schemas::ContentRatingCncRating>,
         #[doc = "The video's rating from France's Conseil sup\u{e9}rieur de l?audiovisuel, which rates broadcast content."]
         #[serde(rename = "csaRating", default)]
-        pub csa_rating: Option<crate::schemas::ContentRatingCsaRating>,
+        pub csa_rating: ::std::option::Option<crate::schemas::ContentRatingCsaRating>,
         #[doc = "The video's rating from Luxembourg's Commission de surveillance de la classification des films (CSCF)."]
         #[serde(rename = "cscfRating", default)]
-        pub cscf_rating: Option<crate::schemas::ContentRatingCscfRating>,
+        pub cscf_rating: ::std::option::Option<crate::schemas::ContentRatingCscfRating>,
         #[doc = "The video's rating in the Czech Republic."]
         #[serde(rename = "czfilmRating", default)]
-        pub czfilm_rating: Option<crate::schemas::ContentRatingCzfilmRating>,
+        pub czfilm_rating: ::std::option::Option<crate::schemas::ContentRatingCzfilmRating>,
         #[doc = "The video's Departamento de Justi\u{e7}a, Classifica\u{e7}\u{e3}o, Qualifica\u{e7}\u{e3}o e T\u{ed}tulos (DJCQT - Brazil) rating."]
         #[serde(rename = "djctqRating", default)]
-        pub djctq_rating: Option<crate::schemas::ContentRatingDjctqRating>,
+        pub djctq_rating: ::std::option::Option<crate::schemas::ContentRatingDjctqRating>,
         #[doc = "Reasons that explain why the video received its DJCQT (Brazil) rating."]
         #[serde(rename = "djctqRatingReasons", default)]
-        pub djctq_rating_reasons: Option<Vec<crate::schemas::ContentRatingDjctqRatingReasonsItems>>,
+        pub djctq_rating_reasons:
+            ::std::option::Option<Vec<crate::schemas::ContentRatingDjctqRatingReasonsItems>>,
         #[doc = "Rating system in Turkey - Evaluation and Classification Board of the Ministry of Culture and Tourism"]
         #[serde(rename = "ecbmctRating", default)]
-        pub ecbmct_rating: Option<crate::schemas::ContentRatingEcbmctRating>,
+        pub ecbmct_rating: ::std::option::Option<crate::schemas::ContentRatingEcbmctRating>,
         #[doc = "The video's rating in Estonia."]
         #[serde(rename = "eefilmRating", default)]
-        pub eefilm_rating: Option<crate::schemas::ContentRatingEefilmRating>,
+        pub eefilm_rating: ::std::option::Option<crate::schemas::ContentRatingEefilmRating>,
         #[doc = "The video's rating in Egypt."]
         #[serde(rename = "egfilmRating", default)]
-        pub egfilm_rating: Option<crate::schemas::ContentRatingEgfilmRating>,
+        pub egfilm_rating: ::std::option::Option<crate::schemas::ContentRatingEgfilmRating>,
         #[doc = "The video's Eirin (\u{6620}\u{502b}) rating. Eirin is the Japanese rating system."]
         #[serde(rename = "eirinRating", default)]
-        pub eirin_rating: Option<crate::schemas::ContentRatingEirinRating>,
+        pub eirin_rating: ::std::option::Option<crate::schemas::ContentRatingEirinRating>,
         #[doc = "The video's rating from Malaysia's Film Censorship Board."]
         #[serde(rename = "fcbmRating", default)]
-        pub fcbm_rating: Option<crate::schemas::ContentRatingFcbmRating>,
+        pub fcbm_rating: ::std::option::Option<crate::schemas::ContentRatingFcbmRating>,
         #[doc = "The video's rating from Hong Kong's Office for Film, Newspaper and Article Administration."]
         #[serde(rename = "fcoRating", default)]
-        pub fco_rating: Option<crate::schemas::ContentRatingFcoRating>,
+        pub fco_rating: ::std::option::Option<crate::schemas::ContentRatingFcoRating>,
         #[doc = "This property has been deprecated. Use the contentDetails.contentRating.cncRating instead."]
         #[serde(rename = "fmocRating", default)]
-        pub fmoc_rating: Option<crate::schemas::ContentRatingFmocRating>,
+        pub fmoc_rating: ::std::option::Option<crate::schemas::ContentRatingFmocRating>,
         #[doc = "The video's rating from South Africa's Film and Publication Board."]
         #[serde(rename = "fpbRating", default)]
-        pub fpb_rating: Option<crate::schemas::ContentRatingFpbRating>,
+        pub fpb_rating: ::std::option::Option<crate::schemas::ContentRatingFpbRating>,
         #[doc = "Reasons that explain why the video received its FPB (South Africa) rating."]
         #[serde(rename = "fpbRatingReasons", default)]
-        pub fpb_rating_reasons: Option<Vec<crate::schemas::ContentRatingFpbRatingReasonsItems>>,
+        pub fpb_rating_reasons:
+            ::std::option::Option<Vec<crate::schemas::ContentRatingFpbRatingReasonsItems>>,
         #[doc = "The video's Freiwillige Selbstkontrolle der Filmwirtschaft (FSK - Germany) rating."]
         #[serde(rename = "fskRating", default)]
-        pub fsk_rating: Option<crate::schemas::ContentRatingFskRating>,
+        pub fsk_rating: ::std::option::Option<crate::schemas::ContentRatingFskRating>,
         #[doc = "The video's rating in Greece."]
         #[serde(rename = "grfilmRating", default)]
-        pub grfilm_rating: Option<crate::schemas::ContentRatingGrfilmRating>,
+        pub grfilm_rating: ::std::option::Option<crate::schemas::ContentRatingGrfilmRating>,
         #[doc = "The video's Instituto de la Cinematograf\u{ed}a y de las Artes Audiovisuales (ICAA - Spain) rating."]
         #[serde(rename = "icaaRating", default)]
-        pub icaa_rating: Option<crate::schemas::ContentRatingIcaaRating>,
+        pub icaa_rating: ::std::option::Option<crate::schemas::ContentRatingIcaaRating>,
         #[doc = "The video's Irish Film Classification Office (IFCO - Ireland) rating. See the IFCO website for more information."]
         #[serde(rename = "ifcoRating", default)]
-        pub ifco_rating: Option<crate::schemas::ContentRatingIfcoRating>,
+        pub ifco_rating: ::std::option::Option<crate::schemas::ContentRatingIfcoRating>,
         #[doc = "The video's rating in Israel."]
         #[serde(rename = "ilfilmRating", default)]
-        pub ilfilm_rating: Option<crate::schemas::ContentRatingIlfilmRating>,
+        pub ilfilm_rating: ::std::option::Option<crate::schemas::ContentRatingIlfilmRating>,
         #[doc = "The video's INCAA (Instituto Nacional de Cine y Artes Audiovisuales - Argentina) rating."]
         #[serde(rename = "incaaRating", default)]
-        pub incaa_rating: Option<crate::schemas::ContentRatingIncaaRating>,
+        pub incaa_rating: ::std::option::Option<crate::schemas::ContentRatingIncaaRating>,
         #[doc = "The video's rating from the Kenya Film Classification Board."]
         #[serde(rename = "kfcbRating", default)]
-        pub kfcb_rating: Option<crate::schemas::ContentRatingKfcbRating>,
+        pub kfcb_rating: ::std::option::Option<crate::schemas::ContentRatingKfcbRating>,
         #[doc = "voor de Classificatie van Audiovisuele Media (Netherlands)."]
         #[serde(rename = "kijkwijzerRating", default)]
-        pub kijkwijzer_rating: Option<crate::schemas::ContentRatingKijkwijzerRating>,
+        pub kijkwijzer_rating: ::std::option::Option<crate::schemas::ContentRatingKijkwijzerRating>,
         #[doc = "The video's Korea Media Rating Board (\u{c601}\u{c0c1}\u{bb3c}\u{b4f1}\u{ae09}\u{c704}\u{c6d0}\u{d68c}) rating. The KMRB rates videos in South Korea."]
         #[serde(rename = "kmrbRating", default)]
-        pub kmrb_rating: Option<crate::schemas::ContentRatingKmrbRating>,
+        pub kmrb_rating: ::std::option::Option<crate::schemas::ContentRatingKmrbRating>,
         #[doc = "The video's rating from Indonesia's Lembaga Sensor Film."]
         #[serde(rename = "lsfRating", default)]
-        pub lsf_rating: Option<crate::schemas::ContentRatingLsfRating>,
+        pub lsf_rating: ::std::option::Option<crate::schemas::ContentRatingLsfRating>,
         #[doc = "The video's rating from Malta's Film Age-Classification Board."]
         #[serde(rename = "mccaaRating", default)]
-        pub mccaa_rating: Option<crate::schemas::ContentRatingMccaaRating>,
+        pub mccaa_rating: ::std::option::Option<crate::schemas::ContentRatingMccaaRating>,
         #[doc = "The video's rating from the Danish Film Institute's (Det Danske Filminstitut) Media Council for Children and Young People."]
         #[serde(rename = "mccypRating", default)]
-        pub mccyp_rating: Option<crate::schemas::ContentRatingMccypRating>,
+        pub mccyp_rating: ::std::option::Option<crate::schemas::ContentRatingMccypRating>,
         #[doc = "The video's rating system for Vietnam - MCST"]
         #[serde(rename = "mcstRating", default)]
-        pub mcst_rating: Option<crate::schemas::ContentRatingMcstRating>,
+        pub mcst_rating: ::std::option::Option<crate::schemas::ContentRatingMcstRating>,
         #[doc = "The video's rating from Singapore's Media Development Authority (MDA) and, specifically, it's Board of Film Censors (BFC)."]
         #[serde(rename = "mdaRating", default)]
-        pub mda_rating: Option<crate::schemas::ContentRatingMdaRating>,
+        pub mda_rating: ::std::option::Option<crate::schemas::ContentRatingMdaRating>,
         #[doc = "The video's rating from Medietilsynet, the Norwegian Media Authority."]
         #[serde(rename = "medietilsynetRating", default)]
-        pub medietilsynet_rating: Option<crate::schemas::ContentRatingMedietilsynetRating>,
+        pub medietilsynet_rating:
+            ::std::option::Option<crate::schemas::ContentRatingMedietilsynetRating>,
         #[doc = "The video's rating from Finland's Kansallinen Audiovisuaalinen Instituutti (National Audiovisual Institute)."]
         #[serde(rename = "mekuRating", default)]
-        pub meku_rating: Option<crate::schemas::ContentRatingMekuRating>,
+        pub meku_rating: ::std::option::Option<crate::schemas::ContentRatingMekuRating>,
         #[doc = "The rating system for MENA countries, a clone of MPAA. It is needed to"]
         #[serde(rename = "menaMpaaRating", default)]
-        pub mena_mpaa_rating: Option<crate::schemas::ContentRatingMenaMpaaRating>,
+        pub mena_mpaa_rating: ::std::option::Option<crate::schemas::ContentRatingMenaMpaaRating>,
         #[doc = "The video's rating from the Ministero dei Beni e delle Attivit\u{e0} Culturali e del Turismo (Italy)."]
         #[serde(rename = "mibacRating", default)]
-        pub mibac_rating: Option<crate::schemas::ContentRatingMibacRating>,
+        pub mibac_rating: ::std::option::Option<crate::schemas::ContentRatingMibacRating>,
         #[doc = "The video's Ministerio de Cultura (Colombia) rating."]
         #[serde(rename = "mocRating", default)]
-        pub moc_rating: Option<crate::schemas::ContentRatingMocRating>,
+        pub moc_rating: ::std::option::Option<crate::schemas::ContentRatingMocRating>,
         #[doc = "The video's rating from Taiwan's Ministry of Culture (\u{6587}\u{5316}\u{90e8})."]
         #[serde(rename = "moctwRating", default)]
-        pub moctw_rating: Option<crate::schemas::ContentRatingMoctwRating>,
+        pub moctw_rating: ::std::option::Option<crate::schemas::ContentRatingMoctwRating>,
         #[doc = "The video's Motion Picture Association of America (MPAA) rating."]
         #[serde(rename = "mpaaRating", default)]
-        pub mpaa_rating: Option<crate::schemas::ContentRatingMpaaRating>,
+        pub mpaa_rating: ::std::option::Option<crate::schemas::ContentRatingMpaaRating>,
         #[doc = "The rating system for trailer, DVD, and Ad in the US. See http://movielabs.com/md/ratings/v2.3/html/US_MPAAT_Ratings.html."]
         #[serde(rename = "mpaatRating", default)]
-        pub mpaat_rating: Option<crate::schemas::ContentRatingMpaatRating>,
+        pub mpaat_rating: ::std::option::Option<crate::schemas::ContentRatingMpaatRating>,
         #[doc = "The video's rating from the Movie and Television Review and Classification Board (Philippines)."]
         #[serde(rename = "mtrcbRating", default)]
-        pub mtrcb_rating: Option<crate::schemas::ContentRatingMtrcbRating>,
+        pub mtrcb_rating: ::std::option::Option<crate::schemas::ContentRatingMtrcbRating>,
         #[doc = "The video's rating from the Maldives National Bureau of Classification."]
         #[serde(rename = "nbcRating", default)]
-        pub nbc_rating: Option<crate::schemas::ContentRatingNbcRating>,
+        pub nbc_rating: ::std::option::Option<crate::schemas::ContentRatingNbcRating>,
         #[doc = "The video's rating in Poland."]
         #[serde(rename = "nbcplRating", default)]
-        pub nbcpl_rating: Option<crate::schemas::ContentRatingNbcplRating>,
+        pub nbcpl_rating: ::std::option::Option<crate::schemas::ContentRatingNbcplRating>,
         #[doc = "The video's rating from the Bulgarian National Film Center."]
         #[serde(rename = "nfrcRating", default)]
-        pub nfrc_rating: Option<crate::schemas::ContentRatingNfrcRating>,
+        pub nfrc_rating: ::std::option::Option<crate::schemas::ContentRatingNfrcRating>,
         #[doc = "The video's rating from Nigeria's National Film and Video Censors Board."]
         #[serde(rename = "nfvcbRating", default)]
-        pub nfvcb_rating: Option<crate::schemas::ContentRatingNfvcbRating>,
+        pub nfvcb_rating: ::std::option::Option<crate::schemas::ContentRatingNfvcbRating>,
         #[doc = "The video's rating from the Nacion\u{e3}lais Kino centrs (National Film Centre of Latvia)."]
         #[serde(rename = "nkclvRating", default)]
-        pub nkclv_rating: Option<crate::schemas::ContentRatingNkclvRating>,
+        pub nkclv_rating: ::std::option::Option<crate::schemas::ContentRatingNkclvRating>,
         #[doc = "The video's Office of Film and Literature Classification (OFLC - New Zealand) rating."]
         #[serde(rename = "oflcRating", default)]
-        pub oflc_rating: Option<crate::schemas::ContentRatingOflcRating>,
+        pub oflc_rating: ::std::option::Option<crate::schemas::ContentRatingOflcRating>,
         #[doc = "The video's rating in Peru."]
         #[serde(rename = "pefilmRating", default)]
-        pub pefilm_rating: Option<crate::schemas::ContentRatingPefilmRating>,
+        pub pefilm_rating: ::std::option::Option<crate::schemas::ContentRatingPefilmRating>,
         #[doc = "The video's rating from the Hungarian Nemzeti Filmiroda, the Rating Committee of the National Office of Film."]
         #[serde(rename = "rcnofRating", default)]
-        pub rcnof_rating: Option<crate::schemas::ContentRatingRcnofRating>,
+        pub rcnof_rating: ::std::option::Option<crate::schemas::ContentRatingRcnofRating>,
         #[doc = "The video's rating in Venezuela."]
         #[serde(rename = "resorteviolenciaRating", default)]
-        pub resorteviolencia_rating: Option<crate::schemas::ContentRatingResorteviolenciaRating>,
+        pub resorteviolencia_rating:
+            ::std::option::Option<crate::schemas::ContentRatingResorteviolenciaRating>,
         #[doc = "The video's General Directorate of Radio, Television and Cinematography (Mexico) rating."]
         #[serde(rename = "rtcRating", default)]
-        pub rtc_rating: Option<crate::schemas::ContentRatingRtcRating>,
+        pub rtc_rating: ::std::option::Option<crate::schemas::ContentRatingRtcRating>,
         #[doc = "The video's rating from Ireland's Raidi\u{f3} Teilif\u{ed}s \u{c9}ireann."]
         #[serde(rename = "rteRating", default)]
-        pub rte_rating: Option<crate::schemas::ContentRatingRteRating>,
+        pub rte_rating: ::std::option::Option<crate::schemas::ContentRatingRteRating>,
         #[doc = "The video's National Film Registry of the Russian Federation (MKRF - Russia) rating."]
         #[serde(rename = "russiaRating", default)]
-        pub russia_rating: Option<crate::schemas::ContentRatingRussiaRating>,
+        pub russia_rating: ::std::option::Option<crate::schemas::ContentRatingRussiaRating>,
         #[doc = "The video's rating in Slovakia."]
         #[serde(rename = "skfilmRating", default)]
-        pub skfilm_rating: Option<crate::schemas::ContentRatingSkfilmRating>,
+        pub skfilm_rating: ::std::option::Option<crate::schemas::ContentRatingSkfilmRating>,
         #[doc = "The video's rating in Iceland."]
         #[serde(rename = "smaisRating", default)]
-        pub smais_rating: Option<crate::schemas::ContentRatingSmaisRating>,
+        pub smais_rating: ::std::option::Option<crate::schemas::ContentRatingSmaisRating>,
         #[doc = "The video's rating from Statens medier\u{e5}d (Sweden's National Media Council)."]
         #[serde(rename = "smsaRating", default)]
-        pub smsa_rating: Option<crate::schemas::ContentRatingSmsaRating>,
+        pub smsa_rating: ::std::option::Option<crate::schemas::ContentRatingSmsaRating>,
         #[doc = "The video's TV Parental Guidelines (TVPG) rating."]
         #[serde(rename = "tvpgRating", default)]
-        pub tvpg_rating: Option<crate::schemas::ContentRatingTvpgRating>,
+        pub tvpg_rating: ::std::option::Option<crate::schemas::ContentRatingTvpgRating>,
         #[doc = "A rating that YouTube uses to identify age-restricted content."]
         #[serde(rename = "ytRating", default)]
-        pub yt_rating: Option<crate::schemas::ContentRatingYtRating>,
+        pub yt_rating: ::std::option::Option<crate::schemas::ContentRatingYtRating>,
     }
     impl ::field_selector::FieldSelector for ContentRating {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -7217,7 +7973,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -7226,13 +7981,13 @@ pub mod schemas {
     pub struct GeoPoint {
         #[doc = "Altitude above the reference ellipsoid, in meters."]
         #[serde(rename = "altitude", default)]
-        pub altitude: Option<f64>,
+        pub altitude: ::std::option::Option<f64>,
         #[doc = "Latitude in degrees."]
         #[serde(rename = "latitude", default)]
-        pub latitude: Option<f64>,
+        pub latitude: ::std::option::Option<f64>,
         #[doc = "Longitude in degrees."]
         #[serde(rename = "longitude", default)]
-        pub longitude: Option<f64>,
+        pub longitude: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for GeoPoint {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -7241,7 +7996,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -7259,16 +8013,16 @@ pub mod schemas {
     pub struct GuideCategory {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the guide category."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#guideCategory\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the category, such as its title."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::GuideCategorySnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::GuideCategorySnippet>,
     }
     impl ::field_selector::FieldSelector for GuideCategory {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -7277,7 +8031,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -7295,29 +8048,29 @@ pub mod schemas {
     pub struct GuideCategoryListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of categories that can be associated with YouTube channels. In this map, the category ID is the map key, and its value is the corresponding guideCategory resource."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::GuideCategory>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::GuideCategory>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#guideCategoryListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(rename = "prevPageToken", default)]
-        pub prev_page_token: Option<String>,
+        pub prev_page_token: ::std::option::Option<String>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GuideCategoryListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -7326,7 +8079,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -7343,10 +8095,10 @@ pub mod schemas {
     )]
     pub struct GuideCategorySnippet {
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "Description of the guide category."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GuideCategorySnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -7355,7 +8107,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -7373,16 +8124,16 @@ pub mod schemas {
     pub struct I18Nlanguage {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the i18n language."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#i18nLanguage\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the i18n language, such as language code and human-readable name."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::I18NlanguageSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::I18NlanguageSnippet>,
     }
     impl ::field_selector::FieldSelector for I18Nlanguage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -7391,7 +8142,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -7409,19 +8159,19 @@ pub mod schemas {
     pub struct I18NlanguageListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of supported i18n languages. In this map, the i18n language ID is the map key, and its value is the corresponding i18nLanguage resource."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::I18Nlanguage>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::I18Nlanguage>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#i18nLanguageListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for I18NlanguageListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -7430,7 +8180,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -7448,10 +8197,10 @@ pub mod schemas {
     pub struct I18NlanguageSnippet {
         #[doc = "A short BCP-47 code that uniquely identifies a language."]
         #[serde(rename = "hl", default)]
-        pub hl: Option<String>,
+        pub hl: ::std::option::Option<String>,
         #[doc = "The human-readable name of the language in the language itself."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for I18NlanguageSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -7460,7 +8209,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -7478,16 +8226,16 @@ pub mod schemas {
     pub struct I18Nregion {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the i18n region."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#i18nRegion\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the i18n region, such as region code and human-readable name."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::I18NregionSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::I18NregionSnippet>,
     }
     impl ::field_selector::FieldSelector for I18Nregion {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -7496,7 +8244,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -7514,19 +8261,19 @@ pub mod schemas {
     pub struct I18NregionListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of regions where YouTube is available. In this map, the i18n region ID is the map key, and its value is the corresponding i18nRegion resource."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::I18Nregion>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::I18Nregion>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#i18nRegionListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for I18NregionListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -7535,7 +8282,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -7553,10 +8299,10 @@ pub mod schemas {
     pub struct I18NregionSnippet {
         #[doc = "The region code as a 2-letter ISO country code."]
         #[serde(rename = "gl", default)]
-        pub gl: Option<String>,
+        pub gl: ::std::option::Option<String>,
         #[doc = "The human-readable name of the region."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for I18NregionSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -7565,7 +8311,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -7583,70 +8328,74 @@ pub mod schemas {
     pub struct ImageSettings {
         #[doc = "The URL for the background image shown on the video watch page. The image should be 1200px by 615px, with a maximum file size of 128k."]
         #[serde(rename = "backgroundImageUrl", default)]
-        pub background_image_url: Option<crate::schemas::LocalizedProperty>,
+        pub background_image_url: ::std::option::Option<crate::schemas::LocalizedProperty>,
         #[doc = "This is used only in update requests; if it's set, we use this URL to generate all of the above banner URLs."]
         #[serde(rename = "bannerExternalUrl", default)]
-        pub banner_external_url: Option<String>,
+        pub banner_external_url: ::std::option::Option<String>,
         #[doc = "Banner image. Desktop size (1060x175)."]
         #[serde(rename = "bannerImageUrl", default)]
-        pub banner_image_url: Option<String>,
+        pub banner_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. Mobile size high resolution (1440x395)."]
         #[serde(rename = "bannerMobileExtraHdImageUrl", default)]
-        pub banner_mobile_extra_hd_image_url: Option<String>,
+        pub banner_mobile_extra_hd_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. Mobile size high resolution (1280x360)."]
         #[serde(rename = "bannerMobileHdImageUrl", default)]
-        pub banner_mobile_hd_image_url: Option<String>,
+        pub banner_mobile_hd_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. Mobile size (640x175)."]
         #[serde(rename = "bannerMobileImageUrl", default)]
-        pub banner_mobile_image_url: Option<String>,
+        pub banner_mobile_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. Mobile size low resolution (320x88)."]
         #[serde(rename = "bannerMobileLowImageUrl", default)]
-        pub banner_mobile_low_image_url: Option<String>,
+        pub banner_mobile_low_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. Mobile size medium/high resolution (960x263)."]
         #[serde(rename = "bannerMobileMediumHdImageUrl", default)]
-        pub banner_mobile_medium_hd_image_url: Option<String>,
+        pub banner_mobile_medium_hd_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. Tablet size extra high resolution (2560x424)."]
         #[serde(rename = "bannerTabletExtraHdImageUrl", default)]
-        pub banner_tablet_extra_hd_image_url: Option<String>,
+        pub banner_tablet_extra_hd_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. Tablet size high resolution (2276x377)."]
         #[serde(rename = "bannerTabletHdImageUrl", default)]
-        pub banner_tablet_hd_image_url: Option<String>,
+        pub banner_tablet_hd_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. Tablet size (1707x283)."]
         #[serde(rename = "bannerTabletImageUrl", default)]
-        pub banner_tablet_image_url: Option<String>,
+        pub banner_tablet_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. Tablet size low resolution (1138x188)."]
         #[serde(rename = "bannerTabletLowImageUrl", default)]
-        pub banner_tablet_low_image_url: Option<String>,
+        pub banner_tablet_low_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. TV size high resolution (1920x1080)."]
         #[serde(rename = "bannerTvHighImageUrl", default)]
-        pub banner_tv_high_image_url: Option<String>,
+        pub banner_tv_high_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. TV size extra high resolution (2120x1192)."]
         #[serde(rename = "bannerTvImageUrl", default)]
-        pub banner_tv_image_url: Option<String>,
+        pub banner_tv_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. TV size low resolution (854x480)."]
         #[serde(rename = "bannerTvLowImageUrl", default)]
-        pub banner_tv_low_image_url: Option<String>,
+        pub banner_tv_low_image_url: ::std::option::Option<String>,
         #[doc = "Banner image. TV size medium resolution (1280x720)."]
         #[serde(rename = "bannerTvMediumImageUrl", default)]
-        pub banner_tv_medium_image_url: Option<String>,
+        pub banner_tv_medium_image_url: ::std::option::Option<String>,
         #[doc = "The image map script for the large banner image."]
         #[serde(rename = "largeBrandedBannerImageImapScript", default)]
-        pub large_branded_banner_image_imap_script: Option<crate::schemas::LocalizedProperty>,
+        pub large_branded_banner_image_imap_script:
+            ::std::option::Option<crate::schemas::LocalizedProperty>,
         #[doc = "The URL for the 854px by 70px image that appears below the video player in the expanded video view of the video watch page."]
         #[serde(rename = "largeBrandedBannerImageUrl", default)]
-        pub large_branded_banner_image_url: Option<crate::schemas::LocalizedProperty>,
+        pub large_branded_banner_image_url:
+            ::std::option::Option<crate::schemas::LocalizedProperty>,
         #[doc = "The image map script for the small banner image."]
         #[serde(rename = "smallBrandedBannerImageImapScript", default)]
-        pub small_branded_banner_image_imap_script: Option<crate::schemas::LocalizedProperty>,
+        pub small_branded_banner_image_imap_script:
+            ::std::option::Option<crate::schemas::LocalizedProperty>,
         #[doc = "The URL for the 640px by 70px banner image that appears below the video player in the default view of the video watch page."]
         #[serde(rename = "smallBrandedBannerImageUrl", default)]
-        pub small_branded_banner_image_url: Option<crate::schemas::LocalizedProperty>,
+        pub small_branded_banner_image_url:
+            ::std::option::Option<crate::schemas::LocalizedProperty>,
         #[doc = "The URL for a 1px by 1px tracking pixel that can be used to collect statistics for views of the channel or video pages."]
         #[serde(rename = "trackingImageUrl", default)]
-        pub tracking_image_url: Option<String>,
+        pub tracking_image_url: ::std::option::Option<String>,
         #[doc = "The URL for the image that appears above the top-left corner of the video player. This is a 25-pixel-high image with a flexible width that cannot exceed 170 pixels."]
         #[serde(rename = "watchIconImageUrl", default)]
-        pub watch_icon_image_url: Option<String>,
+        pub watch_icon_image_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ImageSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -7655,7 +8404,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -7673,13 +8421,13 @@ pub mod schemas {
     pub struct IngestionInfo {
         #[doc = "The backup ingestion URL that you should use to stream video to YouTube. You have the option of simultaneously streaming the content that you are sending to the ingestionAddress to this URL."]
         #[serde(rename = "backupIngestionAddress", default)]
-        pub backup_ingestion_address: Option<String>,
+        pub backup_ingestion_address: ::std::option::Option<String>,
         #[doc = "The primary ingestion URL that you should use to stream video to YouTube. You must stream video to this URL.\n\nDepending on which application or tool you use to encode your video stream, you may need to enter the stream URL and stream name separately or you may need to concatenate them in the following format:\n\nSTREAM_URL/STREAM_NAME"]
         #[serde(rename = "ingestionAddress", default)]
-        pub ingestion_address: Option<String>,
+        pub ingestion_address: ::std::option::Option<String>,
         #[doc = "The HTTP or RTMP stream name that YouTube assigns to the video stream."]
         #[serde(rename = "streamName", default)]
-        pub stream_name: Option<String>,
+        pub stream_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for IngestionInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -7688,7 +8436,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -7705,15 +8452,15 @@ pub mod schemas {
     )]
     pub struct InvideoBranding {
         #[serde(rename = "imageBytes", default)]
-        pub image_bytes: Option<Vec<u8>>,
+        pub image_bytes: ::std::option::Option<crate::bytes::Bytes>,
         #[serde(rename = "imageUrl", default)]
-        pub image_url: Option<String>,
+        pub image_url: ::std::option::Option<String>,
         #[serde(rename = "position", default)]
-        pub position: Option<crate::schemas::InvideoPosition>,
+        pub position: ::std::option::Option<crate::schemas::InvideoPosition>,
         #[serde(rename = "targetChannelId", default)]
-        pub target_channel_id: Option<String>,
+        pub target_channel_id: ::std::option::Option<String>,
         #[serde(rename = "timing", default)]
-        pub timing: Option<crate::schemas::InvideoTiming>,
+        pub timing: ::std::option::Option<crate::schemas::InvideoTiming>,
     }
     impl ::field_selector::FieldSelector for InvideoBranding {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -7722,7 +8469,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -7775,6 +8521,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for InvideoPositionCornerPosition {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum InvideoPositionType {
         Corner,
@@ -7816,6 +8571,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for InvideoPositionType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -7831,10 +8595,10 @@ pub mod schemas {
     pub struct InvideoPosition {
         #[doc = "Describes in which corner of the video the visual widget will appear."]
         #[serde(rename = "cornerPosition", default)]
-        pub corner_position: Option<crate::schemas::InvideoPositionCornerPosition>,
+        pub corner_position: ::std::option::Option<crate::schemas::InvideoPositionCornerPosition>,
         #[doc = "Defines the position type."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::InvideoPositionType>,
+        pub r#type: ::std::option::Option<crate::schemas::InvideoPositionType>,
     }
     impl ::field_selector::FieldSelector for InvideoPosition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -7843,7 +8607,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -7861,16 +8624,16 @@ pub mod schemas {
     pub struct InvideoPromotion {
         #[doc = "The default temporal position within the video where the promoted item will be displayed. Can be overriden by more specific timing in the item."]
         #[serde(rename = "defaultTiming", default)]
-        pub default_timing: Option<crate::schemas::InvideoTiming>,
+        pub default_timing: ::std::option::Option<crate::schemas::InvideoTiming>,
         #[doc = "List of promoted items in decreasing priority."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::PromotedItem>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::PromotedItem>>,
         #[doc = "The spatial position within the video where the promoted item will be displayed."]
         #[serde(rename = "position", default)]
-        pub position: Option<crate::schemas::InvideoPosition>,
+        pub position: ::std::option::Option<crate::schemas::InvideoPosition>,
         #[doc = "Indicates whether the channel's promotional campaign uses \"smart timing.\" This feature attempts to show promotions at a point in the video when they are more likely to be clicked and less likely to disrupt the viewing experience. This feature also picks up a single promotion to show on each video."]
         #[serde(rename = "useSmartTiming", default)]
-        pub use_smart_timing: Option<bool>,
+        pub use_smart_timing: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for InvideoPromotion {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -7879,7 +8642,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -7926,6 +8688,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for InvideoTimingType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -7942,14 +8713,14 @@ pub mod schemas {
         #[doc = "Defines the duration in milliseconds for which the promotion should be displayed. If missing, the client should use the default."]
         #[serde(rename = "durationMs", default)]
         #[serde(with = "crate::parsed_string")]
-        pub duration_ms: Option<u64>,
+        pub duration_ms: ::std::option::Option<u64>,
         #[doc = "Defines the time at which the promotion will appear. Depending on the value of type the value of the offsetMs field will represent a time offset from the start or from the end of the video, expressed in milliseconds."]
         #[serde(rename = "offsetMs", default)]
         #[serde(with = "crate::parsed_string")]
-        pub offset_ms: Option<u64>,
+        pub offset_ms: ::std::option::Option<u64>,
         #[doc = "Describes a timing type. If the value is offsetFromStart, then the offsetMs field represents an offset from the start of the video. If the value is offsetFromEnd, then the offsetMs field represents an offset from the end of the video."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::InvideoTimingType>,
+        pub r#type: ::std::option::Option<crate::schemas::InvideoTimingType>,
     }
     impl ::field_selector::FieldSelector for InvideoTiming {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -7958,7 +8729,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -7975,7 +8745,7 @@ pub mod schemas {
     )]
     pub struct LanguageTag {
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LanguageTag {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -7984,7 +8754,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -8001,7 +8770,7 @@ pub mod schemas {
     )]
     pub struct LevelDetails {
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LevelDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -8010,7 +8779,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -8028,25 +8796,25 @@ pub mod schemas {
     pub struct LiveBroadcast {
         #[doc = "The contentDetails object contains information about the event's video content, such as whether the content can be shown in an embedded video player or if it will be archived and therefore available for viewing after the event has concluded."]
         #[serde(rename = "contentDetails", default)]
-        pub content_details: Option<crate::schemas::LiveBroadcastContentDetails>,
+        pub content_details: ::std::option::Option<crate::schemas::LiveBroadcastContentDetails>,
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube assigns to uniquely identify the broadcast."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveBroadcast\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the event, including its title, description, start time, and end time."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::LiveBroadcastSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::LiveBroadcastSnippet>,
         #[doc = "The statistics object contains info about the event's current stats. These include concurrent viewers and total chat count. Statistics can change (in either direction) during the lifetime of an event. Statistics are only returned while the event is live."]
         #[serde(rename = "statistics", default)]
-        pub statistics: Option<crate::schemas::LiveBroadcastStatistics>,
+        pub statistics: ::std::option::Option<crate::schemas::LiveBroadcastStatistics>,
         #[doc = "The status object contains information about the event's status."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::LiveBroadcastStatus>,
+        pub status: ::std::option::Option<crate::schemas::LiveBroadcastStatus>,
     }
     impl ::field_selector::FieldSelector for LiveBroadcast {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -8055,7 +8823,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -8117,6 +8884,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for LiveBroadcastContentDetailsClosedCaptionsType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LiveBroadcastContentDetailsLatencyPreference {
         Low,
@@ -8162,6 +8938,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for LiveBroadcastContentDetailsLatencyPreference {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -8211,6 +8996,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for LiveBroadcastContentDetailsProjection {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LiveBroadcastContentDetailsStereoLayout {
         LeftRight,
@@ -8258,6 +9052,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for LiveBroadcastContentDetailsStereoLayout {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -8273,51 +9076,54 @@ pub mod schemas {
     pub struct LiveBroadcastContentDetails {
         #[doc = "This value uniquely identifies the live stream bound to the broadcast."]
         #[serde(rename = "boundStreamId", default)]
-        pub bound_stream_id: Option<String>,
+        pub bound_stream_id: ::std::option::Option<String>,
         #[doc = "The date and time that the live stream referenced by boundStreamId was last updated."]
         #[serde(rename = "boundStreamLastUpdateTimeMs", default)]
-        pub bound_stream_last_update_time_ms: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub bound_stream_last_update_time_ms:
+            ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[serde(rename = "closedCaptionsType", default)]
         pub closed_captions_type:
-            Option<crate::schemas::LiveBroadcastContentDetailsClosedCaptionsType>,
+            ::std::option::Option<crate::schemas::LiveBroadcastContentDetailsClosedCaptionsType>,
         #[doc = "This setting indicates whether auto start is enabled for this broadcast."]
         #[serde(rename = "enableAutoStart", default)]
-        pub enable_auto_start: Option<bool>,
+        pub enable_auto_start: ::std::option::Option<bool>,
         #[doc = "This setting indicates whether HTTP POST closed captioning is enabled for this broadcast. The ingestion URL of the closed captions is returned through the liveStreams API. This is mutually exclusive with using the closed_captions_type property, and is equivalent to setting closed_captions_type to CLOSED_CAPTIONS_HTTP_POST."]
         #[serde(rename = "enableClosedCaptions", default)]
-        pub enable_closed_captions: Option<bool>,
+        pub enable_closed_captions: ::std::option::Option<bool>,
         #[doc = "This setting indicates whether YouTube should enable content encryption for the broadcast."]
         #[serde(rename = "enableContentEncryption", default)]
-        pub enable_content_encryption: Option<bool>,
+        pub enable_content_encryption: ::std::option::Option<bool>,
         #[doc = "This setting determines whether viewers can access DVR controls while watching the video. DVR controls enable the viewer to control the video playback experience by pausing, rewinding, or fast forwarding content. The default value for this property is true.\n\nImportant: You must set the value to true and also set the enableArchive property's value to true if you want to make playback available immediately after the broadcast ends."]
         #[serde(rename = "enableDvr", default)]
-        pub enable_dvr: Option<bool>,
+        pub enable_dvr: ::std::option::Option<bool>,
         #[doc = "This setting indicates whether the broadcast video can be played in an embedded player. If you choose to archive the video (using the enableArchive property), this setting will also apply to the archived video."]
         #[serde(rename = "enableEmbed", default)]
-        pub enable_embed: Option<bool>,
+        pub enable_embed: ::std::option::Option<bool>,
         #[doc = "Indicates whether this broadcast has low latency enabled."]
         #[serde(rename = "enableLowLatency", default)]
-        pub enable_low_latency: Option<bool>,
+        pub enable_low_latency: ::std::option::Option<bool>,
         #[doc = "If both this and enable_low_latency are set, they must match. LATENCY_NORMAL should match enable_low_latency=false LATENCY_LOW should match enable_low_latency=true LATENCY_ULTRA_LOW should have enable_low_latency omitted."]
         #[serde(rename = "latencyPreference", default)]
         pub latency_preference:
-            Option<crate::schemas::LiveBroadcastContentDetailsLatencyPreference>,
+            ::std::option::Option<crate::schemas::LiveBroadcastContentDetailsLatencyPreference>,
         #[serde(rename = "mesh", default)]
-        pub mesh: Option<Vec<u8>>,
+        pub mesh: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "The monitorStream object contains information about the monitor stream, which the broadcaster can use to review the event content before the broadcast stream is shown publicly."]
         #[serde(rename = "monitorStream", default)]
-        pub monitor_stream: Option<crate::schemas::MonitorStreamInfo>,
+        pub monitor_stream: ::std::option::Option<crate::schemas::MonitorStreamInfo>,
         #[doc = "The projection format of this broadcast. This defaults to rectangular."]
         #[serde(rename = "projection", default)]
-        pub projection: Option<crate::schemas::LiveBroadcastContentDetailsProjection>,
+        pub projection:
+            ::std::option::Option<crate::schemas::LiveBroadcastContentDetailsProjection>,
         #[doc = "Automatically start recording after the event goes live. The default value for this property is true.\n\nImportant: You must also set the enableDvr property's value to true if you want the playback to be available immediately after the broadcast ends. If you set this property's value to true but do not also set the enableDvr property to true, there may be a delay of around one day before the archived video will be available for playback."]
         #[serde(rename = "recordFromStart", default)]
-        pub record_from_start: Option<bool>,
+        pub record_from_start: ::std::option::Option<bool>,
         #[doc = "This setting indicates whether the broadcast should automatically begin with an in-stream slate when you update the broadcast's status to live. After updating the status, you then need to send a liveCuepoints.insert request that sets the cuepoint's eventState to end to remove the in-stream slate and make your broadcast stream visible to viewers."]
         #[serde(rename = "startWithSlate", default)]
-        pub start_with_slate: Option<bool>,
+        pub start_with_slate: ::std::option::Option<bool>,
         #[serde(rename = "stereoLayout", default)]
-        pub stereo_layout: Option<crate::schemas::LiveBroadcastContentDetailsStereoLayout>,
+        pub stereo_layout:
+            ::std::option::Option<crate::schemas::LiveBroadcastContentDetailsStereoLayout>,
     }
     impl ::field_selector::FieldSelector for LiveBroadcastContentDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -8326,7 +9132,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -8344,29 +9149,29 @@ pub mod schemas {
     pub struct LiveBroadcastListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of broadcasts that match the request criteria."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::LiveBroadcast>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::LiveBroadcast>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveBroadcastListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(rename = "prevPageToken", default)]
-        pub prev_page_token: Option<String>,
+        pub prev_page_token: ::std::option::Option<String>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LiveBroadcastListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -8375,7 +9180,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -8446,6 +9250,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for LiveBroadcastSnippetBroadcastType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -8461,38 +9274,39 @@ pub mod schemas {
     pub struct LiveBroadcastSnippet {
         #[doc = "The date and time that the broadcast actually ended. This information is only available once the broadcast's state is complete. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "actualEndTime", default)]
-        pub actual_end_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub actual_end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The date and time that the broadcast actually started. This information is only available once the broadcast's state is live. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "actualStartTime", default)]
-        pub actual_start_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub actual_start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[serde(rename = "broadcastType", default)]
-        pub broadcast_type: Option<crate::schemas::LiveBroadcastSnippetBroadcastType>,
+        pub broadcast_type:
+            ::std::option::Option<crate::schemas::LiveBroadcastSnippetBroadcastType>,
         #[doc = "The ID that YouTube uses to uniquely identify the channel that is publishing the broadcast."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "The broadcast's description. As with the title, you can set this field by modifying the broadcast resource or by setting the description field of the corresponding video resource."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[serde(rename = "isDefaultBroadcast", default)]
-        pub is_default_broadcast: Option<bool>,
+        pub is_default_broadcast: ::std::option::Option<bool>,
         #[doc = "The id of the live chat for this broadcast."]
         #[serde(rename = "liveChatId", default)]
-        pub live_chat_id: Option<String>,
+        pub live_chat_id: ::std::option::Option<String>,
         #[doc = "The date and time that the broadcast was added to YouTube's live broadcast schedule. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "publishedAt", default)]
-        pub published_at: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The date and time that the broadcast is scheduled to end. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "scheduledEndTime", default)]
-        pub scheduled_end_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub scheduled_end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The date and time that the broadcast is scheduled to start. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "scheduledStartTime", default)]
-        pub scheduled_start_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub scheduled_start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "A map of thumbnail images associated with the broadcast. For each nested object in this object, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
         #[serde(rename = "thumbnails", default)]
-        pub thumbnails: Option<crate::schemas::ThumbnailDetails>,
+        pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
         #[doc = "The broadcast's title. Note that the broadcast represents exactly one YouTube video. You can set this field by modifying the broadcast resource or by setting the title field of the corresponding video resource."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LiveBroadcastSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -8501,7 +9315,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -8520,11 +9333,11 @@ pub mod schemas {
         #[doc = "The number of viewers currently watching the broadcast. The property and its value will be present if the broadcast has current viewers and the broadcast owner has not hidden the viewcount for the video. Note that YouTube stops tracking the number of concurrent viewers for a broadcast when the broadcast ends. So, this property would not identify the number of viewers watching an archived video of a live broadcast that already ended."]
         #[serde(rename = "concurrentViewers", default)]
         #[serde(with = "crate::parsed_string")]
-        pub concurrent_viewers: Option<u64>,
+        pub concurrent_viewers: ::std::option::Option<u64>,
         #[doc = "The total number of live chat messages currently on the broadcast. The property and its value will be present if the broadcast is public, has the live chat feature enabled, and has at least one message. Note that this field will not be filled after the broadcast ends. So this property would not identify the number of chat messages for an archived video of a completed live broadcast."]
         #[serde(rename = "totalChatCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub total_chat_count: Option<u64>,
+        pub total_chat_count: ::std::option::Option<u64>,
     }
     impl ::field_selector::FieldSelector for LiveBroadcastStatistics {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -8533,7 +9346,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -8598,6 +9410,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for LiveBroadcastStatusLifeCycleStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LiveBroadcastStatusLiveBroadcastPriority {
         High,
@@ -8643,6 +9464,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for LiveBroadcastStatusLiveBroadcastPriority {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -8692,6 +9522,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for LiveBroadcastStatusPrivacyStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LiveBroadcastStatusRecordingStatus {
         NotRecording,
@@ -8739,6 +9578,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for LiveBroadcastStatusRecordingStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -8754,17 +9602,19 @@ pub mod schemas {
     pub struct LiveBroadcastStatus {
         #[doc = "The broadcast's status. The status can be updated using the API's liveBroadcasts.transition method."]
         #[serde(rename = "lifeCycleStatus", default)]
-        pub life_cycle_status: Option<crate::schemas::LiveBroadcastStatusLifeCycleStatus>,
+        pub life_cycle_status:
+            ::std::option::Option<crate::schemas::LiveBroadcastStatusLifeCycleStatus>,
         #[doc = "Priority of the live broadcast event (internal state)."]
         #[serde(rename = "liveBroadcastPriority", default)]
         pub live_broadcast_priority:
-            Option<crate::schemas::LiveBroadcastStatusLiveBroadcastPriority>,
+            ::std::option::Option<crate::schemas::LiveBroadcastStatusLiveBroadcastPriority>,
         #[doc = "The broadcast's privacy status. Note that the broadcast represents exactly one YouTube video, so the privacy settings are identical to those supported for videos. In addition, you can set this field by modifying the broadcast resource or by setting the privacyStatus field of the corresponding video resource."]
         #[serde(rename = "privacyStatus", default)]
-        pub privacy_status: Option<crate::schemas::LiveBroadcastStatusPrivacyStatus>,
+        pub privacy_status: ::std::option::Option<crate::schemas::LiveBroadcastStatusPrivacyStatus>,
         #[doc = "The broadcast's recording status."]
         #[serde(rename = "recordingStatus", default)]
-        pub recording_status: Option<crate::schemas::LiveBroadcastStatusRecordingStatus>,
+        pub recording_status:
+            ::std::option::Option<crate::schemas::LiveBroadcastStatusRecordingStatus>,
     }
     impl ::field_selector::FieldSelector for LiveBroadcastStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -8773,7 +9623,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -8791,16 +9640,16 @@ pub mod schemas {
     pub struct LiveChatBan {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube assigns to uniquely identify the ban."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveChatBan\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the ban."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::LiveChatBanSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::LiveChatBanSnippet>,
     }
     impl ::field_selector::FieldSelector for LiveChatBan {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -8809,7 +9658,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -8856,6 +9704,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for LiveChatBanSnippetType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -8872,15 +9729,15 @@ pub mod schemas {
         #[doc = "The duration of a ban, only filled if the ban has type TEMPORARY."]
         #[serde(rename = "banDurationSeconds", default)]
         #[serde(with = "crate::parsed_string")]
-        pub ban_duration_seconds: Option<u64>,
+        pub ban_duration_seconds: ::std::option::Option<u64>,
         #[serde(rename = "bannedUserDetails", default)]
-        pub banned_user_details: Option<crate::schemas::ChannelProfileDetails>,
+        pub banned_user_details: ::std::option::Option<crate::schemas::ChannelProfileDetails>,
         #[doc = "The chat this ban is pertinent to."]
         #[serde(rename = "liveChatId", default)]
-        pub live_chat_id: Option<String>,
+        pub live_chat_id: ::std::option::Option<String>,
         #[doc = "The type of ban."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::LiveChatBanSnippetType>,
+        pub r#type: ::std::option::Option<crate::schemas::LiveChatBanSnippetType>,
     }
     impl ::field_selector::FieldSelector for LiveChatBanSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -8889,7 +9746,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -8907,17 +9763,17 @@ pub mod schemas {
     pub struct LiveChatFanFundingEventDetails {
         #[doc = "A rendered string that displays the fund amount and currency to the user."]
         #[serde(rename = "amountDisplayString", default)]
-        pub amount_display_string: Option<String>,
+        pub amount_display_string: ::std::option::Option<String>,
         #[doc = "The amount of the fund."]
         #[serde(rename = "amountMicros", default)]
         #[serde(with = "crate::parsed_string")]
-        pub amount_micros: Option<u64>,
+        pub amount_micros: ::std::option::Option<u64>,
         #[doc = "The currency in which the fund was made."]
         #[serde(rename = "currency", default)]
-        pub currency: Option<String>,
+        pub currency: ::std::option::Option<String>,
         #[doc = "The comment added by the user to this fan funding event."]
         #[serde(rename = "userComment", default)]
-        pub user_comment: Option<String>,
+        pub user_comment: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LiveChatFanFundingEventDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -8926,7 +9782,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -8944,19 +9799,19 @@ pub mod schemas {
     pub struct LiveChatMessage {
         #[doc = "The authorDetails object contains basic details about the user that posted this message."]
         #[serde(rename = "authorDetails", default)]
-        pub author_details: Option<crate::schemas::LiveChatMessageAuthorDetails>,
+        pub author_details: ::std::option::Option<crate::schemas::LiveChatMessageAuthorDetails>,
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube assigns to uniquely identify the message."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveChatMessage\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the message."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::LiveChatMessageSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::LiveChatMessageSnippet>,
     }
     impl ::field_selector::FieldSelector for LiveChatMessage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -8965,7 +9820,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -8983,28 +9837,28 @@ pub mod schemas {
     pub struct LiveChatMessageAuthorDetails {
         #[doc = "The YouTube channel ID."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "The channel's URL."]
         #[serde(rename = "channelUrl", default)]
-        pub channel_url: Option<String>,
+        pub channel_url: ::std::option::Option<String>,
         #[doc = "The channel's display name."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "Whether the author is a moderator of the live chat."]
         #[serde(rename = "isChatModerator", default)]
-        pub is_chat_moderator: Option<bool>,
+        pub is_chat_moderator: ::std::option::Option<bool>,
         #[doc = "Whether the author is the owner of the live chat."]
         #[serde(rename = "isChatOwner", default)]
-        pub is_chat_owner: Option<bool>,
+        pub is_chat_owner: ::std::option::Option<bool>,
         #[doc = "Whether the author is a sponsor of the live chat."]
         #[serde(rename = "isChatSponsor", default)]
-        pub is_chat_sponsor: Option<bool>,
+        pub is_chat_sponsor: ::std::option::Option<bool>,
         #[doc = "Whether the author's identity has been verified by YouTube."]
         #[serde(rename = "isVerified", default)]
-        pub is_verified: Option<bool>,
+        pub is_verified: ::std::option::Option<bool>,
         #[doc = "The channels's avatar URL."]
         #[serde(rename = "profileImageUrl", default)]
-        pub profile_image_url: Option<String>,
+        pub profile_image_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LiveChatMessageAuthorDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -9013,7 +9867,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -9030,7 +9883,7 @@ pub mod schemas {
     )]
     pub struct LiveChatMessageDeletedDetails {
         #[serde(rename = "deletedMessageId", default)]
-        pub deleted_message_id: Option<String>,
+        pub deleted_message_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LiveChatMessageDeletedDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -9039,7 +9892,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -9057,32 +9909,32 @@ pub mod schemas {
     pub struct LiveChatMessageListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of live chat messages."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::LiveChatMessage>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::LiveChatMessage>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveChatMessageListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The date and time when the underlying stream went offline. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "offlineAt", default)]
-        pub offline_at: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub offline_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The amount of time the client should wait before polling again."]
         #[serde(rename = "pollingIntervalMillis", default)]
-        pub polling_interval_millis: Option<u32>,
+        pub polling_interval_millis: ::std::option::Option<u32>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LiveChatMessageListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -9091,7 +9943,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -9108,7 +9959,7 @@ pub mod schemas {
     )]
     pub struct LiveChatMessageRetractedDetails {
         #[serde(rename = "retractedMessageId", default)]
-        pub retracted_message_id: Option<String>,
+        pub retracted_message_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LiveChatMessageRetractedDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -9117,7 +9968,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -9214,6 +10064,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for LiveChatMessageSnippetType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -9229,47 +10088,52 @@ pub mod schemas {
     pub struct LiveChatMessageSnippet {
         #[doc = "The ID of the user that authored this message, this field is not always filled. textMessageEvent - the user that wrote the message fanFundingEvent - the user that funded the broadcast newSponsorEvent - the user that just became a sponsor messageDeletedEvent - the moderator that took the action messageRetractedEvent - the author that retracted their message userBannedEvent - the moderator that took the action superChatEvent - the user that made the purchase"]
         #[serde(rename = "authorChannelId", default)]
-        pub author_channel_id: Option<String>,
+        pub author_channel_id: ::std::option::Option<String>,
         #[doc = "Contains a string that can be displayed to the user. If this field is not present the message is silent, at the moment only messages of type TOMBSTONE and CHAT_ENDED_EVENT are silent."]
         #[serde(rename = "displayMessage", default)]
-        pub display_message: Option<String>,
+        pub display_message: ::std::option::Option<String>,
         #[doc = "Details about the funding event, this is only set if the type is 'fanFundingEvent'."]
         #[serde(rename = "fanFundingEventDetails", default)]
-        pub fan_funding_event_details: Option<crate::schemas::LiveChatFanFundingEventDetails>,
+        pub fan_funding_event_details:
+            ::std::option::Option<crate::schemas::LiveChatFanFundingEventDetails>,
         #[doc = "Whether the message has display content that should be displayed to users."]
         #[serde(rename = "hasDisplayContent", default)]
-        pub has_display_content: Option<bool>,
+        pub has_display_content: ::std::option::Option<bool>,
         #[serde(rename = "liveChatId", default)]
-        pub live_chat_id: Option<String>,
+        pub live_chat_id: ::std::option::Option<String>,
         #[serde(rename = "messageDeletedDetails", default)]
-        pub message_deleted_details: Option<crate::schemas::LiveChatMessageDeletedDetails>,
+        pub message_deleted_details:
+            ::std::option::Option<crate::schemas::LiveChatMessageDeletedDetails>,
         #[serde(rename = "messageRetractedDetails", default)]
-        pub message_retracted_details: Option<crate::schemas::LiveChatMessageRetractedDetails>,
+        pub message_retracted_details:
+            ::std::option::Option<crate::schemas::LiveChatMessageRetractedDetails>,
         #[serde(rename = "pollClosedDetails", default)]
-        pub poll_closed_details: Option<crate::schemas::LiveChatPollClosedDetails>,
+        pub poll_closed_details: ::std::option::Option<crate::schemas::LiveChatPollClosedDetails>,
         #[serde(rename = "pollEditedDetails", default)]
-        pub poll_edited_details: Option<crate::schemas::LiveChatPollEditedDetails>,
+        pub poll_edited_details: ::std::option::Option<crate::schemas::LiveChatPollEditedDetails>,
         #[serde(rename = "pollOpenedDetails", default)]
-        pub poll_opened_details: Option<crate::schemas::LiveChatPollOpenedDetails>,
+        pub poll_opened_details: ::std::option::Option<crate::schemas::LiveChatPollOpenedDetails>,
         #[serde(rename = "pollVotedDetails", default)]
-        pub poll_voted_details: Option<crate::schemas::LiveChatPollVotedDetails>,
+        pub poll_voted_details: ::std::option::Option<crate::schemas::LiveChatPollVotedDetails>,
         #[doc = "The date and time when the message was orignally published. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "publishedAt", default)]
-        pub published_at: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The type of message, this will always be present, it determines the contents of the message as well as which fields will be present."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::LiveChatMessageSnippetType>,
+        pub r#type: ::std::option::Option<crate::schemas::LiveChatMessageSnippetType>,
         #[doc = "Details about the Super Chat event, this is only set if the type is 'superChatEvent'."]
         #[serde(rename = "superChatDetails", default)]
-        pub super_chat_details: Option<crate::schemas::LiveChatSuperChatDetails>,
+        pub super_chat_details: ::std::option::Option<crate::schemas::LiveChatSuperChatDetails>,
         #[doc = "Details about the Super Sticker event, this is only set if the type is 'superStickerEvent'."]
         #[serde(rename = "superStickerDetails", default)]
-        pub super_sticker_details: Option<crate::schemas::LiveChatSuperStickerDetails>,
+        pub super_sticker_details:
+            ::std::option::Option<crate::schemas::LiveChatSuperStickerDetails>,
         #[doc = "Details about the text message, this is only set if the type is 'textMessageEvent'."]
         #[serde(rename = "textMessageDetails", default)]
-        pub text_message_details: Option<crate::schemas::LiveChatTextMessageDetails>,
+        pub text_message_details: ::std::option::Option<crate::schemas::LiveChatTextMessageDetails>,
         #[serde(rename = "userBannedDetails", default)]
-        pub user_banned_details: Option<crate::schemas::LiveChatUserBannedMessageDetails>,
+        pub user_banned_details:
+            ::std::option::Option<crate::schemas::LiveChatUserBannedMessageDetails>,
     }
     impl ::field_selector::FieldSelector for LiveChatMessageSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -9278,7 +10142,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -9296,16 +10159,16 @@ pub mod schemas {
     pub struct LiveChatModerator {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube assigns to uniquely identify the moderator."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveChatModerator\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the moderator."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::LiveChatModeratorSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::LiveChatModeratorSnippet>,
     }
     impl ::field_selector::FieldSelector for LiveChatModerator {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -9314,7 +10177,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -9332,29 +10194,29 @@ pub mod schemas {
     pub struct LiveChatModeratorListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of moderators that match the request criteria."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::LiveChatModerator>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::LiveChatModerator>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveChatModeratorListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(rename = "prevPageToken", default)]
-        pub prev_page_token: Option<String>,
+        pub prev_page_token: ::std::option::Option<String>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LiveChatModeratorListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -9363,7 +10225,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -9381,10 +10242,10 @@ pub mod schemas {
     pub struct LiveChatModeratorSnippet {
         #[doc = "The ID of the live chat this moderator can act on."]
         #[serde(rename = "liveChatId", default)]
-        pub live_chat_id: Option<String>,
+        pub live_chat_id: ::std::option::Option<String>,
         #[doc = "Details about the moderator."]
         #[serde(rename = "moderatorDetails", default)]
-        pub moderator_details: Option<crate::schemas::ChannelProfileDetails>,
+        pub moderator_details: ::std::option::Option<crate::schemas::ChannelProfileDetails>,
     }
     impl ::field_selector::FieldSelector for LiveChatModeratorSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -9393,7 +10254,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -9411,7 +10271,7 @@ pub mod schemas {
     pub struct LiveChatPollClosedDetails {
         #[doc = "The id of the poll that was closed."]
         #[serde(rename = "pollId", default)]
-        pub poll_id: Option<String>,
+        pub poll_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LiveChatPollClosedDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -9420,7 +10280,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -9437,11 +10296,11 @@ pub mod schemas {
     )]
     pub struct LiveChatPollEditedDetails {
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::LiveChatPollItem>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::LiveChatPollItem>>,
         #[serde(rename = "prompt", default)]
-        pub prompt: Option<String>,
+        pub prompt: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LiveChatPollEditedDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -9450,7 +10309,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -9468,9 +10326,9 @@ pub mod schemas {
     pub struct LiveChatPollItem {
         #[doc = "Plain text description of the item."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[serde(rename = "itemId", default)]
-        pub item_id: Option<String>,
+        pub item_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LiveChatPollItem {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -9479,7 +10337,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -9496,11 +10353,11 @@ pub mod schemas {
     )]
     pub struct LiveChatPollOpenedDetails {
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::LiveChatPollItem>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::LiveChatPollItem>>,
         #[serde(rename = "prompt", default)]
-        pub prompt: Option<String>,
+        pub prompt: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LiveChatPollOpenedDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -9509,7 +10366,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -9527,10 +10383,10 @@ pub mod schemas {
     pub struct LiveChatPollVotedDetails {
         #[doc = "The poll item the user chose."]
         #[serde(rename = "itemId", default)]
-        pub item_id: Option<String>,
+        pub item_id: ::std::option::Option<String>,
         #[doc = "The poll the user voted on."]
         #[serde(rename = "pollId", default)]
-        pub poll_id: Option<String>,
+        pub poll_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LiveChatPollVotedDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -9539,7 +10395,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -9557,20 +10412,20 @@ pub mod schemas {
     pub struct LiveChatSuperChatDetails {
         #[doc = "A rendered string that displays the fund amount and currency to the user."]
         #[serde(rename = "amountDisplayString", default)]
-        pub amount_display_string: Option<String>,
+        pub amount_display_string: ::std::option::Option<String>,
         #[doc = "The amount purchased by the user, in micros (1,750,000 micros = 1.75)."]
         #[serde(rename = "amountMicros", default)]
         #[serde(with = "crate::parsed_string")]
-        pub amount_micros: Option<u64>,
+        pub amount_micros: ::std::option::Option<u64>,
         #[doc = "The currency in which the purchase was made."]
         #[serde(rename = "currency", default)]
-        pub currency: Option<String>,
+        pub currency: ::std::option::Option<String>,
         #[doc = "The tier in which the amount belongs. Lower amounts belong to lower tiers. The lowest tier is 1."]
         #[serde(rename = "tier", default)]
-        pub tier: Option<u32>,
+        pub tier: ::std::option::Option<u32>,
         #[doc = "The comment added by the user to this Super Chat event."]
         #[serde(rename = "userComment", default)]
-        pub user_comment: Option<String>,
+        pub user_comment: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LiveChatSuperChatDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -9579,7 +10434,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -9597,20 +10451,20 @@ pub mod schemas {
     pub struct LiveChatSuperStickerDetails {
         #[doc = "A rendered string that displays the fund amount and currency to the user."]
         #[serde(rename = "amountDisplayString", default)]
-        pub amount_display_string: Option<String>,
+        pub amount_display_string: ::std::option::Option<String>,
         #[doc = "The amount purchased by the user, in micros (1,750,000 micros = 1.75)."]
         #[serde(rename = "amountMicros", default)]
         #[serde(with = "crate::parsed_string")]
-        pub amount_micros: Option<u64>,
+        pub amount_micros: ::std::option::Option<u64>,
         #[doc = "The currency in which the purchase was made."]
         #[serde(rename = "currency", default)]
-        pub currency: Option<String>,
+        pub currency: ::std::option::Option<String>,
         #[doc = "Information about the Super Sticker."]
         #[serde(rename = "superStickerMetadata", default)]
-        pub super_sticker_metadata: Option<crate::schemas::SuperStickerMetadata>,
+        pub super_sticker_metadata: ::std::option::Option<crate::schemas::SuperStickerMetadata>,
         #[doc = "The tier in which the amount belongs. Lower amounts belong to lower tiers. The lowest tier is 1."]
         #[serde(rename = "tier", default)]
-        pub tier: Option<u32>,
+        pub tier: ::std::option::Option<u32>,
     }
     impl ::field_selector::FieldSelector for LiveChatSuperStickerDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -9619,7 +10473,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -9637,7 +10490,7 @@ pub mod schemas {
     pub struct LiveChatTextMessageDetails {
         #[doc = "The user's message."]
         #[serde(rename = "messageText", default)]
-        pub message_text: Option<String>,
+        pub message_text: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LiveChatTextMessageDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -9646,7 +10499,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -9693,6 +10545,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for LiveChatUserBannedMessageDetailsBanType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -9709,13 +10570,14 @@ pub mod schemas {
         #[doc = "The duration of the ban. This property is only present if the banType is temporary."]
         #[serde(rename = "banDurationSeconds", default)]
         #[serde(with = "crate::parsed_string")]
-        pub ban_duration_seconds: Option<u64>,
+        pub ban_duration_seconds: ::std::option::Option<u64>,
         #[doc = "The type of ban."]
         #[serde(rename = "banType", default)]
-        pub ban_type: Option<crate::schemas::LiveChatUserBannedMessageDetailsBanType>,
+        pub ban_type:
+            ::std::option::Option<crate::schemas::LiveChatUserBannedMessageDetailsBanType>,
         #[doc = "The details of the user that was banned."]
         #[serde(rename = "bannedUserDetails", default)]
-        pub banned_user_details: Option<crate::schemas::ChannelProfileDetails>,
+        pub banned_user_details: ::std::option::Option<crate::schemas::ChannelProfileDetails>,
     }
     impl ::field_selector::FieldSelector for LiveChatUserBannedMessageDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -9724,7 +10586,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -9742,25 +10603,25 @@ pub mod schemas {
     pub struct LiveStream {
         #[doc = "The cdn object defines the live stream's content delivery network (CDN) settings. These settings provide details about the manner in which you stream your content to YouTube."]
         #[serde(rename = "cdn", default)]
-        pub cdn: Option<crate::schemas::CdnSettings>,
+        pub cdn: ::std::option::Option<crate::schemas::CdnSettings>,
         #[doc = "The content_details object contains information about the stream, including the closed captions ingestion URL."]
         #[serde(rename = "contentDetails", default)]
-        pub content_details: Option<crate::schemas::LiveStreamContentDetails>,
+        pub content_details: ::std::option::Option<crate::schemas::LiveStreamContentDetails>,
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube assigns to uniquely identify the stream."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveStream\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the stream, including its channel, title, and description."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::LiveStreamSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::LiveStreamSnippet>,
         #[doc = "The status object contains information about live stream's status."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::LiveStreamStatus>,
+        pub status: ::std::option::Option<crate::schemas::LiveStreamStatus>,
     }
     impl ::field_selector::FieldSelector for LiveStream {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -9769,7 +10630,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -9932,6 +10792,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for LiveStreamConfigurationIssueType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LiveStreamConfigurationIssueSeverity {
         Error,
@@ -9979,6 +10848,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for LiveStreamConfigurationIssueSeverity {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -9994,16 +10872,16 @@ pub mod schemas {
     pub struct LiveStreamConfigurationIssue {
         #[doc = "The long-form description of the issue and how to resolve it."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The kind of error happening."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::LiveStreamConfigurationIssueType>,
+        pub r#type: ::std::option::Option<crate::schemas::LiveStreamConfigurationIssueType>,
         #[doc = "The short-form reason for this issue."]
         #[serde(rename = "reason", default)]
-        pub reason: Option<String>,
+        pub reason: ::std::option::Option<String>,
         #[doc = "How severe this issue is to the stream."]
         #[serde(rename = "severity", default)]
-        pub severity: Option<crate::schemas::LiveStreamConfigurationIssueSeverity>,
+        pub severity: ::std::option::Option<crate::schemas::LiveStreamConfigurationIssueSeverity>,
     }
     impl ::field_selector::FieldSelector for LiveStreamConfigurationIssue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10012,7 +10890,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10030,10 +10907,10 @@ pub mod schemas {
     pub struct LiveStreamContentDetails {
         #[doc = "The ingestion URL where the closed captions of this stream are sent."]
         #[serde(rename = "closedCaptionsIngestionUrl", default)]
-        pub closed_captions_ingestion_url: Option<String>,
+        pub closed_captions_ingestion_url: ::std::option::Option<String>,
         #[doc = "Indicates whether the stream is reusable, which means that it can be bound to multiple broadcasts. It is common for broadcasters to reuse the same stream for many different broadcasts if those broadcasts occur at different times.\n\nIf you set this value to false, then the stream will not be reusable, which means that it can only be bound to one broadcast. Non-reusable streams differ from reusable streams in the following ways:\n\n* A non-reusable stream can only be bound to one broadcast. \n* A non-reusable stream might be deleted by an automated process after the broadcast ends. \n* The  liveStreams.list method does not list non-reusable streams if you call the method and set the mine parameter to true. The only way to use that method to retrieve the resource for a non-reusable stream is to use the id parameter to identify the stream."]
         #[serde(rename = "isReusable", default)]
-        pub is_reusable: Option<bool>,
+        pub is_reusable: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for LiveStreamContentDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10042,7 +10919,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -10098,6 +10974,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for LiveStreamHealthStatusStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -10113,14 +10998,15 @@ pub mod schemas {
     pub struct LiveStreamHealthStatus {
         #[doc = "The configurations issues on this stream"]
         #[serde(rename = "configurationIssues", default)]
-        pub configuration_issues: Option<Vec<crate::schemas::LiveStreamConfigurationIssue>>,
+        pub configuration_issues:
+            ::std::option::Option<Vec<crate::schemas::LiveStreamConfigurationIssue>>,
         #[doc = "The last time this status was updated (in seconds)"]
         #[serde(rename = "lastUpdateTimeSeconds", default)]
         #[serde(with = "crate::parsed_string")]
-        pub last_update_time_seconds: Option<u64>,
+        pub last_update_time_seconds: ::std::option::Option<u64>,
         #[doc = "The status code of this stream"]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::LiveStreamHealthStatusStatus>,
+        pub status: ::std::option::Option<crate::schemas::LiveStreamHealthStatusStatus>,
     }
     impl ::field_selector::FieldSelector for LiveStreamHealthStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10129,7 +11015,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10147,29 +11032,29 @@ pub mod schemas {
     pub struct LiveStreamListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of live streams that match the request criteria."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::LiveStream>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::LiveStream>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveStreamListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(rename = "prevPageToken", default)]
-        pub prev_page_token: Option<String>,
+        pub prev_page_token: ::std::option::Option<String>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LiveStreamListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10178,7 +11063,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10196,18 +11080,18 @@ pub mod schemas {
     pub struct LiveStreamSnippet {
         #[doc = "The ID that YouTube uses to uniquely identify the channel that is transmitting the stream."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "The stream's description. The value cannot be longer than 10000 characters."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[serde(rename = "isDefaultStream", default)]
-        pub is_default_stream: Option<bool>,
+        pub is_default_stream: ::std::option::Option<bool>,
         #[doc = "The date and time that the stream was created. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "publishedAt", default)]
-        pub published_at: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The stream's title. The value must be between 1 and 128 characters long."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LiveStreamSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10216,7 +11100,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -10272,6 +11155,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for LiveStreamStatusStreamStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -10287,9 +11179,9 @@ pub mod schemas {
     pub struct LiveStreamStatus {
         #[doc = "The health status of the stream."]
         #[serde(rename = "healthStatus", default)]
-        pub health_status: Option<crate::schemas::LiveStreamHealthStatus>,
+        pub health_status: ::std::option::Option<crate::schemas::LiveStreamHealthStatus>,
         #[serde(rename = "streamStatus", default)]
-        pub stream_status: Option<crate::schemas::LiveStreamStatusStreamStatus>,
+        pub stream_status: ::std::option::Option<crate::schemas::LiveStreamStatusStreamStatus>,
     }
     impl ::field_selector::FieldSelector for LiveStreamStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10298,7 +11190,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10315,12 +11206,12 @@ pub mod schemas {
     )]
     pub struct LocalizedProperty {
         #[serde(rename = "default", default)]
-        pub default: Option<String>,
+        pub default: ::std::option::Option<String>,
         #[doc = "The language of the default property."]
         #[serde(rename = "defaultLanguage", default)]
-        pub default_language: Option<crate::schemas::LanguageTag>,
+        pub default_language: ::std::option::Option<crate::schemas::LanguageTag>,
         #[serde(rename = "localized", default)]
-        pub localized: Option<Vec<crate::schemas::LocalizedString>>,
+        pub localized: ::std::option::Option<Vec<crate::schemas::LocalizedString>>,
     }
     impl ::field_selector::FieldSelector for LocalizedProperty {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10329,7 +11220,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10346,9 +11236,9 @@ pub mod schemas {
     )]
     pub struct LocalizedString {
         #[serde(rename = "language", default)]
-        pub language: Option<String>,
+        pub language: ::std::option::Option<String>,
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LocalizedString {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10357,7 +11247,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10375,16 +11264,16 @@ pub mod schemas {
     pub struct Member {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube assigns to uniquely identify the member."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#member\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the member."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::MemberSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::MemberSnippet>,
     }
     impl ::field_selector::FieldSelector for Member {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10393,7 +11282,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10411,26 +11299,26 @@ pub mod schemas {
     pub struct MemberListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of members that match the request criteria."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Member>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Member>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#memberListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for MemberListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10439,7 +11327,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10457,13 +11344,13 @@ pub mod schemas {
     pub struct MemberSnippet {
         #[doc = "The id of the channel that's offering memberships."]
         #[serde(rename = "creatorChannelId", default)]
-        pub creator_channel_id: Option<String>,
+        pub creator_channel_id: ::std::option::Option<String>,
         #[doc = "Details about the member."]
         #[serde(rename = "memberDetails", default)]
-        pub member_details: Option<crate::schemas::ChannelProfileDetails>,
+        pub member_details: ::std::option::Option<crate::schemas::ChannelProfileDetails>,
         #[doc = "Details about the user's membership."]
         #[serde(rename = "membershipsDetails", default)]
-        pub memberships_details: Option<crate::schemas::MembershipsDetails>,
+        pub memberships_details: ::std::option::Option<crate::schemas::MembershipsDetails>,
     }
     impl ::field_selector::FieldSelector for MemberSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10472,7 +11359,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10490,22 +11376,22 @@ pub mod schemas {
     pub struct MembershipsDetails {
         #[doc = "All levels that the user has access to. This includes the purchased level and all other levels that are included because of a higher purchase."]
         #[serde(rename = "accessibleLevels", default)]
-        pub accessible_levels: Option<Vec<String>>,
+        pub accessible_levels: ::std::option::Option<Vec<String>>,
         #[doc = "The date and time when the user became a continuous member across all levels."]
         #[serde(rename = "memberSince", default)]
-        pub member_since: Option<String>,
+        pub member_since: ::std::option::Option<String>,
         #[doc = "The date and time when the user started to continuously have access to the currently highest level."]
         #[serde(rename = "memberSinceCurrentLevel", default)]
-        pub member_since_current_level: Option<String>,
+        pub member_since_current_level: ::std::option::Option<String>,
         #[doc = "The cumulative time the user has been a member across all levels in complete months (the time is rounded down to the nearest integer)."]
         #[serde(rename = "memberTotalDuration", default)]
-        pub member_total_duration: Option<i32>,
+        pub member_total_duration: ::std::option::Option<i32>,
         #[doc = "The cumulative time the user has had access to the currently highest level in complete months (the time is rounded down to the nearest integer)."]
         #[serde(rename = "memberTotalDurationCurrentLevel", default)]
-        pub member_total_duration_current_level: Option<i32>,
+        pub member_total_duration_current_level: ::std::option::Option<i32>,
         #[doc = "The highest level the user has access to at the moment."]
         #[serde(rename = "purchasedLevel", default)]
-        pub purchased_level: Option<String>,
+        pub purchased_level: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for MembershipsDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10514,7 +11400,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10532,16 +11417,16 @@ pub mod schemas {
     pub struct MembershipsLevel {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube assigns to uniquely identify the memberships level."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#membershipsLevel\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the level."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::MembershipsLevelSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::MembershipsLevelSnippet>,
     }
     impl ::field_selector::FieldSelector for MembershipsLevel {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10550,7 +11435,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10568,19 +11452,19 @@ pub mod schemas {
     pub struct MembershipsLevelListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of pricing levels offered by a creator to the fans."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::MembershipsLevel>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::MembershipsLevel>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#membershipsLevelListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for MembershipsLevelListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10589,7 +11473,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10607,9 +11490,9 @@ pub mod schemas {
     pub struct MembershipsLevelSnippet {
         #[doc = "The id of the channel that's offering channel memberships."]
         #[serde(rename = "creatorChannelId", default)]
-        pub creator_channel_id: Option<String>,
+        pub creator_channel_id: ::std::option::Option<String>,
         #[serde(rename = "levelDetails", default)]
-        pub level_details: Option<crate::schemas::LevelDetails>,
+        pub level_details: ::std::option::Option<crate::schemas::LevelDetails>,
     }
     impl ::field_selector::FieldSelector for MembershipsLevelSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10618,7 +11501,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10636,13 +11518,13 @@ pub mod schemas {
     pub struct MonitorStreamInfo {
         #[doc = "If you have set the enableMonitorStream property to true, then this property determines the length of the live broadcast delay."]
         #[serde(rename = "broadcastStreamDelayMs", default)]
-        pub broadcast_stream_delay_ms: Option<u32>,
+        pub broadcast_stream_delay_ms: ::std::option::Option<u32>,
         #[doc = "HTML code that embeds a player that plays the monitor stream."]
         #[serde(rename = "embedHtml", default)]
-        pub embed_html: Option<String>,
+        pub embed_html: ::std::option::Option<String>,
         #[doc = "This value determines whether the monitor stream is enabled for the broadcast. If the monitor stream is enabled, then YouTube will broadcast the event content on a special stream intended only for the broadcaster's consumption. The broadcaster can use the stream to review the event content and also to identify the optimal times to insert cuepoints.\n\nYou need to set this value to true if you intend to have a broadcast delay for your event.\n\nNote: This property cannot be updated once the broadcast is in the testing or live state."]
         #[serde(rename = "enableMonitorStream", default)]
-        pub enable_monitor_stream: Option<bool>,
+        pub enable_monitor_stream: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for MonitorStreamInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10651,7 +11533,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10669,10 +11550,10 @@ pub mod schemas {
     pub struct Nonprofit {
         #[doc = "Id of the nonprofit."]
         #[serde(rename = "nonprofitId", default)]
-        pub nonprofit_id: Option<crate::schemas::NonprofitId>,
+        pub nonprofit_id: ::std::option::Option<crate::schemas::NonprofitId>,
         #[doc = "Legal name of the nonprofit."]
         #[serde(rename = "nonprofitLegalName", default)]
-        pub nonprofit_legal_name: Option<String>,
+        pub nonprofit_legal_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Nonprofit {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10681,7 +11562,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10698,7 +11578,7 @@ pub mod schemas {
     )]
     pub struct NonprofitId {
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for NonprofitId {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10707,7 +11587,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10725,10 +11604,10 @@ pub mod schemas {
     pub struct PageInfo {
         #[doc = "The number of results included in the API response."]
         #[serde(rename = "resultsPerPage", default)]
-        pub results_per_page: Option<i32>,
+        pub results_per_page: ::std::option::Option<i32>,
         #[doc = "The total number of results in the result set."]
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for PageInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10737,7 +11616,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10755,29 +11633,30 @@ pub mod schemas {
     pub struct Playlist {
         #[doc = "The contentDetails object contains information like video count."]
         #[serde(rename = "contentDetails", default)]
-        pub content_details: Option<crate::schemas::PlaylistContentDetails>,
+        pub content_details: ::std::option::Option<crate::schemas::PlaylistContentDetails>,
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the playlist."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#playlist\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Localizations for different languages"]
         #[serde(rename = "localizations", default)]
-        pub localizations:
-            Option<::std::collections::BTreeMap<String, crate::schemas::PlaylistLocalization>>,
+        pub localizations: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::PlaylistLocalization>,
+        >,
         #[doc = "The player object contains information that you would use to play the playlist in an embedded player."]
         #[serde(rename = "player", default)]
-        pub player: Option<crate::schemas::PlaylistPlayer>,
+        pub player: ::std::option::Option<crate::schemas::PlaylistPlayer>,
         #[doc = "The snippet object contains basic details about the playlist, such as its title and description."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::PlaylistSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::PlaylistSnippet>,
         #[doc = "The status object contains status information for the playlist."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::PlaylistStatus>,
+        pub status: ::std::option::Option<crate::schemas::PlaylistStatus>,
     }
     impl ::field_selector::FieldSelector for Playlist {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10786,7 +11665,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10804,7 +11682,7 @@ pub mod schemas {
     pub struct PlaylistContentDetails {
         #[doc = "The number of videos in the playlist."]
         #[serde(rename = "itemCount", default)]
-        pub item_count: Option<u32>,
+        pub item_count: ::std::option::Option<u32>,
     }
     impl ::field_selector::FieldSelector for PlaylistContentDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10813,7 +11691,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10831,22 +11708,22 @@ pub mod schemas {
     pub struct PlaylistItem {
         #[doc = "The contentDetails object is included in the resource if the included item is a YouTube video. The object contains additional information about the video."]
         #[serde(rename = "contentDetails", default)]
-        pub content_details: Option<crate::schemas::PlaylistItemContentDetails>,
+        pub content_details: ::std::option::Option<crate::schemas::PlaylistItemContentDetails>,
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the playlist item."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#playlistItem\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the playlist item, such as its title and position in the playlist."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::PlaylistItemSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::PlaylistItemSnippet>,
         #[doc = "The status object contains information about the playlist item's privacy status."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::PlaylistItemStatus>,
+        pub status: ::std::option::Option<crate::schemas::PlaylistItemStatus>,
     }
     impl ::field_selector::FieldSelector for PlaylistItem {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10855,7 +11732,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10873,19 +11749,19 @@ pub mod schemas {
     pub struct PlaylistItemContentDetails {
         #[doc = "The time, measured in seconds from the start of the video, when the video should stop playing. (The playlist owner can specify the times when the video should start and stop playing when the video is played in the context of the playlist.) By default, assume that the video.endTime is the end of the video."]
         #[serde(rename = "endAt", default)]
-        pub end_at: Option<String>,
+        pub end_at: ::std::option::Option<String>,
         #[doc = "A user-generated note for this item."]
         #[serde(rename = "note", default)]
-        pub note: Option<String>,
+        pub note: ::std::option::Option<String>,
         #[doc = "The time, measured in seconds from the start of the video, when the video should start playing. (The playlist owner can specify the times when the video should start and stop playing when the video is played in the context of the playlist.) The default value is 0."]
         #[serde(rename = "startAt", default)]
-        pub start_at: Option<String>,
+        pub start_at: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify a video. To retrieve the video resource, set the id query parameter to this value in your API request."]
         #[serde(rename = "videoId", default)]
-        pub video_id: Option<String>,
+        pub video_id: ::std::option::Option<String>,
         #[doc = "The date and time that the video was published to YouTube. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "videoPublishedAt", default)]
-        pub video_published_at: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub video_published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for PlaylistItemContentDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10894,7 +11770,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10912,29 +11787,29 @@ pub mod schemas {
     pub struct PlaylistItemListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of playlist items that match the request criteria."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::PlaylistItem>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::PlaylistItem>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#playlistItemListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(rename = "prevPageToken", default)]
-        pub prev_page_token: Option<String>,
+        pub prev_page_token: ::std::option::Option<String>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PlaylistItemListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10943,7 +11818,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -10961,31 +11835,31 @@ pub mod schemas {
     pub struct PlaylistItemSnippet {
         #[doc = "The ID that YouTube uses to uniquely identify the user that added the item to the playlist."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "Channel title for the channel that the playlist item belongs to."]
         #[serde(rename = "channelTitle", default)]
-        pub channel_title: Option<String>,
+        pub channel_title: ::std::option::Option<String>,
         #[doc = "The item's description."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the playlist that the playlist item is in."]
         #[serde(rename = "playlistId", default)]
-        pub playlist_id: Option<String>,
+        pub playlist_id: ::std::option::Option<String>,
         #[doc = "The order in which the item appears in the playlist. The value uses a zero-based index, so the first item has a position of 0, the second item has a position of 1, and so forth."]
         #[serde(rename = "position", default)]
-        pub position: Option<u32>,
+        pub position: ::std::option::Option<u32>,
         #[doc = "The date and time that the item was added to the playlist. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "publishedAt", default)]
-        pub published_at: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The id object contains information that can be used to uniquely identify the resource that is included in the playlist as the playlist item."]
         #[serde(rename = "resourceId", default)]
-        pub resource_id: Option<crate::schemas::ResourceId>,
+        pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
         #[doc = "A map of thumbnail images associated with the playlist item. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
         #[serde(rename = "thumbnails", default)]
-        pub thumbnails: Option<crate::schemas::ThumbnailDetails>,
+        pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
         #[doc = "The item's title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PlaylistItemSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -10994,7 +11868,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -11044,6 +11917,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PlaylistItemStatusPrivacyStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -11059,7 +11941,7 @@ pub mod schemas {
     pub struct PlaylistItemStatus {
         #[doc = "This resource's privacy status."]
         #[serde(rename = "privacyStatus", default)]
-        pub privacy_status: Option<crate::schemas::PlaylistItemStatusPrivacyStatus>,
+        pub privacy_status: ::std::option::Option<crate::schemas::PlaylistItemStatusPrivacyStatus>,
     }
     impl ::field_selector::FieldSelector for PlaylistItemStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11068,7 +11950,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -11086,29 +11967,29 @@ pub mod schemas {
     pub struct PlaylistListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of playlists that match the request criteria."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Playlist>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Playlist>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#playlistListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(rename = "prevPageToken", default)]
-        pub prev_page_token: Option<String>,
+        pub prev_page_token: ::std::option::Option<String>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PlaylistListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11117,7 +11998,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -11135,10 +12015,10 @@ pub mod schemas {
     pub struct PlaylistLocalization {
         #[doc = "The localized strings for playlist's description."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The localized strings for playlist's title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PlaylistLocalization {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11147,7 +12027,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -11165,7 +12044,7 @@ pub mod schemas {
     pub struct PlaylistPlayer {
         #[doc = "An <iframe> tag that embeds a player that will play the playlist."]
         #[serde(rename = "embedHtml", default)]
-        pub embed_html: Option<String>,
+        pub embed_html: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PlaylistPlayer {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11174,7 +12053,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -11192,31 +12070,31 @@ pub mod schemas {
     pub struct PlaylistSnippet {
         #[doc = "The ID that YouTube uses to uniquely identify the channel that published the playlist."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "The channel title of the channel that the video belongs to."]
         #[serde(rename = "channelTitle", default)]
-        pub channel_title: Option<String>,
+        pub channel_title: ::std::option::Option<String>,
         #[doc = "The language of the playlist's default title and description."]
         #[serde(rename = "defaultLanguage", default)]
-        pub default_language: Option<String>,
+        pub default_language: ::std::option::Option<String>,
         #[doc = "The playlist's description."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Localized title and description, read-only."]
         #[serde(rename = "localized", default)]
-        pub localized: Option<crate::schemas::PlaylistLocalization>,
+        pub localized: ::std::option::Option<crate::schemas::PlaylistLocalization>,
         #[doc = "The date and time that the playlist was created. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "publishedAt", default)]
-        pub published_at: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Keyword tags associated with the playlist."]
         #[serde(rename = "tags", default)]
-        pub tags: Option<Vec<String>>,
+        pub tags: ::std::option::Option<Vec<String>>,
         #[doc = "A map of thumbnail images associated with the playlist. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
         #[serde(rename = "thumbnails", default)]
-        pub thumbnails: Option<crate::schemas::ThumbnailDetails>,
+        pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
         #[doc = "The playlist's title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PlaylistSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11225,7 +12103,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -11275,6 +12152,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PlaylistStatusPrivacyStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -11290,7 +12176,7 @@ pub mod schemas {
     pub struct PlaylistStatus {
         #[doc = "The playlist's privacy status."]
         #[serde(rename = "privacyStatus", default)]
-        pub privacy_status: Option<crate::schemas::PlaylistStatusPrivacyStatus>,
+        pub privacy_status: ::std::option::Option<crate::schemas::PlaylistStatusPrivacyStatus>,
     }
     impl ::field_selector::FieldSelector for PlaylistStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11299,7 +12185,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -11317,16 +12202,16 @@ pub mod schemas {
     pub struct PromotedItem {
         #[doc = "A custom message to display for this promotion. This field is currently ignored unless the promoted item is a website."]
         #[serde(rename = "customMessage", default)]
-        pub custom_message: Option<String>,
+        pub custom_message: ::std::option::Option<String>,
         #[doc = "Identifies the promoted item."]
         #[serde(rename = "id", default)]
-        pub id: Option<crate::schemas::PromotedItemId>,
+        pub id: ::std::option::Option<crate::schemas::PromotedItemId>,
         #[doc = "If true, the content owner's name will be used when displaying the promotion. This field can only be set when the update is made on behalf of the content owner."]
         #[serde(rename = "promotedByContentOwner", default)]
-        pub promoted_by_content_owner: Option<bool>,
+        pub promoted_by_content_owner: ::std::option::Option<bool>,
         #[doc = "The temporal position within the video where the promoted item will be displayed. If present, it overrides the default timing."]
         #[serde(rename = "timing", default)]
-        pub timing: Option<crate::schemas::InvideoTiming>,
+        pub timing: ::std::option::Option<crate::schemas::InvideoTiming>,
     }
     impl ::field_selector::FieldSelector for PromotedItem {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11335,7 +12220,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -11385,6 +12269,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PromotedItemIdType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -11400,16 +12293,16 @@ pub mod schemas {
     pub struct PromotedItemId {
         #[doc = "Describes the type of the promoted item."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::PromotedItemIdType>,
+        pub r#type: ::std::option::Option<crate::schemas::PromotedItemIdType>,
         #[doc = "If type is recentUpload, this field identifies the channel from which to take the recent upload. If missing, the channel is assumed to be the same channel for which the invideoPromotion is set."]
         #[serde(rename = "recentlyUploadedBy", default)]
-        pub recently_uploaded_by: Option<String>,
+        pub recently_uploaded_by: ::std::option::Option<String>,
         #[doc = "If the promoted item represents a video, this field represents the unique YouTube ID identifying it. This field will be present only if type has the value video."]
         #[serde(rename = "videoId", default)]
-        pub video_id: Option<String>,
+        pub video_id: ::std::option::Option<String>,
         #[doc = "If the promoted item represents a website, this field represents the url pointing to the website. This field will be present only if type has the value website."]
         #[serde(rename = "websiteUrl", default)]
-        pub website_url: Option<String>,
+        pub website_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PromotedItemId {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11418,7 +12311,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -11436,10 +12328,10 @@ pub mod schemas {
     pub struct PropertyValue {
         #[doc = "A property."]
         #[serde(rename = "property", default)]
-        pub property: Option<String>,
+        pub property: ::std::option::Option<String>,
         #[doc = "The property's value."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PropertyValue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11448,7 +12340,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -11466,16 +12357,16 @@ pub mod schemas {
     pub struct ResourceId {
         #[doc = "The ID that YouTube uses to uniquely identify the referred resource, if that resource is a channel. This property is only present if the resourceId.kind value is youtube#channel."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "The type of the API resource."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the referred resource, if that resource is a playlist. This property is only present if the resourceId.kind value is youtube#playlist."]
         #[serde(rename = "playlistId", default)]
-        pub playlist_id: Option<String>,
+        pub playlist_id: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the referred resource, if that resource is a video. This property is only present if the resourceId.kind value is youtube#video."]
         #[serde(rename = "videoId", default)]
-        pub video_id: Option<String>,
+        pub video_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ResourceId {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11484,7 +12375,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -11502,31 +12392,31 @@ pub mod schemas {
     pub struct SearchListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of results that match the search criteria."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::SearchResult>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::SearchResult>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#searchListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(rename = "prevPageToken", default)]
-        pub prev_page_token: Option<String>,
+        pub prev_page_token: ::std::option::Option<String>,
         #[serde(rename = "regionCode", default)]
-        pub region_code: Option<String>,
+        pub region_code: ::std::option::Option<String>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SearchListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11535,7 +12425,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -11553,16 +12442,16 @@ pub mod schemas {
     pub struct SearchResult {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The id object contains information that can be used to uniquely identify the resource that matches the search request."]
         #[serde(rename = "id", default)]
-        pub id: Option<crate::schemas::ResourceId>,
+        pub id: ::std::option::Option<crate::schemas::ResourceId>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#searchResult\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about a search result, such as its title or description. For example, if the search result is a video, then the title will be the video's title and the description will be the video's description."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::SearchResultSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::SearchResultSnippet>,
     }
     impl ::field_selector::FieldSelector for SearchResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11571,7 +12460,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -11621,6 +12509,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for SearchResultSnippetLiveBroadcastContent {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -11636,25 +12533,26 @@ pub mod schemas {
     pub struct SearchResultSnippet {
         #[doc = "The value that YouTube uses to uniquely identify the channel that published the resource that the search result identifies."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "The title of the channel that published the resource that the search result identifies."]
         #[serde(rename = "channelTitle", default)]
-        pub channel_title: Option<String>,
+        pub channel_title: ::std::option::Option<String>,
         #[doc = "A description of the search result."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "It indicates if the resource (video or channel) has upcoming/active live broadcast content. Or it's \"none\" if there is not any upcoming/active live broadcasts."]
         #[serde(rename = "liveBroadcastContent", default)]
-        pub live_broadcast_content: Option<crate::schemas::SearchResultSnippetLiveBroadcastContent>,
+        pub live_broadcast_content:
+            ::std::option::Option<crate::schemas::SearchResultSnippetLiveBroadcastContent>,
         #[doc = "The creation date and time of the resource that the search result identifies. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "publishedAt", default)]
-        pub published_at: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "A map of thumbnail images associated with the search result. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
         #[serde(rename = "thumbnails", default)]
-        pub thumbnails: Option<crate::schemas::ThumbnailDetails>,
+        pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
         #[doc = "The title of the search result."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SearchResultSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11663,7 +12561,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -11681,13 +12578,13 @@ pub mod schemas {
     pub struct Sponsor {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#sponsor\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the sponsor."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::SponsorSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::SponsorSnippet>,
     }
     impl ::field_selector::FieldSelector for Sponsor {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11696,7 +12593,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -11714,26 +12610,26 @@ pub mod schemas {
     pub struct SponsorListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of sponsors that match the request criteria."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Sponsor>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Sponsor>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#sponsorListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SponsorListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11742,7 +12638,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -11760,16 +12655,16 @@ pub mod schemas {
     pub struct SponsorSnippet {
         #[doc = "The id of the channel being sponsored."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "The cumulative time a user has been a sponsor in months."]
         #[serde(rename = "cumulativeDurationMonths", default)]
-        pub cumulative_duration_months: Option<i32>,
+        pub cumulative_duration_months: ::std::option::Option<i32>,
         #[doc = "Details about the sponsor."]
         #[serde(rename = "sponsorDetails", default)]
-        pub sponsor_details: Option<crate::schemas::ChannelProfileDetails>,
+        pub sponsor_details: ::std::option::Option<crate::schemas::ChannelProfileDetails>,
         #[doc = "The date and time when the user became a sponsor. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "sponsorSince", default)]
-        pub sponsor_since: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub sponsor_since: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for SponsorSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11778,7 +12673,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -11796,22 +12690,23 @@ pub mod schemas {
     pub struct Subscription {
         #[doc = "The contentDetails object contains basic statistics about the subscription."]
         #[serde(rename = "contentDetails", default)]
-        pub content_details: Option<crate::schemas::SubscriptionContentDetails>,
+        pub content_details: ::std::option::Option<crate::schemas::SubscriptionContentDetails>,
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the subscription."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#subscription\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the subscription, including its title and the channel that the user subscribed to."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::SubscriptionSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::SubscriptionSnippet>,
         #[doc = "The subscriberSnippet object contains basic details about the sbuscriber."]
         #[serde(rename = "subscriberSnippet", default)]
-        pub subscriber_snippet: Option<crate::schemas::SubscriptionSubscriberSnippet>,
+        pub subscriber_snippet:
+            ::std::option::Option<crate::schemas::SubscriptionSubscriberSnippet>,
     }
     impl ::field_selector::FieldSelector for Subscription {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11820,7 +12715,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -11867,6 +12761,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for SubscriptionContentDetailsActivityType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -11882,13 +12785,14 @@ pub mod schemas {
     pub struct SubscriptionContentDetails {
         #[doc = "The type of activity this subscription is for (only uploads, everything)."]
         #[serde(rename = "activityType", default)]
-        pub activity_type: Option<crate::schemas::SubscriptionContentDetailsActivityType>,
+        pub activity_type:
+            ::std::option::Option<crate::schemas::SubscriptionContentDetailsActivityType>,
         #[doc = "The number of new items in the subscription since its content was last read."]
         #[serde(rename = "newItemCount", default)]
-        pub new_item_count: Option<u32>,
+        pub new_item_count: ::std::option::Option<u32>,
         #[doc = "The approximate number of items that the subscription points to."]
         #[serde(rename = "totalItemCount", default)]
-        pub total_item_count: Option<u32>,
+        pub total_item_count: ::std::option::Option<u32>,
     }
     impl ::field_selector::FieldSelector for SubscriptionContentDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11897,7 +12801,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -11915,29 +12818,29 @@ pub mod schemas {
     pub struct SubscriptionListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of subscriptions that match the request criteria."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Subscription>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Subscription>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#subscriptionListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(rename = "prevPageToken", default)]
-        pub prev_page_token: Option<String>,
+        pub prev_page_token: ::std::option::Option<String>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SubscriptionListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11946,7 +12849,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -11964,25 +12866,25 @@ pub mod schemas {
     pub struct SubscriptionSnippet {
         #[doc = "The ID that YouTube uses to uniquely identify the subscriber's channel."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "Channel title for the channel that the subscription belongs to."]
         #[serde(rename = "channelTitle", default)]
-        pub channel_title: Option<String>,
+        pub channel_title: ::std::option::Option<String>,
         #[doc = "The subscription's details."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The date and time that the subscription was created. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "publishedAt", default)]
-        pub published_at: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The id object contains information about the channel that the user subscribed to."]
         #[serde(rename = "resourceId", default)]
-        pub resource_id: Option<crate::schemas::ResourceId>,
+        pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
         #[doc = "A map of thumbnail images associated with the video. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
         #[serde(rename = "thumbnails", default)]
-        pub thumbnails: Option<crate::schemas::ThumbnailDetails>,
+        pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
         #[doc = "The subscription's title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SubscriptionSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -11991,7 +12893,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -12009,16 +12910,16 @@ pub mod schemas {
     pub struct SubscriptionSubscriberSnippet {
         #[doc = "The channel ID of the subscriber."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "The description of the subscriber."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Thumbnails for this subscriber."]
         #[serde(rename = "thumbnails", default)]
-        pub thumbnails: Option<crate::schemas::ThumbnailDetails>,
+        pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
         #[doc = "The title of the subscriber."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SubscriptionSubscriberSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12027,7 +12928,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -12045,16 +12945,16 @@ pub mod schemas {
     pub struct SuperChatEvent {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube assigns to uniquely identify the Super Chat event."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#superChatEvent\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the Super Chat event."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::SuperChatEventSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::SuperChatEventSnippet>,
     }
     impl ::field_selector::FieldSelector for SuperChatEvent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12063,7 +12963,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -12081,26 +12980,26 @@ pub mod schemas {
     pub struct SuperChatEventListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of Super Chat purchases that match the request criteria."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::SuperChatEvent>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::SuperChatEvent>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#superChatEventListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SuperChatEventListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12109,7 +13008,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -12128,40 +13026,40 @@ pub mod schemas {
         #[doc = "The purchase amount, in micros of the purchase currency. e.g., 1 is represented as 1000000."]
         #[serde(rename = "amountMicros", default)]
         #[serde(with = "crate::parsed_string")]
-        pub amount_micros: Option<u64>,
+        pub amount_micros: ::std::option::Option<u64>,
         #[doc = "Channel id where the event occurred."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "The text contents of the comment left by the user."]
         #[serde(rename = "commentText", default)]
-        pub comment_text: Option<String>,
+        pub comment_text: ::std::option::Option<String>,
         #[doc = "The date and time when the event occurred. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "createdAt", default)]
-        pub created_at: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The currency in which the purchase was made. ISO 4217."]
         #[serde(rename = "currency", default)]
-        pub currency: Option<String>,
+        pub currency: ::std::option::Option<String>,
         #[doc = "A rendered string that displays the purchase amount and currency (e.g., \"$1.00\"). The string is rendered for the given language."]
         #[serde(rename = "displayString", default)]
-        pub display_string: Option<String>,
+        pub display_string: ::std::option::Option<String>,
         #[doc = "True if this event is a Super Chat for Good purchase."]
         #[serde(rename = "isSuperChatForGood", default)]
-        pub is_super_chat_for_good: Option<bool>,
+        pub is_super_chat_for_good: ::std::option::Option<bool>,
         #[doc = "True if this event is a Super Sticker event."]
         #[serde(rename = "isSuperStickerEvent", default)]
-        pub is_super_sticker_event: Option<bool>,
+        pub is_super_sticker_event: ::std::option::Option<bool>,
         #[doc = "The tier for the paid message, which is based on the amount of money spent to purchase the message."]
         #[serde(rename = "messageType", default)]
-        pub message_type: Option<u32>,
+        pub message_type: ::std::option::Option<u32>,
         #[doc = "If this event is a Super Chat for Good purchase, this field will contain information about the charity the purchase is donated to."]
         #[serde(rename = "nonprofit", default)]
-        pub nonprofit: Option<crate::schemas::Nonprofit>,
+        pub nonprofit: ::std::option::Option<crate::schemas::Nonprofit>,
         #[doc = "If this event is a Super Sticker event, this field will contain metadata about the Super Sticker."]
         #[serde(rename = "superStickerMetadata", default)]
-        pub super_sticker_metadata: Option<crate::schemas::SuperStickerMetadata>,
+        pub super_sticker_metadata: ::std::option::Option<crate::schemas::SuperStickerMetadata>,
         #[doc = "Details about the supporter."]
         #[serde(rename = "supporterDetails", default)]
-        pub supporter_details: Option<crate::schemas::ChannelProfileDetails>,
+        pub supporter_details: ::std::option::Option<crate::schemas::ChannelProfileDetails>,
     }
     impl ::field_selector::FieldSelector for SuperChatEventSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12170,7 +13068,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -12188,13 +13085,13 @@ pub mod schemas {
     pub struct SuperStickerMetadata {
         #[doc = "Internationalized alt text that describes the sticker image and any animation associated with it."]
         #[serde(rename = "altText", default)]
-        pub alt_text: Option<String>,
+        pub alt_text: ::std::option::Option<String>,
         #[doc = "Specifies the localization language in which the alt text is returned."]
         #[serde(rename = "altTextLanguage", default)]
-        pub alt_text_language: Option<String>,
+        pub alt_text_language: ::std::option::Option<String>,
         #[doc = "Unique identifier of the Super Sticker. This is a shorter form of the alt_text that includes pack name and a recognizable characteristic of the sticker."]
         #[serde(rename = "stickerId", default)]
-        pub sticker_id: Option<String>,
+        pub sticker_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SuperStickerMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12203,7 +13100,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -12221,13 +13117,13 @@ pub mod schemas {
     pub struct Thumbnail {
         #[doc = "(Optional) Height of the thumbnail image."]
         #[serde(rename = "height", default)]
-        pub height: Option<u32>,
+        pub height: ::std::option::Option<u32>,
         #[doc = "The thumbnail image's URL."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
         #[doc = "(Optional) Width of the thumbnail image."]
         #[serde(rename = "width", default)]
-        pub width: Option<u32>,
+        pub width: ::std::option::Option<u32>,
     }
     impl ::field_selector::FieldSelector for Thumbnail {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12236,7 +13132,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -12254,19 +13149,19 @@ pub mod schemas {
     pub struct ThumbnailDetails {
         #[doc = "The default image for this resource."]
         #[serde(rename = "default", default)]
-        pub default: Option<crate::schemas::Thumbnail>,
+        pub default: ::std::option::Option<crate::schemas::Thumbnail>,
         #[doc = "The high quality image for this resource."]
         #[serde(rename = "high", default)]
-        pub high: Option<crate::schemas::Thumbnail>,
+        pub high: ::std::option::Option<crate::schemas::Thumbnail>,
         #[doc = "The maximum resolution quality image for this resource."]
         #[serde(rename = "maxres", default)]
-        pub maxres: Option<crate::schemas::Thumbnail>,
+        pub maxres: ::std::option::Option<crate::schemas::Thumbnail>,
         #[doc = "The medium quality image for this resource."]
         #[serde(rename = "medium", default)]
-        pub medium: Option<crate::schemas::Thumbnail>,
+        pub medium: ::std::option::Option<crate::schemas::Thumbnail>,
         #[doc = "The standard quality image for this resource."]
         #[serde(rename = "standard", default)]
-        pub standard: Option<crate::schemas::Thumbnail>,
+        pub standard: ::std::option::Option<crate::schemas::Thumbnail>,
     }
     impl ::field_selector::FieldSelector for ThumbnailDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12275,7 +13170,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -12293,19 +13187,19 @@ pub mod schemas {
     pub struct ThumbnailSetResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of thumbnails."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::ThumbnailDetails>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::ThumbnailDetails>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#thumbnailSetResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ThumbnailSetResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12314,7 +13208,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -12332,7 +13225,7 @@ pub mod schemas {
     )]
     pub struct TokenPagination;
     impl ::field_selector::FieldSelector for TokenPagination {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
@@ -12340,59 +13233,61 @@ pub mod schemas {
     pub struct Video {
         #[doc = "Age restriction details related to a video. This data can only be retrieved by the video owner."]
         #[serde(rename = "ageGating", default)]
-        pub age_gating: Option<crate::schemas::VideoAgeGating>,
+        pub age_gating: ::std::option::Option<crate::schemas::VideoAgeGating>,
         #[doc = "The contentDetails object contains information about the video content, including the length of the video and its aspect ratio."]
         #[serde(rename = "contentDetails", default)]
-        pub content_details: Option<crate::schemas::VideoContentDetails>,
+        pub content_details: ::std::option::Option<crate::schemas::VideoContentDetails>,
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The fileDetails object encapsulates information about the video file that was uploaded to YouTube, including the file's resolution, duration, audio and video codecs, stream bitrates, and more. This data can only be retrieved by the video owner."]
         #[serde(rename = "fileDetails", default)]
-        pub file_details: Option<crate::schemas::VideoFileDetails>,
+        pub file_details: ::std::option::Option<crate::schemas::VideoFileDetails>,
         #[doc = "The ID that YouTube uses to uniquely identify the video."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#video\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The liveStreamingDetails object contains metadata about a live video broadcast. The object will only be present in a video resource if the video is an upcoming, live, or completed live broadcast."]
         #[serde(rename = "liveStreamingDetails", default)]
-        pub live_streaming_details: Option<crate::schemas::VideoLiveStreamingDetails>,
+        pub live_streaming_details:
+            ::std::option::Option<crate::schemas::VideoLiveStreamingDetails>,
         #[doc = "List with all localizations."]
         #[serde(rename = "localizations", default)]
-        pub localizations:
-            Option<::std::collections::BTreeMap<String, crate::schemas::VideoLocalization>>,
+        pub localizations: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::VideoLocalization>,
+        >,
         #[doc = "The monetizationDetails object encapsulates information about the monetization status of the video."]
         #[serde(rename = "monetizationDetails", default)]
-        pub monetization_details: Option<crate::schemas::VideoMonetizationDetails>,
+        pub monetization_details: ::std::option::Option<crate::schemas::VideoMonetizationDetails>,
         #[doc = "The player object contains information that you would use to play the video in an embedded player."]
         #[serde(rename = "player", default)]
-        pub player: Option<crate::schemas::VideoPlayer>,
+        pub player: ::std::option::Option<crate::schemas::VideoPlayer>,
         #[doc = "The processingDetails object encapsulates information about YouTube's progress in processing the uploaded video file. The properties in the object identify the current processing status and an estimate of the time remaining until YouTube finishes processing the video. This part also indicates whether different types of data or content, such as file details or thumbnail images, are available for the video.\n\nThe processingProgress object is designed to be polled so that the video uploaded can track the progress that YouTube has made in processing the uploaded video file. This data can only be retrieved by the video owner."]
         #[serde(rename = "processingDetails", default)]
-        pub processing_details: Option<crate::schemas::VideoProcessingDetails>,
+        pub processing_details: ::std::option::Option<crate::schemas::VideoProcessingDetails>,
         #[doc = "The projectDetails object contains information about the project specific video metadata."]
         #[serde(rename = "projectDetails", default)]
-        pub project_details: Option<crate::schemas::VideoProjectDetails>,
+        pub project_details: ::std::option::Option<crate::schemas::VideoProjectDetails>,
         #[doc = "The recordingDetails object encapsulates information about the location, date and address where the video was recorded."]
         #[serde(rename = "recordingDetails", default)]
-        pub recording_details: Option<crate::schemas::VideoRecordingDetails>,
+        pub recording_details: ::std::option::Option<crate::schemas::VideoRecordingDetails>,
         #[doc = "The snippet object contains basic details about the video, such as its title, description, and category."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::VideoSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::VideoSnippet>,
         #[doc = "The statistics object contains statistics about the video."]
         #[serde(rename = "statistics", default)]
-        pub statistics: Option<crate::schemas::VideoStatistics>,
+        pub statistics: ::std::option::Option<crate::schemas::VideoStatistics>,
         #[doc = "The status object contains information about the video's uploading, processing, and privacy statuses."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::VideoStatus>,
+        pub status: ::std::option::Option<crate::schemas::VideoStatus>,
         #[doc = "The suggestions object encapsulates suggestions that identify opportunities to improve the video quality or the metadata for the uploaded video. This data can only be retrieved by the video owner."]
         #[serde(rename = "suggestions", default)]
-        pub suggestions: Option<crate::schemas::VideoSuggestions>,
+        pub suggestions: ::std::option::Option<crate::schemas::VideoSuggestions>,
         #[doc = "The topicDetails object encapsulates information about Freebase topics associated with the video."]
         #[serde(rename = "topicDetails", default)]
-        pub topic_details: Option<crate::schemas::VideoTopicDetails>,
+        pub topic_details: ::std::option::Option<crate::schemas::VideoTopicDetails>,
     }
     impl ::field_selector::FieldSelector for Video {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12401,7 +13296,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -12419,19 +13313,19 @@ pub mod schemas {
     pub struct VideoAbuseReport {
         #[doc = "Additional comments regarding the abuse report."]
         #[serde(rename = "comments", default)]
-        pub comments: Option<String>,
+        pub comments: ::std::option::Option<String>,
         #[doc = "The language that the content was viewed in."]
         #[serde(rename = "language", default)]
-        pub language: Option<String>,
+        pub language: ::std::option::Option<String>,
         #[doc = "The high-level, or primary, reason that the content is abusive. The value is an abuse report reason ID."]
         #[serde(rename = "reasonId", default)]
-        pub reason_id: Option<String>,
+        pub reason_id: ::std::option::Option<String>,
         #[doc = "The specific, or secondary, reason that this content is abusive (if available). The value is an abuse report reason ID that is a valid secondary reason for the primary reason."]
         #[serde(rename = "secondaryReasonId", default)]
-        pub secondary_reason_id: Option<String>,
+        pub secondary_reason_id: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the video."]
         #[serde(rename = "videoId", default)]
-        pub video_id: Option<String>,
+        pub video_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VideoAbuseReport {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12440,7 +13334,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -12458,16 +13351,16 @@ pub mod schemas {
     pub struct VideoAbuseReportReason {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID of this abuse report reason."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#videoAbuseReportReason\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the abuse report reason."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::VideoAbuseReportReasonSnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::VideoAbuseReportReasonSnippet>,
     }
     impl ::field_selector::FieldSelector for VideoAbuseReportReason {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12476,7 +13369,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -12494,19 +13386,19 @@ pub mod schemas {
     pub struct VideoAbuseReportReasonListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of valid abuse reasons that are used with video.ReportAbuse."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::VideoAbuseReportReason>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::VideoAbuseReportReason>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#videoAbuseReportReasonListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VideoAbuseReportReasonListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12515,7 +13407,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -12533,10 +13424,11 @@ pub mod schemas {
     pub struct VideoAbuseReportReasonSnippet {
         #[doc = "The localized label belonging to this abuse report reason."]
         #[serde(rename = "label", default)]
-        pub label: Option<String>,
+        pub label: ::std::option::Option<String>,
         #[doc = "The secondary reasons associated with this reason, if any are available. (There might be 0 or more.)"]
         #[serde(rename = "secondaryReasons", default)]
-        pub secondary_reasons: Option<Vec<crate::schemas::VideoAbuseReportSecondaryReason>>,
+        pub secondary_reasons:
+            ::std::option::Option<Vec<crate::schemas::VideoAbuseReportSecondaryReason>>,
     }
     impl ::field_selector::FieldSelector for VideoAbuseReportReasonSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12545,7 +13437,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -12563,10 +13454,10 @@ pub mod schemas {
     pub struct VideoAbuseReportSecondaryReason {
         #[doc = "The ID of this abuse report secondary reason."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The localized label for this abuse report secondary reason."]
         #[serde(rename = "label", default)]
-        pub label: Option<String>,
+        pub label: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VideoAbuseReportSecondaryReason {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12575,7 +13466,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -12628,6 +13518,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VideoAgeGatingVideoGameRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -12643,13 +13542,13 @@ pub mod schemas {
     pub struct VideoAgeGating {
         #[doc = "Indicates whether or not the video has alcoholic beverage content. Only users of legal purchasing age in a particular country, as identified by ICAP, can view the content."]
         #[serde(rename = "alcoholContent", default)]
-        pub alcohol_content: Option<bool>,
+        pub alcohol_content: ::std::option::Option<bool>,
         #[doc = "Age-restricted trailers. For redband trailers and adult-rated video-games. Only users aged 18+ can view the content. The the field is true the content is restricted to viewers aged 18+. Otherwise The field won't be present."]
         #[serde(rename = "restricted", default)]
-        pub restricted: Option<bool>,
+        pub restricted: ::std::option::Option<bool>,
         #[doc = "Video game rating, if any."]
         #[serde(rename = "videoGameRating", default)]
-        pub video_game_rating: Option<crate::schemas::VideoAgeGatingVideoGameRating>,
+        pub video_game_rating: ::std::option::Option<crate::schemas::VideoAgeGatingVideoGameRating>,
     }
     impl ::field_selector::FieldSelector for VideoAgeGating {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12658,7 +13557,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -12676,16 +13574,16 @@ pub mod schemas {
     pub struct VideoCategory {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the video category."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#videoCategory\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The snippet object contains basic details about the video category, including its title."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::VideoCategorySnippet>,
+        pub snippet: ::std::option::Option<crate::schemas::VideoCategorySnippet>,
     }
     impl ::field_selector::FieldSelector for VideoCategory {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12694,7 +13592,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -12712,29 +13609,29 @@ pub mod schemas {
     pub struct VideoCategoryListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of video categories that can be associated with YouTube videos. In this map, the video category ID is the map key, and its value is the corresponding videoCategory resource."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::VideoCategory>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::VideoCategory>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#videoCategoryListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(rename = "prevPageToken", default)]
-        pub prev_page_token: Option<String>,
+        pub prev_page_token: ::std::option::Option<String>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VideoCategoryListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12743,7 +13640,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -12760,13 +13656,13 @@ pub mod schemas {
     )]
     pub struct VideoCategorySnippet {
         #[serde(rename = "assignable", default)]
-        pub assignable: Option<bool>,
+        pub assignable: ::std::option::Option<bool>,
         #[doc = "The YouTube channel that created the video category."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "The video category's title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VideoCategorySnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12775,7 +13671,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -12822,6 +13717,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VideoContentDetailsCaption {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoContentDetailsDefinition {
         Hd,
@@ -12864,6 +13768,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for VideoContentDetailsDefinition {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -12910,6 +13823,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VideoContentDetailsProjection {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -12925,34 +13847,35 @@ pub mod schemas {
     pub struct VideoContentDetails {
         #[doc = "The value of captions indicates whether the video has captions or not."]
         #[serde(rename = "caption", default)]
-        pub caption: Option<crate::schemas::VideoContentDetailsCaption>,
+        pub caption: ::std::option::Option<crate::schemas::VideoContentDetailsCaption>,
         #[doc = "Specifies the ratings that the video received under various rating schemes."]
         #[serde(rename = "contentRating", default)]
-        pub content_rating: Option<crate::schemas::ContentRating>,
+        pub content_rating: ::std::option::Option<crate::schemas::ContentRating>,
         #[doc = "The countryRestriction object contains information about the countries where a video is (or is not) viewable."]
         #[serde(rename = "countryRestriction", default)]
-        pub country_restriction: Option<crate::schemas::AccessPolicy>,
+        pub country_restriction: ::std::option::Option<crate::schemas::AccessPolicy>,
         #[doc = "The value of definition indicates whether the video is available in high definition or only in standard definition."]
         #[serde(rename = "definition", default)]
-        pub definition: Option<crate::schemas::VideoContentDetailsDefinition>,
+        pub definition: ::std::option::Option<crate::schemas::VideoContentDetailsDefinition>,
         #[doc = "The value of dimension indicates whether the video is available in 3D or in 2D."]
         #[serde(rename = "dimension", default)]
-        pub dimension: Option<String>,
+        pub dimension: ::std::option::Option<String>,
         #[doc = "The length of the video. The tag value is an ISO 8601 duration in the format PT#M#S, in which the letters PT indicate that the value specifies a period of time, and the letters M and S refer to length in minutes and seconds, respectively. The # characters preceding the M and S letters are both integers that specify the number of minutes (or seconds) of the video. For example, a value of PT15M51S indicates that the video is 15 minutes and 51 seconds long."]
         #[serde(rename = "duration", default)]
-        pub duration: Option<String>,
+        pub duration: ::std::option::Option<String>,
         #[doc = "Indicates whether the video uploader has provided a custom thumbnail image for the video. This property is only visible to the video uploader."]
         #[serde(rename = "hasCustomThumbnail", default)]
-        pub has_custom_thumbnail: Option<bool>,
+        pub has_custom_thumbnail: ::std::option::Option<bool>,
         #[doc = "The value of is_license_content indicates whether the video is licensed content."]
         #[serde(rename = "licensedContent", default)]
-        pub licensed_content: Option<bool>,
+        pub licensed_content: ::std::option::Option<bool>,
         #[doc = "Specifies the projection format of the video."]
         #[serde(rename = "projection", default)]
-        pub projection: Option<crate::schemas::VideoContentDetailsProjection>,
+        pub projection: ::std::option::Option<crate::schemas::VideoContentDetailsProjection>,
         #[doc = "The regionRestriction object contains information about the countries where a video is (or is not) viewable. The object will contain either the contentDetails.regionRestriction.allowed property or the contentDetails.regionRestriction.blocked property."]
         #[serde(rename = "regionRestriction", default)]
-        pub region_restriction: Option<crate::schemas::VideoContentDetailsRegionRestriction>,
+        pub region_restriction:
+            ::std::option::Option<crate::schemas::VideoContentDetailsRegionRestriction>,
     }
     impl ::field_selector::FieldSelector for VideoContentDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12961,7 +13884,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -12979,10 +13901,10 @@ pub mod schemas {
     pub struct VideoContentDetailsRegionRestriction {
         #[doc = "A list of region codes that identify countries where the video is viewable. If this property is present and a country is not listed in its value, then the video is blocked from appearing in that country. If this property is present and contains an empty list, the video is blocked in all countries."]
         #[serde(rename = "allowed", default)]
-        pub allowed: Option<Vec<String>>,
+        pub allowed: ::std::option::Option<Vec<String>>,
         #[doc = "A list of region codes that identify countries where the video is blocked. If this property is present and a country is not listed in its value, then the video is viewable in that country. If this property is present and contains an empty list, the video is viewable in all countries."]
         #[serde(rename = "blocked", default)]
-        pub blocked: Option<Vec<String>>,
+        pub blocked: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for VideoContentDetailsRegionRestriction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -12991,7 +13913,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -13053,40 +13974,49 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VideoFileDetailsFileType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct VideoFileDetails {
         #[doc = "A list of audio streams contained in the uploaded video file. Each item in the list contains detailed metadata about an audio stream."]
         #[serde(rename = "audioStreams", default)]
-        pub audio_streams: Option<Vec<crate::schemas::VideoFileDetailsAudioStream>>,
+        pub audio_streams: ::std::option::Option<Vec<crate::schemas::VideoFileDetailsAudioStream>>,
         #[doc = "The uploaded video file's combined (video and audio) bitrate in bits per second."]
         #[serde(rename = "bitrateBps", default)]
         #[serde(with = "crate::parsed_string")]
-        pub bitrate_bps: Option<u64>,
+        pub bitrate_bps: ::std::option::Option<u64>,
         #[doc = "The uploaded video file's container format."]
         #[serde(rename = "container", default)]
-        pub container: Option<String>,
+        pub container: ::std::option::Option<String>,
         #[doc = "The date and time when the uploaded video file was created. The value is specified in ISO 8601 format. Currently, the following ISO 8601 formats are supported:\n\n* Date only: YYYY-MM-DD \n* Naive time: YYYY-MM-DDTHH:MM:SS \n* Time with timezone: YYYY-MM-DDTHH:MM:SS+HH:MM"]
         #[serde(rename = "creationTime", default)]
-        pub creation_time: Option<String>,
+        pub creation_time: ::std::option::Option<String>,
         #[doc = "The length of the uploaded video in milliseconds."]
         #[serde(rename = "durationMs", default)]
         #[serde(with = "crate::parsed_string")]
-        pub duration_ms: Option<u64>,
+        pub duration_ms: ::std::option::Option<u64>,
         #[doc = "The uploaded file's name. This field is present whether a video file or another type of file was uploaded."]
         #[serde(rename = "fileName", default)]
-        pub file_name: Option<String>,
+        pub file_name: ::std::option::Option<String>,
         #[doc = "The uploaded file's size in bytes. This field is present whether a video file or another type of file was uploaded."]
         #[serde(rename = "fileSize", default)]
         #[serde(with = "crate::parsed_string")]
-        pub file_size: Option<u64>,
+        pub file_size: ::std::option::Option<u64>,
         #[doc = "The uploaded file's type as detected by YouTube's video processing engine. Currently, YouTube only processes video files, but this field is present whether a video file or another type of file was uploaded."]
         #[serde(rename = "fileType", default)]
-        pub file_type: Option<crate::schemas::VideoFileDetailsFileType>,
+        pub file_type: ::std::option::Option<crate::schemas::VideoFileDetailsFileType>,
         #[doc = "A list of video streams contained in the uploaded video file. Each item in the list contains detailed metadata about a video stream."]
         #[serde(rename = "videoStreams", default)]
-        pub video_streams: Option<Vec<crate::schemas::VideoFileDetailsVideoStream>>,
+        pub video_streams: ::std::option::Option<Vec<crate::schemas::VideoFileDetailsVideoStream>>,
     }
     impl ::field_selector::FieldSelector for VideoFileDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -13095,7 +14025,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -13114,16 +14043,16 @@ pub mod schemas {
         #[doc = "The audio stream's bitrate, in bits per second."]
         #[serde(rename = "bitrateBps", default)]
         #[serde(with = "crate::parsed_string")]
-        pub bitrate_bps: Option<u64>,
+        pub bitrate_bps: ::std::option::Option<u64>,
         #[doc = "The number of audio channels that the stream contains."]
         #[serde(rename = "channelCount", default)]
-        pub channel_count: Option<u32>,
+        pub channel_count: ::std::option::Option<u32>,
         #[doc = "The audio codec that the stream uses."]
         #[serde(rename = "codec", default)]
-        pub codec: Option<String>,
+        pub codec: ::std::option::Option<String>,
         #[doc = "A value that uniquely identifies a video vendor. Typically, the value is a four-letter vendor code."]
         #[serde(rename = "vendor", default)]
-        pub vendor: Option<String>,
+        pub vendor: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VideoFileDetailsAudioStream {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -13132,7 +14061,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -13188,35 +14116,44 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VideoFileDetailsVideoStreamRotation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct VideoFileDetailsVideoStream {
         #[doc = "The video content's display aspect ratio, which specifies the aspect ratio in which the video should be displayed."]
         #[serde(rename = "aspectRatio", default)]
-        pub aspect_ratio: Option<f64>,
+        pub aspect_ratio: ::std::option::Option<f64>,
         #[doc = "The video stream's bitrate, in bits per second."]
         #[serde(rename = "bitrateBps", default)]
         #[serde(with = "crate::parsed_string")]
-        pub bitrate_bps: Option<u64>,
+        pub bitrate_bps: ::std::option::Option<u64>,
         #[doc = "The video codec that the stream uses."]
         #[serde(rename = "codec", default)]
-        pub codec: Option<String>,
+        pub codec: ::std::option::Option<String>,
         #[doc = "The video stream's frame rate, in frames per second."]
         #[serde(rename = "frameRateFps", default)]
-        pub frame_rate_fps: Option<f64>,
+        pub frame_rate_fps: ::std::option::Option<f64>,
         #[doc = "The encoded video content's height in pixels."]
         #[serde(rename = "heightPixels", default)]
-        pub height_pixels: Option<u32>,
+        pub height_pixels: ::std::option::Option<u32>,
         #[doc = "The amount that YouTube needs to rotate the original source content to properly display the video."]
         #[serde(rename = "rotation", default)]
-        pub rotation: Option<crate::schemas::VideoFileDetailsVideoStreamRotation>,
+        pub rotation: ::std::option::Option<crate::schemas::VideoFileDetailsVideoStreamRotation>,
         #[doc = "A value that uniquely identifies a video vendor. Typically, the value is a four-letter vendor code."]
         #[serde(rename = "vendor", default)]
-        pub vendor: Option<String>,
+        pub vendor: ::std::option::Option<String>,
         #[doc = "The encoded video content's width in pixels. You can calculate the video's encoding aspect ratio as width_pixels\u{a0}/\u{a0}height_pixels."]
         #[serde(rename = "widthPixels", default)]
-        pub width_pixels: Option<u32>,
+        pub width_pixels: ::std::option::Option<u32>,
     }
     impl ::field_selector::FieldSelector for VideoFileDetailsVideoStream {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -13225,7 +14162,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -13243,19 +14179,19 @@ pub mod schemas {
     pub struct VideoGetRatingResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of ratings that match the request criteria."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::VideoRating>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::VideoRating>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#videoGetRatingResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VideoGetRatingResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -13264,7 +14200,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -13273,29 +14208,29 @@ pub mod schemas {
     pub struct VideoListResponse {
         #[doc = "Etag of this resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Serialized EventId of the request which produced this response."]
         #[serde(rename = "eventId", default)]
-        pub event_id: Option<String>,
+        pub event_id: ::std::option::Option<String>,
         #[doc = "A list of videos that match the request criteria."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Video>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Video>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#videoListResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(rename = "prevPageToken", default)]
-        pub prev_page_token: Option<String>,
+        pub prev_page_token: ::std::option::Option<String>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
         #[doc = "The visitorId identifies the visitor."]
         #[serde(rename = "visitorId", default)]
-        pub visitor_id: Option<String>,
+        pub visitor_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VideoListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -13304,7 +14239,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -13322,23 +14256,23 @@ pub mod schemas {
     pub struct VideoLiveStreamingDetails {
         #[doc = "The ID of the currently active live chat attached to this video. This field is filled only if the video is a currently live broadcast that has live chat. Once the broadcast transitions to complete this field will be removed and the live chat closed down. For persistent broadcasts that live chat id will no longer be tied to this video but rather to the new video being displayed at the persistent page."]
         #[serde(rename = "activeLiveChatId", default)]
-        pub active_live_chat_id: Option<String>,
+        pub active_live_chat_id: ::std::option::Option<String>,
         #[doc = "The time that the broadcast actually ended. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format. This value will not be available until the broadcast is over."]
         #[serde(rename = "actualEndTime", default)]
-        pub actual_end_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub actual_end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The time that the broadcast actually started. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format. This value will not be available until the broadcast begins."]
         #[serde(rename = "actualStartTime", default)]
-        pub actual_start_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub actual_start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The number of viewers currently watching the broadcast. The property and its value will be present if the broadcast has current viewers and the broadcast owner has not hidden the viewcount for the video. Note that YouTube stops tracking the number of concurrent viewers for a broadcast when the broadcast ends. So, this property would not identify the number of viewers watching an archived video of a live broadcast that already ended."]
         #[serde(rename = "concurrentViewers", default)]
         #[serde(with = "crate::parsed_string")]
-        pub concurrent_viewers: Option<u64>,
+        pub concurrent_viewers: ::std::option::Option<u64>,
         #[doc = "The time that the broadcast is scheduled to end. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format. If the value is empty or the property is not present, then the broadcast is scheduled to continue indefinitely."]
         #[serde(rename = "scheduledEndTime", default)]
-        pub scheduled_end_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub scheduled_end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The time that the broadcast is scheduled to begin. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "scheduledStartTime", default)]
-        pub scheduled_start_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub scheduled_start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for VideoLiveStreamingDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -13347,7 +14281,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -13365,10 +14298,10 @@ pub mod schemas {
     pub struct VideoLocalization {
         #[doc = "Localized version of the video's description."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Localized version of the video's title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VideoLocalization {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -13377,7 +14310,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -13395,7 +14327,7 @@ pub mod schemas {
     pub struct VideoMonetizationDetails {
         #[doc = "The value of access indicates whether the video can be monetized or not."]
         #[serde(rename = "access", default)]
-        pub access: Option<crate::schemas::AccessPolicy>,
+        pub access: ::std::option::Option<crate::schemas::AccessPolicy>,
     }
     impl ::field_selector::FieldSelector for VideoMonetizationDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -13404,7 +14336,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -13422,14 +14353,14 @@ pub mod schemas {
     pub struct VideoPlayer {
         #[serde(rename = "embedHeight", default)]
         #[serde(with = "crate::parsed_string")]
-        pub embed_height: Option<i64>,
+        pub embed_height: ::std::option::Option<i64>,
         #[doc = "An <iframe> tag that embeds a player that will play the video."]
         #[serde(rename = "embedHtml", default)]
-        pub embed_html: Option<String>,
+        pub embed_html: ::std::option::Option<String>,
         #[doc = "The embed width"]
         #[serde(rename = "embedWidth", default)]
         #[serde(with = "crate::parsed_string")]
-        pub embed_width: Option<i64>,
+        pub embed_width: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for VideoPlayer {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -13438,7 +14369,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -13491,6 +14421,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VideoProcessingDetailsProcessingFailureReason {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoProcessingDetailsProcessingStatus {
         Failed,
@@ -13541,6 +14480,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VideoProcessingDetailsProcessingStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -13556,29 +14504,31 @@ pub mod schemas {
     pub struct VideoProcessingDetails {
         #[doc = "This value indicates whether video editing suggestions, which might improve video quality or the playback experience, are available for the video. You can retrieve these suggestions by requesting the suggestions part in your videos.list() request."]
         #[serde(rename = "editorSuggestionsAvailability", default)]
-        pub editor_suggestions_availability: Option<String>,
+        pub editor_suggestions_availability: ::std::option::Option<String>,
         #[doc = "This value indicates whether file details are available for the uploaded video. You can retrieve a video's file details by requesting the fileDetails part in your videos.list() request."]
         #[serde(rename = "fileDetailsAvailability", default)]
-        pub file_details_availability: Option<String>,
+        pub file_details_availability: ::std::option::Option<String>,
         #[doc = "The reason that YouTube failed to process the video. This property will only have a value if the processingStatus property's value is failed."]
         #[serde(rename = "processingFailureReason", default)]
         pub processing_failure_reason:
-            Option<crate::schemas::VideoProcessingDetailsProcessingFailureReason>,
+            ::std::option::Option<crate::schemas::VideoProcessingDetailsProcessingFailureReason>,
         #[doc = "This value indicates whether the video processing engine has generated suggestions that might improve YouTube's ability to process the the video, warnings that explain video processing problems, or errors that cause video processing problems. You can retrieve these suggestions by requesting the suggestions part in your videos.list() request."]
         #[serde(rename = "processingIssuesAvailability", default)]
-        pub processing_issues_availability: Option<String>,
+        pub processing_issues_availability: ::std::option::Option<String>,
         #[doc = "The processingProgress object contains information about the progress YouTube has made in processing the video. The values are really only relevant if the video's processing status is processing."]
         #[serde(rename = "processingProgress", default)]
-        pub processing_progress: Option<crate::schemas::VideoProcessingDetailsProcessingProgress>,
+        pub processing_progress:
+            ::std::option::Option<crate::schemas::VideoProcessingDetailsProcessingProgress>,
         #[doc = "The video's processing status. This value indicates whether YouTube was able to process the video or if the video is still being processed."]
         #[serde(rename = "processingStatus", default)]
-        pub processing_status: Option<crate::schemas::VideoProcessingDetailsProcessingStatus>,
+        pub processing_status:
+            ::std::option::Option<crate::schemas::VideoProcessingDetailsProcessingStatus>,
         #[doc = "This value indicates whether keyword (tag) suggestions are available for the video. Tags can be added to a video's metadata to make it easier for other users to find the video. You can retrieve these suggestions by requesting the suggestions part in your videos.list() request."]
         #[serde(rename = "tagSuggestionsAvailability", default)]
-        pub tag_suggestions_availability: Option<String>,
+        pub tag_suggestions_availability: ::std::option::Option<String>,
         #[doc = "This value indicates whether thumbnail images have been generated for the video."]
         #[serde(rename = "thumbnailsAvailability", default)]
-        pub thumbnails_availability: Option<String>,
+        pub thumbnails_availability: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VideoProcessingDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -13587,7 +14537,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -13606,15 +14555,15 @@ pub mod schemas {
         #[doc = "The number of parts of the video that YouTube has already processed. You can estimate the percentage of the video that YouTube has already processed by calculating:\n100 * parts_processed / parts_total\n\nNote that since the estimated number of parts could increase without a corresponding increase in the number of parts that have already been processed, it is possible that the calculated progress could periodically decrease while YouTube processes a video."]
         #[serde(rename = "partsProcessed", default)]
         #[serde(with = "crate::parsed_string")]
-        pub parts_processed: Option<u64>,
+        pub parts_processed: ::std::option::Option<u64>,
         #[doc = "An estimate of the total number of parts that need to be processed for the video. The number may be updated with more precise estimates while YouTube processes the video."]
         #[serde(rename = "partsTotal", default)]
         #[serde(with = "crate::parsed_string")]
-        pub parts_total: Option<u64>,
+        pub parts_total: ::std::option::Option<u64>,
         #[doc = "An estimate of the amount of time, in millseconds, that YouTube needs to finish processing the video."]
         #[serde(rename = "timeLeftMs", default)]
         #[serde(with = "crate::parsed_string")]
-        pub time_left_ms: Option<u64>,
+        pub time_left_ms: ::std::option::Option<u64>,
     }
     impl ::field_selector::FieldSelector for VideoProcessingDetailsProcessingProgress {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -13623,7 +14572,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -13641,7 +14589,7 @@ pub mod schemas {
     pub struct VideoProjectDetails {
         #[doc = "A list of project tags associated with the video during the upload."]
         #[serde(rename = "tags", default)]
-        pub tags: Option<Vec<String>>,
+        pub tags: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for VideoProjectDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -13650,7 +14598,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -13703,6 +14650,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VideoRatingRating {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -13717,9 +14673,9 @@ pub mod schemas {
     )]
     pub struct VideoRating {
         #[serde(rename = "rating", default)]
-        pub rating: Option<crate::schemas::VideoRatingRating>,
+        pub rating: ::std::option::Option<crate::schemas::VideoRatingRating>,
         #[serde(rename = "videoId", default)]
-        pub video_id: Option<String>,
+        pub video_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VideoRating {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -13728,7 +14684,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -13737,13 +14692,13 @@ pub mod schemas {
     pub struct VideoRecordingDetails {
         #[doc = "The geolocation information associated with the video."]
         #[serde(rename = "location", default)]
-        pub location: Option<crate::schemas::GeoPoint>,
+        pub location: ::std::option::Option<crate::schemas::GeoPoint>,
         #[doc = "The text description of the location where the video was recorded."]
         #[serde(rename = "locationDescription", default)]
-        pub location_description: Option<String>,
+        pub location_description: ::std::option::Option<String>,
         #[doc = "The date and time when the video was recorded. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sssZ) format."]
         #[serde(rename = "recordingDate", default)]
-        pub recording_date: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub recording_date: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for VideoRecordingDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -13752,7 +14707,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -13802,6 +14756,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VideoSnippetLiveBroadcastContent {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -13817,40 +14780,41 @@ pub mod schemas {
     pub struct VideoSnippet {
         #[doc = "The YouTube video category associated with the video."]
         #[serde(rename = "categoryId", default)]
-        pub category_id: Option<String>,
+        pub category_id: ::std::option::Option<String>,
         #[doc = "The ID that YouTube uses to uniquely identify the channel that the video was uploaded to."]
         #[serde(rename = "channelId", default)]
-        pub channel_id: Option<String>,
+        pub channel_id: ::std::option::Option<String>,
         #[doc = "Channel title for the channel that the video belongs to."]
         #[serde(rename = "channelTitle", default)]
-        pub channel_title: Option<String>,
+        pub channel_title: ::std::option::Option<String>,
         #[doc = "The default_audio_language property specifies the language spoken in the video's default audio track."]
         #[serde(rename = "defaultAudioLanguage", default)]
-        pub default_audio_language: Option<String>,
+        pub default_audio_language: ::std::option::Option<String>,
         #[doc = "The language of the videos's default snippet."]
         #[serde(rename = "defaultLanguage", default)]
-        pub default_language: Option<String>,
+        pub default_language: ::std::option::Option<String>,
         #[doc = "The video's description."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Indicates if the video is an upcoming/active live broadcast. Or it's \"none\" if the video is not an upcoming/active live broadcast."]
         #[serde(rename = "liveBroadcastContent", default)]
-        pub live_broadcast_content: Option<crate::schemas::VideoSnippetLiveBroadcastContent>,
+        pub live_broadcast_content:
+            ::std::option::Option<crate::schemas::VideoSnippetLiveBroadcastContent>,
         #[doc = "Localized snippet selected with the hl parameter. If no such localization exists, this field is populated with the default snippet. (Read-only)"]
         #[serde(rename = "localized", default)]
-        pub localized: Option<crate::schemas::VideoLocalization>,
+        pub localized: ::std::option::Option<crate::schemas::VideoLocalization>,
         #[doc = "The date and time that the video was uploaded. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "publishedAt", default)]
-        pub published_at: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "A list of keyword tags associated with the video. Tags may contain spaces."]
         #[serde(rename = "tags", default)]
-        pub tags: Option<Vec<String>>,
+        pub tags: ::std::option::Option<Vec<String>>,
         #[doc = "A map of thumbnail images associated with the video. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
         #[serde(rename = "thumbnails", default)]
-        pub thumbnails: Option<crate::schemas::ThumbnailDetails>,
+        pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
         #[doc = "The video's title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VideoSnippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -13859,7 +14823,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -13878,23 +14841,23 @@ pub mod schemas {
         #[doc = "The number of comments for the video."]
         #[serde(rename = "commentCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub comment_count: Option<u64>,
+        pub comment_count: ::std::option::Option<u64>,
         #[doc = "The number of users who have indicated that they disliked the video by giving it a negative rating."]
         #[serde(rename = "dislikeCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub dislike_count: Option<u64>,
+        pub dislike_count: ::std::option::Option<u64>,
         #[doc = "The number of users who currently have the video marked as a favorite video."]
         #[serde(rename = "favoriteCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub favorite_count: Option<u64>,
+        pub favorite_count: ::std::option::Option<u64>,
         #[doc = "The number of users who have indicated that they liked the video by giving it a positive rating."]
         #[serde(rename = "likeCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub like_count: Option<u64>,
+        pub like_count: ::std::option::Option<u64>,
         #[doc = "The number of times the video has been viewed."]
         #[serde(rename = "viewCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub view_count: Option<u64>,
+        pub view_count: ::std::option::Option<u64>,
     }
     impl ::field_selector::FieldSelector for VideoStatistics {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -13903,7 +14866,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -13962,6 +14924,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VideoStatusFailureReason {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoStatusLicense {
         CreativeCommon,
@@ -14004,6 +14975,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for VideoStatusLicense {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -14051,6 +15031,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for VideoStatusPrivacyStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -14121,6 +15110,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VideoStatusRejectionReason {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoStatusUploadStatus {
         Deleted,
@@ -14174,6 +15172,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VideoStatusUploadStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -14189,28 +15196,28 @@ pub mod schemas {
     pub struct VideoStatus {
         #[doc = "This value indicates if the video can be embedded on another website."]
         #[serde(rename = "embeddable", default)]
-        pub embeddable: Option<bool>,
+        pub embeddable: ::std::option::Option<bool>,
         #[doc = "This value explains why a video failed to upload. This property is only present if the uploadStatus property indicates that the upload failed."]
         #[serde(rename = "failureReason", default)]
-        pub failure_reason: Option<crate::schemas::VideoStatusFailureReason>,
+        pub failure_reason: ::std::option::Option<crate::schemas::VideoStatusFailureReason>,
         #[doc = "The video's license."]
         #[serde(rename = "license", default)]
-        pub license: Option<crate::schemas::VideoStatusLicense>,
+        pub license: ::std::option::Option<crate::schemas::VideoStatusLicense>,
         #[doc = "The video's privacy status."]
         #[serde(rename = "privacyStatus", default)]
-        pub privacy_status: Option<crate::schemas::VideoStatusPrivacyStatus>,
+        pub privacy_status: ::std::option::Option<crate::schemas::VideoStatusPrivacyStatus>,
         #[doc = "This value indicates if the extended video statistics on the watch page can be viewed by everyone. Note that the view count, likes, etc will still be visible if this is disabled."]
         #[serde(rename = "publicStatsViewable", default)]
-        pub public_stats_viewable: Option<bool>,
+        pub public_stats_viewable: ::std::option::Option<bool>,
         #[doc = "The date and time when the video is scheduled to publish. It can be set only if the privacy status of the video is private. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format."]
         #[serde(rename = "publishAt", default)]
-        pub publish_at: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub publish_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "This value explains why YouTube rejected an uploaded video. This property is only present if the uploadStatus property indicates that the upload was rejected."]
         #[serde(rename = "rejectionReason", default)]
-        pub rejection_reason: Option<crate::schemas::VideoStatusRejectionReason>,
+        pub rejection_reason: ::std::option::Option<crate::schemas::VideoStatusRejectionReason>,
         #[doc = "The status of the uploaded video."]
         #[serde(rename = "uploadStatus", default)]
-        pub upload_status: Option<crate::schemas::VideoStatusUploadStatus>,
+        pub upload_status: ::std::option::Option<crate::schemas::VideoStatusUploadStatus>,
     }
     impl ::field_selector::FieldSelector for VideoStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -14219,7 +15226,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -14274,6 +15280,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for VideoSuggestionsEditorSuggestionsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -14339,6 +15354,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VideoSuggestionsProcessingErrorsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoSuggestionsProcessingHintsItems {
         HdrVideo,
@@ -14397,6 +15421,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for VideoSuggestionsProcessingHintsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -14505,6 +15538,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VideoSuggestionsProcessingWarningsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -14520,20 +15562,24 @@ pub mod schemas {
     pub struct VideoSuggestions {
         #[doc = "A list of video editing operations that might improve the video quality or playback experience of the uploaded video."]
         #[serde(rename = "editorSuggestions", default)]
-        pub editor_suggestions: Option<Vec<crate::schemas::VideoSuggestionsEditorSuggestionsItems>>,
+        pub editor_suggestions:
+            ::std::option::Option<Vec<crate::schemas::VideoSuggestionsEditorSuggestionsItems>>,
         #[doc = "A list of errors that will prevent YouTube from successfully processing the uploaded video video. These errors indicate that, regardless of the video's current processing status, eventually, that status will almost certainly be failed."]
         #[serde(rename = "processingErrors", default)]
-        pub processing_errors: Option<Vec<crate::schemas::VideoSuggestionsProcessingErrorsItems>>,
+        pub processing_errors:
+            ::std::option::Option<Vec<crate::schemas::VideoSuggestionsProcessingErrorsItems>>,
         #[doc = "A list of suggestions that may improve YouTube's ability to process the video."]
         #[serde(rename = "processingHints", default)]
-        pub processing_hints: Option<Vec<crate::schemas::VideoSuggestionsProcessingHintsItems>>,
+        pub processing_hints:
+            ::std::option::Option<Vec<crate::schemas::VideoSuggestionsProcessingHintsItems>>,
         #[doc = "A list of reasons why YouTube may have difficulty transcoding the uploaded video or that might result in an erroneous transcoding. These warnings are generated before YouTube actually processes the uploaded video file. In addition, they identify issues that are unlikely to cause the video processing to fail but that might cause problems such as sync issues, video artifacts, or a missing audio track."]
         #[serde(rename = "processingWarnings", default)]
         pub processing_warnings:
-            Option<Vec<crate::schemas::VideoSuggestionsProcessingWarningsItems>>,
+            ::std::option::Option<Vec<crate::schemas::VideoSuggestionsProcessingWarningsItems>>,
         #[doc = "A list of keyword tags that could be added to the video's metadata to increase the likelihood that users will locate your video when searching or browsing on YouTube."]
         #[serde(rename = "tagSuggestions", default)]
-        pub tag_suggestions: Option<Vec<crate::schemas::VideoSuggestionsTagSuggestion>>,
+        pub tag_suggestions:
+            ::std::option::Option<Vec<crate::schemas::VideoSuggestionsTagSuggestion>>,
     }
     impl ::field_selector::FieldSelector for VideoSuggestions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -14542,7 +15588,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -14560,10 +15605,10 @@ pub mod schemas {
     pub struct VideoSuggestionsTagSuggestion {
         #[doc = "A set of video categories for which the tag is relevant. You can use this information to display appropriate tag suggestions based on the video category that the video uploader associates with the video. By default, tag suggestions are relevant for all categories if there are no restricts defined for the keyword."]
         #[serde(rename = "categoryRestricts", default)]
-        pub category_restricts: Option<Vec<String>>,
+        pub category_restricts: ::std::option::Option<Vec<String>>,
         #[doc = "The keyword tag suggested for the video."]
         #[serde(rename = "tag", default)]
-        pub tag: Option<String>,
+        pub tag: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for VideoSuggestionsTagSuggestion {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -14572,7 +15617,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -14590,13 +15634,13 @@ pub mod schemas {
     pub struct VideoTopicDetails {
         #[doc = "Similar to topic_id, except that these topics are merely relevant to the video. These are topics that may be mentioned in, or appear in the video. You can retrieve information about each topic using Freebase Topic API."]
         #[serde(rename = "relevantTopicIds", default)]
-        pub relevant_topic_ids: Option<Vec<String>>,
+        pub relevant_topic_ids: ::std::option::Option<Vec<String>>,
         #[doc = "A list of Wikipedia URLs that provide a high-level description of the video's content."]
         #[serde(rename = "topicCategories", default)]
-        pub topic_categories: Option<Vec<String>>,
+        pub topic_categories: ::std::option::Option<Vec<String>>,
         #[doc = "A list of Freebase topic IDs that are centrally associated with the video. These are topics that are centrally featured in the video, and it can be said that the video is mainly about each of these. You can retrieve information about each topic using the Freebase Topic API."]
         #[serde(rename = "topicIds", default)]
-        pub topic_ids: Option<Vec<String>>,
+        pub topic_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for VideoTopicDetails {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -14605,7 +15649,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -14623,13 +15666,13 @@ pub mod schemas {
     pub struct WatchSettings {
         #[doc = "The text color for the video watch page's branded area."]
         #[serde(rename = "backgroundColor", default)]
-        pub background_color: Option<String>,
+        pub background_color: ::std::option::Option<String>,
         #[doc = "An ID that uniquely identifies a playlist that displays next to the video player."]
         #[serde(rename = "featuredPlaylistId", default)]
-        pub featured_playlist_id: Option<String>,
+        pub featured_playlist_id: ::std::option::Option<String>,
         #[doc = "The background color for the video watch page's branded area."]
         #[serde(rename = "textColor", default)]
-        pub text_color: Option<String>,
+        pub text_color: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for WatchSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -14638,7 +15681,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -14687,6 +15729,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -15457,6 +16508,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for DownloadTfmt {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -17825,6 +18885,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListModerationStatus {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListOrder {
                 #[doc = "Order by relevance."]
@@ -17871,6 +18940,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListOrder {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListTextFormat {
                 #[doc = "Returns the comments in HTML format. This is the default value."]
@@ -17915,6 +18993,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListTextFormat {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -18628,6 +19715,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListTextFormat {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum SetModerationStatusModerationStatus {
                 #[doc = "Marks a comment as awaiting review by a moderator."]
@@ -18676,6 +19772,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for SetModerationStatusModerationStatus {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -20146,6 +21251,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListBroadcastStatus {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListBroadcastType {
                 #[doc = "Return all broadcasts."]
@@ -20196,6 +21310,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListBroadcastType {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum TransitionBroadcastStatus {
                 #[doc = "The broadcast is over. YouTube stops transmitting video."]
@@ -20244,6 +21367,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for TransitionBroadcastStatus {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -23757,6 +24889,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListMode {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
         }
         pub struct MembersActions<'a, A> {
             pub(crate) reqwest: &'a reqwest::Client,
@@ -25758,6 +26899,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListChannelType {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListEventType {
                 #[doc = "Only include completed broadcasts."]
@@ -25806,6 +26956,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListEventType {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -25870,6 +27029,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListOrder {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListSafeSearch {
                 #[doc = "YouTube will filter some content from search results and, at the least, will filter content that is restricted in your locale. Based on their content, search results could be removed from search results or demoted in search results. This is the default parameter value."]
@@ -25918,6 +27086,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListSafeSearch {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -25970,6 +27147,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListVideoCaption {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListVideoDefinition {
                 #[doc = "Return all videos, regardless of their resolution."]
@@ -26020,6 +27206,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListVideoDefinition {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListVideoDimension {
                 #[doc = "Restrict search results to exclude 3D videos."]
@@ -26068,6 +27263,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListVideoDimension {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -26124,6 +27328,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListVideoDuration {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListVideoEmbeddable {
                 #[doc = "Return all videos, embeddable or not."]
@@ -26168,6 +27381,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListVideoEmbeddable {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -26220,6 +27442,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListVideoLicense {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListVideoSyndicated {
                 #[doc = "Return all videos, syndicated or not."]
@@ -26264,6 +27495,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListVideoSyndicated {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -26314,6 +27554,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListVideoType {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -26908,6 +28157,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListFilter {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
         }
         pub struct SponsorsActions<'a, A> {
             pub(crate) reqwest: &'a reqwest::Client,
@@ -27242,6 +28500,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListOrder {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -28759,6 +30026,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListChart {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListMyRating {
                 #[doc = "Returns only videos disliked by the authenticated user."]
@@ -28803,6 +30079,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListMyRating {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -28853,6 +30138,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for RateRating {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -30619,6 +31913,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -30694,5 +31989,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

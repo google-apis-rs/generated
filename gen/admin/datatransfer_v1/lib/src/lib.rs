@@ -14,20 +14,20 @@ pub mod schemas {
     pub struct Application {
         #[doc = "Etag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The application's ID."]
         #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
+        pub id: ::std::option::Option<i64>,
         #[doc = "Identifies the resource as a DataTransfer Application Resource."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The application's name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The list of all possible transfer parameters for this application. These parameters can be used to select the data of the user in this application to be transfered."]
         #[serde(rename = "transferParams", default)]
-        pub transfer_params: Option<Vec<crate::schemas::ApplicationTransferParam>>,
+        pub transfer_params: ::std::option::Option<Vec<crate::schemas::ApplicationTransferParam>>,
     }
     impl ::field_selector::FieldSelector for Application {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -36,7 +36,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -55,13 +54,14 @@ pub mod schemas {
         #[doc = "The application's ID."]
         #[serde(rename = "applicationId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub application_id: Option<i64>,
+        pub application_id: ::std::option::Option<i64>,
         #[doc = "The transfer parameters for the application. These parameters are used to select the data which will get transfered in context of this application."]
         #[serde(rename = "applicationTransferParams", default)]
-        pub application_transfer_params: Option<Vec<crate::schemas::ApplicationTransferParam>>,
+        pub application_transfer_params:
+            ::std::option::Option<Vec<crate::schemas::ApplicationTransferParam>>,
         #[doc = "Current status of transfer for this application. (Read-only)"]
         #[serde(rename = "applicationTransferStatus", default)]
-        pub application_transfer_status: Option<String>,
+        pub application_transfer_status: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ApplicationDataTransfer {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -70,7 +70,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -88,10 +87,10 @@ pub mod schemas {
     pub struct ApplicationTransferParam {
         #[doc = "The type of the transfer parameter. eg: 'PRIVACY_LEVEL'"]
         #[serde(rename = "key", default)]
-        pub key: Option<String>,
+        pub key: ::std::option::Option<String>,
         #[doc = "The value of the coressponding transfer parameter. eg: 'PRIVATE' or 'SHARED'"]
         #[serde(rename = "value", default)]
-        pub value: Option<Vec<String>>,
+        pub value: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ApplicationTransferParam {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -100,7 +99,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -118,16 +116,16 @@ pub mod schemas {
     pub struct ApplicationsListResponse {
         #[doc = "List of applications that support data transfer and are also installed for the customer."]
         #[serde(rename = "applications", default)]
-        pub applications: Option<Vec<crate::schemas::Application>>,
+        pub applications: ::std::option::Option<Vec<crate::schemas::Application>>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Identifies the resource as a collection of Applications."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token which will be used to specify next page in list API."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ApplicationsListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -136,7 +134,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -154,28 +151,29 @@ pub mod schemas {
     pub struct DataTransfer {
         #[doc = "List of per application data transfer resources. It contains data transfer details of the applications associated with this transfer resource. Note that this list is also used to specify the applications for which data transfer has to be done at the time of the transfer resource creation."]
         #[serde(rename = "applicationDataTransfers", default)]
-        pub application_data_transfers: Option<Vec<crate::schemas::ApplicationDataTransfer>>,
+        pub application_data_transfers:
+            ::std::option::Option<Vec<crate::schemas::ApplicationDataTransfer>>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The transfer's ID (Read-only)."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies the resource as a DataTransfer request."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "ID of the user to whom the data is being transfered."]
         #[serde(rename = "newOwnerUserId", default)]
-        pub new_owner_user_id: Option<String>,
+        pub new_owner_user_id: ::std::option::Option<String>,
         #[doc = "ID of the user whose data is being transfered."]
         #[serde(rename = "oldOwnerUserId", default)]
-        pub old_owner_user_id: Option<String>,
+        pub old_owner_user_id: ::std::option::Option<String>,
         #[doc = "Overall transfer status (Read-only)."]
         #[serde(rename = "overallTransferStatusCode", default)]
-        pub overall_transfer_status_code: Option<String>,
+        pub overall_transfer_status_code: ::std::option::Option<String>,
         #[doc = "The time at which the data transfer was requested (Read-only)."]
         #[serde(rename = "requestTime", default)]
-        pub request_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub request_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for DataTransfer {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -184,7 +182,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -202,16 +199,16 @@ pub mod schemas {
     pub struct DataTransfersListResponse {
         #[doc = "List of data transfer requests."]
         #[serde(rename = "dataTransfers", default)]
-        pub data_transfers: Option<Vec<crate::schemas::DataTransfer>>,
+        pub data_transfers: ::std::option::Option<Vec<crate::schemas::DataTransfer>>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Identifies the resource as a collection of data transfer requests."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token which will be used to specify next page in list API."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DataTransfersListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -220,7 +217,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -265,6 +261,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1607,6 +1612,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1682,5 +1688,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

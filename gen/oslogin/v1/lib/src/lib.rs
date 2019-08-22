@@ -14,7 +14,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -31,7 +31,7 @@ pub mod schemas {
     pub struct ImportSshPublicKeyResponse {
         #[doc = "The login profile information for the user."]
         #[serde(rename = "loginProfile", default)]
-        pub login_profile: Option<crate::schemas::LoginProfile>,
+        pub login_profile: ::std::option::Option<crate::schemas::LoginProfile>,
     }
     impl ::field_selector::FieldSelector for ImportSshPublicKeyResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -40,7 +40,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -58,14 +57,15 @@ pub mod schemas {
     pub struct LoginProfile {
         #[doc = "A unique user ID."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The list of POSIX accounts associated with the user."]
         #[serde(rename = "posixAccounts", default)]
-        pub posix_accounts: Option<Vec<crate::schemas::PosixAccount>>,
+        pub posix_accounts: ::std::option::Option<Vec<crate::schemas::PosixAccount>>,
         #[doc = "A map from SSH public key fingerprint to the associated key object."]
         #[serde(rename = "sshPublicKeys", default)]
-        pub ssh_public_keys:
-            Option<::std::collections::BTreeMap<String, crate::schemas::SshPublicKey>>,
+        pub ssh_public_keys: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::SshPublicKey>,
+        >,
     }
     impl ::field_selector::FieldSelector for LoginProfile {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -74,7 +74,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -131,6 +130,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PosixAccountOperatingSystemType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -146,36 +154,37 @@ pub mod schemas {
     pub struct PosixAccount {
         #[doc = "Output only. A POSIX account identifier."]
         #[serde(rename = "accountId", default)]
-        pub account_id: Option<String>,
+        pub account_id: ::std::option::Option<String>,
         #[doc = "The GECOS (user information) entry for this account."]
         #[serde(rename = "gecos", default)]
-        pub gecos: Option<String>,
+        pub gecos: ::std::option::Option<String>,
         #[doc = "The default group ID."]
         #[serde(rename = "gid", default)]
         #[serde(with = "crate::parsed_string")]
-        pub gid: Option<i64>,
+        pub gid: ::std::option::Option<i64>,
         #[doc = "The path to the home directory for this account."]
         #[serde(rename = "homeDirectory", default)]
-        pub home_directory: Option<String>,
+        pub home_directory: ::std::option::Option<String>,
         #[doc = "The operating system type where this account applies."]
         #[serde(rename = "operatingSystemType", default)]
-        pub operating_system_type: Option<crate::schemas::PosixAccountOperatingSystemType>,
+        pub operating_system_type:
+            ::std::option::Option<crate::schemas::PosixAccountOperatingSystemType>,
         #[doc = "Only one POSIX account can be marked as primary."]
         #[serde(rename = "primary", default)]
-        pub primary: Option<bool>,
+        pub primary: ::std::option::Option<bool>,
         #[doc = "The path to the logic shell for this account."]
         #[serde(rename = "shell", default)]
-        pub shell: Option<String>,
+        pub shell: ::std::option::Option<String>,
         #[doc = "System identifier for which account the username or uid applies to.\nBy default, the empty value is used."]
         #[serde(rename = "systemId", default)]
-        pub system_id: Option<String>,
+        pub system_id: ::std::option::Option<String>,
         #[doc = "The user ID."]
         #[serde(rename = "uid", default)]
         #[serde(with = "crate::parsed_string")]
-        pub uid: Option<i64>,
+        pub uid: ::std::option::Option<i64>,
         #[doc = "The username of the POSIX account."]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PosixAccount {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -184,7 +193,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -203,13 +211,13 @@ pub mod schemas {
         #[doc = "An expiration time in microseconds since epoch."]
         #[serde(rename = "expirationTimeUsec", default)]
         #[serde(with = "crate::parsed_string")]
-        pub expiration_time_usec: Option<i64>,
+        pub expiration_time_usec: ::std::option::Option<i64>,
         #[doc = "Output only. The SHA-256 fingerprint of the SSH public key."]
         #[serde(rename = "fingerprint", default)]
-        pub fingerprint: Option<String>,
+        pub fingerprint: ::std::option::Option<String>,
         #[doc = "Public key text in SSH format, defined by\n<a href=\"https://www.ietf.org/rfc/rfc4253.txt\" target=\"_blank\">RFC4253</a>\nsection 6.6."]
         #[serde(rename = "key", default)]
-        pub key: Option<String>,
+        pub key: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SshPublicKey {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -218,7 +226,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -273,6 +280,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -317,6 +333,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1801,6 +1826,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1876,5 +1902,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

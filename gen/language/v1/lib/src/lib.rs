@@ -53,6 +53,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AnalyzeEntitiesRequestEncodingType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -68,10 +77,11 @@ pub mod schemas {
     pub struct AnalyzeEntitiesRequest {
         #[doc = "Required. Input document."]
         #[serde(rename = "document", default)]
-        pub document: Option<crate::schemas::Document>,
+        pub document: ::std::option::Option<crate::schemas::Document>,
         #[doc = "The encoding type used by the API to calculate offsets."]
         #[serde(rename = "encodingType", default)]
-        pub encoding_type: Option<crate::schemas::AnalyzeEntitiesRequestEncodingType>,
+        pub encoding_type:
+            ::std::option::Option<crate::schemas::AnalyzeEntitiesRequestEncodingType>,
     }
     impl ::field_selector::FieldSelector for AnalyzeEntitiesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -80,7 +90,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -89,10 +98,10 @@ pub mod schemas {
     pub struct AnalyzeEntitiesResponse {
         #[doc = "The recognized entities in the input document."]
         #[serde(rename = "entities", default)]
-        pub entities: Option<Vec<crate::schemas::Entity>>,
+        pub entities: ::std::option::Option<Vec<crate::schemas::Entity>>,
         #[doc = "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.\nSee Document.language field for more details."]
         #[serde(rename = "language", default)]
-        pub language: Option<String>,
+        pub language: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AnalyzeEntitiesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -101,7 +110,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -158,6 +166,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AnalyzeEntitySentimentRequestEncodingType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -173,10 +190,11 @@ pub mod schemas {
     pub struct AnalyzeEntitySentimentRequest {
         #[doc = "Required. Input document."]
         #[serde(rename = "document", default)]
-        pub document: Option<crate::schemas::Document>,
+        pub document: ::std::option::Option<crate::schemas::Document>,
         #[doc = "The encoding type used by the API to calculate offsets."]
         #[serde(rename = "encodingType", default)]
-        pub encoding_type: Option<crate::schemas::AnalyzeEntitySentimentRequestEncodingType>,
+        pub encoding_type:
+            ::std::option::Option<crate::schemas::AnalyzeEntitySentimentRequestEncodingType>,
     }
     impl ::field_selector::FieldSelector for AnalyzeEntitySentimentRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -185,7 +203,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -194,10 +211,10 @@ pub mod schemas {
     pub struct AnalyzeEntitySentimentResponse {
         #[doc = "The recognized entities in the input document with associated sentiments."]
         #[serde(rename = "entities", default)]
-        pub entities: Option<Vec<crate::schemas::Entity>>,
+        pub entities: ::std::option::Option<Vec<crate::schemas::Entity>>,
         #[doc = "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.\nSee Document.language field for more details."]
         #[serde(rename = "language", default)]
-        pub language: Option<String>,
+        pub language: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AnalyzeEntitySentimentResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -206,7 +223,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -263,6 +279,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AnalyzeSentimentRequestEncodingType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -278,10 +303,11 @@ pub mod schemas {
     pub struct AnalyzeSentimentRequest {
         #[doc = "Required. Input document."]
         #[serde(rename = "document", default)]
-        pub document: Option<crate::schemas::Document>,
+        pub document: ::std::option::Option<crate::schemas::Document>,
         #[doc = "The encoding type used by the API to calculate sentence offsets."]
         #[serde(rename = "encodingType", default)]
-        pub encoding_type: Option<crate::schemas::AnalyzeSentimentRequestEncodingType>,
+        pub encoding_type:
+            ::std::option::Option<crate::schemas::AnalyzeSentimentRequestEncodingType>,
     }
     impl ::field_selector::FieldSelector for AnalyzeSentimentRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -290,7 +316,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -299,13 +324,13 @@ pub mod schemas {
     pub struct AnalyzeSentimentResponse {
         #[doc = "The overall sentiment of the input document."]
         #[serde(rename = "documentSentiment", default)]
-        pub document_sentiment: Option<crate::schemas::Sentiment>,
+        pub document_sentiment: ::std::option::Option<crate::schemas::Sentiment>,
         #[doc = "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.\nSee Document.language field for more details."]
         #[serde(rename = "language", default)]
-        pub language: Option<String>,
+        pub language: ::std::option::Option<String>,
         #[doc = "The sentiment for all the sentences in the document."]
         #[serde(rename = "sentences", default)]
-        pub sentences: Option<Vec<crate::schemas::Sentence>>,
+        pub sentences: ::std::option::Option<Vec<crate::schemas::Sentence>>,
     }
     impl ::field_selector::FieldSelector for AnalyzeSentimentResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -314,7 +339,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -371,6 +395,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AnalyzeSyntaxRequestEncodingType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -386,10 +419,10 @@ pub mod schemas {
     pub struct AnalyzeSyntaxRequest {
         #[doc = "Required. Input document."]
         #[serde(rename = "document", default)]
-        pub document: Option<crate::schemas::Document>,
+        pub document: ::std::option::Option<crate::schemas::Document>,
         #[doc = "The encoding type used by the API to calculate offsets."]
         #[serde(rename = "encodingType", default)]
-        pub encoding_type: Option<crate::schemas::AnalyzeSyntaxRequestEncodingType>,
+        pub encoding_type: ::std::option::Option<crate::schemas::AnalyzeSyntaxRequestEncodingType>,
     }
     impl ::field_selector::FieldSelector for AnalyzeSyntaxRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -398,7 +431,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -407,13 +439,13 @@ pub mod schemas {
     pub struct AnalyzeSyntaxResponse {
         #[doc = "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.\nSee Document.language field for more details."]
         #[serde(rename = "language", default)]
-        pub language: Option<String>,
+        pub language: ::std::option::Option<String>,
         #[doc = "Sentences in the input document."]
         #[serde(rename = "sentences", default)]
-        pub sentences: Option<Vec<crate::schemas::Sentence>>,
+        pub sentences: ::std::option::Option<Vec<crate::schemas::Sentence>>,
         #[doc = "Tokens, along with their syntactic information, in the input document."]
         #[serde(rename = "tokens", default)]
-        pub tokens: Option<Vec<crate::schemas::Token>>,
+        pub tokens: ::std::option::Option<Vec<crate::schemas::Token>>,
     }
     impl ::field_selector::FieldSelector for AnalyzeSyntaxResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -422,7 +454,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -479,6 +510,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for AnnotateTextRequestEncodingType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -494,13 +534,13 @@ pub mod schemas {
     pub struct AnnotateTextRequest {
         #[doc = "Required. Input document."]
         #[serde(rename = "document", default)]
-        pub document: Option<crate::schemas::Document>,
+        pub document: ::std::option::Option<crate::schemas::Document>,
         #[doc = "The encoding type used by the API to calculate offsets."]
         #[serde(rename = "encodingType", default)]
-        pub encoding_type: Option<crate::schemas::AnnotateTextRequestEncodingType>,
+        pub encoding_type: ::std::option::Option<crate::schemas::AnnotateTextRequestEncodingType>,
         #[doc = "Required. The enabled features."]
         #[serde(rename = "features", default)]
-        pub features: Option<crate::schemas::Features>,
+        pub features: ::std::option::Option<crate::schemas::Features>,
     }
     impl ::field_selector::FieldSelector for AnnotateTextRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -509,7 +549,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -518,22 +557,22 @@ pub mod schemas {
     pub struct AnnotateTextResponse {
         #[doc = "Categories identified in the input document."]
         #[serde(rename = "categories", default)]
-        pub categories: Option<Vec<crate::schemas::ClassificationCategory>>,
+        pub categories: ::std::option::Option<Vec<crate::schemas::ClassificationCategory>>,
         #[doc = "The overall sentiment for the document. Populated if the user enables\nAnnotateTextRequest.Features.extract_document_sentiment."]
         #[serde(rename = "documentSentiment", default)]
-        pub document_sentiment: Option<crate::schemas::Sentiment>,
+        pub document_sentiment: ::std::option::Option<crate::schemas::Sentiment>,
         #[doc = "Entities, along with their semantic information, in the input document.\nPopulated if the user enables\nAnnotateTextRequest.Features.extract_entities."]
         #[serde(rename = "entities", default)]
-        pub entities: Option<Vec<crate::schemas::Entity>>,
+        pub entities: ::std::option::Option<Vec<crate::schemas::Entity>>,
         #[doc = "The language of the text, which will be the same as the language specified\nin the request or, if not specified, the automatically-detected language.\nSee Document.language field for more details."]
         #[serde(rename = "language", default)]
-        pub language: Option<String>,
+        pub language: ::std::option::Option<String>,
         #[doc = "Sentences in the input document. Populated if the user enables\nAnnotateTextRequest.Features.extract_syntax."]
         #[serde(rename = "sentences", default)]
-        pub sentences: Option<Vec<crate::schemas::Sentence>>,
+        pub sentences: ::std::option::Option<Vec<crate::schemas::Sentence>>,
         #[doc = "Tokens, along with their syntactic information, in the input document.\nPopulated if the user enables\nAnnotateTextRequest.Features.extract_syntax."]
         #[serde(rename = "tokens", default)]
-        pub tokens: Option<Vec<crate::schemas::Token>>,
+        pub tokens: ::std::option::Option<Vec<crate::schemas::Token>>,
     }
     impl ::field_selector::FieldSelector for AnnotateTextResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -542,7 +581,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -551,10 +589,10 @@ pub mod schemas {
     pub struct ClassificationCategory {
         #[doc = "The classifier's confidence of the category. Number represents how certain\nthe classifier is that this category represents the given text."]
         #[serde(rename = "confidence", default)]
-        pub confidence: Option<f32>,
+        pub confidence: ::std::option::Option<f32>,
         #[doc = "The name of the category representing the document, from the [predefined\ntaxonomy](/natural-language/docs/categories)."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ClassificationCategory {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -563,7 +601,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -581,7 +618,7 @@ pub mod schemas {
     pub struct ClassifyTextRequest {
         #[doc = "Required. Input document."]
         #[serde(rename = "document", default)]
-        pub document: Option<crate::schemas::Document>,
+        pub document: ::std::option::Option<crate::schemas::Document>,
     }
     impl ::field_selector::FieldSelector for ClassifyTextRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -590,7 +627,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -599,7 +635,7 @@ pub mod schemas {
     pub struct ClassifyTextResponse {
         #[doc = "Categories representing the input document."]
         #[serde(rename = "categories", default)]
-        pub categories: Option<Vec<crate::schemas::ClassificationCategory>>,
+        pub categories: ::std::option::Option<Vec<crate::schemas::ClassificationCategory>>,
     }
     impl ::field_selector::FieldSelector for ClassifyTextResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -608,7 +644,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -981,6 +1016,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DependencyEdgeLabel {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -996,10 +1040,10 @@ pub mod schemas {
     pub struct DependencyEdge {
         #[doc = "Represents the head of this token in the dependency tree.\nThis is the index of the token which has an arc going to this token.\nThe index is the position of the token in the array of tokens returned\nby the API method. If this token is a root token, then the\n`head_token_index` is its own index."]
         #[serde(rename = "headTokenIndex", default)]
-        pub head_token_index: Option<i32>,
+        pub head_token_index: ::std::option::Option<i32>,
         #[doc = "The parse label for the token."]
         #[serde(rename = "label", default)]
-        pub label: Option<crate::schemas::DependencyEdgeLabel>,
+        pub label: ::std::option::Option<crate::schemas::DependencyEdgeLabel>,
     }
     impl ::field_selector::FieldSelector for DependencyEdge {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1008,7 +1052,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1061,6 +1104,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DocumentType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1076,16 +1128,16 @@ pub mod schemas {
     pub struct Document {
         #[doc = "The content of the input in string format.\nCloud audit logging exempt since it is based on user data."]
         #[serde(rename = "content", default)]
-        pub content: Option<String>,
+        pub content: ::std::option::Option<String>,
         #[doc = "The Google Cloud Storage URI where the file content is located.\nThis URI must be of the form: gs://bucket_name/object_name. For more\ndetails, see https://cloud.google.com/storage/docs/reference-uris.\nNOTE: Cloud Storage object versioning is not supported."]
         #[serde(rename = "gcsContentUri", default)]
-        pub gcs_content_uri: Option<String>,
+        pub gcs_content_uri: ::std::option::Option<String>,
         #[doc = "The language of the document (if not specified, the language is\nautomatically detected). Both ISO and BCP-47 language codes are\naccepted.<br>\n[Language Support](/natural-language/docs/languages)\nlists currently supported languages for each API method.\nIf the language (either specified by the caller or automatically detected)\nis not supported by the called API method, an `INVALID_ARGUMENT` error\nis returned."]
         #[serde(rename = "language", default)]
-        pub language: Option<String>,
+        pub language: ::std::option::Option<String>,
         #[doc = "Required. If the type is not set or is `TYPE_UNSPECIFIED`,\nreturns an `INVALID_ARGUMENT` error."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DocumentType>,
+        pub r#type: ::std::option::Option<crate::schemas::DocumentType>,
     }
     impl ::field_selector::FieldSelector for Document {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1094,7 +1146,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1187,28 +1238,37 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for EntityType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Entity {
         #[doc = "The mentions of this entity in the input document. The API currently\nsupports proper noun mentions."]
         #[serde(rename = "mentions", default)]
-        pub mentions: Option<Vec<crate::schemas::EntityMention>>,
+        pub mentions: ::std::option::Option<Vec<crate::schemas::EntityMention>>,
         #[doc = "Metadata associated with the entity.\n\nFor most entity types, the metadata is a Wikipedia URL (`wikipedia_url`)\nand Knowledge Graph MID (`mid`), if they are available. For the metadata\nassociated with other entity types, see the Type table below."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, String>>,
+        pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The representative name for the entity."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The entity type."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::EntityType>,
+        pub r#type: ::std::option::Option<crate::schemas::EntityType>,
         #[doc = "The salience score associated with the entity in the [0, 1.0] range.\n\nThe salience score for an entity provides information about the\nimportance or centrality of that entity to the entire document text.\nScores closer to 0 are less salient, while scores closer to 1.0 are highly\nsalient."]
         #[serde(rename = "salience", default)]
-        pub salience: Option<f32>,
+        pub salience: ::std::option::Option<f32>,
         #[doc = "For calls to AnalyzeEntitySentiment or if\nAnnotateTextRequest.Features.extract_entity_sentiment is set to\ntrue, this field will contain the aggregate sentiment expressed for this\nentity in the provided document."]
         #[serde(rename = "sentiment", default)]
-        pub sentiment: Option<crate::schemas::Sentiment>,
+        pub sentiment: ::std::option::Option<crate::schemas::Sentiment>,
     }
     impl ::field_selector::FieldSelector for Entity {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1217,7 +1277,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1270,19 +1329,28 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for EntityMentionType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct EntityMention {
         #[doc = "The type of the entity mention."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::EntityMentionType>,
+        pub r#type: ::std::option::Option<crate::schemas::EntityMentionType>,
         #[doc = "For calls to AnalyzeEntitySentiment or if\nAnnotateTextRequest.Features.extract_entity_sentiment is set to\ntrue, this field will contain the sentiment expressed for this mention of\nthe entity in the provided document."]
         #[serde(rename = "sentiment", default)]
-        pub sentiment: Option<crate::schemas::Sentiment>,
+        pub sentiment: ::std::option::Option<crate::schemas::Sentiment>,
         #[doc = "The mention text."]
         #[serde(rename = "text", default)]
-        pub text: Option<crate::schemas::TextSpan>,
+        pub text: ::std::option::Option<crate::schemas::TextSpan>,
     }
     impl ::field_selector::FieldSelector for EntityMention {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1291,7 +1359,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1309,19 +1376,19 @@ pub mod schemas {
     pub struct Features {
         #[doc = "Classify the full document into categories."]
         #[serde(rename = "classifyText", default)]
-        pub classify_text: Option<bool>,
+        pub classify_text: ::std::option::Option<bool>,
         #[doc = "Extract document-level sentiment."]
         #[serde(rename = "extractDocumentSentiment", default)]
-        pub extract_document_sentiment: Option<bool>,
+        pub extract_document_sentiment: ::std::option::Option<bool>,
         #[doc = "Extract entities."]
         #[serde(rename = "extractEntities", default)]
-        pub extract_entities: Option<bool>,
+        pub extract_entities: ::std::option::Option<bool>,
         #[doc = "Extract entities and their associated sentiment."]
         #[serde(rename = "extractEntitySentiment", default)]
-        pub extract_entity_sentiment: Option<bool>,
+        pub extract_entity_sentiment: ::std::option::Option<bool>,
         #[doc = "Extract syntax information."]
         #[serde(rename = "extractSyntax", default)]
-        pub extract_syntax: Option<bool>,
+        pub extract_syntax: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for Features {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1330,7 +1397,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1385,6 +1451,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for PartOfSpeechAspect {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1485,6 +1560,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PartOfSpeechCase {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechForm {
         #[doc = "Form is not applicable in the analyzed language or is not predicted."]
@@ -1571,6 +1655,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PartOfSpeechForm {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechGender {
         #[doc = "Gender is not applicable in the analyzed language or is not predicted."]
@@ -1623,6 +1716,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for PartOfSpeechGender {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1691,6 +1793,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PartOfSpeechMood {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechNumber {
         #[doc = "Number is not applicable in the analyzed language or is not predicted."]
@@ -1743,6 +1854,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for PartOfSpeechNumber {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1803,6 +1923,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PartOfSpeechPerson {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechProper {
         #[doc = "Proper is not applicable in the analyzed language or is not predicted."]
@@ -1853,6 +1982,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PartOfSpeechProper {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechReciprocity {
         #[doc = "Reciprocity is not applicable in the analyzed language or is not\npredicted."]
@@ -1901,6 +2039,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for PartOfSpeechReciprocity {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1997,6 +2144,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PartOfSpeechTag {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechTense {
         #[doc = "Tense is not applicable in the analyzed language or is not predicted."]
@@ -2063,6 +2219,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PartOfSpeechTense {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PartOfSpeechVoice {
         #[doc = "Voice is not applicable in the analyzed language or is not predicted."]
@@ -2117,6 +2282,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PartOfSpeechVoice {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2132,40 +2306,40 @@ pub mod schemas {
     pub struct PartOfSpeech {
         #[doc = "The grammatical aspect."]
         #[serde(rename = "aspect", default)]
-        pub aspect: Option<crate::schemas::PartOfSpeechAspect>,
+        pub aspect: ::std::option::Option<crate::schemas::PartOfSpeechAspect>,
         #[doc = "The grammatical case."]
         #[serde(rename = "case", default)]
-        pub case: Option<crate::schemas::PartOfSpeechCase>,
+        pub case: ::std::option::Option<crate::schemas::PartOfSpeechCase>,
         #[doc = "The grammatical form."]
         #[serde(rename = "form", default)]
-        pub form: Option<crate::schemas::PartOfSpeechForm>,
+        pub form: ::std::option::Option<crate::schemas::PartOfSpeechForm>,
         #[doc = "The grammatical gender."]
         #[serde(rename = "gender", default)]
-        pub gender: Option<crate::schemas::PartOfSpeechGender>,
+        pub gender: ::std::option::Option<crate::schemas::PartOfSpeechGender>,
         #[doc = "The grammatical mood."]
         #[serde(rename = "mood", default)]
-        pub mood: Option<crate::schemas::PartOfSpeechMood>,
+        pub mood: ::std::option::Option<crate::schemas::PartOfSpeechMood>,
         #[doc = "The grammatical number."]
         #[serde(rename = "number", default)]
-        pub number: Option<crate::schemas::PartOfSpeechNumber>,
+        pub number: ::std::option::Option<crate::schemas::PartOfSpeechNumber>,
         #[doc = "The grammatical person."]
         #[serde(rename = "person", default)]
-        pub person: Option<crate::schemas::PartOfSpeechPerson>,
+        pub person: ::std::option::Option<crate::schemas::PartOfSpeechPerson>,
         #[doc = "The grammatical properness."]
         #[serde(rename = "proper", default)]
-        pub proper: Option<crate::schemas::PartOfSpeechProper>,
+        pub proper: ::std::option::Option<crate::schemas::PartOfSpeechProper>,
         #[doc = "The grammatical reciprocity."]
         #[serde(rename = "reciprocity", default)]
-        pub reciprocity: Option<crate::schemas::PartOfSpeechReciprocity>,
+        pub reciprocity: ::std::option::Option<crate::schemas::PartOfSpeechReciprocity>,
         #[doc = "The part of speech tag."]
         #[serde(rename = "tag", default)]
-        pub tag: Option<crate::schemas::PartOfSpeechTag>,
+        pub tag: ::std::option::Option<crate::schemas::PartOfSpeechTag>,
         #[doc = "The grammatical tense."]
         #[serde(rename = "tense", default)]
-        pub tense: Option<crate::schemas::PartOfSpeechTense>,
+        pub tense: ::std::option::Option<crate::schemas::PartOfSpeechTense>,
         #[doc = "The grammatical voice."]
         #[serde(rename = "voice", default)]
-        pub voice: Option<crate::schemas::PartOfSpeechVoice>,
+        pub voice: ::std::option::Option<crate::schemas::PartOfSpeechVoice>,
     }
     impl ::field_selector::FieldSelector for PartOfSpeech {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2174,7 +2348,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2183,10 +2356,10 @@ pub mod schemas {
     pub struct Sentence {
         #[doc = "For calls to AnalyzeSentiment or if\nAnnotateTextRequest.Features.extract_document_sentiment is set to\ntrue, this field will contain the sentiment for the sentence."]
         #[serde(rename = "sentiment", default)]
-        pub sentiment: Option<crate::schemas::Sentiment>,
+        pub sentiment: ::std::option::Option<crate::schemas::Sentiment>,
         #[doc = "The sentence text."]
         #[serde(rename = "text", default)]
-        pub text: Option<crate::schemas::TextSpan>,
+        pub text: ::std::option::Option<crate::schemas::TextSpan>,
     }
     impl ::field_selector::FieldSelector for Sentence {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2195,7 +2368,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2204,10 +2376,10 @@ pub mod schemas {
     pub struct Sentiment {
         #[doc = "A non-negative number in the [0, +inf) range, which represents\nthe absolute magnitude of sentiment regardless of score (positive or\nnegative)."]
         #[serde(rename = "magnitude", default)]
-        pub magnitude: Option<f32>,
+        pub magnitude: ::std::option::Option<f32>,
         #[doc = "Sentiment score between -1.0 (negative sentiment) and 1.0\n(positive sentiment)."]
         #[serde(rename = "score", default)]
-        pub score: Option<f32>,
+        pub score: ::std::option::Option<f32>,
     }
     impl ::field_selector::FieldSelector for Sentiment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2216,20 +2388,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
-        pub code: Option<i32>,
+        pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub details:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Status {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2238,7 +2410,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2256,10 +2427,10 @@ pub mod schemas {
     pub struct TextSpan {
         #[doc = "The API calculates the beginning offset of the content in the original\ndocument according to the EncodingType specified in the API request."]
         #[serde(rename = "beginOffset", default)]
-        pub begin_offset: Option<i32>,
+        pub begin_offset: ::std::option::Option<i32>,
         #[doc = "The content of the output text."]
         #[serde(rename = "content", default)]
-        pub content: Option<String>,
+        pub content: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TextSpan {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2268,7 +2439,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2286,16 +2456,16 @@ pub mod schemas {
     pub struct Token {
         #[doc = "Dependency tree parse for this token."]
         #[serde(rename = "dependencyEdge", default)]
-        pub dependency_edge: Option<crate::schemas::DependencyEdge>,
+        pub dependency_edge: ::std::option::Option<crate::schemas::DependencyEdge>,
         #[doc = "[Lemma](https://en.wikipedia.org/wiki/Lemma_%28morphology%29) of the token."]
         #[serde(rename = "lemma", default)]
-        pub lemma: Option<String>,
+        pub lemma: ::std::option::Option<String>,
         #[doc = "Parts of speech tag for this token."]
         #[serde(rename = "partOfSpeech", default)]
-        pub part_of_speech: Option<crate::schemas::PartOfSpeech>,
+        pub part_of_speech: ::std::option::Option<crate::schemas::PartOfSpeech>,
         #[doc = "The token text."]
         #[serde(rename = "text", default)]
-        pub text: Option<crate::schemas::TextSpan>,
+        pub text: ::std::option::Option<crate::schemas::TextSpan>,
     }
     impl ::field_selector::FieldSelector for Token {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2304,7 +2474,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -2359,6 +2528,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -2403,6 +2581,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -3790,6 +3977,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3865,5 +4053,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

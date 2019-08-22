@@ -13,9 +13,9 @@ pub mod schemas {
     )]
     pub struct FieldMask {
         #[serde(rename = "fields", default)]
-        pub fields: Option<Vec<crate::schemas::FieldMask>>,
+        pub fields: ::std::option::Option<Vec<crate::schemas::FieldMask>>,
         #[serde(rename = "id", default)]
-        pub id: Option<i32>,
+        pub id: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for FieldMask {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -24,7 +24,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -41,11 +40,11 @@ pub mod schemas {
     )]
     pub struct PageInfo {
         #[serde(rename = "resultPerPage", default)]
-        pub result_per_page: Option<i32>,
+        pub result_per_page: ::std::option::Option<i32>,
         #[serde(rename = "startIndex", default)]
-        pub start_index: Option<i32>,
+        pub start_index: ::std::option::Option<i32>,
         #[serde(rename = "totalResults", default)]
-        pub total_results: Option<i32>,
+        pub total_results: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for PageInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -54,7 +53,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -71,7 +69,7 @@ pub mod schemas {
     )]
     pub struct ResultsGetRequest {
         #[serde(rename = "resultMask", default)]
-        pub result_mask: Option<crate::schemas::ResultsMask>,
+        pub result_mask: ::std::option::Option<crate::schemas::ResultsMask>,
     }
     impl ::field_selector::FieldSelector for ResultsGetRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -80,7 +78,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -97,9 +94,9 @@ pub mod schemas {
     )]
     pub struct ResultsMask {
         #[serde(rename = "fields", default)]
-        pub fields: Option<Vec<crate::schemas::FieldMask>>,
+        pub fields: ::std::option::Option<Vec<crate::schemas::FieldMask>>,
         #[serde(rename = "projection", default)]
-        pub projection: Option<String>,
+        pub projection: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ResultsMask {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -108,7 +105,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -126,37 +122,37 @@ pub mod schemas {
     pub struct Survey {
         #[doc = "Targeting-criteria message containing demographic information"]
         #[serde(rename = "audience", default)]
-        pub audience: Option<crate::schemas::SurveyAudience>,
+        pub audience: ::std::option::Option<crate::schemas::SurveyAudience>,
         #[doc = "Cost to run the survey and collect the necessary number of responses."]
         #[serde(rename = "cost", default)]
-        pub cost: Option<crate::schemas::SurveyCost>,
+        pub cost: ::std::option::Option<crate::schemas::SurveyCost>,
         #[doc = "Additional information to store on behalf of the API consumer and associate with this question. This binary blob is treated as opaque. This field is limited to 64K bytes."]
         #[serde(rename = "customerData", default)]
-        pub customer_data: Option<Vec<u8>>,
+        pub customer_data: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Text description of the survey."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "List of email addresses for survey owners. Must contain at least the address of the user making the API call."]
         #[serde(rename = "owners", default)]
-        pub owners: Option<Vec<String>>,
+        pub owners: ::std::option::Option<Vec<String>>,
         #[doc = "List of questions defining the survey."]
         #[serde(rename = "questions", default)]
-        pub questions: Option<Vec<crate::schemas::SurveyQuestion>>,
+        pub questions: ::std::option::Option<Vec<crate::schemas::SurveyQuestion>>,
         #[doc = "Reason for the survey being rejected. Only present if the survey state is rejected."]
         #[serde(rename = "rejectionReason", default)]
-        pub rejection_reason: Option<crate::schemas::SurveyRejection>,
+        pub rejection_reason: ::std::option::Option<crate::schemas::SurveyRejection>,
         #[doc = "State that the survey is in."]
         #[serde(rename = "state", default)]
-        pub state: Option<String>,
+        pub state: ::std::option::Option<String>,
         #[doc = "Unique survey ID, that is viewable in the URL of the Survey Creator UI"]
         #[serde(rename = "surveyUrlId", default)]
-        pub survey_url_id: Option<String>,
+        pub survey_url_id: ::std::option::Option<String>,
         #[doc = "Optional name that will be given to the survey."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "Number of responses desired for the survey."]
         #[serde(rename = "wantedResponseCount", default)]
-        pub wanted_response_count: Option<i32>,
+        pub wanted_response_count: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Survey {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -165,7 +161,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -183,22 +178,22 @@ pub mod schemas {
     pub struct SurveyAudience {
         #[doc = "Optional list of age buckets to target. Supported age buckets are: ['18-24', '25-34', '35-44', '45-54', '55-64', '65+']"]
         #[serde(rename = "ages", default)]
-        pub ages: Option<Vec<String>>,
+        pub ages: ::std::option::Option<Vec<String>>,
         #[doc = "Required country code that surveys should be targeted to. Accepts standard ISO 3166-1 2 character language codes. For instance, 'US' for the United States, and 'GB' for the United Kingdom."]
         #[serde(rename = "country", default)]
-        pub country: Option<String>,
+        pub country: ::std::option::Option<String>,
         #[doc = "Country subdivision (states/provinces/etc) that surveys should be targeted to. For all countries except GB, ISO-3166-2 subdivision code is required (eg. 'US-OH' for Ohio, United States). For GB, NUTS 1 statistical region codes for the United Kingdom is required (eg. 'UK-UKC' for North East England)."]
         #[serde(rename = "countrySubdivision", default)]
-        pub country_subdivision: Option<String>,
+        pub country_subdivision: ::std::option::Option<String>,
         #[doc = "Optional gender to target."]
         #[serde(rename = "gender", default)]
-        pub gender: Option<String>,
+        pub gender: ::std::option::Option<String>,
         #[doc = "Language code that surveys should be targeted to. For instance, 'en-US'. Surveys may target bilingual users by specifying a list of language codes (for example, 'de' and 'en-US'). In that case, all languages will be used for targeting users but the survey content (which is displayed) must match the first language listed. Accepts standard BCP47 language codes. See specification."]
         #[serde(rename = "languages", default)]
-        pub languages: Option<Vec<String>>,
+        pub languages: ::std::option::Option<Vec<String>>,
         #[doc = "Online population source where the respondents are sampled from."]
         #[serde(rename = "populationSource", default)]
-        pub population_source: Option<String>,
+        pub population_source: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SurveyAudience {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -207,7 +202,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -226,18 +220,18 @@ pub mod schemas {
         #[doc = "Cost per survey response in nano units of the given currency. To get the total cost for a survey, multiply this value by wanted_response_count."]
         #[serde(rename = "costPerResponseNanos", default)]
         #[serde(with = "crate::parsed_string")]
-        pub cost_per_response_nanos: Option<i64>,
+        pub cost_per_response_nanos: ::std::option::Option<i64>,
         #[doc = "Currency code that the cost is given in."]
         #[serde(rename = "currencyCode", default)]
-        pub currency_code: Option<String>,
+        pub currency_code: ::std::option::Option<String>,
         #[doc = "*Deprecated* Threshold to start a survey automatically if the quoted price is at most this value. When a survey has a Screener (threshold) question, it must go through an incidence pricing test to determine the final cost per response. Typically you will have to make a followup call to start the survey giving the final computed cost per response. If the survey has no threshold_answers, setting this property will return an error. By specifying this property, you indicate the max price per response you are willing to pay in advance of the incidence test. If the price turns out to be lower than the specified value, the survey will begin immediately and you will be charged at the rate determined by the incidence pricing test. If the price turns out to be greater than the specified value the survey will not be started and you will instead be notified what price was determined by the incidence test. At that point, you must raise the value of this property to be greater than or equal to that cost before attempting to start the survey again. This will immediately start the survey as long the incidence test was run within the last 21 days. This will no longer be available after June 2018."]
         #[serde(rename = "maxCostPerResponseNanos", default)]
         #[serde(with = "crate::parsed_string")]
-        pub max_cost_per_response_nanos: Option<i64>,
+        pub max_cost_per_response_nanos: ::std::option::Option<i64>,
         #[doc = "Cost of survey in nano units of the given currency. DEPRECATED in favor of cost_per_response_nanos"]
         #[serde(rename = "nanos", default)]
         #[serde(with = "crate::parsed_string")]
-        pub nanos: Option<i64>,
+        pub nanos: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for SurveyCost {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -246,7 +240,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -264,57 +257,57 @@ pub mod schemas {
     pub struct SurveyQuestion {
         #[doc = "The randomization option for multiple choice and multi-select questions. If not specified, this option defaults to randomize."]
         #[serde(rename = "answerOrder", default)]
-        pub answer_order: Option<String>,
+        pub answer_order: ::std::option::Option<String>,
         #[doc = "Required list of answer options for a question."]
         #[serde(rename = "answers", default)]
-        pub answers: Option<Vec<String>>,
+        pub answers: ::std::option::Option<Vec<String>>,
         #[doc = "Option to allow open-ended text box for Single Answer and Multiple Answer question types. This can be used with SINGLE_ANSWER, SINGLE_ANSWER_WITH_IMAGE, MULTIPLE_ANSWERS, and MULTIPLE_ANSWERS_WITH_IMAGE question types."]
         #[serde(rename = "hasOther", default)]
-        pub has_other: Option<bool>,
+        pub has_other: ::std::option::Option<bool>,
         #[doc = "For rating questions, the text for the higher end of the scale, such as 'Best'. For numeric questions, a string representing a floating-point that is the maximum allowed number for a response."]
         #[serde(rename = "highValueLabel", default)]
-        pub high_value_label: Option<String>,
+        pub high_value_label: ::std::option::Option<String>,
         #[serde(rename = "images", default)]
-        pub images: Option<Vec<crate::schemas::SurveyQuestionImage>>,
+        pub images: ::std::option::Option<Vec<crate::schemas::SurveyQuestionImage>>,
         #[doc = "Currently only support pinning an answer option to the last position."]
         #[serde(rename = "lastAnswerPositionPinned", default)]
-        pub last_answer_position_pinned: Option<bool>,
+        pub last_answer_position_pinned: ::std::option::Option<bool>,
         #[doc = "For rating questions, the text for the lower end of the scale, such as 'Worst'. For numeric questions, a string representing a floating-point that is the minimum allowed number for a response."]
         #[serde(rename = "lowValueLabel", default)]
-        pub low_value_label: Option<String>,
+        pub low_value_label: ::std::option::Option<String>,
         #[doc = "Option to force the user to pick one of the open text suggestions. This requires that suggestions are provided for this question."]
         #[serde(rename = "mustPickSuggestion", default)]
-        pub must_pick_suggestion: Option<bool>,
+        pub must_pick_suggestion: ::std::option::Option<bool>,
         #[doc = "Number of stars to use for ratings questions."]
         #[serde(rename = "numStars", default)]
-        pub num_stars: Option<String>,
+        pub num_stars: ::std::option::Option<String>,
         #[doc = "Placeholder text for an open text question."]
         #[serde(rename = "openTextPlaceholder", default)]
-        pub open_text_placeholder: Option<String>,
+        pub open_text_placeholder: ::std::option::Option<String>,
         #[doc = "A list of suggested answers for open text question auto-complete. This is only valid if single_line_response is true."]
         #[serde(rename = "openTextSuggestions", default)]
-        pub open_text_suggestions: Option<Vec<String>>,
+        pub open_text_suggestions: ::std::option::Option<Vec<String>>,
         #[doc = "Required question text shown to the respondent."]
         #[serde(rename = "question", default)]
-        pub question: Option<String>,
+        pub question: ::std::option::Option<String>,
         #[doc = "Required field defining the question type. For details about configuring different type of questions, consult the question configuration guide."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Used by the Rating Scale with Text question type. This text goes along with the question field that is presented to the respondent, and is the actual text that the respondent is asked to rate."]
         #[serde(rename = "sentimentText", default)]
-        pub sentiment_text: Option<String>,
+        pub sentiment_text: ::std::option::Option<String>,
         #[doc = "Option to allow multiple line open text responses instead of a single line response. Note that we don't show auto-complete suggestions with multiple line responses."]
         #[serde(rename = "singleLineResponse", default)]
-        pub single_line_response: Option<bool>,
+        pub single_line_response: ::std::option::Option<bool>,
         #[doc = "The threshold/screener answer options, which will screen a user into the rest of the survey. These will be a subset of the answer option strings."]
         #[serde(rename = "thresholdAnswers", default)]
-        pub threshold_answers: Option<Vec<String>>,
+        pub threshold_answers: ::std::option::Option<Vec<String>>,
         #[doc = "Optional unit of measurement for display (for example: hours, people, miles)."]
         #[serde(rename = "unitOfMeasurementLabel", default)]
-        pub unit_of_measurement_label: Option<String>,
+        pub unit_of_measurement_label: ::std::option::Option<String>,
         #[doc = "The YouTube video ID to be show in video questions."]
         #[serde(rename = "videoId", default)]
-        pub video_id: Option<String>,
+        pub video_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SurveyQuestion {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -323,7 +316,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -341,13 +333,13 @@ pub mod schemas {
     pub struct SurveyQuestionImage {
         #[doc = "The alt text property used in image tags is required for all images."]
         #[serde(rename = "altText", default)]
-        pub alt_text: Option<String>,
+        pub alt_text: ::std::option::Option<String>,
         #[doc = "Inline jpeg, gif, tiff, bmp, or png image raw bytes for an image question types."]
         #[serde(rename = "data", default)]
-        pub data: Option<Vec<u8>>,
+        pub data: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "The read-only URL for the hosted images."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SurveyQuestionImage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -356,7 +348,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -374,10 +365,10 @@ pub mod schemas {
     pub struct SurveyRejection {
         #[doc = "A human-readable explanation of what was wrong with the survey."]
         #[serde(rename = "explanation", default)]
-        pub explanation: Option<String>,
+        pub explanation: ::std::option::Option<String>,
         #[doc = "Which category of rejection this was. See the  Google Surveys Help Center for additional details on each category."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SurveyRejection {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -386,7 +377,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -404,10 +394,10 @@ pub mod schemas {
     pub struct SurveyResults {
         #[doc = "Human readable string describing the status of the request."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
         #[doc = "External survey ID as viewable by survey owners in the editor view."]
         #[serde(rename = "surveyUrlId", default)]
-        pub survey_url_id: Option<String>,
+        pub survey_url_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SurveyResults {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -416,7 +406,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -434,7 +423,7 @@ pub mod schemas {
     pub struct SurveysDeleteResponse {
         #[doc = "Unique request ID used for logging and debugging. Please include in any error reporting or troubleshooting requests."]
         #[serde(rename = "requestId", default)]
-        pub request_id: Option<String>,
+        pub request_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SurveysDeleteResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -443,7 +432,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -460,15 +448,15 @@ pub mod schemas {
     )]
     pub struct SurveysListResponse {
         #[serde(rename = "pageInfo", default)]
-        pub page_info: Option<crate::schemas::PageInfo>,
+        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
         #[doc = "Unique request ID used for logging and debugging. Please include in any error reporting or troubleshooting requests."]
         #[serde(rename = "requestId", default)]
-        pub request_id: Option<String>,
+        pub request_id: ::std::option::Option<String>,
         #[doc = "An individual survey resource."]
         #[serde(rename = "resources", default)]
-        pub resources: Option<Vec<crate::schemas::Survey>>,
+        pub resources: ::std::option::Option<Vec<crate::schemas::Survey>>,
         #[serde(rename = "tokenPagination", default)]
-        pub token_pagination: Option<crate::schemas::TokenPagination>,
+        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
     }
     impl ::field_selector::FieldSelector for SurveysListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -477,7 +465,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -496,7 +483,7 @@ pub mod schemas {
         #[doc = "*Deprecated* Threshold to start a survey automatically if the quoted prices is less than or equal to this value. See Survey.Cost for more details. This will no longer be available after June 2018."]
         #[serde(rename = "maxCostPerResponseNanos", default)]
         #[serde(with = "crate::parsed_string")]
-        pub max_cost_per_response_nanos: Option<i64>,
+        pub max_cost_per_response_nanos: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for SurveysStartRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -505,7 +492,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -523,7 +509,7 @@ pub mod schemas {
     pub struct SurveysStartResponse {
         #[doc = "Unique request ID used for logging and debugging. Please include in any error reporting or troubleshooting requests."]
         #[serde(rename = "requestId", default)]
-        pub request_id: Option<String>,
+        pub request_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SurveysStartResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -532,7 +518,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -550,7 +535,7 @@ pub mod schemas {
     pub struct SurveysStopResponse {
         #[doc = "Unique request ID used for logging and debugging. Please include in any error reporting or troubleshooting requests."]
         #[serde(rename = "requestId", default)]
-        pub request_id: Option<String>,
+        pub request_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SurveysStopResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -559,7 +544,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -576,9 +560,9 @@ pub mod schemas {
     )]
     pub struct TokenPagination {
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "previousPageToken", default)]
-        pub previous_page_token: Option<String>,
+        pub previous_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TokenPagination {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -587,7 +571,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -636,6 +619,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -2225,6 +2217,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2300,5 +2293,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

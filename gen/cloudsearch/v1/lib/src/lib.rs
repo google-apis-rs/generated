@@ -14,7 +14,7 @@ pub mod schemas {
     pub struct BooleanOperatorOptions {
         #[doc = "Indicates the operator name required in the query in order to isolate the\nboolean property. For example, if operatorName is *closed* and the\nproperty's name is *isClosed*, then queries like\n*closed:<value>* will show results only where the value of the\nproperty named *isClosed* matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator will return\nall items where *<value>* matches the value of any\nString properties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(rename = "operatorName", default)]
-        pub operator_name: Option<String>,
+        pub operator_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BooleanOperatorOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -23,7 +23,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -41,7 +40,7 @@ pub mod schemas {
     pub struct BooleanPropertyOptions {
         #[doc = "If set, describes how the boolean should be used as a search operator."]
         #[serde(rename = "operatorOptions", default)]
-        pub operator_options: Option<crate::schemas::BooleanOperatorOptions>,
+        pub operator_options: ::std::option::Option<crate::schemas::BooleanOperatorOptions>,
     }
     impl ::field_selector::FieldSelector for BooleanPropertyOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -50,7 +49,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -68,7 +66,7 @@ pub mod schemas {
     pub struct CheckAccessResponse {
         #[doc = "Returns true if principal has access.  Returns false otherwise."]
         #[serde(rename = "hasAccess", default)]
-        pub has_access: Option<bool>,
+        pub has_access: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for CheckAccessResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -77,7 +75,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -129,16 +126,25 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CompositeFilterLogicOperator {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct CompositeFilter {
         #[doc = "The logic operator of the sub filter."]
         #[serde(rename = "logicOperator", default)]
-        pub logic_operator: Option<crate::schemas::CompositeFilterLogicOperator>,
+        pub logic_operator: ::std::option::Option<crate::schemas::CompositeFilterLogicOperator>,
         #[doc = "Sub filters."]
         #[serde(rename = "subFilters", default)]
-        pub sub_filters: Option<Vec<crate::schemas::Filter>>,
+        pub sub_filters: ::std::option::Option<Vec<crate::schemas::Filter>>,
     }
     impl ::field_selector::FieldSelector for CompositeFilter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -147,7 +153,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -165,10 +170,10 @@ pub mod schemas {
     pub struct CustomerIndexStats {
         #[doc = "Date for which statistics were calculated."]
         #[serde(rename = "date", default)]
-        pub date: Option<crate::schemas::Date>,
+        pub date: ::std::option::Option<crate::schemas::Date>,
         #[doc = "Number of items aggregrated by status code."]
         #[serde(rename = "itemCountByStatus", default)]
-        pub item_count_by_status: Option<Vec<crate::schemas::ItemCountByStatus>>,
+        pub item_count_by_status: ::std::option::Option<Vec<crate::schemas::ItemCountByStatus>>,
     }
     impl ::field_selector::FieldSelector for CustomerIndexStats {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -177,7 +182,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -195,28 +199,28 @@ pub mod schemas {
     pub struct DataSource {
         #[doc = "If true, Indexing API rejects any modification calls to this datasource\nsuch as create, update, and delete.\nDisabling this does not imply halting process of previously\naccepted data."]
         #[serde(rename = "disableModifications", default)]
-        pub disable_modifications: Option<bool>,
+        pub disable_modifications: ::std::option::Option<bool>,
         #[doc = "Disable serving any search or assist results."]
         #[serde(rename = "disableServing", default)]
-        pub disable_serving: Option<bool>,
+        pub disable_serving: ::std::option::Option<bool>,
         #[doc = "Required. Display name of the datasource\nThe maximum length is 300 characters."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "List of service accounts that have indexing access."]
         #[serde(rename = "indexingServiceAccounts", default)]
-        pub indexing_service_accounts: Option<Vec<String>>,
+        pub indexing_service_accounts: ::std::option::Option<Vec<String>>,
         #[doc = "This field restricts visibility to items at the datasource level. Items\nwithin the datasource are restricted to the union of users and groups\nincluded in this field. Note that, this does not ensure access to a\nspecific item, as users need to have ACL permissions on the contained\nitems. This ensures a high level access on the entire datasource, and\nthat the individual items are not shared outside this visibility."]
         #[serde(rename = "itemsVisibility", default)]
-        pub items_visibility: Option<Vec<crate::schemas::GsuitePrincipal>>,
+        pub items_visibility: ::std::option::Option<Vec<crate::schemas::GsuitePrincipal>>,
         #[doc = "Name of the datasource resource.\nFormat: datasources/{source_id}.\n<br />The name is ignored when creating a datasource."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "IDs of the Long Running Operations (LROs) currently running for this\nschema."]
         #[serde(rename = "operationIds", default)]
-        pub operation_ids: Option<Vec<String>>,
+        pub operation_ids: ::std::option::Option<Vec<String>>,
         #[doc = "A short name or alias for the source.  This value will be used to match the\n'source' operator. For example, if the short name is *<value>* then\nqueries like *source:<value>* will only return results for this\nsource. The value must be unique across all datasources. The value must\nonly contain alphanumeric characters (a-zA-Z0-9). The value cannot start\nwith 'google' and cannot be one of the following: mail, gmail, docs, drive,\ngroups, sites, calendar, hangouts, gplus, keep, people, teams.\nIts maximum length is 32 characters."]
         #[serde(rename = "shortName", default)]
-        pub short_name: Option<String>,
+        pub short_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DataSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -225,7 +229,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -243,10 +246,10 @@ pub mod schemas {
     pub struct DataSourceIndexStats {
         #[doc = "Date for which index stats were calculated. If the date of request is not\nthe current date then stats calculated on the next day are returned. Stats\nare calculated close to mid night in this case. If date of request is\ncurrent date, then real time stats are returned."]
         #[serde(rename = "date", default)]
-        pub date: Option<crate::schemas::Date>,
+        pub date: ::std::option::Option<crate::schemas::Date>,
         #[doc = "Number of items aggregrated by status code."]
         #[serde(rename = "itemCountByStatus", default)]
-        pub item_count_by_status: Option<Vec<crate::schemas::ItemCountByStatus>>,
+        pub item_count_by_status: ::std::option::Option<Vec<crate::schemas::ItemCountByStatus>>,
     }
     impl ::field_selector::FieldSelector for DataSourceIndexStats {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -255,7 +258,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -264,10 +266,10 @@ pub mod schemas {
     pub struct DataSourceRestriction {
         #[doc = "Filter options restricting the results. If multiple filters\nare present, they are grouped by object type before joining.\nFilters with the same object type are joined conjunctively, then\nthe resulting expressions are joined disjunctively.\n\nThe maximum number of elements is 20.\n\nNOTE: Suggest API supports only few filters at the moment:\n\"objecttype\", \"type\" and \"mimetype\".\nFor now, schema specific filters cannot be used to filter suggestions."]
         #[serde(rename = "filterOptions", default)]
-        pub filter_options: Option<Vec<crate::schemas::FilterOptions>>,
+        pub filter_options: ::std::option::Option<Vec<crate::schemas::FilterOptions>>,
         #[doc = "The source of restriction."]
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::Source>,
+        pub source: ::std::option::Option<crate::schemas::Source>,
     }
     impl ::field_selector::FieldSelector for DataSourceRestriction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -276,7 +278,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -294,13 +295,13 @@ pub mod schemas {
     pub struct Date {
         #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month."]
         #[serde(rename = "day", default)]
-        pub day: Option<i32>,
+        pub day: ::std::option::Option<i32>,
         #[doc = "Month of date. Must be from 1 to 12."]
         #[serde(rename = "month", default)]
-        pub month: Option<i32>,
+        pub month: ::std::option::Option<i32>,
         #[doc = "Year of date. Must be from 1 to 9999."]
         #[serde(rename = "year", default)]
-        pub year: Option<i32>,
+        pub year: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Date {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -309,7 +310,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -327,13 +327,13 @@ pub mod schemas {
     pub struct DateOperatorOptions {
         #[doc = "Indicates the operator name required in the query in order to isolate the\ndate property using the greater-than operator. For example, if\ngreaterThanOperatorName is *closedafter* and the property's name is\n*closeDate*, then queries like *closedafter:<value>* will\nshow results only where the value of the property named *closeDate* is\nlater than *<value>*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(rename = "greaterThanOperatorName", default)]
-        pub greater_than_operator_name: Option<String>,
+        pub greater_than_operator_name: ::std::option::Option<String>,
         #[doc = "Indicates the operator name required in the query in order to isolate the\ndate property using the less-than operator. For example, if\nlessThanOperatorName is *closedbefore* and the property's name is\n*closeDate*, then queries like *closedbefore:<value>* will\nshow results only where the value of the property named *closeDate* is\nearlier than *<value>*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(rename = "lessThanOperatorName", default)]
-        pub less_than_operator_name: Option<String>,
+        pub less_than_operator_name: ::std::option::Option<String>,
         #[doc = "Indicates the actual string required in the query in order to isolate the\ndate property. For example, suppose an issue tracking schema object\nhas a property named *closeDate* that specifies an operator with an\noperatorName of *closedon*. For searches on that data, queries like\n*closedon:<value>* will show results only where the value of the\n*closeDate* property matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator will return\nall items where *<value>* matches the value of any String\nproperties or text within the content field for the indexed datasource.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(rename = "operatorName", default)]
-        pub operator_name: Option<String>,
+        pub operator_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DateOperatorOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -342,7 +342,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -360,7 +359,7 @@ pub mod schemas {
     pub struct DatePropertyOptions {
         #[doc = "If set, describes how the date should be used as a search operator."]
         #[serde(rename = "operatorOptions", default)]
-        pub operator_options: Option<crate::schemas::DateOperatorOptions>,
+        pub operator_options: ::std::option::Option<crate::schemas::DateOperatorOptions>,
     }
     impl ::field_selector::FieldSelector for DatePropertyOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -369,7 +368,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -386,7 +384,7 @@ pub mod schemas {
     )]
     pub struct DateValues {
         #[serde(rename = "values", default)]
-        pub values: Option<Vec<crate::schemas::Date>>,
+        pub values: ::std::option::Option<Vec<crate::schemas::Date>>,
     }
     impl ::field_selector::FieldSelector for DateValues {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -395,7 +393,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -413,7 +410,7 @@ pub mod schemas {
     pub struct DebugOptions {
         #[doc = "If you are asked by Google to help with debugging, set this field.\nOtherwise, ignore this field."]
         #[serde(rename = "enableDebugging", default)]
-        pub enable_debugging: Option<bool>,
+        pub enable_debugging: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for DebugOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -422,7 +419,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -440,13 +436,13 @@ pub mod schemas {
     pub struct DeleteQueueItemsRequest {
         #[doc = "Name of connector making this call.\n<br />Format: datasources/{source_id}/connectors/{ID}"]
         #[serde(rename = "connectorName", default)]
-        pub connector_name: Option<String>,
+        pub connector_name: ::std::option::Option<String>,
         #[doc = "Common debug options."]
         #[serde(rename = "debugOptions", default)]
-        pub debug_options: Option<crate::schemas::DebugOptions>,
+        pub debug_options: ::std::option::Option<crate::schemas::DebugOptions>,
         #[doc = "Name of a queue to delete items from."]
         #[serde(rename = "queue", default)]
-        pub queue: Option<String>,
+        pub queue: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DeleteQueueItemsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -455,7 +451,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -473,7 +468,7 @@ pub mod schemas {
     pub struct DisplayedProperty {
         #[doc = "The name of the top-level property as defined in a property definition\nfor the object. If the name is not a defined property in the schema, an\nerror will be given when attempting to update the schema."]
         #[serde(rename = "propertyName", default)]
-        pub property_name: Option<String>,
+        pub property_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DisplayedProperty {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -482,7 +477,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -500,7 +494,7 @@ pub mod schemas {
     pub struct DoubleOperatorOptions {
         #[doc = "Indicates the operator name required in the query in order to use the\ndouble property in sorting or as a facet.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(rename = "operatorName", default)]
-        pub operator_name: Option<String>,
+        pub operator_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DoubleOperatorOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -509,7 +503,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -527,7 +520,7 @@ pub mod schemas {
     pub struct DoublePropertyOptions {
         #[doc = "If set, describes how the double should be used as a search operator."]
         #[serde(rename = "operatorOptions", default)]
-        pub operator_options: Option<crate::schemas::DoubleOperatorOptions>,
+        pub operator_options: ::std::option::Option<crate::schemas::DoubleOperatorOptions>,
     }
     impl ::field_selector::FieldSelector for DoublePropertyOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -536,7 +529,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -544,7 +536,7 @@ pub mod schemas {
     )]
     pub struct DoubleValues {
         #[serde(rename = "values", default)]
-        pub values: Option<Vec<f64>>,
+        pub values: ::std::option::Option<Vec<f64>>,
     }
     impl ::field_selector::FieldSelector for DoubleValues {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -553,7 +545,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -603,6 +594,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DriveFollowUpRestrictType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -617,7 +617,7 @@ pub mod schemas {
     )]
     pub struct DriveFollowUpRestrict {
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DriveFollowUpRestrictType>,
+        pub r#type: ::std::option::Option<crate::schemas::DriveFollowUpRestrictType>,
     }
     impl ::field_selector::FieldSelector for DriveFollowUpRestrict {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -626,7 +626,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -676,6 +675,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DriveLocationRestrictType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -690,7 +698,7 @@ pub mod schemas {
     )]
     pub struct DriveLocationRestrict {
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DriveLocationRestrictType>,
+        pub r#type: ::std::option::Option<crate::schemas::DriveLocationRestrictType>,
     }
     impl ::field_selector::FieldSelector for DriveLocationRestrict {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -699,7 +707,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -785,6 +792,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DriveMimeTypeRestrictType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -799,7 +815,7 @@ pub mod schemas {
     )]
     pub struct DriveMimeTypeRestrict {
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DriveMimeTypeRestrictType>,
+        pub r#type: ::std::option::Option<crate::schemas::DriveMimeTypeRestrictType>,
     }
     impl ::field_selector::FieldSelector for DriveMimeTypeRestrict {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -808,7 +824,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -869,6 +884,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DriveTimeSpanRestrictType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -883,7 +907,7 @@ pub mod schemas {
     )]
     pub struct DriveTimeSpanRestrict {
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DriveTimeSpanRestrictType>,
+        pub r#type: ::std::option::Option<crate::schemas::DriveTimeSpanRestrictType>,
     }
     impl ::field_selector::FieldSelector for DriveTimeSpanRestrict {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -892,7 +916,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -910,7 +933,7 @@ pub mod schemas {
     pub struct EmailAddress {
         #[doc = "The email address."]
         #[serde(rename = "emailAddress", default)]
-        pub email_address: Option<String>,
+        pub email_address: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EmailAddress {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -919,7 +942,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -937,7 +959,7 @@ pub mod schemas {
     pub struct EnumOperatorOptions {
         #[doc = "Indicates the operator name required in the query in order to isolate the\nenum property. For example, if operatorName is *priority* and the\nproperty's name is *priorityVal*, then queries like\n*priority:<value>* will show results only where the value of the\nproperty named *priorityVal* matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator will return\nall items where *<value>* matches the value of any String\nproperties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(rename = "operatorName", default)]
-        pub operator_name: Option<String>,
+        pub operator_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EnumOperatorOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -946,7 +968,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -999,6 +1020,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for EnumPropertyOptionsOrderedRanking {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1014,13 +1044,14 @@ pub mod schemas {
     pub struct EnumPropertyOptions {
         #[doc = "If set, describes how the enum should be used as a search operator."]
         #[serde(rename = "operatorOptions", default)]
-        pub operator_options: Option<crate::schemas::EnumOperatorOptions>,
+        pub operator_options: ::std::option::Option<crate::schemas::EnumOperatorOptions>,
         #[doc = "Used to specify the ordered ranking for the enumeration that determines how\nthe integer values provided in the possible EnumValuePairs are used to rank\nresults. If specified, integer values must be provided for all possible\nEnumValuePair values given for this property. Can only be used if\nisRepeatable\nis false."]
         #[serde(rename = "orderedRanking", default)]
-        pub ordered_ranking: Option<crate::schemas::EnumPropertyOptionsOrderedRanking>,
+        pub ordered_ranking:
+            ::std::option::Option<crate::schemas::EnumPropertyOptionsOrderedRanking>,
         #[doc = "The list of possible values for the enumeration property. All\nEnumValuePairs must provide a string value. If you specify an integer value\nfor one EnumValuePair, then all possible EnumValuePairs must provide an\ninteger value. Both the string value and integer value must be unique over\nall possible values. Once set, possible values cannot be removed or\nmodified. If you supply an ordered ranking and think you might insert\nadditional enum values in the future, leave gaps in the initial integer\nvalues to allow adding a value in between previously registered values.\nThe maximum number of elements is 100."]
         #[serde(rename = "possibleValues", default)]
-        pub possible_values: Option<Vec<crate::schemas::EnumValuePair>>,
+        pub possible_values: ::std::option::Option<Vec<crate::schemas::EnumValuePair>>,
     }
     impl ::field_selector::FieldSelector for EnumPropertyOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1029,7 +1060,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1047,10 +1077,10 @@ pub mod schemas {
     pub struct EnumValuePair {
         #[doc = "The integer value of the EnumValuePair which must be non-negative.\nOptional."]
         #[serde(rename = "integerValue", default)]
-        pub integer_value: Option<i32>,
+        pub integer_value: ::std::option::Option<i32>,
         #[doc = "The string value of the EnumValuePair.\nThe maximum length is 32 characters."]
         #[serde(rename = "stringValue", default)]
-        pub string_value: Option<String>,
+        pub string_value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EnumValuePair {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1059,7 +1089,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1077,7 +1106,7 @@ pub mod schemas {
     pub struct EnumValues {
         #[doc = "The maximum allowable length for string values is 32 characters."]
         #[serde(rename = "values", default)]
-        pub values: Option<Vec<String>>,
+        pub values: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for EnumValues {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1086,7 +1115,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1103,7 +1131,7 @@ pub mod schemas {
     )]
     pub struct ErrorInfo {
         #[serde(rename = "errorMessages", default)]
-        pub error_messages: Option<Vec<crate::schemas::ErrorMessage>>,
+        pub error_messages: ::std::option::Option<Vec<crate::schemas::ErrorMessage>>,
     }
     impl ::field_selector::FieldSelector for ErrorInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1112,7 +1140,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1129,9 +1156,9 @@ pub mod schemas {
     )]
     pub struct ErrorMessage {
         #[serde(rename = "errorMessage", default)]
-        pub error_message: Option<String>,
+        pub error_message: ::std::option::Option<String>,
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::Source>,
+        pub source: ::std::option::Option<crate::schemas::Source>,
     }
     impl ::field_selector::FieldSelector for ErrorMessage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1140,7 +1167,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1149,12 +1175,12 @@ pub mod schemas {
     pub struct FacetBucket {
         #[doc = "Number of results that match the bucket value. Counts are only returned\nfor searches when count accuracy is ensured. Can be empty."]
         #[serde(rename = "count", default)]
-        pub count: Option<i32>,
+        pub count: ::std::option::Option<i32>,
         #[doc = "Percent of results that match the bucket value. This value is between\n(0-100]. Percentages are returned for all searches, but are an estimate.\nBecause percentages are always returned, you should render percentages\ninstead of counts."]
         #[serde(rename = "percentage", default)]
-        pub percentage: Option<i32>,
+        pub percentage: ::std::option::Option<i32>,
         #[serde(rename = "value", default)]
-        pub value: Option<crate::schemas::Value>,
+        pub value: ::std::option::Option<crate::schemas::Value>,
     }
     impl ::field_selector::FieldSelector for FacetBucket {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1163,7 +1189,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1181,16 +1206,16 @@ pub mod schemas {
     pub struct FacetOptions {
         #[doc = "Maximum number of facet buckets that should be returned for this facet.\nDefaults to 10.\nMaximum value is 100."]
         #[serde(rename = "numFacetBuckets", default)]
-        pub num_facet_buckets: Option<i32>,
+        pub num_facet_buckets: ::std::option::Option<i32>,
         #[doc = "If object_type is set, only those objects of that type will be used to\ncompute facets. If empty, then all objects will be used to compute facets."]
         #[serde(rename = "objectType", default)]
-        pub object_type: Option<String>,
+        pub object_type: ::std::option::Option<String>,
         #[doc = "Name of the operator chosen for faceting. @see\ncloudsearch.SchemaPropertyOptions"]
         #[serde(rename = "operatorName", default)]
-        pub operator_name: Option<String>,
+        pub operator_name: ::std::option::Option<String>,
         #[doc = "Source name to facet on. Format: datasources/{source_id}\nIf empty, all data sources will be used."]
         #[serde(rename = "sourceName", default)]
-        pub source_name: Option<String>,
+        pub source_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FacetOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1199,7 +1224,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1208,16 +1232,16 @@ pub mod schemas {
     pub struct FacetResult {
         #[doc = "FacetBuckets for values in response containing at least a single result."]
         #[serde(rename = "buckets", default)]
-        pub buckets: Option<Vec<crate::schemas::FacetBucket>>,
+        pub buckets: ::std::option::Option<Vec<crate::schemas::FacetBucket>>,
         #[doc = "Object type for which facet results are returned. Can be empty."]
         #[serde(rename = "objectType", default)]
-        pub object_type: Option<String>,
+        pub object_type: ::std::option::Option<String>,
         #[doc = "Name of the operator chosen for faceting. @see\ncloudsearch.SchemaPropertyOptions"]
         #[serde(rename = "operatorName", default)]
-        pub operator_name: Option<String>,
+        pub operator_name: ::std::option::Option<String>,
         #[doc = "Source name for which facet results are returned. Will not be empty."]
         #[serde(rename = "sourceName", default)]
-        pub source_name: Option<String>,
+        pub source_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FacetResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1226,7 +1250,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1244,10 +1267,10 @@ pub mod schemas {
     pub struct FieldViolation {
         #[doc = "Description of the error."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Path of field with violation."]
         #[serde(rename = "field", default)]
-        pub field: Option<String>,
+        pub field: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FieldViolation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1256,7 +1279,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1264,9 +1286,9 @@ pub mod schemas {
     )]
     pub struct Filter {
         #[serde(rename = "compositeFilter", default)]
-        pub composite_filter: Option<crate::schemas::CompositeFilter>,
+        pub composite_filter: ::std::option::Option<crate::schemas::CompositeFilter>,
         #[serde(rename = "valueFilter", default)]
-        pub value_filter: Option<crate::schemas::ValueFilter>,
+        pub value_filter: ::std::option::Option<crate::schemas::ValueFilter>,
     }
     impl ::field_selector::FieldSelector for Filter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1275,7 +1297,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1284,10 +1305,10 @@ pub mod schemas {
     pub struct FilterOptions {
         #[doc = "Generic filter to restrict the search, such as `lang:en`, `site:xyz`."]
         #[serde(rename = "filter", default)]
-        pub filter: Option<crate::schemas::Filter>,
+        pub filter: ::std::option::Option<crate::schemas::Filter>,
         #[doc = "If object_type is set, only objects of that type are returned. This should\ncorrespond to the name of the object that was registered within the\ndefinition of schema. The maximum length is 256 characters."]
         #[serde(rename = "objectType", default)]
-        pub object_type: Option<String>,
+        pub object_type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FilterOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1296,7 +1317,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1314,10 +1334,10 @@ pub mod schemas {
     pub struct FreshnessOptions {
         #[doc = "The duration after which an object should be considered\nstale. The default value is 180 days (in seconds)."]
         #[serde(rename = "freshnessDuration", default)]
-        pub freshness_duration: Option<String>,
+        pub freshness_duration: ::std::option::Option<String>,
         #[doc = "This property indicates the freshness level of the object in the index.\nIf set, this property must be a top-level property within the\nproperty definitions\nand it must be a\ntimestamp type\nor\ndate type.\nOtherwise, the Indexing API uses\nupdateTime\nas the freshness indicator.\nThe maximum length is 256 characters.\n\nWhen a property is used to calculate fresheness, the value defaults\nto 2 years from the current time."]
         #[serde(rename = "freshnessProperty", default)]
-        pub freshness_property: Option<String>,
+        pub freshness_property: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FreshnessOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1326,7 +1346,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1344,7 +1363,7 @@ pub mod schemas {
     pub struct GetCustomerIndexStatsResponse {
         #[doc = "Summary of indexed item counts, one for each day in the requested range."]
         #[serde(rename = "stats", default)]
-        pub stats: Option<Vec<crate::schemas::CustomerIndexStats>>,
+        pub stats: ::std::option::Option<Vec<crate::schemas::CustomerIndexStats>>,
     }
     impl ::field_selector::FieldSelector for GetCustomerIndexStatsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1353,7 +1372,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1371,7 +1389,7 @@ pub mod schemas {
     pub struct GetDataSourceIndexStatsResponse {
         #[doc = "Summary of indexed item counts, one for each day in the requested range."]
         #[serde(rename = "stats", default)]
-        pub stats: Option<Vec<crate::schemas::DataSourceIndexStats>>,
+        pub stats: ::std::option::Option<Vec<crate::schemas::DataSourceIndexStats>>,
     }
     impl ::field_selector::FieldSelector for GetDataSourceIndexStatsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1380,7 +1398,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1440,6 +1457,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GmailActionRestrictType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1454,7 +1480,7 @@ pub mod schemas {
     )]
     pub struct GmailActionRestrict {
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::GmailActionRestrictType>,
+        pub r#type: ::std::option::Option<crate::schemas::GmailActionRestrictType>,
     }
     impl ::field_selector::FieldSelector for GmailActionRestrict {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1463,7 +1489,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1539,6 +1564,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GmailAttachmentRestrictType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1553,7 +1587,7 @@ pub mod schemas {
     )]
     pub struct GmailAttachmentRestrict {
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::GmailAttachmentRestrictType>,
+        pub r#type: ::std::option::Option<crate::schemas::GmailAttachmentRestrictType>,
     }
     impl ::field_selector::FieldSelector for GmailAttachmentRestrict {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1562,7 +1596,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1626,6 +1659,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GmailFolderRestrictType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1640,7 +1682,7 @@ pub mod schemas {
     )]
     pub struct GmailFolderRestrict {
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::GmailFolderRestrictType>,
+        pub r#type: ::std::option::Option<crate::schemas::GmailFolderRestrictType>,
     }
     impl ::field_selector::FieldSelector for GmailFolderRestrict {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1649,7 +1691,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1729,6 +1770,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GmailIntelligentRestrictType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1743,7 +1793,7 @@ pub mod schemas {
     )]
     pub struct GmailIntelligentRestrict {
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::GmailIntelligentRestrictType>,
+        pub r#type: ::std::option::Option<crate::schemas::GmailIntelligentRestrictType>,
     }
     impl ::field_selector::FieldSelector for GmailIntelligentRestrict {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1752,7 +1802,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1836,6 +1885,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GmailTimeRestrictType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1850,7 +1908,7 @@ pub mod schemas {
     )]
     pub struct GmailTimeRestrict {
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::GmailTimeRestrictType>,
+        pub r#type: ::std::option::Option<crate::schemas::GmailTimeRestrictType>,
     }
     impl ::field_selector::FieldSelector for GmailTimeRestrict {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1859,7 +1917,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1877,13 +1934,13 @@ pub mod schemas {
     pub struct GsuitePrincipal {
         #[doc = "This principal represents all users of the G Suite domain of the\ncustomer."]
         #[serde(rename = "gsuiteDomain", default)]
-        pub gsuite_domain: Option<bool>,
+        pub gsuite_domain: ::std::option::Option<bool>,
         #[doc = "This principal references a G Suite group account"]
         #[serde(rename = "gsuiteGroupEmail", default)]
-        pub gsuite_group_email: Option<String>,
+        pub gsuite_group_email: ::std::option::Option<String>,
         #[doc = "This principal references a G Suite user account"]
         #[serde(rename = "gsuiteUserEmail", default)]
-        pub gsuite_user_email: Option<String>,
+        pub gsuite_user_email: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GsuitePrincipal {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1892,7 +1949,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1910,7 +1966,7 @@ pub mod schemas {
     pub struct HtmlOperatorOptions {
         #[doc = "Indicates the operator name required in the query in order to isolate the\nhtml property. For example, if operatorName is *subject* and the\nproperty's name is *subjectLine*, then queries like\n*subject:<value>* will show results only where the value of the\nproperty named *subjectLine* matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator will return\nall items where *<value>* matches the value of any\nhtml properties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(rename = "operatorName", default)]
-        pub operator_name: Option<String>,
+        pub operator_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for HtmlOperatorOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1919,7 +1975,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1937,10 +1992,10 @@ pub mod schemas {
     pub struct HtmlPropertyOptions {
         #[doc = "If set, describes how the property should be used as a search operator."]
         #[serde(rename = "operatorOptions", default)]
-        pub operator_options: Option<crate::schemas::HtmlOperatorOptions>,
+        pub operator_options: ::std::option::Option<crate::schemas::HtmlOperatorOptions>,
         #[doc = "Indicates the search quality importance of the tokens within the\nfield when used for retrieval. Can only be set to DEFAULT or NONE."]
         #[serde(rename = "retrievalImportance", default)]
-        pub retrieval_importance: Option<crate::schemas::RetrievalImportance>,
+        pub retrieval_importance: ::std::option::Option<crate::schemas::RetrievalImportance>,
     }
     impl ::field_selector::FieldSelector for HtmlPropertyOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1949,7 +2004,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1967,7 +2021,7 @@ pub mod schemas {
     pub struct HtmlValues {
         #[doc = "The maximum allowable length for html values is 2048 characters."]
         #[serde(rename = "values", default)]
-        pub values: Option<Vec<String>>,
+        pub values: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for HtmlValues {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1976,7 +2030,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1994,7 +2047,7 @@ pub mod schemas {
     pub struct IndexItemOptions {
         #[doc = "Specifies if the index request should allow gsuite principals that do not\nexist or are deleted in the index request."]
         #[serde(rename = "allowUnknownGsuitePrincipals", default)]
-        pub allow_unknown_gsuite_principals: Option<bool>,
+        pub allow_unknown_gsuite_principals: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for IndexItemOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2003,7 +2056,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2056,24 +2108,33 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for IndexItemRequestMode {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct IndexItemRequest {
         #[doc = "Name of connector making this call.\n<br />Format: datasources/{source_id}/connectors/{ID}"]
         #[serde(rename = "connectorName", default)]
-        pub connector_name: Option<String>,
+        pub connector_name: ::std::option::Option<String>,
         #[doc = "Common debug options."]
         #[serde(rename = "debugOptions", default)]
-        pub debug_options: Option<crate::schemas::DebugOptions>,
+        pub debug_options: ::std::option::Option<crate::schemas::DebugOptions>,
         #[serde(rename = "indexItemOptions", default)]
-        pub index_item_options: Option<crate::schemas::IndexItemOptions>,
+        pub index_item_options: ::std::option::Option<crate::schemas::IndexItemOptions>,
         #[doc = "Name of the item.  Format:\ndatasources/{source_id}/items/{item_id}"]
         #[serde(rename = "item", default)]
-        pub item: Option<crate::schemas::Item>,
+        pub item: ::std::option::Option<crate::schemas::Item>,
         #[doc = "Required. The RequestMode for this request."]
         #[serde(rename = "mode", default)]
-        pub mode: Option<crate::schemas::IndexItemRequestMode>,
+        pub mode: ::std::option::Option<crate::schemas::IndexItemRequestMode>,
     }
     impl ::field_selector::FieldSelector for IndexItemRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2082,7 +2143,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2100,13 +2160,13 @@ pub mod schemas {
     pub struct IntegerOperatorOptions {
         #[doc = "Indicates the operator name required in the query in order to isolate the\ninteger property using the greater-than operator. For example, if\ngreaterThanOperatorName is *priorityabove* and the property's name is\n*priorityVal*, then queries like *priorityabove:<value>* will\nshow results only where the value of the property named *priorityVal* is\ngreater than *<value>*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(rename = "greaterThanOperatorName", default)]
-        pub greater_than_operator_name: Option<String>,
+        pub greater_than_operator_name: ::std::option::Option<String>,
         #[doc = "Indicates the operator name required in the query in order to isolate the\ninteger property using the less-than operator. For example, if\nlessThanOperatorName is *prioritybelow* and the property's name is\n*priorityVal*, then queries like *prioritybelow:<value>* will\nshow results only where the value of the property named *priorityVal* is\nless than *<value>*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(rename = "lessThanOperatorName", default)]
-        pub less_than_operator_name: Option<String>,
+        pub less_than_operator_name: ::std::option::Option<String>,
         #[doc = "Indicates the operator name required in the query in order to isolate the\ninteger property. For example, if operatorName is *priority* and the\nproperty's name is *priorityVal*, then queries like\n*priority:<value>* will show results only where the value of the\nproperty named *priorityVal* matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator will return\nall items where *<value>* matches the value of any String\nproperties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(rename = "operatorName", default)]
-        pub operator_name: Option<String>,
+        pub operator_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for IntegerOperatorOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2115,7 +2175,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2168,6 +2227,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for IntegerPropertyOptionsOrderedRanking {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2184,17 +2252,18 @@ pub mod schemas {
         #[doc = "The maximum value of the property. The minimum and maximum values for the\nproperty are used to rank results according to the\nordered ranking.\nIndexing requests with values greater than the maximum are accepted and\nranked with the same weight as items indexed with the maximum value."]
         #[serde(rename = "maximumValue", default)]
         #[serde(with = "crate::parsed_string")]
-        pub maximum_value: Option<i64>,
+        pub maximum_value: ::std::option::Option<i64>,
         #[doc = "The minimum value of the property. The minimum and maximum values for the\nproperty are used to rank results according to the\nordered ranking.\nIndexing requests with values less than the minimum are accepted and\nranked with the same weight as items indexed with the minimum value."]
         #[serde(rename = "minimumValue", default)]
         #[serde(with = "crate::parsed_string")]
-        pub minimum_value: Option<i64>,
+        pub minimum_value: ::std::option::Option<i64>,
         #[doc = "If set, describes how the integer should be used as a search operator."]
         #[serde(rename = "operatorOptions", default)]
-        pub operator_options: Option<crate::schemas::IntegerOperatorOptions>,
+        pub operator_options: ::std::option::Option<crate::schemas::IntegerOperatorOptions>,
         #[doc = "Used to specify the ordered ranking for the integer. Can only be used if\nisRepeatable\nis false."]
         #[serde(rename = "orderedRanking", default)]
-        pub ordered_ranking: Option<crate::schemas::IntegerPropertyOptionsOrderedRanking>,
+        pub ordered_ranking:
+            ::std::option::Option<crate::schemas::IntegerPropertyOptionsOrderedRanking>,
     }
     impl ::field_selector::FieldSelector for IntegerPropertyOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2203,7 +2272,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2220,7 +2288,7 @@ pub mod schemas {
     )]
     pub struct IntegerValues {
         #[serde(rename = "values", default)]
-        pub values: Option<Vec<i64>>,
+        pub values: ::std::option::Option<Vec<i64>>,
     }
     impl ::field_selector::FieldSelector for IntegerValues {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2229,7 +2297,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2282,6 +2349,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for InteractionType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2297,12 +2373,12 @@ pub mod schemas {
     pub struct Interaction {
         #[doc = "The time when the user acted on the item.  If multiple actions of the same\ntype exist for a single user, only the most recent action is recorded."]
         #[serde(rename = "interactionTime", default)]
-        pub interaction_time: Option<String>,
+        pub interaction_time: ::std::option::Option<String>,
         #[doc = "The user that acted on the item."]
         #[serde(rename = "principal", default)]
-        pub principal: Option<crate::schemas::Principal>,
+        pub principal: ::std::option::Option<crate::schemas::Principal>,
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::InteractionType>,
+        pub r#type: ::std::option::Option<crate::schemas::InteractionType>,
     }
     impl ::field_selector::FieldSelector for Interaction {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2311,7 +2387,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2367,40 +2442,49 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ItemItemType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Item {
         #[doc = "Access control list for this item."]
         #[serde(rename = "acl", default)]
-        pub acl: Option<crate::schemas::ItemAcl>,
+        pub acl: ::std::option::Option<crate::schemas::ItemAcl>,
         #[doc = "Item content to be indexed and made text searchable."]
         #[serde(rename = "content", default)]
-        pub content: Option<crate::schemas::ItemContent>,
+        pub content: ::std::option::Option<crate::schemas::ItemContent>,
         #[doc = "Type for this item."]
         #[serde(rename = "itemType", default)]
-        pub item_type: Option<crate::schemas::ItemItemType>,
+        pub item_type: ::std::option::Option<crate::schemas::ItemItemType>,
         #[doc = "Metadata information."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::ItemMetadata>,
+        pub metadata: ::std::option::Option<crate::schemas::ItemMetadata>,
         #[doc = "Name of the Item. Format:\ndatasources/{source_id}/items/{item_id}\n<br />This is a required field.\nThe maximum length is 1536 characters."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Additional state connector can store for this item.\nThe maximum length is 10000 bytes."]
         #[serde(rename = "payload", default)]
-        pub payload: Option<Vec<u8>>,
+        pub payload: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Queue this item belongs to.\nThe maximum length is 100 characters."]
         #[serde(rename = "queue", default)]
-        pub queue: Option<String>,
+        pub queue: ::std::option::Option<String>,
         #[doc = "Status of the item.\nOutput only field."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::ItemStatus>,
+        pub status: ::std::option::Option<crate::schemas::ItemStatus>,
         #[doc = "The structured data for the item that should conform to a registered\nobject definition in the schema for the data source."]
         #[serde(rename = "structuredData", default)]
-        pub structured_data: Option<crate::schemas::ItemStructuredData>,
+        pub structured_data: ::std::option::Option<crate::schemas::ItemStructuredData>,
         #[doc = "Required. The indexing system stores the version from the datasource as a\nbyte string and compares the Item version in the index\nto the version of the queued Item using lexical ordering.\n<br /><br />\nCloud Search Indexing won't index or delete any queued item with\na version value that is less than or equal to the version of the\ncurrently indexed item.\nThe maximum length for this field is 1024 bytes."]
         #[serde(rename = "version", default)]
-        pub version: Option<Vec<u8>>,
+        pub version: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for Item {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2409,7 +2493,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2466,6 +2549,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ItemAclAclInheritanceType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2481,19 +2573,19 @@ pub mod schemas {
     pub struct ItemAcl {
         #[doc = "Sets the type of access rules to apply when an item inherits its ACL from a\nparent. This should always be set in tandem with the\ninheritAclFrom\nfield. Also, when the\ninheritAclFrom field\nis set, this field should be set to a valid AclInheritanceType."]
         #[serde(rename = "aclInheritanceType", default)]
-        pub acl_inheritance_type: Option<crate::schemas::ItemAclAclInheritanceType>,
+        pub acl_inheritance_type: ::std::option::Option<crate::schemas::ItemAclAclInheritanceType>,
         #[doc = "List of principals who are explicitly denied access to the item in search\nresults. While principals are denied access by default, use denied readers\nto handle exceptions and override the list allowed readers.\nThe maximum number of elements is 100."]
         #[serde(rename = "deniedReaders", default)]
-        pub denied_readers: Option<Vec<crate::schemas::Principal>>,
+        pub denied_readers: ::std::option::Option<Vec<crate::schemas::Principal>>,
         #[doc = "Name of the item to inherit the Access Permission List (ACL) from.\nNote: ACL inheritance *only* provides access permissions\nto child items and does not define structural relationships, nor does it\nprovide convenient ways to delete large groups of items.\nDeleting an ACL parent from the index only alters the access permissions of\nchild items that reference the parent in the\ninheritAclFrom\nfield. The item is still in the index, but may not\nvisible in search results. By contrast, deletion of a container item\nalso deletes all items that reference the container via the\ncontainerName\nfield.\nThe maximum length for this field is 1536 characters."]
         #[serde(rename = "inheritAclFrom", default)]
-        pub inherit_acl_from: Option<String>,
+        pub inherit_acl_from: ::std::option::Option<String>,
         #[doc = "Optional. List of owners for the item. This field has no bearing on\ndocument access permissions. It does, however, offer\na slight ranking boosts items where the querying user is an owner.\nThe maximum number of elements is 5."]
         #[serde(rename = "owners", default)]
-        pub owners: Option<Vec<crate::schemas::Principal>>,
+        pub owners: ::std::option::Option<Vec<crate::schemas::Principal>>,
         #[doc = "List of principals who are allowed to see the item in search results.\nOptional if inheriting permissions from another item or if the item\nis not intended to be visible, such as\nvirtual\ncontainers.\nThe maximum number of elements is 1000."]
         #[serde(rename = "readers", default)]
-        pub readers: Option<Vec<crate::schemas::Principal>>,
+        pub readers: ::std::option::Option<Vec<crate::schemas::Principal>>,
     }
     impl ::field_selector::FieldSelector for ItemAcl {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2502,7 +2594,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2559,6 +2650,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ItemContentContentFormat {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2574,15 +2674,15 @@ pub mod schemas {
     pub struct ItemContent {
         #[doc = "Upload reference ID of a previously uploaded content via write method."]
         #[serde(rename = "contentDataRef", default)]
-        pub content_data_ref: Option<crate::schemas::UploadItemRef>,
+        pub content_data_ref: ::std::option::Option<crate::schemas::UploadItemRef>,
         #[serde(rename = "contentFormat", default)]
-        pub content_format: Option<crate::schemas::ItemContentContentFormat>,
+        pub content_format: ::std::option::Option<crate::schemas::ItemContentContentFormat>,
         #[doc = "Hashing info calculated and provided by the API client for content.\nCan be used with the items.push method to calculate modified state.\nThe maximum length is 2048 characters."]
         #[serde(rename = "hash", default)]
-        pub hash: Option<String>,
+        pub hash: ::std::option::Option<String>,
         #[doc = "Content that is supplied inlined within the update method.\nThe maximum length is 102400 bytes (100 KiB)."]
         #[serde(rename = "inlineContent", default)]
-        pub inline_content: Option<Vec<u8>>,
+        pub inline_content: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for ItemContent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2591,7 +2691,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2652,6 +2751,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ItemCountByStatusStatusCode {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2668,10 +2776,10 @@ pub mod schemas {
         #[doc = "Number of items matching the status code."]
         #[serde(rename = "count", default)]
         #[serde(with = "crate::parsed_string")]
-        pub count: Option<i64>,
+        pub count: ::std::option::Option<i64>,
         #[doc = "Status of the items."]
         #[serde(rename = "statusCode", default)]
-        pub status_code: Option<crate::schemas::ItemCountByStatusStatusCode>,
+        pub status_code: ::std::option::Option<crate::schemas::ItemCountByStatusStatusCode>,
     }
     impl ::field_selector::FieldSelector for ItemCountByStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2680,7 +2788,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2689,40 +2796,40 @@ pub mod schemas {
     pub struct ItemMetadata {
         #[doc = "The name of the container for this item.\nDeletion of the container item leads to automatic deletion of this\nitem.  Note: ACLs are not inherited from a container item.\nTo provide ACL inheritance for an item, use the\ninheritAclFrom\nfield. The maximum length is 1536 characters."]
         #[serde(rename = "containerName", default)]
-        pub container_name: Option<String>,
+        pub container_name: ::std::option::Option<String>,
         #[doc = "The BCP-47 language code for the item, such as \"en-US\" or \"sr-Latn\". For\nmore information, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier.\nThe maximum length is 32 characters."]
         #[serde(rename = "contentLanguage", default)]
-        pub content_language: Option<String>,
+        pub content_language: ::std::option::Option<String>,
         #[doc = "The time when the item was created in the source repository."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Hashing value provided by the API caller.\nThis can be used with the\nitems.push\nmethod to calculate modified state.\nThe maximum length is 2048 characters."]
         #[serde(rename = "hash", default)]
-        pub hash: Option<String>,
+        pub hash: ::std::option::Option<String>,
         #[doc = "A list of interactions for the item.  Interactions are used to improve\nSearch quality, but are not exposed to end users.\nThe maximum number of elements is 1000."]
         #[serde(rename = "interactions", default)]
-        pub interactions: Option<Vec<crate::schemas::Interaction>>,
+        pub interactions: ::std::option::Option<Vec<crate::schemas::Interaction>>,
         #[doc = "Additional keywords or phrases that should match the item.\nUsed internally for user generated content.\nThe maximum number of elements is 100.\nThe maximum length is 8192 characters."]
         #[serde(rename = "keywords", default)]
-        pub keywords: Option<Vec<String>>,
+        pub keywords: ::std::option::Option<Vec<String>>,
         #[doc = "The original mime-type of\nItemContent.content\nin the source repository.\nThe maximum length is 256 characters."]
         #[serde(rename = "mimeType", default)]
-        pub mime_type: Option<String>,
+        pub mime_type: ::std::option::Option<String>,
         #[doc = "The type of the item.  This should correspond to the name of an object\ndefinition in the schema registered for the data source.  For example, if\nthe schema for the data source contains an object definition with name\n'document', then item indexing requests for objects of that type should set\nobjectType to 'document'.\nThe maximum length is 256 characters."]
         #[serde(rename = "objectType", default)]
-        pub object_type: Option<String>,
+        pub object_type: ::std::option::Option<String>,
         #[doc = "Additional search quality metadata of the item"]
         #[serde(rename = "searchQualityMetadata", default)]
-        pub search_quality_metadata: Option<crate::schemas::SearchQualityMetadata>,
+        pub search_quality_metadata: ::std::option::Option<crate::schemas::SearchQualityMetadata>,
         #[doc = "Link to the source repository serving the data.  Search results apply\nthis link to the title.\nThe maximum length is 2048 characters."]
         #[serde(rename = "sourceRepositoryUrl", default)]
-        pub source_repository_url: Option<String>,
+        pub source_repository_url: ::std::option::Option<String>,
         #[doc = "The title of the item.  If given, this will be the displayed title of the\nSearch result.\nThe maximum length is 2048 characters."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "The time when the item was last modified in the source repository."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ItemMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2731,7 +2838,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2792,6 +2898,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ItemStatusCode {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2807,13 +2922,13 @@ pub mod schemas {
     pub struct ItemStatus {
         #[doc = "Status code."]
         #[serde(rename = "code", default)]
-        pub code: Option<crate::schemas::ItemStatusCode>,
+        pub code: ::std::option::Option<crate::schemas::ItemStatusCode>,
         #[doc = "Error details in case the item is in ERROR state."]
         #[serde(rename = "processingErrors", default)]
-        pub processing_errors: Option<Vec<crate::schemas::ProcessingError>>,
+        pub processing_errors: ::std::option::Option<Vec<crate::schemas::ProcessingError>>,
         #[doc = "Repository error reported by connector."]
         #[serde(rename = "repositoryErrors", default)]
-        pub repository_errors: Option<Vec<crate::schemas::RepositoryError>>,
+        pub repository_errors: ::std::option::Option<Vec<crate::schemas::RepositoryError>>,
     }
     impl ::field_selector::FieldSelector for ItemStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2822,7 +2937,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2831,10 +2945,10 @@ pub mod schemas {
     pub struct ItemStructuredData {
         #[doc = "Hashing value provided by the API caller.\nThis can be used with the\nitems.push\nmethod to calculate modified state.\nThe maximum length is 2048 characters."]
         #[serde(rename = "hash", default)]
-        pub hash: Option<String>,
+        pub hash: ::std::option::Option<String>,
         #[doc = "The structured data object that should conform to a registered object\ndefinition in the schema for the data source."]
         #[serde(rename = "object", default)]
-        pub object: Option<crate::schemas::StructuredDataObject>,
+        pub object: ::std::option::Option<crate::schemas::StructuredDataObject>,
     }
     impl ::field_selector::FieldSelector for ItemStructuredData {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2843,7 +2957,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2861,9 +2974,9 @@ pub mod schemas {
     pub struct ListDataSourceResponse {
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "sources", default)]
-        pub sources: Option<Vec<crate::schemas::DataSource>>,
+        pub sources: ::std::option::Option<Vec<crate::schemas::DataSource>>,
     }
     impl ::field_selector::FieldSelector for ListDataSourceResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2872,7 +2985,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2889,10 +3001,10 @@ pub mod schemas {
     )]
     pub struct ListItemNamesForUnmappedIdentityResponse {
         #[serde(rename = "itemNames", default)]
-        pub item_names: Option<Vec<String>>,
+        pub item_names: ::std::option::Option<Vec<String>>,
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListItemNamesForUnmappedIdentityResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2901,7 +3013,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2909,10 +3020,10 @@ pub mod schemas {
     )]
     pub struct ListItemsResponse {
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Item>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Item>>,
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListItemsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2921,7 +3032,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2938,9 +3048,9 @@ pub mod schemas {
     )]
     pub struct ListQuerySourcesResponse {
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "sources", default)]
-        pub sources: Option<Vec<crate::schemas::QuerySource>>,
+        pub sources: ::std::option::Option<Vec<crate::schemas::QuerySource>>,
     }
     impl ::field_selector::FieldSelector for ListQuerySourcesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2949,7 +3059,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2958,9 +3067,9 @@ pub mod schemas {
     pub struct ListSearchApplicationsResponse {
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "searchApplications", default)]
-        pub search_applications: Option<Vec<crate::schemas::SearchApplication>>,
+        pub search_applications: ::std::option::Option<Vec<crate::schemas::SearchApplication>>,
     }
     impl ::field_selector::FieldSelector for ListSearchApplicationsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2969,7 +3078,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2987,9 +3095,9 @@ pub mod schemas {
     pub struct ListUnmappedIdentitiesResponse {
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[serde(rename = "unmappedIdentities", default)]
-        pub unmapped_identities: Option<Vec<crate::schemas::UnmappedIdentity>>,
+        pub unmapped_identities: ::std::option::Option<Vec<crate::schemas::UnmappedIdentity>>,
     }
     impl ::field_selector::FieldSelector for ListUnmappedIdentitiesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2998,7 +3106,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3016,10 +3123,10 @@ pub mod schemas {
     pub struct MatchRange {
         #[doc = "End of the match in the snippet."]
         #[serde(rename = "end", default)]
-        pub end: Option<i32>,
+        pub end: ::std::option::Option<i32>,
         #[doc = "Starting position of the match in the snippet."]
         #[serde(rename = "start", default)]
-        pub start: Option<i32>,
+        pub start: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for MatchRange {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3028,7 +3135,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3046,7 +3152,7 @@ pub mod schemas {
     pub struct Media {
         #[doc = "Name of the media resource."]
         #[serde(rename = "resourceName", default)]
-        pub resource_name: Option<String>,
+        pub resource_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Media {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3055,7 +3161,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3064,28 +3169,28 @@ pub mod schemas {
     pub struct Metadata {
         #[doc = "The creation time for this document or object in the search result."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Options that specify how to display a structured data search result."]
         #[serde(rename = "displayOptions", default)]
-        pub display_options: Option<crate::schemas::ResultDisplayMetadata>,
+        pub display_options: ::std::option::Option<crate::schemas::ResultDisplayMetadata>,
         #[doc = "Indexed fields in structured data, returned as a generic named property."]
         #[serde(rename = "fields", default)]
-        pub fields: Option<Vec<crate::schemas::NamedProperty>>,
+        pub fields: ::std::option::Option<Vec<crate::schemas::NamedProperty>>,
         #[doc = "Mime type of the search result."]
         #[serde(rename = "mimeType", default)]
-        pub mime_type: Option<String>,
+        pub mime_type: ::std::option::Option<String>,
         #[doc = "Object type of the search result."]
         #[serde(rename = "objectType", default)]
-        pub object_type: Option<String>,
+        pub object_type: ::std::option::Option<String>,
         #[doc = "Owner (usually creator) of the document or object of the search result."]
         #[serde(rename = "owner", default)]
-        pub owner: Option<crate::schemas::Person>,
+        pub owner: ::std::option::Option<crate::schemas::Person>,
         #[doc = "The named source for the result, such as Gmail."]
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::Source>,
+        pub source: ::std::option::Option<crate::schemas::Source>,
         #[doc = "The last modified date for the object in the search result. If not\nset in the item, the value returned here is empty. When\n`updateTime` is used for calculating freshness and is not set, this\nvalue defaults to 2 years from the current time."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Metadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3094,7 +3199,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3112,7 +3216,7 @@ pub mod schemas {
     pub struct Metaline {
         #[doc = "The list of displayed properties for the metaline. The maxiumum number of\nproperties is 5."]
         #[serde(rename = "properties", default)]
-        pub properties: Option<Vec<crate::schemas::DisplayedProperty>>,
+        pub properties: ::std::option::Option<Vec<crate::schemas::DisplayedProperty>>,
     }
     impl ::field_selector::FieldSelector for Metaline {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3121,7 +3225,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3139,7 +3242,7 @@ pub mod schemas {
     pub struct Name {
         #[doc = "The read-only display name formatted according to the locale specified by\nthe viewer's account or the <code>Accept-Language</code> HTTP header."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Name {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3148,7 +3251,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3156,26 +3258,26 @@ pub mod schemas {
     )]
     pub struct NamedProperty {
         #[serde(rename = "booleanValue", default)]
-        pub boolean_value: Option<bool>,
+        pub boolean_value: ::std::option::Option<bool>,
         #[serde(rename = "dateValues", default)]
-        pub date_values: Option<crate::schemas::DateValues>,
+        pub date_values: ::std::option::Option<crate::schemas::DateValues>,
         #[serde(rename = "doubleValues", default)]
-        pub double_values: Option<crate::schemas::DoubleValues>,
+        pub double_values: ::std::option::Option<crate::schemas::DoubleValues>,
         #[serde(rename = "enumValues", default)]
-        pub enum_values: Option<crate::schemas::EnumValues>,
+        pub enum_values: ::std::option::Option<crate::schemas::EnumValues>,
         #[serde(rename = "htmlValues", default)]
-        pub html_values: Option<crate::schemas::HtmlValues>,
+        pub html_values: ::std::option::Option<crate::schemas::HtmlValues>,
         #[serde(rename = "integerValues", default)]
-        pub integer_values: Option<crate::schemas::IntegerValues>,
+        pub integer_values: ::std::option::Option<crate::schemas::IntegerValues>,
         #[doc = "The name of the property.  This name should correspond to the name of the\nproperty that was registered for object definition in the schema.\nThe maximum allowable length for this property is 256 characters."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[serde(rename = "objectValues", default)]
-        pub object_values: Option<crate::schemas::ObjectValues>,
+        pub object_values: ::std::option::Option<crate::schemas::ObjectValues>,
         #[serde(rename = "textValues", default)]
-        pub text_values: Option<crate::schemas::TextValues>,
+        pub text_values: ::std::option::Option<crate::schemas::TextValues>,
         #[serde(rename = "timestampValues", default)]
-        pub timestamp_values: Option<crate::schemas::TimestampValues>,
+        pub timestamp_values: ::std::option::Option<crate::schemas::TimestampValues>,
     }
     impl ::field_selector::FieldSelector for NamedProperty {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3184,7 +3286,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3202,13 +3303,13 @@ pub mod schemas {
     pub struct ObjectDefinition {
         #[doc = "Name for the object, which then defines its type. Item indexing requests\nshould set the\nobjectType field\nequal to this value. For example, if *name* is *Document*, then indexing\nrequests for items of type Document should set\nobjectType equal to\n*Document*. Each object definition must be uniquely named within a schema.\nThe name must start with a letter and can only contain letters (A-Z, a-z)\nor numbers (0-9).\nThe maximum length is 256 characters."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The optional object-specific options."]
         #[serde(rename = "options", default)]
-        pub options: Option<crate::schemas::ObjectOptions>,
+        pub options: ::std::option::Option<crate::schemas::ObjectOptions>,
         #[doc = "The property definitions for the object.\nThe maximum number of elements is 1000."]
         #[serde(rename = "propertyDefinitions", default)]
-        pub property_definitions: Option<Vec<crate::schemas::PropertyDefinition>>,
+        pub property_definitions: ::std::option::Option<Vec<crate::schemas::PropertyDefinition>>,
     }
     impl ::field_selector::FieldSelector for ObjectDefinition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3217,7 +3318,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3235,10 +3335,10 @@ pub mod schemas {
     pub struct ObjectDisplayOptions {
         #[doc = "Defines the properties that will be displayed in the metalines of the\nsearch results. The property values will be displayed in the order given\nhere. If a property holds multiple values, all of the values will be\ndiplayed before the next properties. For this reason, it is a good practice\nto specify singular properties before repeated properties in this list. All\nof the properties must set\nis_returnable\nto true. The maximum number of metalines is 3."]
         #[serde(rename = "metalines", default)]
-        pub metalines: Option<Vec<crate::schemas::Metaline>>,
+        pub metalines: ::std::option::Option<Vec<crate::schemas::Metaline>>,
         #[doc = "The user friendly label to display in the search result to inidicate the\ntype of the item. This is OPTIONAL; if not given, an object label will not\nbe displayed on the context line of the search results. The maximum length\nis 32 characters."]
         #[serde(rename = "objectDisplayLabel", default)]
-        pub object_display_label: Option<String>,
+        pub object_display_label: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ObjectDisplayOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3247,7 +3347,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3265,10 +3364,10 @@ pub mod schemas {
     pub struct ObjectOptions {
         #[doc = "Options that determine how the object is displayed in the Cloud Search\nresults page."]
         #[serde(rename = "displayOptions", default)]
-        pub display_options: Option<crate::schemas::ObjectDisplayOptions>,
+        pub display_options: ::std::option::Option<crate::schemas::ObjectDisplayOptions>,
         #[doc = "The freshness options for an object."]
         #[serde(rename = "freshnessOptions", default)]
-        pub freshness_options: Option<crate::schemas::FreshnessOptions>,
+        pub freshness_options: ::std::option::Option<crate::schemas::FreshnessOptions>,
     }
     impl ::field_selector::FieldSelector for ObjectOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3277,7 +3376,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3295,7 +3393,7 @@ pub mod schemas {
     pub struct ObjectPropertyOptions {
         #[doc = "The properties of the sub-object. These properties represent a nested\nobject. For example, if this property represents a postal address, the\nsubobjectProperties might be named *street*, *city*, and *state*.\nThe maximum number of elements is 1000."]
         #[serde(rename = "subobjectProperties", default)]
-        pub subobject_properties: Option<Vec<crate::schemas::PropertyDefinition>>,
+        pub subobject_properties: ::std::option::Option<Vec<crate::schemas::PropertyDefinition>>,
     }
     impl ::field_selector::FieldSelector for ObjectPropertyOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3304,7 +3402,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3312,7 +3409,7 @@ pub mod schemas {
     )]
     pub struct ObjectValues {
         #[serde(rename = "values", default)]
-        pub values: Option<Vec<crate::schemas::StructuredDataObject>>,
+        pub values: ::std::option::Option<Vec<crate::schemas::StructuredDataObject>>,
     }
     impl ::field_selector::FieldSelector for ObjectValues {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3321,26 +3418,27 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
         #[serde(rename = "done", default)]
-        pub done: Option<bool>,
+        pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
         #[serde(rename = "error", default)]
-        pub error: Option<crate::schemas::Status>,
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
         #[serde(rename = "response", default)]
-        pub response: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub response:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
     impl ::field_selector::FieldSelector for Operation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3349,7 +3447,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3367,7 +3464,7 @@ pub mod schemas {
     pub struct PeopleSuggestion {
         #[doc = "Suggested person. All fields of the person object might not be populated."]
         #[serde(rename = "person", default)]
-        pub person: Option<crate::schemas::Person>,
+        pub person: ::std::option::Option<crate::schemas::Person>,
     }
     impl ::field_selector::FieldSelector for PeopleSuggestion {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3376,7 +3473,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3394,19 +3490,19 @@ pub mod schemas {
     pub struct Person {
         #[doc = "The person's email addresses"]
         #[serde(rename = "emailAddresses", default)]
-        pub email_addresses: Option<Vec<crate::schemas::EmailAddress>>,
+        pub email_addresses: ::std::option::Option<Vec<crate::schemas::EmailAddress>>,
         #[doc = "The resource name of the person to provide information about.\nSee <a href=\"https://developers.google.com/people/api/rest/v1/people/get\">\nPeople.get</a> from Google People API."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Obfuscated ID of a person."]
         #[serde(rename = "obfuscatedId", default)]
-        pub obfuscated_id: Option<String>,
+        pub obfuscated_id: ::std::option::Option<String>,
         #[doc = "The person's name"]
         #[serde(rename = "personNames", default)]
-        pub person_names: Option<Vec<crate::schemas::Name>>,
+        pub person_names: ::std::option::Option<Vec<crate::schemas::Name>>,
         #[doc = "A person's read-only photo. A picture shown next to the person's name to\nhelp others recognize the person in search results."]
         #[serde(rename = "photos", default)]
-        pub photos: Option<Vec<crate::schemas::Photo>>,
+        pub photos: ::std::option::Option<Vec<crate::schemas::Photo>>,
     }
     impl ::field_selector::FieldSelector for Person {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3415,7 +3511,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3433,7 +3528,7 @@ pub mod schemas {
     pub struct Photo {
         #[doc = "The URL of the photo."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Photo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3442,7 +3537,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3498,6 +3592,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PollItemsRequestStatusCodesItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -3513,19 +3616,20 @@ pub mod schemas {
     pub struct PollItemsRequest {
         #[doc = "Name of connector making this call.\n<br />Format: datasources/{source_id}/connectors/{ID}"]
         #[serde(rename = "connectorName", default)]
-        pub connector_name: Option<String>,
+        pub connector_name: ::std::option::Option<String>,
         #[doc = "Common debug options."]
         #[serde(rename = "debugOptions", default)]
-        pub debug_options: Option<crate::schemas::DebugOptions>,
+        pub debug_options: ::std::option::Option<crate::schemas::DebugOptions>,
         #[doc = "Maximum number of items to return.\n<br />The maximum and the default value is 1000"]
         #[serde(rename = "limit", default)]
-        pub limit: Option<i32>,
+        pub limit: ::std::option::Option<i32>,
         #[doc = "Queue name to fetch items from.  If unspecified, PollItems will\nfetch from 'default' queue.\nThe maximum length is 100 characters."]
         #[serde(rename = "queue", default)]
-        pub queue: Option<String>,
+        pub queue: ::std::option::Option<String>,
         #[doc = "Limit the items polled to the ones with these statuses."]
         #[serde(rename = "statusCodes", default)]
-        pub status_codes: Option<Vec<crate::schemas::PollItemsRequestStatusCodesItems>>,
+        pub status_codes:
+            ::std::option::Option<Vec<crate::schemas::PollItemsRequestStatusCodesItems>>,
     }
     impl ::field_selector::FieldSelector for PollItemsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3534,7 +3638,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3543,7 +3646,7 @@ pub mod schemas {
     pub struct PollItemsResponse {
         #[doc = "Set of items from the queue available for connector to process.\n<br />These items have the following subset of fields populated: <br />\n<br />version\n<br />metadata.hash\n<br />structured_data.hash\n<br />content.hash\n<br />payload\n<br />status\n<br />queue"]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Item>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Item>>,
     }
     impl ::field_selector::FieldSelector for PollItemsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3552,7 +3655,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3570,13 +3672,13 @@ pub mod schemas {
     pub struct Principal {
         #[doc = "This principal is a group identified using an external identity.\nThe name field must specify the group resource name with this format:\nidentitysources/{source_id}/groups/{ID}"]
         #[serde(rename = "groupResourceName", default)]
-        pub group_resource_name: Option<String>,
+        pub group_resource_name: ::std::option::Option<String>,
         #[doc = "This principal is a GSuite user, group or domain."]
         #[serde(rename = "gsuitePrincipal", default)]
-        pub gsuite_principal: Option<crate::schemas::GsuitePrincipal>,
+        pub gsuite_principal: ::std::option::Option<crate::schemas::GsuitePrincipal>,
         #[doc = "This principal is a user identified using an external identity.\nThe name field must specify the user resource name with this format:\nidentitysources/{source_id}/users/{ID}"]
         #[serde(rename = "userResourceName", default)]
-        pub user_resource_name: Option<String>,
+        pub user_resource_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Principal {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3585,7 +3687,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3650,6 +3751,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ProcessingErrorCode {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -3665,13 +3775,13 @@ pub mod schemas {
     pub struct ProcessingError {
         #[doc = "Error code indicating the nature of the error."]
         #[serde(rename = "code", default)]
-        pub code: Option<crate::schemas::ProcessingErrorCode>,
+        pub code: ::std::option::Option<crate::schemas::ProcessingErrorCode>,
         #[doc = "Description of the error."]
         #[serde(rename = "errorMessage", default)]
-        pub error_message: Option<String>,
+        pub error_message: ::std::option::Option<String>,
         #[doc = "In case the item fields are invalid, this field contains the details\nabout the validation errors."]
         #[serde(rename = "fieldViolations", default)]
-        pub field_violations: Option<Vec<crate::schemas::FieldViolation>>,
+        pub field_violations: ::std::option::Option<Vec<crate::schemas::FieldViolation>>,
     }
     impl ::field_selector::FieldSelector for ProcessingError {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3680,7 +3790,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3697,44 +3806,45 @@ pub mod schemas {
     )]
     pub struct PropertyDefinition {
         #[serde(rename = "booleanPropertyOptions", default)]
-        pub boolean_property_options: Option<crate::schemas::BooleanPropertyOptions>,
+        pub boolean_property_options: ::std::option::Option<crate::schemas::BooleanPropertyOptions>,
         #[serde(rename = "datePropertyOptions", default)]
-        pub date_property_options: Option<crate::schemas::DatePropertyOptions>,
+        pub date_property_options: ::std::option::Option<crate::schemas::DatePropertyOptions>,
         #[doc = "Options that determine how the property is displayed in the Cloud Search\nresults page if it is specified to be displayed in the object's\ndisplay options\n."]
         #[serde(rename = "displayOptions", default)]
-        pub display_options: Option<crate::schemas::PropertyDisplayOptions>,
+        pub display_options: ::std::option::Option<crate::schemas::PropertyDisplayOptions>,
         #[serde(rename = "doublePropertyOptions", default)]
-        pub double_property_options: Option<crate::schemas::DoublePropertyOptions>,
+        pub double_property_options: ::std::option::Option<crate::schemas::DoublePropertyOptions>,
         #[serde(rename = "enumPropertyOptions", default)]
-        pub enum_property_options: Option<crate::schemas::EnumPropertyOptions>,
+        pub enum_property_options: ::std::option::Option<crate::schemas::EnumPropertyOptions>,
         #[serde(rename = "htmlPropertyOptions", default)]
-        pub html_property_options: Option<crate::schemas::HtmlPropertyOptions>,
+        pub html_property_options: ::std::option::Option<crate::schemas::HtmlPropertyOptions>,
         #[serde(rename = "integerPropertyOptions", default)]
-        pub integer_property_options: Option<crate::schemas::IntegerPropertyOptions>,
+        pub integer_property_options: ::std::option::Option<crate::schemas::IntegerPropertyOptions>,
         #[doc = "Indicates that the property can be used for generating facets. Cannot be\ntrue for properties whose type is object. IsReturnable must be true to set\nthis option.\nOnly supported for Boolean, Enum, and Text properties."]
         #[serde(rename = "isFacetable", default)]
-        pub is_facetable: Option<bool>,
+        pub is_facetable: ::std::option::Option<bool>,
         #[doc = "Indicates that multiple values are allowed for the property. For example, a\ndocument only has one description but can have multiple comments. Cannot be\ntrue for properties whose type is a boolean.\nIf set to false, properties that contain more than one value will cause the\nindexing request for that item to be rejected."]
         #[serde(rename = "isRepeatable", default)]
-        pub is_repeatable: Option<bool>,
+        pub is_repeatable: ::std::option::Option<bool>,
         #[doc = "Indicates that the property identifies data that should be returned in\nsearch results via the Query API. If set to *true*, indicates that Query\nAPI users can use matching property fields in results. However, storing\nfields requires more space allocation and uses more bandwidth for search\nqueries, which impacts performance over large datasets. Set to *true* here\nonly if the field is needed for search results. Cannot be true for\nproperties whose type is an object."]
         #[serde(rename = "isReturnable", default)]
-        pub is_returnable: Option<bool>,
+        pub is_returnable: ::std::option::Option<bool>,
         #[doc = "Indicates that the property can be used for sorting. Cannot be true for\nproperties that are repeatable. Cannot be true for properties whose type\nis object or user identifier. IsReturnable must be true to set this option.\nOnly supported for Boolean, Date, Double, Integer, and Timestamp\nproperties."]
         #[serde(rename = "isSortable", default)]
-        pub is_sortable: Option<bool>,
+        pub is_sortable: ::std::option::Option<bool>,
         #[doc = "Indicates that users can perform wildcard search for this\nproperty. Only supported for Text properties. IsReturnable must be true to\nset this option. In a given datasource maximum of 5 properties can be\nmarked as is_wildcard_searchable.\n\nNote: This is an alpha feature and is enabled for whitelisted users only."]
         #[serde(rename = "isWildcardSearchable", default)]
-        pub is_wildcard_searchable: Option<bool>,
+        pub is_wildcard_searchable: ::std::option::Option<bool>,
         #[doc = "The name of the property. Item indexing requests sent to the Indexing API\nshould set the property name\nequal to this value. For example, if name is *subject_line*, then indexing\nrequests for document items with subject fields should set the\nname for that field equal to\n*subject_line*. Use the name as the identifier for the object property.\nOnce registered as a property for an object, you cannot re-use this name\nfor another property within that object.\nThe name must start with a letter and can only contain letters (A-Z, a-z)\nor numbers (0-9).\nThe maximum length is 256 characters."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[serde(rename = "objectPropertyOptions", default)]
-        pub object_property_options: Option<crate::schemas::ObjectPropertyOptions>,
+        pub object_property_options: ::std::option::Option<crate::schemas::ObjectPropertyOptions>,
         #[serde(rename = "textPropertyOptions", default)]
-        pub text_property_options: Option<crate::schemas::TextPropertyOptions>,
+        pub text_property_options: ::std::option::Option<crate::schemas::TextPropertyOptions>,
         #[serde(rename = "timestampPropertyOptions", default)]
-        pub timestamp_property_options: Option<crate::schemas::TimestampPropertyOptions>,
+        pub timestamp_property_options:
+            ::std::option::Option<crate::schemas::TimestampPropertyOptions>,
     }
     impl ::field_selector::FieldSelector for PropertyDefinition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3743,7 +3853,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3761,7 +3870,7 @@ pub mod schemas {
     pub struct PropertyDisplayOptions {
         #[doc = "The user friendly label for the property that will be used if the property\nis specified to be displayed in ObjectDisplayOptions. If given, the display\nlabel will be shown in front of the property values when the property is\npart of the object display options. For example, if the property value is\n'1', the value by itself may not be useful context for the user. If the\ndisplay name given was 'priority', then the user will see 'priority : 1' in\nthe search results which provides clear conext to search users. This is\nOPTIONAL; if not given, only the property values will be displayed.\nThe maximum length is 32 characters."]
         #[serde(rename = "displayLabel", default)]
-        pub display_label: Option<String>,
+        pub display_label: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PropertyDisplayOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3770,7 +3879,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3831,6 +3939,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PushItemType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -3846,25 +3963,25 @@ pub mod schemas {
     pub struct PushItem {
         #[doc = "Content hash of the item according to the repository. If specified, this is\nused to determine how to modify this\nitem's status. Setting this field and the\ntype field results in argument\nerror.\nThe maximum length is 2048 characters."]
         #[serde(rename = "contentHash", default)]
-        pub content_hash: Option<String>,
+        pub content_hash: ::std::option::Option<String>,
         #[doc = "Metadata hash of the item according to the repository. If specified, this\nis used to determine how to modify this\nitem's status. Setting this field and the\ntype field results in argument\nerror.\nThe maximum length is 2048 characters."]
         #[serde(rename = "metadataHash", default)]
-        pub metadata_hash: Option<String>,
+        pub metadata_hash: ::std::option::Option<String>,
         #[doc = "Provides additional document state information for the connector,\nsuch as an alternate repository ID and other metadata.\nThe maximum length is 8192 bytes."]
         #[serde(rename = "payload", default)]
-        pub payload: Option<Vec<u8>>,
+        pub payload: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Queue to which this item belongs to.  The <code>default</code> queue is\nchosen if this field is not specified. The maximum length is\n512 characters."]
         #[serde(rename = "queue", default)]
-        pub queue: Option<String>,
+        pub queue: ::std::option::Option<String>,
         #[doc = "The type of the push operation that defines the push behavior."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::PushItemType>,
+        pub r#type: ::std::option::Option<crate::schemas::PushItemType>,
         #[doc = "Populate this field to store Connector or repository error details.\nThis information is displayed in the Admin Console.\nThis field may only be populated when the\nType is\nREPOSITORY_ERROR."]
         #[serde(rename = "repositoryError", default)]
-        pub repository_error: Option<crate::schemas::RepositoryError>,
+        pub repository_error: ::std::option::Option<crate::schemas::RepositoryError>,
         #[doc = "Structured data hash of the item according to the repository. If specified,\nthis is used to determine how to modify this item's status. Setting this\nfield and the type field\nresults in argument error.\nThe maximum length is 2048 characters."]
         #[serde(rename = "structuredDataHash", default)]
-        pub structured_data_hash: Option<String>,
+        pub structured_data_hash: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PushItem {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3873,7 +3990,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -3891,13 +4007,13 @@ pub mod schemas {
     pub struct PushItemRequest {
         #[doc = "Name of connector making this call.\n<br />Format: datasources/{source_id}/connectors/{ID}"]
         #[serde(rename = "connectorName", default)]
-        pub connector_name: Option<String>,
+        pub connector_name: ::std::option::Option<String>,
         #[doc = "Common debug options."]
         #[serde(rename = "debugOptions", default)]
-        pub debug_options: Option<crate::schemas::DebugOptions>,
+        pub debug_options: ::std::option::Option<crate::schemas::DebugOptions>,
         #[doc = "Item to push onto the queue."]
         #[serde(rename = "item", default)]
-        pub item: Option<crate::schemas::PushItem>,
+        pub item: ::std::option::Option<crate::schemas::PushItem>,
     }
     impl ::field_selector::FieldSelector for PushItemRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3906,7 +4022,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -3959,6 +4074,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for QueryInterpretationInterpretationType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -3973,10 +4097,11 @@ pub mod schemas {
     )]
     pub struct QueryInterpretation {
         #[serde(rename = "interpretationType", default)]
-        pub interpretation_type: Option<crate::schemas::QueryInterpretationInterpretationType>,
+        pub interpretation_type:
+            ::std::option::Option<crate::schemas::QueryInterpretationInterpretationType>,
         #[doc = "The interpretation of the query used in search. For example, query \"email\nfrom john\" will be interpreted as \"from:john source:mail\""]
         #[serde(rename = "interpretedQuery", default)]
-        pub interpreted_query: Option<String>,
+        pub interpreted_query: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for QueryInterpretation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -3985,7 +4110,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4003,7 +4127,7 @@ pub mod schemas {
     pub struct QueryInterpretationOptions {
         #[doc = "Flag to disable natural language (NL) interpretation of queries. Default is\nfalse, Set to true to disable natural language interpretation. NL\ninterpretation only applies to predefined datasources."]
         #[serde(rename = "disableNlInterpretation", default)]
-        pub disable_nl_interpretation: Option<bool>,
+        pub disable_nl_interpretation: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for QueryInterpretationOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4012,7 +4136,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4030,7 +4153,7 @@ pub mod schemas {
     pub struct QueryItem {
         #[doc = "True if the text was generated by means other than a previous user search."]
         #[serde(rename = "isSynthetic", default)]
-        pub is_synthetic: Option<bool>,
+        pub is_synthetic: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for QueryItem {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4039,7 +4162,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4108,6 +4230,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for QueryOperatorType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -4123,37 +4254,37 @@ pub mod schemas {
     pub struct QueryOperator {
         #[doc = "Display name of the operator"]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "Potential list of values for the opeatror field. This field is only filled\nwhen we can safely enumerate all the possible values of this operator."]
         #[serde(rename = "enumValues", default)]
-        pub enum_values: Option<Vec<String>>,
+        pub enum_values: ::std::option::Option<Vec<String>>,
         #[doc = "Indicates the operator name that can be used to  isolate the property using\nthe greater-than operator."]
         #[serde(rename = "greaterThanOperatorName", default)]
-        pub greater_than_operator_name: Option<String>,
+        pub greater_than_operator_name: ::std::option::Option<String>,
         #[doc = "Can this operator be used to get facets."]
         #[serde(rename = "isFacetable", default)]
-        pub is_facetable: Option<bool>,
+        pub is_facetable: ::std::option::Option<bool>,
         #[doc = "Indicates if multiple values can be set for this property."]
         #[serde(rename = "isRepeatable", default)]
-        pub is_repeatable: Option<bool>,
+        pub is_repeatable: ::std::option::Option<bool>,
         #[doc = "Will the property associated with this facet be returned as part of search\nresults."]
         #[serde(rename = "isReturnable", default)]
-        pub is_returnable: Option<bool>,
+        pub is_returnable: ::std::option::Option<bool>,
         #[doc = "Can this operator be used to sort results."]
         #[serde(rename = "isSortable", default)]
-        pub is_sortable: Option<bool>,
+        pub is_sortable: ::std::option::Option<bool>,
         #[doc = "Can get suggestions for this field."]
         #[serde(rename = "isSuggestable", default)]
-        pub is_suggestable: Option<bool>,
+        pub is_suggestable: ::std::option::Option<bool>,
         #[doc = "Indicates the operator name that can be used to  isolate the property using\nthe less-than operator."]
         #[serde(rename = "lessThanOperatorName", default)]
-        pub less_than_operator_name: Option<String>,
+        pub less_than_operator_name: ::std::option::Option<String>,
         #[doc = "The name of the operator."]
         #[serde(rename = "operatorName", default)]
-        pub operator_name: Option<String>,
+        pub operator_name: ::std::option::Option<String>,
         #[doc = "Type of the operator."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::QueryOperatorType>,
+        pub r#type: ::std::option::Option<crate::schemas::QueryOperatorType>,
     }
     impl ::field_selector::FieldSelector for QueryOperator {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4162,7 +4293,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4180,16 +4310,16 @@ pub mod schemas {
     pub struct QuerySource {
         #[doc = "Display name of the data source."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "List of all operators applicable for this source."]
         #[serde(rename = "operators", default)]
-        pub operators: Option<Vec<crate::schemas::QueryOperator>>,
+        pub operators: ::std::option::Option<Vec<crate::schemas::QueryOperator>>,
         #[doc = "A short name or alias for the source.  This value can be used with the\n'source' operator."]
         #[serde(rename = "shortName", default)]
-        pub short_name: Option<String>,
+        pub short_name: ::std::option::Option<String>,
         #[doc = "Name of the source"]
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::Source>,
+        pub source: ::std::option::Option<crate::schemas::Source>,
     }
     impl ::field_selector::FieldSelector for QuerySource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4198,7 +4328,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4216,7 +4345,7 @@ pub mod schemas {
     )]
     pub struct QuerySuggestion;
     impl ::field_selector::FieldSelector for QuerySuggestion {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RepositoryErrorType {
@@ -4296,6 +4425,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for RepositoryErrorType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -4311,13 +4449,13 @@ pub mod schemas {
     pub struct RepositoryError {
         #[doc = "Message that describes the error. The maximum allowable length\nof the message is 8192 characters."]
         #[serde(rename = "errorMessage", default)]
-        pub error_message: Option<String>,
+        pub error_message: ::std::option::Option<String>,
         #[doc = "Error codes.  Matches the definition of HTTP status codes."]
         #[serde(rename = "httpStatusCode", default)]
-        pub http_status_code: Option<i32>,
+        pub http_status_code: ::std::option::Option<i32>,
         #[doc = "Type of error."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::RepositoryErrorType>,
+        pub r#type: ::std::option::Option<crate::schemas::RepositoryErrorType>,
     }
     impl ::field_selector::FieldSelector for RepositoryError {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4326,7 +4464,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4344,16 +4481,16 @@ pub mod schemas {
     pub struct RequestOptions {
         #[doc = "Debug options of the request"]
         #[serde(rename = "debugOptions", default)]
-        pub debug_options: Option<crate::schemas::DebugOptions>,
+        pub debug_options: ::std::option::Option<crate::schemas::DebugOptions>,
         #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier.\nFor translations.\n\nWhen specified, the documents in search results are biased towards the\nspecified language.\nSuggest API does not use this parameter. It autocompletes only based on\ncharacters in the query."]
         #[serde(rename = "languageCode", default)]
-        pub language_code: Option<String>,
+        pub language_code: ::std::option::Option<String>,
         #[doc = "Id of the application created using SearchApplicationsService."]
         #[serde(rename = "searchApplicationId", default)]
-        pub search_application_id: Option<String>,
+        pub search_application_id: ::std::option::Option<String>,
         #[doc = "Current user's time zone id, such as \"America/Los_Angeles\" or\n\"Australia/Sydney\". These IDs are defined by\n[Unicode Common Locale Data Repository (CLDR)](http://cldr.unicode.org/)\nproject, and currently available in the file\n[timezone.xml](http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml)"]
         #[serde(rename = "timeZone", default)]
-        pub time_zone: Option<String>,
+        pub time_zone: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RequestOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4362,7 +4499,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4380,7 +4516,7 @@ pub mod schemas {
     pub struct ResetSearchApplicationRequest {
         #[doc = "Common debug options."]
         #[serde(rename = "debugOptions", default)]
-        pub debug_options: Option<crate::schemas::DebugOptions>,
+        pub debug_options: ::std::option::Option<crate::schemas::DebugOptions>,
     }
     impl ::field_selector::FieldSelector for ResetSearchApplicationRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4389,7 +4525,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4407,7 +4542,7 @@ pub mod schemas {
     pub struct ResponseDebugInfo {
         #[doc = "General debug info formatted for display."]
         #[serde(rename = "formattedDebugInfo", default)]
-        pub formatted_debug_info: Option<String>,
+        pub formatted_debug_info: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ResponseDebugInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4416,7 +4551,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4434,28 +4568,30 @@ pub mod schemas {
     pub struct RestrictItem {
         #[doc = "LINT.ThenChange(//depot/google3/java/com/google/apps/search/quality/itemsuggest/utils/SubtypeRerankingUtils.java)"]
         #[serde(rename = "driveFollowUpRestrict", default)]
-        pub drive_follow_up_restrict: Option<crate::schemas::DriveFollowUpRestrict>,
+        pub drive_follow_up_restrict: ::std::option::Option<crate::schemas::DriveFollowUpRestrict>,
         #[serde(rename = "driveLocationRestrict", default)]
-        pub drive_location_restrict: Option<crate::schemas::DriveLocationRestrict>,
+        pub drive_location_restrict: ::std::option::Option<crate::schemas::DriveLocationRestrict>,
         #[doc = "LINT.IfChange\nDrive Types."]
         #[serde(rename = "driveMimeTypeRestrict", default)]
-        pub drive_mime_type_restrict: Option<crate::schemas::DriveMimeTypeRestrict>,
+        pub drive_mime_type_restrict: ::std::option::Option<crate::schemas::DriveMimeTypeRestrict>,
         #[serde(rename = "driveTimeSpanRestrict", default)]
-        pub drive_time_span_restrict: Option<crate::schemas::DriveTimeSpanRestrict>,
+        pub drive_time_span_restrict: ::std::option::Option<crate::schemas::DriveTimeSpanRestrict>,
         #[serde(rename = "gmailActionRestrict", default)]
-        pub gmail_action_restrict: Option<crate::schemas::GmailActionRestrict>,
+        pub gmail_action_restrict: ::std::option::Option<crate::schemas::GmailActionRestrict>,
         #[serde(rename = "gmailAttachmentRestrict", default)]
-        pub gmail_attachment_restrict: Option<crate::schemas::GmailAttachmentRestrict>,
+        pub gmail_attachment_restrict:
+            ::std::option::Option<crate::schemas::GmailAttachmentRestrict>,
         #[doc = "Gmail Types."]
         #[serde(rename = "gmailFolderRestrict", default)]
-        pub gmail_folder_restrict: Option<crate::schemas::GmailFolderRestrict>,
+        pub gmail_folder_restrict: ::std::option::Option<crate::schemas::GmailFolderRestrict>,
         #[serde(rename = "gmailIntelligentRestrict", default)]
-        pub gmail_intelligent_restrict: Option<crate::schemas::GmailIntelligentRestrict>,
+        pub gmail_intelligent_restrict:
+            ::std::option::Option<crate::schemas::GmailIntelligentRestrict>,
         #[serde(rename = "gmailTimeRestrict", default)]
-        pub gmail_time_restrict: Option<crate::schemas::GmailTimeRestrict>,
+        pub gmail_time_restrict: ::std::option::Option<crate::schemas::GmailTimeRestrict>,
         #[doc = "The search restrict (e.g. \"after:2017-09-11 before:2017-09-12\")."]
         #[serde(rename = "searchOperator", default)]
-        pub search_operator: Option<String>,
+        pub search_operator: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RestrictItem {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4464,7 +4600,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4482,7 +4617,7 @@ pub mod schemas {
     pub struct ResultCounts {
         #[doc = "Result count information for each source with results."]
         #[serde(rename = "sourceResultCounts", default)]
-        pub source_result_counts: Option<Vec<crate::schemas::SourceResultCount>>,
+        pub source_result_counts: ::std::option::Option<Vec<crate::schemas::SourceResultCount>>,
     }
     impl ::field_selector::FieldSelector for ResultCounts {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4491,7 +4626,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4509,7 +4643,7 @@ pub mod schemas {
     pub struct ResultDebugInfo {
         #[doc = "General debug info formatted for display."]
         #[serde(rename = "formattedDebugInfo", default)]
-        pub formatted_debug_info: Option<String>,
+        pub formatted_debug_info: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ResultDebugInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4518,7 +4652,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4527,13 +4660,13 @@ pub mod schemas {
     pub struct ResultDisplayField {
         #[doc = "The display label for the property."]
         #[serde(rename = "label", default)]
-        pub label: Option<String>,
+        pub label: ::std::option::Option<String>,
         #[doc = "The operator name of the property."]
         #[serde(rename = "operatorName", default)]
-        pub operator_name: Option<String>,
+        pub operator_name: ::std::option::Option<String>,
         #[doc = "The name value pair for the property."]
         #[serde(rename = "property", default)]
-        pub property: Option<crate::schemas::NamedProperty>,
+        pub property: ::std::option::Option<crate::schemas::NamedProperty>,
     }
     impl ::field_selector::FieldSelector for ResultDisplayField {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4542,7 +4675,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4550,7 +4682,7 @@ pub mod schemas {
     )]
     pub struct ResultDisplayLine {
         #[serde(rename = "fields", default)]
-        pub fields: Option<Vec<crate::schemas::ResultDisplayField>>,
+        pub fields: ::std::option::Option<Vec<crate::schemas::ResultDisplayField>>,
     }
     impl ::field_selector::FieldSelector for ResultDisplayLine {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4559,7 +4691,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4568,10 +4699,10 @@ pub mod schemas {
     pub struct ResultDisplayMetadata {
         #[doc = "The metalines content to be displayed with the result."]
         #[serde(rename = "metalines", default)]
-        pub metalines: Option<Vec<crate::schemas::ResultDisplayLine>>,
+        pub metalines: ::std::option::Option<Vec<crate::schemas::ResultDisplayLine>>,
         #[doc = "The display label for the object."]
         #[serde(rename = "objectTypeLabel", default)]
-        pub object_type_label: Option<String>,
+        pub object_type_label: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ResultDisplayMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4580,7 +4711,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -4641,6 +4771,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for RetrievalImportanceImportance {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -4656,7 +4795,7 @@ pub mod schemas {
     pub struct RetrievalImportance {
         #[doc = "Indicates the ranking importance given to property when it is matched\nduring retrieval. Once set, the token importance of a property cannot be\nchanged."]
         #[serde(rename = "importance", default)]
-        pub importance: Option<crate::schemas::RetrievalImportanceImportance>,
+        pub importance: ::std::option::Option<crate::schemas::RetrievalImportanceImportance>,
     }
     impl ::field_selector::FieldSelector for RetrievalImportance {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4665,7 +4804,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4683,10 +4821,10 @@ pub mod schemas {
     pub struct Schema {
         #[doc = "The list of top-level objects for the data source.\nThe maximum number of elements is 10."]
         #[serde(rename = "objectDefinitions", default)]
-        pub object_definitions: Option<Vec<crate::schemas::ObjectDefinition>>,
+        pub object_definitions: ::std::option::Option<Vec<crate::schemas::ObjectDefinition>>,
         #[doc = "IDs of the Long Running Operations (LROs) currently running for this\nschema. After modifying the schema, wait for operations to complete\nbefore indexing additional content."]
         #[serde(rename = "operationIds", default)]
-        pub operation_ids: Option<Vec<String>>,
+        pub operation_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for Schema {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4695,7 +4833,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4713,10 +4850,10 @@ pub mod schemas {
     pub struct ScoringConfig {
         #[doc = "Whether to use freshness as a ranking signal. By default, freshness is used\nas a ranking signal. Note that this setting is not available in the Admin\nUI."]
         #[serde(rename = "disableFreshness", default)]
-        pub disable_freshness: Option<bool>,
+        pub disable_freshness: ::std::option::Option<bool>,
         #[doc = "Whether to personalize the results. By default, personal signals will\nbe used to boost results."]
         #[serde(rename = "disablePersonalization", default)]
-        pub disable_personalization: Option<bool>,
+        pub disable_personalization: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for ScoringConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4725,7 +4862,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4734,28 +4870,29 @@ pub mod schemas {
     pub struct SearchApplication {
         #[doc = "Retrictions applied to the configurations.\nThe maximum number of elements is 10."]
         #[serde(rename = "dataSourceRestrictions", default)]
-        pub data_source_restrictions: Option<Vec<crate::schemas::DataSourceRestriction>>,
+        pub data_source_restrictions:
+            ::std::option::Option<Vec<crate::schemas::DataSourceRestriction>>,
         #[doc = "The default fields for returning facet results.\nThe sources specified here also have been included in\ndata_source_restrictions\nabove."]
         #[serde(rename = "defaultFacetOptions", default)]
-        pub default_facet_options: Option<Vec<crate::schemas::FacetOptions>>,
+        pub default_facet_options: ::std::option::Option<Vec<crate::schemas::FacetOptions>>,
         #[doc = "The default options for sorting the search results"]
         #[serde(rename = "defaultSortOptions", default)]
-        pub default_sort_options: Option<crate::schemas::SortOptions>,
+        pub default_sort_options: ::std::option::Option<crate::schemas::SortOptions>,
         #[doc = "Display name of the Search Application.\nThe maximum length is 300 characters."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "Name of the Search Application.\n<br />Format: searchapplications/{application_id}."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "IDs of the Long Running Operations (LROs) currently running for this\nschema. Output only field."]
         #[serde(rename = "operationIds", default)]
-        pub operation_ids: Option<Vec<String>>,
+        pub operation_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Configuration for ranking results."]
         #[serde(rename = "scoringConfig", default)]
-        pub scoring_config: Option<crate::schemas::ScoringConfig>,
+        pub scoring_config: ::std::option::Option<crate::schemas::ScoringConfig>,
         #[doc = "Configuration for a sources specified in data_source_restrictions."]
         #[serde(rename = "sourceConfig", default)]
-        pub source_config: Option<Vec<crate::schemas::SourceConfig>>,
+        pub source_config: ::std::option::Option<Vec<crate::schemas::SourceConfig>>,
     }
     impl ::field_selector::FieldSelector for SearchApplication {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4764,7 +4901,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4782,13 +4918,13 @@ pub mod schemas {
     pub struct SearchItemsByViewUrlRequest {
         #[doc = "Common debug options."]
         #[serde(rename = "debugOptions", default)]
-        pub debug_options: Option<crate::schemas::DebugOptions>,
+        pub debug_options: ::std::option::Option<crate::schemas::DebugOptions>,
         #[doc = "The next_page_token value returned from a previous request, if any."]
         #[serde(rename = "pageToken", default)]
-        pub page_token: Option<String>,
+        pub page_token: ::std::option::Option<String>,
         #[doc = "Specify the full view URL to find the corresponding item.\nThe maximum length is 2048 characters."]
         #[serde(rename = "viewUrl", default)]
-        pub view_url: Option<String>,
+        pub view_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SearchItemsByViewUrlRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4797,7 +4933,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4805,10 +4940,10 @@ pub mod schemas {
     )]
     pub struct SearchItemsByViewUrlResponse {
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Item>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Item>>,
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SearchItemsByViewUrlResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4817,7 +4952,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4826,7 +4960,7 @@ pub mod schemas {
     pub struct SearchQualityMetadata {
         #[doc = "An indication of the quality of the item, used to influence search quality.\nValue should be between 0.0 (lowest quality) and 1.0 (highest quality). The\ndefault value is 0.0."]
         #[serde(rename = "quality", default)]
-        pub quality: Option<f64>,
+        pub quality: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for SearchQualityMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4835,7 +4969,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4844,27 +4977,29 @@ pub mod schemas {
     pub struct SearchRequest {
         #[doc = "The sources to use for querying. If not specified, all data sources\nfrom the current search application are used."]
         #[serde(rename = "dataSourceRestrictions", default)]
-        pub data_source_restrictions: Option<Vec<crate::schemas::DataSourceRestriction>>,
+        pub data_source_restrictions:
+            ::std::option::Option<Vec<crate::schemas::DataSourceRestriction>>,
         #[serde(rename = "facetOptions", default)]
-        pub facet_options: Option<Vec<crate::schemas::FacetOptions>>,
+        pub facet_options: ::std::option::Option<Vec<crate::schemas::FacetOptions>>,
         #[doc = "Maximum number of search results to return in one page.\nValid values are between 1 and 100, inclusive.\nDefault value is 10."]
         #[serde(rename = "pageSize", default)]
-        pub page_size: Option<i32>,
+        pub page_size: ::std::option::Option<i32>,
         #[doc = "The raw query string.\nSee supported search operators in the [Cloud search\nCheat\nSheet](https://gsuite.google.com/learning-center/products/cloudsearch/cheat-sheet/)"]
         #[serde(rename = "query", default)]
-        pub query: Option<String>,
+        pub query: ::std::option::Option<String>,
         #[doc = "Options to interpret the user query."]
         #[serde(rename = "queryInterpretationOptions", default)]
-        pub query_interpretation_options: Option<crate::schemas::QueryInterpretationOptions>,
+        pub query_interpretation_options:
+            ::std::option::Option<crate::schemas::QueryInterpretationOptions>,
         #[doc = "Request options, such as the search application and user timezone."]
         #[serde(rename = "requestOptions", default)]
-        pub request_options: Option<crate::schemas::RequestOptions>,
+        pub request_options: ::std::option::Option<crate::schemas::RequestOptions>,
         #[doc = "The options for sorting the search results"]
         #[serde(rename = "sortOptions", default)]
-        pub sort_options: Option<crate::schemas::SortOptions>,
+        pub sort_options: ::std::option::Option<crate::schemas::SortOptions>,
         #[doc = "Starting index of the results."]
         #[serde(rename = "start", default)]
-        pub start: Option<i32>,
+        pub start: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for SearchRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4873,7 +5008,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4882,39 +5016,39 @@ pub mod schemas {
     pub struct SearchResponse {
         #[doc = "Debugging information about the response."]
         #[serde(rename = "debugInfo", default)]
-        pub debug_info: Option<crate::schemas::ResponseDebugInfo>,
+        pub debug_info: ::std::option::Option<crate::schemas::ResponseDebugInfo>,
         #[doc = "Error information about the response."]
         #[serde(rename = "errorInfo", default)]
-        pub error_info: Option<crate::schemas::ErrorInfo>,
+        pub error_info: ::std::option::Option<crate::schemas::ErrorInfo>,
         #[doc = "Repeated facet results."]
         #[serde(rename = "facetResults", default)]
-        pub facet_results: Option<Vec<crate::schemas::FacetResult>>,
+        pub facet_results: ::std::option::Option<Vec<crate::schemas::FacetResult>>,
         #[doc = "Whether there are more search results matching the query."]
         #[serde(rename = "hasMoreResults", default)]
-        pub has_more_results: Option<bool>,
+        pub has_more_results: ::std::option::Option<bool>,
         #[doc = "Query interpretation result for user query. Empty if query interpretation\nis disabled."]
         #[serde(rename = "queryInterpretation", default)]
-        pub query_interpretation: Option<crate::schemas::QueryInterpretation>,
+        pub query_interpretation: ::std::option::Option<crate::schemas::QueryInterpretation>,
         #[doc = "The estimated result count for this query."]
         #[serde(rename = "resultCountEstimate", default)]
         #[serde(with = "crate::parsed_string")]
-        pub result_count_estimate: Option<i64>,
+        pub result_count_estimate: ::std::option::Option<i64>,
         #[doc = "The exact result count for this query."]
         #[serde(rename = "resultCountExact", default)]
         #[serde(with = "crate::parsed_string")]
-        pub result_count_exact: Option<i64>,
+        pub result_count_exact: ::std::option::Option<i64>,
         #[doc = "Expanded result count information."]
         #[serde(rename = "resultCounts", default)]
-        pub result_counts: Option<crate::schemas::ResultCounts>,
+        pub result_counts: ::std::option::Option<crate::schemas::ResultCounts>,
         #[doc = "Results from a search query."]
         #[serde(rename = "results", default)]
-        pub results: Option<Vec<crate::schemas::SearchResult>>,
+        pub results: ::std::option::Option<Vec<crate::schemas::SearchResult>>,
         #[doc = "Suggested spelling for the query."]
         #[serde(rename = "spellResults", default)]
-        pub spell_results: Option<Vec<crate::schemas::SpellResult>>,
+        pub spell_results: ::std::option::Option<Vec<crate::schemas::SpellResult>>,
         #[doc = "Structured results for the user query. These results are not counted\nagainst the page_size."]
         #[serde(rename = "structuredResults", default)]
-        pub structured_results: Option<Vec<crate::schemas::StructuredResult>>,
+        pub structured_results: ::std::option::Option<Vec<crate::schemas::StructuredResult>>,
     }
     impl ::field_selector::FieldSelector for SearchResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4923,7 +5057,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4932,22 +5065,22 @@ pub mod schemas {
     pub struct SearchResult {
         #[doc = "If source is clustered, provide list of clustered results. There will only\nbe one level of clustered results. If current source is not enabled for\nclustering, this field will be empty."]
         #[serde(rename = "clusteredResults", default)]
-        pub clustered_results: Option<Vec<crate::schemas::SearchResult>>,
+        pub clustered_results: ::std::option::Option<Vec<crate::schemas::SearchResult>>,
         #[doc = "Debugging information about this search result."]
         #[serde(rename = "debugInfo", default)]
-        pub debug_info: Option<crate::schemas::ResultDebugInfo>,
+        pub debug_info: ::std::option::Option<crate::schemas::ResultDebugInfo>,
         #[doc = "Metadata of the search result."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::Metadata>,
+        pub metadata: ::std::option::Option<crate::schemas::Metadata>,
         #[doc = "The concatenation of all snippets (summaries) available for this result."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<crate::schemas::Snippet>,
+        pub snippet: ::std::option::Option<crate::schemas::Snippet>,
         #[doc = "Title of the search result."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "The URL of the search result. The URL contains a Google redirect to the\nactual item. This URL is signed and shouldn't be changed."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SearchResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4956,7 +5089,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -4974,10 +5106,10 @@ pub mod schemas {
     pub struct Snippet {
         #[doc = "The matched ranges in the snippet."]
         #[serde(rename = "matchRanges", default)]
-        pub match_ranges: Option<Vec<crate::schemas::MatchRange>>,
+        pub match_ranges: ::std::option::Option<Vec<crate::schemas::MatchRange>>,
         #[doc = "The snippet of the document.\nThe snippet of the document. May contain escaped HTML character that\nshould be unescaped prior to rendering."]
         #[serde(rename = "snippet", default)]
-        pub snippet: Option<String>,
+        pub snippet: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Snippet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -4986,7 +5118,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5033,6 +5164,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for SortOptionsSortOrder {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -5048,10 +5188,10 @@ pub mod schemas {
     pub struct SortOptions {
         #[doc = "Name of the operator corresponding to the field to sort on.\nThe corresponding property must be marked as\nsortable."]
         #[serde(rename = "operatorName", default)]
-        pub operator_name: Option<String>,
+        pub operator_name: ::std::option::Option<String>,
         #[doc = "Ascending is the default sort order"]
         #[serde(rename = "sortOrder", default)]
-        pub sort_order: Option<crate::schemas::SortOptionsSortOrder>,
+        pub sort_order: ::std::option::Option<crate::schemas::SortOptionsSortOrder>,
     }
     impl ::field_selector::FieldSelector for SortOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5060,7 +5200,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5130,6 +5269,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for SourcePredefinedSource {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -5145,10 +5293,10 @@ pub mod schemas {
     pub struct Source {
         #[doc = "Source name for content indexed by the\nIndexing API."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Predefined content source for Google Apps."]
         #[serde(rename = "predefinedSource", default)]
-        pub predefined_source: Option<crate::schemas::SourcePredefinedSource>,
+        pub predefined_source: ::std::option::Option<crate::schemas::SourcePredefinedSource>,
     }
     impl ::field_selector::FieldSelector for Source {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5157,7 +5305,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5175,13 +5322,13 @@ pub mod schemas {
     pub struct SourceConfig {
         #[doc = "The crowding configuration for the source."]
         #[serde(rename = "crowdingConfig", default)]
-        pub crowding_config: Option<crate::schemas::SourceCrowdingConfig>,
+        pub crowding_config: ::std::option::Option<crate::schemas::SourceCrowdingConfig>,
         #[doc = "The scoring configuration for the source."]
         #[serde(rename = "scoringConfig", default)]
-        pub scoring_config: Option<crate::schemas::SourceScoringConfig>,
+        pub scoring_config: ::std::option::Option<crate::schemas::SourceScoringConfig>,
         #[doc = "The source for which this configuration is to be used."]
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::Source>,
+        pub source: ::std::option::Option<crate::schemas::Source>,
     }
     impl ::field_selector::FieldSelector for SourceConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5190,7 +5337,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5208,10 +5354,10 @@ pub mod schemas {
     pub struct SourceCrowdingConfig {
         #[doc = "Maximum number of results allowed from a source.\nNo limits will be set on results if this value is less than or equal to 0."]
         #[serde(rename = "numResults", default)]
-        pub num_results: Option<i32>,
+        pub num_results: ::std::option::Option<i32>,
         #[doc = "Maximum number of suggestions allowed from a source.\nNo limits will be set on results if this value is less than or equal to 0."]
         #[serde(rename = "numSuggestions", default)]
-        pub num_suggestions: Option<i32>,
+        pub num_suggestions: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for SourceCrowdingConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5220,7 +5366,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5238,18 +5383,18 @@ pub mod schemas {
     pub struct SourceResultCount {
         #[doc = "Whether there are more search results for this source."]
         #[serde(rename = "hasMoreResults", default)]
-        pub has_more_results: Option<bool>,
+        pub has_more_results: ::std::option::Option<bool>,
         #[doc = "The estimated result count for this source."]
         #[serde(rename = "resultCountEstimate", default)]
         #[serde(with = "crate::parsed_string")]
-        pub result_count_estimate: Option<i64>,
+        pub result_count_estimate: ::std::option::Option<i64>,
         #[doc = "The exact result count for this source."]
         #[serde(rename = "resultCountExact", default)]
         #[serde(with = "crate::parsed_string")]
-        pub result_count_exact: Option<i64>,
+        pub result_count_exact: ::std::option::Option<i64>,
         #[doc = "The source the result count information is associated with."]
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::Source>,
+        pub source: ::std::option::Option<crate::schemas::Source>,
     }
     impl ::field_selector::FieldSelector for SourceResultCount {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5258,7 +5403,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5308,6 +5452,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for SourceScoringConfigSourceImportance {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -5323,7 +5476,8 @@ pub mod schemas {
     pub struct SourceScoringConfig {
         #[doc = "Importance of the source."]
         #[serde(rename = "sourceImportance", default)]
-        pub source_importance: Option<crate::schemas::SourceScoringConfigSourceImportance>,
+        pub source_importance:
+            ::std::option::Option<crate::schemas::SourceScoringConfigSourceImportance>,
     }
     impl ::field_selector::FieldSelector for SourceScoringConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5332,7 +5486,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5350,7 +5503,7 @@ pub mod schemas {
     pub struct SpellResult {
         #[doc = "The suggested spelling of the query."]
         #[serde(rename = "suggestedQuery", default)]
-        pub suggested_query: Option<String>,
+        pub suggested_query: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SpellResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5359,7 +5512,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5377,10 +5529,10 @@ pub mod schemas {
     pub struct StartUploadItemRequest {
         #[doc = "Name of connector making this call.\n<br />Format: datasources/{source_id}/connectors/{ID}"]
         #[serde(rename = "connectorName", default)]
-        pub connector_name: Option<String>,
+        pub connector_name: ::std::option::Option<String>,
         #[doc = "Common debug options."]
         #[serde(rename = "debugOptions", default)]
-        pub debug_options: Option<crate::schemas::DebugOptions>,
+        pub debug_options: ::std::option::Option<crate::schemas::DebugOptions>,
     }
     impl ::field_selector::FieldSelector for StartUploadItemRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5389,20 +5541,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
-        pub code: Option<i32>,
+        pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub details:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Status {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5411,7 +5563,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5420,7 +5571,7 @@ pub mod schemas {
     pub struct StructuredDataObject {
         #[doc = "The properties for the object.\nThe maximum number of elements is 1000."]
         #[serde(rename = "properties", default)]
-        pub properties: Option<Vec<crate::schemas::NamedProperty>>,
+        pub properties: ::std::option::Option<Vec<crate::schemas::NamedProperty>>,
     }
     impl ::field_selector::FieldSelector for StructuredDataObject {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5429,7 +5580,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5447,7 +5597,7 @@ pub mod schemas {
     pub struct StructuredResult {
         #[doc = "Representation of a person"]
         #[serde(rename = "person", default)]
-        pub person: Option<crate::schemas::Person>,
+        pub person: ::std::option::Option<crate::schemas::Person>,
     }
     impl ::field_selector::FieldSelector for StructuredResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5456,7 +5606,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5465,13 +5614,14 @@ pub mod schemas {
     pub struct SuggestRequest {
         #[doc = "The sources to use for suggestions. If not specified, all data sources\nfrom the current search application are used.\nSuggestions are based on Gmail titles. Suggestions from third party sources\nare not available."]
         #[serde(rename = "dataSourceRestrictions", default)]
-        pub data_source_restrictions: Option<Vec<crate::schemas::DataSourceRestriction>>,
+        pub data_source_restrictions:
+            ::std::option::Option<Vec<crate::schemas::DataSourceRestriction>>,
         #[doc = "Partial query for which autocomplete suggestions will be shown.\nFor example, if the query is \"sea\", then the server might return\n\"season\", \"search\", \"seagull\" and so on."]
         #[serde(rename = "query", default)]
-        pub query: Option<String>,
+        pub query: ::std::option::Option<String>,
         #[doc = "Request options, such as the search application and user timezone."]
         #[serde(rename = "requestOptions", default)]
-        pub request_options: Option<crate::schemas::RequestOptions>,
+        pub request_options: ::std::option::Option<crate::schemas::RequestOptions>,
     }
     impl ::field_selector::FieldSelector for SuggestRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5480,7 +5630,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5498,7 +5647,7 @@ pub mod schemas {
     pub struct SuggestResponse {
         #[doc = "List of suggestions."]
         #[serde(rename = "suggestResults", default)]
-        pub suggest_results: Option<Vec<crate::schemas::SuggestResult>>,
+        pub suggest_results: ::std::option::Option<Vec<crate::schemas::SuggestResult>>,
     }
     impl ::field_selector::FieldSelector for SuggestResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5507,7 +5656,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5525,16 +5673,16 @@ pub mod schemas {
     pub struct SuggestResult {
         #[doc = "This is present when the suggestion indicates a person. It\ncontains more information about the person - like their email ID,\nname etc."]
         #[serde(rename = "peopleSuggestion", default)]
-        pub people_suggestion: Option<crate::schemas::PeopleSuggestion>,
+        pub people_suggestion: ::std::option::Option<crate::schemas::PeopleSuggestion>,
         #[doc = "This field will be present if the suggested query is a word/phrase\ncompletion."]
         #[serde(rename = "querySuggestion", default)]
-        pub query_suggestion: Option<crate::schemas::QuerySuggestion>,
+        pub query_suggestion: ::std::option::Option<crate::schemas::QuerySuggestion>,
         #[doc = "The source of the suggestion."]
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::Source>,
+        pub source: ::std::option::Option<crate::schemas::Source>,
         #[doc = "The suggested query that will be used for search, when the user\nclicks on the suggestion"]
         #[serde(rename = "suggestedQuery", default)]
-        pub suggested_query: Option<String>,
+        pub suggested_query: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SuggestResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5543,7 +5691,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5561,10 +5708,10 @@ pub mod schemas {
     pub struct TextOperatorOptions {
         #[doc = "If true, the text value will be tokenized as one atomic value in\noperator searches and facet matches. For example, if the operator name is\n\"genre\" and the value is \"science-fiction\" the query restrictions\n\"genre:science\" and \"genre:fiction\" will not match the item;\n\"genre:science-fiction\" will. Value matching is case-sensitive\nand does not remove special characters.\nIf false, the text will be tokenized. For example, if the value is\n\"science-fiction\" the queries \"genre:science\" and \"genre:fiction\" will\nmatch the item."]
         #[serde(rename = "exactMatchWithOperator", default)]
-        pub exact_match_with_operator: Option<bool>,
+        pub exact_match_with_operator: ::std::option::Option<bool>,
         #[doc = "Indicates the operator name required in the query in order to isolate the\ntext property. For example, if operatorName is *subject* and the\nproperty's name is *subjectLine*, then queries like\n*subject:<value>* will show results only where the value of the\nproperty named *subjectLine* matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator will return\nall items where *<value>* matches the value of any\ntext properties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(rename = "operatorName", default)]
-        pub operator_name: Option<String>,
+        pub operator_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TextOperatorOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5573,7 +5720,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5591,10 +5737,10 @@ pub mod schemas {
     pub struct TextPropertyOptions {
         #[doc = "If set, describes how the property should be used as a search operator."]
         #[serde(rename = "operatorOptions", default)]
-        pub operator_options: Option<crate::schemas::TextOperatorOptions>,
+        pub operator_options: ::std::option::Option<crate::schemas::TextOperatorOptions>,
         #[doc = "Indicates the search quality importance of the tokens within the\nfield when used for retrieval."]
         #[serde(rename = "retrievalImportance", default)]
-        pub retrieval_importance: Option<crate::schemas::RetrievalImportance>,
+        pub retrieval_importance: ::std::option::Option<crate::schemas::RetrievalImportance>,
     }
     impl ::field_selector::FieldSelector for TextPropertyOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5603,7 +5749,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5621,7 +5766,7 @@ pub mod schemas {
     pub struct TextValues {
         #[doc = "The maximum allowable length for text values is 2048 characters."]
         #[serde(rename = "values", default)]
-        pub values: Option<Vec<String>>,
+        pub values: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for TextValues {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5630,7 +5775,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5648,13 +5792,13 @@ pub mod schemas {
     pub struct TimestampOperatorOptions {
         #[doc = "Indicates the operator name required in the query in order to isolate the\ntimestamp property using the greater-than operator. For example, if\ngreaterThanOperatorName is *closedafter* and the property's name is\n*closeDate*, then queries like *closedafter:<value>* will\nshow results only where the value of the property named *closeDate* is\nlater than *<value>*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(rename = "greaterThanOperatorName", default)]
-        pub greater_than_operator_name: Option<String>,
+        pub greater_than_operator_name: ::std::option::Option<String>,
         #[doc = "Indicates the operator name required in the query in order to isolate the\ntimestamp property using the less-than operator. For example, if\nlessThanOperatorName is *closedbefore* and the property's name is\n*closeDate*, then queries like *closedbefore:<value>* will\nshow results only where the value of the property named *closeDate* is\nearlier than *<value>*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(rename = "lessThanOperatorName", default)]
-        pub less_than_operator_name: Option<String>,
+        pub less_than_operator_name: ::std::option::Option<String>,
         #[doc = "Indicates the operator name required in the query in order to isolate the\ntimestamp property. For example, if operatorName is *closedon* and the\nproperty's name is *closeDate*, then queries like\n*closedon:<value>* will show results only where the value of the\nproperty named *closeDate* matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator will return\nall items where *<value>* matches the value of any String\nproperties or text within the content field for the item. The operator\nname can only contain lowercase letters (a-z). The maximum length is 32\ncharacters."]
         #[serde(rename = "operatorName", default)]
-        pub operator_name: Option<String>,
+        pub operator_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TimestampOperatorOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5663,7 +5807,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5681,7 +5824,7 @@ pub mod schemas {
     pub struct TimestampPropertyOptions {
         #[doc = "If set, describes how the timestamp should be used as a search operator."]
         #[serde(rename = "operatorOptions", default)]
-        pub operator_options: Option<crate::schemas::TimestampOperatorOptions>,
+        pub operator_options: ::std::option::Option<crate::schemas::TimestampOperatorOptions>,
     }
     impl ::field_selector::FieldSelector for TimestampPropertyOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5690,7 +5833,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5707,7 +5849,7 @@ pub mod schemas {
     )]
     pub struct TimestampValues {
         #[serde(rename = "values", default)]
-        pub values: Option<Vec<String>>,
+        pub values: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for TimestampValues {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5716,7 +5858,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5793,6 +5934,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for UnmappedIdentityResolutionStatusCode {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -5808,10 +5958,11 @@ pub mod schemas {
     pub struct UnmappedIdentity {
         #[doc = "The resource name for an external user."]
         #[serde(rename = "externalIdentity", default)]
-        pub external_identity: Option<crate::schemas::Principal>,
+        pub external_identity: ::std::option::Option<crate::schemas::Principal>,
         #[doc = "The resolution status for the external identity."]
         #[serde(rename = "resolutionStatusCode", default)]
-        pub resolution_status_code: Option<crate::schemas::UnmappedIdentityResolutionStatusCode>,
+        pub resolution_status_code:
+            ::std::option::Option<crate::schemas::UnmappedIdentityResolutionStatusCode>,
     }
     impl ::field_selector::FieldSelector for UnmappedIdentity {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5820,7 +5971,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5838,13 +5988,13 @@ pub mod schemas {
     pub struct UnreserveItemsRequest {
         #[doc = "Name of connector making this call.\n<br />Format: datasources/{source_id}/connectors/{ID}"]
         #[serde(rename = "connectorName", default)]
-        pub connector_name: Option<String>,
+        pub connector_name: ::std::option::Option<String>,
         #[doc = "Common debug options."]
         #[serde(rename = "debugOptions", default)]
-        pub debug_options: Option<crate::schemas::DebugOptions>,
+        pub debug_options: ::std::option::Option<crate::schemas::DebugOptions>,
         #[doc = "Name of a queue to unreserve items from."]
         #[serde(rename = "queue", default)]
-        pub queue: Option<String>,
+        pub queue: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UnreserveItemsRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5853,7 +6003,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5871,9 +6020,9 @@ pub mod schemas {
     pub struct UpdateDataSourceRequest {
         #[doc = "Common debug options."]
         #[serde(rename = "debugOptions", default)]
-        pub debug_options: Option<crate::schemas::DebugOptions>,
+        pub debug_options: ::std::option::Option<crate::schemas::DebugOptions>,
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::DataSource>,
+        pub source: ::std::option::Option<crate::schemas::DataSource>,
     }
     impl ::field_selector::FieldSelector for UpdateDataSourceRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5882,7 +6031,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5900,13 +6048,13 @@ pub mod schemas {
     pub struct UpdateSchemaRequest {
         #[doc = "Common debug options."]
         #[serde(rename = "debugOptions", default)]
-        pub debug_options: Option<crate::schemas::DebugOptions>,
+        pub debug_options: ::std::option::Option<crate::schemas::DebugOptions>,
         #[doc = "The new schema for the source."]
         #[serde(rename = "schema", default)]
-        pub schema: Option<crate::schemas::Schema>,
+        pub schema: ::std::option::Option<crate::schemas::Schema>,
         #[doc = "If true, the request will be validated without side effects."]
         #[serde(rename = "validateOnly", default)]
-        pub validate_only: Option<bool>,
+        pub validate_only: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for UpdateSchemaRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5915,7 +6063,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5933,7 +6080,7 @@ pub mod schemas {
     pub struct UploadItemRef {
         #[doc = "Name of the content reference.\nThe maximum length is 2048 characters."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UploadItemRef {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5942,7 +6089,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5950,18 +6096,18 @@ pub mod schemas {
     )]
     pub struct Value {
         #[serde(rename = "booleanValue", default)]
-        pub boolean_value: Option<bool>,
+        pub boolean_value: ::std::option::Option<bool>,
         #[serde(rename = "dateValue", default)]
-        pub date_value: Option<crate::schemas::Date>,
+        pub date_value: ::std::option::Option<crate::schemas::Date>,
         #[serde(rename = "doubleValue", default)]
-        pub double_value: Option<f64>,
+        pub double_value: ::std::option::Option<f64>,
         #[serde(rename = "integerValue", default)]
         #[serde(with = "crate::parsed_string")]
-        pub integer_value: Option<i64>,
+        pub integer_value: ::std::option::Option<i64>,
         #[serde(rename = "stringValue", default)]
-        pub string_value: Option<String>,
+        pub string_value: ::std::option::Option<String>,
         #[serde(rename = "timestampValue", default)]
-        pub timestamp_value: Option<String>,
+        pub timestamp_value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Value {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5970,7 +6116,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -5979,10 +6124,10 @@ pub mod schemas {
     pub struct ValueFilter {
         #[doc = "The `operator_name` applied to the query, such as *price_greater_than*.\nThe filter can work against both types of filters defined in the schema\nfor your data source:\n<br/><br/>\n\n1. `operator_name`, where the query filters results by the property\n   that matches the value.\n   <br/>\n1. `greater_than_operator_name` or `less_than_operator_name` in your\n   schema. The query filters the results for the property values that are\n   greater than or less than  the supplied value in the query."]
         #[serde(rename = "operatorName", default)]
-        pub operator_name: Option<String>,
+        pub operator_name: ::std::option::Option<String>,
         #[doc = "The value to be compared with."]
         #[serde(rename = "value", default)]
-        pub value: Option<crate::schemas::Value>,
+        pub value: ::std::option::Option<crate::schemas::Value>,
     }
     impl ::field_selector::FieldSelector for ValueFilter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -5991,7 +6136,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -6046,6 +6190,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -6090,6 +6243,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -7414,6 +7576,15 @@ mod resources {
                             })
                         }
                     }
+                    impl ::field_selector::FieldSelector for ListResolutionStatusCode {
+                        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                            match selector.chars().rev().nth(0) {
+                                Some(',') | None => {}
+                                _ => selector.push_str(","),
+                            }
+                            selector.push_str(ident);
+                        }
+                    }
                 }
                 pub struct UnmappedidsActions<'a, A> {
                     pub(crate) reqwest: &'a reqwest::Client,
@@ -8422,6 +8593,15 @@ mod resources {
                             })
                         }
                     }
+                    impl ::field_selector::FieldSelector for DeleteMode {
+                        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                            match selector.chars().rev().nth(0) {
+                                Some(',') | None => {}
+                                _ => selector.push_str(","),
+                            }
+                            selector.push_str(ident);
+                        }
+                    }
                 }
                 pub struct ItemsActions<'a, A> {
                     pub(crate) reqwest: &'a reqwest::Client,
@@ -8650,7 +8830,7 @@ mod resources {
                     debug_options_enable_debugging: Option<bool>,
                     mode:
                         Option<crate::resources::indexing::datasources::items::params::DeleteMode>,
-                    version: Option<Vec<u8>>,
+                    version: Option<crate::bytes::Bytes>,
                     access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
                     callback: Option<String>,
@@ -8683,9 +8863,9 @@ mod resources {
                         self
                     }
                     #[doc = "Required. The incremented version of the item to delete from the index.\nThe indexing system stores the version from the datasource as a\nbyte string and compares the Item version in the index\nto the version of the queued Item using lexical ordering.\n<br /><br />\nCloud Search Indexing won't delete any queued item with\na version value that is less than or equal to\nthe version of the currently indexed item.\nThe maximum length for this field is 1024 bytes."]
-                    pub fn version(mut self, value: impl Into<Box<[u8]>>) -> Self {
-                        self.version = Some(value.into());
-                        self
+                    pub fn version(mut self, value: impl Into<Vec<u8>>) -> Self {
+                        let v: Vec<u8> = value.into();
+                        self.version = Some(v.into())
                     }
                     #[doc = "OAuth access token."]
                     pub fn access_token(mut self, value: impl Into<String>) -> Self {
@@ -14701,6 +14881,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -14776,5 +14957,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

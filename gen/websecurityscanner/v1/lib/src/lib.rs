@@ -14,10 +14,10 @@ pub mod schemas {
     pub struct Authentication {
         #[doc = "Authentication using a custom account."]
         #[serde(rename = "customAccount", default)]
-        pub custom_account: Option<crate::schemas::CustomAccount>,
+        pub custom_account: ::std::option::Option<crate::schemas::CustomAccount>,
         #[doc = "Authentication using a Google account."]
         #[serde(rename = "googleAccount", default)]
-        pub google_account: Option<crate::schemas::GoogleAccount>,
+        pub google_account: ::std::option::Option<crate::schemas::GoogleAccount>,
     }
     impl ::field_selector::FieldSelector for Authentication {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -26,7 +26,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -44,13 +43,13 @@ pub mod schemas {
     pub struct CrawledUrl {
         #[doc = "Output only. The body of the request that was used to visit the URL."]
         #[serde(rename = "body", default)]
-        pub body: Option<String>,
+        pub body: ::std::option::Option<String>,
         #[doc = "Output only. The http method of the request that was used to visit the URL, in\nuppercase."]
         #[serde(rename = "httpMethod", default)]
-        pub http_method: Option<String>,
+        pub http_method: ::std::option::Option<String>,
         #[doc = "Output only. The URL that was crawled."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CrawledUrl {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -59,7 +58,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -77,13 +75,13 @@ pub mod schemas {
     pub struct CustomAccount {
         #[doc = "Required. The login form URL of the website."]
         #[serde(rename = "loginUrl", default)]
-        pub login_url: Option<String>,
+        pub login_url: ::std::option::Option<String>,
         #[doc = "Required. Input only. The password of the custom account. The credential is stored encrypted\nand not returned in any response nor included in audit logs."]
         #[serde(rename = "password", default)]
-        pub password: Option<String>,
+        pub password: ::std::option::Option<String>,
         #[doc = "Required. The user name of the custom account."]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CustomAccount {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -92,7 +90,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -110,7 +107,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -127,52 +124,52 @@ pub mod schemas {
     pub struct Finding {
         #[doc = "Output only. The body of the request that triggered the vulnerability."]
         #[serde(rename = "body", default)]
-        pub body: Option<String>,
+        pub body: ::std::option::Option<String>,
         #[doc = "Output only. The description of the vulnerability."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Output only. The URL where the browser lands when the vulnerability is detected."]
         #[serde(rename = "finalUrl", default)]
-        pub final_url: Option<String>,
+        pub final_url: ::std::option::Option<String>,
         #[doc = "Output only. The type of the Finding.\nDetailed and up-to-date information on findings can be found here:\nhttps://cloud.google.com/security-scanner/docs/scan-result-details"]
         #[serde(rename = "findingType", default)]
-        pub finding_type: Option<String>,
+        pub finding_type: ::std::option::Option<String>,
         #[doc = "Output only. An addon containing information reported for a vulnerability with an HTML\nform, if any."]
         #[serde(rename = "form", default)]
-        pub form: Option<crate::schemas::Form>,
+        pub form: ::std::option::Option<crate::schemas::Form>,
         #[doc = "Output only. If the vulnerability was originated from nested IFrame, the immediate\nparent IFrame is reported."]
         #[serde(rename = "frameUrl", default)]
-        pub frame_url: Option<String>,
+        pub frame_url: ::std::option::Option<String>,
         #[doc = "Output only. The URL produced by the server-side fuzzer and used in the request that\ntriggered the vulnerability."]
         #[serde(rename = "fuzzedUrl", default)]
-        pub fuzzed_url: Option<String>,
+        pub fuzzed_url: ::std::option::Option<String>,
         #[doc = "Output only. The http method of the request that triggered the vulnerability, in\nuppercase."]
         #[serde(rename = "httpMethod", default)]
-        pub http_method: Option<String>,
+        pub http_method: ::std::option::Option<String>,
         #[doc = "Output only. The resource name of the Finding. The name follows the format of\n'projects/{projectId}/scanConfigs/{scanConfigId}/scanruns/{scanRunId}/findings/{findingId}'.\nThe finding IDs are generated by the system."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Output only. An addon containing information about outdated libraries."]
         #[serde(rename = "outdatedLibrary", default)]
-        pub outdated_library: Option<crate::schemas::OutdatedLibrary>,
+        pub outdated_library: ::std::option::Option<crate::schemas::OutdatedLibrary>,
         #[doc = "Output only. The URL containing human-readable payload that user can leverage to\nreproduce the vulnerability."]
         #[serde(rename = "reproductionUrl", default)]
-        pub reproduction_url: Option<String>,
+        pub reproduction_url: ::std::option::Option<String>,
         #[doc = "Output only. The tracking ID uniquely identifies a vulnerability instance across\nmultiple ScanRuns."]
         #[serde(rename = "trackingId", default)]
-        pub tracking_id: Option<String>,
+        pub tracking_id: ::std::option::Option<String>,
         #[doc = "Output only. An addon containing detailed information regarding any resource causing the\nvulnerability such as JavaScript sources, image, audio files, etc."]
         #[serde(rename = "violatingResource", default)]
-        pub violating_resource: Option<crate::schemas::ViolatingResource>,
+        pub violating_resource: ::std::option::Option<crate::schemas::ViolatingResource>,
         #[doc = "Output only. An addon containing information about vulnerable or missing HTTP headers."]
         #[serde(rename = "vulnerableHeaders", default)]
-        pub vulnerable_headers: Option<crate::schemas::VulnerableHeaders>,
+        pub vulnerable_headers: ::std::option::Option<crate::schemas::VulnerableHeaders>,
         #[doc = "Output only. An addon containing information about request parameters which were found\nto be vulnerable."]
         #[serde(rename = "vulnerableParameters", default)]
-        pub vulnerable_parameters: Option<crate::schemas::VulnerableParameters>,
+        pub vulnerable_parameters: ::std::option::Option<crate::schemas::VulnerableParameters>,
         #[doc = "Output only. An addon containing information reported for an XSS, if any."]
         #[serde(rename = "xss", default)]
-        pub xss: Option<crate::schemas::Xss>,
+        pub xss: ::std::option::Option<crate::schemas::Xss>,
     }
     impl ::field_selector::FieldSelector for Finding {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -181,7 +178,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -199,10 +195,10 @@ pub mod schemas {
     pub struct FindingTypeStats {
         #[doc = "Output only. The count of findings belonging to this finding type."]
         #[serde(rename = "findingCount", default)]
-        pub finding_count: Option<i32>,
+        pub finding_count: ::std::option::Option<i32>,
         #[doc = "Output only. The finding type associated with the stats."]
         #[serde(rename = "findingType", default)]
-        pub finding_type: Option<String>,
+        pub finding_type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FindingTypeStats {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -211,7 +207,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -229,10 +224,10 @@ pub mod schemas {
     pub struct Form {
         #[doc = "! The URI where to send the form when it's submitted."]
         #[serde(rename = "actionUri", default)]
-        pub action_uri: Option<String>,
+        pub action_uri: ::std::option::Option<String>,
         #[doc = "! The names of form fields related to the vulnerability."]
         #[serde(rename = "fields", default)]
-        pub fields: Option<Vec<String>>,
+        pub fields: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for Form {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -241,7 +236,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -259,10 +253,10 @@ pub mod schemas {
     pub struct GoogleAccount {
         #[doc = "Required. Input only. The password of the Google account. The credential is stored encrypted\nand not returned in any response nor included in audit logs."]
         #[serde(rename = "password", default)]
-        pub password: Option<String>,
+        pub password: ::std::option::Option<String>,
         #[doc = "Required. The user name of the Google account."]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GoogleAccount {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -271,7 +265,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -289,10 +282,10 @@ pub mod schemas {
     pub struct Header {
         #[doc = "Header name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Header value."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Header {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -301,7 +294,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -319,10 +311,10 @@ pub mod schemas {
     pub struct ListCrawledUrlsResponse {
         #[doc = "The list of CrawledUrls returned."]
         #[serde(rename = "crawledUrls", default)]
-        pub crawled_urls: Option<Vec<crate::schemas::CrawledUrl>>,
+        pub crawled_urls: ::std::option::Option<Vec<crate::schemas::CrawledUrl>>,
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListCrawledUrlsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -331,7 +323,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -349,7 +340,7 @@ pub mod schemas {
     pub struct ListFindingTypeStatsResponse {
         #[doc = "The list of FindingTypeStats returned."]
         #[serde(rename = "findingTypeStats", default)]
-        pub finding_type_stats: Option<Vec<crate::schemas::FindingTypeStats>>,
+        pub finding_type_stats: ::std::option::Option<Vec<crate::schemas::FindingTypeStats>>,
     }
     impl ::field_selector::FieldSelector for ListFindingTypeStatsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -358,7 +349,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -376,10 +366,10 @@ pub mod schemas {
     pub struct ListFindingsResponse {
         #[doc = "The list of Findings returned."]
         #[serde(rename = "findings", default)]
-        pub findings: Option<Vec<crate::schemas::Finding>>,
+        pub findings: ::std::option::Option<Vec<crate::schemas::Finding>>,
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListFindingsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -388,7 +378,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -406,10 +395,10 @@ pub mod schemas {
     pub struct ListScanConfigsResponse {
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of ScanConfigs returned."]
         #[serde(rename = "scanConfigs", default)]
-        pub scan_configs: Option<Vec<crate::schemas::ScanConfig>>,
+        pub scan_configs: ::std::option::Option<Vec<crate::schemas::ScanConfig>>,
     }
     impl ::field_selector::FieldSelector for ListScanConfigsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -418,7 +407,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -436,10 +424,10 @@ pub mod schemas {
     pub struct ListScanRunsResponse {
         #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of ScanRuns returned."]
         #[serde(rename = "scanRuns", default)]
-        pub scan_runs: Option<Vec<crate::schemas::ScanRun>>,
+        pub scan_runs: ::std::option::Option<Vec<crate::schemas::ScanRun>>,
     }
     impl ::field_selector::FieldSelector for ListScanRunsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -448,7 +436,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -466,13 +453,13 @@ pub mod schemas {
     pub struct OutdatedLibrary {
         #[doc = "URLs to learn more information about the vulnerabilities in the library."]
         #[serde(rename = "learnMoreUrls", default)]
-        pub learn_more_urls: Option<Vec<String>>,
+        pub learn_more_urls: ::std::option::Option<Vec<String>>,
         #[doc = "The name of the outdated library."]
         #[serde(rename = "libraryName", default)]
-        pub library_name: Option<String>,
+        pub library_name: ::std::option::Option<String>,
         #[doc = "The version number."]
         #[serde(rename = "version", default)]
-        pub version: Option<String>,
+        pub version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for OutdatedLibrary {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -481,7 +468,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -518,6 +504,15 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok ( match value { "EXPORT_TO_SECURITY_COMMAND_CENTER_UNSPECIFIED" => ScanConfigExportToSecurityCommandCenter :: ExportToSecurityCommandCenterUnspecified , "ENABLED" => ScanConfigExportToSecurityCommandCenter :: Enabled , "DISABLED" => ScanConfigExportToSecurityCommandCenter :: Disabled , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::field_selector::FieldSelector for ScanConfigExportToSecurityCommandCenter {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -568,6 +563,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ScanConfigRiskLevel {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -624,6 +628,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ScanConfigUserAgent {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -639,35 +652,35 @@ pub mod schemas {
     pub struct ScanConfig {
         #[doc = "The authentication configuration. If specified, service will use the\nauthentication configuration during scanning."]
         #[serde(rename = "authentication", default)]
-        pub authentication: Option<crate::schemas::Authentication>,
+        pub authentication: ::std::option::Option<crate::schemas::Authentication>,
         #[doc = "The blacklist URL patterns as described in\nhttps://cloud.google.com/security-scanner/docs/excluded-urls"]
         #[serde(rename = "blacklistPatterns", default)]
-        pub blacklist_patterns: Option<Vec<String>>,
+        pub blacklist_patterns: ::std::option::Option<Vec<String>>,
         #[doc = "Required. The user provided display name of the ScanConfig."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "Controls export of scan configurations and results to Cloud Security\nCommand Center."]
         #[serde(rename = "exportToSecurityCommandCenter", default)]
         pub export_to_security_command_center:
-            Option<crate::schemas::ScanConfigExportToSecurityCommandCenter>,
+            ::std::option::Option<crate::schemas::ScanConfigExportToSecurityCommandCenter>,
         #[doc = "The maximum QPS during scanning. A valid value ranges from 5 to 20\ninclusively. If the field is unspecified or its value is set 0, server will\ndefault to 15. Other values outside of [5, 20] range will be rejected with\nINVALID_ARGUMENT error."]
         #[serde(rename = "maxQps", default)]
-        pub max_qps: Option<i32>,
+        pub max_qps: ::std::option::Option<i32>,
         #[doc = "The resource name of the ScanConfig. The name follows the format of\n'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are\ngenerated by the system."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The risk level selected for the scan"]
         #[serde(rename = "riskLevel", default)]
-        pub risk_level: Option<crate::schemas::ScanConfigRiskLevel>,
+        pub risk_level: ::std::option::Option<crate::schemas::ScanConfigRiskLevel>,
         #[doc = "The schedule of the ScanConfig."]
         #[serde(rename = "schedule", default)]
-        pub schedule: Option<crate::schemas::Schedule>,
+        pub schedule: ::std::option::Option<crate::schemas::Schedule>,
         #[doc = "Required. The starting URLs from which the scanner finds site pages."]
         #[serde(rename = "startingUrls", default)]
-        pub starting_urls: Option<Vec<String>>,
+        pub starting_urls: ::std::option::Option<Vec<String>>,
         #[doc = "The user agent used during scanning."]
         #[serde(rename = "userAgent", default)]
-        pub user_agent: Option<crate::schemas::ScanConfigUserAgent>,
+        pub user_agent: ::std::option::Option<crate::schemas::ScanConfigUserAgent>,
     }
     impl ::field_selector::FieldSelector for ScanConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -676,7 +689,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -937,6 +949,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ScanConfigErrorCode {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -952,10 +973,10 @@ pub mod schemas {
     pub struct ScanConfigError {
         #[doc = "Output only. Indicates the reason code for a configuration failure."]
         #[serde(rename = "code", default)]
-        pub code: Option<crate::schemas::ScanConfigErrorCode>,
+        pub code: ::std::option::Option<crate::schemas::ScanConfigErrorCode>,
         #[doc = "Output only. Indicates the full name of the ScanConfig field that triggers this error,\nfor example \"scan_config.max_qps\". This field is provided for\ntroubleshooting purposes only and its actual value can change in the\nfuture."]
         #[serde(rename = "fieldName", default)]
-        pub field_name: Option<String>,
+        pub field_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ScanConfigError {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -964,7 +985,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1021,6 +1041,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ScanRunExecutionState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ScanRunResultState {
         #[doc = "Default value. This value is returned when the ScanRun is not yet\nfinished."]
@@ -1075,6 +1104,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ScanRunResultState {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1090,39 +1128,39 @@ pub mod schemas {
     pub struct ScanRun {
         #[doc = "Output only. The time at which the ScanRun reached termination state - that the ScanRun\nis either finished or stopped by user."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
         #[doc = "Output only. If result_state is an ERROR, this field provides the primary reason for\nscan's termination and more details, if such are available."]
         #[serde(rename = "errorTrace", default)]
-        pub error_trace: Option<crate::schemas::ScanRunErrorTrace>,
+        pub error_trace: ::std::option::Option<crate::schemas::ScanRunErrorTrace>,
         #[doc = "Output only. The execution state of the ScanRun."]
         #[serde(rename = "executionState", default)]
-        pub execution_state: Option<crate::schemas::ScanRunExecutionState>,
+        pub execution_state: ::std::option::Option<crate::schemas::ScanRunExecutionState>,
         #[doc = "Output only. Whether the scan run has found any vulnerabilities."]
         #[serde(rename = "hasVulnerabilities", default)]
-        pub has_vulnerabilities: Option<bool>,
+        pub has_vulnerabilities: ::std::option::Option<bool>,
         #[doc = "Output only. The resource name of the ScanRun. The name follows the format of\n'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.\nThe ScanRun IDs are generated by the system."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Output only. The percentage of total completion ranging from 0 to 100.\nIf the scan is in queue, the value is 0.\nIf the scan is running, the value ranges from 0 to 100.\nIf the scan is finished, the value is 100."]
         #[serde(rename = "progressPercent", default)]
-        pub progress_percent: Option<i32>,
+        pub progress_percent: ::std::option::Option<i32>,
         #[doc = "Output only. The result state of the ScanRun. This field is only available after the\nexecution state reaches \"FINISHED\"."]
         #[serde(rename = "resultState", default)]
-        pub result_state: Option<crate::schemas::ScanRunResultState>,
+        pub result_state: ::std::option::Option<crate::schemas::ScanRunResultState>,
         #[doc = "Output only. The time at which the ScanRun started."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
         #[doc = "Output only. The number of URLs crawled during this ScanRun. If the scan is in progress,\nthe value represents the number of URLs crawled up to now."]
         #[serde(rename = "urlsCrawledCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub urls_crawled_count: Option<i64>,
+        pub urls_crawled_count: ::std::option::Option<i64>,
         #[doc = "Output only. The number of URLs tested during this ScanRun. If the scan is in progress,\nthe value represents the number of URLs tested up to now. The number of\nURLs tested is usually larger than the number URLS crawled because\ntypically a crawled URL is tested with multiple test payloads."]
         #[serde(rename = "urlsTestedCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub urls_tested_count: Option<i64>,
+        pub urls_tested_count: ::std::option::Option<i64>,
         #[doc = "Output only. A list of warnings, if such are encountered during this scan run."]
         #[serde(rename = "warningTraces", default)]
-        pub warning_traces: Option<Vec<crate::schemas::ScanRunWarningTrace>>,
+        pub warning_traces: ::std::option::Option<Vec<crate::schemas::ScanRunWarningTrace>>,
     }
     impl ::field_selector::FieldSelector for ScanRun {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1131,7 +1169,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1200,6 +1237,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ScanRunErrorTraceCode {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1215,13 +1261,13 @@ pub mod schemas {
     pub struct ScanRunErrorTrace {
         #[doc = "Output only. Indicates the error reason code."]
         #[serde(rename = "code", default)]
-        pub code: Option<crate::schemas::ScanRunErrorTraceCode>,
+        pub code: ::std::option::Option<crate::schemas::ScanRunErrorTraceCode>,
         #[doc = "Output only. If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most\ncommon HTTP error code, if such is available. For example, if this code is\n404, the scan has encountered too many NOT_FOUND responses."]
         #[serde(rename = "mostCommonHttpErrorCode", default)]
-        pub most_common_http_error_code: Option<i32>,
+        pub most_common_http_error_code: ::std::option::Option<i32>,
         #[doc = "Output only. If the scan encounters SCAN_CONFIG_ISSUE error, this field has the error\nmessage encountered during scan configuration validation that is performed\nbefore each scan run."]
         #[serde(rename = "scanConfigError", default)]
-        pub scan_config_error: Option<crate::schemas::ScanConfigError>,
+        pub scan_config_error: ::std::option::Option<crate::schemas::ScanConfigError>,
     }
     impl ::field_selector::FieldSelector for ScanRunErrorTrace {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1230,7 +1276,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1291,6 +1336,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ScanRunWarningTraceCode {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1306,7 +1360,7 @@ pub mod schemas {
     pub struct ScanRunWarningTrace {
         #[doc = "Output only. Indicates the warning code."]
         #[serde(rename = "code", default)]
-        pub code: Option<crate::schemas::ScanRunWarningTraceCode>,
+        pub code: ::std::option::Option<crate::schemas::ScanRunWarningTraceCode>,
     }
     impl ::field_selector::FieldSelector for ScanRunWarningTrace {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1315,7 +1369,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1333,10 +1386,10 @@ pub mod schemas {
     pub struct Schedule {
         #[doc = "Required. The duration of time between executions in days."]
         #[serde(rename = "intervalDurationDays", default)]
-        pub interval_duration_days: Option<i32>,
+        pub interval_duration_days: ::std::option::Option<i32>,
         #[doc = "A timestamp indicates when the next run will be scheduled. The value is\nrefreshed by the server after each run. If unspecified, it will default\nto current server time, which means the scan will be scheduled to start\nimmediately."]
         #[serde(rename = "scheduleTime", default)]
-        pub schedule_time: Option<String>,
+        pub schedule_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Schedule {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1345,7 +1398,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1363,7 +1415,7 @@ pub mod schemas {
     )]
     pub struct StartScanRunRequest;
     impl ::field_selector::FieldSelector for StartScanRunRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -1380,7 +1432,7 @@ pub mod schemas {
     )]
     pub struct StopScanRunRequest;
     impl ::field_selector::FieldSelector for StopScanRunRequest {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -1397,10 +1449,10 @@ pub mod schemas {
     pub struct ViolatingResource {
         #[doc = "The MIME type of this resource."]
         #[serde(rename = "contentType", default)]
-        pub content_type: Option<String>,
+        pub content_type: ::std::option::Option<String>,
         #[doc = "URL of this violating resource."]
         #[serde(rename = "resourceUrl", default)]
-        pub resource_url: Option<String>,
+        pub resource_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ViolatingResource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1409,7 +1461,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1427,10 +1478,10 @@ pub mod schemas {
     pub struct VulnerableHeaders {
         #[doc = "List of vulnerable headers."]
         #[serde(rename = "headers", default)]
-        pub headers: Option<Vec<crate::schemas::Header>>,
+        pub headers: ::std::option::Option<Vec<crate::schemas::Header>>,
         #[doc = "List of missing headers."]
         #[serde(rename = "missingHeaders", default)]
-        pub missing_headers: Option<Vec<crate::schemas::Header>>,
+        pub missing_headers: ::std::option::Option<Vec<crate::schemas::Header>>,
     }
     impl ::field_selector::FieldSelector for VulnerableHeaders {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1439,7 +1490,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1457,7 +1507,7 @@ pub mod schemas {
     pub struct VulnerableParameters {
         #[doc = "The vulnerable parameter names."]
         #[serde(rename = "parameterNames", default)]
-        pub parameter_names: Option<Vec<String>>,
+        pub parameter_names: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for VulnerableParameters {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1466,7 +1516,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1571,6 +1620,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for XssAttackVector {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1586,16 +1644,16 @@ pub mod schemas {
     pub struct Xss {
         #[doc = "The attack vector of the payload triggering this XSS."]
         #[serde(rename = "attackVector", default)]
-        pub attack_vector: Option<crate::schemas::XssAttackVector>,
+        pub attack_vector: ::std::option::Option<crate::schemas::XssAttackVector>,
         #[doc = "An error message generated by a javascript breakage."]
         #[serde(rename = "errorMessage", default)]
-        pub error_message: Option<String>,
+        pub error_message: ::std::option::Option<String>,
         #[doc = "Stack traces leading to the point where the XSS occurred."]
         #[serde(rename = "stackTraces", default)]
-        pub stack_traces: Option<Vec<String>>,
+        pub stack_traces: ::std::option::Option<Vec<String>>,
         #[doc = "The reproduction url for the seeding POST request of a Stored XSS."]
         #[serde(rename = "storedXssSeedingUrl", default)]
-        pub stored_xss_seeding_url: Option<String>,
+        pub stored_xss_seeding_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Xss {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1604,7 +1662,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -1659,6 +1716,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -1703,6 +1769,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -5056,6 +5131,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -5131,5 +5207,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

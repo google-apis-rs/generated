@@ -14,7 +14,7 @@ pub mod schemas {
     )]
     pub struct DeleteEventsResponse;
     impl ::field_selector::FieldSelector for DeleteEventsResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -31,16 +31,16 @@ pub mod schemas {
     pub struct ErrorContext {
         #[doc = "The HTTP request which was processed when the error was\ntriggered."]
         #[serde(rename = "httpRequest", default)]
-        pub http_request: Option<crate::schemas::HttpRequestContext>,
+        pub http_request: ::std::option::Option<crate::schemas::HttpRequestContext>,
         #[doc = "The location in the source code where the decision was made to\nreport the error, usually the place where it was logged.\nFor a logged exception this would be the source line where the\nexception is logged, usually close to the place where it was\ncaught."]
         #[serde(rename = "reportLocation", default)]
-        pub report_location: Option<crate::schemas::SourceLocation>,
+        pub report_location: ::std::option::Option<crate::schemas::SourceLocation>,
         #[doc = "Source code that was used to build the executable which has\ncaused the given error message."]
         #[serde(rename = "sourceReferences", default)]
-        pub source_references: Option<Vec<crate::schemas::SourceReference>>,
+        pub source_references: ::std::option::Option<Vec<crate::schemas::SourceReference>>,
         #[doc = "The user who caused or was affected by the crash.\nThis can be a user ID, an email address, or an arbitrary token that\nuniquely identifies the user.\nWhen sending an error report, leave this field empty if the user was not\nlogged in. In this case the\nError Reporting system will use other data, such as remote IP address, to\ndistinguish affected users. See `affected_users_count` in\n`ErrorGroupStats`."]
         #[serde(rename = "user", default)]
-        pub user: Option<String>,
+        pub user: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ErrorContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -49,7 +49,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -67,16 +66,16 @@ pub mod schemas {
     pub struct ErrorEvent {
         #[doc = "Data about the context in which the error occurred."]
         #[serde(rename = "context", default)]
-        pub context: Option<crate::schemas::ErrorContext>,
+        pub context: ::std::option::Option<crate::schemas::ErrorContext>,
         #[doc = "Time when the event occurred as provided in the error report.\nIf the report did not contain a timestamp, the time the error was received\nby the Error Reporting system is used."]
         #[serde(rename = "eventTime", default)]
-        pub event_time: Option<String>,
+        pub event_time: ::std::option::Option<String>,
         #[doc = "The stack trace that was reported or logged by the service."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
         #[doc = "The `ServiceContext` for which this error was reported."]
         #[serde(rename = "serviceContext", default)]
-        pub service_context: Option<crate::schemas::ServiceContext>,
+        pub service_context: ::std::option::Option<crate::schemas::ServiceContext>,
     }
     impl ::field_selector::FieldSelector for ErrorEvent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -85,7 +84,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -103,13 +101,13 @@ pub mod schemas {
     pub struct ErrorGroup {
         #[doc = "Group IDs are unique for a given project. If the same kind of error\noccurs in different service contexts, it will receive the same group ID."]
         #[serde(rename = "groupId", default)]
-        pub group_id: Option<String>,
+        pub group_id: ::std::option::Option<String>,
         #[doc = "The group resource name.\nExample: <code>projects/my-project-123/groups/my-groupid</code>"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Associated tracking issues."]
         #[serde(rename = "trackingIssues", default)]
-        pub tracking_issues: Option<Vec<crate::schemas::TrackingIssue>>,
+        pub tracking_issues: ::std::option::Option<Vec<crate::schemas::TrackingIssue>>,
     }
     impl ::field_selector::FieldSelector for ErrorGroup {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -118,7 +116,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -136,33 +133,33 @@ pub mod schemas {
     pub struct ErrorGroupStats {
         #[doc = "Service contexts with a non-zero error count for the given filter\ncriteria. This list can be truncated if multiple services are affected.\nRefer to `num_affected_services` for the total count."]
         #[serde(rename = "affectedServices", default)]
-        pub affected_services: Option<Vec<crate::schemas::ServiceContext>>,
+        pub affected_services: ::std::option::Option<Vec<crate::schemas::ServiceContext>>,
         #[doc = "Approximate number of affected users in the given group that\nmatch the filter criteria.\nUsers are distinguished by data in the `ErrorContext` of the\nindividual error events, such as their login name or their remote\nIP address in case of HTTP requests.\nThe number of affected users can be zero even if the number of\nerrors is non-zero if no data was provided from which the\naffected user could be deduced.\nUsers are counted based on data in the request\ncontext that was provided in the error report. If more users are\nimplicitly affected, such as due to a crash of the whole service,\nthis is not reflected here."]
         #[serde(rename = "affectedUsersCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub affected_users_count: Option<i64>,
+        pub affected_users_count: ::std::option::Option<i64>,
         #[doc = "Approximate total number of events in the given group that match\nthe filter criteria."]
         #[serde(rename = "count", default)]
         #[serde(with = "crate::parsed_string")]
-        pub count: Option<i64>,
+        pub count: ::std::option::Option<i64>,
         #[doc = "Approximate first occurrence that was ever seen for this group\nand which matches the given filter criteria, ignoring the\ntime_range that was specified in the request."]
         #[serde(rename = "firstSeenTime", default)]
-        pub first_seen_time: Option<String>,
+        pub first_seen_time: ::std::option::Option<String>,
         #[doc = "Group data that is independent of the filter criteria."]
         #[serde(rename = "group", default)]
-        pub group: Option<crate::schemas::ErrorGroup>,
+        pub group: ::std::option::Option<crate::schemas::ErrorGroup>,
         #[doc = "Approximate last occurrence that was ever seen for this group and\nwhich matches the given filter criteria, ignoring the time_range\nthat was specified in the request."]
         #[serde(rename = "lastSeenTime", default)]
-        pub last_seen_time: Option<String>,
+        pub last_seen_time: ::std::option::Option<String>,
         #[doc = "The total number of services with a non-zero error count for the given\nfilter criteria."]
         #[serde(rename = "numAffectedServices", default)]
-        pub num_affected_services: Option<i32>,
+        pub num_affected_services: ::std::option::Option<i32>,
         #[doc = "An arbitrary event that is chosen as representative for the whole group.\nThe representative event is intended to be used as a quick preview for\nthe whole group. Events in the group are usually sufficiently similar\nto each other such that showing an arbitrary representative provides\ninsight into the characteristics of the group as a whole."]
         #[serde(rename = "representative", default)]
-        pub representative: Option<crate::schemas::ErrorEvent>,
+        pub representative: ::std::option::Option<crate::schemas::ErrorEvent>,
         #[doc = "Approximate number of occurrences over time.\nTimed counts returned by ListGroups are guaranteed to be:\n\n* Inside the requested time interval\n* Non-overlapping, and\n* Ordered by ascending time."]
         #[serde(rename = "timedCounts", default)]
-        pub timed_counts: Option<Vec<crate::schemas::TimedCount>>,
+        pub timed_counts: ::std::option::Option<Vec<crate::schemas::TimedCount>>,
     }
     impl ::field_selector::FieldSelector for ErrorGroupStats {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -171,7 +168,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -189,22 +185,22 @@ pub mod schemas {
     pub struct HttpRequestContext {
         #[doc = "The type of HTTP request, such as `GET`, `POST`, etc."]
         #[serde(rename = "method", default)]
-        pub method: Option<String>,
+        pub method: ::std::option::Option<String>,
         #[doc = "The referrer information that is provided with the request."]
         #[serde(rename = "referrer", default)]
-        pub referrer: Option<String>,
+        pub referrer: ::std::option::Option<String>,
         #[doc = "The IP address from which the request originated.\nThis can be IPv4, IPv6, or a token which is derived from the\nIP address, depending on the data that has been provided\nin the error report."]
         #[serde(rename = "remoteIp", default)]
-        pub remote_ip: Option<String>,
+        pub remote_ip: ::std::option::Option<String>,
         #[doc = "The HTTP response status code for the request."]
         #[serde(rename = "responseStatusCode", default)]
-        pub response_status_code: Option<i32>,
+        pub response_status_code: ::std::option::Option<i32>,
         #[doc = "The URL of the request."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
         #[doc = "The user agent information that is provided with the request."]
         #[serde(rename = "userAgent", default)]
-        pub user_agent: Option<String>,
+        pub user_agent: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for HttpRequestContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -213,7 +209,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -231,13 +226,13 @@ pub mod schemas {
     pub struct ListEventsResponse {
         #[doc = "The error events which match the given request."]
         #[serde(rename = "errorEvents", default)]
-        pub error_events: Option<Vec<crate::schemas::ErrorEvent>>,
+        pub error_events: ::std::option::Option<Vec<crate::schemas::ErrorEvent>>,
         #[doc = "If non-empty, more results are available.\nPass this token, along with the same query parameters as the first\nrequest, to view the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The timestamp specifies the start time to which the request was restricted."]
         #[serde(rename = "timeRangeBegin", default)]
-        pub time_range_begin: Option<String>,
+        pub time_range_begin: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListEventsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -246,7 +241,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -264,13 +258,13 @@ pub mod schemas {
     pub struct ListGroupStatsResponse {
         #[doc = "The error group stats which match the given request."]
         #[serde(rename = "errorGroupStats", default)]
-        pub error_group_stats: Option<Vec<crate::schemas::ErrorGroupStats>>,
+        pub error_group_stats: ::std::option::Option<Vec<crate::schemas::ErrorGroupStats>>,
         #[doc = "If non-empty, more results are available.\nPass this token, along with the same query parameters as the first\nrequest, to view the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The timestamp specifies the start time to which the request was restricted.\nThe start time is set based on the requested time range. It may be adjusted\nto a later time if a project has exceeded the storage quota and older data\nhas been deleted."]
         #[serde(rename = "timeRangeBegin", default)]
-        pub time_range_begin: Option<String>,
+        pub time_range_begin: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListGroupStatsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -279,7 +273,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -297,7 +290,7 @@ pub mod schemas {
     )]
     pub struct ReportErrorEventResponse;
     impl ::field_selector::FieldSelector for ReportErrorEventResponse {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -314,16 +307,16 @@ pub mod schemas {
     pub struct ReportedErrorEvent {
         #[doc = "[Optional] A description of the context in which the error occurred."]
         #[serde(rename = "context", default)]
-        pub context: Option<crate::schemas::ErrorContext>,
+        pub context: ::std::option::Option<crate::schemas::ErrorContext>,
         #[doc = "[Optional] Time when the event occurred.\nIf not provided, the time when the event was received by the\nError Reporting system will be used."]
         #[serde(rename = "eventTime", default)]
-        pub event_time: Option<String>,
+        pub event_time: ::std::option::Option<String>,
         #[doc = "[Required] The error message.\nIf no `context.reportLocation` is provided, the message must contain a\nheader (typically consisting of the exception type name and an error\nmessage) and an exception stack trace in one of the supported programming\nlanguages and formats.\nSupported languages are Java, Python, JavaScript, Ruby, C#, PHP, and Go.\nSupported stack trace formats are:\n\n* **Java**: Must be the return value of\n  [`Throwable.printStackTrace()`](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29).\n* **Python**: Must be the return value of\n  [`traceback.format_exc()`](https://docs.python.org/2/library/traceback.html#traceback.format_exc).\n* **JavaScript**: Must be the value of\n  [`error.stack`](https://github.com/v8/v8/wiki/Stack-Trace-API) as returned\n  by V8.\n* **Ruby**: Must contain frames returned by\n  [`Exception.backtrace`](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-backtrace).\n* **C#**: Must be the return value of\n  [`Exception.ToString()`](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx).\n* **PHP**: Must start with `PHP (Notice|Parse error|Fatal error|Warning)`\n  and contain the result of\n  [`(string)$exception`](http://php.net/manual/en/exception.tostring.php).\n* **Go**: Must be the return value of\n  [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack)."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
         #[doc = "[Required] The service context in which this error has occurred."]
         #[serde(rename = "serviceContext", default)]
-        pub service_context: Option<crate::schemas::ServiceContext>,
+        pub service_context: ::std::option::Option<crate::schemas::ServiceContext>,
     }
     impl ::field_selector::FieldSelector for ReportedErrorEvent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -332,7 +325,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -350,13 +342,13 @@ pub mod schemas {
     pub struct ServiceContext {
         #[doc = "Type of the MonitoredResource. List of possible values:\nhttps://cloud.google.com/monitoring/api/resources\n\nValue is set automatically for incoming errors and must not be set when\nreporting errors."]
         #[serde(rename = "resourceType", default)]
-        pub resource_type: Option<String>,
+        pub resource_type: ::std::option::Option<String>,
         #[doc = "An identifier of the service, such as the name of the\nexecutable, job, or Google App Engine service name. This field is expected\nto have a low number of values that are relatively stable over time, as\nopposed to `version`, which can be changed whenever new code is deployed.\n\nContains the service name for error reports extracted from Google\nApp Engine logs or `default` if the App Engine default service is used."]
         #[serde(rename = "service", default)]
-        pub service: Option<String>,
+        pub service: ::std::option::Option<String>,
         #[doc = "Represents the source code version that the developer provided,\nwhich could represent a version label or a Git SHA-1 hash, for example.\nFor App Engine standard environment, the version is set to the version of\nthe app."]
         #[serde(rename = "version", default)]
-        pub version: Option<String>,
+        pub version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ServiceContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -365,7 +357,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -383,13 +374,13 @@ pub mod schemas {
     pub struct SourceLocation {
         #[doc = "The source code filename, which can include a truncated relative\npath, or a full path from a production machine."]
         #[serde(rename = "filePath", default)]
-        pub file_path: Option<String>,
+        pub file_path: ::std::option::Option<String>,
         #[doc = "Human-readable name of a function or method.\nThe value can include optional context like the class or package name.\nFor example, `my.package.MyClass.method` in case of Java."]
         #[serde(rename = "functionName", default)]
-        pub function_name: Option<String>,
+        pub function_name: ::std::option::Option<String>,
         #[doc = "1-based. 0 indicates that the line number is unknown."]
         #[serde(rename = "lineNumber", default)]
-        pub line_number: Option<i32>,
+        pub line_number: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for SourceLocation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -398,7 +389,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -416,10 +406,10 @@ pub mod schemas {
     pub struct SourceReference {
         #[doc = "Optional. A URI string identifying the repository.\nExample: \"https://github.com/GoogleCloudPlatform/kubernetes.git\""]
         #[serde(rename = "repository", default)]
-        pub repository: Option<String>,
+        pub repository: ::std::option::Option<String>,
         #[doc = "The canonical and persistent identifier of the deployed revision.\nExample (git): \"0035781c50ec7aa23385dc841529ce8a4b70db1b\""]
         #[serde(rename = "revisionId", default)]
-        pub revision_id: Option<String>,
+        pub revision_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SourceReference {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -428,7 +418,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -447,13 +436,13 @@ pub mod schemas {
         #[doc = "Approximate number of occurrences in the given time period."]
         #[serde(rename = "count", default)]
         #[serde(with = "crate::parsed_string")]
-        pub count: Option<i64>,
+        pub count: ::std::option::Option<i64>,
         #[doc = "End of the time period to which `count` refers (excluded)."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
         #[doc = "Start of the time period to which `count` refers (included)."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TimedCount {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -462,7 +451,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -480,7 +468,7 @@ pub mod schemas {
     pub struct TrackingIssue {
         #[doc = "A URL pointing to a related entry in an issue tracking system.\nExample: https://github.com/user/project/issues/4"]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TrackingIssue {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -489,7 +477,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -544,6 +531,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -588,6 +584,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -888,6 +893,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for ListTimeRangePeriod {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
             }
@@ -1503,6 +1517,15 @@ mod resources {
                         })
                     }
                 }
+                impl ::field_selector::FieldSelector for ListAlignment {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
+                    }
+                }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListOrder {
                     GroupOrderUnspecified,
@@ -1554,6 +1577,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for ListOrder {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1610,6 +1642,15 @@ mod resources {
                                 )))
                             }
                         })
+                    }
+                }
+                impl ::field_selector::FieldSelector for ListTimeRangePeriod {
+                    fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                        match selector.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => selector.push_str(","),
+                        }
+                        selector.push_str(ident);
                     }
                 }
             }
@@ -2665,6 +2706,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2740,5 +2782,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

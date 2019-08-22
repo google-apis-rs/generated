@@ -14,13 +14,13 @@ pub mod schemas {
     pub struct ArtifactObjects {
         #[doc = "Cloud Storage bucket and optional object path, in the form\n\"gs://bucket/path/to/somewhere/\". (see [Bucket Name\nRequirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).\n\nFiles in the workspace matching any path pattern will be uploaded to\nCloud Storage with this location as a prefix."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "Path globs used to match files in the build's workspace."]
         #[serde(rename = "paths", default)]
-        pub paths: Option<Vec<String>>,
+        pub paths: ::std::option::Option<Vec<String>>,
         #[doc = "Output only. Stores timing information for pushing all artifact objects."]
         #[serde(rename = "timing", default)]
-        pub timing: Option<crate::schemas::TimeSpan>,
+        pub timing: ::std::option::Option<crate::schemas::TimeSpan>,
     }
     impl ::field_selector::FieldSelector for ArtifactObjects {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -29,7 +29,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -47,10 +46,10 @@ pub mod schemas {
     pub struct ArtifactResult {
         #[doc = "The file hash of the artifact."]
         #[serde(rename = "fileHash", default)]
-        pub file_hash: Option<Vec<crate::schemas::FileHashes>>,
+        pub file_hash: ::std::option::Option<Vec<crate::schemas::FileHashes>>,
         #[doc = "The path of an artifact in a Google Cloud Storage bucket, with the\ngeneration number. For example,\n`gs://mybucket/path/to/output.jar#generation`."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ArtifactResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -59,7 +58,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -77,10 +75,10 @@ pub mod schemas {
     pub struct Artifacts {
         #[doc = "A list of images to be pushed upon the successful completion of all build\nsteps.\n\nThe images will be pushed using the builder service account's credentials.\n\nThe digests of the pushed images will be stored in the Build resource's\nresults field.\n\nIf any of the images fail to be pushed, the build is marked FAILURE."]
         #[serde(rename = "images", default)]
-        pub images: Option<Vec<String>>,
+        pub images: ::std::option::Option<Vec<String>>,
         #[doc = "A list of objects to be uploaded to Cloud Storage upon successful\ncompletion of all build steps.\n\nFiles in the workspace matching specified paths globs will be uploaded to\nthe specified Cloud Storage location using the builder service account's\ncredentials.\n\nThe location and generation of the uploaded objects will be stored in the\nBuild resource's results field.\n\nIf any objects fail to be pushed, the build is marked FAILURE."]
         #[serde(rename = "objects", default)]
-        pub objects: Option<crate::schemas::ArtifactObjects>,
+        pub objects: ::std::option::Option<crate::schemas::ArtifactObjects>,
     }
     impl ::field_selector::FieldSelector for Artifacts {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -89,7 +87,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -162,6 +159,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for BuildStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -177,70 +183,71 @@ pub mod schemas {
     pub struct Build {
         #[doc = "Artifacts produced by the build that should be uploaded upon\nsuccessful completion of all build steps."]
         #[serde(rename = "artifacts", default)]
-        pub artifacts: Option<crate::schemas::Artifacts>,
+        pub artifacts: ::std::option::Option<crate::schemas::Artifacts>,
         #[doc = "Output only. The ID of the `BuildTrigger` that triggered this build, if it\nwas triggered automatically."]
         #[serde(rename = "buildTriggerId", default)]
-        pub build_trigger_id: Option<String>,
+        pub build_trigger_id: ::std::option::Option<String>,
         #[doc = "Output only. Time at which the request to create the build was received."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. Time at which execution of the build was finished.\n\nThe difference between finish_time and start_time is the duration of the\nbuild's execution."]
         #[serde(rename = "finishTime", default)]
-        pub finish_time: Option<String>,
+        pub finish_time: ::std::option::Option<String>,
         #[doc = "Output only. Unique identifier of the build."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "A list of images to be pushed upon the successful completion of all build\nsteps.\n\nThe images are pushed using the builder service account's credentials.\n\nThe digests of the pushed images will be stored in the `Build` resource's\nresults field.\n\nIf any of the images fail to be pushed, the build status is marked\n`FAILURE`."]
         #[serde(rename = "images", default)]
-        pub images: Option<Vec<String>>,
+        pub images: ::std::option::Option<Vec<String>>,
         #[doc = "Output only. URL to logs for this build in Google Cloud Console."]
         #[serde(rename = "logUrl", default)]
-        pub log_url: Option<String>,
+        pub log_url: ::std::option::Option<String>,
         #[doc = "Google Cloud Storage bucket where logs should be written (see\n[Bucket Name\nRequirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).\nLogs file names will be of the format `${logs_bucket}/log-${build_id}.txt`."]
         #[serde(rename = "logsBucket", default)]
-        pub logs_bucket: Option<String>,
+        pub logs_bucket: ::std::option::Option<String>,
         #[doc = "Special options for this build."]
         #[serde(rename = "options", default)]
-        pub options: Option<crate::schemas::BuildOptions>,
+        pub options: ::std::option::Option<crate::schemas::BuildOptions>,
         #[doc = "Output only. ID of the project."]
         #[serde(rename = "projectId", default)]
-        pub project_id: Option<String>,
+        pub project_id: ::std::option::Option<String>,
         #[doc = "Output only. Results of the build."]
         #[serde(rename = "results", default)]
-        pub results: Option<crate::schemas::Results>,
+        pub results: ::std::option::Option<crate::schemas::Results>,
         #[doc = "Secrets to decrypt using Cloud Key Management Service."]
         #[serde(rename = "secrets", default)]
-        pub secrets: Option<Vec<crate::schemas::Secret>>,
+        pub secrets: ::std::option::Option<Vec<crate::schemas::Secret>>,
         #[doc = "The location of the source files to build."]
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::Source>,
+        pub source: ::std::option::Option<crate::schemas::Source>,
         #[doc = "Output only. A permanent fixed identifier for source."]
         #[serde(rename = "sourceProvenance", default)]
-        pub source_provenance: Option<crate::schemas::SourceProvenance>,
+        pub source_provenance: ::std::option::Option<crate::schemas::SourceProvenance>,
         #[doc = "Output only. Time at which execution of the build was started."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
         #[doc = "Output only. Status of the build."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::BuildStatus>,
+        pub status: ::std::option::Option<crate::schemas::BuildStatus>,
         #[doc = "Output only. Customer-readable message about the current status."]
         #[serde(rename = "statusDetail", default)]
-        pub status_detail: Option<String>,
+        pub status_detail: ::std::option::Option<String>,
         #[doc = "Required. The operations to be performed on the workspace."]
         #[serde(rename = "steps", default)]
-        pub steps: Option<Vec<crate::schemas::BuildStep>>,
+        pub steps: ::std::option::Option<Vec<crate::schemas::BuildStep>>,
         #[doc = "Substitutions data for `Build` resource."]
         #[serde(rename = "substitutions", default)]
-        pub substitutions: Option<::std::collections::BTreeMap<String, String>>,
+        pub substitutions: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Tags for annotation of a `Build`. These are not docker tags."]
         #[serde(rename = "tags", default)]
-        pub tags: Option<Vec<String>>,
+        pub tags: ::std::option::Option<Vec<String>>,
         #[doc = "Amount of time that this build should be allowed to run, to second\ngranularity. If this amount of time elapses, work on the build will cease\nand the build status will be `TIMEOUT`.\n\nDefault time is ten minutes."]
         #[serde(rename = "timeout", default)]
-        pub timeout: Option<String>,
+        pub timeout: ::std::option::Option<String>,
         #[doc = "Output only. Stores timing information for phases of the build. Valid keys\nare:\n\n* BUILD: time to execute all build steps\n* PUSH: time to push all specified images.\n* FETCHSOURCE: time to fetch source.\n\nIf the build does not specify source or images,\nthese keys will not be included."]
         #[serde(rename = "timing", default)]
-        pub timing: Option<::std::collections::BTreeMap<String, crate::schemas::TimeSpan>>,
+        pub timing:
+            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::TimeSpan>>,
     }
     impl ::field_selector::FieldSelector for Build {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -249,7 +256,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -267,7 +273,7 @@ pub mod schemas {
     pub struct BuildOperationMetadata {
         #[doc = "The build that the operation is tracking."]
         #[serde(rename = "build", default)]
-        pub build: Option<crate::schemas::Build>,
+        pub build: ::std::option::Option<crate::schemas::Build>,
     }
     impl ::field_selector::FieldSelector for BuildOperationMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -276,7 +282,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -329,6 +334,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for BuildOptionsLogStreamingOption {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BuildOptionsLogging {
         #[doc = "The service determines the logging mode. The default is `LEGACY`. Do not\nrely on the default logging behavior as it may change in the future."]
@@ -377,6 +391,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for BuildOptionsLogging {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -429,6 +452,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for BuildOptionsMachineType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BuildOptionsRequestedVerifyOption {
         #[doc = "Not a verifiable build. (default)"]
@@ -473,6 +505,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for BuildOptionsRequestedVerifyOption {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -522,6 +563,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for BuildOptionsSourceProvenanceHashItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BuildOptionsSubstitutionOption {
         #[doc = "Fails the build if error in substitutions checks, like missing\na substitution in the template or in the map."]
@@ -568,6 +618,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for BuildOptionsSubstitutionOption {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -584,38 +643,41 @@ pub mod schemas {
         #[doc = "Requested disk size for the VM that runs the build. Note that this is *NOT*\n\"disk free\"; some of the space will be used by the operating system and\nbuild utilities. Also note that this is the minimum disk size that will be\nallocated for the build -- the build may run with a larger disk than\nrequested. At present, the maximum disk size is 1000GB; builds that request\nmore than the maximum are rejected with an error."]
         #[serde(rename = "diskSizeGb", default)]
         #[serde(with = "crate::parsed_string")]
-        pub disk_size_gb: Option<i64>,
+        pub disk_size_gb: ::std::option::Option<i64>,
         #[doc = "A list of global environment variable definitions that will exist for all\nbuild steps in this build. If a variable is defined in both globally and in\na build step, the variable will use the build step value.\n\nThe elements are of the form \"KEY=VALUE\" for the environment variable \"KEY\"\nbeing given the value \"VALUE\"."]
         #[serde(rename = "env", default)]
-        pub env: Option<Vec<String>>,
+        pub env: ::std::option::Option<Vec<String>>,
         #[doc = "Option to define build log streaming behavior to Google Cloud\nStorage."]
         #[serde(rename = "logStreamingOption", default)]
-        pub log_streaming_option: Option<crate::schemas::BuildOptionsLogStreamingOption>,
+        pub log_streaming_option:
+            ::std::option::Option<crate::schemas::BuildOptionsLogStreamingOption>,
         #[doc = "Option to specify the logging mode, which determines where the logs are\nstored."]
         #[serde(rename = "logging", default)]
-        pub logging: Option<crate::schemas::BuildOptionsLogging>,
+        pub logging: ::std::option::Option<crate::schemas::BuildOptionsLogging>,
         #[doc = "Compute Engine machine type on which to run the build."]
         #[serde(rename = "machineType", default)]
-        pub machine_type: Option<crate::schemas::BuildOptionsMachineType>,
+        pub machine_type: ::std::option::Option<crate::schemas::BuildOptionsMachineType>,
         #[doc = "Requested verifiability options."]
         #[serde(rename = "requestedVerifyOption", default)]
-        pub requested_verify_option: Option<crate::schemas::BuildOptionsRequestedVerifyOption>,
+        pub requested_verify_option:
+            ::std::option::Option<crate::schemas::BuildOptionsRequestedVerifyOption>,
         #[doc = "A list of global environment variables, which are encrypted using a Cloud\nKey Management Service crypto key. These values must be specified in the\nbuild's `Secret`. These variables will be available to all build steps\nin this build."]
         #[serde(rename = "secretEnv", default)]
-        pub secret_env: Option<Vec<String>>,
+        pub secret_env: ::std::option::Option<Vec<String>>,
         #[doc = "Requested hash for SourceProvenance."]
         #[serde(rename = "sourceProvenanceHash", default)]
         pub source_provenance_hash:
-            Option<Vec<crate::schemas::BuildOptionsSourceProvenanceHashItems>>,
+            ::std::option::Option<Vec<crate::schemas::BuildOptionsSourceProvenanceHashItems>>,
         #[doc = "Option to specify behavior when there is an error in the substitution\nchecks."]
         #[serde(rename = "substitutionOption", default)]
-        pub substitution_option: Option<crate::schemas::BuildOptionsSubstitutionOption>,
+        pub substitution_option:
+            ::std::option::Option<crate::schemas::BuildOptionsSubstitutionOption>,
         #[doc = "Global list of volumes to mount for ALL build steps\n\nEach volume is created as an empty volume prior to starting the build\nprocess. Upon completion of the build, volumes and their contents are\ndiscarded. Global volume names and paths cannot conflict with the volumes\ndefined a build step.\n\nUsing a global volume in a build with only one step is not valid as\nit is indicative of a build request with an incorrect configuration."]
         #[serde(rename = "volumes", default)]
-        pub volumes: Option<Vec<crate::schemas::Volume>>,
+        pub volumes: ::std::option::Option<Vec<crate::schemas::Volume>>,
         #[doc = "Option to specify a `WorkerPool` for the build. User specifies the pool\nwith the format \"[WORKERPOOL_PROJECT_ID]/[WORKERPOOL_NAME]\".\nThis is an experimental field."]
         #[serde(rename = "workerPool", default)]
-        pub worker_pool: Option<String>,
+        pub worker_pool: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BuildOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -624,7 +686,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -697,6 +758,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for BuildStepStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -712,43 +782,43 @@ pub mod schemas {
     pub struct BuildStep {
         #[doc = "A list of arguments that will be presented to the step when it is started.\n\nIf the image used to run the step's container has an entrypoint, the `args`\nare used as arguments to that entrypoint. If the image does not define\nan entrypoint, the first element in args is used as the entrypoint,\nand the remainder will be used as arguments."]
         #[serde(rename = "args", default)]
-        pub args: Option<Vec<String>>,
+        pub args: ::std::option::Option<Vec<String>>,
         #[doc = "Working directory to use when running this step's container.\n\nIf this value is a relative path, it is relative to the build's working\ndirectory. If this value is absolute, it may be outside the build's working\ndirectory, in which case the contents of the path may not be persisted\nacross build step executions, unless a `volume` for that path is specified.\n\nIf the build specifies a `RepoSource` with `dir` and a step with a `dir`,\nwhich specifies an absolute path, the `RepoSource` `dir` is ignored for\nthe step's execution."]
         #[serde(rename = "dir", default)]
-        pub dir: Option<String>,
+        pub dir: ::std::option::Option<String>,
         #[doc = "Entrypoint to be used instead of the build step image's default entrypoint.\nIf unset, the image's default entrypoint is used."]
         #[serde(rename = "entrypoint", default)]
-        pub entrypoint: Option<String>,
+        pub entrypoint: ::std::option::Option<String>,
         #[doc = "A list of environment variable definitions to be used when running a step.\n\nThe elements are of the form \"KEY=VALUE\" for the environment variable \"KEY\"\nbeing given the value \"VALUE\"."]
         #[serde(rename = "env", default)]
-        pub env: Option<Vec<String>>,
+        pub env: ::std::option::Option<Vec<String>>,
         #[doc = "Unique identifier for this build step, used in `wait_for` to\nreference this build step as a dependency."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Required. The name of the container image that will run this particular\nbuild step.\n\nIf the image is available in the host's Docker daemon's cache, it\nwill be run directly. If not, the host will attempt to pull the image\nfirst, using the builder service account's credentials if necessary.\n\nThe Docker daemon's cache will already have the latest versions of all of\nthe officially supported build steps\n([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)).\nThe Docker daemon will also have cached many of the layers for some popular\nimages, like \"ubuntu\", \"debian\", but they will be refreshed at the time you\nattempt to use them.\n\nIf you built an image in a previous build step, it will be stored in the\nhost's Docker daemon's cache and is available to use as the name for a\nlater build step."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Output only. Stores timing information for pulling this build step's\nbuilder image only."]
         #[serde(rename = "pullTiming", default)]
-        pub pull_timing: Option<crate::schemas::TimeSpan>,
+        pub pull_timing: ::std::option::Option<crate::schemas::TimeSpan>,
         #[doc = "A list of environment variables which are encrypted using a Cloud Key\nManagement Service crypto key. These values must be specified in the\nbuild's `Secret`."]
         #[serde(rename = "secretEnv", default)]
-        pub secret_env: Option<Vec<String>>,
+        pub secret_env: ::std::option::Option<Vec<String>>,
         #[doc = "Output only. Status of the build step. At this time, build step status is\nonly updated on build completion; step status is not updated in real-time\nas the build progresses."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::BuildStepStatus>,
+        pub status: ::std::option::Option<crate::schemas::BuildStepStatus>,
         #[doc = "Time limit for executing this build step. If not defined, the step has no\ntime limit and will be allowed to continue to run until either it completes\nor the build itself times out."]
         #[serde(rename = "timeout", default)]
-        pub timeout: Option<String>,
+        pub timeout: ::std::option::Option<String>,
         #[doc = "Output only. Stores timing information for executing this build step."]
         #[serde(rename = "timing", default)]
-        pub timing: Option<crate::schemas::TimeSpan>,
+        pub timing: ::std::option::Option<crate::schemas::TimeSpan>,
         #[doc = "List of volumes to mount into the build step.\n\nEach volume is created as an empty volume prior to execution of the\nbuild step. Upon completion of the build, volumes and their contents are\ndiscarded.\n\nUsing a named volume in only one step is not valid as it is indicative\nof a build request with an incorrect configuration."]
         #[serde(rename = "volumes", default)]
-        pub volumes: Option<Vec<crate::schemas::Volume>>,
+        pub volumes: ::std::option::Option<Vec<crate::schemas::Volume>>,
         #[doc = "The ID(s) of the step(s) that this build step depends on.\nThis build step will not start until all the build steps in `wait_for`\nhave completed successfully. If `wait_for` is empty, this build step will\nstart when all previous build steps in the `Build.Steps` list have\ncompleted successfully."]
         #[serde(rename = "waitFor", default)]
-        pub wait_for: Option<Vec<String>>,
+        pub wait_for: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for BuildStep {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -757,7 +827,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -775,13 +844,13 @@ pub mod schemas {
     pub struct BuiltImage {
         #[doc = "Docker Registry 2.0 digest."]
         #[serde(rename = "digest", default)]
-        pub digest: Option<String>,
+        pub digest: ::std::option::Option<String>,
         #[doc = "Name used to push the container image to Google Container Registry, as\npresented to `docker push`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Output only. Stores timing information for pushing the specified image."]
         #[serde(rename = "pushTiming", default)]
-        pub push_timing: Option<crate::schemas::TimeSpan>,
+        pub push_timing: ::std::option::Option<crate::schemas::TimeSpan>,
     }
     impl ::field_selector::FieldSelector for BuiltImage {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -790,7 +859,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -808,7 +876,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -825,7 +893,7 @@ pub mod schemas {
     pub struct FileHashes {
         #[doc = "Collection of file hashes."]
         #[serde(rename = "fileHash", default)]
-        pub file_hash: Option<Vec<crate::schemas::Hash>>,
+        pub file_hash: ::std::option::Option<Vec<crate::schemas::Hash>>,
     }
     impl ::field_selector::FieldSelector for FileHashes {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -834,7 +902,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -887,6 +954,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for HashType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -902,10 +978,10 @@ pub mod schemas {
     pub struct Hash {
         #[doc = "The type of hash that was performed."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::HashType>,
+        pub r#type: ::std::option::Option<crate::schemas::HashType>,
         #[doc = "The hash value."]
         #[serde(rename = "value", default)]
-        pub value: Option<Vec<u8>>,
+        pub value: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for Hash {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -914,7 +990,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -932,7 +1007,7 @@ pub mod schemas {
     pub struct ListWorkerPoolsResponse {
         #[doc = "`WorkerPools` for the project."]
         #[serde(rename = "workerPools", default)]
-        pub worker_pools: Option<Vec<crate::schemas::WorkerPool>>,
+        pub worker_pools: ::std::option::Option<Vec<crate::schemas::WorkerPool>>,
     }
     impl ::field_selector::FieldSelector for ListWorkerPoolsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -941,7 +1016,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -959,13 +1033,13 @@ pub mod schemas {
     pub struct Network {
         #[doc = "Network on which the workers are created.\n\"default\" network is used if empty."]
         #[serde(rename = "network", default)]
-        pub network: Option<String>,
+        pub network: ::std::option::Option<String>,
         #[doc = "Project id containing the defined network and subnetwork. For a peered VPC,\nthis will be the same as the project_id in which the workers are created.\nFor a shared VPC, this will be the project sharing the network with the\nproject_id project in which workers will be created. For custom workers\nwith no VPC, this will be the same as project_id."]
         #[serde(rename = "projectId", default)]
-        pub project_id: Option<String>,
+        pub project_id: ::std::option::Option<String>,
         #[doc = "Subnetwork on which the workers are created.\n\"default\" subnetwork is used if empty."]
         #[serde(rename = "subnetwork", default)]
-        pub subnetwork: Option<String>,
+        pub subnetwork: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Network {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -974,7 +1048,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -992,22 +1065,22 @@ pub mod schemas {
     pub struct RepoSource {
         #[doc = "Name of the branch to build."]
         #[serde(rename = "branchName", default)]
-        pub branch_name: Option<String>,
+        pub branch_name: ::std::option::Option<String>,
         #[doc = "Explicit commit SHA to build."]
         #[serde(rename = "commitSha", default)]
-        pub commit_sha: Option<String>,
+        pub commit_sha: ::std::option::Option<String>,
         #[doc = "Directory, relative to the source root, in which to run the build.\n\nThis must be a relative path. If a step's `dir` is specified and is an\nabsolute path, this value is ignored for that step's execution."]
         #[serde(rename = "dir", default)]
-        pub dir: Option<String>,
+        pub dir: ::std::option::Option<String>,
         #[doc = "ID of the project that owns the Cloud Source Repository. If omitted, the\nproject ID requesting the build is assumed."]
         #[serde(rename = "projectId", default)]
-        pub project_id: Option<String>,
+        pub project_id: ::std::option::Option<String>,
         #[doc = "Name of the Cloud Source Repository. If omitted, the name \"default\" is\nassumed."]
         #[serde(rename = "repoName", default)]
-        pub repo_name: Option<String>,
+        pub repo_name: ::std::option::Option<String>,
         #[doc = "Name of the tag to build."]
         #[serde(rename = "tagName", default)]
-        pub tag_name: Option<String>,
+        pub tag_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RepoSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1016,7 +1089,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1034,23 +1106,23 @@ pub mod schemas {
     pub struct Results {
         #[doc = "Path to the artifact manifest. Only populated when artifacts are uploaded."]
         #[serde(rename = "artifactManifest", default)]
-        pub artifact_manifest: Option<String>,
+        pub artifact_manifest: ::std::option::Option<String>,
         #[doc = "Time to push all non-container artifacts."]
         #[serde(rename = "artifactTiming", default)]
-        pub artifact_timing: Option<crate::schemas::TimeSpan>,
+        pub artifact_timing: ::std::option::Option<crate::schemas::TimeSpan>,
         #[doc = "List of build step digests, in the order corresponding to build step\nindices."]
         #[serde(rename = "buildStepImages", default)]
-        pub build_step_images: Option<Vec<String>>,
+        pub build_step_images: ::std::option::Option<Vec<String>>,
         #[doc = "List of build step outputs, produced by builder images, in the order\ncorresponding to build step indices.\n\n[Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders)\ncan produce this output by writing to `$BUILDER_OUTPUT/output`.\nOnly the first 4KB of data is stored."]
         #[serde(rename = "buildStepOutputs", default)]
-        pub build_step_outputs: Option<Vec<Vec<u8>>>,
+        pub build_step_outputs: ::std::option::Option<Vec<crate::bytes::Bytes>>,
         #[doc = "Container images that were built as a part of the build."]
         #[serde(rename = "images", default)]
-        pub images: Option<Vec<crate::schemas::BuiltImage>>,
+        pub images: ::std::option::Option<Vec<crate::schemas::BuiltImage>>,
         #[doc = "Number of artifacts uploaded. Only populated when artifacts are uploaded."]
         #[serde(rename = "numArtifacts", default)]
         #[serde(with = "crate::parsed_string")]
-        pub num_artifacts: Option<i64>,
+        pub num_artifacts: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for Results {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1059,7 +1131,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1077,10 +1148,11 @@ pub mod schemas {
     pub struct Secret {
         #[doc = "Cloud KMS key name to use to decrypt these envs."]
         #[serde(rename = "kmsKeyName", default)]
-        pub kms_key_name: Option<String>,
+        pub kms_key_name: ::std::option::Option<String>,
         #[doc = "Map of environment variable name to its encrypted value.\n\nSecret environment variables must be unique across all of a build's\nsecrets, and must be used by at least one build step. Values can be at most\n64 KB in size. There can be at most 100 secret values across all of a\nbuild's secrets."]
         #[serde(rename = "secretEnv", default)]
-        pub secret_env: Option<::std::collections::BTreeMap<String, Vec<u8>>>,
+        pub secret_env:
+            ::std::option::Option<::std::collections::BTreeMap<String, crate::bytes::Bytes>>,
     }
     impl ::field_selector::FieldSelector for Secret {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1089,7 +1161,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1107,10 +1178,10 @@ pub mod schemas {
     pub struct Source {
         #[doc = "If provided, get the source from this location in a Cloud Source\nRepository."]
         #[serde(rename = "repoSource", default)]
-        pub repo_source: Option<crate::schemas::RepoSource>,
+        pub repo_source: ::std::option::Option<crate::schemas::RepoSource>,
         #[doc = "If provided, get the source from this location in Google Cloud Storage."]
         #[serde(rename = "storageSource", default)]
-        pub storage_source: Option<crate::schemas::StorageSource>,
+        pub storage_source: ::std::option::Option<crate::schemas::StorageSource>,
     }
     impl ::field_selector::FieldSelector for Source {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1119,7 +1190,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1137,13 +1207,14 @@ pub mod schemas {
     pub struct SourceProvenance {
         #[doc = "Output only. Hash(es) of the build source, which can be used to verify that\nthe original source integrity was maintained in the build. Note that\n`FileHashes` will only be populated if `BuildOptions` has requested a\n`SourceProvenanceHash`.\n\nThe keys to this map are file paths used as build source and the values\ncontain the hash values for those files.\n\nIf the build source came in a single package such as a gzipped tarfile\n(`.tar.gz`), the `FileHash` will be for the single path to that file."]
         #[serde(rename = "fileHashes", default)]
-        pub file_hashes: Option<::std::collections::BTreeMap<String, crate::schemas::FileHashes>>,
+        pub file_hashes:
+            ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::FileHashes>>,
         #[doc = "A copy of the build's `source.repo_source`, if exists, with any\nrevisions resolved."]
         #[serde(rename = "resolvedRepoSource", default)]
-        pub resolved_repo_source: Option<crate::schemas::RepoSource>,
+        pub resolved_repo_source: ::std::option::Option<crate::schemas::RepoSource>,
         #[doc = "A copy of the build's `source.storage_source`, if exists, with any\ngenerations resolved."]
         #[serde(rename = "resolvedStorageSource", default)]
-        pub resolved_storage_source: Option<crate::schemas::StorageSource>,
+        pub resolved_storage_source: ::std::option::Option<crate::schemas::StorageSource>,
     }
     impl ::field_selector::FieldSelector for SourceProvenance {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1152,7 +1223,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1170,14 +1240,14 @@ pub mod schemas {
     pub struct StorageSource {
         #[doc = "Google Cloud Storage bucket containing the source (see\n[Bucket Name\nRequirements](https://cloud.google.com/storage/docs/bucket-naming#requirements))."]
         #[serde(rename = "bucket", default)]
-        pub bucket: Option<String>,
+        pub bucket: ::std::option::Option<String>,
         #[doc = "Google Cloud Storage generation for the object. If the generation is\nomitted, the latest generation will be used."]
         #[serde(rename = "generation", default)]
         #[serde(with = "crate::parsed_string")]
-        pub generation: Option<i64>,
+        pub generation: ::std::option::Option<i64>,
         #[doc = "Google Cloud Storage object containing the source.\n\nThis object must be a gzipped archive file (`.tar.gz`) containing source to\nbuild."]
         #[serde(rename = "object", default)]
-        pub object: Option<String>,
+        pub object: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for StorageSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1186,7 +1256,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1204,10 +1273,10 @@ pub mod schemas {
     pub struct TimeSpan {
         #[doc = "End of time span."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
         #[doc = "Start of time span."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TimeSpan {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1216,7 +1285,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1234,10 +1302,10 @@ pub mod schemas {
     pub struct Volume {
         #[doc = "Name of the volume to mount.\n\nVolume names must be unique per build step and must be valid names for\nDocker volumes. Each named volume must be used by at least two build steps."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Path at which to mount the volume.\n\nPaths must be absolute and cannot conflict with other volume paths on the\nsame build step or with certain reserved volume paths."]
         #[serde(rename = "path", default)]
-        pub path: Option<String>,
+        pub path: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Volume {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1246,7 +1314,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1265,16 +1332,16 @@ pub mod schemas {
         #[doc = "Size of the disk attached to the worker, in GB.\nSee https://cloud.google.com/compute/docs/disks/\nIf `0` is specified, Cloud Build will use a standard disk size.\n`disk_size` is overridden if you specify a different disk size in\n`build_options`. In this case, a VM with a disk size specified in the\n`build_options` will be created on demand at build time. For more\ninformation see\nhttps://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.builds#buildoptions"]
         #[serde(rename = "diskSizeGb", default)]
         #[serde(with = "crate::parsed_string")]
-        pub disk_size_gb: Option<i64>,
+        pub disk_size_gb: ::std::option::Option<i64>,
         #[doc = "Machine Type of the worker, such as n1-standard-1.\nSee https://cloud.google.com/compute/docs/machine-types.\nIf left blank, Cloud Build will use a standard unspecified machine to\ncreate the worker pool.\n`machine_type` is overridden if you specify a different machine type in\n`build_options`. In this case, the VM specified in the `build_options`\nwill be created on demand at build time. For more information see\nhttps://cloud.google.com/cloud-build/docs/speeding-up-builds#using_custom_virtual_machine_sizes"]
         #[serde(rename = "machineType", default)]
-        pub machine_type: Option<String>,
+        pub machine_type: ::std::option::Option<String>,
         #[doc = "The network definition used to create the worker.\nIf this section is left empty, the workers will be created in\nWorkerPool.project_id on the default network."]
         #[serde(rename = "network", default)]
-        pub network: Option<crate::schemas::Network>,
+        pub network: ::std::option::Option<crate::schemas::Network>,
         #[doc = "The tag applied to the worker, and the same tag used by the firewall rule.\nIt is used to identify the Cloud Build workers among other VMs.\nThe default value for tag is `worker`."]
         #[serde(rename = "tag", default)]
-        pub tag: Option<String>,
+        pub tag: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for WorkerConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1283,7 +1350,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1337,6 +1403,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for WorkerPoolRegionsItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1397,6 +1472,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for WorkerPoolStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1412,35 +1496,35 @@ pub mod schemas {
     pub struct WorkerPool {
         #[doc = "Output only. Time at which the request to create the `WorkerPool` was\nreceived."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. Time at which the request to delete the `WorkerPool` was\nreceived."]
         #[serde(rename = "deleteTime", default)]
-        pub delete_time: Option<String>,
+        pub delete_time: ::std::option::Option<String>,
         #[doc = "User-defined name of the `WorkerPool`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The project ID of the GCP project for which the `WorkerPool` is created."]
         #[serde(rename = "projectId", default)]
-        pub project_id: Option<String>,
+        pub project_id: ::std::option::Option<String>,
         #[doc = "List of regions to create the `WorkerPool`. Regions can't be empty.\nIf Cloud Build adds a new GCP region in the future, the existing\n`WorkerPool` will not be enabled in the new region automatically;\nyou must add the new region to the `regions` field to enable the\n`WorkerPool` in that region."]
         #[serde(rename = "regions", default)]
-        pub regions: Option<Vec<crate::schemas::WorkerPoolRegionsItems>>,
+        pub regions: ::std::option::Option<Vec<crate::schemas::WorkerPoolRegionsItems>>,
         #[doc = "Output only. The service account used to manage the `WorkerPool`. The\nservice account must have the Compute Instance Admin (Beta) permission at\nthe project level."]
         #[serde(rename = "serviceAccountEmail", default)]
-        pub service_account_email: Option<String>,
+        pub service_account_email: ::std::option::Option<String>,
         #[doc = "Output only. WorkerPool Status."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::WorkerPoolStatus>,
+        pub status: ::std::option::Option<crate::schemas::WorkerPoolStatus>,
         #[doc = "Output only. Time at which the request to update the `WorkerPool` was\nreceived."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
         #[doc = "Configuration to be used for a creating workers in the `WorkerPool`."]
         #[serde(rename = "workerConfig", default)]
-        pub worker_config: Option<crate::schemas::WorkerConfig>,
+        pub worker_config: ::std::option::Option<crate::schemas::WorkerConfig>,
         #[doc = "Total number of workers to be created across all requested regions."]
         #[serde(rename = "workerCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub worker_count: Option<i64>,
+        pub worker_count: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for WorkerPool {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1449,7 +1533,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -1504,6 +1587,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -1548,6 +1640,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -2799,6 +2900,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2874,5 +2976,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

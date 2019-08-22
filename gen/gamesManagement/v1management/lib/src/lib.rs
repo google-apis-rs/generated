@@ -14,10 +14,10 @@ pub mod schemas {
     pub struct AchievementResetAllResponse {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#achievementResetAllResponse."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The achievement reset results."]
         #[serde(rename = "results", default)]
-        pub results: Option<Vec<crate::schemas::AchievementResetResponse>>,
+        pub results: ::std::option::Option<Vec<crate::schemas::AchievementResetResponse>>,
     }
     impl ::field_selector::FieldSelector for AchievementResetAllResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -26,7 +26,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -44,10 +43,10 @@ pub mod schemas {
     pub struct AchievementResetMultipleForAllRequest {
         #[doc = "The IDs of achievements to reset."]
         #[serde(rename = "achievement_ids", default)]
-        pub achievement_ids: Option<Vec<String>>,
+        pub achievement_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#achievementResetMultipleForAllRequest."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AchievementResetMultipleForAllRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -56,7 +55,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -74,16 +72,16 @@ pub mod schemas {
     pub struct AchievementResetResponse {
         #[doc = "The current state of the achievement. This is the same as the initial state of the achievement.\nPossible values are:\n\n* \"HIDDEN\"- Achievement is hidden. \n* \"REVEALED\" - Achievement is revealed. \n* \"UNLOCKED\" - Achievement is unlocked."]
         #[serde(rename = "currentState", default)]
-        pub current_state: Option<String>,
+        pub current_state: ::std::option::Option<String>,
         #[doc = "The ID of an achievement for which player state has been updated."]
         #[serde(rename = "definitionId", default)]
-        pub definition_id: Option<String>,
+        pub definition_id: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#achievementResetResponse."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Flag to indicate if the requested update actually occurred."]
         #[serde(rename = "updateOccurred", default)]
-        pub update_occurred: Option<bool>,
+        pub update_occurred: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for AchievementResetResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -92,7 +90,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -110,10 +107,10 @@ pub mod schemas {
     pub struct EventsResetMultipleForAllRequest {
         #[doc = "The IDs of events to reset."]
         #[serde(rename = "event_ids", default)]
-        pub event_ids: Option<Vec<String>>,
+        pub event_ids: ::std::option::Option<Vec<String>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#eventsResetMultipleForAllRequest."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EventsResetMultipleForAllRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -122,7 +119,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -140,11 +136,11 @@ pub mod schemas {
     pub struct GamesPlayedResource {
         #[doc = "True if the player was auto-matched with the currently authenticated user."]
         #[serde(rename = "autoMatched", default)]
-        pub auto_matched: Option<bool>,
+        pub auto_matched: ::std::option::Option<bool>,
         #[doc = "The last time the player played the game in milliseconds since the epoch in UTC."]
         #[serde(rename = "timeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub time_millis: Option<i64>,
+        pub time_millis: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for GamesPlayedResource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -153,7 +149,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -172,17 +167,17 @@ pub mod schemas {
         #[doc = "The current number of experience points for the player."]
         #[serde(rename = "currentExperiencePoints", default)]
         #[serde(with = "crate::parsed_string")]
-        pub current_experience_points: Option<i64>,
+        pub current_experience_points: ::std::option::Option<i64>,
         #[doc = "The current level of the player."]
         #[serde(rename = "currentLevel", default)]
-        pub current_level: Option<crate::schemas::GamesPlayerLevelResource>,
+        pub current_level: ::std::option::Option<crate::schemas::GamesPlayerLevelResource>,
         #[doc = "The timestamp when the player was leveled up, in millis since Unix epoch UTC."]
         #[serde(rename = "lastLevelUpTimestampMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub last_level_up_timestamp_millis: Option<i64>,
+        pub last_level_up_timestamp_millis: ::std::option::Option<i64>,
         #[doc = "The next level of the player. If the current level is the maximum level, this should be same as the current level."]
         #[serde(rename = "nextLevel", default)]
-        pub next_level: Option<crate::schemas::GamesPlayerLevelResource>,
+        pub next_level: ::std::option::Option<crate::schemas::GamesPlayerLevelResource>,
     }
     impl ::field_selector::FieldSelector for GamesPlayerExperienceInfoResource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -191,7 +186,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -209,15 +203,15 @@ pub mod schemas {
     pub struct GamesPlayerLevelResource {
         #[doc = "The level for the user."]
         #[serde(rename = "level", default)]
-        pub level: Option<i32>,
+        pub level: ::std::option::Option<i32>,
         #[doc = "The maximum experience points for this level."]
         #[serde(rename = "maxExperiencePoints", default)]
         #[serde(with = "crate::parsed_string")]
-        pub max_experience_points: Option<i64>,
+        pub max_experience_points: ::std::option::Option<i64>,
         #[doc = "The minimum experience points for this level."]
         #[serde(rename = "minExperiencePoints", default)]
         #[serde(with = "crate::parsed_string")]
-        pub min_experience_points: Option<i64>,
+        pub min_experience_points: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for GamesPlayerLevelResource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -226,7 +220,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -245,13 +238,13 @@ pub mod schemas {
         #[doc = "The time this player was hidden."]
         #[serde(rename = "hiddenTimeMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub hidden_time_millis: Option<i64>,
+        pub hidden_time_millis: ::std::option::Option<i64>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#hiddenPlayer."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The player information."]
         #[serde(rename = "player", default)]
-        pub player: Option<crate::schemas::Player>,
+        pub player: ::std::option::Option<crate::schemas::Player>,
     }
     impl ::field_selector::FieldSelector for HiddenPlayer {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -260,7 +253,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -278,13 +270,13 @@ pub mod schemas {
     pub struct HiddenPlayerList {
         #[doc = "The players."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::HiddenPlayer>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::HiddenPlayer>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#hiddenPlayerList."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The pagination token for the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for HiddenPlayerList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -293,7 +285,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -311,10 +302,10 @@ pub mod schemas {
     pub struct PlayerName {
         #[doc = "The family name of this player. In some places, this is known as the last name."]
         #[serde(rename = "familyName", default)]
-        pub family_name: Option<String>,
+        pub family_name: ::std::option::Option<String>,
         #[doc = "The given name of this player. In some places, this is known as the first name."]
         #[serde(rename = "givenName", default)]
-        pub given_name: Option<String>,
+        pub given_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PlayerName {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -323,7 +314,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -341,40 +331,41 @@ pub mod schemas {
     pub struct Player {
         #[doc = "The base URL for the image that represents the player."]
         #[serde(rename = "avatarImageUrl", default)]
-        pub avatar_image_url: Option<String>,
+        pub avatar_image_url: ::std::option::Option<String>,
         #[doc = "The url to the landscape mode player banner image."]
         #[serde(rename = "bannerUrlLandscape", default)]
-        pub banner_url_landscape: Option<String>,
+        pub banner_url_landscape: ::std::option::Option<String>,
         #[doc = "The url to the portrait mode player banner image."]
         #[serde(rename = "bannerUrlPortrait", default)]
-        pub banner_url_portrait: Option<String>,
+        pub banner_url_portrait: ::std::option::Option<String>,
         #[doc = "The name to display for the player."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "An object to represent Play Game experience information for the player."]
         #[serde(rename = "experienceInfo", default)]
-        pub experience_info: Option<crate::schemas::GamesPlayerExperienceInfoResource>,
+        pub experience_info:
+            ::std::option::Option<crate::schemas::GamesPlayerExperienceInfoResource>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#player."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Details about the last time this player played a multiplayer game with the currently authenticated player. Populated for PLAYED_WITH player collection members."]
         #[serde(rename = "lastPlayedWith", default)]
-        pub last_played_with: Option<crate::schemas::GamesPlayedResource>,
+        pub last_played_with: ::std::option::Option<crate::schemas::GamesPlayedResource>,
         #[doc = "An object representation of the individual components of the player's name. For some players, these fields may not be present."]
         #[serde(rename = "name", default)]
-        pub name: Option<crate::schemas::PlayerName>,
+        pub name: ::std::option::Option<crate::schemas::PlayerName>,
         #[doc = "The player ID that was used for this player the first time they signed into the game in question. This is only populated for calls to player.get for the requesting player, only if the player ID has subsequently changed, and only to clients that support remapping player IDs."]
         #[serde(rename = "originalPlayerId", default)]
-        pub original_player_id: Option<String>,
+        pub original_player_id: ::std::option::Option<String>,
         #[doc = "The ID of the player."]
         #[serde(rename = "playerId", default)]
-        pub player_id: Option<String>,
+        pub player_id: ::std::option::Option<String>,
         #[doc = "The player's profile settings. Controls whether or not the player's profile is visible to other players."]
         #[serde(rename = "profileSettings", default)]
-        pub profile_settings: Option<crate::schemas::ProfileSettings>,
+        pub profile_settings: ::std::option::Option<crate::schemas::ProfileSettings>,
         #[doc = "The player's title rewarded for their game activities."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Player {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -383,7 +374,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -401,10 +391,10 @@ pub mod schemas {
     pub struct PlayerScoreResetAllResponse {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#playerScoreResetResponse."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The leaderboard reset results."]
         #[serde(rename = "results", default)]
-        pub results: Option<Vec<crate::schemas::PlayerScoreResetResponse>>,
+        pub results: ::std::option::Option<Vec<crate::schemas::PlayerScoreResetResponse>>,
     }
     impl ::field_selector::FieldSelector for PlayerScoreResetAllResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -413,7 +403,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -431,13 +420,13 @@ pub mod schemas {
     pub struct PlayerScoreResetResponse {
         #[doc = "The ID of an leaderboard for which player state has been updated."]
         #[serde(rename = "definitionId", default)]
-        pub definition_id: Option<String>,
+        pub definition_id: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#playerScoreResetResponse."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The time spans of the updated score.\nPossible values are:\n\n* \"ALL_TIME\" - The score is an all-time score. \n* \"WEEKLY\" - The score is a weekly score. \n* \"DAILY\" - The score is a daily score."]
         #[serde(rename = "resetScoreTimeSpans", default)]
-        pub reset_score_time_spans: Option<Vec<String>>,
+        pub reset_score_time_spans: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for PlayerScoreResetResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -446,7 +435,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -464,9 +452,9 @@ pub mod schemas {
     pub struct ProfileSettings {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#profileSettings."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "profileVisible", default)]
-        pub profile_visible: Option<bool>,
+        pub profile_visible: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for ProfileSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -475,7 +463,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -493,10 +480,10 @@ pub mod schemas {
     pub struct QuestsResetMultipleForAllRequest {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#questsResetMultipleForAllRequest."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The IDs of quests to reset."]
         #[serde(rename = "quest_ids", default)]
-        pub quest_ids: Option<Vec<String>>,
+        pub quest_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for QuestsResetMultipleForAllRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -505,7 +492,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -523,10 +509,10 @@ pub mod schemas {
     pub struct ScoresResetMultipleForAllRequest {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#scoresResetMultipleForAllRequest."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The IDs of leaderboards to reset."]
         #[serde(rename = "leaderboard_ids", default)]
-        pub leaderboard_ids: Option<Vec<String>>,
+        pub leaderboard_ids: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ScoresResetMultipleForAllRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -535,7 +521,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -580,6 +565,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -3965,6 +3959,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4040,5 +4035,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

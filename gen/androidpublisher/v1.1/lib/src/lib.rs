@@ -14,26 +14,26 @@ pub mod schemas {
     pub struct InappPurchase {
         #[doc = "The consumption state of the inapp product. Possible values are:\n\n* Yet to be consumed \n* Consumed"]
         #[serde(rename = "consumptionState", default)]
-        pub consumption_state: Option<i32>,
+        pub consumption_state: ::std::option::Option<i32>,
         #[doc = "A developer-specified string that contains supplemental information about an order."]
         #[serde(rename = "developerPayload", default)]
-        pub developer_payload: Option<String>,
+        pub developer_payload: ::std::option::Option<String>,
         #[doc = "This kind represents an inappPurchase object in the androidpublisher service."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The order id associated with the purchase of the inapp product."]
         #[serde(rename = "orderId", default)]
-        pub order_id: Option<String>,
+        pub order_id: ::std::option::Option<String>,
         #[doc = "The purchase state of the order. Possible values are:\n\n* Purchased \n* Canceled \n* Pending"]
         #[serde(rename = "purchaseState", default)]
-        pub purchase_state: Option<i32>,
+        pub purchase_state: ::std::option::Option<i32>,
         #[doc = "The time the product was purchased, in milliseconds since the epoch (Jan 1, 1970)."]
         #[serde(rename = "purchaseTime", default)]
         #[serde(with = "crate::parsed_string")]
-        pub purchase_time: Option<i64>,
+        pub purchase_time: ::std::option::Option<i64>,
         #[doc = "The type of purchase of the inapp product. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are:\n\n* Test (i.e. purchased from a license testing account) \n* Promo (i.e. purchased using a promo code) \n* Rewarded (i.e. from watching a video ad instead of paying)"]
         #[serde(rename = "purchaseType", default)]
-        pub purchase_type: Option<i32>,
+        pub purchase_type: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for InappPurchase {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -42,7 +42,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -60,18 +59,18 @@ pub mod schemas {
     pub struct SubscriptionPurchase {
         #[doc = "Whether the subscription will automatically be renewed when it reaches its current expiry time."]
         #[serde(rename = "autoRenewing", default)]
-        pub auto_renewing: Option<bool>,
+        pub auto_renewing: ::std::option::Option<bool>,
         #[doc = "Time at which the subscription was granted, in milliseconds since the Epoch."]
         #[serde(rename = "initiationTimestampMsec", default)]
         #[serde(with = "crate::parsed_string")]
-        pub initiation_timestamp_msec: Option<i64>,
+        pub initiation_timestamp_msec: ::std::option::Option<i64>,
         #[doc = "This kind represents a subscriptionPurchase object in the androidpublisher service."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Time at which the subscription will expire, in milliseconds since the Epoch."]
         #[serde(rename = "validUntilTimestampMsec", default)]
         #[serde(with = "crate::parsed_string")]
-        pub valid_until_timestamp_msec: Option<i64>,
+        pub valid_until_timestamp_msec: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for SubscriptionPurchase {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -80,7 +79,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -125,6 +123,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -910,6 +917,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -985,5 +993,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

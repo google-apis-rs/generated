@@ -1,27 +1,27 @@
     Checking google-firestore1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/firestore/v1/lib)
 error[E0308]: mismatched types
-    --> firestore/v1/lib/src/lib.rs:6357:49
+    --> firestore/v1/lib/src/lib.rs:6476:25
      |
-6357 |                         self.transaction = Some(value.into());
-     |                                                 ^^^^^^^^^^^^
-     |                                                 |
-     |                                                 expected struct `std::vec::Vec`, found struct `std::boxed::Box`
-     |                                                 help: try using a conversion method: `value.into().to_vec()`
+6474 |                     pub fn transaction(mut self, value: impl Into<Vec<u8>>) -> Self {
+     |                                                                                ---- expected `resources::projects::databases::documents::GetRequestBuilder<'a, A>` because of return type
+6475 |                         let v: Vec<u8> = value.into();
+6476 |                         self.transaction = Some(v.into())
+     |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected struct `resources::projects::databases::documents::GetRequestBuilder`, found ()
      |
-     = note: expected type `std::vec::Vec<u8>`
-                found type `std::boxed::Box<[u8]>`
+     = note: expected type `resources::projects::databases::documents::GetRequestBuilder<'a, A>`
+                found type `()`
 
 error[E0308]: mismatched types
-    --> firestore/v1/lib/src/lib.rs:6571:49
+    --> firestore/v1/lib/src/lib.rs:6690:25
      |
-6571 |                         self.transaction = Some(value.into());
-     |                                                 ^^^^^^^^^^^^
-     |                                                 |
-     |                                                 expected struct `std::vec::Vec`, found struct `std::boxed::Box`
-     |                                                 help: try using a conversion method: `value.into().to_vec()`
+6688 |                     pub fn transaction(mut self, value: impl Into<Vec<u8>>) -> Self {
+     |                                                                                ---- expected `resources::projects::databases::documents::ListRequestBuilder<'a, A>` because of return type
+6689 |                         let v: Vec<u8> = value.into();
+6690 |                         self.transaction = Some(v.into())
+     |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected struct `resources::projects::databases::documents::ListRequestBuilder`, found ()
      |
-     = note: expected type `std::vec::Vec<u8>`
-                found type `std::boxed::Box<[u8]>`
+     = note: expected type `resources::projects::databases::documents::ListRequestBuilder<'a, A>`
+                found type `()`
 
 error: aborting due to 2 previous errors
 

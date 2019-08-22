@@ -1,14 +1,14 @@
     Checking google-pagespeedonline5 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/pagespeedonline/v5/lib)
 error[E0412]: cannot find type `RunpagespeedCategoryItems` in module `crate::resources::pagespeedapi::params`
-   --> pagespeedonline/v5/lib/src/lib.rs:730:68
+   --> pagespeedonline/v5/lib/src/lib.rs:737:68
     |
-730 |                 Option<Vec<crate::resources::pagespeedapi::params::RunpagespeedCategoryItems>>,
+737 |                 Option<Vec<crate::resources::pagespeedapi::params::RunpagespeedCategoryItems>>,
     |                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::pagespeedapi::params`
 
 error[E0412]: cannot find type `RunpagespeedCategoryItems` in module `crate::resources::pagespeedapi::params`
-   --> pagespeedonline/v5/lib/src/lib.rs:747:78
+   --> pagespeedonline/v5/lib/src/lib.rs:754:78
     |
-747 |                 value: impl Into<Vec<crate::resources::pagespeedapi::params::RunpagespeedCategoryItems>>,
+754 |                 value: impl Into<Vec<crate::resources::pagespeedapi::params::RunpagespeedCategoryItems>>,
     |                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::pagespeedapi::params`
 
 error: aborting due to 2 previous errors

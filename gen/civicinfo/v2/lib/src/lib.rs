@@ -14,19 +14,19 @@ pub mod schemas {
     pub struct AdministrationRegion {
         #[doc = "The election administration body for this area."]
         #[serde(rename = "electionAdministrationBody", default)]
-        pub election_administration_body: Option<crate::schemas::AdministrativeBody>,
+        pub election_administration_body: ::std::option::Option<crate::schemas::AdministrativeBody>,
         #[doc = "An ID for this object. IDs may change in future requests and should not be cached. Access to this field requires special access that can be requested from the Request more link on the Quotas page."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The city or county that provides election information for this voter. This object can have the same elements as state."]
         #[serde(rename = "local_jurisdiction", default)]
-        pub local_jurisdiction: Option<crate::schemas::AdministrationRegion>,
+        pub local_jurisdiction: ::std::option::Option<crate::schemas::AdministrationRegion>,
         #[doc = "The name of the jurisdiction."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "A list of sources for this area. If multiple sources are listed the data has been aggregated from those sources."]
         #[serde(rename = "sources", default)]
-        pub sources: Option<Vec<crate::schemas::Source>>,
+        pub sources: ::std::option::Option<Vec<crate::schemas::Source>>,
     }
     impl ::field_selector::FieldSelector for AdministrationRegion {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -35,7 +35,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -53,45 +52,45 @@ pub mod schemas {
     pub struct AdministrativeBody {
         #[doc = "A URL provided by this administrative body for information on absentee voting."]
         #[serde(rename = "absenteeVotingInfoUrl", default)]
-        pub absentee_voting_info_url: Option<String>,
+        pub absentee_voting_info_url: ::std::option::Option<String>,
         #[serde(rename = "addressLines", default)]
-        pub address_lines: Option<Vec<String>>,
+        pub address_lines: ::std::option::Option<Vec<String>>,
         #[doc = "A URL provided by this administrative body to give contest information to the voter."]
         #[serde(rename = "ballotInfoUrl", default)]
-        pub ballot_info_url: Option<String>,
+        pub ballot_info_url: ::std::option::Option<String>,
         #[doc = "The mailing address of this administrative body."]
         #[serde(rename = "correspondenceAddress", default)]
-        pub correspondence_address: Option<crate::schemas::SimpleAddressType>,
+        pub correspondence_address: ::std::option::Option<crate::schemas::SimpleAddressType>,
         #[doc = "A URL provided by this administrative body for looking up general election information."]
         #[serde(rename = "electionInfoUrl", default)]
-        pub election_info_url: Option<String>,
+        pub election_info_url: ::std::option::Option<String>,
         #[doc = "The election officials for this election administrative body."]
         #[serde(rename = "electionOfficials", default)]
-        pub election_officials: Option<Vec<crate::schemas::ElectionOfficial>>,
+        pub election_officials: ::std::option::Option<Vec<crate::schemas::ElectionOfficial>>,
         #[doc = "A URL provided by this administrative body for confirming that the voter is registered to vote."]
         #[serde(rename = "electionRegistrationConfirmationUrl", default)]
-        pub election_registration_confirmation_url: Option<String>,
+        pub election_registration_confirmation_url: ::std::option::Option<String>,
         #[doc = "A URL provided by this administrative body for looking up how to register to vote."]
         #[serde(rename = "electionRegistrationUrl", default)]
-        pub election_registration_url: Option<String>,
+        pub election_registration_url: ::std::option::Option<String>,
         #[doc = "A URL provided by this administrative body describing election rules to the voter."]
         #[serde(rename = "electionRulesUrl", default)]
-        pub election_rules_url: Option<String>,
+        pub election_rules_url: ::std::option::Option<String>,
         #[doc = "A description of the hours of operation for this administrative body."]
         #[serde(rename = "hoursOfOperation", default)]
-        pub hours_of_operation: Option<String>,
+        pub hours_of_operation: ::std::option::Option<String>,
         #[doc = "The name of this election administrative body."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The physical address of this administrative body."]
         #[serde(rename = "physicalAddress", default)]
-        pub physical_address: Option<crate::schemas::SimpleAddressType>,
+        pub physical_address: ::std::option::Option<crate::schemas::SimpleAddressType>,
         #[doc = "A description of the services this administrative body may provide."]
         #[serde(rename = "voter_services", default)]
-        pub voter_services: Option<Vec<String>>,
+        pub voter_services: ::std::option::Option<Vec<String>>,
         #[doc = "A URL provided by this administrative body for looking up where to vote."]
         #[serde(rename = "votingLocationFinderUrl", default)]
-        pub voting_location_finder_url: Option<String>,
+        pub voting_location_finder_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AdministrativeBody {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -100,7 +99,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -118,29 +116,29 @@ pub mod schemas {
     pub struct Candidate {
         #[doc = "The URL for the candidate's campaign web site."]
         #[serde(rename = "candidateUrl", default)]
-        pub candidate_url: Option<String>,
+        pub candidate_url: ::std::option::Option<String>,
         #[doc = "A list of known (social) media channels for this candidate."]
         #[serde(rename = "channels", default)]
-        pub channels: Option<Vec<crate::schemas::Channel>>,
+        pub channels: ::std::option::Option<Vec<crate::schemas::Channel>>,
         #[doc = "The email address for the candidate's campaign."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The candidate's name. If this is a joint ticket it will indicate the name of the candidate at the top of a ticket followed by a / and that name of candidate at the bottom of the ticket. e.g. \"Mitt Romney / Paul Ryan\""]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The order the candidate appears on the ballot for this contest."]
         #[serde(rename = "orderOnBallot", default)]
         #[serde(with = "crate::parsed_string")]
-        pub order_on_ballot: Option<i64>,
+        pub order_on_ballot: ::std::option::Option<i64>,
         #[doc = "The full name of the party the candidate is a member of."]
         #[serde(rename = "party", default)]
-        pub party: Option<String>,
+        pub party: ::std::option::Option<String>,
         #[doc = "The voice phone number for the candidate's campaign office."]
         #[serde(rename = "phone", default)]
-        pub phone: Option<String>,
+        pub phone: ::std::option::Option<String>,
         #[doc = "A URL for a photo of the candidate."]
         #[serde(rename = "photoUrl", default)]
-        pub photo_url: Option<String>,
+        pub photo_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Candidate {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -149,7 +147,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -167,10 +164,10 @@ pub mod schemas {
     pub struct Channel {
         #[doc = "The unique public identifier for the candidate's channel."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The type of channel. The following is a list of types of channels, but is not exhaustive. More channel types may be added at a later time. One of: GooglePlus, YouTube, Facebook, Twitter"]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Channel {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -179,7 +176,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -198,81 +194,81 @@ pub mod schemas {
         #[doc = "A number specifying the position of this contest on the voter's ballot."]
         #[serde(rename = "ballotPlacement", default)]
         #[serde(with = "crate::parsed_string")]
-        pub ballot_placement: Option<i64>,
+        pub ballot_placement: ::std::option::Option<i64>,
         #[doc = "The official title on the ballot for this contest, only where available."]
         #[serde(rename = "ballotTitle", default)]
-        pub ballot_title: Option<String>,
+        pub ballot_title: ::std::option::Option<String>,
         #[doc = "The candidate choices for this contest."]
         #[serde(rename = "candidates", default)]
-        pub candidates: Option<Vec<crate::schemas::Candidate>>,
+        pub candidates: ::std::option::Option<Vec<crate::schemas::Candidate>>,
         #[doc = "Information about the electoral district that this contest is in."]
         #[serde(rename = "district", default)]
-        pub district: Option<crate::schemas::ElectoralDistrict>,
+        pub district: ::std::option::Option<crate::schemas::ElectoralDistrict>,
         #[doc = "A description of any additional eligibility requirements for voting in this contest."]
         #[serde(rename = "electorateSpecifications", default)]
-        pub electorate_specifications: Option<String>,
+        pub electorate_specifications: ::std::option::Option<String>,
         #[doc = "An ID for this object. IDs may change in future requests and should not be cached. Access to this field requires special access that can be requested from the Request more link on the Quotas page."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The levels of government of the office for this contest. There may be more than one in cases where a jurisdiction effectively acts at two different levels of government; for example, the mayor of the District of Columbia acts at \"locality\" level, but also effectively at both \"administrative-area-2\" and \"administrative-area-1\"."]
         #[serde(rename = "level", default)]
-        pub level: Option<Vec<String>>,
+        pub level: ::std::option::Option<Vec<String>>,
         #[doc = "The number of candidates that will be elected to office in this contest."]
         #[serde(rename = "numberElected", default)]
         #[serde(with = "crate::parsed_string")]
-        pub number_elected: Option<i64>,
+        pub number_elected: ::std::option::Option<i64>,
         #[doc = "The number of candidates that a voter may vote for in this contest."]
         #[serde(rename = "numberVotingFor", default)]
         #[serde(with = "crate::parsed_string")]
-        pub number_voting_for: Option<i64>,
+        pub number_voting_for: ::std::option::Option<i64>,
         #[doc = "The name of the office for this contest."]
         #[serde(rename = "office", default)]
-        pub office: Option<String>,
+        pub office: ::std::option::Option<String>,
         #[doc = "If this is a partisan election, the name of the party it is for."]
         #[serde(rename = "primaryParty", default)]
-        pub primary_party: Option<String>,
+        pub primary_party: ::std::option::Option<String>,
         #[doc = "The type of contest. Usually this will be 'General', 'Primary', or 'Run-off' for contests with candidates. For referenda this will be 'Referendum'. For Retention contests this will typically be 'Retention'."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "The set of ballot responses for the referendum. A ballot response represents a line on the ballot. Common examples might include \"yes\" or \"no\" for referenda. This field is only populated for contests of type 'Referendum'."]
         #[serde(rename = "referendumBallotResponses", default)]
-        pub referendum_ballot_responses: Option<Vec<String>>,
+        pub referendum_ballot_responses: ::std::option::Option<Vec<String>>,
         #[doc = "Specifies a short summary of the referendum that is typically on the ballot below the title but above the text. This field is only populated for contests of type 'Referendum'."]
         #[serde(rename = "referendumBrief", default)]
-        pub referendum_brief: Option<String>,
+        pub referendum_brief: ::std::option::Option<String>,
         #[doc = "A statement in opposition to the referendum. It does not necessarily appear on the ballot. This field is only populated for contests of type 'Referendum'."]
         #[serde(rename = "referendumConStatement", default)]
-        pub referendum_con_statement: Option<String>,
+        pub referendum_con_statement: ::std::option::Option<String>,
         #[doc = "Specifies what effect abstaining (not voting) on the proposition will have (i.e. whether abstaining is considered a vote against it). This field is only populated for contests of type 'Referendum'."]
         #[serde(rename = "referendumEffectOfAbstain", default)]
-        pub referendum_effect_of_abstain: Option<String>,
+        pub referendum_effect_of_abstain: ::std::option::Option<String>,
         #[doc = "The threshold of votes that the referendum needs in order to pass, e.g. \"two-thirds\". This field is only populated for contests of type 'Referendum'."]
         #[serde(rename = "referendumPassageThreshold", default)]
-        pub referendum_passage_threshold: Option<String>,
+        pub referendum_passage_threshold: ::std::option::Option<String>,
         #[doc = "A statement in favor of the referendum. It does not necessarily appear on the ballot. This field is only populated for contests of type 'Referendum'."]
         #[serde(rename = "referendumProStatement", default)]
-        pub referendum_pro_statement: Option<String>,
+        pub referendum_pro_statement: ::std::option::Option<String>,
         #[doc = "A brief description of the referendum. This field is only populated for contests of type 'Referendum'."]
         #[serde(rename = "referendumSubtitle", default)]
-        pub referendum_subtitle: Option<String>,
+        pub referendum_subtitle: ::std::option::Option<String>,
         #[doc = "The full text of the referendum. This field is only populated for contests of type 'Referendum'."]
         #[serde(rename = "referendumText", default)]
-        pub referendum_text: Option<String>,
+        pub referendum_text: ::std::option::Option<String>,
         #[doc = "The title of the referendum (e.g. 'Proposition 42'). This field is only populated for contests of type 'Referendum'."]
         #[serde(rename = "referendumTitle", default)]
-        pub referendum_title: Option<String>,
+        pub referendum_title: ::std::option::Option<String>,
         #[doc = "A link to the referendum. This field is only populated for contests of type 'Referendum'."]
         #[serde(rename = "referendumUrl", default)]
-        pub referendum_url: Option<String>,
+        pub referendum_url: ::std::option::Option<String>,
         #[doc = "The roles which this office fulfills."]
         #[serde(rename = "roles", default)]
-        pub roles: Option<Vec<String>>,
+        pub roles: ::std::option::Option<Vec<String>>,
         #[doc = "A list of sources for this contest. If multiple sources are listed, the data has been aggregated from those sources."]
         #[serde(rename = "sources", default)]
-        pub sources: Option<Vec<crate::schemas::Source>>,
+        pub sources: ::std::option::Option<Vec<crate::schemas::Source>>,
         #[doc = "\"Yes\" or \"No\" depending on whether this a contest being held outside the normal election cycle."]
         #[serde(rename = "special", default)]
-        pub special: Option<String>,
+        pub special: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Contest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -281,7 +277,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -298,7 +293,7 @@ pub mod schemas {
     )]
     pub struct ContextParams {
         #[serde(rename = "clientProfile", default)]
-        pub client_profile: Option<String>,
+        pub client_profile: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ContextParams {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -307,7 +302,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -324,7 +318,7 @@ pub mod schemas {
     )]
     pub struct DivisionRepresentativeInfoRequest {
         #[serde(rename = "contextParams", default)]
-        pub context_params: Option<crate::schemas::ContextParams>,
+        pub context_params: ::std::option::Option<crate::schemas::ContextParams>,
     }
     impl ::field_selector::FieldSelector for DivisionRepresentativeInfoRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -333,7 +327,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -350,7 +343,7 @@ pub mod schemas {
     )]
     pub struct DivisionSearchRequest {
         #[serde(rename = "contextParams", default)]
-        pub context_params: Option<crate::schemas::ContextParams>,
+        pub context_params: ::std::option::Option<crate::schemas::ContextParams>,
     }
     impl ::field_selector::FieldSelector for DivisionSearchRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -359,7 +352,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -377,9 +369,9 @@ pub mod schemas {
     pub struct DivisionSearchResponse {
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"civicinfo#divisionSearchResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[serde(rename = "results", default)]
-        pub results: Option<Vec<crate::schemas::DivisionSearchResult>>,
+        pub results: ::std::option::Option<Vec<crate::schemas::DivisionSearchResult>>,
     }
     impl ::field_selector::FieldSelector for DivisionSearchResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -388,7 +380,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -406,13 +397,13 @@ pub mod schemas {
     pub struct DivisionSearchResult {
         #[doc = "Other Open Civic Data identifiers that refer to the same division -- for example, those that refer to other political divisions whose boundaries are defined to be coterminous with this one. For example, ocd-division/country:us/state:wy will include an alias of ocd-division/country:us/state:wy/cd:1, since Wyoming has only one Congressional district."]
         #[serde(rename = "aliases", default)]
-        pub aliases: Option<Vec<String>>,
+        pub aliases: ::std::option::Option<Vec<String>>,
         #[doc = "The name of the division."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The unique Open Civic Data identifier for this division."]
         #[serde(rename = "ocdId", default)]
-        pub ocd_id: Option<String>,
+        pub ocd_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DivisionSearchResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -421,7 +412,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -439,17 +429,17 @@ pub mod schemas {
     pub struct Election {
         #[doc = "Day of the election in YYYY-MM-DD format."]
         #[serde(rename = "electionDay", default)]
-        pub election_day: Option<String>,
+        pub election_day: ::std::option::Option<String>,
         #[doc = "The unique ID of this election."]
         #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
+        pub id: ::std::option::Option<i64>,
         #[doc = "A displayable name for the election."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The political division of the election. Represented as an OCD Division ID. Voters within these political jurisdictions are covered by this election. This is typically a state such as ocd-division/country:us/state:ca or for the midterms or general election the entire US (i.e. ocd-division/country:us)."]
         #[serde(rename = "ocdDivisionId", default)]
-        pub ocd_division_id: Option<String>,
+        pub ocd_division_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Election {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -458,7 +448,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -476,19 +465,19 @@ pub mod schemas {
     pub struct ElectionOfficial {
         #[doc = "The email address of the election official."]
         #[serde(rename = "emailAddress", default)]
-        pub email_address: Option<String>,
+        pub email_address: ::std::option::Option<String>,
         #[doc = "The fax number of the election official."]
         #[serde(rename = "faxNumber", default)]
-        pub fax_number: Option<String>,
+        pub fax_number: ::std::option::Option<String>,
         #[doc = "The full name of the election official."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The office phone number of the election official."]
         #[serde(rename = "officePhoneNumber", default)]
-        pub office_phone_number: Option<String>,
+        pub office_phone_number: ::std::option::Option<String>,
         #[doc = "The title of the election official."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ElectionOfficial {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -497,7 +486,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -514,7 +502,7 @@ pub mod schemas {
     )]
     pub struct ElectionsQueryRequest {
         #[serde(rename = "contextParams", default)]
-        pub context_params: Option<crate::schemas::ContextParams>,
+        pub context_params: ::std::option::Option<crate::schemas::ContextParams>,
     }
     impl ::field_selector::FieldSelector for ElectionsQueryRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -523,7 +511,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -541,10 +528,10 @@ pub mod schemas {
     pub struct ElectionsQueryResponse {
         #[doc = "A list of available elections"]
         #[serde(rename = "elections", default)]
-        pub elections: Option<Vec<crate::schemas::Election>>,
+        pub elections: ::std::option::Option<Vec<crate::schemas::Election>>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"civicinfo#electionsQueryResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ElectionsQueryResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -553,7 +540,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -571,15 +557,15 @@ pub mod schemas {
     pub struct ElectoralDistrict {
         #[doc = "An identifier for this district, relative to its scope. For example, the 34th State Senate district would have id \"34\" and a scope of stateUpper."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[serde(rename = "kgForeignKey", default)]
-        pub kg_foreign_key: Option<String>,
+        pub kg_foreign_key: ::std::option::Option<String>,
         #[doc = "The name of the district."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The geographic scope of this district. If unspecified the district's geography is not known. One of: national, statewide, congressional, stateUpper, stateLower, countywide, judicial, schoolBoard, cityWide, township, countyCouncil, cityCouncil, ward, special"]
         #[serde(rename = "scope", default)]
-        pub scope: Option<String>,
+        pub scope: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ElectoralDistrict {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -588,7 +574,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -605,7 +590,7 @@ pub mod schemas {
     )]
     pub struct FieldMetadataProto {
         #[serde(rename = "internal", default)]
-        pub internal: Option<crate::schemas::InternalFieldMetadataProto>,
+        pub internal: ::std::option::Option<crate::schemas::InternalFieldMetadataProto>,
     }
     impl ::field_selector::FieldSelector for FieldMetadataProto {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -614,7 +599,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -632,13 +616,13 @@ pub mod schemas {
     pub struct GeographicDivision {
         #[doc = "Any other valid OCD IDs that refer to the same division.\n\nBecause OCD IDs are meant to be human-readable and at least somewhat predictable, there are occasionally several identifiers for a single division. These identifiers are defined to be equivalent to one another, and one is always indicated as the primary identifier. The primary identifier will be returned in ocd_id above, and any other equivalent valid identifiers will be returned in this list.\n\nFor example, if this division's OCD ID is ocd-division/country:us/district:dc, this will contain ocd-division/country:us/state:dc."]
         #[serde(rename = "alsoKnownAs", default)]
-        pub also_known_as: Option<Vec<String>>,
+        pub also_known_as: ::std::option::Option<Vec<String>>,
         #[doc = "The name of the division."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "List of indices in the offices array, one for each office elected from this division. Will only be present if includeOffices was true (or absent) in the request."]
         #[serde(rename = "officeIndices", default)]
-        pub office_indices: Option<Vec<u32>>,
+        pub office_indices: ::std::option::Option<Vec<u32>>,
     }
     impl ::field_selector::FieldSelector for GeographicDivision {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -647,7 +631,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -664,9 +647,9 @@ pub mod schemas {
     )]
     pub struct InternalFieldMetadataProto {
         #[serde(rename = "isAuto", default)]
-        pub is_auto: Option<bool>,
+        pub is_auto: ::std::option::Option<bool>,
         #[serde(rename = "sourceSummary", default)]
-        pub source_summary: Option<crate::schemas::InternalSourceSummaryProto>,
+        pub source_summary: ::std::option::Option<crate::schemas::InternalSourceSummaryProto>,
     }
     impl ::field_selector::FieldSelector for InternalFieldMetadataProto {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -675,7 +658,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -692,9 +674,9 @@ pub mod schemas {
     )]
     pub struct InternalSourceSummaryProto {
         #[serde(rename = "dataset", default)]
-        pub dataset: Option<String>,
+        pub dataset: ::std::option::Option<String>,
         #[serde(rename = "provider", default)]
-        pub provider: Option<String>,
+        pub provider: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for InternalSourceSummaryProto {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -703,7 +685,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -721,43 +702,43 @@ pub mod schemas {
     pub struct LivegraphBacktraceRecordInfo {
         #[serde(rename = "dataSourcePublishMsec", default)]
         #[serde(with = "crate::parsed_string")]
-        pub data_source_publish_msec: Option<i64>,
+        pub data_source_publish_msec: ::std::option::Option<i64>,
         #[serde(rename = "expId", default)]
-        pub exp_id: Option<String>,
+        pub exp_id: ::std::option::Option<String>,
         #[serde(rename = "expInfo", default)]
-        pub exp_info: Option<crate::schemas::LivegraphBacktraceRecordInfoExpInfo>,
+        pub exp_info: ::std::option::Option<crate::schemas::LivegraphBacktraceRecordInfoExpInfo>,
         #[serde(rename = "isRecon", default)]
-        pub is_recon: Option<bool>,
+        pub is_recon: ::std::option::Option<bool>,
         #[serde(rename = "isWlmThrottled", default)]
-        pub is_wlm_throttled: Option<bool>,
+        pub is_wlm_throttled: ::std::option::Option<bool>,
         #[serde(rename = "numberOfTriples", default)]
         #[serde(with = "crate::parsed_string")]
-        pub number_of_triples: Option<i64>,
+        pub number_of_triples: ::std::option::Option<i64>,
         #[serde(rename = "priority", default)]
-        pub priority: Option<String>,
+        pub priority: ::std::option::Option<String>,
         #[serde(rename = "process", default)]
-        pub process: Option<String>,
+        pub process: ::std::option::Option<String>,
         #[serde(rename = "proxyReceiveMsec", default)]
         #[serde(with = "crate::parsed_string")]
-        pub proxy_receive_msec: Option<i64>,
+        pub proxy_receive_msec: ::std::option::Option<i64>,
         #[serde(rename = "proxySentMsec", default)]
         #[serde(with = "crate::parsed_string")]
-        pub proxy_sent_msec: Option<i64>,
+        pub proxy_sent_msec: ::std::option::Option<i64>,
         #[serde(rename = "recordId", default)]
-        pub record_id: Option<String>,
+        pub record_id: ::std::option::Option<String>,
         #[serde(rename = "shouldMonitorLatency", default)]
-        pub should_monitor_latency: Option<bool>,
+        pub should_monitor_latency: ::std::option::Option<bool>,
         #[serde(rename = "subscriberReceiveMsec", default)]
         #[serde(with = "crate::parsed_string")]
-        pub subscriber_receive_msec: Option<i64>,
+        pub subscriber_receive_msec: ::std::option::Option<i64>,
         #[serde(rename = "topicBuildFinishMsec", default)]
         #[serde(with = "crate::parsed_string")]
-        pub topic_build_finish_msec: Option<i64>,
+        pub topic_build_finish_msec: ::std::option::Option<i64>,
         #[serde(rename = "topicBuildStartMsec", default)]
         #[serde(with = "crate::parsed_string")]
-        pub topic_build_start_msec: Option<i64>,
+        pub topic_build_start_msec: ::std::option::Option<i64>,
         #[serde(rename = "version", default)]
-        pub version: Option<String>,
+        pub version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LivegraphBacktraceRecordInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -766,7 +747,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -783,7 +763,7 @@ pub mod schemas {
     )]
     pub struct LivegraphBacktraceRecordInfoExpInfo {
         #[serde(rename = "deletedIns", default)]
-        pub deleted_ins: Option<Vec<String>>,
+        pub deleted_ins: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for LivegraphBacktraceRecordInfoExpInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -792,7 +772,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -809,7 +788,8 @@ pub mod schemas {
     )]
     pub struct MessageSet {
         #[serde(rename = "recordMessageSetExt", default)]
-        pub record_message_set_ext: Option<crate::schemas::LivegraphBacktraceRecordInfo>,
+        pub record_message_set_ext:
+            ::std::option::Option<crate::schemas::LivegraphBacktraceRecordInfo>,
     }
     impl ::field_selector::FieldSelector for MessageSet {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -818,7 +798,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -836,22 +815,22 @@ pub mod schemas {
     pub struct Office {
         #[doc = "The OCD ID of the division with which this office is associated."]
         #[serde(rename = "divisionId", default)]
-        pub division_id: Option<String>,
+        pub division_id: ::std::option::Option<String>,
         #[doc = "The levels of government of which this office is part. There may be more than one in cases where a jurisdiction effectively acts at two different levels of government; for example, the mayor of the District of Columbia acts at \"locality\" level, but also effectively at both \"administrative-area-2\" and \"administrative-area-1\"."]
         #[serde(rename = "levels", default)]
-        pub levels: Option<Vec<String>>,
+        pub levels: ::std::option::Option<Vec<String>>,
         #[doc = "The human-readable name of the office."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "List of indices in the officials array of people who presently hold this office."]
         #[serde(rename = "officialIndices", default)]
-        pub official_indices: Option<Vec<u32>>,
+        pub official_indices: ::std::option::Option<Vec<u32>>,
         #[doc = "The roles which this office fulfills. Roles are not meant to be exhaustive, or to exactly specify the entire set of responsibilities of a given office, but are meant to be rough categories that are useful for general selection from or sorting of a list of offices."]
         #[serde(rename = "roles", default)]
-        pub roles: Option<Vec<String>>,
+        pub roles: ::std::option::Option<Vec<String>>,
         #[doc = "A list of sources for this office. If multiple sources are listed, the data has been aggregated from those sources."]
         #[serde(rename = "sources", default)]
-        pub sources: Option<Vec<crate::schemas::Source>>,
+        pub sources: ::std::option::Option<Vec<crate::schemas::Source>>,
     }
     impl ::field_selector::FieldSelector for Office {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -860,7 +839,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -878,28 +856,28 @@ pub mod schemas {
     pub struct Official {
         #[doc = "Addresses at which to contact the official."]
         #[serde(rename = "address", default)]
-        pub address: Option<Vec<crate::schemas::SimpleAddressType>>,
+        pub address: ::std::option::Option<Vec<crate::schemas::SimpleAddressType>>,
         #[doc = "A list of known (social) media channels for this official."]
         #[serde(rename = "channels", default)]
-        pub channels: Option<Vec<crate::schemas::Channel>>,
+        pub channels: ::std::option::Option<Vec<crate::schemas::Channel>>,
         #[doc = "The direct email addresses for the official."]
         #[serde(rename = "emails", default)]
-        pub emails: Option<Vec<String>>,
+        pub emails: ::std::option::Option<Vec<String>>,
         #[doc = "The official's name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The full name of the party the official belongs to."]
         #[serde(rename = "party", default)]
-        pub party: Option<String>,
+        pub party: ::std::option::Option<String>,
         #[doc = "The official's public contact phone numbers."]
         #[serde(rename = "phones", default)]
-        pub phones: Option<Vec<String>>,
+        pub phones: ::std::option::Option<Vec<String>>,
         #[doc = "A URL for a photo of the official."]
         #[serde(rename = "photoUrl", default)]
-        pub photo_url: Option<String>,
+        pub photo_url: ::std::option::Option<String>,
         #[doc = "The official's public website URLs."]
         #[serde(rename = "urls", default)]
-        pub urls: Option<Vec<String>>,
+        pub urls: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for Official {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -908,7 +886,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -925,13 +902,13 @@ pub mod schemas {
     )]
     pub struct PointProto {
         #[serde(rename = "latE7", default)]
-        pub lat_e7: Option<u32>,
+        pub lat_e7: ::std::option::Option<u32>,
         #[serde(rename = "lngE7", default)]
-        pub lng_e7: Option<u32>,
+        pub lng_e7: ::std::option::Option<u32>,
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::FieldMetadataProto>,
+        pub metadata: ::std::option::Option<crate::schemas::FieldMetadataProto>,
         #[serde(rename = "temporaryData", default)]
-        pub temporary_data: Option<crate::schemas::MessageSet>,
+        pub temporary_data: ::std::option::Option<crate::schemas::MessageSet>,
     }
     impl ::field_selector::FieldSelector for PointProto {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -940,7 +917,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -949,37 +925,37 @@ pub mod schemas {
     pub struct PollingLocation {
         #[doc = "The address of the location."]
         #[serde(rename = "address", default)]
-        pub address: Option<crate::schemas::SimpleAddressType>,
+        pub address: ::std::option::Option<crate::schemas::SimpleAddressType>,
         #[doc = "The last date that this early vote site or drop off location may be used. This field is not populated for polling locations."]
         #[serde(rename = "endDate", default)]
-        pub end_date: Option<String>,
+        pub end_date: ::std::option::Option<String>,
         #[doc = "An ID for this object. IDs may change in future requests and should not be cached. Access to this field requires special access that can be requested from the Request more link on the Quotas page."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Latitude of the location, in degrees north of the equator. Only some locations -- generally, ballot drop boxes for vote-by-mail elections -- will have this set; for others, use a geocoding service like the Google Maps API to resolve the address to a geographic point."]
         #[serde(rename = "latitude", default)]
-        pub latitude: Option<f64>,
+        pub latitude: ::std::option::Option<f64>,
         #[doc = "Longitude of the location, in degrees east of the Prime Meridian. Only some locations -- generally, ballot drop boxes for vote-by-mail elections -- will have this set; for others, use a geocoding service like the Google Maps API to resolve the address to a geographic point."]
         #[serde(rename = "longitude", default)]
-        pub longitude: Option<f64>,
+        pub longitude: ::std::option::Option<f64>,
         #[doc = "The name of the early vote site or drop off location. This field is not populated for polling locations."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Notes about this location (e.g. accessibility ramp or entrance to use)."]
         #[serde(rename = "notes", default)]
-        pub notes: Option<String>,
+        pub notes: ::std::option::Option<String>,
         #[doc = "A description of when this location is open."]
         #[serde(rename = "pollingHours", default)]
-        pub polling_hours: Option<String>,
+        pub polling_hours: ::std::option::Option<String>,
         #[doc = "A list of sources for this location. If multiple sources are listed the data has been aggregated from those sources."]
         #[serde(rename = "sources", default)]
-        pub sources: Option<Vec<crate::schemas::Source>>,
+        pub sources: ::std::option::Option<Vec<crate::schemas::Source>>,
         #[doc = "The first date that this early vote site or drop off location may be used. This field is not populated for polling locations."]
         #[serde(rename = "startDate", default)]
-        pub start_date: Option<String>,
+        pub start_date: ::std::option::Option<String>,
         #[doc = "The services provided by this early vote site or drop off location. This field is not populated for polling locations."]
         #[serde(rename = "voterServices", default)]
-        pub voter_services: Option<String>,
+        pub voter_services: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PollingLocation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -988,7 +964,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1005,45 +980,45 @@ pub mod schemas {
     )]
     pub struct PostalAddress {
         #[serde(rename = "addressLines", default)]
-        pub address_lines: Option<Vec<String>>,
+        pub address_lines: ::std::option::Option<Vec<String>>,
         #[serde(rename = "administrativeAreaName", default)]
-        pub administrative_area_name: Option<String>,
+        pub administrative_area_name: ::std::option::Option<String>,
         #[serde(rename = "countryName", default)]
-        pub country_name: Option<String>,
+        pub country_name: ::std::option::Option<String>,
         #[serde(rename = "countryNameCode", default)]
-        pub country_name_code: Option<String>,
+        pub country_name_code: ::std::option::Option<String>,
         #[serde(rename = "dependentLocalityName", default)]
-        pub dependent_locality_name: Option<String>,
+        pub dependent_locality_name: ::std::option::Option<String>,
         #[serde(rename = "dependentThoroughfareName", default)]
-        pub dependent_thoroughfare_name: Option<String>,
+        pub dependent_thoroughfare_name: ::std::option::Option<String>,
         #[serde(rename = "firmName", default)]
-        pub firm_name: Option<String>,
+        pub firm_name: ::std::option::Option<String>,
         #[serde(rename = "isDisputed", default)]
-        pub is_disputed: Option<bool>,
+        pub is_disputed: ::std::option::Option<bool>,
         #[serde(rename = "languageCode", default)]
-        pub language_code: Option<String>,
+        pub language_code: ::std::option::Option<String>,
         #[serde(rename = "localityName", default)]
-        pub locality_name: Option<String>,
+        pub locality_name: ::std::option::Option<String>,
         #[serde(rename = "postBoxNumber", default)]
-        pub post_box_number: Option<String>,
+        pub post_box_number: ::std::option::Option<String>,
         #[serde(rename = "postalCodeNumber", default)]
-        pub postal_code_number: Option<String>,
+        pub postal_code_number: ::std::option::Option<String>,
         #[serde(rename = "postalCodeNumberExtension", default)]
-        pub postal_code_number_extension: Option<String>,
+        pub postal_code_number_extension: ::std::option::Option<String>,
         #[serde(rename = "premiseName", default)]
-        pub premise_name: Option<String>,
+        pub premise_name: ::std::option::Option<String>,
         #[serde(rename = "recipientName", default)]
-        pub recipient_name: Option<String>,
+        pub recipient_name: ::std::option::Option<String>,
         #[serde(rename = "sortingCode", default)]
-        pub sorting_code: Option<String>,
+        pub sorting_code: ::std::option::Option<String>,
         #[serde(rename = "subAdministrativeAreaName", default)]
-        pub sub_administrative_area_name: Option<String>,
+        pub sub_administrative_area_name: ::std::option::Option<String>,
         #[serde(rename = "subPremiseName", default)]
-        pub sub_premise_name: Option<String>,
+        pub sub_premise_name: ::std::option::Option<String>,
         #[serde(rename = "thoroughfareName", default)]
-        pub thoroughfare_name: Option<String>,
+        pub thoroughfare_name: ::std::option::Option<String>,
         #[serde(rename = "thoroughfareNumber", default)]
-        pub thoroughfare_number: Option<String>,
+        pub thoroughfare_number: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PostalAddress {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1052,7 +1027,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1069,29 +1043,29 @@ pub mod schemas {
     )]
     pub struct Provenance {
         #[serde(rename = "collidedSegmentSource", default)]
-        pub collided_segment_source: Option<crate::schemas::StreetSegmentList>,
+        pub collided_segment_source: ::std::option::Option<crate::schemas::StreetSegmentList>,
         #[serde(rename = "ctclContestUuid", default)]
-        pub ctcl_contest_uuid: Option<String>,
+        pub ctcl_contest_uuid: ::std::option::Option<String>,
         #[serde(rename = "ctclOfficeUuid", default)]
-        pub ctcl_office_uuid: Option<String>,
+        pub ctcl_office_uuid: ::std::option::Option<String>,
         #[serde(rename = "datasetId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub dataset_id: Option<i64>,
+        pub dataset_id: ::std::option::Option<i64>,
         #[serde(rename = "precinctId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub precinct_id: Option<i64>,
+        pub precinct_id: ::std::option::Option<i64>,
         #[serde(rename = "precinctSplitId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub precinct_split_id: Option<i64>,
+        pub precinct_split_id: ::std::option::Option<i64>,
         #[serde(rename = "tsStreetSegmentId", default)]
-        pub ts_street_segment_id: Option<String>,
+        pub ts_street_segment_id: ::std::option::Option<String>,
         #[serde(rename = "vip5PrecinctId", default)]
-        pub vip_5_precinct_id: Option<String>,
+        pub vip_5_precinct_id: ::std::option::Option<String>,
         #[serde(rename = "vip5StreetSegmentId", default)]
-        pub vip_5_street_segment_id: Option<String>,
+        pub vip_5_street_segment_id: ::std::option::Option<String>,
         #[serde(rename = "vipStreetSegmentId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub vip_street_segment_id: Option<i64>,
+        pub vip_street_segment_id: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for Provenance {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1100,7 +1074,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1118,14 +1091,15 @@ pub mod schemas {
     pub struct RepresentativeInfoData {
         #[doc = "Political geographic divisions that contain the requested address."]
         #[serde(rename = "divisions", default)]
-        pub divisions:
-            Option<::std::collections::BTreeMap<String, crate::schemas::GeographicDivision>>,
+        pub divisions: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::GeographicDivision>,
+        >,
         #[doc = "Elected offices referenced by the divisions listed above. Will only be present if includeOffices was true in the request."]
         #[serde(rename = "offices", default)]
-        pub offices: Option<Vec<crate::schemas::Office>>,
+        pub offices: ::std::option::Option<Vec<crate::schemas::Office>>,
         #[doc = "Officials holding the offices listed above. Will only be present if includeOffices was true in the request."]
         #[serde(rename = "officials", default)]
-        pub officials: Option<Vec<crate::schemas::Official>>,
+        pub officials: ::std::option::Option<Vec<crate::schemas::Official>>,
     }
     impl ::field_selector::FieldSelector for RepresentativeInfoData {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1134,7 +1108,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1151,7 +1124,7 @@ pub mod schemas {
     )]
     pub struct RepresentativeInfoRequest {
         #[serde(rename = "contextParams", default)]
-        pub context_params: Option<crate::schemas::ContextParams>,
+        pub context_params: ::std::option::Option<crate::schemas::ContextParams>,
     }
     impl ::field_selector::FieldSelector for RepresentativeInfoRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1160,7 +1133,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1178,20 +1150,21 @@ pub mod schemas {
     pub struct RepresentativeInfoResponse {
         #[doc = "Political geographic divisions that contain the requested address."]
         #[serde(rename = "divisions", default)]
-        pub divisions:
-            Option<::std::collections::BTreeMap<String, crate::schemas::GeographicDivision>>,
+        pub divisions: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::GeographicDivision>,
+        >,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"civicinfo#representativeInfoResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The normalized version of the requested address"]
         #[serde(rename = "normalizedInput", default)]
-        pub normalized_input: Option<crate::schemas::SimpleAddressType>,
+        pub normalized_input: ::std::option::Option<crate::schemas::SimpleAddressType>,
         #[doc = "Elected offices referenced by the divisions listed above. Will only be present if includeOffices was true in the request."]
         #[serde(rename = "offices", default)]
-        pub offices: Option<Vec<crate::schemas::Office>>,
+        pub offices: ::std::option::Option<Vec<crate::schemas::Office>>,
         #[doc = "Officials holding the offices listed above. Will only be present if includeOffices was true in the request."]
         #[serde(rename = "officials", default)]
-        pub officials: Option<Vec<crate::schemas::Official>>,
+        pub officials: ::std::option::Option<Vec<crate::schemas::Official>>,
     }
     impl ::field_selector::FieldSelector for RepresentativeInfoResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1200,7 +1173,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1218,25 +1190,25 @@ pub mod schemas {
     pub struct SimpleAddressType {
         #[doc = "The city or town for the address."]
         #[serde(rename = "city", default)]
-        pub city: Option<String>,
+        pub city: ::std::option::Option<String>,
         #[doc = "The street name and number of this address."]
         #[serde(rename = "line1", default)]
-        pub line_1: Option<String>,
+        pub line_1: ::std::option::Option<String>,
         #[doc = "The second line the address, if needed."]
         #[serde(rename = "line2", default)]
-        pub line_2: Option<String>,
+        pub line_2: ::std::option::Option<String>,
         #[doc = "The third line of the address, if needed."]
         #[serde(rename = "line3", default)]
-        pub line_3: Option<String>,
+        pub line_3: ::std::option::Option<String>,
         #[doc = "The name of the location."]
         #[serde(rename = "locationName", default)]
-        pub location_name: Option<String>,
+        pub location_name: ::std::option::Option<String>,
         #[doc = "The US two letter state abbreviation of the address."]
         #[serde(rename = "state", default)]
-        pub state: Option<String>,
+        pub state: ::std::option::Option<String>,
         #[doc = "The US Postal Zip Code of the address."]
         #[serde(rename = "zip", default)]
-        pub zip: Option<String>,
+        pub zip: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SimpleAddressType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1245,7 +1217,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1263,10 +1234,10 @@ pub mod schemas {
     pub struct Source {
         #[doc = "The name of the data source."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Whether this data comes from an official government source."]
         #[serde(rename = "official", default)]
-        pub official: Option<bool>,
+        pub official: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for Source {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1275,7 +1246,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1292,101 +1262,101 @@ pub mod schemas {
     )]
     pub struct StreetSegment {
         #[serde(rename = "administrationRegionIds", default)]
-        pub administration_region_ids: Option<Vec<String>>,
+        pub administration_region_ids: ::std::option::Option<Vec<String>>,
         #[serde(rename = "beforeGeocodeId", default)]
-        pub before_geocode_id: Option<String>,
+        pub before_geocode_id: ::std::option::Option<String>,
         #[serde(rename = "catalistUniquePrecinctCode", default)]
-        pub catalist_unique_precinct_code: Option<String>,
+        pub catalist_unique_precinct_code: ::std::option::Option<String>,
         #[serde(rename = "city", default)]
-        pub city: Option<String>,
+        pub city: ::std::option::Option<String>,
         #[serde(rename = "cityCouncilDistrict", default)]
-        pub city_council_district: Option<String>,
+        pub city_council_district: ::std::option::Option<String>,
         #[serde(rename = "congressionalDistrict", default)]
-        pub congressional_district: Option<String>,
+        pub congressional_district: ::std::option::Option<String>,
         #[serde(rename = "contestIds", default)]
-        pub contest_ids: Option<Vec<String>>,
+        pub contest_ids: ::std::option::Option<Vec<String>>,
         #[serde(rename = "countyCouncilDistrict", default)]
-        pub county_council_district: Option<String>,
+        pub county_council_district: ::std::option::Option<String>,
         #[serde(rename = "countyFips", default)]
-        pub county_fips: Option<String>,
+        pub county_fips: ::std::option::Option<String>,
         #[serde(rename = "datasetId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub dataset_id: Option<i64>,
+        pub dataset_id: ::std::option::Option<i64>,
         #[serde(rename = "earlyVoteSiteByIds", default)]
-        pub early_vote_site_by_ids: Option<Vec<String>>,
+        pub early_vote_site_by_ids: ::std::option::Option<Vec<String>>,
         #[serde(rename = "endHouseNumber", default)]
         #[serde(with = "crate::parsed_string")]
-        pub end_house_number: Option<i64>,
+        pub end_house_number: ::std::option::Option<i64>,
         #[serde(rename = "geocodedPoint", default)]
-        pub geocoded_point: Option<crate::schemas::PointProto>,
+        pub geocoded_point: ::std::option::Option<crate::schemas::PointProto>,
         #[serde(rename = "geographicDivisionOcdIds", default)]
-        pub geographic_division_ocd_ids: Option<Vec<String>>,
+        pub geographic_division_ocd_ids: ::std::option::Option<Vec<String>>,
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[serde(rename = "judicialDistrict", default)]
-        pub judicial_district: Option<String>,
+        pub judicial_district: ::std::option::Option<String>,
         #[serde(rename = "mailOnly", default)]
-        pub mail_only: Option<bool>,
+        pub mail_only: ::std::option::Option<bool>,
         #[serde(rename = "municipalDistrict", default)]
-        pub municipal_district: Option<String>,
+        pub municipal_district: ::std::option::Option<String>,
         #[serde(rename = "ncoaAddress", default)]
-        pub ncoa_address: Option<String>,
+        pub ncoa_address: ::std::option::Option<String>,
         #[serde(rename = "oddOrEvens", default)]
-        pub odd_or_evens: Option<Vec<String>>,
+        pub odd_or_evens: ::std::option::Option<Vec<String>>,
         #[serde(rename = "originalId", default)]
-        pub original_id: Option<String>,
+        pub original_id: ::std::option::Option<String>,
         #[serde(rename = "pollinglocationByIds", default)]
-        pub pollinglocation_by_ids: Option<Vec<String>>,
+        pub pollinglocation_by_ids: ::std::option::Option<Vec<String>>,
         #[serde(rename = "precinctName", default)]
-        pub precinct_name: Option<String>,
+        pub precinct_name: ::std::option::Option<String>,
         #[serde(rename = "precinctOcdId", default)]
-        pub precinct_ocd_id: Option<String>,
+        pub precinct_ocd_id: ::std::option::Option<String>,
         #[serde(rename = "provenances", default)]
-        pub provenances: Option<Vec<crate::schemas::Provenance>>,
+        pub provenances: ::std::option::Option<Vec<crate::schemas::Provenance>>,
         #[serde(rename = "published", default)]
-        pub published: Option<bool>,
+        pub published: ::std::option::Option<bool>,
         #[serde(rename = "schoolDistrict", default)]
-        pub school_district: Option<String>,
+        pub school_district: ::std::option::Option<String>,
         #[serde(rename = "startHouseNumber", default)]
         #[serde(with = "crate::parsed_string")]
-        pub start_house_number: Option<i64>,
+        pub start_house_number: ::std::option::Option<i64>,
         #[serde(rename = "startLatE7", default)]
         #[serde(with = "crate::parsed_string")]
-        pub start_lat_e7: Option<i64>,
+        pub start_lat_e7: ::std::option::Option<i64>,
         #[serde(rename = "startLngE7", default)]
         #[serde(with = "crate::parsed_string")]
-        pub start_lng_e7: Option<i64>,
+        pub start_lng_e7: ::std::option::Option<i64>,
         #[serde(rename = "state", default)]
-        pub state: Option<String>,
+        pub state: ::std::option::Option<String>,
         #[serde(rename = "stateHouseDistrict", default)]
-        pub state_house_district: Option<String>,
+        pub state_house_district: ::std::option::Option<String>,
         #[serde(rename = "stateSenateDistrict", default)]
-        pub state_senate_district: Option<String>,
+        pub state_senate_district: ::std::option::Option<String>,
         #[serde(rename = "streetName", default)]
-        pub street_name: Option<String>,
+        pub street_name: ::std::option::Option<String>,
         #[serde(rename = "subAdministrativeAreaName", default)]
-        pub sub_administrative_area_name: Option<String>,
+        pub sub_administrative_area_name: ::std::option::Option<String>,
         #[serde(rename = "surrogateId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub surrogate_id: Option<i64>,
+        pub surrogate_id: ::std::option::Option<i64>,
         #[serde(rename = "targetsmartUniquePrecinctCode", default)]
-        pub targetsmart_unique_precinct_code: Option<String>,
+        pub targetsmart_unique_precinct_code: ::std::option::Option<String>,
         #[serde(rename = "townshipDistrict", default)]
-        pub township_district: Option<String>,
+        pub township_district: ::std::option::Option<String>,
         #[serde(rename = "unitNumber", default)]
-        pub unit_number: Option<String>,
+        pub unit_number: ::std::option::Option<String>,
         #[serde(rename = "unitType", default)]
-        pub unit_type: Option<String>,
+        pub unit_type: ::std::option::Option<String>,
         #[serde(rename = "vanPrecinctCode", default)]
-        pub van_precinct_code: Option<String>,
+        pub van_precinct_code: ::std::option::Option<String>,
         #[serde(rename = "voterGeographicDivisionOcdIds", default)]
-        pub voter_geographic_division_ocd_ids: Option<Vec<String>>,
+        pub voter_geographic_division_ocd_ids: ::std::option::Option<Vec<String>>,
         #[serde(rename = "wardDistrict", default)]
-        pub ward_district: Option<String>,
+        pub ward_district: ::std::option::Option<String>,
         #[serde(rename = "wildcard", default)]
-        pub wildcard: Option<bool>,
+        pub wildcard: ::std::option::Option<bool>,
         #[serde(rename = "zip", default)]
-        pub zip: Option<String>,
+        pub zip: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for StreetSegment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1395,7 +1365,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1412,7 +1381,7 @@ pub mod schemas {
     )]
     pub struct StreetSegmentList {
         #[serde(rename = "segments", default)]
-        pub segments: Option<Vec<crate::schemas::StreetSegment>>,
+        pub segments: ::std::option::Option<Vec<crate::schemas::StreetSegment>>,
     }
     impl ::field_selector::FieldSelector for StreetSegmentList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1421,7 +1390,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1429,9 +1397,10 @@ pub mod schemas {
     )]
     pub struct VoterInfoRequest {
         #[serde(rename = "contextParams", default)]
-        pub context_params: Option<crate::schemas::ContextParams>,
+        pub context_params: ::std::option::Option<crate::schemas::ContextParams>,
         #[serde(rename = "voterInfoSegmentResult", default)]
-        pub voter_info_segment_result: Option<crate::schemas::VoterInfoSegmentResult>,
+        pub voter_info_segment_result:
+            ::std::option::Option<crate::schemas::VoterInfoSegmentResult>,
     }
     impl ::field_selector::FieldSelector for VoterInfoRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1440,7 +1409,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1449,38 +1417,38 @@ pub mod schemas {
     pub struct VoterInfoResponse {
         #[doc = "Contests that will appear on the voter's ballot."]
         #[serde(rename = "contests", default)]
-        pub contests: Option<Vec<crate::schemas::Contest>>,
+        pub contests: ::std::option::Option<Vec<crate::schemas::Contest>>,
         #[doc = "Locations where a voter is eligible to drop off a completed ballot. The voter must have received and completed a ballot prior to arriving at the location. The location may not have ballots available on the premises. These locations could be open on or before election day as indicated in the pollingHours field."]
         #[serde(rename = "dropOffLocations", default)]
-        pub drop_off_locations: Option<Vec<crate::schemas::PollingLocation>>,
+        pub drop_off_locations: ::std::option::Option<Vec<crate::schemas::PollingLocation>>,
         #[doc = "Locations where the voter is eligible to vote early, prior to election day."]
         #[serde(rename = "earlyVoteSites", default)]
-        pub early_vote_sites: Option<Vec<crate::schemas::PollingLocation>>,
+        pub early_vote_sites: ::std::option::Option<Vec<crate::schemas::PollingLocation>>,
         #[doc = "The election that was queried."]
         #[serde(rename = "election", default)]
-        pub election: Option<crate::schemas::Election>,
+        pub election: ::std::option::Option<crate::schemas::Election>,
         #[doc = "Identifies what kind of resource this is. Value: the fixed string \"civicinfo#voterInfoResponse\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Specifies whether voters in the precinct vote only by mailing their ballots (with the possible option of dropping off their ballots as well)."]
         #[serde(rename = "mailOnly", default)]
-        pub mail_only: Option<bool>,
+        pub mail_only: ::std::option::Option<bool>,
         #[doc = "The normalized version of the requested address"]
         #[serde(rename = "normalizedInput", default)]
-        pub normalized_input: Option<crate::schemas::SimpleAddressType>,
+        pub normalized_input: ::std::option::Option<crate::schemas::SimpleAddressType>,
         #[doc = "When there are multiple elections for a voter address, the otherElections field is populated in the API response and there are two possibilities: 1. If the earliest election is not the intended election, specify the election ID of the desired election in a second API request using the electionId field. 2. If these elections occur on the same day, the API doesn?t return any polling location, contest, or election official information to ensure that an additional query is made. For user-facing applications, we recommend displaying these elections to the user to disambiguate. A second API request using the electionId field should be made for the election that is relevant to the user."]
         #[serde(rename = "otherElections", default)]
-        pub other_elections: Option<Vec<crate::schemas::Election>>,
+        pub other_elections: ::std::option::Option<Vec<crate::schemas::Election>>,
         #[doc = "Locations where the voter is eligible to vote on election day."]
         #[serde(rename = "pollingLocations", default)]
-        pub polling_locations: Option<Vec<crate::schemas::PollingLocation>>,
+        pub polling_locations: ::std::option::Option<Vec<crate::schemas::PollingLocation>>,
         #[serde(rename = "precinctId", default)]
-        pub precinct_id: Option<String>,
+        pub precinct_id: ::std::option::Option<String>,
         #[serde(rename = "segments", default)]
-        pub segments: Option<Vec<crate::schemas::StreetSegment>>,
+        pub segments: ::std::option::Option<Vec<crate::schemas::StreetSegment>>,
         #[doc = "Local Election Information for the state that the voter votes in. For the US, there will only be one element in this array."]
         #[serde(rename = "state", default)]
-        pub state: Option<Vec<crate::schemas::AdministrationRegion>>,
+        pub state: ::std::option::Option<Vec<crate::schemas::AdministrationRegion>>,
     }
     impl ::field_selector::FieldSelector for VoterInfoResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1489,7 +1457,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1498,13 +1465,13 @@ pub mod schemas {
     pub struct VoterInfoSegmentResult {
         #[serde(rename = "generatedMillis", default)]
         #[serde(with = "crate::parsed_string")]
-        pub generated_millis: Option<i64>,
+        pub generated_millis: ::std::option::Option<i64>,
         #[serde(rename = "postalAddress", default)]
-        pub postal_address: Option<crate::schemas::PostalAddress>,
+        pub postal_address: ::std::option::Option<crate::schemas::PostalAddress>,
         #[serde(rename = "request", default)]
-        pub request: Option<crate::schemas::VoterInfoRequest>,
+        pub request: ::std::option::Option<crate::schemas::VoterInfoRequest>,
         #[serde(rename = "response", default)]
-        pub response: Option<crate::schemas::VoterInfoResponse>,
+        pub response: ::std::option::Option<crate::schemas::VoterInfoResponse>,
     }
     impl ::field_selector::FieldSelector for VoterInfoSegmentResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1513,7 +1480,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -1558,6 +1524,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -2693,6 +2668,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2768,5 +2744,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

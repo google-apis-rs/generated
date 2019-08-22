@@ -13,17 +13,17 @@ pub mod schemas {
     )]
     pub struct JwkKeysItems {
         #[serde(rename = "alg", default)]
-        pub alg: Option<String>,
+        pub alg: ::std::option::Option<String>,
         #[serde(rename = "e", default)]
-        pub e: Option<String>,
+        pub e: ::std::option::Option<String>,
         #[serde(rename = "kid", default)]
-        pub kid: Option<String>,
+        pub kid: ::std::option::Option<String>,
         #[serde(rename = "kty", default)]
-        pub kty: Option<String>,
+        pub kty: ::std::option::Option<String>,
         #[serde(rename = "n", default)]
-        pub n: Option<String>,
+        pub n: ::std::option::Option<String>,
         #[serde(rename = "use", default)]
-        pub r#use: Option<String>,
+        pub r#use: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for JwkKeysItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -32,7 +32,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -49,7 +48,7 @@ pub mod schemas {
     )]
     pub struct Jwk {
         #[serde(rename = "keys", default)]
-        pub keys: Option<Vec<crate::schemas::JwkKeysItems>>,
+        pub keys: ::std::option::Option<Vec<crate::schemas::JwkKeysItems>>,
     }
     impl ::field_selector::FieldSelector for Jwk {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -58,7 +57,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -76,31 +74,31 @@ pub mod schemas {
     pub struct Tokeninfo {
         #[doc = "The access type granted with this token. It can be offline or online."]
         #[serde(rename = "access_type", default)]
-        pub access_type: Option<String>,
+        pub access_type: ::std::option::Option<String>,
         #[doc = "Who is the intended audience for this token. In general the same as issued_to."]
         #[serde(rename = "audience", default)]
-        pub audience: Option<String>,
+        pub audience: ::std::option::Option<String>,
         #[doc = "The email address of the user. Present only if the email scope is present in the request."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The expiry time of the token, as number of seconds left until expiry."]
         #[serde(rename = "expires_in", default)]
-        pub expires_in: Option<i32>,
+        pub expires_in: ::std::option::Option<i32>,
         #[doc = "To whom was the token issued to. In general the same as audience."]
         #[serde(rename = "issued_to", default)]
-        pub issued_to: Option<String>,
+        pub issued_to: ::std::option::Option<String>,
         #[doc = "The space separated list of scopes granted to this token."]
         #[serde(rename = "scope", default)]
-        pub scope: Option<String>,
+        pub scope: ::std::option::Option<String>,
         #[doc = "The token handle associated with this token."]
         #[serde(rename = "token_handle", default)]
-        pub token_handle: Option<String>,
+        pub token_handle: ::std::option::Option<String>,
         #[doc = "The obfuscated user id."]
         #[serde(rename = "user_id", default)]
-        pub user_id: Option<String>,
+        pub user_id: ::std::option::Option<String>,
         #[doc = "Boolean flag which is true if the email address is verified. Present only if the email scope is present in the request."]
         #[serde(rename = "verified_email", default)]
-        pub verified_email: Option<bool>,
+        pub verified_email: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for Tokeninfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -109,7 +107,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -127,37 +124,37 @@ pub mod schemas {
     pub struct Userinfoplus {
         #[doc = "The user's email address."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The user's last name."]
         #[serde(rename = "family_name", default)]
-        pub family_name: Option<String>,
+        pub family_name: ::std::option::Option<String>,
         #[doc = "The user's gender."]
         #[serde(rename = "gender", default)]
-        pub gender: Option<String>,
+        pub gender: ::std::option::Option<String>,
         #[doc = "The user's first name."]
         #[serde(rename = "given_name", default)]
-        pub given_name: Option<String>,
+        pub given_name: ::std::option::Option<String>,
         #[doc = "The hosted domain e.g. example.com if the user is Google apps user."]
         #[serde(rename = "hd", default)]
-        pub hd: Option<String>,
+        pub hd: ::std::option::Option<String>,
         #[doc = "The obfuscated ID of the user."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "URL of the profile page."]
         #[serde(rename = "link", default)]
-        pub link: Option<String>,
+        pub link: ::std::option::Option<String>,
         #[doc = "The user's preferred locale."]
         #[serde(rename = "locale", default)]
-        pub locale: Option<String>,
+        pub locale: ::std::option::Option<String>,
         #[doc = "The user's full name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "URL of the user's picture image."]
         #[serde(rename = "picture", default)]
-        pub picture: Option<String>,
+        pub picture: ::std::option::Option<String>,
         #[doc = "Boolean flag which is true if the email address is verified. Always verified because we only return the user's primary email address."]
         #[serde(rename = "verified_email", default)]
-        pub verified_email: Option<bool>,
+        pub verified_email: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for Userinfoplus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -166,7 +163,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -211,6 +207,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1116,6 +1121,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1191,5 +1197,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

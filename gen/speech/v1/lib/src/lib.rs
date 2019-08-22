@@ -3,10 +3,10 @@ pub mod schemas {
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "A list of operations that matches the specified filter in the request."]
         #[serde(rename = "operations", default)]
-        pub operations: Option<Vec<crate::schemas::Operation>>,
+        pub operations: ::std::option::Option<Vec<crate::schemas::Operation>>,
     }
     impl ::field_selector::FieldSelector for ListOperationsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -15,7 +15,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -33,13 +32,13 @@ pub mod schemas {
     pub struct LongRunningRecognizeMetadata {
         #[doc = "Time of the most recent processing update."]
         #[serde(rename = "lastUpdateTime", default)]
-        pub last_update_time: Option<String>,
+        pub last_update_time: ::std::option::Option<String>,
         #[doc = "Approximate percentage of audio processed thus far. Guaranteed to be 100\nwhen the audio is fully processed and the results are available."]
         #[serde(rename = "progressPercent", default)]
-        pub progress_percent: Option<i32>,
+        pub progress_percent: ::std::option::Option<i32>,
         #[doc = "Time when the request was received."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LongRunningRecognizeMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -48,7 +47,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -66,10 +64,10 @@ pub mod schemas {
     pub struct LongRunningRecognizeRequest {
         #[doc = "*Required* The audio data to be recognized."]
         #[serde(rename = "audio", default)]
-        pub audio: Option<crate::schemas::RecognitionAudio>,
+        pub audio: ::std::option::Option<crate::schemas::RecognitionAudio>,
         #[doc = "*Required* Provides information to the recognizer that specifies how to\nprocess the request."]
         #[serde(rename = "config", default)]
-        pub config: Option<crate::schemas::RecognitionConfig>,
+        pub config: ::std::option::Option<crate::schemas::RecognitionConfig>,
     }
     impl ::field_selector::FieldSelector for LongRunningRecognizeRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -78,7 +76,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -87,7 +84,7 @@ pub mod schemas {
     pub struct LongRunningRecognizeResponse {
         #[doc = "Output only. Sequential list of transcription results corresponding to\nsequential portions of audio."]
         #[serde(rename = "results", default)]
-        pub results: Option<Vec<crate::schemas::SpeechRecognitionResult>>,
+        pub results: ::std::option::Option<Vec<crate::schemas::SpeechRecognitionResult>>,
     }
     impl ::field_selector::FieldSelector for LongRunningRecognizeResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -96,26 +93,27 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
         #[serde(rename = "done", default)]
-        pub done: Option<bool>,
+        pub done: ::std::option::Option<bool>,
         #[doc = "The error result of the operation in case of failure or cancellation."]
         #[serde(rename = "error", default)]
-        pub error: Option<crate::schemas::Status>,
+        pub error: ::std::option::Option<crate::schemas::Status>,
         #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub metadata:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
         #[serde(rename = "response", default)]
-        pub response: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub response:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
     }
     impl ::field_selector::FieldSelector for Operation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -124,7 +122,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -142,10 +139,10 @@ pub mod schemas {
     pub struct RecognitionAudio {
         #[doc = "The audio data bytes encoded as specified in\n`RecognitionConfig`. Note: as with all bytes fields, proto buffers use a\npure binary representation, whereas JSON representations use base64."]
         #[serde(rename = "content", default)]
-        pub content: Option<Vec<u8>>,
+        pub content: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "URI that points to a file that contains audio data bytes as specified in\n`RecognitionConfig`. The file must not be compressed (for example, gzip).\nCurrently, only Google Cloud Storage URIs are\nsupported, which must be specified in the following format:\n`gs://bucket_name/object_name` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](https://cloud.google.com/storage/docs/reference-uris)."]
         #[serde(rename = "uri", default)]
-        pub uri: Option<String>,
+        pub uri: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RecognitionAudio {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -154,7 +151,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -227,6 +223,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for RecognitionConfigEncoding {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -242,43 +247,43 @@ pub mod schemas {
     pub struct RecognitionConfig {
         #[doc = "*Optional* The number of channels in the input audio data.\nONLY set this for MULTI-CHANNEL recognition.\nValid values for LINEAR16 and FLAC are `1`-`8`.\nValid values for OGG_OPUS are '1'-'254'.\nValid value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`.\nIf `0` or omitted, defaults to one channel (mono).\nNote: We only recognize the first channel by default.\nTo perform independent recognition on each channel set\n`enable_separate_recognition_per_channel` to 'true'."]
         #[serde(rename = "audioChannelCount", default)]
-        pub audio_channel_count: Option<i32>,
+        pub audio_channel_count: ::std::option::Option<i32>,
         #[doc = "*Optional* If 'true', adds punctuation to recognition result hypotheses.\nThis feature is only available in select languages. Setting this for\nrequests in other languages has no effect at all.\nThe default 'false' value does not add punctuation to result hypotheses.\nNote: This is currently offered as an experimental service, complimentary\nto all users. In the future this may be exclusively available as a\npremium feature."]
         #[serde(rename = "enableAutomaticPunctuation", default)]
-        pub enable_automatic_punctuation: Option<bool>,
+        pub enable_automatic_punctuation: ::std::option::Option<bool>,
         #[doc = "This needs to be set to `true` explicitly and `audio_channel_count` > 1\nto get each channel recognized separately. The recognition result will\ncontain a `channel_tag` field to state which channel that result belongs\nto. If this is not true, we will only recognize the first channel. The\nrequest is billed cumulatively for all channels recognized:\n`audio_channel_count` multiplied by the length of the audio."]
         #[serde(rename = "enableSeparateRecognitionPerChannel", default)]
-        pub enable_separate_recognition_per_channel: Option<bool>,
+        pub enable_separate_recognition_per_channel: ::std::option::Option<bool>,
         #[doc = "*Optional* If `true`, the top result includes a list of words and\nthe start and end time offsets (timestamps) for those words. If\n`false`, no word-level time offset information is returned. The default is\n`false`."]
         #[serde(rename = "enableWordTimeOffsets", default)]
-        pub enable_word_time_offsets: Option<bool>,
+        pub enable_word_time_offsets: ::std::option::Option<bool>,
         #[doc = "Encoding of audio data sent in all `RecognitionAudio` messages.\nThis field is optional for `FLAC` and `WAV` audio files and required\nfor all other audio formats. For details, see AudioEncoding."]
         #[serde(rename = "encoding", default)]
-        pub encoding: Option<crate::schemas::RecognitionConfigEncoding>,
+        pub encoding: ::std::option::Option<crate::schemas::RecognitionConfigEncoding>,
         #[doc = "*Required* The language of the supplied audio as a\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.\nExample: \"en-US\".\nSee [Language Support](/speech-to-text/docs/languages)\nfor a list of the currently supported language codes."]
         #[serde(rename = "languageCode", default)]
-        pub language_code: Option<String>,
+        pub language_code: ::std::option::Option<String>,
         #[doc = "*Optional* Maximum number of recognition hypotheses to be returned.\nSpecifically, the maximum number of `SpeechRecognitionAlternative` messages\nwithin each `SpeechRecognitionResult`.\nThe server may return fewer than `max_alternatives`.\nValid values are `0`-`30`. A value of `0` or `1` will return a maximum of\none. If omitted, will return a maximum of one."]
         #[serde(rename = "maxAlternatives", default)]
-        pub max_alternatives: Option<i32>,
+        pub max_alternatives: ::std::option::Option<i32>,
         #[doc = "*Optional* Metadata regarding this request."]
         #[serde(rename = "metadata", default)]
-        pub metadata: Option<crate::schemas::RecognitionMetadata>,
+        pub metadata: ::std::option::Option<crate::schemas::RecognitionMetadata>,
         #[doc = "*Optional* Which model to select for the given request. Select the model\nbest suited to your domain to get best results. If a model is not\nexplicitly specified, then we auto-select a model based on the parameters\nin the RecognitionConfig.\n\n<table>\n  <tr>\n    <td><b>Model</b></td>\n    <td><b>Description</b></td>\n  </tr>\n  <tr>\n    <td><code>command_and_search</code></td>\n    <td>Best for short queries such as voice commands or voice search.</td>\n  </tr>\n  <tr>\n    <td><code>phone_call</code></td>\n    <td>Best for audio that originated from a phone call (typically\n    recorded at an 8khz sampling rate).</td>\n  </tr>\n  <tr>\n    <td><code>video</code></td>\n    <td>Best for audio that originated from from video or includes multiple\n        speakers. Ideally the audio is recorded at a 16khz or greater\n        sampling rate. This is a premium model that costs more than the\n        standard rate.</td>\n  </tr>\n  <tr>\n    <td><code>default</code></td>\n    <td>Best for audio that is not one of the specific audio models.\n        For example, long-form audio. Ideally the audio is high-fidelity,\n        recorded at a 16khz or greater sampling rate.</td>\n  </tr>\n</table>"]
         #[serde(rename = "model", default)]
-        pub model: Option<String>,
+        pub model: ::std::option::Option<String>,
         #[doc = "*Optional* If set to `true`, the server will attempt to filter out\nprofanities, replacing all but the initial character in each filtered word\nwith asterisks, e.g. \"f***\". If set to `false` or omitted, profanities\nwon't be filtered out."]
         #[serde(rename = "profanityFilter", default)]
-        pub profanity_filter: Option<bool>,
+        pub profanity_filter: ::std::option::Option<bool>,
         #[doc = "Sample rate in Hertz of the audio data sent in all\n`RecognitionAudio` messages. Valid values are: 8000-48000.\n16000 is optimal. For best results, set the sampling rate of the audio\nsource to 16000 Hz. If that's not possible, use the native sample rate of\nthe audio source (instead of re-sampling).\nThis field is optional for FLAC and WAV audio files, but is\nrequired for all other audio formats. For details, see AudioEncoding."]
         #[serde(rename = "sampleRateHertz", default)]
-        pub sample_rate_hertz: Option<i32>,
+        pub sample_rate_hertz: ::std::option::Option<i32>,
         #[doc = "*Optional* array of SpeechContext.\nA means to provide context to assist the speech recognition. For more\ninformation, see\n[speech adaptation](/speech-to-text/docs/context-strength)."]
         #[serde(rename = "speechContexts", default)]
-        pub speech_contexts: Option<Vec<crate::schemas::SpeechContext>>,
+        pub speech_contexts: ::std::option::Option<Vec<crate::schemas::SpeechContext>>,
         #[doc = "*Optional* Set to true to use an enhanced model for speech recognition.\nIf `use_enhanced` is set to true and the `model` field is not set, then\nan appropriate enhanced model is chosen if an enhanced model exists for\nthe audio.\n\nIf `use_enhanced` is true and an enhanced version of the specified model\ndoes not exist, then the speech is recognized using the standard version\nof the specified model."]
         #[serde(rename = "useEnhanced", default)]
-        pub use_enhanced: Option<bool>,
+        pub use_enhanced: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for RecognitionConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -287,7 +292,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -372,6 +376,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for RecognitionMetadataInteractionType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RecognitionMetadataMicrophoneDistance {
         #[doc = "Audio type is not known."]
@@ -430,6 +443,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for RecognitionMetadataMicrophoneDistance {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RecognitionMetadataOriginalMediaType {
         #[doc = "Unknown original media type."]
@@ -482,6 +504,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for RecognitionMetadataOriginalMediaType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -558,6 +589,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for RecognitionMetadataRecordingDeviceType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -573,32 +613,36 @@ pub mod schemas {
     pub struct RecognitionMetadata {
         #[doc = "Description of the content. Eg. \"Recordings of federal supreme court\nhearings from 2012\"."]
         #[serde(rename = "audioTopic", default)]
-        pub audio_topic: Option<String>,
+        pub audio_topic: ::std::option::Option<String>,
         #[doc = "The industry vertical to which this speech recognition request most\nclosely applies. This is most indicative of the topics contained\nin the audio.  Use the 6-digit NAICS code to identify the industry\nvertical - see https://www.naics.com/search/."]
         #[serde(rename = "industryNaicsCodeOfAudio", default)]
-        pub industry_naics_code_of_audio: Option<u32>,
+        pub industry_naics_code_of_audio: ::std::option::Option<u32>,
         #[doc = "The use case most closely describing the audio content to be recognized."]
         #[serde(rename = "interactionType", default)]
-        pub interaction_type: Option<crate::schemas::RecognitionMetadataInteractionType>,
+        pub interaction_type:
+            ::std::option::Option<crate::schemas::RecognitionMetadataInteractionType>,
         #[doc = "The audio type that most closely describes the audio being recognized."]
         #[serde(rename = "microphoneDistance", default)]
-        pub microphone_distance: Option<crate::schemas::RecognitionMetadataMicrophoneDistance>,
+        pub microphone_distance:
+            ::std::option::Option<crate::schemas::RecognitionMetadataMicrophoneDistance>,
         #[doc = "Obfuscated (privacy-protected) ID of the user, to identify number of\nunique users using the service."]
         #[serde(rename = "obfuscatedId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub obfuscated_id: Option<i64>,
+        pub obfuscated_id: ::std::option::Option<i64>,
         #[doc = "The original media the speech was recorded on."]
         #[serde(rename = "originalMediaType", default)]
-        pub original_media_type: Option<crate::schemas::RecognitionMetadataOriginalMediaType>,
+        pub original_media_type:
+            ::std::option::Option<crate::schemas::RecognitionMetadataOriginalMediaType>,
         #[doc = "Mime type of the original audio file.  For example `audio/m4a`,\n`audio/x-alaw-basic`, `audio/mp3`, `audio/3gpp`.\nA list of possible audio mime types is maintained at\nhttp://www.iana.org/assignments/media-types/media-types.xhtml#audio"]
         #[serde(rename = "originalMimeType", default)]
-        pub original_mime_type: Option<String>,
+        pub original_mime_type: ::std::option::Option<String>,
         #[doc = "The device used to make the recording.  Examples 'Nexus 5X' or\n'Polycom SoundStation IP 6000' or 'POTS' or 'VoIP' or\n'Cardioid Microphone'."]
         #[serde(rename = "recordingDeviceName", default)]
-        pub recording_device_name: Option<String>,
+        pub recording_device_name: ::std::option::Option<String>,
         #[doc = "The type of device the speech was recorded with."]
         #[serde(rename = "recordingDeviceType", default)]
-        pub recording_device_type: Option<crate::schemas::RecognitionMetadataRecordingDeviceType>,
+        pub recording_device_type:
+            ::std::option::Option<crate::schemas::RecognitionMetadataRecordingDeviceType>,
     }
     impl ::field_selector::FieldSelector for RecognitionMetadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -607,7 +651,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -625,10 +668,10 @@ pub mod schemas {
     pub struct RecognizeRequest {
         #[doc = "*Required* The audio data to be recognized."]
         #[serde(rename = "audio", default)]
-        pub audio: Option<crate::schemas::RecognitionAudio>,
+        pub audio: ::std::option::Option<crate::schemas::RecognitionAudio>,
         #[doc = "*Required* Provides information to the recognizer that specifies how to\nprocess the request."]
         #[serde(rename = "config", default)]
-        pub config: Option<crate::schemas::RecognitionConfig>,
+        pub config: ::std::option::Option<crate::schemas::RecognitionConfig>,
     }
     impl ::field_selector::FieldSelector for RecognizeRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -637,7 +680,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -646,7 +688,7 @@ pub mod schemas {
     pub struct RecognizeResponse {
         #[doc = "Output only. Sequential list of transcription results corresponding to\nsequential portions of audio."]
         #[serde(rename = "results", default)]
-        pub results: Option<Vec<crate::schemas::SpeechRecognitionResult>>,
+        pub results: ::std::option::Option<Vec<crate::schemas::SpeechRecognitionResult>>,
     }
     impl ::field_selector::FieldSelector for RecognizeResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -655,7 +697,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -673,7 +714,7 @@ pub mod schemas {
     pub struct SpeechContext {
         #[doc = "*Optional* A list of strings containing words and phrases \"hints\" so that\nthe speech recognition is more likely to recognize them. This can be used\nto improve the accuracy for specific words and phrases, for example, if\nspecific commands are typically spoken by the user. This can also be used\nto add additional words to the vocabulary of the recognizer. See\n[usage limits](/speech-to-text/quotas#content).\n\nList items can also be set to classes for groups of words that represent\ncommon concepts that occur in natural language. For example, rather than\nproviding phrase hints for every month of the year, using the $MONTH class\nimproves the likelihood of correctly transcribing audio that includes\nmonths."]
         #[serde(rename = "phrases", default)]
-        pub phrases: Option<Vec<String>>,
+        pub phrases: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for SpeechContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -682,7 +723,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -691,13 +731,13 @@ pub mod schemas {
     pub struct SpeechRecognitionAlternative {
         #[doc = "Output only. The confidence estimate between 0.0 and 1.0. A higher number\nindicates an estimated greater likelihood that the recognized words are\ncorrect. This field is set only for the top alternative of a non-streaming\nresult or, of a streaming result where `is_final=true`.\nThis field is not guaranteed to be accurate and users should not rely on it\nto be always provided.\nThe default of 0.0 is a sentinel value indicating `confidence` was not set."]
         #[serde(rename = "confidence", default)]
-        pub confidence: Option<f32>,
+        pub confidence: ::std::option::Option<f32>,
         #[doc = "Output only. Transcript text representing the words that the user spoke."]
         #[serde(rename = "transcript", default)]
-        pub transcript: Option<String>,
+        pub transcript: ::std::option::Option<String>,
         #[doc = "Output only. A list of word-specific information for each recognized word.\nNote: When `enable_speaker_diarization` is true, you will see all the words\nfrom the beginning of the audio."]
         #[serde(rename = "words", default)]
-        pub words: Option<Vec<crate::schemas::WordInfo>>,
+        pub words: ::std::option::Option<Vec<crate::schemas::WordInfo>>,
     }
     impl ::field_selector::FieldSelector for SpeechRecognitionAlternative {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -706,7 +746,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -715,10 +754,10 @@ pub mod schemas {
     pub struct SpeechRecognitionResult {
         #[doc = "Output only. May contain one or more recognition hypotheses (up to the\nmaximum specified in `max_alternatives`).\nThese alternatives are ordered in terms of accuracy, with the top (first)\nalternative being the most probable, as ranked by the recognizer."]
         #[serde(rename = "alternatives", default)]
-        pub alternatives: Option<Vec<crate::schemas::SpeechRecognitionAlternative>>,
+        pub alternatives: ::std::option::Option<Vec<crate::schemas::SpeechRecognitionAlternative>>,
         #[doc = "For multi-channel audio, this is the channel number corresponding to the\nrecognized result for the audio from that channel.\nFor audio_channel_count = N, its output values can range from '1' to 'N'."]
         #[serde(rename = "channelTag", default)]
-        pub channel_tag: Option<i32>,
+        pub channel_tag: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for SpeechRecognitionResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -727,20 +766,20 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
         #[serde(rename = "code", default)]
-        pub code: Option<i32>,
+        pub code: ::std::option::Option<i32>,
         #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
         #[serde(rename = "details", default)]
-        pub details: Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
+        pub details:
+            ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
         #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Status {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -749,7 +788,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -767,13 +805,13 @@ pub mod schemas {
     pub struct WordInfo {
         #[doc = "Output only. Time offset relative to the beginning of the audio,\nand corresponding to the end of the spoken word.\nThis field is only set if `enable_word_time_offsets=true` and only\nin the top hypothesis.\nThis is an experimental feature and the accuracy of the time offset can\nvary."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
         #[doc = "Output only. Time offset relative to the beginning of the audio,\nand corresponding to the start of the spoken word.\nThis field is only set if `enable_word_time_offsets=true` and only\nin the top hypothesis.\nThis is an experimental feature and the accuracy of the time offset can\nvary."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
         #[doc = "Output only. The word corresponding to this set of information."]
         #[serde(rename = "word", default)]
-        pub word: Option<String>,
+        pub word: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for WordInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -782,7 +820,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -837,6 +874,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -881,6 +927,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -2610,6 +2665,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2685,5 +2741,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

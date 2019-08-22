@@ -1,50 +1,50 @@
     Checking google-civicinfo2 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/civicinfo/v2/lib)
 error[E0412]: cannot find type `RepresentativeInfoByAddressLevelsItems` in module `crate::resources::representatives::params`
-    --> civicinfo/v2/lib/src/lib.rs:2144:384
+    --> civicinfo/v2/lib/src/lib.rs:2119:384
      |
-2144 |         pub struct RepresentativeInfoByAddressRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , request : crate :: schemas :: RepresentativeInfoRequest , address : Option < String > , include_offices : Option < bool > , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressLevelsItems > > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressRolesItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
+2119 |         pub struct RepresentativeInfoByAddressRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , request : crate :: schemas :: RepresentativeInfoRequest , address : Option < String > , include_offices : Option < bool > , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressLevelsItems > > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressRolesItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
      |                                                                                                                                                                                                                                                                                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::representatives::params`
 
 error[E0412]: cannot find type `RepresentativeInfoByAddressRolesItems` in module `crate::resources::representatives::params`
-    --> civicinfo/v2/lib/src/lib.rs:2144:503
+    --> civicinfo/v2/lib/src/lib.rs:2119:503
      |
-2144 |         pub struct RepresentativeInfoByAddressRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , request : crate :: schemas :: RepresentativeInfoRequest , address : Option < String > , include_offices : Option < bool > , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressLevelsItems > > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressRolesItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
+2119 |         pub struct RepresentativeInfoByAddressRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , request : crate :: schemas :: RepresentativeInfoRequest , address : Option < String > , include_offices : Option < bool > , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressLevelsItems > > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressRolesItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::representatives::params`
 
 error[E0412]: cannot find type `RepresentativeInfoByAddressLevelsItems` in module `crate::resources::representatives::params`
-    --> civicinfo/v2/lib/src/lib.rs:2159:94
+    --> civicinfo/v2/lib/src/lib.rs:2134:94
      |
-2159 |                 value : impl Into < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressLevelsItems > >,
+2134 |                 value : impl Into < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressLevelsItems > >,
      |                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::representatives::params`
 
 error[E0412]: cannot find type `RepresentativeInfoByAddressRolesItems` in module `crate::resources::representatives::params`
-    --> civicinfo/v2/lib/src/lib.rs:2167:94
+    --> civicinfo/v2/lib/src/lib.rs:2142:94
      |
-2167 |                 value : impl Into < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressRolesItems > >,
+2142 |                 value : impl Into < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressRolesItems > >,
      |                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::representatives::params`
 
 error[E0412]: cannot find type `RepresentativeInfoByDivisionLevelsItems` in module `crate::resources::representatives::params`
-    --> civicinfo/v2/lib/src/lib.rs:2291:345
+    --> civicinfo/v2/lib/src/lib.rs:2266:345
      |
-2291 |         pub struct RepresentativeInfoByDivisionRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , request : crate :: schemas :: DivisionRepresentativeInfoRequest , ocd_id : String , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionLevelsItems > > , recursive : Option < bool > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionRolesItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
+2266 |         pub struct RepresentativeInfoByDivisionRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , request : crate :: schemas :: DivisionRepresentativeInfoRequest , ocd_id : String , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionLevelsItems > > , recursive : Option < bool > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionRolesItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
      |                                                                                                                                                                                                                                                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::representatives::params`
 
 error[E0412]: cannot find type `RepresentativeInfoByDivisionRolesItems` in module `crate::resources::representatives::params`
-    --> civicinfo/v2/lib/src/lib.rs:2291:495
+    --> civicinfo/v2/lib/src/lib.rs:2266:495
      |
-2291 |         pub struct RepresentativeInfoByDivisionRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , request : crate :: schemas :: DivisionRepresentativeInfoRequest , ocd_id : String , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionLevelsItems > > , recursive : Option < bool > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionRolesItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
+2266 |         pub struct RepresentativeInfoByDivisionRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , request : crate :: schemas :: DivisionRepresentativeInfoRequest , ocd_id : String , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionLevelsItems > > , recursive : Option < bool > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionRolesItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::representatives::params`
 
 error[E0412]: cannot find type `RepresentativeInfoByDivisionLevelsItems` in module `crate::resources::representatives::params`
-    --> civicinfo/v2/lib/src/lib.rs:2296:94
+    --> civicinfo/v2/lib/src/lib.rs:2271:94
      |
-2296 |                 value : impl Into < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionLevelsItems > >,
+2271 |                 value : impl Into < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionLevelsItems > >,
      |                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::representatives::params`
 
 error[E0412]: cannot find type `RepresentativeInfoByDivisionRolesItems` in module `crate::resources::representatives::params`
-    --> civicinfo/v2/lib/src/lib.rs:2309:94
+    --> civicinfo/v2/lib/src/lib.rs:2284:94
      |
-2309 |                 value : impl Into < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionRolesItems > >,
+2284 |                 value : impl Into < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionRolesItems > >,
      |                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::representatives::params`
 
 error[E0072]: recursive type `schemas::AdministrationRegion` has infinite size
@@ -53,30 +53,31 @@ error[E0072]: recursive type `schemas::AdministrationRegion` has infinite size
 14 |     pub struct AdministrationRegion {
    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ recursive type has infinite size
 ...
-23 |         pub local_jurisdiction: Option<crate::schemas::AdministrationRegion>,
-   |         -------------------------------------------------------------------- recursive without indirection
+23 |         pub local_jurisdiction: ::std::option::Option<crate::schemas::AdministrationRegion>,
+   |         ----------------------------------------------------------------------------------- recursive without indirection
    |
    = help: insert indirection (e.g., a `Box`, `Rc`, or `&`) at some point to make `schemas::AdministrationRegion` representable
 
 error[E0072]: recursive type `schemas::VoterInfoRequest` has infinite size
-    --> civicinfo/v2/lib/src/lib.rs:1430:5
+    --> civicinfo/v2/lib/src/lib.rs:1398:5
      |
-1430 |     pub struct VoterInfoRequest {
-     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^ recursive type has infinite size
+1398 |       pub struct VoterInfoRequest {
+     |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^ recursive type has infinite size
 ...
-1434 |         pub voter_info_segment_result: Option<crate::schemas::VoterInfoSegmentResult>,
-     |         ----------------------------------------------------------------------------- recursive without indirection
+1402 | /         pub voter_info_segment_result:
+1403 | |             ::std::option::Option<crate::schemas::VoterInfoSegmentResult>,
+     | |_________________________________________________________________________- recursive without indirection
      |
      = help: insert indirection (e.g., a `Box`, `Rc`, or `&`) at some point to make `schemas::VoterInfoRequest` representable
 
 error[E0072]: recursive type `schemas::VoterInfoSegmentResult` has infinite size
-    --> civicinfo/v2/lib/src/lib.rs:1498:5
+    --> civicinfo/v2/lib/src/lib.rs:1465:5
      |
-1498 |     pub struct VoterInfoSegmentResult {
+1465 |     pub struct VoterInfoSegmentResult {
      |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ recursive type has infinite size
 ...
-1505 |         pub request: Option<crate::schemas::VoterInfoRequest>,
-     |         ----------------------------------------------------- recursive without indirection
+1472 |         pub request: ::std::option::Option<crate::schemas::VoterInfoRequest>,
+     |         -------------------------------------------------------------------- recursive without indirection
      |
      = help: insert indirection (e.g., a `Box`, `Rc`, or `&`) at some point to make `schemas::VoterInfoSegmentResult` representable
 

@@ -1,14 +1,14 @@
     Checking google-content2 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/content/v2/lib)
 error[E0412]: cannot find type `ListStatusesItems` in module `crate::resources::orders::params`
-     --> content/v2/lib/src/lib.rs:22390:68
+     --> content/v2/lib/src/lib.rs:22190:68
       |
-22390 |             statuses: Option<Vec<crate::resources::orders::params::ListStatusesItems>>,
+22190 |             statuses: Option<Vec<crate::resources::orders::params::ListStatusesItems>>,
       |                                                                    ^^^^^^^^^^^^^^^^^ not found in `crate::resources::orders::params`
 
 error[E0412]: cannot find type `ListStatusesItems` in module `crate::resources::orders::params`
-     --> content/v2/lib/src/lib.rs:22433:72
+     --> content/v2/lib/src/lib.rs:22233:72
       |
-22433 |                 value: impl Into<Vec<crate::resources::orders::params::ListStatusesItems>>,
+22233 |                 value: impl Into<Vec<crate::resources::orders::params::ListStatusesItems>>,
       |                                                                        ^^^^^^^^^^^^^^^^^ not found in `crate::resources::orders::params`
 
 error: aborting due to 2 previous errors

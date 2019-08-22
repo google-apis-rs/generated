@@ -1,98 +1,98 @@
     Checking google-blogger3 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/blogger/v3/lib)
 error[E0412]: cannot find type `ListByUserRoleItems` in module `crate::resources::blogs::params`
-    --> blogger/v3/lib/src/lib.rs:2000:63
+    --> blogger/v3/lib/src/lib.rs:2001:63
      |
-2000 |             role: Option<Vec<crate::resources::blogs::params::ListByUserRoleItems>>,
+2001 |             role: Option<Vec<crate::resources::blogs::params::ListByUserRoleItems>>,
      |                                                               ^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::blogs::params`
 
 error[E0412]: cannot find type `ListByUserStatusItems` in module `crate::resources::blogs::params`
-    --> blogger/v3/lib/src/lib.rs:2001:65
+    --> blogger/v3/lib/src/lib.rs:2002:65
      |
-2001 |             status: Option<Vec<crate::resources::blogs::params::ListByUserStatusItems>>,
+2002 |             status: Option<Vec<crate::resources::blogs::params::ListByUserStatusItems>>,
      |                                                                 ^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::blogs::params`
 
 error[E0412]: cannot find type `ListByUserRoleItems` in module `crate::resources::blogs::params`
-    --> blogger/v3/lib/src/lib.rs:2020:71
+    --> blogger/v3/lib/src/lib.rs:2021:71
      |
-2020 |                 value: impl Into<Vec<crate::resources::blogs::params::ListByUserRoleItems>>,
+2021 |                 value: impl Into<Vec<crate::resources::blogs::params::ListByUserRoleItems>>,
      |                                                                       ^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::blogs::params`
 
 error[E0412]: cannot find type `ListByUserStatusItems` in module `crate::resources::blogs::params`
-    --> blogger/v3/lib/src/lib.rs:2028:71
+    --> blogger/v3/lib/src/lib.rs:2029:71
      |
-2028 |                 value: impl Into<Vec<crate::resources::blogs::params::ListByUserStatusItems>>,
+2029 |                 value: impl Into<Vec<crate::resources::blogs::params::ListByUserStatusItems>>,
      |                                                                       ^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::blogs::params`
 
 error[E0412]: cannot find type `ListStatusItems` in module `crate::resources::comments::params`
-    --> blogger/v3/lib/src/lib.rs:2865:68
+    --> blogger/v3/lib/src/lib.rs:2884:68
      |
-2865 |             status: Option<Vec<crate::resources::comments::params::ListStatusItems>>,
+2884 |             status: Option<Vec<crate::resources::comments::params::ListStatusItems>>,
      |                                                                    ^^^^^^^^^^^^^^^ not found in `crate::resources::comments::params`
 
 error[E0412]: cannot find type `ListStatusItems` in module `crate::resources::comments::params`
-    --> blogger/v3/lib/src/lib.rs:2904:74
+    --> blogger/v3/lib/src/lib.rs:2923:74
      |
-2904 |                 value: impl Into<Vec<crate::resources::comments::params::ListStatusItems>>,
+2923 |                 value: impl Into<Vec<crate::resources::comments::params::ListStatusItems>>,
      |                                                                          ^^^^^^^^^^^^^^^ not found in `crate::resources::comments::params`
 
 error[E0412]: cannot find type `ListByBlogStatusItems` in module `crate::resources::comments::params`
-    --> blogger/v3/lib/src/lib.rs:3167:68
+    --> blogger/v3/lib/src/lib.rs:3186:68
      |
-3167 |             status: Option<Vec<crate::resources::comments::params::ListByBlogStatusItems>>,
+3186 |             status: Option<Vec<crate::resources::comments::params::ListByBlogStatusItems>>,
      |                                                                    ^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::comments::params`
 
 error[E0412]: cannot find type `ListByBlogStatusItems` in module `crate::resources::comments::params`
-    --> blogger/v3/lib/src/lib.rs:3205:74
+    --> blogger/v3/lib/src/lib.rs:3224:74
      |
-3205 |                 value: impl Into<Vec<crate::resources::comments::params::ListByBlogStatusItems>>,
+3224 |                 value: impl Into<Vec<crate::resources::comments::params::ListByBlogStatusItems>>,
      |                                                                          ^^^^^^^^^^^^^^^^^^^^^ not found in `crate::resources::comments::params`
 
 error[E0412]: cannot find type `GetRangeItems` in module `crate::resources::page_views::params`
-    --> blogger/v3/lib/src/lib.rs:3790:69
+    --> blogger/v3/lib/src/lib.rs:3809:69
      |
-3790 |             range: Option<Vec<crate::resources::page_views::params::GetRangeItems>>,
+3809 |             range: Option<Vec<crate::resources::page_views::params::GetRangeItems>>,
      |                                                                     ^^^^^^^^^^^^^ not found in `crate::resources::page_views::params`
 
 error[E0412]: cannot find type `GetRangeItems` in module `crate::resources::page_views::params`
-    --> blogger/v3/lib/src/lib.rs:3803:76
+    --> blogger/v3/lib/src/lib.rs:3822:76
      |
-3803 |                 value: impl Into<Vec<crate::resources::page_views::params::GetRangeItems>>,
+3822 |                 value: impl Into<Vec<crate::resources::page_views::params::GetRangeItems>>,
      |                                                                            ^^^^^^^^^^^^^ not found in `crate::resources::page_views::params`
 
 error[E0412]: cannot find type `ListStatusItems` in module `crate::resources::pages::params`
-    --> blogger/v3/lib/src/lib.rs:4613:65
+    --> blogger/v3/lib/src/lib.rs:4650:65
      |
-4613 |             status: Option<Vec<crate::resources::pages::params::ListStatusItems>>,
+4650 |             status: Option<Vec<crate::resources::pages::params::ListStatusItems>>,
      |                                                                 ^^^^^^^^^^^^^^^ not found in `crate::resources::pages::params`
 
 error[E0412]: cannot find type `ListStatusItems` in module `crate::resources::pages::params`
-    --> blogger/v3/lib/src/lib.rs:4642:71
+    --> blogger/v3/lib/src/lib.rs:4679:71
      |
-4642 |                 value: impl Into<Vec<crate::resources::pages::params::ListStatusItems>>,
+4679 |                 value: impl Into<Vec<crate::resources::pages::params::ListStatusItems>>,
      |                                                                       ^^^^^^^^^^^^^^^ not found in `crate::resources::pages::params`
 
 error[E0412]: cannot find type `ListStatusItems` in module `crate::resources::post_user_infos::params`
-    --> blogger/v3/lib/src/lib.rs:5836:75
+    --> blogger/v3/lib/src/lib.rs:5891:75
      |
-5836 |             status: Option<Vec<crate::resources::post_user_infos::params::ListStatusItems>>,
+5891 |             status: Option<Vec<crate::resources::post_user_infos::params::ListStatusItems>>,
      |                                                                           ^^^^^^^^^^^^^^^ not found in `crate::resources::post_user_infos::params`
 
 error[E0412]: cannot find type `ListStatusItems` in module `crate::resources::post_user_infos::params`
-    --> blogger/v3/lib/src/lib.rs:5888:81
+    --> blogger/v3/lib/src/lib.rs:5943:81
      |
-5888 |                 value: impl Into<Vec<crate::resources::post_user_infos::params::ListStatusItems>>,
+5943 |                 value: impl Into<Vec<crate::resources::post_user_infos::params::ListStatusItems>>,
      |                                                                                 ^^^^^^^^^^^^^^^ not found in `crate::resources::post_user_infos::params`
 
 error[E0412]: cannot find type `ListStatusItems` in module `crate::resources::posts::params`
-    --> blogger/v3/lib/src/lib.rs:7229:65
+    --> blogger/v3/lib/src/lib.rs:7329:65
      |
-7229 |             status: Option<Vec<crate::resources::posts::params::ListStatusItems>>,
+7329 |             status: Option<Vec<crate::resources::posts::params::ListStatusItems>>,
      |                                                                 ^^^^^^^^^^^^^^^ not found in `crate::resources::posts::params`
 
 error[E0412]: cannot find type `ListStatusItems` in module `crate::resources::posts::params`
-    --> blogger/v3/lib/src/lib.rs:7283:71
+    --> blogger/v3/lib/src/lib.rs:7383:71
      |
-7283 |                 value: impl Into<Vec<crate::resources::posts::params::ListStatusItems>>,
+7383 |                 value: impl Into<Vec<crate::resources::posts::params::ListStatusItems>>,
      |                                                                       ^^^^^^^^^^^^^^^ not found in `crate::resources::posts::params`
 
 error: aborting due to 16 previous errors

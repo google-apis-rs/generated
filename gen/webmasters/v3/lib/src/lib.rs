@@ -4,15 +4,15 @@ pub mod schemas {
     )]
     pub struct ApiDataRow {
         #[serde(rename = "clicks", default)]
-        pub clicks: Option<f64>,
+        pub clicks: ::std::option::Option<f64>,
         #[serde(rename = "ctr", default)]
-        pub ctr: Option<f64>,
+        pub ctr: ::std::option::Option<f64>,
         #[serde(rename = "impressions", default)]
-        pub impressions: Option<f64>,
+        pub impressions: ::std::option::Option<f64>,
         #[serde(rename = "keys", default)]
-        pub keys: Option<Vec<String>>,
+        pub keys: ::std::option::Option<Vec<String>>,
         #[serde(rename = "position", default)]
-        pub position: Option<f64>,
+        pub position: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for ApiDataRow {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -21,7 +21,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -38,11 +37,11 @@ pub mod schemas {
     )]
     pub struct ApiDimensionFilter {
         #[serde(rename = "dimension", default)]
-        pub dimension: Option<String>,
+        pub dimension: ::std::option::Option<String>,
         #[serde(rename = "expression", default)]
-        pub expression: Option<String>,
+        pub expression: ::std::option::Option<String>,
         #[serde(rename = "operator", default)]
-        pub operator: Option<String>,
+        pub operator: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ApiDimensionFilter {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -51,7 +50,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -68,9 +66,9 @@ pub mod schemas {
     )]
     pub struct ApiDimensionFilterGroup {
         #[serde(rename = "filters", default)]
-        pub filters: Option<Vec<crate::schemas::ApiDimensionFilter>>,
+        pub filters: ::std::option::Option<Vec<crate::schemas::ApiDimensionFilter>>,
         #[serde(rename = "groupType", default)]
-        pub group_type: Option<String>,
+        pub group_type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ApiDimensionFilterGroup {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -79,7 +77,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -97,28 +94,29 @@ pub mod schemas {
     pub struct SearchAnalyticsQueryRequest {
         #[doc = "[Optional; Default is \"auto\"] How data is aggregated. If aggregated by property, all data for the same property is aggregated; if aggregated by page, all data is aggregated by canonical URI. If you filter or group by page, choose AUTO; otherwise you can aggregate either by property or by page, depending on how you want your data calculated; see  the help documentation to learn how data is calculated differently by site versus by page.\n\nNote: If you group or filter by page, you cannot aggregate by property.\n\nIf you specify any value other than AUTO, the aggregation type in the result will match the requested type, or if you request an invalid type, you will get an error. The API will never change your aggregation type if the requested type is invalid."]
         #[serde(rename = "aggregationType", default)]
-        pub aggregation_type: Option<String>,
+        pub aggregation_type: ::std::option::Option<String>,
         #[doc = "[Optional] Zero or more filters to apply to the dimension grouping values; for example, 'query contains \"buy\"' to see only data where the query string contains the substring \"buy\" (not case-sensitive). You can filter by a dimension without grouping by it."]
         #[serde(rename = "dimensionFilterGroups", default)]
-        pub dimension_filter_groups: Option<Vec<crate::schemas::ApiDimensionFilterGroup>>,
+        pub dimension_filter_groups:
+            ::std::option::Option<Vec<crate::schemas::ApiDimensionFilterGroup>>,
         #[doc = "[Optional] Zero or more dimensions to group results by. Dimensions are the group-by values in the Search Analytics page. Dimensions are combined to create a unique row key for each row. Results are grouped in the order that you supply these dimensions."]
         #[serde(rename = "dimensions", default)]
-        pub dimensions: Option<Vec<String>>,
+        pub dimensions: ::std::option::Option<Vec<String>>,
         #[doc = "[Required] End date of the requested date range, in YYYY-MM-DD format, in PST (UTC - 8:00). Must be greater than or equal to the start date. This value is included in the range."]
         #[serde(rename = "endDate", default)]
-        pub end_date: Option<String>,
+        pub end_date: ::std::option::Option<String>,
         #[doc = "[Optional; Default is 1000] The maximum number of rows to return. Must be a number from 1 to 5,000 (inclusive)."]
         #[serde(rename = "rowLimit", default)]
-        pub row_limit: Option<i32>,
+        pub row_limit: ::std::option::Option<i32>,
         #[doc = "[Optional; Default is \"web\"] The search type to filter for."]
         #[serde(rename = "searchType", default)]
-        pub search_type: Option<String>,
+        pub search_type: ::std::option::Option<String>,
         #[doc = "[Required] Start date of the requested date range, in YYYY-MM-DD format, in PST time (UTC - 8:00). Must be less than or equal to the end date. This value is included in the range."]
         #[serde(rename = "startDate", default)]
-        pub start_date: Option<String>,
+        pub start_date: ::std::option::Option<String>,
         #[doc = "[Optional; Default is 0] Zero-based index of the first row in the response. Must be a non-negative number."]
         #[serde(rename = "startRow", default)]
-        pub start_row: Option<i32>,
+        pub start_row: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for SearchAnalyticsQueryRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -127,7 +125,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -136,10 +133,10 @@ pub mod schemas {
     pub struct SearchAnalyticsQueryResponse {
         #[doc = "How the results were aggregated."]
         #[serde(rename = "responseAggregationType", default)]
-        pub response_aggregation_type: Option<String>,
+        pub response_aggregation_type: ::std::option::Option<String>,
         #[doc = "A list of rows grouped by the key values in the order given in the query."]
         #[serde(rename = "rows", default)]
-        pub rows: Option<Vec<crate::schemas::ApiDataRow>>,
+        pub rows: ::std::option::Option<Vec<crate::schemas::ApiDataRow>>,
     }
     impl ::field_selector::FieldSelector for SearchAnalyticsQueryResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -148,7 +145,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -166,7 +162,7 @@ pub mod schemas {
     pub struct SitemapsListResponse {
         #[doc = "Contains detailed information about a specific URL submitted as a sitemap."]
         #[serde(rename = "sitemap", default)]
-        pub sitemap: Option<Vec<crate::schemas::WmxSitemap>>,
+        pub sitemap: ::std::option::Option<Vec<crate::schemas::WmxSitemap>>,
     }
     impl ::field_selector::FieldSelector for SitemapsListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -175,7 +171,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -193,7 +188,7 @@ pub mod schemas {
     pub struct SitesListResponse {
         #[doc = "Contains permission level information about a Search Console site. For more information, see Permissions in Search Console."]
         #[serde(rename = "siteEntry", default)]
-        pub site_entry: Option<Vec<crate::schemas::WmxSite>>,
+        pub site_entry: ::std::option::Option<Vec<crate::schemas::WmxSite>>,
     }
     impl ::field_selector::FieldSelector for SitesListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -202,7 +197,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -220,10 +214,10 @@ pub mod schemas {
     pub struct WmxSite {
         #[doc = "The user's permission level for the site."]
         #[serde(rename = "permissionLevel", default)]
-        pub permission_level: Option<String>,
+        pub permission_level: ::std::option::Option<String>,
         #[doc = "The URL of the site."]
         #[serde(rename = "siteUrl", default)]
-        pub site_url: Option<String>,
+        pub site_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for WmxSite {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -232,7 +226,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -250,33 +243,33 @@ pub mod schemas {
     pub struct WmxSitemap {
         #[doc = "The various content types in the sitemap."]
         #[serde(rename = "contents", default)]
-        pub contents: Option<Vec<crate::schemas::WmxSitemapContent>>,
+        pub contents: ::std::option::Option<Vec<crate::schemas::WmxSitemapContent>>,
         #[doc = "Number of errors in the sitemap. These are issues with the sitemap itself that need to be fixed before it can be processed correctly."]
         #[serde(rename = "errors", default)]
         #[serde(with = "crate::parsed_string")]
-        pub errors: Option<i64>,
+        pub errors: ::std::option::Option<i64>,
         #[doc = "If true, the sitemap has not been processed."]
         #[serde(rename = "isPending", default)]
-        pub is_pending: Option<bool>,
+        pub is_pending: ::std::option::Option<bool>,
         #[doc = "If true, the sitemap is a collection of sitemaps."]
         #[serde(rename = "isSitemapsIndex", default)]
-        pub is_sitemaps_index: Option<bool>,
+        pub is_sitemaps_index: ::std::option::Option<bool>,
         #[doc = "Date & time in which this sitemap was last downloaded. Date format is in RFC 3339 format (yyyy-mm-dd)."]
         #[serde(rename = "lastDownloaded", default)]
-        pub last_downloaded: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub last_downloaded: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Date & time in which this sitemap was submitted. Date format is in RFC 3339 format (yyyy-mm-dd)."]
         #[serde(rename = "lastSubmitted", default)]
-        pub last_submitted: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub last_submitted: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The url of the sitemap."]
         #[serde(rename = "path", default)]
-        pub path: Option<String>,
+        pub path: ::std::option::Option<String>,
         #[doc = "The type of the sitemap. For example: rssFeed."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Number of warnings for the sitemap. These are generally non-critical issues with URLs in the sitemaps."]
         #[serde(rename = "warnings", default)]
         #[serde(with = "crate::parsed_string")]
-        pub warnings: Option<i64>,
+        pub warnings: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for WmxSitemap {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -285,7 +278,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -304,14 +296,14 @@ pub mod schemas {
         #[doc = "The number of URLs from the sitemap that were indexed (of the content type)."]
         #[serde(rename = "indexed", default)]
         #[serde(with = "crate::parsed_string")]
-        pub indexed: Option<i64>,
+        pub indexed: ::std::option::Option<i64>,
         #[doc = "The specific type of content in this sitemap. For example: web."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "The number of URLs in the sitemap (of the content type)."]
         #[serde(rename = "submitted", default)]
         #[serde(with = "crate::parsed_string")]
-        pub submitted: Option<i64>,
+        pub submitted: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for WmxSitemapContent {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -320,7 +312,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -365,6 +356,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1894,6 +1894,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1969,5 +1970,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

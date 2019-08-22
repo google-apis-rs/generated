@@ -14,7 +14,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -32,19 +32,19 @@ pub mod schemas {
         #[doc = "gdata"]
         #[serde(rename = "blobGeneration", default)]
         #[serde(with = "crate::parsed_string")]
-        pub blob_generation: Option<i64>,
+        pub blob_generation: ::std::option::Option<i64>,
         #[doc = "gdata"]
         #[serde(rename = "blobId", default)]
-        pub blob_id: Option<String>,
+        pub blob_id: ::std::option::Option<String>,
         #[doc = "gdata"]
         #[serde(rename = "downloadReadHandle", default)]
-        pub download_read_handle: Option<Vec<u8>>,
+        pub download_read_handle: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "gdata"]
         #[serde(rename = "readToken", default)]
-        pub read_token: Option<String>,
+        pub read_token: ::std::option::Option<String>,
         #[doc = "gdata"]
         #[serde(rename = "uploadMetadataContainer", default)]
-        pub upload_metadata_container: Option<Vec<u8>>,
+        pub upload_metadata_container: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for GdataBlobstore2Info {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -53,7 +53,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -114,6 +113,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GdataCompositeMediaReferenceType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -129,38 +137,38 @@ pub mod schemas {
     pub struct GdataCompositeMedia {
         #[doc = "gdata"]
         #[serde(rename = "blobRef", default)]
-        pub blob_ref: Option<Vec<u8>>,
+        pub blob_ref: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "gdata"]
         #[serde(rename = "blobstore2Info", default)]
-        pub blobstore_2_info: Option<crate::schemas::GdataBlobstore2Info>,
+        pub blobstore_2_info: ::std::option::Option<crate::schemas::GdataBlobstore2Info>,
         #[doc = "gdata"]
         #[serde(rename = "cosmoBinaryReference", default)]
-        pub cosmo_binary_reference: Option<Vec<u8>>,
+        pub cosmo_binary_reference: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "gdata"]
         #[serde(rename = "crc32cHash", default)]
-        pub crc_3_2c_hash: Option<u32>,
+        pub crc_3_2c_hash: ::std::option::Option<u32>,
         #[doc = "gdata"]
         #[serde(rename = "inline", default)]
-        pub inline: Option<Vec<u8>>,
+        pub inline: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "gdata"]
         #[serde(rename = "length", default)]
         #[serde(with = "crate::parsed_string")]
-        pub length: Option<i64>,
+        pub length: ::std::option::Option<i64>,
         #[doc = "gdata"]
         #[serde(rename = "md5Hash", default)]
-        pub md_5_hash: Option<Vec<u8>>,
+        pub md_5_hash: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "gdata"]
         #[serde(rename = "objectId", default)]
-        pub object_id: Option<crate::schemas::GdataObjectId>,
+        pub object_id: ::std::option::Option<crate::schemas::GdataObjectId>,
         #[doc = "gdata"]
         #[serde(rename = "path", default)]
-        pub path: Option<String>,
+        pub path: ::std::option::Option<String>,
         #[doc = "gdata"]
         #[serde(rename = "referenceType", default)]
-        pub reference_type: Option<crate::schemas::GdataCompositeMediaReferenceType>,
+        pub reference_type: ::std::option::Option<crate::schemas::GdataCompositeMediaReferenceType>,
         #[doc = "gdata"]
         #[serde(rename = "sha1Hash", default)]
-        pub sha_1_hash: Option<Vec<u8>>,
+        pub sha_1_hash: ::std::option::Option<crate::bytes::Bytes>,
     }
     impl ::field_selector::FieldSelector for GdataCompositeMedia {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -169,7 +177,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -187,19 +194,19 @@ pub mod schemas {
     pub struct GdataContentTypeInfo {
         #[doc = "gdata"]
         #[serde(rename = "bestGuess", default)]
-        pub best_guess: Option<String>,
+        pub best_guess: ::std::option::Option<String>,
         #[doc = "gdata"]
         #[serde(rename = "fromBytes", default)]
-        pub from_bytes: Option<String>,
+        pub from_bytes: ::std::option::Option<String>,
         #[doc = "gdata"]
         #[serde(rename = "fromFileName", default)]
-        pub from_file_name: Option<String>,
+        pub from_file_name: ::std::option::Option<String>,
         #[doc = "gdata"]
         #[serde(rename = "fromHeader", default)]
-        pub from_header: Option<String>,
+        pub from_header: ::std::option::Option<String>,
         #[doc = "gdata"]
         #[serde(rename = "fromUrlPath", default)]
-        pub from_url_path: Option<String>,
+        pub from_url_path: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GdataContentTypeInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -208,7 +215,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -226,21 +232,21 @@ pub mod schemas {
     pub struct GdataDiffChecksumsResponse {
         #[doc = "gdata"]
         #[serde(rename = "checksumsLocation", default)]
-        pub checksums_location: Option<crate::schemas::GdataCompositeMedia>,
+        pub checksums_location: ::std::option::Option<crate::schemas::GdataCompositeMedia>,
         #[doc = "gdata"]
         #[serde(rename = "chunkSizeBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub chunk_size_bytes: Option<i64>,
+        pub chunk_size_bytes: ::std::option::Option<i64>,
         #[doc = "gdata"]
         #[serde(rename = "objectLocation", default)]
-        pub object_location: Option<crate::schemas::GdataCompositeMedia>,
+        pub object_location: ::std::option::Option<crate::schemas::GdataCompositeMedia>,
         #[doc = "gdata"]
         #[serde(rename = "objectSizeBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub object_size_bytes: Option<i64>,
+        pub object_size_bytes: ::std::option::Option<i64>,
         #[doc = "gdata"]
         #[serde(rename = "objectVersion", default)]
-        pub object_version: Option<String>,
+        pub object_version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GdataDiffChecksumsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -249,7 +255,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -267,7 +272,7 @@ pub mod schemas {
     pub struct GdataDiffDownloadResponse {
         #[doc = "gdata"]
         #[serde(rename = "objectLocation", default)]
-        pub object_location: Option<crate::schemas::GdataCompositeMedia>,
+        pub object_location: ::std::option::Option<crate::schemas::GdataCompositeMedia>,
     }
     impl ::field_selector::FieldSelector for GdataDiffDownloadResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -276,7 +281,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -294,13 +298,13 @@ pub mod schemas {
     pub struct GdataDiffUploadRequest {
         #[doc = "gdata"]
         #[serde(rename = "checksumsInfo", default)]
-        pub checksums_info: Option<crate::schemas::GdataCompositeMedia>,
+        pub checksums_info: ::std::option::Option<crate::schemas::GdataCompositeMedia>,
         #[doc = "gdata"]
         #[serde(rename = "objectInfo", default)]
-        pub object_info: Option<crate::schemas::GdataCompositeMedia>,
+        pub object_info: ::std::option::Option<crate::schemas::GdataCompositeMedia>,
         #[doc = "gdata"]
         #[serde(rename = "objectVersion", default)]
-        pub object_version: Option<String>,
+        pub object_version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GdataDiffUploadRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -309,7 +313,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -327,10 +330,10 @@ pub mod schemas {
     pub struct GdataDiffUploadResponse {
         #[doc = "gdata"]
         #[serde(rename = "objectVersion", default)]
-        pub object_version: Option<String>,
+        pub object_version: ::std::option::Option<String>,
         #[doc = "gdata"]
         #[serde(rename = "originalObject", default)]
-        pub original_object: Option<crate::schemas::GdataCompositeMedia>,
+        pub original_object: ::std::option::Option<crate::schemas::GdataCompositeMedia>,
     }
     impl ::field_selector::FieldSelector for GdataDiffUploadResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -339,7 +342,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -358,10 +360,10 @@ pub mod schemas {
         #[doc = "gdata"]
         #[serde(rename = "objectSizeBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub object_size_bytes: Option<i64>,
+        pub object_size_bytes: ::std::option::Option<i64>,
         #[doc = "gdata"]
         #[serde(rename = "objectVersion", default)]
-        pub object_version: Option<String>,
+        pub object_version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GdataDiffVersionResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -370,7 +372,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -388,10 +389,10 @@ pub mod schemas {
     pub struct GdataDownloadParameters {
         #[doc = "gdata"]
         #[serde(rename = "allowGzipCompression", default)]
-        pub allow_gzip_compression: Option<bool>,
+        pub allow_gzip_compression: ::std::option::Option<bool>,
         #[doc = "gdata"]
         #[serde(rename = "ignoreRange", default)]
-        pub ignore_range: Option<bool>,
+        pub ignore_range: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for GdataDownloadParameters {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -400,7 +401,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -493,6 +493,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for GdataMediaReferenceType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -508,96 +517,98 @@ pub mod schemas {
     pub struct GdataMedia {
         #[doc = "gdata"]
         #[serde(rename = "algorithm", default)]
-        pub algorithm: Option<String>,
+        pub algorithm: ::std::option::Option<String>,
         #[doc = "gdata"]
         #[serde(rename = "bigstoreObjectRef", default)]
-        pub bigstore_object_ref: Option<Vec<u8>>,
+        pub bigstore_object_ref: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "gdata"]
         #[serde(rename = "blobRef", default)]
-        pub blob_ref: Option<Vec<u8>>,
+        pub blob_ref: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "gdata"]
         #[serde(rename = "blobstore2Info", default)]
-        pub blobstore_2_info: Option<crate::schemas::GdataBlobstore2Info>,
+        pub blobstore_2_info: ::std::option::Option<crate::schemas::GdataBlobstore2Info>,
         #[doc = "gdata"]
         #[serde(rename = "compositeMedia", default)]
-        pub composite_media: Option<Vec<crate::schemas::GdataCompositeMedia>>,
+        pub composite_media: ::std::option::Option<Vec<crate::schemas::GdataCompositeMedia>>,
         #[doc = "gdata"]
         #[serde(rename = "contentType", default)]
-        pub content_type: Option<String>,
+        pub content_type: ::std::option::Option<String>,
         #[doc = "gdata"]
         #[serde(rename = "contentTypeInfo", default)]
-        pub content_type_info: Option<crate::schemas::GdataContentTypeInfo>,
+        pub content_type_info: ::std::option::Option<crate::schemas::GdataContentTypeInfo>,
         #[doc = "gdata"]
         #[serde(rename = "cosmoBinaryReference", default)]
-        pub cosmo_binary_reference: Option<Vec<u8>>,
+        pub cosmo_binary_reference: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "gdata"]
         #[serde(rename = "crc32cHash", default)]
-        pub crc_3_2c_hash: Option<u32>,
+        pub crc_3_2c_hash: ::std::option::Option<u32>,
         #[doc = "gdata"]
         #[serde(rename = "diffChecksumsResponse", default)]
-        pub diff_checksums_response: Option<crate::schemas::GdataDiffChecksumsResponse>,
+        pub diff_checksums_response:
+            ::std::option::Option<crate::schemas::GdataDiffChecksumsResponse>,
         #[doc = "gdata"]
         #[serde(rename = "diffDownloadResponse", default)]
-        pub diff_download_response: Option<crate::schemas::GdataDiffDownloadResponse>,
+        pub diff_download_response:
+            ::std::option::Option<crate::schemas::GdataDiffDownloadResponse>,
         #[doc = "gdata"]
         #[serde(rename = "diffUploadRequest", default)]
-        pub diff_upload_request: Option<crate::schemas::GdataDiffUploadRequest>,
+        pub diff_upload_request: ::std::option::Option<crate::schemas::GdataDiffUploadRequest>,
         #[doc = "gdata"]
         #[serde(rename = "diffUploadResponse", default)]
-        pub diff_upload_response: Option<crate::schemas::GdataDiffUploadResponse>,
+        pub diff_upload_response: ::std::option::Option<crate::schemas::GdataDiffUploadResponse>,
         #[doc = "gdata"]
         #[serde(rename = "diffVersionResponse", default)]
-        pub diff_version_response: Option<crate::schemas::GdataDiffVersionResponse>,
+        pub diff_version_response: ::std::option::Option<crate::schemas::GdataDiffVersionResponse>,
         #[doc = "gdata"]
         #[serde(rename = "downloadParameters", default)]
-        pub download_parameters: Option<crate::schemas::GdataDownloadParameters>,
+        pub download_parameters: ::std::option::Option<crate::schemas::GdataDownloadParameters>,
         #[doc = "gdata"]
         #[serde(rename = "filename", default)]
-        pub filename: Option<String>,
+        pub filename: ::std::option::Option<String>,
         #[doc = "gdata"]
         #[serde(rename = "hash", default)]
-        pub hash: Option<String>,
+        pub hash: ::std::option::Option<String>,
         #[doc = "gdata"]
         #[serde(rename = "hashVerified", default)]
-        pub hash_verified: Option<bool>,
+        pub hash_verified: ::std::option::Option<bool>,
         #[doc = "gdata"]
         #[serde(rename = "inline", default)]
-        pub inline: Option<Vec<u8>>,
+        pub inline: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "gdata"]
         #[serde(rename = "isPotentialRetry", default)]
-        pub is_potential_retry: Option<bool>,
+        pub is_potential_retry: ::std::option::Option<bool>,
         #[doc = "gdata"]
         #[serde(rename = "length", default)]
         #[serde(with = "crate::parsed_string")]
-        pub length: Option<i64>,
+        pub length: ::std::option::Option<i64>,
         #[doc = "gdata"]
         #[serde(rename = "md5Hash", default)]
-        pub md_5_hash: Option<Vec<u8>>,
+        pub md_5_hash: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "gdata"]
         #[serde(rename = "mediaId", default)]
-        pub media_id: Option<Vec<u8>>,
+        pub media_id: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "gdata"]
         #[serde(rename = "objectId", default)]
-        pub object_id: Option<crate::schemas::GdataObjectId>,
+        pub object_id: ::std::option::Option<crate::schemas::GdataObjectId>,
         #[doc = "gdata"]
         #[serde(rename = "path", default)]
-        pub path: Option<String>,
+        pub path: ::std::option::Option<String>,
         #[doc = "gdata"]
         #[serde(rename = "referenceType", default)]
-        pub reference_type: Option<crate::schemas::GdataMediaReferenceType>,
+        pub reference_type: ::std::option::Option<crate::schemas::GdataMediaReferenceType>,
         #[doc = "gdata"]
         #[serde(rename = "sha1Hash", default)]
-        pub sha_1_hash: Option<Vec<u8>>,
+        pub sha_1_hash: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "gdata"]
         #[serde(rename = "sha256Hash", default)]
-        pub sha_256_hash: Option<Vec<u8>>,
+        pub sha_256_hash: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "gdata"]
         #[serde(rename = "timestamp", default)]
         #[serde(with = "crate::parsed_string")]
-        pub timestamp: Option<u64>,
+        pub timestamp: ::std::option::Option<u64>,
         #[doc = "gdata"]
         #[serde(rename = "token", default)]
-        pub token: Option<String>,
+        pub token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GdataMedia {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -606,7 +617,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -624,14 +634,14 @@ pub mod schemas {
     pub struct GdataObjectId {
         #[doc = "gdata"]
         #[serde(rename = "bucketName", default)]
-        pub bucket_name: Option<String>,
+        pub bucket_name: ::std::option::Option<String>,
         #[doc = "gdata"]
         #[serde(rename = "generation", default)]
         #[serde(with = "crate::parsed_string")]
-        pub generation: Option<i64>,
+        pub generation: ::std::option::Option<i64>,
         #[doc = "gdata"]
         #[serde(rename = "objectName", default)]
-        pub object_name: Option<String>,
+        pub object_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for GdataObjectId {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -640,7 +650,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -658,22 +667,22 @@ pub mod schemas {
     pub struct Job {
         #[doc = "The creation date/time of the job."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "The date/time when this job will expire/expired. After a job expired, no\nnew reports are generated."]
         #[serde(rename = "expireTime", default)]
-        pub expire_time: Option<String>,
+        pub expire_time: ::std::option::Option<String>,
         #[doc = "The server-generated ID of the job (max. 40 characters)."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The name of the job (max. 100 characters)."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The type of reports this job creates. Corresponds to the ID of a\nReportType."]
         #[serde(rename = "reportTypeId", default)]
-        pub report_type_id: Option<String>,
+        pub report_type_id: ::std::option::Option<String>,
         #[doc = "True if this a system-managed job that cannot be modified by the user;\notherwise false."]
         #[serde(rename = "systemManaged", default)]
-        pub system_managed: Option<bool>,
+        pub system_managed: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for Job {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -682,7 +691,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -700,10 +708,10 @@ pub mod schemas {
     pub struct ListJobsResponse {
         #[doc = "The list of jobs."]
         #[serde(rename = "jobs", default)]
-        pub jobs: Option<Vec<crate::schemas::Job>>,
+        pub jobs: ::std::option::Option<Vec<crate::schemas::Job>>,
         #[doc = "A token to retrieve next page of results.\nPass this value in the\nListJobsRequest.page_token\nfield in the subsequent call to `ListJobs` method to retrieve the next\npage of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListJobsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -712,7 +720,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -730,10 +737,10 @@ pub mod schemas {
     pub struct ListReportTypesResponse {
         #[doc = "A token to retrieve next page of results.\nPass this value in the\nListReportTypesRequest.page_token\nfield in the subsequent call to `ListReportTypes` method to retrieve the\nnext page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of report types."]
         #[serde(rename = "reportTypes", default)]
-        pub report_types: Option<Vec<crate::schemas::ReportType>>,
+        pub report_types: ::std::option::Option<Vec<crate::schemas::ReportType>>,
     }
     impl ::field_selector::FieldSelector for ListReportTypesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -742,7 +749,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -760,10 +766,10 @@ pub mod schemas {
     pub struct ListReportsResponse {
         #[doc = "A token to retrieve next page of results.\nPass this value in the\nListReportsRequest.page_token\nfield in the subsequent call to `ListReports` method to retrieve the next\npage of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of report types."]
         #[serde(rename = "reports", default)]
-        pub reports: Option<Vec<crate::schemas::Report>>,
+        pub reports: ::std::option::Option<Vec<crate::schemas::Report>>,
     }
     impl ::field_selector::FieldSelector for ListReportsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -772,7 +778,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -790,25 +795,25 @@ pub mod schemas {
     pub struct Report {
         #[doc = "The date/time when this report was created."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "The URL from which the report can be downloaded (max. 1000 characters)."]
         #[serde(rename = "downloadUrl", default)]
-        pub download_url: Option<String>,
+        pub download_url: ::std::option::Option<String>,
         #[doc = "The end of the time period that the report instance covers. The value is\nexclusive."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<String>,
+        pub end_time: ::std::option::Option<String>,
         #[doc = "The server-generated ID of the report."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The date/time when the job this report belongs to will expire/expired."]
         #[serde(rename = "jobExpireTime", default)]
-        pub job_expire_time: Option<String>,
+        pub job_expire_time: ::std::option::Option<String>,
         #[doc = "The ID of the job that created this report."]
         #[serde(rename = "jobId", default)]
-        pub job_id: Option<String>,
+        pub job_id: ::std::option::Option<String>,
         #[doc = "The start of the time period that the report instance covers. The value is\ninclusive."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Report {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -817,7 +822,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -835,16 +839,16 @@ pub mod schemas {
     pub struct ReportType {
         #[doc = "The date/time when this report type was/will be deprecated."]
         #[serde(rename = "deprecateTime", default)]
-        pub deprecate_time: Option<String>,
+        pub deprecate_time: ::std::option::Option<String>,
         #[doc = "The ID of the report type (max. 100 characters)."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The name of the report type (max. 100 characters)."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "True if this a system-managed report type; otherwise false. Reporting jobs\nfor system-managed report types are created automatically and can thus not\nbe used in the `CreateJob` method."]
         #[serde(rename = "systemManaged", default)]
-        pub system_managed: Option<bool>,
+        pub system_managed: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for ReportType {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -853,7 +857,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -908,6 +911,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -952,6 +964,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -3271,6 +3292,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3346,5 +3368,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

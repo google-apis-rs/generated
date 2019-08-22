@@ -1,39 +1,39 @@
     Checking google-iam1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/iam/v1/lib)
 error[E0412]: cannot find type `ListKeyTypesItems` in module `crate::resources::projects::service_accounts::keys::params`
-    --> iam/v1/lib/src/lib.rs:8946:285
+    --> iam/v1/lib/src/lib.rs:9123:285
      |
-8946 |                 pub struct ListRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , name : String , key_types : Option < Vec < crate :: resources :: projects :: service_accounts :: keys :: params :: ListKeyTypesItems > > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+9123 |                 pub struct ListRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , name : String , key_types : Option < Vec < crate :: resources :: projects :: service_accounts :: keys :: params :: ListKeyTypesItems > > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
      |                                                                                                                                                                                                                                                                                             ^^^^^^^^^^^^^^^^^ not found in `crate::resources::projects::service_accounts::keys::params`
 
 error[E0412]: cannot find type `ListKeyTypesItems` in module `crate::resources::projects::service_accounts::keys::params`
-    --> iam/v1/lib/src/lib.rs:8951:123
+    --> iam/v1/lib/src/lib.rs:9128:123
      |
-8951 |                         value : impl Into < Vec < crate :: resources :: projects :: service_accounts :: keys :: params :: ListKeyTypesItems > >,
+9128 |                         value : impl Into < Vec < crate :: resources :: projects :: service_accounts :: keys :: params :: ListKeyTypesItems > >,
      |                                                                                                                           ^^^^^^^^^^^^^^^^^ not found in `crate::resources::projects::service_accounts::keys::params`
 
 error[E0308]: mismatched types
-    --> iam/v1/lib/src/lib.rs:2948:38
+    --> iam/v1/lib/src/lib.rs:3084:21
      |
-2948 |                     self.etag = Some(value.into());
-     |                                      ^^^^^^^^^^^^
-     |                                      |
-     |                                      expected struct `std::vec::Vec`, found struct `std::boxed::Box`
-     |                                      help: try using a conversion method: `value.into().to_vec()`
+3082 |                 pub fn etag(mut self, value: impl Into<Vec<u8>>) -> Self {
+     |                                                                     ---- expected `resources::organizations::roles::DeleteRequestBuilder<'a, A>` because of return type
+3083 |                     let v: Vec<u8> = value.into();
+3084 |                     self.etag = Some(v.into())
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^ expected struct `resources::organizations::roles::DeleteRequestBuilder`, found ()
      |
-     = note: expected type `std::vec::Vec<u8>`
-                found type `std::boxed::Box<[u8]>`
+     = note: expected type `resources::organizations::roles::DeleteRequestBuilder<'a, A>`
+                found type `()`
 
 error[E0308]: mismatched types
-    --> iam/v1/lib/src/lib.rs:4509:38
+    --> iam/v1/lib/src/lib.rs:4654:21
      |
-4509 |                     self.etag = Some(value.into());
-     |                                      ^^^^^^^^^^^^
-     |                                      |
-     |                                      expected struct `std::vec::Vec`, found struct `std::boxed::Box`
-     |                                      help: try using a conversion method: `value.into().to_vec()`
+4652 |                 pub fn etag(mut self, value: impl Into<Vec<u8>>) -> Self {
+     |                                                                     ---- expected `resources::projects::roles::DeleteRequestBuilder<'a, A>` because of return type
+4653 |                     let v: Vec<u8> = value.into();
+4654 |                     self.etag = Some(v.into())
+     |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^ expected struct `resources::projects::roles::DeleteRequestBuilder`, found ()
      |
-     = note: expected type `std::vec::Vec<u8>`
-                found type `std::boxed::Box<[u8]>`
+     = note: expected type `resources::projects::roles::DeleteRequestBuilder<'a, A>`
+                found type `()`
 
 error: aborting due to 4 previous errors
 

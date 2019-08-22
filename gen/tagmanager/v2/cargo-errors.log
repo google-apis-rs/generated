@@ -1,26 +1,26 @@
     Checking google-tagmanager2 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/tagmanager/v2/lib)
 error[E0412]: cannot find type `CreateTypeItems` in module `crate::resources::accounts::containers::workspaces::built_in_variables::params`
-    --> tagmanager/v2/lib/src/lib.rs:9258:312
+    --> tagmanager/v2/lib/src/lib.rs:9321:312
      |
-9258 |                     pub struct CreateRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , parent : String , r#type : Option < Vec < crate :: resources :: accounts :: containers :: workspaces :: built_in_variables :: params :: CreateTypeItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
+9321 |                     pub struct CreateRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , parent : String , r#type : Option < Vec < crate :: resources :: accounts :: containers :: workspaces :: built_in_variables :: params :: CreateTypeItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
      |                                                                                                                                                                                                                                                                                                                        ^^^^^^^^^^^^^^^ not found in `crate::resources::accounts::containers::workspaces::built_in_variables::params`
 
 error[E0412]: cannot find type `CreateTypeItems` in module `crate::resources::accounts::containers::workspaces::built_in_variables::params`
-    --> tagmanager/v2/lib/src/lib.rs:9263:149
+    --> tagmanager/v2/lib/src/lib.rs:9326:149
      |
-9263 |                             value : impl Into < Vec < crate :: resources :: accounts :: containers :: workspaces :: built_in_variables :: params :: CreateTypeItems > >,
+9326 |                             value : impl Into < Vec < crate :: resources :: accounts :: containers :: workspaces :: built_in_variables :: params :: CreateTypeItems > >,
      |                                                                                                                                                     ^^^^^^^^^^^^^^^ not found in `crate::resources::accounts::containers::workspaces::built_in_variables::params`
 
 error[E0412]: cannot find type `DeleteTypeItems` in module `crate::resources::accounts::containers::workspaces::built_in_variables::params`
-    --> tagmanager/v2/lib/src/lib.rs:9401:310
+    --> tagmanager/v2/lib/src/lib.rs:9464:310
      |
-9401 |                     pub struct DeleteRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , path : String , r#type : Option < Vec < crate :: resources :: accounts :: containers :: workspaces :: built_in_variables :: params :: DeleteTypeItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
+9464 |                     pub struct DeleteRequestBuilder < 'a , A > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a :: std :: sync :: Mutex < A > , path : String , r#type : Option < Vec < crate :: resources :: accounts :: containers :: workspaces :: built_in_variables :: params :: DeleteTypeItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
      |                                                                                                                                                                                                                                                                                                                      ^^^^^^^^^^^^^^^ not found in `crate::resources::accounts::containers::workspaces::built_in_variables::params`
 
 error[E0412]: cannot find type `DeleteTypeItems` in module `crate::resources::accounts::containers::workspaces::built_in_variables::params`
-    --> tagmanager/v2/lib/src/lib.rs:9406:149
+    --> tagmanager/v2/lib/src/lib.rs:9469:149
      |
-9406 |                             value : impl Into < Vec < crate :: resources :: accounts :: containers :: workspaces :: built_in_variables :: params :: DeleteTypeItems > >,
+9469 |                             value : impl Into < Vec < crate :: resources :: accounts :: containers :: workspaces :: built_in_variables :: params :: DeleteTypeItems > >,
      |                                                                                                                                                     ^^^^^^^^^^^^^^^ not found in `crate::resources::accounts::containers::workspaces::built_in_variables::params`
 
 error: aborting due to 4 previous errors

@@ -53,6 +53,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PlatformSummaryBetterAdsStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PlatformSummaryFilterStatus {
         #[doc = "N/A."]
@@ -111,6 +120,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PlatformSummaryFilterStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PlatformSummaryRegionItems {
         RegionUnknown,
@@ -161,6 +179,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for PlatformSummaryRegionItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -176,25 +203,26 @@ pub mod schemas {
     pub struct PlatformSummary {
         #[doc = "The status of the site reviewed for the Better Ads Standards."]
         #[serde(rename = "betterAdsStatus", default)]
-        pub better_ads_status: Option<crate::schemas::PlatformSummaryBetterAdsStatus>,
+        pub better_ads_status:
+            ::std::option::Option<crate::schemas::PlatformSummaryBetterAdsStatus>,
         #[doc = "The date on which ad filtering begins."]
         #[serde(rename = "enforcementTime", default)]
-        pub enforcement_time: Option<String>,
+        pub enforcement_time: ::std::option::Option<String>,
         #[doc = "The ad filtering status of the site."]
         #[serde(rename = "filterStatus", default)]
-        pub filter_status: Option<crate::schemas::PlatformSummaryFilterStatus>,
+        pub filter_status: ::std::option::Option<crate::schemas::PlatformSummaryFilterStatus>,
         #[doc = "The last time that the site changed status."]
         #[serde(rename = "lastChangeTime", default)]
-        pub last_change_time: Option<String>,
+        pub last_change_time: ::std::option::Option<String>,
         #[doc = "The assigned regions for the site and platform.\nNo longer populated, because there is no longer any semantic difference\nbetween sites in different regions."]
         #[serde(rename = "region", default)]
-        pub region: Option<Vec<crate::schemas::PlatformSummaryRegionItems>>,
+        pub region: ::std::option::Option<Vec<crate::schemas::PlatformSummaryRegionItems>>,
         #[doc = "A link that leads to a full ad experience report."]
         #[serde(rename = "reportUrl", default)]
-        pub report_url: Option<String>,
+        pub report_url: ::std::option::Option<String>,
         #[doc = "Whether the site is currently under review."]
         #[serde(rename = "underReview", default)]
-        pub under_review: Option<bool>,
+        pub under_review: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for PlatformSummary {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -203,7 +231,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -221,13 +248,13 @@ pub mod schemas {
     pub struct SiteSummaryResponse {
         #[doc = "Summary for the desktop review of the site."]
         #[serde(rename = "desktopSummary", default)]
-        pub desktop_summary: Option<crate::schemas::PlatformSummary>,
+        pub desktop_summary: ::std::option::Option<crate::schemas::PlatformSummary>,
         #[doc = "Summary for the mobile review of the site."]
         #[serde(rename = "mobileSummary", default)]
-        pub mobile_summary: Option<crate::schemas::PlatformSummary>,
+        pub mobile_summary: ::std::option::Option<crate::schemas::PlatformSummary>,
         #[doc = "The name of the site reviewed."]
         #[serde(rename = "reviewedSite", default)]
-        pub reviewed_site: Option<String>,
+        pub reviewed_site: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SiteSummaryResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -236,7 +263,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -254,7 +280,7 @@ pub mod schemas {
     pub struct ViolatingSitesResponse {
         #[doc = "A list of summaries of violating sites."]
         #[serde(rename = "violatingSites", default)]
-        pub violating_sites: Option<Vec<crate::schemas::SiteSummaryResponse>>,
+        pub violating_sites: ::std::option::Option<Vec<crate::schemas::SiteSummaryResponse>>,
     }
     impl ::field_selector::FieldSelector for ViolatingSitesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -263,7 +289,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -318,6 +343,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -362,6 +396,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1030,6 +1073,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1105,5 +1149,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

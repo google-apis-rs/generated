@@ -14,19 +14,19 @@ pub mod schemas {
     pub struct Acl {
         #[doc = "ETag of the collection."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "List of rules on the access control list."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::AclRule>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::AclRule>>,
         #[doc = "Type of the collection (\"calendar#acl\")."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result. Omitted if no further results are available, in which case nextSyncToken is provided."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Token used at a later point in time to retrieve only the entries that have changed since this result was returned. Omitted if further results are available, in which case nextPageToken is provided."]
         #[serde(rename = "nextSyncToken", default)]
-        pub next_sync_token: Option<String>,
+        pub next_sync_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Acl {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -35,7 +35,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -53,10 +52,10 @@ pub mod schemas {
     pub struct AclRuleScope {
         #[doc = "The type of the scope. Possible values are:\n\n* \"default\" - The public scope. This is the default value. \n* \"user\" - Limits the scope to a single user. \n* \"group\" - Limits the scope to a group. \n* \"domain\" - Limits the scope to a domain.  Note: The permissions granted to the \"default\", or public, scope apply to any user, authenticated or not."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "The email address of a user or group, or the name of a domain, depending on the scope type. Omitted for type \"default\"."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AclRuleScope {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -65,7 +64,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -83,19 +81,19 @@ pub mod schemas {
     pub struct AclRule {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Identifier of the ACL rule."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Type of the resource (\"calendar#aclRule\")."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The role assigned to the scope. Possible values are:\n\n* \"none\" - Provides no access. \n* \"freeBusyReader\" - Provides read access to free/busy information. \n* \"reader\" - Provides read access to the calendar. Private events will appear to users with reader access, but event details will be hidden. \n* \"writer\" - Provides read and write access to the calendar. Private events will appear to users with writer access, and event details will be visible. \n* \"owner\" - Provides ownership of the calendar. This role has all of the permissions of the writer role with the additional ability to see and manipulate ACLs."]
         #[serde(rename = "role", default)]
-        pub role: Option<String>,
+        pub role: ::std::option::Option<String>,
         #[doc = "The scope of the rule."]
         #[serde(rename = "scope", default)]
-        pub scope: Option<crate::schemas::AclRuleScope>,
+        pub scope: ::std::option::Option<crate::schemas::AclRuleScope>,
     }
     impl ::field_selector::FieldSelector for AclRule {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -104,7 +102,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -122,28 +119,28 @@ pub mod schemas {
     pub struct Calendar {
         #[doc = "Conferencing properties for this calendar, for example what types of conferences are allowed."]
         #[serde(rename = "conferenceProperties", default)]
-        pub conference_properties: Option<crate::schemas::ConferenceProperties>,
+        pub conference_properties: ::std::option::Option<crate::schemas::ConferenceProperties>,
         #[doc = "Description of the calendar. Optional."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Identifier of the calendar. To retrieve IDs call the calendarList.list() method."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Type of the resource (\"calendar#calendar\")."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Geographic location of the calendar as free-form text. Optional."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "Title of the calendar."]
         #[serde(rename = "summary", default)]
-        pub summary: Option<String>,
+        pub summary: ::std::option::Option<String>,
         #[doc = "The time zone of the calendar. (Formatted as an IANA Time Zone Database name, e.g. \"Europe/Zurich\".) Optional."]
         #[serde(rename = "timeZone", default)]
-        pub time_zone: Option<String>,
+        pub time_zone: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Calendar {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -152,7 +149,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -170,19 +166,19 @@ pub mod schemas {
     pub struct CalendarList {
         #[doc = "ETag of the collection."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Calendars that are present on the user's calendar list."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::CalendarListEntry>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::CalendarListEntry>>,
         #[doc = "Type of the collection (\"calendar#calendarList\")."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result. Omitted if no further results are available, in which case nextSyncToken is provided."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Token used at a later point in time to retrieve only the entries that have changed since this result was returned. Omitted if further results are available, in which case nextPageToken is provided."]
         #[serde(rename = "nextSyncToken", default)]
-        pub next_sync_token: Option<String>,
+        pub next_sync_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CalendarList {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -191,7 +187,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -209,7 +204,7 @@ pub mod schemas {
     pub struct CalendarListEntryNotificationSettings {
         #[doc = "The list of notifications set for this calendar."]
         #[serde(rename = "notifications", default)]
-        pub notifications: Option<Vec<crate::schemas::CalendarNotification>>,
+        pub notifications: ::std::option::Option<Vec<crate::schemas::CalendarNotification>>,
     }
     impl ::field_selector::FieldSelector for CalendarListEntryNotificationSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -218,7 +213,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -236,61 +230,62 @@ pub mod schemas {
     pub struct CalendarListEntry {
         #[doc = "The effective access role that the authenticated user has on the calendar. Read-only. Possible values are:\n\n* \"freeBusyReader\" - Provides read access to free/busy information. \n* \"reader\" - Provides read access to the calendar. Private events will appear to users with reader access, but event details will be hidden. \n* \"writer\" - Provides read and write access to the calendar. Private events will appear to users with writer access, and event details will be visible. \n* \"owner\" - Provides ownership of the calendar. This role has all of the permissions of the writer role with the additional ability to see and manipulate ACLs."]
         #[serde(rename = "accessRole", default)]
-        pub access_role: Option<String>,
+        pub access_role: ::std::option::Option<String>,
         #[doc = "The main color of the calendar in the hexadecimal format \"#0088aa\". This property supersedes the index-based colorId property. To set or change this property, you need to specify colorRgbFormat=true in the parameters of the insert, update and patch methods. Optional."]
         #[serde(rename = "backgroundColor", default)]
-        pub background_color: Option<String>,
+        pub background_color: ::std::option::Option<String>,
         #[doc = "The color of the calendar. This is an ID referring to an entry in the calendar section of the colors definition (see the colors endpoint). This property is superseded by the backgroundColor and foregroundColor properties and can be ignored when using these properties. Optional."]
         #[serde(rename = "colorId", default)]
-        pub color_id: Option<String>,
+        pub color_id: ::std::option::Option<String>,
         #[doc = "Conferencing properties for this calendar, for example what types of conferences are allowed."]
         #[serde(rename = "conferenceProperties", default)]
-        pub conference_properties: Option<crate::schemas::ConferenceProperties>,
+        pub conference_properties: ::std::option::Option<crate::schemas::ConferenceProperties>,
         #[doc = "The default reminders that the authenticated user has for this calendar."]
         #[serde(rename = "defaultReminders", default)]
-        pub default_reminders: Option<Vec<crate::schemas::EventReminder>>,
+        pub default_reminders: ::std::option::Option<Vec<crate::schemas::EventReminder>>,
         #[doc = "Whether this calendar list entry has been deleted from the calendar list. Read-only. Optional. The default is False."]
         #[serde(rename = "deleted", default)]
-        pub deleted: Option<bool>,
+        pub deleted: ::std::option::Option<bool>,
         #[doc = "Description of the calendar. Optional. Read-only."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The foreground color of the calendar in the hexadecimal format \"#ffffff\". This property supersedes the index-based colorId property. To set or change this property, you need to specify colorRgbFormat=true in the parameters of the insert, update and patch methods. Optional."]
         #[serde(rename = "foregroundColor", default)]
-        pub foreground_color: Option<String>,
+        pub foreground_color: ::std::option::Option<String>,
         #[doc = "Whether the calendar has been hidden from the list. Optional. The default is False."]
         #[serde(rename = "hidden", default)]
-        pub hidden: Option<bool>,
+        pub hidden: ::std::option::Option<bool>,
         #[doc = "Identifier of the calendar."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Type of the resource (\"calendar#calendarListEntry\")."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Geographic location of the calendar as free-form text. Optional. Read-only."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "The notifications that the authenticated user is receiving for this calendar."]
         #[serde(rename = "notificationSettings", default)]
-        pub notification_settings: Option<crate::schemas::CalendarListEntryNotificationSettings>,
+        pub notification_settings:
+            ::std::option::Option<crate::schemas::CalendarListEntryNotificationSettings>,
         #[doc = "Whether the calendar is the primary calendar of the authenticated user. Read-only. Optional. The default is False."]
         #[serde(rename = "primary", default)]
-        pub primary: Option<bool>,
+        pub primary: ::std::option::Option<bool>,
         #[doc = "Whether the calendar content shows up in the calendar UI. Optional. The default is False."]
         #[serde(rename = "selected", default)]
-        pub selected: Option<bool>,
+        pub selected: ::std::option::Option<bool>,
         #[doc = "Title of the calendar. Read-only."]
         #[serde(rename = "summary", default)]
-        pub summary: Option<String>,
+        pub summary: ::std::option::Option<String>,
         #[doc = "The summary that the authenticated user has set for this calendar. Optional."]
         #[serde(rename = "summaryOverride", default)]
-        pub summary_override: Option<String>,
+        pub summary_override: ::std::option::Option<String>,
         #[doc = "The time zone of the calendar. Optional. Read-only."]
         #[serde(rename = "timeZone", default)]
-        pub time_zone: Option<String>,
+        pub time_zone: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CalendarListEntry {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -299,7 +294,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -317,10 +311,10 @@ pub mod schemas {
     pub struct CalendarNotification {
         #[doc = "The method used to deliver the notification. Possible values are:\n\n* \"email\" - Notifications are sent via email. \n* \"sms\" - Deprecated. Once this feature is shutdown, the API will no longer return notifications using this method. Any newly added SMS notifications will be ignored. See  Google Calendar SMS notifications to be removed for more information.\n  Notifications are sent via SMS. This value is read-only and is ignored on inserts and updates. SMS notifications are only available for G Suite customers.  \n  Required when adding a notification."]
         #[serde(rename = "method", default)]
-        pub method: Option<String>,
+        pub method: ::std::option::Option<String>,
         #[doc = "The type of notification. Possible values are:\n\n* \"eventCreation\" - Notification sent when a new event is put on the calendar. \n* \"eventChange\" - Notification sent when an event is changed. \n* \"eventCancellation\" - Notification sent when an event is cancelled. \n* \"eventResponse\" - Notification sent when an attendee responds to the event invitation. \n* \"agenda\" - An agenda with the events of the day (sent out in the morning).  \n  Required when adding a notification."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CalendarNotification {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -329,7 +323,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -347,35 +340,35 @@ pub mod schemas {
     pub struct Channel {
         #[doc = "The address where notifications are delivered for this channel."]
         #[serde(rename = "address", default)]
-        pub address: Option<String>,
+        pub address: ::std::option::Option<String>,
         #[doc = "Date and time of notification channel expiration, expressed as a Unix timestamp, in milliseconds. Optional."]
         #[serde(rename = "expiration", default)]
         #[serde(with = "crate::parsed_string")]
-        pub expiration: Option<i64>,
+        pub expiration: ::std::option::Option<i64>,
         #[doc = "A UUID or similar unique string that identifies this channel."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Identifies this as a notification channel used to watch for changes to a resource, which is \"api#channel\"."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Additional parameters controlling delivery channel behavior. Optional."]
         #[serde(rename = "params", default)]
-        pub params: Option<::std::collections::BTreeMap<String, String>>,
+        pub params: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "A Boolean value to indicate whether payload is wanted. Optional."]
         #[serde(rename = "payload", default)]
-        pub payload: Option<bool>,
+        pub payload: ::std::option::Option<bool>,
         #[doc = "The type of delivery mechanism used for this channel."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "An opaque ID that identifies the resource being watched on this channel. Stable across different API versions."]
         #[serde(rename = "resourceId", default)]
-        pub resource_id: Option<String>,
+        pub resource_id: ::std::option::Option<String>,
         #[doc = "A version-specific identifier for the watched resource."]
         #[serde(rename = "resourceUri", default)]
-        pub resource_uri: Option<String>,
+        pub resource_uri: ::std::option::Option<String>,
         #[doc = "An arbitrary string delivered to the target address with each notification delivered over this channel. Optional."]
         #[serde(rename = "token", default)]
-        pub token: Option<String>,
+        pub token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Channel {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -384,7 +377,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -402,10 +394,10 @@ pub mod schemas {
     pub struct ColorDefinition {
         #[doc = "The background color associated with this color definition."]
         #[serde(rename = "background", default)]
-        pub background: Option<String>,
+        pub background: ::std::option::Option<String>,
         #[doc = "The foreground color that can be used to write on top of a background with 'background' color."]
         #[serde(rename = "foreground", default)]
-        pub foreground: Option<String>,
+        pub foreground: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ColorDefinition {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -414,7 +406,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -432,16 +423,20 @@ pub mod schemas {
     pub struct Colors {
         #[doc = "A global palette of calendar colors, mapping from the color ID to its definition. A calendarListEntry resource refers to one of these color IDs in its color field. Read-only."]
         #[serde(rename = "calendar", default)]
-        pub calendar: Option<::std::collections::BTreeMap<String, crate::schemas::ColorDefinition>>,
+        pub calendar: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::ColorDefinition>,
+        >,
         #[doc = "A global palette of event colors, mapping from the color ID to its definition. An event resource may refer to one of these color IDs in its color field. Read-only."]
         #[serde(rename = "event", default)]
-        pub event: Option<::std::collections::BTreeMap<String, crate::schemas::ColorDefinition>>,
+        pub event: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::ColorDefinition>,
+        >,
         #[doc = "Type of the resource (\"calendar#colors\")."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Last modification time of the color palette (as a RFC3339 timestamp). Read-only."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for Colors {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -450,7 +445,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -468,25 +462,25 @@ pub mod schemas {
     pub struct ConferenceData {
         #[doc = "The ID of the conference.\nCan be used by developers to keep track of conferences, should not be displayed to users.\nValues for solution types:\n\n* \"eventHangout\": unset.\n* \"eventNamedHangout\": the name of the Hangout.\n* \"hangoutsMeet\": the 10-letter meeting code, for example \"aaa-bbbb-ccc\".  Optional."]
         #[serde(rename = "conferenceId", default)]
-        pub conference_id: Option<String>,
+        pub conference_id: ::std::option::Option<String>,
         #[doc = "The conference solution, such as Hangouts or Hangouts Meet.\nUnset for a conference with a failed create request.\nEither conferenceSolution and at least one entryPoint, or createRequest is required."]
         #[serde(rename = "conferenceSolution", default)]
-        pub conference_solution: Option<crate::schemas::ConferenceSolution>,
+        pub conference_solution: ::std::option::Option<crate::schemas::ConferenceSolution>,
         #[doc = "A request to generate a new conference and attach it to the event. The data is generated asynchronously. To see whether the data is present check the status field.\nEither conferenceSolution and at least one entryPoint, or createRequest is required."]
         #[serde(rename = "createRequest", default)]
-        pub create_request: Option<crate::schemas::CreateConferenceRequest>,
+        pub create_request: ::std::option::Option<crate::schemas::CreateConferenceRequest>,
         #[doc = "Information about individual conference entry points, such as URLs or phone numbers.\nAll of them must belong to the same conference.\nEither conferenceSolution and at least one entryPoint, or createRequest is required."]
         #[serde(rename = "entryPoints", default)]
-        pub entry_points: Option<Vec<crate::schemas::EntryPoint>>,
+        pub entry_points: ::std::option::Option<Vec<crate::schemas::EntryPoint>>,
         #[doc = "Additional notes (such as instructions from the domain administrator, legal notices) to display to the user. Can contain HTML. The maximum length is 2048 characters. Optional."]
         #[serde(rename = "notes", default)]
-        pub notes: Option<String>,
+        pub notes: ::std::option::Option<String>,
         #[doc = "Additional properties related to a conference. An example would be a solution-specific setting for enabling video streaming."]
         #[serde(rename = "parameters", default)]
-        pub parameters: Option<crate::schemas::ConferenceParameters>,
+        pub parameters: ::std::option::Option<crate::schemas::ConferenceParameters>,
         #[doc = "The signature of the conference data.\nGenerated on server side. Must be preserved while copying the conference data between events, otherwise the conference data will not be copied.\nUnset for a conference with a failed create request.\nOptional for a conference with a pending create request."]
         #[serde(rename = "signature", default)]
-        pub signature: Option<String>,
+        pub signature: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ConferenceData {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -495,7 +489,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -513,7 +506,8 @@ pub mod schemas {
     pub struct ConferenceParameters {
         #[doc = "Additional add-on specific data."]
         #[serde(rename = "addOnParameters", default)]
-        pub add_on_parameters: Option<crate::schemas::ConferenceParametersAddOnParameters>,
+        pub add_on_parameters:
+            ::std::option::Option<crate::schemas::ConferenceParametersAddOnParameters>,
     }
     impl ::field_selector::FieldSelector for ConferenceParameters {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -522,7 +516,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -539,7 +532,7 @@ pub mod schemas {
     )]
     pub struct ConferenceParametersAddOnParameters {
         #[serde(rename = "parameters", default)]
-        pub parameters: Option<::std::collections::BTreeMap<String, String>>,
+        pub parameters: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::field_selector::FieldSelector for ConferenceParametersAddOnParameters {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -548,7 +541,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -566,7 +558,7 @@ pub mod schemas {
     pub struct ConferenceProperties {
         #[doc = "The types of conference solutions that are supported for this calendar.\nThe possible values are:\n\n* \"eventHangout\" \n* \"eventNamedHangout\" \n* \"hangoutsMeet\"  Optional."]
         #[serde(rename = "allowedConferenceSolutionTypes", default)]
-        pub allowed_conference_solution_types: Option<Vec<String>>,
+        pub allowed_conference_solution_types: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ConferenceProperties {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -575,7 +567,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -593,7 +584,7 @@ pub mod schemas {
     pub struct ConferenceRequestStatus {
         #[doc = "The current status of the conference create request. Read-only.\nThe possible values are:\n\n* \"pending\": the conference create request is still being processed.\n* \"success\": the conference create request succeeded, the entry points are populated.\n* \"failure\": the conference create request failed, there are no entry points."]
         #[serde(rename = "statusCode", default)]
-        pub status_code: Option<String>,
+        pub status_code: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ConferenceRequestStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -602,7 +593,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -620,13 +610,13 @@ pub mod schemas {
     pub struct ConferenceSolution {
         #[doc = "The user-visible icon for this solution."]
         #[serde(rename = "iconUri", default)]
-        pub icon_uri: Option<String>,
+        pub icon_uri: ::std::option::Option<String>,
         #[doc = "The key which can uniquely identify the conference solution for this event."]
         #[serde(rename = "key", default)]
-        pub key: Option<crate::schemas::ConferenceSolutionKey>,
+        pub key: ::std::option::Option<crate::schemas::ConferenceSolutionKey>,
         #[doc = "The user-visible name of this solution. Not localized."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ConferenceSolution {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -635,7 +625,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -653,7 +642,7 @@ pub mod schemas {
     pub struct ConferenceSolutionKey {
         #[doc = "The conference solution type.\nIf a client encounters an unfamiliar or empty type, it should still be able to display the entry points. However, it should disallow modifications.\nThe possible values are:\n\n* \"eventHangout\" for Hangouts for consumers (http://hangouts.google.com)\n* \"eventNamedHangout\" for classic Hangouts for G Suite users (http://hangouts.google.com)\n* \"hangoutsMeet\" for Hangouts Meet (http://meet.google.com)"]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ConferenceSolutionKey {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -662,7 +651,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -680,13 +668,13 @@ pub mod schemas {
     pub struct CreateConferenceRequest {
         #[doc = "The conference solution, such as Hangouts or Hangouts Meet."]
         #[serde(rename = "conferenceSolutionKey", default)]
-        pub conference_solution_key: Option<crate::schemas::ConferenceSolutionKey>,
+        pub conference_solution_key: ::std::option::Option<crate::schemas::ConferenceSolutionKey>,
         #[doc = "The client-generated unique ID for this request.\nClients should regenerate this ID for every new request. If an ID provided is the same as for the previous request, the request is ignored."]
         #[serde(rename = "requestId", default)]
-        pub request_id: Option<String>,
+        pub request_id: ::std::option::Option<String>,
         #[doc = "The status of the conference create request."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::ConferenceRequestStatus>,
+        pub status: ::std::option::Option<crate::schemas::ConferenceRequestStatus>,
     }
     impl ::field_selector::FieldSelector for CreateConferenceRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -695,7 +683,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -713,34 +700,34 @@ pub mod schemas {
     pub struct EntryPoint {
         #[doc = "The access code to access the conference. The maximum length is 128 characters.\nWhen creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed.\nOptional."]
         #[serde(rename = "accessCode", default)]
-        pub access_code: Option<String>,
+        pub access_code: ::std::option::Option<String>,
         #[doc = "Features of the entry point, such as being toll or toll-free. One entry point can have multiple features. However, toll and toll-free cannot be both set on the same entry point."]
         #[serde(rename = "entryPointFeatures", default)]
-        pub entry_point_features: Option<Vec<String>>,
+        pub entry_point_features: ::std::option::Option<Vec<String>>,
         #[doc = "The type of the conference entry point.\nPossible values are:\n\n* \"video\" - joining a conference over HTTP. A conference can have zero or one video entry point.\n* \"phone\" - joining a conference by dialing a phone number. A conference can have zero or more phone entry points.\n* \"sip\" - joining a conference over SIP. A conference can have zero or one sip entry point.\n* \"more\" - further conference joining instructions, for example additional phone numbers. A conference can have zero or one more entry point. A conference with only a more entry point is not a valid conference."]
         #[serde(rename = "entryPointType", default)]
-        pub entry_point_type: Option<String>,
+        pub entry_point_type: ::std::option::Option<String>,
         #[doc = "The label for the URI. Visible to end users. Not localized. The maximum length is 512 characters.\nExamples:\n\n* for video: meet.google.com/aaa-bbbb-ccc\n* for phone: +1 123 268 2601\n* for sip: 12345678@altostrat.com\n* for more: should not be filled  \n  Optional."]
         #[serde(rename = "label", default)]
-        pub label: Option<String>,
+        pub label: ::std::option::Option<String>,
         #[doc = "The meeting code to access the conference. The maximum length is 128 characters.\nWhen creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed.\nOptional."]
         #[serde(rename = "meetingCode", default)]
-        pub meeting_code: Option<String>,
+        pub meeting_code: ::std::option::Option<String>,
         #[doc = "The passcode to access the conference. The maximum length is 128 characters.\nWhen creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed."]
         #[serde(rename = "passcode", default)]
-        pub passcode: Option<String>,
+        pub passcode: ::std::option::Option<String>,
         #[doc = "The password to access the conference. The maximum length is 128 characters.\nWhen creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed.\nOptional."]
         #[serde(rename = "password", default)]
-        pub password: Option<String>,
+        pub password: ::std::option::Option<String>,
         #[doc = "The PIN to access the conference. The maximum length is 128 characters.\nWhen creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed.\nOptional."]
         #[serde(rename = "pin", default)]
-        pub pin: Option<String>,
+        pub pin: ::std::option::Option<String>,
         #[doc = "The CLDR/ISO 3166 region code for the country associated with this phone access. Example: \"SE\" for Sweden.\nCalendar backend will populate this field only for EntryPointType.PHONE."]
         #[serde(rename = "regionCode", default)]
-        pub region_code: Option<String>,
+        pub region_code: ::std::option::Option<String>,
         #[doc = "The URI of the entry point. The maximum length is 1300 characters.\nFormat:\n\n* for video, http: or https: schema is required.\n* for phone, tel: schema is required. The URI should include the entire dial sequence (e.g., tel:+12345678900,,,123456789;1234).\n* for sip, sip: schema is required, e.g., sip:12345678@myprovider.com.\n* for more, http: or https: schema is required."]
         #[serde(rename = "uri", default)]
-        pub uri: Option<String>,
+        pub uri: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EntryPoint {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -749,7 +736,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -767,10 +753,10 @@ pub mod schemas {
     pub struct Error {
         #[doc = "Domain, or broad category, of the error."]
         #[serde(rename = "domain", default)]
-        pub domain: Option<String>,
+        pub domain: ::std::option::Option<String>,
         #[doc = "Specific reason for the error. Some of the possible values are:\n\n* \"groupTooBig\" - The group of users requested is too large for a single query. \n* \"tooManyCalendarsRequested\" - The number of calendars requested is too large for a single query. \n* \"notFound\" - The requested resource was not found. \n* \"internalError\" - The API service has encountered an internal error.  Additional error types may be added in the future, so clients should gracefully handle additional error statuses not included in this list."]
         #[serde(rename = "reason", default)]
-        pub reason: Option<String>,
+        pub reason: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Error {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -779,7 +765,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -797,16 +782,16 @@ pub mod schemas {
     pub struct EventCreator {
         #[doc = "Whether the creator corresponds to the calendar on which this copy of the event appears. Read-only. The default is False."]
         #[serde(rename = "self", default)]
-        pub _self: Option<bool>,
+        pub _self: ::std::option::Option<bool>,
         #[doc = "The creator's name, if available."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The creator's email address, if available."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The creator's Profile ID, if available. It corresponds to the id field in the People collection of the Google+ API"]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EventCreator {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -815,7 +800,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -833,10 +817,10 @@ pub mod schemas {
     pub struct EventExtendedProperties {
         #[doc = "Properties that are private to the copy of the event that appears on this calendar."]
         #[serde(rename = "private", default)]
-        pub private: Option<::std::collections::BTreeMap<String, String>>,
+        pub private: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Properties that are shared between copies of the event on other attendees' calendars."]
         #[serde(rename = "shared", default)]
-        pub shared: Option<::std::collections::BTreeMap<String, String>>,
+        pub shared: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::field_selector::FieldSelector for EventExtendedProperties {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -845,7 +829,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -863,28 +846,28 @@ pub mod schemas {
     pub struct EventGadget {
         #[doc = "The gadget's display mode. Optional. Possible values are:\n\n* \"icon\" - The gadget displays next to the event's title in the calendar view. \n* \"chip\" - The gadget displays when the event is clicked."]
         #[serde(rename = "display", default)]
-        pub display: Option<String>,
+        pub display: ::std::option::Option<String>,
         #[doc = "The gadget's height in pixels. The height must be an integer greater than 0. Optional."]
         #[serde(rename = "height", default)]
-        pub height: Option<i32>,
+        pub height: ::std::option::Option<i32>,
         #[doc = "The gadget's icon URL. The URL scheme must be HTTPS."]
         #[serde(rename = "iconLink", default)]
-        pub icon_link: Option<String>,
+        pub icon_link: ::std::option::Option<String>,
         #[doc = "The gadget's URL. The URL scheme must be HTTPS."]
         #[serde(rename = "link", default)]
-        pub link: Option<String>,
+        pub link: ::std::option::Option<String>,
         #[doc = "Preferences."]
         #[serde(rename = "preferences", default)]
-        pub preferences: Option<::std::collections::BTreeMap<String, String>>,
+        pub preferences: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The gadget's type."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "The gadget's title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "The gadget's width in pixels. The width must be an integer greater than 0. Optional."]
         #[serde(rename = "width", default)]
-        pub width: Option<i32>,
+        pub width: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for EventGadget {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -893,7 +876,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -911,16 +893,16 @@ pub mod schemas {
     pub struct EventOrganizer {
         #[doc = "Whether the organizer corresponds to the calendar on which this copy of the event appears. Read-only. The default is False."]
         #[serde(rename = "self", default)]
-        pub _self: Option<bool>,
+        pub _self: ::std::option::Option<bool>,
         #[doc = "The organizer's name, if available."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The organizer's email address, if available. It must be a valid email address as per RFC5322."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The organizer's Profile ID, if available. It corresponds to the id field in the People collection of the Google+ API"]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EventOrganizer {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -929,7 +911,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -947,10 +928,10 @@ pub mod schemas {
     pub struct EventReminders {
         #[doc = "If the event doesn't use the default reminders, this lists the reminders specific to the event, or, if not set, indicates that no reminders are set for this event. The maximum number of override reminders is 5."]
         #[serde(rename = "overrides", default)]
-        pub overrides: Option<Vec<crate::schemas::EventReminder>>,
+        pub overrides: ::std::option::Option<Vec<crate::schemas::EventReminder>>,
         #[doc = "Whether the default reminders of the calendar apply to the event."]
         #[serde(rename = "useDefault", default)]
-        pub use_default: Option<bool>,
+        pub use_default: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for EventReminders {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -959,7 +940,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -977,10 +957,10 @@ pub mod schemas {
     pub struct EventSource {
         #[doc = "Title of the source; for example a title of a web page or an email subject."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "URL of the source pointing to a resource. The URL scheme must be HTTP or HTTPS."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EventSource {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -989,7 +969,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1007,118 +986,118 @@ pub mod schemas {
     pub struct Event {
         #[doc = "Whether anyone can invite themselves to the event (currently works for Google+ events only). Optional. The default is False."]
         #[serde(rename = "anyoneCanAddSelf", default)]
-        pub anyone_can_add_self: Option<bool>,
+        pub anyone_can_add_self: ::std::option::Option<bool>,
         #[doc = "File attachments for the event. Currently only Google Drive attachments are supported.\nIn order to modify attachments the supportsAttachments request parameter should be set to true.\nThere can be at most 25 attachments per event,"]
         #[serde(rename = "attachments", default)]
-        pub attachments: Option<Vec<crate::schemas::EventAttachment>>,
+        pub attachments: ::std::option::Option<Vec<crate::schemas::EventAttachment>>,
         #[doc = "The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users."]
         #[serde(rename = "attendees", default)]
-        pub attendees: Option<Vec<crate::schemas::EventAttendee>>,
+        pub attendees: ::std::option::Option<Vec<crate::schemas::EventAttendee>>,
         #[doc = "Whether attendees may have been omitted from the event's representation. When retrieving an event, this may be due to a restriction specified by the maxAttendee query parameter. When updating an event, this can be used to only update the participant's response. Optional. The default is False."]
         #[serde(rename = "attendeesOmitted", default)]
-        pub attendees_omitted: Option<bool>,
+        pub attendees_omitted: ::std::option::Option<bool>,
         #[doc = "The color of the event. This is an ID referring to an entry in the event section of the colors definition (see the  colors endpoint). Optional."]
         #[serde(rename = "colorId", default)]
-        pub color_id: Option<String>,
+        pub color_id: ::std::option::Option<String>,
         #[doc = "The conference-related information, such as details of a Hangouts Meet conference. To create new conference details use the createRequest field. To persist your changes, remember to set the conferenceDataVersion request parameter to 1 for all event modification requests."]
         #[serde(rename = "conferenceData", default)]
-        pub conference_data: Option<crate::schemas::ConferenceData>,
+        pub conference_data: ::std::option::Option<crate::schemas::ConferenceData>,
         #[doc = "Creation time of the event (as a RFC3339 timestamp). Read-only."]
         #[serde(rename = "created", default)]
-        pub created: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The creator of the event. Read-only."]
         #[serde(rename = "creator", default)]
-        pub creator: Option<crate::schemas::EventCreator>,
+        pub creator: ::std::option::Option<crate::schemas::EventCreator>,
         #[doc = "Description of the event. Optional."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The (exclusive) end time of the event. For a recurring event, this is the end time of the first instance."]
         #[serde(rename = "end", default)]
-        pub end: Option<crate::schemas::EventDateTime>,
+        pub end: ::std::option::Option<crate::schemas::EventDateTime>,
         #[doc = "Whether the end time is actually unspecified. An end time is still provided for compatibility reasons, even if this attribute is set to True. The default is False."]
         #[serde(rename = "endTimeUnspecified", default)]
-        pub end_time_unspecified: Option<bool>,
+        pub end_time_unspecified: ::std::option::Option<bool>,
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Extended properties of the event."]
         #[serde(rename = "extendedProperties", default)]
-        pub extended_properties: Option<crate::schemas::EventExtendedProperties>,
+        pub extended_properties: ::std::option::Option<crate::schemas::EventExtendedProperties>,
         #[doc = "A gadget that extends this event."]
         #[serde(rename = "gadget", default)]
-        pub gadget: Option<crate::schemas::EventGadget>,
+        pub gadget: ::std::option::Option<crate::schemas::EventGadget>,
         #[doc = "Whether attendees other than the organizer can invite others to the event. Optional. The default is True."]
         #[serde(rename = "guestsCanInviteOthers", default)]
-        pub guests_can_invite_others: Option<bool>,
+        pub guests_can_invite_others: ::std::option::Option<bool>,
         #[doc = "Whether attendees other than the organizer can modify the event. Optional. The default is False."]
         #[serde(rename = "guestsCanModify", default)]
-        pub guests_can_modify: Option<bool>,
+        pub guests_can_modify: ::std::option::Option<bool>,
         #[doc = "Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."]
         #[serde(rename = "guestsCanSeeOtherGuests", default)]
-        pub guests_can_see_other_guests: Option<bool>,
+        pub guests_can_see_other_guests: ::std::option::Option<bool>,
         #[doc = "An absolute link to the Google+ hangout associated with this event. Read-only."]
         #[serde(rename = "hangoutLink", default)]
-        pub hangout_link: Option<String>,
+        pub hangout_link: ::std::option::Option<String>,
         #[doc = "An absolute link to this event in the Google Calendar Web UI. Read-only."]
         #[serde(rename = "htmlLink", default)]
-        pub html_link: Option<String>,
+        pub html_link: ::std::option::Option<String>,
         #[doc = "Event unique identifier as defined in RFC5545. It is used to uniquely identify events accross calendaring systems and must be supplied when importing events via the import method.\nNote that the icalUID and the id are not identical and only one of them should be supplied at event creation time. One difference in their semantics is that in recurring events, all occurrences of one event have different ids while they all share the same icalUIDs."]
         #[serde(rename = "iCalUID", default)]
-        pub i_cal_uid: Option<String>,
+        pub i_cal_uid: ::std::option::Option<String>,
         #[doc = "Opaque identifier of the event. When creating new single or recurring events, you can specify their IDs. Provided IDs must follow these rules:\n\n* characters allowed in the ID are those used in base32hex encoding, i.e. lowercase letters a-v and digits 0-9, see section 3.1.2 in RFC2938 \n* the length of the ID must be between 5 and 1024 characters \n* the ID must be unique per calendar  Due to the globally distributed nature of the system, we cannot guarantee that ID collisions will be detected at event creation time. To minimize the risk of collisions we recommend using an established UUID algorithm such as one described in RFC4122.\n  If you do not specify an ID, it will be automatically generated by the server.\n  Note that the icalUID and the id are not identical and only one of them should be supplied at event creation time. One difference in their semantics is that in recurring events, all occurrences of one event have different ids while they all share the same icalUIDs."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Type of the resource (\"calendar#event\")."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Geographic location of the event as free-form text. Optional."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "Whether this is a locked event copy where no changes can be made to the main event fields \"summary\", \"description\", \"location\", \"start\", \"end\" or \"recurrence\". The default is False. Read-Only."]
         #[serde(rename = "locked", default)]
-        pub locked: Option<bool>,
+        pub locked: ::std::option::Option<bool>,
         #[doc = "The organizer of the event. If the organizer is also an attendee, this is indicated with a separate entry in attendees with the organizer field set to True. To change the organizer, use the move operation. Read-only, except when importing an event."]
         #[serde(rename = "organizer", default)]
-        pub organizer: Option<crate::schemas::EventOrganizer>,
+        pub organizer: ::std::option::Option<crate::schemas::EventOrganizer>,
         #[doc = "For an instance of a recurring event, this is the time at which this event would start according to the recurrence data in the recurring event identified by recurringEventId. It uniquely identifies the instance within the recurring event series even if the instance was moved to a different time. Immutable."]
         #[serde(rename = "originalStartTime", default)]
-        pub original_start_time: Option<crate::schemas::EventDateTime>,
+        pub original_start_time: ::std::option::Option<crate::schemas::EventDateTime>,
         #[doc = "Whether this is a private event copy where changes are not shared with other copies on other calendars. Optional. Immutable. The default is False."]
         #[serde(rename = "privateCopy", default)]
-        pub private_copy: Option<bool>,
+        pub private_copy: ::std::option::Option<bool>,
         #[doc = "List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. Note that DTSTART and DTEND lines are not allowed in this field; event start and end times are specified in the start and end fields. This field is omitted for single events or instances of recurring events."]
         #[serde(rename = "recurrence", default)]
-        pub recurrence: Option<Vec<String>>,
+        pub recurrence: ::std::option::Option<Vec<String>>,
         #[doc = "For an instance of a recurring event, this is the id of the recurring event to which this instance belongs. Immutable."]
         #[serde(rename = "recurringEventId", default)]
-        pub recurring_event_id: Option<String>,
+        pub recurring_event_id: ::std::option::Option<String>,
         #[doc = "Information about the event's reminders for the authenticated user."]
         #[serde(rename = "reminders", default)]
-        pub reminders: Option<crate::schemas::EventReminders>,
+        pub reminders: ::std::option::Option<crate::schemas::EventReminders>,
         #[doc = "Sequence number as per iCalendar."]
         #[serde(rename = "sequence", default)]
-        pub sequence: Option<i32>,
+        pub sequence: ::std::option::Option<i32>,
         #[doc = "Source from which the event was created. For example, a web page, an email message or any document identifiable by an URL with HTTP or HTTPS scheme. Can only be seen or modified by the creator of the event."]
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::EventSource>,
+        pub source: ::std::option::Option<crate::schemas::EventSource>,
         #[doc = "The (inclusive) start time of the event. For a recurring event, this is the start time of the first instance."]
         #[serde(rename = "start", default)]
-        pub start: Option<crate::schemas::EventDateTime>,
+        pub start: ::std::option::Option<crate::schemas::EventDateTime>,
         #[doc = "Status of the event. Optional. Possible values are:\n\n* \"confirmed\" - The event is confirmed. This is the default status. \n* \"tentative\" - The event is tentatively confirmed. \n* \"cancelled\" - The event is cancelled (deleted). The list method returns cancelled events only on incremental sync (when syncToken or updatedMin are specified) or if the showDeleted flag is set to true. The get method always returns them.\n  A cancelled status represents two different states depending on the event type:\n* Cancelled exceptions of an uncancelled recurring event indicate that this instance should no longer be presented to the user. Clients should store these events for the lifetime of the parent recurring event.\n  Cancelled exceptions are only guaranteed to have values for the id, recurringEventId and originalStartTime fields populated. The other fields might be empty.\n* All other cancelled events represent deleted events. Clients should remove their locally synced copies. Such cancelled events will eventually disappear, so do not rely on them being available indefinitely.\n  Deleted events are only guaranteed to have the id field populated.   On the organizer's calendar, cancelled events continue to expose event details (summary, location, etc.) so that they can be restored (undeleted). Similarly, the events to which the user was invited and that they manually removed continue to provide details. However, incremental sync requests with showDeleted set to false will not return these details.\n  If an event changes its organizer (for example via the move operation) and the original organizer is not on the attendee list, it will leave behind a cancelled event where only the id field is guaranteed to be populated."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
         #[doc = "Title of the event."]
         #[serde(rename = "summary", default)]
-        pub summary: Option<String>,
+        pub summary: ::std::option::Option<String>,
         #[doc = "Whether the event blocks time on the calendar. Optional. Possible values are:\n\n* \"opaque\" - Default value. The event does block time on the calendar. This is equivalent to setting Show me as to Busy in the Calendar UI. \n* \"transparent\" - The event does not block time on the calendar. This is equivalent to setting Show me as to Available in the Calendar UI."]
         #[serde(rename = "transparency", default)]
-        pub transparency: Option<String>,
+        pub transparency: ::std::option::Option<String>,
         #[doc = "Last modification time of the event (as a RFC3339 timestamp). Read-only."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Visibility of the event. Optional. Possible values are:\n\n* \"default\" - Uses the default visibility for events on the calendar. This is the default value. \n* \"public\" - The event is public and event details are visible to all readers of the calendar. \n* \"private\" - The event is private and only event attendees may view event details. \n* \"confidential\" - The event is private. This value is provided for compatibility reasons."]
         #[serde(rename = "visibility", default)]
-        pub visibility: Option<String>,
+        pub visibility: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Event {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1127,7 +1106,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1145,19 +1123,19 @@ pub mod schemas {
     pub struct EventAttachment {
         #[doc = "ID of the attached file. Read-only.\nFor Google Drive files, this is the ID of the corresponding Files resource entry in the Drive API."]
         #[serde(rename = "fileId", default)]
-        pub file_id: Option<String>,
+        pub file_id: ::std::option::Option<String>,
         #[doc = "URL link to the attachment.\nFor adding Google Drive file attachments use the same format as in alternateLink property of the Files resource in the Drive API.\nRequired when adding an attachment."]
         #[serde(rename = "fileUrl", default)]
-        pub file_url: Option<String>,
+        pub file_url: ::std::option::Option<String>,
         #[doc = "URL link to the attachment's icon. Read-only."]
         #[serde(rename = "iconLink", default)]
-        pub icon_link: Option<String>,
+        pub icon_link: ::std::option::Option<String>,
         #[doc = "Internet media type (MIME type) of the attachment."]
         #[serde(rename = "mimeType", default)]
-        pub mime_type: Option<String>,
+        pub mime_type: ::std::option::Option<String>,
         #[doc = "Attachment title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EventAttachment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1166,7 +1144,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1184,34 +1161,34 @@ pub mod schemas {
     pub struct EventAttendee {
         #[doc = "Whether this entry represents the calendar on which this copy of the event appears. Read-only. The default is False."]
         #[serde(rename = "self", default)]
-        pub _self: Option<bool>,
+        pub _self: ::std::option::Option<bool>,
         #[doc = "Number of additional guests. Optional. The default is 0."]
         #[serde(rename = "additionalGuests", default)]
-        pub additional_guests: Option<i32>,
+        pub additional_guests: ::std::option::Option<i32>,
         #[doc = "The attendee's response comment. Optional."]
         #[serde(rename = "comment", default)]
-        pub comment: Option<String>,
+        pub comment: ::std::option::Option<String>,
         #[doc = "The attendee's name, if available. Optional."]
         #[serde(rename = "displayName", default)]
-        pub display_name: Option<String>,
+        pub display_name: ::std::option::Option<String>,
         #[doc = "The attendee's email address, if available. This field must be present when adding an attendee. It must be a valid email address as per RFC5322.\nRequired when adding an attendee."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "The attendee's Profile ID, if available. It corresponds to the id field in the People collection of the Google+ API"]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Whether this is an optional attendee. Optional. The default is False."]
         #[serde(rename = "optional", default)]
-        pub optional: Option<bool>,
+        pub optional: ::std::option::Option<bool>,
         #[doc = "Whether the attendee is the organizer of the event. Read-only. The default is False."]
         #[serde(rename = "organizer", default)]
-        pub organizer: Option<bool>,
+        pub organizer: ::std::option::Option<bool>,
         #[doc = "Whether the attendee is a resource. Can only be set when the attendee is added to the event for the first time. Subsequent modifications are ignored. Optional. The default is False."]
         #[serde(rename = "resource", default)]
-        pub resource: Option<bool>,
+        pub resource: ::std::option::Option<bool>,
         #[doc = "The attendee's response status. Possible values are:\n\n* \"needsAction\" - The attendee has not responded to the invitation. \n* \"declined\" - The attendee has declined the invitation. \n* \"tentative\" - The attendee has tentatively accepted the invitation. \n* \"accepted\" - The attendee has accepted the invitation."]
         #[serde(rename = "responseStatus", default)]
-        pub response_status: Option<String>,
+        pub response_status: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EventAttendee {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1220,7 +1197,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1238,13 +1214,13 @@ pub mod schemas {
     pub struct EventDateTime {
         #[doc = "The date, in the format \"yyyy-mm-dd\", if this is an all-day event."]
         #[serde(rename = "date", default)]
-        pub date: Option<::chrono::NaiveDate>,
+        pub date: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "The time, as a combined date-time value (formatted according to RFC3339). A time zone offset is required unless a time zone is explicitly specified in timeZone."]
         #[serde(rename = "dateTime", default)]
-        pub date_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub date_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The time zone in which the time is specified. (Formatted as an IANA Time Zone Database name, e.g. \"Europe/Zurich\".) For recurring events this field is required and specifies the time zone in which the recurrence is expanded. For single events this field is optional and indicates a custom time zone for the event start/end."]
         #[serde(rename = "timeZone", default)]
-        pub time_zone: Option<String>,
+        pub time_zone: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for EventDateTime {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1253,7 +1229,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1271,10 +1246,10 @@ pub mod schemas {
     pub struct EventReminder {
         #[doc = "The method used by this reminder. Possible values are:\n\n* \"email\" - Reminders are sent via email. \n* \"sms\" - Deprecated. Once this feature is shutdown, the API will no longer return reminders using this method. Any newly added SMS reminders will be ignored. See  Google Calendar SMS notifications to be removed for more information.\n  Reminders are sent via SMS. These are only available for G Suite customers. Requests to set SMS reminders for other account types are ignored. \n* \"popup\" - Reminders are sent via a UI popup.  \n  Required when adding a reminder."]
         #[serde(rename = "method", default)]
-        pub method: Option<String>,
+        pub method: ::std::option::Option<String>,
         #[doc = "Number of minutes before the start of the event when the reminder should trigger. Valid values are between 0 and 40320 (4 weeks in minutes).\nRequired when adding a reminder."]
         #[serde(rename = "minutes", default)]
-        pub minutes: Option<i32>,
+        pub minutes: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for EventReminder {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1283,7 +1258,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1301,37 +1275,37 @@ pub mod schemas {
     pub struct Events {
         #[doc = "The user's access role for this calendar. Read-only. Possible values are:\n\n* \"none\" - The user has no access. \n* \"freeBusyReader\" - The user has read access to free/busy information. \n* \"reader\" - The user has read access to the calendar. Private events will appear to users with reader access, but event details will be hidden. \n* \"writer\" - The user has read and write access to the calendar. Private events will appear to users with writer access, and event details will be visible. \n* \"owner\" - The user has ownership of the calendar. This role has all of the permissions of the writer role with the additional ability to see and manipulate ACLs."]
         #[serde(rename = "accessRole", default)]
-        pub access_role: Option<String>,
+        pub access_role: ::std::option::Option<String>,
         #[doc = "The default reminders on the calendar for the authenticated user. These reminders apply to all events on this calendar that do not explicitly override them (i.e. do not have reminders.useDefault set to True)."]
         #[serde(rename = "defaultReminders", default)]
-        pub default_reminders: Option<Vec<crate::schemas::EventReminder>>,
+        pub default_reminders: ::std::option::Option<Vec<crate::schemas::EventReminder>>,
         #[doc = "Description of the calendar. Read-only."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "ETag of the collection."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "List of events on the calendar."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Event>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Event>>,
         #[doc = "Type of the collection (\"calendar#events\")."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result. Omitted if no further results are available, in which case nextSyncToken is provided."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Token used at a later point in time to retrieve only the entries that have changed since this result was returned. Omitted if further results are available, in which case nextPageToken is provided."]
         #[serde(rename = "nextSyncToken", default)]
-        pub next_sync_token: Option<String>,
+        pub next_sync_token: ::std::option::Option<String>,
         #[doc = "Title of the calendar. Read-only."]
         #[serde(rename = "summary", default)]
-        pub summary: Option<String>,
+        pub summary: ::std::option::Option<String>,
         #[doc = "The time zone of the calendar. Read-only."]
         #[serde(rename = "timeZone", default)]
-        pub time_zone: Option<String>,
+        pub time_zone: ::std::option::Option<String>,
         #[doc = "Last modification time of the calendar (as a RFC3339 timestamp). Read-only."]
         #[serde(rename = "updated", default)]
-        pub updated: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for Events {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1340,7 +1314,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1358,10 +1331,10 @@ pub mod schemas {
     pub struct FreeBusyCalendar {
         #[doc = "List of time ranges during which this calendar should be regarded as busy."]
         #[serde(rename = "busy", default)]
-        pub busy: Option<Vec<crate::schemas::TimePeriod>>,
+        pub busy: ::std::option::Option<Vec<crate::schemas::TimePeriod>>,
         #[doc = "Optional error(s) (if computation for the calendar failed)."]
         #[serde(rename = "errors", default)]
-        pub errors: Option<Vec<crate::schemas::Error>>,
+        pub errors: ::std::option::Option<Vec<crate::schemas::Error>>,
     }
     impl ::field_selector::FieldSelector for FreeBusyCalendar {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1370,7 +1343,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1388,10 +1360,10 @@ pub mod schemas {
     pub struct FreeBusyGroup {
         #[doc = "List of calendars' identifiers within a group."]
         #[serde(rename = "calendars", default)]
-        pub calendars: Option<Vec<String>>,
+        pub calendars: ::std::option::Option<Vec<String>>,
         #[doc = "Optional error(s) (if computation for the group failed)."]
         #[serde(rename = "errors", default)]
-        pub errors: Option<Vec<crate::schemas::Error>>,
+        pub errors: ::std::option::Option<Vec<crate::schemas::Error>>,
     }
     impl ::field_selector::FieldSelector for FreeBusyGroup {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1400,7 +1372,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1418,22 +1389,22 @@ pub mod schemas {
     pub struct FreeBusyRequest {
         #[doc = "Maximal number of calendars for which FreeBusy information is to be provided. Optional. Maximum value is 50."]
         #[serde(rename = "calendarExpansionMax", default)]
-        pub calendar_expansion_max: Option<i32>,
+        pub calendar_expansion_max: ::std::option::Option<i32>,
         #[doc = "Maximal number of calendar identifiers to be provided for a single group. Optional. An error is returned for a group with more members than this value. Maximum value is 100."]
         #[serde(rename = "groupExpansionMax", default)]
-        pub group_expansion_max: Option<i32>,
+        pub group_expansion_max: ::std::option::Option<i32>,
         #[doc = "List of calendars and/or groups to query."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::FreeBusyRequestItem>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::FreeBusyRequestItem>>,
         #[doc = "The end of the interval for the query formatted as per RFC3339."]
         #[serde(rename = "timeMax", default)]
-        pub time_max: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub time_max: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The start of the interval for the query formatted as per RFC3339."]
         #[serde(rename = "timeMin", default)]
-        pub time_min: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub time_min: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Time zone used in the response. Optional. The default is UTC."]
         #[serde(rename = "timeZone", default)]
-        pub time_zone: Option<String>,
+        pub time_zone: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FreeBusyRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1442,7 +1413,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1460,7 +1430,7 @@ pub mod schemas {
     pub struct FreeBusyRequestItem {
         #[doc = "The identifier of a calendar or a group."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FreeBusyRequestItem {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1469,7 +1439,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1487,20 +1456,23 @@ pub mod schemas {
     pub struct FreeBusyResponse {
         #[doc = "List of free/busy information for calendars."]
         #[serde(rename = "calendars", default)]
-        pub calendars:
-            Option<::std::collections::BTreeMap<String, crate::schemas::FreeBusyCalendar>>,
+        pub calendars: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::FreeBusyCalendar>,
+        >,
         #[doc = "Expansion of groups."]
         #[serde(rename = "groups", default)]
-        pub groups: Option<::std::collections::BTreeMap<String, crate::schemas::FreeBusyGroup>>,
+        pub groups: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::FreeBusyGroup>,
+        >,
         #[doc = "Type of the resource (\"calendar#freeBusy\")."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The end of the interval."]
         #[serde(rename = "timeMax", default)]
-        pub time_max: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub time_max: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The start of the interval."]
         #[serde(rename = "timeMin", default)]
-        pub time_min: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub time_min: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for FreeBusyResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1509,7 +1481,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1527,16 +1498,16 @@ pub mod schemas {
     pub struct Setting {
         #[doc = "ETag of the resource."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The id of the user setting."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Type of the resource (\"calendar#setting\")."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Value of the user setting. The format of the value depends on the ID of the setting. It must always be a UTF-8 string of length up to 1024 characters."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Setting {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1545,7 +1516,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1563,19 +1533,19 @@ pub mod schemas {
     pub struct Settings {
         #[doc = "Etag of the collection."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "List of user settings."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Setting>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Setting>>,
         #[doc = "Type of the collection (\"calendar#settings\")."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Token used to access the next page of this result. Omitted if no further results are available, in which case nextSyncToken is provided."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "Token used at a later point in time to retrieve only the entries that have changed since this result was returned. Omitted if further results are available, in which case nextPageToken is provided."]
         #[serde(rename = "nextSyncToken", default)]
-        pub next_sync_token: Option<String>,
+        pub next_sync_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Settings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1584,7 +1554,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1602,10 +1571,10 @@ pub mod schemas {
     pub struct TimePeriod {
         #[doc = "The (exclusive) end of the time period."]
         #[serde(rename = "end", default)]
-        pub end: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub end: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The (inclusive) start of the time period."]
         #[serde(rename = "start", default)]
-        pub start: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub start: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for TimePeriod {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1614,7 +1583,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -1659,6 +1627,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -3079,6 +3056,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for ListMinAccessRole {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum WatchMinAccessRole {
                 #[doc = "The user can read free/busy information."]
@@ -3131,6 +3117,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for WatchMinAccessRole {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -5516,6 +5511,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for DeleteSendUpdates {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum InsertSendUpdates {
                 #[doc = "Notifications are sent to all guests."]
@@ -5566,6 +5570,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for InsertSendUpdates {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListOrderBy {
                 #[doc = "Order by the start date/time (ascending). This is only available when querying single events (i.e. the parameter singleEvents is True)"]
@@ -5610,6 +5623,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for ListOrderBy {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5662,6 +5684,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for MoveSendUpdates {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum PatchSendUpdates {
                 #[doc = "Notifications are sent to all guests."]
@@ -5710,6 +5741,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for PatchSendUpdates {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -5762,6 +5802,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for QuickAddSendUpdates {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum UpdateSendUpdates {
                 #[doc = "Notifications are sent to all guests."]
@@ -5812,6 +5861,15 @@ mod resources {
                     })
                 }
             }
+            impl ::field_selector::FieldSelector for UpdateSendUpdates {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
+                }
+            }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum WatchOrderBy {
                 #[doc = "Order by the start date/time (ascending). This is only available when querying single events (i.e. the parameter singleEvents is True)"]
@@ -5856,6 +5914,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for WatchOrderBy {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -9612,6 +9679,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -9687,5 +9755,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

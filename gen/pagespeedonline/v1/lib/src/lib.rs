@@ -14,10 +14,10 @@ pub mod schemas {
     pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeaderArgsItems {
         #[doc = "Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, or DURATION."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Argument value, as a localized string."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector
         for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeaderArgsItems
@@ -28,7 +28,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -43,7 +42,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeader { # [ doc = "List of arguments for the format string." ] # [ serde ( rename = "args" , default ) ] pub args : Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeaderArgsItems > > , # [ doc = "A localized format string with $N placeholders, where N is the 1-indexed argument number, e.g. 'Minifying the following $1 resources would save a total of $2 bytes'." ] # [ serde ( rename = "format" , default ) ] pub format : Option < String > , }
+    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeader { # [ doc = "List of arguments for the format string." ] # [ serde ( rename = "args" , default ) ] pub args : :: std :: option :: Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeaderArgsItems > > , # [ doc = "A localized format string with $N placeholders, where N is the 1-indexed argument number, e.g. 'Minifying the following $1 resources would save a total of $2 bytes'." ] # [ serde ( rename = "format" , default ) ] pub format : :: std :: option :: Option < String > , }
     impl ::field_selector::FieldSelector
         for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeader
     {
@@ -53,7 +52,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -72,12 +70,12 @@ pub mod schemas {
     {
         #[doc = "Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, or DURATION."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Argument value, as a localized string."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
-    impl :: field_selector :: FieldSelector for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItemsArgsItems { fn field_selector_with_ident ( ident : & str , selector : & mut String ) { match selector . chars ( ) . rev ( ) . nth ( 0 ) { Some ( ',' ) | None => { } , _ => selector . push_str ( "," ) , } selector . push_str ( ident ) ; selector . push_str ( "*" ) ; } }
+    impl :: field_selector :: FieldSelector for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItemsArgsItems { fn field_selector_with_ident ( ident : & str , selector : & mut String ) { match selector . chars ( ) . rev ( ) . nth ( 0 ) { Some ( ',' ) | None => { } , _ => selector . push_str ( "," ) , } selector . push_str ( ident ) ; } }
     #[derive(
         Debug,
         Clone,
@@ -90,7 +88,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItems { # [ doc = "List of arguments for the format string." ] # [ serde ( rename = "args" , default ) ] pub args : Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItemsArgsItems > > , # [ doc = "A localized format string with $N placeholders, where N is the 1-indexed argument number, e.g. 'Unnecessary metadata for this resource adds an additional $1 bytes to its download size'." ] # [ serde ( rename = "format" , default ) ] pub format : Option < String > , }
+    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItems { # [ doc = "List of arguments for the format string." ] # [ serde ( rename = "args" , default ) ] pub args : :: std :: option :: Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItemsArgsItems > > , # [ doc = "A localized format string with $N placeholders, where N is the 1-indexed argument number, e.g. 'Unnecessary metadata for this resource adds an additional $1 bytes to its download size'." ] # [ serde ( rename = "format" , default ) ] pub format : :: std :: option :: Option < String > , }
     impl ::field_selector::FieldSelector
         for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItems
     {
@@ -100,7 +98,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -119,12 +116,12 @@ pub mod schemas {
     {
         #[doc = "Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, or DURATION."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Argument value, as a localized string."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
-    impl :: field_selector :: FieldSelector for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResultArgsItems { fn field_selector_with_ident ( ident : & str , selector : & mut String ) { match selector . chars ( ) . rev ( ) . nth ( 0 ) { Some ( ',' ) | None => { } , _ => selector . push_str ( "," ) , } selector . push_str ( ident ) ; selector . push_str ( "*" ) ; } }
+    impl :: field_selector :: FieldSelector for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResultArgsItems { fn field_selector_with_ident ( ident : & str , selector : & mut String ) { match selector . chars ( ) . rev ( ) . nth ( 0 ) { Some ( ',' ) | None => { } , _ => selector . push_str ( "," ) , } selector . push_str ( ident ) ; } }
     #[derive(
         Debug,
         Clone,
@@ -137,7 +134,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResult { # [ doc = "List of arguments for the format string." ] # [ serde ( rename = "args" , default ) ] pub args : Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResultArgsItems > > , # [ doc = "A localized format string with $N placeholders, where N is the 1-indexed argument number, e.g. 'Minifying the resource at URL $1 can save $2 bytes'." ] # [ serde ( rename = "format" , default ) ] pub format : Option < String > , }
+    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResult { # [ doc = "List of arguments for the format string." ] # [ serde ( rename = "args" , default ) ] pub args : :: std :: option :: Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResultArgsItems > > , # [ doc = "A localized format string with $N placeholders, where N is the 1-indexed argument number, e.g. 'Minifying the resource at URL $1 can save $2 bytes'." ] # [ serde ( rename = "format" , default ) ] pub format : :: std :: option :: Option < String > , }
     impl ::field_selector::FieldSelector
         for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResult
     {
@@ -147,7 +144,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -162,7 +158,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems { # [ doc = "List of entries that provide additional details about a single URL. Optional." ] # [ serde ( rename = "details" , default ) ] pub details : Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItems > > , # [ doc = "A format string that gives information about the URL, and a list of arguments for that format string." ] # [ serde ( rename = "result" , default ) ] pub result : Option < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResult > , }
+    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems { # [ doc = "List of entries that provide additional details about a single URL. Optional." ] # [ serde ( rename = "details" , default ) ] pub details : :: std :: option :: Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsDetailsItems > > , # [ doc = "A format string that gives information about the URL, and a list of arguments for that format string." ] # [ serde ( rename = "result" , default ) ] pub result : :: std :: option :: Option < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItemsResult > , }
     impl ::field_selector::FieldSelector
         for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems
     {
@@ -172,7 +168,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -187,7 +182,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems { # [ doc = "Heading to be displayed with the list of URLs." ] # [ serde ( rename = "header" , default ) ] pub header : Option < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeader > , # [ doc = "List of entries that provide information about URLs in the url block. Optional." ] # [ serde ( rename = "urls" , default ) ] pub urls : Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems > > , }
+    pub struct ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems { # [ doc = "Heading to be displayed with the list of URLs." ] # [ serde ( rename = "header" , default ) ] pub header : :: std :: option :: Option < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsHeader > , # [ doc = "List of entries that provide information about URLs in the url block. Optional." ] # [ serde ( rename = "urls" , default ) ] pub urls : :: std :: option :: Option < Vec < crate :: schemas :: ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItemsUrlsItems > > , }
     impl ::field_selector::FieldSelector
         for ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems
     {
@@ -197,7 +192,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -206,13 +200,13 @@ pub mod schemas {
     pub struct ResultFormattedResultsRuleResultsAdditionalProperties {
         #[doc = "Localized name of the rule, intended for presentation to a user."]
         #[serde(rename = "localizedRuleName", default)]
-        pub localized_rule_name: Option<String>,
+        pub localized_rule_name: ::std::option::Option<String>,
         #[doc = "The impact (unbounded floating point value) that implementing the suggestions for this rule would have on making the page faster. Impact is comparable between rules to determine which rule's suggestions would have a higher or lower impact on making a page faster. For instance, if enabling compression would save 1MB, while optimizing images would save 500kB, the enable compression rule would have 2x the impact of the image optimization rule, all other things being equal."]
         #[serde(rename = "ruleImpact", default)]
-        pub rule_impact: Option<f64>,
+        pub rule_impact: ::std::option::Option<f64>,
         #[doc = "List of blocks of URLs. Each block may contain a heading and a list of URLs. Each URL may optionally include additional details."]
         #[serde(rename = "urlBlocks", default)]
-        pub url_blocks: Option<
+        pub url_blocks: ::std::option::Option<
             Vec<
                 crate::schemas::ResultFormattedResultsRuleResultsAdditionalPropertiesUrlBlocksItems,
             >,
@@ -225,7 +219,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -234,10 +227,10 @@ pub mod schemas {
     pub struct ResultFormattedResults {
         #[doc = "The locale of the formattedResults, e.g. \"en_US\"."]
         #[serde(rename = "locale", default)]
-        pub locale: Option<String>,
+        pub locale: ::std::option::Option<String>,
         #[doc = "Dictionary of formatted rule results, with one entry for each PageSpeed rule instantiated and run by the server."]
         #[serde(rename = "ruleResults", default)]
-        pub rule_results: Option<
+        pub rule_results: ::std::option::Option<
             ::std::collections::BTreeMap<
                 String,
                 crate::schemas::ResultFormattedResultsRuleResultsAdditionalProperties,
@@ -251,7 +244,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -270,50 +262,50 @@ pub mod schemas {
         #[doc = "Number of uncompressed response bytes for CSS resources on the page."]
         #[serde(rename = "cssResponseBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub css_response_bytes: Option<i64>,
+        pub css_response_bytes: ::std::option::Option<i64>,
         #[doc = "Number of response bytes for flash resources on the page."]
         #[serde(rename = "flashResponseBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub flash_response_bytes: Option<i64>,
+        pub flash_response_bytes: ::std::option::Option<i64>,
         #[doc = "Number of uncompressed response bytes for the main HTML document and all iframes on the page."]
         #[serde(rename = "htmlResponseBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub html_response_bytes: Option<i64>,
+        pub html_response_bytes: ::std::option::Option<i64>,
         #[doc = "Number of response bytes for image resources on the page."]
         #[serde(rename = "imageResponseBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub image_response_bytes: Option<i64>,
+        pub image_response_bytes: ::std::option::Option<i64>,
         #[doc = "Number of uncompressed response bytes for JS resources on the page."]
         #[serde(rename = "javascriptResponseBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub javascript_response_bytes: Option<i64>,
+        pub javascript_response_bytes: ::std::option::Option<i64>,
         #[doc = "Number of CSS resources referenced by the page."]
         #[serde(rename = "numberCssResources", default)]
-        pub number_css_resources: Option<i32>,
+        pub number_css_resources: ::std::option::Option<i32>,
         #[doc = "Number of unique hosts referenced by the page."]
         #[serde(rename = "numberHosts", default)]
-        pub number_hosts: Option<i32>,
+        pub number_hosts: ::std::option::Option<i32>,
         #[doc = "Number of JavaScript resources referenced by the page."]
         #[serde(rename = "numberJsResources", default)]
-        pub number_js_resources: Option<i32>,
+        pub number_js_resources: ::std::option::Option<i32>,
         #[doc = "Number of HTTP resources loaded by the page."]
         #[serde(rename = "numberResources", default)]
-        pub number_resources: Option<i32>,
+        pub number_resources: ::std::option::Option<i32>,
         #[doc = "Number of static (i.e. cacheable) resources on the page."]
         #[serde(rename = "numberStaticResources", default)]
-        pub number_static_resources: Option<i32>,
+        pub number_static_resources: ::std::option::Option<i32>,
         #[doc = "Number of response bytes for other resources on the page."]
         #[serde(rename = "otherResponseBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub other_response_bytes: Option<i64>,
+        pub other_response_bytes: ::std::option::Option<i64>,
         #[doc = "Number of uncompressed response bytes for text resources not covered by other statistics (i.e non-HTML, non-script, non-CSS resources) on the page."]
         #[serde(rename = "textResponseBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub text_response_bytes: Option<i64>,
+        pub text_response_bytes: ::std::option::Option<i64>,
         #[doc = "Total size of all request bytes sent by the page."]
         #[serde(rename = "totalRequestBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub total_request_bytes: Option<i64>,
+        pub total_request_bytes: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for ResultPageStats {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -322,7 +314,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -340,16 +331,16 @@ pub mod schemas {
     pub struct ResultScreenshot {
         #[doc = "Image data base64 encoded."]
         #[serde(rename = "data", default)]
-        pub data: Option<Vec<u8>>,
+        pub data: ::std::option::Option<crate::bytes::Bytes>,
         #[doc = "Height of screenshot in pixels."]
         #[serde(rename = "height", default)]
-        pub height: Option<i32>,
+        pub height: ::std::option::Option<i32>,
         #[doc = "Mime type of image data. E.g. \"image/jpeg\"."]
         #[serde(rename = "mime_type", default)]
-        pub mime_type: Option<String>,
+        pub mime_type: ::std::option::Option<String>,
         #[doc = "Width of screenshot in pixels."]
         #[serde(rename = "width", default)]
-        pub width: Option<i32>,
+        pub width: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ResultScreenshot {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -358,7 +349,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -376,10 +366,10 @@ pub mod schemas {
     pub struct ResultVersion {
         #[doc = "The major version number of PageSpeed used to generate these results."]
         #[serde(rename = "major", default)]
-        pub major: Option<i32>,
+        pub major: ::std::option::Option<i32>,
         #[doc = "The minor version number of PageSpeed used to generate these results."]
         #[serde(rename = "minor", default)]
-        pub minor: Option<i32>,
+        pub minor: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ResultVersion {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -388,7 +378,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -397,37 +386,37 @@ pub mod schemas {
     pub struct Result {
         #[doc = "The captcha verify result"]
         #[serde(rename = "captchaResult", default)]
-        pub captcha_result: Option<String>,
+        pub captcha_result: ::std::option::Option<String>,
         #[doc = "Localized PageSpeed results. Contains a ruleResults entry for each PageSpeed rule instantiated and run by the server."]
         #[serde(rename = "formattedResults", default)]
-        pub formatted_results: Option<crate::schemas::ResultFormattedResults>,
+        pub formatted_results: ::std::option::Option<crate::schemas::ResultFormattedResults>,
         #[doc = "Canonicalized and final URL for the document, after following page redirects (if any)."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "List of rules that were specified in the request, but which the server did not know how to instantiate."]
         #[serde(rename = "invalidRules", default)]
-        pub invalid_rules: Option<Vec<String>>,
+        pub invalid_rules: ::std::option::Option<Vec<String>>,
         #[doc = "Kind of result."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Summary statistics for the page, such as number of JavaScript bytes, number of HTML bytes, etc."]
         #[serde(rename = "pageStats", default)]
-        pub page_stats: Option<crate::schemas::ResultPageStats>,
+        pub page_stats: ::std::option::Option<crate::schemas::ResultPageStats>,
         #[doc = "Response code for the document. 200 indicates a normal page load. 4xx/5xx indicates an error."]
         #[serde(rename = "responseCode", default)]
-        pub response_code: Option<i32>,
+        pub response_code: ::std::option::Option<i32>,
         #[doc = "The PageSpeed Score (0-100), which indicates how much faster a page could be. A high score indicates little room for improvement, while a lower score indicates more room for improvement."]
         #[serde(rename = "score", default)]
-        pub score: Option<i32>,
+        pub score: ::std::option::Option<i32>,
         #[doc = "Base64-encoded screenshot of the page that was analyzed."]
         #[serde(rename = "screenshot", default)]
-        pub screenshot: Option<crate::schemas::ResultScreenshot>,
+        pub screenshot: ::std::option::Option<crate::schemas::ResultScreenshot>,
         #[doc = "Title of the page, as displayed in the browser's title bar."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "The version of PageSpeed used to generate these results."]
         #[serde(rename = "version", default)]
-        pub version: Option<crate::schemas::ResultVersion>,
+        pub version: ::std::option::Option<crate::schemas::ResultVersion>,
     }
     impl ::field_selector::FieldSelector for Result {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -436,7 +425,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -481,6 +469,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -550,6 +547,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for RunpagespeedStrategy {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -1004,6 +1010,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1079,5 +1086,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

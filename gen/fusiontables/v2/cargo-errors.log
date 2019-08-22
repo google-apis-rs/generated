@@ -1,20 +1,20 @@
     Checking google-fusiontables2 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/fusiontables/v2/lib)
 error[E0609]: no field `request` on type `resources::table::ImportRowsRequestBuilder<'a, A>`
-    --> fusiontables/v2/lib/src/lib.rs:4068:63
+    --> fusiontables/v2/lib/src/lib.rs:4053:63
      |
-4068 |                 let request_json = ::serde_json::to_vec(&self.request)?;
+4053 |                 let request_json = ::serde_json::to_vec(&self.request)?;
      |                                                               ^^^^^^^ help: a field with a similar name exists: `reqwest`
 
 error[E0609]: no field `request` on type `resources::table::ImportTableRequestBuilder<'a, A>`
-    --> fusiontables/v2/lib/src/lib.rs:4293:63
+    --> fusiontables/v2/lib/src/lib.rs:4278:63
      |
-4293 |                 let request_json = ::serde_json::to_vec(&self.request)?;
+4278 |                 let request_json = ::serde_json::to_vec(&self.request)?;
      |                                                               ^^^^^^^ help: a field with a similar name exists: `reqwest`
 
 error[E0609]: no field `request` on type `resources::table::ReplaceRowsRequestBuilder<'a, A>`
-    --> fusiontables/v2/lib/src/lib.rs:5190:63
+    --> fusiontables/v2/lib/src/lib.rs:5175:63
      |
-5190 |                 let request_json = ::serde_json::to_vec(&self.request)?;
+5175 |                 let request_json = ::serde_json::to_vec(&self.request)?;
      |                                                               ^^^^^^^ help: a field with a similar name exists: `reqwest`
 
 error: aborting due to 3 previous errors

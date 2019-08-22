@@ -14,10 +14,10 @@ pub mod schemas {
     pub struct ActingUser {
         #[doc = "The email address of the user when the user performed the action."]
         #[serde(rename = "email", default)]
-        pub email: Option<String>,
+        pub email: ::std::option::Option<String>,
         #[doc = "A profile image URL for the user. May not be present if the user has\nchanged their email address or deleted their account."]
         #[serde(rename = "imageUrl", default)]
-        pub image_url: Option<String>,
+        pub image_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ActingUser {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -26,7 +26,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -44,10 +43,10 @@ pub mod schemas {
     pub struct CertDnsChallenge {
         #[doc = "The domain name upon which the DNS challenge must be satisfied."]
         #[serde(rename = "domainName", default)]
-        pub domain_name: Option<String>,
+        pub domain_name: ::std::option::Option<String>,
         #[doc = "The value that must be present as a TXT record on the domain name to\nsatisfy the challenge."]
         #[serde(rename = "token", default)]
-        pub token: Option<String>,
+        pub token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CertDnsChallenge {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -56,7 +55,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -74,10 +72,10 @@ pub mod schemas {
     pub struct CertHttpChallenge {
         #[doc = "The URL path on which to serve the specified token to satisfy the\ncertificate challenge."]
         #[serde(rename = "path", default)]
-        pub path: Option<String>,
+        pub path: ::std::option::Option<String>,
         #[doc = "The token to serve at the specified URL path to satisfy the certificate\nchallenge."]
         #[serde(rename = "token", default)]
-        pub token: Option<String>,
+        pub token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CertHttpChallenge {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -86,7 +84,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -104,10 +101,10 @@ pub mod schemas {
     pub struct CloudRunRewrite {
         #[doc = "Optional. User-provided region where the Cloud Run service is hosted.<br>\nDefaults to `us-central1` if not supplied."]
         #[serde(rename = "region", default)]
-        pub region: Option<String>,
+        pub region: ::std::option::Option<String>,
         #[doc = "Required. User-defined ID of the Cloud Run service."]
         #[serde(rename = "serviceId", default)]
-        pub service_id: Option<String>,
+        pub service_id: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CloudRunRewrite {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -116,7 +113,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -177,6 +173,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DomainStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -192,22 +197,22 @@ pub mod schemas {
     pub struct Domain {
         #[doc = "Required. The domain name of the association."]
         #[serde(rename = "domainName", default)]
-        pub domain_name: Option<String>,
+        pub domain_name: ::std::option::Option<String>,
         #[doc = "If set, the domain should redirect with the provided parameters."]
         #[serde(rename = "domainRedirect", default)]
-        pub domain_redirect: Option<crate::schemas::DomainRedirect>,
+        pub domain_redirect: ::std::option::Option<crate::schemas::DomainRedirect>,
         #[doc = "Output only. Information about the provisioning of certificates and the\nhealth of the DNS resolution for the domain."]
         #[serde(rename = "provisioning", default)]
-        pub provisioning: Option<crate::schemas::DomainProvisioning>,
+        pub provisioning: ::std::option::Option<crate::schemas::DomainProvisioning>,
         #[doc = "Required. The site name of the association."]
         #[serde(rename = "site", default)]
-        pub site: Option<String>,
+        pub site: ::std::option::Option<String>,
         #[doc = "Output only. Additional status of the domain association."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::DomainStatus>,
+        pub status: ::std::option::Option<crate::schemas::DomainStatus>,
         #[doc = "Output only. The time at which the domain was last updated."]
         #[serde(rename = "updateTime", default)]
-        pub update_time: Option<String>,
+        pub update_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Domain {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -216,7 +221,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -285,6 +289,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DomainProvisioningCertStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DomainProvisioningDnsStatus {
         #[doc = "Unspecified DNS status."]
@@ -347,6 +360,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DomainProvisioningDnsStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -362,28 +384,28 @@ pub mod schemas {
     pub struct DomainProvisioning {
         #[doc = "The TXT records (for the certificate challenge) that were found at the last\nDNS fetch."]
         #[serde(rename = "certChallengeDiscoveredTxt", default)]
-        pub cert_challenge_discovered_txt: Option<Vec<String>>,
+        pub cert_challenge_discovered_txt: ::std::option::Option<Vec<String>>,
         #[doc = "The DNS challenge for generating a certificate."]
         #[serde(rename = "certChallengeDns", default)]
-        pub cert_challenge_dns: Option<crate::schemas::CertDnsChallenge>,
+        pub cert_challenge_dns: ::std::option::Option<crate::schemas::CertDnsChallenge>,
         #[doc = "The HTTP challenge for generating a certificate."]
         #[serde(rename = "certChallengeHttp", default)]
-        pub cert_challenge_http: Option<crate::schemas::CertHttpChallenge>,
+        pub cert_challenge_http: ::std::option::Option<crate::schemas::CertHttpChallenge>,
         #[doc = "The certificate provisioning status; updated when Firebase Hosting\nprovisions an SSL certificate for the domain."]
         #[serde(rename = "certStatus", default)]
-        pub cert_status: Option<crate::schemas::DomainProvisioningCertStatus>,
+        pub cert_status: ::std::option::Option<crate::schemas::DomainProvisioningCertStatus>,
         #[doc = "The IPs found at the last DNS fetch."]
         #[serde(rename = "discoveredIps", default)]
-        pub discovered_ips: Option<Vec<String>>,
+        pub discovered_ips: ::std::option::Option<Vec<String>>,
         #[doc = "The time at which the last DNS fetch occurred."]
         #[serde(rename = "dnsFetchTime", default)]
-        pub dns_fetch_time: Option<String>,
+        pub dns_fetch_time: ::std::option::Option<String>,
         #[doc = "The DNS record match status as of the last DNS fetch."]
         #[serde(rename = "dnsStatus", default)]
-        pub dns_status: Option<crate::schemas::DomainProvisioningDnsStatus>,
+        pub dns_status: ::std::option::Option<crate::schemas::DomainProvisioningDnsStatus>,
         #[doc = "The list of IPs to which the domain is expected to resolve."]
         #[serde(rename = "expectedIps", default)]
-        pub expected_ips: Option<Vec<String>>,
+        pub expected_ips: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for DomainProvisioning {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -392,7 +414,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -441,6 +462,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for DomainRedirectType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -456,10 +486,10 @@ pub mod schemas {
     pub struct DomainRedirect {
         #[doc = "Required. The domain name to redirect to."]
         #[serde(rename = "domainName", default)]
-        pub domain_name: Option<String>,
+        pub domain_name: ::std::option::Option<String>,
         #[doc = "Required. The redirect status code."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::DomainRedirectType>,
+        pub r#type: ::std::option::Option<crate::schemas::DomainRedirectType>,
     }
     impl ::field_selector::FieldSelector for DomainRedirect {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -468,7 +498,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -486,7 +515,7 @@ pub mod schemas {
     )]
     pub struct Empty;
     impl ::field_selector::FieldSelector for Empty {
-        fn field_selector_with_ident(ident: &str, selector: &mut String) {}
+        fn field_selector_with_ident(_ident: &str, _selector: &mut String) {}
     }
     #[derive(
         Debug,
@@ -503,13 +532,13 @@ pub mod schemas {
     pub struct Header {
         #[doc = "The user-supplied [glob\npattern](/docs/hosting/full-config#glob_pattern_matching) to match\nagainst the request URL path."]
         #[serde(rename = "glob", default)]
-        pub glob: Option<String>,
+        pub glob: ::std::option::Option<String>,
         #[doc = "Required. The additional headers to add to the response."]
         #[serde(rename = "headers", default)]
-        pub headers: Option<::std::collections::BTreeMap<String, String>>,
+        pub headers: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The user-supplied RE2 regular expression to match against the request\nURL path."]
         #[serde(rename = "regex", default)]
-        pub regex: Option<String>,
+        pub regex: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Header {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -518,7 +547,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -536,10 +564,10 @@ pub mod schemas {
     pub struct ListDomainsResponse {
         #[doc = "The list of domains, if any exist."]
         #[serde(rename = "domains", default)]
-        pub domains: Option<Vec<crate::schemas::Domain>>,
+        pub domains: ::std::option::Option<Vec<crate::schemas::Domain>>,
         #[doc = "The pagination token, if more results exist."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListDomainsResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -548,7 +576,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -566,10 +593,10 @@ pub mod schemas {
     pub struct ListReleasesResponse {
         #[doc = "If there are additional releases remaining beyond the ones in this\nresponse, then supply this token in the next\n[`list`](../sites.versions.files/list) call to continue with the next set\nof releases."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "The list of hashes of files that still need to be uploaded, if any exist."]
         #[serde(rename = "releases", default)]
-        pub releases: Option<Vec<crate::schemas::Release>>,
+        pub releases: ::std::option::Option<Vec<crate::schemas::Release>>,
     }
     impl ::field_selector::FieldSelector for ListReleasesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -578,7 +605,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -596,10 +622,10 @@ pub mod schemas {
     pub struct ListVersionFilesResponse {
         #[doc = "The list path/hashes in the specified version."]
         #[serde(rename = "files", default)]
-        pub files: Option<Vec<crate::schemas::VersionFile>>,
+        pub files: ::std::option::Option<Vec<crate::schemas::VersionFile>>,
         #[doc = "The pagination token, if more results exist."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ListVersionFilesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -608,7 +634,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -626,7 +651,7 @@ pub mod schemas {
     pub struct PopulateVersionFilesRequest {
         #[doc = "A set of file paths to the hashes corresponding to assets that should be\nadded to the version. Note that a file path to an empty hash will remove\nthe path from the version. Calculate a hash by Gzipping the file then\ntaking the SHA256 hash of the newly compressed file."]
         #[serde(rename = "files", default)]
-        pub files: Option<::std::collections::BTreeMap<String, String>>,
+        pub files: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::field_selector::FieldSelector for PopulateVersionFilesRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -635,7 +660,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -653,10 +677,10 @@ pub mod schemas {
     pub struct PopulateVersionFilesResponse {
         #[doc = "The content hashes of the specified files that need to be uploaded to the\nspecified endpoint."]
         #[serde(rename = "uploadRequiredHashes", default)]
-        pub upload_required_hashes: Option<Vec<String>>,
+        pub upload_required_hashes: ::std::option::Option<Vec<String>>,
         #[doc = "The URL to which the files should be uploaded, in the format:\n<br>\"https://upload-firebasehosting.googleapis.com/upload/sites/<var>site-name</var>/versions/<var>versionID</var>/files\".\n<br>Perform a multipart `POST` of the Gzipped file contents to the URL\nusing a forward slash and the hash of the file appended to the end."]
         #[serde(rename = "uploadUrl", default)]
-        pub upload_url: Option<String>,
+        pub upload_url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PopulateVersionFilesResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -665,7 +689,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -683,16 +706,16 @@ pub mod schemas {
     pub struct Redirect {
         #[doc = "The user-supplied [glob\npattern](/docs/hosting/full-config#glob_pattern_matching) to match\nagainst the request URL path."]
         #[serde(rename = "glob", default)]
-        pub glob: Option<String>,
+        pub glob: ::std::option::Option<String>,
         #[doc = "Required. The value to put in the HTTP location header of the response.\n<br>The location can contain capture group values from the pattern using\na `:` prefix to identify the segment and an optional `*` to capture the\nrest of the URL.\nFor example:\n<code>\"glob\": \"/:capture*\",\n<br>\"statusCode\": 301,\n<br>\"location\": \"https://example.com/foo/:capture\"</code>"]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "The user-supplied RE2 regular expression to match against the request\nURL path."]
         #[serde(rename = "regex", default)]
-        pub regex: Option<String>,
+        pub regex: ::std::option::Option<String>,
         #[doc = "Required. The status HTTP code to return in the response. It must be a\nvalid 3xx status code."]
         #[serde(rename = "statusCode", default)]
-        pub status_code: Option<i32>,
+        pub status_code: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for Redirect {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -701,7 +724,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -758,6 +780,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ReleaseType {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -773,22 +804,22 @@ pub mod schemas {
     pub struct Release {
         #[doc = "The deploy description when the release was created. The value can be up to\n512\u{a0}characters."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
         #[doc = "Output only. The unique identifier for the release, in the format:\n<code>sites/<var>site-name</var>/releases/<var>releaseID</var></code>\nThis name is provided in the response body when you call the\n[`CreateRelease`](sites.releases/create) endpoint."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Explains the reason for the release.\n<br>Specify a value for this field only when creating a `SITE_DISABLE`\ntype release."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<crate::schemas::ReleaseType>,
+        pub r#type: ::std::option::Option<crate::schemas::ReleaseType>,
         #[doc = "Output only. The time at which the version is set to be public."]
         #[serde(rename = "releaseTime", default)]
-        pub release_time: Option<String>,
+        pub release_time: ::std::option::Option<String>,
         #[doc = "Output only. Identifies the user who created the release."]
         #[serde(rename = "releaseUser", default)]
-        pub release_user: Option<crate::schemas::ActingUser>,
+        pub release_user: ::std::option::Option<crate::schemas::ActingUser>,
         #[doc = "Output only. The configuration and content that was released."]
         #[serde(rename = "version", default)]
-        pub version: Option<crate::schemas::Version>,
+        pub version: ::std::option::Option<crate::schemas::Version>,
     }
     impl ::field_selector::FieldSelector for Release {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -797,7 +828,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -815,22 +845,22 @@ pub mod schemas {
     pub struct Rewrite {
         #[doc = "The request will be forwarded to Firebase Dynamic Links."]
         #[serde(rename = "dynamicLinks", default)]
-        pub dynamic_links: Option<bool>,
+        pub dynamic_links: ::std::option::Option<bool>,
         #[doc = "The function to proxy requests to. Must match the exported function\nname exactly."]
         #[serde(rename = "function", default)]
-        pub function: Option<String>,
+        pub function: ::std::option::Option<String>,
         #[doc = "The user-supplied [glob\npattern](/docs/hosting/full-config#glob_pattern_matching) to match\nagainst the request URL path."]
         #[serde(rename = "glob", default)]
-        pub glob: Option<String>,
+        pub glob: ::std::option::Option<String>,
         #[doc = "The URL path to rewrite the request to."]
         #[serde(rename = "path", default)]
-        pub path: Option<String>,
+        pub path: ::std::option::Option<String>,
         #[doc = "The user-supplied RE2 regular expression to match against the request\nURL path."]
         #[serde(rename = "regex", default)]
-        pub regex: Option<String>,
+        pub regex: ::std::option::Option<String>,
         #[doc = "The request will be forwarded to Cloud Run."]
         #[serde(rename = "run", default)]
-        pub run: Option<crate::schemas::CloudRunRewrite>,
+        pub run: ::std::option::Option<crate::schemas::CloudRunRewrite>,
     }
     impl ::field_selector::FieldSelector for Rewrite {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -839,7 +869,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -886,6 +915,15 @@ pub mod schemas {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for ServingConfigAppAssociation {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -942,6 +980,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ServingConfigTrailingSlashBehavior {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -957,22 +1004,23 @@ pub mod schemas {
     pub struct ServingConfig {
         #[doc = "How to handle well known App Association files."]
         #[serde(rename = "appAssociation", default)]
-        pub app_association: Option<crate::schemas::ServingConfigAppAssociation>,
+        pub app_association: ::std::option::Option<crate::schemas::ServingConfigAppAssociation>,
         #[doc = "Defines whether to drop the file extension from uploaded files."]
         #[serde(rename = "cleanUrls", default)]
-        pub clean_urls: Option<bool>,
+        pub clean_urls: ::std::option::Option<bool>,
         #[doc = "A list of custom response headers that are added to the content if the\nrequest URL path matches the glob."]
         #[serde(rename = "headers", default)]
-        pub headers: Option<Vec<crate::schemas::Header>>,
+        pub headers: ::std::option::Option<Vec<crate::schemas::Header>>,
         #[doc = "A list of globs that will cause the response to redirect to another\nlocation."]
         #[serde(rename = "redirects", default)]
-        pub redirects: Option<Vec<crate::schemas::Redirect>>,
+        pub redirects: ::std::option::Option<Vec<crate::schemas::Redirect>>,
         #[doc = "A list of rewrites that will act as if the service were given the\ndestination URL."]
         #[serde(rename = "rewrites", default)]
-        pub rewrites: Option<Vec<crate::schemas::Rewrite>>,
+        pub rewrites: ::std::option::Option<Vec<crate::schemas::Rewrite>>,
         #[doc = "Defines how to handle a trailing slash in the URL path."]
         #[serde(rename = "trailingSlashBehavior", default)]
-        pub trailing_slash_behavior: Option<crate::schemas::ServingConfigTrailingSlashBehavior>,
+        pub trailing_slash_behavior:
+            ::std::option::Option<crate::schemas::ServingConfigTrailingSlashBehavior>,
     }
     impl ::field_selector::FieldSelector for ServingConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -981,7 +1029,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1000,7 +1047,7 @@ pub mod schemas {
         #[doc = "The number of FINALIZED versions that will be held for a site before\nautomatic deletion. When a new version is deployed, content for versions\nin storage in excess of this number will be deleted, and will no longer be\nbilled for storage usage. Oldest versions will be deleted first; sites are\ncreated with an unlimited number of max_versions by default."]
         #[serde(rename = "maxVersions", default)]
         #[serde(with = "crate::parsed_string")]
-        pub max_versions: Option<i64>,
+        pub max_versions: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for SiteConfig {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1009,7 +1056,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1074,6 +1120,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VersionStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1089,42 +1144,42 @@ pub mod schemas {
     pub struct Version {
         #[doc = "The configuration for the behavior of the site. This configuration exists\nin the [`firebase.json`](/docs/cli/#the_firebasejson_file) file."]
         #[serde(rename = "config", default)]
-        pub config: Option<crate::schemas::ServingConfig>,
+        pub config: ::std::option::Option<crate::schemas::ServingConfig>,
         #[doc = "Output only. The time at which the version was created."]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<String>,
+        pub create_time: ::std::option::Option<String>,
         #[doc = "Output only. Identifies the user who created the version."]
         #[serde(rename = "createUser", default)]
-        pub create_user: Option<crate::schemas::ActingUser>,
+        pub create_user: ::std::option::Option<crate::schemas::ActingUser>,
         #[doc = "Output only. The time at which the version was `DELETED`."]
         #[serde(rename = "deleteTime", default)]
-        pub delete_time: Option<String>,
+        pub delete_time: ::std::option::Option<String>,
         #[doc = "Output only. Identifies the user who `DELETED` the version."]
         #[serde(rename = "deleteUser", default)]
-        pub delete_user: Option<crate::schemas::ActingUser>,
+        pub delete_user: ::std::option::Option<crate::schemas::ActingUser>,
         #[doc = "Output only. The total number of files associated with the version.\n<br>This value is calculated after a version is `FINALIZED`."]
         #[serde(rename = "fileCount", default)]
         #[serde(with = "crate::parsed_string")]
-        pub file_count: Option<i64>,
+        pub file_count: ::std::option::Option<i64>,
         #[doc = "Output only. The time at which the version was `FINALIZED`."]
         #[serde(rename = "finalizeTime", default)]
-        pub finalize_time: Option<String>,
+        pub finalize_time: ::std::option::Option<String>,
         #[doc = "Output only. Identifies the user who `FINALIZED` the version."]
         #[serde(rename = "finalizeUser", default)]
-        pub finalize_user: Option<crate::schemas::ActingUser>,
+        pub finalize_user: ::std::option::Option<crate::schemas::ActingUser>,
         #[doc = "The labels used for extra metadata and/or filtering."]
         #[serde(rename = "labels", default)]
-        pub labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The unique identifier for a version, in the format:\n<code>sites/<var>site-name</var>/versions/<var>versionID</var></code>\nThis name is provided in the response body when you call the\n[`CreateVersion`](../sites.versions/create) endpoint."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The deploy status of a version.\n<br>\n<br>For a successful deploy, call the\n[`CreateVersion`](sites.versions/create) endpoint to make a new version\n(`CREATED` status),\n[upload all desired files](sites.versions/populateFiles) to the version,\nthen [update](sites.versions/patch) the version to the `FINALIZED` status.\n<br>\n<br>Note that if you leave the version in the `CREATED` state for more\nthan 12\u{a0}hours, the system will automatically mark the version as\n`ABANDONED`.\n<br>\n<br>You can also change the status of a version to `DELETED` by calling the\n[`DeleteVersion`](sites.versions/delete) endpoint."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::VersionStatus>,
+        pub status: ::std::option::Option<crate::schemas::VersionStatus>,
         #[doc = "Output only. The total stored bytesize of the version.\n<br>This value is calculated after a version is `FINALIZED`."]
         #[serde(rename = "versionBytes", default)]
         #[serde(with = "crate::parsed_string")]
-        pub version_bytes: Option<i64>,
+        pub version_bytes: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for Version {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1133,7 +1188,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1186,6 +1240,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for VersionFileStatus {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1201,13 +1264,13 @@ pub mod schemas {
     pub struct VersionFile {
         #[doc = "The SHA256 content hash of the file."]
         #[serde(rename = "hash", default)]
-        pub hash: Option<String>,
+        pub hash: ::std::option::Option<String>,
         #[doc = "The URI at which the file's content should display."]
         #[serde(rename = "path", default)]
-        pub path: Option<String>,
+        pub path: ::std::option::Option<String>,
         #[doc = "Output only. The current status of a particular file in the specified\nversion.\n<br>The value will be either `pending upload` or `uploaded`."]
         #[serde(rename = "status", default)]
-        pub status: Option<crate::schemas::VersionFileStatus>,
+        pub status: ::std::option::Option<crate::schemas::VersionFileStatus>,
     }
     impl ::field_selector::FieldSelector for VersionFile {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1216,7 +1279,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -1271,6 +1333,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -1315,6 +1386,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -4194,6 +4274,15 @@ mod resources {
                             })
                         }
                     }
+                    impl ::field_selector::FieldSelector for ListStatus {
+                        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                            match selector.chars().rev().nth(0) {
+                                Some(',') | None => {}
+                                _ => selector.push_str(","),
+                            }
+                            selector.push_str(ident);
+                        }
+                    }
                 }
                 pub struct FilesActions<'a, A> {
                     pub(crate) reqwest: &'a reqwest::Client,
@@ -4788,6 +4877,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4863,5 +4953,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

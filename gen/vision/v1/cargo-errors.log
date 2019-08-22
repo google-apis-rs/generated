@@ -1,1632 +1,1632 @@
     Checking google-vision1 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/vision/v1/lib)
 error[E0107]: wrong number of type arguments: expected 0, found 2
-   --> vision/v1/lib/src/lib.rs:414:57
+   --> vision/v1/lib/src/lib.rs:400:57
     |
-414 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+400 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
     |                                                         |
     |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-   --> vision/v1/lib/src/lib.rs:422:54
+   --> vision/v1/lib/src/lib.rs:408:54
     |
-422 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+408 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     |                                                      ^^^^  ^^^^^^^^ unexpected type argument
     |                                                      |
     |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-   --> vision/v1/lib/src/lib.rs:508:57
+   --> vision/v1/lib/src/lib.rs:502:57
     |
-508 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+502 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
     |                                                         |
     |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-   --> vision/v1/lib/src/lib.rs:516:54
+   --> vision/v1/lib/src/lib.rs:510:54
     |
-516 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+510 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     |                                                      ^^^^  ^^^^^^^^ unexpected type argument
     |                                                      |
     |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-   --> vision/v1/lib/src/lib.rs:749:57
+   --> vision/v1/lib/src/lib.rs:745:57
     |
-749 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+745 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
     |                                                         |
     |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-   --> vision/v1/lib/src/lib.rs:757:54
+   --> vision/v1/lib/src/lib.rs:753:54
     |
-757 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+753 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     |                                                      ^^^^  ^^^^^^^^ unexpected type argument
     |                                                      |
     |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-   --> vision/v1/lib/src/lib.rs:939:57
+   --> vision/v1/lib/src/lib.rs:940:57
     |
-939 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+940 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
     |                                                         |
     |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-   --> vision/v1/lib/src/lib.rs:947:54
+   --> vision/v1/lib/src/lib.rs:948:54
     |
-947 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+948 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     |                                                      ^^^^  ^^^^^^^^ unexpected type argument
     |                                                      |
     |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:1001:57
+    --> vision/v1/lib/src/lib.rs:1011:57
      |
-1001 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+1011 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:1009:54
+    --> vision/v1/lib/src/lib.rs:1019:54
      |
-1009 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+1019 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:1063:57
+    --> vision/v1/lib/src/lib.rs:1082:57
      |
-1063 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+1082 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:1071:54
+    --> vision/v1/lib/src/lib.rs:1090:54
      |
-1071 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+1090 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:1125:57
+    --> vision/v1/lib/src/lib.rs:1153:57
      |
-1125 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+1153 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:1133:54
+    --> vision/v1/lib/src/lib.rs:1161:54
      |
-1133 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+1161 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:1187:57
+    --> vision/v1/lib/src/lib.rs:1224:57
      |
-1187 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+1224 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:1195:54
+    --> vision/v1/lib/src/lib.rs:1232:54
      |
-1195 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+1232 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:1249:57
+    --> vision/v1/lib/src/lib.rs:1295:57
      |
-1249 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+1295 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:1257:54
+    --> vision/v1/lib/src/lib.rs:1303:54
      |
-1257 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+1303 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:1311:57
+    --> vision/v1/lib/src/lib.rs:1366:57
      |
-1311 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+1366 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:1319:54
+    --> vision/v1/lib/src/lib.rs:1374:54
      |
-1319 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+1374 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:1454:57
+    --> vision/v1/lib/src/lib.rs:1522:57
      |
-1454 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+1522 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:1462:54
+    --> vision/v1/lib/src/lib.rs:1530:54
      |
-1462 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+1530 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:1751:57
+    --> vision/v1/lib/src/lib.rs:1831:57
      |
-1751 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+1831 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:1759:54
+    --> vision/v1/lib/src/lib.rs:1839:54
      |
-1759 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+1839 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:1995:57
+    --> vision/v1/lib/src/lib.rs:2087:57
      |
-1995 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+2087 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:2003:54
+    --> vision/v1/lib/src/lib.rs:2095:54
      |
-2003 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+2095 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:2065:57
+    --> vision/v1/lib/src/lib.rs:2166:57
      |
-2065 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+2166 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:2073:54
+    --> vision/v1/lib/src/lib.rs:2174:54
      |
-2073 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+2174 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:2135:57
+    --> vision/v1/lib/src/lib.rs:2245:57
      |
-2135 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+2245 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:2143:54
+    --> vision/v1/lib/src/lib.rs:2253:54
      |
-2143 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+2253 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:2203:57
+    --> vision/v1/lib/src/lib.rs:2324:57
      |
-2203 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+2324 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:2211:54
+    --> vision/v1/lib/src/lib.rs:2332:54
      |
-2211 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+2332 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:2271:57
+    --> vision/v1/lib/src/lib.rs:2401:57
      |
-2271 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+2401 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:2279:54
+    --> vision/v1/lib/src/lib.rs:2409:54
      |
-2279 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+2409 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:2341:57
+    --> vision/v1/lib/src/lib.rs:2480:57
      |
-2341 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+2480 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:2349:54
+    --> vision/v1/lib/src/lib.rs:2488:54
      |
-2349 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+2488 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:2417:57
+    --> vision/v1/lib/src/lib.rs:2567:57
      |
-2417 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+2567 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:2427:54
+    --> vision/v1/lib/src/lib.rs:2577:54
      |
-2427 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+2577 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:2700:57
+    --> vision/v1/lib/src/lib.rs:2870:57
      |
-2700 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+2870 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:2708:54
+    --> vision/v1/lib/src/lib.rs:2878:54
      |
-2708 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+2878 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:3070:57
+    --> vision/v1/lib/src/lib.rs:3244:57
      |
-3070 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+3244 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:3078:54
+    --> vision/v1/lib/src/lib.rs:3252:54
      |
-3078 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+3252 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:3457:57
+    --> vision/v1/lib/src/lib.rs:3640:57
      |
-3457 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+3640 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:3465:54
+    --> vision/v1/lib/src/lib.rs:3648:54
      |
-3465 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+3648 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:3523:57
+    --> vision/v1/lib/src/lib.rs:3715:57
      |
-3523 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+3715 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:3531:54
+    --> vision/v1/lib/src/lib.rs:3723:54
      |
-3531 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+3723 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:3587:57
+    --> vision/v1/lib/src/lib.rs:3788:57
      |
-3587 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+3788 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:3595:54
+    --> vision/v1/lib/src/lib.rs:3796:54
      |
-3595 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+3796 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:3651:57
+    --> vision/v1/lib/src/lib.rs:3861:57
      |
-3651 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+3861 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:3659:54
+    --> vision/v1/lib/src/lib.rs:3869:54
      |
-3659 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+3869 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:3717:57
+    --> vision/v1/lib/src/lib.rs:3936:57
      |
-3717 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+3936 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:3725:54
+    --> vision/v1/lib/src/lib.rs:3944:54
      |
-3725 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+3944 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:3875:57
+    --> vision/v1/lib/src/lib.rs:4112:57
      |
-3875 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+4112 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:3883:54
+    --> vision/v1/lib/src/lib.rs:4120:54
      |
-3883 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+4120 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:4362:57
+    --> vision/v1/lib/src/lib.rs:4618:57
      |
-4362 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+4618 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:4370:54
+    --> vision/v1/lib/src/lib.rs:4626:54
      |
-4370 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+4626 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:4606:57
+    --> vision/v1/lib/src/lib.rs:4874:57
      |
-4606 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+4874 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:4614:54
+    --> vision/v1/lib/src/lib.rs:4882:54
      |
-4614 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+4882 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:4676:57
+    --> vision/v1/lib/src/lib.rs:4953:57
      |
-4676 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+4953 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:4684:54
+    --> vision/v1/lib/src/lib.rs:4961:54
      |
-4684 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+4961 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:4746:57
+    --> vision/v1/lib/src/lib.rs:5032:57
      |
-4746 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+5032 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:4754:54
+    --> vision/v1/lib/src/lib.rs:5040:54
      |
-4754 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+5040 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:4814:57
+    --> vision/v1/lib/src/lib.rs:5111:57
      |
-4814 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+5111 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:4822:54
+    --> vision/v1/lib/src/lib.rs:5119:54
      |
-4822 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+5119 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:4882:57
+    --> vision/v1/lib/src/lib.rs:5188:57
      |
-4882 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+5188 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:4890:54
+    --> vision/v1/lib/src/lib.rs:5196:54
      |
-4890 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+5196 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:4952:57
+    --> vision/v1/lib/src/lib.rs:5267:57
      |
-4952 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+5267 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:4960:54
+    --> vision/v1/lib/src/lib.rs:5275:54
      |
-4960 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+5275 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:5028:57
+    --> vision/v1/lib/src/lib.rs:5354:57
      |
-5028 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+5354 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:5038:54
+    --> vision/v1/lib/src/lib.rs:5364:54
      |
-5038 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+5364 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:5311:57
+    --> vision/v1/lib/src/lib.rs:5657:57
      |
-5311 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+5657 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:5319:54
+    --> vision/v1/lib/src/lib.rs:5665:54
      |
-5319 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+5665 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:5681:57
+    --> vision/v1/lib/src/lib.rs:6031:57
      |
-5681 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+6031 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:5689:54
+    --> vision/v1/lib/src/lib.rs:6039:54
      |
-5689 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+6039 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:6068:57
+    --> vision/v1/lib/src/lib.rs:6427:57
      |
-6068 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+6427 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:6076:54
+    --> vision/v1/lib/src/lib.rs:6435:54
      |
-6076 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+6435 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:6134:57
+    --> vision/v1/lib/src/lib.rs:6502:57
      |
-6134 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+6502 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:6142:54
+    --> vision/v1/lib/src/lib.rs:6510:54
      |
-6142 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+6510 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:6198:57
+    --> vision/v1/lib/src/lib.rs:6575:57
      |
-6198 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+6575 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:6206:54
+    --> vision/v1/lib/src/lib.rs:6583:54
      |
-6206 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+6583 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:6262:57
+    --> vision/v1/lib/src/lib.rs:6648:57
      |
-6262 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+6648 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:6270:54
+    --> vision/v1/lib/src/lib.rs:6656:54
      |
-6270 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+6656 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:6328:57
+    --> vision/v1/lib/src/lib.rs:6723:57
      |
-6328 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+6723 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:6336:54
+    --> vision/v1/lib/src/lib.rs:6731:54
      |
-6336 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+6731 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:6486:57
+    --> vision/v1/lib/src/lib.rs:6899:57
      |
-6486 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+6899 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:6494:54
+    --> vision/v1/lib/src/lib.rs:6907:54
      |
-6494 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+6907 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:6972:57
+    --> vision/v1/lib/src/lib.rs:7404:57
      |
-6972 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+7404 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:6980:54
+    --> vision/v1/lib/src/lib.rs:7412:54
      |
-6980 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+7412 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:7068:57
+    --> vision/v1/lib/src/lib.rs:7510:57
      |
-7068 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+7510 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:7076:54
+    --> vision/v1/lib/src/lib.rs:7518:54
      |
-7076 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+7518 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:7312:57
+    --> vision/v1/lib/src/lib.rs:7766:57
      |
-7312 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+7766 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:7320:54
+    --> vision/v1/lib/src/lib.rs:7774:54
      |
-7320 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+7774 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:7382:57
+    --> vision/v1/lib/src/lib.rs:7845:57
      |
-7382 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+7845 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:7390:54
+    --> vision/v1/lib/src/lib.rs:7853:54
      |
-7390 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+7853 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:7452:57
+    --> vision/v1/lib/src/lib.rs:7924:57
      |
-7452 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+7924 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:7460:54
+    --> vision/v1/lib/src/lib.rs:7932:54
      |
-7460 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+7932 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:7520:57
+    --> vision/v1/lib/src/lib.rs:8003:57
      |
-7520 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+8003 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:7528:54
+    --> vision/v1/lib/src/lib.rs:8011:54
      |
-7528 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+8011 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:7588:57
+    --> vision/v1/lib/src/lib.rs:8080:57
      |
-7588 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+8080 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:7596:54
+    --> vision/v1/lib/src/lib.rs:8088:54
      |
-7596 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+8088 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:7658:57
+    --> vision/v1/lib/src/lib.rs:8159:57
      |
-7658 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+8159 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:7666:54
+    --> vision/v1/lib/src/lib.rs:8167:54
      |
-7666 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+8167 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:7734:57
+    --> vision/v1/lib/src/lib.rs:8246:57
      |
-7734 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+8246 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:7744:54
+    --> vision/v1/lib/src/lib.rs:8256:54
      |
-7744 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+8256 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:8017:57
+    --> vision/v1/lib/src/lib.rs:8549:57
      |
-8017 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+8549 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:8025:54
+    --> vision/v1/lib/src/lib.rs:8557:54
      |
-8025 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+8557 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:8406:57
+    --> vision/v1/lib/src/lib.rs:8942:57
      |
-8406 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+8942 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:8414:54
+    --> vision/v1/lib/src/lib.rs:8950:54
      |
-8414 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+8950 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:8817:57
+    --> vision/v1/lib/src/lib.rs:9362:57
      |
-8817 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+9362 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:8825:54
+    --> vision/v1/lib/src/lib.rs:9370:54
      |
-8825 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+9370 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:8883:57
+    --> vision/v1/lib/src/lib.rs:9437:57
      |
-8883 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+9437 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:8891:54
+    --> vision/v1/lib/src/lib.rs:9445:54
      |
-8891 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+9445 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:8947:57
+    --> vision/v1/lib/src/lib.rs:9510:57
      |
-8947 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+9510 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:8955:54
+    --> vision/v1/lib/src/lib.rs:9518:54
      |
-8955 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+9518 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:9011:57
+    --> vision/v1/lib/src/lib.rs:9583:57
      |
-9011 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+9583 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:9019:54
+    --> vision/v1/lib/src/lib.rs:9591:54
      |
-9019 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+9591 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:9077:57
+    --> vision/v1/lib/src/lib.rs:9658:57
      |
-9077 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+9658 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:9085:54
+    --> vision/v1/lib/src/lib.rs:9666:54
      |
-9085 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+9666 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:9235:57
+    --> vision/v1/lib/src/lib.rs:9834:57
      |
-9235 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+9834 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
      |                                                         |
      |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:9243:54
+    --> vision/v1/lib/src/lib.rs:9842:54
      |
-9243 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+9842 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
      |                                                      |
      |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:9774:57
-     |
-9774 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-     |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
-     |                                                         |
-     |                                                         unexpected type argument
-
-error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:9782:54
-     |
-9782 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-     |                                                      ^^^^  ^^^^^^^^ unexpected type argument
-     |                                                      |
-     |                                                      unexpected type argument
-
-error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:9870:57
-     |
-9870 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-     |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
-     |                                                         |
-     |                                                         unexpected type argument
-
-error[E0107]: wrong number of type arguments: expected 0, found 2
-    --> vision/v1/lib/src/lib.rs:9878:54
-     |
-9878 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-     |                                                      ^^^^  ^^^^^^^^ unexpected type argument
-     |                                                      |
-     |                                                      unexpected type argument
-
-error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:10114:57
+     --> vision/v1/lib/src/lib.rs:10394:57
       |
-10114 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+10394 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:10122:54
+     --> vision/v1/lib/src/lib.rs:10402:54
       |
-10122 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+10402 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:10184:57
+     --> vision/v1/lib/src/lib.rs:10500:57
       |
-10184 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+10500 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:10192:54
+     --> vision/v1/lib/src/lib.rs:10508:54
       |
-10192 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+10508 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:10254:57
+     --> vision/v1/lib/src/lib.rs:10756:57
       |
-10254 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+10756 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:10262:54
+     --> vision/v1/lib/src/lib.rs:10764:54
       |
-10262 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+10764 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:10322:57
+     --> vision/v1/lib/src/lib.rs:10835:57
       |
-10322 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+10835 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:10330:54
+     --> vision/v1/lib/src/lib.rs:10843:54
       |
-10330 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+10843 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:10390:57
+     --> vision/v1/lib/src/lib.rs:10914:57
       |
-10390 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+10914 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:10398:54
+     --> vision/v1/lib/src/lib.rs:10922:54
       |
-10398 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+10922 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:10460:57
+     --> vision/v1/lib/src/lib.rs:10993:57
       |
-10460 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+10993 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:10468:54
+     --> vision/v1/lib/src/lib.rs:11001:54
       |
-10468 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+11001 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:10536:57
+     --> vision/v1/lib/src/lib.rs:11070:57
       |
-10536 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+11070 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:10546:54
+     --> vision/v1/lib/src/lib.rs:11078:54
       |
-10546 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+11078 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:10819:57
+     --> vision/v1/lib/src/lib.rs:11149:57
       |
-10819 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+11149 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:10827:54
+     --> vision/v1/lib/src/lib.rs:11157:54
       |
-10827 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+11157 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:11226:57
+     --> vision/v1/lib/src/lib.rs:11236:57
       |
-11226 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+11236 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:11234:54
+     --> vision/v1/lib/src/lib.rs:11246:54
       |
-11234 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+11246 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:11604:57
+     --> vision/v1/lib/src/lib.rs:11539:57
       |
-11604 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+11539 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:11614:54
+     --> vision/v1/lib/src/lib.rs:11547:54
       |
-11614 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+11547 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:11704:57
+     --> vision/v1/lib/src/lib.rs:11949:57
       |
-11704 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+11949 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:11712:54
+     --> vision/v1/lib/src/lib.rs:11957:54
       |
-11712 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+11957 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:11770:57
+     --> vision/v1/lib/src/lib.rs:12336:57
       |
-11770 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+12336 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:11778:54
+     --> vision/v1/lib/src/lib.rs:12346:54
       |
-11778 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+12346 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:11834:57
+     --> vision/v1/lib/src/lib.rs:12446:57
       |
-11834 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+12446 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:11842:54
+     --> vision/v1/lib/src/lib.rs:12454:54
       |
-11842 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+12454 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:11898:57
+     --> vision/v1/lib/src/lib.rs:12521:57
       |
-11898 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+12521 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:11906:54
+     --> vision/v1/lib/src/lib.rs:12529:54
       |
-11906 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+12529 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:11964:57
+     --> vision/v1/lib/src/lib.rs:12594:57
       |
-11964 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+12594 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:11972:54
+     --> vision/v1/lib/src/lib.rs:12602:54
       |
-11972 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+12602 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:12131:57
+     --> vision/v1/lib/src/lib.rs:12667:57
       |
-12131 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+12667 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:12139:54
+     --> vision/v1/lib/src/lib.rs:12675:54
       |
-12139 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+12675 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:12662:57
+     --> vision/v1/lib/src/lib.rs:12742:57
       |
-12662 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+12742 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:12670:54
+     --> vision/v1/lib/src/lib.rs:12750:54
       |
-12670 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+12750 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:12761:57
+     --> vision/v1/lib/src/lib.rs:12927:57
       |
-12761 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+12927 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:12769:54
+     --> vision/v1/lib/src/lib.rs:12935:54
       |
-12769 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+12935 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:13015:57
+     --> vision/v1/lib/src/lib.rs:13478:57
       |
-13015 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+13478 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:13023:54
+     --> vision/v1/lib/src/lib.rs:13486:54
       |
-13023 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+13486 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:13085:57
+     --> vision/v1/lib/src/lib.rs:13587:57
       |
-13085 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+13587 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:13093:54
+     --> vision/v1/lib/src/lib.rs:13595:54
       |
-13093 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+13595 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:13155:57
+     --> vision/v1/lib/src/lib.rs:13854:57
       |
-13155 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+13854 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:13163:54
+     --> vision/v1/lib/src/lib.rs:13862:54
       |
-13163 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+13862 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:13223:57
+     --> vision/v1/lib/src/lib.rs:13933:57
       |
-13223 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+13933 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:13231:54
+     --> vision/v1/lib/src/lib.rs:13941:54
       |
-13231 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+13941 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:13291:57
+     --> vision/v1/lib/src/lib.rs:14012:57
       |
-13291 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+14012 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:13299:54
+     --> vision/v1/lib/src/lib.rs:14020:54
       |
-13299 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+14020 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:13361:57
+     --> vision/v1/lib/src/lib.rs:14091:57
       |
-13361 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+14091 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:13369:54
+     --> vision/v1/lib/src/lib.rs:14099:54
       |
-13369 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+14099 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:13437:57
+     --> vision/v1/lib/src/lib.rs:14168:57
       |
-13437 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+14168 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:13447:54
+     --> vision/v1/lib/src/lib.rs:14176:54
       |
-13447 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+14176 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:13720:57
+     --> vision/v1/lib/src/lib.rs:14247:57
       |
-13720 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+14247 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:13728:54
+     --> vision/v1/lib/src/lib.rs:14255:54
       |
-13728 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+14255 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:14139:57
+     --> vision/v1/lib/src/lib.rs:14334:57
       |
-14139 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+14334 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:14147:54
+     --> vision/v1/lib/src/lib.rs:14344:54
       |
-14147 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+14344 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:14556:57
+     --> vision/v1/lib/src/lib.rs:14637:57
       |
-14556 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+14637 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:14564:54
+     --> vision/v1/lib/src/lib.rs:14645:54
       |
-14564 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+14645 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:14622:57
+     --> vision/v1/lib/src/lib.rs:15059:57
       |
-14622 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+15059 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:14630:54
+     --> vision/v1/lib/src/lib.rs:15067:54
       |
-14630 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+15067 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:14686:57
+     --> vision/v1/lib/src/lib.rs:15485:57
       |
-14686 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+15485 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:14694:54
+     --> vision/v1/lib/src/lib.rs:15493:54
       |
-14694 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+15493 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:14750:57
+     --> vision/v1/lib/src/lib.rs:15560:57
       |
-14750 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+15560 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:14758:54
+     --> vision/v1/lib/src/lib.rs:15568:54
       |
-14758 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+15568 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:14816:57
+     --> vision/v1/lib/src/lib.rs:15633:57
       |
-14816 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+15633 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:14824:54
+     --> vision/v1/lib/src/lib.rs:15641:54
       |
-14824 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+15641 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:15049:57
+     --> vision/v1/lib/src/lib.rs:15706:57
       |
-15049 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+15706 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:15057:54
+     --> vision/v1/lib/src/lib.rs:15714:54
       |
-15057 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+15714 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:15807:57
+     --> vision/v1/lib/src/lib.rs:15781:57
       |
-15807 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+15781 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:15815:54
+     --> vision/v1/lib/src/lib.rs:15789:54
       |
-15815 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+15789 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:16177:57
+     --> vision/v1/lib/src/lib.rs:16032:57
       |
-16177 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+16032 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:16185:54
+     --> vision/v1/lib/src/lib.rs:16040:54
       |
-16185 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+16040 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:16606:57
+     --> vision/v1/lib/src/lib.rs:16791:57
       |
-16606 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+16791 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:16614:54
+     --> vision/v1/lib/src/lib.rs:16799:54
       |
-16614 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+16799 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:16668:57
+     --> vision/v1/lib/src/lib.rs:17160:57
       |
-16668 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+17160 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:16676:54
+     --> vision/v1/lib/src/lib.rs:17168:54
       |
-16676 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+17168 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:16730:57
+     --> vision/v1/lib/src/lib.rs:17585:57
       |
-16730 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+17585 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:16738:54
+     --> vision/v1/lib/src/lib.rs:17593:54
       |
-16738 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+17593 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:16792:57
+     --> vision/v1/lib/src/lib.rs:17656:57
       |
-16792 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+17656 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:16800:54
+     --> vision/v1/lib/src/lib.rs:17664:54
       |
-16800 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+17664 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:16854:57
+     --> vision/v1/lib/src/lib.rs:17727:57
       |
-16854 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+17727 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
       |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
       |                                                         |
       |                                                         unexpected type argument
 
 error[E0107]: wrong number of type arguments: expected 0, found 2
-     --> vision/v1/lib/src/lib.rs:16862:54
+     --> vision/v1/lib/src/lib.rs:17735:54
       |
-16862 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+17735 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
+      |                                                      |
+      |                                                      unexpected type argument
+
+error[E0107]: wrong number of type arguments: expected 0, found 2
+     --> vision/v1/lib/src/lib.rs:17798:57
+      |
+17798 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
+      |                                                         |
+      |                                                         unexpected type argument
+
+error[E0107]: wrong number of type arguments: expected 0, found 2
+     --> vision/v1/lib/src/lib.rs:17806:54
+      |
+17806 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+      |                                                      ^^^^  ^^^^^^^^ unexpected type argument
+      |                                                      |
+      |                                                      unexpected type argument
+
+error[E0107]: wrong number of type arguments: expected 0, found 2
+     --> vision/v1/lib/src/lib.rs:17869:57
+      |
+17869 |         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+      |                                                         ^^^^^  ^^^^^^^^ unexpected type argument
+      |                                                         |
+      |                                                         unexpected type argument
+
+error[E0107]: wrong number of type arguments: expected 0, found 2
+     --> vision/v1/lib/src/lib.rs:17877:54
+      |
+17877 |         fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
       |                                                      ^^^^  ^^^^^^^^ unexpected type argument
       |                                                      |
       |                                                      unexpected type argument

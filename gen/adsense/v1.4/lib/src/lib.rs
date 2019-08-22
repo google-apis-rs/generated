@@ -14,25 +14,25 @@ pub mod schemas {
     pub struct Account {
         #[serde(rename = "creation_time", default)]
         #[serde(with = "crate::parsed_string")]
-        pub creation_time: Option<i64>,
+        pub creation_time: ::std::option::Option<i64>,
         #[doc = "Unique identifier of this account."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is, in this case adsense#account."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Name of this account."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Whether this account is premium."]
         #[serde(rename = "premium", default)]
-        pub premium: Option<bool>,
+        pub premium: ::std::option::Option<bool>,
         #[doc = "Sub accounts of the this account."]
         #[serde(rename = "subAccounts", default)]
-        pub sub_accounts: Option<Vec<crate::schemas::Account>>,
+        pub sub_accounts: ::std::option::Option<Vec<crate::schemas::Account>>,
         #[doc = "AdSense timezone of this account."]
         #[serde(rename = "timezone", default)]
-        pub timezone: Option<String>,
+        pub timezone: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Account {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -41,7 +41,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -59,16 +58,16 @@ pub mod schemas {
     pub struct Accounts {
         #[doc = "ETag of this response for caching purposes."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The accounts returned in this list response."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Account>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Account>>,
         #[doc = "Kind of list this is, in this case adsense#accounts."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through accounts. To retrieve the next page of results, set the next request's \"pageToken\" value to this."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Accounts {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -77,7 +76,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -95,19 +93,19 @@ pub mod schemas {
     pub struct AdClient {
         #[doc = "Whether this ad client is opted in to ARC."]
         #[serde(rename = "arcOptIn", default)]
-        pub arc_opt_in: Option<bool>,
+        pub arc_opt_in: ::std::option::Option<bool>,
         #[doc = "Unique identifier of this ad client."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is, in this case adsense#adClient."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "This ad client's product code, which corresponds to the PRODUCT_CODE report dimension."]
         #[serde(rename = "productCode", default)]
-        pub product_code: Option<String>,
+        pub product_code: ::std::option::Option<String>,
         #[doc = "Whether this ad client supports being reported on."]
         #[serde(rename = "supportsReporting", default)]
-        pub supports_reporting: Option<bool>,
+        pub supports_reporting: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for AdClient {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -116,7 +114,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -134,16 +131,16 @@ pub mod schemas {
     pub struct AdClients {
         #[doc = "ETag of this response for caching purposes."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ad clients returned in this list response."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::AdClient>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::AdClient>>,
         #[doc = "Kind of list this is, in this case adsense#adClients."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through ad clients. To retrieve the next page of results, set the next request's \"pageToken\" value to this."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AdClients {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -152,7 +149,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -170,16 +166,16 @@ pub mod schemas {
     pub struct AdCode {
         #[doc = "The Auto ad code snippet. The ad code snippet."]
         #[serde(rename = "adCode", default)]
-        pub ad_code: Option<String>,
+        pub ad_code: ::std::option::Option<String>,
         #[doc = "The AMP Auto ad code snippet that goes in the body of an AMP page."]
         #[serde(rename = "ampBody", default)]
-        pub amp_body: Option<String>,
+        pub amp_body: ::std::option::Option<String>,
         #[doc = "The AMP Auto ad code snippet that goes in the head of an AMP page."]
         #[serde(rename = "ampHead", default)]
-        pub amp_head: Option<String>,
+        pub amp_head: ::std::option::Option<String>,
         #[doc = "Kind this is, in this case adsense#adCode."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AdCode {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -188,7 +184,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -206,19 +201,19 @@ pub mod schemas {
     pub struct AdStyleColors {
         #[doc = "The color of the ad background."]
         #[serde(rename = "background", default)]
-        pub background: Option<String>,
+        pub background: ::std::option::Option<String>,
         #[doc = "The color of the ad border."]
         #[serde(rename = "border", default)]
-        pub border: Option<String>,
+        pub border: ::std::option::Option<String>,
         #[doc = "The color of the ad text."]
         #[serde(rename = "text", default)]
-        pub text: Option<String>,
+        pub text: ::std::option::Option<String>,
         #[doc = "The color of the ad title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[doc = "The color of the ad url."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AdStyleColors {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -227,7 +222,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -245,10 +239,10 @@ pub mod schemas {
     pub struct AdStyleFont {
         #[doc = "The family of the font."]
         #[serde(rename = "family", default)]
-        pub family: Option<String>,
+        pub family: ::std::option::Option<String>,
         #[doc = "The size of the font."]
         #[serde(rename = "size", default)]
-        pub size: Option<String>,
+        pub size: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AdStyleFont {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -257,7 +251,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -275,16 +268,16 @@ pub mod schemas {
     pub struct AdStyle {
         #[doc = "The colors which are included in the style. These are represented as six hexadecimal characters, similar to HTML color codes, but without the leading hash."]
         #[serde(rename = "colors", default)]
-        pub colors: Option<crate::schemas::AdStyleColors>,
+        pub colors: ::std::option::Option<crate::schemas::AdStyleColors>,
         #[doc = "The style of the corners in the ad (deprecated: never populated, ignored)."]
         #[serde(rename = "corners", default)]
-        pub corners: Option<String>,
+        pub corners: ::std::option::Option<String>,
         #[doc = "The font which is included in the style."]
         #[serde(rename = "font", default)]
-        pub font: Option<crate::schemas::AdStyleFont>,
+        pub font: ::std::option::Option<crate::schemas::AdStyleFont>,
         #[doc = "Kind this is, in this case adsense#adStyle."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AdStyle {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -293,7 +286,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -311,13 +303,13 @@ pub mod schemas {
     pub struct AdUnitContentAdsSettingsBackupOption {
         #[doc = "Color to use when type is set to COLOR."]
         #[serde(rename = "color", default)]
-        pub color: Option<String>,
+        pub color: ::std::option::Option<String>,
         #[doc = "Type of the backup option. Possible values are BLANK, COLOR and URL."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "URL to use when type is set to URL."]
         #[serde(rename = "url", default)]
-        pub url: Option<String>,
+        pub url: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AdUnitContentAdsSettingsBackupOption {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -326,7 +318,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -344,13 +335,14 @@ pub mod schemas {
     pub struct AdUnitContentAdsSettings {
         #[doc = "The backup option to be used in instances where no ad is available."]
         #[serde(rename = "backupOption", default)]
-        pub backup_option: Option<crate::schemas::AdUnitContentAdsSettingsBackupOption>,
+        pub backup_option:
+            ::std::option::Option<crate::schemas::AdUnitContentAdsSettingsBackupOption>,
         #[doc = "Type of this ad unit."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Size of this ad unit."]
         #[serde(rename = "size", default)]
-        pub size: Option<String>,
+        pub size: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AdUnitContentAdsSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -359,7 +351,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -377,16 +368,16 @@ pub mod schemas {
     pub struct AdUnitFeedAdsSettings {
         #[doc = "The position of the ads relative to the feed entries."]
         #[serde(rename = "adPosition", default)]
-        pub ad_position: Option<String>,
+        pub ad_position: ::std::option::Option<String>,
         #[doc = "The frequency at which ads should appear in the feed (i.e. every N entries)."]
         #[serde(rename = "frequency", default)]
-        pub frequency: Option<i32>,
+        pub frequency: ::std::option::Option<i32>,
         #[doc = "The minimum length an entry should be in order to have attached ads."]
         #[serde(rename = "minimumWordCount", default)]
-        pub minimum_word_count: Option<i32>,
+        pub minimum_word_count: ::std::option::Option<i32>,
         #[doc = "The type of ads which should appear."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AdUnitFeedAdsSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -395,7 +386,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -413,16 +403,16 @@ pub mod schemas {
     pub struct AdUnitMobileContentAdsSettings {
         #[doc = "The markup language to use for this ad unit."]
         #[serde(rename = "markupLanguage", default)]
-        pub markup_language: Option<String>,
+        pub markup_language: ::std::option::Option<String>,
         #[doc = "Type of this ad unit."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "The scripting language to use for this ad unit."]
         #[serde(rename = "scriptingLanguage", default)]
-        pub scripting_language: Option<String>,
+        pub scripting_language: ::std::option::Option<String>,
         #[doc = "Size of this ad unit."]
         #[serde(rename = "size", default)]
-        pub size: Option<String>,
+        pub size: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AdUnitMobileContentAdsSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -431,7 +421,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -449,34 +438,35 @@ pub mod schemas {
     pub struct AdUnit {
         #[doc = "Identity code of this ad unit, not necessarily unique across ad clients."]
         #[serde(rename = "code", default)]
-        pub code: Option<String>,
+        pub code: ::std::option::Option<String>,
         #[doc = "Settings specific to content ads (AFC) and highend mobile content ads (AFMC - deprecated)."]
         #[serde(rename = "contentAdsSettings", default)]
-        pub content_ads_settings: Option<crate::schemas::AdUnitContentAdsSettings>,
+        pub content_ads_settings: ::std::option::Option<crate::schemas::AdUnitContentAdsSettings>,
         #[doc = "Custom style information specific to this ad unit."]
         #[serde(rename = "customStyle", default)]
-        pub custom_style: Option<crate::schemas::AdStyle>,
+        pub custom_style: ::std::option::Option<crate::schemas::AdStyle>,
         #[doc = "Settings specific to feed ads (AFF) - deprecated."]
         #[serde(rename = "feedAdsSettings", default)]
-        pub feed_ads_settings: Option<crate::schemas::AdUnitFeedAdsSettings>,
+        pub feed_ads_settings: ::std::option::Option<crate::schemas::AdUnitFeedAdsSettings>,
         #[doc = "Unique identifier of this ad unit. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is, in this case adsense#adUnit."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Settings specific to WAP mobile content ads (AFMC) - deprecated."]
         #[serde(rename = "mobileContentAdsSettings", default)]
-        pub mobile_content_ads_settings: Option<crate::schemas::AdUnitMobileContentAdsSettings>,
+        pub mobile_content_ads_settings:
+            ::std::option::Option<crate::schemas::AdUnitMobileContentAdsSettings>,
         #[doc = "Name of this ad unit."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "ID of the saved ad style which holds this ad unit's style information."]
         #[serde(rename = "savedStyleId", default)]
-        pub saved_style_id: Option<String>,
+        pub saved_style_id: ::std::option::Option<String>,
         #[doc = "Status of this ad unit. Possible values are:\nNEW: Indicates that the ad unit was created within the last seven days and does not yet have any activity associated with it.\n\nACTIVE: Indicates that there has been activity on this ad unit in the last seven days.\n\nINACTIVE: Indicates that there has been no activity on this ad unit in the last seven days."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AdUnit {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -485,7 +475,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -503,16 +492,16 @@ pub mod schemas {
     pub struct AdUnits {
         #[doc = "ETag of this response for caching purposes."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The ad units returned in this list response."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::AdUnit>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::AdUnit>>,
         #[doc = "Kind of list this is, in this case adsense#adUnits."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through ad units. To retrieve the next page of results, set the next request's \"pageToken\" value to this."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AdUnits {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -521,7 +510,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -539,13 +527,13 @@ pub mod schemas {
     pub struct AdsenseReportsGenerateResponseHeadersItems {
         #[doc = "The currency of this column. Only present if the header type is METRIC_CURRENCY."]
         #[serde(rename = "currency", default)]
-        pub currency: Option<String>,
+        pub currency: ::std::option::Option<String>,
         #[doc = "The name of the header."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The type of the header; one of DIMENSION, METRIC_TALLY, METRIC_RATIO, or METRIC_CURRENCY."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AdsenseReportsGenerateResponseHeadersItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -554,7 +542,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -572,32 +559,33 @@ pub mod schemas {
     pub struct AdsenseReportsGenerateResponse {
         #[doc = "The averages of the report. This is the same length as any other row in the report; cells corresponding to dimension columns are empty."]
         #[serde(rename = "averages", default)]
-        pub averages: Option<Vec<String>>,
+        pub averages: ::std::option::Option<Vec<String>>,
         #[doc = "The requested end date in yyyy-mm-dd format."]
         #[serde(rename = "endDate", default)]
-        pub end_date: Option<String>,
+        pub end_date: ::std::option::Option<String>,
         #[doc = "The header information of the columns requested in the report. This is a list of headers; one for each dimension in the request, followed by one for each metric in the request."]
         #[serde(rename = "headers", default)]
-        pub headers: Option<Vec<crate::schemas::AdsenseReportsGenerateResponseHeadersItems>>,
+        pub headers:
+            ::std::option::Option<Vec<crate::schemas::AdsenseReportsGenerateResponseHeadersItems>>,
         #[doc = "Kind this is, in this case adsense#report."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The output rows of the report. Each row is a list of cells; one for each dimension in the request, followed by one for each metric in the request. The dimension cells contain strings, and the metric cells contain numbers."]
         #[serde(rename = "rows", default)]
-        pub rows: Option<Vec<Vec<String>>>,
+        pub rows: ::std::option::Option<Vec<Vec<String>>>,
         #[doc = "The requested start date in yyyy-mm-dd format."]
         #[serde(rename = "startDate", default)]
-        pub start_date: Option<String>,
+        pub start_date: ::std::option::Option<String>,
         #[doc = "The total number of rows matched by the report request. Fewer rows may be returned in the response due to being limited by the row count requested or the report row limit."]
         #[serde(rename = "totalMatchedRows", default)]
         #[serde(with = "crate::parsed_string")]
-        pub total_matched_rows: Option<i64>,
+        pub total_matched_rows: ::std::option::Option<i64>,
         #[doc = "The totals of the report. This is the same length as any other row in the report; cells corresponding to dimension columns are empty."]
         #[serde(rename = "totals", default)]
-        pub totals: Option<Vec<String>>,
+        pub totals: ::std::option::Option<Vec<String>>,
         #[doc = "Any warnings associated with generation of the report."]
         #[serde(rename = "warnings", default)]
-        pub warnings: Option<Vec<String>>,
+        pub warnings: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for AdsenseReportsGenerateResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -606,7 +594,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -624,22 +611,22 @@ pub mod schemas {
     pub struct Alert {
         #[doc = "Unique identifier of this alert. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Whether this alert can be dismissed."]
         #[serde(rename = "isDismissible", default)]
-        pub is_dismissible: Option<bool>,
+        pub is_dismissible: ::std::option::Option<bool>,
         #[doc = "Kind of resource this is, in this case adsense#alert."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The localized alert message."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
         #[doc = "Type of this alert. Possible values: SELF_HOLD, MIGRATED_TO_BILLING3, ADDRESS_PIN_VERIFICATION, PHONE_PIN_VERIFICATION, CORPORATE_ENTITY, GRAYLISTED_PUBLISHER, API_HOLD."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Severity of this alert. Possible values: INFO, WARNING, SEVERE."]
         #[serde(rename = "severity", default)]
-        pub severity: Option<String>,
+        pub severity: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Alert {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -648,7 +635,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -666,10 +652,10 @@ pub mod schemas {
     pub struct Alerts {
         #[doc = "The alerts returned in this list response."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Alert>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Alert>>,
         #[doc = "Kind of list this is, in this case adsense#alerts."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Alerts {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -678,7 +664,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -696,16 +681,16 @@ pub mod schemas {
     pub struct CustomChannelTargetingInfo {
         #[doc = "The name used to describe this channel externally."]
         #[serde(rename = "adsAppearOn", default)]
-        pub ads_appear_on: Option<String>,
+        pub ads_appear_on: ::std::option::Option<String>,
         #[doc = "The external description of the channel."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The locations in which ads appear. (Only valid for content and mobile content ads (deprecated)). Acceptable values for content ads are: TOP_LEFT, TOP_CENTER, TOP_RIGHT, MIDDLE_LEFT, MIDDLE_CENTER, MIDDLE_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT, MULTIPLE_LOCATIONS. Acceptable values for mobile content ads (deprecated) are: TOP, MIDDLE, BOTTOM, MULTIPLE_LOCATIONS."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "The language of the sites ads will be displayed on."]
         #[serde(rename = "siteLanguage", default)]
-        pub site_language: Option<String>,
+        pub site_language: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CustomChannelTargetingInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -714,7 +699,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -732,19 +716,19 @@ pub mod schemas {
     pub struct CustomChannel {
         #[doc = "Code of this custom channel, not necessarily unique across ad clients."]
         #[serde(rename = "code", default)]
-        pub code: Option<String>,
+        pub code: ::std::option::Option<String>,
         #[doc = "Unique identifier of this custom channel. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is, in this case adsense#customChannel."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Name of this custom channel."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The targeting information of this custom channel, if activated."]
         #[serde(rename = "targetingInfo", default)]
-        pub targeting_info: Option<crate::schemas::CustomChannelTargetingInfo>,
+        pub targeting_info: ::std::option::Option<crate::schemas::CustomChannelTargetingInfo>,
     }
     impl ::field_selector::FieldSelector for CustomChannel {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -753,7 +737,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -771,16 +754,16 @@ pub mod schemas {
     pub struct CustomChannels {
         #[doc = "ETag of this response for caching purposes."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The custom channels returned in this list response."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::CustomChannel>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::CustomChannel>>,
         #[doc = "Kind of list this is, in this case adsense#customChannels."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through custom channels. To retrieve the next page of results, set the next request's \"pageToken\" value to this."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CustomChannels {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -789,7 +772,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -806,10 +788,10 @@ pub mod schemas {
     )]
     pub struct Metadata {
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::ReportingMetadataEntry>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::ReportingMetadataEntry>>,
         #[doc = "Kind of list this is, in this case adsense#metadata."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Metadata {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -818,7 +800,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -836,19 +817,19 @@ pub mod schemas {
     pub struct Payment {
         #[doc = "Unique identifier of this Payment."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is, in this case adsense#payment."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The amount to be paid."]
         #[serde(rename = "paymentAmount", default)]
-        pub payment_amount: Option<String>,
+        pub payment_amount: ::std::option::Option<String>,
         #[doc = "The currency code for the amount to be paid."]
         #[serde(rename = "paymentAmountCurrencyCode", default)]
-        pub payment_amount_currency_code: Option<String>,
+        pub payment_amount_currency_code: ::std::option::Option<String>,
         #[doc = "The date this payment was/will be credited to the user, or none if the payment threshold has not been met."]
         #[serde(rename = "paymentDate", default)]
-        pub payment_date: Option<String>,
+        pub payment_date: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Payment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -857,7 +838,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -875,10 +855,10 @@ pub mod schemas {
     pub struct Payments {
         #[doc = "The list of Payments for the account. One or both of a) the account's most recent payment; and b) the account's upcoming payment."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Payment>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Payment>>,
         #[doc = "Kind of list this is, in this case adsense#payments."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Payments {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -887,7 +867,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -905,25 +884,25 @@ pub mod schemas {
     pub struct ReportingMetadataEntry {
         #[doc = "For metrics this is a list of dimension IDs which the metric is compatible with, for dimensions it is a list of compatibility groups the dimension belongs to."]
         #[serde(rename = "compatibleDimensions", default)]
-        pub compatible_dimensions: Option<Vec<String>>,
+        pub compatible_dimensions: ::std::option::Option<Vec<String>>,
         #[doc = "The names of the metrics the dimension or metric this reporting metadata entry describes is compatible with."]
         #[serde(rename = "compatibleMetrics", default)]
-        pub compatible_metrics: Option<Vec<String>>,
+        pub compatible_metrics: ::std::option::Option<Vec<String>>,
         #[doc = "Unique identifier of this reporting metadata entry, corresponding to the name of the appropriate dimension or metric."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is, in this case adsense#reportingMetadataEntry."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The names of the dimensions which the dimension or metric this reporting metadata entry describes requires to also be present in order for the report to be valid. Omitting these will not cause an error or warning, but may result in data which cannot be correctly interpreted."]
         #[serde(rename = "requiredDimensions", default)]
-        pub required_dimensions: Option<Vec<String>>,
+        pub required_dimensions: ::std::option::Option<Vec<String>>,
         #[doc = "The names of the metrics which the dimension or metric this reporting metadata entry describes requires to also be present in order for the report to be valid. Omitting these will not cause an error or warning, but may result in data which cannot be correctly interpreted."]
         #[serde(rename = "requiredMetrics", default)]
-        pub required_metrics: Option<Vec<String>>,
+        pub required_metrics: ::std::option::Option<Vec<String>>,
         #[doc = "The codes of the projects supported by the dimension or metric this reporting metadata entry describes."]
         #[serde(rename = "supportedProducts", default)]
-        pub supported_products: Option<Vec<String>>,
+        pub supported_products: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ReportingMetadataEntry {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -932,7 +911,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -950,16 +928,16 @@ pub mod schemas {
     pub struct SavedAdStyle {
         #[doc = "The AdStyle itself."]
         #[serde(rename = "adStyle", default)]
-        pub ad_style: Option<crate::schemas::AdStyle>,
+        pub ad_style: ::std::option::Option<crate::schemas::AdStyle>,
         #[doc = "Unique identifier of this saved ad style. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is, in this case adsense#savedAdStyle."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The user selected name of this SavedAdStyle."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SavedAdStyle {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -968,7 +946,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -986,16 +963,16 @@ pub mod schemas {
     pub struct SavedAdStyles {
         #[doc = "ETag of this response for caching purposes."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The saved ad styles returned in this list response."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::SavedAdStyle>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::SavedAdStyle>>,
         #[doc = "Kind of list this is, in this case adsense#savedAdStyles."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through ad units. To retrieve the next page of results, set the next request's \"pageToken\" value to this."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SavedAdStyles {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1004,7 +981,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1022,13 +998,13 @@ pub mod schemas {
     pub struct SavedReport {
         #[doc = "Unique identifier of this saved report."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is, in this case adsense#savedReport."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "This saved report's name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SavedReport {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1037,7 +1013,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1055,16 +1030,16 @@ pub mod schemas {
     pub struct SavedReports {
         #[doc = "ETag of this response for caching purposes."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The saved reports returned in this list response."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::SavedReport>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::SavedReport>>,
         #[doc = "Kind of list this is, in this case adsense#savedReports."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through saved reports. To retrieve the next page of results, set the next request's \"pageToken\" value to this."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SavedReports {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1073,7 +1048,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1091,13 +1065,13 @@ pub mod schemas {
     pub struct UrlChannel {
         #[doc = "Unique identifier of this URL channel. This should be considered an opaque identifier; it is not safe to rely on it being in any particular format."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Kind of resource this is, in this case adsense#urlChannel."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "URL Pattern of this URL channel. Does not include \"http://\" or \"https://\". Example: www.example.com/home"]
         #[serde(rename = "urlPattern", default)]
-        pub url_pattern: Option<String>,
+        pub url_pattern: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UrlChannel {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1106,7 +1080,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1124,16 +1097,16 @@ pub mod schemas {
     pub struct UrlChannels {
         #[doc = "ETag of this response for caching purposes."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The URL channels returned in this list response."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::UrlChannel>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::UrlChannel>>,
         #[doc = "Kind of list this is, in this case adsense#urlChannels."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Continuation token used to page through URL channels. To retrieve the next page of results, set the next request's \"pageToken\" value to this."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UrlChannels {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1142,7 +1115,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -1195,6 +1167,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -10419,6 +10400,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -10494,5 +10476,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

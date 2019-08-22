@@ -14,16 +14,16 @@ pub mod schemas {
     pub struct GetResponse {
         #[doc = "The current app state version."]
         #[serde(rename = "currentStateVersion", default)]
-        pub current_state_version: Option<String>,
+        pub current_state_version: ::std::option::Option<String>,
         #[doc = "The requested data."]
         #[serde(rename = "data", default)]
-        pub data: Option<String>,
+        pub data: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string appstate#getResponse."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The key for the data."]
         #[serde(rename = "stateKey", default)]
-        pub state_key: Option<i32>,
+        pub state_key: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for GetResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -32,7 +32,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -50,13 +49,13 @@ pub mod schemas {
     pub struct ListResponse {
         #[doc = "The app state data."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::GetResponse>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::GetResponse>>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string appstate#listResponse."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The maximum number of keys allowed for this user."]
         #[serde(rename = "maximumKeyCount", default)]
-        pub maximum_key_count: Option<i32>,
+        pub maximum_key_count: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -65,7 +64,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -83,10 +81,10 @@ pub mod schemas {
     pub struct UpdateRequest {
         #[doc = "The new app state data that your application is trying to update with."]
         #[serde(rename = "data", default)]
-        pub data: Option<String>,
+        pub data: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string appstate#updateRequest."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UpdateRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -95,7 +93,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -113,13 +110,13 @@ pub mod schemas {
     pub struct WriteResult {
         #[doc = "The version of the data for this key on the server."]
         #[serde(rename = "currentStateVersion", default)]
-        pub current_state_version: Option<String>,
+        pub current_state_version: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string appstate#writeResult."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The written key."]
         #[serde(rename = "stateKey", default)]
-        pub state_key: Option<i32>,
+        pub state_key: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for WriteResult {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -128,7 +125,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -173,6 +169,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1195,6 +1200,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1270,5 +1276,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

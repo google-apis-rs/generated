@@ -14,10 +14,10 @@ pub mod schemas {
     pub struct AndroidAppAsset {
         #[doc = "Because there is no global enforcement of package name uniqueness, we also\nrequire a signing certificate, which in combination with the package name\nuniquely identifies an app.\n\nSome apps' signing keys are rotated, so they may be signed by different\nkeys over time.  We treat these as distinct assets, since we use (package\nname, cert) as the unique ID.  This should not normally pose any problems\nas both versions of the app will make the same or similar statements.\nOther assets making statements about the app will have to be updated when a\nkey is rotated, however.\n\n(Note that the syntaxes for publishing and querying for statements contain\nsyntactic sugar to easily let you specify apps that are known by multiple\ncertificates.)\nREQUIRED"]
         #[serde(rename = "certificate", default)]
-        pub certificate: Option<crate::schemas::CertificateInfo>,
+        pub certificate: ::std::option::Option<crate::schemas::CertificateInfo>,
         #[doc = "Android App assets are naturally identified by their Java package name.\nFor example, the Google Maps app uses the package name\n`com.google.android.apps.maps`.\nREQUIRED"]
         #[serde(rename = "packageName", default)]
-        pub package_name: Option<String>,
+        pub package_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AndroidAppAsset {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -26,7 +26,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -44,10 +43,10 @@ pub mod schemas {
     pub struct Asset {
         #[doc = "Set if this is an Android App asset."]
         #[serde(rename = "androidApp", default)]
-        pub android_app: Option<crate::schemas::AndroidAppAsset>,
+        pub android_app: ::std::option::Option<crate::schemas::AndroidAppAsset>,
         #[doc = "Set if this is a web asset."]
         #[serde(rename = "web", default)]
-        pub web: Option<crate::schemas::WebAsset>,
+        pub web: ::std::option::Option<crate::schemas::WebAsset>,
     }
     impl ::field_selector::FieldSelector for Asset {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -56,7 +55,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -74,7 +72,7 @@ pub mod schemas {
     pub struct CertificateInfo {
         #[doc = "The uppercase SHA-265 fingerprint of the certificate.  From the PEM\ncertificate, it can be acquired like this:\n\n````text\n$ keytool -printcert -file $CERTFILE | grep SHA256:\nSHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \\\n    42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n````\n\nor like this:\n\n````text\n$ openssl x509 -in $CERTFILE -noout -fingerprint -sha256\nSHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \\\n    16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n````\n\nIn this example, the contents of this field would be `14:6D:E9:83:C5:73: 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`.\n\nIf these tools are not available to you, you can convert the PEM\ncertificate into the DER format, compute the SHA-256 hash of that string\nand represent the result as a hexstring (that is, uppercase hexadecimal\nrepresentations of each octet, separated by colons)."]
         #[serde(rename = "sha256Fingerprint", default)]
-        pub sha_256_fingerprint: Option<String>,
+        pub sha_256_fingerprint: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CertificateInfo {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -83,7 +81,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -181,6 +178,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for CheckResponseErrorCodeItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -196,16 +202,16 @@ pub mod schemas {
     pub struct CheckResponse {
         #[doc = "Human-readable message containing information intended to help end users\nunderstand, reproduce and debug the result.\n\nThe message will be in English and we are currently not planning to offer\nany translations.\n\nPlease note that no guarantees are made about the contents or format of\nthis string.  Any aspect of it may be subject to change without notice.\nYou should not attempt to programmatically parse this data.  For\nprogrammatic access, use the error_code field below."]
         #[serde(rename = "debugString", default)]
-        pub debug_string: Option<String>,
+        pub debug_string: ::std::option::Option<String>,
         #[doc = "Error codes that describe the result of the Check operation."]
         #[serde(rename = "errorCode", default)]
-        pub error_code: Option<Vec<crate::schemas::CheckResponseErrorCodeItems>>,
+        pub error_code: ::std::option::Option<Vec<crate::schemas::CheckResponseErrorCodeItems>>,
         #[doc = "Set to true if the assets specified in the request are linked by the\nrelation specified in the request."]
         #[serde(rename = "linked", default)]
-        pub linked: Option<bool>,
+        pub linked: ::std::option::Option<bool>,
         #[doc = "From serving time, how much longer the response should be considered valid\nbarring further updates.\nREQUIRED"]
         #[serde(rename = "maxAge", default)]
-        pub max_age: Option<String>,
+        pub max_age: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for CheckResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -214,7 +220,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -312,6 +317,15 @@ pub mod schemas {
             })
         }
     }
+    impl ::field_selector::FieldSelector for ListResponseErrorCodeItems {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -327,16 +341,16 @@ pub mod schemas {
     pub struct ListResponse {
         #[doc = "Human-readable message containing information intended to help end users\nunderstand, reproduce and debug the result.\n\nThe message will be in English and we are currently not planning to offer\nany translations.\n\nPlease note that no guarantees are made about the contents or format of\nthis string.  Any aspect of it may be subject to change without notice.\nYou should not attempt to programmatically parse this data.  For\nprogrammatic access, use the error_code field below."]
         #[serde(rename = "debugString", default)]
-        pub debug_string: Option<String>,
+        pub debug_string: ::std::option::Option<String>,
         #[doc = "Error codes that describe the result of the List operation."]
         #[serde(rename = "errorCode", default)]
-        pub error_code: Option<Vec<crate::schemas::ListResponseErrorCodeItems>>,
+        pub error_code: ::std::option::Option<Vec<crate::schemas::ListResponseErrorCodeItems>>,
         #[doc = "From serving time, how much longer the response should be considered valid\nbarring further updates.\nREQUIRED"]
         #[serde(rename = "maxAge", default)]
-        pub max_age: Option<String>,
+        pub max_age: ::std::option::Option<String>,
         #[doc = "A list of all the matching statements that have been found."]
         #[serde(rename = "statements", default)]
-        pub statements: Option<Vec<crate::schemas::Statement>>,
+        pub statements: ::std::option::Option<Vec<crate::schemas::Statement>>,
     }
     impl ::field_selector::FieldSelector for ListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -345,7 +359,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -363,13 +376,13 @@ pub mod schemas {
     pub struct Statement {
         #[doc = "The relation identifies the use of the statement as intended by the source\nasset's owner (that is, the person or entity who issued the statement).\nEvery complete statement has a relation.\n\nWe identify relations with strings of the format `<kind>/<detail>`, where\n`<kind>` must be one of a set of pre-defined purpose categories, and\n`<detail>` is a free-form lowercase alphanumeric string that describes the\nspecific use case of the statement.\n\nRefer to [our API documentation](/digital-asset-links/v1/relation-strings)\nfor the current list of supported relations.\n\nExample: `delegate_permission/common.handle_all_urls`\nREQUIRED"]
         #[serde(rename = "relation", default)]
-        pub relation: Option<String>,
+        pub relation: ::std::option::Option<String>,
         #[doc = "Every statement has a source asset.\nREQUIRED"]
         #[serde(rename = "source", default)]
-        pub source: Option<crate::schemas::Asset>,
+        pub source: ::std::option::Option<crate::schemas::Asset>,
         #[doc = "Every statement has a target asset.\nREQUIRED"]
         #[serde(rename = "target", default)]
-        pub target: Option<crate::schemas::Asset>,
+        pub target: ::std::option::Option<crate::schemas::Asset>,
     }
     impl ::field_selector::FieldSelector for Statement {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -378,7 +391,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -396,7 +408,7 @@ pub mod schemas {
     pub struct WebAsset {
         #[doc = "Web assets are identified by a URL that contains only the scheme, hostname\nand port parts.  The format is\n\n````text\nhttp[s]://<hostname>[:<port>]\n````\n\nHostnames must be fully qualified: they must end in a single period\n(\"`.`\").\n\nOnly the schemes \"http\" and \"https\" are currently allowed.\n\nPort numbers are given as a decimal number, and they must be omitted if the\nstandard port numbers are used: 80 for http and 443 for https.\n\nWe call this limited URL the \"site\".  All URLs that share the same scheme,\nhostname and port are considered to be a part of the site and thus belong\nto the web asset.\n\nExample: the asset with the site `https://www.google.com` contains all\nthese URLs:\n\n* `https://www.google.com/`\n* `https://www.google.com:443/`\n* `https://www.google.com/foo`\n* `https://www.google.com/foo?bar`\n* `https://www.google.com/foo#bar`\n* `https://user@password:www.google.com/`\n\nBut it does not contain these URLs:\n\n* `http://www.google.com/`       (wrong scheme)\n* `https://google.com/`          (hostname does not match)\n* `https://www.google.com:444/`  (port does not match)\n  REQUIRED"]
         #[serde(rename = "site", default)]
-        pub site: Option<String>,
+        pub site: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for WebAsset {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -405,7 +417,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -460,6 +471,15 @@ pub mod params {
             })
         }
     }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Xgafv {
         #[doc = "v1 error format"]
@@ -504,6 +524,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Xgafv {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -1264,6 +1293,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1339,5 +1369,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

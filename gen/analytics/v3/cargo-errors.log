@@ -1,8 +1,8 @@
     Checking google-analytics3 v0.1.0 (/Users/sthiel/dev/google-apis/generated/gen/analytics/v3/lib)
 error[E0609]: no field `request` on type `resources::management::uploads::UploadDataRequestBuilder<'a, A>`
-     --> analytics/v3/lib/src/lib.rs:17317:67
+     --> analytics/v3/lib/src/lib.rs:17258:67
       |
-17317 |                     let request_json = ::serde_json::to_vec(&self.request)?;
+17258 |                     let request_json = ::serde_json::to_vec(&self.request)?;
       |                                                                   ^^^^^^^ help: a field with a similar name exists: `reqwest`
 
 error: aborting due to previous error

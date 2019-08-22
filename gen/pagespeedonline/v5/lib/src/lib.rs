@@ -4,32 +4,33 @@ pub mod schemas {
     pub struct LighthouseAuditResultV5 {
         #[doc = "The description of the audit."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "Freeform details section of the audit."]
         #[serde(rename = "details", default)]
-        pub details: Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        pub details:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "The value that should be displayed on the UI for this audit."]
         #[serde(rename = "displayValue", default)]
-        pub display_value: Option<String>,
+        pub display_value: ::std::option::Option<String>,
         #[doc = "An error message from a thrown error inside the audit."]
         #[serde(rename = "errorMessage", default)]
-        pub error_message: Option<String>,
+        pub error_message: ::std::option::Option<String>,
         #[doc = "An explanation of the errors in the audit."]
         #[serde(rename = "explanation", default)]
-        pub explanation: Option<String>,
+        pub explanation: ::std::option::Option<String>,
         #[doc = "The audit's id."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[serde(rename = "score", default)]
-        pub score: Option<::serde_json::Value>,
+        pub score: ::std::option::Option<::serde_json::Value>,
         #[doc = "The enumerated score display mode."]
         #[serde(rename = "scoreDisplayMode", default)]
-        pub score_display_mode: Option<String>,
+        pub score_display_mode: ::std::option::Option<String>,
         #[doc = "The human readable title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
         #[serde(rename = "warnings", default)]
-        pub warnings: Option<::serde_json::Value>,
+        pub warnings: ::std::option::Option<::serde_json::Value>,
     }
     impl ::field_selector::FieldSelector for LighthouseAuditResultV5 {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -38,7 +39,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -47,13 +47,13 @@ pub mod schemas {
     pub struct LighthouseCategoryV5AuditRefsItems {
         #[doc = "The category group that the audit belongs to (optional)."]
         #[serde(rename = "group", default)]
-        pub group: Option<String>,
+        pub group: ::std::option::Option<String>,
         #[doc = "The audit ref id."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The weight this audit's score has on the overall category score."]
         #[serde(rename = "weight", default)]
-        pub weight: Option<f64>,
+        pub weight: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for LighthouseCategoryV5AuditRefsItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -62,28 +62,28 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct LighthouseCategoryV5 {
         #[doc = "An array of references to all the audit members of this category."]
         #[serde(rename = "auditRefs", default)]
-        pub audit_refs: Option<Vec<crate::schemas::LighthouseCategoryV5AuditRefsItems>>,
+        pub audit_refs:
+            ::std::option::Option<Vec<crate::schemas::LighthouseCategoryV5AuditRefsItems>>,
         #[doc = "A more detailed description of the category and its importance."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The string identifier of the category."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "A description for the manual audits in the category."]
         #[serde(rename = "manualDescription", default)]
-        pub manual_description: Option<String>,
+        pub manual_description: ::std::option::Option<String>,
         #[serde(rename = "score", default)]
-        pub score: Option<::serde_json::Value>,
+        pub score: ::std::option::Option<::serde_json::Value>,
         #[doc = "The human-friendly name of the category."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LighthouseCategoryV5 {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -92,26 +92,25 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct LighthouseResultV5Categories {
         #[doc = "The accessibility category, containing all accessibility related audits."]
         #[serde(rename = "accessibility", default)]
-        pub accessibility: Option<crate::schemas::LighthouseCategoryV5>,
+        pub accessibility: ::std::option::Option<crate::schemas::LighthouseCategoryV5>,
         #[doc = "The best practices category, containing all web best practice related audits."]
         #[serde(rename = "best-practices", default)]
-        pub best_practices: Option<crate::schemas::LighthouseCategoryV5>,
+        pub best_practices: ::std::option::Option<crate::schemas::LighthouseCategoryV5>,
         #[doc = "The performance category, containing all performance related audits."]
         #[serde(rename = "performance", default)]
-        pub performance: Option<crate::schemas::LighthouseCategoryV5>,
+        pub performance: ::std::option::Option<crate::schemas::LighthouseCategoryV5>,
         #[doc = "The Progressive-Web-App (PWA) category, containing all pwa related audits."]
         #[serde(rename = "pwa", default)]
-        pub pwa: Option<crate::schemas::LighthouseCategoryV5>,
+        pub pwa: ::std::option::Option<crate::schemas::LighthouseCategoryV5>,
         #[doc = "The Search-Engine-Optimization (SEO) category, containing all seo related audits."]
         #[serde(rename = "seo", default)]
-        pub seo: Option<crate::schemas::LighthouseCategoryV5>,
+        pub seo: ::std::option::Option<crate::schemas::LighthouseCategoryV5>,
     }
     impl ::field_selector::FieldSelector for LighthouseResultV5Categories {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -120,7 +119,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -138,10 +136,10 @@ pub mod schemas {
     pub struct LighthouseResultV5CategoryGroupsAdditionalProperties {
         #[doc = "An optional human readable description of the category group."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The title of the category group."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LighthouseResultV5CategoryGroupsAdditionalProperties {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -150,19 +148,18 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct LighthouseResultV5ConfigSettings {
         #[doc = "The form factor the emulation should use."]
         #[serde(rename = "emulatedFormFactor", default)]
-        pub emulated_form_factor: Option<String>,
+        pub emulated_form_factor: ::std::option::Option<String>,
         #[doc = "The locale setting."]
         #[serde(rename = "locale", default)]
-        pub locale: Option<String>,
+        pub locale: ::std::option::Option<String>,
         #[serde(rename = "onlyCategories", default)]
-        pub only_categories: Option<::serde_json::Value>,
+        pub only_categories: ::std::option::Option<::serde_json::Value>,
     }
     impl ::field_selector::FieldSelector for LighthouseResultV5ConfigSettings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -171,7 +168,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -180,13 +176,13 @@ pub mod schemas {
     pub struct LighthouseResultV5Environment {
         #[doc = "The benchmark index number that indicates rough device class."]
         #[serde(rename = "benchmarkIndex", default)]
-        pub benchmark_index: Option<f64>,
+        pub benchmark_index: ::std::option::Option<f64>,
         #[doc = "The user agent string of the version of Chrome used."]
         #[serde(rename = "hostUserAgent", default)]
-        pub host_user_agent: Option<String>,
+        pub host_user_agent: ::std::option::Option<String>,
         #[doc = "The user agent string that was sent over the network."]
         #[serde(rename = "networkUserAgent", default)]
-        pub network_user_agent: Option<String>,
+        pub network_user_agent: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LighthouseResultV5Environment {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -195,7 +191,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -213,52 +208,52 @@ pub mod schemas {
     pub struct LighthouseResultV5I18NRendererFormattedStrings {
         #[doc = "The tooltip text on an expandable chevron icon."]
         #[serde(rename = "auditGroupExpandTooltip", default)]
-        pub audit_group_expand_tooltip: Option<String>,
+        pub audit_group_expand_tooltip: ::std::option::Option<String>,
         #[doc = "The label for the initial request in a critical request chain."]
         #[serde(rename = "crcInitialNavigation", default)]
-        pub crc_initial_navigation: Option<String>,
+        pub crc_initial_navigation: ::std::option::Option<String>,
         #[doc = "The label for values shown in the summary of critical request chains."]
         #[serde(rename = "crcLongestDurationLabel", default)]
-        pub crc_longest_duration_label: Option<String>,
+        pub crc_longest_duration_label: ::std::option::Option<String>,
         #[doc = "The label shown next to an audit or metric that has had an error."]
         #[serde(rename = "errorLabel", default)]
-        pub error_label: Option<String>,
+        pub error_label: ::std::option::Option<String>,
         #[doc = "The error string shown next to an erroring audit."]
         #[serde(rename = "errorMissingAuditInfo", default)]
-        pub error_missing_audit_info: Option<String>,
+        pub error_missing_audit_info: ::std::option::Option<String>,
         #[doc = "The title of the lab data performance category."]
         #[serde(rename = "labDataTitle", default)]
-        pub lab_data_title: Option<String>,
+        pub lab_data_title: ::std::option::Option<String>,
         #[doc = "The disclaimer shown under performance explaning that the network can vary."]
         #[serde(rename = "lsPerformanceCategoryDescription", default)]
-        pub ls_performance_category_description: Option<String>,
+        pub ls_performance_category_description: ::std::option::Option<String>,
         #[doc = "The heading shown above a list of audits that were not computerd in the run."]
         #[serde(rename = "manualAuditsGroupTitle", default)]
-        pub manual_audits_group_title: Option<String>,
+        pub manual_audits_group_title: ::std::option::Option<String>,
         #[doc = "The heading shown above a list of audits that do not apply to a page."]
         #[serde(rename = "notApplicableAuditsGroupTitle", default)]
-        pub not_applicable_audits_group_title: Option<String>,
+        pub not_applicable_audits_group_title: ::std::option::Option<String>,
         #[doc = "The heading for the estimated page load savings opportunity of an audit."]
         #[serde(rename = "opportunityResourceColumnLabel", default)]
-        pub opportunity_resource_column_label: Option<String>,
+        pub opportunity_resource_column_label: ::std::option::Option<String>,
         #[doc = "The heading for the estimated page load savings of opportunity audits."]
         #[serde(rename = "opportunitySavingsColumnLabel", default)]
-        pub opportunity_savings_column_label: Option<String>,
+        pub opportunity_savings_column_label: ::std::option::Option<String>,
         #[doc = "The heading that is shown above a list of audits that are passing."]
         #[serde(rename = "passedAuditsGroupTitle", default)]
-        pub passed_audits_group_title: Option<String>,
+        pub passed_audits_group_title: ::std::option::Option<String>,
         #[doc = "The label that explains the score gauges scale (0-49, 50-89, 90-100)."]
         #[serde(rename = "scorescaleLabel", default)]
-        pub scorescale_label: Option<String>,
+        pub scorescale_label: ::std::option::Option<String>,
         #[doc = "The label shown preceding important warnings that may have invalidated an entire report."]
         #[serde(rename = "toplevelWarningsMessage", default)]
-        pub toplevel_warnings_message: Option<String>,
+        pub toplevel_warnings_message: ::std::option::Option<String>,
         #[doc = "The disclaimer shown below a performance metric value."]
         #[serde(rename = "varianceDisclaimer", default)]
-        pub variance_disclaimer: Option<String>,
+        pub variance_disclaimer: ::std::option::Option<String>,
         #[doc = "The label shown above a bulleted list of warnings."]
         #[serde(rename = "warningHeader", default)]
-        pub warning_header: Option<String>,
+        pub warning_header: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LighthouseResultV5I18NRendererFormattedStrings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -267,7 +262,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -286,7 +280,7 @@ pub mod schemas {
         #[doc = "Internationalized strings that are formatted to the locale in configSettings."]
         #[serde(rename = "rendererFormattedStrings", default)]
         pub renderer_formatted_strings:
-            Option<crate::schemas::LighthouseResultV5I18NRendererFormattedStrings>,
+            ::std::option::Option<crate::schemas::LighthouseResultV5I18NRendererFormattedStrings>,
     }
     impl ::field_selector::FieldSelector for LighthouseResultV5I18N {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -295,7 +289,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -313,10 +306,10 @@ pub mod schemas {
     pub struct LighthouseResultV5RuntimeError {
         #[doc = "The enumerated Lighthouse Error code."]
         #[serde(rename = "code", default)]
-        pub code: Option<String>,
+        pub code: ::std::option::Option<String>,
         #[doc = "A human readable message explaining the error code."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LighthouseResultV5RuntimeError {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -325,7 +318,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -343,16 +335,16 @@ pub mod schemas {
     pub struct LighthouseResultV5StackPacksItems {
         #[doc = "The stack pack advice strings."]
         #[serde(rename = "descriptions", default)]
-        pub descriptions: Option<::std::collections::BTreeMap<String, String>>,
+        pub descriptions: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "The stack pack icon data uri."]
         #[serde(rename = "iconDataURL", default)]
-        pub icon_data_url: Option<String>,
+        pub icon_data_url: ::std::option::Option<String>,
         #[doc = "The stack pack id."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "The stack pack title."]
         #[serde(rename = "title", default)]
-        pub title: Option<String>,
+        pub title: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LighthouseResultV5StackPacksItems {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -361,7 +353,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -370,7 +361,7 @@ pub mod schemas {
     pub struct LighthouseResultV5Timing {
         #[doc = "The total duration of Lighthouse's run."]
         #[serde(rename = "total", default)]
-        pub total: Option<f64>,
+        pub total: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector for LighthouseResultV5Timing {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -379,21 +370,21 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct LighthouseResultV5 {
         #[doc = "Map of audits in the LHR."]
         #[serde(rename = "audits", default)]
-        pub audits:
-            Option<::std::collections::BTreeMap<String, crate::schemas::LighthouseAuditResultV5>>,
+        pub audits: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::LighthouseAuditResultV5>,
+        >,
         #[doc = "Map of categories in the LHR."]
         #[serde(rename = "categories", default)]
-        pub categories: Option<crate::schemas::LighthouseResultV5Categories>,
+        pub categories: ::std::option::Option<crate::schemas::LighthouseResultV5Categories>,
         #[doc = "Map of category groups in the LHR."]
         #[serde(rename = "categoryGroups", default)]
-        pub category_groups: Option<
+        pub category_groups: ::std::option::Option<
             ::std::collections::BTreeMap<
                 String,
                 crate::schemas::LighthouseResultV5CategoryGroupsAdditionalProperties,
@@ -401,40 +392,42 @@ pub mod schemas {
         >,
         #[doc = "The configuration settings for this LHR."]
         #[serde(rename = "configSettings", default)]
-        pub config_settings: Option<crate::schemas::LighthouseResultV5ConfigSettings>,
+        pub config_settings:
+            ::std::option::Option<crate::schemas::LighthouseResultV5ConfigSettings>,
         #[doc = "Environment settings that were used when making this LHR."]
         #[serde(rename = "environment", default)]
-        pub environment: Option<crate::schemas::LighthouseResultV5Environment>,
+        pub environment: ::std::option::Option<crate::schemas::LighthouseResultV5Environment>,
         #[doc = "The time that this run was fetched."]
         #[serde(rename = "fetchTime", default)]
-        pub fetch_time: Option<String>,
+        pub fetch_time: ::std::option::Option<String>,
         #[doc = "The final resolved url that was audited."]
         #[serde(rename = "finalUrl", default)]
-        pub final_url: Option<String>,
+        pub final_url: ::std::option::Option<String>,
         #[doc = "The internationalization strings that are required to render the LHR."]
         #[serde(rename = "i18n", default)]
-        pub i_1_8n: Option<crate::schemas::LighthouseResultV5I18N>,
+        pub i_1_8n: ::std::option::Option<crate::schemas::LighthouseResultV5I18N>,
         #[doc = "The lighthouse version that was used to generate this LHR."]
         #[serde(rename = "lighthouseVersion", default)]
-        pub lighthouse_version: Option<String>,
+        pub lighthouse_version: ::std::option::Option<String>,
         #[doc = "The original requested url."]
         #[serde(rename = "requestedUrl", default)]
-        pub requested_url: Option<String>,
+        pub requested_url: ::std::option::Option<String>,
         #[doc = "List of all run warnings in the LHR. Will always output to at least `[]`."]
         #[serde(rename = "runWarnings", default)]
-        pub run_warnings: Option<Vec<::serde_json::Value>>,
+        pub run_warnings: ::std::option::Option<Vec<::serde_json::Value>>,
         #[doc = "A top-level error message that, if present, indicates a serious enough problem that this Lighthouse result may need to be discarded."]
         #[serde(rename = "runtimeError", default)]
-        pub runtime_error: Option<crate::schemas::LighthouseResultV5RuntimeError>,
+        pub runtime_error: ::std::option::Option<crate::schemas::LighthouseResultV5RuntimeError>,
         #[doc = "The Stack Pack advice strings."]
         #[serde(rename = "stackPacks", default)]
-        pub stack_packs: Option<Vec<crate::schemas::LighthouseResultV5StackPacksItems>>,
+        pub stack_packs:
+            ::std::option::Option<Vec<crate::schemas::LighthouseResultV5StackPacksItems>>,
         #[doc = "Timing information for this LHR."]
         #[serde(rename = "timing", default)]
-        pub timing: Option<crate::schemas::LighthouseResultV5Timing>,
+        pub timing: ::std::option::Option<crate::schemas::LighthouseResultV5Timing>,
         #[doc = "The user agent that was used to run this LHR."]
         #[serde(rename = "userAgent", default)]
-        pub user_agent: Option<String>,
+        pub user_agent: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LighthouseResultV5 {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -443,7 +436,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -451,11 +443,11 @@ pub mod schemas {
     )]
     pub struct PagespeedApiLoadingExperienceV5MetricsAdditionalPropertiesDistributionsItems {
         #[serde(rename = "max", default)]
-        pub max: Option<i32>,
+        pub max: ::std::option::Option<i32>,
         #[serde(rename = "min", default)]
-        pub min: Option<i32>,
+        pub min: ::std::option::Option<i32>,
         #[serde(rename = "proportion", default)]
-        pub proportion: Option<f64>,
+        pub proportion: ::std::option::Option<f64>,
     }
     impl ::field_selector::FieldSelector
         for PagespeedApiLoadingExperienceV5MetricsAdditionalPropertiesDistributionsItems
@@ -466,13 +458,12 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
-    pub struct PagespeedApiLoadingExperienceV5MetricsAdditionalProperties { # [ serde ( rename = "category" , default ) ] pub category : Option < String > , # [ serde ( rename = "distributions" , default ) ] pub distributions : Option < Vec < crate :: schemas :: PagespeedApiLoadingExperienceV5MetricsAdditionalPropertiesDistributionsItems > > , # [ serde ( rename = "percentile" , default ) ] pub percentile : Option < i32 > , }
+    pub struct PagespeedApiLoadingExperienceV5MetricsAdditionalProperties { # [ serde ( rename = "category" , default ) ] pub category : :: std :: option :: Option < String > , # [ serde ( rename = "distributions" , default ) ] pub distributions : :: std :: option :: Option < Vec < crate :: schemas :: PagespeedApiLoadingExperienceV5MetricsAdditionalPropertiesDistributionsItems > > , # [ serde ( rename = "percentile" , default ) ] pub percentile : :: std :: option :: Option < i32 > , }
     impl ::field_selector::FieldSelector
         for PagespeedApiLoadingExperienceV5MetricsAdditionalProperties
     {
@@ -482,7 +473,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -491,18 +481,18 @@ pub mod schemas {
     pub struct PagespeedApiLoadingExperienceV5 {
         #[doc = "The url, pattern or origin which the metrics are on."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[serde(rename = "initial_url", default)]
-        pub initial_url: Option<String>,
+        pub initial_url: ::std::option::Option<String>,
         #[serde(rename = "metrics", default)]
-        pub metrics: Option<
+        pub metrics: ::std::option::Option<
             ::std::collections::BTreeMap<
                 String,
                 crate::schemas::PagespeedApiLoadingExperienceV5MetricsAdditionalProperties,
             >,
         >,
         #[serde(rename = "overall_category", default)]
-        pub overall_category: Option<String>,
+        pub overall_category: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for PagespeedApiLoadingExperienceV5 {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -511,7 +501,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -529,10 +518,10 @@ pub mod schemas {
     pub struct PagespeedApiPagespeedResponseV5Version {
         #[doc = "The major version number of PageSpeed used to generate these results."]
         #[serde(rename = "major", default)]
-        pub major: Option<i32>,
+        pub major: ::std::option::Option<i32>,
         #[doc = "The minor version number of PageSpeed used to generate these results."]
         #[serde(rename = "minor", default)]
-        pub minor: Option<i32>,
+        pub minor: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for PagespeedApiPagespeedResponseV5Version {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -541,35 +530,36 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct PagespeedApiPagespeedResponseV5 {
         #[doc = "The UTC timestamp of this analysis."]
         #[serde(rename = "analysisUTCTimestamp", default)]
-        pub analysis_utc_timestamp: Option<String>,
+        pub analysis_utc_timestamp: ::std::option::Option<String>,
         #[doc = "The captcha verify result"]
         #[serde(rename = "captchaResult", default)]
-        pub captcha_result: Option<String>,
+        pub captcha_result: ::std::option::Option<String>,
         #[doc = "Canonicalized and final URL for the document, after following page redirects (if any)."]
         #[serde(rename = "id", default)]
-        pub id: Option<String>,
+        pub id: ::std::option::Option<String>,
         #[doc = "Kind of result."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Lighthouse response for the audit url as an object."]
         #[serde(rename = "lighthouseResult", default)]
-        pub lighthouse_result: Option<crate::schemas::LighthouseResultV5>,
+        pub lighthouse_result: ::std::option::Option<crate::schemas::LighthouseResultV5>,
         #[doc = "Metrics of end users' page loading experience."]
         #[serde(rename = "loadingExperience", default)]
-        pub loading_experience: Option<crate::schemas::PagespeedApiLoadingExperienceV5>,
+        pub loading_experience:
+            ::std::option::Option<crate::schemas::PagespeedApiLoadingExperienceV5>,
         #[doc = "Metrics of the aggregated page loading experience of the origin"]
         #[serde(rename = "originLoadingExperience", default)]
-        pub origin_loading_experience: Option<crate::schemas::PagespeedApiLoadingExperienceV5>,
+        pub origin_loading_experience:
+            ::std::option::Option<crate::schemas::PagespeedApiLoadingExperienceV5>,
         #[doc = "The version of PageSpeed used to generate these results."]
         #[serde(rename = "version", default)]
-        pub version: Option<crate::schemas::PagespeedApiPagespeedResponseV5Version>,
+        pub version: ::std::option::Option<crate::schemas::PagespeedApiPagespeedResponseV5Version>,
     }
     impl ::field_selector::FieldSelector for PagespeedApiPagespeedResponseV5 {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -578,7 +568,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -623,6 +612,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -692,6 +690,15 @@ mod resources {
                             )))
                         }
                     })
+                }
+            }
+            impl ::field_selector::FieldSelector for RunpagespeedStrategy {
+                fn field_selector_with_ident(ident: &str, selector: &mut String) {
+                    match selector.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => selector.push_str(","),
+                    }
+                    selector.push_str(ident);
                 }
             }
         }
@@ -1149,6 +1156,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1224,5 +1232,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }

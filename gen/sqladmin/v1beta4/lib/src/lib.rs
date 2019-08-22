@@ -14,16 +14,16 @@ pub mod schemas {
     pub struct AclEntry {
         #[doc = "The time when this access control entry expires in RFC 3339 format, for example 2012-11-15T16:19:00.094Z."]
         #[serde(rename = "expirationTime", default)]
-        pub expiration_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub expiration_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "This is always sql#aclEntry."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "An optional label to identify this entry."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The whitelisted value for the access control list."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for AclEntry {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -32,7 +32,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -50,10 +49,10 @@ pub mod schemas {
     pub struct ApiWarning {
         #[doc = "Code to uniquely identify the warning type."]
         #[serde(rename = "code", default)]
-        pub code: Option<String>,
+        pub code: ::std::option::Option<String>,
         #[doc = "The warning message."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ApiWarning {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -62,7 +61,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -80,22 +78,22 @@ pub mod schemas {
     pub struct BackupConfiguration {
         #[doc = "Whether binary log is enabled. If backup configuration is disabled, binary log must be disabled as well."]
         #[serde(rename = "binaryLogEnabled", default)]
-        pub binary_log_enabled: Option<bool>,
+        pub binary_log_enabled: ::std::option::Option<bool>,
         #[doc = "Whether this configuration is enabled."]
         #[serde(rename = "enabled", default)]
-        pub enabled: Option<bool>,
+        pub enabled: ::std::option::Option<bool>,
         #[doc = "This is always sql#backupConfiguration."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The location of the backup."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "Reserved for future use."]
         #[serde(rename = "replicationLogArchivingEnabled", default)]
-        pub replication_log_archiving_enabled: Option<bool>,
+        pub replication_log_archiving_enabled: ::std::option::Option<bool>,
         #[doc = "Start time for the daily backup configuration in UTC timezone in the 24 hour format - HH:MM."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<String>,
+        pub start_time: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BackupConfiguration {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -104,7 +102,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -122,44 +119,44 @@ pub mod schemas {
     pub struct BackupRun {
         #[doc = "The description of this run, only applicable to on-demand backups."]
         #[serde(rename = "description", default)]
-        pub description: Option<String>,
+        pub description: ::std::option::Option<String>,
         #[doc = "The time the backup operation completed in UTC timezone in RFC 3339 format, for example 2012-11-15T16:19:00.094Z."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The time the run was enqueued in UTC timezone in RFC 3339 format, for example 2012-11-15T16:19:00.094Z."]
         #[serde(rename = "enqueuedTime", default)]
-        pub enqueued_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub enqueued_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Information about why the backup operation failed. This is only present if the run has the FAILED status."]
         #[serde(rename = "error", default)]
-        pub error: Option<crate::schemas::OperationError>,
+        pub error: ::std::option::Option<crate::schemas::OperationError>,
         #[doc = "The identifier for this backup run. Unique only for a specific Cloud SQL instance."]
         #[serde(rename = "id", default)]
         #[serde(with = "crate::parsed_string")]
-        pub id: Option<i64>,
+        pub id: ::std::option::Option<i64>,
         #[doc = "Name of the database instance."]
         #[serde(rename = "instance", default)]
-        pub instance: Option<String>,
+        pub instance: ::std::option::Option<String>,
         #[doc = "This is always sql#backupRun."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The location of the backup."]
         #[serde(rename = "location", default)]
-        pub location: Option<String>,
+        pub location: ::std::option::Option<String>,
         #[doc = "The type of this run; can be either \"AUTOMATED\" or \"ON_DEMAND\"."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "The URI of this resource."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "The time the backup operation actually started in UTC timezone in RFC 3339 format, for example 2012-11-15T16:19:00.094Z."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The status of this run."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
         #[doc = "The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example 2012-11-15T16:19:00.094Z."]
         #[serde(rename = "windowStartTime", default)]
-        pub window_start_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub window_start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for BackupRun {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -168,7 +165,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -186,13 +182,13 @@ pub mod schemas {
     pub struct BackupRunsListResponse {
         #[doc = "A list of backup runs in reverse chronological order of the enqueued time."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::BackupRun>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::BackupRun>>,
         #[doc = "This is always sql#backupRunsList."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BackupRunsListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -201,7 +197,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -219,14 +214,14 @@ pub mod schemas {
     pub struct BinLogCoordinates {
         #[doc = "Name of the binary log file for a Cloud SQL instance."]
         #[serde(rename = "binLogFileName", default)]
-        pub bin_log_file_name: Option<String>,
+        pub bin_log_file_name: ::std::option::Option<String>,
         #[doc = "Position (offset) within the binary log file."]
         #[serde(rename = "binLogPosition", default)]
         #[serde(with = "crate::parsed_string")]
-        pub bin_log_position: Option<i64>,
+        pub bin_log_position: ::std::option::Option<i64>,
         #[doc = "This is always sql#binLogCoordinates."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for BinLogCoordinates {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -235,7 +230,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -253,17 +247,17 @@ pub mod schemas {
     pub struct CloneContext {
         #[doc = "Binary log coordinates, if specified, identify the position up to which the source instance should be cloned. If not specified, the source instance is cloned up to the most recent binary log coordinates."]
         #[serde(rename = "binLogCoordinates", default)]
-        pub bin_log_coordinates: Option<crate::schemas::BinLogCoordinates>,
+        pub bin_log_coordinates: ::std::option::Option<crate::schemas::BinLogCoordinates>,
         #[doc = "Name of the Cloud SQL instance to be created as a clone."]
         #[serde(rename = "destinationInstanceName", default)]
-        pub destination_instance_name: Option<String>,
+        pub destination_instance_name: ::std::option::Option<String>,
         #[doc = "This is always sql#cloneContext."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Reserved for future use."]
         #[serde(rename = "pitrTimestampMs", default)]
         #[serde(with = "crate::parsed_string")]
-        pub pitr_timestamp_ms: Option<i64>,
+        pub pitr_timestamp_ms: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for CloneContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -272,7 +266,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -290,28 +283,28 @@ pub mod schemas {
     pub struct Database {
         #[doc = "The MySQL charset value."]
         #[serde(rename = "charset", default)]
-        pub charset: Option<String>,
+        pub charset: ::std::option::Option<String>,
         #[doc = "The MySQL collation value."]
         #[serde(rename = "collation", default)]
-        pub collation: Option<String>,
+        pub collation: ::std::option::Option<String>,
         #[doc = "This field is deprecated and will be removed from a future version of the API."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The name of the Cloud SQL instance. This does not include the project ID."]
         #[serde(rename = "instance", default)]
-        pub instance: Option<String>,
+        pub instance: ::std::option::Option<String>,
         #[doc = "This is always sql#database."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The name of the database in the Cloud SQL instance. This does not include the project ID or instance name."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable."]
         #[serde(rename = "project", default)]
-        pub project: Option<String>,
+        pub project: ::std::option::Option<String>,
         #[doc = "The URI of this resource."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Database {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -320,7 +313,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -338,10 +330,10 @@ pub mod schemas {
     pub struct DatabaseFlags {
         #[doc = "The name of the flag. These flags are passed at instance startup, so include both server options and system variables for MySQL. Flags should be specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The value of the flag. Booleans should be set to on for true and off for false. This field must be omitted if the flag doesn't take a value."]
         #[serde(rename = "value", default)]
-        pub value: Option<String>,
+        pub value: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DatabaseFlags {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -350,7 +342,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -368,10 +359,10 @@ pub mod schemas {
     pub struct DatabaseInstanceFailoverReplica {
         #[doc = "The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The master can only failover to the falover replica when the status is true."]
         #[serde(rename = "available", default)]
-        pub available: Option<bool>,
+        pub available: ::std::option::Option<bool>,
         #[doc = "The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DatabaseInstanceFailoverReplica {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -380,7 +371,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -398,90 +388,93 @@ pub mod schemas {
     pub struct DatabaseInstance {
         #[doc = "FIRST_GEN: First Generation instance. MySQL only.\nSECOND_GEN: Second Generation instance or PostgreSQL instance.\nEXTERNAL: A database server that is not managed by Google.\nThis property is read-only; use the tier property in the settings object to determine the database type and Second or First Generation."]
         #[serde(rename = "backendType", default)]
-        pub backend_type: Option<String>,
+        pub backend_type: ::std::option::Option<String>,
         #[doc = "Connection name of the Cloud SQL instance used in connection strings."]
         #[serde(rename = "connectionName", default)]
-        pub connection_name: Option<String>,
+        pub connection_name: ::std::option::Option<String>,
         #[doc = "The current disk usage of the instance in bytes. This property has been deprecated. Users should use the \"cloudsql.googleapis.com/database/disk/bytes_used\" metric in Cloud Monitoring API instead. Please see this announcement for details."]
         #[serde(rename = "currentDiskSize", default)]
         #[serde(with = "crate::parsed_string")]
-        pub current_disk_size: Option<i64>,
+        pub current_disk_size: ::std::option::Option<i64>,
         #[doc = "The database engine type and version. The databaseVersion field can not be changed after instance creation. MySQL Second Generation instances: MYSQL_5_7 (default) or MYSQL_5_6. PostgreSQL instances: POSTGRES_9_6 (default) or POSTGRES_11 Beta. MySQL First Generation instances: MYSQL_5_6 (default) or MYSQL_5_5"]
         #[serde(rename = "databaseVersion", default)]
-        pub database_version: Option<String>,
+        pub database_version: ::std::option::Option<String>,
         #[doc = "Disk encryption configuration specific to an instance. Applies only to Second Generation instances."]
         #[serde(rename = "diskEncryptionConfiguration", default)]
-        pub disk_encryption_configuration: Option<crate::schemas::DiskEncryptionConfiguration>,
+        pub disk_encryption_configuration:
+            ::std::option::Option<crate::schemas::DiskEncryptionConfiguration>,
         #[doc = "Disk encryption status specific to an instance. Applies only to Second Generation instances."]
         #[serde(rename = "diskEncryptionStatus", default)]
-        pub disk_encryption_status: Option<crate::schemas::DiskEncryptionStatus>,
+        pub disk_encryption_status: ::std::option::Option<crate::schemas::DiskEncryptionStatus>,
         #[doc = "This field is deprecated and will be removed from a future version of the API. Use the settings.settingsVersion field instead."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The name and status of the failover replica. This property is applicable only to Second Generation instances."]
         #[serde(rename = "failoverReplica", default)]
-        pub failover_replica: Option<crate::schemas::DatabaseInstanceFailoverReplica>,
+        pub failover_replica:
+            ::std::option::Option<crate::schemas::DatabaseInstanceFailoverReplica>,
         #[doc = "The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone."]
         #[serde(rename = "gceZone", default)]
-        pub gce_zone: Option<String>,
+        pub gce_zone: ::std::option::Option<String>,
         #[doc = "The instance type. This can be one of the following.\nCLOUD_SQL_INSTANCE: A Cloud SQL instance that is not replicating from a master.\nON_PREMISES_INSTANCE: An instance running on the customer's premises.\nREAD_REPLICA_INSTANCE: A Cloud SQL instance configured as a read-replica."]
         #[serde(rename = "instanceType", default)]
-        pub instance_type: Option<String>,
+        pub instance_type: ::std::option::Option<String>,
         #[doc = "The assigned IP addresses for the instance."]
         #[serde(rename = "ipAddresses", default)]
-        pub ip_addresses: Option<Vec<crate::schemas::IpMapping>>,
+        pub ip_addresses: ::std::option::Option<Vec<crate::schemas::IpMapping>>,
         #[doc = "The IPv6 address assigned to the instance. This property is applicable only to First Generation instances."]
         #[serde(rename = "ipv6Address", default)]
-        pub ipv_6_address: Option<String>,
+        pub ipv_6_address: ::std::option::Option<String>,
         #[doc = "This is always sql#instance."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The name of the instance which will act as master in the replication setup."]
         #[serde(rename = "masterInstanceName", default)]
-        pub master_instance_name: Option<String>,
+        pub master_instance_name: ::std::option::Option<String>,
         #[doc = "The maximum disk size of the instance in bytes."]
         #[serde(rename = "maxDiskSize", default)]
         #[serde(with = "crate::parsed_string")]
-        pub max_disk_size: Option<i64>,
+        pub max_disk_size: ::std::option::Option<i64>,
         #[doc = "Name of the Cloud SQL instance. This does not include the project ID."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "Configuration specific to on-premises instances."]
         #[serde(rename = "onPremisesConfiguration", default)]
-        pub on_premises_configuration: Option<crate::schemas::OnPremisesConfiguration>,
+        pub on_premises_configuration:
+            ::std::option::Option<crate::schemas::OnPremisesConfiguration>,
         #[doc = "The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable."]
         #[serde(rename = "project", default)]
-        pub project: Option<String>,
+        pub project: ::std::option::Option<String>,
         #[doc = "The geographical region. Can be us-central (FIRST_GEN instances only), us-central1 (SECOND_GEN instances only), asia-east1 or europe-west1. Defaults to us-central or us-central1 depending on the instance type (First Generation or Second Generation). The region can not be changed after instance creation."]
         #[serde(rename = "region", default)]
-        pub region: Option<String>,
+        pub region: ::std::option::Option<String>,
         #[doc = "Configuration specific to failover replicas and read replicas."]
         #[serde(rename = "replicaConfiguration", default)]
-        pub replica_configuration: Option<crate::schemas::ReplicaConfiguration>,
+        pub replica_configuration: ::std::option::Option<crate::schemas::ReplicaConfiguration>,
         #[doc = "The replicas of the instance."]
         #[serde(rename = "replicaNames", default)]
-        pub replica_names: Option<Vec<String>>,
+        pub replica_names: ::std::option::Option<Vec<String>>,
         #[doc = "Initial root password. Use only on creation."]
         #[serde(rename = "rootPassword", default)]
-        pub root_password: Option<String>,
+        pub root_password: ::std::option::Option<String>,
         #[doc = "The URI of this resource."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "SSL configuration."]
         #[serde(rename = "serverCaCert", default)]
-        pub server_ca_cert: Option<crate::schemas::SslCert>,
+        pub server_ca_cert: ::std::option::Option<crate::schemas::SslCert>,
         #[doc = "The service account email address assigned to the instance. This property is applicable only to Second Generation instances."]
         #[serde(rename = "serviceAccountEmailAddress", default)]
-        pub service_account_email_address: Option<String>,
+        pub service_account_email_address: ::std::option::Option<String>,
         #[doc = "The user settings."]
         #[serde(rename = "settings", default)]
-        pub settings: Option<crate::schemas::Settings>,
+        pub settings: ::std::option::Option<crate::schemas::Settings>,
         #[doc = "The current serving state of the Cloud SQL instance. This can be one of the following.\nRUNNABLE: The instance is running, or is ready to run when accessed.\nSUSPENDED: The instance is not available, for example due to problems with billing.\nPENDING_CREATE: The instance is being created.\nMAINTENANCE: The instance is down for maintenance.\nFAILED: The instance creation failed.\nUNKNOWN_STATE: The state of the instance is unknown."]
         #[serde(rename = "state", default)]
-        pub state: Option<String>,
+        pub state: ::std::option::Option<String>,
         #[doc = "If the instance state is SUSPENDED, the reason for the suspension."]
         #[serde(rename = "suspensionReason", default)]
-        pub suspension_reason: Option<Vec<String>>,
+        pub suspension_reason: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for DatabaseInstance {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -490,7 +483,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -508,10 +500,10 @@ pub mod schemas {
     pub struct DatabasesListResponse {
         #[doc = "List of database resources in the instance."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Database>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Database>>,
         #[doc = "This is always sql#databasesList."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DatabasesListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -520,7 +512,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -538,11 +529,11 @@ pub mod schemas {
     pub struct DemoteMasterConfiguration {
         #[doc = "This is always sql#demoteMasterConfiguration."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "MySQL specific configuration when replicating from a MySQL on-premises master. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named master.info in the data directory."]
         #[serde(rename = "mysqlReplicaConfiguration", default)]
         pub mysql_replica_configuration:
-            Option<crate::schemas::DemoteMasterMySqlReplicaConfiguration>,
+            ::std::option::Option<crate::schemas::DemoteMasterMySqlReplicaConfiguration>,
     }
     impl ::field_selector::FieldSelector for DemoteMasterConfiguration {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -551,7 +542,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -569,16 +559,16 @@ pub mod schemas {
     pub struct DemoteMasterContext {
         #[doc = "This is always sql#demoteMasterContext."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The name of the instance which will act as on-premises master in the replication setup."]
         #[serde(rename = "masterInstanceName", default)]
-        pub master_instance_name: Option<String>,
+        pub master_instance_name: ::std::option::Option<String>,
         #[doc = "Configuration specific to read-replicas replicating from the on-premises master."]
         #[serde(rename = "replicaConfiguration", default)]
-        pub replica_configuration: Option<crate::schemas::DemoteMasterConfiguration>,
+        pub replica_configuration: ::std::option::Option<crate::schemas::DemoteMasterConfiguration>,
         #[doc = "Verify GTID consistency for demote operation. Default value: True. Second Generation instances only. Setting this flag to false enables you to bypass GTID consistency check between on-premises master and Cloud SQL instance during the demotion operation but also exposes you to the risk of future replication failures. Change the value only if you know the reason for the GTID divergence and are confident that doing so will not cause any replication issues."]
         #[serde(rename = "verifyGtidConsistency", default)]
-        pub verify_gtid_consistency: Option<bool>,
+        pub verify_gtid_consistency: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for DemoteMasterContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -587,7 +577,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -605,22 +594,22 @@ pub mod schemas {
     pub struct DemoteMasterMySqlReplicaConfiguration {
         #[doc = "PEM representation of the trusted CA's x509 certificate."]
         #[serde(rename = "caCertificate", default)]
-        pub ca_certificate: Option<String>,
+        pub ca_certificate: ::std::option::Option<String>,
         #[doc = "PEM representation of the slave's x509 certificate."]
         #[serde(rename = "clientCertificate", default)]
-        pub client_certificate: Option<String>,
+        pub client_certificate: ::std::option::Option<String>,
         #[doc = "PEM representation of the slave's private key. The corresponsing public key is encoded in the client's certificate. The format of the slave's private key can be either PKCS #1 or PKCS #8."]
         #[serde(rename = "clientKey", default)]
-        pub client_key: Option<String>,
+        pub client_key: ::std::option::Option<String>,
         #[doc = "This is always sql#demoteMasterMysqlReplicaConfiguration."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The password for the replication connection."]
         #[serde(rename = "password", default)]
-        pub password: Option<String>,
+        pub password: ::std::option::Option<String>,
         #[doc = "The username for the replication connection."]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DemoteMasterMySqlReplicaConfiguration {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -629,7 +618,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -647,10 +635,10 @@ pub mod schemas {
     pub struct DiskEncryptionConfiguration {
         #[doc = "This is always sql#diskEncryptionConfiguration."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "KMS key resource name"]
         #[serde(rename = "kmsKeyName", default)]
-        pub kms_key_name: Option<String>,
+        pub kms_key_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DiskEncryptionConfiguration {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -659,7 +647,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -677,10 +664,10 @@ pub mod schemas {
     pub struct DiskEncryptionStatus {
         #[doc = "This is always sql#diskEncryptionStatus."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "KMS key version used to encrypt the Cloud SQL instance disk"]
         #[serde(rename = "kmsKeyVersionName", default)]
-        pub kms_key_version_name: Option<String>,
+        pub kms_key_version_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for DiskEncryptionStatus {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -689,7 +676,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -707,7 +693,7 @@ pub mod schemas {
     pub struct ExportContextCsvExportOptions {
         #[doc = "The select query used to extract the data."]
         #[serde(rename = "selectQuery", default)]
-        pub select_query: Option<String>,
+        pub select_query: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ExportContextCsvExportOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -716,7 +702,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -734,7 +719,7 @@ pub mod schemas {
     pub struct ExportContextSqlExportOptionsMysqlExportOptions {
         #[doc = "Option to include SQL statement required to set up replication. If set to 1, the dump file includes a CHANGE MASTER TO statement with the binary log coordinates. If set to 2, the CHANGE MASTER TO statement is written as a SQL comment, and has no effect. All other values are ignored."]
         #[serde(rename = "masterData", default)]
-        pub master_data: Option<i32>,
+        pub master_data: ::std::option::Option<i32>,
     }
     impl ::field_selector::FieldSelector for ExportContextSqlExportOptionsMysqlExportOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -743,7 +728,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -762,13 +746,13 @@ pub mod schemas {
         #[doc = "Options for exporting from MySQL."]
         #[serde(rename = "mysqlExportOptions", default)]
         pub mysql_export_options:
-            Option<crate::schemas::ExportContextSqlExportOptionsMysqlExportOptions>,
+            ::std::option::Option<crate::schemas::ExportContextSqlExportOptionsMysqlExportOptions>,
         #[doc = "Export only schemas."]
         #[serde(rename = "schemaOnly", default)]
-        pub schema_only: Option<bool>,
+        pub schema_only: ::std::option::Option<bool>,
         #[doc = "Tables to export, or that were exported, from the specified database. If you specify tables, specify one and only one database. For PostgreSQL instances, you can specify only one table."]
         #[serde(rename = "tables", default)]
-        pub tables: Option<Vec<String>>,
+        pub tables: ::std::option::Option<Vec<String>>,
     }
     impl ::field_selector::FieldSelector for ExportContextSqlExportOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -777,7 +761,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -795,22 +778,24 @@ pub mod schemas {
     pub struct ExportContext {
         #[doc = "Options for exporting data as CSV."]
         #[serde(rename = "csvExportOptions", default)]
-        pub csv_export_options: Option<crate::schemas::ExportContextCsvExportOptions>,
+        pub csv_export_options:
+            ::std::option::Option<crate::schemas::ExportContextCsvExportOptions>,
         #[doc = "Databases to be exported.\nMySQL instances: If fileType is SQL and no database is specified, all databases are exported, except for the mysql system database. If fileType is CSV, you can specify one database, either by using this property or by using the csvExportOptions.selectQuery property, which takes precedence over this property.\nPostgreSQL instances: Specify exactly one database to be exported. If fileType is CSV, this database must match the database used in the csvExportOptions.selectQuery property."]
         #[serde(rename = "databases", default)]
-        pub databases: Option<Vec<String>>,
+        pub databases: ::std::option::Option<Vec<String>>,
         #[doc = "The file type for the specified uri.\nSQL: The file contains SQL statements.\nCSV: The file contains CSV data."]
         #[serde(rename = "fileType", default)]
-        pub file_type: Option<String>,
+        pub file_type: ::std::option::Option<String>,
         #[doc = "This is always sql#exportContext."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Options for exporting data as SQL statements."]
         #[serde(rename = "sqlExportOptions", default)]
-        pub sql_export_options: Option<crate::schemas::ExportContextSqlExportOptions>,
+        pub sql_export_options:
+            ::std::option::Option<crate::schemas::ExportContextSqlExportOptions>,
         #[doc = "The path to the file in Google Cloud Storage where the export will be stored. The URI is in the form gs://bucketName/fileName. If the file already exists, the requests succeeds, but the operation fails. If fileType is SQL and the filename ends with .gz, the contents are compressed."]
         #[serde(rename = "uri", default)]
-        pub uri: Option<String>,
+        pub uri: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ExportContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -819,7 +804,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -837,11 +821,11 @@ pub mod schemas {
     pub struct FailoverContext {
         #[doc = "This is always sql#failoverContext."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The current settings version of this instance. Request will be rejected if this version doesn't match the current settings version."]
         #[serde(rename = "settingsVersion", default)]
         #[serde(with = "crate::parsed_string")]
-        pub settings_version: Option<i64>,
+        pub settings_version: ::std::option::Option<i64>,
     }
     impl ::field_selector::FieldSelector for FailoverContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -850,7 +834,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -868,33 +851,33 @@ pub mod schemas {
     pub struct Flag {
         #[doc = "For STRING flags, a list of strings that the value can be set to."]
         #[serde(rename = "allowedStringValues", default)]
-        pub allowed_string_values: Option<Vec<String>>,
+        pub allowed_string_values: ::std::option::Option<Vec<String>>,
         #[doc = "The database version this flag applies to. Can be MYSQL_5_5, MYSQL_5_6, or MYSQL_5_7. MYSQL_5_7 is applicable only to Second Generation instances."]
         #[serde(rename = "appliesTo", default)]
-        pub applies_to: Option<Vec<String>>,
+        pub applies_to: ::std::option::Option<Vec<String>>,
         #[doc = "True if the flag is only released in Beta."]
         #[serde(rename = "inBeta", default)]
-        pub in_beta: Option<bool>,
+        pub in_beta: ::std::option::Option<bool>,
         #[doc = "This is always sql#flag."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "For INTEGER flags, the maximum allowed value."]
         #[serde(rename = "maxValue", default)]
         #[serde(with = "crate::parsed_string")]
-        pub max_value: Option<i64>,
+        pub max_value: ::std::option::Option<i64>,
         #[doc = "For INTEGER flags, the minimum allowed value."]
         #[serde(rename = "minValue", default)]
         #[serde(with = "crate::parsed_string")]
-        pub min_value: Option<i64>,
+        pub min_value: ::std::option::Option<i64>,
         #[doc = "This is the name of the flag. Flag names always use underscores, not hyphens, e.g. max_allowed_packet"]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The type of the flag. Flags are typed to being BOOLEAN, STRING, INTEGER or NONE. NONE is used for flags which do not take a value, such as skip_grant_tables."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "Indicates whether changing this flag will trigger a database restart. Only applicable to Second Generation instances."]
         #[serde(rename = "requiresRestart", default)]
-        pub requires_restart: Option<bool>,
+        pub requires_restart: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for Flag {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -903,7 +886,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -921,10 +903,10 @@ pub mod schemas {
     pub struct FlagsListResponse {
         #[doc = "List of flags."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Flag>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Flag>>,
         #[doc = "This is always sql#flagsList."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for FlagsListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -933,7 +915,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -951,10 +932,10 @@ pub mod schemas {
     pub struct ImportContextCsvImportOptions {
         #[doc = "The columns to which CSV data is imported. If not specified, all columns of the database table are loaded with CSV data."]
         #[serde(rename = "columns", default)]
-        pub columns: Option<Vec<String>>,
+        pub columns: ::std::option::Option<Vec<String>>,
         #[doc = "The table to which CSV data is imported."]
         #[serde(rename = "table", default)]
-        pub table: Option<String>,
+        pub table: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ImportContextCsvImportOptions {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -963,7 +944,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -981,22 +961,23 @@ pub mod schemas {
     pub struct ImportContext {
         #[doc = "Options for importing data as CSV."]
         #[serde(rename = "csvImportOptions", default)]
-        pub csv_import_options: Option<crate::schemas::ImportContextCsvImportOptions>,
+        pub csv_import_options:
+            ::std::option::Option<crate::schemas::ImportContextCsvImportOptions>,
         #[doc = "The target database for the import. If fileType is SQL, this field is required only if the import file does not specify a database, and is overridden by any database specification in the import file. If fileType is CSV, one database must be specified."]
         #[serde(rename = "database", default)]
-        pub database: Option<String>,
+        pub database: ::std::option::Option<String>,
         #[doc = "The file type for the specified uri.\nSQL: The file contains SQL statements.\nCSV: The file contains CSV data."]
         #[serde(rename = "fileType", default)]
-        pub file_type: Option<String>,
+        pub file_type: ::std::option::Option<String>,
         #[doc = "The PostgreSQL user for this import operation. PostgreSQL instances only."]
         #[serde(rename = "importUser", default)]
-        pub import_user: Option<String>,
+        pub import_user: ::std::option::Option<String>,
         #[doc = "This is always sql#importContext."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Path to the import file in Cloud Storage, in the form gs://bucketName/fileName. Compressed gzip files (.gz) are supported when fileType is SQL. The instance must have write permissions to the bucket and read access to the file."]
         #[serde(rename = "uri", default)]
-        pub uri: Option<String>,
+        pub uri: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for ImportContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1005,7 +986,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1023,7 +1003,7 @@ pub mod schemas {
     pub struct InstancesCloneRequest {
         #[doc = "Contains details about the clone operation."]
         #[serde(rename = "cloneContext", default)]
-        pub clone_context: Option<crate::schemas::CloneContext>,
+        pub clone_context: ::std::option::Option<crate::schemas::CloneContext>,
     }
     impl ::field_selector::FieldSelector for InstancesCloneRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1032,7 +1012,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1050,7 +1029,7 @@ pub mod schemas {
     pub struct InstancesDemoteMasterRequest {
         #[doc = "Contains details about the demoteMaster operation."]
         #[serde(rename = "demoteMasterContext", default)]
-        pub demote_master_context: Option<crate::schemas::DemoteMasterContext>,
+        pub demote_master_context: ::std::option::Option<crate::schemas::DemoteMasterContext>,
     }
     impl ::field_selector::FieldSelector for InstancesDemoteMasterRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1059,7 +1038,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1077,7 +1055,7 @@ pub mod schemas {
     pub struct InstancesExportRequest {
         #[doc = "Contains details about the export operation."]
         #[serde(rename = "exportContext", default)]
-        pub export_context: Option<crate::schemas::ExportContext>,
+        pub export_context: ::std::option::Option<crate::schemas::ExportContext>,
     }
     impl ::field_selector::FieldSelector for InstancesExportRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1086,7 +1064,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1104,7 +1081,7 @@ pub mod schemas {
     pub struct InstancesFailoverRequest {
         #[doc = "Failover Context."]
         #[serde(rename = "failoverContext", default)]
-        pub failover_context: Option<crate::schemas::FailoverContext>,
+        pub failover_context: ::std::option::Option<crate::schemas::FailoverContext>,
     }
     impl ::field_selector::FieldSelector for InstancesFailoverRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1113,7 +1090,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1131,7 +1107,7 @@ pub mod schemas {
     pub struct InstancesImportRequest {
         #[doc = "Contains details about the import operation."]
         #[serde(rename = "importContext", default)]
-        pub import_context: Option<crate::schemas::ImportContext>,
+        pub import_context: ::std::option::Option<crate::schemas::ImportContext>,
     }
     impl ::field_selector::FieldSelector for InstancesImportRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1140,7 +1116,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1158,16 +1133,16 @@ pub mod schemas {
     pub struct InstancesListResponse {
         #[doc = "List of database instance resources."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::DatabaseInstance>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::DatabaseInstance>>,
         #[doc = "This is always sql#instancesList."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
         #[doc = "List of warnings that ocurred while handling the request."]
         #[serde(rename = "warnings", default)]
-        pub warnings: Option<Vec<crate::schemas::ApiWarning>>,
+        pub warnings: ::std::option::Option<Vec<crate::schemas::ApiWarning>>,
     }
     impl ::field_selector::FieldSelector for InstancesListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1176,7 +1151,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1193,13 +1167,13 @@ pub mod schemas {
     )]
     pub struct InstancesListServerCasResponse {
         #[serde(rename = "activeVersion", default)]
-        pub active_version: Option<String>,
+        pub active_version: ::std::option::Option<String>,
         #[doc = "List of server CA certificates for the instance."]
         #[serde(rename = "certs", default)]
-        pub certs: Option<Vec<crate::schemas::SslCert>>,
+        pub certs: ::std::option::Option<Vec<crate::schemas::SslCert>>,
         #[doc = "This is always sql#instancesListServerCas."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for InstancesListServerCasResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1208,7 +1182,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1226,7 +1199,7 @@ pub mod schemas {
     pub struct InstancesRestoreBackupRequest {
         #[doc = "Parameters required to perform the restore backup operation."]
         #[serde(rename = "restoreBackupContext", default)]
-        pub restore_backup_context: Option<crate::schemas::RestoreBackupContext>,
+        pub restore_backup_context: ::std::option::Option<crate::schemas::RestoreBackupContext>,
     }
     impl ::field_selector::FieldSelector for InstancesRestoreBackupRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1235,7 +1208,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1253,7 +1225,7 @@ pub mod schemas {
     pub struct InstancesRotateServerCaRequest {
         #[doc = "Contains details about the rotate server CA operation."]
         #[serde(rename = "rotateServerCaContext", default)]
-        pub rotate_server_ca_context: Option<crate::schemas::RotateServerCaContext>,
+        pub rotate_server_ca_context: ::std::option::Option<crate::schemas::RotateServerCaContext>,
     }
     impl ::field_selector::FieldSelector for InstancesRotateServerCaRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1262,7 +1234,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1280,7 +1251,7 @@ pub mod schemas {
     pub struct InstancesTruncateLogRequest {
         #[doc = "Contains details about the truncate log operation."]
         #[serde(rename = "truncateLogContext", default)]
-        pub truncate_log_context: Option<crate::schemas::TruncateLogContext>,
+        pub truncate_log_context: ::std::option::Option<crate::schemas::TruncateLogContext>,
     }
     impl ::field_selector::FieldSelector for InstancesTruncateLogRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1289,7 +1260,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1307,16 +1277,16 @@ pub mod schemas {
     pub struct IpConfiguration {
         #[doc = "The list of external networks that are allowed to connect to the instance using the IP. In CIDR notation, also known as 'slash' notation (e.g. 192.168.100.0/24)."]
         #[serde(rename = "authorizedNetworks", default)]
-        pub authorized_networks: Option<Vec<crate::schemas::AclEntry>>,
+        pub authorized_networks: ::std::option::Option<Vec<crate::schemas::AclEntry>>,
         #[doc = "Whether the instance should be assigned an IP address or not."]
         #[serde(rename = "ipv4Enabled", default)]
-        pub ipv_4_enabled: Option<bool>,
+        pub ipv_4_enabled: ::std::option::Option<bool>,
         #[doc = "The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, /projects/myProject/global/networks/default. This setting can be updated, but it cannot be removed after it is set."]
         #[serde(rename = "privateNetwork", default)]
-        pub private_network: Option<String>,
+        pub private_network: ::std::option::Option<String>,
         #[doc = "Whether SSL connections over IP should be enforced or not."]
         #[serde(rename = "requireSsl", default)]
-        pub require_ssl: Option<bool>,
+        pub require_ssl: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for IpConfiguration {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1325,7 +1295,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1343,13 +1312,13 @@ pub mod schemas {
     pub struct IpMapping {
         #[doc = "The IP address assigned."]
         #[serde(rename = "ipAddress", default)]
-        pub ip_address: Option<String>,
+        pub ip_address: ::std::option::Option<String>,
         #[doc = "The type of this IP address. A PRIMARY address is a public address that can accept incoming connections. A PRIVATE address is a private address that can accept incoming connections. An OUTGOING address is the source address of connections originating from the instance, if supported."]
         #[serde(rename = "type", default)]
-        pub r#type: Option<String>,
+        pub r#type: ::std::option::Option<String>,
         #[doc = "The due time for this IP to be retired in RFC 3339 format, for example 2012-11-15T16:19:00.094Z. This field is only available when the IP is scheduled to be retired."]
         #[serde(rename = "timeToRetire", default)]
-        pub time_to_retire: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub time_to_retire: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::field_selector::FieldSelector for IpMapping {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1358,7 +1327,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1376,13 +1344,13 @@ pub mod schemas {
     pub struct LocationPreference {
         #[doc = "The AppEngine application to follow, it must be in the same region as the Cloud SQL instance."]
         #[serde(rename = "followGaeApplication", default)]
-        pub follow_gae_application: Option<String>,
+        pub follow_gae_application: ::std::option::Option<String>,
         #[doc = "This is always sql#locationPreference."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The preferred Compute Engine zone (e.g. us-central1-a, us-central1-b, etc.)."]
         #[serde(rename = "zone", default)]
-        pub zone: Option<String>,
+        pub zone: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for LocationPreference {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1391,7 +1359,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1409,16 +1376,16 @@ pub mod schemas {
     pub struct MaintenanceWindow {
         #[doc = "day of week (1-7), starting on Monday."]
         #[serde(rename = "day", default)]
-        pub day: Option<i32>,
+        pub day: ::std::option::Option<i32>,
         #[doc = "hour of day - 0 to 23."]
         #[serde(rename = "hour", default)]
-        pub hour: Option<i32>,
+        pub hour: ::std::option::Option<i32>,
         #[doc = "This is always sql#maintenanceWindow."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Maintenance timing setting: canary (Earlier) or stable (Later).\nLearn more."]
         #[serde(rename = "updateTrack", default)]
-        pub update_track: Option<String>,
+        pub update_track: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for MaintenanceWindow {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1427,7 +1394,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1445,38 +1411,38 @@ pub mod schemas {
     pub struct MySqlReplicaConfiguration {
         #[doc = "PEM representation of the trusted CA's x509 certificate."]
         #[serde(rename = "caCertificate", default)]
-        pub ca_certificate: Option<String>,
+        pub ca_certificate: ::std::option::Option<String>,
         #[doc = "PEM representation of the slave's x509 certificate."]
         #[serde(rename = "clientCertificate", default)]
-        pub client_certificate: Option<String>,
+        pub client_certificate: ::std::option::Option<String>,
         #[doc = "PEM representation of the slave's private key. The corresponsing public key is encoded in the client's certificate."]
         #[serde(rename = "clientKey", default)]
-        pub client_key: Option<String>,
+        pub client_key: ::std::option::Option<String>,
         #[doc = "Seconds to wait between connect retries. MySQL's default is 60 seconds."]
         #[serde(rename = "connectRetryInterval", default)]
-        pub connect_retry_interval: Option<i32>,
+        pub connect_retry_interval: ::std::option::Option<i32>,
         #[doc = "Path to a SQL dump file in Google Cloud Storage from which the slave instance is to be created. The URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are also supported. Dumps should have the binlog co-ordinates from which replication should begin. This can be accomplished by setting --master-data to 1 when using mysqldump."]
         #[serde(rename = "dumpFilePath", default)]
-        pub dump_file_path: Option<String>,
+        pub dump_file_path: ::std::option::Option<String>,
         #[doc = "This is always sql#mysqlReplicaConfiguration."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Interval in milliseconds between replication heartbeats."]
         #[serde(rename = "masterHeartbeatPeriod", default)]
         #[serde(with = "crate::parsed_string")]
-        pub master_heartbeat_period: Option<i64>,
+        pub master_heartbeat_period: ::std::option::Option<i64>,
         #[doc = "The password for the replication connection."]
         #[serde(rename = "password", default)]
-        pub password: Option<String>,
+        pub password: ::std::option::Option<String>,
         #[doc = "A list of permissible ciphers to use for SSL encryption."]
         #[serde(rename = "sslCipher", default)]
-        pub ssl_cipher: Option<String>,
+        pub ssl_cipher: ::std::option::Option<String>,
         #[doc = "The username for the replication connection."]
         #[serde(rename = "username", default)]
-        pub username: Option<String>,
+        pub username: ::std::option::Option<String>,
         #[doc = "Whether or not to check the master's Common Name value in the certificate that it sends during the SSL handshake."]
         #[serde(rename = "verifyServerCertificate", default)]
-        pub verify_server_certificate: Option<bool>,
+        pub verify_server_certificate: ::std::option::Option<bool>,
     }
     impl ::field_selector::FieldSelector for MySqlReplicaConfiguration {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1485,7 +1451,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1503,10 +1468,10 @@ pub mod schemas {
     pub struct OnPremisesConfiguration {
         #[doc = "The host and port of the on-premises instance in host:port format"]
         #[serde(rename = "hostPort", default)]
-        pub host_port: Option<String>,
+        pub host_port: ::std::option::Option<String>,
         #[doc = "This is always sql#onPremisesConfiguration."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for OnPremisesConfiguration {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1515,7 +1480,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1533,48 +1497,48 @@ pub mod schemas {
     pub struct Operation {
         #[doc = "The time this operation finished in UTC timezone in RFC 3339 format, for example 2012-11-15T16:19:00.094Z."]
         #[serde(rename = "endTime", default)]
-        pub end_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "If errors occurred during processing of this operation, this field will be populated."]
         #[serde(rename = "error", default)]
-        pub error: Option<crate::schemas::OperationErrors>,
+        pub error: ::std::option::Option<crate::schemas::OperationErrors>,
         #[doc = "The context for export operation, if applicable."]
         #[serde(rename = "exportContext", default)]
-        pub export_context: Option<crate::schemas::ExportContext>,
+        pub export_context: ::std::option::Option<crate::schemas::ExportContext>,
         #[doc = "The context for import operation, if applicable."]
         #[serde(rename = "importContext", default)]
-        pub import_context: Option<crate::schemas::ImportContext>,
+        pub import_context: ::std::option::Option<crate::schemas::ImportContext>,
         #[doc = "The time this operation was enqueued in UTC timezone in RFC 3339 format, for example 2012-11-15T16:19:00.094Z."]
         #[serde(rename = "insertTime", default)]
-        pub insert_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub insert_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "This is always sql#operation."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "An identifier that uniquely identifies the operation. You can use this identifier to retrieve the Operations resource that has information about the operation."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The type of the operation. Valid values are CREATE, DELETE, UPDATE, RESTART, IMPORT, EXPORT, BACKUP_VOLUME, RESTORE_VOLUME, CREATE_USER, DELETE_USER, CREATE_DATABASE, DELETE_DATABASE ."]
         #[serde(rename = "operationType", default)]
-        pub operation_type: Option<String>,
+        pub operation_type: ::std::option::Option<String>,
         #[doc = "The URI of this resource."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "The time this operation actually started in UTC timezone in RFC 3339 format, for example 2012-11-15T16:19:00.094Z."]
         #[serde(rename = "startTime", default)]
-        pub start_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The status of an operation. Valid values are PENDING, RUNNING, DONE, UNKNOWN."]
         #[serde(rename = "status", default)]
-        pub status: Option<String>,
+        pub status: ::std::option::Option<String>,
         #[doc = "Name of the database instance related to this operation."]
         #[serde(rename = "targetId", default)]
-        pub target_id: Option<String>,
+        pub target_id: ::std::option::Option<String>,
         #[serde(rename = "targetLink", default)]
-        pub target_link: Option<String>,
+        pub target_link: ::std::option::Option<String>,
         #[doc = "The project ID of the target instance related to this operation."]
         #[serde(rename = "targetProject", default)]
-        pub target_project: Option<String>,
+        pub target_project: ::std::option::Option<String>,
         #[doc = "The email address of the user who initiated this operation."]
         #[serde(rename = "user", default)]
-        pub user: Option<String>,
+        pub user: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Operation {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1583,7 +1547,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1601,13 +1564,13 @@ pub mod schemas {
     pub struct OperationError {
         #[doc = "Identifies the specific error that occurred."]
         #[serde(rename = "code", default)]
-        pub code: Option<String>,
+        pub code: ::std::option::Option<String>,
         #[doc = "This is always sql#operationError."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "Additional information about the error encountered."]
         #[serde(rename = "message", default)]
-        pub message: Option<String>,
+        pub message: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for OperationError {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1616,7 +1579,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1634,10 +1596,10 @@ pub mod schemas {
     pub struct OperationErrors {
         #[doc = "The list of errors encountered while processing this operation."]
         #[serde(rename = "errors", default)]
-        pub errors: Option<Vec<crate::schemas::OperationError>>,
+        pub errors: ::std::option::Option<Vec<crate::schemas::OperationError>>,
         #[doc = "This is always sql#operationErrors."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for OperationErrors {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1646,7 +1608,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1664,13 +1625,13 @@ pub mod schemas {
     pub struct OperationsListResponse {
         #[doc = "List of operation resources."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Operation>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Operation>>,
         #[doc = "This is always sql#operationsList."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for OperationsListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1679,7 +1640,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1697,13 +1657,14 @@ pub mod schemas {
     pub struct ReplicaConfiguration {
         #[doc = "Specifies if the replica is the failover target. If the field is set to true the replica will be designated as a failover replica. In case the master instance fails, the replica instance will be promoted as the new master instance.\nOnly one replica can be specified as failover target, and the replica has to be in different zone with the master instance."]
         #[serde(rename = "failoverTarget", default)]
-        pub failover_target: Option<bool>,
+        pub failover_target: ::std::option::Option<bool>,
         #[doc = "This is always sql#replicaConfiguration."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "MySQL specific configuration when replicating from a MySQL on-premises master. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named master.info in the data directory."]
         #[serde(rename = "mysqlReplicaConfiguration", default)]
-        pub mysql_replica_configuration: Option<crate::schemas::MySqlReplicaConfiguration>,
+        pub mysql_replica_configuration:
+            ::std::option::Option<crate::schemas::MySqlReplicaConfiguration>,
     }
     impl ::field_selector::FieldSelector for ReplicaConfiguration {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1712,7 +1673,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1731,16 +1691,16 @@ pub mod schemas {
         #[doc = "The ID of the backup run to restore from."]
         #[serde(rename = "backupRunId", default)]
         #[serde(with = "crate::parsed_string")]
-        pub backup_run_id: Option<i64>,
+        pub backup_run_id: ::std::option::Option<i64>,
         #[doc = "The ID of the instance that the backup was taken from."]
         #[serde(rename = "instanceId", default)]
-        pub instance_id: Option<String>,
+        pub instance_id: ::std::option::Option<String>,
         #[doc = "This is always sql#restoreBackupContext."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The full project ID of the source instance."]
         #[serde(rename = "project", default)]
-        pub project: Option<String>,
+        pub project: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RestoreBackupContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1749,7 +1709,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1767,10 +1726,10 @@ pub mod schemas {
     pub struct RotateServerCaContext {
         #[doc = "This is always sql#rotateServerCaContext."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The fingerprint of the next version to be rotated to. If left unspecified, will be rotated to the most recently added server CA version."]
         #[serde(rename = "nextVersion", default)]
-        pub next_version: Option<String>,
+        pub next_version: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for RotateServerCaContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1779,7 +1738,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1797,67 +1755,67 @@ pub mod schemas {
     pub struct Settings {
         #[doc = "The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values:\nALWAYS: The instance is on, and remains so even in the absence of connection requests.\nNEVER: The instance is off; it is not activated, even if a connection request arrives.\nON_DEMAND: First Generation instances only. The instance responds to incoming requests, and turns itself off when not in use. Instances with PER_USE pricing turn off after 15 minutes of inactivity. Instances with PER_PACKAGE pricing turn off after 12 hours of inactivity."]
         #[serde(rename = "activationPolicy", default)]
-        pub activation_policy: Option<String>,
+        pub activation_policy: ::std::option::Option<String>,
         #[doc = "The App Engine app IDs that can access this instance. First Generation instances only."]
         #[serde(rename = "authorizedGaeApplications", default)]
-        pub authorized_gae_applications: Option<Vec<String>>,
+        pub authorized_gae_applications: ::std::option::Option<Vec<String>>,
         #[doc = "Availability type (PostgreSQL instances only). Potential values:\nZONAL: The instance serves data from only one zone. Outages in that zone affect data accessibility.\nREGIONAL: The instance can serve data from more than one zone in a region (it is highly available).\nFor more information, see Overview of the High Availability Configuration."]
         #[serde(rename = "availabilityType", default)]
-        pub availability_type: Option<String>,
+        pub availability_type: ::std::option::Option<String>,
         #[doc = "The daily backup configuration for the instance."]
         #[serde(rename = "backupConfiguration", default)]
-        pub backup_configuration: Option<crate::schemas::BackupConfiguration>,
+        pub backup_configuration: ::std::option::Option<crate::schemas::BackupConfiguration>,
         #[doc = "Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property is only applicable to First Generation instances."]
         #[serde(rename = "crashSafeReplicationEnabled", default)]
-        pub crash_safe_replication_enabled: Option<bool>,
+        pub crash_safe_replication_enabled: ::std::option::Option<bool>,
         #[doc = "The size of data disk, in GB. The data disk size minimum is 10GB. Not used for First Generation instances."]
         #[serde(rename = "dataDiskSizeGb", default)]
         #[serde(with = "crate::parsed_string")]
-        pub data_disk_size_gb: Option<i64>,
+        pub data_disk_size_gb: ::std::option::Option<i64>,
         #[doc = "The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances."]
         #[serde(rename = "dataDiskType", default)]
-        pub data_disk_type: Option<String>,
+        pub data_disk_type: ::std::option::Option<String>,
         #[doc = "The database flags passed to the instance at startup."]
         #[serde(rename = "databaseFlags", default)]
-        pub database_flags: Option<Vec<crate::schemas::DatabaseFlags>>,
+        pub database_flags: ::std::option::Option<Vec<crate::schemas::DatabaseFlags>>,
         #[doc = "Configuration specific to read replica instances. Indicates whether replication is enabled or not."]
         #[serde(rename = "databaseReplicationEnabled", default)]
-        pub database_replication_enabled: Option<bool>,
+        pub database_replication_enabled: ::std::option::Option<bool>,
         #[doc = "The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances."]
         #[serde(rename = "ipConfiguration", default)]
-        pub ip_configuration: Option<crate::schemas::IpConfiguration>,
+        pub ip_configuration: ::std::option::Option<crate::schemas::IpConfiguration>,
         #[doc = "This is always sql#settings."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location is only applicable to First Generation instances."]
         #[serde(rename = "locationPreference", default)]
-        pub location_preference: Option<crate::schemas::LocationPreference>,
+        pub location_preference: ::std::option::Option<crate::schemas::LocationPreference>,
         #[doc = "The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes. Not used for First Generation instances."]
         #[serde(rename = "maintenanceWindow", default)]
-        pub maintenance_window: Option<crate::schemas::MaintenanceWindow>,
+        pub maintenance_window: ::std::option::Option<crate::schemas::MaintenanceWindow>,
         #[doc = "The pricing plan for this instance. This can be either PER_USE or PACKAGE. Only PER_USE is supported for Second Generation instances."]
         #[serde(rename = "pricingPlan", default)]
-        pub pricing_plan: Option<String>,
+        pub pricing_plan: ::std::option::Option<String>,
         #[doc = "The type of replication this instance uses. This can be either ASYNCHRONOUS or SYNCHRONOUS. This property is only applicable to First Generation instances."]
         #[serde(rename = "replicationType", default)]
-        pub replication_type: Option<String>,
+        pub replication_type: ::std::option::Option<String>,
         #[doc = "The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value."]
         #[serde(rename = "settingsVersion", default)]
         #[serde(with = "crate::parsed_string")]
-        pub settings_version: Option<i64>,
+        pub settings_version: ::std::option::Option<i64>,
         #[doc = "Configuration to increase storage size automatically. The default value is true. Not used for First Generation instances."]
         #[serde(rename = "storageAutoResize", default)]
-        pub storage_auto_resize: Option<bool>,
+        pub storage_auto_resize: ::std::option::Option<bool>,
         #[doc = "The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit. Not used for First Generation instances."]
         #[serde(rename = "storageAutoResizeLimit", default)]
         #[serde(with = "crate::parsed_string")]
-        pub storage_auto_resize_limit: Option<i64>,
+        pub storage_auto_resize_limit: ::std::option::Option<i64>,
         #[doc = "The tier (or machine type) for this instance, for example db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances). For MySQL instances, this property determines whether the instance is First or Second Generation. For more information, see Instance Settings."]
         #[serde(rename = "tier", default)]
-        pub tier: Option<String>,
+        pub tier: ::std::option::Option<String>,
         #[doc = "User-provided labels, represented as a dictionary where each label is a single key value pair."]
         #[serde(rename = "userLabels", default)]
-        pub user_labels: Option<::std::collections::BTreeMap<String, String>>,
+        pub user_labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::field_selector::FieldSelector for Settings {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1866,7 +1824,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1884,31 +1841,31 @@ pub mod schemas {
     pub struct SslCert {
         #[doc = "PEM representation."]
         #[serde(rename = "cert", default)]
-        pub cert: Option<String>,
+        pub cert: ::std::option::Option<String>,
         #[doc = "Serial number, as extracted from the certificate."]
         #[serde(rename = "certSerialNumber", default)]
-        pub cert_serial_number: Option<String>,
+        pub cert_serial_number: ::std::option::Option<String>,
         #[doc = "User supplied name. Constrained to [a-zA-Z.-_ ]+."]
         #[serde(rename = "commonName", default)]
-        pub common_name: Option<String>,
+        pub common_name: ::std::option::Option<String>,
         #[doc = "The time when the certificate was created in RFC 3339 format, for example 2012-11-15T16:19:00.094Z"]
         #[serde(rename = "createTime", default)]
-        pub create_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub create_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The time when the certificate expires in RFC 3339 format, for example 2012-11-15T16:19:00.094Z."]
         #[serde(rename = "expirationTime", default)]
-        pub expiration_time: Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub expiration_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Name of the database instance."]
         #[serde(rename = "instance", default)]
-        pub instance: Option<String>,
+        pub instance: ::std::option::Option<String>,
         #[doc = "This is always sql#sslCert."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The URI of this resource."]
         #[serde(rename = "selfLink", default)]
-        pub self_link: Option<String>,
+        pub self_link: ::std::option::Option<String>,
         #[doc = "Sha1 Fingerprint."]
         #[serde(rename = "sha1Fingerprint", default)]
-        pub sha_1_fingerprint: Option<String>,
+        pub sha_1_fingerprint: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SslCert {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1917,7 +1874,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1935,10 +1891,10 @@ pub mod schemas {
     pub struct SslCertDetail {
         #[doc = "The public information about the cert."]
         #[serde(rename = "certInfo", default)]
-        pub cert_info: Option<crate::schemas::SslCert>,
+        pub cert_info: ::std::option::Option<crate::schemas::SslCert>,
         #[doc = "The private key for the client cert, in pem format. Keep private in order to protect your security."]
         #[serde(rename = "certPrivateKey", default)]
-        pub cert_private_key: Option<String>,
+        pub cert_private_key: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SslCertDetail {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1947,7 +1903,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1965,7 +1920,7 @@ pub mod schemas {
     pub struct SslCertsCreateEphemeralRequest {
         #[doc = "PEM encoded public key to include in the signed certificate."]
         #[serde(rename = "public_key", default)]
-        pub public_key: Option<String>,
+        pub public_key: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SslCertsCreateEphemeralRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -1974,7 +1929,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -1992,7 +1946,7 @@ pub mod schemas {
     pub struct SslCertsInsertRequest {
         #[doc = "User supplied name. Must be a distinct name from the other certificates for this instance."]
         #[serde(rename = "commonName", default)]
-        pub common_name: Option<String>,
+        pub common_name: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SslCertsInsertRequest {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2001,7 +1955,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2019,16 +1972,16 @@ pub mod schemas {
     pub struct SslCertsInsertResponse {
         #[doc = "The new client certificate and private key. For First Generation instances, the new certificate does not take effect until the instance is restarted."]
         #[serde(rename = "clientCert", default)]
-        pub client_cert: Option<crate::schemas::SslCertDetail>,
+        pub client_cert: ::std::option::Option<crate::schemas::SslCertDetail>,
         #[doc = "This is always sql#sslCertsInsert."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The operation to track the ssl certs insert request."]
         #[serde(rename = "operation", default)]
-        pub operation: Option<crate::schemas::Operation>,
+        pub operation: ::std::option::Option<crate::schemas::Operation>,
         #[doc = "The server Certificate Authority's certificate. If this is missing you can force a new one to be generated by calling resetSslConfig method on instances resource."]
         #[serde(rename = "serverCaCert", default)]
-        pub server_ca_cert: Option<crate::schemas::SslCert>,
+        pub server_ca_cert: ::std::option::Option<crate::schemas::SslCert>,
     }
     impl ::field_selector::FieldSelector for SslCertsInsertResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2037,7 +1990,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2055,10 +2007,10 @@ pub mod schemas {
     pub struct SslCertsListResponse {
         #[doc = "List of client certificates for the instance."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::SslCert>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::SslCert>>,
         #[doc = "This is always sql#sslCertsList."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for SslCertsListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2067,7 +2019,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2086,20 +2037,20 @@ pub mod schemas {
         #[doc = "The maximum disk size of this tier in bytes."]
         #[serde(rename = "DiskQuota", default)]
         #[serde(with = "crate::parsed_string")]
-        pub disk_quota: Option<i64>,
+        pub disk_quota: ::std::option::Option<i64>,
         #[doc = "This is always sql#tier."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The maximum RAM usage of this tier in bytes."]
         #[serde(rename = "RAM", default)]
         #[serde(with = "crate::parsed_string")]
-        pub ram: Option<i64>,
+        pub ram: ::std::option::Option<i64>,
         #[doc = "The applicable regions for this tier."]
         #[serde(rename = "region", default)]
-        pub region: Option<Vec<String>>,
+        pub region: ::std::option::Option<Vec<String>>,
         #[doc = "An identifier for the machine type, for example, db-n1-standard-1. For related information, see Pricing."]
         #[serde(rename = "tier", default)]
-        pub tier: Option<String>,
+        pub tier: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for Tier {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2108,7 +2059,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2126,10 +2076,10 @@ pub mod schemas {
     pub struct TiersListResponse {
         #[doc = "List of tiers."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::Tier>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::Tier>>,
         #[doc = "This is always sql#tiersList."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TiersListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2138,7 +2088,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2156,10 +2105,10 @@ pub mod schemas {
     pub struct TruncateLogContext {
         #[doc = "This is always sql#truncateLogContext."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The type of log to truncate. Valid values are MYSQL_GENERAL_TABLE and MYSQL_SLOW_TABLE."]
         #[serde(rename = "logType", default)]
-        pub log_type: Option<String>,
+        pub log_type: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for TruncateLogContext {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2168,7 +2117,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2186,25 +2134,25 @@ pub mod schemas {
     pub struct User {
         #[doc = "This field is deprecated and will be removed from a future version of the API."]
         #[serde(rename = "etag", default)]
-        pub etag: Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "The host name from which the user can connect. For insert operations, host defaults to an empty string. For update operations, host is specified as part of the request URL. The host name cannot be updated after insertion."]
         #[serde(rename = "host", default)]
-        pub host: Option<String>,
+        pub host: ::std::option::Option<String>,
         #[doc = "The name of the Cloud SQL instance. This does not include the project ID. Can be omitted for update since it is already specified on the URL."]
         #[serde(rename = "instance", default)]
-        pub instance: Option<String>,
+        pub instance: ::std::option::Option<String>,
         #[doc = "This is always sql#user."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "The name of the user in the Cloud SQL instance. Can be omitted for update since it is already specified in the URL."]
         #[serde(rename = "name", default)]
-        pub name: Option<String>,
+        pub name: ::std::option::Option<String>,
         #[doc = "The password for the user."]
         #[serde(rename = "password", default)]
-        pub password: Option<String>,
+        pub password: ::std::option::Option<String>,
         #[doc = "The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable. Can be omitted for update since it is already specified on the URL."]
         #[serde(rename = "project", default)]
-        pub project: Option<String>,
+        pub project: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for User {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2213,7 +2161,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
     #[derive(
@@ -2231,13 +2178,13 @@ pub mod schemas {
     pub struct UsersListResponse {
         #[doc = "List of user resources in the instance."]
         #[serde(rename = "items", default)]
-        pub items: Option<Vec<crate::schemas::User>>,
+        pub items: ::std::option::Option<Vec<crate::schemas::User>>,
         #[doc = "This is always sql#usersList."]
         #[serde(rename = "kind", default)]
-        pub kind: Option<String>,
+        pub kind: ::std::option::Option<String>,
         #[doc = "An identifier that uniquely identifies the operation. You can use this identifier to retrieve the Operations resource that has information about the operation."]
         #[serde(rename = "nextPageToken", default)]
-        pub next_page_token: Option<String>,
+        pub next_page_token: ::std::option::Option<String>,
     }
     impl ::field_selector::FieldSelector for UsersListResponse {
         fn field_selector_with_ident(ident: &str, selector: &mut String) {
@@ -2246,7 +2193,6 @@ pub mod schemas {
                 _ => selector.push_str(","),
             }
             selector.push_str(ident);
-            selector.push_str("*");
         }
     }
 }
@@ -2291,6 +2237,15 @@ pub mod params {
                     )))
                 }
             })
+        }
+    }
+    impl ::field_selector::FieldSelector for Alt {
+        fn field_selector_with_ident(ident: &str, selector: &mut String) {
+            match selector.chars().rev().nth(0) {
+                Some(',') | None => {}
+                _ => selector.push_str(","),
+            }
+            selector.push_str(ident);
         }
     }
 }
@@ -10633,6 +10588,7 @@ fn parse_range_header(
 // to deserialize any string to a FromStr type and serialize any
 // Display type to a String. Google API's encode i64, u64 values as
 // strings.
+#[allow(dead_code)]
 mod parsed_string {
     pub fn serialize<T, S>(value: &Option<T>, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -10708,5 +10664,49 @@ where
         }
 
         Some(Ok(paginated_result.page_contents))
+    }
+} // Bytes in google apis are represented as urlsafe base64 encoded strings.
+  // This defines a Bytes type that is a simple wrapper around a Vec<u8> used
+  // internally to handle byte fields in google apis.
+#[allow(dead_code)]
+mod bytes {
+    use radix64::URL_SAFE as BASE64_CFG;
+
+    #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+    pub struct Bytes(Vec<u8>);
+
+    impl ::std::convert::From<Vec<u8>> for Bytes {
+        fn from(x: Vec<u8>) -> Bytes {
+            Bytes(x)
+        }
+    }
+
+    impl ::std::fmt::Display for Bytes {
+        fn fmt(&self, f: &mut std::fmt::Formatter) -> ::std::fmt::Result {
+            ::radix64::Display::new(BASE64_CFG, &self.0).fmt(f)
+        }
+    }
+
+    impl ::serde::Serialize for Bytes {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::Serializer,
+        {
+            let encoded = BASE64_CFG.encode(&self.0);
+            encoded.serialize(serializer)
+        }
+    }
+
+    impl<'de> ::serde::Deserialize<'de> for Bytes {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Bytes, D::Error>
+        where
+            D: ::serde::Deserializer<'de>,
+        {
+            let encoded = String::deserialize(deserializer)?;
+            let decoded = BASE64_CFG
+                .decode(&encoded)
+                .map_err(|_| ::serde::de::Error::custom("invalid base64 input"))?;
+            Ok(Bytes(decoded))
+        }
     }
 }
