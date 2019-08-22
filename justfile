@@ -94,11 +94,11 @@ show-errors prefix=any_error:
 # Best after 'refresh-with-force', it generates all code and runs cargo against it, collecting errors
 collect-errors:
     just mcp 
-    just gen-all
+    just gen-all || true
     just update-drivers 
-    just gen-check 
+    just gen-check  || true
     just update-drivers
-    just gen-doc 
+    just gen-doc  || true
     just update-drivers
 
 # generate as many APIs as possible, in parallel
