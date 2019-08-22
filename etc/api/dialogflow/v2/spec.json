@@ -7,7 +7,7 @@
   "canonicalName": "Dialogflow",
   "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20190810",
+  "revision": "20190820",
   "title": "Dialogflow API",
   "description": "Builds conversational interfaces (for example, chatbots, and voice-powered apps and devices).",
   "ownerDomain": "google.com",
@@ -7663,7 +7663,7 @@
                       "id": "dialogflow.projects.agent.sessions.entityTypes.create",
                       "path": "v2/{+parent}/entityTypes",
                       "httpMethod": "POST",
-                      "description": "Creates a session entity type.\n\nIf the specified session entity type already exists, overrides the session\nentity type.",
+                      "description": "Creates a session entity type.\n\nIf the specified session entity type already exists, overrides the session\nentity type.\n\nThis method doesn't work with Google Assistant integration.\nContact Dialogflow support if you need to use session entities\nwith Google Assistant integration.",
                       "parameters": {
                         "parent": {
                           "description": "Required. The session to create a session entity type for.\nFormat: `projects/<Project ID>/agent/sessions/<Session ID>`.",
@@ -7703,7 +7703,7 @@
                       "id": "dialogflow.projects.agent.sessions.entityTypes.delete",
                       "path": "v2/{+name}",
                       "httpMethod": "DELETE",
-                      "description": "Deletes the specified session entity type.",
+                      "description": "Deletes the specified session entity type.\n\nThis method doesn't work with Google Assistant integration.\nContact Dialogflow support if you need to use session entities\nwith Google Assistant integration.",
                       "parameters": {
                         "name": {
                           "description": "Required. The name of the entity type to delete. Format:\n`projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type\nDisplay Name>`.",
@@ -7741,7 +7741,7 @@
                       "id": "dialogflow.projects.agent.sessions.entityTypes.get",
                       "path": "v2/{+name}",
                       "httpMethod": "GET",
-                      "description": "Retrieves the specified session entity type.",
+                      "description": "Retrieves the specified session entity type.\n\nThis method doesn't work with Google Assistant integration.\nContact Dialogflow support if you need to use session entities\nwith Google Assistant integration.",
                       "parameters": {
                         "name": {
                           "description": "Required. The name of the session entity type. Format:\n`projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type\nDisplay Name>`.",
@@ -7779,7 +7779,7 @@
                       "id": "dialogflow.projects.agent.sessions.entityTypes.list",
                       "path": "v2/{+parent}/entityTypes",
                       "httpMethod": "GET",
-                      "description": "Returns the list of all session entity types in the specified session.",
+                      "description": "Returns the list of all session entity types in the specified session.\n\nThis method doesn't work with Google Assistant integration.\nContact Dialogflow support if you need to use session entities\nwith Google Assistant integration.",
                       "parameters": {
                         "pageSize": {
                           "description": "Optional. The maximum number of items to return in a single page. By\ndefault 100 and at most 1000.",
@@ -7845,7 +7845,7 @@
                       "id": "dialogflow.projects.agent.sessions.entityTypes.patch",
                       "path": "v2/{+name}",
                       "httpMethod": "PATCH",
-                      "description": "Updates the specified session entity type.",
+                      "description": "Updates the specified session entity type.\n\nThis method doesn't work with Google Assistant integration.\nContact Dialogflow support if you need to use session entities\nwith Google Assistant integration.",
                       "parameters": {
                         "name": {
                           "description": "Required. The unique identifier of this session entity type. Format:\n`projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type\nDisplay Name>`.\n\n`<Entity Type Display Name>` must be the display name of an existing entity\ntype in the same agent that will be overridden or supplemented.",

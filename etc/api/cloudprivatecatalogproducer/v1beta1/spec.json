@@ -7,7 +7,7 @@
   "canonicalName": "Cloud PrivateCatalog Producer",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20190810",
+  "revision": "20190816",
   "title": "Cloud Private Catalog Producer API",
   "description": "Enables cloud users to manage and share enterprise catalogs intheir organizations.",
   "ownerDomain": "google.com",

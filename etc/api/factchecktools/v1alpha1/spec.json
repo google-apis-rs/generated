@@ -7,7 +7,7 @@
   "canonicalName": "Fact Check Tools",
   "fullyEncodeReservedExpansion": true,
   "version": "v1alpha1",
-  "revision": "20190820",
+  "revision": "20190821",
   "title": "Fact Check Tools API",
   "description": "",
   "ownerDomain": "google.com",
@@ -333,6 +333,16 @@
         },
         "imageUrl": {
           "description": "Corresponds to `ClaimReview.reviewRating.image`.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "ratingExplanation": {
+          "description": "Corresponds to `ClaimReview.reviewRating.ratingExplanation`.",
           "type": "string",
           "format": null,
           "enum": [],
