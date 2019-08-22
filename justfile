@@ -8,7 +8,6 @@ MAKEFILE_TPL := ""
 CARGO_TOML_TPL := ""
 GEN_MAKEFILE := OUTPUT_DIR + "/Makefile"
 GEN_CARGO_TOML := OUTPUT_DIR + "/Cargo.toml"
-GEN_JUSTFILE := OUTPUT_DIR + "/justfile"
 ERRORS_FILE_SUFFIX := "-errors.log"
 SKIP_MCP := "no"
 
@@ -24,6 +23,8 @@ help:
     'refresh-google-api-index'  and 'fetch-api-specs-pruned' and 'fetch-api-specs-google'
     -- Drive the generator and update its inputs ----------------------------------------------------)
     'update-drivers'
+    -- Operations on the gen/ directory  ------------------------------------------------------------)
+    'gen-all' and 'gen-check' and 'gen-doc' and 'gen-cargo <+arguments>'
     -- Developer Targets ----------------------------------------------------------------------------)
     'mcp' and 'show-errors' and 'clear-errors' and 
     EOF
@@ -52,8 +53,7 @@ _map-api-index: mcp
 update-drivers: _map-api-index mcp
     cat {{API_INDEX_MAPPED_JSON}} | {{MCP}} substitute \
         templates/Makefile.liquid:{{GEN_MAKEFILE}} \
-        templates/Cargo.toml.liquid:{{GEN_CARGO_TOML}} \
-        templates/justfile.liquid:{{GEN_JUSTFILE}}
+        templates/Cargo.toml.liquid:{{GEN_CARGO_TOML}}
 
 # fetch API specifications from Google's discovery service, based on the list of ones we know work
 fetch-api-specs-pruned: _map-api-index mcp
@@ -94,9 +94,26 @@ show-errors prefix=any_error:
 # Best after 'refresh-with-force', it generates all code and runs cargo against it, collecting errors
 collect-errors:
     just mcp 
-    just gen/all
+    just gen-all
     just update-drivers 
-    just gen/check 
+    just gen-check 
     just update-drivers
-    just gen/doc 
+    just gen-doc 
     just update-drivers
+
+# generate as many APIs as possible, in parallel
+gen-all:
+    make -C {{OUTPUT_DIR}} gen-all -kj8
+
+check := "check"
+# Run cargo on the workspace with all projects
+gen-cargo +arguments=check:
+    cd {{OUTPUT_DIR}} && cargo {{arguments}}
+
+# Run cargo via Make, one by one, and collect errors when checking
+gen-check:
+    make -C {{OUTPUT_DIR}} cargo-all ARGS=check  -k
+
+# Run cargo via Make, one by one, and collect errors when making docs
+gen-doc:
+    make -C {{OUTPUT_DIR}} cargo-all ARGS=docs  -k
