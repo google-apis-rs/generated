@@ -101,7 +101,7 @@ collect-errors:
     just gen-doc  || true
     just update-drivers
 
-# generate as many APIs as possible, in parallel
+# generate as many APIs as possible, in parallel, and one by one (use it if generator changed)
 gen-all:
     make -C {{OUTPUT_DIR}} gen-all -kj8
 
