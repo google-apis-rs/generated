@@ -7,7 +7,7 @@
   "canonicalName": "Container",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20190628",
+  "revision": "20190812",
   "title": "Kubernetes Engine API",
   "description": "Builds and manages container-based applications, powered by the open source Kubernetes technology.",
   "ownerDomain": "google.com",

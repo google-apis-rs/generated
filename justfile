@@ -17,7 +17,7 @@ help:
     cat <<EOF
     Run 'just --list' for more details, here is an overview
     -- Used most often... ---------------------------------------------------------------------------)
-    'refresh-pruned-specs' and 'refresh-with-force'
+    'refresh-pruned-specs' and 'refresh-all'
     'gen/all' and 'gen/cargo check'
     -- The source of it all -- first mentioned serve as input for these mentioned later -------------)
     'refresh-google-api-index'  and 'fetch-api-specs-pruned' and 'fetch-api-specs-google'
@@ -57,11 +57,11 @@ update-drivers: _map-api-index mcp
 
 # fetch API specifications from Google's discovery service, based on the list of ones we know work
 fetch-api-specs-pruned: _map-api-index mcp
-    {{MCP}} fetch-api-specs {{API_INDEX_MAPPED_JSON}} {{SPEC_DIR}}
+    {{MCP}} fetch-api-specs {{API_INDEX_MAPPED_JSON}} {{SPEC_DIR}} {{OUTPUT_DIR}}
 
-# fetch API specifications from Google's discovery service, based the entire index of available APIs
+# fetch API specifications from Google's discovery service, based the entire index of available APIs, and regenerate code
 fetch-api-specs-google: refresh-api-index
-    {{MCP}} fetch-api-specs {{API_INDEX_JSON}} {{SPEC_DIR}}
+    {{MCP}} fetch-api-specs {{API_INDEX_JSON}} {{SPEC_DIR}} {{OUTPUT_DIR}}
 
 # fetch latest API specifications known to be working, just make it work!
 refresh-pruned-specs: fetch-api-specs-pruned update-drivers
@@ -73,6 +73,8 @@ refresh-with-force:
     just fetch-api-specs-google
     just update-drivers
 
+# clear errors, fetch latest index from google, and fetch all specs, run cargo check and doc
+refresh-all: refresh-with-force collect-errors
 
 any_error := "*"
 # valid prefixes: generator or cargo
@@ -91,11 +93,9 @@ show-errors prefix=any_error:
         cat "$fp"
     done
 
-# Best after 'refresh-with-force', it generates all code and runs cargo against it, collecting errors
+# Best after 'refresh-all', it generates all code and runs cargo against it, collecting errors
 collect-errors:
     just mcp 
-    just gen-all || true
-    just update-drivers 
     just gen-check  || true
     just update-drivers
     just gen-doc  || true

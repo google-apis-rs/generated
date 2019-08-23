@@ -17,18 +17,13 @@ to one that you just build. Typical invocations would look like this:
 (cd ../generator && cargo build) && just MCP=$PWD/../generator/target/debug/mcp update-drivers
 ```
 
-### Forcefully regenerating/rebuilding crates even if they errorred before
+### Forcefully regenerating/rebuilding crates even if they failed to generate/build before
 
 The system will remember generator and cargo errors, and not attempt to work on the affected APIs again, unless these files are cleared.
-This can be done manually, or by force.
+This can be done manually, but most of the time you will want to refresh everything, and check for errors.
 
 ```
-just refresh-with-force
-```
-
-From there you would usually go with the following to gather all error data with refreshed code:
-```
-just collect-errors
+just refresh-all
 ```
 
 ### Forcefully update the Makefile after a change affecting the mapped index
