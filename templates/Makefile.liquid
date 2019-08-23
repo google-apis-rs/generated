@@ -21,9 +21,10 @@ cargo-all: {% for item in api -%}{{item.make_target}}-cargo {% endfor %}
 	@echo just ../update-drivers
 
 {% for item in api %}
+{%- assign tmp_log = item.make_target | append: "-errors.log" | prepend: "/tmp/" -%}
 {{item.lib_cargo_file}}: ../{{standard.spec_dir}}/{{item.spec_file}} $(MCP)
-	set -o pipefail; $(MCP) generate $< {{item.gen_dir}} 2>&1 | tee {{item.gen_error_file}} && rm {{item.gen_error_file}}
+	set -o pipefail; $(MCP) generate $< {{item.gen_dir}} 2>&1 | tee {{tmp_log}} || { cp -v {{tmp_log}} {{item.gen_error_file}}; rm -f {{tmp_log}}; false; }
 {{item.make_target}}: {{item.lib_cargo_file}}
 {{item.make_target}}-cargo: {{item.make_target}}
-	set -o pipefail; ( cd {{item.gen_dir}}/{{standard.lib_dir}} && cargo $(ARGS) ) 2>&1 | tee {{item.cargo_error_file}} && rm {{item.cargo_error_file}}
+	set -o pipefail; ( cd {{item.gen_dir}}/{{standard.lib_dir}} && cargo $(ARGS) ) 2>&1 | tee {{tmp_log}} || { cp -v {{tmp_log}} {{item.gen_error_file}}; rm -f {{tmp_log}}; false; }
 {% endfor %}
