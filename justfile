@@ -24,7 +24,7 @@ help:
     -- Drive the generator and update its inputs ----------------------------------------------------)
     'update-drivers'
     -- Operations on the gen/ directory  ------------------------------------------------------------)
-    'gen-all' and 'gen-check' and 'gen-doc' and 'gen-cargo <+arguments>'
+    'gen-all' and 'gen-check' and 'gen-doc' and 'gen-cargo <+arguments>' and 'gen-make <target> <+arguments>'
     -- Developer Targets ----------------------------------------------------------------------------)
     'mcp' and 'show-errors' and 'clear-errors' and 
     EOF
@@ -109,6 +109,10 @@ check := "check"
 # Run cargo on the workspace with all projects
 gen-cargo +arguments=check:
     cd {{OUTPUT_DIR}} && cargo {{arguments}}
+
+# Run make on the given target
+gen-make target +arguments=check:
+    make -C {{OUTPUT_DIR}} {{target}}-cargo ARGS={{arguments}}
 
 # Run cargo via Make, one by one, and collect errors when checking
 gen-check:
